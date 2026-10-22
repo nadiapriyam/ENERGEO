@@ -1,0 +1,193 @@
+{
+  "generator": "verify/run_all.py",
+  "sympy": "1.14.0",
+  "cards": [
+    {
+      "block": 1,
+      "claim": "Any J = M⁻¹K with K antisymmetric satisfies JᵀM + MJ = 0",
+      "figure": "The tangent to every orbit is J·x; the group it generates preserves Q.",
+      "check": {
+        "verifier": "sympy.simplify on 2×2 symbolic symmetric M",
+        "metric": "symbolic residual",
+        "tolerance": "exact",
+        "verdict": "PASS"
+      }
+    },
+    {
+      "block": 1,
+      "claim": "Elliptic case (det M > 0): A(s) = cos s·I + sin s·J has AᵀMA = M",
+      "figure": "Orbits are the ellipses Q = const, closing after s = 2π; in 3D they are horizontal rings on the bowl z = Q.",
+      "check": {
+        "verifier": "sympy.simplify, symbolic a, b, e with det M = e² > 0",
+        "metric": "symbolic residual",
+        "tolerance": "exact",
+        "verdict": "PASS"
+      }
+    },
+    {
+      "block": 1,
+      "claim": "Hyperbolic case (det M < 0): A(s) = cosh s·I + sinh s·J has AᵀMA = M",
+      "figure": "Orbits are hyperbola branches Q = const on the saddle z = Q; they never close.",
+      "check": {
+        "verifier": "sympy.simplify, symbolic a, b, e with det M = −e² < 0",
+        "metric": "symbolic residual",
+        "tolerance": "exact",
+        "verdict": "PASS"
+      }
+    },
+    {
+      "block": 1,
+      "claim": "Null vectors are η-orthogonal to themselves: (1,1)ᵀη(1,1) = 0",
+      "figure": "On the saddle, the null lines sit at height 0 — a vector lying on its own orthogonal line.",
+      "check": {
+        "verifier": "exact arithmetic",
+        "metric": "symbolic residual",
+        "tolerance": "exact",
+        "verdict": "PASS"
+      }
+    },
+    {
+      "block": 2,
+      "claim": "Residual of the G-projection is G-orthogonal: uᵀG(v − (uᵀGv / uᵀGu)u) = 0",
+      "figure": "The drop line from v to the u-axis lands in the G-orthogonal plane, not the visually perpendicular one.",
+      "check": {
+        "verifier": "sympy.simplify, symbolic symmetric 3×3 G",
+        "metric": "symbolic residual",
+        "tolerance": "exact",
+        "verdict": "PASS"
+      }
+    },
+    {
+      "block": 2,
+      "claim": "∇(xᵀGx) = 2Gx, so the tangent plane of the unit ball at û has normal Gu",
+      "figure": "The G-orthogonal plane of u is drawn parallel to the ellipsoid's tangent plane where u pierces it.",
+      "check": {
+        "verifier": "sympy gradient",
+        "metric": "symbolic residual",
+        "tolerance": "exact",
+        "verdict": "PASS"
+      }
+    },
+    {
+      "block": 3,
+      "claim": "Over one period [0, 2π], {cos kt, sin kt}ₖ₌₁³ has Gram matrix π·I",
+      "figure": "The Gram heatmap shows a clean diagonal at L = T; off-diagonal cells light up as L drifts from T.",
+      "check": {
+        "verifier": "sympy.integrate, exact",
+        "metric": "symbolic residual",
+        "tolerance": "exact",
+        "verdict": "PASS"
+      }
+    },
+    {
+      "block": 3,
+      "claim": "Closed form used live: ∫₀ᴸ cos t·cos 3t dt = ½(sin 2L/2 + sin 4L/4)",
+      "figure": "Each Gram cell in the app is this formula, not a numerical approximation.",
+      "check": {
+        "verifier": "sympy.integrate vs closed form",
+        "metric": "symbolic residual",
+        "tolerance": "exact",
+        "verdict": "PASS"
+      }
+    },
+    {
+      "block": 4,
+      "claim": "Parseval for a 3-harmonic trig sum: ∫₀^{2π} x² dt = π Σ(aₖ² + bₖ²)",
+      "figure": "The time-domain energy bar and the coefficient-sphere radius² are the same number.",
+      "check": {
+        "verifier": "sympy.integrate, symbolic coefficients",
+        "metric": "symbolic residual",
+        "tolerance": "exact",
+        "verdict": "PASS"
+      }
+    },
+    {
+      "block": 4,
+      "claim": "On any interval: ‖x₁+x₂‖² = ‖x₁‖² + ‖x₂‖² + 2⟨x₁,x₂⟩; the cross term is 0 at L = 2π",
+      "figure": "The parallelepiped of parts is square-cornered exactly when the cross terms vanish.",
+      "check": {
+        "verifier": "sympy.integrate, symbolic L",
+        "metric": "symbolic residual",
+        "tolerance": "exact",
+        "verdict": "PASS"
+      }
+    },
+    {
+      "block": 5,
+      "claim": "Time-average ⟨cos(ωt+φ), cos(ω(t+τ)+φ)⟩ = ½cos ωτ, independent of φ",
+      "figure": "The defect landscape is computed from amplitudes only; changing phases leaves it unchanged.",
+      "check": {
+        "verifier": "product-to-sum identity + bound |∫osc| ≤ 1/ω, then limit T → ∞",
+        "metric": "symbolic residual",
+        "tolerance": "exact",
+        "verdict": "PASS"
+      }
+    },
+    {
+      "block": 5,
+      "claim": "For unitary U: ‖x − Ux‖² / 2‖x‖² = 1 − ⟨x,Ux⟩/‖x‖²",
+      "figure": "The defect curve is the autocorrelation curve flipped: valleys of D are peaks of ρ.",
+      "check": {
+        "verifier": "expansion with ‖Ux‖ = ‖x‖",
+        "metric": "symbolic residual",
+        "tolerance": "exact",
+        "verdict": "PASS"
+      }
+    },
+    {
+      "block": 5,
+      "claim": "r = p/q ⇒ D(2πq) = 0 exactly (a true symmetry of the shifted signal)",
+      "figure": "Rational ridges of the landscape touch zero at τ = 2πq; irrational ones never do.",
+      "check": {
+        "verifier": "exact trig evaluation",
+        "metric": "symbolic residual",
+        "tolerance": "exact",
+        "verdict": "PASS"
+      }
+    },
+    {
+      "block": 6,
+      "claim": "The 24 signed permutation matrices with det +1 form a group (closed under products)",
+      "figure": "Every animated rotation in the panel is one of these 24, played as a turn about its axis.",
+      "check": {
+        "verifier": "exact integer matrices",
+        "metric": "symbolic residual",
+        "tolerance": "exact",
+        "verdict": "PASS"
+      }
+    },
+    {
+      "block": 6,
+      "claim": "|orbit|·|stab| = 24: generic 24·1, edge 12·2, vertex 8·3, face 6·4",
+      "figure": "Dragging the point onto a symmetry axis merges orbit points and grows the stabilizer.",
+      "check": {
+        "verifier": "exact orbit enumeration",
+        "metric": "symbolic residual",
+        "tolerance": "exact",
+        "verdict": "PASS"
+      }
+    },
+    {
+      "block": 7,
+      "claim": "The cyclic shift (x₁,x₂,x₃) ↦ (x₃,x₁,x₂) equals the 120° rotation about (1,1,1)",
+      "figure": "Shifting the signal is drawn as turning the point about the diagonal; the orbit is an equilateral triangle.",
+      "check": {
+        "verifier": "Rodrigues formula, exact",
+        "metric": "symbolic residual",
+        "tolerance": "exact",
+        "verdict": "PASS"
+      }
+    },
+    {
+      "block": 7,
+      "claim": "P = (I + S + S²)/3 is the orthogonal projector onto span(1,1,1): P² = P, Pᵀ = P",
+      "figure": "The orbit's centroid sits on the diagonal; the residual lies in the plane x₁+x₂+x₃ = 0.",
+      "check": {
+        "verifier": "exact arithmetic",
+        "metric": "symbolic residual",
+        "tolerance": "exact",
+        "verdict": "PASS"
+      }
+    }
+  ]
+}
