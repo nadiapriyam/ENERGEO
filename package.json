@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "verify": "python3 verify/run_all.py"
+    "verify": "python3 verify/run_ledger.py"
   },
   "keywords": [],
   "author": "",

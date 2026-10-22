@@ -12,9 +12,9 @@ It is split into three hypotheses (your split, `claude_code_prompt.md` §1a). Th
 
 | | File | Depends on |
 |---|---|---|
-| H1 | [Orthogonality, quadratics, and representation theory](hypotheses/H1.md) | — |
-| H2 | [A pattern of representations and how they develop](hypotheses/H2.md) | H1 ("due to this geometry") |
-| H3 | [The relationship-ridden geometry, with the invariant as a rule in the manifold](hypotheses/H3.md) | H2 ("leading to") |
+| H1 | [Orthogonality, quadratics, and representation theory](../research/hypotheses/H1.md) | — |
+| H2 | [A pattern of representations and how they develop](../research/hypotheses/H2.md) | H1 ("due to this geometry") |
+| H3 | [The relationship-ridden geometry, with the invariant as a rule in the manifold](../research/hypotheses/H3.md) | H2 ("leading to") |
 
 **Status of all three:** hypotheses, neither assumed true nor assumed false.
 
@@ -27,12 +27,12 @@ It is split into three hypotheses (your split, `claude_code_prompt.md` §1a). Th
 
 | Source | Governs |
 |---|---|
-| `Mathematical_Basis_Interactive_Design_Spec.md` | Theory and equations: what is established, what is derived, what is your hypothesis, what is open. Also the 18 blocks, the panel layout and the learner modes. |
-| `Interactive_Master_Map.docx` | How the ideas become consecutive interactives: the "journey of one signal". Every interactive transforms an object the learner already understands. |
-| `claude_code_prompt.md` | How we work (§6): the verifier decides, levels, step cards, gates. |
+| [`Mathematical_Basis_Interactive_Design_Spec.md`](Mathematical_Basis_Interactive_Design_Spec.md) | Theory and equations: what is established, what is derived, what is your hypothesis, what is open. Also the 18 blocks, the panel layout and the learner modes. |
+| [`Interactive_Master_Map.docx`](Interactive_Master_Map.docx) | How the ideas become consecutive interactives: the "journey of one signal". Every interactive transforms an object the learner already understands. |
+| [`claude_code_prompt.md`](claude_code_prompt.md) | How we work (§6): the verifier decides, levels, step cards, gates. |
 | [`gate2_answers.md`](gate2_answers.md) | Your clarifications of the wording in §1. |
-| `hypotheses/`, `connections/` | The hypotheses and the proposed connections, each with a level. |
-| `verify_*.py` and the ledger | The verdicts. Nothing is accepted without one. |
+| [`research/`](../research/) | The hypotheses, the connections (each with a level), open questions and sources. |
+| [`verify/`](../verify/) and its ledger | The verdicts. Nothing is accepted without one. The ledger is append-only in spirit: failures stay visible even after a later test passes. |
 
 ## Terms (from Gate 2)
 
@@ -47,13 +47,15 @@ Words are read by the role they play (§2). These are fixed by your answers:
 
 ## Claim levels (§6)
 
-| Level | Meaning | Statement label |
-|---|---|---|
-| 1 | Established | Known |
-| 2 | Buildable | Supported inference |
-| 3 | Testable forward hypothesis | Testable hypothesis |
-| 4 | Speculative analogy | Long-term possibility |
+| Level | Label |
+|---|---|
+| 1 | Established / Known |
+| 2 | Derived connection / Supported inference |
+| 3 | Testable hypothesis |
+| 4 | Open or speculative connection |
 
-The pairing of levels with labels above is Claude's reading of §6. Please confirm it.
+*(Labels set by Nadia at Gate 3.)*
+
+A connection is never promoted just because several equations look alike. These stay distinct even where they connect: quadratic invariance, Noether conservation, symplectic preservation, and metric invariance.
 
 A level changes only on a verifier verdict. Level 3 and 4 ideas are never removed. Each one records what experiment would move it up.
