@@ -1,0 +1,408 @@
+{
+ "generated": "2026-10-23T22:18:58+00:00",
+ "commit": "665e548",
+ "cards": {
+  "B1a": {
+   "script": "verify_B1_B7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Any J = M⁻¹K with K antisymmetric satisfies JᵀM + MJ = 0"
+  },
+  "B1b": {
+   "script": "verify_B1_B7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Elliptic case (det M > 0): A(s) = cos s·I + sin s·J has AᵀMA = M"
+  },
+  "B1c": {
+   "script": "verify_B1_B7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Hyperbolic case (det M < 0): A(s) = cosh s·I + sinh s·J has AᵀMA = M"
+  },
+  "B1d": {
+   "script": "verify_B1_B7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Null vectors are η-orthogonal to themselves: (1,1)ᵀη(1,1) = 0"
+  },
+  "B2a": {
+   "script": "verify_B1_B7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Residual of the G-projection is G-orthogonal: uᵀG(v − (uᵀGv / uᵀGu)u) = 0"
+  },
+  "B2b": {
+   "script": "verify_B1_B7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "∇(xᵀGx) = 2Gx, so the tangent plane of the unit ball at û has normal Gu"
+  },
+  "B3a": {
+   "script": "verify_B1_B7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Over one period [0, 2π], {cos kt, sin kt}ₖ₌₁³ has Gram matrix π·I"
+  },
+  "B3b": {
+   "script": "verify_B1_B7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Closed form used live: ∫₀ᴸ cos t·cos 3t dt = ½(sin 2L/2 + sin 4L/4)"
+  },
+  "B4a": {
+   "script": "verify_B1_B7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Parseval for a 3-harmonic trig sum: ∫₀^{2π} x² dt = π Σ(aₖ² + bₖ²)"
+  },
+  "B4b": {
+   "script": "verify_B1_B7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "On any interval: ‖x₁+x₂‖² = ‖x₁‖² + ‖x₂‖² + 2⟨x₁,x₂⟩; the cross term is 0 at L = 2π"
+  },
+  "B5a": {
+   "script": "verify_B1_B7.py",
+   "verdict": "FAIL",
+   "everFailed": true,
+   "claim": "Time-average ⟨cos(ωt+φ), cos(ω(t+τ)+φ)⟩ = ½cos ωτ, independent of φ"
+  },
+  "B5a2": {
+   "script": "verify_B1_B7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[added after B5a FAILED] time-average ⟨cos(ωt+φ), cos(ω(t+τ)+φ)⟩ = ½cos ωτ, independent of φ"
+  },
+  "B5b": {
+   "script": "verify_B1_B7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "For unitary U: ‖x − Ux‖² / 2‖x‖² = 1 − ⟨x,Ux⟩/‖x‖²"
+  },
+  "B5c": {
+   "script": "verify_B1_B7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "r = p/q ⇒ D(2πq) = 0 exactly (a true symmetry of the shifted signal)"
+  },
+  "B6a": {
+   "script": "verify_B1_B7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "The 24 signed permutation matrices with det +1 form a group (closed under products)"
+  },
+  "B6b": {
+   "script": "verify_B1_B7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "|orbit|·|stab| = 24: generic 24·1, edge 12·2, vertex 8·3, face 6·4"
+  },
+  "B7a": {
+   "script": "verify_B1_B7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "The cyclic shift (x₁,x₂,x₃) ↦ (x₃,x₁,x₂) equals the 120° rotation about (1,1,1)"
+  },
+  "B7b": {
+   "script": "verify_B1_B7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "P = (I + S + S²)/3 is the orthogonal projector onto span(1,1,1): P² = P, Pᵀ = P"
+  },
+  "C1a": {
+   "script": "verify_C1_C2.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "antisymmetric J (2x2): x^T J x = 0 for all real x"
+  },
+  "C1a(2)": {
+   "script": "verify_C1_C2.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "antisymmetric J (4x4): x^T J x = 0 for all real x"
+  },
+  "C1b": {
+   "script": "verify_C1_C2.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "(A^T M A)_ij = B(A e_i, A e_j) for general 2x2 A, M  (so A^T M A = M is form preservation)"
+  },
+  "C1c": {
+   "script": "verify_C1_C2.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "diag(2,1) keeps x^T J x = 0 yet D^T J D = 2J != J; the Hamiltonian flow exp(sK) of S9 keeps A^T J A = J"
+  },
+  "C2a": {
+   "script": "verify_C1_C2.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "symmetric M: K^T M + M K is symmetric, so conservation of z^T M z <=> K^T M + M K = 0; antisymmetric J: K = I conserves z^T J z trivially but K^T J + J K = 2J"
+  },
+  "C8a": {
+   "script": "verify_C8_C9.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "wrapping: |e^{iwt}| = 1 for all t, and lim_{t->oo} cos(wt) does not exist (AccumBounds(-1,1))"
+  },
+  "C8b": {
+   "script": "verify_C8_C9.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "compressing: theta in (0,oo) -> e^{-theta t_i} in (0,1); theta->0+ gives (1,1,1), theta->oo gives (0,0,0)"
+  },
+  "C8c": {
+   "script": "verify_C8_C9.py",
+   "verdict": "FAIL",
+   "everFailed": true,
+   "claim": "square wave: ||S_N - f||_2 shrinks (ratio 0.109 < 0.05) but max S_N stays > 1.17 (1.1813, 1.1790, 1.1790)"
+  },
+  "C8c2": {
+   "script": "verify_C8_C9.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "square wave: RMS error equals the Parseval tail (rel. err 0.0008 < 0.01) and the tail -> 0; overshoot persists (max S_N > 1.17)"
+  },
+  "C8d": {
+   "script": "verify_C8_C9.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "quasi-periodic: no exact return (sqrt2 irrational) but near-returns D(2pi q) = [0.9291, 0.2635, 0.049, 0.0085, 0.0015]"
+  },
+  "C9a": {
+   "script": "verify_C8_C9.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Lambda_c^T M_c Lambda_c = M_c with M_c = diag(1, -1/c^2)  [S5c in matrix form]"
+  },
+  "C9b": {
+   "script": "verify_C8_C9.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "c -> oo: M_c -> diag(1, 0), det M_c = -1/c^2 -> 0  (the form degenerates: only time is measured)"
+  },
+  "C9c": {
+   "script": "verify_C8_C9.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "boost generator K_c = [[0,-1/c^2],[-1,0]]: det K_c = -1/c^2 < 0 (hyperbolic); K_oo = [[0,0],[-1,0]], K_oo^2 = 0 (shear)"
+  },
+  "C9d": {
+   "script": "verify_C8_C9.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Galilean boost exp(v K_oo) = [[1,0],[-v,1]] preserves the degenerate form diag(1,0)"
+  },
+  "O1a": {
+   "script": "verify_O1.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Rodrigues rotation about any unit axis: R^T R = I, hence (Ru).(Rv) = u.v"
+  },
+  "O1b": {
+   "script": "verify_O1.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "orthogonal (1,0,0),(0,1,0) seen along (1,1,1) appear at 120 deg; (1,0,1),(0,1,1) at 60 deg appear at 90 deg from above"
+  },
+  "O1c": {
+   "script": "verify_O1.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "sampled cosines on N = 8 and N = 12 points: sum cos(2pi m j/N)cos(2pi n j/N) = (N/2) delta_mn for m + n < N"
+  },
+  "O1d": {
+   "script": "verify_O1.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "left Riemann sums approach the integral off-period: errors (N=64, N=1024) = [(0.04991, 0.003113), (0.0045, 0.000371)]"
+  },
+  "O1e": {
+   "script": "verify_O1.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "with unit e1=(1,0), e2=(cos t, sin t): Parseval gap is 0 for all x only at t = pi/2; reconstruction exact there, not at t = pi/3"
+  },
+  "S1a": {
+   "script": "verify_S1_S5.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "||u+v||^2 = ||u||^2 + ||v||^2 + 2<u,v>"
+  },
+  "S1b": {
+   "script": "verify_S1_S5.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "polarization: <u,v> = (Q(u+v) - Q(u-v))/4"
+  },
+  "S2a": {
+   "script": "verify_S1_S5.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "<e_j, e_k> = delta_jk for j,k in -3..3"
+  },
+  "S2b": {
+   "script": "verify_S1_S5.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Parseval: ||f||^2 = sum |f_hat(k)|^2"
+  },
+  "S3": {
+   "script": "verify_S1_S5.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "T_tau e_k = exp(-2 pi i k tau) e_k"
+  },
+  "S4a": {
+   "script": "verify_S1_S5.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "traceless J: J^2 = -det(J) * I  (Cayley-Hamilton)"
+  },
+  "S4b": {
+   "script": "verify_S1_S5.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "J^2=-1: exp(sJ) = cos s I + sin s J"
+  },
+  "S4c": {
+   "script": "verify_S1_S5.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "J^2=+1: exp(sJ) = cosh s I + sinh s J"
+  },
+  "S4d": {
+   "script": "verify_S1_S5.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "J^2= 0: exp(sJ) = I + s J"
+  },
+  "S4e": {
+   "script": "verify_S1_S5.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "rotation preserves x^2+y^2 for all s"
+  },
+  "S4f": {
+   "script": "verify_S1_S5.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "boost preserves x^2-y^2 for all s"
+  },
+  "S5a": {
+   "script": "verify_S1_S5.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "velocity addition: tanh(s1+s2) = (tanh s1 + tanh s2)/(1 + tanh s1 tanh s2)"
+  },
+  "S5b": {
+   "script": "verify_S1_S5.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "lim_{s->+-inf} tanh s = +-1 (bounded by c)"
+  },
+  "S5c": {
+   "script": "verify_S1_S5.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Lorentz preserves x^2 - c^2 t^2"
+  },
+  "S5d": {
+   "script": "verify_S1_S5.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "c -> inf: (x', t') -> (x - v t, t)  [Galilean]"
+  },
+  "S6": {
+   "script": "verify_S6_S8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Gram-Schmidt(1,x,x^2,x^3) = normalized Legendre P0..P3"
+  },
+  "S7": {
+   "script": "verify_S6_S8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Bessel: sum_k <f,e_k>^2 <= ||f||^2  running = [0.08, 0.08, 0.21061224489795918, 0.21061224489795918]  ||f||^2 = 0.2222222222222222"
+  },
+  "S8": {
+   "script": "verify_S6_S8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "L P_n = -n(n+1) P_n  and  <Lu,v> = <u,Lv>  (so eigenvectors are orthogonal)"
+  },
+  "S9": {
+   "script": "verify_S9_S14.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Euclidean  M=I   (rotation): K^T M + M K = 0 and exp(sK)^T M exp(sK) = M"
+  },
+  "S9(2)": {
+   "script": "verify_S9_S14.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Minkowski  M=eta (boost): K^T M + M K = 0 and exp(sK)^T M exp(sK) = M"
+  },
+  "S9(3)": {
+   "script": "verify_S9_S14.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Symplectic M=J   (Hamiltonian): K^T M + M K = 0 and exp(sK)^T M exp(sK) = M"
+  },
+  "S9b": {
+   "script": "verify_S9_S14.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "d/dt (z^T M z) = z^T (K^T M + M K) z = 0 along z' = K z  (conservation = invariant form)"
+  },
+  "S10": {
+   "script": "verify_S9_S14.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Kepler eccentricity: e^2 - 1 = 2 E L^2/(m mu^2), so sign(E) = sign(e - 1)  (same trichotomy as S4)"
+  },
+  "S11": {
+   "script": "verify_S9_S14.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "F h_n = (-i)^n h_n for n = 0..4 (numeric, rel. err < 1e-6): F is rotation by 90 deg; F^4 = I"
+  },
+  "S11b": {
+   "script": "verify_S9_S14.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "harmonic-oscillator flow for a quarter period maps (x,p) -> (p,-x)  [phase-space picture of F]"
+  },
+  "S12": {
+   "script": "verify_S9_S14.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "4-momentum: P^T eta P = m^2 c^2 <=> E^2 = p^2 c^2 + m^2 c^4 (Block 10 is Block 9's invariant form)"
+  },
+  "S12b": {
+   "script": "verify_S9_S14.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Minkowski: a light ray is orthogonal to itself, <l,l>_eta = 0 with l != 0"
+  },
+  "S13": {
+   "script": "verify_S9_S14.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "P_H = avg_h U_h: P^2=P, P^T=P, <P x, x - P x> = 0"
+  },
+  "S14a": {
+   "script": "verify_S9_S14.py",
+   "verdict": "FAIL",
+   "everFailed": true,
+   "claim": "[my threshold, kept on record] 5-param spectrum spans > 4 decades (got 3.1)"
+  },
+  "S14b": {
+   "script": "verify_S9_S14.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[paper's claim] eigenvalues roughly evenly spaced in log: gaps [-0.69, -0.67, -0.8, -0.98], spread 0.31 < 0.35 decade"
+  }
+ }
+}

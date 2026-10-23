@@ -18,6 +18,7 @@ import sys
 HERE = pathlib.Path(__file__).resolve().parent
 LEDGER = HERE / "ledger" / "ledger.jsonl"
 SUMMARY = HERE / "ledger" / "summary.md"
+LATEST = HERE / "ledger" / "latest.json"   # derived view for the app; the ledger itself is ledger.jsonl
 LINE = re.compile(r"^(\S+)\s+(PASS|FAIL)\s+(.*)$")
 
 
@@ -78,6 +79,15 @@ def main():
     passed = sum(r["verdict"] == "PASS" for r in rows)
     lines += ["", f"**{passed}/{len(rows)} PASS this run.** FAILs are kept, not fixed in place."]
     SUMMARY.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    latest = {
+        "generated": stamp,
+        "commit": sha,
+        "cards": {
+            r["id"]: {"script": r["script"], "verdict": r["verdict"], "everFailed": (r["script"], r["id"]) in ever_failed, "claim": r["claim"]}
+            for r in rows
+        },
+    }
+    LATEST.write_text(json.dumps(latest, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(f"{passed}/{len(rows)} PASS · appended {len(rows)} rows → {LEDGER.relative_to(HERE.parent)}")
     for r in rows:
         if r["verdict"] != "PASS":

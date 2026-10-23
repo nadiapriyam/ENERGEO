@@ -1,0 +1,67 @@
+/* Layout concept: a working plate. Equation on the left, live geometry in the centre, instruments on the right,
+   and a ledger strip along the bottom that says what changed, what held, and how sure each statement is.
+
+   Colour has exactly one mathematical job. Warm = a positive contribution to an inner product, cool = a negative
+   one, the neutral ground = zero. Orthogonality is drawn as signed contributions cancelling back to the ground,
+   in every representation. Objects (vectors, functions) are ink. Certainty is drawn with line style, not hue. */
+
+:root {
+  --paper: #f1f3f4;
+  --surface: #fbfcfc;
+  --ink: #1b2532;
+  --ink-2: #4a5563;
+  --ink-3: #66707d;
+  --rule: #d9dee3;
+  --grid: #e8ecef;
+  --pos: #c24e28;
+  --neg: #2e6bc6;
+  --zero: #edf0f2;
+  --veil: rgba(27, 37, 50, 0.06);
+
+  --font-display: "KaTeX_Main", "Latin Modern Roman", "Computer Modern Serif", "Times New Roman", serif;
+  --font-body: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-data: "Atkinson Hyperlegible Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --font-math: "KaTeX_Math", "KaTeX_Main", "Times New Roman", serif;
+
+  --step--1: 0.8125rem;
+  --step-0: 0.9375rem;
+  --step-1: 1.0625rem;
+  --step-2: 1.375rem;
+  --step-3: 1.875rem;
+
+  --radius: 6px;
+  --gap: 16px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f1216;
+    --surface: #161a20;
+    --ink: #e5e9ee;
+    --ink-2: #aeb7c2;
+    --ink-3: #8a94a0;
+    --rule: #2b323b;
+    --grid: #20262d;
+    --pos: #e26c42;
+    --neg: #5b93e6;
+    --zero: #232830;
+    --veil: rgba(229, 233, 238, 0.06);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #0f1216;
+  --surface: #161a20;
+  --ink: #e5e9ee;
+  --ink-2: #aeb7c2;
+  --ink-3: #8a94a0;
+  --rule: #2b323b;
+  --grid: #20262d;
+  --pos: #e26c42;
+  --neg: #5b93e6;
+  --zero: #232830;
+  --veil: rgba(229, 233, 238, 0.06);
+  color-scheme: dark;
+}

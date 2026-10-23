@@ -12,12 +12,13 @@ Read these before any work, in this order:
 - `docs/`: the spec, the Master Map, the prompt, and gate records. These are Nadia's documents.
 - `research/`: claims and their status. The app reads it and never writes it.
 - `verify/`: card scripts (`verify_*.py`), card outputs (`cards/`), and the append-only ledger (`ledger/`).
-- `src/`, `test/`: the app. `src/math` holds pure functions, tested with `npm test`.
+- `src/`, `test/`: the app (Vite + three.js). `src/math` holds pure functions, tested with `npm test`. See `src/README.md` for the frame, the journey (carried objects) and how to add an interactive. Every visual element's position or state comes from `src/math`.
 
 ## Commands
 
 - `npm test`: math unit tests (node:test).
 - `npm run verify`: runs every `verify/verify_*.py` and appends the results to `verify/ledger/ledger.jsonl`.
+- `npm run dev` / `npm run build`: the site. Pushing to `main` deploys it to GitHub Pages.
 
 ## Never
 

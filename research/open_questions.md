@@ -8,11 +8,10 @@ Questions for Nadia. Answered questions are kept, with a pointer to the answer i
 |---|---|---|
 | P-2 | **The paper PDF.** Claude can't reach arxiv.org, PMC or the Cornell PDF from this environment. Please add the PDF to `research/sources/` so the claim can be quoted directly. | [source card](sources/quinn2023.md) |
 | C7-2 | What derivation would relate the eigenvalue decay of $J^TJ$ to coefficient decay of a specified $f$? This is open research, not a question that blocks anything. | [C7](connections/C7.md) |
-| G4 | **Gate 4:** the build form. | chat |
 
 ## Answered
 
-All of these were answered at Gate 3, on 2026-10-22. Your words are in [`docs/gate3_decisions.md`](../docs/gate3_decisions.md).
+Answered at Gate 3 on 2026-10-22 unless the row says otherwise. Your words are in [`docs/gate3_decisions.md`](../docs/gate3_decisions.md) and [`docs/gate4_decisions.md`](../docs/gate4_decisions.md).
 
 | ID | Question | Where the answer lives |
 |---|---|---|
@@ -29,3 +28,4 @@ All of these were answered at Gate 3, on 2026-10-22. Your words are in [`docs/ga
 | C8, C9 | Approve? | Both approved, C8 reworded. [C8](connections/C8.md), [C9](connections/C9.md) |
 | P-1 | Level labels? | Set at Gate 3. [objective](../docs/objective.md) |
 | P-3 | Repo layout? | Approved with changes; applied. |
+| G4 | The build form? | Option A, a Vite + three.js site with Python verifiers on GitHub Pages; first prototype Orthogonality and Zero. Answered 2026-10-23, [`docs/gate4_decisions.md`](../docs/gate4_decisions.md) |

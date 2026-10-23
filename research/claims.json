@@ -1,0 +1,67 @@
+{
+  "about": "Machine-readable index of the statements the app displays. Levels follow docs/objective.md (1 Established, 2 Derived, 3 Hypothesis, 4 Open). Every statement names the cards that back it; the app shows their current verdicts from verify/ledger/latest.json. The app reads this file and never writes it.",
+  "statements": {
+    "ortho.inner-is-sum": {
+      "level": 1,
+      "text": "The inner product is a sum of signed contributions: ⟨u,v⟩ = Σ uᵢvᵢ in Rⁿ, and ⟨f,g⟩ = ∫ f(t)g(t) dt for functions.",
+      "cards": ["S1b", "B3b"]
+    },
+    "ortho.pythagoras": {
+      "level": 1,
+      "text": "‖u+v‖² = ‖u‖² + ‖v‖² + 2⟨u,v⟩, so u ⟂ v exactly when Pythagoras holds.",
+      "cards": ["S1a", "B4b"]
+    },
+    "ortho.shadow": {
+      "level": 1,
+      "text": "The shadow of v on u is (⟨u,v⟩/⟨u,u⟩)u. It vanishes exactly when ⟨u,v⟩ = 0, and the residual v − shadow is always perpendicular to u.",
+      "cards": ["B2a"]
+    },
+    "ortho.rotation-invariance": {
+      "level": 1,
+      "text": "Rotating both vectors (or the camera) changes every coordinate but not ⟨u,v⟩.",
+      "cards": ["O1a"]
+    },
+    "ortho.screen-distorts": {
+      "level": 1,
+      "text": "A projection onto a screen or a coordinate plane does not preserve angles: an orthogonal pair can look oblique, and an oblique pair can look perpendicular.",
+      "cards": ["O1b"]
+    },
+    "ortho.signature": {
+      "level": 1,
+      "text": "For a basis, zero cross terms (Gram = I), independent projection coefficients, Parseval additivity and residual ⟂ retained part all hold together when the basis is orthonormal.",
+      "cards": ["O1e", "S7", "S13"]
+    },
+    "ortho.trig-full-period": {
+      "level": 1,
+      "text": "Over one full period, distinct sines and cosines have zero inner product: the Gram matrix of {cos kt, sin kt} is π·I.",
+      "cards": ["S2a", "B3a"]
+    },
+    "ortho.discrete": {
+      "level": 1,
+      "text": "Sampled at N equally spaced points, distinct cosines are orthogonal vectors in R^N (for m + n < N).",
+      "cards": ["O1c"]
+    },
+    "ortho.samples-to-integral": {
+      "level": 1,
+      "text": "As the number of samples grows, the scaled sample sum (L/N) Σ f(tⱼ)g(tⱼ) approaches ∫ f g.",
+      "cards": ["O1d"]
+    },
+    "ortho.null-later": {
+      "level": 1,
+      "text": "In an indefinite geometry a nonzero vector can have q(v) = 0 (a null vector). This is a different zero from orthogonality, compared later and never merged with it (Gate 3, H1-2).",
+      "cards": ["S12b", "B1d"]
+    },
+    "H1": {
+      "level": 3,
+      "text": "Why orthogonality keeps appearing as a structural mechanism across representations (Nadia's hypothesis H1). The established consequences above are what an investigation of it can build on.",
+      "cards": [],
+      "source": "research/hypotheses/H1.md"
+    },
+    "H2.pattern": {
+      "level": 3,
+      "text": "Candidate pattern: Object → Representation → Transformation → Invariant → Decomposition → Geometry, plus what became visible, hidden or lost (Nadia's hypothesis H2).",
+      "cards": [],
+      "source": "research/hypotheses/H2.md"
+    }
+  }
+}

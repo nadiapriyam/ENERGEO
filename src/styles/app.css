@@ -1,0 +1,957 @@
+@import "./tokens.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+::selection {
+  background: color-mix(in oklab, var(--neg) 28%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: var(--ink);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-wrap: balance;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.app {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-block: 18px 40px;
+  display: grid;
+  gap: 14px;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────── */
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px 24px;
+}
+
+.top-titles {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.brand {
+  font-size: var(--step--1);
+  color: var(--ink-2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 10px;
+}
+
+.brand b {
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.title {
+  font-size: var(--step-3);
+  line-height: 1.1;
+}
+
+.top-question {
+  color: var(--ink-2);
+  max-width: 62ch;
+}
+
+.modes {
+  display: inline-flex;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 3px;
+  gap: 2px;
+}
+
+.modes button {
+  border: 0;
+  background: transparent;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--ink-2);
+}
+
+.modes button[aria-checked="true"] {
+  background: var(--ink);
+  color: var(--surface);
+}
+
+.modes button:hover:not([aria-checked="true"]) {
+  background: var(--veil);
+  color: var(--ink);
+}
+
+/* ── Stage rail: a real sequence, so it is numbered ─────────────────── */
+
+.rail {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.rail ol {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 4px;
+  display: flex;
+  gap: 4px;
+  min-width: max-content;
+}
+
+.rail button {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: baseline;
+  gap: 0 8px;
+  text-align: left;
+  border: 1px solid transparent;
+  border-bottom: 2px solid var(--rule);
+  background: transparent;
+  padding: 6px 10px 6px 8px;
+  cursor: pointer;
+  color: var(--ink-2);
+  border-radius: 4px 4px 0 0;
+}
+
+.rail button:hover {
+  background: var(--veil);
+  color: var(--ink);
+}
+
+.rail button[aria-current="step"] {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+  background: var(--surface);
+}
+
+.rail .num {
+  font-family: var(--font-data);
+  font-size: var(--step--1);
+  font-variant-numeric: tabular-nums;
+}
+
+.rail .rep {
+  grid-column: 2;
+  font-family: var(--font-math);
+  font-size: var(--step--1);
+  color: var(--ink-3);
+}
+
+.rail .done .num::after {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-left: 5px;
+  border-radius: 50%;
+  background: var(--ink-2);
+  vertical-align: middle;
+}
+
+/* ── The plate ──────────────────────────────────────────────────────── */
+
+.plate {
+  display: grid;
+  grid-template-columns: minmax(250px, 320px) minmax(0, 1fr) minmax(250px, 310px);
+  grid-template-areas: "left centre right";
+  gap: 20px;
+  align-items: start;
+}
+
+.pane {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  align-content: start;
+}
+
+.block > *,
+.figure > * {
+  min-width: 0;
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: 2px;
+  margin: 0.4em 0;
+}
+
+.pane.left {
+  grid-area: left;
+}
+
+.pane.centre {
+  grid-area: centre;
+}
+
+.pane.right {
+  grid-area: right;
+}
+
+@media (max-width: 1100px) {
+  .plate {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas: "centre centre" "left right";
+  }
+}
+
+@media (max-width: 760px) {
+  .plate {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "centre" "right" "left";
+  }
+}
+
+.section-label {
+  font-size: var(--step--1);
+  color: var(--ink-2);
+  letter-spacing: 0.02em;
+  margin-bottom: 6px;
+}
+
+.block {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule);
+}
+
+.block:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+/* ── Left: equation, symbols, guided steps, statements ─────────────── */
+
+.equation {
+  font-size: 1.02rem;
+  overflow-x: auto;
+  padding: 4px 0;
+}
+
+.symbols {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 12px;
+  margin: 0;
+  font-size: var(--step--1);
+}
+
+.symbols dt {
+  font-size: 1rem;
+}
+
+.symbols dd {
+  margin: 0;
+  color: var(--ink-2);
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  counter-reset: step;
+}
+
+.steps li {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 2px 8px;
+  counter-increment: step;
+}
+
+.steps li::before {
+  content: counter(step);
+  font-family: var(--font-data);
+  font-size: var(--step--1);
+  color: var(--ink-3);
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+}
+
+.steps li.current::before {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.steps li.done::before {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--surface);
+}
+
+.steps li.later {
+  color: var(--ink-3);
+}
+
+.steps .prompt {
+  font-weight: 600;
+}
+
+.steps .then {
+  grid-column: 2;
+  color: var(--ink-2);
+}
+
+.steps .then[hidden] {
+  display: none;
+}
+
+.steps .meter {
+  grid-column: 2;
+  font-family: var(--font-data);
+  font-size: var(--step--1);
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Statements with their level and their cards */
+
+.statements {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.statement {
+  display: grid;
+  gap: 5px;
+  font-size: var(--step--1);
+}
+
+.statement p {
+  color: var(--ink);
+}
+
+.statement .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+}
+
+.level {
+  font-size: 0.75rem;
+  padding: 1px 7px;
+  border-radius: 999px;
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.level-1 {
+  background: var(--ink);
+  color: var(--surface);
+}
+
+.level-2 {
+  border-style: solid;
+}
+
+.level-3 {
+  border-style: dashed;
+}
+
+.level-4 {
+  border-style: dotted;
+}
+
+.card-chip {
+  font-family: var(--font-data);
+  font-size: 0.72rem;
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.card-chip.fail {
+  background: var(--ink-2);
+  border-color: var(--ink-2);
+  color: var(--surface);
+  font-weight: 700;
+}
+
+.card-chip .was {
+  text-decoration: underline dotted;
+}
+
+/* ── Centre: the figure ─────────────────────────────────────────────── */
+
+.stage-head {
+  display: grid;
+  gap: 4px;
+}
+
+.stage-head h2 {
+  font-size: var(--step-2);
+}
+
+.stage-head p {
+  color: var(--ink-2);
+  max-width: 70ch;
+}
+
+.figure {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 12px;
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.figure-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  touch-action: none;
+}
+
+.figure .caption {
+  font-size: var(--step--1);
+  color: var(--ink-2);
+}
+
+.figure .caption strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.callout-projection {
+  font-size: var(--step--1);
+  color: var(--ink-2);
+  border-left: 1px solid var(--ink-3);
+  padding-left: 10px;
+}
+
+/* SVG vocabulary */
+
+.svg-grid {
+  stroke: var(--grid);
+  stroke-width: 1;
+  fill: none;
+}
+
+.svg-axis {
+  stroke: var(--rule);
+  stroke-width: 1.25;
+  fill: none;
+}
+
+.svg-zero {
+  stroke: var(--ink-3);
+  stroke-width: 1.25;
+  fill: none;
+}
+
+.svg-tick {
+  fill: var(--ink-3);
+  font-family: var(--font-data);
+  font-size: 11px;
+}
+
+.svg-label {
+  fill: var(--ink-2);
+  font-family: var(--font-body);
+  font-size: 12px;
+}
+
+.svg-math {
+  fill: var(--ink);
+  font-family: var(--font-math);
+  font-style: italic;
+  font-size: 17px;
+}
+
+.svg-vec {
+  stroke: var(--ink);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.svg-vec-head {
+  fill: var(--ink);
+}
+
+.svg-vec.alt {
+  stroke: var(--ink-2);
+}
+
+.svg-vec-head.alt {
+  fill: var(--ink-2);
+}
+
+.svg-residual {
+  stroke: var(--ink-3);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+  fill: none;
+}
+
+.svg-curve {
+  stroke: var(--ink);
+  stroke-width: 2;
+  fill: none;
+}
+
+.svg-curve.alt {
+  stroke: var(--ink-2);
+  stroke-dasharray: 6 4;
+}
+
+.svg-pos {
+  fill: var(--pos);
+  stroke: var(--pos);
+}
+
+.svg-neg {
+  fill: var(--neg);
+  stroke: var(--neg);
+}
+
+.svg-pos-stroke {
+  stroke: var(--pos);
+  fill: none;
+}
+
+.svg-neg-stroke {
+  stroke: var(--neg);
+  fill: none;
+}
+
+.svg-area-pos {
+  fill: color-mix(in oklab, var(--pos) 45%, var(--surface));
+  stroke: none;
+}
+
+.svg-area-neg {
+  fill: color-mix(in oklab, var(--neg) 45%, var(--surface));
+  stroke: none;
+}
+
+.svg-zero-mark {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-width: 1.5;
+}
+
+.svg-right-angle {
+  stroke: var(--ink);
+  stroke-width: 1.25;
+  fill: none;
+}
+
+.svg-arc {
+  stroke: var(--ink-3);
+  stroke-width: 1.25;
+  fill: none;
+}
+
+.svg-handle {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-width: 2;
+  cursor: grab;
+}
+
+.svg-handle:focus-visible {
+  outline: none;
+  stroke-width: 3.5;
+}
+
+.svg-handle-hit {
+  fill: transparent;
+  cursor: grab;
+}
+
+.svg-cell {
+  stroke: var(--surface);
+  stroke-width: 2;
+}
+
+.svg-cell-text {
+  font-family: var(--font-data);
+  font-size: 11px;
+  fill: var(--ink);
+  text-anchor: middle;
+  dominant-baseline: central;
+  pointer-events: none;
+}
+
+/* ── Right: instruments ─────────────────────────────────────────────── */
+
+.control {
+  display: grid;
+  gap: 4px;
+}
+
+.control label,
+.control .control-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: var(--step--1);
+  color: var(--ink-2);
+}
+
+.control output {
+  font-family: var(--font-data);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.control input[type="range"] {
+  width: 100%;
+  accent-color: var(--ink);
+}
+
+.control select {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 4px 6px;
+}
+
+.choice-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.btn {
+  border: 1px solid var(--ink);
+  background: var(--surface);
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: var(--step--1);
+}
+
+.btn:hover {
+  background: var(--veil);
+}
+
+.btn[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--surface);
+}
+
+.readouts {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 12px;
+  margin: 0;
+  font-size: var(--step--1);
+}
+
+.readouts dt {
+  color: var(--ink-2);
+}
+
+.readouts dd {
+  margin: 0;
+  font-family: var(--font-data);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.readouts .sign-pos {
+  color: var(--ink);
+  box-shadow: inset 0 -3px 0 var(--pos);
+}
+
+.readouts .sign-neg {
+  color: var(--ink);
+  box-shadow: inset 0 -3px 0 var(--neg);
+}
+
+.verdict {
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  padding: 8px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+}
+
+.verdict.holds {
+  border-color: var(--ink);
+}
+
+.verdict b {
+  font-weight: 600;
+}
+
+.signature {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  font-size: var(--step--1);
+}
+
+.signature li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2px 10px;
+}
+
+.signature .val {
+  font-family: var(--font-data);
+  font-variant-numeric: tabular-nums;
+}
+
+.signature .state {
+  grid-column: 1 / -1;
+  color: var(--ink-3);
+  font-size: 0.75rem;
+}
+
+.signature li.holds .state {
+  color: var(--ink);
+}
+
+.note {
+  font-size: var(--step--1);
+  color: var(--ink-2);
+}
+
+/* ── Bottom ledger strip ────────────────────────────────────────────── */
+
+.strip {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 14px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px 20px;
+}
+
+.strip .notice h3,
+.strip .wide h3 {
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.strip .notice p {
+  font-size: var(--step--1);
+  color: var(--ink-2);
+}
+
+.strip .wide {
+  grid-column: span 2;
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .strip {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .strip .wide {
+    grid-column: auto;
+  }
+}
+
+.trail {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-size: var(--step--1);
+}
+
+.trail li {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 2px 8px;
+  color: var(--ink-2);
+}
+
+.trail li .rep {
+  font-family: var(--font-math);
+  color: var(--ink);
+  margin-right: 6px;
+}
+
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  font-size: var(--step--1);
+}
+
+.links li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  align-items: baseline;
+}
+
+.links .muted {
+  color: var(--ink-3);
+}
+
+.foot {
+  font-size: 0.75rem;
+  color: var(--ink-3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+
+/* Tooltip */
+
+.tip {
+  position: fixed;
+  z-index: 20;
+  pointer-events: none;
+  background: var(--ink);
+  color: var(--surface);
+  font-family: var(--font-data);
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-variant-numeric: tabular-nums;
+  max-width: 260px;
+}
+
+/* 3D */
+
+.scene3d {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--surface);
+  cursor: grab;
+  touch-action: none;
+}
+
+.scene3d canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.scene3d .lbl {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-math);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.scene3d .lbl.axis {
+  font-size: 13px;
+  color: var(--ink-3);
+}
+
+.fallback {
+  padding: 16px;
+  color: var(--ink-2);
+  font-size: var(--step--1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
