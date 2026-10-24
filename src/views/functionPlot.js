@@ -1,6 +1,8 @@
 // Two functions f and g on [0, L], optionally with their sample points (the vector they become in R^N).
+// Grid lines mark multiples of tickStep (one period of the slowest wave, or half of it).
 
 import { s, clear } from '../core/dom.js';
+import { num } from '../core/format.js';
 import { responsiveSvg } from './responsive.js';
 
 const H = 150;
@@ -13,18 +15,17 @@ export function createFunctionPlot() {
   svg.append(g);
   let lastDraw = null;
   const rs = responsiveSvg(svg, H, (W) => lastDraw?.(W));
-  const Y = (y) => H / 2 - y * (H / 2 - 14);
-
-  function update({ curve, L, samples, fLabel, gLabel }) {
+  function update({ curve, L, samples, fLabel, gLabel, yMax = 1, tickStep = Math.PI }) {
+    const Y = (y) => H / 2 - (y / yMax) * (H / 2 - 14);
     lastDraw = (W) => {
       clear(g);
       const plotW = W - PADL - PADR;
       const X = (t) => PADL + (t / L) * plotW;
       g.append(s('line', { class: 'svg-zero', x1: PADL, y1: Y(0), x2: PADL + plotW, y2: Y(0) }));
-      g.append(s('text', { class: 'svg-tick', x: PADL - 6, y: Y(1) + 4, 'text-anchor': 'end' }, '1'));
-      g.append(s('text', { class: 'svg-tick', x: PADL - 6, y: Y(-1) + 4, 'text-anchor': 'end' }, '−1'));
-      for (let m = 1; m * Math.PI <= L + 1e-9; m++) {
-        const x = X(m * Math.PI);
+      g.append(s('text', { class: 'svg-tick', x: PADL - 6, y: Y(yMax) + 4, 'text-anchor': 'end' }, num(yMax, 1)));
+      g.append(s('text', { class: 'svg-tick', x: PADL - 6, y: Y(-yMax) + 4, 'text-anchor': 'end' }, `−${num(yMax, 1)}`));
+      for (let m = 1; m * tickStep <= L + 1e-9; m++) {
+        const x = X(m * tickStep);
         g.append(s('line', { class: 'svg-grid', x1: x, y1: 4, x2: x, y2: H - 4 }));
       }
       const path = (arr) => {

@@ -6,9 +6,26 @@ import './styles/app.css';
 
 import { mountInteractive } from './core/frame.js';
 import { createJourney } from './core/journey.js';
+import coefficients from './interactives/coefficients/index.js';
 import orthogonality from './interactives/orthogonality/index.js';
 
-// One interactive exists so far. The journey is shared, so the next interactive can pick up
-// the objects this one leaves behind (the pair, the basis, the waves).
+// The built interactives, in Master Map order. The hash names one and its stage (#coeff-2, #ortho-5); with no
+// hash the path starts at the first. The journey is shared, so #8 picks up the signal that #7 leaves behind.
+const BUILT = [coefficients, orthogonality];
 const journey = createJourney();
-mountInteractive(document.getElementById('app'), orthogonality, journey);
+const root = document.getElementById('app');
+let mounted = null;
+let current = null;
+
+function route() {
+  const prefix = location.hash.match(/^#([a-z]+)-\d+$/)?.[1];
+  const def = BUILT.find((d) => d.hashPrefix === prefix) ?? mounted ?? BUILT[0];
+  if (def === mounted) return;
+  current?.destroy();
+  mounted = def;
+  current = mountInteractive(root, def, journey);
+  window.scrollTo(0, 0);
+}
+
+window.addEventListener('hashchange', route);
+route();

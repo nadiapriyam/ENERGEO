@@ -34,7 +34,9 @@ Each interactive is a list of stages. A stage supplies:
 
 `core/journey.js` keeps each object under one id, with one entry per representation (ℝ², ℝ³, ℝ⁴, ℝᴺ, L²…). Each entry is derived from an earlier one by a named transformation, and the trail records every step. If a source representation changes, the derived one is rebuilt and the trail says so.
 
-The store persists in `localStorage` when the browser allows it, so the next interactive can pick up what this one leaves behind.
+A representation can also be derived from another object's (`from: { id, rep }`), which is how one interactive hands its object to the next. Fourier Coefficients (#7) leaves the signal `f` behind (`interactives/signal.js`); Orthogonality and Zero (#8) builds its pair from it. `u` holds the coefficient arrows √2 f̂(k) of `f`, and `v` those of `g`, the same signal delayed by 0.14 of a period. The coordinates are coefficients in the orthonormal basis b = (√2 cos 2πt, −√2 sin 2πt, √2 cos 4πt, −√2 sin 4πt), so u·v = ⟨f, g⟩ on [0, 1] (card O2c). Stages 4 and 5 add second-harmonic coordinates, stage 6 perturbs that basis, and stages 7 and 8 show the same two waves as samples and as functions.
+
+The store persists in `localStorage` when the browser allows it (key `energeo.journey.v2`), so the next interactive can pick up what this one leaves behind.
 
 ## Colour
 
@@ -51,8 +53,8 @@ The pair was validated with the dataviz palette checker, in both light and dark,
 
 ## Adding the next interactive
 
-1. Add `src/interactives/<name>/index.js` exporting `{ id, hashPrefix, mapNumber, title, question, stages, connections, investigation }`.
-2. Mark it built in `src/interactives/registry.js`.
+1. Add `src/interactives/<name>/index.js` exporting `{ id, hashPrefix, mapNumber, title, question, stages, connections, investigation }`, and optionally `next: { label, hash }`, offered once the last stage is reached.
+2. Add it to `BUILT` in `src/main.js` (the hash `#<hashPrefix>-<stage>` selects it), and mark it built, with its `hashPrefix`, in `src/interactives/registry.js` so the Before/After links reach it.
 3. Give each statement it shows an entry in `research/claims.json`, with cards on the ledger.
 4. Reuse carried objects through `journey` instead of creating fresh ones.
 

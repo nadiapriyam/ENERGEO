@@ -29,3 +29,6 @@ Answered at Gate 3 on 2026-10-22 unless the row says otherwise. Your words are i
 | P-1 | Level labels? | Set at Gate 3. [objective](../docs/objective.md) |
 | P-3 | Repo layout? | Approved with changes; applied. |
 | G4 | The build form? | Option A, a Vite + three.js site with Python verifiers on GitHub Pages; first prototype Orthogonality and Zero. Answered 2026-10-23, [`docs/gate4_decisions.md`](../docs/gate4_decisions.md) |
+| G4-R | Gate 4 review: what next? | Precision pass items 1–6 applied; then Master Map #7, handing its waveform into #8 as the same object. Answered 2026-10-24, [`docs/gate4_review.md`](../docs/gate4_review.md) |
+| M7-1 | How does the #7 waveform enter #8? | "Arrows are its coefficients": #8's arrows are coefficient arrows of your signal and a delayed copy. [`docs/map7_decisions.md`](../docs/map7_decisions.md) |
+| M7-2 | Which Fourier basis for #7? | "Complex eᵏ, as in your evidence": e_k(t) = e^{2πikt} on [0, 1]; #8 stages 7–8 use period 1. [`docs/map7_decisions.md`](../docs/map7_decisions.md) |

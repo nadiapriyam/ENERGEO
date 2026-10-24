@@ -11,7 +11,8 @@
 
 import { safeStorage } from './store.js';
 
-const KEY = 'energeo.journey.v1';
+// v2: the pair is now derived from the signal of Fourier Coefficients, so v1 objects are not reused.
+const KEY = 'energeo.journey.v2';
 
 export function createJourney() {
   let objects = safeStorage.read(KEY, {});
@@ -31,17 +32,26 @@ export function createJourney() {
       return objects[id];
     },
 
-    /** Read a representation, deriving it from `from` with `derive` when missing or stale. */
+    /**
+     * Read a representation, deriving it with `derive` when missing or stale. `from` names the source:
+     * a representation of the same object (a string), or of another object ({ id, rep }), so one
+     * interactive's object can be built from what an earlier interactive left behind.
+     */
     rep(id, rep, from, derive, action) {
+      const src = typeof from === 'string' ? { id, rep: from } : from;
+      const srcRep = src && objects[src.id]?.reps[src.rep];
+      if (!objects[id]) {
+        if (!srcRep) return undefined;
+        objects[id] = { id, kind: id, reps: {}, trail: [] };
+      }
       const obj = objects[id];
       const have = obj.reps[rep];
-      const src = from && obj.reps[from];
-      const stale = have && src && have.from && have.from.version !== src.version;
+      const stale = have && srcRep && have.from && (have.from.version !== srcRep.version || (have.from.id ?? id) !== src.id);
       if (!have || stale) {
-        if (!src) return have?.data;
-        const data = derive(src.data);
-        obj.reps[rep] = { data, version: (have?.version ?? 0) + 1, from: { rep: from, version: src.version } };
-        obj.trail.push({ rep, action: stale ? `${action} (rebuilt: the ${from} pair changed)` : action });
+        if (!srcRep) return have?.data;
+        const data = derive(srcRep.data);
+        obj.reps[rep] = { data, version: (have?.version ?? 0) + 1, from: { id: src.id, rep: src.rep, version: srcRep.version } };
+        obj.trail.push({ rep, action: stale ? `${action} (rebuilt: its source changed)` : action });
         save();
       }
       return obj.reps[rep].data;

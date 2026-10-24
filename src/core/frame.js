@@ -8,6 +8,8 @@
 //   notice                     (what changed / what held / what became visible / what became hidden)
 //   carry                      (which object and representation it works on, and how it is derived)
 // Modes: Guided shows the steps; Explore frees every control; Advanced adds the full numbers and matrices.
+// An interactive may name `next: { label, hash }`, offered once its last stage is reached. mountInteractive returns
+// { destroy } so main.js can swap interactives on the same page.
 
 import { h, clear } from './dom.js';
 import { createStore, safeStorage } from './store.js';
@@ -80,10 +82,11 @@ export function mountInteractive(root, def, journey) {
     if (location.hash !== `#${token}`) history.replaceState(null, '', `#${token}`);
   }
 
-  window.addEventListener('hashchange', () => {
+  const onHash = () => {
     const i = stageFromHash(def);
     if (i != null && i !== prefs.get().stage) prefs.set({ stage: i });
-  });
+  };
+  window.addEventListener('hashchange', onHash);
 
   function makeCtx(stage) {
     const flags = {};
@@ -124,9 +127,11 @@ export function mountInteractive(root, def, journey) {
 
     readoutEl = h('dl', { class: 'readouts' });
     clear(right).append(
-      h('div', { class: 'block' }, h('div', { class: 'section-label' }, 'Controls'), ui.controls),
-      h('div', { class: 'block' }, h('div', { class: 'section-label' }, 'Live readout'), readoutEl),
-      ui.instruments ?? null,
+      ...[
+        h('div', { class: 'block' }, h('div', { class: 'section-label' }, 'Controls'), ui.controls),
+        h('div', { class: 'block' }, h('div', { class: 'section-label' }, 'Live readout'), readoutEl),
+        ui.instruments,
+      ].filter(Boolean),
     );
 
     stepsEl = h('ol', { class: 'steps' });
@@ -186,9 +191,13 @@ export function mountInteractive(root, def, journey) {
       if (guided && i === done && step.meter) li.append(h('span', { class: 'meter', html: richText(step.meter(model, ctx)) }));
       stepsEl.append(li);
     });
-    if (guided && done >= st.steps.length && prefs.get().stage < def.stages.length - 1) {
+    const last = prefs.get().stage === def.stages.length - 1;
+    if (guided && done >= st.steps.length && !last) {
       const nx = def.stages[prefs.get().stage + 1];
       stepsEl.append(h('li', { class: 'current' }, h('button', { type: 'button', class: 'btn', onclick: () => go(prefs.get().stage + 1) }, `Carry this into stage ${prefs.get().stage + 2}: ${nx.title}`)));
+    }
+    if (last && def.next && (!guided || done >= st.steps.length)) {
+      stepsEl.append(h('li', { class: guided ? 'current' : '' }, h('a', { class: 'btn', href: `#${def.next.hash}` }, def.next.label)));
     }
   }
 
@@ -225,7 +234,12 @@ export function mountInteractive(root, def, journey) {
     );
   }
 
-  const mapLink = (m) => (m ? h('span', null, `${m.n}. ${m.title}`, h('span', { class: 'muted' }, ` (${m.status}${m.note ? `: ${m.note}` : ''})`)) : h('span', { class: 'muted' }, 'none'));
+  const mapLink = (m) => {
+    if (!m) return h('span', { class: 'muted' }, 'none');
+    const name = `${m.n}. ${m.title}`;
+    const note = h('span', { class: 'muted' }, ` (${m.status}${m.note ? `: ${m.note}` : ''})`);
+    return m.hashPrefix ? h('span', null, h('a', { href: `#${m.hashPrefix}-1` }, name), note) : h('span', null, name, note);
+  };
 
   function renderRail() {
     const { stage, progress } = prefs.get();
@@ -248,7 +262,7 @@ export function mountInteractive(root, def, journey) {
 
   let lastStage = -1;
   let lastMode = '';
-  prefs.subscribe(({ stage, mode }) => {
+  const unsubscribe = prefs.subscribe(({ stage, mode }) => {
     safeStorage.write('energeo.mode', mode);
     if (stage !== lastStage || mode !== lastMode) {
       lastStage = stage;
@@ -262,6 +276,15 @@ export function mountInteractive(root, def, journey) {
   lastStage = prefs.get().stage;
   lastMode = prefs.get().mode;
   renderStage();
+
+  return {
+    destroy() {
+      window.removeEventListener('hashchange', onHash);
+      unsubscribe?.();
+      ui?.destroy?.();
+      clear(root);
+    },
+  };
 }
 
 function stageFromHash(def) {

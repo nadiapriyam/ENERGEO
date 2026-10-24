@@ -93,6 +93,70 @@
         "B3b"
       ]
     },
+    "coef.basis": {
+      "level": 1,
+      "text": "The waves e_k(t) = e^{2πikt} are orthonormal on [0, 1]: ⟨e_j, e_k⟩ = ∫₀¹ e_j(t) conj(e_k(t)) dt = δ_jk.",
+      "cards": [
+        "S2a",
+        "O2-0"
+      ]
+    },
+    "coef.projection": {
+      "level": 1,
+      "text": "A Fourier coefficient is a projection: f̂(k) = ⟨f, e_k⟩ = ∫₀¹ f(t) e^{−2πikt} dt. Geometrically it is the centroid of f wound around the circle at frequency k.",
+      "cards": [
+        "S2a",
+        "O2-0",
+        "O2a"
+      ]
+    },
+    "coef.independence": {
+      "level": 1,
+      "text": "Because ⟨e_j, e_k⟩ = δ_jk, each coefficient is isolated: every other component contributes exactly 0 to ⟨f, e_k⟩.",
+      "cards": [
+        "S2a",
+        "O2a"
+      ]
+    },
+    "coef.removal": {
+      "level": 1,
+      "text": "Removing the k-th component of a real signal lowers ‖f‖² by exactly 2|f̂(k)|² (the ±k pair) and leaves every other coefficient unchanged.",
+      "cards": [
+        "S2b",
+        "O2b"
+      ]
+    },
+    "coef.crosstalk": {
+      "level": 1,
+      "text": "In a non-orthogonal basis the naive projections ⟨f, ẽ_k⟩ leak into one another: the Gram matrix leaves I, and Σ⟨f, ẽ_k⟩ẽ_k no longer rebuilds f.",
+      "cards": [
+        "O1e",
+        "O2f"
+      ]
+    },
+    "coef.arrows": {
+      "level": 1,
+      "text": "For real signals, ⟨f, g⟩ = Σ_k (√2 f̂(k))·(√2 ĝ(k)): the dot product of the coefficient arrows is the inner product of the waves, exactly.",
+      "cards": [
+        "O2c"
+      ]
+    },
+    "coef.sampled": {
+      "level": 1,
+      "text": "Sampled at N points, (1/N) Σ f(t_j)g(t_j) = Σ over N | k+l of f̂(k)ĝ(l). The terms with k + l ≠ 0 are aliasing; for harmonics up to K they vanish once N > 2K, and the sum equals ⟨f, g⟩.",
+      "cards": [
+        "O2e",
+        "O1g"
+      ]
+    },
+    "coef.interval": {
+      "level": 1,
+      "text": "The domain is part of the inner product. For the basis √2 cos 2πkt, −√2 sin 2πkt the Gram matrix is I on [0, 1] and 2I on [0, 2]; on other intervals some cross terms appear while others stay zero.",
+      "cards": [
+        "O2d",
+        "O1f"
+      ]
+    },
     "H1": {
       "level": 3,
       "text": "Why orthogonality keeps appearing as a structural mechanism across representations (Nadia's hypothesis H1). The established consequences above are what an investigation of it can build on.",

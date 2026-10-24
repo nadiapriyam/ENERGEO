@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-24T15:06:36+00:00",
- "commit": "eef9f94",
+ "generated": "2026-10-24T15:54:33+00:00",
+ "commit": "001f45b",
  "cards": {
   "B1a": {
    "script": "verify_B1_B7.py",
@@ -235,6 +235,48 @@
    "verdict": "PASS",
    "everFailed": false,
    "claim": "discrete criterion: sample sums equal the root-of-unity prediction (worst error 1.2e-14 < 1e-9); m+n<N is sufficient, not necessary"
+  },
+  "O2-0": {
+   "script": "verify_O2.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "integral_0^1 e^{2 pi i n t} dt = delta_{n0} for n = -6..6 (sympy.integrate)"
+  },
+  "O2a": {
+   "script": "verify_O2.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "<f, e_k> = f^(k) for a real 3-harmonic f, and <f_j, e_k> = 0 for j != k (symbolic coefficients)"
+  },
+  "O2b": {
+   "script": "verify_O2.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "||f||^2 = 2 sum |f^(k)|^2, and removing component k lowers it by exactly 2|f^(k)|^2"
+  },
+  "O2c": {
+   "script": "verify_O2.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "<f, g> on [0,1] equals the dot product of the coefficient arrows sqrt2 f^(k), sqrt2 g^(k) in R^6"
+  },
+  "O2d": {
+   "script": "verify_O2.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "real basis Gram: I on [0,1], 2I on [0,2]; on [0,3/2] 4 of 6 cross terms are 0"
+  },
+  "O2e": {
+   "script": "verify_O2.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "sampled sums match the root-of-unity prediction (worst 1.8e-15) and equal <f,g> for N > 2K (worst 6.7e-16); tol 1e-9"
+  },
+  "O2f": {
+   "script": "verify_O2.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "cross-talk: eps=0 rebuild error 0.0e+00; eps=0.3 Gram off-diagonal 0.216, rebuild error 0.568"
   },
   "S1a": {
    "script": "verify_S1_S5.py",

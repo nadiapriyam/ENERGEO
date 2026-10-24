@@ -76,7 +76,7 @@ export function createContributionStrip({ title = 'Contributions', runTitle = 'R
   }
 
   /** Functions: curve = { t, product, running }, over [0, L]. */
-  function area({ curve, L, yMax, runMax, total, samples }) {
+  function area({ curve, L, yMax, runMax, total, samples, tickStep = Math.PI, tickLabel = (m) => (m === 1 ? 'π' : `${m}π`) }) {
     lastDraw = (W) => {
       clear(g1);
       clear(g2);
@@ -102,11 +102,11 @@ export function createContributionStrip({ title = 'Contributions', runTitle = 'R
           g1.append(s('line', { class: val >= 0 ? 'svg-pos-stroke' : 'svg-neg-stroke', 'stroke-width': 2, x1: X(tj), y1: y1(0), x2: X(tj), y2: y1(val) }));
         });
       }
-      // ticks at the multiples of π that the interval actually reaches
-      for (let m = 1; m * Math.PI <= L + 1e-9; m++) {
-        const x = X(m * Math.PI);
+      // ticks at the multiples of tickStep that the interval actually reaches
+      for (let m = 1; m * tickStep <= L + 1e-9; m++) {
+        const x = X(m * tickStep);
         g1.append(s('line', { class: 'svg-grid', x1: x, y1: 0, x2: x, y2: H1 }));
-        g1.append(s('text', { class: 'svg-tick', x, y: H1 + 14, 'text-anchor': 'middle' }, m === 1 ? 'π' : `${m}π`));
+        g1.append(s('text', { class: 'svg-tick', x, y: H1 + 14, 'text-anchor': 'middle' }, tickLabel(m)));
       }
 
       const y2 = frame(g2, H2, runMax, plotW);

@@ -19,4 +19,4 @@ export const deg = (rad, digits = 1) => (rad == null ? '—' : `${num((rad * 180
 /** Class name that underlines a readout in the colour of its sign (zero gets none). */
 export const signClass = (x, tol = 5e-4) => (x > tol ? 'sign-pos' : x < -tol ? 'sign-neg' : '');
 
-export const sci = (x) => (x === 0 ? '0' : Math.abs(x) < 1e-3 ? x.toExponential(1).replace('-', MINUS) : num(x, 4));
+export const sci = (x) => (x === 0 ? '0' : Math.abs(x) < 1e-3 ? x.toExponential(1).replaceAll('-', MINUS) : num(x, 4));

@@ -2,7 +2,7 @@
 // Positions and numbers all come from src/math; this file only wires them to views and words.
 
 import { h } from '../../core/dom.js';
-import { slider, button, select, row, group } from '../../core/controls.js';
+import { slider, button, row, group } from '../../core/controls.js';
 import { num, signed, deg, signClass, sci } from '../../core/format.js';
 import { tex, texEl } from '../../core/tex.js';
 import { createVectorPlane } from '../../views/vectorPlane.js';
@@ -11,14 +11,17 @@ import { createPythagorasBars } from '../../views/pythagorasBars.js';
 import { createShadows } from '../../views/shadows.js';
 import { createGramMatrix } from '../../views/gramMatrix.js';
 import { createCompareBars } from '../../views/compareBars.js';
+import { createWavesPlot } from '../../views/wavesPlot.js';
 import { createFunctionPlot } from '../../views/functionPlot.js';
 import {
-  pairReadings, projectedAngle, rotatePair, pad, coordinatePlanes, coordinateShadow,
-  basisSignature, tiltedOrthonormalBasis, perturbBasis,
-  sampleWave, sampledInner, functionInner, productCurve, normalisedTrigGram, discretePredicted, aliasing,
+  pairReadings, projectedAngle, rotatePair, coordinatePlanes, coordinateShadow,
+  basisSignature, perturbBasis,
 } from '../../math/orthogonality.js';
-import { add, scale, norm, rotationAxisAngle, dot } from '../../math/linalg.js';
-import { trigBasis, basisValue } from '../../math/fourier.js';
+import {
+  arrowOf, waveFromCoords, sampledInnerCoords, sampledPredictedCoords, aliasedCoords, intervalInner, productCurveCoords, realBasisGram,
+} from '../../math/coefficients.js';
+import { add, scale, norm, rotationAxisAngle, dot, identity } from '../../math/linalg.js';
+import { SIGNAL, C3, DEFAULT_SIGNAL, ensureSignal, liveCoeffs, delayed, DELAY } from '../signal.js';
 
 const TOL = 0.02; // "orthogonal" in drag stages means |u·v| < 0.02; the readout always shows the exact value
 const AXIS = (() => {
@@ -41,66 +44,92 @@ const prefixMax = (vals) => {
 const SUB = ['₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈'];
 const vecTex = (x, d = 2) => `\\begin{pmatrix}${x.map((c) => num(c, d)).join('\\\\')}\\end{pmatrix}`;
 const matTex = (M, d = 2) => `\\begin{pmatrix}${M.map((r) => r.map((c) => num(c, d)).join('&')).join('\\\\')}\\end{pmatrix}`;
-const fnTex = (f) => `\\${f.kind} ${f.k === 1 ? '' : f.k}t`;
-const fnText = (f) => `${f.kind} ${f.k === 1 ? '' : f.k}t`;
 
 // ── carried objects ──────────────────────────────────────────────────────────────────────────────
+// The pair is made from the signal of Fourier Coefficients (#7). u holds the coefficient arrows √2 f̂(k) of your
+// signal f; v holds those of g, your signal delayed by DELAY of a period. Coordinates are real coefficients in the
+// orthonormal basis b = (√2 cos 2πt, −√2 sin 2πt, √2 cos 4πt, −√2 sin 4πt), so u·v = ⟨f, g⟩ on [0, 1] (card O2c).
 const R2 = '\\mathbb R^2';
 const R3 = '\\mathbb R^3';
 const R4 = '\\mathbb R^4';
 const RN = '\\mathbb R^N';
 const L2 = 'L^2[0,L]';
-const B4 = '\\{e_k\\}\\subset\\mathbb R^4';
+const B4 = '\\{b_k\\}\\subset\\mathbb R^4';
+const SRC = { id: SIGNAL, rep: C3 };
 
-const ensurePair = (J) => J.ensure('pair', 'pair', R2, { u: [2, 0.8], v: [0.6, 1.7] }, 'two arrows in the plane');
-// `exact` marks a pair built to be orthogonal by an exact construction (and not dragged since).
-// Lifting, padding and rotating keep exact orthogonality, so the flag travels with the pair.
-const lift = (d) => ({ u: [...d.u, 0], v: [...d.v, 0], theta: 0, exact: !!d.exact });
+/** Whether your signal has a first harmonic to hand over (it can be removed, or dragged to almost nothing, in #7). */
+function hasFirstHarmonic(J) {
+  ensureSignal(J);
+  return Math.hypot(...liveCoeffs(J.get(SIGNAL).reps[C3].data)[0]) > 0.1;
+}
+/** The signal's coefficients for the hand-off; without a first harmonic it falls back to the example's. */
+function handoffCoeffs(J) {
+  return hasFirstHarmonic(J) ? liveCoeffs(J.get(SIGNAL).reps[C3].data) : liveCoeffs(DEFAULT_SIGNAL);
+}
+const fromSignal = (J) => () => {
+  const f = handoffCoeffs(J);
+  const g = delayed(f);
+  return { u: arrowOf(f[0]), v: arrowOf(g[0]), exact: false };
+};
+// `exact` marks a pair built to be orthogonal by an exact construction (and not dragged since). Adding a
+// coordinate adds a contribution u_i v_i, so exactness survives only when that contribution is exactly 0.
+const extend = (J, part) => (d) => {
+  const f = handoffCoeffs(J);
+  const g = delayed(f);
+  const pick = (c) => Math.SQRT2 * c[1][part];
+  const p = d.theta ? rotatePair(d.u, d.v, AXIS, d.theta) : d;
+  const u = [...p.u, pick(f)];
+  const v = [...p.v, pick(g)];
+  return { u, v, theta: 0, exact: !!d.exact && u.at(-1) * v.at(-1) === 0 };
+};
 const shown3 = (d) => (d.theta ? rotatePair(d.u, d.v, AXIS, d.theta) : { u: d.u, v: d.v });
 
 const PAIR2 = {
-  name: 'the pair (u, v)',
-  read: (J) => (ensurePair(J), J.get('pair').reps[R2].data),
+  name: 'two waves as coefficient arrows (u from your signal f, v from g = f delayed)',
+  read: (J) => {
+    const own = hasFirstHarmonic(J);
+    const u = own ? 'u = √2 f̂(1) from your signal' : 'u = √2 f̂(1) of the example signal, because your signal’s first harmonic is removed or almost zero';
+    return J.rep('pair', R2, SRC, fromSignal(J), `${u}; v = √2 ĝ(1), where g is ${own ? 'your' : 'that'} signal delayed by ${DELAY} of a period`);
+  },
   write: (J, d) => J.update('pair', R2, d),
   trail: (J) => J.trail('pair'),
 };
 const PAIR3 = {
   ...PAIR2,
-  read: (J) => (ensurePair(J), J.rep('pair', R3, R2, lift, 'lifted into space: third coordinate 0')),
+  read: (J) => (PAIR2.read(J), J.rep('pair', R3, R2, extend(J, 0), 'a third coordinate: the real part of each wave’s second-harmonic arrow')),
   write: (J, d) => J.update('pair', R3, d),
 };
 const PAIR4 = {
   ...PAIR2,
-  read: (J) => {
-    PAIR3.read(J);
-    return J.rep('pair', R4, R3, (d) => {
-      const p = shown3(d);
-      return { u: pad(p.u, 4), v: pad(p.v, 4), exact: !!d.exact };
-    }, 'given a fourth coordinate, 0');
-  },
+  read: (J) => (PAIR3.read(J), J.rep('pair', R4, R3, extend(J, 1), 'a fourth coordinate: the imaginary part of the second-harmonic arrow')),
   write: (J, d) => J.update('pair', R4, d),
 };
 const BASIS = {
-  name: 'a basis of four directions, and x (your v from stage 5)',
+  name: 'the Fourier basis behind the coordinates, and x (the wave g from stage 5)',
   read: (J) => {
-    J.ensure('basis', 'basis', B4, { eps: 0, retained: 2 }, 'an orthonormal basis of R⁴, tilted so no vector lies on an axis');
+    J.ensure('basis', 'basis', B4, { eps: 0, retained: 2 }, 'the orthonormal basis b₁…b₄ that the coordinates refer to');
     return { ...J.get('basis').reps[B4].data, x: PAIR4.read(J).v };
   },
   write: (J, d) => J.update('basis', B4, { eps: d.eps, retained: d.retained }),
   trail: (J) => J.trail('basis'),
 };
-const ensureWaves = (J) => J.ensure('waves', 'waves', RN, { f: { kind: 'cos', k: 1 }, g: { kind: 'cos', k: 3 }, N: 8 }, 'two cosines sampled at N points: two vectors in ℝᴺ');
-const WAVES = {
-  name: 'two sampled waves (f, g)',
-  read: (J) => (ensureWaves(J), J.get('waves').reps[RN].data),
-  write: (J, d) => J.update('waves', RN, d),
-  trail: (J) => J.trail('waves'),
+const SAMPLES = {
+  ...PAIR2,
+  read: (J) => {
+    const d = PAIR4.read(J);
+    const set = J.rep('pair', RN, R4, () => ({ N: 8 }), 'the same two waves, sampled at N points: two vectors in ℝᴺ');
+    return { ...d, ...set };
+  },
+  write: (J, d) => J.update('pair', RN, { N: d.N }),
 };
 const FUNCS = {
-  ...WAVES,
-  name: 'two functions (f, g)',
-  read: (J) => (ensureWaves(J), J.rep('waves', L2, RN, (d) => ({ f: d.f, g: d.g, L: TWO_PI, showSamples: false, N: d.N }), 'N → ∞: the samples become functions on [0, L]')),
-  write: (J, d) => J.update('waves', L2, d),
+  ...PAIR2,
+  read: (J) => {
+    const d = PAIR4.read(J);
+    const set = J.rep('pair', L2, R4, () => ({ L: 1, showSamples: false }), 'N → ∞: the same two waves as functions on [0, L]');
+    return { ...d, ...set, N: J.get('pair').reps[RN]?.data?.N ?? 8 };
+  },
+  write: (J, d) => J.update('pair', L2, { L: d.L, showSamples: d.showSamples }),
 };
 
 // ── shared pieces ────────────────────────────────────────────────────────────────────────────────
@@ -119,14 +148,14 @@ function liveVerdict() {
   const el = h('div', { class: 'verdict', 'aria-live': 'polite' });
   return {
     el,
-    set(inner, { tol = TOL, what = 'u·v', exact = false, why = 'by construction' } = {}) {
+    set(inner, { tol = TOL, what = 'u·v', exact = false, why = 'by construction', hint = 'Remove the shadow constructs that.' } = {}) {
       const tiny = Math.abs(inner) < 1e-9;
       if (exact && tiny) {
         el.className = 'verdict holds';
-        el.innerHTML = `<b>Exactly orthogonal</b> ${why}: ${what} = 0. The displayed remainder, ${sci(inner)}, is floating-point error.`;
+        el.innerHTML = `<b>Exactly orthogonal</b> ${why}: ${what} = 0.${inner === 0 ? '' : ` The displayed remainder, ${sci(inner)}, is floating-point error.`}`;
       } else if (Math.abs(inner) < tol) {
         el.className = 'verdict approx';
-        el.innerHTML = `<b>Approximately orthogonal</b>, within the interactive tolerance |${what}| &lt; ${tol}. Now ${what} = ${num(inner, 4)}. Exactly orthogonal means ${what} = 0; Remove the shadow constructs that.`;
+        el.innerHTML = `<b>Approximately orthogonal</b>, within the interactive tolerance |${what}| &lt; ${tol}. Now ${what} = ${num(inner, 4)}. Exactly orthogonal means ${what} = 0. ${hint}`;
       } else {
         el.className = 'verdict';
         el.innerHTML = `<b>Not orthogonal.</b> ${what} = ${num(inner, 4)}.`;
@@ -149,6 +178,19 @@ const removeShadow = (u, v) => {
   return norm(r.residual) > 1e-6 ? { v: r.residual, exact: true } : { v, exact: false };
 };
 
+/** The two waves behind the arrows, drawn under the geometry: f from u, g from v (same scale). */
+function wavesUnder(caption = 'Each coordinate is the coefficient of one basis wave, so u and v are waves too.') {
+  const plot = createWavesPlot({ rows: [{ height: 96 }] });
+  const t = Array.from({ length: 301 }, (_, i) => i / 300);
+  const el = h('div', null, h('p', { class: 'caption' }, h('strong', null, 'The waves: f from u (solid), g from v (dashed). '), caption), plot.el);
+  return {
+    el,
+    update(u, v) {
+      plot.update(t, [{ label: 'f and g', yMax: 4, series: [{ values: t.map((x) => waveFromCoords(u, x)), style: 'ink' }, { values: t.map((x) => waveFromCoords(v, x)), style: 'dashed' }] }]);
+    },
+  };
+}
+
 const pairAdvanced = (m) =>
   h(
     'div',
@@ -164,14 +206,14 @@ const stage1 = {
   id: 'two-arrows',
   title: 'Two arrows',
   rep: R2,
-  question: 'Drag the tip of $v$. Below the plane, each coordinate adds a signed contribution to $u\\cdot v$.',
+  question: 'Your signal arrives as an arrow. $u$ is its first-harmonic coefficient $\\sqrt2\\,\\hat f(1)$; $v$ is the same for a second wave $g$, your signal delayed by a fraction of a period. Drag the tip of $v$: below the plane, each coordinate adds a signed contribution to $u\\cdot v$.',
   equation: 'u\\cdot v = u_1v_1 + u_2v_2',
   symbols: [
-    ['u,\\ v', 'two arrows, each a pair of numbers'],
+    ['u,\\ v', 'the arrows $\\sqrt2\\,\\hat f(1)$ and $\\sqrt2\\,\\hat g(1)$ from Fourier Coefficients: each a pair of numbers'],
     ['u_iv_i', 'what coordinate $i$ contributes: warm if positive, cool if negative'],
-    ['u\\cdot v', 'the sum of the contributions: the inner product'],
+    ['u\\cdot v', 'the sum of the contributions. It equals $\\int_0^1 f_1(t)\\,g_1(t)\\,dt$, the inner product of the two first harmonics (card O2c)'],
   ],
-  statements: ['ortho.inner-is-sum'],
+  statements: ['ortho.inner-is-sum', 'coef.arrows'],
   carry: PAIR2,
   steps: [
     { prompt: 'Drag the tip of $v$ and watch the two bars.', done: (m, c) => !!c.flags.touched, then: 'Each bar is one coordinate’s contribution $u_iv_i$. Warm bars add to $u\\cdot v$; cool bars subtract from it.' },
@@ -183,7 +225,7 @@ const stage1 = {
         c.flags.side1 = Math.sign(m.u[0] * m.v[1] - m.u[1] * m.v[0]);
         return true;
       },
-      then: 'The bars nearly cancel: $u\\cdot v$ is within the interactive tolerance of 0, and the dashed square marks an angle close to 90°. Exactly, $u\\perp v \\iff u\\cdot v = 0$, and in the plane that is exactly a right angle. Stage 2 shows how to construct it exactly.',
+      then: 'The bars nearly cancel: $u\\cdot v$ is within the interactive tolerance of 0, and the dashed square marks an angle close to 90°. Look at the waves: $g$ now runs a quarter period away from $f$, and $\\int_0^1 f_1 g_1\\,dt$ is nearly 0. Exactly, $u\\perp v \\iff u\\cdot v = 0$; stage 2 shows how to construct it exactly.',
     },
     {
       prompt: 'Find a second direction, on the other side of $u$, where they cancel.',
@@ -203,8 +245,8 @@ const stage1 = {
   notice: {
     changed: 'The coordinates of $v$, both contributions, and the angle.',
     held: 'The rule for combining coordinates, $u_1v_1+u_2v_2$.',
-    visible: 'Orthogonality as cancellation: two signed contributions summing to zero.',
-    hidden: 'Nothing yet. In the plane, the angle and the contributions tell the same story.',
+    visible: 'Orthogonality as cancellation, and the same zero in the waves: $u\\perp v$ exactly when $\\int_0^1 f_1g_1\\,dt = 0$.',
+    hidden: 'Only the first harmonics are in this picture; the other harmonics wait for more coordinates (stages 4 and 5).',
   },
   model(ctx) {
     const { u, v, exact } = ctx.data();
@@ -215,18 +257,21 @@ const stage1 = {
   advanced: pairAdvanced,
   build(ctx) {
     const plane = createVectorPlane({
+      extent: 2.5,
       draggable: ctx.mode === 'guided' ? ['v'] : ['u', 'v'],
       onDrag: (name, p) => ctx.setData({ ...ctx.data(), [name]: p, exact: false }),
     });
     const strip = createContributionStrip({ title: 'Each coordinate’s contribution uᵢvᵢ', runTitle: 'Adding them up: the running total ends at u·v' });
     const verdict = liveVerdict();
-    const reset = button({ label: 'Reset the pair', onclick: () => ctx.setData({ u: [2, 0.8], v: [0.6, 1.7], exact: false }) });
+    const waves = wavesUnder('Here only the first harmonics. Moving v reshapes g: the arrow’s length is the amplitude, its angle the phase.');
+    const reset = button({ label: 'Reset to your signal', onclick: () => ctx.setData(fromSignal(ctx.journey)()) });
     return {
-      figure: figure(planeBox(plane.el), strip.el),
+      figure: figure(planeBox(plane.el), waves.el, strip.el),
       controls: group(h('p', { class: 'note', 'data-modes': 'explore advanced' }, 'Both tips can be dragged. Arrow keys move a focused tip (Shift for larger steps).'), h('p', { class: 'note', 'data-modes': 'guided' }, 'Drag the tip of v, or focus it and use the arrow keys.'), row(reset.el)),
       instruments: h('div', { class: 'block' }, h('div', { class: 'section-label' }, 'Live check (this configuration)'), verdict.el),
       update(m) {
         plane.update({ u: m.u, v: m.v, r: m.r, showShadow: false, exact: m.exact });
+        waves.update(m.u, m.v);
         strip.bars({ values: m.r.contributions, labels: ['u₁v₁', 'u₂v₂'], ...stripScales(m.r.contributions), total: m.r.inner });
         verdict.set(m.r.inner, { exact: m.exact });
       },
@@ -238,7 +283,7 @@ const stage2 = {
   id: 'shadow',
   title: 'The shadow',
   rep: R2,
-  question: 'How much of $v$ lies along $u$? Its shadow on the line of $u$ answers that. When the shadow is gone, $v$ is orthogonal to $u$.',
+  question: 'How much of $v$ lies along $u$? Its shadow on the line of $u$ answers that. For the waves: how much of $g_1$ moves in step with $f_1$. When the shadow is gone, $v$ is orthogonal to $u$.',
   equation: '\\operatorname{proj}_u v = \\frac{u\\cdot v}{u\\cdot u}\\,u',
   symbols: [
     ['\\operatorname{proj}_u v', 'the shadow of $v$ on the line through $u$'],
@@ -255,7 +300,7 @@ const stage2 = {
   notice: {
     changed: 'The shadow’s length and the sign of its direction.',
     held: 'The residual is orthogonal to $u$ for every $v$.',
-    visible: 'Orthogonality as an absence: no shadow.',
+    visible: 'Orthogonality as an absence: no shadow, so no part of $g_1$ moves in step with $f_1$.',
     hidden: 'The shadow does not show the residual’s length: many different $v$ cast the same shadow.',
   },
   model: stage1.model,
@@ -267,8 +312,9 @@ const stage2 = {
   ],
   advanced: pairAdvanced,
   build(ctx) {
-    const plane = createVectorPlane({ draggable: ctx.mode === 'guided' ? ['v'] : ['u', 'v'], onDrag: (name, p) => ctx.setData({ ...ctx.data(), [name]: p, exact: false }) });
+    const plane = createVectorPlane({ extent: 2.5, draggable: ctx.mode === 'guided' ? ['v'] : ['u', 'v'], onDrag: (name, p) => ctx.setData({ ...ctx.data(), [name]: p, exact: false }) });
     const strip = createContributionStrip({ title: 'Each coordinate’s contribution uᵢvᵢ', runTitle: 'Running total: u·v, which sets the shadow' });
+    const waves = wavesUnder('Here only the first harmonics. When the shadow is gone, g runs exactly a quarter period from f.');
     const verdict = liveVerdict();
     const remove = button({
       label: 'Remove the shadow',
@@ -279,11 +325,12 @@ const stage2 = {
       },
     });
     return {
-      figure: figure(planeBox(plane.el), strip.el),
+      figure: figure(planeBox(plane.el), waves.el, strip.el),
       controls: group(row(remove.el), h('p', { class: 'note' }, 'Remove the shadow replaces v with its residual: the exact orthogonal construction.')),
       instruments: h('div', { class: 'block' }, h('div', { class: 'section-label' }, 'Live check (this configuration)'), verdict.el),
       update(m) {
         plane.update({ u: m.u, v: m.v, r: m.r, showShadow: true, exact: m.exact });
+        waves.update(m.u, m.v);
         strip.bars({ values: m.r.contributions, labels: ['u₁v₁', 'u₂v₂'], ...stripScales(m.r.contributions), total: m.r.inner });
         verdict.set(m.r.inner, { exact: m.exact });
       },
@@ -295,7 +342,7 @@ const stage3 = {
   id: 'pythagoras',
   title: 'Pythagoras',
   rep: R2,
-  question: 'When do squared lengths simply add? Compare $\\|u\\|^2+\\|v\\|^2$ with $\\|u+v\\|^2$.',
+  question: 'When do squared lengths simply add? Compare $\\|u\\|^2+\\|v\\|^2$ with $\\|u+v\\|^2$. For the waves, these are $\\int f_1^2 + \\int g_1^2$ against $\\int (f_1+g_1)^2$.',
   equation: '\\|u+v\\|^2 = \\|u\\|^2 + \\|v\\|^2 + 2\\,u\\cdot v',
   symbols: [
     ['\\|u\\|^2', 'squared length, $u\\cdot u$'],
@@ -321,7 +368,7 @@ const stage3 = {
   ],
   advanced: pairAdvanced,
   build(ctx) {
-    const plane = createVectorPlane({ triangle: true, draggable: ctx.mode === 'guided' ? ['v'] : ['u', 'v'], onDrag: (name, p) => ctx.setData({ ...ctx.data(), [name]: p, exact: false }) });
+    const plane = createVectorPlane({ extent: 2.5, triangle: true, draggable: ctx.mode === 'guided' ? ['v'] : ['u', 'v'], onDrag: (name, p) => ctx.setData({ ...ctx.data(), [name]: p, exact: false }) });
     const bars = createPythagorasBars();
     const verdict = liveVerdict();
     const remove = button({ label: 'Remove the shadow', onclick: () => ctx.setData({ ...ctx.data(), ...removeShadow(ctx.data().u, ctx.data().v) }) });
@@ -342,11 +389,11 @@ const stage4 = {
   id: 'space',
   title: 'Turn the view',
   rep: R3,
-  question: 'Your pair, lifted into space. Two different changes: orbit the camera, which changes only the picture, or rotate the vectors, which changes the vectors.',
+  question: 'A third coordinate: the real part of each wave’s second-harmonic arrow, from your signal. Two different changes are possible here: orbit the camera, which changes only the picture, or rotate the vectors, which changes the vectors and so the waves.',
   equation: '(Ru)\\cdot(Rv) = u\\cdot v',
   symbols: [
     ['R', 'a rotation applied to both vectors: it moves them'],
-    ['u\\cdot v', '$u_1v_1+u_2v_2+u_3v_3$: now three contributions'],
+    ['u\\cdot v', '$u_1v_1+u_2v_2+u_3v_3$: now three contributions. The new one, $u_3v_3$, comes from the second harmonics'],
     ['\\text{camera}', 'moving the viewpoint moves nothing; it changes only the projection onto your screen'],
     ['\\text{screen angle}', 'the angle the arrows make in that projection: a picture of the pair, not the pair'],
   ],
@@ -402,6 +449,7 @@ const stage4 = {
   build(ctx) {
     const strip = createContributionStrip({ title: 'Each coordinate’s contribution uᵢvᵢ', runTitle: 'Running total: u·v' });
     const verdict = liveVerdict();
+    const waves = wavesUnder('Three coordinates: the first harmonic, plus the cosine part of the second.');
     const sceneHost = h('div', { class: 'scene3d', style: { display: 'grid', placeItems: 'center' } }, h('p', { class: 'fallback' }, 'Loading the 3D view…'));
     let scene = null;
     let last = null;
@@ -468,12 +516,13 @@ const stage4 = {
     const plane = button({ label: 'Show the plane orthogonal to u', pressed: false, onclick: () => { ctx.flags.complement = !ctx.flags.complement; plane.press(ctx.flags.complement); ctx.refresh(); } });
 
     return {
-      figure: figure(sceneHost, h('p', { class: 'caption' }, h('strong', null, 'Drag to orbit, scroll to zoom. '), 'Orbiting moves the camera, not the vectors. The camera is orthographic, so the screen angle readout is exactly the angle drawn on your screen.'), strip.el),
+      figure: figure(sceneHost, h('p', { class: 'caption' }, h('strong', null, 'Drag to orbit, scroll to zoom. '), 'Orbiting moves the camera, not the vectors. The camera is orthographic, so the screen angle readout is exactly the angle drawn on your screen.'), waves.el, strip.el),
       controls: group(row(orbit.el, remove.el), theta.el, tilt.el, row(plane.el)),
       instruments: h('div', { class: 'block' }, h('div', { class: 'section-label' }, 'Live check (this configuration)'), verdict.el),
       update(m) {
         last = m;
         scene?.update(m);
+        waves.update(m.u, m.v);
         strip.bars({ values: m.r.contributions, labels: ['u₁v₁', 'u₂v₂', 'u₃v₃'], ...stripScales(m.r.contributions), total: m.r.inner });
         verdict.set(m.r.inner, { exact: m.exact });
         theta.set(m.theta);
@@ -493,7 +542,7 @@ const stage5 = {
   id: 'beyond-sight',
   title: 'Beyond sight',
   rep: R4,
-  question: 'Four coordinates. No single 2D or 3D picture shows this pair faithfully. Every drawing below is a shadow on one coordinate plane.',
+  question: 'A fourth coordinate completes both harmonics of each wave. No single 2D or 3D picture shows this pair faithfully. Every drawing below is a shadow on one coordinate plane; the waves show the whole pair.',
   equation: 'u\\cdot v = \\sum_{i=1}^{4} u_iv_i',
   symbols: [
     ['u,\\ v\\in\\mathbb R^4', 'arrows with four coordinates each'],
@@ -548,60 +597,67 @@ const stage5 = {
     const preset = button({ label: 'Load u = (1,1,1,1), v = (1,−1,1,−1)', onclick: () => { ctx.flags.preset = true; ctx.setData({ ...ONE_PAIR, exact: true }); } });
     const remove = button({ label: 'Remove the shadow', onclick: () => { const d = ctx.data(); ctx.setData({ ...d, ...removeShadow(d.u, d.v) }); } });
     const uText = h('p', { class: 'note' });
+    const waves = wavesUnder();
     return {
       figure: figure(
         h('p', { class: 'callout-projection' }, 'Six shadows of one pair, one per coordinate plane. A shadow is a projection: it drops two coordinates. No single panel shows the four-dimensional angle faithfully; the contributions below do not depend on any of them.'),
         shadows.el,
+        waves.el,
         strip.el,
       ),
       controls: group(uText, ...vs.map((x) => x.el), row(preset.el, remove.el)),
       instruments: h('div', { class: 'block' }, h('div', { class: 'section-label' }, 'Live check (this configuration)'), verdict.el),
       update(m) {
         shadows.update(m.u, m.v);
+        waves.update(m.u, m.v);
         strip.bars({ values: m.r.contributions, labels: ['u₁v₁', 'u₂v₂', 'u₃v₃', 'u₄v₄'], ...stripScales(m.r.contributions), total: m.r.inner });
         verdict.set(m.r.inner, { exact: m.exact });
         vs.forEach((x, i) => x.set(m.v[i]));
-        uText.innerHTML = `${tex(`u = (${m.u.map((c) => num(c, 2)).join(',\\ ')})`)}, carried from the earlier stages.`;
+        uText.innerHTML = `${tex(`u = (${m.u.map((c) => num(c, 2)).join(',\\ ')})`)}, the wave f. The sliders change v, the wave g.`;
       },
     };
   },
 };
 
+const B_LABELS = ['b₁', 'b₂', 'b₃', 'b₄'];
+
 const stage6 = {
   id: 'basis',
   title: 'A basis you can’t see',
   rep: B4,
-  question: 'Four directions in $\\mathbb R^4$, each at right angles to the others. How would you know, without a picture?',
-  equation: 'G_{ij} = \\langle e_i, e_j\\rangle,\\qquad G = I',
+  question: 'The four coordinates are coefficients in a basis of waves, $b_1=\\sqrt2\\cos 2\\pi t$, $b_2=-\\sqrt2\\sin 2\\pi t$, $b_3=\\sqrt2\\cos 4\\pi t$, $b_4=-\\sqrt2\\sin 4\\pi t$. Written in its own coordinates, each $b_k$ is one of the four unit directions of $\\mathbb R^4$, all at right angles. How would you know, without a picture?',
+  equation: 'G_{ij} = \\langle b_i, b_j\\rangle,\\qquad G = I',
   symbols: [
-    ['e_1,\\dots,e_4', 'four unit vectors in $\\mathbb R^4$'],
-    ['G', 'the Gram matrix: every inner product of the basis at once'],
-    ['a_k=\\langle x,e_k\\rangle', 'the coefficient of $x$ along $e_k$; here $x$ is your $v$ from stage 5'],
+    ['b_1,\\dots,b_4', 'the basis waves behind the coordinates: the first two harmonics, as cosine and sine'],
+    ['G', 'the Gram matrix: every inner product $\\langle b_i,b_j\\rangle = \\int_0^1 b_ib_j\\,dt$ at once'],
+    ['\\varepsilon', 'how far the basis is pushed off orthogonal: each $b_k$ tilts by $\\varepsilon$ in a fixed direction, then is rescaled to length 1'],
+    ['a_k=\\langle x,b_k\\rangle', 'the coefficient of $x$ along $b_k$; here $x$ is the wave $g$, your $v$ from stage 5'],
   ],
-  statements: ['ortho.signature'],
+  statements: ['ortho.signature', 'coef.crosstalk'],
   carry: BASIS,
   steps: [
-    { prompt: 'Push the basis off orthogonal with the slider.', done: (m) => m.eps > 0.15, then: 'Off-diagonal cells appear: the basis vectors now cast shadows on one another. The rebuild of $x$ from its coefficients drifts, and the four checks on the right move off zero together.' },
-    { prompt: 'Bring the slider back to 0.', done: (m, c) => m.eps === 0 && !!c.flags.wasOff, then: 'All four checks return to zero at once: no cross terms, coefficients that rebuild $x$, squared coefficients that add up to $\\|x\\|^2$, and a residual orthogonal to what was kept. This is the H1-1 signature, read in a space with no picture.' },
+    { prompt: 'Push the basis off orthogonal with the slider.', done: (m) => m.eps > 0.15, then: 'Off-diagonal cells appear: the basis waves now overlap, $\\langle b_i,b_j\\rangle\\ne0$. The coefficients stop working independently, so $\\sum_k a_kb_k$ no longer rebuilds $g$: the dashed wave pulls away, and the four checks on the right move off zero together. This is the cross-talk of Fourier Coefficients, in the real coordinates.' },
+    { prompt: 'Bring the slider back to 0.', done: (m, c) => m.eps === 0 && !!c.flags.wasOff, then: 'All four checks return to zero at once: no cross terms, coefficients that rebuild $g$, squared coefficients that add up to $\\|g\\|^2$, and a residual orthogonal to what was kept. This is the H1-1 signature, read in a space with no picture.' },
   ],
   notice: {
-    changed: 'The off-diagonal Gram entries, the rebuild of $x$, and all four checks.',
-    held: 'Every basis vector keeps length 1: the diagonal stays at 1.',
-    visible: 'Orthogonality as a pattern in a table: a diagonal Gram matrix.',
+    changed: 'The off-diagonal Gram entries, the rebuilt wave, and all four checks.',
+    held: 'Every basis wave keeps length 1: the diagonal stays at 1.',
+    visible: 'Orthogonality as a pattern in a table: a diagonal Gram matrix, and coefficients that rebuild the wave.',
     hidden: 'The directions themselves: no projection shows them faithfully, yet their inner products still reveal the geometry.',
   },
   model(ctx) {
     const d = ctx.data();
-    const x = norm(d.x) > 0.2 ? d.x : [1, 0.5, -0.8, 0.3];
-    const basis = perturbBasis(tiltedOrthonormalBasis(4), d.eps);
+    const fromV = norm(d.x) > 0.2;
+    const x = fromV ? d.x : d.u;
+    const basis = perturbBasis(identity(4), d.eps);
     const sig = basisSignature(basis, x, d.retained);
     const recon = basis.reduce((acc, e, k) => add(acc, scale(e, sig.coeffs[k])), [0, 0, 0, 0]);
     if (d.eps > 0.15) ctx.flags.wasOff = true;
-    return { ...d, x, xFromPair: norm(d.x) > 0.2, basis, sig, recon };
+    return { ...d, x, fromV, basis, sig, recon };
   },
   readouts: (m) => [
     ['perturbation ε', num(m.eps, 2)],
-    ['$\\|x\\|^2$', num(dot(m.x, m.x))],
+    ['$\\|g\\|^2$', num(dot(m.x, m.x))],
     ['$\\sum_k a_k^2$', num(m.sig.coeffs.reduce((s, a) => s + a * a, 0))],
   ],
   advanced(m) {
@@ -610,12 +666,14 @@ const stage6 = {
       null,
       texEl(`G = ${matTex(m.sig.G, 3)}`, { display: true, tag: 'div' }),
       texEl(`a = (${m.sig.coeffs.map((a) => num(a, 3)).join(',\\ ')})`, { display: true, tag: 'div' }),
-      texEl(`x = ${vecTex(m.x, 3)},\\quad \\textstyle\\sum_k a_ke_k = ${vecTex(m.recon, 3)}`, { display: true, tag: 'div' }),
+      texEl(`x = ${vecTex(m.x, 3)},\\quad \\textstyle\\sum_k a_kb_k = ${vecTex(m.recon, 3)}`, { display: true, tag: 'div' }),
     );
   },
   build(ctx) {
-    const gram = createGramMatrix({ labels: ['e₁', 'e₂', 'e₃', 'e₄'], cell: 52 });
-    const compare = createCompareBars({ aLabel: 'x', bLabel: 'Σ aₖeₖ, rebuilt from the coefficients', yMax: 2.5 });
+    const gram = createGramMatrix({ labels: B_LABELS, cell: 52 });
+    const compare = createCompareBars({ aLabel: 'x', bLabel: 'Σ aₖbₖ, rebuilt from the coefficients', yMax: 2.5 });
+    const waves = createWavesPlot({ rows: [{ height: 96 }] });
+    const t = Array.from({ length: 301 }, (_, i) => i / 300);
     const eps = slider({
       label: 'Push off orthogonal, ε',
       min: 0, max: 0.6, step: 0.01, value: ctx.data().eps,
@@ -632,9 +690,10 @@ const stage6 = {
     const xNote = h('p', { class: 'note' });
     return {
       figure: figure(
-        h('p', { class: 'caption' }, h('strong', null, 'Gram matrix. '), 'Diagonal: each direction with itself. Off-diagonal: each pair. Orthonormal means a warm diagonal on an empty field.'),
+        h('p', { class: 'caption' }, h('strong', null, 'Gram matrix of the basis waves. '), 'Diagonal: each wave with itself. Off-diagonal: each pair. Orthonormal means a warm diagonal on an empty field.'),
         gram.el,
-        h('p', { class: 'caption' }, h('strong', null, 'x and its rebuild from the coefficients. '), 'Equal bars mean each coefficient did its work independently of the others.'),
+        h('p', { class: 'caption' }, h('strong', null, 'The wave and its rebuild. '), 'Solid: g. Dashed: Σ aₖbₖ, built from the simple projection coefficients. They coincide only when the basis is orthonormal.'),
+        waves.el,
         compare.el,
       ),
       controls: group(eps.el, kept.el, xNote),
@@ -642,19 +701,21 @@ const stage6 = {
       update(m) {
         gram.update(m.sig.G, { showValues: ctx.mode === 'advanced' });
         compare.update(m.x, m.recon, ['x₁', 'x₂', 'x₃', 'x₄']);
+        waves.update(t, [{ label: 'g, and its rebuild', yMax: 4, series: [{ values: t.map((s) => waveFromCoords(m.x, s)), style: 'ink' }, { values: t.map((s) => waveFromCoords(m.recon, s)), style: 'dashed' }] }]);
         eps.set(m.eps);
         kept.set(m.retained);
-        xNote.textContent = m.xFromPair ? 'x is the v you built in stage 5.' : 'Your v from stage 5 is almost zero, so x = (1, 0.5, −0.8, 0.3) stands in.';
+        xNote.textContent = m.fromV ? 'x is the wave g: the v you built in stage 5.' : 'Your v from stage 5 is almost zero, so x = u, the wave f, stands in.';
         const items = [
           ['Zero cross terms', 'max |G_ij|, i ≠ j', m.sig.crossTerms],
-          ['Independent coefficients', '‖x − Σ aₖeₖ‖', m.sig.reconError],
+          ['Independent coefficients', '‖x − Σ aₖbₖ‖', m.sig.reconError],
           ['Parseval additivity', '‖x‖² − Σ aₖ²', m.sig.parsevalGap],
-          [`Residual ⟂ the ${m.retained} kept`, 'max |⟨x − kept, eⱼ⟩|', m.sig.residualMax],
+          [`Residual ⟂ the ${m.retained} kept`, 'max |⟨x − kept, bⱼ⟩|', m.sig.residualMax],
         ];
         sigList.replaceChildren(
           ...items.map(([name, what, val]) => {
             const holds = Math.abs(val) < 1e-9;
-            return h('li', { class: holds ? 'holds' : '' }, h('span', null, name), h('span', { class: 'val' }, sci(val)), h('span', { class: 'state' }, `${what}: ${holds ? 'holds; the value is floating-point error (|value| < 10⁻⁹)' : 'fails'}`));
+            const state = val === 0 ? 'holds exactly' : holds ? 'holds; the value is floating-point error (|value| < 10⁻⁹)' : 'fails';
+            return h('li', { class: holds ? 'holds' : '' }, h('span', null, name), h('span', { class: 'val' }, sci(val)), h('span', { class: 'state' }, `${what}: ${state}`));
           }),
         );
       },
@@ -662,178 +723,209 @@ const stage6 = {
   },
 };
 
-const WAVE_OPTIONS = ['cos', 'sin'].flatMap((kind) => [1, 2, 3, 4, 5].map((k) => [`${kind}${k}`, `${kind} ${k === 1 ? '' : k}t`]));
-const parseWave = (s) => ({ kind: s.slice(0, 3), k: Number(s.slice(3)) });
-const waveKey = (f) => `${f.kind}${f.k}`;
+// Harmonics stop at k = 2, so the aliased root-of-unity sums (N | k + l, k + l ≠ 0) all vanish once N > 4 (card O2e).
+const KMAX = 2;
+const halfTick = (m) => String(m / 2);
 
 const stage7 = {
-  id: 'waves',
+  id: 'samples',
   title: 'Waves as vectors',
   rep: RN,
-  question: 'A new pair: two waves, sampled at $N$ points. Each becomes a list of $N$ numbers, which is a vector in $\\mathbb R^N$.',
-  equation: '\\langle \\mathbf f,\\mathbf g\\rangle_N = \\frac{2\\pi}{N}\\sum_{j=0}^{N-1} f(t_j)\\,g(t_j)',
+  question: 'The same two waves, $f$ from $u$ and $g$ from $v$, sampled at $N$ equally spaced times in one period. Each becomes a list of $N$ numbers: a vector in $\\mathbb R^N$.',
+  equation: '\\langle \\mathbf f,\\mathbf g\\rangle_N = \\frac1N\\sum_{j=0}^{N-1} f(t_j)\\,g(t_j)',
   symbols: [
-    ['t_j', '$2\\pi j/N$: the $N$ equally spaced sample times'],
+    ['t_j', '$j/N$: $N$ equally spaced times in one period $[0,1)$'],
     ['\\mathbf f', '$(f(t_0),\\dots,f(t_{N-1}))$: the wave as a vector'],
     ['f(t_j)g(t_j)', 'one contribution per sample, exactly like $u_iv_i$'],
-    ['\\tfrac{2\\pi}{N}', 'a fixed scale, so the sum can be compared across $N$'],
-    ['m,\\ n', 'the harmonics of $f$ and $g$: $f$ is $\\cos mt$ or $\\sin mt$'],
+    ['\\tfrac1N', 'a fixed scale, so the total can be compared across $N$, and with $u\\cdot v$'],
   ],
-  statements: ['ortho.discrete', 'ortho.inner-is-sum'],
-  carry: WAVES,
+  statements: ['coef.sampled', 'ortho.inner-is-sum'],
+  carry: SAMPLES,
   steps: [
-    { prompt: 'Compare the sample dots with the bars: each bar is $f(t_j)g(t_j)$. Change $N$.', done: (m, c) => !!c.flags.touched, then: 'The same picture as for arrows: one signed contribution per coordinate, summed.' },
-    { prompt: 'Choose a different pair of waves and read the total.', done: (m, c) => !!c.flags.picked && m.distinct && Math.abs(m.predicted) < 1e-12, then: 'They cancel exactly. The sum of sample products is a sum of roots of unity, and here those sums add to zero (card O1g). For these waves, $m+n<N$ is a sufficient condition for that cancellation, not its definition.' },
-    { prompt: 'Now take cos t and cos 3t and lower $N$ to 4.', done: (m) => m.distinct && Math.abs(m.predicted) > 1e-6, then: 'At $N=4$ the samples of $\\cos 3t$ equal the samples of $\\cos t$ (aliasing: $N$ divides $m+n$), so the root-of-unity sum no longer cancels. The sampling is part of the inner product.' },
-    { prompt: 'Raise $N$ to at least 64.', done: (m) => m.N >= 64, then: 'Thinner bars, and they trace a curve. The next stage follows them to the limit.' },
+    { prompt: 'Compare the sample dots with the bars: each bar is $f(t_j)g(t_j)/N$. Change $N$.', done: (m, c) => !!c.flags.touched, then: 'The same picture as for arrows: one signed contribution per coordinate, summed. For every $N$ above 4 the total is exactly $u\\cdot v$, the dot product of the arrows.' },
+    { prompt: 'Lower $N$ until the total stops matching $u\\cdot v$.', done: (m) => Math.abs(m.gap) > 1e-6, then: 'With only $N$ samples, $e^{2\\pi ikt}$ and $e^{2\\pi i(k-N)t}$ take the same values (aliasing), so pairs of harmonics with $N\\mid k+l$ join the sum (card O2e). Because these waves stop at harmonic 2, $N>4$ is enough to exclude every such pair. That is a sufficient condition, not the definition: for some pairs the extra terms happen to cancel.' },
+    { prompt: 'Raise $N$ to at least 32.', done: (m) => m.N >= 32, then: 'Thinner bars, and they trace a curve: the product $f(t)g(t)$. The next stage follows them to the limit.' },
   ],
   notice: {
     changed: 'The number of coordinates, $N$.',
-    held: 'The rule: multiply matching coordinates and add.',
-    visible: 'A wave is a vector, and orthogonality of waves is cancellation of sample products.',
+    held: 'The rule: multiply matching coordinates and add. And for every $N>4$, the total itself.',
+    visible: 'A wave is a vector, and the sample inner product equals the arrow inner product once the sampling resolves every harmonic present.',
     hidden: 'Everything between the samples.',
   },
   model(ctx) {
-    const { f, g, N } = ctx.data();
-    const tj = Array.from({ length: N }, (_, j) => (TWO_PI * j) / N);
-    const fs = sampleWave(f, N);
-    const gs = sampleWave(g, N);
-    const contrib = fs.map((x, j) => (TWO_PI / N) * x * gs[j]);
-    const total = sampledInner(f, g, N);
-    const curve = productCurve(f, g, TWO_PI, 400);
-    const distinct = waveKey(f) !== waveKey(g);
-    const sameKind = f.kind === g.kind;
-    return { f, g, N, tj, fs, gs, contrib, total, curve, distinct, belowAlias: f.k + g.k < N, exact: functionInner(f, g), sameKind, predicted: discretePredicted(f, g, N), alias: aliasing(f, g, N) };
+    const d = ctx.data();
+    const { u, v, N } = d;
+    const tj = Array.from({ length: N }, (_, j) => j / N);
+    const fs = tj.map((t) => waveFromCoords(u, t));
+    const gs = tj.map((t) => waveFromCoords(v, t));
+    const contrib = fs.map((x, j) => (x * gs[j]) / N);
+    const total = sampledInnerCoords(u, v, N);
+    const uv = dot(u, v);
+    const predicted = sampledPredictedCoords(u, v, N);
+    const aliased = aliasedCoords(u, v, N);
+    const curve = productCurveCoords(u, v, 1, 400);
+    const resolved = N > 2 * KMAX;
+    // ⟨f,g⟩_N = u·v + aliased terms. With u·v = 0 by construction, the samples are exactly orthogonal when the
+    // aliased terms are exactly 0: always for N > 4, and at smaller N when each aliased pair meets a zero coefficient.
+    return { ...d, tj, fs, gs, contrib, total, uv, predicted, aliased, gap: total - uv, curve, resolved, arrowsExact: !!d.exact, exact: !!d.exact && aliased === 0 };
   },
   readouts: (m) => [
     ['$\\langle\\mathbf f,\\mathbf g\\rangle_N$', signed(m.total, 4), signClass(m.total, 1e-9)],
-    ['$\\int_0^{2\\pi} f g\\,dt$ (for comparison)', signed(m.exact, 4)],
-    ['$N$', String(m.N)],
+    ['$u\\cdot v$, from the arrows', signed(m.uv, 4), signClass(m.uv, 1e-9)],
+    ['difference', sci(m.gap)],
+    ['aliased terms', m.aliased === 0 ? '0 exactly' : signed(m.aliased, 4)],
     ['root-of-unity prediction', signed(m.predicted, 4)],
-    ['sufficient condition $m+n<N$', m.belowAlias ? 'holds' : 'does not hold'],
-    ['$N$ divides $m-n$? $m+n$?', `${m.alias.diff ? 'yes' : 'no'}, ${m.alias.sum ? 'yes' : 'no'}`],
+    ['$N$', String(m.N)],
+    ['sufficient condition $N>4$', m.resolved ? 'holds' : 'does not hold'],
   ],
   advanced(m) {
     const rows = m.tj.slice(0, 8).map((t, j) => `${j} & ${num(t, 3)} & ${num(m.fs[j], 3)} & ${num(m.gs[j], 3)} & ${num(m.contrib[j], 4)}`).join('\\\\');
     return h(
       'div',
       null,
-      texEl(`\\begin{array}{rrrrr} j & t_j & f(t_j) & g(t_j) & \\tfrac{2\\pi}{N}f g\\\\ \\hline ${rows}${m.N > 8 ? '\\\\ \\vdots&&&&' : ''}\\end{array}`, { display: true, tag: 'div', cls: 'equation' }),
-      texEl('\\sum_{j=0}^{N-1}\\cos\\tfrac{2\\pi pj}{N} = \\begin{cases} N & N\\mid p\\\\ 0 & \\text{otherwise}\\end{cases}', { display: true, tag: 'div' }),
-      texEl('\\sum_{j=0}^{N-1}\\sin\\tfrac{2\\pi pj}{N} = 0', { display: true, tag: 'div' }),
-      texEl('\\cos mt\\cos nt = \\tfrac12[\\cos(m{-}n)t + \\cos(m{+}n)t]', { display: true, tag: 'div' }),
-      texEl('\\sin mt\\sin nt = \\tfrac12[\\cos(m{-}n)t - \\cos(m{+}n)t]', { display: true, tag: 'div' }),
+      texEl(`\\begin{array}{rrrrr} j & t_j & f(t_j) & g(t_j) & \\tfrac1N f g\\\\ \\hline ${rows}${m.N > 8 ? '\\\\ \\vdots&&&&' : ''}\\end{array}`, { display: true, tag: 'div', cls: 'equation' }),
+      texEl('\\frac1N\\sum_{j=0}^{N-1} e^{2\\pi i p j/N} = \\begin{cases} 1 & N\\mid p\\\\ 0 & \\text{otherwise}\\end{cases}', { display: true, tag: 'div' }),
+      texEl('\\langle\\mathbf f,\\mathbf g\\rangle_N = \\sum_{N\\mid k+l}\\hat f(k)\\,\\hat g(l)\\qquad (k,l = \\pm1,\\pm2)', { display: true, tag: 'div' }),
     );
   },
   build(ctx) {
     const plot = createFunctionPlot();
-    const strip = createContributionStrip({ title: 'Each sample’s contribution (2π/N)·f(tⱼ)g(tⱼ)', runTitle: 'Running total: ⟨f, g⟩ in ℝᴺ' });
+    const strip = createContributionStrip({ title: 'Each sample’s contribution f(tⱼ)g(tⱼ)/N', runTitle: 'Running total: ⟨f, g⟩ in ℝᴺ' });
+    const match = h('div', { class: 'verdict', 'aria-live': 'polite' });
     const verdict = liveVerdict();
-    const fSel = select({ label: 'f', options: WAVE_OPTIONS, value: waveKey(ctx.data().f), onchange: (v) => { ctx.flags.picked = true; ctx.setData({ ...ctx.data(), f: parseWave(v) }); } });
-    const gSel = select({ label: 'g', options: WAVE_OPTIONS, value: waveKey(ctx.data().g), onchange: (v) => { ctx.flags.picked = true; ctx.setData({ ...ctx.data(), g: parseWave(v) }); } });
-    const nSl = slider({ label: 'Samples, N', min: 3, max: 128, step: 1, value: ctx.data().N, format: (x) => String(x), oninput: (x) => ctx.setData({ ...ctx.data(), N: x }) });
+    const nSl = slider({ label: 'Samples, N', min: 1, max: 64, step: 1, value: ctx.data().N, format: (x) => String(x), oninput: (x) => { ctx.flags.touched = true; ctx.setData({ ...ctx.data(), N: x }); } });
     return {
       figure: figure(plot.el, strip.el),
-      controls: group(row(fSel.el, gSel.el), nSl.el),
-      instruments: h('div', { class: 'block' }, h('div', { class: 'section-label' }, 'Live check (this configuration)'), verdict.el),
+      controls: group(nSl.el, h('p', { class: 'note' }, 'f and g are the waves of your u and v from stage 5. Solid dots: samples of f. Open dots: samples of g.')),
+      instruments: h(
+        'div',
+        { class: 'block' },
+        h('div', { class: 'section-label' }, 'Samples against arrows'),
+        match,
+        h('div', { class: 'section-label' }, 'Live check (this configuration)'),
+        verdict.el,
+      ),
       update(m) {
-        plot.update({ curve: m.curve, L: TWO_PI, samples: { t: m.tj, f: m.fs, g: m.gs }, fLabel: `f = ${fnText(m.f)}`, gLabel: `g = ${fnText(m.g)}` });
-        strip.bars({ values: m.contrib, labels: m.N <= 8 ? m.tj.map((_, j) => `j=${j}`) : null, yMax: nice(TWO_PI / m.N), runMax: 4, total: m.total });
-        verdict.set(m.total, { tol: 0, what: 'the sample inner product', exact: Math.abs(m.predicted) < 1e-12, why: 'by the root-of-unity sum' });
+        const yMax = nice(Math.max(...m.curve.f.map(Math.abs), ...m.curve.g.map(Math.abs), 0.5));
+        plot.update({ curve: m.curve, L: 1, yMax, tickStep: 0.5, samples: { t: m.tj, f: m.fs, g: m.gs }, fLabel: 'f, from u', gLabel: 'g, from v' });
+        strip.bars({ values: m.contrib, labels: m.N <= 8 ? m.tj.map((_, j) => `j=${j}`) : null, yMax: nice(Math.max(...m.contrib.map(Math.abs), 0.05)), runMax: nice(Math.max(prefixMax(m.contrib), Math.abs(m.uv), 0.1)), total: m.total });
+        if (m.resolved) {
+          match.className = 'verdict holds';
+          match.innerHTML = `<b>Equal to u·v exactly.</b> With harmonics up to 2, every aliased root-of-unity sum vanishes once N &gt; 4, so the samples give the arrows’ inner product (card O2e). The displayed difference, ${sci(m.gap)}, is floating-point error.`;
+        } else if (m.aliased === 0) {
+          match.className = 'verdict holds';
+          match.innerHTML = `<b>Equal to u·v exactly</b>, although N ≤ 4: every aliased pair of harmonics meets a coefficient that is exactly 0 (a harmonic this pair does not have). N &gt; 4 is sufficient, not necessary. The displayed difference, ${sci(m.gap)}, is floating-point error.`;
+        } else if (Math.abs(m.aliased) > 1e-9) {
+          match.className = 'verdict';
+          match.innerHTML = `<b>Aliasing at N = ${m.N}.</b> Pairs of harmonics with N | k + l, k + l ≠ 0, join the sum. The sample total differs from u·v by ${num(m.gap, 4)}, the aliased terms the root-of-unity prediction names.`;
+        } else {
+          match.className = 'verdict approx';
+          match.innerHTML = `<b>Nearly equal to u·v</b>, although N ≤ 4: for this pair the aliased terms almost cancel, leaving ${sci(m.aliased)}.`;
+        }
+        verdict.set(m.total, { what: '⟨f, g⟩_N', exact: m.exact, why: `by construction (carried from stage 5), and the aliased terms are exactly 0${m.resolved ? ' because N > 4' : ''}`, hint: m.arrowsExact ? 'The arrows are exactly orthogonal; at this N the aliased terms keep the samples from it.' : 'Remove the shadow, in stages 2 to 5, constructs that.' });
         nSl.set(m.N);
-        fSel.set(waveKey(m.f));
-        gSel.set(waveKey(m.g));
       },
     };
   },
 };
 
-const TRIG6 = trigBasis(3);
-const TRIG_LABELS = ['c₁', 's₁', 'c₂', 's₂', 'c₃', 's₃'];
-
 const stage8 = {
   id: 'functions',
   title: 'Functions',
   rep: L2,
-  question: 'Let $N$ grow without bound. The sum becomes an integral, and the bars become an area.',
-  equation: '\\langle f, g\\rangle = \\int_0^{L} f(t)\\,g(t)\\,dt',
+  question: 'Let $N$ grow without bound. The sum becomes an integral over one period, and the bars become an area. Then change the interval itself.',
+  equation: '\\langle f, g\\rangle_L = \\int_0^{L} f(t)\\,g(t)\\,dt',
   symbols: [
     ['f(t)g(t)', 'the contribution at each instant: warm area above zero, cool area below'],
-    ['L', 'the domain $[0,L]$ is part of the inner product: change it and the geometry changes'],
-    ['c_k,\\ s_k', '$\\cos kt/\\sqrt\\pi$ and $\\sin kt/\\sqrt\\pi$: unit length over $[0,2\\pi]$'],
+    ['L', 'the domain $[0,L]$ is part of the inner product. Over one period, $L=1$, it is exactly $u\\cdot v$'],
+    ['b_1,\\dots,b_4', 'the basis waves of stage 6; their Gram matrix over $[0,L]$ is shown below'],
   ],
-  statements: ['ortho.samples-to-integral', 'ortho.trig-full-period', 'ortho.interval'],
+  statements: ['ortho.samples-to-integral', 'coef.arrows', 'coef.interval'],
   carry: FUNCS,
   steps: [
-    { prompt: 'Change $g$ and compare the warm and cool areas.', done: (m, c) => !!c.flags.touched, then: 'Over a full period the warm and cool areas match exactly, so $\\int_0^{2\\pi} fg\\,dt = 0$ for different harmonics. No arrows, no angle, and still orthogonal.' },
-    { prompt: 'Lengthen or shorten the interval $L$, and watch which Gram entries move.', done: (m) => Math.abs(m.L - TWO_PI) > 0.3, then: 'Changing $L$ changes the inner product itself. Some cross terms appear, others stay at zero, and the diagonal changes because the fixed $1/\\sqrt\\pi$ scaling gives unit length only at $L=2\\pi$. Try $L=4\\pi$: every cross term is zero again, yet $G=2I$, orthogonal but not unit length (card O1f). The domain is part of the inner product, and therefore part of the geometry.' },
-    { prompt: 'Bring $L$ back to $2\\pi$ (the button does it exactly).', done: (m, c) => Math.abs(m.L - TWO_PI) < 1e-9 && !!c.flags.wasOff, then: 'For this normalised basis, $L=2\\pi$ gives $G=I$ exactly: the H1-1 signature, now for functions.' },
+    { prompt: 'At $L=1$, compare the running integral with $u\\cdot v$. Then drag $L$ away from 1.', done: (m) => Math.abs(m.L - 1) > 0.15, then: 'Changing $L$ changes the inner product itself. $\\langle f,g\\rangle_L$ no longer equals $u\\cdot v$, some cross terms of the basis appear, and the diagonal moves off 1. The coordinates $u$ and $v$ did not change; the inner product they are measured with did.' },
+    { prompt: 'Press Set L = 2.', done: (m) => m.L === 2, then: 'Two full periods: every cross term is exactly zero again, yet $G = 2I$, so the basis is orthogonal but not unit length, and $\\langle f,g\\rangle_2 = 2\\,u\\cdot v$ (card O2d).' },
+    { prompt: 'Bring $L$ back to 1 (the button does it exactly).', done: (m, c) => m.L === 1 && !!c.flags.wasOff, then: 'One period gives $G=I$ by the closed form: the H1-1 signature, now for functions. The arrows of Fourier Coefficients, the vectors of stages 1 to 5, the samples of stage 7 and these functions are one object, and they give one number: $u\\cdot v = \\langle\\mathbf f,\\mathbf g\\rangle_N$ for $N>4$, $= \\int_0^1 fg\\,dt$.' },
   ],
   notice: {
     changed: 'The domain $[0,L]$, and with it the inner product: some cross terms, the diagonal, and the balance of warm and cool area.',
-    held: 'The product curve $f(t)g(t)$ itself: only how much of it is integrated changes.',
-    visible: 'The domain is part of the inner product, and so part of the geometry. Orthogonal functions cancel areas; an orthonormal basis gives $G=I$.',
+    held: 'The waves $f$ and $g$ themselves, and their coordinates $u$ and $v$: only how much of the product is integrated changes.',
+    visible: 'The domain is part of the inner product, and so part of the geometry. Over one period the integral is the arrow inner product, and the basis has $G=I$.',
     hidden: 'Pointwise detail: one number now stands for the whole product curve.',
   },
   model(ctx) {
     const d = ctx.data();
-    const curve = productCurve(d.f, d.g, d.L, 600);
-    const exact = functionInner(d.f, d.g, d.L);
-    const G = normalisedTrigGram(TRIG6, d.L);
+    const { u, v, L } = d;
+    const curve = productCurveCoords(u, v, L, 600);
+    const inner = intervalInner(u, v, L);
+    const uv = dot(u, v);
+    const G = realBasisGram(4, L);
     let off = 0;
-    G.forEach((r, i) => r.forEach((g, j) => { if (i !== j) off = Math.max(off, Math.abs(g)); }));
-    const diag = G.map((r, i) => r[i]);
     let zeroCross = 0;
-    G.forEach((r, i) => r.forEach((g, j) => { if (i < j && Math.abs(g) < 1e-12) zeroCross += 1; }));
-    if (Math.abs(d.L - TWO_PI) > 0.3) ctx.flags.wasOff = true;
+    G.forEach((r, i) => r.forEach((g, j) => {
+      if (i !== j) off = Math.max(off, Math.abs(g));
+      if (i < j && Math.abs(g) < 1e-12) zeroCross += 1;
+    }));
+    const diag = G.map((r, i) => r[i]);
+    if (Math.abs(L - 1) > 0.15) ctx.flags.wasOff = true;
     let samples = null;
     if (d.showSamples) {
-      const N = d.N ?? 16;
-      const t = Array.from({ length: N }, (_, j) => (d.L * j) / N);
-      samples = { t, product: t.map((x) => basisValue(d.f, x) * basisValue(d.g, x)), sum: sampledInner(d.f, d.g, N, d.L), N };
+      const N = d.N ?? 8;
+      const t = Array.from({ length: N }, (_, j) => (L * j) / N);
+      const product = t.map((x) => waveFromCoords(u, x) * waveFromCoords(v, x));
+      samples = { t, product, sum: (L / N) * product.reduce((a, b) => a + b, 0), N };
     }
-    return { ...d, curve, exact, G, off, diag, zeroCross, samples, runMax: nice(Math.max(...Array.from(curve.running, Math.abs), 0.5)) };
+    const wholePeriods = Number.isInteger(L) && L >= 1;
+    return {
+      ...d, curve, inner, uv, G, off, zeroCross, diag, samples, wholePeriods,
+      exact: !!d.exact && wholePeriods,
+      yMax: nice(Math.max(...Array.from(curve.product, Math.abs), 0.25)),
+      runMax: nice(Math.max(...Array.from(curve.running, Math.abs), Math.abs(uv), 0.25)),
+      fMax: nice(Math.max(...Array.from(curve.f, Math.abs), ...Array.from(curve.g, Math.abs), 0.5)),
+    };
   },
   readouts: (m) => [
-    ['$\\langle f,g\\rangle$ (closed form)', signed(m.exact, 4), signClass(m.exact, 1e-9)],
+    ['$\\langle f,g\\rangle_L$ (closed form)', signed(m.inner, 4), signClass(m.inner, 1e-9)],
+    ['$u\\cdot v$, from the arrows', signed(m.uv, 4), signClass(m.uv, 1e-9)],
     ['warm area', num(m.curve.positive, 4)],
     ['cool area', num(m.curve.negative, 4)],
-    ['$L$', `${num(m.L, 3)} (2π = ${num(TWO_PI, 3)})`],
+    ['$L$', num(m.L, 2)],
     ['largest off-diagonal of $G$', sci(m.off)],
-    ['cross terms exactly 0', `${m.zeroCross} of 15`],
+    ['cross terms zero (|value| < 10⁻¹²)', `${m.zeroCross} of 6`],
     ['diagonal of $G$', Math.max(...m.diag) - Math.min(...m.diag) < 1e-12 ? num(m.diag[0], 3) : `${num(Math.min(...m.diag), 3)} to ${num(Math.max(...m.diag), 3)}`],
     ...(m.samples ? [[`sample sum, $N=${m.samples.N}$`, signed(m.samples.sum, 4)]] : []),
   ],
   advanced(m) {
-    return h('div', null, texEl(`\\int_0^{${num(m.L, 3)}} ${fnTex(m.f)}\\,${fnTex(m.g)}\\,dt = ${num(m.exact, 5)}`, { display: true, tag: 'div' }), texEl(`G = ${matTex(m.G, 3)}`, { display: true, tag: 'div', cls: 'equation' }));
+    return h(
+      'div',
+      null,
+      texEl(`\\int_0^{${num(m.L, 2)}} f\\,g\\,dt = u^{\\mathsf T} G(L)\\, v = ${num(m.inner, 5)}`, { display: true, tag: 'div' }),
+      texEl(`G(L) = ${matTex(m.G, 3)}`, { display: true, tag: 'div', cls: 'equation' }),
+    );
   },
   build(ctx) {
     const plot = createFunctionPlot();
-    const strip = createContributionStrip({ title: 'The contribution at each instant, f(t)g(t)', runTitle: 'Running integral: ends at ⟨f, g⟩' });
-    const gram = createGramMatrix({ labels: TRIG_LABELS, cell: 40 });
+    const strip = createContributionStrip({ title: 'The contribution at each instant, f(t)g(t)', runTitle: 'Running integral: ends at ⟨f, g⟩_L' });
+    const gram = createGramMatrix({ labels: B_LABELS, cell: 46 });
     const verdict = liveVerdict();
-    const fSel = select({ label: 'f', options: WAVE_OPTIONS, value: waveKey(ctx.data().f), onchange: (v) => ctx.setData({ ...ctx.data(), f: parseWave(v) }) });
-    const gSel = select({ label: 'g', options: WAVE_OPTIONS, value: waveKey(ctx.data().g), onchange: (v) => ctx.setData({ ...ctx.data(), g: parseWave(v) }) });
-    const lSl = slider({ label: 'Interval length, L', min: 0.5, max: 4 * Math.PI, step: 0.01, value: ctx.data().L, format: (x) => num(x, 2), oninput: (x) => ctx.setData({ ...ctx.data(), L: x }) });
-    const exact = button({ label: 'Set L = 2π', onclick: () => ctx.setData({ ...ctx.data(), L: TWO_PI }) });
-    const four = button({ label: 'Set L = 4π', onclick: () => ctx.setData({ ...ctx.data(), L: 2 * TWO_PI }) });
+    const lSl = slider({ label: 'Interval length, L', min: 0.1, max: 2, step: 0.01, value: ctx.data().L, format: (x) => num(x, 2), oninput: (x) => ctx.setData({ ...ctx.data(), L: x }) });
+    const one = button({ label: 'Set L = 1', onclick: () => ctx.setData({ ...ctx.data(), L: 1 }) });
+    const two = button({ label: 'Set L = 2', onclick: () => ctx.setData({ ...ctx.data(), L: 2 }) });
     const samp = button({ label: 'Show the samples from stage 7', pressed: !!ctx.data().showSamples, modes: 'explore advanced', onclick: () => { const d = ctx.data(); ctx.setData({ ...d, showSamples: !d.showSamples }); } });
     return {
       figure: figure(
         plot.el,
         strip.el,
-        h('div', { class: 'figure-row' }, h('div', null, h('p', { class: 'caption' }, h('strong', null, 'Gram matrix of six basis waves over [0, L]. '), 'At L = 2π it is exactly I. Other intervals change some entries, not necessarily all. Colour runs from −2 (cool) through 0 to +2 (warm), so I and 2I look different.'), gram.el)),
+        h('div', { class: 'figure-row' }, h('div', null, h('p', { class: 'caption' }, h('strong', null, 'Gram matrix of the four basis waves over [0, L]. '), 'At L = 1 it is I, at L = 2 it is 2I. Other intervals change some entries, not necessarily all. Colour runs from −2 (cool) through 0 to +2 (warm), so I and 2I look different.'), gram.el)),
       ),
-      controls: group(row(fSel.el, gSel.el), lSl.el, row(exact.el, four.el, samp.el)),
+      controls: group(lSl.el, row(one.el, two.el, samp.el)),
       instruments: h('div', { class: 'block' }, h('div', { class: 'section-label' }, 'Live check (this configuration)'), verdict.el),
       update(m) {
-        plot.update({ curve: m.curve, L: m.L, fLabel: `f = ${fnText(m.f)}`, gLabel: `g = ${fnText(m.g)}` });
-        strip.area({ curve: m.curve, L: m.L, yMax: 1, runMax: m.runMax, total: m.exact, samples: m.samples });
+        plot.update({ curve: m.curve, L: m.L, yMax: m.fMax, tickStep: 0.5, fLabel: 'f, from u', gLabel: 'g, from v' });
+        strip.area({ curve: m.curve, L: m.L, yMax: m.yMax, runMax: m.runMax, total: m.inner, samples: m.samples, tickStep: 0.5, tickLabel: halfTick });
         gram.update(m.G, { showValues: true, digits: 2, scaleMax: 2 });
-        verdict.set(m.exact, { tol: 0, what: '⟨f, g⟩', exact: true, why: 'by the closed-form integral' });
+        verdict.set(m.inner, { what: '⟨f, g⟩_L', exact: m.exact, why: 'by construction (carried from stage 5), and over whole periods G = L·I', hint: 'Remove the shadow, in stages 2 to 5, constructs that.' });
         lSl.set(m.L);
-        fSel.set(waveKey(m.f));
-        gSel.set(waveKey(m.g));
         samp.press(!!m.showSamples);
       },
     };
@@ -845,7 +937,7 @@ export default {
   hashPrefix: 'ortho',
   mapNumber: 8,
   title: 'Orthogonality and Zero',
-  question: 'One relationship, $\\langle u,v\\rangle = 0$, followed from arrows you can see into spaces you cannot. In every view an inner product is a sum of signed contributions, and orthogonality is when they cancel.',
+  question: 'One relationship, $\\langle u,v\\rangle = 0$, followed from the coefficient arrows of your signal into spaces you cannot see. In every view an inner product is a sum of signed contributions, and orthogonality is when they cancel.',
   stages: [stage1, stage2, stage3, stage4, stage5, stage6, stage7, stage8],
   connections: [
     ['C1', 'one preservation equation, many geometries'],
