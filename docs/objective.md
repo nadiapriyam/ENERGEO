@@ -22,6 +22,7 @@ It is split into three hypotheses (your split, `claude_code_prompt.md` §1a). Th
 
 - **In scope:** the mathematics itself and the connected geometries (Gate 2, answer 9).
 - **Parked:** the finite-energy / spacecraft application (Energeo). Applications come only when you ask (§9).
+- **Names (Gate 4 review):** the learning platform is **Geometry of Representation**. ENERGEO stays the repository name and the name of the later finite-energy application. Not every result here is part of an energy theory.
 
 ## Which document governs what
 

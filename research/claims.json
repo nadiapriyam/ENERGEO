@@ -4,52 +4,94 @@
     "ortho.inner-is-sum": {
       "level": 1,
       "text": "The inner product is a sum of signed contributions: ⟨u,v⟩ = Σ uᵢvᵢ in Rⁿ, and ⟨f,g⟩ = ∫ f(t)g(t) dt for functions.",
-      "cards": ["S1b", "B3b"]
+      "cards": [
+        "S1b",
+        "B3b"
+      ]
     },
     "ortho.pythagoras": {
       "level": 1,
       "text": "‖u+v‖² = ‖u‖² + ‖v‖² + 2⟨u,v⟩, so u ⟂ v exactly when Pythagoras holds.",
-      "cards": ["S1a", "B4b"]
+      "cards": [
+        "S1a",
+        "B4b"
+      ]
     },
     "ortho.shadow": {
       "level": 1,
-      "text": "The shadow of v on u is (⟨u,v⟩/⟨u,u⟩)u. It vanishes exactly when ⟨u,v⟩ = 0, and the residual v − shadow is always perpendicular to u.",
-      "cards": ["B2a"]
+      "text": "The shadow of v on u is (⟨u,v⟩/⟨u,u⟩)u. It vanishes exactly when ⟨u,v⟩ = 0, and the residual v − shadow is exactly perpendicular to u: an exact construction, so any nonzero remainder on screen is floating-point error.",
+      "cards": [
+        "B2a"
+      ]
     },
     "ortho.rotation-invariance": {
       "level": 1,
-      "text": "Rotating both vectors (or the camera) changes every coordinate but not ⟨u,v⟩.",
-      "cards": ["O1a"]
+      "text": "Applying the same rotation R to both vectors changes every coordinate but not the inner product: (Ru)·(Rv) = u·v.",
+      "cards": [
+        "O1a"
+      ]
     },
     "ortho.screen-distorts": {
       "level": 1,
       "text": "A projection onto a screen or a coordinate plane does not preserve angles: an orthogonal pair can look oblique, and an oblique pair can look perpendicular.",
-      "cards": ["O1b"]
+      "cards": [
+        "O1b"
+      ]
     },
     "ortho.signature": {
       "level": 1,
       "text": "For a basis, zero cross terms (Gram = I), independent projection coefficients, Parseval additivity and residual ⟂ retained part all hold together when the basis is orthonormal.",
-      "cards": ["O1e", "S7", "S13"]
+      "cards": [
+        "O1e",
+        "S7",
+        "S13"
+      ]
     },
     "ortho.trig-full-period": {
       "level": 1,
       "text": "Over one full period, distinct sines and cosines have zero inner product: the Gram matrix of {cos kt, sin kt} is π·I.",
-      "cards": ["S2a", "B3a"]
+      "cards": [
+        "S2a",
+        "B3a"
+      ]
     },
     "ortho.discrete": {
       "level": 1,
-      "text": "Sampled at N equally spaced points, distinct cosines are orthogonal vectors in R^N (for m + n < N).",
-      "cards": ["O1c"]
+      "text": "Sampled at N equally spaced points on [0, 2π), two waves give orthogonal vectors exactly when their root-of-unity sums cancel; for cos mt and cos nt that means N divides neither m − n nor m + n. The condition m + n < N is sufficient for the waves used here, not the definition.",
+      "cards": [
+        "O1c",
+        "O1g"
+      ]
     },
     "ortho.samples-to-integral": {
       "level": 1,
       "text": "As the number of samples grows, the scaled sample sum (L/N) Σ f(tⱼ)g(tⱼ) approaches ∫ f g.",
-      "cards": ["O1d"]
+      "cards": [
+        "O1d"
+      ]
     },
     "ortho.null-later": {
       "level": 1,
       "text": "In an indefinite geometry a nonzero vector can have q(v) = 0 (a null vector). This is a different zero from orthogonality, compared later and never merged with it (Gate 3, H1-2).",
-      "cards": ["S12b", "B1d"]
+      "cards": [
+        "S12b",
+        "B1d"
+      ]
+    },
+    "ortho.camera": {
+      "level": 1,
+      "text": "Orbiting the camera moves neither vector, so their inner product and true angle do not change. Only their two-dimensional projection on the screen changes, and a projection need not preserve angles.",
+      "cards": [
+        "O1b"
+      ]
+    },
+    "ortho.interval": {
+      "level": 1,
+      "text": "The domain is part of the inner product. For the basis cos kt/√π, sin kt/√π: G = I at L = 2π and G = 2I at L = 4π (orthogonal, not unit length); at other L some cross terms appear while others can stay zero.",
+      "cards": [
+        "O1f",
+        "B3b"
+      ]
     },
     "H1": {
       "level": 3,

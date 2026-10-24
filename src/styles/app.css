@@ -752,6 +752,11 @@ p {
   border-color: var(--ink);
 }
 
+.verdict.approx {
+  border-color: var(--ink-2);
+  border-style: dashed;
+}
+
 .verdict b {
   font-weight: 600;
 }

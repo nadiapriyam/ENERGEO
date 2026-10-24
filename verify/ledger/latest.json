@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-23T22:18:58+00:00",
- "commit": "665e548",
+ "generated": "2026-10-24T15:06:36+00:00",
+ "commit": "eef9f94",
  "cards": {
   "B1a": {
    "script": "verify_B1_B7.py",
@@ -223,6 +223,18 @@
    "verdict": "PASS",
    "everFailed": false,
    "claim": "with unit e1=(1,0), e2=(cos t, sin t): Parseval gap is 0 for all x only at t = pi/2; reconstruction exact there, not at t = pi/3"
+  },
+  "O1f": {
+   "script": "verify_O1.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "interval: G = I at 2pi, G = 2I at 4pi; at 3pi cos-cos cross terms are 0 but <sin t, cos 2t>/pi = -2/(3*pi)"
+  },
+  "O1g": {
+   "script": "verify_O1.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "discrete criterion: sample sums equal the root-of-unity prediction (worst error 1.2e-14 < 1e-9); m+n<N is sufficient, not necessary"
   },
   "S1a": {
    "script": "verify_S1_S5.py",

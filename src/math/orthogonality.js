@@ -185,3 +185,22 @@ export function productCurve(f, g, L = 2 * Math.PI, samples = 600) {
 
 /** Gram matrix of the normalised trig basis {cos kt/√π, sin kt/√π} over [0, L]. Equals I at L = 2π. */
 export const normalisedTrigGram = (basis, L) => basisGram(basis, L).map((row) => row.map((g) => g / Math.PI));
+
+/**
+ * The exact value of (2π/N) Σ_j f(t_j) g(t_j) at t_j = 2πj/N, from roots of unity:
+ *   Σ_j cos(2πpj/N) = N if N divides p, else 0;   Σ_j sin(2πpj/N) = 0 always.
+ * With product-to-sum: cos·cos → ½[C(m−n) + C(m+n)], sin·sin → ½[C(m−n) − C(m+n)], sin·cos → 0.
+ * This is the criterion for discrete orthogonality; m + n < N is only a sufficient condition for it.
+ */
+export function discretePredicted(f, g, N) {
+  const C = (p) => (((p % N) + N) % N === 0 ? N : 0);
+  const m = f.k;
+  const n = g.k;
+  let sum = 0;
+  if (f.kind === 'cos' && g.kind === 'cos') sum = 0.5 * (C(m - n) + C(m + n));
+  else if (f.kind === 'sin' && g.kind === 'sin') sum = 0.5 * (C(m - n) - C(m + n));
+  return ((2 * Math.PI) / N) * sum;
+}
+
+/** Which multiples-of-N coincidences drive the discrete sum: does N divide m − n, and does it divide m + n? */
+export const aliasing = (f, g, N) => ({ diff: (f.k - g.k) % N === 0, sum: (f.k + g.k) % N === 0 });

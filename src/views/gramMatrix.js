@@ -5,7 +5,7 @@ import { s, set, clear } from '../core/dom.js';
 import { num } from '../core/format.js';
 import { withTip } from '../core/tooltip.js';
 
-export function createGramMatrix({ labels, cell = 44, showValues = false, valueDigits = 2, scaleMax = 1 }) {
+export function createGramMatrix({ labels, cell = 44, showValues = false, valueDigits = 2, scaleMax: initialScale = 1 }) {
   const n = labels.length;
   const off = 34;
   const size = off + n * cell + 4;
@@ -14,6 +14,7 @@ export function createGramMatrix({ labels, cell = 44, showValues = false, valueD
   const texts = [];
   let current = null;
   let digits = valueDigits;
+  let scaleMax = initialScale;
 
   labels.forEach((lab, i) => {
     svg.append(s('text', { class: 'svg-math', x: off + i * cell + cell / 2, y: off - 10, 'text-anchor': 'middle', style: { fontSize: '14px' } }, lab));
@@ -36,6 +37,7 @@ export function createGramMatrix({ labels, cell = 44, showValues = false, valueD
     current = G;
     const show = opts.showValues ?? showValues;
     if (opts.digits) digits = opts.digits;
+    if (opts.scaleMax) scaleMax = opts.scaleMax;
     for (let i = 0; i < n; i++) {
       for (let j = 0; j < n; j++) {
         const g = G[i][j];

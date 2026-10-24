@@ -1,0 +1,40 @@
+name: Verify (tests and verifier cards)
+
+# Runs every check from scratch on GitHub's machines, so results can be read here independently of any
+# report in chat. It prints verdicts and does not commit: the ledger in the repo is only appended locally.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Math unit tests (src/math)
+        run: npm test
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install sympy numpy
+      - name: Verifier cards (every verify/verify_*.py)
+        run: |
+          : > cards.txt
+          for f in verify/verify_*.py; do
+            echo "::group::$f"
+            python3 "$f" | tee -a cards.txt
+            echo "::endgroup::"
+          done
+          echo "PASS: $(grep -cE '^\S+\s+PASS' cards.txt)   FAIL: $(grep -cE '^\S+\s+FAIL' cards.txt)"
+          echo "FAILs on record by rule (kept, never rewritten): S14a, C8c, B5a"
+          grep -E '^\S+\s+FAIL' cards.txt || true
+          # A FAIL that is not already on record turns this run red.
+          unexpected=$(grep -E '^\S+\s+FAIL' cards.txt | awk '{print $1}' | grep -vxE 'S14a|C8c|B5a' || true)
+          if [ -n "$unexpected" ]; then echo "New FAIL: $unexpected"; exit 1; fi

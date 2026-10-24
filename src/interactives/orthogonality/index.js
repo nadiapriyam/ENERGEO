@@ -15,7 +15,7 @@ import { createFunctionPlot } from '../../views/functionPlot.js';
 import {
   pairReadings, projectedAngle, rotatePair, pad, coordinatePlanes, coordinateShadow,
   basisSignature, tiltedOrthonormalBasis, perturbBasis,
-  sampleWave, sampledInner, functionInner, productCurve, normalisedTrigGram,
+  sampleWave, sampledInner, functionInner, productCurve, normalisedTrigGram, discretePredicted, aliasing,
 } from '../../math/orthogonality.js';
 import { add, scale, norm, rotationAxisAngle, dot } from '../../math/linalg.js';
 import { trigBasis, basisValue } from '../../math/fourier.js';
@@ -53,7 +53,9 @@ const L2 = 'L^2[0,L]';
 const B4 = '\\{e_k\\}\\subset\\mathbb R^4';
 
 const ensurePair = (J) => J.ensure('pair', 'pair', R2, { u: [2, 0.8], v: [0.6, 1.7] }, 'two arrows in the plane');
-const lift = (d) => ({ u: [...d.u, 0], v: [...d.v, 0], theta: 0 });
+// `exact` marks a pair built to be orthogonal by an exact construction (and not dragged since).
+// Lifting, padding and rotating keep exact orthogonality, so the flag travels with the pair.
+const lift = (d) => ({ u: [...d.u, 0], v: [...d.v, 0], theta: 0, exact: !!d.exact });
 const shown3 = (d) => (d.theta ? rotatePair(d.u, d.v, AXIS, d.theta) : { u: d.u, v: d.v });
 
 const PAIR2 = {
@@ -73,7 +75,7 @@ const PAIR4 = {
     PAIR3.read(J);
     return J.rep('pair', R4, R3, (d) => {
       const p = shown3(d);
-      return { u: pad(p.u, 4), v: pad(p.v, 4) };
+      return { u: pad(p.u, 4), v: pad(p.v, 4), exact: !!d.exact };
     }, 'given a fourth coordinate, 0');
   },
   write: (J, d) => J.update('pair', R4, d),
@@ -110,16 +112,25 @@ function planeBox(el) {
   return h('div', { style: { maxWidth: '440px', width: '100%', justifySelf: 'center' } }, el);
 }
 
+// Three distinct states. Mathematically u ⟂ v ⟺ u·v = 0; a dragged pair can only get near that.
+//   exact: zero in exact arithmetic (an exact construction, or a closed form); only floating-point error remains
+//   approximate: within the interactive tolerance, which is a convenience for dragging, not orthogonality
 function liveVerdict() {
   const el = h('div', { class: 'verdict', 'aria-live': 'polite' });
   return {
     el,
-    set(inner, tol = TOL, what = 'u·v') {
-      const ok = Math.abs(inner) < tol;
-      el.className = `verdict${ok ? ' holds' : ''}`;
-      el.innerHTML = ok
-        ? `<b>Orthogonal here.</b> ${what} = ${num(inner, 4)}, within ±${tol} of 0.`
-        : `<b>Not orthogonal.</b> ${what} = ${num(inner, 4)}.`;
+    set(inner, { tol = TOL, what = 'u·v', exact = false, why = 'by construction' } = {}) {
+      const tiny = Math.abs(inner) < 1e-9;
+      if (exact && tiny) {
+        el.className = 'verdict holds';
+        el.innerHTML = `<b>Exactly orthogonal</b> ${why}: ${what} = 0. The displayed remainder, ${sci(inner)}, is floating-point error.`;
+      } else if (Math.abs(inner) < tol) {
+        el.className = 'verdict approx';
+        el.innerHTML = `<b>Approximately orthogonal</b>, within the interactive tolerance |${what}| &lt; ${tol}. Now ${what} = ${num(inner, 4)}. Exactly orthogonal means ${what} = 0; Remove the shadow constructs that.`;
+      } else {
+        el.className = 'verdict';
+        el.innerHTML = `<b>Not orthogonal.</b> ${what} = ${num(inner, 4)}.`;
+      }
     },
   };
 }
@@ -132,9 +143,10 @@ const pairReadouts = (r) => [
   ['angle', deg(r.angle)],
 ];
 
+/** The exact construction v ↦ v − proj_u v. When v lies along u the residual is 0, so nothing is replaced. */
 const removeShadow = (u, v) => {
   const r = pairReadings(u, v);
-  return norm(r.residual) > 1e-6 ? r.residual : v;
+  return norm(r.residual) > 1e-6 ? { v: r.residual, exact: true } : { v, exact: false };
 };
 
 const pairAdvanced = (m) =>
@@ -165,13 +177,13 @@ const stage1 = {
     { prompt: 'Drag the tip of $v$ and watch the two bars.', done: (m, c) => !!c.flags.touched, then: 'Each bar is one coordinate’s contribution $u_iv_i$. Warm bars add to $u\\cdot v$; cool bars subtract from it.' },
     {
       prompt: 'Find a direction for $v$ where the two bars cancel.',
-      meter: (m) => `$u\\cdot v$ = ${signed(m.r.inner)} (target: within ±${TOL})`,
+      meter: (m) => `$u\\cdot v$ = ${signed(m.r.inner)} (target: within the interactive tolerance ±${TOL})`,
       done: (m, c) => {
         if (!m.orthogonal) return false;
         c.flags.side1 = Math.sign(m.u[0] * m.v[1] - m.u[1] * m.v[0]);
         return true;
       },
-      then: 'The bars are equal and opposite, so $u\\cdot v = 0$, and the angle is 90°. In the plane, a zero inner product and a right angle are the same fact.',
+      then: 'The bars nearly cancel: $u\\cdot v$ is within the interactive tolerance of 0, and the dashed square marks an angle close to 90°. Exactly, $u\\perp v \\iff u\\cdot v = 0$, and in the plane that is exactly a right angle. Stage 2 shows how to construct it exactly.',
     },
     {
       prompt: 'Find a second direction, on the other side of $u$, where they cancel.',
@@ -185,7 +197,7 @@ const stage1 = {
         }
         return side !== c.flags.side1;
       },
-      then: 'Both directions lie on one line through the origin. In the plane, the arrows orthogonal to $u$ form a line.',
+      then: 'Both directions lie close to one line through the origin. In the plane, the arrows exactly orthogonal to $u$ form that line.',
     },
   ],
   notice: {
@@ -195,28 +207,28 @@ const stage1 = {
     hidden: 'Nothing yet. In the plane, the angle and the contributions tell the same story.',
   },
   model(ctx) {
-    const { u, v } = ctx.data();
+    const { u, v, exact } = ctx.data();
     const r = pairReadings(u, v);
-    return { u, v, r, orthogonal: Math.abs(r.inner) < TOL };
+    return { u, v, r, orthogonal: Math.abs(r.inner) < TOL, exact: !!exact && Math.abs(r.inner) < 1e-9 };
   },
   readouts: (m) => pairReadouts(m.r),
   advanced: pairAdvanced,
   build(ctx) {
     const plane = createVectorPlane({
       draggable: ctx.mode === 'guided' ? ['v'] : ['u', 'v'],
-      onDrag: (name, p) => ctx.setData({ ...ctx.data(), [name]: p }),
+      onDrag: (name, p) => ctx.setData({ ...ctx.data(), [name]: p, exact: false }),
     });
     const strip = createContributionStrip({ title: 'Each coordinate’s contribution uᵢvᵢ', runTitle: 'Adding them up: the running total ends at u·v' });
     const verdict = liveVerdict();
-    const reset = button({ label: 'Reset the pair', onclick: () => ctx.setData({ u: [2, 0.8], v: [0.6, 1.7] }) });
+    const reset = button({ label: 'Reset the pair', onclick: () => ctx.setData({ u: [2, 0.8], v: [0.6, 1.7], exact: false }) });
     return {
       figure: figure(planeBox(plane.el), strip.el),
       controls: group(h('p', { class: 'note', 'data-modes': 'explore advanced' }, 'Both tips can be dragged. Arrow keys move a focused tip (Shift for larger steps).'), h('p', { class: 'note', 'data-modes': 'guided' }, 'Drag the tip of v, or focus it and use the arrow keys.'), row(reset.el)),
       instruments: h('div', { class: 'block' }, h('div', { class: 'section-label' }, 'Live check (this configuration)'), verdict.el),
       update(m) {
-        plane.update({ u: m.u, v: m.v, r: m.r, showShadow: false });
+        plane.update({ u: m.u, v: m.v, r: m.r, showShadow: false, exact: m.exact });
         strip.bars({ values: m.r.contributions, labels: ['u₁v₁', 'u₂v₂'], ...stripScales(m.r.contributions), total: m.r.inner });
-        verdict.set(m.r.inner);
+        verdict.set(m.r.inner, { exact: m.exact });
       },
     };
   },
@@ -237,8 +249,8 @@ const stage2 = {
   carry: PAIR2,
   steps: [
     { prompt: 'Drag $v$ and watch its shadow on the line of $u$.', done: (m, c) => !!c.flags.touched, then: 'The shadow points along $u$ when $u\\cdot v>0$ (warm) and against it when $u\\cdot v<0$ (cool). The dashed residual always meets the line of $u$ at a right angle.' },
-    { prompt: 'Make the shadow disappear.', meter: (m) => `shadow length ${num(norm(m.r.shadow), 3)}`, done: (m) => m.orthogonal, then: 'No shadow means no part of $v$ lies along $u$. That is what $u\\cdot v = 0$ says.' },
-    { prompt: 'Move $v$ off again, then press Remove the shadow.', done: (m, c) => !!c.flags.removed, then: 'Subtracting the shadow leaves the residual, which is orthogonal to $u$ by construction. Repeated vector by vector, this one step is Gram–Schmidt: a way to build an orthogonal basis without ever seeing it (card S6).' },
+    { prompt: 'Make the shadow (nearly) disappear by dragging.', meter: (m) => `shadow length ${num(norm(m.r.shadow), 3)}`, done: (m) => m.orthogonal, then: 'The shadow is within the interactive tolerance of zero: almost no part of $v$ lies along $u$. No shadow at all is exactly what $u\\cdot v = 0$ says, and dragging can only come close.' },
+    { prompt: 'Move $v$ off again, then press Remove the shadow.', done: (m, c) => !!c.flags.removed, then: 'Subtracting the shadow is an exact construction: $u\\cdot(v-\\operatorname{proj}_u v) = 0$ in exact arithmetic, and any remainder shown is floating-point error. Repeated vector by vector, this step is Gram–Schmidt: a way to build an orthogonal basis without ever seeing it (card S6).' },
   ],
   notice: {
     changed: 'The shadow’s length and the sign of its direction.',
@@ -255,7 +267,7 @@ const stage2 = {
   ],
   advanced: pairAdvanced,
   build(ctx) {
-    const plane = createVectorPlane({ draggable: ctx.mode === 'guided' ? ['v'] : ['u', 'v'], onDrag: (name, p) => ctx.setData({ ...ctx.data(), [name]: p }) });
+    const plane = createVectorPlane({ draggable: ctx.mode === 'guided' ? ['v'] : ['u', 'v'], onDrag: (name, p) => ctx.setData({ ...ctx.data(), [name]: p, exact: false }) });
     const strip = createContributionStrip({ title: 'Each coordinate’s contribution uᵢvᵢ', runTitle: 'Running total: u·v, which sets the shadow' });
     const verdict = liveVerdict();
     const remove = button({
@@ -263,17 +275,17 @@ const stage2 = {
       onclick: () => {
         const d = ctx.data();
         ctx.flags.removed = true;
-        ctx.setData({ ...d, v: removeShadow(d.u, d.v) });
+        ctx.setData({ ...d, ...removeShadow(d.u, d.v) });
       },
     });
     return {
       figure: figure(planeBox(plane.el), strip.el),
-      controls: group(row(remove.el), h('p', { class: 'note' }, 'Remove the shadow replaces v with its residual.')),
+      controls: group(row(remove.el), h('p', { class: 'note' }, 'Remove the shadow replaces v with its residual: the exact orthogonal construction.')),
       instruments: h('div', { class: 'block' }, h('div', { class: 'section-label' }, 'Live check (this configuration)'), verdict.el),
       update(m) {
-        plane.update({ u: m.u, v: m.v, r: m.r, showShadow: true });
+        plane.update({ u: m.u, v: m.v, r: m.r, showShadow: true, exact: m.exact });
         strip.bars({ values: m.r.contributions, labels: ['u₁v₁', 'u₂v₂'], ...stripScales(m.r.contributions), total: m.r.inner });
-        verdict.set(m.r.inner);
+        verdict.set(m.r.inner, { exact: m.exact });
       },
     };
   },
@@ -293,7 +305,7 @@ const stage3 = {
   carry: PAIR2,
   steps: [
     { prompt: 'Drag $v$ and compare the two bars.', done: (m, c) => !!c.flags.touched, then: 'They always differ by exactly $2\\,u\\cdot v$, the cross term: warm when it adds length, cool when it takes length away.' },
-    { prompt: 'Make the two bars equal.', meter: (m) => `cross term $2\\,u\\cdot v$ = ${signed(m.r.crossTerm)}`, done: (m) => m.orthogonal, then: 'The cross term is gone, so squared lengths add. The triangle $u$, $v$, $u+v$ has a right angle. Pythagoras holds exactly when $u\\cdot v = 0$.' },
+    { prompt: 'Make the two bars equal.', meter: (m) => `cross term $2\\,u\\cdot v$ = ${signed(m.r.crossTerm)}`, done: (m) => m.orthogonal, then: 'The cross term is within the interactive tolerance of 0, so the bars nearly match and the triangle nearly has a right angle. Exactly, Pythagoras holds if and only if $u\\cdot v = 0$. Remove the shadow makes it exact.' },
   ],
   notice: {
     changed: 'The cross term, and the length of $u+v$.',
@@ -309,18 +321,18 @@ const stage3 = {
   ],
   advanced: pairAdvanced,
   build(ctx) {
-    const plane = createVectorPlane({ triangle: true, draggable: ctx.mode === 'guided' ? ['v'] : ['u', 'v'], onDrag: (name, p) => ctx.setData({ ...ctx.data(), [name]: p }) });
+    const plane = createVectorPlane({ triangle: true, draggable: ctx.mode === 'guided' ? ['v'] : ['u', 'v'], onDrag: (name, p) => ctx.setData({ ...ctx.data(), [name]: p, exact: false }) });
     const bars = createPythagorasBars();
     const verdict = liveVerdict();
-    const remove = button({ label: 'Remove the shadow', modes: 'explore advanced', onclick: () => ctx.setData({ ...ctx.data(), v: removeShadow(ctx.data().u, ctx.data().v) }) });
+    const remove = button({ label: 'Remove the shadow', onclick: () => ctx.setData({ ...ctx.data(), ...removeShadow(ctx.data().u, ctx.data().v) }) });
     return {
       figure: figure(planeBox(plane.el), bars.el),
       controls: group(row(remove.el), h('p', { class: 'note' }, 'The thin dashed copy of v starts at the tip of u, so the three sides form a triangle.')),
       instruments: h('div', { class: 'block' }, h('div', { class: 'section-label' }, 'Live check (this configuration)'), verdict.el),
       update(m) {
-        plane.update({ u: m.u, v: m.v, r: m.r, showShadow: false });
+        plane.update({ u: m.u, v: m.v, r: m.r, showShadow: false, exact: m.exact });
         bars.update(m.r);
-        verdict.set(m.r.inner);
+        verdict.set(m.r.inner, { exact: m.exact });
       },
     };
   },
@@ -330,35 +342,36 @@ const stage4 = {
   id: 'space',
   title: 'Turn the view',
   rep: R3,
-  question: 'Your pair, lifted into space. Orbit the camera: does the right angle survive a change of viewpoint?',
+  question: 'Your pair, lifted into space. Two different changes: orbit the camera, which changes only the picture, or rotate the vectors, which changes the vectors.',
   equation: '(Ru)\\cdot(Rv) = u\\cdot v',
   symbols: [
-    ['R', 'any rotation of space. Orbiting the camera is a rotation too, seen from the other side'],
+    ['R', 'a rotation applied to both vectors: it moves them'],
     ['u\\cdot v', '$u_1v_1+u_2v_2+u_3v_3$: now three contributions'],
-    ['\\text{screen angle}', 'the angle the arrows make on your screen: a projection of the pair, not the pair'],
+    ['\\text{camera}', 'moving the viewpoint moves nothing; it changes only the projection onto your screen'],
+    ['\\text{screen angle}', 'the angle the arrows make in that projection: a picture of the pair, not the pair'],
   ],
-  statements: ['ortho.rotation-invariance', 'ortho.screen-distorts'],
+  statements: ['ortho.camera', 'ortho.rotation-invariance'],
   carry: PAIR3,
   steps: [
     {
-      prompt: 'Make the pair orthogonal (Remove the shadow works here too), then drag the figure to orbit the camera.',
+      prompt: 'Make the pair orthogonal (Remove the shadow makes it exact), then drag the figure to orbit the camera.',
       meter: (m) => `$u\\cdot v$ = ${signed(m.r.inner)}, screen angle ${deg(m.screen)}`,
       done: (m, c) => m.orthogonal && !!c.flags.orbited,
-      then: 'On screen the angle swings away from 90°, and $u\\cdot v$ does not move. The screen is a projection, and projections do not preserve angles (card O1b).',
+      then: 'The vectors did not move, so neither did $u\\cdot v$ or the true angle. Only their projection onto your screen changed, and a projection need not preserve angles (card O1b). The representation hid the right angle without changing the relationship.',
     },
-    { prompt: 'Turn both vectors with the rotation slider.', done: (m, c) => !!c.flags.rotated, then: 'Every coordinate changed, and so did each contribution $u_iv_i$. Their sum did not: rotations preserve the inner product (card O1a).' },
+    { prompt: 'Now rotate the vectors themselves with the rotation slider.', done: (m, c) => !!c.flags.rotated, then: 'This time the vectors moved: every coordinate changed, and so did each contribution $u_iv_i$. Their sum did not, because rotations preserve the inner product, $(Ru)\\cdot(Rv)=u\\cdot v$ (card O1a). The camera changes the picture; a rotation changes the vectors and keeps their relationship.' },
     {
       prompt: 'Tilt $v$ out of its plane with the height slider, then remove the shadow again.',
       meter: (m) => `$v_3$ = ${num(m.v[2], 2)}, $u\\cdot v$ = ${signed(m.r.inner)}`,
       done: (m) => m.orthogonal && Math.abs(m.v[2]) > 0.3,
-      then: 'You found another vector orthogonal to $u$. Show the plane orthogonal to $u$: every arrow in it qualifies. A line of them in the plane, a whole plane of them in space.',
+      then: 'You found another vector orthogonal to $u$. Show the plane orthogonal to $u$: every arrow in it qualifies exactly. A line of them in the plane, a whole plane of them in space.',
     },
   ],
   notice: {
-    changed: 'The screen angle, every coordinate, and every single contribution $u_iv_i$.',
-    held: '$u\\cdot v$, the true angle, and both lengths.',
-    visible: 'A right angle belongs to the pair, not to the picture of it.',
-    hidden: 'The true angle on screen: the camera shows a projection.',
+    changed: 'Orbiting the camera: only the screen angle. Rotating the vectors: every coordinate and every contribution $u_iv_i$.',
+    held: 'Under both: $u\\cdot v$, the true angle and both lengths. Under orbiting, the vectors themselves.',
+    visible: 'A right angle belongs to the pair, not to its picture.',
+    hidden: 'On screen, the true angle: the camera shows a projection, which can hide a right angle without changing it.',
   },
   model(ctx) {
     const d = ctx.data();
@@ -368,6 +381,7 @@ const stage4 = {
     return {
       u, v, r, theta: d.theta ?? 0,
       orthogonal: Math.abs(r.inner) < TOL,
+      exact: !!d.exact && Math.abs(r.inner) < 1e-9,
       screen: projectedAngle(u, v, view),
       view,
       showComplement: !!ctx.flags.complement,
@@ -412,14 +426,14 @@ const stage4 = {
       if (last) scene.update(last);
     });
 
-    const setShown = (u, v) => {
+    const setShown = (u, v, exact) => {
       // store the base pair so the rotation slider keeps its meaning
       const d = ctx.data();
       const back = d.theta ? rotatePair(u, v, AXIS, -d.theta) : { u, v };
-      ctx.setData({ ...d, u: back.u, v: back.v });
+      ctx.setData({ ...d, u: back.u, v: back.v, exact });
     };
     const theta = slider({
-      label: 'Turn both vectors, θ',
+      label: 'Rotate both vectors, θ',
       min: 0, max: TWO_PI, step: 0.01, value: ctx.data().theta ?? 0,
       format: (x) => deg(x, 0),
       oninput: (x) => {
@@ -433,7 +447,7 @@ const stage4 = {
       format: (x) => num(x, 2),
       oninput: (x) => {
         const p = shown3(ctx.data());
-        setShown(p.u, [p.v[0], p.v[1], x]);
+        setShown(p.u, [p.v[0], p.v[1], x], false);
       },
     });
     const orbit = button({
@@ -450,18 +464,18 @@ const stage4 = {
         }
       },
     });
-    const remove = button({ label: 'Remove the shadow', onclick: () => { const p = shown3(ctx.data()); setShown(p.u, removeShadow(p.u, p.v)); } });
+    const remove = button({ label: 'Remove the shadow', onclick: () => { const p = shown3(ctx.data()); const r = removeShadow(p.u, p.v); setShown(p.u, r.v, r.exact); } });
     const plane = button({ label: 'Show the plane orthogonal to u', pressed: false, onclick: () => { ctx.flags.complement = !ctx.flags.complement; plane.press(ctx.flags.complement); ctx.refresh(); } });
 
     return {
-      figure: figure(sceneHost, h('p', { class: 'caption' }, h('strong', null, 'Drag to orbit, scroll to zoom. '), 'The camera is orthographic, so the screen angle readout is exactly the angle drawn on your screen.'), strip.el),
+      figure: figure(sceneHost, h('p', { class: 'caption' }, h('strong', null, 'Drag to orbit, scroll to zoom. '), 'Orbiting moves the camera, not the vectors. The camera is orthographic, so the screen angle readout is exactly the angle drawn on your screen.'), strip.el),
       controls: group(row(orbit.el, remove.el), theta.el, tilt.el, row(plane.el)),
       instruments: h('div', { class: 'block' }, h('div', { class: 'section-label' }, 'Live check (this configuration)'), verdict.el),
       update(m) {
         last = m;
         scene?.update(m);
         strip.bars({ values: m.r.contributions, labels: ['u₁v₁', 'u₂v₂', 'u₃v₃'], ...stripScales(m.r.contributions), total: m.r.inner });
-        verdict.set(m.r.inner);
+        verdict.set(m.r.inner, { exact: m.exact });
         theta.set(m.theta);
         tilt.set(m.v[2]);
       },
@@ -479,7 +493,7 @@ const stage5 = {
   id: 'beyond-sight',
   title: 'Beyond sight',
   rep: R4,
-  question: 'Four coordinates. No picture can show this pair. Every drawing below is a shadow on one coordinate plane.',
+  question: 'Four coordinates. No single 2D or 3D picture shows this pair faithfully. Every drawing below is a shadow on one coordinate plane.',
   equation: 'u\\cdot v = \\sum_{i=1}^{4} u_iv_i',
   symbols: [
     ['u,\\ v\\in\\mathbb R^4', 'arrows with four coordinates each'],
@@ -494,19 +508,19 @@ const stage5 = {
       prompt: 'Build your own orthogonal pair with the sliders, using all four coordinates.',
       meter: (m) => `$u\\cdot v$ = ${signed(m.r.inner)}`,
       done: (m, c) => m.orthogonal && !!c.flags.slid && m.v.every((x) => Math.abs(x) > 0.1),
-      then: 'You found a right angle that cannot be drawn. The bars are the evidence.',
+      then: 'You found a right angle that no single 2D or 3D projection shows faithfully. The contributions are the evidence: the inner product keeps the relationship that the shadows can hide.',
     },
   ],
   notice: {
     changed: 'The shadows, and the angle each one appears to make.',
     held: '$u\\cdot v$: one number, computed from all four coordinates at once.',
-    visible: 'Orthogonality as cancellation, now the only way to see it.',
-    hidden: 'The true angle has no drawing. It exists only as $\\arccos$ of a number.',
+    visible: 'Orthogonality as cancellation of contributions, which still works where pictures fail.',
+    hidden: 'No single 2D or 3D projection faithfully shows the four-dimensional angle. The inner product preserves the relationship that the projections can hide.',
   },
   model(ctx) {
-    const { u, v } = ctx.data();
+    const { u, v, exact } = ctx.data();
     const r = pairReadings(u, v);
-    return { u, v, r, orthogonal: Math.abs(r.inner) < TOL };
+    return { u, v, r, orthogonal: Math.abs(r.inner) < TOL, exact: !!exact && Math.abs(r.inner) < 1e-9 };
   },
   readouts: (m) => [...pairReadouts(m.r)],
   advanced(m) {
@@ -527,16 +541,16 @@ const stage5 = {
           const v = [...d.v];
           v[i] = x;
           ctx.flags.slid = true;
-          ctx.setData({ ...d, v });
+          ctx.setData({ ...d, v, exact: false });
         },
       }),
     );
-    const preset = button({ label: 'Load u = (1,1,1,1), v = (1,−1,1,−1)', onclick: () => { ctx.flags.preset = true; ctx.setData({ ...ONE_PAIR }); } });
-    const remove = button({ label: 'Remove the shadow', onclick: () => { const d = ctx.data(); ctx.setData({ ...d, v: removeShadow(d.u, d.v) }); } });
+    const preset = button({ label: 'Load u = (1,1,1,1), v = (1,−1,1,−1)', onclick: () => { ctx.flags.preset = true; ctx.setData({ ...ONE_PAIR, exact: true }); } });
+    const remove = button({ label: 'Remove the shadow', onclick: () => { const d = ctx.data(); ctx.setData({ ...d, ...removeShadow(d.u, d.v) }); } });
     const uText = h('p', { class: 'note' });
     return {
       figure: figure(
-        h('p', { class: 'callout-projection' }, 'Six shadows of one pair, one per coordinate plane. A shadow is a projection: it drops two coordinates. None of these panels is the four-dimensional pair.'),
+        h('p', { class: 'callout-projection' }, 'Six shadows of one pair, one per coordinate plane. A shadow is a projection: it drops two coordinates. No single panel shows the four-dimensional angle faithfully; the contributions below do not depend on any of them.'),
         shadows.el,
         strip.el,
       ),
@@ -545,7 +559,7 @@ const stage5 = {
       update(m) {
         shadows.update(m.u, m.v);
         strip.bars({ values: m.r.contributions, labels: ['u₁v₁', 'u₂v₂', 'u₃v₃', 'u₄v₄'], ...stripScales(m.r.contributions), total: m.r.inner });
-        verdict.set(m.r.inner);
+        verdict.set(m.r.inner, { exact: m.exact });
         vs.forEach((x, i) => x.set(m.v[i]));
         uText.innerHTML = `${tex(`u = (${m.u.map((c) => num(c, 2)).join(',\\ ')})`)}, carried from the earlier stages.`;
       },
@@ -574,7 +588,7 @@ const stage6 = {
     changed: 'The off-diagonal Gram entries, the rebuild of $x$, and all four checks.',
     held: 'Every basis vector keeps length 1: the diagonal stays at 1.',
     visible: 'Orthogonality as a pattern in a table: a diagonal Gram matrix.',
-    hidden: 'The directions themselves. You never see them, only their inner products.',
+    hidden: 'The directions themselves: no projection shows them faithfully, yet their inner products still reveal the geometry.',
   },
   model(ctx) {
     const d = ctx.data();
@@ -640,7 +654,7 @@ const stage6 = {
         sigList.replaceChildren(
           ...items.map(([name, what, val]) => {
             const holds = Math.abs(val) < 1e-9;
-            return h('li', { class: holds ? 'holds' : '' }, h('span', null, name), h('span', { class: 'val' }, sci(val)), h('span', { class: 'state' }, `${what}: ${holds ? 'holds (|value| < 10⁻⁹)' : 'fails'}`));
+            return h('li', { class: holds ? 'holds' : '' }, h('span', null, name), h('span', { class: 'val' }, sci(val)), h('span', { class: 'state' }, `${what}: ${holds ? 'holds; the value is floating-point error (|value| < 10⁻⁹)' : 'fails'}`));
           }),
         );
       },
@@ -663,13 +677,14 @@ const stage7 = {
     ['\\mathbf f', '$(f(t_0),\\dots,f(t_{N-1}))$: the wave as a vector'],
     ['f(t_j)g(t_j)', 'one contribution per sample, exactly like $u_iv_i$'],
     ['\\tfrac{2\\pi}{N}', 'a fixed scale, so the sum can be compared across $N$'],
+    ['m,\\ n', 'the harmonics of $f$ and $g$: $f$ is $\\cos mt$ or $\\sin mt$'],
   ],
   statements: ['ortho.discrete', 'ortho.inner-is-sum'],
   carry: WAVES,
   steps: [
     { prompt: 'Compare the sample dots with the bars: each bar is $f(t_j)g(t_j)$. Change $N$.', done: (m, c) => !!c.flags.touched, then: 'The same picture as for arrows: one signed contribution per coordinate, summed.' },
-    { prompt: 'Choose a different pair of waves, keeping $m+n<N$, and read the total.', done: (m, c) => !!c.flags.picked && m.distinct && m.belowAlias && Math.abs(m.total) < 1e-9, then: 'Different harmonics cancel exactly, at every such $N$ (card O1c for cosines). Two sampled waves can be orthogonal vectors.' },
-    { prompt: 'Now take cos t and cos 3t and lower $N$ to 4.', done: (m) => m.distinct && !m.belowAlias && Math.abs(m.total) > 1e-6, then: 'With too few samples the waves alias: at $N=4$ the samples of cos 3t are exactly the samples of cos t, so the sum no longer cancels. The sampling is part of the inner product.' },
+    { prompt: 'Choose a different pair of waves and read the total.', done: (m, c) => !!c.flags.picked && m.distinct && Math.abs(m.predicted) < 1e-12, then: 'They cancel exactly. The sum of sample products is a sum of roots of unity, and here those sums add to zero (card O1g). For these waves, $m+n<N$ is a sufficient condition for that cancellation, not its definition.' },
+    { prompt: 'Now take cos t and cos 3t and lower $N$ to 4.', done: (m) => m.distinct && Math.abs(m.predicted) > 1e-6, then: 'At $N=4$ the samples of $\\cos 3t$ equal the samples of $\\cos t$ (aliasing: $N$ divides $m+n$), so the root-of-unity sum no longer cancels. The sampling is part of the inner product.' },
     { prompt: 'Raise $N$ to at least 64.', done: (m) => m.N >= 64, then: 'Thinner bars, and they trace a curve. The next stage follows them to the limit.' },
   ],
   notice: {
@@ -688,17 +703,27 @@ const stage7 = {
     const curve = productCurve(f, g, TWO_PI, 400);
     const distinct = waveKey(f) !== waveKey(g);
     const sameKind = f.kind === g.kind;
-    return { f, g, N, tj, fs, gs, contrib, total, curve, distinct, belowAlias: f.k + g.k < N, exact: functionInner(f, g), sameKind };
+    return { f, g, N, tj, fs, gs, contrib, total, curve, distinct, belowAlias: f.k + g.k < N, exact: functionInner(f, g), sameKind, predicted: discretePredicted(f, g, N), alias: aliasing(f, g, N) };
   },
   readouts: (m) => [
     ['$\\langle\\mathbf f,\\mathbf g\\rangle_N$', signed(m.total, 4), signClass(m.total, 1e-9)],
     ['$\\int_0^{2\\pi} f g\\,dt$ (for comparison)', signed(m.exact, 4)],
     ['$N$', String(m.N)],
-    ['$m+n<N$?', m.f.k + m.g.k < m.N ? 'yes' : 'no'],
+    ['root-of-unity prediction', signed(m.predicted, 4)],
+    ['sufficient condition $m+n<N$', m.belowAlias ? 'holds' : 'does not hold'],
+    ['$N$ divides $m-n$? $m+n$?', `${m.alias.diff ? 'yes' : 'no'}, ${m.alias.sum ? 'yes' : 'no'}`],
   ],
   advanced(m) {
     const rows = m.tj.slice(0, 8).map((t, j) => `${j} & ${num(t, 3)} & ${num(m.fs[j], 3)} & ${num(m.gs[j], 3)} & ${num(m.contrib[j], 4)}`).join('\\\\');
-    return texEl(`\\begin{array}{rrrrr} j & t_j & f(t_j) & g(t_j) & \\tfrac{2\\pi}{N}f g\\\\ \\hline ${rows}${m.N > 8 ? '\\\\ \\vdots&&&&' : ''}\\end{array}`, { display: true, tag: 'div', cls: 'equation' });
+    return h(
+      'div',
+      null,
+      texEl(`\\begin{array}{rrrrr} j & t_j & f(t_j) & g(t_j) & \\tfrac{2\\pi}{N}f g\\\\ \\hline ${rows}${m.N > 8 ? '\\\\ \\vdots&&&&' : ''}\\end{array}`, { display: true, tag: 'div', cls: 'equation' }),
+      texEl('\\sum_{j=0}^{N-1}\\cos\\tfrac{2\\pi pj}{N} = \\begin{cases} N & N\\mid p\\\\ 0 & \\text{otherwise}\\end{cases}', { display: true, tag: 'div' }),
+      texEl('\\sum_{j=0}^{N-1}\\sin\\tfrac{2\\pi pj}{N} = 0', { display: true, tag: 'div' }),
+      texEl('\\cos mt\\cos nt = \\tfrac12[\\cos(m{-}n)t + \\cos(m{+}n)t]', { display: true, tag: 'div' }),
+      texEl('\\sin mt\\sin nt = \\tfrac12[\\cos(m{-}n)t - \\cos(m{+}n)t]', { display: true, tag: 'div' }),
+    );
   },
   build(ctx) {
     const plot = createFunctionPlot();
@@ -714,7 +739,7 @@ const stage7 = {
       update(m) {
         plot.update({ curve: m.curve, L: TWO_PI, samples: { t: m.tj, f: m.fs, g: m.gs }, fLabel: `f = ${fnText(m.f)}`, gLabel: `g = ${fnText(m.g)}` });
         strip.bars({ values: m.contrib, labels: m.N <= 8 ? m.tj.map((_, j) => `j=${j}`) : null, yMax: nice(TWO_PI / m.N), runMax: 4, total: m.total });
-        verdict.set(m.total, 1e-9, '⟨f, g⟩_N');
+        verdict.set(m.total, { tol: 0, what: 'the sample inner product', exact: Math.abs(m.predicted) < 1e-12, why: 'by the root-of-unity sum' });
         nSl.set(m.N);
         fSel.set(waveKey(m.f));
         gSel.set(waveKey(m.g));
@@ -734,20 +759,20 @@ const stage8 = {
   equation: '\\langle f, g\\rangle = \\int_0^{L} f(t)\\,g(t)\\,dt',
   symbols: [
     ['f(t)g(t)', 'the contribution at each instant: warm area above zero, cool area below'],
-    ['L', 'the interval is part of the inner product; change it and the geometry changes'],
+    ['L', 'the domain $[0,L]$ is part of the inner product: change it and the geometry changes'],
     ['c_k,\\ s_k', '$\\cos kt/\\sqrt\\pi$ and $\\sin kt/\\sqrt\\pi$: unit length over $[0,2\\pi]$'],
   ],
-  statements: ['ortho.samples-to-integral', 'ortho.trig-full-period', 'ortho.signature'],
+  statements: ['ortho.samples-to-integral', 'ortho.trig-full-period', 'ortho.interval'],
   carry: FUNCS,
   steps: [
     { prompt: 'Change $g$ and compare the warm and cool areas.', done: (m, c) => !!c.flags.touched, then: 'Over a full period the warm and cool areas match exactly, so $\\int_0^{2\\pi} fg\\,dt = 0$ for different harmonics. No arrows, no angle, and still orthogonal.' },
-    { prompt: 'Lengthen or shorten the interval $L$.', done: (m) => Math.abs(m.L - TWO_PI) > 0.3, then: 'Off a full period the areas no longer balance, and off-diagonal cells appear in the Gram matrix. Whether two functions are orthogonal depends on the interval, because the interval is part of the inner product.' },
-    { prompt: 'Bring $L$ back to $2\\pi$ (the button does it exactly).', done: (m, c) => Math.abs(m.L - TWO_PI) < 1e-9 && !!c.flags.wasOff, then: 'The Gram matrix of the six basis waves is the identity again: the H1-1 signature, now for functions.' },
+    { prompt: 'Lengthen or shorten the interval $L$, and watch which Gram entries move.', done: (m) => Math.abs(m.L - TWO_PI) > 0.3, then: 'Changing $L$ changes the inner product itself. Some cross terms appear, others stay at zero, and the diagonal changes because the fixed $1/\\sqrt\\pi$ scaling gives unit length only at $L=2\\pi$. Try $L=4\\pi$: every cross term is zero again, yet $G=2I$, orthogonal but not unit length (card O1f). The domain is part of the inner product, and therefore part of the geometry.' },
+    { prompt: 'Bring $L$ back to $2\\pi$ (the button does it exactly).', done: (m, c) => Math.abs(m.L - TWO_PI) < 1e-9 && !!c.flags.wasOff, then: 'For this normalised basis, $L=2\\pi$ gives $G=I$ exactly: the H1-1 signature, now for functions.' },
   ],
   notice: {
-    changed: 'The interval, and with it the balance of warm and cool area.',
+    changed: 'The domain $[0,L]$, and with it the inner product: some cross terms, the diagonal, and the balance of warm and cool area.',
     held: 'The product curve $f(t)g(t)$ itself: only how much of it is integrated changes.',
-    visible: 'Orthogonality of functions as cancelling areas, and as an identity Gram matrix.',
+    visible: 'The domain is part of the inner product, and so part of the geometry. Orthogonal functions cancel areas; an orthonormal basis gives $G=I$.',
     hidden: 'Pointwise detail: one number now stands for the whole product curve.',
   },
   model(ctx) {
@@ -757,6 +782,9 @@ const stage8 = {
     const G = normalisedTrigGram(TRIG6, d.L);
     let off = 0;
     G.forEach((r, i) => r.forEach((g, j) => { if (i !== j) off = Math.max(off, Math.abs(g)); }));
+    const diag = G.map((r, i) => r[i]);
+    let zeroCross = 0;
+    G.forEach((r, i) => r.forEach((g, j) => { if (i < j && Math.abs(g) < 1e-12) zeroCross += 1; }));
     if (Math.abs(d.L - TWO_PI) > 0.3) ctx.flags.wasOff = true;
     let samples = null;
     if (d.showSamples) {
@@ -764,7 +792,7 @@ const stage8 = {
       const t = Array.from({ length: N }, (_, j) => (d.L * j) / N);
       samples = { t, product: t.map((x) => basisValue(d.f, x) * basisValue(d.g, x)), sum: sampledInner(d.f, d.g, N, d.L), N };
     }
-    return { ...d, curve, exact, G, off, samples, runMax: nice(Math.max(...Array.from(curve.running, Math.abs), 0.5)) };
+    return { ...d, curve, exact, G, off, diag, zeroCross, samples, runMax: nice(Math.max(...Array.from(curve.running, Math.abs), 0.5)) };
   },
   readouts: (m) => [
     ['$\\langle f,g\\rangle$ (closed form)', signed(m.exact, 4), signClass(m.exact, 1e-9)],
@@ -772,6 +800,8 @@ const stage8 = {
     ['cool area', num(m.curve.negative, 4)],
     ['$L$', `${num(m.L, 3)} (2π = ${num(TWO_PI, 3)})`],
     ['largest off-diagonal of $G$', sci(m.off)],
+    ['cross terms exactly 0', `${m.zeroCross} of 15`],
+    ['diagonal of $G$', Math.max(...m.diag) - Math.min(...m.diag) < 1e-12 ? num(m.diag[0], 3) : `${num(Math.min(...m.diag), 3)} to ${num(Math.max(...m.diag), 3)}`],
     ...(m.samples ? [[`sample sum, $N=${m.samples.N}$`, signed(m.samples.sum, 4)]] : []),
   ],
   advanced(m) {
@@ -786,20 +816,21 @@ const stage8 = {
     const gSel = select({ label: 'g', options: WAVE_OPTIONS, value: waveKey(ctx.data().g), onchange: (v) => ctx.setData({ ...ctx.data(), g: parseWave(v) }) });
     const lSl = slider({ label: 'Interval length, L', min: 0.5, max: 4 * Math.PI, step: 0.01, value: ctx.data().L, format: (x) => num(x, 2), oninput: (x) => ctx.setData({ ...ctx.data(), L: x }) });
     const exact = button({ label: 'Set L = 2π', onclick: () => ctx.setData({ ...ctx.data(), L: TWO_PI }) });
+    const four = button({ label: 'Set L = 4π', onclick: () => ctx.setData({ ...ctx.data(), L: 2 * TWO_PI }) });
     const samp = button({ label: 'Show the samples from stage 7', pressed: !!ctx.data().showSamples, modes: 'explore advanced', onclick: () => { const d = ctx.data(); ctx.setData({ ...d, showSamples: !d.showSamples }); } });
     return {
       figure: figure(
         plot.el,
         strip.el,
-        h('div', { class: 'figure-row' }, h('div', null, h('p', { class: 'caption' }, h('strong', null, 'Gram matrix of six basis waves over [0, L]. '), 'At L = 2π it is the identity.'), gram.el)),
+        h('div', { class: 'figure-row' }, h('div', null, h('p', { class: 'caption' }, h('strong', null, 'Gram matrix of six basis waves over [0, L]. '), 'At L = 2π it is exactly I. Other intervals change some entries, not necessarily all. Colour runs from −2 (cool) through 0 to +2 (warm), so I and 2I look different.'), gram.el)),
       ),
-      controls: group(row(fSel.el, gSel.el), lSl.el, row(exact.el, samp.el)),
+      controls: group(row(fSel.el, gSel.el), lSl.el, row(exact.el, four.el, samp.el)),
       instruments: h('div', { class: 'block' }, h('div', { class: 'section-label' }, 'Live check (this configuration)'), verdict.el),
       update(m) {
         plot.update({ curve: m.curve, L: m.L, fLabel: `f = ${fnText(m.f)}`, gLabel: `g = ${fnText(m.g)}` });
         strip.area({ curve: m.curve, L: m.L, yMax: 1, runMax: m.runMax, total: m.exact, samples: m.samples });
-        gram.update(m.G, { showValues: ctx.mode === 'advanced' });
-        verdict.set(m.exact, 1e-9, '⟨f, g⟩');
+        gram.update(m.G, { showValues: true, digits: 2, scaleMax: 2 });
+        verdict.set(m.exact, { tol: 0, what: '⟨f, g⟩', exact: true, why: 'by the closed-form integral' });
         lSl.set(m.L);
         fSel.set(waveKey(m.f));
         gSel.set(waveKey(m.g));

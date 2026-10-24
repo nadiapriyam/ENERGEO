@@ -39,7 +39,7 @@ export function mountInteractive(root, def, journey) {
     h(
       'div',
       { class: 'top-titles' },
-      h('div', { class: 'brand' }, h('b', null, 'ENERGEO'), h('span', null, `Master Map, interactive ${def.mapNumber}`)),
+      h('div', { class: 'brand' }, h('b', null, 'Geometry of Representation'), h('span', null, `Master Map, interactive ${def.mapNumber}`)),
       h('h1', { class: 'title' }, def.title),
       h('p', { class: 'top-question', html: richText(def.question) }),
     ),

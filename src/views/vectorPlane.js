@@ -135,7 +135,7 @@ export function createVectorPlane({ extent = 3, size = 420, draggable = ['v'], o
     return [vec[0] / n, -vec[1] / n];
   };
 
-  function update({ u, v, r, showShadow = true }) {
+  function update({ u, v, r, showShadow = true, exact = false }) {
     state = { u, v };
     place(U, u);
     place(V, v);
@@ -176,7 +176,10 @@ export function createVectorPlane({ extent = 3, size = 420, draggable = ['v'], o
     const p1 = [X(Math.cos(a1) * R / k), Y(Math.sin(a1) * R / k)];
     const p2 = [X(Math.cos(a1 + d) * R / k), Y(Math.sin(a1 + d) * R / k)];
     set(arc, { d: ortho ? '' : `M${p1[0]},${p1[1]} A${R},${R} 0 0 ${sweep} ${p2[0]},${p2[1]}` });
+    // solid square: exactly orthogonal (by construction); dashed: only within the interactive tolerance
     set(square, { d: ortho ? corner([X(0), Y(0)], pxDir(u), pxDir(v), 12) : '' });
+    if (exact) square.removeAttribute('stroke-dasharray');
+    else square.setAttribute('stroke-dasharray', '3 2');
     const mid = a1 + d / 2;
     set(angleText, { x: X(Math.cos(mid) * (R + 18) / k) - 12, y: Y(Math.sin(mid) * (R + 18) / k) + 4 });
     angleText.textContent = deg(r.angle);
@@ -186,6 +189,8 @@ export function createVectorPlane({ extent = 3, size = 420, draggable = ['v'], o
       set(triV, { x1: X(u[0]), y1: Y(u[1]), x2: X(s2[0]), y2: Y(s2[1]) });
       set(triSum, { x1: X(0), y1: Y(0), x2: X(s2[0]), y2: Y(s2[1]) });
       set(triMark, { d: ortho ? corner([X(u[0]), Y(u[1])], pxDir([-u[0], -u[1]]), pxDir(v), 9) : '' });
+      if (exact) triMark.removeAttribute('stroke-dasharray');
+      else triMark.setAttribute('stroke-dasharray', '3 2');
       const n2 = Math.hypot(s2[0], s2[1]) || 1;
       set(triLabel, { x: X(s2[0]) + (s2[0] / n2) * 10, y: Y(s2[1]) - (s2[1] / n2) * 10 });
     }

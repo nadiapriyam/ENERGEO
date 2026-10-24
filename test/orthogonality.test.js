@@ -85,3 +85,28 @@ test('normalised trig Gram is I over a full period only', () => {
   close(maxAbs(matSub(o.normalisedTrigGram(B, 2 * Math.PI), identity(6))), 0, 1e-12);
   assert.ok(maxAbs(matSub(o.normalisedTrigGram(B, 2 * Math.PI * 0.8), identity(6))) > 0.05);
 });
+
+test('discrete orthogonality: the root-of-unity prediction matches the sample sum for every pair and N', () => {
+  for (let N = 3; N <= 12; N++) {
+    for (const fk of ['cos', 'sin']) for (const gk of ['cos', 'sin']) {
+      for (let m = 1; m <= 6; m++) for (let n = 1; n <= 6; n++) {
+        const f = { kind: fk, k: m };
+        const g = { kind: gk, k: n };
+        close(o.sampledInner(f, g, N), o.discretePredicted(f, g, N), 1e-9);
+      }
+    }
+  }
+  // m + n < N is sufficient, not necessary: sin 2t and cos t at N = 3 have m + n = N, yet sin–cos pairs always cancel
+  close(o.discretePredicted({ kind: 'sin', k: 2 }, { kind: 'cos', k: 1 }, 3), 0, 1e-15);
+  // and the aliasing case of stage 7: cos t, cos 3t at N = 4 do not cancel
+  assert.ok(Math.abs(o.discretePredicted({ kind: 'cos', k: 1 }, { kind: 'cos', k: 3 }, 4)) > 1);
+});
+
+test('the interval is part of the inner product: G = I at 2π, 2I at 4π, partial at 3π', () => {
+  const B = trigBasis(3);
+  close(maxAbs(matSub(o.normalisedTrigGram(B, 4 * Math.PI), identity(6).map((r) => r.map((x) => 2 * x)))), 0, 1e-12);
+  const G3 = o.normalisedTrigGram(B, 3 * Math.PI);
+  // cos–cos cross terms vanish at L = 3π, but sin t against cos 2t does not
+  close(G3[0][2], 0, 1e-12);
+  assert.ok(Math.abs(G3[1][2]) > 0.1);
+});
