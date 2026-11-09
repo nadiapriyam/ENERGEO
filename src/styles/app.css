@@ -1352,3 +1352,77 @@ svg.placing {
 .steps .step-head .prompt {
   display: inline;
 }
+
+/* Stage 2b: two spin states */
+.spin-states {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.spin-card {
+  margin: 0;
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 12px;
+  background: var(--surface);
+  min-width: 0;
+}
+
+.spin-reading {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: var(--step--1);
+}
+
+.spin-reading .zero-glyph[data-state="exact"] {
+  border: 2px solid var(--ink);
+  box-shadow: inset 0 0 0 3px var(--surface), inset 0 0 0 10px var(--ink);
+}
+
+.spin-reading .zero-glyph[data-state="none"] {
+  border-color: var(--rule);
+}
+
+.spin-hidden {
+  min-height: 120px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 10px;
+  font-size: var(--step--1);
+  color: var(--ink-3);
+  border: 1px dashed var(--rule);
+  border-radius: 4px;
+  background: repeating-linear-gradient(135deg, transparent 0 8px, var(--veil) 8px 9px);
+}
+
+.spin-card svg {
+  width: 100%;
+  height: auto;
+}
+
+.svg-amp {
+  fill: var(--ink-2);
+}
+
+.spin-ket {
+  overflow-x: auto;
+}
+
+.ladder-item {
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 10px 12px;
+  background: var(--surface);
+  display: grid;
+  gap: 4px;
+}
+
+.ladder-item p {
+  margin: 0;
+}

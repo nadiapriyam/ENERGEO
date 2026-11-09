@@ -3,100 +3,602 @@
   "program": {
     "id": "program",
     "title": "Geometry of Representation research program",
-    "children": ["backbone.primary", "backbone.secondary", "backbone.invariant", "H1", "H2", "H3", "stmt.rule-bound-periodicity", "idea.hidden-family", "Q.cancellation-information", "Q.zero-inference", "Q.zero-generators", "Q.pairA", "Q.geometry-rules", "Q.energeo"]
+    "children": [
+      "backbone.primary",
+      "backbone.secondary",
+      "backbone.invariant",
+      "H1",
+      "H2",
+      "H3",
+      "stmt.rule-bound-periodicity",
+      "idea.hidden-family",
+      "Q.cancellation-information",
+      "Q.zero-inference",
+      "Q.zero-generators",
+      "Q.pairA",
+      "Q.geometry-rules",
+      "Q.energeo",
+      "Q.zero-distinguishable",
+      "Q.additional-relations"
+    ]
   },
   "statements": [
-    { "id": "backbone.primary", "status": "hypothesis", "source": "docs/restructure_decisions.md", "claim": "backbone.primary",
-      "words": "What appears as zero, cancellation, or balance in one representation may be evidence of an underlying geometric constraint." },
-    { "id": "backbone.secondary", "status": "hypothesis", "source": "docs/restructure_decisions.md",
-      "words": "If physically different phenomena satisfy the same mathematical relation under an appropriate representation, they may be instances of the same structural law rather than merely analogous systems." },
-    { "id": "backbone.invariant", "status": "hypothesis", "source": "docs/restructure_decisions.md",
-      "words": "If a relation is preserved under the admissible transformations of a space, that relation may encode part of the geometry of that space." },
-    { "id": "H1", "status": "hypothesis", "source": "research/hypotheses/H1.md" },
-    { "id": "H2", "status": "hypothesis", "source": "research/hypotheses/H2.md" },
-    { "id": "H3", "status": "hypothesis", "source": "research/hypotheses/H3.md", "crossLinks": ["stmt.rule-bound-periodicity"] },
-    { "id": "stmt.rule-bound-periodicity", "status": "hypothesis", "source": "docs/restructure_decisions.md", "crossLinks": ["H3"],
-      "words": "★ Any geometrical object that is bound by rules can be periodic." },
-    { "id": "idea.hidden-family", "status": "hypothesis", "source": "docs/restructure_decisions.md", "claim": "idea.hidden-family",
-      "words": "A single observed zero may correspond to a nontrivial family of hidden states." },
-    { "id": "Q.cancellation-information", "status": "open", "source": "docs/restructure_decisions.md", "claim": "Q.cancellation-information",
-      "words": "What information is contained in the cancellation state itself?" },
-    { "id": "Q.zero-inference", "status": "open", "source": "docs/restructure_decisions.md", "claim": "Q.zero-inference",
-      "words": "What can be inferred from the zero state while it remains zero?" },
-    { "id": "Q.zero-generators", "status": "open", "source": "docs/restructure_decisions.md", "claim": "Q.zero-generators",
-      "words": "When presented with a zero-valued result, can we determine the hidden rules or structure that generated that zero?" },
-    { "id": "Q.pairA", "status": "open", "source": "docs/restructure_decisions.md", "claim": "Q.pairA",
-      "words": "Are proton cancellation and mass balance two unrelated constructions, or do they admit a common representation?" },
-    { "id": "Q.geometry-rules", "status": "open", "source": "docs/restructure_decisions.md",
-      "words": "What observable rules arise because an object is constrained by a particular geometry?" },
-    { "id": "Q.energeo", "status": "open", "source": "docs/restructure_decisions.md",
-      "words": "Can energy behavior be represented in a space where hidden balances, null relations, and invariants become geometrically explicit?" }
+    {
+      "id": "backbone.primary",
+      "status": "hypothesis",
+      "source": "docs/restructure_decisions.md",
+      "claim": "backbone.primary",
+      "words": "What appears as zero, cancellation, or balance in one representation may be evidence of an underlying geometric constraint."
+    },
+    {
+      "id": "backbone.secondary",
+      "status": "hypothesis",
+      "source": "docs/restructure_decisions.md",
+      "words": "If physically different phenomena satisfy the same mathematical relation under an appropriate representation, they may be instances of the same structural law rather than merely analogous systems."
+    },
+    {
+      "id": "backbone.invariant",
+      "status": "hypothesis",
+      "source": "docs/restructure_decisions.md",
+      "words": "If a relation is preserved under the admissible transformations of a space, that relation may encode part of the geometry of that space."
+    },
+    {
+      "id": "H1",
+      "status": "hypothesis",
+      "source": "research/hypotheses/H1.md"
+    },
+    {
+      "id": "H2",
+      "status": "hypothesis",
+      "source": "research/hypotheses/H2.md"
+    },
+    {
+      "id": "H3",
+      "status": "hypothesis",
+      "source": "research/hypotheses/H3.md",
+      "crossLinks": [
+        "stmt.rule-bound-periodicity"
+      ]
+    },
+    {
+      "id": "stmt.rule-bound-periodicity",
+      "status": "hypothesis",
+      "source": "docs/restructure_decisions.md",
+      "crossLinks": [
+        "H3"
+      ],
+      "words": "★ Any geometrical object that is bound by rules can be periodic."
+    },
+    {
+      "id": "idea.hidden-family",
+      "status": "hypothesis",
+      "source": "docs/restructure_decisions.md",
+      "claim": "idea.hidden-family",
+      "words": "A single observed zero may correspond to a nontrivial family of hidden states."
+    },
+    {
+      "id": "Q.cancellation-information",
+      "status": "open",
+      "source": "docs/restructure_decisions.md",
+      "claim": "Q.cancellation-information",
+      "words": "What information is contained in the cancellation state itself?"
+    },
+    {
+      "id": "Q.zero-inference",
+      "status": "open",
+      "source": "docs/restructure_decisions.md",
+      "claim": "Q.zero-inference",
+      "words": "What can be inferred from the zero state while it remains zero?"
+    },
+    {
+      "id": "Q.zero-generators",
+      "status": "open",
+      "source": "docs/restructure_decisions.md",
+      "claim": "Q.zero-generators",
+      "words": "When presented with a zero-valued result, can we determine the hidden rules or structure that generated that zero?"
+    },
+    {
+      "id": "Q.pairA",
+      "status": "open",
+      "source": "docs/restructure_decisions.md",
+      "claim": "Q.pairA",
+      "words": "Are proton cancellation and mass balance two unrelated constructions, or do they admit a common representation?"
+    },
+    {
+      "id": "Q.geometry-rules",
+      "status": "open",
+      "source": "docs/restructure_decisions.md",
+      "words": "What observable rules arise because an object is constrained by a particular geometry?"
+    },
+    {
+      "id": "Q.energeo",
+      "status": "open",
+      "source": "docs/restructure_decisions.md",
+      "words": "Can energy behavior be represented in a space where hidden balances, null relations, and invariants become geometrically explicit?"
+    },
+    {
+      "id": "Q.zero-distinguishable",
+      "status": "open",
+      "source": "docs/restructure_decisions.md",
+      "claim": "Q.zero-distinguishable",
+      "words": "When a measurement is zero, what additional structure remains distinguishable?"
+    },
+    {
+      "id": "Q.additional-relations",
+      "status": "open",
+      "source": "docs/restructure_decisions.md",
+      "claim": "Q.additional-relations",
+      "words": "What additional preserved relations are needed to identify the geometry?"
+    }
   ],
   "objects": [
-    { "id": "obj.opposition", "label": "two vectors v, w in R²", "stage": "1", "journeyId": "opposition" },
-    { "id": "obj.moments", "label": "directional contributions m₁ … mₙ in R³, no positions", "stage": "2", "journeyId": "moments" },
-    { "id": "obj.distribution", "label": "positive point masses in R² and a candidate origin R", "stage": "3", "journeyId": "distribution" },
-    { "id": "obj.ring", "label": "a field on a heated ring, q : S¹ → R", "stage": "4" },
-    { "id": "obj.phase", "label": "phase evolution t ↦ e^{iωt}", "stage": "5" },
-    { "id": "obj.signal", "label": "a signal and its Fourier coefficients", "stage": "6", "journeyId": "signal" },
-    { "id": "obj.pair", "label": "two waves as coefficient vectors", "stage": "7", "journeyId": "pair" }
+    {
+      "id": "obj.opposition",
+      "label": "two vectors v, w in R²",
+      "stage": "1",
+      "journeyId": "opposition"
+    },
+    {
+      "id": "obj.moments",
+      "label": "directional contributions m₁ … mₙ in R³, no positions (the MRI-motivated ensemble)",
+      "stage": "2",
+      "journeyId": "moments"
+    },
+    {
+      "id": "obj.spin-pair",
+      "label": "two states A, B of a pair of spin-½ particles",
+      "stage": "2b",
+      "journeyId": "spinPair",
+      "distinctFrom": [
+        "obj.moments"
+      ],
+      "note": "A separate exact quantum case. Not a model of the stage 2 ensemble: MRI transverse cancellation is not a two-proton singlet/triplet phenomenon, and nothing here treats it as one."
+    },
+    {
+      "id": "obj.distribution",
+      "label": "positive point masses in R² and a candidate origin R",
+      "stage": "3",
+      "journeyId": "distribution"
+    },
+    {
+      "id": "obj.ring",
+      "label": "a field on a heated ring, q : S¹ → R",
+      "stage": "4"
+    },
+    {
+      "id": "obj.phase",
+      "label": "phase evolution t ↦ e^{iωt}",
+      "stage": "5"
+    },
+    {
+      "id": "obj.signal",
+      "label": "a signal and its Fourier coefficients",
+      "stage": "6",
+      "journeyId": "signal"
+    },
+    {
+      "id": "obj.pair",
+      "label": "two waves as coefficient vectors",
+      "stage": "7",
+      "journeyId": "pair"
+    }
   ],
   "relations": [
-    { "id": "rel.pair-resultant-zero", "object": "obj.opposition", "representation": "R²", "measurement": "(v, w) ↦ v + w",
-      "zeroCondition": "v + w = 0 with v ≠ 0 and w ≠ 0", "status": "established",
-      "cards": ["Z1a2", "Z1b"], "history": ["Z1a"], "claims": ["zero.pair"], "reveal": { "stage": "1", "phase": "formalize" },
-      "connectsTo": ["idea.hidden-family", "zps.opposition"] },
-    { "id": "rel.ensemble-resultant-zero", "object": "obj.moments", "representation": "(R³)ⁿ, directions and lengths only", "measurement": "(m_j) ↦ Σ m_j",
-      "zeroCondition": "Σ m_j = 0 with every m_j ≠ 0", "status": "established",
-      "cards": ["Z2a", "Z2b2"], "history": ["Z2b"], "claims": ["zero.ensemble"], "reveal": { "stage": "2", "phase": "formalize" },
-      "connectsTo": ["pair.A", "zps.moments", "Q.cancellation-information"] },
-    { "id": "rel.pair-twist", "object": "obj.moments", "representation": "(R³)ⁿ", "measurement": "(m_j) ↦ Σ m_j",
-      "preservedUnder": ["turning m_i and m_j together about the line of m_i + m_j"], "status": "established",
-      "cards": ["Z2c"], "claims": ["zero.twist"], "connectsTo": ["zps.moments"] },
-    { "id": "rel.first-moment-zero", "object": "obj.distribution", "representation": "positive point masses in R²", "measurement": "R ↦ Σ m_i (r_i − R)",
-      "zeroCondition": "F(R) = 0 exactly at R = R_CM, since M = Σ m_i > 0", "geometricMeaning": "a distinguished balancing location", "status": "established",
-      "cards": ["Z3a", "Z3b"], "claims": ["zero.first-moment"], "reveal": { "stage": "3", "phase": "formalize" },
-      "connectsTo": ["pair.A"] },
-    { "id": "rel.first-moment-shift", "object": "obj.distribution", "representation": "positive point masses in R²", "measurement": "R ↦ Σ m_i (r_i − R)",
-      "preservedUnder": ["shifting every mass by the same step, with R_CM shifted by that step"], "status": "established",
-      "cards": ["Z3c"], "claims": ["zero.cm-shift"], "reveal": { "stage": "3", "phase": "formalize" },
-      "connectsTo": ["pair.A"] },
-    { "id": "rel.coef-arrows", "object": "obj.signal", "representation": "coefficient arrows √2 f̂(k)", "measurement": "(f, g) ↦ ⟨f, g⟩ on [0, 1]",
-      "status": "established", "cards": ["O2c"], "claims": ["coef.arrows"], "connectsTo": ["obj.pair"] }
+    {
+      "id": "rel.pair-resultant-zero",
+      "object": "obj.opposition",
+      "representation": "R²",
+      "measurement": "(v, w) ↦ v + w",
+      "zeroCondition": "v + w = 0 with v ≠ 0 and w ≠ 0",
+      "status": "established",
+      "cards": [
+        "Z1a2",
+        "Z1b"
+      ],
+      "history": [
+        "Z1a"
+      ],
+      "claims": [
+        "zero.pair"
+      ],
+      "reveal": {
+        "stage": "1",
+        "phase": "formalize"
+      },
+      "connectsTo": [
+        "idea.hidden-family",
+        "zps.opposition"
+      ]
+    },
+    {
+      "id": "rel.ensemble-resultant-zero",
+      "object": "obj.moments",
+      "representation": "(R³)ⁿ, directions and lengths only",
+      "measurement": "(m_j) ↦ Σ m_j",
+      "zeroCondition": "Σ m_j = 0 with every m_j ≠ 0",
+      "status": "established",
+      "cards": [
+        "Z2a",
+        "Z2b2"
+      ],
+      "history": [
+        "Z2b"
+      ],
+      "claims": [
+        "zero.ensemble"
+      ],
+      "reveal": {
+        "stage": "2",
+        "phase": "formalize"
+      },
+      "connectsTo": [
+        "pair.A",
+        "zps.moments",
+        "Q.cancellation-information"
+      ]
+    },
+    {
+      "id": "rel.pair-twist",
+      "object": "obj.moments",
+      "representation": "(R³)ⁿ",
+      "measurement": "(m_j) ↦ Σ m_j",
+      "preservedUnder": [
+        "turning m_i and m_j together about the line of m_i + m_j"
+      ],
+      "status": "established",
+      "cards": [
+        "Z2c"
+      ],
+      "claims": [
+        "zero.twist"
+      ],
+      "connectsTo": [
+        "zps.moments"
+      ]
+    },
+    {
+      "id": "rel.first-moment-zero",
+      "object": "obj.distribution",
+      "representation": "positive point masses in R²",
+      "measurement": "R ↦ Σ m_i (r_i − R)",
+      "zeroCondition": "F(R) = 0 exactly at R = R_CM, since M = Σ m_i > 0",
+      "geometricMeaning": "a distinguished balancing location",
+      "status": "established",
+      "cards": [
+        "Z3a",
+        "Z3b"
+      ],
+      "claims": [
+        "zero.first-moment"
+      ],
+      "reveal": {
+        "stage": "3",
+        "phase": "formalize"
+      },
+      "connectsTo": [
+        "pair.A"
+      ]
+    },
+    {
+      "id": "rel.first-moment-shift",
+      "object": "obj.distribution",
+      "representation": "positive point masses in R²",
+      "measurement": "R ↦ Σ m_i (r_i − R)",
+      "preservedUnder": [
+        "shifting every mass by the same step, with R_CM shifted by that step"
+      ],
+      "status": "established",
+      "cards": [
+        "Z3c"
+      ],
+      "claims": [
+        "zero.cm-shift"
+      ],
+      "reveal": {
+        "stage": "3",
+        "phase": "formalize"
+      },
+      "connectsTo": [
+        "pair.A"
+      ]
+    },
+    {
+      "id": "rel.coef-arrows",
+      "object": "obj.signal",
+      "representation": "coefficient arrows √2 f̂(k)",
+      "measurement": "(f, g) ↦ ⟨f, g⟩ on [0, 1]",
+      "status": "established",
+      "cards": [
+        "O2c"
+      ],
+      "claims": [
+        "coef.arrows"
+      ],
+      "connectsTo": [
+        "obj.pair"
+      ]
+    },
+    {
+      "id": "rel.sz-zero-two-states",
+      "object": "obj.spin-pair",
+      "representation": "two spin-½ particles, basis |↑↑⟩, |↑↓⟩, |↓↑⟩, |↓↓⟩",
+      "measurement": "total S_z",
+      "zeroCondition": "S_z A = 0 and S_z B = 0, with A ≠ B as states",
+      "status": "established",
+      "cards": [
+        "Q1a",
+        "Q1b",
+        "Q1c",
+        "Q1d",
+        "Q1e"
+      ],
+      "claims": [
+        "quantum.sz-zero"
+      ],
+      "reveal": {
+        "stage": "2b",
+        "phase": "formalize"
+      },
+      "connectsTo": [
+        "csv.sz-zero",
+        "dist.measurement-identifiability"
+      ]
+    },
+    {
+      "id": "rel.zero-not-identifying",
+      "object": "obj.spin-pair",
+      "representation": "any measurement map F",
+      "measurement": "F",
+      "zeroCondition": "F(x) = 0 does not determine x uniquely",
+      "status": "derived",
+      "cards": [
+        "Z1b",
+        "Z2b2",
+        "Q1a",
+        "Q1d"
+      ],
+      "claims": [
+        "zero.not-identifying"
+      ],
+      "reveal": {
+        "stage": "2b",
+        "phase": "formalize"
+      },
+      "connectsTo": [
+        "dist.measurement-identifiability",
+        "idea.hidden-family"
+      ]
+    },
+    {
+      "id": "rel.zero-resultant-linear",
+      "object": "obj.moments",
+      "representation": "(R^d)ⁿ",
+      "measurement": "(v_i) ↦ Σ v_i",
+      "preservedUnder": [
+        "every linear map applied to every vector"
+      ],
+      "status": "established",
+      "cards": [
+        "Z4a",
+        "Z4b"
+      ],
+      "claims": [
+        "zero.linear-preserves"
+      ],
+      "connectsTo": [
+        "rel.zero-preservation-too-weak"
+      ]
+    },
+    {
+      "id": "rel.zero-preservation-too-weak",
+      "object": "obj.moments",
+      "representation": "(R^d)ⁿ",
+      "measurement": "(v_i) ↦ Σ v_i",
+      "status": "derived",
+      "cards": [
+        "Z4a",
+        "Z4b"
+      ],
+      "claims": [
+        "zero.too-weak"
+      ],
+      "connectsTo": [
+        "Q.additional-relations"
+      ]
+    }
   ],
   "zeroProducingSets": [
-    { "id": "zps.opposition", "object": "obj.opposition", "measurement": "v + w", "condition": "v + w = 0, v ≠ 0, w ≠ 0", "structure": null,
-      "explorations": ["choose another v and find the w that gives zero"] },
-    { "id": "zps.moments", "object": "obj.moments", "measurement": "Σ m_j", "condition": "Σ m_j = 0, every m_j ≠ 0", "structure": null,
-      "explorations": ["change one contribution while a chosen contribution adjusts so the total stays zero", "turn two contributions together about the line of their sum", "generate another configuration", "test a change before applying it; a change that would leave zero is previewed, not applied"] }
+    {
+      "id": "zps.opposition",
+      "object": "obj.opposition",
+      "measurement": "v + w",
+      "condition": "v + w = 0, v ≠ 0, w ≠ 0",
+      "structure": null,
+      "explorations": [
+        "choose another v and find the w that gives zero"
+      ]
+    },
+    {
+      "id": "zps.moments",
+      "object": "obj.moments",
+      "measurement": "Σ m_j",
+      "condition": "Σ m_j = 0, every m_j ≠ 0",
+      "structure": null,
+      "explorations": [
+        "change one contribution while a chosen contribution adjusts so the total stays zero",
+        "turn two contributions together about the line of their sum",
+        "generate another configuration",
+        "test a change before applying it; a change that would leave zero is previewed, not applied"
+      ]
+    }
   ],
   "pairs": [
-    { "id": "pair.A", "directed": true,
+    {
+      "id": "pair.A",
+      "directed": true,
       "directionMeaning": "Epistemic, not physical: the mass system currently gives a mathematically explicit zero from which to learn how to interrogate another zero. Mass is not claimed to be more fundamental, and no shared mechanism is asserted.",
-      "sourceObject": { "id": "obj.distribution" }, "targetObject": { "id": "obj.moments" },
+      "sourceObject": {
+        "id": "obj.distribution"
+      },
+      "targetObject": {
+        "id": "obj.moments"
+      },
       "sharedObservation": "nonzero contributions whose aggregate can equal zero",
       "candidateCommonRelation": null,
       "transferQuestions": [
-        { "id": "TQ-1", "title": "Does zero distinguish anything?", "context": "Mass balance shows that a zero can identify a distinguished structural feature.",
-          "text": "Does the target zero distinguish any structure within the family of configurations that produce it?", "learnedFrom": ["rel.first-moment-zero"], "status": "open" },
-        { "id": "TQ-2", "title": "What conditions generate the zero?", "context": "For mass, the condition under which the zero occurs can be stated exactly.",
-          "text": "What mathematical conditions on the hidden configuration are necessary or sufficient for this zero to occur?", "learnedFrom": ["rel.first-moment-zero"], "status": "open" },
-        { "id": "TQ-3", "title": "What does zero determine, and what does it leave unresolved?", "context": "Different mass configurations can share the same balancing location.",
-          "text": "Which different internal configurations produce the same zero result? What properties are fixed by the zero, and what properties remain free?", "learnedFrom": ["rel.first-moment-zero"], "status": "open" },
-        { "id": "TQ-4", "title": "Are there different ways of producing the same zero?", "context": "For mass, when the zero exists can be stated and checked.",
-          "text": "Can structurally different configurations generate the same zero, and if so, can those configurations be classified?", "learnedFrom": ["rel.first-moment-zero"], "status": "open" },
-        { "id": "TQ-5", "title": "What transformations preserve zero?", "context": "Shifting every mass by the same step moves the balancing location by that step.",
-          "text": "If a zero-producing configuration is transformed, which transformations keep it in the zero state and which do not?", "learnedFrom": ["rel.first-moment-shift"], "status": "open" },
-        { "id": "TQ-6", "title": "What information varies underneath the same zero?", "context": "Mass configurations with the same balancing location can still differ in other ways.",
-          "text": "Among configurations that all produce the same zero result, what other mathematical quantities, relationships, or structures can still differ?", "learnedFrom": ["rel.first-moment-zero"], "status": "open" }
+        {
+          "id": "TQ-1",
+          "title": "Does zero distinguish anything?",
+          "context": "Mass balance shows that a zero can identify a distinguished structural feature.",
+          "text": "Does the target zero distinguish any structure within the family of configurations that produce it?",
+          "learnedFrom": [
+            "rel.first-moment-zero"
+          ],
+          "status": "open"
+        },
+        {
+          "id": "TQ-2",
+          "title": "What conditions generate the zero?",
+          "context": "For mass, the condition under which the zero occurs can be stated exactly.",
+          "text": "What mathematical conditions on the hidden configuration are necessary or sufficient for this zero to occur?",
+          "learnedFrom": [
+            "rel.first-moment-zero"
+          ],
+          "status": "open"
+        },
+        {
+          "id": "TQ-3",
+          "title": "What does zero determine, and what does it leave unresolved?",
+          "context": "Different mass configurations can share the same balancing location.",
+          "text": "Which different internal configurations produce the same zero result? What properties are fixed by the zero, and what properties remain free?",
+          "learnedFrom": [
+            "rel.first-moment-zero"
+          ],
+          "status": "open"
+        },
+        {
+          "id": "TQ-4",
+          "title": "Are there different ways of producing the same zero?",
+          "context": "For mass, when the zero exists can be stated and checked.",
+          "text": "Can structurally different configurations generate the same zero, and if so, can those configurations be classified?",
+          "learnedFrom": [
+            "rel.first-moment-zero"
+          ],
+          "status": "open"
+        },
+        {
+          "id": "TQ-5",
+          "title": "What transformations preserve zero?",
+          "context": "Shifting every mass by the same step moves the balancing location by that step.",
+          "text": "If a zero-producing configuration is transformed, which transformations keep it in the zero state and which do not?",
+          "learnedFrom": [
+            "rel.first-moment-shift"
+          ],
+          "status": "open"
+        },
+        {
+          "id": "TQ-6",
+          "title": "What information varies underneath the same zero?",
+          "context": "Mass configurations with the same balancing location can still differ in other ways.",
+          "text": "Among configurations that all produce the same zero result, what other mathematical quantities, relationships, or structures can still differ?",
+          "learnedFrom": [
+            "rel.first-moment-zero"
+          ],
+          "status": "open"
+        }
       ],
       "status": "open",
-      "unresolvedQuestions": ["Q.zero-inference", "Q.zero-generators", "Q.cancellation-information", "Q.pairA"] },
-    { "id": "pair.B", "directed": false,
-      "sourceObject": { "id": "obj.ring" }, "targetObject": { "id": "obj.phase" },
+      "unresolvedQuestions": [
+        "Q.zero-inference",
+        "Q.zero-generators",
+        "Q.cancellation-information",
+        "Q.pairA",
+        "Q.zero-distinguishable"
+      ]
+    },
+    {
+      "id": "pair.B",
+      "directed": false,
+      "sourceObject": {
+        "id": "obj.ring"
+      },
+      "targetObject": {
+        "id": "obj.phase"
+      },
       "sharedObservation": "repeated behavior",
-      "candidateCommonRelation": null, "transferQuestions": [], "status": "open",
-      "unresolvedQuestions": ["Q.geometry-rules"] }
+      "candidateCommonRelation": null,
+      "transferQuestions": [],
+      "status": "open",
+      "unresolvedQuestions": [
+        "Q.geometry-rules"
+      ]
+    }
   ],
-  "geometryPrompts": []
+  "geometryPrompts": [],
+  "consistentSets": [
+    {
+      "id": "csv.sz-zero",
+      "object": "obj.spin-pair",
+      "measurement": "total S_z",
+      "observedValue": "0",
+      "states": "every normalized combination of |↑↓⟩ and |↓↑⟩",
+      "distinguishedBy": [
+        "S²"
+      ],
+      "structure": null,
+      "cards": [
+        "Q1a",
+        "Q1d"
+      ]
+    }
+  ],
+  "distinctions": [
+    {
+      "id": "dist.measurement-identifiability",
+      "status": "established",
+      "text": "A zero measurement is not the same as identifying the state from that measurement: a measurement map may be many-to-one.",
+      "neutralName": "states consistent with the same observed value",
+      "instances": [
+        "zps.opposition",
+        "zps.moments",
+        "csv.sz-zero"
+      ],
+      "cards": [
+        "Z1b",
+        "Z2b2",
+        "Q1a",
+        "Q1d"
+      ]
+    }
+  ],
+  "observationLadder": {
+    "note": "Three observations of increasing strength from Chapter I. Kept separate: they are not one theorem, and the mass zero and the quantum-spin zero are not claimed to share a physical mechanism.",
+    "steps": [
+      {
+        "id": "obs.A",
+        "title": "Vector cancellation",
+        "relations": [
+          "rel.pair-resultant-zero",
+          "rel.ensemble-resultant-zero"
+        ],
+        "question": "What configurations produce the zero?"
+      },
+      {
+        "id": "obs.B",
+        "title": "Mass balance",
+        "relations": [
+          "rel.first-moment-zero"
+        ],
+        "question": "What structural property does the zero constrain?"
+      },
+      {
+        "id": "obs.C",
+        "title": "Quantum zero",
+        "relations": [
+          "rel.sz-zero-two-states"
+        ],
+        "question": "What information is invisible to this measurement but visible to another relation?"
+      }
+    ]
+  }
 }

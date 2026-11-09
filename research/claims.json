@@ -242,6 +242,55 @@
       "text": "Are proton cancellation and mass balance two unrelated constructions, or do they admit a common representation?",
       "cards": [],
       "source": "docs/restructure_decisions.md"
+    },
+    "quantum.sz-zero": {
+      "level": 1,
+      "text": "A zero-valued observable can fail to uniquely determine a quantum state. For two spin-½ particles, (|↑↓⟩ + |↓↑⟩)/√2 and (|↑↓⟩ − |↓↑⟩)/√2 both give S_z = 0 with certainty, yet S² gives 2ħ² for the first and 0 for the second.",
+      "cards": [
+        "Q1a",
+        "Q1b",
+        "Q1c",
+        "Q1e"
+      ]
+    },
+    "zero.not-identifying": {
+      "level": 2,
+      "text": "This provides a rigorous example of the more general distinction already being explored in Chapter I: F(x) = 0 does not imply that x is uniquely determined.",
+      "cards": [
+        "Z1b",
+        "Z2b2",
+        "Q1a",
+        "Q1d"
+      ]
+    },
+    "zero.linear-preserves": {
+      "level": 1,
+      "text": "If Σ v_i = 0, then Σ A v_i = A Σ v_i = 0 for every linear map A. Doubling every vector is such a map, and it preserves a bilinear form only when the form is 0.",
+      "cards": [
+        "Z4a",
+        "Z4b"
+      ]
+    },
+    "zero.too-weak": {
+      "level": 2,
+      "text": "Therefore preservation of a zero resultant alone is too weak to identify a unique geometry.",
+      "cards": [
+        "Z4a",
+        "Z4b"
+      ],
+      "source": "research/notes/chapter1_limits.md"
+    },
+    "Q.zero-distinguishable": {
+      "level": 4,
+      "text": "When a measurement is zero, what additional structure remains distinguishable?",
+      "cards": [],
+      "source": "docs/restructure_decisions.md"
+    },
+    "Q.additional-relations": {
+      "level": 4,
+      "text": "What additional preserved relations are needed to identify the geometry?",
+      "cards": [],
+      "source": "docs/restructure_decisions.md"
     }
   }
 }

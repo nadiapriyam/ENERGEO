@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-09T23:23:15+00:00",
- "commit": "3309ee8",
+ "generated": "2026-11-09T23:54:03+00:00",
+ "commit": "74292d5",
  "cards": {
   "B1a": {
    "script": "verify_B1_B7.py",
@@ -277,6 +277,48 @@
    "verdict": "PASS",
    "everFailed": false,
    "claim": "cross-talk: eps=0 rebuild error 0.0e+00; eps=0.3 Gram off-diagonal 0.216, rebuild error 0.568"
+  },
+  "Q1a": {
+   "script": "verify_Q1_Z4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "S_z A = 0 and S_z B = 0 for A = (|ud> + |du>)/sqrt2, B = (|ud> - |du>)/sqrt2: both are eigenstates with eigenvalue 0, so S_z returns 0 with certainty"
+  },
+  "Q1b": {
+   "script": "verify_Q1_Z4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "S^2 = Sx^2 + Sy^2 + Sz^2 (from the Pauli matrices, complex sigma_y) gives S^2 A = 2 hbar^2 A and S^2 B = 0"
+  },
+  "Q1c": {
+   "script": "verify_Q1_Z4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "A and B are different states: both normalized, and no phase makes one a multiple of the other (rank [A B] = 2)"
+  },
+  "Q1d": {
+   "script": "verify_Q1_Z4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "the states with S_z = 0 form a two-dimensional family: the null space of S_z is spanned by |ud> and |du>"
+  },
+  "Q1e": {
+   "script": "verify_Q1_Z4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "S^2 and S_z commute, so both can be measured on the same state: [S^2, S_z] = 0"
+  },
+  "Z4a": {
+   "script": "verify_Q1_Z4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "if v1 + v2 + v3 = 0, then A v1 + A v2 + A v3 = A (v1 + v2 + v3) = 0 for every linear map A (symbolic 2x2)"
+  },
+  "Z4b": {
+   "script": "verify_Q1_Z4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "doubling every vector keeps every zero resultant at zero, yet it preserves a bilinear form M (D^T M D = M) only when M = 0"
   },
   "S1a": {
    "script": "verify_S1_S5.py",

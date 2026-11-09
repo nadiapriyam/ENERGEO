@@ -168,3 +168,47 @@ Transfer questions:
 > Do not call this family a kernel, fiber, manifold, equivalence class, null space, or orbit in learner-facing material yet.
 
 > zero-producing configuration set
+
+## Chapter I extension: the quantum zero (stage 2b)
+
+> Before moving to Act II, extend Chapter I with one additional established quantum example.
+> Do not redesign the chapter around it.
+
+> What information can remain hidden underneath a measured zero?
+
+> Do not claim that ordinary MRI transverse cancellation is a two-proton singlet/triplet phenomenon.
+
+> No conflation.
+
+> A zero-valued observable can fail to uniquely determine a quantum state.
+
+> This provides a rigorous example of the more general distinction already being explored in Chapter I:
+
+> When a measurement is zero, what additional structure remains distinguishable?
+
+> What additional relationships distinguish states that appear identical under one zero-valued measurement?
+
+> One measurement returned zero for both states. The zero did not uniquely specify the state.
+
+> Do not say:
+> therefore every zero contains hidden quantum information.
+
+Three observations, kept separate:
+
+> What configurations produce the zero?
+>
+> What structural property does the zero constrain?
+>
+> What information is invisible to this measurement but visible to another relation?
+
+> Do not merge these into one theorem.
+
+> states consistent with the same observed value
+
+The Chapter I limitation:
+
+> Therefore preservation of a zero resultant alone is too weak to identify a unique geometry.
+
+> What additional preserved relations are needed to identify the geometry?
+
+> Do not solve this yet with A†MA=M.

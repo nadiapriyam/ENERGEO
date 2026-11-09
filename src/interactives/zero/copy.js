@@ -99,6 +99,49 @@ export const STAGES = {
     revealTerms: ['−(m', '-(m', 'fix the last', 'n − 1', 'n - 1'],
   },
 
+  '2b': {
+    title: 'Same reading, different states',
+    question: 'Two states, A and B, of a pair of spin-½ particles. The measurement is $S_z$, the total spin of the pair along one direction. At first you see each state only through that reading.',
+    origin: 'A separate case. Stage 2’s cancellation is the MRI intuition that led to the project; this two-particle case is not a model of it, and the two are kept apart. Here the system is exactly two spin-½ particles, and every statement is exact quantum mechanics.',
+    measurement: {
+      equation: 'S_z = S_{z,1} + S_{z,2}',
+      symbols: [
+        ['S_z', 'the measurement: the total spin of the pair along one direction, in units of $\\hbar$'],
+        ['A,\\ B', 'two states of the pair. What is inside them is hidden at first.'],
+        ['|{\\uparrow\\downarrow}\\rangle', 'particle 1 up and particle 2 down; $|{\\downarrow\\uparrow}\\rangle$ is the reverse'],
+      ],
+    },
+    observations: {
+      szA: 'State A: $S_z \\to 0$.',
+      szB: 'State B: $S_z \\to 0$.',
+      inside: 'Inside, A and B have the same two terms with the same sizes. Only the sign between the terms differs.',
+      s2: 'A second measurement, $S^2$, separates them: $2\\hbar^2$ for A and $0$ for B.',
+    },
+    steps: [
+      { phase: 'observe', prompt: 'Measure $S_z$ on A and on B. Is this reading enough to conclude that A and B are the same state?', then: 'Both read 0. Equal readings, so this measurement alone cannot tell.' },
+      { phase: 'manipulate', prompt: 'Press Look inside and compare the two states term by term.', then: 'The same two terms with the same sizes. Only the sign between them differs.' },
+      { phase: 'conjecture', prompt: 'Predict: could another measurement tell A from B? Commit your prediction.', then: 'Your prediction is recorded.' },
+      { phase: 'test', prompt: 'Measure a second observable, the total spin $S^2$, on both states.', then: '$S^2$ gives different values: a second measurement separates states that $S_z$ could not.' },
+      { phase: 'formalize', prompt: 'The rule behind what you found.', then: 'One measurement returned zero for both states. The zero did not uniquely specify the state.' },
+    ],
+    formal: {
+      equation: '\\begin{aligned} S_z|1,0\\rangle &= 0, & S^2|1,0\\rangle &= 2\\hbar^2\\,|1,0\\rangle\\\\ S_z|0,0\\rangle &= 0, & S^2|0,0\\rangle &= 0 \\end{aligned}',
+      lines: [
+        'A is the triplet state $|1,0\\rangle = \\tfrac{1}{\\sqrt2}\\big(|{\\uparrow\\downarrow}\\rangle + |{\\downarrow\\uparrow}\\rangle\\big)$. B is the singlet state $|0,0\\rangle = \\tfrac{1}{\\sqrt2}\\big(|{\\uparrow\\downarrow}\\rangle - |{\\downarrow\\uparrow}\\rangle\\big)$.',
+        'One measurement returned zero for both states. The zero did not uniquely specify the state.',
+      ],
+      statements: ['quantum.sz-zero', 'zero.not-identifying'],
+    },
+    questions: ['Q.zero-distinguishable'],
+    notice: {
+      changed: 'Which state was measured, and then which measurement.',
+      held: 'The $S_z$ reading: 0 for both states.',
+      visible: 'A second measurement, $S^2$, separates states that $S_z$ could not.',
+      hidden: 'The sign between the two terms. $S_z$ does not see it.',
+    },
+    revealTerms: ['triplet', 'singlet', '|1,0', '|0,0', '|1, 0', '|0, 0'],
+  },
+
   3: {
     title: 'A zero that marks a place',
     question: 'Masses at points in the plane, and a point $R$ you can move. The measurement weighs each mass by its displacement from $R$ and adds.',
@@ -176,8 +219,17 @@ export const STAGES = {
       turnOne: 'Turn one contribution only',
       scaleOne: 'Lengthen one contribution only',
     },
+    ladder: {
+      title: 'Three observations from this chapter',
+      intro: 'Of increasing strength, and kept separate: they are not one theorem, and the mass zero and the spin zero are not claimed to share a physical mechanism.',
+      items: [
+        { title: 'A. Vector cancellation', equation: '\\sum_i v_i = 0', text: 'Many nonzero configurations can map to one zero resultant.', question: 'What configurations produce the zero?' },
+        { title: 'B. Mass balance', equation: '\\sum_i m_i\\,(r_i - R_{\\mathrm{CM}}) = 0', text: 'A zero additionally identifies a distinguished structural feature.', question: 'What structural property does the zero constrain?' },
+        { title: 'C. Quantum zero', equation: 'S_z = 0', text: 'Two different states can give the same zero result for one observable while differing under another observable.', question: 'What information is invisible to this measurement but visible to another relation?' },
+      ],
+    },
     transferIntro: 'Each is a research prompt, not a finding: the proton zero is not assumed to have a balancing point, a position, or anything else the mass system has.',
-    questions: ['Q.zero-inference', 'Q.zero-generators', 'Q.cancellation-information'],
+    questions: ['Q.zero-inference', 'Q.zero-generators', 'Q.cancellation-information', 'Q.zero-distinguishable'],
     notice: {
       changed: 'The hidden configuration.',
       held: 'The reading: 0.',

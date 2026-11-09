@@ -8,6 +8,8 @@ Questions for Nadia. Answered questions are kept, with a pointer to the answer i
 |---|---|---|
 | P-2 | **The paper PDF.** Claude can't reach arxiv.org, PMC or the Cornell PDF from this environment. Please add the PDF to `research/sources/` so the claim can be quoted directly. | [source card](sources/quinn2023.md) |
 | C7-2 | What derivation would relate the eigenvalue decay of $J^TJ$ to coefficient decay of a specified $f$? This is open research, not a question that blocks anything. | [C7](connections/C7.md) |
+| Z-1 | When a measurement is zero, what additional structure remains distinguishable? (Nadia's words; Chapter I, stage 2b) | [restructure decisions](../docs/restructure_decisions.md), `research/graph.json` |
+| Z-2 | What additional preserved relations are needed to identify the geometry? (Nadia's words; not to be answered with A†MA = M yet) | [Chapter I limits](notes/chapter1_limits.md) |
 
 ## Answered
 

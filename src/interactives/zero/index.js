@@ -13,6 +13,9 @@ import { createSumPlane } from '../../views/sumPlane.js';
 import { createMassPlane } from '../../views/massPlane.js';
 import { createConfigStrip } from '../../views/configStrip.js';
 import { createZeroIndicator, zeroState, vecText } from '../../views/zeroIndicator.js';
+import { createSpinStates } from '../../views/spinStates.js';
+import * as Q from '../../math/spin.js';
+import { richText } from '../../core/tex.js';
 import * as Z from '../../math/zero.js';
 import { norm, sub, add, dot, rotationAxisAngle } from '../../math/linalg.js';
 import { CHAPTER, STAGES } from './copy.js';
@@ -59,6 +62,8 @@ const startMoments = () => ({ ms: Z.tetraConfiguration(1.6), exact: true, adjust
 const startMasses = () => ({ masses: [1.0, 2.2, 0.8], positions: [[-1.8, 0.9], [1.3, 1.2], [0.4, -1.7]], R: [-1.6, -1.4], exact: false, prediction: null, selected: 1, placing: false, firstZeroCm: null, shiftSign: 1 });
 const PAIR = carry('opposition', '\\mathbb R^2', startPair, 'two nonzero arrows in a starting position', 'two arrows, v and w');
 const MOMENTS = carry('moments', '(\\mathbb R^3)^n', startMoments, 'four contributions of equal length, in a starting configuration', 'your configuration of contributions');
+const startSpin = () => ({ measuredA: false, measuredB: false, inside: false, prediction: null, s2: false });
+const SPIN = carry('spinPair', '\\mathbb C^4', startSpin, 'two states A and B of a spin pair, seen only through S_z', 'two states of a spin pair, A and B');
 const MASSES = carry('distribution', '\\mathbb R^2', startMasses, 'three positive masses and a candidate origin R', 'masses in the plane and the point R');
 
 // ── stage 1 ──────────────────────────────────────────────────────────────────────────────────────
@@ -307,6 +312,104 @@ const stage2 = {
 };
 const vec3 = (v) => `(${v.map((x) => num(x, 3).replace('−', '-')).join(',\\ ')})`;
 
+// ── stage 2b: the quantum zero ───────────────────────────────────────────────────────────────────
+// A separate exact case (two spin-½ particles), not a model of stage 2. Both states give S_z = 0 with certainty;
+// S² separates them. The names triplet and singlet appear only at the formalize step.
+
+const ket = (sign) => `\\tfrac{1}{\\sqrt2}\\big(|{\\uparrow\\downarrow}\\rangle ${sign} |{\\downarrow\\uparrow}\\rangle\\big)`;
+const matrixTex = (M, unit) => `${unit}\\begin{pmatrix}${M.map((r) => r.join('&')).join('\\\\')}\\end{pmatrix}`;
+
+const stage2b = {
+  id: 'quantum-zero',
+  ...fromCopy('2b', [
+    (m, c) => c.observed.has('szA') && c.observed.has('szB'),
+    (m, c) => c.observed.has('inside'),
+    (m) => !!m.prediction,
+    (m, c) => c.observed.has('s2'),
+    () => true,
+  ]),
+  rep: '\\mathbb C^4',
+  carryLabel: 'Continue to stage',
+  carry: SPIN,
+  model(ctx) {
+    const d = ctx.data();
+    return {
+      ...d,
+      szA: Q.reading(Q.SZ, Q.STATE_A),
+      szB: Q.reading(Q.SZ, Q.STATE_B),
+      s2A: Q.reading(Q.S2, Q.STATE_A),
+      s2B: Q.reading(Q.S2, Q.STATE_B),
+      same: Q.sameState(Q.STATE_A, Q.STATE_B),
+    };
+  },
+  observe(m) {
+    const out = [];
+    if (m.measuredA) out.push('szA');
+    if (m.measuredB) out.push('szB');
+    if (m.inside) out.push('inside');
+    if (m.s2) out.push('s2');
+    return out;
+  },
+  readouts: (m) => [
+    ['$S_z$ on A $\\to$', m.measuredA ? `${num(m.szA.value, 0)}` : 'not measured'],
+    ['$S_z$ on B $\\to$', m.measuredB ? `${num(m.szB.value, 0)}` : 'not measured'],
+    ...(m.s2 ? [['$S^2$ on A $\\to$', `${num(m.s2A.value, 0)}ħ²`], ['$S^2$ on B $\\to$', `${num(m.s2B.value, 0)}`]] : []),
+  ],
+  advanced(m, ctx, { formal }) {
+    if (!m.inside) return h('p', { class: 'note' }, 'The amplitudes appear here once you look inside the states.');
+    const parts = [
+      texEl(`A = (0,\\ \\tfrac{1}{\\sqrt2},\\ \\tfrac{1}{\\sqrt2},\\ 0),\\quad B = (0,\\ \\tfrac{1}{\\sqrt2},\\ -\\tfrac{1}{\\sqrt2},\\ 0)\\quad\\text{over } |{\\uparrow\\uparrow}\\rangle, |{\\uparrow\\downarrow}\\rangle, |{\\downarrow\\uparrow}\\rangle, |{\\downarrow\\downarrow}\\rangle`, { display: true, tag: 'div', cls: 'equation' }),
+      texEl(`S_z = ${matrixTex(Q.SZ, '\\hbar')},\\qquad S_z A = S_z B = 0`, { display: true, tag: 'div', cls: 'equation' }),
+    ];
+    if (m.s2) parts.push(texEl(`S^2 = ${matrixTex(Q.S2, '\\hbar^2')},\\qquad S^2A = ${num(m.s2A.value, 0)}\\hbar^2 A,\\quad S^2 B = 0`, { display: true, tag: 'div', cls: 'equation' }));
+    if (formal) parts.push(h('p', { class: 'note', html: richText('$[S^2, S_z] = 0$, so both can be measured on the same state (card Q1e). The states with $S_z = 0$ are every normalized combination of $|{\\uparrow\\downarrow}\\rangle$ and $|{\\downarrow\\uparrow}\\rangle$ (card Q1d).') }));
+    return h('div', null, parts);
+  },
+  build(ctx) {
+    const set = (patch) => ctx.setData({ ...ctx.data(), ...patch });
+    const view = createSpinStates({ labels: Q.BASIS });
+    const indicatorA = createZeroIndicator();
+    const indicatorB = createZeroIndicator();
+    const conj = conjectureBox();
+    const mA = button({ label: 'Measure S_z on A', onclick: () => set({ measuredA: true }) });
+    const mB = button({ label: 'Measure S_z on B', onclick: () => set({ measuredB: true }) });
+    const look = button({ label: 'Look inside', pressed: false, onclick: () => set({ inside: !ctx.data().inside }) });
+    const yes = button({ label: 'Another measurement can tell them apart', onclick: () => set({ prediction: 'can' }) });
+    const no = button({ label: 'No measurement can tell them apart', onclick: () => set({ prediction: 'cannot' }) });
+    const s2 = button({ label: 'Measure S² on both', onclick: () => set({ s2: true }) });
+    const s2note = h('p', { class: 'note' }, 'Commit a prediction first.');
+    const reset = button({ label: 'Start again', onclick: () => ctx.setData(startSpin()) });
+    return {
+      figure: figure(view.el, h('p', { class: 'caption' }, h('strong', null, 'Two states, one measurement at a time. '), 'A reading appears on a state only after it is measured. Looking inside shows the amplitudes over the four basis states.')),
+      controls: group(row(mA.el, mB.el), look.el, h('div', { class: 'sub-label' }, 'Your prediction'), yes.el, no.el, h('div', { class: 'sub-label' }, 'A second measurement'), s2.el, s2note, reset.el, conj),
+      instruments: h('div', { class: 'block' }, h('div', { class: 'section-label' }, 'The readings'), indicatorA.el, indicatorB.el),
+      update(m) {
+        const names = ctx.formal ? ['triplet $|1,0\\rangle$', 'singlet $|0,0\\rangle$'] : [null, null];
+        view.update({
+          inside: m.inside,
+          states: [
+            { name: 'A', amps: Q.STATE_A, ket: ket('+'), sz: m.measuredA ? m.szA.value : null, s2: m.s2 ? m.s2A.value : null, formalName: names[0] && richText(names[0]) },
+            { name: 'B', amps: Q.STATE_B, ket: ket('-'), sz: m.measuredB ? m.szB.value : null, s2: m.s2 ? m.s2B.value : null, formalName: names[1] && richText(names[1]) },
+          ],
+        });
+        indicatorA.el.hidden = !m.measuredA;
+        indicatorB.el.hidden = !m.measuredB;
+        if (m.measuredA) indicatorA.set({ what: 'S_z on A', value: [m.szA.value], size: Math.abs(m.szA.value), state: zeroState(Math.abs(m.szA.value), true), sizeLabel: '|S_z|' });
+        if (m.measuredB) indicatorB.set({ what: 'S_z on B', value: [m.szB.value], size: Math.abs(m.szB.value), state: zeroState(Math.abs(m.szB.value), true), sizeLabel: '|S_z|' });
+        look.press(!!m.inside);
+        yes.press(m.prediction === 'can');
+        no.press(m.prediction === 'cannot');
+        s2.el.toggleAttribute('disabled', !m.prediction);
+        s2note.hidden = !!m.prediction;
+        conj.hidden = !m.prediction;
+        if (m.prediction) {
+          conj.innerHTML = `<b>Your prediction:</b> ${m.prediction === 'can' ? 'another measurement can tell A from B' : 'no measurement can tell A from B'}.${m.s2 ? ` <b>The test:</b> S² gave ${num(m.s2A.value, 0)}ħ² for A and 0 for B, so a second measurement ${m.prediction === 'can' ? 'did' : 'did, against the prediction,'} tell them apart.` : ''}`;
+        }
+      },
+    };
+  },
+};
+
 // ── stage 3 ──────────────────────────────────────────────────────────────────────────────────────
 
 const stage3 = {
@@ -506,12 +609,20 @@ const stage3b = {
     });
     const back = button({ label: 'Back to the zero', onclick: () => { ctx.flags.preview = null; ctx.refresh(); } });
 
+    const ladder = h(
+      'section',
+      { class: 'transfer ladder' },
+      h('h3', null, C.ladder.title),
+      h('p', { class: 'note' }, C.ladder.intro),
+      ...C.ladder.items.map((it) => h('article', { class: 'ladder-item' }, h('strong', null, it.title), texEl(it.equation, { tag: 'span' }), h('p', null, it.text), h('p', { class: 'tq-text' }, it.question))),
+    );
     const tq = h('section', { class: 'transfer' }, h('h3', null, 'Questions brought back from the mass zero'), h('p', { class: 'note' }, C.transferIntro), ...transferCards('pair.A'));
     return {
       figure: figure(
         scene.el,
         h('p', { class: 'caption' }, h('strong', null, 'Collected configurations. '), 'Each is drawn in one fixed oblique view, which is a 2D picture, not the configuration itself.'),
         strip.el,
+        ladder,
         tq,
       ),
       controls: group(
@@ -557,7 +668,7 @@ export default {
   title: CHAPTER.title,
   question: CHAPTER.question,
   hashPrefix: 's',
-  stages: [stage1, stage2, stage3, stage3b],
+  stages: [stage1, stage2, stage2b, stage3, stage3b],
   connections: [],
   investigation: [
     ['backbone.primary', 'Primary backbone'],

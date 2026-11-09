@@ -75,3 +75,21 @@ test('rule 7–8: transfer questions cite established source relations, carry no
 test('zero-producing sets have no structure chosen in advance', () => {
   for (const z of graph.zeroProducingSets) assert.equal(z.structure, null, z.id);
 });
+
+test('the spin pair is recorded as distinct from the MRI-motivated ensemble (no conflation)', () => {
+  const spin = graph.objects.find((o) => o.id === 'obj.spin-pair');
+  assert.ok(spin.distinctFrom.includes('obj.moments'));
+  for (const p of graph.pairs) assert.ok(![p.sourceObject.id, p.targetObject.id].includes('obj.spin-pair'), `${p.id} must not pair the spin case with the ensemble`);
+});
+
+test('states consistent with one observed value: no structure chosen; the distinction cites PASS cards', () => {
+  for (const c of graph.consistentSets) assert.equal(c.structure, null, c.id);
+  for (const d of graph.distinctions) for (const id of d.cards) assert.equal(ledger[id]?.verdict, 'PASS', `${d.id}: ${id}`);
+});
+
+test('the three Chapter I observations stay separate, each resting on established relations', () => {
+  const steps = graph.observationLadder.steps;
+  assert.equal(steps.length, 3);
+  for (const st of steps) for (const rid of st.relations) assert.equal(relations.get(rid)?.status, 'established', `${st.id}: ${rid}`);
+  assert.match(graph.observationLadder.note, /not one theorem/);
+});
