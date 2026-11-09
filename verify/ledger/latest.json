@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-24T15:54:33+00:00",
- "commit": "001f45b",
+ "generated": "2026-11-09T23:23:15+00:00",
+ "commit": "3309ee8",
  "cards": {
   "B1a": {
    "script": "verify_B1_B7.py",
@@ -457,6 +457,66 @@
    "verdict": "PASS",
    "everFailed": false,
    "claim": "[paper's claim] eigenvalues roughly evenly spaced in log: gaps [-0.69, -0.67, -0.8, -0.98], spread 0.31 < 0.35 decade"
+  },
+  "Z1a": {
+   "script": "verify_Z1_Z3.py",
+   "verdict": "FAIL",
+   "everFailed": true,
+   "claim": "v + (-v) = 0 for every v in R^2, and |v|^2 = v1^2 + v2^2 is 0 only at v = 0 (so both vectors can be nonzero)"
+  },
+  "Z1a2": {
+   "script": "verify_Z1_Z3.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[added after Z1a FAILED: the check, not the claim, was wrong] v + (-v) = 0, and a vector with a nonzero coordinate has positive length: n^2 + v2^2 > 0 and v1^2 + n^2 > 0 for real n != 0"
+  },
+  "Z1b": {
+   "script": "verify_Z1_Z3.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "v + w = 0 has the single solution w = -v for each v: a two-parameter family of pairs gives the same zero reading"
+  },
+  "Z2a": {
+   "script": "verify_Z1_Z3.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "four tetrahedral contributions of equal nonzero length have resultant exactly 0"
+  },
+  "Z2b": {
+   "script": "verify_Z1_Z3.py",
+   "verdict": "FAIL",
+   "everFailed": true,
+   "claim": "any three contributions m1, m2, m3 fix a fourth, m4 = -(m1 + m2 + m3), and then the resultant is exactly 0"
+  },
+  "Z2b2": {
+   "script": "verify_Z1_Z3.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[added after Z2b FAILED: the check, not the claim, was wrong] for symbolic m1, m2, m3 in R^3, m4 = -(m1 + m2 + m3) makes the resultant exactly 0"
+  },
+  "Z2c": {
+   "script": "verify_Z1_Z3.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "turning two contributions about the line of their sum keeps their sum, so the resultant stays 0 (Rodrigues, symbolic angle)"
+  },
+  "Z3a": {
+   "script": "verify_Z1_Z3.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "F(R) = sum m_i (r_i - R) equals M (R_CM - R) with M = sum m_i and R_CM = sum m_i r_i / M"
+  },
+  "Z3b": {
+   "script": "verify_Z1_Z3.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "with every m_i > 0, F(R) = 0 has exactly one solution, R = R_CM; different configurations can share that point"
+  },
+  "Z3c": {
+   "script": "verify_Z1_Z3.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "shifting every mass by the same step a moves the balancing point by a: R_CM(r + a) = R_CM(r) + a"
   }
  }
 }

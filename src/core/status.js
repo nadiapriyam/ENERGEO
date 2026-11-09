@@ -7,10 +7,10 @@ import ledger from '../../verify/ledger/latest.json';
 import { h } from './dom.js';
 
 export const LEVELS = {
-  1: { name: 'Established', title: 'Level 1: Established / Known' },
-  2: { name: 'Derived', title: 'Level 2: Derived connection / Supported inference' },
-  3: { name: 'Hypothesis', title: 'Level 3: Testable hypothesis' },
-  4: { name: 'Open', title: 'Level 4: Open or speculative connection' },
+  1: { name: 'ESTABLISHED', title: 'Level 1: established (verified by its cards)' },
+  2: { name: 'DERIVED CONNECTION', title: 'Level 2: derived connection' },
+  3: { name: 'HYPOTHESIS', title: 'Level 3: hypothesis, not a result' },
+  4: { name: 'OPEN QUESTION', title: 'Level 4: open question' },
 };
 
 export const REPO = 'https://github.com/nadiapriyam/ENERGEO/blob/main/';

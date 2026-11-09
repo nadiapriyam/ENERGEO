@@ -168,6 +168,80 @@
       "text": "Candidate pattern: Object → Representation → Transformation → Invariant → Decomposition → Geometry, plus what became visible, hidden or lost (Nadia's hypothesis H2).",
       "cards": [],
       "source": "research/hypotheses/H2.md"
+    },
+    "zero.pair": {
+      "level": 1,
+      "text": "v + w = 0 exactly when w = −v. Every nonzero v has such a partner, so one zero reading comes from a whole family of pairs of nonzero vectors.",
+      "cards": [
+        "Z1a2",
+        "Z1b"
+      ]
+    },
+    "zero.ensemble": {
+      "level": 1,
+      "text": "A resultant can be exactly zero while every contribution is nonzero: four equal contributions toward the corners of a regular tetrahedron sum to 0. Any n − 1 contributions fix the last one, m_n = −(m_1 + … + m_{n−1}), so many configurations give the same zero.",
+      "cards": [
+        "Z2a",
+        "Z2b2"
+      ]
+    },
+    "zero.twist": {
+      "level": 1,
+      "text": "Turning two contributions together about the line of their sum leaves their sum unchanged, so the resultant stays exactly what it was.",
+      "cards": [
+        "Z2c"
+      ]
+    },
+    "zero.first-moment": {
+      "level": 1,
+      "text": "F(R) = Σ m_i (r_i − R) = M (R_CM − R), with M = Σ m_i and R_CM = Σ m_i r_i / M. With every mass positive, F(R) = 0 at R = R_CM and nowhere else.",
+      "cards": [
+        "Z3a",
+        "Z3b"
+      ]
+    },
+    "zero.cm-shift": {
+      "level": 1,
+      "text": "Shifting every mass by the same step moves the balancing point R_CM by that step.",
+      "cards": [
+        "Z3c"
+      ]
+    },
+    "backbone.primary": {
+      "level": 3,
+      "text": "What appears as zero, cancellation, or balance in one representation may be evidence of an underlying geometric constraint.",
+      "cards": [],
+      "source": "docs/restructure_decisions.md"
+    },
+    "idea.hidden-family": {
+      "level": 3,
+      "text": "A single observed zero may correspond to a nontrivial family of hidden states.",
+      "cards": [],
+      "source": "docs/restructure_decisions.md"
+    },
+    "Q.cancellation-information": {
+      "level": 4,
+      "text": "What information is contained in the cancellation state itself?",
+      "cards": [],
+      "source": "docs/restructure_decisions.md"
+    },
+    "Q.zero-inference": {
+      "level": 4,
+      "text": "What can be inferred from the zero state while it remains zero?",
+      "cards": [],
+      "source": "docs/restructure_decisions.md"
+    },
+    "Q.zero-generators": {
+      "level": 4,
+      "text": "When presented with a zero-valued result, can we determine the hidden rules or structure that generated that zero?",
+      "cards": [],
+      "source": "docs/restructure_decisions.md"
+    },
+    "Q.pairA": {
+      "level": 4,
+      "text": "Are proton cancellation and mass balance two unrelated constructions, or do they admit a common representation?",
+      "cards": [],
+      "source": "docs/restructure_decisions.md"
     }
   }
 }

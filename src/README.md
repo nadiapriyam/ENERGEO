@@ -51,6 +51,18 @@ Colour has one job: the sign of a contribution to an inner product.
 
 The pair was validated with the dataviz palette checker, in both light and dark, including colour-blind separation.
 
+## Discovery stages (Chapter I on)
+
+A stage with `discovery: true` follows the discovery rules in `CLAUDE.md`. Its words live in a copy module (`interactives/zero/copy.js`) so `test/copy.test.js` can check them. A stage supplies:
+
+- **measurement**: what is measured, shown from the start.
+- **observations** and **observe(model, ctx)**: the observation record, kept per stage in `localStorage`.
+- **steps** with a **phase** each; **formal**, shown from the formalize step on, in every mode.
+- **num**: the global stage number (`1`, `3b`). The hash is `#s<num>`.
+- **pair**, **questions**: the candidate pair card and the research questions in the bottom strip, from `research/graph.json` and `research/claims.json`.
+
+The shared measurement grammar (`views/zeroIndicator.js`) reports "measurement → value" and draws an exact 0, a near 0 and a nonzero reading the same way in every stage. "Exact" is a property of how a state was constructed; the floating-point residual is printed separately.
+
 ## Adding the next interactive
 
 1. Add `src/interactives/<name>/index.js` exporting `{ id, hashPrefix, mapNumber, title, question, stages, connections, investigation }`, and optionally `next: { label, hash }`, offered once the last stage is reached.

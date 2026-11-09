@@ -33,8 +33,8 @@ jobs:
             echo "::endgroup::"
           done
           echo "PASS: $(grep -cE '^\S+\s+PASS' cards.txt)   FAIL: $(grep -cE '^\S+\s+FAIL' cards.txt)"
-          echo "FAILs on record by rule (kept, never rewritten): S14a, C8c, B5a"
+          echo "FAILs on record by rule (kept, never rewritten): S14a, C8c, B5a, Z1a, Z2b"
           grep -E '^\S+\s+FAIL' cards.txt || true
           # A FAIL that is not already on record turns this run red.
-          unexpected=$(grep -E '^\S+\s+FAIL' cards.txt | awk '{print $1}' | grep -vxE 'S14a|C8c|B5a' || true)
+          unexpected=$(grep -E '^\S+\s+FAIL' cards.txt | awk '{print $1}' | grep -vxE 'S14a|C8c|B5a|Z1a|Z2b' || true)
           if [ -n "$unexpected" ]; then echo "New FAIL: $unexpected"; exit 1; fi

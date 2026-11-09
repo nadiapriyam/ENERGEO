@@ -960,3 +960,395 @@ p {
     animation: none !important;
   }
 }
+
+/* ── Chapter I: discovery stages ─────────────────────────────────────────────────────────────────
+   Observation record, phase chips, the formal block (shown only at the formalize step), the shared zero
+   indicator (measurement → value, one look for an exact 0), learner predictions, pairs and transfer questions. */
+
+.level {
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+}
+
+.stage-head .origin {
+  font-size: var(--step--1);
+  color: var(--ink-2);
+  border-left: 2px solid var(--rule);
+  padding-left: 10px;
+  margin-top: 6px;
+}
+
+.observed {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.observed li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.observed li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.observed li.empty {
+  color: var(--ink-3);
+  padding-left: 0;
+}
+
+.observed li.empty::before {
+  display: none;
+}
+
+.steps .phase {
+  display: inline-block;
+  font-family: var(--font-data);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0 5px;
+  margin-right: 6px;
+  vertical-align: 1px;
+}
+
+.steps li.current .phase {
+  color: var(--ink);
+  border-color: var(--ink-3);
+}
+
+.block.formal {
+  border-left: 3px solid var(--ink);
+  padding-left: 12px;
+}
+
+.formal-line {
+  margin: 6px 0;
+}
+
+.sub-label {
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--ink-2);
+  margin-top: 6px;
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.notes-wait p {
+  margin: 0;
+}
+
+/* Shared zero indicator. The ring is the same in the readout and in every drawing. */
+.zero-indicator {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 10px 12px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--surface);
+  font-size: var(--step--1);
+}
+
+.zero-glyph {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--ink-3);
+  margin-top: 1px;
+  box-sizing: border-box;
+}
+
+.zero-indicator[data-state="exact"] .zero-glyph {
+  border: 2px solid var(--ink);
+  box-shadow: inset 0 0 0 3px var(--surface), inset 0 0 0 10px var(--ink);
+}
+
+.zero-indicator[data-state="near"] .zero-glyph {
+  border: 2px dashed var(--ink);
+}
+
+.zero-indicator[data-state="none"] .zero-glyph {
+  border-color: var(--rule);
+}
+
+.svg-zero-ring {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2;
+  visibility: hidden;
+}
+
+.svg-zero-ring[data-state="exact"] {
+  visibility: visible;
+}
+
+.svg-zero-ring[data-state="near"] {
+  visibility: visible;
+  stroke-dasharray: 4 3;
+}
+
+.svg-resultant {
+  stroke: var(--ink);
+  stroke-width: 4;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.svg-resultant-head {
+  fill: var(--ink);
+}
+
+.svg-vec.ghost {
+  stroke: var(--ink-3);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 4;
+}
+
+.svg-vec.ghost-head {
+  fill: var(--ink-3);
+}
+
+.svg-vec.alt-head {
+  fill: var(--ink-2);
+}
+
+.svg-vec-head {
+  fill: var(--ink);
+}
+
+.svg-term {
+  stroke: var(--ink-2);
+  stroke-width: 1.5;
+}
+
+.svg-term-head {
+  fill: var(--ink-2);
+}
+
+.svg-mass {
+  fill: color-mix(in oklab, var(--ink) 14%, var(--surface));
+  stroke: var(--ink);
+  stroke-width: 1.5;
+  cursor: grab;
+}
+
+.mass.selected .svg-mass {
+  stroke-width: 3;
+}
+
+.mass:focus-visible .svg-mass {
+  stroke-dasharray: 3 2;
+}
+
+.svg-mass-label {
+  font-family: var(--font-math);
+  font-style: italic;
+  font-size: 13px;
+  fill: var(--ink);
+  pointer-events: none;
+}
+
+.svg-prediction {
+  fill: none;
+  stroke: var(--ink-2);
+  stroke-width: 1.75;
+  stroke-dasharray: 3 3;
+}
+
+.svg-cm {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.svg-r-mark {
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+svg.placing {
+  cursor: crosshair;
+}
+
+.scene3d.ensemble {
+  aspect-ratio: 5 / 4;
+}
+
+.scene3d .lbl.m-lbl {
+  font-size: 15px;
+  color: var(--ink-2);
+}
+
+.scene3d .lbl.m-lbl.selected {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.scene3d .lbl.total-lbl {
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.scene3d .lbl.zero-ring-3d {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  visibility: hidden;
+}
+
+.scene3d .lbl.zero-ring-3d[data-state="exact"] {
+  visibility: visible;
+}
+
+.scene3d .lbl.zero-ring-3d[data-state="near"] {
+  visibility: visible;
+  border-style: dashed;
+}
+
+/* A learner's prediction: their commitment, never a research status. Square corners and no badge. */
+.conjecture {
+  border: 1px dashed var(--ink-3);
+  border-radius: 2px;
+  padding: 8px 10px;
+  font-size: var(--step--1);
+  background: var(--paper);
+}
+
+.pair-card {
+  display: grid;
+  gap: 4px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 10px 12px;
+  background: var(--surface);
+  font-size: var(--step--1);
+}
+
+.pair-card p {
+  margin: 0;
+}
+
+.pair-head {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pair-side {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pair-role {
+  font-family: var(--font-data);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.transfer {
+  display: grid;
+  gap: 10px;
+}
+
+.transfer h3 {
+  margin: 8px 0 0;
+  font-size: var(--step-1);
+}
+
+.tq-card {
+  border: 1px dotted var(--ink-3);
+  border-radius: 6px;
+  padding: 10px 12px;
+  display: grid;
+  gap: 4px;
+  background: var(--surface);
+}
+
+.tq-card p {
+  margin: 0;
+}
+
+.tq-head {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tq-id {
+  font-family: var(--font-data);
+  font-size: var(--step--1);
+  color: var(--ink-3);
+}
+
+.tq-text {
+  font-size: var(--step-0);
+}
+
+.tq-from {
+  font-size: var(--step--1);
+  color: var(--ink-2);
+}
+
+.config-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.config {
+  margin: 0;
+  width: 128px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 6px;
+  background: var(--surface);
+}
+
+.config svg {
+  width: 100%;
+  height: auto;
+}
+
+.config figcaption {
+  font-size: 0.72rem;
+  color: var(--ink-2);
+  line-height: 1.35;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.steps .step-head {
+  display: block;
+}
+
+.steps .step-head .prompt {
+  display: inline;
+}

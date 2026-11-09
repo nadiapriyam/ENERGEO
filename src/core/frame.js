@@ -10,11 +10,20 @@
 // Modes: Guided shows the steps; Explore frees every control; Advanced adds the full numbers and matrices.
 // An interactive may name `next: { label, hash }`, offered once its last stage is reached. mountInteractive returns
 // { destroy } so main.js can swap interactives on the same page.
+//
+// Discovery stages (stage.discovery = true; Chapter I onward) follow DR-1 and DR-4 of the restructuring report:
+//   measurement   what is measured, shown from the start (the readout's definition, not the explanation)
+//   observations  { id: text }, recorded live when stage.observe(model, ctx) returns their ids
+//   steps         each with a phase: observe, manipulate, detect, conjecture, test, formalize
+//   formal        { equation, lines, statements }: shown only once the formalize step is reached, in every mode
+//   num           the global stage number ('1', '3b'); the hash is #s<num>
 
 import { h, clear } from './dom.js';
 import { createStore, safeStorage } from './store.js';
 import { texEl, richText } from './tex.js';
 import { statementRow, levelBadge, statement, ledgerStamp, REPO } from './status.js';
+import { pairCard } from './graph.js';
+import { PHASE_LABEL } from '../interactives/zero/copy.js';
 import { MASTER_MAP, neighbours } from '../interactives/registry.js';
 
 const MODES = [
@@ -25,6 +34,8 @@ const MODES = [
 
 export function mountInteractive(root, def, journey) {
   const progressKey = `energeo.progress.${def.id}`;
+  const observedKey = `energeo.observed.${def.id}`;
+  const observed = safeStorage.read(observedKey, {});
   const prefs = createStore({
     mode: safeStorage.read('energeo.mode', 'guided'),
     stage: stageFromHash(def) ?? 0,
@@ -41,7 +52,7 @@ export function mountInteractive(root, def, journey) {
     h(
       'div',
       { class: 'top-titles' },
-      h('div', { class: 'brand' }, h('b', null, 'Geometry of Representation'), h('span', null, `Master Map, interactive ${def.mapNumber}`)),
+      h('div', { class: 'brand' }, h('b', null, 'Geometry of Representation'), h('span', null, def.kicker ?? `Master Map, interactive ${def.mapNumber}`)),
       h('h1', { class: 'title' }, def.title),
       h('p', { class: 'top-question', html: richText(def.question) }),
     ),
@@ -65,7 +76,7 @@ export function mountInteractive(root, def, journey) {
 
   def.stages.forEach((st, i) => {
     railList.append(
-      h('li', null, h('button', { type: 'button', 'data-i': i, onclick: () => go(i) }, h('span', { class: 'num' }, String(i + 1)), h('span', null, st.title), h('span', { class: 'rep', html: richText(`$${st.rep}$`) }))),
+      h('li', null, h('button', { type: 'button', 'data-i': i, onclick: () => go(i) }, h('span', { class: 'num' }, st.num ?? String(i + 1)), h('span', null, st.title), h('span', { class: 'rep', html: richText(`$${st.rep}$`) }))),
     );
   });
 
@@ -75,10 +86,61 @@ export function mountInteractive(root, def, journey) {
   let readoutEl = null;
   let stepsEl = null;
   let advancedEl = null;
+  let observedEl = null;
+  let formalEl = null;
+  let lastFormal = null;
+
+  const formalIndex = (st) => st.steps.findIndex((x) => x.phase === 'formalize');
+  /** A discovery stage's end notes wait for its formal rule or, in a stage with none, for its last step. */
+  const notesOpenFor = (st) => !st.discovery || formalReached(st) || (formalIndex(st) < 0 && (prefs.get().progress[st.id] ?? 0) >= st.steps.length);
+  /** The formal rule is shown once the formalize step is reached, in every mode (DR-4). */
+  function formalReached(st) {
+    const f = formalIndex(st);
+    return f >= 0 && (prefs.get().progress[st.id] ?? 0) >= f;
+  }
+
+  function recordObservations(st, model) {
+    if (!st.observe) return;
+    const have = ctx.observed;
+    let changed = false;
+    for (const id of st.observe(model, ctx)) {
+      if (!have.has(id)) {
+        have.add(id);
+        changed = true;
+      }
+    }
+    if (changed) {
+      observed[st.id] = [...have];
+      safeStorage.write(observedKey, observed);
+    }
+  }
+
+  function renderObserved(st) {
+    const ids = Object.keys(st.observations).filter((id) => ctx.observed.has(id));
+    observedEl.replaceChildren(
+      ...(ids.length ? ids.map((id) => h('li', { html: richText(st.observations[id]) })) : [h('li', { class: 'empty' }, 'Nothing yet. Observations appear here as you find them.')]),
+    );
+  }
+
+  function renderFormal(st) {
+    if (!formalReached(st)) {
+      clear(formalEl);
+      formalEl.hidden = true;
+      return;
+    }
+    formalEl.hidden = false;
+    const f = st.formal;
+    clear(formalEl).append(
+      h('div', { class: 'section-label' }, 'The rule'),
+      texEl(f.equation, { display: true, tag: 'div', cls: 'equation' }),
+      ...f.lines.map((l) => h('p', { class: 'formal-line', html: richText(l) })),
+      h('ul', { class: 'statements' }, f.statements.map(statementRow)),
+    );
+  }
 
   function go(i) {
     prefs.set({ stage: i });
-    const token = `${def.hashPrefix}-${i + 1}`;
+    const token = stageToken(def, i);
     if (location.hash !== `#${token}`) history.replaceState(null, '', `#${token}`);
   }
 
@@ -93,6 +155,10 @@ export function mountInteractive(root, def, journey) {
     const c = {
       stage,
       flags,
+      observed: new Set(observed[stage.id] ?? []),
+      get formal() {
+        return formalReached(stage);
+      },
       get mode() {
         return prefs.get().mode;
       },
@@ -121,7 +187,7 @@ export function mountInteractive(root, def, journey) {
     ui = st.build(ctx);
 
     clear(centre).append(
-      h('div', { class: 'stage-head' }, h('h2', null, `${prefs.get().stage + 1}. ${st.title}`), h('p', { html: richText(st.question) })),
+      h('div', { class: 'stage-head' }, h('h2', null, `${st.num ?? prefs.get().stage + 1}. ${st.title}`), h('p', { html: richText(st.question) }), st.origin ? h('p', { class: 'origin', html: richText(st.origin) }) : null),
       ui.figure,
     );
 
@@ -136,6 +202,23 @@ export function mountInteractive(root, def, journey) {
 
     stepsEl = h('ol', { class: 'steps' });
     advancedEl = h('div', { class: 'block advanced' });
+    if (st.discovery) {
+      observedEl = h('ul', { class: 'observed' });
+      formalEl = h('div', { class: 'block formal' });
+      clear(left).append(
+        h('div', { class: 'block' }, h('div', { class: 'section-label' }, 'What is measured'), texEl(st.measurement.equation, { display: true, tag: 'div', cls: 'equation' }), symbolList(st.measurement.symbols)),
+        h('div', { class: 'block' }, h('div', { class: 'section-label' }, 'Observed so far'), observedEl),
+        h('div', { class: 'block' }, h('div', { class: 'section-label' }, prefs.get().mode === 'guided' ? 'Steps' : 'Things to try'), stepsEl),
+        formalEl,
+        advancedEl,
+      );
+      lastFormal = null;
+      renderStrip(st);
+      renderRail();
+      applyMode();
+      refresh();
+      return;
+    }
     clear(left).append(
       h('div', { class: 'block' }, h('div', { class: 'section-label' }, 'The equation'), texEl(st.equation, { display: true, tag: 'div', cls: 'equation' }), symbolList(st.symbols)),
       h('div', { class: 'block' }, h('div', { class: 'section-label' }, prefs.get().mode === 'guided' ? 'Steps' : 'Things to try'), stepsEl),
@@ -159,6 +242,7 @@ export function mountInteractive(root, def, journey) {
     const st = def.stages[prefs.get().stage];
     const model = st.model(ctx);
     ui.update(model);
+    if (st.discovery) recordObservations(st, model);
 
     clear(readoutEl);
     for (const [label, value, cls] of st.readouts(model, ctx)) {
@@ -176,7 +260,18 @@ export function mountInteractive(root, def, journey) {
       return; // prefs subscriber re-renders the step list
     }
     renderSteps(st, model);
-    if (prefs.get().mode === 'advanced' && st.advanced) clear(advancedEl).append(h('div', { class: 'section-label' }, 'Mathematics in full'), st.advanced(model, ctx));
+    if (st.discovery) {
+      renderObserved(st);
+      renderFormal(st);
+      const open = notesOpenFor(st);
+      if (open !== lastFormal) {
+        lastFormal = open;
+        renderStrip(st);
+      }
+    }
+    // Advanced shows raw numbers at any time, and the relation only once it has been formalized (DR-4).
+    const adv = prefs.get().mode !== 'advanced' ? null : st.discovery ? st.advanced?.(model, ctx, { formal: formalReached(st) }) : st.advanced?.(model, ctx);
+    if (adv) clear(advancedEl).append(h('div', { class: 'section-label' }, st.discovery && !formalReached(st) ? 'Numbers in full' : 'Mathematics in full'), adv);
     else clear(advancedEl);
   }
 
@@ -186,7 +281,8 @@ export function mountInteractive(root, def, journey) {
     clear(stepsEl);
     st.steps.forEach((step, i) => {
       const state = !guided ? '' : i < done ? 'done' : i === done ? 'current' : 'later';
-      const li = h('li', { class: state }, h('span', { class: 'prompt', html: richText(step.prompt) }));
+      const prompt = h('span', { class: 'prompt', html: richText(step.prompt) });
+      const li = h('li', { class: state }, step.phase ? h('div', { class: 'step-head' }, h('span', { class: `phase phase-${step.phase}` }, PHASE_LABEL[step.phase]), prompt) : prompt);
       if (guided && i < done) li.append(h('p', { class: 'then', html: richText(step.then) }));
       if (guided && i === done && step.meter) li.append(h('span', { class: 'meter', html: richText(step.meter(model, ctx)) }));
       stepsEl.append(li);
@@ -194,7 +290,7 @@ export function mountInteractive(root, def, journey) {
     const last = prefs.get().stage === def.stages.length - 1;
     if (guided && done >= st.steps.length && !last) {
       const nx = def.stages[prefs.get().stage + 1];
-      stepsEl.append(h('li', { class: 'current' }, h('button', { type: 'button', class: 'btn', onclick: () => go(prefs.get().stage + 1) }, `Carry this into stage ${prefs.get().stage + 2}: ${nx.title}`)));
+      stepsEl.append(h('li', { class: 'current' }, h('button', { type: 'button', class: 'btn', onclick: () => go(prefs.get().stage + 1) }, `${nx.carryLabel ?? 'Carry this into stage'} ${nx.num ?? prefs.get().stage + 2}: ${nx.title}`)));
     }
     if (last && def.next && (!guided || done >= st.steps.length)) {
       stepsEl.append(h('li', { class: guided ? 'current' : '' }, h('a', { class: 'btn', href: `#${def.next.hash}` }, def.next.label)));
@@ -203,13 +299,21 @@ export function mountInteractive(root, def, journey) {
 
   function renderStrip(st) {
     const n = st.notice;
-    const map = neighbours(def.mapNumber);
+    const map = def.map ?? neighbours(def.mapNumber);
     const trail = st.carry.trail(journey);
+    // In a discovery stage the notes summarise what was found, so they wait (notesOpenFor).
+    const notesOpen = notesOpenFor(st);
     clear(strip).append(
-      h('div', { class: 'notice' }, h('h3', null, 'What changed'), h('p', { html: richText(n.changed) })),
-      h('div', { class: 'notice' }, h('h3', null, 'What stayed the same'), h('p', { html: richText(n.held) })),
-      h('div', { class: 'notice' }, h('h3', null, 'What became visible'), h('p', { html: richText(n.visible) })),
-      h('div', { class: 'notice' }, h('h3', null, 'What became hidden or lost'), h('p', { html: richText(n.hidden) })),
+      ...(notesOpen
+        ? [
+            h('div', { class: 'notice' }, h('h3', null, 'What changed'), h('p', { html: richText(n.changed) })),
+            h('div', { class: 'notice' }, h('h3', null, 'What stayed the same'), h('p', { html: richText(n.held) })),
+            h('div', { class: 'notice' }, h('h3', null, 'What became visible'), h('p', { html: richText(n.visible) })),
+            h('div', { class: 'notice' }, h('h3', null, 'What became hidden or lost'), h('p', { html: richText(n.hidden) })),
+          ]
+        : [h('div', { class: 'wide notes-wait' }, h('p', { class: 'muted' }, `What changed, what stayed the same, what became visible and what became hidden: these notes appear once you have ${formalIndex(st) < 0 ? 'finished this stage’s steps' : 'found this stage’s rule'}.`))]),
+      ...(st.questions?.length ? [h('div', { class: 'wide' }, h('h3', null, 'Research questions this stage raises'), h('ul', { class: 'statements' }, st.questions.map(statementRow)))] : []),
+      ...(st.pair ? [h('div', { class: 'wide' }, h('h3', null, 'Candidate pair'), pairCard(st.pair, st.pairRole))] : []),
       h(
         'div',
         { class: 'wide' },
@@ -224,9 +328,10 @@ export function mountInteractive(root, def, journey) {
           'ul',
           { class: 'links' },
           def.connections.map(([id, note]) => h('li', null, h('a', { href: `${REPO}research/connections/${id}.md`, target: '_blank', rel: 'noopener' }, id), h('span', { class: 'muted' }, note))),
-          def.investigation.map((id) =>
-            h('li', null, levelBadge(statement(id).level), h('a', { href: REPO + statement(id).source, target: '_blank', rel: 'noopener' }, id.split('.')[0]), h('span', { class: 'muted' }, 'an investigation, not a result')),
-          ),
+          def.investigation.map((entry) => {
+            const [id, label] = Array.isArray(entry) ? entry : [entry, entry.split('.')[0]];
+            return h('li', null, levelBadge(statement(id).level), h('a', { href: REPO + statement(id).source, target: '_blank', rel: 'noopener' }, label), h('span', { class: 'muted' }, 'an investigation, not a result'));
+          }),
           h('li', null, h('span', null, 'Before:'), mapLink(map.prev)),
           h('li', null, h('span', null, 'After:'), mapLink(map.next)),
         ),
@@ -288,8 +393,19 @@ export function mountInteractive(root, def, journey) {
 }
 
 function stageFromHash(def) {
+  const byNum = location.hash.match(/^#s(\w+)$/);
+  if (byNum) {
+    const i = def.stages.findIndex((st) => st.num === byNum[1]);
+    return i >= 0 ? i : null;
+  }
   const m = location.hash.match(new RegExp(`^#${def.hashPrefix}-(\\d+)$`));
   if (!m) return null;
   const i = Number(m[1]) - 1;
   return i >= 0 && i < def.stages.length ? i : null;
+}
+
+/** #s<num> for numbered (Chapter) stages, #<prefix>-<i> for the earlier interactives. */
+function stageToken(def, i) {
+  const st = def.stages[i];
+  return st.num ? `s${st.num}` : `${def.hashPrefix}-${i + 1}`;
 }
