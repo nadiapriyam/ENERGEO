@@ -93,3 +93,18 @@ test('the three Chapter I observations stay separate, each resting on establishe
   for (const st of steps) for (const rid of st.relations) assert.equal(relations.get(rid)?.status, 'established', `${st.id}: ${rid}`);
   assert.match(graph.observationLadder.note, /not one theorem/);
 });
+
+test('A2: a shared algebraic form is established by PASS cards, says what it does not establish, and leaves the pair open', () => {
+  for (const p of graph.pairs) {
+    const f = p.sharedAlgebraicForm;
+    if (!f) continue;
+    assert.equal(p.status, 'open', `${p.id}: a shared form does not close the pair`);
+    assert.equal(p.candidateCommonRelation, null, `${p.id}: the deeper common relation stays unfilled`);
+    assert.equal(f.status, 'established');
+    assert.ok(f.cards.length > 0);
+    for (const id of f.cards) assert.equal(ledger[id]?.verdict, 'PASS', `${p.id}: ${id}`);
+    for (const c of f.claims) assert.ok(claims[c], `${p.id}: claim ${c}`);
+    assert.ok(f.doesNotEstablish.length >= 4, `${p.id}: the limits of the shared form are recorded`);
+    assert.ok(p.unresolvedQuestions.includes('Q.pairA-transfer'), `${p.id}: the transfer question stays open`);
+  }
+});

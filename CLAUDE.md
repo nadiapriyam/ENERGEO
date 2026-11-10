@@ -5,7 +5,7 @@ Read these before any work, in this order:
 1. `docs/claude_code_prompt.md`: the rules of work. The verifier decides, levels 1–4, step cards, gates, never move a threshold after a result.
 2. `docs/objective.md`: the objective, which document governs what, terms, and level labels.
 3. `docs/gate2_answers.md`, `docs/gate3_decisions.md`, `docs/restructure_decisions.md`: Nadia's decisions, verbatim. They govern wording. The restructuring decisions govern the sequence (Chapters/Acts I–IX; Chapter I is built).
-4. `research/`: hypotheses H1–H3 (each opens with Nadia's exact words), connections C1–C9, open questions, sources, and `graph.json` (the research graph: program, statements, relations, zero-producing sets, candidate pairs).
+4. `research/`: hypotheses H1–H3 (each opens with Nadia's exact words), connections C1–C9, open questions, sources, `graph.json` (the research graph: program, statements, relations, zero-producing sets, candidate pairs), `theories.json` (every theory with its provenance, evidence for and against, and history; ids listed append-only in `theories.ids`) and `theory_coverage.md` (generated from it by `node research/tools/build_coverage.mjs`; `test/theories.test.js` checks every quote).
 
 ## Discovery rules (every interactive from Chapter I on)
 
@@ -34,4 +34,5 @@ Read these before any work, in this order:
 - Present a Level 3 or 4 claim as evidence, or call a result successful because a visual looks good.
 - Work on the finite-energy (Energeo) application until Nadia asks.
 - Call a zero-producing configuration set a kernel, fiber, manifold, equivalence class, null space or orbit in learner copy before its structure is established.
-- Fill in a candidate pair's common relation, or give a transfer question an answer. Pairs carry questions; data is never derived across a pair.
+- Fill in a candidate pair's deeper common relation, or give a transfer question an answer. What cards establish goes in `sharedAlgebraicForm` with its `doesNotEstablish` list; pairs carry questions, and data is never derived across a pair.
+- Delete, or silently rewrite, a theory of Nadia's because it is speculative, unproven or contradicted. Every user-origin theory has a record in `research/theories.json` with its original wording; evidence against it is attached, never used to erase it (`docs/restructure_decisions.md`, governing rule).

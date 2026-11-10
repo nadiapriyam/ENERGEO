@@ -1,0 +1,4148 @@
+{
+  "about": "Theory registry (provenance layer of the research graph). Every record keeps the original wording; evidence against a theory is attached, never used to delete it. Generated from research/tools/theories_source.py; checked by test/theories.test.js; rendered to research/theory_coverage.md.",
+  "kinds": [
+    "hypothesis",
+    "open-question",
+    "derived-connection",
+    "philosophical-exploration",
+    "historical-conjecture",
+    "established"
+  ],
+  "statuses": [
+    "established",
+    "derived",
+    "hypothesis",
+    "open"
+  ],
+  "theories": [
+    {
+      "id": "T-ORIGIN",
+      "label": "The founding hypothesis, whole",
+      "words": "i want to prove a theory correct. evidence: fourier transform: there is an orthonormal basis that is ubiquitous its the inner product of its coefficents. However more importantly, I focus on the relatonship between the coefficents and noticed a pattern. the relationship between f hat (k) * e^2pi*ikt. first i want to prove what is the significance of having orthogonality: examining quadratics- the geometry and it equaling to 0/ it relation to the eucliden geometry. and anything beyond euliciden is a repsentation from representation theory. second i want to prove that due to this geometry there is a pattern of representations and how they develop, leading to my theory of the relationship ridden equation- rather geometry that says that there is a common structure where infinite things are combined my a finite thing to produce a representation. like time and a finite circle geometry producing an infinite sine and cosine with bounds. and that invarient variable like the speed of light which also converges to infinity is an invarient variable that acts as a rule in the manifold (https://pmc.ncbi.nlm.nih.gov/articles/PMC10018491/) remember these are theories that are waiting to be proved, might hace some rough edges however its important to remember we can't assume this is false or true. take this as a hypothesis",
+      "variants": [],
+      "normalizedStatement": "Split by Nadia into H1 → H2 → H3 (prompt §1a); every part below keeps its own record.",
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I–IX"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/claude_code_prompt.md"
+      ],
+      "auditRef": "prompt §1",
+      "audit": {
+        "before": "preserved",
+        "note": "objective.md and the prompt; split into H1–H3"
+      },
+      "interactive": "none",
+      "graphRecord": "program"
+    },
+    {
+      "id": "T-EVIDENCE",
+      "label": "The Fourier evidence",
+      "words": "fourier transform: there is an orthonormal basis that is ubiquitous its the inner product of its coefficents. However more importantly, I focus on the relatonship between the coefficents and noticed a pattern. the relationship between f hat (k) * e^2pi*ikt.",
+      "variants": [
+        {
+          "words": "What these terms represent *together* is seen everywhere in Fourier series and the Fourier transform.",
+          "source": "docs/claude_code_prompt.md"
+        }
+      ],
+      "normalizedStatement": "f̂(k) = ⟨f, e_k⟩ with e_k orthonormal; the pattern Nadia noticed is what f̂(k) and e^{2πikt} represent together.",
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:S2a",
+          "note": "e_k orthonormal"
+        },
+        {
+          "ref": "card:O2a",
+          "note": "f̂(k) is the projection ⟨f, e_k⟩"
+        },
+        {
+          "ref": "card:S2b",
+          "note": "Parseval"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "The established parts are the projection and orthonormality; the \"pattern\" across fields is the hypothesis."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III",
+        "IV"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "O2a",
+        "S2a",
+        "S2b"
+      ],
+      "sourceDocs": [
+        "docs/claude_code_prompt.md",
+        "docs/claude_code_prompt.md"
+      ],
+      "auditRef": "prompt §1, §1b",
+      "audit": {
+        "before": "preserved",
+        "note": "shared evidence block of H1–H3"
+      },
+      "interactive": "Fourier Coefficients (#7) and Orthogonality and Zero (#8), to become stages 6–8",
+      "graphRecord": "H1, H2, H3"
+    },
+    {
+      "id": "T-H1",
+      "label": "H1: orthogonality, quadratics, representation",
+      "words": "first i want to prove what is the significance of having orthogonality: examining quadratics- the geometry and it equaling to 0/ it relation to the eucliden geometry. and anything beyond euliciden is a repsentation from representation theory.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:S1a",
+          "note": "Pythagoras ⟺ orthogonality"
+        },
+        {
+          "ref": "card:O1e",
+          "note": "signature together"
+        },
+        {
+          "ref": "card:S7",
+          "note": "Bessel"
+        },
+        {
+          "ref": "card:S13",
+          "note": "projection residual"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Each consequence of orthogonality is Level 1; why orthogonality keeps appearing across representations is the hypothesis (Gate 3)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "IV",
+        "V"
+      ],
+      "relatedObjects": [
+        "obj.pair"
+      ],
+      "relatedCards": [
+        "O1e",
+        "S13",
+        "S1a",
+        "S7"
+      ],
+      "sourceDocs": [
+        "docs/claude_code_prompt.md"
+      ],
+      "auditRef": "H1",
+      "audit": {
+        "before": "preserved",
+        "note": ""
+      },
+      "interactive": "Orthogonality and Zero (#8), stage 7 of the restructure",
+      "graphRecord": "H1"
+    },
+    {
+      "id": "T-H1-SIGNATURE",
+      "label": "H1-1: orthogonality makes components separable",
+      "words": "The significance I want to investigate is that orthogonality makes components mathematically separable.",
+      "variants": [],
+      "normalizedStatement": "Zero cross terms, independent projection coefficients, Pythagorean/Parseval additivity, residual ⟂ retained part; G = I.",
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:S1a",
+          "note": ""
+        },
+        {
+          "ref": "card:O1e",
+          "note": ""
+        },
+        {
+          "ref": "card:S2b",
+          "note": ""
+        },
+        {
+          "ref": "card:B2a",
+          "note": ""
+        },
+        {
+          "ref": "card:O2f",
+          "note": "cross-talk when G ≠ I"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "IV"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "B2a",
+        "O1e",
+        "O2f",
+        "S1a",
+        "S2b"
+      ],
+      "sourceDocs": [
+        "docs/gate3_decisions.md"
+      ],
+      "auditRef": "H1-1",
+      "audit": {
+        "before": "preserved",
+        "note": ""
+      },
+      "interactive": "#7 stage 4, #8 stages 1–3 and 6",
+      "graphRecord": "claim:ortho.signature"
+    },
+    {
+      "id": "T-H1-TWO-ZEROS",
+      "label": "H1-2: \"equals zero\" can encode two different relationships",
+      "words": "They are interesting precisely because \"equals zero\" can encode two different geometric relationships.",
+      "variants": [],
+      "normalizedStatement": "⟨u, v⟩_M = 0 (orthogonality) and q_M(v) = 0 with v ≠ 0 (null vector, indefinite M) are distinct and never merged.",
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:S12b",
+          "note": "light ray orthogonal to itself"
+        },
+        {
+          "ref": "card:B1d",
+          "note": "null vector"
+        },
+        {
+          "ref": "card:S1a",
+          "note": "orthogonality"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I",
+        "V"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "B1d",
+        "S12b",
+        "S1a"
+      ],
+      "sourceDocs": [
+        "docs/gate3_decisions.md"
+      ],
+      "auditRef": "H1-2",
+      "audit": {
+        "before": "preserved",
+        "note": ""
+      },
+      "interactive": "none yet (claim ortho.null-later exists but is not on screen)",
+      "graphRecord": "claim:ortho.null-later"
+    },
+    {
+      "id": "T-BEYOND-EUCLID-0",
+      "label": "\"Anything beyond Euclidean is a representation\" (original wording)",
+      "words": "and anything beyond euliciden is a repsentation from representation theory.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "historical-conjecture",
+      "status": "hypothesis",
+      "evidenceFor": [],
+      "evidenceAgainst": [
+        {
+          "ref": "doc:docs/gate2_answers.md",
+          "note": "Nadia, Gate 2 answer 7: \"the sentence itself is too absolute and should not be treated as a theorem\""
+        }
+      ],
+      "boundaries": [],
+      "supersededBy": "T-BEYOND-EUCLID",
+      "supersedes": null,
+      "relatedActs": [
+        "IV",
+        "V"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/claude_code_prompt.md"
+      ],
+      "auditRef": "prompt §1, H1",
+      "audit": {
+        "before": "partial",
+        "note": "kept only inside the H1 quotation"
+      },
+      "interactive": "none",
+      "graphRecord": "H1 (inside its words)"
+    },
+    {
+      "id": "T-BEYOND-EUCLID",
+      "label": "Unseen geometries are accessed through representations",
+      "words": "When a geometry cannot be directly seen in ordinary Euclidean space, mathematics gives us a representation through which its relationships can still be studied.",
+      "variants": [
+        {
+          "words": "It is better to say that we access many abstract or higher-dimensional geometries through representations.",
+          "source": "docs/gate2_answers.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:O1b",
+          "note": "a projection does not preserve angles"
+        },
+        {
+          "ref": "card:S6",
+          "note": "G = I built without a picture"
+        },
+        {
+          "ref": "card:O2c",
+          "note": "inner products of waves as arrow dot products"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": "T-BEYOND-EUCLID-0",
+      "relatedActs": [
+        "IV",
+        "V"
+      ],
+      "relatedObjects": [
+        "obj.pair"
+      ],
+      "relatedCards": [
+        "O1b",
+        "O2c",
+        "S6"
+      ],
+      "sourceDocs": [
+        "docs/gate2_answers.md",
+        "docs/gate2_answers.md"
+      ],
+      "auditRef": "Gate 2 answer 7",
+      "audit": {
+        "before": "partial",
+        "note": "objective.md terms list only"
+      },
+      "interactive": "#8 stages 4–8 (restructure stage 8)",
+      "graphRecord": "objective.md \"beyond Euclidean\""
+    },
+    {
+      "id": "T-SEE-ORTHOGONALITY",
+      "label": "Seeing orthogonality where it cannot be drawn",
+      "words": "your stated goal is to show the pattern that lets us see orthogonality when we cannot see it directly.",
+      "variants": [
+        {
+          "words": "how to get an orthonormal basis when you can't visualize it. There must be a way to find that.",
+          "source": "docs/claude_code_prompt.md"
+        },
+        {
+          "words": "The interactive should reveal the pattern that tells us this is orthogonality even when our eyes cannot directly see it.",
+          "source": "docs/gate4_decisions.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:O1e",
+          "note": ""
+        },
+        {
+          "ref": "card:S6",
+          "note": ""
+        },
+        {
+          "ref": "card:O1f",
+          "note": "domain is part of the inner product"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "IV"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "O1e",
+        "O1f",
+        "S6"
+      ],
+      "sourceDocs": [
+        "docs/Mathematical_Basis_Interactive_Design_Spec.md",
+        "docs/claude_code_prompt.md",
+        "docs/gate4_decisions.md"
+      ],
+      "auditRef": "spec Block 2; prompt §1b",
+      "audit": {
+        "before": "preserved",
+        "note": "H1 \"orthogonality detector\""
+      },
+      "interactive": "#8 stages 4–8",
+      "graphRecord": "H1"
+    },
+    {
+      "id": "T-INF-FIN-0",
+      "label": "\"Infinite things converge, finite things don't\" (original wording)",
+      "words": "Infinite things converge, finite things don't.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "historical-conjecture",
+      "status": "hypothesis",
+      "evidenceFor": [],
+      "evidenceAgainst": [
+        {
+          "ref": "doc:docs/gate2_answers.md",
+          "note": "Nadia, Gate 2 answer 2: \"I am not claiming that finite things do not converge\""
+        },
+        {
+          "ref": "card:C8c",
+          "note": "FAIL kept: pointwise vs mean-square"
+        }
+      ],
+      "boundaries": [],
+      "supersededBy": "T-INF-FIN",
+      "supersedes": null,
+      "relatedActs": [
+        "VI",
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C8c"
+      ],
+      "sourceDocs": [
+        "docs/claude_code_prompt.md"
+      ],
+      "auditRef": "prompt §1b",
+      "audit": {
+        "before": "partial",
+        "note": "mentioned in H1 clarifications; no record"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-INF-FIN",
+      "label": "An indefinitely extendable process approaching a finite structure",
+      "words": "I am interested in how an indefinitely extendable process can approach or define a bounded or finite structure.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:C8c2",
+          "note": "Fourier partial sums: mean-square convergence, RMS ~ N^(-1/2)"
+        },
+        {
+          "ref": "card:S7",
+          "note": "Bessel bound"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:C8c",
+          "note": "FAIL kept: the overshoot at a jump never shrinks (convergence depends on the measure)"
+        }
+      ],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": "T-INF-FIN-0",
+      "relatedActs": [
+        "VI",
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C8c",
+        "C8c2",
+        "S7"
+      ],
+      "sourceDocs": [
+        "docs/gate2_answers.md"
+      ],
+      "auditRef": "Gate 2 answer 2",
+      "audit": {
+        "before": "partial",
+        "note": "H1/H3 clarifications only"
+      },
+      "interactive": "none (Act VI, mean-square convergence)",
+      "graphRecord": null
+    },
+    {
+      "id": "T-RELATIONSHIP-RIDDEN",
+      "label": "Structure lives in relationships",
+      "words": "the structure I am interested in seems to live in relationships among objects, transformations, and invariants, rather than in individual numbers considered alone.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "philosophical-exploration",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "A guiding intuition, never stated as a theorem (Gate 2 answer 5)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I–IX"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/gate2_answers.md"
+      ],
+      "auditRef": "Gate 2 answer 5",
+      "audit": {
+        "before": "partial",
+        "note": "objective.md terms list"
+      },
+      "interactive": "none",
+      "graphRecord": "objective.md \"relationship ridden\""
+    },
+    {
+      "id": "T-H2",
+      "label": "H2: a pattern of representations and how they develop",
+      "words": "second i want to prove that due to this geometry there is a pattern of representations and how they develop,",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:S3",
+          "note": "shift becomes phase"
+        },
+        {
+          "ref": "card:S2b",
+          "note": "Parseval"
+        },
+        {
+          "ref": "card:S11",
+          "note": "Fourier transform as quarter-turn"
+        },
+        {
+          "ref": "card:B5a2",
+          "note": "what is lost: phase"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "H2-3: false if no consistent structural relationship appears; failures are kept (several families may result)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "II",
+        "III",
+        "IV",
+        "V"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "B5a2",
+        "S11",
+        "S2b",
+        "S3"
+      ],
+      "sourceDocs": [
+        "docs/claude_code_prompt.md"
+      ],
+      "auditRef": "H2",
+      "audit": {
+        "before": "preserved",
+        "note": ""
+      },
+      "interactive": "#7 and #8 (pattern rows); Chapter I indirectly",
+      "graphRecord": "H2, claim:H2.pattern"
+    },
+    {
+      "id": "T-REPRESENTATION",
+      "label": "R1: different descriptions, one object?",
+      "words": "Can apparently different descriptions become the same object under the correct representation?",
+      "variants": [
+        {
+          "words": "Are these different objects, or different descriptions of one object?",
+          "source": "docs/Interactive_Master_Map.extracted.md"
+        },
+        {
+          "words": "I am investigating whether this repeated architecture occurs broadly enough to constitute a meaningful common structure.",
+          "source": "docs/gate3_decisions.md"
+        }
+      ],
+      "normalizedStatement": "Object → representation → transformation → invariant → decomposition → geometry (H2-1, Level 3; universality Level 4).",
+      "origin": "user",
+      "kind": "open-question",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:S3",
+          "note": ""
+        },
+        {
+          "ref": "card:S2b",
+          "note": ""
+        },
+        {
+          "ref": "card:O2c",
+          "note": "one signal, three representations, one inner product"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Not every representation must follow the pattern (Gate 3, H2-1)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "II",
+        "III",
+        "IV"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "O2c",
+        "S2b",
+        "S3"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/Interactive_Master_Map.extracted.md",
+        "docs/gate3_decisions.md"
+      ],
+      "auditRef": "R1; Master Map #5; H2-1",
+      "audit": {
+        "before": "partial",
+        "note": "H2-1 holds the pattern; the question itself had no record"
+      },
+      "interactive": "#7 → #8 hand-off carries one signal through representations",
+      "graphRecord": "H2"
+    },
+    {
+      "id": "T-VISIBLE-HIDDEN",
+      "label": "R1: what became visible, hidden, preserved or lost?",
+      "words": "What became visible, hidden, preserved or lost?",
+      "variants": [
+        {
+          "words": "What became visible, and what information became hidden or lost?",
+          "source": "docs/gate3_decisions.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:B5a2",
+          "note": "phase lost to the symmetry defect"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I–IX"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "B5a2"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/gate3_decisions.md"
+      ],
+      "auditRef": "R1; H2-1",
+      "audit": {
+        "before": "preserved",
+        "note": "built into every stage as notes"
+      },
+      "interactive": "every stage's \"what became visible / hidden\" notes",
+      "graphRecord": "frame notice"
+    },
+    {
+      "id": "T-H2-ROLES",
+      "label": "H2-2: the form defines, orthogonality organizes",
+      "words": "Both, but they play different roles.",
+      "variants": [],
+      "normalizedStatement": "M (or the inner product) defines the geometry; orthogonality organizes independent directions inside it; A†MA = M says which relationships survive. Not the same concept.",
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:C1b",
+          "note": "preservation ⟺ AᵀMA = M"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "IV",
+        "V"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C1b"
+      ],
+      "sourceDocs": [
+        "docs/gate3_decisions.md"
+      ],
+      "auditRef": "H2-2",
+      "audit": {
+        "before": "preserved",
+        "note": "H2.md"
+      },
+      "interactive": "none",
+      "graphRecord": "H2"
+    },
+    {
+      "id": "T-H3",
+      "label": "H3: the relationship-ridden geometry",
+      "words": "leading to my theory of the relationship ridden equation- rather geometry that says that there is a common structure where infinite things are combined my a finite thing to produce a representation. like time and a finite circle geometry producing an infinite sine and cosine with bounds. and that invarient variable like the speed of light which also converges to infinity is an invarient variable that acts as a rule in the manifold (https://pmc.ncbi.nlm.nih.gov/articles/PMC10018491/)",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:C8a",
+          "note": "wrapping"
+        },
+        {
+          "ref": "card:C8d",
+          "note": "quasi-periodic"
+        },
+        {
+          "ref": "card:C9c",
+          "note": "boost → shear as c → ∞"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "One universal common geometry: Level 4. A common schema with subclasses: Level 3 (Gate 3)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C8a",
+        "C8d",
+        "C9c"
+      ],
+      "sourceDocs": [
+        "docs/claude_code_prompt.md"
+      ],
+      "auditRef": "H3",
+      "audit": {
+        "before": "preserved",
+        "note": ""
+      },
+      "interactive": "none",
+      "graphRecord": "H3"
+    },
+    {
+      "id": "T-SCHEMA",
+      "label": "Unbounded parameter through a constrained geometry: a schema with subclasses",
+      "words": "an unbounded parameter interacting with or being represented through a constrained geometry",
+      "variants": [
+        {
+          "words": "are wrapping, quasi-periodic recurrence and boundary approach different subclasses of a common schema?",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "what happens when an unbounded parameter is represented through bounded geometry?",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:C8a",
+          "note": "wrapping: exact returns"
+        },
+        {
+          "ref": "card:C8d",
+          "note": "quasi-periodic: near returns only"
+        },
+        {
+          "ref": "card:C8b",
+          "note": "boundary approach"
+        },
+        {
+          "ref": "card:S5b",
+          "note": "tanh bound"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:C8c",
+          "note": "FAIL kept (mean-square vs pointwise)"
+        }
+      ],
+      "boundaries": [
+        "The three behaviours are opposite at infinity (exact return, near return, convergence): \"useful evidence, not a problem\" (Gate 3)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C8a",
+        "C8b",
+        "C8c",
+        "C8d",
+        "S5b"
+      ],
+      "sourceDocs": [
+        "docs/gate3_decisions.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R7; H3-2",
+      "audit": {
+        "before": "preserved",
+        "note": "H3-2 and C8"
+      },
+      "interactive": "none",
+      "graphRecord": "H3, C8"
+    },
+    {
+      "id": "T-TIME-CIRCLE-0",
+      "label": "Time + finite circle: \"sines and cosines converge to infinity\" (original wording)",
+      "words": "Adding an infinite object like time to a finite circle geometry makes sines and cosines converge to infinity.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "historical-conjecture",
+      "status": "hypothesis",
+      "evidenceFor": [],
+      "evidenceAgainst": [
+        {
+          "ref": "card:C8a",
+          "note": "|e^{iωt}| = 1 for all t: sine and cosine stay in [−1, 1]"
+        },
+        {
+          "ref": "doc:docs/gate2_answers.md",
+          "note": "Nadia, Gate 2 answer 6: \"That wording in Master Map #18 is misleading\""
+        }
+      ],
+      "boundaries": [],
+      "supersededBy": "T-TIME-CIRCLE",
+      "supersedes": null,
+      "relatedActs": [
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C8a"
+      ],
+      "sourceDocs": [
+        "docs/Interactive_Master_Map.extracted.md"
+      ],
+      "auditRef": "R7; Master Map #18",
+      "audit": {
+        "before": "title-only",
+        "note": "quoted only in the report (AMB-15); no record"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-TIME-CIRCLE",
+      "label": "Unbounded time, bounded circle, bounded values",
+      "words": "an unbounded time parameter combined with a finite circular geometry generates an indefinitely continuing sine/cosine evolution whose values remain bounded",
+      "variants": [],
+      "normalizedStatement": "t ∈ ℝ unbounded; t ↦ (cos ωt, sin ωt) ∈ S¹ bounded; cycles → ∞ while values stay in [−1, 1].",
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:C8a",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": "T-TIME-CIRCLE-0",
+      "relatedActs": [
+        "II",
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C8a"
+      ],
+      "sourceDocs": [
+        "docs/gate2_answers.md"
+      ],
+      "auditRef": "R7; Gate 2 answer 6",
+      "audit": {
+        "before": "preserved",
+        "note": ""
+      },
+      "interactive": "none yet (stage 5 will show t ↦ e^{iωt})",
+      "graphRecord": "H3"
+    },
+    {
+      "id": "T-TWO-INFINITIES",
+      "label": "Two kinds of infinity",
+      "words": "So there are potentially two very different kinds of infinity:",
+      "variants": [],
+      "normalizedStatement": "t → ∞ and the number of completed cycles → ∞, while sin ωt, cos ωt ∈ [−1, 1].",
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/gate2_answers.md"
+      ],
+      "auditRef": "Gate 2 answer 6",
+      "audit": {
+        "before": "partial",
+        "note": "H3 clarifications"
+      },
+      "interactive": "none",
+      "graphRecord": "H3"
+    },
+    {
+      "id": "T-ANALOGUES",
+      "label": "Deeper analogues of an unbounded quantity through a bounded geometry",
+      "words": "The question I want to investigate is whether this type of relationship—an unbounded quantity expressed through a bounded geometry—has deeper mathematical analogues elsewhere.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:C8d",
+          "note": ""
+        },
+        {
+          "ref": "card:C8b",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C8b",
+        "C8d"
+      ],
+      "sourceDocs": [
+        "docs/gate2_answers.md"
+      ],
+      "auditRef": "Gate 2 answer 8",
+      "audit": {
+        "before": "partial",
+        "note": "H3 clarifications"
+      },
+      "interactive": "none",
+      "graphRecord": "H3, C8"
+    },
+    {
+      "id": "T-TIME-BOUND",
+      "label": "Can time be bound to finite geometry, and paired with another infinite structure?",
+      "words": "From there, introduce your questions about whether time could be bound to finite geometry and paired with another infinite structure.",
+      "variants": [
+        {
+          "words": "can time be bound to finite geometry?",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "can finite geometry be paired with another infinite structure?",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/Interactive_Master_Map.extracted.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R7; Master Map #18",
+      "audit": {
+        "before": "title-only",
+        "note": "Master Map #18 only"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-NATURE-OR-DESCRIPTION",
+      "label": "Nature, or only our descriptions?",
+      "words": "Do these relationships tell us something about nature, or only about our mathematical descriptions of it?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "philosophical-exploration",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VIII",
+        "IX"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/Interactive_Master_Map.extracted.md"
+      ],
+      "auditRef": "Master Map (after the time investigation)",
+      "audit": {
+        "before": "missing",
+        "note": "Master Map closing questions only"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-C-ROLES",
+      "label": "R19: the two roles of c",
+      "words": "That transition between the two roles is what interests me.",
+      "variants": [
+        {
+          "words": "the same parameter linking these roles may reveal something structurally important.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "Within a theory c helps define the invariant structure; across theories c → ∞ moves toward the Newtonian boundary. spacetime geometry ≠ model-manifold geometry.",
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:C9a",
+          "note": ""
+        },
+        {
+          "ref": "card:C9b",
+          "note": "form degenerates"
+        },
+        {
+          "ref": "card:C9c",
+          "note": "boost → shear"
+        },
+        {
+          "ref": "card:S5d",
+          "note": "Galilean limit"
+        },
+        {
+          "ref": "source:research/sources/quinn2023.md",
+          "note": "c → ∞ as a model-manifold boundary (PDF pending, P-2)"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "C9 is not inferred from the paper; the two manifolds are linked only through c (Gate 3)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C9a",
+        "C9b",
+        "C9c",
+        "S5d"
+      ],
+      "sourceDocs": [
+        "docs/gate3_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R19; H3-1",
+      "audit": {
+        "before": "preserved",
+        "note": "H3-1, C9"
+      },
+      "interactive": "none",
+      "graphRecord": "H3, C9"
+    },
+    {
+      "id": "T-MANIFOLDS",
+      "label": "Three manifolds kept apart",
+      "words": "That is different from spacetime as a manifold in relativity.",
+      "variants": [],
+      "normalizedStatement": "prediction/model manifold ≠ spacetime manifold ≠ possible representation manifold.",
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "definition:docs/objective.md",
+          "note": "a distinction of terms fixed by Nadia, not a result"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VII",
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/gate2_answers.md"
+      ],
+      "auditRef": "Gate 2 answer 4",
+      "audit": {
+        "before": "preserved",
+        "note": "objective.md"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-REP-MANIFOLD",
+      "label": "A manifold of representations",
+      "words": "It is also different from a possible future manifold of representations, which is something we may investigate but have not yet formally defined.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "V",
+        "VII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/gate2_answers.md"
+      ],
+      "auditRef": "Gate 2 answer 4",
+      "audit": {
+        "before": "partial",
+        "note": "objective.md says \"undefined so far\"; no record"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-BACKBONE-PRIMARY",
+      "label": "Primary backbone",
+      "words": "What appears as zero, cancellation, or balance in one representation may be evidence of an underlying geometric constraint.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:Z3b",
+          "note": "a zero that marks a distinguished place"
+        },
+        {
+          "ref": "card:Q1a",
+          "note": "a zero that hides a distinction"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:Z5a",
+          "note": "boundary: some zeros carry no hidden structure (|x|² = 0 only at 0)"
+        },
+        {
+          "ref": "card:Z4b",
+          "note": "boundary: preserving zero resultants identifies no particular form"
+        }
+      ],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I–IX"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "Q1a",
+        "Z3b",
+        "Z4b",
+        "Z5a"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "backbone",
+      "audit": {
+        "before": "preserved",
+        "note": ""
+      },
+      "interactive": "Chapter I (investigation link)",
+      "graphRecord": "backbone.primary"
+    },
+    {
+      "id": "T-BACKBONE-SECONDARY",
+      "label": "Secondary backbone",
+      "words": "If physically different phenomena satisfy the same mathematical relation under an appropriate representation, they may be instances of the same structural law rather than merely analogous systems.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:Z3d",
+          "note": "bears on it: Pair A shares a zero-sum form; this does not show a shared law"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "AMB-18: without a restriction on \"appropriate\", any two systems can be given representations satisfying one relation."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I",
+        "II"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "Z3d"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "backbone",
+      "audit": {
+        "before": "preserved",
+        "note": ""
+      },
+      "interactive": "none",
+      "graphRecord": "backbone.secondary"
+    },
+    {
+      "id": "T-BACKBONE-INVARIANT",
+      "label": "Invariant-geometry direction",
+      "words": "If a relation is preserved under the admissible transformations of a space, that relation may encode part of the geometry of that space.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:C1b",
+          "note": "preserving B for all pairs ⟺ AᵀMA = M"
+        },
+        {
+          "ref": "card:S9",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:Z4b",
+          "note": "boundary: the zero-resultant relation is preserved by maps that preserve no nonzero form"
+        }
+      ],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "V"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C1b",
+        "S9",
+        "Z4b"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "backbone",
+      "audit": {
+        "before": "preserved",
+        "note": ""
+      },
+      "interactive": "none",
+      "graphRecord": "backbone.invariant"
+    },
+    {
+      "id": "T-ZERO-L1",
+      "label": "R2 level 1",
+      "words": "zero may arise from nonzero structure",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:Z1a2",
+          "note": ""
+        },
+        {
+          "ref": "card:Z2a",
+          "note": ""
+        },
+        {
+          "ref": "card:Q1a",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "Q1a",
+        "Z1a2",
+        "Z2a"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R2.1",
+      "audit": {
+        "before": "partial",
+        "note": "spread across the backbone, the tracked idea and Pair A; not separate records"
+      },
+      "interactive": "Chapter I stages 1, 2, 2b",
+      "graphRecord": null
+    },
+    {
+      "id": "T-ZERO-L2",
+      "label": "R2 level 2",
+      "words": "zero may encode balance",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:Z3a",
+          "note": ""
+        },
+        {
+          "ref": "card:Z3b",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "Z3a",
+        "Z3b"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R2.2",
+      "audit": {
+        "before": "partial",
+        "note": "spread across the backbone, the tracked idea and Pair A; not separate records"
+      },
+      "interactive": "Chapter I stage 3",
+      "graphRecord": null
+    },
+    {
+      "id": "T-ZERO-L3",
+      "label": "R2 level 3",
+      "words": "zero may define an exact relation",
+      "variants": [
+        {
+          "words": "The positive and negative contributions to the integral cancel even though there are no literal arrows at 90°.",
+          "source": "docs/gate4_decisions.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:S1a",
+          "note": "orthogonality"
+        },
+        {
+          "ref": "card:B2a",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I",
+        "IV"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "B2a",
+        "S1a"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/gate4_decisions.md"
+      ],
+      "auditRef": "R2.3",
+      "audit": {
+        "before": "partial",
+        "note": "spread across the backbone, the tracked idea and Pair A; not separate records"
+      },
+      "interactive": "#8 (Act IV)",
+      "graphRecord": null
+    },
+    {
+      "id": "T-ZERO-L4",
+      "label": "R2 level 4",
+      "words": "zero may identify a distinguished structural feature",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:Z3b",
+          "note": "R_CM"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "Z3b"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R2.4",
+      "audit": {
+        "before": "partial",
+        "note": "spread across the backbone, the tracked idea and Pair A; not separate records"
+      },
+      "interactive": "Chapter I stage 3",
+      "graphRecord": null
+    },
+    {
+      "id": "T-ZERO-L5",
+      "label": "R2 level 5",
+      "words": "one zero may correspond to multiple hidden configurations",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:Z1b",
+          "note": ""
+        },
+        {
+          "ref": "card:Z2b2",
+          "note": ""
+        },
+        {
+          "ref": "card:Q1d",
+          "note": ""
+        },
+        {
+          "ref": "card:Q1f",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "Q1d",
+        "Q1f",
+        "Z1b",
+        "Z2b2"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R2.5",
+      "audit": {
+        "before": "partial",
+        "note": "spread across the backbone, the tracked idea and Pair A; not separate records"
+      },
+      "interactive": "Chapter I stages 1, 2, 2b, 3b",
+      "graphRecord": null
+    },
+    {
+      "id": "T-ZERO-L6",
+      "label": "R2 level 6",
+      "words": "a preserved zero relation may indicate a geometric constraint",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:C1b",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:Z4b",
+          "note": "boundary"
+        }
+      ],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C1b",
+        "Z4b"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R2.6",
+      "audit": {
+        "before": "partial",
+        "note": "spread across the backbone, the tracked idea and Pair A; not separate records"
+      },
+      "interactive": "none (Act V)",
+      "graphRecord": null
+    },
+    {
+      "id": "T-ZERO-L7",
+      "label": "R2 level 7",
+      "words": "knowledge about one zero system may help interrogate another",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:Z3d",
+          "note": "shared zero-sum form (Pair A)"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "Z3d"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R2.7",
+      "audit": {
+        "before": "partial",
+        "note": "spread across the backbone, the tracked idea and Pair A; not separate records"
+      },
+      "interactive": "Chapter I stage 3b (transfer questions)",
+      "graphRecord": null
+    },
+    {
+      "id": "T-HIDDEN-FAMILY",
+      "label": "Tracked idea: one zero, a family of hidden states",
+      "words": "A single observed zero may correspond to a nontrivial family of hidden states.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:Z1b",
+          "note": ""
+        },
+        {
+          "ref": "card:Z2b2",
+          "note": ""
+        },
+        {
+          "ref": "card:Q1d",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:Z5a",
+          "note": "boundary: not every zero has a family behind it"
+        }
+      ],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "Q1d",
+        "Z1b",
+        "Z2b2",
+        "Z5a"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Chapter I",
+      "audit": {
+        "before": "preserved",
+        "note": ""
+      },
+      "interactive": "Chapter I",
+      "graphRecord": "idea.hidden-family"
+    },
+    {
+      "id": "T-ZERO-GENERAL-0",
+      "label": "General zero statement (first wording)",
+      "words": "F(x)=0 \\not\\Rightarrow x\\text{ is uniquely determined}",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "historical-conjecture",
+      "status": "hypothesis",
+      "evidenceFor": [],
+      "evidenceAgainst": [
+        {
+          "ref": "card:Z5a",
+          "note": "too universal: F(x) = |x|² is 0 only at x = 0"
+        }
+      ],
+      "boundaries": [],
+      "supersededBy": "T-ZERO-GENERAL",
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "Z5a"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "A1",
+      "audit": {
+        "before": "preserved",
+        "note": "was the claim text until A1"
+      },
+      "interactive": "none",
+      "graphRecord": "claim:zero.not-identifying (old text)"
+    },
+    {
+      "id": "T-ZERO-GENERAL",
+      "label": "A zero need not determine the state",
+      "words": "A zero-valued measurement need not uniquely determine the underlying state.",
+      "variants": [
+        {
+          "words": "In the measurement maps examined here, one zero output can correspond to multiple underlying states or configurations.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:Z1b",
+          "note": ""
+        },
+        {
+          "ref": "card:Z2b2",
+          "note": ""
+        },
+        {
+          "ref": "card:Q1a",
+          "note": ""
+        },
+        {
+          "ref": "card:Q1d",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:Z5a",
+          "note": "boundary: sometimes it does"
+        }
+      ],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": "T-ZERO-GENERAL-0",
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "Q1a",
+        "Q1d",
+        "Z1b",
+        "Z2b2",
+        "Z5a"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "A1",
+      "audit": {
+        "before": "preserved",
+        "note": ""
+      },
+      "interactive": "Chapter I stage 2b (formal block)",
+      "graphRecord": "claim:zero.not-identifying"
+    },
+    {
+      "id": "T-QUANTUM-ZERO",
+      "label": "Same S_z zero, different states",
+      "words": "A zero-valued observable can fail to uniquely determine a quantum state.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:Q1a",
+          "note": ""
+        },
+        {
+          "ref": "card:Q1b",
+          "note": ""
+        },
+        {
+          "ref": "card:Q1c",
+          "note": ""
+        },
+        {
+          "ref": "card:Q1e",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [
+        "obj.spin-pair"
+      ],
+      "relatedCards": [
+        "Q1a",
+        "Q1b",
+        "Q1c",
+        "Q1e"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "stage 2b",
+      "audit": {
+        "before": "preserved",
+        "note": ""
+      },
+      "interactive": "Chapter I stage 2b",
+      "graphRecord": "rel.sz-zero-two-states"
+    },
+    {
+      "id": "T-RECONSTRUCT",
+      "label": "Reconstructing the hidden state from the zero alone (not established)",
+      "words": "the hidden state can be reconstructed from the zero alone",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Stage 2b does not establish it: the second observable S² supplied the information."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "A5",
+      "audit": {
+        "before": "missing",
+        "note": "added at A5"
+      },
+      "interactive": "Chapter I stage 2b (stated as not established)",
+      "graphRecord": "rel.sz-zero-two-states.doesNotEstablish"
+    },
+    {
+      "id": "T-Q.cancellation-information",
+      "label": "Stage 2 question",
+      "words": "What information is contained in the cancellation state itself?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Chapter I",
+      "audit": {
+        "before": "preserved",
+        "note": "graph statement"
+      },
+      "interactive": "Chapter I (research questions)",
+      "graphRecord": "Q.cancellation-information"
+    },
+    {
+      "id": "T-Q.zero-inference",
+      "label": "Pair A question",
+      "words": "What can be inferred from the zero state while it remains zero?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Chapter I",
+      "audit": {
+        "before": "preserved",
+        "note": "graph statement"
+      },
+      "interactive": "Chapter I (research questions)",
+      "graphRecord": "Q.zero-inference"
+    },
+    {
+      "id": "T-Q.zero-generators",
+      "label": "Pair A, longer-term",
+      "words": "When presented with a zero-valued result, can we determine the hidden rules or structure that generated that zero?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Chapter I",
+      "audit": {
+        "before": "preserved",
+        "note": "graph statement"
+      },
+      "interactive": "Chapter I (research questions)",
+      "graphRecord": "Q.zero-generators"
+    },
+    {
+      "id": "T-Q.pairA",
+      "label": "Stage 3 question",
+      "words": "Are proton cancellation and mass balance two unrelated constructions, or do they admit a common representation?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Chapter I",
+      "audit": {
+        "before": "preserved",
+        "note": "graph statement"
+      },
+      "interactive": "Chapter I (research questions)",
+      "graphRecord": "Q.pairA"
+    },
+    {
+      "id": "T-Q.pairA-transfer",
+      "label": "Pair A, after the shared form",
+      "words": "Does the shared zero-sum form preserve enough additional structure for knowledge from one system to constrain the other?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Chapter I",
+      "audit": {
+        "before": "missing",
+        "note": "added at this audit"
+      },
+      "interactive": "Chapter I (research questions)",
+      "graphRecord": "Q.pairA-transfer"
+    },
+    {
+      "id": "T-Q.zero-distinguishable",
+      "label": "Stage 2b question",
+      "words": "When a measurement is zero, what additional structure remains distinguishable?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Chapter I",
+      "audit": {
+        "before": "preserved",
+        "note": "graph statement"
+      },
+      "interactive": "Chapter I (research questions)",
+      "graphRecord": "Q.zero-distinguishable"
+    },
+    {
+      "id": "T-Q.zero-internal-inference",
+      "label": "Hiding vs recovering",
+      "words": "What information, if any, can be inferred from the internal structure of a zero state without perturbing it into a nonzero state?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Chapter I",
+      "audit": {
+        "before": "missing",
+        "note": "added at this audit"
+      },
+      "interactive": "Chapter I (research questions)",
+      "graphRecord": "Q.zero-internal-inference"
+    },
+    {
+      "id": "T-Q.additional-relations",
+      "label": "Chapter I limitation",
+      "words": "What additional preserved relations are needed to identify the geometry?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Chapter I",
+      "audit": {
+        "before": "preserved",
+        "note": "graph statement"
+      },
+      "interactive": "none (research note)",
+      "graphRecord": "Q.additional-relations"
+    },
+    {
+      "id": "T-Q.zero-geometry-broader",
+      "label": "Chapter I limitation, broader",
+      "words": "Is zero preservation sufficient to identify a geometry in some broader sense?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Chapter I",
+      "audit": {
+        "before": "missing",
+        "note": "added at this audit"
+      },
+      "interactive": "none (research note)",
+      "graphRecord": "Q.zero-geometry-broader"
+    },
+    {
+      "id": "T-ZERO-WEAK-0",
+      "label": "Zero preservation \"too weak to identify a unique geometry\" (first wording)",
+      "words": "Therefore preservation of a zero resultant alone is too weak to identify a unique geometry.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "historical-conjecture",
+      "status": "derived",
+      "evidenceFor": [],
+      "evidenceAgainst": [
+        {
+          "ref": "card:Z4b",
+          "note": "Z4b proves less: only that no particular preserved form is identified"
+        }
+      ],
+      "boundaries": [],
+      "supersededBy": "T-ZERO-NO-FORM",
+      "supersedes": null,
+      "relatedActs": [
+        "I",
+        "V"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "Z4b"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "A3",
+      "audit": {
+        "before": "preserved",
+        "note": "was claim zero.too-weak until A3"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-ZERO-NO-FORM",
+      "label": "Zero preservation identifies no particular form",
+      "words": "zero-resultant preservation alone does not identify a particular preserved bilinear or metric form.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:Z4a",
+          "note": ""
+        },
+        {
+          "ref": "card:Z4b",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": "T-ZERO-WEAK-0",
+      "relatedActs": [
+        "I",
+        "V"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "Z4a",
+        "Z4b"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "A3",
+      "audit": {
+        "before": "preserved",
+        "note": ""
+      },
+      "interactive": "none (research note; would answer part of TQ-5)",
+      "graphRecord": "claim:zero.no-preserved-form"
+    },
+    {
+      "id": "T-PAIRA-SHARED",
+      "label": "Pair A shared algebraic form",
+      "words": "Under the representations currently used, both systems can exhibit a zero-sum vector relation.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:Z2a",
+          "note": ""
+        },
+        {
+          "ref": "card:Z2b2",
+          "note": ""
+        },
+        {
+          "ref": "card:Z3d",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Does not establish: the same physical mechanism; the same geometry; that mass explains proton cancellation; that all information transfers."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [
+        "obj.distribution",
+        "obj.moments"
+      ],
+      "relatedCards": [
+        "Z2a",
+        "Z2b2",
+        "Z3d"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "A2",
+      "audit": {
+        "before": "missing",
+        "note": "added at A2"
+      },
+      "interactive": "Chapter I stage 3b (pair card)",
+      "graphRecord": "pair.A.sharedAlgebraicForm"
+    },
+    {
+      "id": "T-TQ-1",
+      "label": "TQ-1: Does zero distinguish anything?",
+      "words": "Does the target zero distinguish any structure within the family of configurations that produce it?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "TQ-1",
+      "audit": {
+        "before": "preserved",
+        "note": ""
+      },
+      "interactive": "Chapter I stage 3b",
+      "graphRecord": "pair.A TQ-1"
+    },
+    {
+      "id": "T-TQ-2",
+      "label": "TQ-2: What conditions generate the zero?",
+      "words": "What mathematical conditions on the hidden configuration are necessary or sufficient for this zero to occur?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "TQ-2",
+      "audit": {
+        "before": "preserved",
+        "note": ""
+      },
+      "interactive": "Chapter I stage 3b",
+      "graphRecord": "pair.A TQ-2"
+    },
+    {
+      "id": "T-TQ-3",
+      "label": "TQ-3: What does zero determine, and what does it leave unresolved?",
+      "words": "Which different internal configurations produce the same zero result? What properties are fixed by the zero, and what properties remain free?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "TQ-3",
+      "audit": {
+        "before": "preserved",
+        "note": ""
+      },
+      "interactive": "Chapter I stage 3b",
+      "graphRecord": "pair.A TQ-3"
+    },
+    {
+      "id": "T-TQ-4",
+      "label": "TQ-4: Are there different ways of producing the same zero?",
+      "words": "Can structurally different configurations generate the same zero, and if so, can those configurations be classified?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "TQ-4",
+      "audit": {
+        "before": "preserved",
+        "note": ""
+      },
+      "interactive": "Chapter I stage 3b",
+      "graphRecord": "pair.A TQ-4"
+    },
+    {
+      "id": "T-TQ-5",
+      "label": "TQ-5: What transformations preserve zero?",
+      "words": "If a zero-producing configuration is transformed, which transformations keep it in the zero state and which do not?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "TQ-5",
+      "audit": {
+        "before": "preserved",
+        "note": ""
+      },
+      "interactive": "Chapter I stage 3b",
+      "graphRecord": "pair.A TQ-5"
+    },
+    {
+      "id": "T-TQ-6",
+      "label": "TQ-6: What information varies underneath the same zero?",
+      "words": "Among configurations that all produce the same zero result, what other mathematical quantities, relationships, or structures can still differ?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "TQ-6",
+      "audit": {
+        "before": "preserved",
+        "note": ""
+      },
+      "interactive": "Chapter I stage 3b",
+      "graphRecord": "pair.A TQ-6"
+    },
+    {
+      "id": "T-ORTHO-CLUE",
+      "label": "R3: why orthogonality matters",
+      "words": "can encode an exact geometric relationship; orthogonal decompositions remove cross terms; quadratic magnitude becomes additive; and under appropriate transformations the zero relation can be preserved.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:S1a",
+          "note": ""
+        },
+        {
+          "ref": "card:O1e",
+          "note": ""
+        },
+        {
+          "ref": "card:S2b",
+          "note": ""
+        },
+        {
+          "ref": "card:O1a",
+          "note": "rotation preserves the zero relation"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Not \"energy is orthogonal\" (R3)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "IV",
+        "V"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "O1a",
+        "O1e",
+        "S1a",
+        "S2b"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R3",
+      "audit": {
+        "before": "partial",
+        "note": "inside H1 and H1-1"
+      },
+      "interactive": "#7, #8",
+      "graphRecord": "H1"
+    },
+    {
+      "id": "T-ORTHO-DEEPER",
+      "label": "R3: orthogonality as the first visible example of something deeper?",
+      "words": "Is orthogonality only the first visible example of a deeper invariant relationship?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:C1b",
+          "note": "orthogonality is one preserved bilinear relation among several kinds"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "IV",
+        "V"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C1b"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R3",
+      "audit": {
+        "before": "missing",
+        "note": ""
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-MASS-WAVE",
+      "label": "R4: mass-like and wave-like descriptions",
+      "words": "mass-like and wave-like descriptions may be different representations of a deeper common principle.",
+      "variants": [
+        {
+          "words": "Wave and particle descriptions are linked representations of one physical structure.",
+          "source": "docs/Mathematical_Basis_Interactive_Design_Spec.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:S12",
+          "note": "E² = p²c² + m²c⁴ is the Lorentz form of four-momentum (one constraint in two sets of variables)"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Not claimed: that classical mass distributions (stage 3) are waves; not a generic wave–particle duality lesson."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "S12"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/Mathematical_Basis_Interactive_Design_Spec.md"
+      ],
+      "auditRef": "R4; spec Block 10",
+      "audit": {
+        "before": "title-only",
+        "note": "spec Block 10 and \"matter/wave discussion\" in connection fields"
+      },
+      "interactive": "none (spec Block 10)",
+      "graphRecord": null
+    },
+    {
+      "id": "T-MASS-WAVE-Q",
+      "label": "R4: one relation for mass-like and wave-like phenomena?",
+      "words": "Can mass-like and wave-like phenomena be represented so that the same underlying relation governs both?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:S12",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "S12"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R4",
+      "audit": {
+        "before": "missing",
+        "note": ""
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-MATTER-FIELD",
+      "label": "R18: matter as one form of deeper structure",
+      "words": "matter-like objects and waves/fields may be different forms/representations of deeper structure.",
+      "variants": [
+        {
+          "words": "Also preserve Nadia's intuition that matter itself has wave/field descriptions.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:S12",
+          "note": "dispersion relation (mass shell)"
+        },
+        {
+          "ref": "uncarded",
+          "note": "QFT field description, particle excitations, wave packets: established physics, not yet carded here"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "The standard QFT account supports part of it; it does not replace the broader question of a common geometry."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "S12"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R18; R4",
+      "audit": {
+        "before": "title-only",
+        "note": "\"matter/waves\" appears only in spec connection fields"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-STAR",
+      "label": "★ rule-bound periodicity",
+      "words": "★ Any geometrical object that is bound by rules can be periodic.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:C8a",
+          "note": "the circle: exact return"
+        },
+        {
+          "ref": "card:B7a",
+          "note": "a cyclic shift of three samples repeats with period 3"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:C8d",
+          "note": "boundary: quasi-periodic winding never returns exactly"
+        },
+        {
+          "ref": "card:S5b",
+          "note": "boundary: tanh stays bounded and never repeats"
+        }
+      ],
+      "boundaries": [
+        "Whether these limit ★ depends on \"bound by rules\", \"periodic\" and \"can be\" (AMB-7 a–c)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "II",
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "B7a",
+        "C8a",
+        "C8d",
+        "S5b"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R5",
+      "audit": {
+        "before": "preserved",
+        "note": ""
+      },
+      "interactive": "none",
+      "graphRecord": "stmt.rule-bound-periodicity"
+    },
+    {
+      "id": "T-GEOM-RULES",
+      "label": "What observable rules arise from a geometry?",
+      "words": "What observable rules arise because an object is constrained by a particular geometry?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "II",
+        "V",
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R5",
+      "audit": {
+        "before": "preserved",
+        "note": ""
+      },
+      "interactive": "none",
+      "graphRecord": "Q.geometry-rules"
+    },
+    {
+      "id": "T-PAIRB",
+      "label": "R5: spatial and temporal periodicity, shared rules?",
+      "words": "a physically observable periodic structure in space and a wave/phase structure in time may be manifestations of shared geometric rules.",
+      "variants": [
+        {
+          "words": "This sets up your larger question about periodicity in the physical world without assuming everything must be periodic.",
+          "source": "docs/Interactive_Master_Map.extracted.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "II"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/Interactive_Master_Map.extracted.md"
+      ],
+      "auditRef": "R5; Master Map #3",
+      "audit": {
+        "before": "partial",
+        "note": "Pair B recorded only \"repeated behavior\""
+      },
+      "interactive": "none",
+      "graphRecord": "pair.B"
+    },
+    {
+      "id": "T-CIRCLE-NOT-THESIS",
+      "label": "R6: the circle is one case, not the thesis",
+      "words": "circle ≠ all periodicity",
+      "variants": [
+        {
+          "words": "Every new geometry should be interrogated for what behavior follows from its own constraints.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:B7a",
+          "note": "periodicity from a cyclic group acting on ℝ³"
+        },
+        {
+          "ref": "card:C8d",
+          "note": "recurrence on a torus"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "II",
+        "V",
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "B7a",
+        "C8d"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R6",
+      "audit": {
+        "before": "partial",
+        "note": "AMB-7 and DR-3 only"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-BEYOND-3D",
+      "label": "R8: relationships that cannot be drawn in three dimensions",
+      "words": "Could a mathematical description contain relationships that cannot be represented directly in our familiar three spatial dimensions?",
+      "variants": [
+        {
+          "words": "Could a mathematical description contain relationships that cannot be represented directly in familiar three-dimensional space?",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:O1b",
+          "note": "shadows disagree with the true angle"
+        },
+        {
+          "ref": "card:O2c",
+          "note": "ℝ⁴ and L² inner products"
+        },
+        {
+          "ref": "card:S6",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "IV",
+        "VII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "O1b",
+        "O2c",
+        "S6"
+      ],
+      "sourceDocs": [
+        "docs/Interactive_Master_Map.extracted.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R8; Master Map #16",
+      "audit": {
+        "before": "title-only",
+        "note": "Master Map #16"
+      },
+      "interactive": "#8 stages 5–8 for ℝ⁴ and L²",
+      "graphRecord": null
+    },
+    {
+      "id": "T-PREDICTION-INFINITE",
+      "label": "R8: an infinite prediction space?",
+      "words": "Then introduce your question about a possible infinite prediction space.",
+      "variants": [
+        {
+          "words": "Could prediction space be effectively/inherently infinite-dimensional?",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/Interactive_Master_Map.extracted.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R8",
+      "audit": {
+        "before": "title-only",
+        "note": "Master Map #16"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-4D-EVENTS",
+      "label": "R8: a four-dimensional description in which events exist together",
+      "words": "This display could introduce your speculative connection to a four-dimensional description in which events exist together, while carefully distinguishing a model's prediction space from physical spacetime.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "philosophical-exploration",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "prediction-space geometry ≠ spacetime geometry; that they differ does not erase the speculative connection."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VII",
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/Interactive_Master_Map.extracted.md"
+      ],
+      "auditRef": "R8",
+      "audit": {
+        "before": "title-only",
+        "note": "Master Map #16"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-INFOGEO",
+      "label": "R9: information geometry of models",
+      "words": "prediction manifold, Fisher metric, stiff / sloppy directions, exact null direction, model boundaries, effective models",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:S14b",
+          "note": "weak: roughly even log spacing (tolerance set after seeing data)"
+        },
+        {
+          "ref": "source:research/sources/quinn2023.md",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:S14a",
+          "note": "FAIL kept: span 3.1 decades, not > 4"
+        }
+      ],
+      "boundaries": [
+        "\"Exact null direction\" has three possible readings (AMB-14)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "S14a",
+        "S14b"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R9",
+      "audit": {
+        "before": "title-only",
+        "note": "spec Blocks 11–14, 17 and the Act VII title"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-C7",
+      "label": "R9 / C7: coefficient spectra and sloppy spectra",
+      "words": "possible structural relation/analogy between coefficient spectra / Bessel-type decomposition and Fisher/sloppy spectra",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "assistant-proposed",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:S7",
+          "note": "Bessel (not evidence for sloppiness)"
+        },
+        {
+          "ref": "card:S14b",
+          "note": "weak"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:S14a",
+          "note": "FAIL kept"
+        }
+      ],
+      "boundaries": [
+        "Bessel concerns one vector's coefficients; the sloppy spectrum is a metric's eigenvalues (Gate 3, C7). Kept as an open analogy."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "S14a",
+        "S14b",
+        "S7"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R9; C7",
+      "audit": {
+        "before": "preserved",
+        "note": "C7.md (Claude-proposed in the prompt; kept by Nadia at Gate 3)"
+      },
+      "interactive": "none",
+      "graphRecord": "C7"
+    },
+    {
+      "id": "T-MAGPHASE",
+      "label": "R10: preserved energy, what else distinguishes?",
+      "words": "If a norm/energy-like quantity is preserved, what information still distinguishes representations?",
+      "variants": [
+        {
+          "words": "This directly introduces your question: If mathematical energy is preserved, what other information distinguishes two representations?",
+          "source": "docs/Interactive_Master_Map.extracted.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:B5a2",
+          "note": "the symmetry defect sees amplitudes, not phases"
+        },
+        {
+          "ref": "card:S2b",
+          "note": ""
+        },
+        {
+          "ref": "card:P1c",
+          "note": "equal power spectra, different signals"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VI"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "B5a2",
+        "P1c",
+        "S2b"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/Interactive_Master_Map.extracted.md"
+      ],
+      "auditRef": "R10; Master Map #12",
+      "audit": {
+        "before": "title-only",
+        "note": "spec Block 16, Master Map #12, Act VI title"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-SAME-SPECTRUM",
+      "label": "R10: same power spectrum, different signals",
+      "words": "Same power spectrum can preserve second-order information while failing to determine the original signal.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:P1a",
+          "note": "power spectrum = DFT of the autocorrelation (second-order information)"
+        },
+        {
+          "ref": "card:P1b",
+          "note": "a shift keeps the spectrum"
+        },
+        {
+          "ref": "card:P1c",
+          "note": "two signals unrelated by shift, reversal or sign share it"
+        },
+        {
+          "ref": "card:B5a2",
+          "note": "phase is invisible to the symmetry defect"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VI"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "B5a2",
+        "P1a",
+        "P1b",
+        "P1c"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R10",
+      "audit": {
+        "before": "title-only",
+        "note": "spec Block 16"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-WAVELETS",
+      "label": "R11: wavelets, scattering and what survives averaging",
+      "words": "wavelet zero/cancellation, zero crossings, modulus before averaging, higher scattering paths, what survives averaging, DYADIC PACKETS",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "No definitions, cards or sources in the repository yet; nothing is imported to define them."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VI"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R11",
+      "audit": {
+        "before": "title-only",
+        "note": "Act VI title only; zero crossings and scattering paths were missing"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-DYADIC",
+      "label": "R11: DYADIC PACKETS",
+      "words": "`DYADIC PACKETS` is an explicit user-priority research term.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Definition OPEN (AMB-13). The literal term is kept; no conventional meaning is assumed."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VI"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R11",
+      "audit": {
+        "before": "title-only",
+        "note": "named in the report only"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-SENSITIVITY",
+      "label": "R17: sensitivity relative to representation",
+      "words": "patterns of invariance and deformation may characterize sensitivity relative to representation, scale, location and transformation.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:B5b",
+          "note": "the symmetry defect measures deformation under a transformation"
+        },
+        {
+          "ref": "card:S14b",
+          "note": "weak"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Not renamed \"uncertainty\": whether sensitivity and uncertainty are related is OPEN (spec Block 8 is the separate Fourier uncertainty result)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VI",
+        "VII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "B5b",
+        "S14b"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R17",
+      "audit": {
+        "before": "missing",
+        "note": "not in the repository before this audit"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-CONJUGACY",
+      "label": "R12: physical pairs and conjugacy",
+      "words": "Do observable physical pairings or complementarities reflect deeper symmetry analogous to mathematical conjugacy?",
+      "variants": [
+        {
+          "words": "Once the mathematical relationship is established, introduce your broader question about physical pairs and whether observable relationships reflect deeper symmetry in nature.",
+          "source": "docs/Interactive_Master_Map.extracted.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "uncarded",
+          "note": "f̂(−k) = conj f̂(k) for real f: used in #7, no card yet"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "V",
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/Interactive_Master_Map.extracted.md"
+      ],
+      "auditRef": "R12; Master Map #17",
+      "audit": {
+        "before": "title-only",
+        "note": "Master Map #17; report AMB-16"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-SUBCONSCIOUS",
+      "label": "R13: underlying structure vs what is consciously accessible",
+      "words": "Your subconscious analogy could appear as an optional philosophical exploration of the distinction between an underlying structure and what is consciously accessible.",
+      "variants": [
+        {
+          "words": "underlying structure vs what is consciously accessible / observable",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "philosophical-exploration",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Not neuroscience; optional in the learner experience."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/Interactive_Master_Map.extracted.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R13; Master Map #17",
+      "audit": {
+        "before": "missing",
+        "note": "Master Map #17 only"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-PERCEPTION-RELATIVITY",
+      "label": "R14: relational perception and relativity",
+      "words": "Then invite the visitor to explore your proposed connection between relational human perception and physical relativity.",
+      "variants": [
+        {
+          "words": "observer-dependent physical measurement in relativity and relational aspects of human perception",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "philosophical-exploration",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:S5c",
+          "note": "anchor: the interval x² − c²t² is the same for every observer"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Not claimed to be the same phenomenon."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "S5c"
+      ],
+      "sourceDocs": [
+        "docs/Interactive_Master_Map.extracted.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R14; Master Map #19",
+      "audit": {
+        "before": "missing",
+        "note": "Master Map #19 only"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-MATH-BOUNDARIES",
+      "label": "R15: can the boundaries of mathematical representation be expanded?",
+      "words": "This provides a way to approach your response to Einstein: If mathematics has boundaries imposed by the way it represents nature, can those boundaries be expanded?",
+      "variants": [
+        {
+          "words": "If mathematics has boundaries imposed by how it represents nature, can those boundaries be expanded?",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "philosophical-exploration",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VIII",
+        "IX"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/Interactive_Master_Map.extracted.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R15",
+      "audit": {
+        "before": "title-only",
+        "note": "Master Map #19"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-REP-COMPLETE",
+      "label": "R15: does a representation preserve everything meaningful?",
+      "words": "Does a mathematical representation preserve everything meaningful about the natural phenomenon it describes?",
+      "variants": [
+        {
+          "words": "We now understand mathematical representations well enough to ask whether they preserve everything about the natural phenomena they describe.",
+          "source": "docs/Interactive_Master_Map.extracted.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "philosophical-exploration",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:B5a2",
+          "note": "a representation that loses phase"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VI",
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "B5a2"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/Interactive_Master_Map.extracted.md"
+      ],
+      "auditRef": "R15",
+      "audit": {
+        "before": "title-only",
+        "note": "Master Map #19"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-ENERGY-MEANING",
+      "label": "R16: what squared magnitude means",
+      "words": "What does squared mathematical magnitude actually mean when it is not literally physical energy?",
+      "variants": [
+        {
+          "words": "This is where your question about mathematical energy as strength, magnitude, or importance becomes central.",
+          "source": "docs/Interactive_Master_Map.extracted.md"
+        },
+        {
+          "words": "For example, the L² norm in Fourier could be energy, it could be strength, and in information geometry it's distance in units of noise.",
+          "source": "docs/claude_code_prompt.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:S2b",
+          "note": "Parseval keeps ‖x‖²"
+        },
+        {
+          "ref": "card:B4a",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "‖x‖₂² may be called signal energy; physical energy depends on the variable and units (spec Block 18)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "IV",
+        "VI",
+        "IX"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "B4a",
+        "S2b"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/Interactive_Master_Map.extracted.md",
+        "docs/claude_code_prompt.md"
+      ],
+      "auditRef": "R16; Master Map #11",
+      "audit": {
+        "before": "partial",
+        "note": "spec Block 18 and prompt §2 as a units warning"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-ORIGIN-NORM-ZERO",
+      "label": "Origin, norm, squared norm, zero and the identity matrix",
+      "words": "This creates a visual explanation for your earlier questions about the relationship between the origin, norm, squared norm, zero, and the identity matrix.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:S4e",
+          "note": "M = I keeps x² + y²"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I",
+        "V"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "S4e"
+      ],
+      "sourceDocs": [
+        "docs/Interactive_Master_Map.extracted.md"
+      ],
+      "auditRef": "Master Map #14",
+      "audit": {
+        "before": "missing",
+        "note": "Master Map #14 only"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-ZERO-ROLES",
+      "label": "Zero has different roles",
+      "words": "What carries forward: Zero has different roles depending on the mathematical structure in which it appears.",
+      "variants": [
+        {
+          "words": "This would be a useful place to incorporate Osgood's remark about zero, after checking the original lecture.",
+          "source": "docs/Interactive_Master_Map.extracted.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:Z1a2",
+          "note": ""
+        },
+        {
+          "ref": "card:Z3b",
+          "note": ""
+        },
+        {
+          "ref": "card:Q1a",
+          "note": ""
+        },
+        {
+          "ref": "card:S12b",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Osgood's remark is not yet checked against the lecture."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "Q1a",
+        "S12b",
+        "Z1a2",
+        "Z3b"
+      ],
+      "sourceDocs": [
+        "docs/Interactive_Master_Map.extracted.md",
+        "docs/Interactive_Master_Map.extracted.md"
+      ],
+      "auditRef": "Master Map #13",
+      "audit": {
+        "before": "title-only",
+        "note": "Master Map #13; now Chapter I"
+      },
+      "interactive": "Chapter I",
+      "graphRecord": null
+    },
+    {
+      "id": "T-BOUNDS-THEME",
+      "label": "The \"bounds / sine-cosine / same structure in another representation\" theme",
+      "words": "Critical for your “bounds / sine-cosine / same structure in another representation” theme.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:S2b",
+          "note": ""
+        },
+        {
+          "ref": "card:C8a",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "II",
+        "IV",
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C8a",
+        "S2b"
+      ],
+      "sourceDocs": [
+        "docs/Mathematical_Basis_Interactive_Design_Spec.md"
+      ],
+      "auditRef": "spec Block 4",
+      "audit": {
+        "before": "missing",
+        "note": "spec Block 4 connection field only"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-ENERGEO",
+      "label": "R20: Energeo",
+      "words": "Can energy behavior be represented in a space where hidden balances, null relations, and invariants become geometrically explicit?",
+      "variants": [
+        {
+          "words": "Can energy behavior be represented in a space where hidden balances, null relations and invariants become geometrically explicit?",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "A downstream test domain, not evidence for anything upstream; parked until Nadia asks."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "IX"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "R20",
+      "audit": {
+        "before": "preserved",
+        "note": ""
+      },
+      "interactive": "none",
+      "graphRecord": "Q.energeo"
+    },
+    {
+      "id": "T-ENERGEO-INTENT",
+      "label": "R20: is energy behavior represented in the most informative way?",
+      "words": "conventional analytics commonly summarize totals, baselines, forecasts or deviations; Energeo asks whether energy behavior itself is being represented in the most informative mathematical way.",
+      "variants": [
+        {
+          "words": "This could become your first connection to NASA-relevant finite-energy problems without requiring you to know the eventual application in advance.",
+          "source": "docs/Interactive_Master_Map.extracted.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "IX"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/Interactive_Master_Map.extracted.md"
+      ],
+      "auditRef": "R20; Master Map #20",
+      "audit": {
+        "before": "missing",
+        "note": "the intention was not recorded"
+      },
+      "interactive": "none",
+      "graphRecord": null
+    },
+    {
+      "id": "T-C1",
+      "label": "Connection C1",
+      "words": "One preservation equation, many geometries",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "assistant-proposed",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:C1b",
+          "note": ""
+        },
+        {
+          "ref": "card:S9",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "V"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C1b",
+        "S9"
+      ],
+      "sourceDocs": [
+        "research/connections/C1.md"
+      ],
+      "auditRef": "C1",
+      "audit": {
+        "before": "preserved",
+        "note": "C1.md"
+      },
+      "interactive": "none",
+      "graphRecord": "C1"
+    },
+    {
+      "id": "T-C2",
+      "label": "Connection C2",
+      "words": "Conservation = invariant form, infinitesimally",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "assistant-proposed",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:S9b",
+          "note": ""
+        },
+        {
+          "ref": "card:C2a",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "V"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C2a",
+        "S9b"
+      ],
+      "sourceDocs": [
+        "research/connections/C2.md"
+      ],
+      "auditRef": "C2",
+      "audit": {
+        "before": "preserved",
+        "note": "C2.md"
+      },
+      "interactive": "none",
+      "graphRecord": "C2"
+    },
+    {
+      "id": "T-C3",
+      "label": "Connection C3",
+      "words": "The sign of the invariant decides bounded vs unbounded",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "assistant-proposed",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:S4a",
+          "note": ""
+        },
+        {
+          "ref": "card:S10",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "S10",
+        "S4a"
+      ],
+      "sourceDocs": [
+        "research/connections/C3.md"
+      ],
+      "auditRef": "C3",
+      "audit": {
+        "before": "preserved",
+        "note": "C3.md"
+      },
+      "interactive": "none",
+      "graphRecord": "C3"
+    },
+    {
+      "id": "T-C4",
+      "label": "Connection C4",
+      "words": "Fourier as a change of representation: two different settings",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "assistant-proposed",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:S2a",
+          "note": ""
+        },
+        {
+          "ref": "card:S11",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III",
+        "V"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "S11",
+        "S2a"
+      ],
+      "sourceDocs": [
+        "research/connections/C4.md"
+      ],
+      "auditRef": "C4",
+      "audit": {
+        "before": "preserved",
+        "note": "C4.md"
+      },
+      "interactive": "none",
+      "graphRecord": "C4"
+    },
+    {
+      "id": "T-C5",
+      "label": "Connection C5",
+      "words": "\"The quadratic equaling 0\" has two faces",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "assistant-proposed",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:S12b",
+          "note": ""
+        },
+        {
+          "ref": "card:B1d",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I",
+        "V"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "B1d",
+        "S12b"
+      ],
+      "sourceDocs": [
+        "research/connections/C5.md"
+      ],
+      "auditRef": "C5",
+      "audit": {
+        "before": "preserved",
+        "note": "C5.md"
+      },
+      "interactive": "none",
+      "graphRecord": "C5"
+    },
+    {
+      "id": "T-C6",
+      "label": "Connection C6",
+      "words": "Projection by symmetry averaging is orthogonal projection",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "assistant-proposed",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:S13",
+          "note": ""
+        },
+        {
+          "ref": "card:B7b",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "IV",
+        "V"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "B7b",
+        "S13"
+      ],
+      "sourceDocs": [
+        "research/connections/C6.md"
+      ],
+      "auditRef": "C6",
+      "audit": {
+        "before": "preserved",
+        "note": "C6.md"
+      },
+      "interactive": "none",
+      "graphRecord": "C6"
+    },
+    {
+      "id": "T-C8",
+      "label": "Connection C8",
+      "words": "Unbounded parameters can generate different kinds of constrained asymptotic geometry",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "assistant-proposed",
+      "kind": "derived-connection",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:C8a",
+          "note": ""
+        },
+        {
+          "ref": "card:C8d",
+          "note": ""
+        },
+        {
+          "ref": "card:C8b",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:C8c",
+          "note": "FAIL kept"
+        }
+      ],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C8a",
+        "C8b",
+        "C8c",
+        "C8d"
+      ],
+      "sourceDocs": [
+        "research/connections/C8.md"
+      ],
+      "auditRef": "C8",
+      "audit": {
+        "before": "preserved",
+        "note": "C8.md"
+      },
+      "interactive": "none",
+      "graphRecord": "C8"
+    },
+    {
+      "id": "T-C9",
+      "label": "Connection C9",
+      "words": "indexes a family of invariant forms",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "assistant-proposed",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:C9a",
+          "note": ""
+        },
+        {
+          "ref": "card:C9c",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "VIII"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C9a",
+        "C9c"
+      ],
+      "sourceDocs": [
+        "research/connections/C9.md"
+      ],
+      "auditRef": "C9",
+      "audit": {
+        "before": "preserved",
+        "note": "C9.md"
+      },
+      "interactive": "none",
+      "graphRecord": "C9"
+    }
+  ]
+}

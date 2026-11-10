@@ -362,7 +362,7 @@ const stage2b = {
       texEl(`S_z = ${matrixTex(Q.SZ, '\\hbar')},\\qquad S_z A = S_z B = 0`, { display: true, tag: 'div', cls: 'equation' }),
     ];
     if (m.s2) parts.push(texEl(`S^2 = ${matrixTex(Q.S2, '\\hbar^2')},\\qquad S^2A = ${num(m.s2A.value, 0)}\\hbar^2 A,\\quad S^2 B = 0`, { display: true, tag: 'div', cls: 'equation' }));
-    if (formal) parts.push(h('p', { class: 'note', html: richText('$[S^2, S_z] = 0$, so both can be measured on the same state (card Q1e). The states with $S_z = 0$ are every normalized combination of $|{\\uparrow\\downarrow}\\rangle$ and $|{\\downarrow\\uparrow}\\rangle$ (card Q1d).') }));
+    if (formal) parts.push(h('p', { class: 'note', html: richText('$[S^2, S_z] = 0$, so both can be measured on the same state (card Q1e). The states with $S_z = 0$ form a two-dimensional complex eigenspace, $\\operatorname{span}_{\\mathbb C}\\{|{\\uparrow\\downarrow}\\rangle, |{\\downarrow\\uparrow}\\rangle\\}$ (cards Q1d, Q1f). Measuring $S^2$ supplied information the zero did not; nothing here reconstructs a state from the zero alone.') }));
     return h('div', null, parts);
   },
   build(ctx) {
@@ -544,6 +544,7 @@ const stage3b = {
   rep: '(\\mathbb R^3)^n',
   carryLabel: 'Return to stage',
   pair: 'pair.A',
+  pairShowShared: true,
   carry: MOMENTS,
   model: momentsModel,
   observe(m, ctx) {

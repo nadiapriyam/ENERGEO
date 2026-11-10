@@ -16,7 +16,8 @@ export const relation = (id) => relations.get(id);
 const STAGE_OF = (objId) => objects.get(objId)?.stage;
 
 /** A candidate pair as a card: its two objects, what both visibly show, and its status. No common relation is shown. */
-export function pairCard(id) {
+/** opts.showShared: show the established shared algebraic form (only after the stages that formalize both sides). */
+export function pairCard(id, opts = {}) {
   const p = pairs.get(id);
   const name = id.replace('pair.', 'Pair ');
   const side = (role, o) => h('div', { class: 'pair-side' }, h('span', { class: 'pair-role' }, role), h('span', null, `${objects.get(o.id).label} (stage ${STAGE_OF(o.id)})`));
@@ -27,7 +28,10 @@ export function pairCard(id) {
     p.directed ? side('source', p.sourceObject) : side('one side', p.sourceObject),
     p.directed ? side('target', p.targetObject) : side('other side', p.targetObject),
     h('p', null, h('span', { class: 'pair-role' }, 'shared observation'), ' ', p.sharedObservation),
-    h('p', null, h('span', { class: 'pair-role' }, 'common relation'), ' ', 'not filled in'),
+    opts.showShared && p.sharedAlgebraicForm
+      ? h('p', null, h('span', { class: 'pair-role' }, 'shared algebraic form'), ' ', levelBadge(LEVEL[p.sharedAlgebraicForm.status]), ' ', `${p.sharedAlgebraicForm.description}: ${p.sharedAlgebraicForm.target} and ${p.sharedAlgebraicForm.source}. It does not establish ${p.sharedAlgebraicForm.doesNotEstablish.join('; ')}.`)
+      : null,
+    h('p', null, h('span', { class: 'pair-role' }, 'deeper common relation'), ' ', 'open; not filled in'),
     p.directionMeaning ? h('p', { class: 'muted' }, p.directionMeaning) : null,
   );
 }

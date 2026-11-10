@@ -129,10 +129,11 @@ export const STAGES = {
       lines: [
         'A is the triplet state $|1,0\\rangle = \\tfrac{1}{\\sqrt2}\\big(|{\\uparrow\\downarrow}\\rangle + |{\\downarrow\\uparrow}\\rangle\\big)$. B is the singlet state $|0,0\\rangle = \\tfrac{1}{\\sqrt2}\\big(|{\\uparrow\\downarrow}\\rangle - |{\\downarrow\\uparrow}\\rangle\\big)$.',
         'One measurement returned zero for both states. The zero did not uniquely specify the state.',
+        'The second measurement, $S^2$, supplied information the zero did not. Nothing here reconstructs a state from the zero alone.',
       ],
-      statements: ['quantum.sz-zero', 'zero.not-identifying'],
+      statements: ['quantum.sz-zero', 'quantum.not-reconstructed', 'zero.not-identifying'],
     },
-    questions: ['Q.zero-distinguishable'],
+    questions: ['Q.zero-distinguishable', 'Q.zero-internal-inference'],
     notice: {
       changed: 'Which state was measured, and then which measurement.',
       held: 'The $S_z$ reading: 0 for both states.',
@@ -229,7 +230,7 @@ export const STAGES = {
       ],
     },
     transferIntro: 'Each is a research prompt, not a finding: the proton zero is not assumed to have a balancing point, a position, or anything else the mass system has.',
-    questions: ['Q.zero-inference', 'Q.zero-generators', 'Q.cancellation-information', 'Q.zero-distinguishable'],
+    questions: ['Q.pairA-transfer', 'Q.zero-inference', 'Q.zero-generators', 'Q.cancellation-information', 'Q.zero-distinguishable', 'Q.zero-internal-inference'],
     notice: {
       changed: 'The hidden configuration.',
       held: 'The reading: 0.',

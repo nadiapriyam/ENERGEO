@@ -255,12 +255,13 @@
     },
     "zero.not-identifying": {
       "level": 2,
-      "text": "This provides a rigorous example of the more general distinction already being explored in Chapter I: F(x) = 0 does not imply that x is uniquely determined.",
+      "text": "A zero-valued measurement need not uniquely determine the underlying state: F(x) = 0 need not uniquely determine x. In the measurement maps examined here, one zero output can correspond to multiple underlying states or configurations.",
       "cards": [
         "Z1b",
         "Z2b2",
         "Q1a",
-        "Q1d"
+        "Q1d",
+        "Z5a"
       ]
     },
     "zero.linear-preserves": {
@@ -271,9 +272,9 @@
         "Z4b"
       ]
     },
-    "zero.too-weak": {
-      "level": 2,
-      "text": "Therefore preservation of a zero resultant alone is too weak to identify a unique geometry.",
+    "zero.no-preserved-form": {
+      "level": 1,
+      "text": "Zero-resultant preservation alone does not identify a particular preserved bilinear or metric form.",
       "cards": [
         "Z4a",
         "Z4b"
@@ -289,6 +290,42 @@
     "Q.additional-relations": {
       "level": 4,
       "text": "What additional preserved relations are needed to identify the geometry?",
+      "cards": [],
+      "source": "docs/restructure_decisions.md"
+    },
+    "zero.shared-form": {
+      "level": 1,
+      "text": "Under the representations currently used, both systems can exhibit a zero-sum vector relation: Σ_j m_j = 0 for the contributions, and Σ_i u_i = 0 with u_i = m_i (r_i − R_CM) for the masses.",
+      "cards": [
+        "Z2a",
+        "Z2b2",
+        "Z3d"
+      ]
+    },
+    "quantum.not-reconstructed": {
+      "level": 1,
+      "text": "Stage 2b establishes that the same zero measurement does not imply the same underlying quantum state. It does not establish that the hidden state can be reconstructed from the zero alone: the second observable, S², supplied the additional information.",
+      "cards": [
+        "Q1a",
+        "Q1b",
+        "Q1c"
+      ]
+    },
+    "Q.pairA-transfer": {
+      "level": 4,
+      "text": "Does the shared zero-sum form preserve enough additional structure for knowledge from one system to constrain the other?",
+      "cards": [],
+      "source": "docs/restructure_decisions.md"
+    },
+    "Q.zero-geometry-broader": {
+      "level": 4,
+      "text": "Is zero preservation sufficient to identify a geometry in some broader sense?",
+      "cards": [],
+      "source": "docs/restructure_decisions.md"
+    },
+    "Q.zero-internal-inference": {
+      "level": 4,
+      "text": "What information, if any, can be inferred from the internal structure of a zero state without perturbing it into a nonzero state?",
       "cards": [],
       "source": "docs/restructure_decisions.md"
     }

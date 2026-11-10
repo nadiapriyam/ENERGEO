@@ -212,3 +212,173 @@ The Chapter I limitation:
 > What additional preserved relations are needed to identify the geometry?
 
 > Do not solve this yet with A†MA=M.
+
+## Precision corrections and the theory-preservation audit (before Act II)
+
+### Governing rule
+
+> Do not decide whether one of Nadia's theories deserves to exist based on whether it is currently proven, conventional, or supported by literature.
+
+> External evidence must not delete a user-origin theory merely because it is speculative.
+
+> A theory that appears false, too broad, or presently unsupported remains in the research history with the appropriate status and its original wording preserved.
+
+> evidenceAgainst ≠ deletion
+
+> A verifier failure is information.
+> A counterexample is information.
+> A failed hypothesis remains part of the intellectual history.
+
+### A1–A5
+
+> A zero-valued measurement need not uniquely determine the underlying state.
+
+> In the measurement maps examined here, one zero output can correspond to multiple underlying states or configurations.
+
+> zero resultant of nonzero vector contributions
+
+> Under the representations currently used, both systems can exhibit a zero-sum vector relation.
+
+> Does the shared zero-sum form preserve enough additional structure for knowledge from one system to constrain the other?
+
+> zero-resultant preservation alone does not identify a particular preserved bilinear or metric form.
+
+> Is zero preservation sufficient to identify a geometry in some broader sense?
+
+> a two-dimensional complex (S_z=0) eigenspace.
+
+> the hidden state can be reconstructed from the zero alone
+
+> What information, if any, can be inferred from the internal structure of a zero state without perturbing it into a nonzero state?
+
+### Theories to preserve (audit items C1–C20 of the request; numbered here R1–R20 to avoid clashing with connections C1–C9)
+
+R1:
+
+> Can apparently different descriptions become the same object under the correct representation?
+
+> What became visible, hidden, preserved or lost?
+
+R2, kept as distinct levels, not one theorem:
+
+> zero may arise from nonzero structure
+
+> zero may encode balance
+
+> zero may define an exact relation
+
+> zero may identify a distinguished structural feature
+
+> one zero may correspond to multiple hidden configurations
+
+> a preserved zero relation may indicate a geometric constraint
+
+> knowledge about one zero system may help interrogate another
+
+R3:
+
+> can encode an exact geometric relationship; orthogonal decompositions remove cross terms; quadratic magnitude becomes additive; and under appropriate transformations the zero relation can be preserved.
+
+> Is orthogonality only the first visible example of a deeper invariant relationship?
+
+> Do not rewrite the project as "energy is orthogonal."
+
+R4:
+
+> mass-like and wave-like descriptions may be different representations of a deeper common principle.
+
+> Can mass-like and wave-like phenomena be represented so that the same underlying relation governs both?
+
+> Also preserve Nadia's intuition that matter itself has wave/field descriptions.
+
+R5:
+
+> a physically observable periodic structure in space and a wave/phase structure in time may be manifestations of shared geometric rules.
+
+R6:
+
+> circle ≠ all periodicity
+
+> Every new geometry should be interrogated for what behavior follows from its own constraints.
+
+R7:
+
+> what happens when an unbounded parameter is represented through bounded geometry?
+
+> can time be bound to finite geometry?
+
+> can finite geometry be paired with another infinite structure?
+
+> are wrapping, quasi-periodic recurrence and boundary approach different subclasses of a common schema?
+
+R8:
+
+> Could a mathematical description contain relationships that cannot be represented directly in familiar three-dimensional space?
+
+> Could prediction space be effectively/inherently infinite-dimensional?
+
+> prediction-space geometry ≠ spacetime geometry
+
+R9:
+
+> prediction manifold, Fisher metric, stiff / sloppy directions, exact null direction, model boundaries, effective models
+
+> possible structural relation/analogy between coefficient spectra / Bessel-type decomposition and Fisher/sloppy spectra
+
+R10:
+
+> If a norm/energy-like quantity is preserved, what information still distinguishes representations?
+
+> Same power spectrum can preserve second-order information while failing to determine the original signal.
+
+R11:
+
+> wavelet zero/cancellation, zero crossings, modulus before averaging, higher scattering paths, what survives averaging, DYADIC PACKETS
+
+> `DYADIC PACKETS` is an explicit user-priority research term.
+
+R12:
+
+> Do observable physical pairings or complementarities reflect deeper symmetry analogous to mathematical conjugacy?
+
+R13:
+
+> underlying structure vs what is consciously accessible / observable
+
+R14:
+
+> observer-dependent physical measurement in relativity and relational aspects of human perception
+
+R15:
+
+> If mathematics has boundaries imposed by how it represents nature, can those boundaries be expanded?
+
+> Does a mathematical representation preserve everything meaningful about the natural phenomenon it describes?
+
+R16:
+
+> What does squared mathematical magnitude actually mean when it is not literally physical energy?
+
+R17:
+
+> patterns of invariance and deformation may characterize sensitivity relative to representation, scale, location and transformation.
+
+R18:
+
+> matter-like objects and waves/fields may be different forms/representations of deeper structure.
+
+R19:
+
+> the same parameter linking these roles may reveal something structurally important.
+
+R20:
+
+> Can energy behavior be represented in a space where hidden balances, null relations and invariants become geometrically explicit?
+
+> conventional analytics commonly summarize totals, baselines, forecasts or deviations; Energeo asks whether energy behavior itself is being represented in the most informative mathematical way.
+
+### Superseded wording, kept as history
+
+From the stage 2b brief (LaTeX as written), corrected by A1:
+
+> F(x)=0 \not\Rightarrow x\text{ is uniquely determined}

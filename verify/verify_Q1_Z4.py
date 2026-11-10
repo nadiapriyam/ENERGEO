@@ -1,5 +1,5 @@
 """Q1: stage 2b, two spin-1/2 particles (a separate exact quantum case, not a model of MRI ensemble cancellation).
-Z4: a research note on Chapter I's limitation: preserving a zero resultant is too weak to single out a geometry.
+Z4: a research note on Chapter I's limitation: preserving a zero resultant alone does not identify a particular preserved bilinear or metric form.
 Exact symbolic checks with hbar kept as a symbol. No numerical thresholds.
 Run: python3 verify/verify_Q1_Z4.py"""
 import sympy as sp
@@ -25,8 +25,10 @@ card("Q1b", "S^2 = Sx^2 + Sy^2 + Sz^2 (from the Pauli matrices, complex sigma_y)
      sp.simplify(S2 * A - 2 * hb**2 * A) == Z4 and sp.simplify(S2 * B) == Z4)
 card("Q1c", "A and B are different states: both normalized, and no phase makes one a multiple of the other (rank [A B] = 2)",
      sp.simplify((A.H * A)[0] - 1) == 0 and sp.simplify((B.H * B)[0] - 1) == 0 and sp.Matrix.hstack(A, B).rank() == 2)
-card("Q1d", "the states with S_z = 0 form a two-dimensional family: the null space of S_z is spanned by |ud> and |du>",
+card("Q1d", "the S_z = 0 eigenspace is a two-dimensional complex subspace: the null space of S_z has dimension 2",
      len(Sz.nullspace()) == 2)
+card("Q1f", "that eigenspace is span_C{|ud>, |du>}: S_z kills both, and they are independent, so they span the two-dimensional null space",
+     sp.simplify(Sz * ud) == Z4 and sp.simplify(Sz * du) == Z4 and sp.Matrix.hstack(ud, du).rank() == 2 and len(Sz.nullspace()) == 2)
 card("Q1e", "S^2 and S_z commute, so both can be measured on the same state: [S^2, S_z] = 0",
      sp.simplify(S2 * Sz - Sz * S2) == sp.zeros(4, 4))
 

@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-09T23:54:03+00:00",
- "commit": "74292d5",
+ "generated": "2026-11-10T17:22:21+00:00",
+ "commit": "c865814",
  "cards": {
   "B1a": {
    "script": "verify_B1_B7.py",
@@ -278,6 +278,24 @@
    "everFailed": false,
    "claim": "cross-talk: eps=0 rebuild error 0.0e+00; eps=0.3 Gram off-diagonal 0.216, rebuild error 0.568"
   },
+  "P1a": {
+   "script": "verify_P1.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "for every real x of length 4: |X_k|^2 is the DFT of the circular autocorrelation r_m = sum_n x_n x_(n+m) (Wiener-Khinchin), so the power spectrum carries exactly the second-order information"
+  },
+  "P1b": {
+   "script": "verify_P1.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "a circular shift changes the signal but not one value of its power spectrum: (1,2,0,3,0,0) and (0,1,2,0,3,0)"
+  },
+  "P1c": {
+   "script": "verify_P1.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "(1,0,0,0,1,1,0,1) and (1,0,0,1,0,0,1,1) have the same power spectrum, yet neither is a shift, reversal or sign change of the other"
+  },
   "Q1a": {
    "script": "verify_Q1_Z4.py",
    "verdict": "PASS",
@@ -300,7 +318,13 @@
    "script": "verify_Q1_Z4.py",
    "verdict": "PASS",
    "everFailed": false,
-   "claim": "the states with S_z = 0 form a two-dimensional family: the null space of S_z is spanned by |ud> and |du>"
+   "claim": "the S_z = 0 eigenspace is a two-dimensional complex subspace: the null space of S_z has dimension 2"
+  },
+  "Q1f": {
+   "script": "verify_Q1_Z4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "that eigenspace is span_C{|ud>, |du>}: S_z kills both, and they are independent, so they span the two-dimensional null space"
   },
   "Q1e": {
    "script": "verify_Q1_Z4.py",
@@ -559,6 +583,18 @@
    "verdict": "PASS",
    "everFailed": false,
    "claim": "shifting every mass by the same step a moves the balancing point by a: R_CM(r + a) = R_CM(r) + a"
+  },
+  "Z3d": {
+   "script": "verify_Z5.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "with u_i = m_i (r_i - R_CM), sum u_i = 0 exactly; and for m_i > 0, u_i = 0 only when r_i = R_CM, so the contributions are nonzero unless a mass sits at R_CM"
+  },
+  "Z5a": {
+   "script": "verify_Z5.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "boundary: F(x) = |x|^2 on R^2 is 0 only at x = 0 (n^2 + a^2 > 0 and a^2 + n^2 > 0 for real n != 0), so a zero reading can determine the state for some measurements"
   }
  }
 }

@@ -313,7 +313,7 @@ export function mountInteractive(root, def, journey) {
           ]
         : [h('div', { class: 'wide notes-wait' }, h('p', { class: 'muted' }, `What changed, what stayed the same, what became visible and what became hidden: these notes appear once you have ${formalIndex(st) < 0 ? 'finished this stage’s steps' : 'found this stage’s rule'}.`))]),
       ...(st.questions?.length ? [h('div', { class: 'wide' }, h('h3', null, 'Research questions this stage raises'), h('ul', { class: 'statements' }, st.questions.map(statementRow)))] : []),
-      ...(st.pair ? [h('div', { class: 'wide' }, h('h3', null, 'Candidate pair'), pairCard(st.pair, st.pairRole))] : []),
+      ...(st.pair ? [h('div', { class: 'wide' }, h('h3', null, 'Candidate pair'), pairCard(st.pair, { showShared: !!st.pairShowShared }))] : []),
       h(
         'div',
         { class: 'wide' },
