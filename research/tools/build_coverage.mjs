@@ -60,7 +60,7 @@ ${['preserved', 'partial', 'title-only', 'missing'].map((k) => `| ${BEFORE[k]} |
 
 | Now | Count | Records |
 |---|---|---|
-| has supporting mathematics (a PASS card) | ${user.filter((r) => passCards(r).length).length} | ${ids(user.filter((r) => passCards(r).length))} |
+| cites a PASS card (for a HYPOTHESIS or OPEN QUESTION the card supports an ingredient, not the theory) | ${user.filter((r) => passCards(r).length).length} | ${ids(user.filter((r) => passCards(r).length))} |
 | has counterevidence, a FAIL kept, or a boundary | ${user.filter((r) => r.evidenceAgainst.length || r.boundaries.length).length} | ${ids(user.filter((r) => r.evidenceAgainst.length || r.boundaries.length))} |
 | completely open (no evidence for or against; scope notes allowed) | ${user.filter((r) => !r.evidenceFor.length && !r.evidenceAgainst.length).length} | ${ids(user.filter((r) => !r.evidenceFor.length && !r.evidenceAgainst.length))} |
 | superseded wording kept as history | ${user.filter((r) => r.supersededBy).length} | ${ids(user.filter((r) => r.supersededBy))} |
