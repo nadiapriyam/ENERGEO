@@ -2,10 +2,15 @@
 
 Read these before any work, in this order:
 
-1. `docs/claude_code_prompt.md`: the rules of work. The verifier decides, levels 1–4, step cards, gates, never move a threshold after a result.
-2. `docs/objective.md`: the objective, which document governs what, terms, and level labels.
-3. `docs/gate2_answers.md`, `docs/gate3_decisions.md`, `docs/restructure_decisions.md`: Nadia's decisions, verbatim. They govern wording. The restructuring decisions govern the sequence (Chapters/Acts I–IX; Chapter I is built).
-4. `research/`: hypotheses H1–H3 (each opens with Nadia's exact words), connections C1–C9, open questions, sources, `graph.json` (the research graph: program, statements, relations, zero-producing sets, candidate pairs), `theories.json` (every theory with its provenance, evidence for and against, and history; ids listed append-only in `theories.ids`) and `theory_coverage.md` (generated from it by `node research/tools/build_coverage.mjs`; `test/theories.test.js` checks every quote).
+1. `docs/research_method.md`: HOW TO THINK/SEARCH. The theorem-seeking research protocol. Every research prompt also carries `docs/research_prompt_preamble.md`.
+2. `docs/claude_code_prompt.md`: WHAT THE FOUNDING THEORY IS, and how verification and status work: the verifier decides, levels 1–4, step cards, gates, never move a threshold after a result.
+3. `docs/objective.md`: the project objective and governance: research posture, which document governs what, terms, level labels.
+4. Gate and restructure decisions: `docs/gate2_answers.md`, `docs/gate3_decisions.md`, `docs/restructure_decisions.md`. Nadia's decisions, verbatim. They govern wording. The restructuring decisions govern the sequence (Chapters/Acts I–IX; Chapter I is built) and set the theorem-seeking method as a backbone decision.
+5. The research registry and graph in `research/`: hypotheses H1–H3 (each opens with Nadia's exact words), connections C1–C9, open questions, sources, `graph.json` (the research graph: program, statements, relations, zero-producing sets, candidate pairs), `theories.json` (every theory with its provenance, evidence for and against, history and proof target; ids listed append-only in `theories.ids`) and `theory_coverage.md` (generated from it by `node research/tools/build_coverage.mjs`; `test/theories.test.js` checks every quote).
+
+**Research stance:** Every user-origin theory is a target theorem. Search narrowly for its exact representation, proof, invariant, transformation law or obstruction. Do not begin with plausibility assessment or adjacent analogies. Search as if the theorem holds; report only what the mathematics establishes.
+
+Reported status (ESTABLISHED, DERIVED CONNECTION, HYPOTHESIS, OPEN QUESTION) is unchanged by this stance. It records how much is proved, never how hard to search. `test/method.test.js` guards this rule.
 
 ## Discovery rules (every interactive from Chapter I on)
 

@@ -65,6 +65,16 @@ ${['preserved', 'partial', 'title-only', 'missing'].map((k) => `| ${BEFORE[k]} |
 | completely open (no evidence for or against; scope notes allowed) | ${user.filter((r) => !r.evidenceFor.length && !r.evidenceAgainst.length).length} | ${ids(user.filter((r) => !r.evidenceFor.length && !r.evidenceAgainst.length))} |
 | superseded wording kept as history | ${user.filter((r) => r.supersededBy).length} | ${ids(user.filter((r) => r.supersededBy))} |
 
+## Proof programs (research mode)
+
+Every record has \`researchMode: theorem-target\` whatever its status (\`docs/research_method.md\`). These records
+already carry a proof target; the rest acquire one when a research pass starts on them. "Last outcome" stays empty
+until a theorem-seeking pass reports one.
+
+| ID | Status | Target (Nadia's words) | Obligations listed | Last outcome |
+|---|---|---|---|---|
+${theories.filter((r) => r.proofTarget).map((r) => `| ${r.id} | ${STATUS[r.status]} | ${cell(r.proofTarget.targetStatement)} | ${r.proofTarget.proofObligations.length} | ${cell(r.proofTarget.lastResearchOutcome)} |`).join('\n')}
+
 ## User-origin theories and questions
 
 ${head}

@@ -14,7 +14,8 @@ const ledger = JSON.parse(read('verify/ledger/latest.json')).cards;
 const graph = JSON.parse(read('research/graph.json'));
 const ORIGINS = ['user', 'established-support', 'assistant-proposed'];
 const FIELDS = ['id', 'label', 'words', 'variants', 'normalizedStatement', 'origin', 'kind', 'status', 'evidenceFor', 'evidenceAgainst', 'boundaries',
-  'supersededBy', 'supersedes', 'relatedActs', 'relatedObjects', 'relatedCards', 'sourceDocs', 'auditRef', 'audit', 'interactive', 'graphRecord'];
+  'supersededBy', 'supersedes', 'relatedActs', 'relatedObjects', 'relatedCards', 'sourceDocs', 'auditRef', 'audit', 'interactive', 'graphRecord',
+  'researchMode', 'proofTarget'];
 
 test('every record has the TheoryRecord fields and valid enums; ids are unique', () => {
   assert.equal(byId.size, T.length, 'duplicate id');
