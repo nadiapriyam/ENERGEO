@@ -150,3 +150,83 @@ test('negative evidence never removes a user-origin theory', () => {
     assert.equal(r.researchMode, 'theorem-target', `${r.id}: still a target (refined, not abandoned)`);
   }
 });
+
+// ── first outside-in construction and the new Act map (2026-11-12) ──────────────────────────────
+
+test('method rules are separate from hypotheses: rules carry governance status, claims live in their own records', () => {
+  for (const id of ['B-OUTSIDE-IN', 'B-NONEXHAUSTIVE', 'B-ZERO-PRESERVE']) {
+    assert.equal(byId.get(id).kind, 'method-rule', id);
+    assert.equal(byId.get(id).status, 'governance', id);
+  }
+  const loss = byId.get('B-ZERO-LOSS');
+  assert.equal(loss.kind, 'hypothesis');
+  assert.equal(loss.status, 'hypothesis', 'the hypothesis stays a theory target');
+  assert.ok(!byId.get('B-ZERO-PRESERVE').variants.some((v) => v.words === loss.variants[0].words), 'the claim moved out of the rule record');
+  assert.ok(byId.get('B-ZERO-PRESERVE').history.length > 0, 'the split is recorded, not silent');
+});
+
+test('zero-preserving interrogation, never "non-perturbing measurement"', () => {
+  assert.ok(method.includes('zero-preserving interrogation'));
+  for (const f of ['docs/research_method.md', 'CLAUDE.md', 'docs/act_map.md', 'src/interactives/zero/copy.js', 'src/interactives/zero/index.js'])
+    assert.ok(!/non-perturbing measurement(?!" is not used)/.test(read(f).replace('"non-perturbing measurement" is not used', '').replace('never call it a "non-perturbing measurement"', '')), f);
+  for (const r of reg.theories) for (const e of [...r.evidenceFor, ...r.evidenceAgainst]) assert.ok(!/leaves each S_z = 0 state unchanged/.test(e.note), `${r.id}: old wording`);
+});
+
+test('the construction rule is in the method: construct the relational object before naming the structure', () => {
+  assert.ok(method.includes('Do not search for the named structure before constructing the relational object.'));
+  assert.ok(method.indexOf('derive the projected vectors') < method.indexOf('only then compare to regular-simplex theory'));
+});
+
+test('the R4 construction record has exactly its eleven sections, and says what it does not establish', () => {
+  const md = read('research/constructions/r4_tetrahedral_zero.md');
+  const heads = md.split('\n').filter((l) => l.startsWith('## ')).map((l) => l.slice(3));
+  assert.deepEqual(heads, ['1. Construction target', '2. Source geometry', '3. Projection map', '4. Exact identities', '5. Lower-dimensional realization',
+    '6. What is established', '7. What is derived', '8. What is NOT established', '9. Connection to Stage 2', '10. Questions generated', '11. Next construction tests']);
+  const not = md.slice(md.indexOf('## 8.'), md.indexOf('## 9.'));
+  assert.match(not, /physical proton cancellation comes from a hidden fourth spatial dimension/);
+  assert.match(md, /ORTHOGONALLY EQUIVALENT/);
+  assert.match(md, /first chosen for cancellation clarity/, 'chronology kept');
+  const affirming = md.slice(md.indexOf('## 1.'), md.indexOf('## 8.')) + md.slice(md.indexOf('## 9.'));   // outside the header's naming note and §8
+  for (const bad of ['origin geometry', 'true higher geometry', 'quantum geometry'])
+    assert.ok(!affirming.includes(bad), `"${bad}" is used only where the record says it is not`);
+});
+
+test('the R4 records: established pieces rest on PASS cards; the chain stays a construction-backed direction', () => {
+  for (const id of ['T-R4-TETRA', 'T-R4-GENERAL', 'T-R4-STAGE2']) assert.equal(byId.get(id).status, 'established', id);
+  assert.equal(byId.get('T-R4-DERIVED').status, 'derived');
+  const chain = byId.get('B-HIGHER-GEOMETRY-CHAIN');
+  assert.equal(chain.kind, 'construction-backed-direction');
+  assert.equal(chain.status, 'hypothesis', 'not promoted to a universal theorem');
+  assert.ok(chain.related.includes('B-HIGHER-GEOMETRY'));
+  for (const q of ['Q-R4-1', 'Q-R4-2', 'Q-R4-4', 'Q-R4-5', 'Q-R4-6', 'Q-R4-7', 'Q-R4-8']) assert.equal(byId.get(q).status, 'open', q);
+  assert.equal(byId.get('Q-R4-3').proofTarget.lastResearchOutcome, 'proved');
+});
+
+test('learner copy says nothing about a physical fourth dimension behind Chapter I', () => {
+  for (const f of ['src/interactives/zero/copy.js', 'src/interactives/zero/index.js'])
+    assert.ok(!/fourth (spatial )?dimension|four-dimensional|\b4D\b|R\^4|ℝ⁴|\\mathbb R\^4/.test(read(f)), f);
+});
+
+test('the Act map: Foundation Acts I–IV in order, the superseded map kept, the app pointing at the new Act II', () => {
+  const md = read('docs/act_map.md');
+  const titles = ['Changing the Meaning of 0', 'From Zero to Form', 'Larger Geometry, Visible Shadow', 'Rule, Continuation, and Repetition'];
+  const at = titles.map((t) => md.indexOf(`| ${['I', 'II', 'III', 'IV'][titles.indexOf(t)]} | ${t} |`));
+  assert.ok(at.every((i) => i >= 0) && [...at].sort((a, b) => a - b).join() === at.join(), 'Foundation Acts I–IV in order');
+  assert.ok(md.indexOf('## Foundation') < md.indexOf('## Guide through known mathematics') && md.indexOf('## Guide through known mathematics') < md.indexOf('## Final Act'));
+  for (const old of ['I · Changing the Meaning of 0', 'II · One Relation, Different Forms', 'III · Projection Reveals Structure', 'IV · Zero Becomes Geometry',
+    'V · Preserved Relations', 'VI · Information Lost and Recovered', 'VII · Geometry of Models', 'VIII · Finite / Infinite Representation', 'IX · Energeo'])
+    assert.ok(md.includes(old), `superseded map keeps ${old}`);
+  assert.match(md, /4 · A Shape From One Rule/);
+  assert.match(read('src/interactives/zero/index.js'), /next: \{ n: 'Chapter II', title: 'From Zero to Form'/);
+});
+
+test('the compass-circle contract keeps the explanatory terms hidden until formalize', () => {
+  const md = read('docs/act_map.md');
+  const contract = md.slice(md.indexOf('## Stage 4 contract'));
+  const hidden = contract.slice(contract.indexOf('**Hidden until formalize:**'), contract.indexOf('**Never written:**'));
+  for (const w of ['*circle*', '*orthogonal*', '*sin*', '*cos*', '*π*', '*periodic*']) assert.ok(hidden.includes(w), w);
+  assert.match(contract, /orthogonality caused the circle/);
+  assert.ok(contract.includes('Which fixed relationships made the shape possible?') && contract.includes('Which global rules are consequences of those fixed relationships?'));
+  const rows = contract.slice(contract.indexOf('| Observe |'), contract.indexOf('| Formalize |'));
+  for (const w of ['circle', 'orthogonal', 'perpendicular', 'sin', 'cos', 'π', 'periodic']) assert.ok(!new RegExp(`\\b${w}\\b`).test(rows.replace('(the angle turned so far)', '')), `"${w}" before formalize`);
+});

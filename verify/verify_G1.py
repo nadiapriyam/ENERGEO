@@ -28,3 +28,13 @@ card("G1b", "for every differentiable plane curve y(t): d/dt |y|^2 = 2 y . y'; s
 
 card("G1c", "the compass trace closes: x(theta + 2 pi) = x(theta) for every theta, while theta itself runs over all of R",
      sp.simplify(x.subs(th, th + 2 * sp.pi) - x) == sp.zeros(2, 1))
+
+# G1d: the precise statement (replaces the loose reading of G1b, which stays on the ledger as recorded)
+def identity_holds(dim):
+    fs = [sp.Function(f'x{k}')(t) for k in range(dim)]
+    X = sp.Matrix(fs)
+    return sp.simplify((X.dot(X)).diff(t) - 2 * X.dot(X.diff(t))) == 0
+c1 = sp.Matrix([sp.cos(t), sp.sin(t)]); c2 = 2 * sp.Matrix([sp.cos(t), sp.sin(t)])   # on (0,1) and on (2,3)
+two_components = all(sp.simplify(c.dot(c.diff(t))) == 0 for c in (c1, c2)) and sp.simplify(c1.dot(c1)) == 1 and sp.simplify(c2.dot(c2)) == 4
+card("G1d", "for a differentiable curve x: I -> R^n, d/dt |x(t)|^2 = 2 x(t) . x'(t) (checked for n = 2, 3, 4 with arbitrary component functions); with the mean value theorem on each connected component: x . x' = 0 for all t in I iff |x(t)| is constant on each connected component of I. The component clause is needed: on I = (0,1) u (2,3), x = (cos t, sin t) then 2(cos t, sin t) has x . x' = 0 everywhere but |x| = 1, then 2",
+     all(identity_holds(k) for k in (2, 3, 4)) and two_components)

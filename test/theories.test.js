@@ -15,7 +15,7 @@ const graph = JSON.parse(read('research/graph.json'));
 const ORIGINS = ['user', 'established-support', 'assistant-proposed'];
 const FIELDS = ['id', 'label', 'words', 'variants', 'normalizedStatement', 'origin', 'kind', 'status', 'evidenceFor', 'evidenceAgainst', 'boundaries',
   'supersededBy', 'supersedes', 'relatedActs', 'relatedObjects', 'relatedCards', 'sourceDocs', 'auditRef', 'audit', 'interactive', 'graphRecord',
-  'researchMode', 'researchDirection', 'construction', 'proofTarget', 'related'];
+  'researchMode', 'researchDirection', 'construction', 'proofTarget', 'related', 'history', 'relatedActsRev3'];
 
 test('every record has the TheoryRecord fields and valid enums; ids are unique', () => {
   assert.equal(byId.size, T.length, 'duplicate id');
@@ -26,6 +26,8 @@ test('every record has the TheoryRecord fields and valid enums; ids are unique',
     assert.ok(reg.statuses.includes(r.status), `${r.id}: status`);
     assert.ok(['preserved', 'partial', 'title-only', 'missing', 'new'].includes(r.audit.before), `${r.id}: audit`);
     for (const id of r.related) assert.ok(byId.has(id), `${r.id}: related ${id} missing`);
+    assert.equal(r.status === 'governance', r.kind === 'method-rule', `${r.id}: governance is the status of method rules, and only of them`);
+    for (const a of r.relatedActs) assert.ok(reg.acts.includes(a), `${r.id}: act ${a} not in the new map`);
   }
 });
 

@@ -33,6 +33,8 @@ Existing mathematics is a reference library, a validation surface, and a source 
 2. Mathematical guide: Fourier, orthogonal bases, quadratic forms, information geometry, relativity, wavelets/scattering and other existing structures, as known examples the geometry may organize.
 3. Translator / application: energy, Energeo, physical systems, space systems. These are consequences, and never the reason the foundational geometry exists.
 
+The Act sequence is [`act_map.md`](act_map.md): Foundation Acts I–IV, then the Guide, then the Translator.
+
 **Backbone direction for the name (not locked).** "Geometry of Representation" is moving from "representations have geometry" toward: *Construct a geometry capable of showing how apparently complete objects/states are manifestations of deeper relationships, and use that geometry as a guide across existing mathematical and physical structures.*
 
 Geometry of Representation is not a survey of whether Nadia's theories seem plausible. It is a theorem-seeking program. Each user-origin theory is taken as the mathematical target. Research attempts to locate or construct the representation, maps, invariants, transformations and proof steps that realize it. Epistemic labels record how much has currently been established; they do not reduce the intensity or direction of the proof search.

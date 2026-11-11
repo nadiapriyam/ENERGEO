@@ -675,5 +675,5 @@ export default {
     ['backbone.primary', 'Primary backbone'],
     ['idea.hidden-family', 'A zero and its hidden family'],
   ],
-  map: { prev: null, next: { n: 'Chapter II', title: 'One Relation, Different Forms', status: 'not built' } },
+  map: { prev: null, next: { n: 'Chapter II', title: 'From Zero to Form', status: 'not built' } },
 };

@@ -681,3 +681,131 @@ The program:
 > Organized orthogonality may participate in the generation or persistence of geometric form and its global rules.
 
 Items 9–12, 17 and 18 (the philosophy) are recorded verbatim in `docs/author_philosophy.md`.
+
+## First outside-in construction and the new Act map (2026-11-12)
+
+Nadia's decisions, verbatim. LaTeX boxes and display math were converted to plain text and line-broken lists joined; nothing else changed. The construction record is `research/constructions/r4_tetrahedral_zero.md`; the Act map is `docs/act_map.md`.
+
+### Approved: placement and hierarchy
+
+> The compass-circle interactive opens Act II.
+
+> Do not make it a prologue.
+
+> zero relation → orthogonal relation → constraint → shape
+
+> A Shape From One Rule
+
+> FOUNDATION ↓ GUIDE THROUGH KNOWN MATHEMATICS ↓ TRANSLATOR / APPLICATION
+
+> zero, hidden structure, zero-preserving interrogation, larger / higher-dimensional generating geometry, constraint, orthogonality, shape / form, finite geometry with indefinite continuation, part / whole, representation, invariant relation
+
+> These are not the source ontology of the project.
+
+> Do not make Energeo the justification for the foundational geometry.
+
+### Method rules separated from hypotheses
+
+> Do not use one record to represent both governance and a scientific claim.
+
+> Construct geometry from observed relations first; compare with existing mathematical structures second.
+
+> Existing named structures are known examples, not assumed exhaustive classes.
+
+> Do not leave the defining zero merely to make the system observable.
+
+> zero-preserving interrogation
+
+> Leaving a natural zero/cancellation state may destroy information encoded in the relations that generated that zero.
+
+> Do not make the methodology contingent on whether this hypothesis is already proved.
+
+> A second quantum observable may alter a state within the relevant eigenspace while still preserving the defining zero value.
+
+> The project rule is about preserving the defining zero relation, not claiming that absolutely nothing in the state changes.
+
+### G1b
+
+> fixed distance from the origin ↔ position vector orthogonal to velocity/tangent
+
+> The broader B-ORTHO-FORM theory remains open.
+
+### The R4 construction
+
+> An orthogonal basis in R^4 can project into a 3-dimensional subspace as four equal tetrahedral vectors whose sum is zero.
+
+> higher-dimensional orthogonal organization → lower-dimensional zero-sum organization
+
+> physical proton cancellation comes from a hidden fourth spatial dimension
+
+(the sentence above is quoted as what must not be written: "That is not established. Do not even imply it through UI copy.")
+
+> tetrahedron was first chosen for cancellation clarity; later the R4 projection construction was discovered.
+
+> R4 orthogonal-source construction
+
+> tetrahedral zero construction
+
+> What information about the original orthonormal basis survives in the projected tetrahedral zero-sum configuration?
+
+> Given only the tetrahedral zero-sum configuration in H, can the R^4 orthogonal-source construction be reconstructed uniquely, up to a natural equivalence?
+
+> For n orthonormal basis vectors in R^n, project onto 1⊥. Does the resulting set always form a regular simplex in R^(n-1)?
+
+> Does every regular simplex zero-sum configuration arise, up to orthogonal equivalence and scale, from this projection construction?
+
+> What properties of the higher-dimensional source are encoded by Σ_i v_i = 0, versus by the stronger Gram-matrix structure G_ij = 3/4 (i = j), −1/4 (i ≠ j)?
+
+> The zero sum is weaker than the full relational structure.
+
+> Which lower-dimensional zero-sum configurations do not admit an orthogonal-source construction of this type?
+
+> zero output ← lower-dimensional relational structure ← higher-dimensional organization
+
+> CONSTRUCTION-BACKED DIRECTION
+
+### Act map and the compass-circle stage
+
+> ACT I — Changing the Meaning of 0
+
+> ACT II — From Zero to Form
+
+> ACT III — Larger Geometry, Visible Shadow
+
+> ACT IV — Rule, Continuation, and Repetition
+
+> Do not begin Act II with the old heated-ring field.
+
+> Known periodicity classes are comparison targets after behavior is derived.
+
+> Do not decide yet that every case is a projection.
+
+> Which fixed relationships made the shape possible?
+
+> Which global rules are consequences of those fixed relationships?
+
+> orthogonality creates sine and cosine.
+
+(quoted as learner copy that must not be written)
+
+> What geometric constraints produce the circular parameterization?
+
+> Which quantities depend on the fixed-radius rule?
+
+> Which depend specifically on Euclidean metric structure?
+
+> Where does π enter?
+
+> Where do sine/cosine enter?
+
+> Which of these relations generalize to other geometries?
+
+> orthogonality → possible generative/form-organizing role
+
+### Construction rule
+
+> Do not search for the named structure before constructing the relational object.
+
+> derive the projected vectors → compute their Gram matrix → discover equal norms + equal pairwise products + zero sum → characterize the resulting object → only then compare to regular-simplex theory
+
+> secondary existing-theory match

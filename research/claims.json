@@ -328,6 +328,48 @@
       "text": "What information, if any, can be inferred from the internal structure of a zero state without perturbing it into a nonzero state?",
       "cards": [],
       "source": "docs/restructure_decisions.md"
+    },
+    "construction.r4-tetra": {
+      "level": 1,
+      "text": "An orthogonal basis in R^4 can project into a 3-dimensional subspace as four equal tetrahedral vectors whose sum is zero.",
+      "cards": [
+        "G2a",
+        "G2b",
+        "G2c",
+        "G2d",
+        "G2e",
+        "G2f",
+        "G2g",
+        "G2h"
+      ],
+      "source": "research/constructions/r4_tetrahedral_zero.md"
+    },
+    "construction.r4-derived": {
+      "level": 2,
+      "text": "higher-dimensional orthogonal organization → lower-dimensional zero-sum organization",
+      "cards": [
+        "G2c",
+        "G2g",
+        "G2j"
+      ],
+      "source": "research/constructions/r4_tetrahedral_zero.md"
+    },
+    "construction.r4-stage2": {
+      "level": 1,
+      "text": "Stage 2 tetrahedral cancellation ← exact realization of projected R4 orthonormal basis",
+      "cards": [
+        "G2i"
+      ],
+      "source": "research/constructions/r4_tetrahedral_zero.md"
+    },
+    "construction.r4-general": {
+      "level": 1,
+      "text": "For every n ≥ 2, the n orthonormal basis vectors of R^n projected onto 1⊥ are the vertices of a regular simplex with zero sum.",
+      "cards": [
+        "G2n",
+        "G2j"
+      ],
+      "source": "research/constructions/r4_tetrahedral_zero.md"
     }
   }
 }

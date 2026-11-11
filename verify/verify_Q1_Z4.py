@@ -43,3 +43,17 @@ D = 2 * sp.eye(2)
 sol = sp.solve(list(D.T * m * D - m), list(m), dict=True)
 card("Z4b", "doubling every vector keeps every zero resultant at zero, yet it preserves a bilinear form M (D^T M D = M) only when M = 0",
      sol == [{s: 0 for s in m}])
+
+# Q1g/Q1h: zero-preserving interrogation (not "non-perturbing measurement")
+a_, b_ = sp.symbols('a b')
+psi = a_ * ud + b_ * du                                # a general state with S_z = 0
+Ps = B * B.H                                           # projector onto the S^2 = 0 eigenspace (singlet)
+Pt = sp.eye(4) - Ps                                    # projector onto the S^2 = 2 hbar^2 eigenspace
+card("Q1g", "measuring S^2 preserves the defining zero: S^2 = 2 hbar^2 P_t with spectral projectors P_t, P_s, and for every state psi = a|ud> + b|du> with S_z psi = 0, both outcomes P_t psi and P_s psi still satisfy S_z = 0",
+     sp.simplify(S2 - 2 * hb**2 * Pt) == sp.zeros(4, 4) and sp.simplify(Sz * psi) == Z4
+     and sp.simplify(Sz * (Pt * psi)) == Z4 and sp.simplify(Sz * (Ps * psi)) == Z4)
+x0 = ud
+card("Q1h", "but the state can change: for psi = |ud> (S_z = 0), the S^2 outcomes are P_t psi = A/sqrt2 and P_s psi = B/sqrt2, neither a multiple of psi; for A and B themselves (eigenstates of S^2) the state is unchanged",
+     sp.simplify(Pt * x0 - A / sp.sqrt(2)) == Z4 and sp.simplify(Ps * x0 - B / sp.sqrt(2)) == Z4
+     and sp.Matrix.hstack(x0, Pt * x0).rank() == 2 and sp.Matrix.hstack(x0, Ps * x0).rank() == 2
+     and sp.simplify(Pt * A - A) == Z4 and sp.simplify(Ps * B - B) == Z4)

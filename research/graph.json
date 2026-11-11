@@ -206,6 +206,13 @@
       "label": "two waves as coefficient vectors",
       "stage": "7",
       "journeyId": "pair"
+    },
+    {
+      "id": "obj.r4-source",
+      "label": "R4 orthogonal-source construction: e₁ … e₄ projected onto 1⊥ (tetrahedral zero construction)",
+      "stage": null,
+      "journeyId": null,
+      "act": "III"
     }
   ],
   "relations": [
@@ -455,6 +462,79 @@
       ],
       "connectsTo": [
         "pair.A"
+      ]
+    },
+    {
+      "id": "rel.r4-tetra-zero",
+      "object": "obj.r4-source",
+      "representation": "H = 1⊥ ⊂ R⁴",
+      "measurement": "(v_i) ↦ Σ v_i",
+      "status": "established",
+      "cards": [
+        "G2a",
+        "G2b",
+        "G2c",
+        "G2d",
+        "G2e",
+        "G2f",
+        "G2g",
+        "G2h"
+      ],
+      "claims": [
+        "construction.r4-tetra"
+      ],
+      "connectsTo": [
+        "B-HIGHER-GEOMETRY"
+      ],
+      "doesNotEstablish": [
+        "that physical proton cancellation comes from a hidden fourth spatial dimension",
+        "that this is the larger geometry behind any zero",
+        "that every zero-sum configuration arises this way"
+      ]
+    },
+    {
+      "id": "rel.r4-derived-zero",
+      "object": "obj.r4-source",
+      "representation": "H = 1⊥ ⊂ R⁴",
+      "measurement": "(v_i) ↦ Σ v_i = P(Σ e_i)",
+      "status": "derived",
+      "cards": [
+        "G2c",
+        "G2g",
+        "G2j"
+      ],
+      "claims": [
+        "construction.r4-derived"
+      ],
+      "connectsTo": [
+        "B-HIGHER-GEOMETRY"
+      ],
+      "doesNotEstablish": [
+        "the chain zero output ← relational structure ← higher-dimensional organization beyond this example"
+      ]
+    },
+    {
+      "id": "rel.r4-stage2-realization",
+      "object": "obj.r4-source",
+      "representation": "Φ: H → R³ (orthonormal basis h₁, h₂, h₃ of H)",
+      "measurement": "Φ(u_i) = TETRA_i",
+      "status": "established",
+      "cards": [
+        "G2i"
+      ],
+      "claims": [
+        "construction.r4-stage2"
+      ],
+      "connectsTo": [
+        "obj.moments"
+      ],
+      "provenance": [
+        "the tetrahedron was first chosen for cancellation clarity (D3)",
+        "the R4 projection construction was discovered later (2026-11-11, carded 2026-11-12)"
+      ],
+      "doesNotEstablish": [
+        "that Stage 2 was designed from this construction",
+        "anything about physical protons"
       ]
     }
   ],

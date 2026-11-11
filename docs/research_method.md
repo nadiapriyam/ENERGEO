@@ -69,6 +69,14 @@ a gap with its own reading.
 
 ## 3. Primary mode: geometry construction
 
+**Construction rule.** Do not search for the named structure before constructing the relational object.
+
+- **Not this:** Stage 2 looks tetrahedral → search regular simplex theorem → explain Stage 2 as simplex geometry.
+- **This:** derive the projected vectors → compute their Gram matrix → discover equal norms + equal pairwise
+  products + zero sum → characterize the resulting object → only then compare to regular-simplex theory.
+
+The first construction done this way is `research/constructions/r4_tetrahedral_zero.md`.
+
 Each step produces something that can be checked. The registry carries the program as each record's
 `construction` field (§9).
 
@@ -99,10 +107,17 @@ classification is secondary.
 
 ### 4.1 Zero Preservation Rule (permanent)
 
-When the defining state is F(x) = 0, the system is not perturbed merely so that F(x) ≠ 0 in order to obtain more
-information.
+**The rule** (method, `B-ZERO-PRESERVE`): do not leave the defining zero merely to make the system observable. When
+the defining state is F(x) = 0, research performs **zero-preserving interrogation**. The system is not perturbed
+merely so that F(x) ≠ 0 in order to obtain more information.
 
-> Perturbing a natural zero state can destroy information encoded in the relationships that produced that zero, even when the perturbation appears to make the system more observable.
+**The hypothesis it is kept apart from** (theory target, `B-ZERO-LOSS`): leaving a natural zero/cancellation state
+may destroy information encoded in the relations that generated that zero.
+
+The rule does not depend on whether the hypothesis is proved.
+
+"Zero-preserving" means the defining zero relation is preserved. It does not mean nothing in the state changes:
+"non-perturbing measurement" is not used as a universal phrase.
 
 - **Not the program:** hidden zero → perturb system → obtain visible nonzero response → infer hidden state. MRI's
   external field is the motivating example of this.
@@ -131,10 +146,15 @@ remains zero*. All of these are open to investigation without breaking the zero:
 "Do not perturb zero" never means "do not inspect the state". The opposite is intended: inspect the zero state more
 deeply rather than destroying it.
 
-*Example already in the repository.* In Chapter I stage 2b, S_z = 0 for both states A and B. S² commutes with S_z,
-and A and B are eigenstates of both (cards Q1b, Q1e). So measuring S² returns a definite value and leaves each state
-unchanged: still S_z = 0. That is a measurement inside the zero. It distinguishes the states without leaving the
-zero.
+*Example already in the repository: zero-preserving interrogation in stage 2b.*
+
+- S_z = 0 for both states A and B. S² commutes with S_z (Q1e).
+- Measuring S² preserves the defining zero for **every** state with S_z = 0: both outcomes still have S_z = 0 (Q1g).
+- The state itself can change inside the S_z = 0 eigenspace. For |↑↓⟩ the outcomes are A and B, neither a
+  multiple of |↑↓⟩ (Q1h).
+- A and B, being eigenstates of S², happen to be left unchanged (Q1b, Q1h).
+
+The measurement distinguishes A from B without leaving the zero. That is the rule's sense of "preserving".
 
 ### 4.3 The larger generating geometry (B-HIGHER-GEOMETRY)
 
@@ -296,6 +316,10 @@ counterexample.
 | Values | as given | ESTABLISHED · DERIVED CONNECTION · HYPOTHESIS · OPEN QUESTION |
 | Changes when | never lowered by a status | only on a verifier verdict or an established source |
 
+Method / governance rules (kind `method-rule`, for example B-OUTSIDE-IN, B-NONEXHAUSTIVE, B-ZERO-PRESERVE) carry
+`status: "governance"`: no epistemic status and no proof obligation. A scientific claim they relate to is a separate
+record (B-ZERO-PRESERVE's is B-ZERO-LOSS). One record never holds both a rule and a claim.
+
 A record can be `status: "hypothesis"` and still be investigated in full. That is intentional, and tests accept
 it. A HYPOTHESIS or OPEN label describes current proof status, never how seriously the theory is pursued. Level 3
 and 4 claims are still never presented as evidence. Every verifier rule in `claude_code_prompt.md` §6 applies.
@@ -317,6 +341,9 @@ The registry fields fill in gradually. Empty fields are unstarted work, not verd
   - `lastResearchOutcome`.
 
 ## 10. Order: foundation, guide, translator
+
+The Act sequence that implements this order is `docs/act_map.md`.
+
 
 1. **Foundational geometry:** zero, cancellation, origin, higher-dimensional generating geometry, orthogonality,
    shape generation, finite rule / infinite continuation, part / whole, the fractal relation, representation,

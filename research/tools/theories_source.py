@@ -8,6 +8,7 @@ P, G2, G3, MM, SPEC, RD = ('docs/claude_code_prompt.md', 'docs/gate2_answers.md'
                            'docs/Interactive_Master_Map.extracted.md', 'docs/Mathematical_Basis_Interactive_Design_Spec.md', 'docs/restructure_decisions.md')
 G4 = 'docs/gate4_decisions.md'
 AP = 'docs/author_philosophy.md'
+CX = 'research/constructions/r4_tetrahedral_zero.md'
 H1, H2, H3 = 'research/hypotheses/H1.md', 'research/hypotheses/H2.md', 'research/hypotheses/H3.md'
 
 def line_from(path, start):
@@ -19,7 +20,7 @@ def line_from(path, start):
 
 R = []
 def T(id, label, words, src, origin, kind, status, *, norm=None, variants=(), pro=(), con=(), bounds=(), sup=None, supers=None,
-      acts=(), objs=(), audit=('preserved', ''), ui='none', graph=None, ref=None, target=None, build=None, related=()):
+      acts=(), objs=(), audit=('preserved', ''), ui='none', graph=None, ref=None, target=None, build=None, related=(), history=()):
     R.append(dict(id=id, label=label, words=words, variants=[dict(words=w, source=s) for w, s in variants],
                   normalizedStatement=norm, origin=origin, kind=kind, status=status,
                   evidenceFor=[dict(ref=r, note=n) for r, n in pro], evidenceAgainst=[dict(ref=r, note=n) for r, n in con],
@@ -30,7 +31,8 @@ def T(id, label, words, src, origin, kind, status, *, norm=None, variants=(), pr
                   # research execution (docs/research_method.md): separate from the reported status above
                   researchMode='theorem-target', researchDirection='outside-in',
                   construction=construction(**build) if build else None,
-                  proofTarget=proof_target(**target) if target else None, related=list(related)))
+                  proofTarget=proof_target(**target) if target else None, related=list(related),
+                  history=[dict(date=d, change=c) for d, c in history], relatedActsRev3=[]))
 
 OUTCOMES = ('proved', 'known-theorem', 'constructive-realization', 'special-case', 'exact-obstruction', 'proof-obligation', 'candidate-new-class')
 def proof_target(targetStatement, source=RD, **kw):
@@ -373,30 +375,35 @@ for cid, title, st, cards, acts in [
 # ── outside-in backbone (2026-11-11) ─────────────────────────────────────────────────────────────
 NEW_AUDIT = ('new', 'stated at the outside-in clarification (2026-11-11)')
 BR = 'backbone-rule'
-T('B-OUTSIDE-IN', 'Outside-in geometry construction', 'Construct geometry from observed relations first; compare it to existing mathematical structures second.', RD, U, BR, 'hypothesis',
+MR, GOV = 'method-rule', 'governance'   # method / governance rules carry no epistemic status (2026-11-12)
+SPLIT = '2026-11-12'
+T('B-OUTSIDE-IN', 'Outside-in geometry construction', 'Construct geometry from observed relations first; compare it to existing mathematical structures second.', RD, U, MR, GOV,
+  history=[(SPLIT, 'reclassified from backbone-rule / HYPOTHESIS to method-rule / governance: a governance rule, not a claim requiring proof (Nadia)')],
   variants=[('observe / collect relations → construct a geometry → discover the rules of that geometry → determine which known structures it contains', RD),
             ('The intended eventual result is a geometry that can act as: a guide for existing structures rather than merely a guide to existing structures.', RD),
             ('Construct first. Classify second.', RD), ('Look from the outside in.', RD)],
-  norm='Primary research direction (method rule). Its claim, that a geometry constructed this way can guide existing structures, is a hypothesis.',
+  norm='Method / governance rule: the primary research direction. The intended result (a guide for existing structures) is an aim, not a claim requiring proof.',
   bounds=['Theorem-seeking is kept as the secondary mode (existing-theorem scan); it never redefines the constructed geometry.'],
   build=dict(sequence=['phenomena / zero / cancellation / relation → collect exact behavior → construct representation → construct geometry → infer its internal rules → test those rules across systems → only then compare against existing mathematics'],
              doNotReason=['user theory → search existing mathematics → identify nearest theorem → fit theory into theorem']),
   acts=['I–IX'], audit=NEW_AUDIT, ui='none (method)', related=['B-NONEXHAUSTIVE', 'T-GOR-MEANING'], ref='outside-in 0, 27')
-T('B-ZERO-PRESERVE', 'Zero Preservation Rule', 'Do not perturb a defining zero merely to obtain information. Investigate the structure of the system while the zero remains zero.', RD, U, BR, 'hypothesis',
-  variants=[('Perturbing a natural zero state can destroy information encoded in the relationships that produced that zero, even when the perturbation appears to make the system more observable.', RD),
+T('B-ZERO-PRESERVE', 'Zero Preservation Rule', 'Do not perturb a defining zero merely to obtain information. Investigate the structure of the system while the zero remains zero.', RD, U, MR, GOV,
+  history=[(SPLIT, 'split: this record is the method rule (method-rule / governance); the hypothesis it carried moved to B-ZERO-LOSS with its wording (Nadia: do not use one record for governance and a claim)')],
+  variants=[('Do not leave the defining zero merely to make the system observable.', RD), ('zero-preserving interrogation', RD),
             ('find information inside the zero', RD), ('the complete structure of the system while its defining relation remains zero', RD),
             ('Preserve the zero. Investigate its geometry.', RD), ('Do not destroy the zero to understand it. Look inside its structure.', AP)],
-  norm='Rule: while F(x) = 0 defines the state, study other observables, internal relations, transformations that stay inside the zero and the larger space it arises from; do not leave the zero to gain information. Premise (HYPOTHESIS): perturbing a natural zero can destroy information held in the relations that produced it.',
-  pro=[('card:Q1e', '[S², S_z] = 0 and A, B are eigenstates of both (Q1b): measuring S² leaves each S_z = 0 state unchanged, a measurement inside the zero that tells A from B'),
-       ('card:Z2c', 'a transformation that stays inside the zero set (a pair twist)')],
+  norm='Method / governance rule: while F(x) = 0 defines the state, research performs zero-preserving interrogation (other observables, internal relations, transformations that stay inside the zero, the larger space it arises from). It does not depend on whether B-ZERO-LOSS is proved.',
+  pro=[('card:Q1g', 'example of the rule in use: measuring S² keeps S_z = 0 for every S_z = 0 state'),
+       ('card:Q1h', 'the state may change inside the eigenspace while the zero is preserved: zero-preserving, not "non-perturbing"'),
+       ('card:Z2c', 'example: a transformation that stays inside the zero set (a pair twist)')],
   bounds=['Leaving the zero is allowed only in a separate, labelled experiment that studies what is lost by leaving it.',
           '"Do not perturb zero" never means "do not inspect the state": inspecting it more deeply is the program.',
-          'The premise has no card yet: nothing in the repository shows information destroyed by a perturbation.'],
+          'Preserving the defining zero relation does not mean nothing in the state changes (Q1h).'],
   build=dict(sequence=['zero remains zero → examine its internal structure → examine its geometry → examine other relations/invariants/measurements → examine transformations that remain inside the zero state → examine the larger space from which the zero state arises'],
              doNotReason=['hidden zero → perturb system → obtain visible nonzero response → infer hidden state'],
              known=['other observables', 'internal relations', 'pairwise relationships', 'higher-order quantities', 'symmetry', 'transformations', 'invariants', 'configuration-space structure',
                     'dimensional structure', 'origin structure', 'higher-dimensional representations', 'families of zero-producing configurations', 'relations between those configurations']),
-  acts=['I–IX'], audit=NEW_AUDIT, ui='Chapter I keeps every zero intact; stage 2b measures S² inside the zero',
+  acts=['I–IX'], audit=NEW_AUDIT, ui='Chapter I keeps every zero intact; stage 2b\'s S² measurement is zero-preserving interrogation',
   related=['T-Q.zero-internal-inference', 'T-RECONSTRUCT', 'T-LOOK-INSIDE', 'B-HIGHER-GEOMETRY', 'T-HIDDEN-FAMILY'], ref='outside-in 1–2, 27')
 T('B-HIGHER-GEOMETRY', 'The larger generating geometry', 'Hidden information in a lower-dimensional manifestation may be encoded in the larger geometry that generates it.', RD, U, 'hypothesis', 'hypothesis',
   variants=[('The most likely way to find the hidden information is to look at the bigger picture: the geometry of the origin geometry — for example, the four-dimensional geometry behind a three-dimensional manifestation.', RD),
@@ -413,11 +420,12 @@ T('B-HIGHER-GEOMETRY', 'The larger generating geometry', 'Hidden information in 
              doNotReason=['quantum mechanics uses Hilbert space → therefore the answer is Hilbert space'],
              known=['projection', 'embedding', 'section', 'quotient', 'fiber', 'shadow', 'boundary', 'higher-dimensional state space', 'configuration space', 'Hilbert space']),
   acts=['foundational'], audit=NEW_AUDIT, related=['B-ZERO-PRESERVE', 'T-BEYOND-3D', 'T-REP-MANIFOLD', 'T-ZERO-ORTHOGONAL-C', 'T-4D-EVENTS', 'T-MANIFOLDS'], ref='outside-in 3–4, 24, 27')
-T('B-NONEXHAUSTIVE', 'Known structures are examples, not the boundary', 'Existing named mathematical structures are known examples, not assumed exhaustive classes.', RD, U, BR, 'hypothesis',
+T('B-NONEXHAUSTIVE', 'Known structures are examples, not the boundary', 'Existing named mathematical structures are known examples, not assumed exhaustive classes.', RD, U, MR, GOV,
+  history=[(SPLIT, 'reclassified from backbone-rule / HYPOTHESIS to method-rule / governance (Nadia); the earlier normalized "premise (HYPOTHESIS)" sentence was dropped')],
   variants=[('We do not know how many kinds of periodic relationships or pairs exist. Assuming the known cases are exhaustive is itself a limitation the project is intended to overcome.', RD),
             ('Known structures are examples, not the boundary of the search space.', RD), ('DO NOT CLOSE THE SEARCH SPACE WITH KNOWN MATHEMATICS', RD),
             ('Fourier pairs are examples. They are not the universe of possible pairs.', RD), ('Circle periodicity is an example. It is not the universe of possible periodic behavior.', RD)],
-  norm='Rule: a list of possibilities is either shown logically exhaustive by a stated theorem, or marked "These are known examples, not an exhaustive classification for this project." A behavior fitting no category is kept as a candidate new class. Premise (HYPOTHESIS): the project\'s geometries can generate behaviors or pairs outside the currently named classes.',
+  norm='Method / governance rule: a list of possibilities is either shown logically exhaustive by a stated theorem, or marked "These are known examples, not an exhaustive classification for this project." A behavior fitting no category is kept as a candidate new class.',
   bounds=['Where a classification is a theorem within stated assumptions, the rule asks for the assumptions to be stated, not for the theorem to be doubted.'],
   acts=['I–IX'], audit=NEW_AUDIT, ui='none (method)', related=['T-STAR', 'T-PAIRB', 'T-CONJUGACY', 'B-OUTSIDE-IN'], ref='outside-in 6–7, 25, 27')
 T('B-FINITE-INFINITE', 'Finite rule, infinite structure, finite form', 'An indefinitely continuing/infinite structure may be governed by rules manifested through a finite geometry.', RD, U, 'hypothesis', 'hypothesis',
@@ -440,14 +448,20 @@ T('B-ORTHO-FORM', 'Organized orthogonality and form', 'Organized orthogonality m
             ('Could the amount, organization, or continuity of orthogonality possessed by a shape relate to global rules such as π, sine, cosine, periodicity, closure, or other geometric behavior?', RD),
             ('It is that a very simple constraint generates the entire shape.', RD)],
   pro=[('card:G1a', 'the established example: radius ⊥ tangent at every point of the compass circle'),
-       ('card:G1b', 'an ingredient, not an answer: for any plane curve, radius ⊥ tangent all along an interval exactly when the distance to the origin stays fixed there (one setting only)')],
+       ('card:G1d', 'an ingredient, not an answer: for a differentiable curve x: I → ℝⁿ, x·x′ = 0 for all t ∈ I iff |x(t)| is constant on each connected component of I (fixed distance from the origin ↔ position orthogonal to velocity)')],
+  history=[(SPLIT, 'evidence note tightened: the loose G1b reading ("for any plane curve … iff …") replaced by the precise G1d statement; G1b stays on the ledger')],
   bounds=['"Every smooth curve has a normal" is a local fact and not an answer (Nadia).', 'Not concluded: that orthogonality alone caused the circle (Nadia).'],
-  build=dict(questions=['How much of this shape\'s global behavior is encoded in the relationships that remain fixed while it is generated?']),
-  acts=['foundational', 'II', 'IV'], audit=NEW_AUDIT, ui='proposed: "A Shape From One Rule" (not built)',
+  build=dict(questions=['How much of this shape\'s global behavior is encoded in the relationships that remain fixed while it is generated?',
+                        'Which fixed relationships made the shape possible?', 'Which global rules are consequences of those fixed relationships?',
+                        'What geometric constraints produce the circular parameterization?', 'Which quantities depend on the fixed-radius rule?',
+                        'Which depend specifically on Euclidean metric structure?', 'Where does π enter?', 'Where do sine/cosine enter?',
+                        'Which of these relations generalize to other geometries?']),
+  acts=['foundational', 'II', 'IV'], audit=NEW_AUDIT, ui='Act II stage 4 contract, "A Shape From One Rule" (docs/act_map.md; not built)',
   related=['T-H1', 'T-ZERO-ORTHOGONAL-D', 'T-CIRCLE-ORTHO', 'T-FIXED-RELATIONS-Q', 'B-FINITE-INFINITE', 'T-ORTHO-DEEPER', 'T-ORTHO-CLUE'], ref='outside-in 14, 27')
 T('T-CIRCLE-ORTHO', 'The compass circle: radius ⊥ tangent', 'At each boundary point of a smooth circle: radius ⊥ tangent.', RD, U, 'established', 'established',
   variants=[("x(θ)·x'(θ)=0.", RD), ('This exact relation may be used as an established example.', RD)],
-  pro=[('card:G1a', ''), ('card:G1c', 'the trace closes')], acts=['foundational', 'II'], audit=NEW_AUDIT, ui='proposed: "A Shape From One Rule" (not built)', ref='outside-in 14')
+  pro=[('card:G1a', ''), ('card:G1c', 'the trace closes'), ('card:G1d', 'fixed distance from the origin ↔ position orthogonal to velocity, on each connected component')],
+  acts=['foundational', 'II'], audit=NEW_AUDIT, ui='Act II stage 4 contract (not built)', ref='outside-in 14')
 T('T-FIXED-RELATIONS-Q', 'What the fixed relations encode', 'How much of this shape\'s global behavior is encoded in the relationships that remain fixed while it is generated?', RD, U, 'open-question', 'open',
   acts=['foundational', 'II'], audit=NEW_AUDIT, ui='proposed: closing question of "A Shape From One Rule"', related=['B-ORTHO-FORM', 'B-FINITE-INFINITE'], ref='outside-in 15')
 T('T-FINITE-GEOMETRIES-Q', 'Which finite geometries generate continuing structure?', 'What kinds of finite geometries can encode or generate indefinitely continuing structure through their internal rules?', RD, U, 'open-question', 'open',
@@ -482,8 +496,56 @@ T('T-IRREVERSIBLE-FORMATION', 'Irreversible geometric formation', 'Our existence
   acts=['foundational'], audit=NEW_AUDIT, related=['B-FINITE-INFINITE', 'B-PART-WHOLE', 'T-STABLE-FORM-Q'], ref='outside-in 17')
 T('T-FRACTAL-PROPERTIES-Q', 'What would make "what are we to the fractal" exact?', 'What mathematical properties would the project\'s geometry need in order for Nadia\'s part/whole “we are to the fractal” intuition to become exact?', AP, U, 'open-question', 'open',
   acts=['foundational'], audit=NEW_AUDIT, related=['B-PART-WHOLE'], ref='outside-in 18')
-T('T-GOR-MEANING', 'Direction for "Geometry of Representation" (not locked)', 'Construct a geometry capable of showing how apparently complete objects/states are manifestations of deeper relationships, and use that geometry as a guide across existing mathematical and physical structures.', RD, U, BR, 'open',
+T('T-GOR-MEANING', 'Direction for "Geometry of Representation" (not locked)', 'Construct a geometry capable of showing how apparently complete objects/states are manifestations of deeper relationships, and use that geometry as a guide across existing mathematical and physical structures.', RD, U, MR, GOV,
+  history=[(SPLIT, 'reclassified from backbone-rule / OPEN to method-rule / governance: a project-definition direction, not a claim')],
   bounds=['Not locked as the final definition (Nadia).'], acts=['I–IX'], audit=NEW_AUDIT, ui='none (project definition)', related=['B-OUTSIDE-IN'], ref='outside-in 20')
+
+
+# ── first outside-in construction (2026-11-12) ───────────────────────────────────────────────────
+C_AUDIT = ('new', 'first outside-in construction (2026-11-12)')
+T('B-ZERO-LOSS', 'Leaving a zero may destroy information', 'Leaving a natural zero/cancellation state may destroy information encoded in the relations that generated that zero.', RD, U, 'hypothesis', 'hypothesis',
+  variants=[('Perturbing a natural zero state can destroy information encoded in the relationships that produced that zero, even when the perturbation appears to make the system more observable.', RD)],
+  bounds=['No card yet: nothing in the repository shows information destroyed by leaving a zero.', 'The method rule (B-ZERO-PRESERVE) does not depend on this being proved.'],
+  history=[(SPLIT, 'split out of B-ZERO-PRESERVE, which had carried this premise; its wording moved here unchanged')],
+  acts=['I', 'III'], audit=C_AUDIT, related=['B-ZERO-PRESERVE', 'T-Q.zero-internal-inference', 'Q-R4-8'], ref='construction 2')
+T('T-R4-TETRA', 'R4 construction: an orthogonal basis projects to a tetrahedral zero', 'An orthogonal basis in R^4 can project into a 3-dimensional subspace as four equal tetrahedral vectors whose sum is zero.', RD, 'established-support', 'established', 'established',
+  norm='P = I − ¼11ᵀ; vᵢ = Peᵢ = eᵢ − ¼1 ∈ 1⊥; Σvᵢ = 0; ‖vᵢ‖² = ¾; vᵢ·vⱼ = −¼; uᵢ·uⱼ = −⅓; Gram G = I − ¼J = P, spectrum {1,1,1,0}; span = 1⊥.',
+  pro=[(f'card:G2{c}', '') for c in 'abcdefgh'], acts=['III'], audit=C_AUDIT, ui='none (Act III; construction record)',
+  related=['B-HIGHER-GEOMETRY', 'T-ZERO-ORTHOGONAL-C', 'T-R4-DERIVED', 'T-R4-STAGE2'], ref='construction 5.3')
+T('T-R4-GENERAL', 'The same construction for every n', 'the same identities hold for every n ≥ 2', CX, 'established-support', 'established', 'established',
+  norm='Pₙ = I − (1/n)11ᵀ, vᵢ = Pₙeᵢ: Σvᵢ = 0, ‖vᵢ‖² = (n−1)/n, vᵢ·vⱼ = −1/n, normalized −1/(n−1); vᵢ − vⱼ = eᵢ − eⱼ, so the vᵢ are a regular simplex in 1⊥.',
+  pro=[('card:G2n', 'derived symbolically in n, checked exactly for n = 2..10'), ('card:G2j', 'pairwise equidistant and affinely spanning: a regular simplex')],
+  bounds=['Derived inside the project; does not replace the R4 case, which stays the concrete bridge to Stage 2.'], acts=['III'], audit=C_AUDIT,
+  related=['T-R4-TETRA', 'Q-R4-3', 'Q-R4-7'], ref='construction 16')
+T('T-R4-DERIVED', 'Orthogonal organization → zero-sum organization (constructed example)', 'higher-dimensional orthogonal organization → lower-dimensional zero-sum organization', RD, U, 'derived-connection', 'derived',
+  norm='In the constructed example: Σvᵢ = P(Σeᵢ) = P1 = 0 (the zero is the image of the one removed direction); the shadow\'s Gram matrix is P itself; vᵢ − vⱼ = eᵢ − eⱼ.',
+  pro=[('card:G2c', 'the zero sum'), ('card:G2g', 'the shadow\'s Gram matrix is P'), ('card:G2j', 'differences survive exactly')],
+  bounds=['For the constructed example only; not universal.', 'Not established: anything about physical protons or a physical fourth dimension.'],
+  acts=['III'], audit=C_AUDIT, related=['T-R4-TETRA', 'B-HIGHER-GEOMETRY-CHAIN', 'T-ZERO-ORTHOGONAL-C'], ref='construction 5.3')
+T('T-R4-STAGE2', 'Stage 2\'s tetrahedron is an exact realization of the R4 construction', 'Stage 2 tetrahedral cancellation ← exact realization of projected R4 orthonormal basis', CX, U, 'established', 'established',
+  norm='ORTHOGONALLY EQUIVALENT: under the isometry Φ: 1⊥ → ℝ³, x ↦ (h₁·x, h₂·x, h₃·x) with h₁ = ½(1,1,−1,−1), h₂ = ½(1,−1,1,−1), h₃ = ½(1,−1,−1,1), Φ(uᵢ) = TETRAᵢ with no permutation and no sign; Stage 2 starts at 1.6·TETRA.',
+  pro=[('card:G2i', 'computed from the app\'s own TETRA')],
+  bounds=['Chronology: the tetrahedron was first chosen for cancellation clarity (D3); the R4 projection construction was discovered later. Stage 2\'s history is not rewritten.'],
+  acts=['I', 'III'], objs=['obj.moments'], audit=C_AUDIT, related=['T-R4-TETRA', 'T-HIDDEN-FAMILY'], graph='rel.r4-stage2-realization', ref='construction 5.4')
+T('B-HIGHER-GEOMETRY-CHAIN', 'Construction-backed direction under B-HIGHER-GEOMETRY', 'zero output ← lower-dimensional relational structure ← higher-dimensional organization', RD, U, 'construction-backed-direction', 'hypothesis',
+  norm='CONSTRUCTION-BACKED DIRECTION: one exact instance (the R4 orthogonal-source construction); not universal, not promoted to a theorem.',
+  pro=[('card:G2c', 'one exact instance: the zero sum'), ('card:G2g', 'the lower-dimensional relational structure (Gram matrix) of that instance')],
+  bounds=['One instance does not make the chain universal.', 'Not every case is assumed to be a projection.'],
+  acts=['III'], audit=C_AUDIT, related=['B-HIGHER-GEOMETRY', 'T-R4-DERIVED', 'Q-R4-6', 'Q-R4-8'], ref='construction 8')
+for qid, words, src, origin in [
+    ('Q-R4-1', 'What information about the original orthonormal basis survives in the projected tetrahedral zero-sum configuration?', RD, U),
+    ('Q-R4-2', 'Given only the tetrahedral zero-sum configuration in H, can the R^4 orthogonal-source construction be reconstructed uniquely, up to a natural equivalence?', RD, U),
+    ('Q-R4-3', 'For n orthonormal basis vectors in R^n, project onto 1⊥. Does the resulting set always form a regular simplex in R^(n-1)?', RD, U),
+    ('Q-R4-4', 'Does every regular simplex zero-sum configuration arise, up to orthogonal equivalence and scale, from this projection construction?', RD, U),
+    ('Q-R4-5', 'What properties of the higher-dimensional source are encoded by Σ_i v_i = 0, versus by the stronger Gram-matrix structure G_ij = 3/4 (i = j), −1/4 (i ≠ j)?', RD, U),
+    ('Q-R4-6', 'Which lower-dimensional zero-sum configurations do not admit an orthogonal-source construction of this type?', RD, U),
+    ('Q-R4-7', 'Does the Chapter I sequence instantiate one family indexed by n?', CX, A),
+    ('Q-R4-8', 'For other maps from a larger geometry, does a lower-dimensional zero always record a direction the map removes?', CX, A)]:
+    answered = qid == 'Q-R4-3'
+    T(qid, f'R4 construction question {qid}', words, src, origin, 'open-question', 'established' if answered else 'open',
+      pro=[('card:G2n', ''), ('card:G2j', 'pairwise equidistant, affinely spanning 1⊥')] if answered else ([('card:G2j', 'a first exact piece: differences survive, only the centroid is removed; not an answer')] if qid in ('Q-R4-1', 'Q-R4-5') else []),
+      target=dict(targetStatement=words, source=src, lastResearchOutcome='proved') if answered else None,
+      acts=['III'], audit=C_AUDIT, related=['T-R4-TETRA'], ref=f'construction {qid}')
 
 PAIR_A = proof_target('Starting from the established common zero-sum form Σv_i = 0, identify all additional invariants/relations of the mass system that can be translated into mathematically meaningful tests on the directional cancellation system.',
                       requiredObjects=['the established shared form Σv_i = 0 (pair.A.sharedAlgebraicForm)'])
@@ -492,8 +554,37 @@ next(r for r in R if r['id'] == 'T-Q.pairA-transfer')['construction'] = construc
     sequence=['mass zero exposes structure → identify the structural information mathematically → ask what type of information a zero-state geometry can encode in general → construct the proton zero geometry → determine what structure emerges there'],
     doNotReason=['mass has center of mass → find center-of-mass analogue in proton zero', "transfer the source object's ontology"])
 
+# Act map (2026-11-12, docs/act_map.md). Records stated before it keep their rev-3 labels in relatedActsRev3.
+OLD_TO_NEW = {'I': ['I'], 'II': ['IV'], 'III': ['Guide'], 'IV': ['Guide'], 'V': ['Guide'], 'VI': ['Guide'], 'VII': ['Guide'],
+              'VIII': ['II–IV'], 'IX': ['Final'], 'I–IX': ['all']}
+VIII_TO_GUIDE = {'T-C-ROLES', 'T-C9', 'T-MANIFOLDS', 'T-PERCEPTION-RELATIVITY', 'T-MASS-WAVE', 'T-MASS-WAVE-Q', 'T-MATTER-FIELD', 'T-CONJUGACY'}
+VIII_UNPLACED = {'T-NATURE-OR-DESCRIPTION', 'T-SUBCONSCIOUS', 'T-MATH-BOUNDARIES', 'T-REP-COMPLETE', 'T-4D-EVENTS'}
+NEW_ACTS = {  # records stated at or after the outside-in clarification, placed directly in the new map
+    'B-OUTSIDE-IN': ['all'], 'B-ZERO-PRESERVE': ['all'], 'B-NONEXHAUSTIVE': ['all'], 'T-GOR-MEANING': ['all'],
+    'B-HIGHER-GEOMETRY': ['III'], 'B-FINITE-INFINITE': ['II', 'IV'], 'B-PART-WHOLE': ['unplaced'], 'B-ORTHO-FORM': ['II'],
+    'T-CIRCLE-ORTHO': ['II'], 'T-FIXED-RELATIONS-Q': ['II'], 'T-FINITE-GEOMETRIES-Q': ['II', 'IV'], 'T-STABLE-FORM-Q': ['IV'],
+    'T-ZERO-ORTHOGONAL': ['I', 'II', 'III'], 'T-ZERO-ORTHOGONAL-A': ['II'], 'T-ZERO-ORTHOGONAL-B': ['II', 'Guide'],
+    'T-ZERO-ORTHOGONAL-C': ['III'], 'T-ZERO-ORTHOGONAL-D': ['II'], 'T-EXISTENCE-ZERO': ['unplaced'], 'T-SPACE-EXPLORATION': ['unplaced'],
+    'T-LOOK-INSIDE': ['unplaced'], 'T-IRREVERSIBLE-FORMATION': ['unplaced'], 'T-FRACTAL-PROPERTIES-Q': ['unplaced']}
+for r in R:
+    if r['audit']['before'] == 'new':
+        if r['id'] in NEW_ACTS:
+            r['relatedActs'] = NEW_ACTS[r['id']]
+        continue
+    old = r['relatedActs']
+    new = []
+    for a in old:
+        m = OLD_TO_NEW[a]
+        if a == 'VIII' and r['id'] in VIII_TO_GUIDE: m = ['Guide']
+        if a == 'VIII' and r['id'] in VIII_UNPLACED: m = ['unplaced']
+        new += [x for x in m if x not in new]
+    r['relatedActsRev3'], r['relatedActs'] = old, new
+    r['history'].append(dict(date=SPLIT, change=f"Act labels remapped to the new Act map (rev 3: {', '.join(old) or '—'})"))
+for r in R:
+    assert all(a in ('I', 'II', 'III', 'IV', 'II–IV', 'Guide', 'Final', 'all', 'unplaced') for a in r['relatedActs']), (r['id'], r['relatedActs'])
+
 # Cross-links (symmetric): existing records that the new backbone touches
-RELATED = {'T-H1': ['B-ORTHO-FORM', 'T-ZERO-ORTHOGONAL'], 'T-H3': ['B-FINITE-INFINITE'], 'T-HIDDEN-FAMILY': ['B-ZERO-PRESERVE', 'B-HIGHER-GEOMETRY'],
+RELATED = {'T-H1': ['B-ORTHO-FORM', 'T-ZERO-ORTHOGONAL'], 'T-ZERO-ORTHOGONAL-C': ['T-R4-TETRA', 'T-R4-DERIVED'], 'T-H3': ['B-FINITE-INFINITE'], 'T-HIDDEN-FAMILY': ['B-ZERO-PRESERVE', 'B-HIGHER-GEOMETRY'],
            'T-Q.pairA-transfer': ['B-ZERO-PRESERVE', 'B-OUTSIDE-IN'], 'T-PAIRB': ['B-NONEXHAUSTIVE'], 'T-EVIDENCE': ['B-NONEXHAUSTIVE']}
 byid = {r['id']: r for r in R}
 for k, ids in RELATED.items():
@@ -512,8 +603,10 @@ for r in R:
         r['words'] = q['text']; r['label'] = f"{q['id']}: {q['title']}"
 out.write_text(json.dumps({
     'about': 'Theory registry (provenance layer of the research graph, with each theory\'s proof program). Every record keeps the original wording; evidence against a theory is attached, never used to delete it. Generated from research/tools/theories_source.py; checked by test/theories.test.js; rendered to research/theory_coverage.md.',
-    'kinds': ['hypothesis', 'open-question', 'derived-connection', 'philosophical-exploration', 'historical-conjecture', 'established', 'backbone-rule'],
-    'statuses': ['established', 'derived', 'hypothesis', 'open'],
+    'kinds': ['hypothesis', 'open-question', 'derived-connection', 'philosophical-exploration', 'historical-conjecture', 'established', 'method-rule', 'construction-backed-direction'],
+    'statuses': ['established', 'derived', 'hypothesis', 'open', 'governance'],
+    'statusNote': 'governance marks a method / governance rule (kind method-rule): it carries no epistemic status and needs no proof. The four epistemic statuses apply to every other record.',
+    'acts': ['I', 'II', 'III', 'IV', 'II–IV', 'Guide', 'Final', 'all', 'unplaced'],
     'researchModes': ['theorem-target'],
     'researchDirections': ['outside-in'],
     'researchOutcomes': list(OUTCOMES),

@@ -11,7 +11,7 @@ const read = (p) => readFileSync(new URL(p, ROOT), 'utf8');
 const OUT = 'research/theory_coverage.md';
 
 const cell = (s) => (s == null || s === '' ? '—' : String(s).replace(/\|/g, '\\|').replace(/\n/g, ' '));
-const STATUS = { established: 'ESTABLISHED', derived: 'DERIVED CONNECTION', hypothesis: 'HYPOTHESIS', open: 'OPEN QUESTION' };
+const STATUS = { established: 'ESTABLISHED', derived: 'DERIVED CONNECTION', hypothesis: 'HYPOTHESIS', open: 'OPEN QUESTION', governance: 'METHOD RULE' };
 const BEFORE = { preserved: 'preserved', partial: 'partial', 'title-only': 'title only', missing: 'MISSING', new: 'new' };
 
 export function render() {
@@ -31,14 +31,14 @@ export function render() {
   const words = (r) => [r.words, ...r.variants.map((v) => `${v.words} *(${v.source})*`)].filter(Boolean).map((w) => `“${w}”`).join(' / ');
   const rel = (r) => [r.supersededBy && `superseded by ${r.supersededBy}`, r.supersedes && `supersedes ${r.supersedes}`].filter(Boolean).join('; ');
   const row = (r) =>
-    `| ${r.id} | ${cell(words(r))} | ${cell([r.normalizedStatement, rel(r)].filter(Boolean).join(' · '))} | ${r.origin} | ${STATUS[r.status]} | ${cell(r.sourceDocs[0])} | ${cell(r.graphRecord)} | ${cell(r.relatedActs.join(', '))} | ${cell(r.interactive)} | ${cell(ev(r.evidenceFor))} | ${cell(against(r))} | ${BEFORE[r.audit.before]}${r.audit.note ? `: ${cell(r.audit.note)}` : ''} |`;
+    `| ${r.id} | ${cell(words(r))} | ${cell([r.normalizedStatement, rel(r)].filter(Boolean).join(' · '))} | ${r.origin} | ${STATUS[r.status]} | ${cell(r.sourceDocs[0])} | ${cell(r.graphRecord)} | ${cell(r.relatedActs.join(', ') + (r.relatedActsRev3.length ? ` (rev 3: ${r.relatedActsRev3.join(', ')})` : ''))} | ${cell(r.interactive)} | ${cell(ev(r.evidenceFor))} | ${cell(against(r))} | ${BEFORE[r.audit.before]}${r.audit.note ? `: ${cell(r.audit.note)}` : ''} |`;
 
   const user = theories.filter((r) => r.origin === 'user');
   const other = theories.filter((r) => r.origin !== 'user');
   const passCards = (r) => r.evidenceFor.filter((e) => e.ref.startsWith('card:') && ledger[e.ref.slice(5)]?.verdict === 'PASS');
   const ids = (list) => (list.length ? list.map((r) => r.id).join(', ') : '—');
   const by = (k) => user.filter((r) => r.audit.before === k);
-  const head = '| ID | Original wording | Normalized wording | Origin | Status | Source document | Graph record | Act | Interactive coverage | Evidence for | Evidence against / boundary | Before this audit |\n|---|---|---|---|---|---|---|---|---|---|---|---|';
+  const head = '| ID | Original wording | Normalized wording | Origin | Status | Source document | Graph record | Act (new map; rev 3) | Interactive coverage | Evidence for | Evidence against / boundary | Before this audit |\n|---|---|---|---|---|---|---|---|---|---|---|---|';
 
   return `# Theory coverage
 
@@ -65,9 +65,17 @@ ${['preserved', 'partial', 'title-only', 'missing', 'new'].map((k) => `| ${BEFOR
 | completely open (no evidence for or against; scope notes allowed) | ${user.filter((r) => !r.evidenceFor.length && !r.evidenceAgainst.length).length} | ${ids(user.filter((r) => !r.evidenceFor.length && !r.evidenceAgainst.length))} |
 | superseded wording kept as history | ${user.filter((r) => r.supersededBy).length} | ${ids(user.filter((r) => r.supersededBy))} |
 
+## Constructions
+
+| Construction | Record | Cards |
+|---|---|---|
+| R4 orthogonal-source construction (tetrahedral zero construction) | \`research/constructions/r4_tetrahedral_zero.md\` | G2a–G2j, G2n |
+
 ## Backbone records
 
 Nadia's backbone statements (outside-in clarification). Every record keeps her original words; full rows are below.
+
+Method rules (status METHOD RULE) carry no epistemic status and need no proof; hypotheses are kept in separate records.
 
 | ID | Statement (Nadia's words) | Kind | Status | Related |
 |---|---|---|---|---|

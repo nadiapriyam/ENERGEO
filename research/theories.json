@@ -7,13 +7,27 @@
     "philosophical-exploration",
     "historical-conjecture",
     "established",
-    "backbone-rule"
+    "method-rule",
+    "construction-backed-direction"
   ],
   "statuses": [
     "established",
     "derived",
     "hypothesis",
-    "open"
+    "open",
+    "governance"
+  ],
+  "statusNote": "governance marks a method / governance rule (kind method-rule): it carries no epistemic status and needs no proof. The four epistemic statuses apply to every other record.",
+  "acts": [
+    "I",
+    "II",
+    "III",
+    "IV",
+    "II–IV",
+    "Guide",
+    "Final",
+    "all",
+    "unplaced"
   ],
   "researchModes": [
     "theorem-target"
@@ -47,7 +61,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "I–IX"
+        "all"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -65,7 +79,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I–IX)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I–IX"
+      ]
     },
     {
       "id": "T-EVIDENCE",
@@ -102,8 +125,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "III",
-        "IV"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -128,6 +150,16 @@
       "proofTarget": null,
       "related": [
         "B-NONEXHAUSTIVE"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: III, IV)"
+        }
+      ],
+      "relatedActsRev3": [
+        "III",
+        "IV"
       ]
     },
     {
@@ -164,8 +196,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "IV",
-        "V"
+        "Guide"
       ],
       "relatedObjects": [
         "obj.pair"
@@ -206,6 +237,16 @@
       "related": [
         "B-ORTHO-FORM",
         "T-ZERO-ORTHOGONAL"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: IV, V)"
+        }
+      ],
+      "relatedActsRev3": [
+        "IV",
+        "V"
       ]
     },
     {
@@ -244,7 +285,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "IV"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -268,7 +309,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: IV)"
+        }
+      ],
+      "relatedActsRev3": [
+        "IV"
+      ]
     },
     {
       "id": "T-H1-TWO-ZEROS",
@@ -299,7 +349,7 @@
       "supersedes": null,
       "relatedActs": [
         "I",
-        "V"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -321,7 +371,17 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I, V)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I",
+        "V"
+      ]
     },
     {
       "id": "T-BEYOND-EUCLID-0",
@@ -343,8 +403,7 @@
       "supersededBy": "T-BEYOND-EUCLID",
       "supersedes": null,
       "relatedActs": [
-        "IV",
-        "V"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -362,7 +421,17 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: IV, V)"
+        }
+      ],
+      "relatedActsRev3": [
+        "IV",
+        "V"
+      ]
     },
     {
       "id": "T-BEYOND-EUCLID",
@@ -397,8 +466,7 @@
       "supersededBy": null,
       "supersedes": "T-BEYOND-EUCLID-0",
       "relatedActs": [
-        "IV",
-        "V"
+        "Guide"
       ],
       "relatedObjects": [
         "obj.pair"
@@ -423,7 +491,17 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: IV, V)"
+        }
+      ],
+      "relatedActsRev3": [
+        "IV",
+        "V"
+      ]
     },
     {
       "id": "T-SEE-ORTHOGONALITY",
@@ -462,7 +540,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "IV"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -486,7 +564,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: IV)"
+        }
+      ],
+      "relatedActsRev3": [
+        "IV"
+      ]
     },
     {
       "id": "T-INF-FIN-0",
@@ -512,8 +599,8 @@
       "supersededBy": "T-INF-FIN",
       "supersedes": null,
       "relatedActs": [
-        "VI",
-        "VIII"
+        "Guide",
+        "II–IV"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -533,7 +620,17 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VI, VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VI",
+        "VIII"
+      ]
     },
     {
       "id": "T-INF-FIN",
@@ -564,8 +661,8 @@
       "supersededBy": null,
       "supersedes": "T-INF-FIN-0",
       "relatedActs": [
-        "VI",
-        "VIII"
+        "Guide",
+        "II–IV"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -589,6 +686,16 @@
       "proofTarget": null,
       "related": [
         "B-FINITE-INFINITE"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VI, VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VI",
+        "VIII"
       ]
     },
     {
@@ -608,7 +715,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "I–IX"
+        "all"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -626,7 +733,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I–IX)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I–IX"
+      ]
     },
     {
       "id": "T-H2",
@@ -662,10 +778,8 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "II",
-        "III",
         "IV",
-        "V"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -701,7 +815,19 @@
         "previousTargets": [],
         "lastResearchOutcome": null
       },
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: II, III, IV, V)"
+        }
+      ],
+      "relatedActsRev3": [
+        "II",
+        "III",
+        "IV",
+        "V"
+      ]
     },
     {
       "id": "T-REPRESENTATION",
@@ -742,9 +868,8 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "II",
-        "III",
-        "IV"
+        "IV",
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -768,7 +893,18 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: II, III, IV)"
+        }
+      ],
+      "relatedActsRev3": [
+        "II",
+        "III",
+        "IV"
+      ]
     },
     {
       "id": "T-VISIBLE-HIDDEN",
@@ -795,7 +931,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "I–IX"
+        "all"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -816,7 +952,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I–IX)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I–IX"
+      ]
     },
     {
       "id": "T-H2-ROLES",
@@ -838,8 +983,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "IV",
-        "V"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -859,7 +1003,17 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: IV, V)"
+        }
+      ],
+      "relatedActsRev3": [
+        "IV",
+        "V"
+      ]
     },
     {
       "id": "T-H3",
@@ -891,7 +1045,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VIII"
+        "II–IV"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -928,6 +1082,15 @@
       },
       "related": [
         "B-FINITE-INFINITE"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VIII"
       ]
     },
     {
@@ -978,7 +1141,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VIII"
+        "II–IV"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -1006,6 +1169,15 @@
       "proofTarget": null,
       "related": [
         "B-FINITE-INFINITE"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VIII"
       ]
     },
     {
@@ -1032,7 +1204,7 @@
       "supersededBy": "T-TIME-CIRCLE",
       "supersedes": null,
       "relatedActs": [
-        "VIII"
+        "II–IV"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -1052,7 +1224,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VIII"
+      ]
     },
     {
       "id": "T-TIME-CIRCLE",
@@ -1074,8 +1255,8 @@
       "supersededBy": null,
       "supersedes": "T-TIME-CIRCLE-0",
       "relatedActs": [
-        "II",
-        "VIII"
+        "IV",
+        "II–IV"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -1097,6 +1278,16 @@
       "proofTarget": null,
       "related": [
         "B-FINITE-INFINITE"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: II, VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "II",
+        "VIII"
       ]
     },
     {
@@ -1114,7 +1305,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VIII"
+        "II–IV"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -1132,7 +1323,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VIII"
+      ]
     },
     {
       "id": "T-ANALOGUES",
@@ -1158,7 +1358,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VIII"
+        "II–IV"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -1181,6 +1381,15 @@
       "proofTarget": null,
       "related": [
         "B-FINITE-INFINITE"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VIII"
       ]
     },
     {
@@ -1207,7 +1416,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VIII"
+        "II–IV"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -1227,7 +1436,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VIII"
+      ]
     },
     {
       "id": "T-NATURE-OR-DESCRIPTION",
@@ -1244,8 +1462,8 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VIII",
-        "IX"
+        "unplaced",
+        "Final"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -1263,7 +1481,17 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VIII, IX)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VIII",
+        "IX"
+      ]
     },
     {
       "id": "T-C-ROLES",
@@ -1308,7 +1536,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VIII"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -1332,7 +1560,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VIII"
+      ]
     },
     {
       "id": "T-MANIFOLDS",
@@ -1354,8 +1591,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VII",
-        "VIII"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -1375,6 +1611,16 @@
       "proofTarget": null,
       "related": [
         "B-HIGHER-GEOMETRY"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VII, VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VII",
+        "VIII"
       ]
     },
     {
@@ -1392,8 +1638,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "V",
-        "VII"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -1413,6 +1658,16 @@
       "proofTarget": null,
       "related": [
         "B-HIGHER-GEOMETRY"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: V, VII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "V",
+        "VII"
       ]
     },
     {
@@ -1448,7 +1703,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "I–IX"
+        "all"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -1471,7 +1726,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I–IX)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I–IX"
+      ]
     },
     {
       "id": "T-BACKBONE-SECONDARY",
@@ -1496,7 +1760,7 @@
       "supersedes": null,
       "relatedActs": [
         "I",
-        "II"
+        "IV"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -1516,7 +1780,17 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I, II)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I",
+        "II"
+      ]
     },
     {
       "id": "T-BACKBONE-INVARIANT",
@@ -1547,7 +1821,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "V"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -1569,7 +1843,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: V)"
+        }
+      ],
+      "relatedActsRev3": [
+        "V"
+      ]
     },
     {
       "id": "T-ZERO-L1",
@@ -1621,7 +1904,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-ZERO-L2",
@@ -1668,7 +1960,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-ZERO-L3",
@@ -1700,7 +2001,7 @@
       "supersedes": null,
       "relatedActs": [
         "I",
-        "IV"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -1722,7 +2023,17 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I, IV)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I",
+        "IV"
+      ]
     },
     {
       "id": "T-ZERO-L4",
@@ -1764,7 +2075,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-ZERO-L5",
@@ -1821,7 +2141,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-ZERO-L6",
@@ -1869,7 +2198,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-ZERO-L7",
@@ -1911,7 +2249,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-HIDDEN-FAMILY",
@@ -1997,7 +2344,17 @@
         "B-ZERO-PRESERVE",
         "B-HIGHER-GEOMETRY",
         "T-ZERO-ORTHOGONAL-C",
-        "T-EXISTENCE-ZERO"
+        "T-EXISTENCE-ZERO",
+        "T-R4-STAGE2"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
       ]
     },
     {
@@ -2040,7 +2397,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-ZERO-GENERAL",
@@ -2109,7 +2475,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-QUANTUM-ZERO",
@@ -2168,7 +2543,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-RECONSTRUCT",
@@ -2207,6 +2591,15 @@
       "proofTarget": null,
       "related": [
         "B-ZERO-PRESERVE"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
       ]
     },
     {
@@ -2242,7 +2635,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-Q.zero-inference",
@@ -2277,7 +2679,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-Q.zero-generators",
@@ -2312,7 +2723,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-Q.pairA",
@@ -2347,7 +2767,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-Q.pairA-transfer",
@@ -2416,6 +2845,15 @@
       "related": [
         "B-ZERO-PRESERVE",
         "B-OUTSIDE-IN"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
       ]
     },
     {
@@ -2451,7 +2889,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-Q.zero-internal-inference",
@@ -2487,7 +2934,17 @@
       "construction": null,
       "proofTarget": null,
       "related": [
-        "B-ZERO-PRESERVE"
+        "B-ZERO-PRESERVE",
+        "B-ZERO-LOSS"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
       ]
     },
     {
@@ -2523,7 +2980,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-Q.zero-geometry-broader",
@@ -2558,7 +3024,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-ZERO-WEAK-0",
@@ -2581,7 +3056,7 @@
       "supersedes": null,
       "relatedActs": [
         "I",
-        "V"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -2601,7 +3076,17 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I, V)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I",
+        "V"
+      ]
     },
     {
       "id": "T-ZERO-NO-FORM",
@@ -2628,7 +3113,7 @@
       "supersedes": "T-ZERO-WEAK-0",
       "relatedActs": [
         "I",
-        "V"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -2649,7 +3134,17 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I, V)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I",
+        "V"
+      ]
     },
     {
       "id": "T-PAIRA-SHARED",
@@ -2706,7 +3201,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-TQ-1",
@@ -2741,7 +3245,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-TQ-2",
@@ -2776,7 +3289,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-TQ-3",
@@ -2811,7 +3333,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-TQ-4",
@@ -2846,7 +3377,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-TQ-5",
@@ -2881,7 +3421,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-TQ-6",
@@ -2916,7 +3465,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-ORTHO-CLUE",
@@ -2952,8 +3510,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "IV",
-        "V"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -2978,6 +3535,16 @@
       "proofTarget": null,
       "related": [
         "B-ORTHO-FORM"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: IV, V)"
+        }
+      ],
+      "relatedActsRev3": [
+        "IV",
+        "V"
       ]
     },
     {
@@ -3000,8 +3567,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "IV",
-        "V"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -3023,6 +3589,16 @@
       "proofTarget": null,
       "related": [
         "B-ORTHO-FORM"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: IV, V)"
+        }
+      ],
+      "relatedActsRev3": [
+        "IV",
+        "V"
       ]
     },
     {
@@ -3052,7 +3628,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VIII"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -3095,7 +3671,16 @@
         "previousTargets": [],
         "lastResearchOutcome": null
       },
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VIII"
+      ]
     },
     {
       "id": "T-MASS-WAVE-Q",
@@ -3117,7 +3702,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VIII"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -3137,7 +3722,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VIII"
+      ]
     },
     {
       "id": "T-MATTER-FIELD",
@@ -3170,7 +3764,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VIII"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -3191,7 +3785,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VIII"
+      ]
     },
     {
       "id": "T-STAR",
@@ -3228,8 +3831,8 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "II",
-        "VIII"
+        "IV",
+        "II–IV"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -3299,6 +3902,16 @@
         "B-FINITE-INFINITE",
         "B-ORTHO-FORM",
         "T-FIXED-RELATIONS-Q"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: II, VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "II",
+        "VIII"
       ]
     },
     {
@@ -3316,9 +3929,9 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "II",
-        "V",
-        "VIII"
+        "IV",
+        "Guide",
+        "II–IV"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -3336,7 +3949,18 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: II, V, VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "II",
+        "V",
+        "VIII"
+      ]
     },
     {
       "id": "T-PAIRB",
@@ -3358,7 +3982,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "II"
+        "IV"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -3392,6 +4016,15 @@
       },
       "related": [
         "B-NONEXHAUSTIVE"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: II)"
+        }
+      ],
+      "relatedActsRev3": [
+        "II"
       ]
     },
     {
@@ -3423,9 +4056,9 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "II",
-        "V",
-        "VIII"
+        "IV",
+        "Guide",
+        "II–IV"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -3447,7 +4080,18 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: II, V, VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "II",
+        "V",
+        "VIII"
+      ]
     },
     {
       "id": "T-BEYOND-3D",
@@ -3482,8 +4126,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "IV",
-        "VII"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -3508,6 +4151,16 @@
       "proofTarget": null,
       "related": [
         "B-HIGHER-GEOMETRY"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: IV, VII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "IV",
+        "VII"
       ]
     },
     {
@@ -3530,7 +4183,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VII"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -3549,7 +4202,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VII"
+      ]
     },
     {
       "id": "T-4D-EVENTS",
@@ -3568,8 +4230,8 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VII",
-        "VIII"
+        "Guide",
+        "unplaced"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -3589,6 +4251,16 @@
       "proofTarget": null,
       "related": [
         "B-HIGHER-GEOMETRY"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VII, VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VII",
+        "VIII"
       ]
     },
     {
@@ -3622,7 +4294,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VII"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -3643,7 +4315,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VII"
+      ]
     },
     {
       "id": "T-C7",
@@ -3676,7 +4357,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VII"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -3698,7 +4379,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VII"
+      ]
     },
     {
       "id": "T-MAGPHASE",
@@ -3733,7 +4423,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VI"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -3756,7 +4446,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VI)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VI"
+      ]
     },
     {
       "id": "T-SAME-SPECTRUM",
@@ -3790,7 +4489,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VI"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -3813,7 +4512,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VI)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VI"
+      ]
     },
     {
       "id": "T-WAVELETS",
@@ -3832,7 +4540,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VI"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -3850,7 +4558,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VI)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VI"
+      ]
     },
     {
       "id": "T-DYADIC",
@@ -3869,7 +4586,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VI"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -3887,7 +4604,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VI)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VI"
+      ]
     },
     {
       "id": "T-SENSITIVITY",
@@ -3915,8 +4641,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VI",
-        "VII"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -3937,7 +4662,17 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VI, VII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VI",
+        "VII"
+      ]
     },
     {
       "id": "T-CONJUGACY",
@@ -3964,8 +4699,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "V",
-        "VIII"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -3986,6 +4720,16 @@
       "proofTarget": null,
       "related": [
         "B-NONEXHAUSTIVE"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: V, VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "V",
+        "VIII"
       ]
     },
     {
@@ -4010,7 +4754,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VIII"
+        "unplaced"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -4029,7 +4773,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VIII"
+      ]
     },
     {
       "id": "T-PERCEPTION-RELATIVITY",
@@ -4058,7 +4811,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VIII"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -4079,7 +4832,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VIII"
+      ]
     },
     {
       "id": "T-MATH-BOUNDARIES",
@@ -4101,8 +4863,8 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VIII",
-        "IX"
+        "unplaced",
+        "Final"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -4121,7 +4883,17 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VIII, IX)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VIII",
+        "IX"
+      ]
     },
     {
       "id": "T-REP-COMPLETE",
@@ -4148,8 +4920,8 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VI",
-        "VIII"
+        "Guide",
+        "unplaced"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -4170,7 +4942,17 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VI, VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VI",
+        "VIII"
+      ]
     },
     {
       "id": "T-ENERGY-MEANING",
@@ -4207,9 +4989,8 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "IV",
-        "VI",
-        "IX"
+        "Guide",
+        "Final"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -4232,7 +5013,18 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: IV, VI, IX)"
+        }
+      ],
+      "relatedActsRev3": [
+        "IV",
+        "VI",
+        "IX"
+      ]
     },
     {
       "id": "T-ORIGIN-NORM-ZERO",
@@ -4255,7 +5047,7 @@
       "supersedes": null,
       "relatedActs": [
         "I",
-        "V"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -4275,7 +5067,17 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I, V)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I",
+        "V"
+      ]
     },
     {
       "id": "T-ZERO-ROLES",
@@ -4340,7 +5142,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I"
+      ]
     },
     {
       "id": "T-BOUNDS-THEME",
@@ -4366,9 +5177,9 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "II",
         "IV",
-        "VIII"
+        "Guide",
+        "II–IV"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -4389,7 +5200,18 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: II, IV, VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "II",
+        "IV",
+        "VIII"
+      ]
     },
     {
       "id": "T-ENERGEO",
@@ -4413,7 +5235,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "IX"
+        "Final"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -4432,7 +5254,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: IX)"
+        }
+      ],
+      "relatedActsRev3": [
+        "IX"
+      ]
     },
     {
       "id": "T-ENERGEO-INTENT",
@@ -4454,7 +5285,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "IX"
+        "Final"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -4473,7 +5304,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: IX)"
+        }
+      ],
+      "relatedActsRev3": [
+        "IX"
+      ]
     },
     {
       "id": "T-C1",
@@ -4499,7 +5339,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "V"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -4520,7 +5360,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: V)"
+        }
+      ],
+      "relatedActsRev3": [
+        "V"
+      ]
     },
     {
       "id": "T-C2",
@@ -4546,7 +5395,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "V"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -4567,7 +5416,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: V)"
+        }
+      ],
+      "relatedActsRev3": [
+        "V"
+      ]
     },
     {
       "id": "T-C3",
@@ -4593,7 +5451,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VIII"
+        "II–IV"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -4614,7 +5472,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VIII"
+      ]
     },
     {
       "id": "T-C4",
@@ -4640,8 +5507,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "III",
-        "V"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -4662,7 +5528,17 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: III, V)"
+        }
+      ],
+      "relatedActsRev3": [
+        "III",
+        "V"
+      ]
     },
     {
       "id": "T-C5",
@@ -4689,7 +5565,7 @@
       "supersedes": null,
       "relatedActs": [
         "I",
-        "V"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -4710,7 +5586,17 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: I, V)"
+        }
+      ],
+      "relatedActsRev3": [
+        "I",
+        "V"
+      ]
     },
     {
       "id": "T-C6",
@@ -4736,8 +5622,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "IV",
-        "V"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -4758,7 +5643,17 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: IV, V)"
+        }
+      ],
+      "relatedActsRev3": [
+        "IV",
+        "V"
+      ]
     },
     {
       "id": "T-C8",
@@ -4793,7 +5688,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VIII"
+        "II–IV"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -4816,7 +5711,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VIII"
+      ]
     },
     {
       "id": "T-C9",
@@ -4842,7 +5746,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "VIII"
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -4863,7 +5767,16 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": []
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Act labels remapped to the new Act map (rev 3: VIII)"
+        }
+      ],
+      "relatedActsRev3": [
+        "VIII"
+      ]
     },
     {
       "id": "B-OUTSIDE-IN",
@@ -4887,10 +5800,10 @@
           "source": "docs/restructure_decisions.md"
         }
       ],
-      "normalizedStatement": "Primary research direction (method rule). Its claim, that a geometry constructed this way can guide existing structures, is a hypothesis.",
+      "normalizedStatement": "Method / governance rule: the primary research direction. The intended result (a guide for existing structures) is an aim, not a claim requiring proof.",
       "origin": "user",
-      "kind": "backbone-rule",
-      "status": "hypothesis",
+      "kind": "method-rule",
+      "status": "governance",
       "evidenceFor": [],
       "evidenceAgainst": [],
       "boundaries": [
@@ -4899,7 +5812,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "I–IX"
+        "all"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -4940,7 +5853,14 @@
         "B-NONEXHAUSTIVE",
         "T-GOR-MEANING",
         "T-Q.pairA-transfer"
-      ]
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "reclassified from backbone-rule / HYPOTHESIS to method-rule / governance: a governance rule, not a claim requiring proof (Nadia)"
+        }
+      ],
+      "relatedActsRev3": []
     },
     {
       "id": "B-ZERO-PRESERVE",
@@ -4948,7 +5868,11 @@
       "words": "Do not perturb a defining zero merely to obtain information. Investigate the structure of the system while the zero remains zero.",
       "variants": [
         {
-          "words": "Perturbing a natural zero state can destroy information encoded in the relationships that produced that zero, even when the perturbation appears to make the system more observable.",
+          "words": "Do not leave the defining zero merely to make the system observable.",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "zero-preserving interrogation",
           "source": "docs/restructure_decisions.md"
         },
         {
@@ -4968,37 +5892,43 @@
           "source": "docs/author_philosophy.md"
         }
       ],
-      "normalizedStatement": "Rule: while F(x) = 0 defines the state, study other observables, internal relations, transformations that stay inside the zero and the larger space it arises from; do not leave the zero to gain information. Premise (HYPOTHESIS): perturbing a natural zero can destroy information held in the relations that produced it.",
+      "normalizedStatement": "Method / governance rule: while F(x) = 0 defines the state, research performs zero-preserving interrogation (other observables, internal relations, transformations that stay inside the zero, the larger space it arises from). It does not depend on whether B-ZERO-LOSS is proved.",
       "origin": "user",
-      "kind": "backbone-rule",
-      "status": "hypothesis",
+      "kind": "method-rule",
+      "status": "governance",
       "evidenceFor": [
         {
-          "ref": "card:Q1e",
-          "note": "[S², S_z] = 0 and A, B are eigenstates of both (Q1b): measuring S² leaves each S_z = 0 state unchanged, a measurement inside the zero that tells A from B"
+          "ref": "card:Q1g",
+          "note": "example of the rule in use: measuring S² keeps S_z = 0 for every S_z = 0 state"
+        },
+        {
+          "ref": "card:Q1h",
+          "note": "the state may change inside the eigenspace while the zero is preserved: zero-preserving, not \"non-perturbing\""
         },
         {
           "ref": "card:Z2c",
-          "note": "a transformation that stays inside the zero set (a pair twist)"
+          "note": "example: a transformation that stays inside the zero set (a pair twist)"
         }
       ],
       "evidenceAgainst": [],
       "boundaries": [
         "Leaving the zero is allowed only in a separate, labelled experiment that studies what is lost by leaving it.",
         "\"Do not perturb zero\" never means \"do not inspect the state\": inspecting it more deeply is the program.",
-        "The premise has no card yet: nothing in the repository shows information destroyed by a perturbation."
+        "Preserving the defining zero relation does not mean nothing in the state changes (Q1h)."
       ],
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "I–IX"
+        "all"
       ],
       "relatedObjects": [],
       "relatedCards": [
-        "Q1e",
+        "Q1g",
+        "Q1h",
         "Z2c"
       ],
       "sourceDocs": [
+        "docs/restructure_decisions.md",
         "docs/restructure_decisions.md",
         "docs/restructure_decisions.md",
         "docs/restructure_decisions.md",
@@ -5011,7 +5941,7 @@
         "before": "new",
         "note": "stated at the outside-in clarification (2026-11-11)"
       },
-      "interactive": "Chapter I keeps every zero intact; stage 2b measures S² inside the zero",
+      "interactive": "Chapter I keeps every zero intact; stage 2b's S² measurement is zero-preserving interrogation",
       "graphRecord": null,
       "researchMode": "theorem-target",
       "researchDirection": "outside-in",
@@ -5053,8 +5983,16 @@
         "B-HIGHER-GEOMETRY",
         "T-HIDDEN-FAMILY",
         "T-Q.pairA-transfer",
-        "T-EXISTENCE-ZERO"
-      ]
+        "T-EXISTENCE-ZERO",
+        "B-ZERO-LOSS"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "split: this record is the method rule (method-rule / governance); the hypothesis it carried moved to B-ZERO-LOSS with its wording (Nadia: do not use one record for governance and a claim)"
+        }
+      ],
+      "relatedActsRev3": []
     },
     {
       "id": "B-HIGHER-GEOMETRY",
@@ -5092,7 +6030,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "foundational"
+        "III"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -5155,8 +6093,12 @@
         "T-ZERO-ORTHOGONAL-C",
         "T-4D-EVENTS",
         "T-MANIFOLDS",
-        "T-HIDDEN-FAMILY"
-      ]
+        "T-HIDDEN-FAMILY",
+        "T-R4-TETRA",
+        "B-HIGHER-GEOMETRY-CHAIN"
+      ],
+      "history": [],
+      "relatedActsRev3": []
     },
     {
       "id": "B-NONEXHAUSTIVE",
@@ -5184,10 +6126,10 @@
           "source": "docs/restructure_decisions.md"
         }
       ],
-      "normalizedStatement": "Rule: a list of possibilities is either shown logically exhaustive by a stated theorem, or marked \"These are known examples, not an exhaustive classification for this project.\" A behavior fitting no category is kept as a candidate new class. Premise (HYPOTHESIS): the project's geometries can generate behaviors or pairs outside the currently named classes.",
+      "normalizedStatement": "Method / governance rule: a list of possibilities is either shown logically exhaustive by a stated theorem, or marked \"These are known examples, not an exhaustive classification for this project.\" A behavior fitting no category is kept as a candidate new class.",
       "origin": "user",
-      "kind": "backbone-rule",
-      "status": "hypothesis",
+      "kind": "method-rule",
+      "status": "governance",
       "evidenceFor": [],
       "evidenceAgainst": [],
       "boundaries": [
@@ -5196,7 +6138,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "I–IX"
+        "all"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -5225,7 +6167,14 @@
         "T-CONJUGACY",
         "B-OUTSIDE-IN",
         "T-EVIDENCE"
-      ]
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "reclassified from backbone-rule / HYPOTHESIS to method-rule / governance (Nadia); the earlier normalized \"premise (HYPOTHESIS)\" sentence was dropped"
+        }
+      ],
+      "relatedActsRev3": []
     },
     {
       "id": "B-FINITE-INFINITE",
@@ -5259,9 +6208,8 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "foundational",
         "II",
-        "VIII"
+        "IV"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -5313,7 +6261,9 @@
         "T-IRREVERSIBLE-FORMATION",
         "B-ORTHO-FORM",
         "T-FIXED-RELATIONS-Q"
-      ]
+      ],
+      "history": [],
+      "relatedActsRev3": []
     },
     {
       "id": "B-PART-WHOLE",
@@ -5345,7 +6295,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "foundational"
+        "unplaced"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -5384,7 +6334,9 @@
         "T-SPACE-EXPLORATION",
         "T-EXISTENCE-ZERO",
         "T-IRREVERSIBLE-FORMATION"
-      ]
+      ],
+      "history": [],
+      "relatedActsRev3": []
     },
     {
       "id": "B-ORTHO-FORM",
@@ -5414,8 +6366,8 @@
           "note": "the established example: radius ⊥ tangent at every point of the compass circle"
         },
         {
-          "ref": "card:G1b",
-          "note": "an ingredient, not an answer: for any plane curve, radius ⊥ tangent all along an interval exactly when the distance to the origin stays fixed there (one setting only)"
+          "ref": "card:G1d",
+          "note": "an ingredient, not an answer: for a differentiable curve x: I → ℝⁿ, x·x′ = 0 for all t ∈ I iff |x(t)| is constant on each connected component of I (fixed distance from the origin ↔ position orthogonal to velocity)"
         }
       ],
       "evidenceAgainst": [],
@@ -5426,14 +6378,12 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "foundational",
-        "II",
-        "IV"
+        "II"
       ],
       "relatedObjects": [],
       "relatedCards": [
         "G1a",
-        "G1b"
+        "G1d"
       ],
       "sourceDocs": [
         "docs/restructure_decisions.md",
@@ -5446,14 +6396,22 @@
         "before": "new",
         "note": "stated at the outside-in clarification (2026-11-11)"
       },
-      "interactive": "proposed: \"A Shape From One Rule\" (not built)",
+      "interactive": "Act II stage 4 contract, \"A Shape From One Rule\" (docs/act_map.md; not built)",
       "graphRecord": null,
       "researchMode": "theorem-target",
       "researchDirection": "outside-in",
       "construction": {
         "sequence": [],
         "questions": [
-          "How much of this shape's global behavior is encoded in the relationships that remain fixed while it is generated?"
+          "How much of this shape's global behavior is encoded in the relationships that remain fixed while it is generated?",
+          "Which fixed relationships made the shape possible?",
+          "Which global rules are consequences of those fixed relationships?",
+          "What geometric constraints produce the circular parameterization?",
+          "Which quantities depend on the fixed-radius rule?",
+          "Which depend specifically on Euclidean metric structure?",
+          "Where does π enter?",
+          "Where do sine/cosine enter?",
+          "Which of these relations generalize to other geometries?"
         ],
         "doNotReason": [],
         "knownExamples": {
@@ -5474,7 +6432,14 @@
         "T-ORTHO-DEEPER",
         "T-ORTHO-CLUE",
         "T-STAR"
-      ]
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "evidence note tightened: the loose G1b reading (\"for any plane curve … iff …\") replaced by the precise G1d statement; G1b stays on the ledger"
+        }
+      ],
+      "relatedActsRev3": []
     },
     {
       "id": "T-CIRCLE-ORTHO",
@@ -5502,6 +6467,10 @@
         {
           "ref": "card:G1c",
           "note": "the trace closes"
+        },
+        {
+          "ref": "card:G1d",
+          "note": "fixed distance from the origin ↔ position orthogonal to velocity, on each connected component"
         }
       ],
       "evidenceAgainst": [],
@@ -5509,13 +6478,13 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "foundational",
         "II"
       ],
       "relatedObjects": [],
       "relatedCards": [
         "G1a",
-        "G1c"
+        "G1c",
+        "G1d"
       ],
       "sourceDocs": [
         "docs/restructure_decisions.md",
@@ -5527,7 +6496,7 @@
         "before": "new",
         "note": "stated at the outside-in clarification (2026-11-11)"
       },
-      "interactive": "proposed: \"A Shape From One Rule\" (not built)",
+      "interactive": "Act II stage 4 contract (not built)",
       "graphRecord": null,
       "researchMode": "theorem-target",
       "researchDirection": "outside-in",
@@ -5535,7 +6504,9 @@
       "proofTarget": null,
       "related": [
         "B-ORTHO-FORM"
-      ]
+      ],
+      "history": [],
+      "relatedActsRev3": []
     },
     {
       "id": "T-FIXED-RELATIONS-Q",
@@ -5552,7 +6523,6 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "foundational",
         "II"
       ],
       "relatedObjects": [],
@@ -5575,7 +6545,9 @@
         "B-ORTHO-FORM",
         "B-FINITE-INFINITE",
         "T-STAR"
-      ]
+      ],
+      "history": [],
+      "relatedActsRev3": []
     },
     {
       "id": "T-FINITE-GEOMETRIES-Q",
@@ -5592,9 +6564,8 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "foundational",
         "II",
-        "VIII"
+        "IV"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -5614,7 +6585,9 @@
       "proofTarget": null,
       "related": [
         "B-FINITE-INFINITE"
-      ]
+      ],
+      "history": [],
+      "relatedActsRev3": []
     },
     {
       "id": "T-STABLE-FORM-Q",
@@ -5631,8 +6604,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "foundational",
-        "VIII"
+        "IV"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -5653,7 +6625,9 @@
       "related": [
         "B-FINITE-INFINITE",
         "T-IRREVERSIBLE-FORMATION"
-      ]
+      ],
+      "history": [],
+      "relatedActsRev3": []
     },
     {
       "id": "T-ZERO-ORTHOGONAL",
@@ -5670,9 +6644,9 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "foundational",
         "I",
-        "IV"
+        "II",
+        "III"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -5696,7 +6670,9 @@
         "T-ZERO-ORTHOGONAL-C",
         "T-ZERO-ORTHOGONAL-D",
         "T-H1"
-      ]
+      ],
+      "history": [],
+      "relatedActsRev3": []
     },
     {
       "id": "T-ZERO-ORTHOGONAL-A",
@@ -5718,7 +6694,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "foundational"
+        "II"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -5740,7 +6716,9 @@
       "proofTarget": null,
       "related": [
         "T-ZERO-ORTHOGONAL"
-      ]
+      ],
+      "history": [],
+      "relatedActsRev3": []
     },
     {
       "id": "T-ZERO-ORTHOGONAL-B",
@@ -5766,8 +6744,8 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "foundational",
-        "IV"
+        "II",
+        "Guide"
       ],
       "relatedObjects": [],
       "relatedCards": [
@@ -5789,7 +6767,9 @@
       "proofTarget": null,
       "related": [
         "T-ZERO-ORTHOGONAL"
-      ]
+      ],
+      "history": [],
+      "relatedActsRev3": []
     },
     {
       "id": "T-ZERO-ORTHOGONAL-C",
@@ -5806,8 +6786,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "foundational",
-        "I"
+        "III"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -5828,8 +6807,12 @@
       "related": [
         "B-HIGHER-GEOMETRY",
         "T-HIDDEN-FAMILY",
+        "T-R4-TETRA",
+        "T-R4-DERIVED",
         "T-ZERO-ORTHOGONAL"
-      ]
+      ],
+      "history": [],
+      "relatedActsRev3": []
     },
     {
       "id": "T-ZERO-ORTHOGONAL-D",
@@ -5846,7 +6829,6 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "foundational",
         "II"
       ],
       "relatedObjects": [],
@@ -5868,7 +6850,9 @@
       "related": [
         "B-ORTHO-FORM",
         "T-ZERO-ORTHOGONAL"
-      ]
+      ],
+      "history": [],
+      "relatedActsRev3": []
     },
     {
       "id": "T-EXISTENCE-ZERO",
@@ -5892,7 +6876,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "foundational"
+        "unplaced"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -5928,7 +6912,9 @@
         "B-PART-WHOLE",
         "T-HIDDEN-FAMILY",
         "B-ZERO-PRESERVE"
-      ]
+      ],
+      "history": [],
+      "relatedActsRev3": []
     },
     {
       "id": "T-SPACE-EXPLORATION",
@@ -5952,7 +6938,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "foundational"
+        "unplaced"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -5973,7 +6959,9 @@
       "proofTarget": null,
       "related": [
         "B-PART-WHOLE"
-      ]
+      ],
+      "history": [],
+      "relatedActsRev3": []
     },
     {
       "id": "T-LOOK-INSIDE",
@@ -5997,7 +6985,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "foundational"
+        "unplaced"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -6018,7 +7006,9 @@
       "proofTarget": null,
       "related": [
         "B-ZERO-PRESERVE"
-      ]
+      ],
+      "history": [],
+      "relatedActsRev3": []
     },
     {
       "id": "T-IRREVERSIBLE-FORMATION",
@@ -6042,7 +7032,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "foundational"
+        "unplaced"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -6065,7 +7055,9 @@
         "B-FINITE-INFINITE",
         "B-PART-WHOLE",
         "T-STABLE-FORM-Q"
-      ]
+      ],
+      "history": [],
+      "relatedActsRev3": []
     },
     {
       "id": "T-FRACTAL-PROPERTIES-Q",
@@ -6082,7 +7074,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "foundational"
+        "unplaced"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -6102,7 +7094,9 @@
       "proofTarget": null,
       "related": [
         "B-PART-WHOLE"
-      ]
+      ],
+      "history": [],
+      "relatedActsRev3": []
     },
     {
       "id": "T-GOR-MEANING",
@@ -6111,8 +7105,8 @@
       "variants": [],
       "normalizedStatement": null,
       "origin": "user",
-      "kind": "backbone-rule",
-      "status": "open",
+      "kind": "method-rule",
+      "status": "governance",
       "evidenceFor": [],
       "evidenceAgainst": [],
       "boundaries": [
@@ -6121,7 +7115,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "I–IX"
+        "all"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -6141,7 +7135,744 @@
       "proofTarget": null,
       "related": [
         "B-OUTSIDE-IN"
-      ]
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "reclassified from backbone-rule / OPEN to method-rule / governance: a project-definition direction, not a claim"
+        }
+      ],
+      "relatedActsRev3": []
+    },
+    {
+      "id": "B-ZERO-LOSS",
+      "label": "Leaving a zero may destroy information",
+      "words": "Leaving a natural zero/cancellation state may destroy information encoded in the relations that generated that zero.",
+      "variants": [
+        {
+          "words": "Perturbing a natural zero state can destroy information encoded in the relationships that produced that zero, even when the perturbation appears to make the system more observable.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "No card yet: nothing in the repository shows information destroyed by leaving a zero.",
+        "The method rule (B-ZERO-PRESERVE) does not depend on this being proved."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I",
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "construction 2",
+      "audit": {
+        "before": "new",
+        "note": "first outside-in construction (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "B-ZERO-PRESERVE",
+        "T-Q.zero-internal-inference",
+        "Q-R4-8"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "split out of B-ZERO-PRESERVE, which had carried this premise; its wording moved here unchanged"
+        }
+      ],
+      "relatedActsRev3": []
+    },
+    {
+      "id": "T-R4-TETRA",
+      "label": "R4 construction: an orthogonal basis projects to a tetrahedral zero",
+      "words": "An orthogonal basis in R^4 can project into a 3-dimensional subspace as four equal tetrahedral vectors whose sum is zero.",
+      "variants": [],
+      "normalizedStatement": "P = I − ¼11ᵀ; vᵢ = Peᵢ = eᵢ − ¼1 ∈ 1⊥; Σvᵢ = 0; ‖vᵢ‖² = ¾; vᵢ·vⱼ = −¼; uᵢ·uⱼ = −⅓; Gram G = I − ¼J = P, spectrum {1,1,1,0}; span = 1⊥.",
+      "origin": "established-support",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:G2a",
+          "note": ""
+        },
+        {
+          "ref": "card:G2b",
+          "note": ""
+        },
+        {
+          "ref": "card:G2c",
+          "note": ""
+        },
+        {
+          "ref": "card:G2d",
+          "note": ""
+        },
+        {
+          "ref": "card:G2e",
+          "note": ""
+        },
+        {
+          "ref": "card:G2f",
+          "note": ""
+        },
+        {
+          "ref": "card:G2g",
+          "note": ""
+        },
+        {
+          "ref": "card:G2h",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "G2a",
+        "G2b",
+        "G2c",
+        "G2d",
+        "G2e",
+        "G2f",
+        "G2g",
+        "G2h"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "construction 5.3",
+      "audit": {
+        "before": "new",
+        "note": "first outside-in construction (2026-11-12)"
+      },
+      "interactive": "none (Act III; construction record)",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "B-HIGHER-GEOMETRY",
+        "T-ZERO-ORTHOGONAL-C",
+        "T-R4-DERIVED",
+        "T-R4-STAGE2",
+        "T-R4-GENERAL",
+        "Q-R4-1",
+        "Q-R4-2",
+        "Q-R4-3",
+        "Q-R4-4",
+        "Q-R4-5",
+        "Q-R4-6",
+        "Q-R4-7",
+        "Q-R4-8"
+      ],
+      "history": [],
+      "relatedActsRev3": []
+    },
+    {
+      "id": "T-R4-GENERAL",
+      "label": "The same construction for every n",
+      "words": "the same identities hold for every n ≥ 2",
+      "variants": [],
+      "normalizedStatement": "Pₙ = I − (1/n)11ᵀ, vᵢ = Pₙeᵢ: Σvᵢ = 0, ‖vᵢ‖² = (n−1)/n, vᵢ·vⱼ = −1/n, normalized −1/(n−1); vᵢ − vⱼ = eᵢ − eⱼ, so the vᵢ are a regular simplex in 1⊥.",
+      "origin": "established-support",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:G2n",
+          "note": "derived symbolically in n, checked exactly for n = 2..10"
+        },
+        {
+          "ref": "card:G2j",
+          "note": "pairwise equidistant and affinely spanning: a regular simplex"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Derived inside the project; does not replace the R4 case, which stays the concrete bridge to Stage 2."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "G2j",
+        "G2n"
+      ],
+      "sourceDocs": [
+        "research/constructions/r4_tetrahedral_zero.md"
+      ],
+      "auditRef": "construction 16",
+      "audit": {
+        "before": "new",
+        "note": "first outside-in construction (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-R4-TETRA",
+        "Q-R4-3",
+        "Q-R4-7"
+      ],
+      "history": [],
+      "relatedActsRev3": []
+    },
+    {
+      "id": "T-R4-DERIVED",
+      "label": "Orthogonal organization → zero-sum organization (constructed example)",
+      "words": "higher-dimensional orthogonal organization → lower-dimensional zero-sum organization",
+      "variants": [],
+      "normalizedStatement": "In the constructed example: Σvᵢ = P(Σeᵢ) = P1 = 0 (the zero is the image of the one removed direction); the shadow's Gram matrix is P itself; vᵢ − vⱼ = eᵢ − eⱼ.",
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:G2c",
+          "note": "the zero sum"
+        },
+        {
+          "ref": "card:G2g",
+          "note": "the shadow's Gram matrix is P"
+        },
+        {
+          "ref": "card:G2j",
+          "note": "differences survive exactly"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "For the constructed example only; not universal.",
+        "Not established: anything about physical protons or a physical fourth dimension."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "G2c",
+        "G2g",
+        "G2j"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "construction 5.3",
+      "audit": {
+        "before": "new",
+        "note": "first outside-in construction (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-R4-TETRA",
+        "B-HIGHER-GEOMETRY-CHAIN",
+        "T-ZERO-ORTHOGONAL-C"
+      ],
+      "history": [],
+      "relatedActsRev3": []
+    },
+    {
+      "id": "T-R4-STAGE2",
+      "label": "Stage 2's tetrahedron is an exact realization of the R4 construction",
+      "words": "Stage 2 tetrahedral cancellation ← exact realization of projected R4 orthonormal basis",
+      "variants": [],
+      "normalizedStatement": "ORTHOGONALLY EQUIVALENT: under the isometry Φ: 1⊥ → ℝ³, x ↦ (h₁·x, h₂·x, h₃·x) with h₁ = ½(1,1,−1,−1), h₂ = ½(1,−1,1,−1), h₃ = ½(1,−1,−1,1), Φ(uᵢ) = TETRAᵢ with no permutation and no sign; Stage 2 starts at 1.6·TETRA.",
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:G2i",
+          "note": "computed from the app's own TETRA"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Chronology: the tetrahedron was first chosen for cancellation clarity (D3); the R4 projection construction was discovered later. Stage 2's history is not rewritten."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I",
+        "III"
+      ],
+      "relatedObjects": [
+        "obj.moments"
+      ],
+      "relatedCards": [
+        "G2i"
+      ],
+      "sourceDocs": [
+        "research/constructions/r4_tetrahedral_zero.md"
+      ],
+      "auditRef": "construction 5.4",
+      "audit": {
+        "before": "new",
+        "note": "first outside-in construction (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": "rel.r4-stage2-realization",
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-R4-TETRA",
+        "T-HIDDEN-FAMILY"
+      ],
+      "history": [],
+      "relatedActsRev3": []
+    },
+    {
+      "id": "B-HIGHER-GEOMETRY-CHAIN",
+      "label": "Construction-backed direction under B-HIGHER-GEOMETRY",
+      "words": "zero output ← lower-dimensional relational structure ← higher-dimensional organization",
+      "variants": [],
+      "normalizedStatement": "CONSTRUCTION-BACKED DIRECTION: one exact instance (the R4 orthogonal-source construction); not universal, not promoted to a theorem.",
+      "origin": "user",
+      "kind": "construction-backed-direction",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:G2c",
+          "note": "one exact instance: the zero sum"
+        },
+        {
+          "ref": "card:G2g",
+          "note": "the lower-dimensional relational structure (Gram matrix) of that instance"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "One instance does not make the chain universal.",
+        "Not every case is assumed to be a projection."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "G2c",
+        "G2g"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "construction 8",
+      "audit": {
+        "before": "new",
+        "note": "first outside-in construction (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "B-HIGHER-GEOMETRY",
+        "T-R4-DERIVED",
+        "Q-R4-6",
+        "Q-R4-8"
+      ],
+      "history": [],
+      "relatedActsRev3": []
+    },
+    {
+      "id": "Q-R4-1",
+      "label": "R4 construction question Q-R4-1",
+      "words": "What information about the original orthonormal basis survives in the projected tetrahedral zero-sum configuration?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:G2j",
+          "note": "a first exact piece: differences survive, only the centroid is removed; not an answer"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "G2j"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "construction Q-R4-1",
+      "audit": {
+        "before": "new",
+        "note": "first outside-in construction (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-R4-TETRA"
+      ],
+      "history": [],
+      "relatedActsRev3": []
+    },
+    {
+      "id": "Q-R4-2",
+      "label": "R4 construction question Q-R4-2",
+      "words": "Given only the tetrahedral zero-sum configuration in H, can the R^4 orthogonal-source construction be reconstructed uniquely, up to a natural equivalence?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "construction Q-R4-2",
+      "audit": {
+        "before": "new",
+        "note": "first outside-in construction (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-R4-TETRA"
+      ],
+      "history": [],
+      "relatedActsRev3": []
+    },
+    {
+      "id": "Q-R4-3",
+      "label": "R4 construction question Q-R4-3",
+      "words": "For n orthonormal basis vectors in R^n, project onto 1⊥. Does the resulting set always form a regular simplex in R^(n-1)?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:G2n",
+          "note": ""
+        },
+        {
+          "ref": "card:G2j",
+          "note": "pairwise equidistant, affinely spanning 1⊥"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "G2j",
+        "G2n"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "construction Q-R4-3",
+      "audit": {
+        "before": "new",
+        "note": "first outside-in construction (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": {
+        "targetStatement": "For n orthonormal basis vectors in R^n, project onto 1⊥. Does the resulting set always form a regular simplex in R^(n-1)?",
+        "targetSource": "docs/restructure_decisions.md",
+        "requiredObjects": [],
+        "requiredMaps": [],
+        "candidateInvariants": [],
+        "requiredEquivalences": [],
+        "proofObligations": [],
+        "exactSearchQueries": [],
+        "knownTheorems": [],
+        "unresolvedObligations": [],
+        "previousTargets": [],
+        "lastResearchOutcome": "proved"
+      },
+      "related": [
+        "T-R4-TETRA",
+        "T-R4-GENERAL"
+      ],
+      "history": [],
+      "relatedActsRev3": []
+    },
+    {
+      "id": "Q-R4-4",
+      "label": "R4 construction question Q-R4-4",
+      "words": "Does every regular simplex zero-sum configuration arise, up to orthogonal equivalence and scale, from this projection construction?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "construction Q-R4-4",
+      "audit": {
+        "before": "new",
+        "note": "first outside-in construction (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-R4-TETRA"
+      ],
+      "history": [],
+      "relatedActsRev3": []
+    },
+    {
+      "id": "Q-R4-5",
+      "label": "R4 construction question Q-R4-5",
+      "words": "What properties of the higher-dimensional source are encoded by Σ_i v_i = 0, versus by the stronger Gram-matrix structure G_ij = 3/4 (i = j), −1/4 (i ≠ j)?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:G2j",
+          "note": "a first exact piece: differences survive, only the centroid is removed; not an answer"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "G2j"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "construction Q-R4-5",
+      "audit": {
+        "before": "new",
+        "note": "first outside-in construction (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-R4-TETRA"
+      ],
+      "history": [],
+      "relatedActsRev3": []
+    },
+    {
+      "id": "Q-R4-6",
+      "label": "R4 construction question Q-R4-6",
+      "words": "Which lower-dimensional zero-sum configurations do not admit an orthogonal-source construction of this type?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "construction Q-R4-6",
+      "audit": {
+        "before": "new",
+        "note": "first outside-in construction (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-R4-TETRA",
+        "B-HIGHER-GEOMETRY-CHAIN"
+      ],
+      "history": [],
+      "relatedActsRev3": []
+    },
+    {
+      "id": "Q-R4-7",
+      "label": "R4 construction question Q-R4-7",
+      "words": "Does the Chapter I sequence instantiate one family indexed by n?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "assistant-proposed",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "research/constructions/r4_tetrahedral_zero.md"
+      ],
+      "auditRef": "construction Q-R4-7",
+      "audit": {
+        "before": "new",
+        "note": "first outside-in construction (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-R4-TETRA",
+        "T-R4-GENERAL"
+      ],
+      "history": [],
+      "relatedActsRev3": []
+    },
+    {
+      "id": "Q-R4-8",
+      "label": "R4 construction question Q-R4-8",
+      "words": "For other maps from a larger geometry, does a lower-dimensional zero always record a direction the map removes?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "assistant-proposed",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "research/constructions/r4_tetrahedral_zero.md"
+      ],
+      "auditRef": "construction Q-R4-8",
+      "audit": {
+        "before": "new",
+        "note": "first outside-in construction (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-R4-TETRA",
+        "B-ZERO-LOSS",
+        "B-HIGHER-GEOMETRY-CHAIN"
+      ],
+      "history": [],
+      "relatedActsRev3": []
     }
   ]
 }
