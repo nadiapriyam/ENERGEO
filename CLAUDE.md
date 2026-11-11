@@ -2,13 +2,15 @@
 
 Read these before any work, in this order:
 
-1. `docs/research_method.md`: HOW TO THINK/SEARCH. The theorem-seeking research protocol. Every research prompt also carries `docs/research_prompt_preamble.md`.
+1. `docs/research_method.md`: HOW TO THINK/SEARCH. Outside-in geometry construction first; theorem-seeking and the existing-theorem scan second. Every research prompt also carries `docs/research_prompt_preamble.md`.
 2. `docs/claude_code_prompt.md`: WHAT THE FOUNDING THEORY IS, and how verification and status work: the verifier decides, levels 1–4, step cards, gates, never move a threshold after a result.
 3. `docs/objective.md`: the project objective and governance: research posture, which document governs what, terms, level labels.
-4. Gate and restructure decisions: `docs/gate2_answers.md`, `docs/gate3_decisions.md`, `docs/restructure_decisions.md`. Nadia's decisions, verbatim. They govern wording. The restructuring decisions govern the sequence (Chapters/Acts I–IX; Chapter I is built) and set the theorem-seeking method as a backbone decision.
+4. Gate and restructure decisions: `docs/gate2_answers.md`, `docs/gate3_decisions.md`, `docs/restructure_decisions.md`. Nadia's decisions, verbatim. They govern wording. The restructuring decisions govern the sequence (Chapters/Acts I–IX; Chapter I is built) and set the research method as a backbone decision. `docs/author_philosophy.md` holds the project's philosophical origin (provenance, not learner copy).
 5. The research registry and graph in `research/`: hypotheses H1–H3 (each opens with Nadia's exact words), connections C1–C9, open questions, sources, `graph.json` (the research graph: program, statements, relations, zero-producing sets, candidate pairs), `theories.json` (every theory with its provenance, evidence for and against, history and proof target; ids listed append-only in `theories.ids`) and `theory_coverage.md` (generated from it by `node research/tools/build_coverage.mjs`; `test/theories.test.js` checks every quote).
 
-**Research stance:** Every user-origin theory is a target theorem. Search narrowly for its exact representation, proof, invariant, transformation law or obstruction. Do not begin with plausibility assessment or adjacent analogies. Search as if the theorem holds; report only what the mathematics establishes.
+**Research direction (primary):** outside-in geometry construction. **Construct first. Classify second. Preserve the zero. Investigate its geometry. Known structures are examples, not the boundary of the search space. Look from the outside in.** Existing mathematics is a reference library and validation surface, matched after a geometry has been constructed. It is not the ontology the geometry is assembled from. Order: foundational geometry → mathematical guide (Fourier, bases, forms, …) → translator (energy, Energeo, applications).
+
+**Research stance (within construction):** Every user-origin theory is a target theorem. Search narrowly for its exact representation, proof, invariant, transformation law or obstruction. Do not begin with plausibility assessment or adjacent analogies. Search as if the theorem holds; report only what the mathematics establishes.
 
 Reported status (ESTABLISHED, DERIVED CONNECTION, HYPOTHESIS, OPEN QUESTION) is unchanged by this stance. It records how much is proved, never how hard to search. `test/method.test.js` guards this rule.
 
@@ -40,4 +42,7 @@ Reported status (ESTABLISHED, DERIVED CONNECTION, HYPOTHESIS, OPEN QUESTION) is 
 - Work on the finite-energy (Energeo) application until Nadia asks.
 - Call a zero-producing configuration set a kernel, fiber, manifold, equivalence class, null space or orbit in learner copy before its structure is established.
 - Fill in a candidate pair's deeper common relation, or give a transfer question an answer. What cards establish goes in `sharedAlgebraicForm` with its `doesNotEstablish` list; pairs carry questions, and data is never derived across a pair.
+- Perturb a defining zero (make F(x) ≠ 0) to obtain information. Investigate the system while the zero remains zero; leaving it is allowed only in a separate experiment, labelled as one, that studies what is lost by leaving it (Zero Preservation Rule).
+- Close a search space with known mathematics. When writing "the possibilities are A, B, C", say whether the list is logically exhaustive (and by which theorem) or write: "These are known examples, not an exhaustive classification for this project." A behavior that fits no known category is kept as a candidate new class.
+- Map Nadia's geometry into a known theory, or choose a structure (Hilbert space, Fourier, a group, a fiber, …) because existing mathematics uses it. Map known theory into the project's geometry, where justified, after construction.
 - Delete, or silently rewrite, a theory of Nadia's because it is speculative, unproven or contradicted. Every user-origin theory has a record in `research/theories.json` with its original wording; evidence against it is attached, never used to erase it (`docs/restructure_decisions.md`, governing rule).

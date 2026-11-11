@@ -22,6 +22,19 @@ It is split into three hypotheses (your split, `claude_code_prompt.md` §1a). Th
 
 ## Research posture
 
+**Direction: outside-in geometry construction.** Construct first. Classify second. Preserve the zero. Investigate its geometry. Known structures are examples, not the boundary of the search space. Look from the outside in.
+
+> observe / collect relations → construct a geometry → discover the rules of that geometry → determine which known structures it contains
+
+Existing mathematics is a reference library, a validation surface, and a source of known special cases, proof techniques, counterexamples and boundaries. It is not the ontology from which Nadia's geometry must be assembled. The intended eventual result is a geometry that can act as a guide *for* existing structures, rather than merely a guide *to* them. Theorem-seeking (below) is kept, as the stance within construction and in the secondary existing-theorem scan.
+
+**Order.**
+1. Foundational geometry: zero, cancellation, origin, higher-dimensional generating geometry, orthogonality, shape generation, finite rule / infinite continuation, part / whole, the fractal relation, representation, invariant relation.
+2. Mathematical guide: Fourier, orthogonal bases, quadratic forms, information geometry, relativity, wavelets/scattering and other existing structures, as known examples the geometry may organize.
+3. Translator / application: energy, Energeo, physical systems, space systems. These are consequences, and never the reason the foundational geometry exists.
+
+**Backbone direction for the name (not locked).** "Geometry of Representation" is moving from "representations have geometry" toward: *Construct a geometry capable of showing how apparently complete objects/states are manifestations of deeper relationships, and use that geometry as a guide across existing mathematical and physical structures.*
+
 Geometry of Representation is not a survey of whether Nadia's theories seem plausible. It is a theorem-seeking program. Each user-origin theory is taken as the mathematical target. Research attempts to locate or construct the representation, maps, invariants, transformations and proof steps that realize it. Epistemic labels record how much has currently been established; they do not reduce the intensity or direction of the proof search.
 
 > Search as though the theorem is true. Report only what the evidence actually proves.

@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-10T17:22:21+00:00",
- "commit": "c865814",
+ "generated": "2026-11-11T16:54:30+00:00",
+ "commit": "e1c96cc",
  "cards": {
   "B1a": {
    "script": "verify_B1_B7.py",
@@ -193,6 +193,30 @@
    "verdict": "PASS",
    "everFailed": false,
    "claim": "Galilean boost exp(v K_oo) = [[1,0],[-v,1]] preserves the degenerate form diag(1,0)"
+  },
+  "G0a": {
+   "script": "verify_G1.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "reading A of '0 is orthogonal': <0, v> = 0 and <v, 0> = 0 for every v in R^3, for the dot product and for every bilinear form x^T M y (symbolic M)"
+  },
+  "G1a": {
+   "script": "verify_G1.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "compass circle x(theta) = r(cos theta, sin theta): x'(theta) = r(-sin theta, cos theta) and x(theta) . x'(theta) = 0 for every theta (radius perpendicular to tangent)"
+  },
+  "G1b": {
+   "script": "verify_G1.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "for every differentiable plane curve y(t): d/dt |y|^2 = 2 y . y'; so on an interval the distance to the origin stays fixed exactly when radius is perpendicular to tangent all along it (a function is constant on an interval iff its derivative vanishes there)"
+  },
+  "G1c": {
+   "script": "verify_G1.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "the compass trace closes: x(theta + 2 pi) = x(theta) for every theta, while theta itself runs over all of R"
   },
   "O1a": {
    "script": "verify_O1.py",

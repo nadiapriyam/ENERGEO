@@ -461,3 +461,223 @@ Wording set for the governing documents (each placed where named):
 `docs/research_prompt_preamble.md`:
 
 > Treat the supplied user theory as the target theorem for this research pass. Do not spend the pass deciding whether it is plausible. Formalize the exact claim and search for the representation, maps, invariants, transformations, known theorems and derivation needed to prove it. Search exact structural consequences before adjacent concepts. If the current formulation cannot hold, identify the exact failing assumption or quantifier and produce the strongest corrected theorem without deleting the original theory. End with a proof, exact theorem match, constructive realization, precise special case, exact obstruction, or explicit proof obligation.
+
+## Outside-in geometry construction (backbone clarification, before Act II)
+
+A correction to the emphasis of the theorem-seeking method above: that method is kept, but it is secondary. Nadia's words, verbatim. LaTeX boxes and arrows were converted to plain text, and line-broken lists are joined onto one line; nothing else changed. The canonical protocol is `docs/research_method.md`. The philosophy is held in `docs/author_philosophy.md`.
+
+### 0. Primary direction
+
+> The previous theorem-seeking method is useful, but it is secondary.
+
+> observe / collect relations → construct a geometry → discover the rules of that geometry → determine which known structures it contains
+
+> OUTSIDE-IN GEOMETRY CONSTRUCTION
+
+Not this:
+
+> user theory → search existing mathematics → identify nearest theorem → fit theory into theorem
+
+> That is inside-out.
+
+> phenomena / zero / cancellation / relation → collect exact behavior → construct representation → construct geometry → infer its internal rules → test those rules across systems → only then compare against existing mathematics
+
+> Existing mathematics is: a reference library; a validation surface; a source of already-known special cases; a source of proof techniques; a source of counterexamples and boundaries.
+
+> It is not the ontology from which Nadia's geometry must be assembled.
+
+> The intended eventual result is a geometry that can act as: a guide for existing structures rather than merely a guide to existing structures.
+
+> Do not silently reverse that direction.
+
+### 1–2. Permanent Zero Preservation Rule
+
+> When the defining state is F(x)=0, do not perturb the system merely so that F(x)≠0 in order to obtain more information.
+
+> Perturbing a natural zero state can destroy information encoded in the relationships that produced that zero, even when the perturbation appears to make the system more observable.
+
+> The MRI/external-field intuition is the motivating example.
+
+Not the core research program:
+
+> hidden zero → perturb system → obtain visible nonzero response → infer hidden state
+
+The program:
+
+> zero remains zero → examine its internal structure → examine its geometry → examine other relations/invariants/measurements → examine transformations that remain inside the zero state → examine the larger space from which the zero state arises
+
+> The defining zero must remain intact unless a separate experiment explicitly studies what is lost by leaving it.
+
+> find information inside the zero
+
+> the complete structure of the system while its defining relation remains zero
+
+> other observables; internal relations; pairwise relationships; higher-order quantities; symmetry; transformations; invariants; configuration-space structure; dimensional structure; origin structure; higher-dimensional representations; families of zero-producing configurations; relations between those configurations.
+
+> Do not interpret “do not perturb zero” as “do not mathematically inspect the state.”
+
+> inspect the zero state more deeply rather than destroying it.
+
+### 3–4. Higher-dimensional / origin-geometry premise
+
+> The most likely way to find the hidden information is to look at the bigger picture: the geometry of the origin geometry — for example, the four-dimensional geometry behind a three-dimensional manifestation.
+
+> Do not soften or remove this because the precise formalism is not yet known.
+
+> observed lower-dimensional state → larger generating geometry → relations invisible in the lower-dimensional manifestation.
+
+> projection; embedding; section; quotient; fiber; shadow; boundary; higher-dimensional state space; configuration space; Hilbert space; another structure.
+
+> Those are possible realizations to be tested.
+
+> The larger geometry must be derived from the behavior, not chosen because an existing theory already uses it.
+
+> Existing quantum formalisms involving higher-dimensional state spaces should be investigated as known realizations of the idea, not used to limit what the project is allowed to construct.
+
+> the zero/lower-dimensional state is carrying structure inherited from a larger geometry.
+
+> If this is true, what must the larger geometry look like?
+
+> Which relations in the observed state would be shadows/restrictions of relations there?
+
+> Which quantities would become distinguishable in the larger geometry?
+
+> What transformations in the larger geometry leave the observed zero unchanged?
+
+> What information is lost when the larger structure is viewed only through the lower-dimensional representation?
+
+> Can multiple observed zero states correspond to different locations/orientations/relations in the larger geometry?
+
+### 5–8. Hierarchy, anti-bias, periodicity, common structure
+
+> Keep theorem-seeking, but change its position in the hierarchy.
+
+> Primary mode — Geometry construction
+
+> Secondary mode — Existing-theorem scan
+
+> Do not allow the secondary mode to redefine the primary geometry.
+
+> Construct first. Match second.
+
+> Fourier pairs are examples. They are not the universe of possible pairs.
+
+> Circle periodicity is an example. It is not the universe of possible periodic behavior.
+
+> Use existing structures as observed members of a potentially larger class.
+
+> We do not know how many kinds of periodic relationships or pairs exist. Assuming the known cases are exhaustive is itself a limitation the project is intended to overcome.
+
+> Therefore ★ must not be reduced to choosing among existing definitions.
+
+> derive the behavior generated by a geometry first
+
+> and only afterwards ask whether existing mathematics calls that behavior periodic, recurrent, quasi-periodic, closed, etc.
+
+> If a new behavior does not fit an existing category, preserve it as a candidate new class rather than forcing it into the nearest category.
+
+> Construct the common geometry first. Then determine what mathematical equivalence relation best describes what emerged.
+
+> The geometry is primary. Its classification is secondary.
+
+### 13–16. Orthogonality, shape, finite rule and infinite structure
+
+> 0 is orthogonal.
+
+> The zero vector satisfies ⟨0,v⟩=0 for every v.
+
+> An inner-product result of zero identifies orthogonality: ⟨u,v⟩=0.
+
+> A cancellation state may be generated by a larger orthogonal organization even when the visible cancellation is not itself simply a pair of perpendicular vectors.
+
+> Orthogonality may participate in generating stable geometric form.
+
+> It is that a very simple constraint generates the entire shape.
+
+> At each boundary point of a smooth circle: radius ⊥ tangent.
+
+> x(θ)·x'(θ)=0.
+
+> This exact relation may be used as an established example.
+
+> What role does the organization of orthogonality play in allowing a geometry to form and obey global rules?
+
+> Could the amount, organization, or continuity of orthogonality possessed by a shape relate to global rules such as π, sine, cosine, periodicity, closure, or other geometric behavior?
+
+> Do not answer this immediately by saying “every smooth curve has a normal.”
+
+> The target is the possible connection between organized local orthogonality and global geometric law.
+
+> A Shape From One Rule
+
+> One finite rule generated an entire closed geometry.
+
+> Do NOT conclude that orthogonality alone caused the circle.
+
+> How much of this shape's global behavior is encoded in the relationships that remain fixed while it is generated?
+
+> An infinite structure can be bound/generated by rules that manifest as a finite shape.
+
+> But do not reduce the theory to the circle.
+
+> What kinds of finite geometries can encode or generate indefinitely continuing structure through their internal rules?
+
+> What makes a geometric form stable enough that its rules persist while the structure continues indefinitely?
+
+### 19–25. Order, meaning, direction of comparison, anti-closure
+
+> FOUNDATIONAL GEOMETRY: zero, cancellation, origin, higher-dimensional generating geometry, orthogonality, shape generation, finite rule / infinite continuation, part / whole, fractal relation, representation, invariant relation
+
+> MATHEMATICAL GUIDE: Fourier, orthogonal bases, quadratic forms, information geometry, relativity, wavelets/scattering, other existing structures
+
+> TRANSLATOR / APPLICATION: energy, Energeo, physical systems, space systems, other domains
+
+> Do not let the energy application become the reason the foundational geometry exists.
+
+> The geometry is primary. The translator/use cases are consequences.
+
+> Construct a geometry capable of showing how apparently complete objects/states are manifestations of deeper relationships, and use that geometry as a guide across existing mathematical and physical structures.
+
+> Do not lock this as the final definition yet.
+
+> Do not automatically map the project into the known theory.
+
+> develop geometric rule → observe repeated/structured behavior → derive its representation → test whether Fourier analysis describes one class of that behavior
+
+> mass zero exposes structure → identify the structural information mathematically → ask what type of information a zero-state geometry can encode in general → construct the proton zero geometry → determine what structure emerges there
+
+> Do not transfer the source object's ontology.
+
+> zero appears informationally incomplete in lower-dimensional representation → determine what larger geometry would make it complete → derive required properties of that larger geometry → THEN compare with Hilbert-space or other known constructions
+
+> DO NOT CLOSE THE SEARCH SPACE WITH KNOWN MATHEMATICS
+
+> A named mathematical structure is never assumed exhaustive merely because it is established.
+
+> These are known examples, not an exhaustive classification for this project.
+
+> Construct first. Classify second.
+
+> Preserve the zero. Investigate its geometry.
+
+> Known structures are examples, not the boundary of the search space.
+
+> Look from the outside in.
+
+### 27. Backbone statements
+
+> Do not perturb a defining zero merely to obtain information. Investigate the structure of the system while the zero remains zero.
+
+> Hidden information in a lower-dimensional manifestation may be encoded in the larger geometry that generates it.
+
+> Construct geometry from observed relations first; compare it to existing mathematical structures second.
+
+> Existing named mathematical structures are known examples, not assumed exhaustive classes.
+
+> An indefinitely continuing/infinite structure may be governed by rules manifested through a finite geometry.
+
+> The object/observer is not merely located in the larger structure; it is a constituent of it. The research question is therefore what the part is to the whole geometry.
+
+> Organized orthogonality may participate in the generation or persistence of geometric form and its global rules.
+
+Items 9–12, 17 and 18 (the philosophy) are recorded verbatim in `docs/author_philosophy.md`.

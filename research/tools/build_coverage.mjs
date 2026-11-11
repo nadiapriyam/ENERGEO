@@ -12,7 +12,7 @@ const OUT = 'research/theory_coverage.md';
 
 const cell = (s) => (s == null || s === '' ? '—' : String(s).replace(/\|/g, '\\|').replace(/\n/g, ' '));
 const STATUS = { established: 'ESTABLISHED', derived: 'DERIVED CONNECTION', hypothesis: 'HYPOTHESIS', open: 'OPEN QUESTION' };
-const BEFORE = { preserved: 'preserved', partial: 'partial', 'title-only': 'title only', missing: 'MISSING' };
+const BEFORE = { preserved: 'preserved', partial: 'partial', 'title-only': 'title only', missing: 'MISSING', new: 'new' };
 
 export function render() {
   const { theories } = JSON.parse(read('research/theories.json'));
@@ -56,7 +56,7 @@ Master Map and Mathematical Basis spec wording is assistant-written, addressed t
 
 | Before this audit | Count | Records |
 |---|---|---|
-${['preserved', 'partial', 'title-only', 'missing'].map((k) => `| ${BEFORE[k]} | ${by(k).length} | ${ids(by(k))} |`).join('\n')}
+${['preserved', 'partial', 'title-only', 'missing', 'new'].map((k) => `| ${BEFORE[k]} | ${by(k).length} | ${ids(by(k))} |`).join('\n')}
 
 | Now | Count | Records |
 |---|---|---|
@@ -65,15 +65,32 @@ ${['preserved', 'partial', 'title-only', 'missing'].map((k) => `| ${BEFORE[k]} |
 | completely open (no evidence for or against; scope notes allowed) | ${user.filter((r) => !r.evidenceFor.length && !r.evidenceAgainst.length).length} | ${ids(user.filter((r) => !r.evidenceFor.length && !r.evidenceAgainst.length))} |
 | superseded wording kept as history | ${user.filter((r) => r.supersededBy).length} | ${ids(user.filter((r) => r.supersededBy))} |
 
-## Proof programs (research mode)
+## Backbone records
 
-Every record has \`researchMode: theorem-target\` whatever its status (\`docs/research_method.md\`). These records
-already carry a proof target; the rest acquire one when a research pass starts on them. "Last outcome" stays empty
-until a theorem-seeking pass reports one.
+Nadia's backbone statements (outside-in clarification). Every record keeps her original words; full rows are below.
 
-| ID | Status | Target (Nadia's words) | Obligations listed | Last outcome |
+| ID | Statement (Nadia's words) | Kind | Status | Related |
 |---|---|---|---|---|
-${theories.filter((r) => r.proofTarget).map((r) => `| ${r.id} | ${STATUS[r.status]} | ${cell(r.proofTarget.targetStatement)} | ${r.proofTarget.proofObligations.length} | ${cell(r.proofTarget.lastResearchOutcome)} |`).join('\n')}
+${theories.filter((r) => r.id.startsWith('B-')).map((r) => `| ${r.id} | ${cell(r.words)} | ${r.kind} | ${STATUS[r.status]} | ${cell(r.related.join(', '))} |`).join('\n')}
+
+## Construction programs (primary mode: outside-in)
+
+Every record has \`researchDirection: outside-in\`: construct first, classify second (\`docs/research_method.md\`). These
+records carry a construction program. Known examples are never assumed exhaustive unless a stated theorem says so.
+
+| ID | Sequence | Questions | Do not reason | Known examples (exhaustive?) |
+|---|---|---|---|---|
+${theories.filter((r) => r.construction).map((r) => { const c = r.construction; return `| ${r.id} | ${cell(c.sequence.join(' / '))} | ${cell(c.questions.join(' / '))} | ${cell(c.doNotReason.join(' / '))} | ${cell(c.knownExamples.items.join(', '))}${c.knownExamples.items.length ? (c.knownExamples.exhaustive ? ` (exhaustive: ${cell(c.knownExamples.basis)})` : ' (known examples, not exhaustive)') : ''} |`; }).join('\n')}
+
+## Proof programs (secondary mode)
+
+Every record has \`researchMode: theorem-target\` whatever its status: the theory holds during construction. These
+records carry a proof target; the rest acquire one when a construction yields a precise claim. "Last outcome" stays
+empty until a research pass reports one. Earlier targets are kept as \`previousTargets\`.
+
+| ID | Status | Target (Nadia's words) | Obligations listed | Earlier target | Last outcome |
+|---|---|---|---|---|---|
+${theories.filter((r) => r.proofTarget).map((r) => `| ${r.id} | ${STATUS[r.status]} | ${cell(r.proofTarget.targetStatement)} | ${r.proofTarget.proofObligations.length} | ${cell(r.proofTarget.previousTargets.map((p) => `${p.targetStatement} (${p.replacedBecause})`).join('; '))} | ${cell(r.proofTarget.lastResearchOutcome)} |`).join('\n')}
 
 ## User-origin theories and questions
 

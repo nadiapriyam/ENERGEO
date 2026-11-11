@@ -15,7 +15,7 @@ const graph = JSON.parse(read('research/graph.json'));
 const ORIGINS = ['user', 'established-support', 'assistant-proposed'];
 const FIELDS = ['id', 'label', 'words', 'variants', 'normalizedStatement', 'origin', 'kind', 'status', 'evidenceFor', 'evidenceAgainst', 'boundaries',
   'supersededBy', 'supersedes', 'relatedActs', 'relatedObjects', 'relatedCards', 'sourceDocs', 'auditRef', 'audit', 'interactive', 'graphRecord',
-  'researchMode', 'proofTarget'];
+  'researchMode', 'researchDirection', 'construction', 'proofTarget', 'related'];
 
 test('every record has the TheoryRecord fields and valid enums; ids are unique', () => {
   assert.equal(byId.size, T.length, 'duplicate id');
@@ -24,7 +24,8 @@ test('every record has the TheoryRecord fields and valid enums; ids are unique',
     assert.ok(ORIGINS.includes(r.origin), `${r.id}: origin`);
     assert.ok(reg.kinds.includes(r.kind), `${r.id}: kind`);
     assert.ok(reg.statuses.includes(r.status), `${r.id}: status`);
-    assert.ok(['preserved', 'partial', 'title-only', 'missing'].includes(r.audit.before), `${r.id}: audit`);
+    assert.ok(['preserved', 'partial', 'title-only', 'missing', 'new'].includes(r.audit.before), `${r.id}: audit`);
+    for (const id of r.related) assert.ok(byId.has(id), `${r.id}: related ${id} missing`);
   }
 });
 

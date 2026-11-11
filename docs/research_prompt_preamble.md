@@ -1,8 +1,20 @@
 # Research prompt preamble
 
-Every research prompt inherits the block below. It governs research tasks. Implementation-only prompts need not
-repeat it, unless the implementation depends on an unresolved theory. The full protocol is
+Every research prompt inherits the two blocks below, in this order. They govern research tasks. Implementation-only
+prompts need not repeat them, unless the implementation depends on an unresolved theory. The full protocol is
 [`research_method.md`](research_method.md).
+
+The first block is assembled from Nadia's own sentences (`restructure_decisions.md`, "Outside-in geometry
+construction"). The second is her theorem-seeking block, kept verbatim; it now applies inside construction and in
+the secondary existing-theorem scan.
+
+```
+OUTSIDE-IN MODE
+Construct first. Classify second. Preserve the zero. Investigate its geometry. Known structures are examples, not the boundary of the search space. Look from the outside in.
+phenomena / zero / cancellation / relation → collect exact behavior → construct representation → construct geometry → infer its internal rules → test those rules across systems → only then compare against existing mathematics
+Do not perturb a defining zero merely to obtain information. Investigate the structure of the system while the zero remains zero.
+DO NOT CLOSE THE SEARCH SPACE WITH KNOWN MATHEMATICS. These are known examples, not an exhaustive classification for this project.
+```
 
 ```
 THEOREM-SEEKING MODE
