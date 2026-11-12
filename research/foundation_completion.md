@@ -1,160 +1,83 @@
-# Foundation completion ledger (V1)
+# Foundation completion ledger (Pass 2)
 
-Object IDs are from `research/foundation_dependencies.md`. Foundation V1 may contain open questions. What blocks
-completion is limited to these five things:
+Generated from `research/tools/foundation_source.py`. Do not edit by hand. Pass 2: 2026-11-12. Object IDs are from `research/foundation_dependencies.md`; sources from `research/foundation_sources.md`.
 
-- missing architecture;
-- an unresolved contradiction;
-- an undefined central object;
-- an incorrect mathematical bridge;
-- major provenance loss.
+Foundation V1 may contain open questions. What blocks completion is limited to: missing architecture; an unresolved contradiction; an undefined central object; an incorrect mathematical bridge; major provenance loss. An open hypothesis does not block V1.
 
-An open hypothesis does not block V1.
+## LOCKED (Pass 2)
 
-## LOCKED
+- **Foundation** is the complete mathematical and theoretical architecture developed throughout the project. The zero work is one part of it.
+- **The spine** OBJECT → REPRESENTATION → RELATION → ZERO / BALANCE / NULL → TRANSFORMATION → PRESERVED STRUCTURE → GEOMETRY → INFORMATION → DYNAMICS / CONTINUATION → CROSS-SYSTEM TRANSFER → APPLICATION is a project architecture, not a theorem.
+- **Zero is a central investigative interface inside the architecture.** It is not the entire Foundation.
+- **Common-form / preserved-relation mathematics is a major unifying mechanism inside the architecture.** It is not the entire Foundation.
+- **Two maps:** `research/master_math_map.md` is the research ontology; `docs/act_map.md` is the teaching / discovery order. They need not share an ordering.
+- **CF11** is two records, rated separately: CF11-A (established pattern) and CF11-B (project hypothesis).
+- **DYADIC PACKETS** is an ORIGINAL USER RESEARCH TERM with an OPEN DEFINITION.
+- **Classification systems:** seven provenance classes, seven bridge strength classes, the source registry, and the domain statuses below.
 
-- **The Foundation definition (2026-11-12).** The complete architecture, old and new.
-- **The status system:**
-  - ESTABLISHED / DERIVED / HYPOTHESIS / OPEN;
-  - GOVERNANCE for method rules;
-  - per-result ratings: Support %, Slop %, Transfer Depth, Breadth, Mathematical Status.
-- **Method rules:**
-  - B-OUTSIDE-IN;
-  - B-NONEXHAUSTIVE;
-  - B-ZERO-PRESERVE;
-  - B-INDEPENDENT-DIRECTION;
-  - B-INDEPENDENT-SYMMETRY;
-  - the theorem-seeking stance within construction.
-- **Provenance rules:**
-  - original wording kept verbatim;
-  - theories are superseded, never deleted;
-  - the ledger is append-only;
-  - FAIL cards are kept.
+## Domain statuses
 
-## MATHEMATICALLY ESTABLISHED (carded)
+Statuses: LOCKED; SOURCE-COMPLETE; MATH-CARDED; SOURCE+CARD COMPLETE; NEEDS DERIVATION; NEEDS CROSS-DOMAIN TEST; OPEN LONG-TERM; WORDING ONLY.
 
-- **Representation and Fourier:** R1–R6.
-- **Common forms and conservation:** CF1–CF6, CF8.
-- **Zeros:** Z1–Z8, Z10.
-- **Orthogonality and norm:** ON1–ON5, ON7.
-- **Transformations:** T1–T3 (T3 assembled from separate cards).
-- **Lorentz:** L1–L3.
-- **Continuation:** I1.
-- **Quantum:** QZ1, QZ4.
-- **Mass–wave:** MW2 (E–p form only).
-
-## PROJECT-CONSTRUCTED (carded, with assumptions and failure conditions)
-
-- **Source geometry:** R8, H1, H2, H4, CF9.
-- **Quantum same-zero:** QZ2, QZ3.
-- **Cross-domain:** Z12.
-- **The compass circle:** ON7 (stage contract).
-
-## PAPER-BACKED
-
-- R7, CF10, M1 (S14b weak, S14a FAIL kept), M2 (source card, PDF pending).
-- Z9 (no card).
-- W2 (no source).
-
-## NEEDS ONE DERIVATION (textbook; one card each)
-
-| Object | Derivation |
-|---|---|
-| T3 | combined continuous statement D_x(τ) = 1 − ρ_x(τ) with ρ_x ↔ \|x̂\|² |
-| T4 | D_x(τ) ≈ (τ²/2)∫ω² dμ_x |
-| CF10 | g = JᵀJ/σ² for Gaussian noise |
-| Z9 | a model with a redundant parameter combination has g v = 0 |
-| P1 | f̂(−k) = conj f̂(k) for real f |
-| MW2 | ω² = c²k² + m²c⁴/ħ² from S12 with E = ħω, p = ħk |
-| W1 | ∫ψ = 0 for a stated wavelet (needs the source first) |
-
-## NEEDS CROSS-DOMAIN TEST (chosen before testing)
-
-| Object | Test |
-|---|---|
-| CF11 | the common-form architecture on a geometry not yet used (for example, the Fisher metric's reparametrization isometries) |
-| Z11 | zero as connector |
-| H5 | the larger generating geometry |
-| Q-SYM-NOVEL | a system where zero + independent symmetry separates what no known label separates |
-| Q-DISTINGUISHED-MODE | a distinguished mode identified by a system before its zero is observed |
-
-## NEEDS SOURCE
-
-- The quinn2023 PDF (P-2).
-- Mallat (scattering; ∫ψ = 0; stability).
-- A Noether statement (CF7).
-- Uncertainty (T5).
-- Michaelis–Menten / effective manifolds (M3).
-- Coarse-graining and RG (H6).
-- **Provenance:** the ThermaLens implementation mathematics (A2), and the original wording of the mass-attraction
-  intuition (MW3).
-
-## NEEDS WORDING ONLY
-
-- **Physical energy vs L² energy (A3)** in learner copy and records.
-- **"Foundation" has two meanings:** the learner Acts I–IV, and the research architecture.
-- **The act map** describes the Guide as "not the source ontology", although the older pillars are Foundation.
-- **C7's title says "resembles".** Its target is an operator, map or theorem.
-- **H2.md's "What false looks like"** should be phrased as an exact obstruction and refinement.
-
-## OPEN LONG-TERM (not blocking V1)
-
-- **Continuation and form:** ★ (I2); B-FINITE-INFINITE (I3); B-ORTHO-FORM (ON8); the two roles of c (L4).
-- **Mass, fields and pairs:** the mass–wave seed (MW1); mass attraction (MW3); physical pairs (P2).
-- **Information and models:** DYADIC PACKETS (W3); C7 (M4); information lost and recovered (W4); effective
-  representations (H6).
-- **Zero:** the inverse problem (H3); B-ZERO-LOSS; B-ZERO-INTERNAL-CHANGE; B-JOINT-ALTERNATIVES.
-- **Philosophy:** the philosophical lenses (PL1).
-- **Application:** Energeo (A1).
+| Domain | Foundation objects | Status | Note |
+|---|---|---|---|
+| D1. Foundation definition, spine, two-map system | OB1 | LOCKED | the whole architecture; zero = central investigative interface; common forms = major unifying mechanism; master map = research ontology; Act map = teaching order |
+| D2. Status, provenance and bridge-strength systems; method rules | QZ5 | LOCKED | seven provenance classes, seven bridge strengths, the source registry; B-* method rules |
+| D3. Fourier / L² representation | R1, R2, R3, R4, R5, R6, Z7, P1 | SOURCE+CARD COMPLETE | R5 (Fourier transform as a quarter-turn) is carded but SOURCE MISSING |
+| D4. Orthogonality and norm | ON1, ON2, ON3, ON4, ON5, ON7, Z4, Z10 | SOURCE+CARD COMPLETE | — |
+| D5. Common forms, generators, conservation | CF1, CF2, CF3, CF4, CF5, CF6, CF7, CF8, CF9, CF10, CF11-A | SOURCE+CARD COMPLETE | Noether in general is source-only (FB5 cards an instance); CF11-A is the established pattern |
+| D6. Common-form architecture as project hypothesis | CF11-B | NEEDS CROSS-DOMAIN TEST | no test chosen in advance; none run in Pass 2 (stop condition) |
+| D7. Zero taxonomy | Z1, Z2, Z3, Z5, Z6, Z8, Z9, Z12 | SOURCE+CARD COMPLETE | Z9 now separates exact structural null, sloppy direction, Lorentz null (FB7) |
+| D8. Zero as connector; the inverse problem | Z11, H3 | OPEN LONG-TERM | special cases proved; general statement open |
+| D9. Translation, correlation, spectrum, localization | T1, T2, T3, T4, T5 | SOURCE+CARD COMPLETE | T3/T4 project-derived and carded; the uncertainty inequality itself is source-only (FB3 cards its instances) |
+| D10. Lorentz and c | L1, L2, L3 | SOURCE+CARD COMPLETE | İnönü–Wigner sourced for the c → ∞ contraction; it is not evidence for L4 |
+| D11. Known continuation behaviours | I1 | SOURCE+CARD COMPLETE | — |
+| D12. Model manifolds and Fisher geometry | R7, CF10, Z9, M1, M2 | SOURCE+CARD COMPLETE | quinn2023 quote pending (P-2); M1 rests on the weak S14b; the MBAM procedure is source-only |
+| D13. C7: coefficient decay vs Fisher eigenvalue decay | M4 | NEEDS DERIVATION | an explicit operator / map / asymptotic theorem, or an exact obstruction |
+| D14. Wavelets and scattering | W1, W2 | SOURCE-COMPLETE | W1 carded; W2: exact first-order parts carded, deformation stability and higher orders source-only |
+| D15. DYADIC PACKETS; information lost and recovered | W3, W4 | OPEN LONG-TERM | DYADIC PACKETS: ORIGINAL USER RESEARCH TERM, OPEN DEFINITION |
+| D16. Effective / reduced representations (examples) | M3, M2, H7 | SOURCE+CARD COMPLETE | three reductions, each with what survives; compared, not equated. The question itself (H6) is OPEN LONG-TERM |
+| D17. Higher / source constructions | R8, H1, H2, H4, CF9 | MATH-CARDED | project constructions: carded with assumptions and failure conditions; no external source needed beyond textbook linear algebra |
+| D18. Quantum same-zero | Z6, QZ1, QZ2, QZ3, QZ4 | SOURCE+CARD COMPLETE | QZ3 is VALIDATION OF KNOWN MATHEMATICS (Schur–Weyl) |
+| D19. Cross-domain transfer | Z12, H5, R10 | NEEDS CROSS-DOMAIN TEST | Q-SYM-NOVEL; Q-DISTINGUISHED-MODE; no nontrivial predictive transfer yet |
+| D20. Pairs and mass–wave: established ingredients | P1, MW2 | SOURCE+CARD COMPLETE | ingredients only; MW1 is not proved by them |
+| D21. Continuation, c, pairs, mass–wave: user hypotheses | I2, I3, L4, MW1, MW3, P2, ON8, ON6, R9 | OPEN LONG-TERM | kept verbatim; MW3: ORIGINAL VERBATIM NOT RECOVERED |
+| D22. Effective-representation question | H6 | OPEN LONG-TERM | no general statement; Kadanoff and Wilson source-only |
+| D23. Philosophical lenses | PL1 | OPEN LONG-TERM | origin, not proof |
+| D24. Failures and boundaries | F1 | LOCKED | every FAIL card kept |
+| D25. Application | A1, A2 | OPEN LONG-TERM | A2: APPLICATION PROVENANCE INCOMPLETE; not upstream evidence |
+| D26. Physical energy vs L² energy; meaning of squared magnitude | A3, ON9 | WORDING ONLY | name the kind of "energy" every time |
 
 ## Blocking items for Foundation V1
 
 | Kind | Item |
 |---|---|
-| missing architecture | wavelets / scattering (W1, W2); effective / reduced representations (M2, M3, H6) |
-| unresolved contradiction | the act map's Guide framing vs the Foundation lock; "Foundation" used for two things |
-| provenance loss | ThermaLens mathematics; the original mass-attraction wording; Mallat and Noether sources; the quinn2023 PDF |
-| bridge needing a card | T3, T4, CF10, Z9, P1, MW2 (the bridges are stated correctly, but uncarded) |
+| missing architecture | none at the level of branches; CF11-B (the organizing hypothesis of the common-form mechanism) has no test chosen in advance |
+| unresolved contradiction | none found (the Act-map framing and the two meanings of "Foundation" are resolved) |
 | undefined central object | none (DYADIC PACKETS is an open user term, not a central object of the spine) |
-
-No incorrect bridge was found: every bridge in `research/foundation_bridges.md` names what it does not prove.
+| incorrect mathematical bridge | none found; every bridge has a strength class, assumptions, a failure condition and what it does not prove |
+| provenance loss | the quinn2023 PDF (P-2); ThermaLens mathematics (APPLICATION PROVENANCE INCOMPLETE); the original mass-attraction wording (ORIGINAL VERBATIM NOT RECOVERED); no source opened at full text |
 
 ## Foundation ratings (separate dimensions, no overall score)
 
-| Dimension | Rating | Reason |
-|---|---|---|
-| Foundation architecture completeness | 65% | All sixteen layers map onto the spine, with 84 objects and 28 bridges. Two branches have no mathematics in the repository (wavelets / scattering; effective reduction), and two framing contradictions remain. |
-| Mathematical verification coverage | 78% | 47 of 60 established or derived objects have PASS cards (computed by `test/foundation.test.js`). The gaps are the eight uncarded bridges above. |
-| Cross-domain validation | 20% | Two structural transfers, both textbook: equal-mass ↔ simplex, and the zero + symmetry architecture across spins and masses. No predictive transfer. No empirical system. |
-| Project-specific construction maturity | 45% | The constructions are exact, with stated assumptions and failure conditions: R4, simplex, reconstruction, tight-frame boundary, WMC / C_G, blind spin and mass tests. None is mathematically novel, and the inverse problem is open. |
-| Paper / source coverage | 20% | There is one source card (quinn2023), whose PDF is pending. There are no Mallat, Noether, uncertainty, Michaelis–Menten or RG sources. The spec and Master Map are assistant-written. |
-| Application validation | 0% | Energeo is untested, and the ThermaLens mathematics is not in the repository. |
+| Dimension | Rating | Previous (V1) | Reason for the change |
+|---|---|---|---|
+| Foundation architecture completeness | 80% | 65% | Two framing contradictions removed: the two-map lock (master map = research ontology, Act map = teaching order) and the single meaning of "Foundation". Wavelets / scattering and effective / reduced representations now have mathematics in the repository (FB10, FB11) and primary sources. CF11 is split into an established pattern and a project hypothesis. Still short of complete: DYADIC PACKETS has no definition yet, CF11-B is untested, the effective-representation question has examples but no general statement, and the application layer has no mathematics here. |
+| Mathematical verification coverage | 95% | 78% | 59 of 62 established or derived objects have PASS cards (computed). The eight bridge gaps are carded by FB1–FB8 (37 new cards in FB1–FB11, all PASS on the first ledger run). Not carded: R7 (definitional), OB1 (definitional), A3 (wording). Five carded objects are carded by instances or exact parts only, with the general theorem source-only: T5, CF7, W2, M2, H7. |
+| Cross-domain validation | 20% | 20% | Unchanged. No cross-domain test was run in this pass (stop condition). The two structural transfers stand; no predictive transfer; no empirical system. |
+| Project-specific construction maturity | 45% | 45% | Unchanged. No new construction was made. The new cards verify textbook bridges the constructions rely on; they do not mature the constructions themselves. |
+| Paper / source coverage | 55% | 20% | 38 external sources registered with verified bibliographic records (6 only partly verified), each with the exact claim it supports and what it does not establish. 43 of 44 external-claim objects have a source; R5 is SOURCE MISSING. Held down because no full text was opened or quoted in this environment, the quinn2023 PDF is still pending, and the spec and master map remain assistant-written. |
+| Application validation | 0% | 0% | Unchanged. Energeo is untested and the ThermaLens mathematics is not in the repository (APPLICATION PROVENANCE INCOMPLETE). |
 
-## Recommended remaining passes (by mathematical obligation)
+## CF11 ratings (separate records)
 
-1. **Provenance and sources.**
-   - Source cards: Mallat; Noether; uncertainty; Michaelis–Menten; coarse-graining / RG.
-   - Recover the quinn2023 PDF, the ThermaLens mathematics and the original mass-attraction wording, which Nadia
-     must supply.
-   - No new derivations.
-2. **The older strands' missing cards:** T3, T4, P1, MW2, CF10, Z9, W1. All are textbook derivations, carded
-   exactly.
-3. **Common-form audit (CF11):**
-   - finalize Part III;
-   - decide CF11's status as the central architecture;
-   - run one cross-domain test, preregistered: the Fisher reparametrization geometry, or the weighted metric of WMC
-     generalized.
-4. **Information-loss audit (W4):** one exact "what survives / what is lost" row per mechanism, scattering included
-   once sourced. Ask Nadia for the intended meaning of DYADIC PACKETS.
-5. **Model manifolds and C7:** an explicit operator for sums of exponentials (FIM) against coefficient decay. The
-   outcome is a map or an exact obstruction.
-6. **Continuation and c:** construction passes on ★ / H3 using CF8 and I1 (derive the behavior first), and on L4
-   using the c-indexed family of forms (C9). This also prepares the compass-circle stage.
-7. **Mass–wave and pairs:** the dispersion relation as a quadratic form in (ω, k). The massless case is the null cone
-   (Z5); the massive case is a mass shell. Conjugate pairs (t, ω), (x, k). This is the construction target for MW1,
-   with no QFT shortcut.
-8. **Synthesis and freeze:**
-   - reconcile the act map with the Foundation;
-   - resolve the wording contradictions;
-   - re-rate the six dimensions;
-   - freeze V1.
+| Record | Statement | Mathematical Status | Backbone Support | AI Slop Risk | Application Breadth |
+|---|---|---|---|---|---|
+| CF11-A (DERIVED) | In many established geometries, a relational structure together with the transformations preserving it characterizes substantial geometric structure | TEXTBOOK / KNOWN | 55% | 10% | 4 |
+| CF11-B (HYPOTHESIS) | Can relation + admissible transformations + preserved structure provide a broader organizing architecture across the geometries investigated in this project? | SPECULATIVE MAPPING | 30% | 30% | 2 |
+
+CF11-A's confidence does not transfer to CF11-B. The earlier single CF11 rating (35% / 25%, breadth 3) is superseded by these two.
+
+## Recommended next pass (one primary obligation)
+
+**CF11-B: one cross-domain test of the common-form architecture, preregistered before it is run.** Choose a project geometry not used to state CF11 (for example, the Fisher metric, whose admissible transformations are reparametrizations rather than linear maps), fix in advance what "organized by relation + admissible transformations + preserved structure" must predict there, then test. CF11-B is the one blocking architectural question that mathematics, not Nadia's input, can settle.

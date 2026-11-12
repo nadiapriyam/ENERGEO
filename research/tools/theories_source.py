@@ -735,6 +735,33 @@ T('T-THERMALENS', 'ThermaLens / Energeo implementation mathematics', 'Keep the e
   bounds=['The implementation mathematics is not in this repository: provenance gap.', 'Downstream application; not evidence for upstream mathematics until tested.'],
   acts=['Final'], audit=V_AUDIT, related=['T-ENERGEO', 'T-ENERGEO-INTENT'], ref='Foundation 37')
 
+# ── Foundation Completion Pass 2 (2026-11-12): CF11 split into an established pattern and a project hypothesis ──
+P2 = '2026-11-12'
+P2_AUDIT = ('missing', 'stated in Foundation Completion Pass 2 (2026-11-12); the earlier single CF11 compressed both statements')
+ACTS_ALREADY_NEW |= {'T-CF11-A', 'T-CF11-B'}
+T('T-CF11-A', 'CF11-A: the established common-form pattern', 'In many established geometries, a relational structure together with the transformations preserving it characterizes substantial geometric structure.', RD, U, 'derived-connection', 'derived',
+  pro=[('card:C1b', 'AᵀMA = M ⟺ the form B_M is preserved, and B_M-zeros with it'), ('card:S4e', 'Euclidean: AᵀA = I'), ('card:S5c', 'Lorentz: ΛᵀηΛ = η'), ('card:S9(3)', 'symplectic generator rule'),
+       ('card:FB9c', 'a symplectic map preserves symplectic orthogonality'), ('card:G5b', 'weighted centering: the D-metric read off a zero relation')],
+  con=[('card:Z4b', 'zero-resultant preservation is kept by every linear map and identifies no form (CF3): the pattern is not universal')],
+  bounds=['An established pattern across known form-preserving geometries (Erlangen-program type statement); not a universal theorem about all geometry.',
+          'Its rating is separate from CF11-B (Nadia, Pass 2: "Do not give CF11-A and CF11-B one shared rating.").'],
+  acts=['Guide'], audit=P2_AUDIT, related=['T-CF11-B', 'T-BACKBONE-INVARIANT', 'T-H2-ROLES'], ref='Foundation Pass 2, 3',
+  history=[(P2, 'CF11 split: this record holds the established pattern (Foundation object CF11-A)')])
+T('T-CF11-B', 'CF11-B: the common-form architecture as a project hypothesis', 'Can relation + admissible transformations + preserved structure provide a broader organizing architecture across the geometries investigated in this project?', RD, U, 'hypothesis', 'hypothesis',
+  pro=[('card:G5b', 'one project geometry (weighted centering) whose metric is read off its own zero relation'), ('card:FS2e', 'the four-spin zero is organized by an independently given group action (Schur)')],
+  con=[('card:Z4b', 'the zero-resultant relation is preserved by all of GL and characterizes no metric (CF3)')],
+  bounds=['HYPOTHESIS / OPEN. Not supported merely by CF11-A: the established pattern does not show that the project\'s own geometries are organized this way.',
+          'No cross-domain test chosen in advance yet; none is run in Pass 2 (stop condition).'],
+  acts=['all'], audit=P2_AUDIT, related=['T-CF11-A', 'T-BACKBONE-INVARIANT'], ref='Foundation Pass 2, 3',
+  history=[(P2, 'CF11 split: this record holds the project hypothesis (Foundation object CF11-B)')])
+
+ACTS_ALREADY_NEW |= {'T-EFFECTIVE-Q'}
+T('T-EFFECTIVE-Q', 'Effective / reduced representations (question)', 'What survives when a richer source description is reduced to an effective representation?', RD, U, 'open-question', 'open',
+  pro=[('card:FB11a', 'Michaelis–Menten: only K_M and V_max survive the quasi-steady-state reduction'), ('card:FB11c', 'a model-manifold boundary: θ₁ survives, θ₂ is lost'), ('card:FB11d', '1D decimation: the coupling form survives, renormalized')],
+  bounds=['The worked reductions are compared, not equated (Pass 2). Kadanoff block spins and Wilson fixed-point RG are source-only.',
+          'Recorded in Pass 2 (2026-11-12): the question was in the V1 decision record without a registry record (provenance correction).'],
+  acts=['III', 'Guide'], audit=('missing', 'stated in the Foundation V1 message (2026-11-12); registry record added in Pass 2'), ref='Foundation 36', history=[(P2, 'registry record added (provenance correction)')])
+
 PAIR_A = proof_target('Starting from the established common zero-sum form Σv_i = 0, identify all additional invariants/relations of the mass system that can be translated into mathematically meaningful tests on the directional cancellation system.',
                       requiredObjects=['the established shared form Σv_i = 0 (pair.A.sharedAlgebraicForm)'])
 next(r for r in R if r['id'] == 'T-Q.pairA-transfer')['proofTarget'] = PAIR_A
@@ -851,6 +878,23 @@ rate('T-CENTERING-OPERATOR', PD, MULTI, 45, 15, 'One unchanged operator family C
 rate('T-S2-DEPHASING', KN, ONE, 25, 15, 'A textbook Lüders measurement computed exactly. The defining zero is kept, while the sector coherence and the ±ħ/2 composition of the zero are lost. It is the same dephasing map as which-path marking (W2d), but the double slit has no defining zero.',
      'A non-quantum zero where an operation inside the zero destroys a relation in the same way.', 'None for the calculation; the project mapping fails if the parallel holds for no non-quantum zero.', EX, ('pass', 'not-yet', 'not-yet', 'pass', 'n/a'), depth=TRIV)
 
+rate('T-CF11-A', KN, MULTI, 55, 10, 'The pattern is textbook (Klein\'s Erlangen program; classical groups as form-preserving groups) and carded in five geometries: Euclidean, unitary, general bilinear, Lorentz, symplectic, plus the project\'s weighted metric. CF3 shows it is not universal: a preserved zero resultant characterizes no form.',
+     'A geometry the project needs, characterized by its preserved relation, that was not chosen because it fits.', 'A geometry in the project\'s table whose transformations preserving its relation fail to characterize it (CF3 is already such a boundary).', GC, ('pass', 'pass', 'partial', 'pass', 'n/a'), depth=TRIV)
+
+# Pass 2 provenance notes (appended; original wording untouched)
+for rid, bound, change in (
+    ('T-DYADIC', 'ORIGINAL USER RESEARCH TERM; OPEN DEFINITION (Pass 2 decision). Intended thematic role: connected to organizing or preserving frequency/scale information within the wavelet/scattering branch. Not identified with standard wavelet packets, dyadic wavelet decomposition or Mallat scattering paths.',
+     'Pass 2: recorded as ORIGINAL USER RESEARCH TERM / OPEN DEFINITION with its thematic role; still undefined'),
+    ('T-GRAVITY-ATTRACTION', 'ORIGINAL VERBATIM NOT RECOVERED: the recorded words are Nadia\'s 2026-11-12 instruction describing an earlier intuition; the historic wording is not in the repository history (searched).',
+     'Pass 2: marked ORIGINAL VERBATIM NOT RECOVERED'),
+    ('T-THERMALENS', 'APPLICATION PROVENANCE INCOMPLETE: prior project/application work, not a paper-backed source; it does not count toward upstream validation.',
+     'Pass 2: marked APPLICATION PROVENANCE INCOMPLETE'),
+    ('T-BACKBONE-INVARIANT', 'Pass 2: its project-level form is CF11-B (T-CF11-B, HYPOTHESIS); the established pattern it rests on is CF11-A (T-CF11-A), rated separately.',
+     'Pass 2: linked to the CF11-A / CF11-B split')):
+    byid[rid]['boundaries'].append(bound)
+    byid[rid]['history'].append(dict(date=P2, change=change))
+byid['T-BACKBONE-INVARIANT']['related'] += ['T-CF11-A', 'T-CF11-B']
+
 BREADTH = {'B-HIGHER-GEOMETRY': 2, 'B-ZERO-LOSS': 0, 'T-R4-STAGE2': 0, 'B-HIGHER-GEOMETRY-CHAIN': 2, 'Q-R4-1': 1, 'Q-R4-2': 1, 'Q-R4-4': 1, 'Q-R4-5': 1,
            'Q-R4-6': 1, 'Q-R4-7': 1, 'T-SIMPLEX-FAMILY': 2, 'T-ZERO-CONNECTOR-LINEAR': 3, 'T-ZERO-CONNECTOR': 3, 'Q-R4-8-INVERSE': 1, 'B-ZERO-INTERNAL-CHANGE': 1,
            'B-JOINT-ALTERNATIVES': 2, 'T-PAIRA-BRIDGE': 2, 'T-WMC': 1, 'T-CENTERING-OPERATOR': 2, 'T-S2-DEPHASING': 0}
@@ -886,7 +930,7 @@ byid['T-MASS-SECOND-MOMENT']['assessment']['novelty'] = 'VALIDATION OF KNOWN MAT
 rate('T-ZERO-SYMMETRY-ARCHITECTURE', KN, MULTI, 35, 20, 'The same precise object appears unchanged in a quantum and a non-quantum zero: an independent group acting covariantly on the zero-producing tuple, with a commuting hidden quadratic that is scalar on irreducible blocks. The roles of geometry and symmetry are inverted between the two systems, so only the architecture transfers, not the pattern. The object is Schur\'s lemma.',
      'A third system, chosen before testing, where the architecture predicts a hidden quantity that is not textbook-implied.', 'A system with an independent symmetry and a commuting hidden quadratic where neither geometry nor symmetry carries the hidden label.', GC, ('pass', 'pass', 'pass', 'pass', 'pass'), depth=STRUCT)
 byid['T-ZERO-SYMMETRY-ARCHITECTURE']['assessment']['novelty'] = 'VALIDATION OF KNOWN MATHEMATICS'
-BREADTH.update({'T-QACP-EXCHANGE': 1, 'T-QACP-OBSTRUCTION-RESTRICTED': 1, 'T-FOURSPIN-GEOMETRY-BLIND': 1, 'T-FOURSPIN-SYMMETRY': 1, 'T-FOURSPIN-SIMPLEX': 2, 'T-MASS-SECOND-MOMENT': 1, 'T-ZERO-SYMMETRY-ARCHITECTURE': 2})
+BREADTH.update({'T-QACP-EXCHANGE': 1, 'T-QACP-OBSTRUCTION-RESTRICTED': 1, 'T-FOURSPIN-GEOMETRY-BLIND': 1, 'T-FOURSPIN-SYMMETRY': 1, 'T-FOURSPIN-SIMPLEX': 2, 'T-MASS-SECOND-MOMENT': 1, 'T-ZERO-SYMMETRY-ARCHITECTURE': 2, 'T-CF11-A': 4})
 for k, b in BREADTH.items():
     byid[k]['assessment']['applicationBreadth'] = b
 

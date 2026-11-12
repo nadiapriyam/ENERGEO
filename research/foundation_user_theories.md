@@ -18,7 +18,7 @@ Every user-origin record in `research/theories.json`, with its original wording,
 | T-H2 | second i want to prove that due to this geometry there is a pattern of representations and how they develop, | — | hypothesis | hypothesis | — |
 | T-REPRESENTATION | Can apparently different descriptions become the same object under the correct representation? | Object → representation → transformation → invariant → decomposition → geometry (H2-1, Level 3; universality Level 4). | open-question | hypothesis | R9 |
 | T-VISIBLE-HIDDEN | What became visible, hidden, preserved or lost? | — | open-question | open | R9, W4 |
-| T-H2-ROLES | Both, but they play different roles. | M (or the inner product) defines the geometry; orthogonality organizes independent directions inside it; A†MA = M says which relationships survive. Not the same concept. | derived-connection | derived | CF11 |
+| T-H2-ROLES | Both, but they play different roles. | M (or the inner product) defines the geometry; orthogonality organizes independent directions inside it; A†MA = M says which relationships survive. Not the same concept. | derived-connection | derived | CF11-A |
 | T-H3 | leading to my theory of the relationship ridden equation- rather geometry that says that there is a common structure where infinite things are combined my a finite thing to produce a representation. like time and a finite circle geometry producing an infinite sine and cosine with bounds. and that invarient variable like the speed of light which also converges to infinity is an invarient variable that acts as a rule in the manifold (https://pmc.ncbi.nlm.nih.gov/articles/PMC10018491/) | — | hypothesis | hypothesis | L4, I3 |
 | T-SCHEMA | an unbounded parameter interacting with or being represented through a constrained geometry | — | hypothesis | hypothesis | I3 |
 | T-TIME-CIRCLE-0 | Adding an infinite object like time to a finite circle geometry makes sines and cosines converge to infinity. | — | historical-conjecture | hypothesis | — |
@@ -32,7 +32,7 @@ Every user-origin record in `research/theories.json`, with its original wording,
 | T-REP-MANIFOLD | It is also different from a possible future manifold of representations, which is something we may investigate but have not yet formally defined. | — | open-question | open | — |
 | T-BACKBONE-PRIMARY | What appears as zero, cancellation, or balance in one representation may be evidence of an underlying geometric constraint. | — | hypothesis | hypothesis | Z11 |
 | T-BACKBONE-SECONDARY | If physically different phenomena satisfy the same mathematical relation under an appropriate representation, they may be instances of the same structural law rather than merely analogous systems. | — | hypothesis | hypothesis | R9, R10 |
-| T-BACKBONE-INVARIANT | If a relation is preserved under the admissible transformations of a space, that relation may encode part of the geometry of that space. | — | hypothesis | hypothesis | CF11 |
+| T-BACKBONE-INVARIANT | If a relation is preserved under the admissible transformations of a space, that relation may encode part of the geometry of that space. | — | hypothesis | hypothesis | CF11-B |
 | T-ZERO-L1 | zero may arise from nonzero structure | — | established | established | — |
 | T-ZERO-L2 | zero may encode balance | — | established | established | — |
 | T-ZERO-L3 | zero may define an exact relation | — | established | established | — |
@@ -140,3 +140,6 @@ Every user-origin record in `research/theories.json`, with its original wording,
 | T-MASS-WAVE-SEED | mass is waves too, it's just a different form. | Construction target: a representation in which mass-like and wave-like behavior satisfy a common exact relation. Supporting mathematics (not proof): E² = p²c² + m²c⁴ with E = ħω, p = ħk (S12). | hypothesis | hypothesis | MW1 |
 | T-GRAVITY-ATTRACTION | Keep the original intuition that mass attraction may not be far removed if the deeper structural principle is shared. | — | hypothesis | open | MW3 |
 | T-THERMALENS | Keep the existing ThermaLens/Energeo implementation mathematics separate from general Foundation proof. | — | open-question | open | A2 |
+| T-CF11-A | In many established geometries, a relational structure together with the transformations preserving it characterizes substantial geometric structure. | — | derived-connection | derived | CF11-A |
+| T-CF11-B | Can relation + admissible transformations + preserved structure provide a broader organizing architecture across the geometries investigated in this project? | — | hypothesis | hypothesis | CF11-B |
+| T-EFFECTIVE-Q | What survives when a richer source description is reduced to an effective representation? | — | open-question | open | H6 |

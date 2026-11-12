@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-12T19:35:29+00:00",
- "commit": "966be69",
+ "generated": "2026-11-12T21:50:30+00:00",
+ "commit": "0a683f6",
  "cards": {
   "B1a": {
    "script": "verify_B1_B7.py",
@@ -193,6 +193,228 @@
    "verdict": "PASS",
    "everFailed": false,
    "claim": "Galilean boost exp(v K_oo) = [[1,0],[-v,1]] preserves the degenerate form diag(1,0)"
+  },
+  "FB1a": {
+   "script": "verify_FB1_FB4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[T3 | BR5, continuous] (T_τx)^(ω) = e^{−iωτ} x̂(ω) under the project convention, checked for x = (1+t)e^{−t²/2} with symbolic τ; assumption x ∈ L¹∩L²; this is the continuous form of the carded S3 (Fourier-series) rule"
+  },
+  "FB1b": {
+   "script": "verify_FB1_FB4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[T3 | BR6+BR7 combined] D_x(τ) = 1 − Re⟨x,T_τx⟩/‖x‖² = 1 − ∫cos(ωτ) dμ_x(ω), with dμ_x = |x̂|²dω/(2π‖x‖²) a probability measure; checked exactly for e^{−t²/2} (D = 1 − e^{−τ²/4}), the complex e^{−t²/2}e^{iat} and the asymmetric (1+t)e^{−t²/2}; assumption x ∈ L²(ℝ), x ≠ 0; complex signals included (Re⟨·⟩ picks the cosine)"
+  },
+  "FB1c": {
+   "script": "verify_FB1_FB4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[T3 | BR7, energy-signal form] the correlation c_x(τ) = ⟨x, T_τx⟩ = ∫conj(x(t))x(t−τ)dt has ∫c_x(τ)e^{iωτ}dτ = |x̂(ω)|² (autocorrelation ↔ energy spectrum, a convolution-theorem corollary; Wiener 1930 / Khintchine 1934 are the power-signal and stationary-process forms); checked exactly for (1+t)e^{−t²/2} and e^{−t²/2}e^{iat}"
+  },
+  "FB1d": {
+   "script": "verify_FB1_FB4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[T3 | failure condition, what BR6/BR7 do NOT give] the defect function does not determine the signal: x = (1+t)e^{−t²/2} and its reversal x(−t) are different signals with identical D_x(τ) and identical |x̂|² (the continuous counterpart of P1b/P1c)"
+  },
+  "FB2a": {
+   "script": "verify_FB1_FB4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[T4 | BR9] D_x''(0) = ∫ω² dμ_x = ‖x'‖²/‖x‖² (exact identity, under the assumption ∫ω²|x̂|² < ∞, i.e. x' ∈ L²); values: e^{−t²/2} → 1/2, e^{−t²/2}e^{iat} → a² + 1/2, (1+t)e^{−t²/2} → 5/6"
+  },
+  "FB2b": {
+   "script": "verify_FB1_FB4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[T4 | exact vs asymptotic] D_x(τ) = (τ²/2)∫ω²dμ_x + o(τ²) is a second-order Taylor statement, not an identity: for e^{−t²/2}, D = 1 − e^{−τ²/4} = τ²/4 − τ⁴/32 + O(τ⁶); the τ² coefficient equals (1/2)·(1/2) and the remainder is nonzero"
+  },
+  "FB2c": {
+   "script": "verify_FB1_FB4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[T4 | failure condition] for the box x = 1 on [0,1], D_x(τ) = |τ| on |τ| ≤ 1 (not twice differentiable at 0) and ∫_{−N}^{N}ω²|x̂|²dω/2π = (2N − 2 sin N)/π → ∞: the second-moment formula needs a finite spectral second moment"
+  },
+  "FB2d": {
+   "script": "verify_FB1_FB4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[T4 | exact link] D_x''(0) = Δω² + ω̄² (spectral variance plus squared spectral mean); for e^{−t²/2}e^{iat}: ω̄ = a, Δω² = 1/2; for any real x, ω̄ = 0 (conjugate symmetry, FB4) so D_x''(0) = Δω² (checked for (1+t)e^{−t²/2})"
+  },
+  "FB3a": {
+   "script": "verify_FB1_FB4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[T5] equality case: for x = e^{−t²/(2s²)} (any width s > 0), Δt² = s²/2 and Δω² = 1/(2s²), so Δt·Δω = 1/2 exactly (variances taken with weights |x|² and |x̂|², each normalized); project convention x̂(ω) = ∫x e^{−iωt}dt"
+  },
+  "FB3b": {
+   "script": "verify_FB1_FB4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[T5] strict cases: x = t e^{−t²/2} has Δt² = Δω² = 3/2, Δt·Δω = 3/2 > 1/2; x = (1+t)e^{−t²/2} has Δt·Δω = sqrt(105)/18 > 1/2. These are instances; the inequality Δt·Δω ≥ 1/2 for all x with finite moments is the cited theorem (Kennard 1927; Folland–Sitaram 1997), not proved by this card"
+  },
+  "FB3c": {
+   "script": "verify_FB1_FB4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[T5 | convention] with the 2π-in-the-exponent convention x̂(ξ) = ∫x e^{−2πitξ}dt (used by Folland–Sitaram), ξ = ω/2π, so Δξ = Δω/2π and the bound reads Δt·Δξ ≥ 1/(4π); the Gaussian attains Δt·Δξ = 1/(4π) exactly; the constant depends on the convention, the statement does not"
+  },
+  "FB3d": {
+   "script": "verify_FB1_FB4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[T5 vs T4, kept distinct] corollary for real x with finite moments: D_x''(0) = Δω² ≥ 1/(4Δt²) (FB2d + the cited inequality); instances: e^{−t²/2} gives 1/2 = 1/(4·1/2) (equality), t e^{−t²/2} gives 3/2 > 1/6. FB2 is an identity about one representation; FB3 is an inequality coupling two"
+  },
+  "FB4a": {
+   "script": "verify_FB1_FB4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[P1] for real x, x̂(−ω) = conj x̂(ω) (so |x̂| is even); checked exactly for the asymmetric real x = (1+t)e^{−t²/2}, where x̂ = √(2π)(1 − iω)e^{−ω²/2} is not real"
+  },
+  "FB4b": {
+   "script": "verify_FB1_FB4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[P1, discrete] for a real vector x ∈ ℚ⁸, the DFT X_k = Σ x_n e^{−2πikn/8} satisfies X_{8−k} = conj X_k for every k (exact arithmetic)"
+  },
+  "FB4c": {
+   "script": "verify_FB1_FB4.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[P1 | failure condition] the symmetry needs x real: for complex x = e^{−t²/2}e^{it}, |x̂(1)| = √(2π) but |x̂(−1)| = √(2π)e^{−2}. Nadia's physical-pair question (P2, T-CONJUGACY) is not addressed by this card"
+  },
+  "FB5a": {
+   "script": "verify_FB5_FB11.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[CF7 | BR12, Noether instance] L = (m/2)(ẋ² + ẏ²) − V(x² + y²) with V an arbitrary C¹ function: δL = 0 to first order under the rotation δ(x,y) = (−y, x), and the Noether charge Q = p·δq = m(xẏ − yẋ) has dQ/dt = 0 on every solution of the Euler–Lagrange equations. Assumptions: autonomous C² Lagrangian, one-parameter symmetry, on-shell. Noether's general theorem (fields, divergence symmetries) is cited, not carded"
+  },
+  "FB5b": {
+   "script": "verify_FB5_FB11.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[CF7 | failure condition] without the symmetry the charge is not conserved: for V = x² + 2y², d/dt[m(xẏ − yẋ)] = −2xy on solutions (nonzero off the axes)"
+  },
+  "FB5c": {
+   "script": "verify_FB5_FB11.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[CF6 | BR12] for an arbitrary time-independent H(q₁,q₂,p₁,p₂) and the constant antisymmetric J, ż = J∇H gives dH/dt = ∇HᵀJ∇H = 0 identically. Failure condition: explicit time dependence, H = p²/2 + t q²/2 gives dH/dt = ∂H/∂t = q²/2 ≠ 0"
+  },
+  "FB6a": {
+   "script": "verify_FB5_FB11.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[CF10 | BR16] for y_i = Y_i(θ) + ε_i with independent ε_i ~ N(0, σ²), known constant σ, the Fisher information E[∂ℓ∂ℓᵀ] = −E[∂²ℓ] = JᵀJ/σ² (J = ∂Y/∂θ); checked exactly for Y_i = e^{−θ₁t_i} + e^{−θ₂t_i}, t = 1, 2, 3, expectations over the Gaussian noise. Standard Fisher geometry (Rao 1945; Amari 2016); the least-squares model-manifold reading is Transtrum–Machta–Sethna"
+  },
+  "FB6b": {
+   "script": "verify_FB5_FB11.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[CF10 | failure condition of the formula] with unequal noise levels σ_i the Fisher metric is JᵀΣ⁻¹J, Σ = diag(σ_i²), not JᵀJ/σ² for one σ: g = JᵀJ/σ² holds only under the equal-variance Gaussian assumption"
+  },
+  "FB7a": {
+   "script": "verify_FB5_FB11.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[Z9 | BR17, exact structural nonidentifiability] Y_i = e^{−(θ₁+θ₂)t_i} depends on θ₁ + θ₂ only: J v = 0 for v = (1, −1) at every θ, so g v = 0 and rank g = 1 everywhere (a reparametrization redundancy, not a small eigenvalue)"
+  },
+  "FB7b": {
+   "script": "verify_FB5_FB11.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[Z9 | OB1] for the positive-semidefinite g = JᵀJ/σ², the three conditions agree: uᵀgu = 0 ⟺ Ju = 0 ⟺ gu = 0, because uᵀgu = |Ju|²/σ² (checked symbolically for a generic 3×2 J)"
+  },
+  "FB7c": {
+   "script": "verify_FB5_FB11.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[Z9 | sloppy ≠ null] Y = e^{−θ₁t} + e^{−θ₂t}, t = 1…5, σ = 1: at θ = (1, 6/5) det g > 0, so no exact null, yet λ_min/λ_max = 4.61e-03 (a sloppy direction); at θ₁ = θ₂ the columns of J coincide and v = (1, −1) is an exact null (det g = 0)"
+  },
+  "FB7d": {
+   "script": "verify_FB5_FB11.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[Z9 vs Z5, kept distinct] for the indefinite Lorentz form η = diag(1, −1), the light-like v = (1, 1) has vᵀηv = 0 but ηv = (1, −1) ≠ 0: a quadratic null of an indefinite form is not a kernel vector, whereas for a semidefinite Fisher metric a quadratic null is a kernel vector (FB7b)"
+  },
+  "FB8a": {
+   "script": "verify_FB5_FB11.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[MW2 | BR27] with the inputs E = ħω and p = ħk (Planck–Einstein and de Broglie, assumed, not derived), E² = p²c² + m²c⁴ ⟺ ω² = c²k² + m²c⁴/ħ² (the dispersion relation of the Klein–Gordon form). This is an established ingredient; it does not show that mass is waves (MW1 stays a HYPOTHESIS)"
+  },
+  "FB8b": {
+   "script": "verify_FB5_FB11.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[MW2 | Z5] in the variables (ω/c, k) the relation is the η-quadratic form: (ω/c)² − k² = m²c²/ħ². Massless: ω = ck lies on the null cone (form value 0, Z5). Massive: a mass shell with positive (timelike) form value"
+  },
+  "FB8c": {
+   "script": "verify_FB5_FB11.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[MW2] for ω(k) = √(c²k² + m²c⁴/ħ²): phase velocity × group velocity = c² exactly, and v_g < c for m > 0. Failure contrast: the non-relativistic ω = ħk²/2m gives v_p·v_g = ħ²k²/2m², which depends on k"
+  },
+  "FB9a": {
+   "script": "verify_FB5_FB11.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[CF6 | BR29] the symplectic form ω(u, v) = uᵀJv (J standard on ℝ⁴) is alternating: ω(v, v) = 0 for EVERY v and ω(u, v) = −ω(v, u). Symplectic orthogonality ω(u, v) = 0 is a genuine relation between two vectors: the ω-complement of e₁ is 3-dimensional and contains e₁ itself"
+  },
+  "FB9b": {
+   "script": "verify_FB5_FB11.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[Z5 vs symplectic, kept distinct] the Lorentz quadratic null is a condition, not an identity: q_η(v) = vᵀηv with η = diag(1, −1, −1, −1) is 0 on the light cone (v = (1, 1, 0, 0)) and nonzero off it (q_η(e₁) = 1). Alternating self-pairing zero ≠ Lorentz quadratic null vector"
+  },
+  "FB9c": {
+   "script": "verify_FB5_FB11.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[CF2 instance] a symplectic map preserves the pairing and hence symplectic orthogonality: the shear A = [[1, s], [0, 1]] has AᵀJA = J, so ω(Au, Av) = ω(u, v) for all u, v (in ℝ², symplectic ⟺ det A = 1)"
+  },
+  "FB10a": {
+   "script": "verify_FB5_FB11.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[W1 | BR18] the Mexican-hat wavelet ψ(t) = (1 − t²)e^{−t²/2} has ∫ψ = 0, ψ̂(ω) = √(2π) ω² e^{−ω²/2} (so ψ̂(0) = 0), and finite admissibility constant C_ψ = ∫|ψ̂(ω)|²/|ω| dω = 2π (Grossmann–Morlet admissibility; Daubechies 1992). The zero is designed in; this card does not connect it to any project zero hypothesis"
+  },
+  "FB10b": {
+   "script": "verify_FB5_FB11.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[W1 | failure condition] a filter with nonzero mean is not admissible: the Gaussian φ = e^{−t²/2} has ∫φ = √(2π) ≠ 0 and ∫_ε^1|φ̂|²/ω dω ≥ (2π/e)·log(1/ε) → ∞ as ε → 0, so C_φ = ∞"
+  },
+  "FB10c": {
+   "script": "verify_FB5_FB11.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[W2 | first-order scattering, exact parts only] the wavelet transform is translation-covariant: (T_τx) ∗ ψ = T_τ(x ∗ ψ) (checked symbolically for x = e^{−t²} with the Mexican hat), and the averaged modulus Σ|x ⊛ ψ| is translation-invariant (exact, circular, ℚ¹⁶, zero-mean filter (1, −2, 1)) while x ⊛ ψ itself changes. The invariant is many-to-one (x and its reversal give the same value). Mallat's deformation stability (Lipschitz continuity to C² diffeomorphisms) and the higher-order scattering results are SOURCE-ONLY (Mallat 2012; Bruna–Mallat 2013), not carded"
+  },
+  "FB11a": {
+   "script": "verify_FB5_FB11.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[M3 | H6] Michaelis–Menten: for E + S ⇌ C → E + P with mass action and E = e₀ − C, the quasi-steady state dC/dt = 0 gives C = e₀S/(K_M + S) and rate k₂C = V_max S/(K_M + S), K_M = (k₋₁ + k₂)/k₁, V_max = k₂e₀ (Briggs–Haldane 1925). What survives: K_M and V_max. What is lost: the three rate constants map to two combinations (rank 2 Jacobian), so one direction in (k₁, k₋₁, k₂) is invisible to the reduced rate"
+  },
+  "FB11b": {
+   "script": "verify_FB5_FB11.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[M3 | failure condition, numeric] the reduction is valid only when ε = e₀/(S₀ + K_M) is small (Segel–Slemrod 1989): k₁ = k₋₁ = k₂ = 1, S₀ = 1; ε = 0.0033 gives max|S_full − S_red|/S₀ = 0.0022 (< 0.02); ε = 1.00 gives 0.229 (> 0.05). Thresholds fixed before the first run"
+  },
+  "FB11c": {
+   "script": "verify_FB5_FB11.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[M2 | H6, manifold boundary] for Y(θ) = e^{−θ₁t} + e^{−θ₂t} (t > 0), the limit θ₂ → ∞ is the one-exponential model e^{−θ₁t}, and ∂Y/∂θ₂ = −t e^{−θ₂t} → 0, so the metric's θ₂ direction collapses on that boundary. What survives: θ₁. What is lost: θ₂. This checks the boundary limit only; it does not implement the MBAM geodesic procedure (Transtrum–Qiu 2014)"
+  },
+  "FB11d": {
+   "script": "verify_FB5_FB11.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[H6, coarse-graining / RG instance] 1D Ising decimation, zero field: Σ_{s₂=±1} e^{Ks₂(s₁+s₃)} = A e^{K′s₁s₃} for all s₁, s₃ = ±1 with tanh K′ = tanh²K, A = 2√cosh 2K (Nelson–Fisher 1975). What survives: the nearest-neighbour coupling form, renormalized K → K′, plus a constant. What is lost: the decimated spins. Failure condition: with a field h ≠ 0 the pure-K recursion does not close (the (+,+) and (−,−) sums differ), so a field term h′ must be added"
   },
   "FS1a": {
    "script": "verify_FS1.py",

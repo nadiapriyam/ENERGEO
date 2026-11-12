@@ -11,8 +11,17 @@ GUIDE THROUGH KNOWN MATHEMATICS
 TRANSLATOR / APPLICATION
 ```
 
-The Guide's subjects are known mathematical structures to be mapped against the geometry being constructed. They are
-not the project's source ontology. Energeo is never the justification for the foundation. Stage numbers are global
+**The Act map is a pedagogical discovery sequence. It does not determine which mathematics belongs to the Foundation ontology.**
+
+(Pass 2 lock, 2026-11-12.) It answers *In what order should a learner discover these ideas?* The research
+ontology is `research/master_math_map.md`, which answers *What mathematical objects, bridges, hypotheses and
+constructions make up Geometry of Representation?* The two need not share an ordering.
+
+So "Foundation Acts" below names the first teaching block (Acts I–IV) only. The research Foundation is the whole
+architecture. Orthogonality, common forms, Lorentz / c, model manifolds, Noether / Hamiltonian and Fourier are taught
+later, in the Guide, and they remain part of the Foundation even when taught later. In the Guide they are matched,
+after construction, against the geometry being built (the outside-in method rule governs the order of construction,
+not what belongs to the Foundation). Energeo is never the justification for the foundation. Stage numbers are global
 (D2). Only stages 1–3b are built.
 
 ## Foundation
@@ -40,6 +49,9 @@ not the project's source ontology. Energeo is never the justification for the fo
   advance.
 
 ## Guide through known mathematics (Act V onward, order not locked)
+
+A teaching position only: every subject below is Foundation mathematics (research ontology), taught after the
+Foundation Acts.
 
 - Fourier;
 - orthogonal bases (the separability signature, H1-1);

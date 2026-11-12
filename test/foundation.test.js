@@ -24,6 +24,7 @@ test('every Foundation object has valid enums, real cards, real registry records
     for (const d of o.dependsOn) assert.ok(ids.has(d), `${o.id}: depends on ${d}`);
     for (const d of o.docs) assert.ok(existsSync(new URL(`../${d}`, import.meta.url)), `${o.id}: ${d}`);
     assert.ok(o.guideLocation, `${o.id}: potential guide location`);
+    assert.ok(F.provenanceClasses.includes(o.provenance), `${o.id}: one primary provenance class`);
     if (o.status === 'ESTABLISHED' || o.status === 'DERIVED')
       assert.ok(o.cards.some((c) => ledger[c].verdict === 'PASS') || /NEEDS|no card|not (yet )?in the repository|spec only|definitional/.test(o.gap ?? ''), `${o.id}: established without a PASS card must name its gap`);
     for (const k of ['backboneSupport', 'slopRisk']) assert.ok(o[k] === null || (Number.isInteger(o[k]) && o[k] >= 0 && o[k] <= 100), `${o.id}: ${k}`);
@@ -34,6 +35,7 @@ test('every bridge is an exact connector that names what it does not prove', () 
   for (const b of F.bridges) {
     assert.ok(b.left && b.right && b.connector, b.id);
     assert.ok(['established', 'project-specific'].includes(b.scope), `${b.id}: scope`);
+    assert.ok(F.bridgeStrengths.includes(b.strength), `${b.id}: strength class`);
     assert.ok(b.doesNotProve && b.doesNotProve !== '—' && b.doesNotProve.length > 5, `${b.id}: what it does NOT prove`);
     for (const c of b.cards) assert.ok(ledger[c], `${b.id}: card ${c}`);
     for (const o of b.objects) assert.ok(ids.has(o), `${b.id}: object ${o}`);
@@ -76,6 +78,12 @@ test('Foundation ratings are separate dimensions; verification coverage is the c
   const carded = est.filter((o) => o.cards.some((c) => ledger[c]?.verdict === 'PASS'));
   const pct = Math.round((100 * carded.length) / est.length);
   assert.ok(comp.includes(`| Mathematical verification coverage | ${pct}% |`), `coverage should read ${pct}% (${carded.length}/${est.length})`);
-  for (const c of ['## LOCKED', '## MATHEMATICALLY ESTABLISHED', '## PROJECT-CONSTRUCTED', '## PAPER-BACKED', '## NEEDS ONE DERIVATION', '## NEEDS CROSS-DOMAIN TEST', '## NEEDS SOURCE', '## NEEDS WORDING ONLY', '## OPEN LONG-TERM'])
-    assert.ok(comp.includes(c), c);
+  assert.ok(comp.includes('## LOCKED (Pass 2)') && comp.includes('## Domain statuses'), 'Pass 2 ledger sections');
+  assert.deepEqual(F.domainStatuses, ['LOCKED', 'SOURCE-COMPLETE', 'MATH-CARDED', 'SOURCE+CARD COMPLETE', 'NEEDS DERIVATION', 'NEEDS CROSS-DOMAIN TEST', 'OPEN LONG-TERM', 'WORDING ONLY']);
+  for (const d of F.domains) {
+    assert.ok(F.domainStatuses.includes(d.status), `${d.id}: status`);
+    assert.ok(comp.includes(`| ${d.id}. ${d.name} |`) && d.objects.every((i) => ids.has(i)), `${d.id} rendered with real objects`);
+  }
+  for (const r of F.ratings) assert.ok(comp.includes(`| ${r.dimension} | ${r.rating}% | ${r.previous}% |`), `${r.dimension}: rating and previous value`);
+  assert.deepEqual(F.ratings.map((r) => r.previous), [65, 78, 20, 45, 20, 0], 'previous V1 ratings kept for the comparison');
 });

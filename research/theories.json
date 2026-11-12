@@ -1021,7 +1021,9 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "T-CF11-A"
+      ],
       "history": [
         {
           "date": "2026-11-12",
@@ -1849,7 +1851,9 @@
           "note": "boundary: the zero-resultant relation is preserved by maps that preserve no nonzero form"
         }
       ],
-      "boundaries": [],
+      "boundaries": [
+        "Pass 2: its project-level form is CF11-B (T-CF11-B, HYPOTHESIS); the established pattern it rests on is CF11-A (T-CF11-A), rated separately."
+      ],
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
@@ -1875,11 +1879,18 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "T-CF11-A",
+        "T-CF11-B"
+      ],
       "history": [
         {
           "date": "2026-11-12",
           "change": "Act labels remapped to the new Act map (rev 3: V)"
+        },
+        {
+          "date": "2026-11-12",
+          "change": "Pass 2: linked to the CF11-A / CF11-B split"
         }
       ],
       "relatedActsRev3": [
@@ -4673,7 +4684,8 @@
       "evidenceFor": [],
       "evidenceAgainst": [],
       "boundaries": [
-        "Definition OPEN (AMB-13). The literal term is kept; no conventional meaning is assumed."
+        "Definition OPEN (AMB-13). The literal term is kept; no conventional meaning is assumed.",
+        "ORIGINAL USER RESEARCH TERM; OPEN DEFINITION (Pass 2 decision). Intended thematic role: connected to organizing or preserving frequency/scale information within the wavelet/scattering branch. Not identified with standard wavelet packets, dyadic wavelet decomposition or Mallat scattering paths."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -4701,6 +4713,10 @@
         {
           "date": "2026-11-12",
           "change": "Act labels remapped to the new Act map (rev 3: VI)"
+        },
+        {
+          "date": "2026-11-12",
+          "change": "Pass 2: recorded as ORIGINAL USER RESEARCH TERM / OPEN DEFINITION with its thematic role; still undefined"
         }
       ],
       "relatedActsRev3": [
@@ -11175,7 +11191,8 @@
       "evidenceFor": [],
       "evidenceAgainst": [],
       "boundaries": [
-        "SPECULATIVE / OPEN; no project construction. The intuition's original wording is not in the repository; this is Nadia's 2026-11-12 description of it."
+        "SPECULATIVE / OPEN; no project construction. The intuition's original wording is not in the repository; this is Nadia's 2026-11-12 description of it.",
+        "ORIGINAL VERBATIM NOT RECOVERED: the recorded words are Nadia's 2026-11-12 instruction describing an earlier intuition; the historic wording is not in the repository history (searched)."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -11201,7 +11218,12 @@
       "related": [
         "T-MASS-WAVE-SEED"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Pass 2: marked ORIGINAL VERBATIM NOT RECOVERED"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": null
     },
@@ -11218,7 +11240,8 @@
       "evidenceAgainst": [],
       "boundaries": [
         "The implementation mathematics is not in this repository: provenance gap.",
-        "Downstream application; not evidence for upstream mathematics until tested."
+        "Downstream application; not evidence for upstream mathematics until tested.",
+        "APPLICATION PROVENANCE INCOMPLETE: prior project/application work, not a paper-backed source; it does not count toward upstream validation."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -11245,7 +11268,256 @@
         "T-ENERGEO",
         "T-ENERGEO-INTENT"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "Pass 2: marked APPLICATION PROVENANCE INCOMPLETE"
+        }
+      ],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-CF11-A",
+      "label": "CF11-A: the established common-form pattern",
+      "words": "In many established geometries, a relational structure together with the transformations preserving it characterizes substantial geometric structure.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:C1b",
+          "note": "AᵀMA = M ⟺ the form B_M is preserved, and B_M-zeros with it"
+        },
+        {
+          "ref": "card:S4e",
+          "note": "Euclidean: AᵀA = I"
+        },
+        {
+          "ref": "card:S5c",
+          "note": "Lorentz: ΛᵀηΛ = η"
+        },
+        {
+          "ref": "card:S9(3)",
+          "note": "symplectic generator rule"
+        },
+        {
+          "ref": "card:FB9c",
+          "note": "a symplectic map preserves symplectic orthogonality"
+        },
+        {
+          "ref": "card:G5b",
+          "note": "weighted centering: the D-metric read off a zero relation"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:Z4b",
+          "note": "zero-resultant preservation is kept by every linear map and identifies no form (CF3): the pattern is not universal"
+        }
+      ],
+      "boundaries": [
+        "An established pattern across known form-preserving geometries (Erlangen-program type statement); not a universal theorem about all geometry.",
+        "Its rating is separate from CF11-B (Nadia, Pass 2: \"Do not give CF11-A and CF11-B one shared rating.\")."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C1b",
+        "FB9c",
+        "G5b",
+        "S4e",
+        "S5c",
+        "S9(3)",
+        "Z4b"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Foundation Pass 2, 3",
+      "audit": {
+        "before": "missing",
+        "note": "stated in Foundation Completion Pass 2 (2026-11-12); the earlier single CF11 compressed both statements"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-CF11-B",
+        "T-BACKBONE-INVARIANT",
+        "T-H2-ROLES"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "CF11 split: this record holds the established pattern (Foundation object CF11-A)"
+        }
+      ],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 55,
+        "slopRisk": 10,
+        "why": "The pattern is textbook (Klein's Erlangen program; classical groups as form-preserving groups) and carded in five geometries: Euclidean, unitary, general bilinear, Lorentz, symplectic, plus the project's weighted metric. CF3 shows it is not universal: a preserved zero resultant characterizes no form.",
+        "increase": "A geometry the project needs, characterized by its preserved relation, that was not chosen because it fits.",
+        "falsify": "A geometry in the project's table whose transformations preserving its relation fail to characterize it (CF3 is already such a boundary).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "TRIVIAL CONSEQUENCE",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 4,
+        "novelty": null
+      }
+    },
+    {
+      "id": "T-CF11-B",
+      "label": "CF11-B: the common-form architecture as a project hypothesis",
+      "words": "Can relation + admissible transformations + preserved structure provide a broader organizing architecture across the geometries investigated in this project?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:G5b",
+          "note": "one project geometry (weighted centering) whose metric is read off its own zero relation"
+        },
+        {
+          "ref": "card:FS2e",
+          "note": "the four-spin zero is organized by an independently given group action (Schur)"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:Z4b",
+          "note": "the zero-resultant relation is preserved by all of GL and characterizes no metric (CF3)"
+        }
+      ],
+      "boundaries": [
+        "HYPOTHESIS / OPEN. Not supported merely by CF11-A: the established pattern does not show that the project's own geometries are organized this way.",
+        "No cross-domain test chosen in advance yet; none is run in Pass 2 (stop condition)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "all"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "FS2e",
+        "G5b",
+        "Z4b"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Foundation Pass 2, 3",
+      "audit": {
+        "before": "missing",
+        "note": "stated in Foundation Completion Pass 2 (2026-11-12); the earlier single CF11 compressed both statements"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-CF11-A",
+        "T-BACKBONE-INVARIANT"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "CF11 split: this record holds the project hypothesis (Foundation object CF11-B)"
+        }
+      ],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-EFFECTIVE-Q",
+      "label": "Effective / reduced representations (question)",
+      "words": "What survives when a richer source description is reduced to an effective representation?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:FB11a",
+          "note": "Michaelis–Menten: only K_M and V_max survive the quasi-steady-state reduction"
+        },
+        {
+          "ref": "card:FB11c",
+          "note": "a model-manifold boundary: θ₁ survives, θ₂ is lost"
+        },
+        {
+          "ref": "card:FB11d",
+          "note": "1D decimation: the coupling form survives, renormalized"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "The worked reductions are compared, not equated (Pass 2). Kadanoff block spins and Wilson fixed-point RG are source-only.",
+        "Recorded in Pass 2 (2026-11-12): the question was in the V1 decision record without a registry record (provenance correction)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III",
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "FB11a",
+        "FB11c",
+        "FB11d"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Foundation 36",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Foundation V1 message (2026-11-12); registry record added in Pass 2"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "registry record added (provenance correction)"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": null
     }

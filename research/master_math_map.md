@@ -1,9 +1,21 @@
-# Master mathematical map: Foundation V1 (consolidation, 2026-11-12)
+# Master mathematical map: Foundation V1 (consolidation and Pass 2, 2026-11-12)
 
 This is the canonical conceptual map of Geometry of Representation. "Foundation" means the complete mathematical and
 theoretical architecture of the project, old and new, not only the recent zero research. Object IDs (OB1, R1, CF1,
 …) refer to the generated dependency table `research/foundation_dependencies.md`. Bridge IDs (BR1, …) refer to
-`research/foundation_bridges.md`. Completion status is in `research/foundation_completion.md`.
+`research/foundation_bridges.md`. Completion status is in `research/foundation_completion.md`. External sources (Pass 2)
+are in `research/foundation_sources.md`.
+
+**Two maps (locked in Pass 2).** This file is the **research ontology**: it answers *What mathematical objects,
+bridges, hypotheses and constructions make up Geometry of Representation?* `docs/act_map.md` is the **teaching /
+discovery order**: it answers *In what order should a learner discover these ideas?* The two need not share an
+ordering. Mathematics taught later in the Guide (orthogonality, common forms, Lorentz / c, model manifolds,
+Noether / Hamiltonian, Fourier) is Foundation all the same.
+
+**Provenance (Pass 2).** Every record has one primary provenance class: USER-ORIGIN; TEXTBOOK / STANDARD;
+PRIMARY-PAPER BACKED; PROJECT-DERIVED FROM ESTABLISHED MATH; PROJECT-CONSTRUCTION; SPECULATIVE PROJECT CONNECTION;
+PHILOSOPHICAL. Every bridge has one strength class: EXACT IDENTITY; EXACT IMPLICATION; THEOREM; SPECIAL-CASE
+CONSTRUCTION; STRUCTURAL ANALOGUE; OPEN CONNECTION; FAILED CONNECTION.
 
 **Historical layers, never collapsed into each other:**
 
@@ -23,7 +35,12 @@ examples, not a logically exhaustive classification**.
 
 ## Part I. Foundation spine
 
-The project's current architecture. It is not a proven universal law.
+The project's current architecture. It is a PROJECT ARCHITECTURE, not a proven universal law. Neither zero alone
+nor the common-form mechanism alone is its center:
+
+- **Zero is a central investigative interface inside the architecture.** It is not the entire Foundation.
+- **Common-form / preserved-relation mathematics is a major unifying mechanism inside the architecture.** It is not
+  the entire Foundation.
 
 ```
 OBJECT → REPRESENTATION → RELATION → ZERO / BALANCE / NULL → TRANSFORMATION → PRESERVED STRUCTURE
@@ -34,14 +51,14 @@ OBJECT → REPRESENTATION → RELATION → ZERO / BALANCE / NULL → TRANSFORMAT
 |---|---|---|
 | OBJECT | OB1, MW1, A3, PL1 | What is the object before we choose how to represent or measure it? Shared vocabulary does not imply a shared object. |
 | REPRESENTATION | R1–R10, ON4, ON5, W1–W3, P1, MW1 | x → R(x): Fourier, basis changes, Lorentz frames, prediction maps, phase, projection |
-| RELATION | CF1, CF9, CF10, CF11, ON1–ON3, ON6, ON7, ON9, T2, Z4, P1, MW2 | the common-form / preserved-relation architecture (Part III) |
+| RELATION | CF1, CF9, CF10, CF11-A, CF11-B, ON1–ON3, ON6, ON7, ON9, T2, Z4, P1, MW2 | the common-form / preserved-relation architecture (Part III) |
 | ZERO / BALANCE / NULL | Z1–Z12, CF2, CF3, ON6, R8, H1, H4, H5, QZ1–QZ5, W1 | the zero taxonomy (Part IV); zero as connector (Z11, hypothesis) |
 | TRANSFORMATION | CF4, CF7, R4, R5, T1–T4, L3, QZ2, QZ3 | groups, generators, orbits, stabilizers |
 | PRESERVED STRUCTURE | CF1, CF2, CF3, CF4, CF5, R3, ON2, L1 | what a transformation keeps |
-| GEOMETRY | CF1, CF8–CF11, R7, ON7, ON8, L1, L3, L4, I3, H1, H2, H5, Z9 | a geometry characterized by a preserved relation (candidate CF11) |
-| INFORMATION | ON3, ON5, T3–T5, M1–M4, W2, W4, H2, H3, H6, QZ1, QZ3, QZ4, Z12 | what a representation keeps, hides, loses or recovers |
+| GEOMETRY | CF1, CF8–CF10, CF11-A, CF11-B, R7, ON7, ON8, L1, L3, L4, I3, H1, H2, H5, Z9 | a geometry characterized by a preserved relation (pattern CF11-A; project hypothesis CF11-B) |
+| INFORMATION | ON3, ON5, T3–T5, M1–M4, W2, W4, H2, H3, H6, H7, QZ1, QZ3, QZ4, Z12 | what a representation keeps, hides, loses or recovers |
 | DYNAMICS / CONTINUATION | CF5, CF6, CF7, CF8, R6, I1–I3, L2 | conservation; unbounded parameter in a bounded geometry |
-| CROSS-SYSTEM TRANSFER | R10, Z11, Z12, L4, M4, P2, MW3, F1 | transfer depth is rated per transfer |
+| CROSS-SYSTEM TRANSFER | R10, CF11-B, Z11, Z12, L4, M4, P2, MW3, F1 | transfer depth is rated per transfer |
 | APPLICATION | A1, A2, A3 | downstream: never evidence for the upstream mathematics until tested |
 
 Objects that span several stages are listed under each stage.
@@ -85,27 +102,38 @@ For bilinear and quadratic geometries, B_M(x, y) = x^†My:
 
 This is where the older invariant-form work and the zero work meet (BR10, CF2).
 
-| Geometry | Object | Relation / form | Allowed transformations | Preserved | Meaning of zero / null | Geometry produced | Project connection | Status |
-|---|---|---|---|---|---|---|---|---|
-| Euclidean | ℝⁿ | M = I | AᵀA = I (O1a, S4e) | lengths, angles, ⟨u, v⟩ | ⟨u, v⟩ = 0: orthogonality | rotations / reflections | H1, Chapter I, #8 | ESTABLISHED |
-| Complex Hilbert / unitary | ℂⁿ, L² | ⟨x, y⟩ = x^†y | U^†U = I | inner products, Parseval | orthogonality; coefficient zero | unitary geometry | Fourier (R3), quantum (QZ) | ESTABLISHED |
-| General bilinear / quadratic | ℝⁿ | B_M(x, y) = xᵀMy | AᵀMA = M (C1b) | B_M, and every B_M-zero | B_M(x, y) = 0; q_M(v) = 0 | the form's group | C1, CF1 | ESTABLISHED |
-| Lorentz | spacetime (t, x) | η_c = diag(1, −1/c²) | ΛᵀηΛ = η (S5c, C9a) | the interval | light-like null q_η(v) = 0 (S12b) | Minkowski geometry; c → ∞ degenerates it (C9b) | H3, C5, C9, L1–L4 | ESTABLISHED |
-| Symplectic | phase space z | J antisymmetric | AᵀJA = J (S9(3), C1c) | xᵀJx = 0 for every x (C1a); H along Hamiltonian flow | every vector is J-null | Hamiltonian geometry | CF6, Block 15 | ESTABLISHED |
-| Weighted inner product / centering | index space ℝⁿ | ⟨x, y⟩_D = xᵀDy, D = diag(m) | D-orthogonal maps; C_m is the D-orthogonal projector (G5b) | weighted relations | ⟨1, C_m x⟩_D = 0: the first-moment zero | the D-metric, **read off a zero relation** | WMC, C_G (CF9, H4) | ESTABLISHED (project-derived) |
-| Fisher / Riemannian | parameter space θ | ds² = dθᵀg(θ)dθ, g = JᵀJ/σ² | reparametrizations (isometries of the prediction map) | statistical distances | g v = 0: nonidentifiable direction (Z9) | model-manifold geometry | R7, C7, Blocks 11–14 | PAPER-BACKED (no card for g; gap) |
-| Fourier as a change of representation | L², ℓ² | ⟨f, g⟩ = ⟨f̂, ĝ⟩ | the unitary F (F⁴ = I, S11) | Parseval | f̂(k) = 0 | the same object in another basis | C4, R1–R5 | ESTABLISHED |
-| *Zero-resultant preservation (negative row)* | (ℝᵈ)ⁿ | Σvᵢ = 0 | every linear map (Z4a) | the zero resultant | Σv = 0 | **no particular form** (Z4b) | CF3 | ESTABLISHED (boundary) |
+| Geometry | Space / object | Relation | Preserving transformations | Generator condition | Zero / null relation | Source | Status | Similar to CF11 | Different |
+|---|---|---|---|---|---|---|---|---|---|
+| Euclidean | ℝⁿ | ⟨u, v⟩ = uᵀv (M = I) | AᵀA = I (S4e, O1a) | Kᵀ + K = 0 (S9) | ⟨u, v⟩ = 0: orthogonality; ‖v‖² = 0 only at v = 0 (Z10) | SRC-AXLER-2015, SRC-FULTON-HARRIS-1991, SRC-KLEIN-1872 | ESTABLISHED (textbook) | relation + preserving group characterize the geometry | definite form: no nonzero null vectors |
+| Unitary / Hilbert | ℂⁿ, L² | ⟨x, y⟩ = x^†y | U^†U = I | K^† + K = 0 | orthogonality; coefficient zero f̂(k) = 0 | SRC-AXLER-2015, SRC-STEIN-SHAKARCHI-2003 | ESTABLISHED (textbook) | same pattern | sesquilinear; infinite-dimensional for L² |
+| General bilinear / quadratic | ℝⁿ | B_M(x, y) = xᵀMy | AᵀMA = M (C1b) | KᵀM + MK = 0 (S9) | B_M(x, y) = 0; q_M(v) = 0 | SRC-FULTON-HARRIS-1991 | ESTABLISHED (textbook) | the general statement of the pattern | what a zero means depends on M's symmetry and signature |
+| Lorentz | spacetime (t, x) | η_c = diag(1, −1/c²) | ΛᵀηΛ = η (S5c, C9a) | Kᵀη + ηK = 0 (boosts, S9(2)) | light-like null q_η(v) = 0, v ≠ 0 (S12b): a condition that selects the light cone | SRC-MINKOWSKI-1909, SRC-EINSTEIN-1905; SRC-INONU-WIGNER-1953 (c → ∞) | ESTABLISHED (textbook) | same pattern; c sits inside the form | indefinite; the form degenerates as c → ∞ (C9b) |
+| Symplectic | phase space z ∈ ℝ²ⁿ | ω(u, v) = uᵀJv, J antisymmetric | AᵀJA = J (S9(3), C1c, FB9c) | KᵀJ + JK = 0 (Hamiltonian generators) | ω(u, v) = 0 is **symplectic orthogonality**, a relation between two vectors. ω(v, v) = 0 holds for every v because ω is alternating: an **alternating self-pairing zero, not a Lorentz-type null vector** (FB9a, FB9b, BR29) | SRC-ARNOLD-1989 | ESTABLISHED (textbook) | same pattern: the preserved pairing characterizes the geometry | alternating, not symmetric; the self-pairing carries no information (preserving xᵀJx = 0 does not identify J, C1c) |
+| Weighted inner product / centering | index space ℝⁿ | ⟨x, y⟩_D = xᵀDy, D = diag(m) | D-orthogonal maps; C_m is the D-orthogonal projector (G5b) | KᵀD + DK = 0 | ⟨1, C_m x⟩_D = 0: the first-moment zero | project cards G5b, G5d; SRC-ARNOLD-1989 (centre of mass) | ESTABLISHED (project-derived) | once the metric is in hand, the pattern applies | the relation came first and the metric was **read off it** (outside-in), not given |
+| Fisher / Riemannian | parameter space θ | ds² = dθᵀg(θ)dθ, g = JᵀJ/σ² for Gaussian noise (FB6a) | reparametrizations θ ↦ φ(θ), under which g transforms as a tensor; isometries where they exist | — (no single linear group) | g v = 0 ⟺ Jv = 0: nonidentifiable direction (FB7a, FB7b); a small nonzero eigenvalue is sloppy, not null (FB7c) | SRC-RAO-1945, SRC-AMARI-2016, SRC-TMS-2011 | ESTABLISHED (paper / textbook) | a metric induced by a representation (the prediction map) | the metric varies point to point; reparametrizations are not form-preserving linear maps; CF11-B is untested here |
+| Fourier as a change of representation | L², ℓ² | ⟨f, g⟩ = (1/2π)⟨f̂, ĝ⟩ (Plancherel) | the unitary F (F⁴ = I, S11); translation → phase (FB1a) | — | f̂(k) = 0 | SRC-STEIN-SHAKARCHI-2003 | ESTABLISHED (textbook) | the inner product survives a change of representation | it relates two representations of one object rather than acting inside one geometry |
+| *Zero-resultant preservation (negative row)* | (ℝᵈ)ⁿ | Σvᵢ = 0 | every linear map (Z4a) | — | Σv = 0 | project cards Z4a, Z4b | ESTABLISHED (boundary) | it is a preserved relation | the preserving group is all of GL: it characterizes **no form** (CF3) |
 
 **Not one fixed matrix.** The rows do not reduce to one M. The Fisher metric varies point to point, and the
-weighted metric is read off a relation.
+weighted metric is read off a relation. No row is included because the word "zero" or "null" appears in it: the
+zero / null column names a different object in each row (`research/foundation_sources.md`, "Recurring words").
 
-**The candidate project-level architecture (CF11):** relation R → its preserving group G_R → the geometry (R, G_R).
+**CF11 is two records (Pass 2), rated separately.**
 
-- Status: HYPOTHESIS. Backbone Support 35%, AI Slop / Delusion Risk 25%, STRUCTURAL TRANSFER, Application Breadth 3.
-- It holds as stated for every row above except zero-resultant preservation (CF3). There the preserving group is all
-  of GL, and it characterizes no metric.
-- It fails, as stated, for any geometry the project needs whose rule is not a preserved relation.
+- **CF11-A, established pattern (DERIVED / ESTABLISHED PATTERN):** *In many established geometries, a relational
+  structure together with the transformations preserving it characterizes substantial geometric structure.*
+  - Examples: the Euclidean, unitary, general bilinear / quadratic, Lorentz and symplectic rows, and the weighted
+    row once its metric is derived. This is the Erlangen-program type statement (SRC-KLEIN-1872), not a universal
+    theorem about all geometry: the zero-resultant row is a counter-case (CF3).
+  - Mathematical Status TEXTBOOK / KNOWN. Backbone Support 55%, AI Slop / Delusion Risk 10%, Application Breadth 4,
+    TRIVIAL CONSEQUENCE across the textbook rows.
+- **CF11-B, project hypothesis (HYPOTHESIS / OPEN):** *Can relation + admissible transformations + preserved
+  structure provide a broader organizing architecture across the geometries investigated in this project?*
+  - Mathematical Status SPECULATIVE MAPPING. Backbone Support 30%, AI Slop / Delusion Risk 30%, Application
+    Breadth 2, NOT YET FORMALIZED.
+  - CF11-A's confidence does not transfer to CF11-B. No cross-domain test has been chosen in advance.
+- The earlier single wording ("choose a relation → find the transformations that preserve it → the geometry is the
+  pair", 35% / 25%) is superseded: it compressed CF11-A and CF11-B into one claim.
 
 ## Part IV. Zero taxonomy
 
@@ -122,7 +150,10 @@ Known/project-observed categories. Not logically exhaustive. Not reduced to kern
 | Coefficient / spectral (Z7) | f̂(k) = 0 | signals | f ⊥ e_k | every other coefficient | multipliers, shifts (phase) | L² with a basis | generated by removing a component |
 | Balance / moment (Z2) | Σmᵢ(rᵢ − R_CM) = 0 | mass configurations | balance point | relative positions; the second moment, via the contribution Gram (MB2) | rigid motions; D-orthogonal maps fixing **1** | configuration space minus translation (G5b) | generated by centering |
 | Symmetry defect (Z8) | D_x(g) = 0 | a signal and a transformation | g ∈ stabilizer | the orbit structure | conjugation in the group | — | observed |
-| Model-manifold null (Z9) | g(θ)v = 0 | parameters | nonidentifiable direction | identifiable combinations | reparametrizations | the prediction map | observed (gap: no card) |
+| Model-manifold null (Z9) | g(θ)v = 0 ⟺ Jv = 0 | parameters | first-order predictions unchanged along v (exact structural nonidentifiability); not a small sloppy eigenvalue, not a Lorentz null (FB7) | identifiable combinations | reparametrizations | the prediction map | observed (FB7a–d) |
+
+Not a zero category: the symplectic self-pairing ω(v, v) = 0 holds for every v (alternating, FB9a). It is kept out of
+the taxonomy because it selects nothing.
 
 **Zero as connector (Z11)**, a HYPOTHESIS:
 
@@ -163,10 +194,10 @@ Also: B-INDEPENDENT-SYMMETRY and B-INDEPENDENT-DIRECTION.
 |---|---|---|
 | Group action → orbit, stabilizer → symmetry defect (zero ⟺ stabilizer) | T1, T2, Z8 | BR8 |
 | Translation → phase | R4 | BR5 |
-| Translation → autocorrelation → spectral magnitude | T3 | BR6, BR7 |
-| Small translation → spectral second moment ↔ localization (two statements, not one) | T4, T5 | BR9 |
+| Translation → autocorrelation → spectral magnitude (carded as one chain, FB1) | T3 | BR5, BR6, BR7 |
+| Small translation → spectral second moment (exact D″(0), FB2) ↔ localization (uncertainty, FB3): two statements, not one | T4, T5 | BR9, BR31 |
 | Global preserved form → generator rule (rotation, boost, symplectic) | CF4 | BR11 |
-| Generator / symmetry → conservation (linear flows, Hamiltonian, Noether) | CF5, CF6, CF7 | BR12 |
+| Generator / symmetry → conservation (linear flows CF5; Hamiltonian CF6; Noether CF7, general theorem source-only, instance FB5) | CF5, CF6, CF7 | BR12 |
 | Sign of the invariant → rotation / boost / shear; Kepler trichotomy | CF8 | — |
 | Fourier transform as a quarter-turn | R5 | — |
 | Symmetry averaging = orthogonal projection | ON3 (C6) | BR2 |
@@ -186,9 +217,10 @@ The mechanisms below are kept separate. These are known examples, not an exhaust
 | Kernel / linear map | the image | the component in ker L; with L unknown, even which relation (G4c) | Z3, H3 |
 | Projection onto **1**^⊥ | all differences eᵢ − eⱼ | the common part (centroid), recoverable up to sign given the class (G3b) | H1, H2 |
 | Centering (WMC) | relative positions | R_CM | H4 |
-| Coarse-graining / model reduction | relevant directions (stiff) | sloppy directions | M2, M3, H6 (no card) |
-| Manifold boundaries | effective model | the limit parameters | M2 (paper) |
-| Scattering (Mallat) | modulus at the next order recovers part of what averaging removed | phase, position | W2 (NEEDS SOURCE) |
+| Quasi-steady-state reduction (Michaelis–Menten) | K_M and V_max | one combination of (k₁, k₋₁, k₂); validity needs e₀/(S₀ + K_M) ≪ 1 | M3 (FB11a, FB11b) |
+| Coarse-graining by decimation (1D Ising) | the coupling form, renormalized: tanh K′ = tanh²K | the decimated spins | H7 (FB11d) |
+| Manifold boundaries | effective model (θ₁ in the two-exponential example) | the limit parameter (θ₂) | M2 (FB11c; MBAM source-only) |
+| Scattering (Mallat) | first order: translation-invariant averaged modulus (FB10c); the next order recovers part of what averaging removed (source-only) | phase, position | W2 (SRC-MALLAT-2012, SRC-BRUNA-MALLAT-2013) |
 | Quantum dephasing / measurement | the zero (S_z = 0); sector populations | sector coherence ρ_AB; the zero's ±ħ/2 composition (W2c, W3a) | QZ4 |
 | Shadows of ℝⁿ | the projected configuration | true angles (O1b) | ON5 |
 
@@ -217,20 +249,27 @@ The mechanisms below are kept separate. These are known examples, not an exhaust
 | Inverse problem (H3) | special case proved; exact obstruction without class (G4c) | OPEN |
 | WMC / C_G (H4) | C_G = I − 11ᵀG/(1ᵀG1), G positive diagonal; locked to **1** | GENERAL CONSTRUCTION |
 | Larger generating geometry (H5) | B-HIGHER-GEOMETRY | HYPOTHESIS |
-| Effective / reduced (H6) | what survives a reduction: projection, simplex, centering, MBAM, singular perturbation, coarse-graining, RG. These mechanisms are compared, not equated. | OPEN (coarse-graining, RG: no source) |
+| Effective / reduced (H6) | what survives a reduction: projection, simplex, centering, MBAM, singular perturbation, coarse-graining, RG. These mechanisms are compared, not equated. Worked examples: M3 (FB11a), a manifold boundary (FB11c), 1D decimation (H7, FB11d) | OPEN (question); examples carded and sourced |
 
-## Part IX. Paper-backed territories
+## Part IX. Paper-backed and textbook territories
 
-| Territory | Paper-established result | Project interpretation | Open project connection | Provenance |
+Sources are listed in full, with what each does **not** establish, in `research/foundation_sources.md`. A source
+supports only the established or derived object it states; it may bear on a hypothesis without supporting it.
+
+| Territory | Established result (source) | Project interpretation | Open project connection | Kept apart |
 |---|---|---|---|---|
-| Model manifolds (Quinn, Abbott, Transtrum, Machta, Sethna) | sloppy spectra, hyperribbons, hierarchical widths, manifold boundaries, effective models | prediction space as a representation geometry (R7) | C7 (M4); higher/infinite prediction spaces (T-PREDICTION-INFINITE) | `research/sources/quinn2023.md`; PDF pending (P-2) |
-| Relativity (textbook) | Lorentz invariance, rapidity, Galilean limit, the four-momentum invariant | c in the form and in the limit (L1–L3) | the two roles of c (L4, H3-1) | cards S5, S12, C9 |
-| Fourier analysis (textbook) | orthonormality, Parseval, shift → phase, Wiener–Khinchin, the transform as a quarter-turn | the founding evidence | conjugacy and pairs (P2) | cards S2, S3, S11, O2, P1 |
-| Conservation (textbook) | Noether; Hamiltonian flow | CF5, CF6 | what law follows from a constraint | linear case carded; Noether NEEDS SOURCE |
-| Wavelets / scattering (Mallat) | ∫ψ = 0; filter → modulus → average; stability and invariance | information destroyed and retained (W1, W2) | DYADIC PACKETS (W3) | **not in the repository: NEEDS SOURCE** |
-| Representation theory (textbook) | Schur's lemma; Schur–Weyl duality; S₄ characters | secondary match for FS2e and MB2c | Q-SYM-NOVEL | cards FS2e, MB2c (no source card) |
-| Uncertainty / localization | Δt Δω ≥ 1/2 | T5 | the link to spectral spread (BR9) | spec only: NEEDS SOURCE |
-| Michaelis–Menten / effective manifolds | singular-perturbation reduction | M3 | H6 | spec only: NEEDS SOURCE |
+| Standard Fisher geometry | Fisher information as a Riemannian metric (SRC-RAO-1945, SRC-AMARI-2016); g = JᵀJ/σ² for Gaussian noise (FB6a) | a metric induced by a representation (CF10) | C7 (M4) | the textbook metric is not a Transtrum–Sethna result |
+| Transtrum / Sethna model manifolds | bounded hyperribbons, hierarchical widths, boundaries, sloppy spectra (SRC-TMS-2010, SRC-TMS-2011, SRC-GUTENKUNST-2007, SRC-MACHTA-2013); MBAM (SRC-TRANSTRUM-QIU-2014) | prediction space as a representation geometry (R7, M1, M2) | higher / infinite prediction spaces (T-PREDICTION-INFINITE) | FB11c checks one boundary limit, not MBAM |
+| Quinn et al. (review) | c as a model parameter; the c → ∞ boundary gives Newtonian kinematics (SRC-QUINN-2023; PDF pending, P-2) | the model-manifold boundary statement only | the two roles of c (L4) | C9 is not inferred from it; spacetime ≠ model manifold |
+| Project C7 | — (no source contains the relation C7 needs) | — | coefficient decay vs Fisher decay (M4; SPECULATIVE PROJECT CONNECTION) | no paper is evidence for C7 |
+| Relativity | Lorentz transformations (SRC-EINSTEIN-1905); the invariant interval and light cone (SRC-MINKOWSKI-1909); contraction to Galilei as c → ∞ (SRC-INONU-WIGNER-1953) and the Carroll limit (SRC-LEVY-LEBLOND-1965) | c in the form and in the limit (L1–L3) | L4: *the same parameter participating in invariant geometry and theory transition may encode a deeper structural relation* (project-origin) | the contraction is not evidence for L4 |
+| Fourier analysis | orthonormality, Parseval, translation → phase, conjugate symmetry, Weyl equidistribution (SRC-STEIN-SHAKARCHI-2003); Wiener–Khinchin (SRC-WIENER-1930, SRC-KHINTCHINE-1934) | the founding evidence | conjugacy and physical pairs (P2) | the defect identities T3, T4 are project-derived (FB1, FB2) |
+| Uncertainty / localization | Δt·Δω ≥ 1/2, equality for Gaussians (SRC-KENNARD-1927, SRC-FOLLAND-SITARAM-1997; convention FB3c) | T5 | the link to spectral spread (BR31) | a different result from the second-moment identity (FB3d) |
+| Conservation | Noether's theorems (SRC-NOETHER-1918); Hamiltonian mechanics and the mechanics form of Noether (SRC-ARNOLD-1989) | CF5–CF7 | what law follows from a constraint | the linear card CF5 is not Noether's theorem |
+| Wavelets / scattering | admissibility and zero mean (SRC-GROSSMANN-MORLET-1984, SRC-DAUBECHIES-1992, SRC-MALLAT-2009); scattering, translation invariance, deformation stability (SRC-MALLAT-2012); higher orders (SRC-BRUNA-MALLAT-2013) | information destroyed and retained (W1, W2) | DYADIC PACKETS (W3, open definition) | Mallat does not prove the zero theory, nor that information is hidden inside every zero |
+| Reductions | quasi-steady state (SRC-BRIGGS-HALDANE-1925, SRC-JOHNSON-GOODY-2011) and its validity (SRC-SEGEL-SLEMROD-1989); decimation RG (SRC-NELSON-FISHER-1975); block spins and RG (SRC-KADANOFF-1966, SRC-WILSON-KOGUT-1974, source-only) | M3, H7, M2 | H6 | compared, not equated |
+| Representation theory | Schur's lemma; Schur–Weyl duality; classical groups as form-preserving groups (SRC-FULTON-HARRIS-1991) | secondary match for FS2e, MB2c; CF1, CF4 | Q-SYM-NOVEL | four spins are VALIDATION OF KNOWN MATHEMATICS |
+| Quantum mechanics | spin addition (SRC-SAKURAI-2017); projective measurement and dephasing (SRC-NIELSEN-CHUANG-2010) | QZ1, QZ4 | B-ZERO-LOSS | dephasing and which-path share a generic map only |
 
 ## Part X. Original user theories
 
@@ -244,8 +283,9 @@ Every user-origin record, with its original wording, normalized reading and stat
     relation.
   - Supporting mathematics, not proof: S12. QFT is a secondary reference.
 - **Mass attraction:** *Keep the original intuition that mass attraction may not be far removed if the deeper
-  structural principle is shared.* (T-GRAVITY-ATTRACTION, SPECULATIVE / OPEN; the original wording is not in the
-  repository)
+  structural principle is shared.* (T-GRAVITY-ATTRACTION, SPECULATIVE / OPEN). **ORIGINAL VERBATIM NOT RECOVERED:**
+  these are Nadia's 2026-11-12 words describing the intuition; its historic wording is not in the repository
+  history.
 - **Zero:**
   - the backbone (T-BACKBONE-PRIMARY);
   - "0 is orthogonal" (T-ZERO-ORTHOGONAL, readings A–D);
@@ -258,10 +298,18 @@ Every user-origin record, with its original wording, normalized reading and stat
 - **Continuation:** finite rule / infinite structure (B-FINITE-INFINITE, T-SCHEMA, T-TIME-CIRCLE); and its
   historical first wording, kept (T-TIME-CIRCLE-0).
 - **Orthogonality and form:** B-ORTHO-FORM.
-- **Information:** C7 (T-C7); DYADIC PACKETS (T-DYADIC); information loss (T-MAGPHASE, T-REP-COMPLETE).
+- **Information:**
+  - **DYADIC PACKETS** (T-DYADIC): ORIGINAL USER RESEARCH TERM, OPEN DEFINITION. Intended thematic role: connected
+    to organizing or preserving frequency/scale information within the wavelet/scattering branch. It is not
+    identified with standard wavelet packets, dyadic wavelet decomposition or Mallat scattering paths.
+  - Information loss (T-MAGPHASE, T-REP-COMPLETE); effective representations (T-EFFECTIVE-Q, registry record added
+    in Pass 2).
+  - *Provenance correction (Pass 2):* C7 (T-C7) was listed here in V1, but the registry records it as an
+    assistant-proposed connection adopted at Gate 3. Its primary class is SPECULATIVE PROJECT CONNECTION (M4).
+- **Common forms:** CF11-B (T-CF11-B), the project hypothesis; its earlier form T-BACKBONE-INVARIANT.
 - **Pairs and fields:** conjugacy (T-CONJUGACY); matter and fields (T-MATTER-FIELD).
 - **Philosophy:** part / whole and the fractal (B-PART-WHOLE); `docs/author_philosophy.md`.
-- **Application:** Energeo (T-ENERGEO, T-ENERGEO-INTENT); ThermaLens (T-THERMALENS, provenance gap).
+- **Application:** Energeo (T-ENERGEO, T-ENERGEO-INTENT); ThermaLens (T-THERMALENS): APPLICATION PROVENANCE INCOMPLETE.
 
 ## Part XI. Project-derived constructions
 
@@ -283,7 +331,7 @@ Only explicit candidates are listed. Ratings are per proposition.
 
 | Candidate | Statement | Status | Support / Slop | Transfer Depth | Breadth |
 |---|---|---|---|---|---|
-| CF11 | relation → preserving group → geometry | HYPOTHESIS | 35% / 25% | STRUCTURAL | 3 |
+| CF11-B | Can relation + admissible transformations + preserved structure provide a broader organizing architecture across the geometries investigated in this project? | HYPOTHESIS | 30% / 30% | NOT YET FORMALIZED | 2 |
 | Z11 | zero as connector / interface | HYPOTHESIS | 25% / 30% | STRUCTURAL | 3 |
 | Z12 | the visible zero does not determine where hidden information lives | DERIVED | 35% / 20% | STRUCTURAL | 2 |
 | H5 | the larger generating geometry | HYPOTHESIS | 35% / 25% | STRUCTURAL | 2 |
@@ -294,6 +342,7 @@ Only explicit candidates are listed. Ratings are per proposition.
 
 **Established chains that work as laws inside known mathematics (not project candidates):**
 
+- CF11-A, the common-form pattern in established geometries (55% / 10%, breadth 4);
 - preserved form → generator → conservation (CF1 → CF4 → CF5, CF6);
 - defect zero ⟺ stabilizer (Z8).
 
@@ -323,31 +372,23 @@ Only explicit candidates are listed. Ratings are per proposition.
   - Core question: can energy behavior be represented so that hidden balance, null relations and invariant structure
     become geometrically explicit?
   - A downstream translator: not evidence until tested.
-- **A2, ThermaLens / Energeo implementation mathematics:** kept separate from Foundation proof. It is not in this
-  repository, which is a provenance gap.
+- **A2, ThermaLens / Energeo implementation mathematics:** prior project / application work, not a paper-backed
+  source. Kept separate from Foundation proof and not counted toward upstream validation. APPLICATION PROVENANCE
+  INCOMPLETE: its mathematics is not in this repository.
 - **A3, physical vs L² energy:** "energy" is always named by kind. Physical units are system-dependent.
 
 ## Part XV. Missing mathematical obligations before Foundation V1
 
-Only material gaps. The full ledger is `research/foundation_completion.md`.
+Only material gaps; the full ledger, with a status for each domain, is `research/foundation_completion.md`.
 
-1. **Missing architecture: wavelets / scattering (W1, W2).** No mathematics or source is in the repository. The
-   branch exists only as titles.
-2. **Missing architecture: effective / reduced representations (M2, M3, H6).** No cards. Coarse-graining and RG have
-   no source.
-3. **Uncarded established bridges in the older strands.** Each is a derivation the map depends on:
-   - the combined translation → autocorrelation → spectrum card (T3);
-   - small translation → spectral second moment (T4);
-   - the uncertainty source (T5);
-   - Noether in general (CF7);
-   - the Fisher metric formula (CF10);
-   - the model-manifold null (Z9);
-   - conjugate symmetry (P1);
-   - the ω–k dispersion (MW2).
-4. **Provenance gaps.** The quinn2023 PDF (P-2); Mallat; ThermaLens; the original wording of the mass-attraction
-   intuition.
-5. **Unresolved contradictions in the architecture:**
-   - The act map files the older pillars (common forms, Fourier/orthogonality, conservation, Lorentz, model manifolds)
-     under "Guide … not the source ontology". The Foundation lock now counts them as Foundation.
-   - "Foundation" names both the learner Acts I–IV and the research architecture.
-6. **No cross-domain test chosen in advance for CF11**, the candidate central architecture.
+1. **CF11-B has no cross-domain test chosen in advance.** It is the organizing hypothesis of the common-form
+   mechanism, and the one architectural question that mathematics, not new input, can settle.
+2. **Provenance.** The quinn2023 PDF (P-2); the ThermaLens mathematics (APPLICATION PROVENANCE INCOMPLETE); the
+   original mass-attraction wording (ORIGINAL VERBATIM NOT RECOVERED). No source has yet been opened and quoted at
+   full text; R5 has no source.
+3. **Source-only theorems.** The uncertainty inequality, Noether's general theorem, Mallat's deformation stability
+   and higher-order scattering, the MBAM procedure and fixed-point RG are cited, with instances or exact parts
+   carded (FB3, FB5, FB10, FB11). They are not reproved here.
+
+Resolved in Pass 2: the act-map framing and the two meanings of "Foundation"; the eight uncarded bridges (FB1–FB8);
+wavelets / scattering and effective / reduced representations now have mathematics and sources in the repository.

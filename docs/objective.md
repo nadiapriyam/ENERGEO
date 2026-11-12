@@ -26,7 +26,7 @@ It is split into three hypotheses (your split, `claude_code_prompt.md` §1a). Th
 
 > observe / collect relations → construct a geometry → discover the rules of that geometry → determine which known structures it contains
 
-Existing mathematics is a reference library, a validation surface, and a source of known special cases, proof techniques, counterexamples and boundaries. It is not the ontology from which Nadia's geometry must be assembled. The intended eventual result is a geometry that can act as a guide *for* existing structures, rather than merely a guide *to* them. Theorem-seeking (below) is kept, as the stance within construction and in the secondary existing-theorem scan.
+Existing mathematics is a reference library, a validation surface, and a source of known special cases, proof techniques, counterexamples and boundaries. It is not the ontology from which Nadia's geometry must be assembled. (This is a rule about the order of construction. It does not demote established mathematics that is already part of the Foundation: `research/master_math_map.md` is the research ontology and includes it; `docs/act_map.md` is only the teaching order. Two-map lock, Foundation Completion Pass 2.) The intended eventual result is a geometry that can act as a guide *for* existing structures, rather than merely a guide *to* them. Theorem-seeking (below) is kept, as the stance within construction and in the secondary existing-theorem scan.
 
 **Order.**
 1. Foundational geometry: zero, cancellation, origin, higher-dimensional generating geometry, orthogonality, shape generation, finite rule / infinite continuation, part / whole, the fractal relation, representation, invariant relation.

@@ -1165,3 +1165,105 @@ Nadia's decisions, verbatim. LaTeX converted to plain text and lists joined; not
 > missing architecture; unresolved contradiction; undefined central object; incorrect mathematical bridge; major provenance loss
 
 > Foundation architecture completeness; Mathematical verification coverage; Cross-domain validation; Novel project-specific construction support; Paper/source coverage; Application validation
+
+## Foundation Completion Pass 2: locks, sources, missing-bridge cards (2026-11-12)
+
+Nadia's decisions, verbatim. LaTeX converted to plain text and lists joined; nothing else changed. The pass's files are `research/foundation_sources.md`, the FB cards (`verify/verify_FB1_FB4.py`, `verify/verify_FB5_FB11.py`), `research/foundation_completion.md` and the generated Foundation tables.
+
+### Foundation and the central architecture
+
+> the complete mathematical and theoretical architecture developed throughout the project
+
+> The recent zero work is ONE PART of the Foundation.
+
+> Do not use "Foundation" as a synonym for: zero theory; Chapter I; recent constructions
+
+> Do not choose either: zero alone or: CF11 alone as the center of Foundation V1.
+
+> OBJECT → REPRESENTATION → RELATION → ZERO / BALANCE / NULL → TRANSFORMATION → PRESERVED STRUCTURE → GEOMETRY → INFORMATION → DYNAMICS / CONTINUATION → CROSS-SYSTEM TRANSFER → APPLICATION
+
+> This is a PROJECT ARCHITECTURE. It is not claimed as a universal theorem.
+
+> Zero is a central investigative interface inside the architecture.
+
+> Common-form / preserved-relation mathematics is a major unifying mechanism inside the architecture.
+
+### The two-map system
+
+> What mathematical objects, bridges, hypotheses and constructions make up Geometry of Representation?
+
+> In what order should a learner discover these ideas?
+
+> These maps are NOT required to have the same ordering.
+
+> The Act map is a pedagogical discovery sequence. It does not determine which mathematics belongs to the Foundation ontology.
+
+> They remain part of Foundation even when taught later.
+
+### CF11, the symplectic row, DYADIC PACKETS
+
+> In many established geometries, a relational structure together with the transformations preserving it characterizes substantial geometric structure.
+
+> Can relation + admissible transformations + preserved structure provide a broader organizing architecture across the geometries investigated in this project?
+
+> Do not give CF11-A and CF11-B one shared rating.
+
+> alternating self-pairing zero ≠ Lorentz quadratic null vector
+
+> Do not use the same "null vector" wording for both without qualification.
+
+> Do NOT define DYADIC PACKETS yet.
+
+> ORIGINAL USER RESEARCH TERM; OPEN DEFINITION
+
+> connected to organizing or preserving frequency/scale information within the wavelet/scattering branch.
+
+> Do not silently identify it with: standard wavelet packets; dyadic wavelet decomposition; Mallat scattering paths
+
+### Sources, provenance and bridges
+
+> Do not fabricate sources.
+
+> Do not use secondary summaries when a primary/canonical source is reasonably available.
+
+> Do not cite a source for a broader project hypothesis than it actually supports.
+
+> Mallat proves the zero theory; Mallat proves information is hidden inside every zero
+
+(Both are lines a source card must NOT say.)
+
+> Do not let a paper source become evidence for C7 unless the paper contains the exact relation C7 needs.
+
+> Do not use the contraction itself as evidence for Nadia's deeper hypothesis.
+
+> the same parameter participating in invariant geometry and theory transition may encode a deeper structural relation.
+
+> Do not simply cite Wiener–Khinchin for the project-defined defect.
+
+> The uncertainty theorem and the symmetry-defect second-moment formula are distinct results.
+
+> What survives when the richer representation is reduced?
+
+> No card should PASS merely because a source says something vaguely similar.
+
+> USER-ORIGIN; TEXTBOOK / STANDARD; PRIMARY-PAPER BACKED; PROJECT-DERIVED FROM ESTABLISHED MATH; PROJECT-CONSTRUCTION; SPECULATIVE PROJECT CONNECTION; PHILOSOPHICAL
+
+> ORIGINAL VERBATIM NOT RECOVERED
+
+> Do not call ThermaLens a paper-backed source.
+
+> APPLICATION PROVENANCE INCOMPLETE
+
+> EXACT IDENTITY; EXACT IMPLICATION; THEOREM; SPECIAL-CASE CONSTRUCTION; STRUCTURAL ANALOGUE; OPEN CONNECTION; FAILED CONNECTION
+
+> energy ≠ energy automatically; null ≠ null automatically; balance ≠ balance automatically; dimension ≠ physical spatial dimension automatically; invariance ≠ same invariant
+
+> LOCKED; SOURCE-COMPLETE; MATH-CARDED; SOURCE+CARD COMPLETE; NEEDS DERIVATION; NEEDS CROSS-DOMAIN TEST; OPEN LONG-TERM; WORDING ONLY
+
+### Stop condition
+
+> new C7 derivation; new CF11 cross-domain experiment; new Mallat-to-zero theorem; new mass-wave construction
+
+(None of these is conducted in this pass.)
+
+> The objective is to finish Foundation V1 in a small number of disciplined passes, not to expand the project indefinitely.
