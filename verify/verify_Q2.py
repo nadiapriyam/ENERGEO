@@ -73,3 +73,12 @@ ud = sp.Matrix([0, 1, 0, 0])
 cu = contrib(ud)
 card("Q2g", "domain of eps: |ud> also has S_z = 0, but it is not an exchange eigenstate; its contributions are (hbar/2)|ud> and -(hbar/2)|ud> (parallel to the state), and P c1 is a multiple of c2 for no sign, so eps is undefined there",
      sp.simplify(Sz1 * ud + Sz2 * ud) == Z and sp.simplify(cu[0] - hb / 2 * ud) == Z and eps(cu, P) is None and parity(ud) is None)
+
+# Q2h: the corrected, restricted obstruction (replaces the broad wording of Q2c's record)
+Cfg = lambda psi: [psi, Sz1 * psi, Sz2 * psi]
+A_, B_ = X, Y
+gram_eq = gram(Cfg(A_)) == gram(Cfg(B_))
+mapped = all(sp.simplify(U * a - sp.I * b) == Z for a, b in zip(Cfg(A_), Cfg(B_)))
+not_covered = sp.simplify(ip(cX[0], P * cX[0]) - ip(cY[0], P * cY[0])) != 0           # a descriptor using P, which does not commute with U
+card("Q2h", "restricted obstruction: U = exp(i pi S_z^(1)/hbar) acts on C^2 (x) C^2, commutes with S_z^(1), S_z^(2) and S_z, and maps the configuration C = (psi, S_z^(1)psi, S_z^(2)psi) of |1,0> to i times that of |0,0>. Hence every descriptor D with D(W C) = D(C) for all unitaries W commuting with S_z^(1) and S_z^(2), and D(e^{i phi} C) = D(C), takes equal values on the two; this class contains every function of the Gram matrix of C (norms, inner products, the relative cancellation c2 = -c1, spans up to such W). It does NOT contain descriptors using an operator that does not commute with U, e.g. <c1, P c1> = -hbar^2/4 vs +hbar^2/4",
+     gram_eq and mapped and not_covered and comm(U, Sz1 + Sz2) == sp.zeros(4, 4))

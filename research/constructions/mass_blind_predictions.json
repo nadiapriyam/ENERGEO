@@ -1,0 +1,74 @@
+{
+  "about": "Predictions R1 and R2 for M1..M6, computed before the second-moment tensor (verify/verify_MB1.py).",
+  "predictions": {
+    "M1": {
+      "zero": true,
+      "d": 2,
+      "nonzero_gram_eigenvalues": {
+        "4": 2
+      },
+      "stabilizer_order": 8,
+      "symmetric_commutant_dimension": 1,
+      "R1": "isotropic",
+      "R2": "isotropic"
+    },
+    "M2": {
+      "zero": true,
+      "d": 2,
+      "nonzero_gram_eigenvalues": {
+        "16": 1,
+        "4": 1
+      },
+      "stabilizer_order": 4,
+      "symmetric_commutant_dimension": 2,
+      "R1": "no prediction",
+      "R2": "anisotropic"
+    },
+    "M3": {
+      "zero": true,
+      "d": 2,
+      "nonzero_gram_eigenvalues": {
+        "8": 1,
+        "2": 1
+      },
+      "stabilizer_order": 4,
+      "symmetric_commutant_dimension": 2,
+      "R1": "no prediction",
+      "R2": "anisotropic"
+    },
+    "M4": {
+      "zero": true,
+      "d": 3,
+      "nonzero_gram_eigenvalues": {
+        "4": 3
+      },
+      "stabilizer_order": 24,
+      "symmetric_commutant_dimension": 1,
+      "R1": "isotropic",
+      "R2": "isotropic"
+    },
+    "M5": {
+      "zero": true,
+      "d": 2,
+      "nonzero_gram_eigenvalues": {
+        "32": 2
+      },
+      "stabilizer_order": 1,
+      "symmetric_commutant_dimension": 3,
+      "R1": "no prediction",
+      "R2": "isotropic"
+    },
+    "M6": {
+      "zero": true,
+      "d": 2,
+      "nonzero_gram_eigenvalues": {
+        "12 - sqrt(29)": 1,
+        "sqrt(29) + 12": 1
+      },
+      "stabilizer_order": 1,
+      "symmetric_commutant_dimension": 3,
+      "R1": "no prediction",
+      "R2": "anisotropic"
+    }
+  }
+}
