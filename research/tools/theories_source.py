@@ -710,7 +710,7 @@ T('T-MASS-SECOND-MOMENT', 'Mass zero: the contributions predict the hidden secon
   pro=[('card:MB1b', 'blind predictions'), ('card:MB2a', ''), ('card:MB2b', ''), ('card:MB2c', '')], acts=['I', 'III'], objs=['obj.distribution'], audit=F_AUDIT,
   related=['T-ZERO-SYMMETRY-ARCHITECTURE', 'T-WMC'], graph='rel.mass-second-moment', ref='four-spin 14–16')
 T('T-ZERO-SYMMETRY-ARCHITECTURE', 'Zero + independent symmetry: the architecture across quantum and mass', 'An independently supplied group acts covariantly on the zero-producing tuple, and a hidden quadratic quantity commutes with that action.', MS, U, 'derived-connection', 'derived',
-  variants=[('zero/resultant + relationships preserved within the zero → information about the hidden configuration.', RD)],
+  variants=[('zero/resultant + relationships preserved within the zero → information about the hidden configuration.', RD), ('The visible zero alone does not determine where the hidden information lives.', RD)],
   norm='Both systems: the hidden quadratic (S², T) commutes with the independent group and is scalar on each irreducible block (Schur). Roles inverted: four spins, geometry blind and symmetry decisive; mass, geometry decisive and symmetry sound but incomplete.',
   pro=[('card:FS2e', 'quantum: Schur–Weyl'), ('card:MB2c', 'mass: Schur'), ('card:FS1e', 'S_n-invariant zero → T′ simplex, quantum'), ('card:G2i', 'and mass / Stage 2')],
   con=[('card:FS2c', 'contribution geometry fails in the quantum system'), ('card:MB2a', 'symmetry misses M5 in the mass system')],
@@ -718,6 +718,22 @@ T('T-ZERO-SYMMETRY-ARCHITECTURE', 'Zero + independent symmetry: the architecture
   acts=['III'], audit=F_AUDIT, related=['B-INDEPENDENT-SYMMETRY', 'T-FOURSPIN-SYMMETRY', 'T-MASS-SECOND-MOMENT'], ref='four-spin 16–17')
 T('Q-SYM-NOVEL', 'A system where the zero + symmetry descriptor separates what no known label separates?', 'Is there a system where "zero-producing tuple + independently supplied symmetry" separates states that no already-known label separates?', F4, A, 'open-question', 'open',
   acts=['III'], audit=F_AUDIT, related=['T-FOURSPIN-SYMMETRY'], ref='four-spin 10')
+
+
+# ── Foundation V1 consolidation (2026-11-12): original theories not previously in the repository ──
+ACTS_ALREADY_NEW = {'T-MASS-WAVE-SEED', 'T-GRAVITY-ATTRACTION', 'T-THERMALENS'}   # placed directly in the new Act map
+V_AUDIT = ('missing', 'not in the repository before the Foundation consolidation (2026-11-12); recorded from Nadia\'s message')
+T('T-MASS-WAVE-SEED', 'Mass is waves too (original seed)', "mass is waves too, it's just a different form.", RD, U, 'hypothesis', 'hypothesis',
+  norm='Construction target: a representation in which mass-like and wave-like behavior satisfy a common exact relation. Supporting mathematics (not proof): E² = p²c² + m²c⁴ with E = ħω, p = ħk (S12).',
+  variants=[('construct a representation in which mass-like and wave-like behavior satisfy a common exact relation', RD)],
+  pro=[('card:S12', 'supporting: one invariant relation in two sets of variables')], bounds=['Not rewritten into QFT language; QFT is a secondary reference, not a proof of this theory.'],
+  acts=['Guide'], audit=V_AUDIT, related=['T-MASS-WAVE', 'T-MASS-WAVE-Q', 'T-MATTER-FIELD', 'T-GRAVITY-ATTRACTION'], ref='Foundation 34')
+T('T-GRAVITY-ATTRACTION', 'Mass attraction and a shared structural principle', 'Keep the original intuition that mass attraction may not be far removed if the deeper structural principle is shared.', RD, U, 'hypothesis', 'open',
+  bounds=['SPECULATIVE / OPEN; no project construction. The intuition\'s original wording is not in the repository; this is Nadia\'s 2026-11-12 description of it.'],
+  acts=['unplaced'], audit=V_AUDIT, related=['T-MASS-WAVE-SEED'], ref='Foundation 35')
+T('T-THERMALENS', 'ThermaLens / Energeo implementation mathematics', 'Keep the existing ThermaLens/Energeo implementation mathematics separate from general Foundation proof.', RD, U, 'open-question', 'open',
+  bounds=['The implementation mathematics is not in this repository: provenance gap.', 'Downstream application; not evidence for upstream mathematics until tested.'],
+  acts=['Final'], audit=V_AUDIT, related=['T-ENERGEO', 'T-ENERGEO-INTENT'], ref='Foundation 37')
 
 PAIR_A = proof_target('Starting from the established common zero-sum form Σv_i = 0, identify all additional invariants/relations of the mass system that can be translated into mathematically meaningful tests on the directional cancellation system.',
                       requiredObjects=['the established shared form Σv_i = 0 (pair.A.sharedAlgebraicForm)'])
@@ -739,6 +755,8 @@ NEW_ACTS = {  # records stated at or after the outside-in clarification, placed 
     'T-ZERO-ORTHOGONAL-C': ['III'], 'T-ZERO-ORTHOGONAL-D': ['II'], 'T-EXISTENCE-ZERO': ['unplaced'], 'T-SPACE-EXPLORATION': ['unplaced'],
     'T-LOOK-INSIDE': ['unplaced'], 'T-IRREVERSIBLE-FORMATION': ['unplaced'], 'T-FRACTAL-PROPERTIES-Q': ['unplaced']}
 for r in R:
+    if r['id'] in ACTS_ALREADY_NEW:
+        continue
     if r['audit']['before'] == 'new':
         if r['id'] in NEW_ACTS:
             r['relatedActs'] = NEW_ACTS[r['id']]

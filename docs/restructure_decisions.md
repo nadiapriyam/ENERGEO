@@ -1095,3 +1095,73 @@ Nadia's decisions, verbatim. LaTeX converted to plain text and lists joined; not
 > Four subsystems have nothing automatically to do with four spatial dimensions.
 
 > The goal is not infinite research. The goal is a geometry that survives application.
+
+## Foundation V1: consolidation and dependency mapping (2026-11-12)
+
+Nadia's decisions, verbatim. LaTeX converted to plain text and lists joined; nothing else changed. The consolidation files are `research/master_math_map.md`, `research/foundation_bridges.md`, `research/foundation_completion.md` and `research/foundation_dependencies.md`.
+
+### Terminology lock
+
+> the complete mathematical and theoretical architecture developed throughout this project
+
+> Do NOT allow the recent research to overwrite the older architecture.
+
+> What exactly is the mathematical architecture of Geometry of Representation, as it exists today?
+
+> What is still missing before Foundation V1 can be considered complete?
+
+> Superseded does NOT mean intellectually irrelevant.
+
+> ORIGINAL USER THEORY; ESTABLISHED MATHEMATICS; PROJECT-DERIVED CONNECTION; PROJECT CONSTRUCTION; PAPER-BACKED CONNECTION; OPEN RESEARCH QUESTION; PHILOSOPHICAL LENS; FAILED / NEGATIVE RESULT
+
+> OBJECT → REPRESENTATION → RELATION → ZERO / BALANCE / NULL → TRANSFORMATION → PRESERVED STRUCTURE → GEOMETRY → INFORMATION → DYNAMICS / CONTINUATION → CROSS-SYSTEM TRANSFER
+
+> What is the object before we choose how to represent or measure it?
+
+> If apparently different phenomena can be represented so that they satisfy the same exact relation, search for a common structural law rather than settle for analogy.
+
+> choose a relation → determine transformations preserving it → infer the geometry generated or characterized by that preserved structure
+
+> COMMON-FORM / PRESERVED-RELATION ARCHITECTURE
+
+> zero cross-relations → decoupled directions → decomposition → additive quadratic magnitude
+
+> transformation geometry ↔ correlation ↔ spectral magnitude
+
+> global preserved geometry → infinitesimal generator rule
+
+> What repeated or continuing behavior follows from the internal constraints of a geometry?
+
+> Find an explicit operator/map/asymptotic theorem connecting them, or establish that the resemblance is only superficial.
+
+> What information is destroyed by one representation/aggregation and recovered or retained by a deeper representation?
+
+> When a representation suppresses information, what relational structure survives and what new representation can expose it?
+
+> The visible zero alone does not determine where the hidden information lives.
+
+> Preserve the zero and inspect independently existing relationships, geometry and symmetries supplied by the system.
+
+> Do physical pairs/complementarities arise from deeper mathematical conjugacy or symmetry?
+
+> What survives when a richer source description is reduced to an effective representation?
+
+> what does not unify
+
+### Original user theories recorded in this message (not previously in the repository)
+
+> mass is waves too, it's just a different form.
+
+> construct a representation in which mass-like and wave-like behavior satisfy a common exact relation
+
+> Keep the original intuition that mass attraction may not be far removed if the deeper structural principle is shared.
+
+> Keep the existing ThermaLens/Energeo implementation mathematics separate from general Foundation proof.
+
+(The ThermaLens implementation mathematics is not in this repository; its provenance is a recorded gap.)
+
+### Completion criterion and ratings
+
+> missing architecture; unresolved contradiction; undefined central object; incorrect mathematical bridge; major provenance loss
+
+> Foundation architecture completeness; Mathematical verification coverage; Cross-domain validation; Novel project-specific construction support; Paper/source coverage; Application validation

@@ -1,0 +1,142 @@
+# Original user theories (Foundation Part X, detail)
+
+Every user-origin record in `research/theories.json`, with its original wording, normalized reading and status kept separate. Generated; do not edit by hand.
+
+| Registry ID | Original wording | Normalized interpretation | Kind | Status | Foundation objects |
+|---|---|---|---|---|---|
+| T-ORIGIN | i want to prove a theory correct. evidence: fourier transform: there is an orthonormal basis that is ubiquitous its the inner product of its coefficents. However more importantly, I focus on the relatonship between the coefficents and noticed a pattern. the relationship between f hat (k) * e^2pi*ikt. first i want to prove what is the significance of having orthogonality: examining quadratics- the geometry and it equaling to 0/ it relation to the eucliden geometry. and anything beyond euliciden is a repsentation from representation theory. second i want to prove that due to this geometry there is a pattern of representations and how they develop, leading to my theory of the relationship ridden equation- rather geometry that says that there is a common structure where infinite things are combined my a finite thing to produce a representation. like time and a finite circle geometry producing an infinite sine and cosine with bounds. and that invarient variable like the speed of light which also converges to infinity is an invarient variable that acts as a rule in the manifold (https://pmc.ncbi.nlm.nih.gov/articles/PMC10018491/) remember these are theories that are waiting to be proved, might hace some rough edges however its important to remember we can't assume this is false or true. take this as a hypothesis | Split by Nadia into H1 → H2 → H3 (prompt §1a); every part below keeps its own record. | hypothesis | hypothesis | — |
+| T-EVIDENCE | fourier transform: there is an orthonormal basis that is ubiquitous its the inner product of its coefficents. However more importantly, I focus on the relatonship between the coefficents and noticed a pattern. the relationship between f hat (k) * e^2pi*ikt. | f̂(k) = ⟨f, e_k⟩ with e_k orthonormal; the pattern Nadia noticed is what f̂(k) and e^{2πikt} represent together. | hypothesis | hypothesis | — |
+| T-H1 | first i want to prove what is the significance of having orthogonality: examining quadratics- the geometry and it equaling to 0/ it relation to the eucliden geometry. and anything beyond euliciden is a repsentation from representation theory. | — | hypothesis | hypothesis | — |
+| T-H1-SIGNATURE | The significance I want to investigate is that orthogonality makes components mathematically separable. | Zero cross terms, independent projection coefficients, Pythagorean/Parseval additivity, residual ⟂ retained part; G = I. | established | established | — |
+| T-H1-TWO-ZEROS | They are interesting precisely because "equals zero" can encode two different geometric relationships. | ⟨u, v⟩_M = 0 (orthogonality) and q_M(v) = 0 with v ≠ 0 (null vector, indefinite M) are distinct and never merged. | established | established | Z4, Z5 |
+| T-BEYOND-EUCLID-0 | and anything beyond euliciden is a repsentation from representation theory. | — | historical-conjecture | hypothesis | — |
+| T-BEYOND-EUCLID | When a geometry cannot be directly seen in ordinary Euclidean space, mathematics gives us a representation through which its relationships can still be studied. | — | hypothesis | hypothesis | — |
+| T-SEE-ORTHOGONALITY | your stated goal is to show the pattern that lets us see orthogonality when we cannot see it directly. | — | open-question | open | — |
+| T-INF-FIN-0 | Infinite things converge, finite things don't. | — | historical-conjecture | hypothesis | — |
+| T-INF-FIN | I am interested in how an indefinitely extendable process can approach or define a bounded or finite structure. | — | open-question | open | — |
+| T-RELATIONSHIP-RIDDEN | the structure I am interested in seems to live in relationships among objects, transformations, and invariants, rather than in individual numbers considered alone. | — | philosophical-exploration | open | — |
+| T-H2 | second i want to prove that due to this geometry there is a pattern of representations and how they develop, | — | hypothesis | hypothesis | — |
+| T-REPRESENTATION | Can apparently different descriptions become the same object under the correct representation? | Object → representation → transformation → invariant → decomposition → geometry (H2-1, Level 3; universality Level 4). | open-question | hypothesis | R9 |
+| T-VISIBLE-HIDDEN | What became visible, hidden, preserved or lost? | — | open-question | open | R9, W4 |
+| T-H2-ROLES | Both, but they play different roles. | M (or the inner product) defines the geometry; orthogonality organizes independent directions inside it; A†MA = M says which relationships survive. Not the same concept. | derived-connection | derived | CF11 |
+| T-H3 | leading to my theory of the relationship ridden equation- rather geometry that says that there is a common structure where infinite things are combined my a finite thing to produce a representation. like time and a finite circle geometry producing an infinite sine and cosine with bounds. and that invarient variable like the speed of light which also converges to infinity is an invarient variable that acts as a rule in the manifold (https://pmc.ncbi.nlm.nih.gov/articles/PMC10018491/) | — | hypothesis | hypothesis | L4, I3 |
+| T-SCHEMA | an unbounded parameter interacting with or being represented through a constrained geometry | — | hypothesis | hypothesis | I3 |
+| T-TIME-CIRCLE-0 | Adding an infinite object like time to a finite circle geometry makes sines and cosines converge to infinity. | — | historical-conjecture | hypothesis | — |
+| T-TIME-CIRCLE | an unbounded time parameter combined with a finite circular geometry generates an indefinitely continuing sine/cosine evolution whose values remain bounded | t ∈ ℝ unbounded; t ↦ (cos ωt, sin ωt) ∈ S¹ bounded; cycles → ∞ while values stay in [−1, 1]. | hypothesis | hypothesis | I3 |
+| T-TWO-INFINITIES | So there are potentially two very different kinds of infinity: | t → ∞ and the number of completed cycles → ∞, while sin ωt, cos ωt ∈ [−1, 1]. | open-question | open | — |
+| T-ANALOGUES | The question I want to investigate is whether this type of relationship—an unbounded quantity expressed through a bounded geometry—has deeper mathematical analogues elsewhere. | — | open-question | open | — |
+| T-TIME-BOUND | From there, introduce your questions about whether time could be bound to finite geometry and paired with another infinite structure. | — | open-question | open | — |
+| T-NATURE-OR-DESCRIPTION | Do these relationships tell us something about nature, or only about our mathematical descriptions of it? | — | philosophical-exploration | open | PL1 |
+| T-C-ROLES | That transition between the two roles is what interests me. | Within a theory c helps define the invariant structure; across theories c → ∞ moves toward the Newtonian boundary. spacetime geometry ≠ model-manifold geometry. | hypothesis | hypothesis | L4 |
+| T-MANIFOLDS | That is different from spacetime as a manifold in relativity. | prediction/model manifold ≠ spacetime manifold ≠ possible representation manifold. | established | established | OB1 |
+| T-REP-MANIFOLD | It is also different from a possible future manifold of representations, which is something we may investigate but have not yet formally defined. | — | open-question | open | — |
+| T-BACKBONE-PRIMARY | What appears as zero, cancellation, or balance in one representation may be evidence of an underlying geometric constraint. | — | hypothesis | hypothesis | Z11 |
+| T-BACKBONE-SECONDARY | If physically different phenomena satisfy the same mathematical relation under an appropriate representation, they may be instances of the same structural law rather than merely analogous systems. | — | hypothesis | hypothesis | R9, R10 |
+| T-BACKBONE-INVARIANT | If a relation is preserved under the admissible transformations of a space, that relation may encode part of the geometry of that space. | — | hypothesis | hypothesis | CF11 |
+| T-ZERO-L1 | zero may arise from nonzero structure | — | established | established | — |
+| T-ZERO-L2 | zero may encode balance | — | established | established | — |
+| T-ZERO-L3 | zero may define an exact relation | — | established | established | — |
+| T-ZERO-L4 | zero may identify a distinguished structural feature | — | established | established | — |
+| T-ZERO-L5 | one zero may correspond to multiple hidden configurations | — | established | established | — |
+| T-ZERO-L6 | a preserved zero relation may indicate a geometric constraint | — | hypothesis | hypothesis | — |
+| T-ZERO-L7 | knowledge about one zero system may help interrogate another | — | hypothesis | hypothesis | — |
+| T-HIDDEN-FAMILY | A single observed zero may correspond to a nontrivial family of hidden states. | — | hypothesis | hypothesis | — |
+| T-ZERO-GENERAL-0 | F(x)=0 \not\Rightarrow x\text{ is uniquely determined} | — | historical-conjecture | hypothesis | — |
+| T-ZERO-GENERAL | A zero-valued measurement need not uniquely determine the underlying state. | — | derived-connection | derived | QZ1 |
+| T-QUANTUM-ZERO | A zero-valued observable can fail to uniquely determine a quantum state. | — | established | established | Z6, QZ1 |
+| T-RECONSTRUCT | the hidden state can be reconstructed from the zero alone | — | open-question | open | — |
+| T-Q.cancellation-information | What information is contained in the cancellation state itself? | — | open-question | open | — |
+| T-Q.zero-inference | What can be inferred from the zero state while it remains zero? | — | open-question | open | — |
+| T-Q.zero-generators | When presented with a zero-valued result, can we determine the hidden rules or structure that generated that zero? | — | open-question | open | — |
+| T-Q.pairA | Are proton cancellation and mass balance two unrelated constructions, or do they admit a common representation? | — | open-question | open | — |
+| T-Q.pairA-transfer | Does the shared zero-sum form preserve enough additional structure for knowledge from one system to constrain the other? | — | open-question | open | — |
+| T-Q.zero-distinguishable | When a measurement is zero, what additional structure remains distinguishable? | — | open-question | open | — |
+| T-Q.zero-internal-inference | What information, if any, can be inferred from the internal structure of a zero state without perturbing it into a nonzero state? | — | open-question | open | — |
+| T-Q.additional-relations | What additional preserved relations are needed to identify the geometry? | — | open-question | open | — |
+| T-Q.zero-geometry-broader | Is zero preservation sufficient to identify a geometry in some broader sense? | — | open-question | open | — |
+| T-ZERO-WEAK-0 | Therefore preservation of a zero resultant alone is too weak to identify a unique geometry. | — | historical-conjecture | derived | — |
+| T-ZERO-NO-FORM | zero-resultant preservation alone does not identify a particular preserved bilinear or metric form. | — | established | established | CF3 |
+| T-PAIRA-SHARED | Under the representations currently used, both systems can exhibit a zero-sum vector relation. | — | established | established | — |
+| T-TQ-1 | Does the target zero distinguish any structure within the family of configurations that produce it? | — | open-question | open | — |
+| T-TQ-2 | What mathematical conditions on the hidden configuration are necessary or sufficient for this zero to occur? | — | open-question | open | — |
+| T-TQ-3 | Which different internal configurations produce the same zero result? What properties are fixed by the zero, and what properties remain free? | — | open-question | open | — |
+| T-TQ-4 | Can structurally different configurations generate the same zero, and if so, can those configurations be classified? | — | open-question | open | — |
+| T-TQ-5 | If a zero-producing configuration is transformed, which transformations keep it in the zero state and which do not? | — | open-question | open | — |
+| T-TQ-6 | Among configurations that all produce the same zero result, what other mathematical quantities, relationships, or structures can still differ? | — | open-question | open | — |
+| T-ORTHO-CLUE | can encode an exact geometric relationship; orthogonal decompositions remove cross terms; quadratic magnitude becomes additive; and under appropriate transformations the zero relation can be preserved. | — | hypothesis | hypothesis | — |
+| T-ORTHO-DEEPER | Is orthogonality only the first visible example of a deeper invariant relationship? | — | open-question | open | ON8 |
+| T-MASS-WAVE | mass-like and wave-like descriptions may be different representations of a deeper common principle. | — | hypothesis | hypothesis | MW1 |
+| T-MASS-WAVE-Q | Can mass-like and wave-like phenomena be represented so that the same underlying relation governs both? | — | open-question | open | MW1 |
+| T-MATTER-FIELD | matter-like objects and waves/fields may be different forms/representations of deeper structure. | — | hypothesis | hypothesis | MW1 |
+| T-STAR | ★ Any geometrical object that is bound by rules can be periodic. | — | hypothesis | hypothesis | I2 |
+| T-GEOM-RULES | What observable rules arise because an object is constrained by a particular geometry? | — | open-question | open | — |
+| T-PAIRB | a physically observable periodic structure in space and a wave/phase structure in time may be manifestations of shared geometric rules. | — | hypothesis | hypothesis | — |
+| T-CIRCLE-NOT-THESIS | circle ≠ all periodicity | — | derived-connection | derived | — |
+| T-BEYOND-3D | Could a mathematical description contain relationships that cannot be represented directly in our familiar three spatial dimensions? | — | open-question | open | — |
+| T-PREDICTION-INFINITE | Then introduce your question about a possible infinite prediction space. | — | open-question | open | — |
+| T-4D-EVENTS | This display could introduce your speculative connection to a four-dimensional description in which events exist together, while carefully distinguishing a model's prediction space from physical spacetime. | — | philosophical-exploration | open | — |
+| T-INFOGEO | prediction manifold, Fisher metric, stiff / sloppy directions, exact null direction, model boundaries, effective models | — | open-question | open | R7, Z9, M2 |
+| T-MAGPHASE | If a norm/energy-like quantity is preserved, what information still distinguishes representations? | — | open-question | open | W4 |
+| T-SAME-SPECTRUM | Same power spectrum can preserve second-order information while failing to determine the original signal. | — | established | established | T3 |
+| T-WAVELETS | wavelet zero/cancellation, zero crossings, modulus before averaging, higher scattering paths, what survives averaging, DYADIC PACKETS | — | open-question | open | W1, W2 |
+| T-DYADIC | `DYADIC PACKETS` is an explicit user-priority research term. | — | open-question | open | W3 |
+| T-SENSITIVITY | patterns of invariance and deformation may characterize sensitivity relative to representation, scale, location and transformation. | — | hypothesis | open | T5 |
+| T-CONJUGACY | Do observable physical pairings or complementarities reflect deeper symmetry analogous to mathematical conjugacy? | — | hypothesis | open | P1, P2 |
+| T-SUBCONSCIOUS | Your subconscious analogy could appear as an optional philosophical exploration of the distinction between an underlying structure and what is consciously accessible. | — | philosophical-exploration | open | PL1 |
+| T-PERCEPTION-RELATIVITY | Then invite the visitor to explore your proposed connection between relational human perception and physical relativity. | — | philosophical-exploration | open | PL1 |
+| T-MATH-BOUNDARIES | This provides a way to approach your response to Einstein: If mathematics has boundaries imposed by the way it represents nature, can those boundaries be expanded? | — | philosophical-exploration | open | — |
+| T-REP-COMPLETE | Does a mathematical representation preserve everything meaningful about the natural phenomenon it describes? | — | philosophical-exploration | open | W4 |
+| T-ENERGY-MEANING | What does squared mathematical magnitude actually mean when it is not literally physical energy? | — | open-question | open | OB1, ON9, A3 |
+| T-ORIGIN-NORM-ZERO | This creates a visual explanation for your earlier questions about the relationship between the origin, norm, squared norm, zero, and the identity matrix. | — | open-question | open | ON9 |
+| T-ZERO-ROLES | What carries forward: Zero has different roles depending on the mathematical structure in which it appears. | — | derived-connection | derived | — |
+| T-BOUNDS-THEME | Critical for your “bounds / sine-cosine / same structure in another representation” theme. | — | hypothesis | open | — |
+| T-ENERGEO | Can energy behavior be represented in a space where hidden balances, null relations, and invariants become geometrically explicit? | — | open-question | open | A1 |
+| T-ENERGEO-INTENT | conventional analytics commonly summarize totals, baselines, forecasts or deviations; Energeo asks whether energy behavior itself is being represented in the most informative mathematical way. | — | open-question | open | A1 |
+| B-OUTSIDE-IN | Construct geometry from observed relations first; compare it to existing mathematical structures second. | Method / governance rule: the primary research direction. The intended result (a guide for existing structures) is an aim, not a claim requiring proof. | method-rule | governance | — |
+| B-ZERO-PRESERVE | Do not perturb a defining zero merely to obtain information. Investigate the structure of the system while the zero remains zero. | Method / governance rule: while F(x) = 0 defines the state, research performs zero-preserving interrogation (other observables, internal relations, transformations that stay inside the zero, the larger space it arises from). It does not depend on whether B-ZERO-LOSS is proved. | method-rule | governance | QZ5 |
+| B-HIGHER-GEOMETRY | Hidden information in a lower-dimensional manifestation may be encoded in the larger geometry that generates it. | — | hypothesis | hypothesis | H5 |
+| B-NONEXHAUSTIVE | Existing named mathematical structures are known examples, not assumed exhaustive classes. | Method / governance rule: a list of possibilities is either shown logically exhaustive by a stated theorem, or marked "These are known examples, not an exhaustive classification for this project." A behavior fitting no category is kept as a candidate new class. | method-rule | governance | — |
+| B-FINITE-INFINITE | An indefinitely continuing/infinite structure may be governed by rules manifested through a finite geometry. | — | hypothesis | hypothesis | I3 |
+| B-PART-WHOLE | The object/observer is not merely located in the larger structure; it is a constituent of it. The research question is therefore what the part is to the whole geometry. | — | philosophical-exploration | hypothesis | PL1 |
+| B-ORTHO-FORM | Organized orthogonality may participate in the generation or persistence of geometric form and its global rules. | — | hypothesis | hypothesis | ON8 |
+| T-CIRCLE-ORTHO | At each boundary point of a smooth circle: radius ⊥ tangent. | — | established | established | ON7 |
+| T-FIXED-RELATIONS-Q | How much of this shape's global behavior is encoded in the relationships that remain fixed while it is generated? | — | open-question | open | — |
+| T-FINITE-GEOMETRIES-Q | What kinds of finite geometries can encode or generate indefinitely continuing structure through their internal rules? | — | open-question | open | — |
+| T-STABLE-FORM-Q | What makes a geometric form stable enough that its rules persist while the structure continues indefinitely? | — | open-question | open | — |
+| T-ZERO-ORTHOGONAL | 0 is orthogonal. | A seed with four readings (A–D), kept as separate construction branches; none is chosen as the intended deeper claim. | hypothesis | open | ON6 |
+| T-ZERO-ORTHOGONAL-A | The zero vector satisfies ⟨0,v⟩=0 for every v. | — | established | established | ON6 |
+| T-ZERO-ORTHOGONAL-B | An inner-product result of zero identifies orthogonality: ⟨u,v⟩=0. | — | established | established | ON6 |
+| T-ZERO-ORTHOGONAL-C | A cancellation state may be generated by a larger orthogonal organization even when the visible cancellation is not itself simply a pair of perpendicular vectors. | — | hypothesis | hypothesis | ON6 |
+| T-ZERO-ORTHOGONAL-D | Orthogonality may participate in generating stable geometric form. | — | hypothesis | hypothesis | ON6 |
+| T-EXISTENCE-ZERO | People, and more generally things that exist, can be thought of analogously as zeros: what appears as one formed thing may be the cancellation, balance, or organization of many things underneath it. | — | philosophical-exploration | hypothesis | PL1 |
+| T-SPACE-EXPLORATION | Humans treat space exploration as exploring something outside our world. But if we are constituents of the same larger structure, exploring outward remains an exploration of the structure of which we are already a part. | — | philosophical-exploration | open | PL1 |
+| T-LOOK-INSIDE | A Buddhist-style idea says that looking inside oneself holds the key. In this project, looking inside zero plays an analogous role. | — | philosophical-exploration | open | PL1 |
+| T-IRREVERSIBLE-FORMATION | Our existence may only be possible because geometry produces something that becomes irreversibly formed, while still belonging to an endlessly continuing/fractal structure. | — | philosophical-exploration | open | PL1 |
+| T-FRACTAL-PROPERTIES-Q | What mathematical properties would the project's geometry need in order for Nadia's part/whole “we are to the fractal” intuition to become exact? | — | open-question | open | — |
+| T-GOR-MEANING | Construct a geometry capable of showing how apparently complete objects/states are manifestations of deeper relationships, and use that geometry as a guide across existing mathematical and physical structures. | — | method-rule | governance | — |
+| B-ZERO-LOSS | Leaving a natural zero/cancellation state may destroy information encoded in the relations that generated that zero. | — | hypothesis | hypothesis | QZ5 |
+| T-R4-DERIVED | higher-dimensional orthogonal organization → lower-dimensional zero-sum organization | In the constructed example: Σvᵢ = P(Σeᵢ) = P1 = 0 (the zero is the image of the one removed direction); the shadow's Gram matrix is P itself; vᵢ − vⱼ = eᵢ − eⱼ. | derived-connection | derived | — |
+| T-R4-STAGE2 | Stage 2 tetrahedral cancellation ← exact realization of projected R4 orthonormal basis | ORTHOGONALLY EQUIVALENT: under the isometry Φ: 1⊥ → ℝ³, x ↦ (h₁·x, h₂·x, h₃·x) with h₁ = ½(1,1,−1,−1), h₂ = ½(1,−1,1,−1), h₃ = ½(1,−1,−1,1), Φ(uᵢ) = TETRAᵢ with no permutation and no sign; Stage 2 starts at 1.6·TETRA. | established | established | — |
+| B-HIGHER-GEOMETRY-CHAIN | zero output ← lower-dimensional relational structure ← higher-dimensional organization | CONSTRUCTION-BACKED DIRECTION: one exact instance (the R4 orthogonal-source construction); not universal, not promoted to a theorem. | construction-backed-direction | hypothesis | H5 |
+| Q-R4-1 | What information about the original orthonormal basis survives in the projected tetrahedral zero-sum configuration? | — | open-question | established | — |
+| Q-R4-2 | Given only the tetrahedral zero-sum configuration in H, can the R^4 orthogonal-source construction be reconstructed uniquely, up to a natural equivalence? | PROVED UNDER EQUIVALENCE (ambient orthogonal transformation; vertex permutation; sign of the normal), assuming an orthonormal source and an orthogonal projection onto the span: f_i = v_i + w with \|w\| = ½, w ⊥ span. | open-question | established | H2 |
+| Q-R4-3 | For n orthonormal basis vectors in R^n, project onto 1⊥. Does the resulting set always form a regular simplex in R^(n-1)? | — | open-question | established | — |
+| Q-R4-4 | Does every regular simplex zero-sum configuration arise, up to orthogonal equivalence and scale, from this projection construction? | — | open-question | established | — |
+| Q-R4-5 | What properties of the higher-dimensional source are encoded by Σ_i v_i = 0, versus by the stronger Gram-matrix structure G_ij = 3/4 (i = j), −1/4 (i ≠ j)? | — | open-question | established | — |
+| Q-R4-6 | Which lower-dimensional zero-sum configurations do not admit an orthogonal-source construction of this type? | — | open-question | established | H2 |
+| T-ZERO-CONNECTOR | A zero/resultant may more generally function as an interface between information in a larger geometry and what appears in a lower-dimensional representation. | — | hypothesis | hypothesis | Z11 |
+| Q-R4-8-INVERSE | Given only the target zero/configuration, and without already knowing L, can the removed source direction or larger geometry be recovered? | — | open-question | open | H3 |
+| B-ZERO-INTERNAL-CHANGE | What information can change, be destroyed, become distinguishable, or become inaccessible while the system remains inside the same defining zero condition? | — | open-question | open | QZ4, QZ5 |
+| B-JOINT-ALTERNATIVES | Can obtaining one form of information destroy another relation that existed only while alternatives remained jointly represented? | — | open-question | open | QZ4 |
+| T-PAIRA-BRIDGE | Exact special-case bridge: Equal-mass centering of the standard basis produces the same regular-simplex zero configuration as projection of an orthonormal basis onto 1⊥. | For equal masses at r_i = e_i: R_CM = (1/n)1, so r_i − R_CM = e_i − (1/n)1 = P_n e_i (G4m); for n = 4 these are Stage 2's first-state vectors up to the isometry of G2i. | established | established | H4 |
+| Q-CENTERING | Is there a general geometry of centering/removing a distinguished direction or weighted mode that contains the simplex projection and mass balance as exact cases? | — | open-question | open | — |
+| B-INDEPENDENT-DIRECTION | A distinguished direction may only enter a construction if it is independently specified by the system before observing the desired zero. | — | method-rule | governance | — |
+| Q-DISTINGUISHED-MODE | Are there independent systems in which a distinguished source mode d arises naturally and is removed by the representation, with zero/resultant structure appearing in the target? | — | open-question | open | — |
+| T-QACP | The zero is produced by two nonzero vectors in the Hilbert space cancelling exactly. | S_z^(1)\|1,0⟩ = +(ħ/2)\|0,0⟩, S_z^(2)\|1,0⟩ = −(ħ/2)\|0,0⟩; S_z^(1)\|0,0⟩ = +(ħ/2)\|1,0⟩, S_z^(2)\|0,0⟩ = −(ħ/2)\|1,0⟩. Each zero is built from the other state. | established | established | QZ2 |
+| Q-QACP-C | Does the source construction reveal a representation/geometric structure analogous to any previously constructed zero? | — | open-question | open | — |
+| Q-SAME-ZERO | Can two systems with the same exact zero be geometrically distinguished using structure that remains present while the zero is preserved? | — | open-question | open | — |
+| B-INDEPENDENT-SYMMETRY | A zero may be analyzed together with structures or symmetries independently supplied by its system. | — | method-rule | governance | QZ5 |
+| T-ZERO-SYMMETRY-ARCHITECTURE | An independently supplied group acts covariantly on the zero-producing tuple, and a hidden quadratic quantity commutes with that action. | Both systems: the hidden quadratic (S², T) commutes with the independent group and is scalar on each irreducible block (Schur). Roles inverted: four spins, geometry blind and symmetry decisive; mass, geometry decisive and symmetry sound but incomplete. | derived-connection | derived | Z12 |
+| T-MASS-WAVE-SEED | mass is waves too, it's just a different form. | Construction target: a representation in which mass-like and wave-like behavior satisfy a common exact relation. Supporting mathematics (not proof): E² = p²c² + m²c⁴ with E = ħω, p = ħk (S12). | hypothesis | hypothesis | MW1 |
+| T-GRAVITY-ATTRACTION | Keep the original intuition that mass attraction may not be far removed if the deeper structural principle is shared. | — | hypothesis | open | MW3 |
+| T-THERMALENS | Keep the existing ThermaLens/Energeo implementation mathematics separate from general Foundation proof. | — | open-question | open | A2 |

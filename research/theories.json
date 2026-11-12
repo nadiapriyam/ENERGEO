@@ -3742,7 +3742,9 @@
         "previousTargets": [],
         "lastResearchOutcome": null
       },
-      "related": [],
+      "related": [
+        "T-MASS-WAVE-SEED"
+      ],
       "history": [
         {
           "date": "2026-11-12",
@@ -3794,7 +3796,9 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "T-MASS-WAVE-SEED"
+      ],
       "history": [
         {
           "date": "2026-11-12",
@@ -3858,7 +3862,9 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "T-MASS-WAVE-SEED"
+      ],
       "history": [
         {
           "date": "2026-11-12",
@@ -5351,7 +5357,9 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "T-THERMALENS"
+      ],
       "history": [
         {
           "date": "2026-11-12",
@@ -5402,7 +5410,9 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "T-THERMALENS"
+      ],
       "history": [
         {
           "date": "2026-11-12",
@@ -10950,6 +10960,10 @@
         {
           "words": "zero/resultant + relationships preserved within the zero → information about the hidden configuration.",
           "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "The visible zero alone does not determine where the hidden information lives.",
+          "source": "docs/restructure_decisions.md"
         }
       ],
       "normalizedStatement": "Both systems: the hidden quadratic (S², T) commutes with the independent group and is scalar on each irreducible block (Schur). Roles inverted: four spins, geometry blind and symmetry decisive; mass, geometry decisive and symmetry sound but incomplete.",
@@ -11003,6 +11017,7 @@
       ],
       "sourceDocs": [
         "research/constructions/mass_second_moment.md",
+        "docs/restructure_decisions.md",
         "docs/restructure_decisions.md"
       ],
       "auditRef": "four-spin 16–17",
@@ -11085,6 +11100,150 @@
       "proofTarget": null,
       "related": [
         "T-FOURSPIN-SYMMETRY"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-MASS-WAVE-SEED",
+      "label": "Mass is waves too (original seed)",
+      "words": "mass is waves too, it's just a different form.",
+      "variants": [
+        {
+          "words": "construct a representation in which mass-like and wave-like behavior satisfy a common exact relation",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "Construction target: a representation in which mass-like and wave-like behavior satisfy a common exact relation. Supporting mathematics (not proof): E² = p²c² + m²c⁴ with E = ħω, p = ħk (S12).",
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:S12",
+          "note": "supporting: one invariant relation in two sets of variables"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Not rewritten into QFT language; QFT is a secondary reference, not a proof of this theory."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "S12"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Foundation 34",
+      "audit": {
+        "before": "missing",
+        "note": "not in the repository before the Foundation consolidation (2026-11-12); recorded from Nadia's message"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-MASS-WAVE",
+        "T-MASS-WAVE-Q",
+        "T-MATTER-FIELD",
+        "T-GRAVITY-ATTRACTION"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-GRAVITY-ATTRACTION",
+      "label": "Mass attraction and a shared structural principle",
+      "words": "Keep the original intuition that mass attraction may not be far removed if the deeper structural principle is shared.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "SPECULATIVE / OPEN; no project construction. The intuition's original wording is not in the repository; this is Nadia's 2026-11-12 description of it."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "unplaced"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Foundation 35",
+      "audit": {
+        "before": "missing",
+        "note": "not in the repository before the Foundation consolidation (2026-11-12); recorded from Nadia's message"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-MASS-WAVE-SEED"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-THERMALENS",
+      "label": "ThermaLens / Energeo implementation mathematics",
+      "words": "Keep the existing ThermaLens/Energeo implementation mathematics separate from general Foundation proof.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "The implementation mathematics is not in this repository: provenance gap.",
+        "Downstream application; not evidence for upstream mathematics until tested."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Final"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Foundation 37",
+      "audit": {
+        "before": "missing",
+        "note": "not in the repository before the Foundation consolidation (2026-11-12); recorded from Nadia's message"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-ENERGEO",
+        "T-ENERGEO-INTENT"
       ],
       "history": [],
       "relatedActsRev3": [],
