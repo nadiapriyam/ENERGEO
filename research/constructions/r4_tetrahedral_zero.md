@@ -1,7 +1,7 @@
 # R4 orthogonal-source construction (tetrahedral zero construction)
 
 The first outside-in construction (`docs/research_method.md` §3), 2026-11-12. Cards: `verify/verify_G2.py`
-(G2a–G2j, G2n). Registry: `T-R4-TETRA`, `T-R4-DERIVED`, `T-R4-GENERAL`, `B-HIGHER-GEOMETRY-CHAIN`, `Q-R4-1` …
+(G2a–G2k, G2n); `verify/verify_G3.py` (G3a–G3d, G3n). Registry: `T-R4-TETRA`, `T-R4-DERIVED`, `T-R4-GENERAL`, `B-HIGHER-GEOMETRY-CHAIN`, `Q-R4-1` …
 `Q-R4-8`. Neutral names only: this is not called "the origin geometry", "the true higher geometry" or "the quantum
 geometry".
 
@@ -136,7 +136,9 @@ higher-dimensional organization*. One exact instance exists. It is not universal
 
 ## 9. Connection to Stage 2
 
-**Result: ORTHOGONALLY EQUIVALENT (G2i).**
+**Result: ORTHOGONALLY EQUIVALENT (G2i).** Stage 2 is an exact coordinate realization of a configuration that is
+orthogonally equivalent to the projected ℝ⁴ construction. The label is not "exactly equivalent": the source vectors
+live in H = **1**^⊥ ⊂ ℝ⁴, Stage 2 uses displayed ℝ³, and an isometry must be chosen to identify them.
 
 - Stage 2's first constructed state is 1.6 · TETRA, with TETRA = (±1, ±1, ±1)/√3 (even number of minus signs,
   `src/math/zero.js`).
@@ -166,14 +168,14 @@ Earlier members of the same family, observed and not retro-assigned a purpose:
 
 | ID | Question |
 |---|---|
-| Q-R4-1 | What information about the original orthonormal basis survives in the projected tetrahedral zero-sum configuration? |
-| Q-R4-2 | Given only the tetrahedral zero-sum configuration in H, can the R⁴ orthogonal-source construction be reconstructed uniquely, up to a natural equivalence? The equivalence must be formalized first. Candidates to test: orthogonal maps of ℝ⁴ that fix the line of **1**; permutations of the source basis; common scale. Not assumed. |
+| Q-R4-1 | What information about the original orthonormal basis survives in the projected tetrahedral zero-sum configuration? **Resolved under assumptions (2026-11-12).** With the source class known (orthonormal, orthogonal projection onto the span), everything survives except the sign of one normal and the ambient isometry (G3b). With no source class, only the Gram matrix survives, and the removed relation is not determined (G4c). |
+| Q-R4-2 | Given only the tetrahedral zero-sum configuration in H, can the R⁴ orthogonal-source construction be reconstructed uniquely, up to a natural equivalence? **PROVED UNDER EQUIVALENCE** (ambient orthogonal transformation; permutation of the vertices; sign of the normal), assuming an orthonormal source and an orthogonal projection onto the span of the vᵢ. Nadia's eᵢ = vᵢ + ½n gives ‖eᵢ‖² = 1 and eᵢ·eⱼ = 0 (G3a). Any orthonormal fᵢ = vᵢ + wᵢ with wᵢ ⊥ span has Gram(w) = I − G = J/4, so every wᵢ equals one w with ‖w‖ = ½ (G3b). In ℝ⁴ that leaves only w = ±½n. Every n: G3n. |
 | Q-R4-3 | For n orthonormal basis vectors in ℝⁿ projected onto **1**^⊥, does the resulting set always form a regular simplex in ℝⁿ⁻¹? **Derived: yes** (G2n, G2j). The points are pairwise equidistant (‖vᵢ − vⱼ‖² = 2) and affinely span the (n−1)-dimensional **1**^⊥. |
-| Q-R4-4 | Does every regular simplex zero-sum configuration arise, up to orthogonal equivalence and scale, from this projection construction? |
-| Q-R4-5 | What properties of the higher-dimensional source are encoded by Σᵢ vᵢ = 0, versus by the stronger Gram-matrix structure Gᵢⱼ = ¾ (i = j), −¼ (i ≠ j)? The zero sum is weaker than the full relational structure. |
-| Q-R4-6 | Which lower-dimensional zero-sum configurations do not admit an orthogonal-source construction of this type? Construct examples and necessary conditions first. |
-| Q-R4-7 | Chapter I's opposed pair is the n = 2 member, #8's 120° view holds the n = 3 member, and Stage 2's tetrahedron is the n = 4 member. Does the Chapter I sequence instantiate one family indexed by n? What changes with n (angle −1/(n−1)), and what does not (zero sum, equal lengths)? |
-| Q-R4-8 | Here the zero sum is the shadow of the one removed direction (Σ vᵢ = P**1**). For other maps from a larger geometry, does a lower-dimensional zero always record a direction the map removes? Can that direction be characterized from the zero state's own structure without leaving the zero (B-ZERO-PRESERVE)? |
+| Q-R4-4 | Does every regular simplex zero-sum configuration arise, up to orthogonal equivalence and scale, from this projection construction? **Proved.** Zero sum forces c = −r²/(n−1), so Gram = r²·n/(n−1)·(I − J/n), a multiple of the Gram of Pₙeᵢ (G3c). Equal Gram matrices give an isometry of spans: Q(Σaᵢvᵢ) = Σaᵢv′ᵢ is well defined and norm-preserving because ‖Σaᵢvᵢ‖² = aᵀGa. |
+| Q-R4-5 | What properties of the higher-dimensional source are encoded by Σᵢ vᵢ = 0, versus by the stronger Gram-matrix structure Gᵢⱼ = ¾ (i = j), −¼ (i ≠ j)? The zero sum is weaker than the full relational structure. **Resolved.** Σvᵢ = 0 is exactly G**1** = 0 (**1** ∈ ker G). The full G fixes the configuration up to isometry. An orthonormal source of this type exists iff a multiple of G is idempotent (G3d). The zero sum alone cannot guarantee that: (1,0), (0,1), (−1,−1) has zero sum and no such source. |
+| Q-R4-6 | Which lower-dimensional zero-sum configurations do not admit an orthogonal-source construction of this type? Construct examples and necessary conditions first. **Resolved (G3d)**, in two readings of "this type". (i) Any orthogonal projection of an orthonormal basis of ℝⁿ: exactly the configurations with two or more distinct nonzero Gram eigenvalues fail; (1,0), (0,1), (−1,−1) has eigenvalues {0, 1, 3}. (ii) Projection onto **1**^⊥ specifically: everything except regular simplices fails (G3c). The frame-theory match (tight frames as projections of orthonormal bases) is secondary, named after the derivation. |
+| Q-R4-7 | Chapter I's opposed pair is the n = 2 member, #8's 120° view holds the n = 3 member, and Stage 2's tetrahedron is the n = 4 member. Does the Chapter I sequence instantiate one family indexed by n? What changes with n (angle −1/(n−1)), and what does not (zero sum, equal lengths)? **Special case.** Every exact Stage 1 state is the n = 2 member up to rotation and scale (G2k). Stage 2's first state is the n = 4 member (G2i). Stage 3 with equal masses at e₁…eₙ gives the family exactly (G4m). Stage 2's varied-magnitude states and Stage 3 in general are not members. The family itself is `T-SIMPLEX-FAMILY`. |
+| Q-R4-8 | Here the zero sum is the shadow of the one removed direction (Σ vᵢ = P**1**). For other maps from a larger geometry, does a lower-dimensional zero always record a direction the map removes? Can that direction be characterized from the zero state's own structure without leaving the zero (B-ZERO-PRESERVE)? **Split (2026-11-12).** The established part is that for linear L, Σ Lxᵢ = 0 iff Σxᵢ ∈ ker L (G4a). The inverse problem is `Q-R4-8-INVERSE`, and stays OPEN in general. Special case proved: with the source class known, the removed direction is Σfᵢ = 4w, up to sign (G3b). Exact obstruction: with L unknown, the zero does not determine whether or which relation was removed (G4c). |
 
 ## 11. Next construction tests
 

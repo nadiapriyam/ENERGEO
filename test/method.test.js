@@ -198,8 +198,11 @@ test('the R4 records: established pieces rest on PASS cards; the chain stays a c
   assert.equal(chain.kind, 'construction-backed-direction');
   assert.equal(chain.status, 'hypothesis', 'not promoted to a universal theorem');
   assert.ok(chain.related.includes('B-HIGHER-GEOMETRY'));
-  for (const q of ['Q-R4-1', 'Q-R4-2', 'Q-R4-4', 'Q-R4-5', 'Q-R4-6', 'Q-R4-7', 'Q-R4-8']) assert.equal(byId.get(q).status, 'open', q);
-  assert.equal(byId.get('Q-R4-3').proofTarget.lastResearchOutcome, 'proved');
+  for (const q of ['Q-R4-7', 'Q-R4-8']) assert.equal(byId.get(q).status, 'open', q);
+  for (const q of ['Q-R4-1', 'Q-R4-2', 'Q-R4-3', 'Q-R4-4', 'Q-R4-5', 'Q-R4-6']) {
+    assert.equal(byId.get(q).status, 'established', `${q}: resolved only with PASS cards`);
+    assert.equal(byId.get(q).proofTarget.lastResearchOutcome, 'proved', q);
+  }
 });
 
 test('learner copy says nothing about a physical fourth dimension behind Chapter I', () => {
@@ -229,4 +232,83 @@ test('the compass-circle contract keeps the explanatory terms hidden until forma
   assert.ok(contract.includes('Which fixed relationships made the shape possible?') && contract.includes('Which global rules are consequences of those fixed relationships?'));
   const rows = contract.slice(contract.indexOf('| Observe |'), contract.indexOf('| Formalize |'));
   for (const w of ['circle', 'orthogonal', 'perpendicular', 'sin', 'cos', 'π', 'periodic']) assert.ok(!new RegExp(`\\b${w}\\b`).test(rows.replace('(the angle turned so far)', '')), `"${w}" before formalize`);
+});
+
+// ── evaluation framework, connector wording, application pass (2026-11-12) ──────────────────────
+
+const RULES = ['Zero is a connector/interface, not automatically a lower-dimensional object.', 'A construction must survive independent application before it can count as backbone proof.',
+  'Low support means continue carefully, not discard.', 'Archive only after repeated independent mathematical/empirical failure.', 'Do not invent a geometry that only works because we designed it around the answer.'];
+
+test('the permanent rules and the evaluation framework are visible in the backbone', () => {
+  const claude = read('CLAUDE.md');
+  for (const r of RULES) { assert.ok(method.includes(r), `method: ${r}`); assert.ok(claude.includes(r), `CLAUDE.md: ${r}`); assert.ok(decisions.includes(r), `decisions: ${r}`); }
+  for (const h of ['## 12. Evaluation and anti-delusion', '### 12.1 Two ratings', '### 12.2 The audit', '### 12.3 Application validity', '### 12.4 Anti-slop guard', '### 12.5 Low support is not discard', '### 4.4 Three operations, kept apart'])
+    assert.ok(method.includes(h), h);
+  assert.ok(method.includes('Would this mathematical statement still be meaningful if we removed all references to Nadia\'s project?'));
+  assert.match(read('docs/research_prompt_preamble.md'), /```\nEVALUATION\n/);
+  assert.match(claude, /Backbone Support %/);
+});
+
+test('zero is never called the lower-dimensional object', () => {
+  for (const f of ['CLAUDE.md', 'docs/research_method.md', 'docs/act_map.md', 'research/constructions/r4_tetrahedral_zero.md', 'research/constructions/zero_connector_linear.md', 'research/application_matrix.md'])
+    assert.ok(!/zero is (a |the )?lower-dimensional|zero = lower-dimensional/i.test(read(f)), f);
+});
+
+test('ratings: every assessment is complete and consistent with the evaluation rules', () => {
+  const STATUSES = ['Known theorem / textbook identity', 'Project-derived theorem', 'Constructive example', 'Empirical correlation', 'Speculative mapping'];
+  const BREADTH = ['one configuration', 'one mathematical family', 'multiple independent mathematical families', 'multiple physical systems', 'real dataset(s)'];
+  const V = ['pass', 'partial', 'fail', 'not-yet', 'n/a'];
+  const rated = reg.theories.filter((r) => r.assessment);
+  assert.ok(rated.length >= 10, 'the substantive results of the application pass are rated');
+  for (const r of rated) {
+    const a = r.assessment;
+    assert.ok(STATUSES.includes(a.mathematicalStatus) && BREADTH.includes(a.breadth), r.id);
+    for (const k of ['backboneSupport', 'slopRisk']) assert.ok(Number.isInteger(a[k]) && a[k] >= 0 && a[k] <= 100, `${r.id}: ${k}`);
+    assert.ok(a.why.split(/(?<=[.!?])\s+/).filter(Boolean).length <= 5, `${r.id}: "why" is at most 5 sentences`);
+    assert.ok(a.increase && a.falsify, `${r.id}: increase and falsify stated`);
+    for (const t of ['construction', 'generalization', 'transfer', 'failureCondition', 'outOfSample']) assert.ok(V.includes(a.validity[t]), `${r.id}: ${t}`);
+    assert.ok(['EXAMPLE', 'GENERAL CONSTRUCTION', 'BACKBONE PROOF'].includes(a.classification), r.id);
+    if (a.breadth === 'one configuration') assert.equal(a.classification, 'EXAMPLE', `${r.id}: one context is an EXAMPLE`);
+    if (a.classification === 'BACKBONE PROOF') assert.ok(a.validity.generalization === 'pass' && a.validity.transfer === 'pass', `${r.id}: backbone proof needs generalization and transfer`);
+    if (a.backboneSupport === 100) assert.ok(a.classification === 'BACKBONE PROOF' && ['pass', 'n/a'].includes(a.validity.outOfSample), `${r.id}: 100% needs independent application`);
+    assert.ok(['active', 'low-confidence-active', 'inactive-archived'].includes(a.branchState), r.id);
+    if (a.branchState === 'inactive-archived') assert.ok(a.failures.length >= 3, `${r.id}: archive only after repeated independent failure`);
+  }
+});
+
+test('the three zero operations are separate records; the measurement branch makes no observer claim', () => {
+  const ids = ['B-ZERO-PRESERVE', 'B-ZERO-LOSS', 'B-ZERO-INTERNAL-CHANGE'];
+  assert.equal(new Set(ids.map((i) => byId.get(i).words)).size, 3);
+  assert.equal(byId.get('B-ZERO-PRESERVE').status, 'governance');
+  assert.equal(byId.get('B-ZERO-INTERNAL-CHANGE').status, 'open');
+  const ja = byId.get('B-JOINT-ALTERNATIVES');
+  assert.ok(ja.boundaries.some((b) => /conscious/.test(b) && /No claim/.test(b)));
+  for (const f of ['docs/research_method.md', 'research/application_matrix.md', 'research/constructions/zero_connector_linear.md'])
+    assert.ok(!/conscious (viewer|observer) causes/i.test(read(f)), f);
+});
+
+test('Stage 2 stays ORTHOGONALLY EQUIVALENT; Q-R4-2 is proved under its stated equivalence; Q-R4-8 is split', () => {
+  assert.match(read('research/constructions/r4_tetrahedral_zero.md'), /Result: ORTHOGONALLY EQUIVALENT/);
+  assert.ok(byId.get('T-R4-STAGE2').variants.some((v) => /orthogonally equivalent to the projected/.test(v.words)));
+  assert.equal(byId.get('Q-R4-2').status, 'established');
+  assert.match(byId.get('Q-R4-2').normalizedStatement, /PROVED UNDER EQUIVALENCE/);
+  assert.equal(byId.get('Q-R4-8').supersededBy, 'Q-R4-8-INVERSE');
+  assert.equal(byId.get('Q-R4-8-INVERSE').status, 'open');
+  assert.equal(byId.get('T-ZERO-CONNECTOR-LINEAR').status, 'established');
+  assert.equal(byId.get('T-ZERO-CONNECTOR').status, 'hypothesis', 'the general connector is not established by the linear case');
+  assert.ok(byId.get('B-PART-WHOLE').relatedActs.includes('III'));
+});
+
+test('construction records share the eleven-section format; the application matrix has its columns and records failures', () => {
+  const SECTIONS = ['1. Construction target', '2. Source geometry', '3. Projection map', '4. Exact identities', '5. Lower-dimensional realization',
+    '6. What is established', '7. What is derived', '8. What is NOT established', '9. Connection to Stage 2', '10. Questions generated', '11. Next construction tests'];
+  for (const f of ['research/constructions/r4_tetrahedral_zero.md', 'research/constructions/zero_connector_linear.md'])
+    assert.deepEqual(read(f).split('\n').filter((l) => l.startsWith('## ')).map((l) => l.slice(3)), SECTIONS, f);
+  const m = read('research/application_matrix.md');
+  assert.ok(m.includes('| System / dataset | Observed zero / relation | Source representation | Target representation | Candidate larger geometry | Map | What becomes zero | What survives | What is lost | Independent of construction example? | Mathematical status | Backbone Support % | AI Slop Risk % | Failure condition |'));
+  for (const row of ['Opposed vector pair', 'n-simplex family', 'Mass center / first moment', 'Quantum S_z = 0 pair', 'Fourier zero coefficient', 'Orthogonality zero']) assert.ok(m.includes(row), row);
+  const results = m.slice(m.indexOf('## Results per row'));
+  assert.match(results, /fails/, 'failures are recorded, not hidden');
+  for (const cell of results.split('\n').filter((l) => /^\| \d\./.test(l)).flatMap((l) => l.replace(/\\\|/g, '¦').split('|').slice(2, 4)))
+    assert.match(cell.trim(), /^(same rule works|partially works|fails|not yet formalized)/, `result label: ${cell.trim()}`);
 });

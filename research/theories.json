@@ -88,7 +88,8 @@
       ],
       "relatedActsRev3": [
         "I–IX"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-EVIDENCE",
@@ -160,7 +161,8 @@
       "relatedActsRev3": [
         "III",
         "IV"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-H1",
@@ -247,7 +249,8 @@
       "relatedActsRev3": [
         "IV",
         "V"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-H1-SIGNATURE",
@@ -309,7 +312,9 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "B-JOINT-ALTERNATIVES"
+      ],
       "history": [
         {
           "date": "2026-11-12",
@@ -318,7 +323,8 @@
       ],
       "relatedActsRev3": [
         "IV"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-H1-TWO-ZEROS",
@@ -371,7 +377,9 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "Q-CONNECT-2"
+      ],
       "history": [
         {
           "date": "2026-11-12",
@@ -381,7 +389,8 @@
       "relatedActsRev3": [
         "I",
         "V"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-BEYOND-EUCLID-0",
@@ -431,7 +440,8 @@
       "relatedActsRev3": [
         "IV",
         "V"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-BEYOND-EUCLID",
@@ -501,7 +511,8 @@
       "relatedActsRev3": [
         "IV",
         "V"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-SEE-ORTHOGONALITY",
@@ -573,7 +584,8 @@
       ],
       "relatedActsRev3": [
         "IV"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-INF-FIN-0",
@@ -630,7 +642,8 @@
       "relatedActsRev3": [
         "VI",
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-INF-FIN",
@@ -696,7 +709,8 @@
       "relatedActsRev3": [
         "VI",
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-RELATIONSHIP-RIDDEN",
@@ -742,7 +756,8 @@
       ],
       "relatedActsRev3": [
         "I–IX"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-H2",
@@ -827,7 +842,8 @@
         "III",
         "IV",
         "V"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-REPRESENTATION",
@@ -904,7 +920,8 @@
         "II",
         "III",
         "IV"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-VISIBLE-HIDDEN",
@@ -961,7 +978,8 @@
       ],
       "relatedActsRev3": [
         "I–IX"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-H2-ROLES",
@@ -1013,7 +1031,8 @@
       "relatedActsRev3": [
         "IV",
         "V"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-H3",
@@ -1091,7 +1110,8 @@
       ],
       "relatedActsRev3": [
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-SCHEMA",
@@ -1178,7 +1198,8 @@
       ],
       "relatedActsRev3": [
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-TIME-CIRCLE-0",
@@ -1233,7 +1254,8 @@
       ],
       "relatedActsRev3": [
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-TIME-CIRCLE",
@@ -1288,7 +1310,8 @@
       "relatedActsRev3": [
         "II",
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-TWO-INFINITIES",
@@ -1332,7 +1355,8 @@
       ],
       "relatedActsRev3": [
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-ANALOGUES",
@@ -1390,7 +1414,8 @@
       ],
       "relatedActsRev3": [
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-TIME-BOUND",
@@ -1445,7 +1470,8 @@
       ],
       "relatedActsRev3": [
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-NATURE-OR-DESCRIPTION",
@@ -1491,7 +1517,8 @@
       "relatedActsRev3": [
         "VIII",
         "IX"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-C-ROLES",
@@ -1569,7 +1596,8 @@
       ],
       "relatedActsRev3": [
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-MANIFOLDS",
@@ -1621,7 +1649,8 @@
       "relatedActsRev3": [
         "VII",
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-REP-MANIFOLD",
@@ -1668,7 +1697,8 @@
       "relatedActsRev3": [
         "V",
         "VII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-BACKBONE-PRIMARY",
@@ -1735,7 +1765,8 @@
       ],
       "relatedActsRev3": [
         "I–IX"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-BACKBONE-SECONDARY",
@@ -1790,7 +1821,8 @@
       "relatedActsRev3": [
         "I",
         "II"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-BACKBONE-INVARIANT",
@@ -1852,7 +1884,8 @@
       ],
       "relatedActsRev3": [
         "V"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-ZERO-L1",
@@ -1913,7 +1946,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-ZERO-L2",
@@ -1969,7 +2003,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-ZERO-L3",
@@ -2033,7 +2068,8 @@
       "relatedActsRev3": [
         "I",
         "IV"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-ZERO-L4",
@@ -2084,7 +2120,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-ZERO-L5",
@@ -2150,7 +2187,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-ZERO-L6",
@@ -2207,7 +2245,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-ZERO-L7",
@@ -2258,7 +2297,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-HIDDEN-FAMILY",
@@ -2355,7 +2395,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-ZERO-GENERAL-0",
@@ -2406,7 +2447,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-ZERO-GENERAL",
@@ -2484,7 +2526,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-QUANTUM-ZERO",
@@ -2552,7 +2595,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-RECONSTRUCT",
@@ -2600,7 +2644,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-Q.cancellation-information",
@@ -2644,7 +2689,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-Q.zero-inference",
@@ -2688,7 +2734,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-Q.zero-generators",
@@ -2732,7 +2779,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-Q.pairA",
@@ -2776,7 +2824,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-Q.pairA-transfer",
@@ -2854,7 +2903,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-Q.zero-distinguishable",
@@ -2898,7 +2948,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-Q.zero-internal-inference",
@@ -2945,7 +2996,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-Q.additional-relations",
@@ -2989,7 +3041,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-Q.zero-geometry-broader",
@@ -3033,7 +3086,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-ZERO-WEAK-0",
@@ -3086,7 +3140,8 @@
       "relatedActsRev3": [
         "I",
         "V"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-ZERO-NO-FORM",
@@ -3144,7 +3199,8 @@
       "relatedActsRev3": [
         "I",
         "V"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-PAIRA-SHARED",
@@ -3210,7 +3266,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-TQ-1",
@@ -3254,7 +3311,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-TQ-2",
@@ -3298,7 +3356,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-TQ-3",
@@ -3342,7 +3401,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-TQ-4",
@@ -3386,7 +3446,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-TQ-5",
@@ -3430,7 +3491,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-TQ-6",
@@ -3474,7 +3536,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-ORTHO-CLUE",
@@ -3545,7 +3608,8 @@
       "relatedActsRev3": [
         "IV",
         "V"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-ORTHO-DEEPER",
@@ -3599,7 +3663,8 @@
       "relatedActsRev3": [
         "IV",
         "V"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-MASS-WAVE",
@@ -3680,7 +3745,8 @@
       ],
       "relatedActsRev3": [
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-MASS-WAVE-Q",
@@ -3731,7 +3797,8 @@
       ],
       "relatedActsRev3": [
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-MATTER-FIELD",
@@ -3794,7 +3861,8 @@
       ],
       "relatedActsRev3": [
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-STAR",
@@ -3912,7 +3980,8 @@
       "relatedActsRev3": [
         "II",
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-GEOM-RULES",
@@ -3960,7 +4029,8 @@
         "II",
         "V",
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-PAIRB",
@@ -4025,7 +4095,8 @@
       ],
       "relatedActsRev3": [
         "II"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-CIRCLE-NOT-THESIS",
@@ -4091,7 +4162,8 @@
         "II",
         "V",
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-BEYOND-3D",
@@ -4161,7 +4233,8 @@
       "relatedActsRev3": [
         "IV",
         "VII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-PREDICTION-INFINITE",
@@ -4211,7 +4284,8 @@
       ],
       "relatedActsRev3": [
         "VII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-4D-EVENTS",
@@ -4261,7 +4335,8 @@
       "relatedActsRev3": [
         "VII",
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-INFOGEO",
@@ -4324,7 +4399,8 @@
       ],
       "relatedActsRev3": [
         "VII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-C7",
@@ -4388,7 +4464,8 @@
       ],
       "relatedActsRev3": [
         "VII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-MAGPHASE",
@@ -4455,7 +4532,8 @@
       ],
       "relatedActsRev3": [
         "VI"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-SAME-SPECTRUM",
@@ -4521,7 +4599,8 @@
       ],
       "relatedActsRev3": [
         "VI"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-WAVELETS",
@@ -4567,7 +4646,8 @@
       ],
       "relatedActsRev3": [
         "VI"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-DYADIC",
@@ -4613,7 +4693,8 @@
       ],
       "relatedActsRev3": [
         "VI"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-SENSITIVITY",
@@ -4672,7 +4753,8 @@
       "relatedActsRev3": [
         "VI",
         "VII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-CONJUGACY",
@@ -4730,7 +4812,8 @@
       "relatedActsRev3": [
         "V",
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-SUBCONSCIOUS",
@@ -4782,7 +4865,8 @@
       ],
       "relatedActsRev3": [
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-PERCEPTION-RELATIVITY",
@@ -4841,7 +4925,8 @@
       ],
       "relatedActsRev3": [
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-MATH-BOUNDARIES",
@@ -4893,7 +4978,8 @@
       "relatedActsRev3": [
         "VIII",
         "IX"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-REP-COMPLETE",
@@ -4952,7 +5038,8 @@
       "relatedActsRev3": [
         "VI",
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-ENERGY-MEANING",
@@ -5024,7 +5111,8 @@
         "IV",
         "VI",
         "IX"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-ORIGIN-NORM-ZERO",
@@ -5077,7 +5165,8 @@
       "relatedActsRev3": [
         "I",
         "V"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-ZERO-ROLES",
@@ -5151,7 +5240,8 @@
       ],
       "relatedActsRev3": [
         "I"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-BOUNDS-THEME",
@@ -5211,7 +5301,8 @@
         "II",
         "IV",
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-ENERGEO",
@@ -5263,7 +5354,8 @@
       ],
       "relatedActsRev3": [
         "IX"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-ENERGEO-INTENT",
@@ -5313,7 +5405,8 @@
       ],
       "relatedActsRev3": [
         "IX"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-C1",
@@ -5369,7 +5462,8 @@
       ],
       "relatedActsRev3": [
         "V"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-C2",
@@ -5425,7 +5519,8 @@
       ],
       "relatedActsRev3": [
         "V"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-C3",
@@ -5481,7 +5576,8 @@
       ],
       "relatedActsRev3": [
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-C4",
@@ -5538,7 +5634,8 @@
       "relatedActsRev3": [
         "III",
         "V"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-C5",
@@ -5596,7 +5693,8 @@
       "relatedActsRev3": [
         "I",
         "V"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-C6",
@@ -5653,7 +5751,8 @@
       "relatedActsRev3": [
         "IV",
         "V"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-C8",
@@ -5720,7 +5819,8 @@
       ],
       "relatedActsRev3": [
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "T-C9",
@@ -5776,7 +5876,8 @@
       ],
       "relatedActsRev3": [
         "VIII"
-      ]
+      ],
+      "assessment": null
     },
     {
       "id": "B-OUTSIDE-IN",
@@ -5860,7 +5961,8 @@
           "change": "reclassified from backbone-rule / HYPOTHESIS to method-rule / governance: a governance rule, not a claim requiring proof (Nadia)"
         }
       ],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "B-ZERO-PRESERVE",
@@ -5984,7 +6086,8 @@
         "T-HIDDEN-FAMILY",
         "T-Q.pairA-transfer",
         "T-EXISTENCE-ZERO",
-        "B-ZERO-LOSS"
+        "B-ZERO-LOSS",
+        "B-ZERO-INTERNAL-CHANGE"
       ],
       "history": [
         {
@@ -5992,7 +6095,8 @@
           "change": "split: this record is the method rule (method-rule / governance); the hypothesis it carried moved to B-ZERO-LOSS with its wording (Nadia: do not use one record for governance and a claim)"
         }
       ],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "B-HIGHER-GEOMETRY",
@@ -6095,10 +6199,31 @@
         "T-MANIFOLDS",
         "T-HIDDEN-FAMILY",
         "T-R4-TETRA",
-        "B-HIGHER-GEOMETRY-CHAIN"
+        "B-HIGHER-GEOMETRY-CHAIN",
+        "T-ZERO-CONNECTOR"
       ],
       "history": [],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Constructive example",
+        "breadth": "one mathematical family",
+        "backboneSupport": 35,
+        "slopRisk": 25,
+        "why": "One exact family (R4 and every n) realizes hidden information encoded in a larger geometry, with reconstruction up to sign. The larger geometry is assumed orthonormal, not derived from the target. Transfer is partial (equal masses only).",
+        "increase": "A larger geometry derived from target-side behavior, and an independent system where the template applies unchanged.",
+        "falsify": "Repeated independent zeros with no larger-geometry reconstruction under any source class.",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "not-yet"
+        },
+        "branchState": "active",
+        "failures": []
+      }
     },
     {
       "id": "B-NONEXHAUSTIVE",
@@ -6174,7 +6299,8 @@
           "change": "reclassified from backbone-rule / HYPOTHESIS to method-rule / governance (Nadia); the earlier normalized \"premise (HYPOTHESIS)\" sentence was dropped"
         }
       ],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "B-FINITE-INFINITE",
@@ -6263,7 +6389,8 @@
         "T-FIXED-RELATIONS-Q"
       ],
       "history": [],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "B-PART-WHOLE",
@@ -6281,6 +6408,10 @@
         {
           "words": "part ↔ whole geometry",
           "source": "docs/author_philosophy.md"
+        },
+        {
+          "words": "What is the visible object/result to the larger geometry that generated it?",
+          "source": "docs/restructure_decisions.md"
         }
       ],
       "normalizedStatement": null,
@@ -6295,7 +6426,7 @@
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
-        "unplaced"
+        "III"
       ],
       "relatedObjects": [],
       "relatedCards": [],
@@ -6303,7 +6434,8 @@
         "docs/restructure_decisions.md",
         "docs/author_philosophy.md",
         "docs/author_philosophy.md",
-        "docs/author_philosophy.md"
+        "docs/author_philosophy.md",
+        "docs/restructure_decisions.md"
       ],
       "auditRef": "outside-in 10, 18, 27",
       "audit": {
@@ -6335,8 +6467,14 @@
         "T-EXISTENCE-ZERO",
         "T-IRREVERSIBLE-FORMATION"
       ],
-      "history": [],
-      "relatedActsRev3": []
+      "history": [
+        {
+          "date": "2026-11-12b",
+          "change": "placed at the end of Act III with the governing question \"What is the visible object/result to the larger geometry that generated it?\"; the R4 construction is a part/whole example, not a fractal"
+        }
+      ],
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "B-ORTHO-FORM",
@@ -6439,7 +6577,8 @@
           "change": "evidence note tightened: the loose G1b reading (\"for any plane curve … iff …\") replaced by the precise G1d statement; G1b stays on the ledger"
         }
       ],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "T-CIRCLE-ORTHO",
@@ -6506,7 +6645,8 @@
         "B-ORTHO-FORM"
       ],
       "history": [],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "T-FIXED-RELATIONS-Q",
@@ -6547,7 +6687,8 @@
         "T-STAR"
       ],
       "history": [],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "T-FINITE-GEOMETRIES-Q",
@@ -6587,7 +6728,8 @@
         "B-FINITE-INFINITE"
       ],
       "history": [],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "T-STABLE-FORM-Q",
@@ -6627,7 +6769,8 @@
         "T-IRREVERSIBLE-FORMATION"
       ],
       "history": [],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "T-ZERO-ORTHOGONAL",
@@ -6672,7 +6815,8 @@
         "T-H1"
       ],
       "history": [],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "T-ZERO-ORTHOGONAL-A",
@@ -6718,7 +6862,8 @@
         "T-ZERO-ORTHOGONAL"
       ],
       "history": [],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "T-ZERO-ORTHOGONAL-B",
@@ -6769,7 +6914,8 @@
         "T-ZERO-ORTHOGONAL"
       ],
       "history": [],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "T-ZERO-ORTHOGONAL-C",
@@ -6812,7 +6958,8 @@
         "T-ZERO-ORTHOGONAL"
       ],
       "history": [],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "T-ZERO-ORTHOGONAL-D",
@@ -6852,7 +6999,8 @@
         "T-ZERO-ORTHOGONAL"
       ],
       "history": [],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "T-EXISTENCE-ZERO",
@@ -6914,7 +7062,8 @@
         "B-ZERO-PRESERVE"
       ],
       "history": [],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "T-SPACE-EXPLORATION",
@@ -6961,7 +7110,8 @@
         "B-PART-WHOLE"
       ],
       "history": [],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "T-LOOK-INSIDE",
@@ -7008,7 +7158,8 @@
         "B-ZERO-PRESERVE"
       ],
       "history": [],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "T-IRREVERSIBLE-FORMATION",
@@ -7057,7 +7208,8 @@
         "T-STABLE-FORM-Q"
       ],
       "history": [],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "T-FRACTAL-PROPERTIES-Q",
@@ -7096,7 +7248,8 @@
         "B-PART-WHOLE"
       ],
       "history": [],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "T-GOR-MEANING",
@@ -7142,7 +7295,8 @@
           "change": "reclassified from backbone-rule / OPEN to method-rule / governance: a project-definition direction, not a claim"
         }
       ],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "B-ZERO-LOSS",
@@ -7190,7 +7344,9 @@
       "related": [
         "B-ZERO-PRESERVE",
         "T-Q.zero-internal-inference",
-        "Q-R4-8"
+        "Q-R4-8",
+        "B-ZERO-INTERNAL-CHANGE",
+        "B-JOINT-ALTERNATIVES"
       ],
       "history": [
         {
@@ -7198,7 +7354,27 @@
           "change": "split out of B-ZERO-PRESERVE, which had carried this premise; its wording moved here unchanged"
         }
       ],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Speculative mapping",
+        "breadth": "one configuration",
+        "backboneSupport": 10,
+        "slopRisk": 40,
+        "why": "No card shows information destroyed by leaving a natural zero. The nearest exact result (W1d) concerns change inside the zero, which is a different operation.",
+        "increase": "A construction where leaving a zero and returning provably loses a relation, compared with a zero-preserving route.",
+        "falsify": "Natural zeros where leaving and returning always loses nothing.",
+        "classification": "EXAMPLE",
+        "validity": {
+          "construction": "not-yet",
+          "generalization": "not-yet",
+          "transfer": "not-yet",
+          "failureCondition": "pass",
+          "outOfSample": "not-yet"
+        },
+        "branchState": "low-confidence-active",
+        "failures": []
+      }
     },
     {
       "id": "T-R4-TETRA",
@@ -7291,7 +7467,8 @@
         "Q-R4-8"
       ],
       "history": [],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "T-R4-GENERAL",
@@ -7343,10 +7520,12 @@
       "related": [
         "T-R4-TETRA",
         "Q-R4-3",
-        "Q-R4-7"
+        "Q-R4-7",
+        "T-SIMPLEX-FAMILY"
       ],
       "history": [],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "T-R4-DERIVED",
@@ -7407,13 +7586,19 @@
         "T-ZERO-ORTHOGONAL-C"
       ],
       "history": [],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "T-R4-STAGE2",
       "label": "Stage 2's tetrahedron is an exact realization of the R4 construction",
       "words": "Stage 2 tetrahedral cancellation ← exact realization of projected R4 orthonormal basis",
-      "variants": [],
+      "variants": [
+        {
+          "words": "Stage 2 is an exact coordinate realization of a configuration that is orthogonally equivalent to the projected R^4 construction.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
       "normalizedStatement": "ORTHOGONALLY EQUIVALENT: under the isometry Φ: 1⊥ → ℝ³, x ↦ (h₁·x, h₂·x, h₃·x) with h₁ = ½(1,1,−1,−1), h₂ = ½(1,−1,1,−1), h₃ = ½(1,−1,−1,1), Φ(uᵢ) = TETRAᵢ with no permutation and no sign; Stage 2 starts at 1.6·TETRA.",
       "origin": "user",
       "kind": "established",
@@ -7441,7 +7626,8 @@
         "G2i"
       ],
       "sourceDocs": [
-        "research/constructions/r4_tetrahedral_zero.md"
+        "research/constructions/r4_tetrahedral_zero.md",
+        "docs/restructure_decisions.md"
       ],
       "auditRef": "construction 5.4",
       "audit": {
@@ -7458,8 +7644,33 @@
         "T-R4-TETRA",
         "T-HIDDEN-FAMILY"
       ],
-      "history": [],
-      "relatedActsRev3": []
+      "history": [
+        {
+          "date": "2026-11-12b",
+          "change": "precise wording adopted (Nadia): ORTHOGONALLY EQUIVALENT, not \"exactly equivalent\"; an isometry H → R^3 must be chosen"
+        }
+      ],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Constructive example",
+        "breadth": "one configuration",
+        "backboneSupport": 10,
+        "slopRisk": 5,
+        "why": "An exact coordinate identity computed from the app's own TETRA. It records provenance only. It says nothing about what a zero carries.",
+        "increase": "None needed; it is a provenance fact.",
+        "falsify": "A change to TETRA that breaks G2i.",
+        "classification": "EXAMPLE",
+        "validity": {
+          "construction": "pass",
+          "generalization": "n/a",
+          "transfer": "n/a",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": []
+      }
     },
     {
       "id": "B-HIGHER-GEOMETRY-CHAIN",
@@ -7513,10 +7724,31 @@
         "B-HIGHER-GEOMETRY",
         "T-R4-DERIVED",
         "Q-R4-6",
-        "Q-R4-8"
+        "Q-R4-8",
+        "T-ZERO-CONNECTOR"
       ],
       "history": [],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Project-derived theorem",
+        "breadth": "one mathematical family",
+        "backboneSupport": 40,
+        "slopRisk": 15,
+        "why": "The chain holds exactly for every zero-sum configuration with a tight Gram (G3d), and fails for the rest. Mass balance shows the same structure in an independent system with equal masses.",
+        "increase": "The weighted mass-balance reconstruction, and a non-linear instance.",
+        "falsify": "An independent system where the chain is claimed but the Gram is not tight.",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "not-yet"
+        },
+        "branchState": "active",
+        "failures": []
+      }
     },
     {
       "id": "Q-R4-1",
@@ -7526,14 +7758,23 @@
       "normalizedStatement": null,
       "origin": "user",
       "kind": "open-question",
-      "status": "open",
+      "status": "established",
       "evidenceFor": [
         {
+          "ref": "card:G3b",
+          "note": "with the source class known, everything survives except the sign of one normal and the ambient isometry"
+        },
+        {
           "ref": "card:G2j",
-          "note": "a first exact piece: differences survive, only the centroid is removed; not an answer"
+          "note": "differences survive exactly"
         }
       ],
-      "evidenceAgainst": [],
+      "evidenceAgainst": [
+        {
+          "ref": "card:G4c",
+          "note": "with no source class, only the Gram matrix survives; the removed relation is not determined"
+        }
+      ],
       "boundaries": [],
       "supersededBy": null,
       "supersedes": null,
@@ -7542,7 +7783,9 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
-        "G2j"
+        "G2j",
+        "G3b",
+        "G4c"
       ],
       "sourceDocs": [
         "docs/restructure_decisions.md"
@@ -7557,23 +7800,74 @@
       "researchMode": "theorem-target",
       "researchDirection": "outside-in",
       "construction": null,
-      "proofTarget": null,
+      "proofTarget": {
+        "targetStatement": "What information about the original orthonormal basis survives in the projected tetrahedral zero-sum configuration?",
+        "targetSource": "docs/restructure_decisions.md",
+        "requiredObjects": [],
+        "requiredMaps": [],
+        "candidateInvariants": [],
+        "requiredEquivalences": [],
+        "proofObligations": [],
+        "exactSearchQueries": [],
+        "knownTheorems": [],
+        "unresolvedObligations": [],
+        "previousTargets": [],
+        "lastResearchOutcome": "proved"
+      },
       "related": [
         "T-R4-TETRA"
       ],
-      "history": [],
-      "relatedActsRev3": []
+      "history": [
+        {
+          "date": "2026-11-12b",
+          "change": "resolved at the application pass: established, outcome proved"
+        }
+      ],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Project-derived theorem",
+        "breadth": "one mathematical family",
+        "backboneSupport": 35,
+        "slopRisk": 10,
+        "why": "With the source class known, everything survives except one sign and an isometry. With no class, only the Gram matrix survives. The answer depends on an assumption, which is stated.",
+        "increase": "A source-class inference from the target alone.",
+        "falsify": "A configuration where the stated survivors are not recoverable within the class.",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "not-yet"
+        },
+        "branchState": "active",
+        "failures": []
+      }
     },
     {
       "id": "Q-R4-2",
       "label": "R4 construction question Q-R4-2",
       "words": "Given only the tetrahedral zero-sum configuration in H, can the R^4 orthogonal-source construction be reconstructed uniquely, up to a natural equivalence?",
       "variants": [],
-      "normalizedStatement": null,
+      "normalizedStatement": "PROVED UNDER EQUIVALENCE (ambient orthogonal transformation; vertex permutation; sign of the normal), assuming an orthonormal source and an orthogonal projection onto the span: f_i = v_i + w with |w| = ½, w ⊥ span.",
       "origin": "user",
       "kind": "open-question",
-      "status": "open",
-      "evidenceFor": [],
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:G3a",
+          "note": "Nadia's e_i = v_i + ½n is orthonormal"
+        },
+        {
+          "ref": "card:G3b",
+          "note": "unique up to ±n and the ambient isometry fixing the span"
+        },
+        {
+          "ref": "card:G3n",
+          "note": "every n"
+        }
+      ],
       "evidenceAgainst": [],
       "boundaries": [],
       "supersededBy": null,
@@ -7582,7 +7876,11 @@
         "III"
       ],
       "relatedObjects": [],
-      "relatedCards": [],
+      "relatedCards": [
+        "G3a",
+        "G3b",
+        "G3n"
+      ],
       "sourceDocs": [
         "docs/restructure_decisions.md"
       ],
@@ -7596,12 +7894,50 @@
       "researchMode": "theorem-target",
       "researchDirection": "outside-in",
       "construction": null,
-      "proofTarget": null,
+      "proofTarget": {
+        "targetStatement": "Given only the tetrahedral zero-sum configuration in H, can the R^4 orthogonal-source construction be reconstructed uniquely, up to a natural equivalence?",
+        "targetSource": "docs/restructure_decisions.md",
+        "requiredObjects": [],
+        "requiredMaps": [],
+        "candidateInvariants": [],
+        "requiredEquivalences": [],
+        "proofObligations": [],
+        "exactSearchQueries": [],
+        "knownTheorems": [],
+        "unresolvedObligations": [],
+        "previousTargets": [],
+        "lastResearchOutcome": "proved"
+      },
       "related": [
         "T-R4-TETRA"
       ],
-      "history": [],
-      "relatedActsRev3": []
+      "history": [
+        {
+          "date": "2026-11-12b",
+          "change": "resolved at the application pass: established, outcome proved"
+        }
+      ],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Project-derived theorem",
+        "breadth": "one mathematical family",
+        "backboneSupport": 40,
+        "slopRisk": 10,
+        "why": "Under an orthonormal source and orthogonal projection, the zero-sum configuration determines the source up to the sign of one normal and an ambient isometry (G3b, G3n). That is an exact case of hidden information being recoverable from the larger geometry. The source class is assumed, not inferred from the target, and G4c shows recovery fails without it.",
+        "increase": "Recovery with the source class inferred from target-side data, or the same reconstruction on an independent system (weighted mass balance).",
+        "falsify": "Two non-isometric orthonormal sources for one configuration within the class (ruled out by G3b), or the reconstruction failing on every independent system.",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "not-yet"
+        },
+        "branchState": "active",
+        "failures": []
+      }
     },
     {
       "id": "Q-R4-3",
@@ -7663,10 +7999,12 @@
       },
       "related": [
         "T-R4-TETRA",
+        "T-SIMPLEX-FAMILY",
         "T-R4-GENERAL"
       ],
       "history": [],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": null
     },
     {
       "id": "Q-R4-4",
@@ -7676,8 +8014,13 @@
       "normalizedStatement": null,
       "origin": "user",
       "kind": "open-question",
-      "status": "open",
-      "evidenceFor": [],
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:G3c",
+          "note": "zero sum forces Gram ∝ I − J/n; equal Gram gives an isometry of spans"
+        }
+      ],
       "evidenceAgainst": [],
       "boundaries": [],
       "supersededBy": null,
@@ -7686,7 +8029,9 @@
         "III"
       ],
       "relatedObjects": [],
-      "relatedCards": [],
+      "relatedCards": [
+        "G3c"
+      ],
       "sourceDocs": [
         "docs/restructure_decisions.md"
       ],
@@ -7700,12 +8045,50 @@
       "researchMode": "theorem-target",
       "researchDirection": "outside-in",
       "construction": null,
-      "proofTarget": null,
+      "proofTarget": {
+        "targetStatement": "Does every regular simplex zero-sum configuration arise, up to orthogonal equivalence and scale, from this projection construction?",
+        "targetSource": "docs/restructure_decisions.md",
+        "requiredObjects": [],
+        "requiredMaps": [],
+        "candidateInvariants": [],
+        "requiredEquivalences": [],
+        "proofObligations": [],
+        "exactSearchQueries": [],
+        "knownTheorems": [],
+        "unresolvedObligations": [],
+        "previousTargets": [],
+        "lastResearchOutcome": "proved"
+      },
       "related": [
         "T-R4-TETRA"
       ],
-      "history": [],
-      "relatedActsRev3": []
+      "history": [
+        {
+          "date": "2026-11-12b",
+          "change": "resolved at the application pass: established, outcome proved"
+        }
+      ],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Known theorem / textbook identity",
+        "breadth": "one mathematical family",
+        "backboneSupport": 25,
+        "slopRisk": 5,
+        "why": "Zero sum forces the Gram matrix of a regular simplex to a multiple of I − J/n, so every such configuration is the projected basis up to scale and isometry. This is standard linear algebra.",
+        "increase": "An independent system whose zero has this exact Gram structure for a reason not built in.",
+        "falsify": "A regular-simplex zero-sum configuration with a different Gram (impossible by G3c).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "not-yet",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": []
+      }
     },
     {
       "id": "Q-R4-5",
@@ -7715,11 +8098,15 @@
       "normalizedStatement": null,
       "origin": "user",
       "kind": "open-question",
-      "status": "open",
+      "status": "established",
       "evidenceFor": [
         {
-          "ref": "card:G2j",
-          "note": "a first exact piece: differences survive, only the centroid is removed; not an answer"
+          "ref": "card:G2g",
+          "note": "the full Gram"
+        },
+        {
+          "ref": "card:G3d",
+          "note": "an orthonormal source exists iff a multiple of the Gram is idempotent; the zero sum alone (G1 = 0) cannot guarantee it"
         }
       ],
       "evidenceAgainst": [],
@@ -7731,7 +8118,8 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
-        "G2j"
+        "G2g",
+        "G3d"
       ],
       "sourceDocs": [
         "docs/restructure_decisions.md"
@@ -7746,12 +8134,50 @@
       "researchMode": "theorem-target",
       "researchDirection": "outside-in",
       "construction": null,
-      "proofTarget": null,
+      "proofTarget": {
+        "targetStatement": "What properties of the higher-dimensional source are encoded by Σ_i v_i = 0, versus by the stronger Gram-matrix structure G_ij = 3/4 (i = j), −1/4 (i ≠ j)?",
+        "targetSource": "docs/restructure_decisions.md",
+        "requiredObjects": [],
+        "requiredMaps": [],
+        "candidateInvariants": [],
+        "requiredEquivalences": [],
+        "proofObligations": [],
+        "exactSearchQueries": [],
+        "knownTheorems": [],
+        "unresolvedObligations": [],
+        "previousTargets": [],
+        "lastResearchOutcome": "proved"
+      },
       "related": [
         "T-R4-TETRA"
       ],
-      "history": [],
-      "relatedActsRev3": []
+      "history": [
+        {
+          "date": "2026-11-12b",
+          "change": "resolved at the application pass: established, outcome proved"
+        }
+      ],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Project-derived theorem",
+        "breadth": "one mathematical family",
+        "backboneSupport": 35,
+        "slopRisk": 10,
+        "why": "The zero sum is one linear condition, G1 = 0. The full Gram fixes the configuration up to isometry. An orthonormal source of this type exists exactly when a multiple of the Gram is idempotent, which the zero sum alone does not guarantee.",
+        "increase": "The same separation of strengths on an independent system.",
+        "falsify": "A zero-sum configuration with non-tight Gram that still has an orthonormal source of this type (ruled out by G3d).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "not-yet",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": []
+      }
     },
     {
       "id": "Q-R4-6",
@@ -7761,8 +8187,13 @@
       "normalizedStatement": null,
       "origin": "user",
       "kind": "open-question",
-      "status": "open",
-      "evidenceFor": [],
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:G3d",
+          "note": "two readings: any orthogonal projection of an orthonormal basis (tight Gram); or projection onto 1⊥ (regular simplices only, G3c)"
+        }
+      ],
       "evidenceAgainst": [],
       "boundaries": [],
       "supersededBy": null,
@@ -7771,7 +8202,9 @@
         "III"
       ],
       "relatedObjects": [],
-      "relatedCards": [],
+      "relatedCards": [
+        "G3d"
+      ],
       "sourceDocs": [
         "docs/restructure_decisions.md"
       ],
@@ -7785,13 +8218,51 @@
       "researchMode": "theorem-target",
       "researchDirection": "outside-in",
       "construction": null,
-      "proofTarget": null,
+      "proofTarget": {
+        "targetStatement": "Which lower-dimensional zero-sum configurations do not admit an orthogonal-source construction of this type?",
+        "targetSource": "docs/restructure_decisions.md",
+        "requiredObjects": [],
+        "requiredMaps": [],
+        "candidateInvariants": [],
+        "requiredEquivalences": [],
+        "proofObligations": [],
+        "exactSearchQueries": [],
+        "knownTheorems": [],
+        "unresolvedObligations": [],
+        "previousTargets": [],
+        "lastResearchOutcome": "proved"
+      },
       "related": [
         "T-R4-TETRA",
         "B-HIGHER-GEOMETRY-CHAIN"
       ],
-      "history": [],
-      "relatedActsRev3": []
+      "history": [
+        {
+          "date": "2026-11-12b",
+          "change": "resolved at the application pass: established, outcome proved"
+        }
+      ],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Project-derived theorem",
+        "breadth": "one mathematical family",
+        "backboneSupport": 40,
+        "slopRisk": 10,
+        "why": "It is an exact boundary: the chain zero ← relational structure ← orthonormal organization holds precisely for zero-sum configurations with a single nonzero Gram eigenvalue. The counterexample (1,0), (0,1), (−1,−1) shows that generic zero sums lack such a source. This bounds the backbone as much as it supports it.",
+        "increase": "A larger source class that covers non-tight zero sums.",
+        "falsify": "An orthonormal-basis projection with non-idempotent Gram (impossible).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "not-yet",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": []
+      }
     },
     {
       "id": "Q-R4-7",
@@ -7802,8 +8273,26 @@
       "origin": "assistant-proposed",
       "kind": "open-question",
       "status": "open",
-      "evidenceFor": [],
-      "evidenceAgainst": [],
+      "evidenceFor": [
+        {
+          "ref": "card:G2k",
+          "note": "every exact Stage 1 state is the n = 2 member"
+        },
+        {
+          "ref": "card:G2i",
+          "note": "Stage 2's first state is the n = 4 member"
+        },
+        {
+          "ref": "card:G4m",
+          "note": "Stage 3 with equal masses at e_i gives the family"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:G3d",
+          "note": "Stage 2's varied-magnitude states and Stage 3 in general are not members"
+        }
+      ],
       "boundaries": [],
       "supersededBy": null,
       "supersedes": null,
@@ -7811,7 +8300,12 @@
         "III"
       ],
       "relatedObjects": [],
-      "relatedCards": [],
+      "relatedCards": [
+        "G2i",
+        "G2k",
+        "G3d",
+        "G4m"
+      ],
       "sourceDocs": [
         "research/constructions/r4_tetrahedral_zero.md"
       ],
@@ -7825,13 +8319,52 @@
       "researchMode": "theorem-target",
       "researchDirection": "outside-in",
       "construction": null,
-      "proofTarget": null,
+      "proofTarget": {
+        "targetStatement": "Does the Chapter I sequence instantiate one family indexed by n?",
+        "targetSource": "research/constructions/r4_tetrahedral_zero.md",
+        "requiredObjects": [],
+        "requiredMaps": [],
+        "candidateInvariants": [],
+        "requiredEquivalences": [],
+        "proofObligations": [],
+        "exactSearchQueries": [],
+        "knownTheorems": [],
+        "unresolvedObligations": [],
+        "previousTargets": [],
+        "lastResearchOutcome": "special-case"
+      },
       "related": [
         "T-R4-TETRA",
+        "T-SIMPLEX-FAMILY",
         "T-R4-GENERAL"
       ],
-      "history": [],
-      "relatedActsRev3": []
+      "history": [
+        {
+          "date": "2026-11-12b",
+          "change": "resolved at the application pass: open, outcome special-case"
+        }
+      ],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Constructive example",
+        "breadth": "one mathematical family",
+        "backboneSupport": 15,
+        "slopRisk": 35,
+        "why": "Stage 1 fits trivially, since every opposed pair is the n = 2 member. Stage 2's first state and equal-mass Stage 3 fit exactly. Varied-magnitude Stage 2 and general Stage 3 do not. The reading is retrospective.",
+        "increase": "A reason, independent of the construction, why Chapter I's configurations should lie in the family.",
+        "falsify": "Already partly falsified for later Stage 2 states and general Stage 3.",
+        "classification": "EXAMPLE",
+        "validity": {
+          "construction": "pass",
+          "generalization": "partial",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "low-confidence-active",
+        "failures": []
+      }
     },
     {
       "id": "Q-R4-8",
@@ -7845,7 +8378,7 @@
       "evidenceFor": [],
       "evidenceAgainst": [],
       "boundaries": [],
-      "supersededBy": null,
+      "supersededBy": "Q-R4-8-INVERSE",
       "supersedes": null,
       "relatedActs": [
         "III"
@@ -7871,8 +8404,621 @@
         "B-ZERO-LOSS",
         "B-HIGHER-GEOMETRY-CHAIN"
       ],
+      "history": [
+        {
+          "date": "2026-11-12b",
+          "change": "split (Nadia): the established linear statement is T-ZERO-CONNECTOR-LINEAR; the inverse problem is Q-R4-8-INVERSE. The wording \"lower-dimensional zero\" is kept as written; current wording: a zero in the lower-dimensional representation"
+        }
+      ],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-SIMPLEX-FAMILY",
+      "label": "The dimension-indexed simplex family",
+      "words": "R^n orthogonal basis → 1⊥ ≅ R^(n-1) → regular simplex with zero centroid/resultant.",
+      "variants": [],
+      "normalizedStatement": "n = 2 opposed pair; n = 3 equilateral 120°; n = 4 tetrahedron; n = 5 4-simplex; … Σv_i = 0, |v_i|² = (n−1)/n, v_i·v_j = −1/n, normalized −1/(n−1).",
+      "origin": "established-support",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:G2n",
+          "note": ""
+        },
+        {
+          "ref": "card:G2j",
+          "note": ""
+        },
+        {
+          "ref": "card:G3c",
+          "note": "every regular-simplex zero-sum configuration is in it"
+        },
+        {
+          "ref": "card:G3n",
+          "note": "reconstructible up to sign"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Not every natural zero has this origin."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "G2j",
+        "G2n",
+        "G3c",
+        "G3n"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "application 8",
+      "audit": {
+        "before": "new",
+        "note": "application pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-R4-GENERAL",
+        "Q-R4-7",
+        "Q-R4-3"
+      ],
       "history": [],
-      "relatedActsRev3": []
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Known theorem / textbook identity",
+        "breadth": "one mathematical family",
+        "backboneSupport": 30,
+        "slopRisk": 5,
+        "why": "The family is standard: a centered standard simplex for every n. It lifts the construction-backed direction from one configuration to a family. It does not reach systems that were not built this way.",
+        "increase": "An independent system that produces a member of the family for a reason not built in.",
+        "falsify": "A member whose Gram is not a multiple of I − J/n.",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "not-yet"
+        },
+        "branchState": "active",
+        "failures": []
+      }
+    },
+    {
+      "id": "T-ZERO-CONNECTOR-LINEAR",
+      "label": "Zero as connector: the linear case",
+      "words": "source relation in ker L → zero in the target representation",
+      "variants": [],
+      "normalizedStatement": "For linear L: Σ L x_i = L(Σ x_i), so Σ L x_i = 0 iff Σ x_i ∈ ker L. With L known the source is determined mod ker L; with L unknown the zero alone does not determine the removed relation.",
+      "origin": "established-support",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:G4a",
+          "note": ""
+        },
+        {
+          "ref": "card:G4b",
+          "note": "recoverability with L known"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Does not establish T-ZERO-CONNECTOR in general.",
+        "The inverse problem without L is obstructed in general (G4c).",
+        "Nonlinear zeros (null vectors, |x|² = 0) are outside it."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "G4a",
+        "G4b"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "application 6–7",
+      "audit": {
+        "before": "new",
+        "note": "application pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-ZERO-CONNECTOR",
+        "Q-R4-8-INVERSE"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Known theorem / textbook identity",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 35,
+        "slopRisk": 15,
+        "why": "The statement is exact for every linear map and holds unchanged on four independent linear rows of the application matrix. In three of them it is only the textbook kernel statement. The inverse problem is obstructed without the map (G4c), and nonlinear zeros are outside it.",
+        "increase": "A nonlinear extension that reduces to it (Q-CONNECT-2), and recovery results for wider source classes (Q-CONNECT-1).",
+        "falsify": "None for the linear statement itself; the connector reading weakens wherever zeros are inherited rather than created.",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "pass",
+          "failureCondition": "pass",
+          "outOfSample": "not-yet"
+        },
+        "branchState": "active",
+        "failures": []
+      }
+    },
+    {
+      "id": "T-ZERO-CONNECTOR",
+      "label": "Zero as connector / interface (project hypothesis)",
+      "words": "A zero/resultant may more generally function as an interface between information in a larger geometry and what appears in a lower-dimensional representation.",
+      "variants": [
+        {
+          "words": "0 acts as a connector/interface between dimensional descriptions.",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "Zero is a connector/interface, not automatically a lower-dimensional object.",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "A zero may appear as a resultant in one representation while connecting to nonzero relations in a larger/source representation.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:G4a",
+          "note": "the linear case, exact"
+        },
+        {
+          "ref": "card:G4m",
+          "note": "an independent system with the same structure (mass balance)"
+        },
+        {
+          "ref": "card:G3b",
+          "note": "the removed relation recoverable when the source class is known"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:G4c",
+          "note": "the zero alone does not determine whether or which source relation was removed; a zero can be inherited"
+        },
+        {
+          "ref": "card:Z5a",
+          "note": "|x|² = 0 connects to no nonzero relation"
+        }
+      ],
+      "boundaries": [
+        "Not established by the linear case."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III",
+        "all"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "G3b",
+        "G4a",
+        "G4c",
+        "G4m",
+        "Z5a"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "application 6",
+      "audit": {
+        "before": "new",
+        "note": "application pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-ZERO-CONNECTOR-LINEAR",
+        "B-HIGHER-GEOMETRY",
+        "B-HIGHER-GEOMETRY-CHAIN",
+        "Q-R4-8-INVERSE",
+        "Q-CONNECT-2"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Speculative mapping",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 30,
+        "slopRisk": 30,
+        "why": "The linear case is exact and transfers in the kernel sense. Recovering the source relation needs the map or the source class, and some zeros connect to nothing (|x|² = 0) or are inherited. The general interface claim goes beyond the mathematics so far.",
+        "increase": "A nonlinear template, and a system where the connector reading predicts something the kernel statement alone does not.",
+        "falsify": "Independent zeros repeatedly found to be inherited, with no removed source relation, or nonlinear zeros resisting every connector formulation.",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "partial",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "not-yet"
+        },
+        "branchState": "active",
+        "failures": []
+      }
+    },
+    {
+      "id": "Q-R4-8-INVERSE",
+      "label": "The inverse problem: recover the removed relation without the map",
+      "words": "Given only the target zero/configuration, and without already knowing L, can the removed source direction or larger geometry be recovered?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:G3b",
+          "note": "special case proved: orthonormal source, orthogonal projection: recovered up to sign"
+        },
+        {
+          "ref": "card:G3n",
+          "note": "every n"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:G4c",
+          "note": "exact obstruction without constraints on L or the source"
+        }
+      ],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": "Q-R4-8",
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "G3b",
+        "G3n",
+        "G4c"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "application 7",
+      "audit": {
+        "before": "new",
+        "note": "application pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": {
+        "targetStatement": "Given only the target zero/configuration, and without already knowing L, can the removed source direction or larger geometry be recovered?",
+        "targetSource": "docs/restructure_decisions.md",
+        "requiredObjects": [],
+        "requiredMaps": [],
+        "candidateInvariants": [],
+        "requiredEquivalences": [],
+        "proofObligations": [],
+        "exactSearchQueries": [],
+        "knownTheorems": [],
+        "unresolvedObligations": [],
+        "previousTargets": [],
+        "lastResearchOutcome": "special-case"
+      },
+      "related": [
+        "Q-CONNECT-1",
+        "T-ZERO-CONNECTOR",
+        "T-ZERO-CONNECTOR-LINEAR"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Project-derived theorem",
+        "breadth": "one mathematical family",
+        "backboneSupport": 35,
+        "slopRisk": 15,
+        "why": "Special case proved: with an orthonormal source, the removed direction is recovered up to sign (G3b). Exact obstruction without constraints (G4c). The general question is open.",
+        "increase": "Recovery for a wider source class.",
+        "falsify": "A proof that no target-side data can identify the source class.",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "partial",
+          "transfer": "not-yet",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": []
+      }
+    },
+    {
+      "id": "Q-CONNECT-1",
+      "label": "Which source classes make the removed relation recoverable?",
+      "words": "Which source classes, other than orthonormal sets, make the removed relation recoverable from the target zero alone?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "assistant-proposed",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "research/constructions/zero_connector_linear.md"
+      ],
+      "auditRef": "connector 10",
+      "audit": {
+        "before": "new",
+        "note": "application pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "Q-R4-8-INVERSE"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "Q-CONNECT-2",
+      "label": "A connector template for nonlinear zeros?",
+      "words": "Is there a connector template for nonlinear zero conditions",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "assistant-proposed",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "research/constructions/zero_connector_linear.md"
+      ],
+      "auditRef": "connector 10",
+      "audit": {
+        "before": "new",
+        "note": "application pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-ZERO-CONNECTOR",
+        "T-H1-TWO-ZEROS"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "B-ZERO-INTERNAL-CHANGE",
+      "label": "Change inside the same zero",
+      "words": "What information can change, be destroyed, become distinguishable, or become inaccessible while the system remains inside the same defining zero condition?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:Q1h",
+          "note": "S² measured on |↑↓⟩ keeps S_z = 0 and changes the state"
+        },
+        {
+          "ref": "card:W1d",
+          "note": "the A–B coherence (1/2) becomes 0 while S_z = 0 holds"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Distinct from leaving the zero (B-ZERO-LOSS) and from state-preserving interrogation; the three operations are not merged."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I",
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "Q1h",
+        "W1d"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "application 9",
+      "audit": {
+        "before": "new",
+        "note": "application pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "B-ZERO-PRESERVE",
+        "B-ZERO-LOSS",
+        "B-JOINT-ALTERNATIVES"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Constructive example",
+        "breadth": "one configuration",
+        "backboneSupport": 25,
+        "slopRisk": 25,
+        "why": "One exact instance exists: S² measured on |↑↓⟩ keeps S_z = 0 and destroys the A–B coherence (W1d). There is no second system yet.",
+        "increase": "A classical instance (for example, inside Stage 2's zero set) where an operation within the zero destroys a relation.",
+        "falsify": "Every operation inside every studied zero set preserving all relations.",
+        "classification": "EXAMPLE",
+        "validity": {
+          "construction": "pass",
+          "generalization": "not-yet",
+          "transfer": "not-yet",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": []
+      }
+    },
+    {
+      "id": "B-JOINT-ALTERNATIVES",
+      "label": "Information that destroys a joint relation (measurement branch)",
+      "words": "Can obtaining one form of information destroy another relation that existed only while alternatives remained jointly represented?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:W1a",
+          "note": "two-path reference: the cross term is weighted by the marker overlap"
+        },
+        {
+          "ref": "card:W1b",
+          "note": "orthogonal markers (full which-path information) zero the cross term"
+        },
+        {
+          "ref": "card:W1c",
+          "note": "V² + D² = 1"
+        },
+        {
+          "ref": "card:W1d",
+          "note": "the same structure inside stage 2b, with the defining zero preserved"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "No claim that a conscious viewer causes collapse; the terms are measurement, interaction, which-path information.",
+        "Not claimed to be the same mechanism as information loss at a natural zero; the exact relation is to be constructed first.",
+        "No physical data used."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "W1a",
+        "W1b",
+        "W1c",
+        "W1d"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "application 10",
+      "audit": {
+        "before": "new",
+        "note": "application pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "B-ZERO-INTERNAL-CHANGE",
+        "B-ZERO-LOSS",
+        "T-H1-SIGNATURE"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Constructive example",
+        "breadth": "one mathematical family",
+        "backboneSupport": 25,
+        "slopRisk": 35,
+        "why": "Established physics: which-path information (orthogonal markers) zeroes the interference cross term, with V² + D² = 1. The same projective structure occurs inside stage 2b with the defining zero preserved. That this is the project's zero mechanism is interpretation, and no physical data were used.",
+        "increase": "An exact map from the marker model to zero-preserving interrogation, or a non-quantum system with the same structure.",
+        "falsify": "The exact relation failing to hold beyond the projective-measurement family.",
+        "classification": "EXAMPLE",
+        "validity": {
+          "construction": "pass",
+          "generalization": "partial",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "not-yet"
+        },
+        "branchState": "active",
+        "failures": []
+      }
     }
   ]
 }

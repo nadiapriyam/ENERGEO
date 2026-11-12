@@ -78,3 +78,14 @@ def simplex(k):
     return diffs_kept and equidistant and spanning and centroid_removed
 card("G2j", "Q-R4-3 in project notation: v_i - v_j = P(e_i - e_j) = e_i - e_j because (e_i - e_j) . 1 = 0, so |v_i - v_j|^2 = 2 for all i != j: the n projected points are pairwise equidistant and affinely span the (n-1)-dimensional 1-perp, i.e. a regular simplex; v_i = e_i minus the centroid (1/n) 1 of the source points; checked exactly for n = 2..10",
      all(simplex(k) for k in range(2, 11)))
+
+# G2k: Stage 1's exact states are the n = 2 member, up to rotation and common scale
+a2, b2 = sp.symbols('a b', real=True)
+vv = sp.Matrix([a2, b2]); L2 = sp.sqrt(a2**2 + b2**2)
+p1 = sp.Matrix([R(1, 2), R(-1, 2)])                    # P_2 e_1 = -P_2 e_2
+cth, sth = (a2 - b2) / (sp.sqrt(2) * L2), (a2 + b2) / (sp.sqrt(2) * L2)
+Q2 = sp.Matrix([[cth, -sth], [sth, cth]])
+s2 = sp.sqrt(2) * L2
+card("G2k", "every exact Stage 1 state (v, -v), v = (a, b) != 0, is a rotation and common scale of the n = 2 member (P_2 e_1, P_2 e_2) = ((1/2,-1/2), (-1/2,1/2)): Q^T Q = I, det Q = 1, Q(s P_2 e_1) = v and Q(s P_2 e_2) = -v with s = sqrt2 |v|",
+     sp.simplify(Q2.T * Q2 - sp.eye(2)) == sp.zeros(2, 2) and sp.simplify(Q2.det() - 1) == 0
+     and sp.simplify(Q2 * (s2 * p1) - vv) == sp.zeros(2, 1) and sp.simplify(Q2 * (s2 * (-p1)) + vv) == sp.zeros(2, 1))

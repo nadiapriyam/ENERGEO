@@ -10,6 +10,10 @@ Read these before any work, in this order:
 
 **Research direction (primary):** outside-in geometry construction. **Construct first. Classify second. Preserve the zero. Investigate its geometry. Known structures are examples, not the boundary of the search space. Look from the outside in.** Existing mathematics is a reference library and validation surface, matched after a geometry has been constructed. It is not the ontology the geometry is assembled from. Order: foundational geometry → mathematical guide (Fourier, bases, forms, …) → translator (energy, Energeo, applications).
 
+**Permanent rules:** Zero is a connector/interface, not automatically a lower-dimensional object. A construction must survive independent application before it can count as backbone proof. Low support means continue carefully, not discard. Archive only after repeated independent mathematical/empirical failure. Do not invent a geometry that only works because we designed it around the answer.
+
+**Every substantive research result** carries a Backbone Support % and an AI Slop / Delusion Risk %, with the audit and application-validity tests of `docs/research_method.md` §12. Transfer tests go in `research/application_matrix.md`. A one-context construction is an EXAMPLE, not a BACKBONE PROOF.
+
 **Research stance (within construction):** Every user-origin theory is a target theorem. Search narrowly for its exact representation, proof, invariant, transformation law or obstruction. Do not begin with plausibility assessment or adjacent analogies. Search as if the theorem holds; report only what the mathematics establishes.
 
 Reported status (ESTABLISHED, DERIVED CONNECTION, HYPOTHESIS, OPEN QUESTION) is unchanged by this stance. It records how much is proved, never how hard to search. `test/method.test.js` guards this rule.
@@ -47,4 +51,10 @@ Reported status (ESTABLISHED, DERIVED CONNECTION, HYPOTHESIS, OPEN QUESTION) is 
 - Search for a named structure before constructing the relational object (derive the vectors, their Gram matrix and their relations first; compare with named theory after).
 - Imply in learner copy that the R4 tetrahedral construction says anything about physical protons or a physical fourth dimension.
 - Map Nadia's geometry into a known theory, or choose a structure (Hilbert space, Fourier, a group, a fiber, …) because existing mathematics uses it. Map known theory into the project's geometry, where justified, after construction.
+- Call zero "the lower-dimensional object", or say a higher dimension automatically explains a zero.
+- Use vague praise ("stronger", "closer", "promising", "interesting", "important", "suggestive") without the exact mathematical change, the Backbone Support % and why.
+- Award 100% Backbone Support because a bespoke example fits, or alter a template to force agreement in the application matrix.
+- Discard a branch because its percentages are low. Archive (never delete) only after repeated independent failure, keeping its provenance and failed reasoning.
+- Treat a mathematical construction as physical validation (e.g. of proton/MRI behavior) because a visual resembles it; physical validation needs physical theory or data.
+- Claim that a conscious observer causes collapse; use "measurement", "interaction" or "which-path information".
 - Delete, or silently rewrite, a theory of Nadia's because it is speculative, unproven or contradicted. Every user-origin theory has a record in `research/theories.json` with its original wording; evidence against it is attached, never used to erase it (`docs/restructure_decisions.md`, governing rule).

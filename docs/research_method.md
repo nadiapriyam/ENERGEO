@@ -6,15 +6,28 @@ do not restate it. It rests on two of Nadia's backbone decisions in `docs/restru
 - **Research method: theorem-seeking.** It is kept, now as the secondary mode.
 - **Outside-in geometry construction.** It sets the primary direction.
 
-It governs how research is conducted. It does not change the epistemic-status system.
+It governs how research is conducted. It does not change the epistemic-status system. Every substantive result also
+carries the ratings of §12.
+
+> construct first → derive consequences → test across contexts → compare to existing mathematics
 
 > **Construct first. Classify second.**
 >
 > **Preserve the zero. Investigate its geometry.**
 >
+> **Zero is a connector/interface, not automatically a lower-dimensional object.**
+>
 > **Known structures are examples, not the boundary of the search space.**
 >
 > **Look from the outside in.**
+>
+> **A construction must survive independent application before it can count as backbone proof.**
+>
+> **Low support means continue carefully, not discard.**
+>
+> **Archive only after repeated independent mathematical/empirical failure.**
+>
+> **Do not invent a geometry that only works because we designed it around the answer.**
 
 ---
 
@@ -103,6 +116,32 @@ The final common structure is not decided in advance to be an equation, an invar
 category, a manifold, a Fourier representation, or any currently named object. The geometry is primary; its
 classification is secondary.
 
+**Representation-change template.** Every construction records:
+
+- the source object;
+- the map / representation;
+- the target object;
+- what survives;
+- what collapses;
+- what becomes zero;
+- what remains reconstructible (with the map known, and with it unknown);
+- what information is lost.
+
+**Recurring invariant question.** After every representation change, ask: *What survived?* and *What disappeared or
+collapsed?* The invariant is not assumed known in advance. This question recurs throughout the project:
+
+- R4 → R3;
+- circle generation;
+- Fourier;
+- phase / magnitude;
+- quadratic geometry;
+- wavelets / scattering;
+- information geometry;
+- relativity;
+- Energeo.
+
+It has no separate Act.
+
 ## 4. The zero program
 
 ### 4.1 Zero Preservation Rule (permanent)
@@ -160,8 +199,19 @@ The measurement distinguishes A from B without leaving the zero. That is the rul
 
 > The most likely way to find the hidden information is to look at the bigger picture: the geometry of the origin geometry — for example, the four-dimensional geometry behind a three-dimensional manifestation.
 
-During construction the premise holds: *the zero/lower-dimensional state is carrying structure inherited from a
-larger geometry.* Its consequences are constructed:
+**Zero as connector.** A zero may appear as a resultant in one representation while connecting to nonzero relations in
+a larger/source representation. The zero is an interface between descriptions; it is not "the lower-dimensional
+object", and a higher dimension does not automatically explain it.
+
+- **Established linear case** (G4a): Σᵢ L xᵢ = L(Σᵢ xᵢ), so Σᵢ L xᵢ = 0 iff Σᵢ xᵢ ∈ ker L. A source relation in
+  ker L becomes a zero in the target.
+- **The project hypothesis** (`T-ZERO-CONNECTOR`) is broader and is not established by the linear case.
+- **The inverse problem** (`Q-R4-8-INVERSE`): without knowing L, the target zero alone does not determine whether,
+  or which, source relation was removed (G4c). With the source class known, it can be (G3b).
+
+*Superseded wording, kept as Nadia's:* "the zero/lower-dimensional state is carrying structure inherited from a
+larger geometry" (B-HIGHER-GEOMETRY's variants). During construction the premise holds in the connector form above.
+Its consequences are constructed:
 
 - If this is true, what must the larger geometry look like?
 - Which relations in the observed state would be shadows/restrictions of relations there?
@@ -188,6 +238,17 @@ known realizations to compare against afterwards. They do not limit what may be 
 
 Structures are named only once the mathematics establishes them. A zero-producing set is not called a kernel,
 fiber, manifold, orbit, variety, equivalence class or null space before that.
+
+### 4.4 Three operations, kept apart
+
+| Operation | Record | Example |
+|---|---|---|
+| Leave the zero | `B-ZERO-LOSS` (hypothesis: leaving may destroy information) | MRI's external field (motivating) |
+| Move or change within the zero | `B-ZERO-INTERNAL-CHANGE` (open: what changes, is destroyed, becomes distinguishable or inaccessible while the zero holds) | S² measured on \|↑↓⟩: S_z = 0 is kept, the A–B coherence is destroyed (Q1h, W1d) |
+| Interrogate structure without changing the underlying state | state-preserving interrogation | S² measured on its eigenstates A or B (Q1h); computing the Gram matrix of a configuration |
+
+Zero-preserving interrogation covers the second and third rows. The Zero Preservation Rule forbids only the first,
+done merely to obtain observability. These operations are not merged.
 
 ## 5. Anti-closure rule
 
@@ -437,3 +498,90 @@ one:
 - B: ⟨u, v⟩ = 0 identifies orthogonality;
 - C: a cancellation generated by a larger orthogonal organization;
 - D: orthogonality participating in stable form.
+
+## 12. Evaluation and anti-delusion (required in every substantive result)
+
+### 12.1 Two ratings
+
+**Backbone Support %:** how directly and deeply the result supports Nadia's actual Geometry of Representation
+backbone.
+
+| Range | Meaning |
+|---|---|
+| 0–20% | Little demonstrated relation to the backbone yet. |
+| 20–40% | A plausible structural correlation exists but lacks a general mechanism. |
+| 40–60% | An exact connection exists in one or a few cases, but generalization is weak. |
+| 60–80% | A general mathematical construction supports a significant portion of the backbone, but independent applications are still missing. |
+| 80–95% | General mathematics plus multiple independent realizations support the target. |
+| 95–99% | Nearly complete mathematical support with clear generalization and successful independent application. |
+| 100% | The specified proposition is completed under explicit assumptions and has survived application outside the examples used to construct it. Never awarded because a bespoke example can be made to fit. |
+
+**AI Slop / Delusion Risk %:** how much of the claimed connection depends on model-created interpretation, bespoke
+framing, unsupported extrapolation, or mathematics constructed only to make the target theory appear true.
+
+| Range | Meaning |
+|---|---|
+| 0–5% | Standard mathematics / exact derivation / textbook-level support. |
+| 5–20% | Established mathematics with a project-specific but controlled interpretation. |
+| 20–40% | Meaningful construction, but the mapping to the backbone requires interpretation. |
+| 40–60% | Substantial extrapolation beyond established mathematics. |
+| 60–80% | Mostly speculative structural correspondence. |
+| 80–100% | Little independent mathematical support; primarily model-generated narrative. |
+
+Words such as "stronger", "closer", "promising", "interesting", "important" or "suggestive" are not used without
+immediately giving three things: the exact mathematical change, the Backbone Support %, and why that percentage was
+assigned.
+
+### 12.2 The audit (every construction meant to support the backbone)
+
+```
+Mathematical status   Known theorem / textbook identity | Project-derived theorem | Constructive example
+                      | Empirical correlation | Speculative mapping
+Breadth               one configuration | one mathematical family | multiple independent mathematical families
+                      | multiple physical systems | real dataset(s)
+Backbone Support      XX%
+AI Slop / Delusion    XX%
+Why                   3–5 precise sentences
+Would increase        the exact missing derivation or application
+Would falsify         the exact failure condition
+```
+
+The registry carries this as each assessed record's `assessment` field.
+
+### 12.3 Application validity
+
+| Test | Question |
+|---|---|
+| Construction | Was the rule derived independently of the desired conclusion? |
+| Generalization | Does it apply to a class rather than one chosen example? |
+| Transfer | Can the same rule be used unchanged on a system/domain not used to construct it? |
+| Failure condition | What data/configuration would make the proposed structure fail? |
+| Out-of-sample | Where applicable, does it hold on new data or a new domain without changing the rule? |
+
+A one-context construction is an **EXAMPLE**, not a **BACKBONE PROOF**. The application matrix
+(`research/application_matrix.md`) records the transfer tests. The template is never altered to force agreement, and
+failures are recorded.
+
+### 12.4 Anti-slop guard
+
+Before a construction is accepted:
+
+1. *Would this mathematical statement still be meaningful if we removed all references to Nadia's project?* If no,
+   it is likely bespoke and gets a high AI Slop / Delusion Risk.
+2. *Does the same rule apply to objects that were not used when deriving it?* If no, it remains an example. If yes,
+   it may be a general construction.
+
+### 12.5 Low support is not discard
+
+Weak evidence ≠ discard. A branch with any coherent mathematical or empirical connection stays active; at low ratings
+it is a *low-confidence active branch*. The ratings are not a search-ending mechanism.
+
+A branch is archived only after repeated independent failure:
+
+- multiple derivation attempts fail;
+- multiple independent systems or datasets fail;
+- multiple reformulations fail;
+- or exact counterexamples repeatedly destroy the intended connection.
+
+Even then it is archived as an *inactive research branch*, never deleted, with its provenance and failed reasoning
+kept.

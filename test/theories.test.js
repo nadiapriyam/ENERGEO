@@ -15,7 +15,7 @@ const graph = JSON.parse(read('research/graph.json'));
 const ORIGINS = ['user', 'established-support', 'assistant-proposed'];
 const FIELDS = ['id', 'label', 'words', 'variants', 'normalizedStatement', 'origin', 'kind', 'status', 'evidenceFor', 'evidenceAgainst', 'boundaries',
   'supersededBy', 'supersedes', 'relatedActs', 'relatedObjects', 'relatedCards', 'sourceDocs', 'auditRef', 'audit', 'interactive', 'graphRecord',
-  'researchMode', 'researchDirection', 'construction', 'proofTarget', 'related', 'history', 'relatedActsRev3'];
+  'researchMode', 'researchDirection', 'construction', 'proofTarget', 'related', 'history', 'relatedActsRev3', 'assessment'];
 
 test('every record has the TheoryRecord fields and valid enums; ids are unique', () => {
   assert.equal(byId.size, T.length, 'duplicate id');

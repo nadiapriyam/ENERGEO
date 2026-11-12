@@ -809,3 +809,95 @@ Nadia's decisions, verbatim. LaTeX boxes and display math were converted to plai
 > derive the projected vectors → compute their Gram matrix → discover equal norms + equal pairwise products + zero sum → characterize the resulting object → only then compare to regular-simplex theory
 
 > secondary existing-theory match
+
+## Evaluation framework, connector wording and the application pass (2026-11-12)
+
+Nadia's decisions, verbatim. LaTeX boxes converted to plain text and lists joined; nothing else changed. They supersede earlier wording that conflicts with them.
+
+> construct first → derive consequences → test across contexts → compare to existing mathematics
+
+> Existing mathematics is validation, comparison, proof machinery and a source of known special cases.
+
+> It is not the boundary of the geometry we are constructing.
+
+### Ratings
+
+> How directly and deeply does this result support Nadia’s actual Geometry of Representation backbone?
+
+> How much of the claimed connection depends on model-created interpretation, bespoke framing, unsupported extrapolation, or mathematics constructed only to make the target theory appear true?
+
+> Do not award 100% because a bespoke example can be made to fit.
+
+> A high AI Slop score does not automatically kill the branch.
+
+> weak evidence ≠ discard
+
+> archive as inactive research branch
+
+> Preserve the provenance and failed reasoning.
+
+> The ratings are not a search-ending mechanism.
+
+> low-confidence active branch
+
+### Application validity and the anti-slop guard
+
+> Do not manufacture a theorem that works only for the example that inspired it.
+
+> Was the mathematical rule derived independently of the desired conclusion?
+
+> Does it apply to a class rather than one chosen example?
+
+> Can the same rule be used unchanged on a system/domain that was not used to construct it?
+
+> What data/configuration would cause the proposed structure to fail?
+
+> Where applicable, test on new data or a new domain without changing the rule.
+
+> Would this mathematical statement still be meaningful if we removed all references to Nadia’s project?
+
+> Does the same rule apply to objects that were not used when deriving it?
+
+### Terminology and the open questions
+
+> ORTHOGONALLY EQUIVALENT
+
+> Stage 2 is an exact coordinate realization of a configuration that is orthogonally equivalent to the projected R^4 construction.
+
+> Reconstruction is considered equivalent up to: ambient orthogonal transformation; permutation of the simplex vertices; choice/sign of the normal direction.
+
+> 0 acts as a connector/interface between dimensional descriptions.
+
+> source relation in ker L → zero in the target representation
+
+> A zero/resultant may more generally function as an interface between information in a larger geometry and what appears in a lower-dimensional representation.
+
+> Given only the target zero/configuration, and without already knowing L, can the removed source direction or larger geometry be recovered?
+
+> R^n orthogonal basis → 1⊥ ≅ R^(n-1) → regular simplex with zero centroid/resultant.
+
+> What information can change, be destroyed, become distinguishable, or become inaccessible while the system remains inside the same defining zero condition?
+
+> Can obtaining one form of information destroy another relation that existed only while alternatives remained jointly represented?
+
+> What is the visible object/result to the larger geometry that generated it?
+
+> A zero may appear as a resultant in one representation while connecting to nonzero relations in a larger/source representation.
+
+### Permanent rules
+
+> Construct first. Classify second.
+
+> Preserve the zero. Investigate its geometry.
+
+> Zero is a connector/interface, not automatically a lower-dimensional object.
+
+> Known structures are examples, not the boundary of the search space.
+
+> A construction must survive independent application before it can count as backbone proof.
+
+> Low support means continue carefully, not discard.
+
+> Archive only after repeated independent mathematical/empirical failure.
+
+> Do not invent a geometry that only works because we designed it around the answer.

@@ -9,6 +9,7 @@ P, G2, G3, MM, SPEC, RD = ('docs/claude_code_prompt.md', 'docs/gate2_answers.md'
 G4 = 'docs/gate4_decisions.md'
 AP = 'docs/author_philosophy.md'
 CX = 'research/constructions/r4_tetrahedral_zero.md'
+ZC = 'research/constructions/zero_connector_linear.md'
 H1, H2, H3 = 'research/hypotheses/H1.md', 'research/hypotheses/H2.md', 'research/hypotheses/H3.md'
 
 def line_from(path, start):
@@ -32,7 +33,7 @@ def T(id, label, words, src, origin, kind, status, *, norm=None, variants=(), pr
                   researchMode='theorem-target', researchDirection='outside-in',
                   construction=construction(**build) if build else None,
                   proofTarget=proof_target(**target) if target else None, related=list(related),
-                  history=[dict(date=d, change=c) for d, c in history], relatedActsRev3=[]))
+                  history=[dict(date=d, change=c) for d, c in history], relatedActsRev3=[], assessment=None))
 
 OUTCOMES = ('proved', 'known-theorem', 'constructive-realization', 'special-case', 'exact-obstruction', 'proof-obligation', 'candidate-new-class')
 def proof_target(targetStatement, source=RD, **kw):
@@ -438,8 +439,10 @@ T('B-FINITE-INFINITE', 'Finite rule, infinite structure, finite form', 'An indef
   acts=['foundational', 'II', 'VIII'], audit=NEW_AUDIT, ui='proposed: "A Shape From One Rule" (not built)',
   related=['T-H3', 'T-SCHEMA', 'T-TIME-CIRCLE', 'T-STAR', 'T-ANALOGUES', 'T-INF-FIN', 'T-FINITE-GEOMETRIES-Q', 'T-STABLE-FORM-Q', 'T-IRREVERSIBLE-FORMATION'], ref='outside-in 16, 27')
 T('B-PART-WHOLE', 'What the part is to the whole', 'The object/observer is not merely located in the larger structure; it is a constituent of it. The research question is therefore what the part is to the whole geometry.', RD, U, 'philosophical-exploration', 'hypothesis',
+  history=[('2026-11-12b', 'placed at the end of Act III with the governing question "What is the visible object/result to the larger geometry that generated it?"; the R4 construction is a part/whole example, not a fractal')],
   variants=[('People are also part of the fractal. We are not simply “in” a fractal as external observers. We are in one as constituents of it.', AP),
-            ('The question is not “Where on the fractal are we?” The question is “What are we to the fractal?”', AP), ('part ↔ whole geometry', AP)],
+            ('The question is not “Where on the fractal are we?” The question is “What are we to the fractal?”', AP), ('part ↔ whole geometry', AP),
+            ('What is the visible object/result to the larger geometry that generated it?', RD)],
   bounds=['The word fractal is kept. Not yet translated into fractal dimension, Mandelbrot coordinates, scale invariance, self-similarity, renormalization or cosmology; these may later become tests (known examples, not an exhaustive classification for this project).'],
   build=dict(questions=['What mathematical properties would the project\'s geometry need in order for Nadia\'s part/whole “we are to the fractal” intuition to become exact?'], source=AP),
   acts=['foundational'], audit=NEW_AUDIT, related=['T-FRACTAL-PROPERTIES-Q', 'T-SPACE-EXPLORATION', 'T-EXISTENCE-ZERO', 'T-IRREVERSIBLE-FORMATION'], ref='outside-in 10, 18, 27')
@@ -523,6 +526,8 @@ T('T-R4-DERIVED', 'Orthogonal organization → zero-sum organization (constructe
   bounds=['For the constructed example only; not universal.', 'Not established: anything about physical protons or a physical fourth dimension.'],
   acts=['III'], audit=C_AUDIT, related=['T-R4-TETRA', 'B-HIGHER-GEOMETRY-CHAIN', 'T-ZERO-ORTHOGONAL-C'], ref='construction 5.3')
 T('T-R4-STAGE2', 'Stage 2\'s tetrahedron is an exact realization of the R4 construction', 'Stage 2 tetrahedral cancellation ← exact realization of projected R4 orthonormal basis', CX, U, 'established', 'established',
+  variants=[('Stage 2 is an exact coordinate realization of a configuration that is orthogonally equivalent to the projected R^4 construction.', RD)],
+  history=[('2026-11-12b', 'precise wording adopted (Nadia): ORTHOGONALLY EQUIVALENT, not "exactly equivalent"; an isometry H → R^3 must be chosen')],
   norm='ORTHOGONALLY EQUIVALENT: under the isometry Φ: 1⊥ → ℝ³, x ↦ (h₁·x, h₂·x, h₃·x) with h₁ = ½(1,1,−1,−1), h₂ = ½(1,−1,1,−1), h₃ = ½(1,−1,−1,1), Φ(uᵢ) = TETRAᵢ with no permutation and no sign; Stage 2 starts at 1.6·TETRA.',
   pro=[('card:G2i', 'computed from the app\'s own TETRA')],
   bounds=['Chronology: the tetrahedron was first chosen for cancellation clarity (D3); the R4 projection construction was discovered later. Stage 2\'s history is not rewritten.'],
@@ -532,6 +537,18 @@ T('B-HIGHER-GEOMETRY-CHAIN', 'Construction-backed direction under B-HIGHER-GEOME
   pro=[('card:G2c', 'one exact instance: the zero sum'), ('card:G2g', 'the lower-dimensional relational structure (Gram matrix) of that instance')],
   bounds=['One instance does not make the chain universal.', 'Not every case is assumed to be a projection.'],
   acts=['III'], audit=C_AUDIT, related=['B-HIGHER-GEOMETRY', 'T-R4-DERIVED', 'Q-R4-6', 'Q-R4-8'], ref='construction 8')
+APPLY = '2026-11-12b'
+QR4 = {  # resolved at the application pass (2026-11-12): status, evidence for, evidence against, outcome
+    'Q-R4-1': ('established', [('card:G3b', 'with the source class known, everything survives except the sign of one normal and the ambient isometry'), ('card:G2j', 'differences survive exactly')],
+               [('card:G4c', 'with no source class, only the Gram matrix survives; the removed relation is not determined')], 'proved'),
+    'Q-R4-2': ('established', [('card:G3a', "Nadia's e_i = v_i + ½n is orthonormal"), ('card:G3b', 'unique up to ±n and the ambient isometry fixing the span'), ('card:G3n', 'every n')], [], 'proved'),
+    'Q-R4-3': ('established', [('card:G2n', ''), ('card:G2j', 'pairwise equidistant, affinely spanning 1⊥')], [], 'proved'),
+    'Q-R4-4': ('established', [('card:G3c', 'zero sum forces Gram ∝ I − J/n; equal Gram gives an isometry of spans')], [], 'proved'),
+    'Q-R4-5': ('established', [('card:G2g', 'the full Gram'), ('card:G3d', 'an orthonormal source exists iff a multiple of the Gram is idempotent; the zero sum alone (G1 = 0) cannot guarantee it')], [], 'proved'),
+    'Q-R4-6': ('established', [('card:G3d', 'two readings: any orthogonal projection of an orthonormal basis (tight Gram); or projection onto 1⊥ (regular simplices only, G3c)')], [], 'proved'),
+    'Q-R4-7': ('open', [('card:G2k', 'every exact Stage 1 state is the n = 2 member'), ('card:G2i', "Stage 2's first state is the n = 4 member"), ('card:G4m', 'Stage 3 with equal masses at e_i gives the family')],
+               [('card:G3d', "Stage 2's varied-magnitude states and Stage 3 in general are not members")], 'special-case'),
+    'Q-R4-8': ('open', [], [], None)}
 for qid, words, src, origin in [
     ('Q-R4-1', 'What information about the original orthonormal basis survives in the projected tetrahedral zero-sum configuration?', RD, U),
     ('Q-R4-2', 'Given only the tetrahedral zero-sum configuration in H, can the R^4 orthogonal-source construction be reconstructed uniquely, up to a natural equivalence?', RD, U),
@@ -541,11 +558,50 @@ for qid, words, src, origin in [
     ('Q-R4-6', 'Which lower-dimensional zero-sum configurations do not admit an orthogonal-source construction of this type?', RD, U),
     ('Q-R4-7', 'Does the Chapter I sequence instantiate one family indexed by n?', CX, A),
     ('Q-R4-8', 'For other maps from a larger geometry, does a lower-dimensional zero always record a direction the map removes?', CX, A)]:
-    answered = qid == 'Q-R4-3'
-    T(qid, f'R4 construction question {qid}', words, src, origin, 'open-question', 'established' if answered else 'open',
-      pro=[('card:G2n', ''), ('card:G2j', 'pairwise equidistant, affinely spanning 1⊥')] if answered else ([('card:G2j', 'a first exact piece: differences survive, only the centroid is removed; not an answer')] if qid in ('Q-R4-1', 'Q-R4-5') else []),
-      target=dict(targetStatement=words, source=src, lastResearchOutcome='proved') if answered else None,
-      acts=['III'], audit=C_AUDIT, related=['T-R4-TETRA'], ref=f'construction {qid}')
+    st, pro, con, outcome = QR4[qid]
+    hist = [] if qid == 'Q-R4-3' else ([(APPLY, f'resolved at the application pass: {st}' + (f', outcome {outcome}' if outcome else ''))] if qid != 'Q-R4-8' else
+            [(APPLY, 'split (Nadia): the established linear statement is T-ZERO-CONNECTOR-LINEAR; the inverse problem is Q-R4-8-INVERSE. The wording "lower-dimensional zero" is kept as written; current wording: a zero in the lower-dimensional representation')])
+    norm = {'Q-R4-2': 'PROVED UNDER EQUIVALENCE (ambient orthogonal transformation; vertex permutation; sign of the normal), assuming an orthonormal source and an orthogonal projection onto the span: f_i = v_i + w with |w| = ½, w ⊥ span.'}.get(qid)
+    T(qid, f'R4 construction question {qid}', words, src, origin, 'open-question', st, pro=pro, con=con, norm=norm,
+      target=dict(targetStatement=words, source=src, lastResearchOutcome=outcome) if outcome else None,
+      sup='Q-R4-8-INVERSE' if qid == 'Q-R4-8' else None,
+      acts=['III'], audit=C_AUDIT, related=['T-R4-TETRA'] + (['T-SIMPLEX-FAMILY'] if qid in ('Q-R4-3', 'Q-R4-7') else []), ref=f'construction {qid}', history=hist)
+
+# ── the application pass (2026-11-12): connector, family, internal change, measurement branch ─────
+A_AUDIT = ('new', 'application pass (2026-11-12)')
+T('T-SIMPLEX-FAMILY', 'The dimension-indexed simplex family', 'R^n orthogonal basis → 1⊥ ≅ R^(n-1) → regular simplex with zero centroid/resultant.', RD, 'established-support', 'established', 'established',
+  norm='n = 2 opposed pair; n = 3 equilateral 120°; n = 4 tetrahedron; n = 5 4-simplex; … Σv_i = 0, |v_i|² = (n−1)/n, v_i·v_j = −1/n, normalized −1/(n−1).',
+  pro=[('card:G2n', ''), ('card:G2j', ''), ('card:G3c', 'every regular-simplex zero-sum configuration is in it'), ('card:G3n', 'reconstructible up to sign')],
+  bounds=['Not every natural zero has this origin.'], acts=['III'], audit=A_AUDIT, related=['T-R4-GENERAL', 'Q-R4-7', 'Q-R4-3'], ref='application 8')
+T('T-ZERO-CONNECTOR-LINEAR', 'Zero as connector: the linear case', 'source relation in ker L → zero in the target representation', RD, 'established-support', 'established', 'established',
+  norm='For linear L: Σ L x_i = L(Σ x_i), so Σ L x_i = 0 iff Σ x_i ∈ ker L. With L known the source is determined mod ker L; with L unknown the zero alone does not determine the removed relation.',
+  pro=[('card:G4a', ''), ('card:G4b', 'recoverability with L known')],
+  bounds=['Does not establish T-ZERO-CONNECTOR in general.', 'The inverse problem without L is obstructed in general (G4c).', 'Nonlinear zeros (null vectors, |x|² = 0) are outside it.'],
+  acts=['III'], audit=A_AUDIT, related=['T-ZERO-CONNECTOR', 'Q-R4-8-INVERSE'], ref='application 6–7')
+T('T-ZERO-CONNECTOR', 'Zero as connector / interface (project hypothesis)', 'A zero/resultant may more generally function as an interface between information in a larger geometry and what appears in a lower-dimensional representation.', RD, U, 'hypothesis', 'hypothesis',
+  variants=[('0 acts as a connector/interface between dimensional descriptions.', RD), ('Zero is a connector/interface, not automatically a lower-dimensional object.', RD),
+            ('A zero may appear as a resultant in one representation while connecting to nonzero relations in a larger/source representation.', RD)],
+  pro=[('card:G4a', 'the linear case, exact'), ('card:G4m', 'an independent system with the same structure (mass balance)'), ('card:G3b', 'the removed relation recoverable when the source class is known')],
+  con=[('card:G4c', 'the zero alone does not determine whether or which source relation was removed; a zero can be inherited'), ('card:Z5a', '|x|² = 0 connects to no nonzero relation')],
+  bounds=['Not established by the linear case.'], acts=['III', 'all'], audit=A_AUDIT, related=['T-ZERO-CONNECTOR-LINEAR', 'B-HIGHER-GEOMETRY', 'B-HIGHER-GEOMETRY-CHAIN'], ref='application 6')
+T('Q-R4-8-INVERSE', 'The inverse problem: recover the removed relation without the map', 'Given only the target zero/configuration, and without already knowing L, can the removed source direction or larger geometry be recovered?', RD, U, 'open-question', 'open',
+  pro=[('card:G3b', 'special case proved: orthonormal source, orthogonal projection: recovered up to sign'), ('card:G3n', 'every n')],
+  con=[('card:G4c', 'exact obstruction without constraints on L or the source')],
+  target=dict(targetStatement='Given only the target zero/configuration, and without already knowing L, can the removed source direction or larger geometry be recovered?', lastResearchOutcome='special-case'),
+  supers='Q-R4-8', acts=['III'], audit=A_AUDIT, related=['Q-CONNECT-1', 'T-ZERO-CONNECTOR'], ref='application 7')
+T('Q-CONNECT-1', 'Which source classes make the removed relation recoverable?', 'Which source classes, other than orthonormal sets, make the removed relation recoverable from the target zero alone?', ZC, A, 'open-question', 'open',
+  acts=['III'], audit=A_AUDIT, related=['Q-R4-8-INVERSE'], ref='connector 10')
+T('Q-CONNECT-2', 'A connector template for nonlinear zeros?', 'Is there a connector template for nonlinear zero conditions', ZC, A, 'open-question', 'open',
+  acts=['III'], audit=A_AUDIT, related=['T-ZERO-CONNECTOR', 'T-H1-TWO-ZEROS'], ref='connector 10')
+T('B-ZERO-INTERNAL-CHANGE', 'Change inside the same zero', 'What information can change, be destroyed, become distinguishable, or become inaccessible while the system remains inside the same defining zero condition?', RD, U, 'open-question', 'open',
+  pro=[('card:Q1h', 'S² measured on |↑↓⟩ keeps S_z = 0 and changes the state'), ('card:W1d', 'the A–B coherence (1/2) becomes 0 while S_z = 0 holds')],
+  bounds=['Distinct from leaving the zero (B-ZERO-LOSS) and from state-preserving interrogation; the three operations are not merged.'],
+  acts=['I', 'III'], audit=A_AUDIT, related=['B-ZERO-PRESERVE', 'B-ZERO-LOSS', 'B-JOINT-ALTERNATIVES'], ref='application 9')
+T('B-JOINT-ALTERNATIVES', 'Information that destroys a joint relation (measurement branch)', 'Can obtaining one form of information destroy another relation that existed only while alternatives remained jointly represented?', RD, U, 'open-question', 'open',
+  pro=[('card:W1a', 'two-path reference: the cross term is weighted by the marker overlap'), ('card:W1b', 'orthogonal markers (full which-path information) zero the cross term'),
+       ('card:W1c', 'V² + D² = 1'), ('card:W1d', 'the same structure inside stage 2b, with the defining zero preserved')],
+  bounds=['No claim that a conscious viewer causes collapse; the terms are measurement, interaction, which-path information.', 'Not claimed to be the same mechanism as information loss at a natural zero; the exact relation is to be constructed first.', 'No physical data used.'],
+  acts=['III'], audit=A_AUDIT, related=['B-ZERO-INTERNAL-CHANGE', 'B-ZERO-LOSS', 'T-H1-SIGNATURE'], ref='application 10')
 
 PAIR_A = proof_target('Starting from the established common zero-sum form Σv_i = 0, identify all additional invariants/relations of the mass system that can be translated into mathematically meaningful tests on the directional cancellation system.',
                       requiredObjects=['the established shared form Σv_i = 0 (pair.A.sharedAlgebraicForm)'])
@@ -561,7 +617,7 @@ VIII_TO_GUIDE = {'T-C-ROLES', 'T-C9', 'T-MANIFOLDS', 'T-PERCEPTION-RELATIVITY', 
 VIII_UNPLACED = {'T-NATURE-OR-DESCRIPTION', 'T-SUBCONSCIOUS', 'T-MATH-BOUNDARIES', 'T-REP-COMPLETE', 'T-4D-EVENTS'}
 NEW_ACTS = {  # records stated at or after the outside-in clarification, placed directly in the new map
     'B-OUTSIDE-IN': ['all'], 'B-ZERO-PRESERVE': ['all'], 'B-NONEXHAUSTIVE': ['all'], 'T-GOR-MEANING': ['all'],
-    'B-HIGHER-GEOMETRY': ['III'], 'B-FINITE-INFINITE': ['II', 'IV'], 'B-PART-WHOLE': ['unplaced'], 'B-ORTHO-FORM': ['II'],
+    'B-HIGHER-GEOMETRY': ['III'], 'B-FINITE-INFINITE': ['II', 'IV'], 'B-PART-WHOLE': ['III'], 'B-ORTHO-FORM': ['II'],
     'T-CIRCLE-ORTHO': ['II'], 'T-FIXED-RELATIONS-Q': ['II'], 'T-FINITE-GEOMETRIES-Q': ['II', 'IV'], 'T-STABLE-FORM-Q': ['IV'],
     'T-ZERO-ORTHOGONAL': ['I', 'II', 'III'], 'T-ZERO-ORTHOGONAL-A': ['II'], 'T-ZERO-ORTHOGONAL-B': ['II', 'Guide'],
     'T-ZERO-ORTHOGONAL-C': ['III'], 'T-ZERO-ORTHOGONAL-D': ['II'], 'T-EXISTENCE-ZERO': ['unplaced'], 'T-SPACE-EXPLORATION': ['unplaced'],
@@ -589,6 +645,49 @@ RELATED = {'T-H1': ['B-ORTHO-FORM', 'T-ZERO-ORTHOGONAL'], 'T-ZERO-ORTHOGONAL-C':
 byid = {r['id']: r for r in R}
 for k, ids in RELATED.items():
     byid[k]['related'] += [i for i in ids if i not in byid[k]['related']]
+
+# ── ratings (docs/research_method.md §12); every substantive result carries both percentages ───────
+KN, PD, CE, EC, SM = 'Known theorem / textbook identity', 'Project-derived theorem', 'Constructive example', 'Empirical correlation', 'Speculative mapping'
+ONE, FAM, MULTI, PHYS, DATA = 'one configuration', 'one mathematical family', 'multiple independent mathematical families', 'multiple physical systems', 'real dataset(s)'
+def rate(id, status, breadth, bs, slop, why, increase, falsify, cls, validity, state='active'):
+    v = dict(zip(('construction', 'generalization', 'transfer', 'failureCondition', 'outOfSample'), validity))
+    byid[id]['assessment'] = dict(date='2026-11-12', mathematicalStatus=status, breadth=breadth, backboneSupport=bs, slopRisk=slop, why=why,
+                                  increase=increase, falsify=falsify, classification=cls, validity=v, branchState=state, failures=[])
+GC, EX = 'GENERAL CONSTRUCTION', 'EXAMPLE'
+rate('T-R4-STAGE2', CE, ONE, 10, 5, 'An exact coordinate identity computed from the app\'s own TETRA. It records provenance only. It says nothing about what a zero carries.',
+     'None needed; it is a provenance fact.', 'A change to TETRA that breaks G2i.', EX, ('pass', 'n/a', 'n/a', 'pass', 'n/a'))
+rate('Q-R4-2', PD, FAM, 40, 10, 'Under an orthonormal source and orthogonal projection, the zero-sum configuration determines the source up to the sign of one normal and an ambient isometry (G3b, G3n). That is an exact case of hidden information being recoverable from the larger geometry. The source class is assumed, not inferred from the target, and G4c shows recovery fails without it.',
+     'Recovery with the source class inferred from target-side data, or the same reconstruction on an independent system (weighted mass balance).', 'Two non-isometric orthonormal sources for one configuration within the class (ruled out by G3b), or the reconstruction failing on every independent system.',
+     GC, ('pass', 'pass', 'partial', 'pass', 'not-yet'))
+rate('Q-R4-1', PD, FAM, 35, 10, 'With the source class known, everything survives except one sign and an isometry. With no class, only the Gram matrix survives. The answer depends on an assumption, which is stated.',
+     'A source-class inference from the target alone.', 'A configuration where the stated survivors are not recoverable within the class.', GC, ('pass', 'pass', 'partial', 'pass', 'not-yet'))
+rate('Q-R4-4', KN, FAM, 25, 5, 'Zero sum forces the Gram matrix of a regular simplex to a multiple of I − J/n, so every such configuration is the projected basis up to scale and isometry. This is standard linear algebra.',
+     'An independent system whose zero has this exact Gram structure for a reason not built in.', 'A regular-simplex zero-sum configuration with a different Gram (impossible by G3c).', GC, ('pass', 'pass', 'not-yet', 'pass', 'n/a'))
+rate('Q-R4-5', PD, FAM, 35, 10, 'The zero sum is one linear condition, G1 = 0. The full Gram fixes the configuration up to isometry. An orthonormal source of this type exists exactly when a multiple of the Gram is idempotent, which the zero sum alone does not guarantee.',
+     'The same separation of strengths on an independent system.', 'A zero-sum configuration with non-tight Gram that still has an orthonormal source of this type (ruled out by G3d).', GC, ('pass', 'pass', 'not-yet', 'pass', 'n/a'))
+rate('Q-R4-6', PD, FAM, 40, 10, 'It is an exact boundary: the chain zero ← relational structure ← orthonormal organization holds precisely for zero-sum configurations with a single nonzero Gram eigenvalue. The counterexample (1,0), (0,1), (−1,−1) shows that generic zero sums lack such a source. This bounds the backbone as much as it supports it.',
+     'A larger source class that covers non-tight zero sums.', 'An orthonormal-basis projection with non-idempotent Gram (impossible).', GC, ('pass', 'pass', 'not-yet', 'pass', 'n/a'))
+rate('T-SIMPLEX-FAMILY', KN, FAM, 30, 5, 'The family is standard: a centered standard simplex for every n. It lifts the construction-backed direction from one configuration to a family. It does not reach systems that were not built this way.',
+     'An independent system that produces a member of the family for a reason not built in.', 'A member whose Gram is not a multiple of I − J/n.', GC, ('pass', 'pass', 'partial', 'pass', 'not-yet'))
+rate('T-ZERO-CONNECTOR-LINEAR', KN, MULTI, 35, 15, 'The statement is exact for every linear map and holds unchanged on four independent linear rows of the application matrix. In three of them it is only the textbook kernel statement. The inverse problem is obstructed without the map (G4c), and nonlinear zeros are outside it.',
+     'A nonlinear extension that reduces to it (Q-CONNECT-2), and recovery results for wider source classes (Q-CONNECT-1).', 'None for the linear statement itself; the connector reading weakens wherever zeros are inherited rather than created.', GC, ('pass', 'pass', 'pass', 'pass', 'not-yet'))
+rate('T-ZERO-CONNECTOR', SM, MULTI, 30, 30, 'The linear case is exact and transfers in the kernel sense. Recovering the source relation needs the map or the source class, and some zeros connect to nothing (|x|² = 0) or are inherited. The general interface claim goes beyond the mathematics so far.',
+     'A nonlinear template, and a system where the connector reading predicts something the kernel statement alone does not.', 'Independent zeros repeatedly found to be inherited, with no removed source relation, or nonlinear zeros resisting every connector formulation.', GC, ('pass', 'partial', 'partial', 'pass', 'not-yet'))
+rate('Q-R4-8-INVERSE', PD, FAM, 35, 15, 'Special case proved: with an orthonormal source, the removed direction is recovered up to sign (G3b). Exact obstruction without constraints (G4c). The general question is open.',
+     'Recovery for a wider source class.', 'A proof that no target-side data can identify the source class.', GC, ('pass', 'partial', 'not-yet', 'pass', 'n/a'))
+rate('B-HIGHER-GEOMETRY', CE, FAM, 35, 25, 'One exact family (R4 and every n) realizes hidden information encoded in a larger geometry, with reconstruction up to sign. The larger geometry is assumed orthonormal, not derived from the target. Transfer is partial (equal masses only).',
+     'A larger geometry derived from target-side behavior, and an independent system where the template applies unchanged.', 'Repeated independent zeros with no larger-geometry reconstruction under any source class.', GC, ('pass', 'pass', 'partial', 'pass', 'not-yet'))
+rate('B-HIGHER-GEOMETRY-CHAIN', PD, FAM, 40, 15, 'The chain holds exactly for every zero-sum configuration with a tight Gram (G3d), and fails for the rest. Mass balance shows the same structure in an independent system with equal masses.',
+     'The weighted mass-balance reconstruction, and a non-linear instance.', 'An independent system where the chain is claimed but the Gram is not tight.', GC, ('pass', 'pass', 'partial', 'pass', 'not-yet'))
+rate('Q-R4-7', CE, FAM, 15, 35, 'Stage 1 fits trivially, since every opposed pair is the n = 2 member. Stage 2\'s first state and equal-mass Stage 3 fit exactly. Varied-magnitude Stage 2 and general Stage 3 do not. The reading is retrospective.',
+     'A reason, independent of the construction, why Chapter I\'s configurations should lie in the family.', 'Already partly falsified for later Stage 2 states and general Stage 3.', EX, ('pass', 'partial', 'partial', 'pass', 'n/a'), 'low-confidence-active')
+rate('B-ZERO-INTERNAL-CHANGE', CE, ONE, 25, 25, 'One exact instance exists: S² measured on |↑↓⟩ keeps S_z = 0 and destroys the A–B coherence (W1d). There is no second system yet.',
+     'A classical instance (for example, inside Stage 2\'s zero set) where an operation within the zero destroys a relation.', 'Every operation inside every studied zero set preserving all relations.', EX, ('pass', 'not-yet', 'not-yet', 'pass', 'n/a'))
+rate('B-JOINT-ALTERNATIVES', CE, FAM, 25, 35, 'Established physics: which-path information (orthogonal markers) zeroes the interference cross term, with V² + D² = 1. The same projective structure occurs inside stage 2b with the defining zero preserved. That this is the project\'s zero mechanism is interpretation, and no physical data were used.',
+     'An exact map from the marker model to zero-preserving interrogation, or a non-quantum system with the same structure.', 'The exact relation failing to hold beyond the projective-measurement family.', EX, ('pass', 'partial', 'partial', 'pass', 'not-yet'))
+rate('B-ZERO-LOSS', SM, ONE, 10, 40, 'No card shows information destroyed by leaving a natural zero. The nearest exact result (W1d) concerns change inside the zero, which is a different operation.',
+     'A construction where leaving a zero and returning provably loses a relation, compared with a zero-preserving route.', 'Natural zeros where leaving and returning always loses nothing.', EX, ('not-yet', 'not-yet', 'not-yet', 'pass', 'not-yet'), 'low-confidence-active')
+
 for r in R:
     for i in r['related']:
         assert i in byid, f"{r['id']}: related {i} missing"

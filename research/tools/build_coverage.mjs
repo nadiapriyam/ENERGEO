@@ -65,11 +65,21 @@ ${['preserved', 'partial', 'title-only', 'missing', 'new'].map((k) => `| ${BEFOR
 | completely open (no evidence for or against; scope notes allowed) | ${user.filter((r) => !r.evidenceFor.length && !r.evidenceAgainst.length).length} | ${ids(user.filter((r) => !r.evidenceFor.length && !r.evidenceAgainst.length))} |
 | superseded wording kept as history | ${user.filter((r) => r.supersededBy).length} | ${ids(user.filter((r) => r.supersededBy))} |
 
+## Ratings (docs/research_method.md §12)
+
+Backbone Support % and AI Slop / Delusion Risk % for every assessed result. Low support means continue carefully,
+not discard. The transfer tests are in \`research/application_matrix.md\`.
+
+| ID | Status | Backbone Support | AI Slop Risk | Classification | Breadth | Branch |
+|---|---|---|---|---|---|---|
+${theories.filter((r) => r.assessment).map((r) => { const a = r.assessment; return `| ${r.id} | ${STATUS[r.status]} | ${a.backboneSupport}% | ${a.slopRisk}% | ${a.classification} | ${a.breadth} | ${a.branchState} |`; }).join('\n')}
+
 ## Constructions
 
 | Construction | Record | Cards |
 |---|---|---|
-| R4 orthogonal-source construction (tetrahedral zero construction) | \`research/constructions/r4_tetrahedral_zero.md\` | G2a–G2j, G2n |
+| R4 orthogonal-source construction (tetrahedral zero construction) | \`research/constructions/r4_tetrahedral_zero.md\` | G2a–G2k, G2n, G3a–G3d, G3n |
+| Zero as connector, linear case | \`research/constructions/zero_connector_linear.md\` | G4a–G4c, G4m |
 
 ## Backbone records
 

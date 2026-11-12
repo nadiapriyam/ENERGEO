@@ -21,11 +21,23 @@ not the project's source ontology. Energeo is never the justification for the fo
 |---|---|---|---|---|
 | I | Changing the Meaning of 0 | zero → cancellation → same zero / different hidden states → mass balance → return to zero | zero; hidden structure; zero-preserving interrogation (stage 2b) | 1, 2, 2b, 3, 3b (built, unchanged) |
 | II | From Zero to Form | fixed origin → fixed relation → orthogonality → generated boundary → closed form → finite geometry / indefinite parameter continuation | constraint; orthogonality; shape / form; finite geometry with indefinite continuation (begins) | 4 · A Shape From One Rule (contract below); later stages not numbered yet |
-| III | Larger Geometry, Visible Shadow | higher-dimensional organization → projection / representation → visible lower-dimensional relation → what survives → what is hidden | larger / higher-dimensional generating geometry; representation; zero-preserving interrogation applied | the R4 orthogonal-source construction (`research/constructions/r4_tetrahedral_zero.md`) is its first exact example. Not every case is assumed to be a projection. |
+| III | Larger Geometry, Visible Shadow | larger object → representation / map → visible manifestation → what survives → what is hidden → (closing) part / whole | larger / higher-dimensional generating geometry; representation (its core structure); zero as connector; zero-preserving interrogation applied; part / whole (closing question) | the R4 orthogonal-source construction (`research/constructions/r4_tetrahedral_zero.md`) is its first exact example. Not every case is assumed to be a projection. |
 | IV | Rule, Continuation, and Repetition | finite geometry → indefinitely continuing rule → circle → phase → spatial/time behavior → ★ | finite geometry with indefinite continuation; ★; Pair B | the heated ring (old stage 4) moves here. Known periodicity classes are comparison targets after behavior is derived. |
 
-**Not yet placed.** Part / whole and invariant relation are Foundation items with no Act yet. Representation is
-only partly covered by Act III. Their placement is open (decision pending).
+**Placement of the remaining Foundation items (decided 2026-11-12).**
+
+- **Part / whole** closes Act III, with the governing question: *What is the visible object/result to the larger
+  geometry that generated it?* This is the mathematically grounded precursor to "What are we to the fractal?". The
+  R4 construction is not a fractal; it only supplies a precise part/whole representation example.
+- **Representation** is Act III's core structure: larger object → representation / map → visible manifestation.
+  Every Act III construction records the representation-change template (`research_method.md` §3):
+  - source object, map, target object;
+  - what survives, what collapses, what becomes zero;
+  - what remains reconstructible (map known / unknown);
+  - what information is lost.
+- **Invariant relation** has no Act of its own. It is the recurring question asked after every representation
+  change, in every Act: *What survived?* and *What disappeared or collapsed?* The invariant is never assumed known in
+  advance.
 
 ## Guide through known mathematics (Act V onward, order not locked)
 
