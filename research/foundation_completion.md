@@ -15,6 +15,13 @@ Foundation V1 may contain open questions. What blocks completion is limited to: 
 - **DYADIC PACKETS** is an ORIGINAL USER RESEARCH TERM with an OPEN DEFINITION.
 - **Classification systems:** seven provenance classes, seven bridge strength classes, the source registry, and the domain statuses below.
 
+## CF11-B after Pass 3
+
+- **Outcome:** CF11-F2 (PARTIAL SURVIVAL), by the decision rule preregistered in `research/constructions/cf11b_fisher_prereg.md` (commit e6f3db8). Result: `research/constructions/cf11b_fisher_test.md`.
+- **Classification:** REFINED. The wording of CF11-B is unchanged.
+- **Why:** one law, F*T = T, expresses the symmetries of constant-form, symplectic and Fisher geometry, but read with that single meaning of "preserved" it organizes generic Fisher geometry only vacuously (F-C′ has an exact null and no supplied symmetry). The explicit refinement adds naturality under reparametrization (P2) and covers it non-vacuously; derived operators such as weighted centering need equivariance (P3).
+- **Pullback common form:** YES. Several major geometries in the Foundation admit a common coordinate-free preservation form in which an admissible symmetry preserves a defining tensor/form under pullback (CF12, BR36). Not all geometry; not reparametrizations.
+
 ## Domain statuses
 
 Statuses: LOCKED; SOURCE-COMPLETE; MATH-CARDED; SOURCE+CARD COMPLETE; NEEDS DERIVATION; NEEDS CROSS-DOMAIN TEST; OPEN LONG-TERM; WORDING ONLY.
@@ -26,13 +33,14 @@ Statuses: LOCKED; SOURCE-COMPLETE; MATH-CARDED; SOURCE+CARD COMPLETE; NEEDS DERI
 | D3. Fourier / L² representation | R1, R2, R3, R4, R5, R6, Z7, P1 | SOURCE+CARD COMPLETE | R5 (Fourier transform as a quarter-turn) is carded but SOURCE MISSING |
 | D4. Orthogonality and norm | ON1, ON2, ON3, ON4, ON5, ON7, Z4, Z10 | SOURCE+CARD COMPLETE | — |
 | D5. Common forms, generators, conservation | CF1, CF2, CF3, CF4, CF5, CF6, CF7, CF8, CF9, CF10, CF11-A | SOURCE+CARD COMPLETE | Noether in general is source-only (FB5 cards an instance); CF11-A is the established pattern |
-| D6. Common-form architecture as project hypothesis | CF11-B | NEEDS CROSS-DOMAIN TEST | no test chosen in advance; none run in Pass 2 (stop condition) |
+| D6. Common-form architecture as project hypothesis | CF11-B, CF11-R | SOURCE+CARD COMPLETE | Pass 3 preregistered test: CF11-F2; CF11-B classified REFINED; adopting the explicit refinement (CF11-R) as wording is Nadia's decision |
+| D27. Coordinate-free common form and covariance | CF12, CF13, Z13 | SOURCE+CARD COMPLETE | F*T = T across constant-form, symplectic and Fisher isometries; naturality of the Fisher metric; symmetry-forced null (sufficient, not necessary) |
 | D7. Zero taxonomy | Z1, Z2, Z3, Z5, Z6, Z8, Z9, Z12 | SOURCE+CARD COMPLETE | Z9 now separates exact structural null, sloppy direction, Lorentz null (FB7) |
 | D8. Zero as connector; the inverse problem | Z11, H3 | OPEN LONG-TERM | special cases proved; general statement open |
 | D9. Translation, correlation, spectrum, localization | T1, T2, T3, T4, T5 | SOURCE+CARD COMPLETE | T3/T4 project-derived and carded; the uncertainty inequality itself is source-only (FB3 cards its instances) |
 | D10. Lorentz and c | L1, L2, L3 | SOURCE+CARD COMPLETE | İnönü–Wigner sourced for the c → ∞ contraction; it is not evidence for L4 |
 | D11. Known continuation behaviours | I1 | SOURCE+CARD COMPLETE | — |
-| D12. Model manifolds and Fisher geometry | R7, CF10, Z9, M1, M2 | SOURCE+CARD COMPLETE | quinn2023 quote pending (P-2); M1 rests on the weak S14b; the MBAM procedure is source-only |
+| D12. Model manifolds and Fisher geometry | R7, CF10, Z9, M1, M2 | SOURCE+CARD COMPLETE | quinn2023 quote pending (P-2); M1 rests on the weak S14b and is a statement in log-parameter coordinates (component eigenvalues are not invariant, CFT5e); the MBAM procedure is source-only |
 | D13. C7: coefficient decay vs Fisher eigenvalue decay | M4 | NEEDS DERIVATION | an explicit operator / map / asymptotic theorem, or an exact obstruction |
 | D14. Wavelets and scattering | W1, W2 | SOURCE-COMPLETE | W1 carded; W2: exact first-order parts carded, deformation stability and higher orders source-only |
 | D15. DYADIC PACKETS; information lost and recovered | W3, W4 | OPEN LONG-TERM | DYADIC PACKETS: ORIGINAL USER RESEARCH TERM, OPEN DEFINITION |
@@ -52,7 +60,7 @@ Statuses: LOCKED; SOURCE-COMPLETE; MATH-CARDED; SOURCE+CARD COMPLETE; NEEDS DERI
 
 | Kind | Item |
 |---|---|
-| missing architecture | none at the level of branches; CF11-B (the organizing hypothesis of the common-form mechanism) has no test chosen in advance |
+| missing architecture | none at the level of branches; CF11-B is tested (REFINED); the explicit refinement awaits adoption |
 | unresolved contradiction | none found (the Act-map framing and the two meanings of "Foundation" are resolved) |
 | undefined central object | none (DYADIC PACKETS is an open user term, not a central object of the spine) |
 | incorrect mathematical bridge | none found; every bridge has a strength class, assumptions, a failure condition and what it does not prove |
@@ -60,24 +68,26 @@ Statuses: LOCKED; SOURCE-COMPLETE; MATH-CARDED; SOURCE+CARD COMPLETE; NEEDS DERI
 
 ## Foundation ratings (separate dimensions, no overall score)
 
-| Dimension | Rating | Previous (V1) | Reason for the change |
+| Dimension | Rating | Previous (Pass 2) | Reason for the change |
 |---|---|---|---|
-| Foundation architecture completeness | 80% | 65% | Two framing contradictions removed: the two-map lock (master map = research ontology, Act map = teaching order) and the single meaning of "Foundation". Wavelets / scattering and effective / reduced representations now have mathematics in the repository (FB10, FB11) and primary sources. CF11 is split into an established pattern and a project hypothesis. Still short of complete: DYADIC PACKETS has no definition yet, CF11-B is untested, the effective-representation question has examples but no general statement, and the application layer has no mathematics here. |
-| Mathematical verification coverage | 95% | 78% | 59 of 62 established or derived objects have PASS cards (computed). The eight bridge gaps are carded by FB1–FB8 (37 new cards in FB1–FB11, all PASS on the first ledger run). Not carded: R7 (definitional), OB1 (definitional), A3 (wording). Five carded objects are carded by instances or exact parts only, with the general theorem source-only: T5, CF7, W2, M2, H7. |
-| Cross-domain validation | 20% | 20% | Unchanged. No cross-domain test was run in this pass (stop condition). The two structural transfers stand; no predictive transfer; no empirical system. |
-| Project-specific construction maturity | 45% | 45% | Unchanged. No new construction was made. The new cards verify textbook bridges the constructions rely on; they do not mature the constructions themselves. |
-| Paper / source coverage | 55% | 20% | 38 external sources registered with verified bibliographic records (6 only partly verified), each with the exact claim it supports and what it does not establish. 43 of 44 external-claim objects have a source; R5 is SOURCE MISSING. Held down because no full text was opened or quoted in this environment, the quinn2023 PDF is still pending, and the spec and master map remain assistant-written. |
+| Foundation architecture completeness | 85% | 80% | Pass 3 settles the status of the common-form mechanism: CF11-B tested (preregistered, CF11-F2), its exact coordinate-free form identified (CF12: F*T = T), and its second mechanism stated (CF13: naturality). Still short: DYADIC PACKETS undefined, the effective-representation question without a general statement, no application mathematics, and the refinement not yet adopted as wording. |
+| Mathematical verification coverage | 95% | 95% | 62 of 65 established or derived objects have PASS cards (computed). New and carded in Pass 3: CF12, CF13, Z13 (CFT cards). Not carded: R7 (definitional), OB1 (definitional), A3 (wording). |
+| Cross-domain validation | 30% | 20% | One preregistered cross-domain test of a project architecture ran across three independent mathematical systems (constant-form, symplectic, Fisher) with two boundary cases, and could have failed. Outcome partial (CF11-F2). Still no predictive transfer and no empirical system. |
+| Project-specific construction maturity | 45% | 45% | Unchanged. Pass 3 formalized an architecture claim; it made no new construction. |
+| Paper / source coverage | 55% | 55% | 41 external sources registered with verified bibliographic records (7 only partly verified), each with the exact claim it supports and what it does not establish. 45 of 46 external-claim objects have a source; R5 is SOURCE MISSING. Unchanged rating: three differential-geometry sources were added, but nothing is yet quoted at full text and the quinn2023 PDF is pending. |
 | Application validation | 0% | 0% | Unchanged. Energeo is untested and the ThermaLens mathematics is not in the repository (APPLICATION PROVENANCE INCOMPLETE). |
 
 ## CF11 ratings (separate records)
 
-| Record | Statement | Mathematical Status | Backbone Support | AI Slop Risk | Application Breadth |
-|---|---|---|---|---|---|
-| CF11-A (DERIVED) | In many established geometries, a relational structure together with the transformations preserving it characterizes substantial geometric structure | TEXTBOOK / KNOWN | 55% | 10% | 4 |
-| CF11-B (HYPOTHESIS) | Can relation + admissible transformations + preserved structure provide a broader organizing architecture across the geometries investigated in this project? | SPECULATIVE MAPPING | 30% | 30% | 2 |
+| Record | Statement | Mathematical Status | Transfer Depth | Backbone Support | AI Slop Risk | Application Breadth |
+|---|---|---|---|---|---|---|
+| CF11-A (DERIVED) | In many established geometries, a relational structure together with the transformations preserving it characterizes substantial geometric structure | TEXTBOOK / KNOWN | TRIVIAL CONSEQUENCE | 60% | 8% | 3 |
+| CF11-B (HYPOTHESIS) | Can relation + admissible transformations + preserved structure provide a broader organizing architecture across the geometries investigated in this project? | PROJECT-DERIVED FROM KNOWN DEFINITIONS | STRUCTURAL TRANSFER | 35% | 25% | 3 |
+| CF11-R (HYPOTHESIS) | A geometry may be characterized by relational structure together with transformations under which that structure is preserved or transforms coherently (explicit form: P1 + P2, P3 for derived operators) | PROJECT-DERIVED FROM KNOWN DEFINITIONS | STRUCTURAL TRANSFER | 45% | 20% | 3 |
+| CF12 (ESTABLISHED) | F*T = T, the coordinate-free common form (BR36) | TEXTBOOK / KNOWN | STRUCTURAL TRANSFER | 70% | 5% | 3 |
 
-CF11-A's confidence does not transfer to CF11-B. The earlier single CF11 rating (35% / 25%, breadth 3) is superseded by these two.
+CF11-A's confidence does not transfer to CF11-B. Pass 3 changes: CF11-A 55% / 10% → 60% / 8% (breadth corrected 4 → 3 to the rubric); CF11-B 30% / 30% → 35% / 25%, NOT YET FORMALIZED → STRUCTURAL TRANSFER (with the refinement), SPECULATIVE MAPPING → PROJECT-DERIVED FROM KNOWN DEFINITIONS, breadth 2 → 3. Mathematical novelty of CF12: none (KNOWN MATHEMATICS); Foundation relevance: high.
 
 ## Recommended next pass (one primary obligation)
 
-**CF11-B: one cross-domain test of the common-form architecture, preregistered before it is run.** Choose a project geometry not used to state CF11 (for example, the Fisher metric, whose admissible transformations are reparametrizations rather than linear maps), fix in advance what "organized by relation + admissible transformations + preserved structure" must predict there, then test. CF11-B is the one blocking architectural question that mathematics, not Nadia's input, can settle.
+**Model-manifold invariance audit.** Pass 3 found that the component eigenvalues of a Fisher metric are not coordinate invariants (CFT5e), and the project's sloppy-spectrum card S14 (M1) is computed in log-parameter coordinates. Before any C7 work, restate every model-manifold quantity the Foundation uses (the sloppy spectrum, hyperribbon widths, null directions, the C7 comparison object) as either coordinate-invariant, with its invariant definition, or explicitly coordinate-stated, and card the difference.

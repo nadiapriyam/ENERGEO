@@ -205,7 +205,8 @@
    "cards": [
     "S2b",
     "B4a",
-    "O2b"
+    "O2b",
+    "CFT9a"
    ],
    "docs": [],
    "registry": [],
@@ -243,7 +244,8 @@
    "equation": "T_τ e_k = e^{−2πikτ} e_k",
    "status": "ESTABLISHED",
    "cards": [
-    "S3"
+    "S3",
+    "CFT9c"
    ],
    "docs": [],
    "registry": [],
@@ -885,7 +887,10 @@
     "S9(3)",
     "C1c",
     "FB9c",
-    "G5b"
+    "G5b",
+    "CFT1a",
+    "CFT2a",
+    "CFT4d"
    ],
    "docs": [],
    "registry": [
@@ -899,10 +904,10 @@
    ],
    "supports": [],
    "bearsOn": [],
-   "backboneSupport": 55,
-   "slopRisk": 10,
+   "backboneSupport": 60,
+   "slopRisk": 8,
    "transferDepth": "TRIVIAL CONSEQUENCE",
-   "applicationBreadth": 4,
+   "applicationBreadth": 3,
    "failureCondition": "a geometry whose structure is not characterized by a preserved relation (zero-resultant preservation already is one, CF3)",
    "foundationRole": "established pattern inside the architecture; not the center (Pass 2 lock)",
    "guideLocation": "Guide: forms (Foundation ontology)",
@@ -928,8 +933,19 @@
    ],
    "equation": "Can relation + admissible transformations + preserved structure provide a broader organizing architecture across the geometries investigated in this project?",
    "status": "HYPOTHESIS",
-   "cards": [],
-   "docs": [],
+   "cards": [
+    "CFT1a",
+    "CFT2a",
+    "CFT4d",
+    "CFT5a",
+    "CFT5c",
+    "CFT5f",
+    "CFT11b"
+   ],
+   "docs": [
+    "research/constructions/cf11b_fisher_prereg.md",
+    "research/constructions/cf11b_fisher_test.md"
+   ],
    "registry": [
     "T-CF11-B",
     "T-BACKBONE-INVARIANT"
@@ -938,22 +954,172 @@
     "CF11-A",
     "CF3",
     "CF9",
-    "CF10"
+    "CF10",
+    "CF12",
+    "CF13"
    ],
    "supports": [],
    "bearsOn": [],
-   "backboneSupport": 30,
-   "slopRisk": 30,
-   "transferDepth": "NOT YET FORMALIZED",
-   "applicationBreadth": 2,
-   "failureCondition": "project geometries (zero-resultant, statistical, symmetry-organized zeros) that the architecture organizes only by per-geometry redefinition",
-   "foundationRole": "candidate organizing hypothesis; rated separately from CF11-A",
+   "backboneSupport": 35,
+   "slopRisk": 25,
+   "transferDepth": "STRUCTURAL TRANSFER",
+   "applicationBreadth": 3,
+   "failureCondition": "read with one meaning of \"preserved\" (P1), it organizes generic Fisher geometry only vacuously (F-C′: CFT5a, CFT5c)",
+   "foundationRole": "Pass 3 (preregistered): CF11-F2, PARTIAL SURVIVAL; classified REFINED; wording unchanged",
    "guideLocation": "all Acts",
    "gap": null,
    "provenance": "USER-ORIGIN",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": "SPECULATIVE MAPPING"
+   "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS"
+  },
+  {
+   "id": "CF11-R",
+   "name": "CF11-CANDIDATE-REFINEMENT (explicit form)",
+   "layer": "ORIGINAL USER THEORY",
+   "stages": [
+    "RELATION",
+    "TRANSFORMATION",
+    "PRESERVED STRUCTURE",
+    "GEOMETRY",
+    "CROSS-SYSTEM TRANSFER"
+   ],
+   "equation": "A geometry may be characterized by relational structure together with transformations under which that structure is preserved or transforms coherently. Explicit form tested: tensor T; P1 F*T = T for symmetries; P2 g_(p∘θ) = θ*g_p (g_φ = Jᵀ g J) for reparametrizations; P3 A C = C A for derived operators; invariants ds², K, rank; failure cases",
+   "status": "HYPOTHESIS",
+   "cards": [
+    "CFT3c",
+    "CFT4c",
+    "CFT11b",
+    "CFT10a",
+    "CFT8c"
+   ],
+   "docs": [
+    "research/constructions/cf11b_fisher_test.md"
+   ],
+   "registry": [
+    "T-CF11-REFINEMENT"
+   ],
+   "dependsOn": [
+    "CF11-B",
+    "CF12",
+    "CF13"
+   ],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": 45,
+   "slopRisk": 20,
+   "transferDepth": "STRUCTURAL TRANSFER",
+   "applicationBreadth": 3,
+   "failureCondition": "\"transforms coherently\" without a stated law (too generic); weighted centering needs P3, beyond P1 and P2",
+   "foundationRole": "supported in explicit form by the Pass 3 test; adoption as project wording is Nadia's decision",
+   "guideLocation": "all Acts",
+   "gap": null,
+   "provenance": "USER-ORIGIN",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS"
+  },
+  {
+   "id": "CF12",
+   "name": "Pullback preservation: the coordinate-free common form",
+   "layer": "ESTABLISHED MATHEMATICS",
+   "stages": [
+    "RELATION",
+    "TRANSFORMATION",
+    "PRESERVED STRUCTURE",
+    "GEOMETRY"
+   ],
+   "equation": "F*T = T, i.e. T_{F(x)}(dF u, dF v) = T_x(u, v); coordinates: dF(x)ᵀ M(F(x)) dF(x) = M(x); constant form and linear F: AᵀMA = M (A†HA = H); covers Euclidean, unitary, Lorentz, symplectic (nonlinear maps allowed) and Fisher isometries",
+   "status": "ESTABLISHED",
+   "cards": [
+    "CFT1a",
+    "CFT1b",
+    "CFT1c",
+    "CFT1d",
+    "CFT2a",
+    "CFT2b",
+    "CFT2c",
+    "CFT3b",
+    "CFT4d",
+    "CFT6c",
+    "CFT9a",
+    "CFT9b",
+    "CFT11a"
+   ],
+   "docs": [],
+   "registry": [
+    "T-CF-PULLBACK-Q"
+   ],
+   "dependsOn": [
+    "CF1",
+    "CF4"
+   ],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": 70,
+   "slopRisk": 5,
+   "transferDepth": "STRUCTURAL TRANSFER",
+   "applicationBreadth": 3,
+   "failureCondition": "a map that is not a symmetry (shear, generic matrix, (q, 2p), non-isometries: CFT1c, CFT2b, CFT4d); a reparametrization is not F*g = g",
+   "foundationRole": "KNOWN MATHEMATICS, HIGH FOUNDATION RELEVANCE: the common form behind AᵀMA = M",
+   "guideLocation": "Guide: forms (Foundation ontology)",
+   "gap": null,
+   "provenance": "TEXTBOOK / STANDARD",
+   "sources": [
+    "SRC-FULTON-HARRIS-1991",
+    "SRC-ARNOLD-1989",
+    "SRC-LEE-2018",
+    "SRC-MYERS-STEENROD-1939"
+   ],
+   "sourceStatus": null,
+   "mathematicalStatus": "TEXTBOOK / KNOWN"
+  },
+  {
+   "id": "CF13",
+   "name": "Naturality of the Fisher metric; coordinate invariants",
+   "layer": "ESTABLISHED MATHEMATICS",
+   "stages": [
+    "REPRESENTATION",
+    "GEOMETRY",
+    "INFORMATION"
+   ],
+   "equation": "reparametrization θ = θ(φ): g_φ = Jᵀ g(θ(φ)) J (the pullback of the model's metric); invariant: ds², vector lengths, Gaussian curvature, rank and null directions, total length; not invariant: the component eigenvalues of g",
+   "status": "ESTABLISHED",
+   "cards": [
+    "CFT3c",
+    "CFT4c",
+    "CFT4e",
+    "CFT5d",
+    "CFT5e",
+    "CFT6b2",
+    "CFT7a",
+    "CFT7b",
+    "CFT10a",
+    "CFT11b"
+   ],
+   "docs": [],
+   "registry": [],
+   "dependsOn": [
+    "CF10"
+   ],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": 30,
+   "slopRisk": 5,
+   "transferDepth": "not a transfer",
+   "applicationBreadth": null,
+   "failureCondition": "a coordinate-dependent pseudo-structure (the identity matrix in every chart) fails the law (CFT10a)",
+   "foundationRole": "separates same model / different coordinates from different model / different geometry (H2)",
+   "guideLocation": "Guide: model manifolds (Foundation ontology)",
+   "gap": null,
+   "provenance": "TEXTBOOK / STANDARD",
+   "sources": [
+    "SRC-AMARI-2016",
+    "SRC-LEE-2018",
+    "SRC-CHENTSOV-1982"
+   ],
+   "sourceStatus": null,
+   "mathematicalStatus": null
   },
   {
    "id": "Z1",
@@ -1385,6 +1551,46 @@
    "failureCondition": "a system where neither geometry nor independent symmetry carries the hidden label",
    "foundationRole": "strongest defensible cross-domain methodological result",
    "guideLocation": "Act III",
+   "gap": null,
+   "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": null
+  },
+  {
+   "id": "Z13",
+   "name": "Symmetry-forced Fisher null (sufficient, not necessary)",
+   "layer": "PROJECT-DERIVED CONNECTION",
+   "stages": [
+    "ZERO / BALANCE / NULL",
+    "TRANSFORMATION",
+    "GEOMETRY"
+   ],
+   "equation": "Y∘S = Y for an involution S ⇒ S*g = g and Jv = 0 at fixed points for dS v = −v; F-C: J(1, −1) = 0 on θ₁ = θ₂; control F-C′ (no symmetry): J(2, −1) = 0 there anyway",
+   "status": "DERIVED",
+   "cards": [
+    "CFT5a",
+    "CFT5b",
+    "CFT5c",
+    "CFT11b"
+   ],
+   "docs": [],
+   "registry": [
+    "T-INFOGEO"
+   ],
+   "dependsOn": [
+    "Z9",
+    "CF12"
+   ],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": 25,
+   "slopRisk": 10,
+   "transferDepth": "TRIVIAL CONSEQUENCE",
+   "applicationBreadth": 1,
+   "failureCondition": "nulls without symmetry (F-C′): the symmetry is sufficient, not necessary",
+   "foundationRole": "zero metric length ↔ nonidentifiable tangent direction, with an independently supplied symmetry; mirrors Z12 (mass: symmetry sound but incomplete)",
+   "guideLocation": "Guide: model manifolds",
    "gap": null,
    "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
    "sources": [],
@@ -2178,10 +2384,11 @@
     "GEOMETRY",
     "INFORMATION"
    ],
-   "equation": "FIM eigenvalues roughly evenly spaced in log",
+   "equation": "FIM eigenvalues roughly evenly spaced in log, computed in log-parameter coordinates (S14); the component spectrum depends on the parametrization (CFT5e)",
    "status": "ESTABLISHED",
    "cards": [
-    "S14b"
+    "S14b",
+    "CFT5e"
    ],
    "docs": [
     "research/sources/quinn2023.md"
@@ -2593,7 +2800,10 @@
     "G5d",
     "G5e",
     "G5f",
-    "G4m"
+    "G4m",
+    "CFT8a",
+    "CFT8b",
+    "CFT8c"
    ],
    "docs": [],
    "registry": [
@@ -3247,7 +3457,7 @@
    "stages": [
     "CROSS-SYSTEM TRANSFER"
    ],
-   "equation": "kept FAIL cards S14a, C8c, B5a, Z1a, Z2b; T′ unchanged fails on unequal masses, quantum, Fourier k ≠ 0, orthogonality; contribution geometry fails for spins; R1 misses M5; P1 converse fails; ε undefined off exchange eigenstates; linear template fails on nonlinear zeros",
+   "equation": "kept FAIL cards S14a, C8c, B5a, Z1a, Z2b, CFT6b (check error, re-carded CFT6b2); CF11-B with one meaning of \"preserved\" does not organize generic Fisher geometry (CFT5c); component FIM eigenvalues are not coordinate invariants (CFT5e); weighted centering is not a symmetry (CFT8b); T′ unchanged fails on unequal masses, quantum, Fourier k ≠ 0, orthogonality; contribution geometry fails for spins; R1 misses M5; P1 converse fails; ε undefined off exchange eigenstates; linear template fails on nonlinear zeros",
    "status": "NEGATIVE",
    "cards": [
     "S14a",
@@ -3255,6 +3465,7 @@
     "B5a",
     "Z1a",
     "Z2b",
+    "CFT6b",
     "G4m",
     "FS2c",
     "FS2d",
@@ -4075,6 +4286,125 @@
    "failureCondition": "a field h ≠ 0 needs a renormalized field too (FB11d)"
   },
   {
+   "id": "BR36",
+   "left": "matrix form AᵀMA = M",
+   "right": "pullback F*T = T",
+   "connector": "(F*B)(u, v) = uᵀ(AᵀMA)v for F(x) = Ax and constant B_M (A†HA = H for Hermitian forms); in general (F*T)_x = dF_xᵀ M(F(x)) dF_x",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "CFT1a",
+    "CFT1b"
+   ],
+   "doesNotProve": "that every geometry is pullback-invariant; that the preserving classes are alike; that a reparametrization is F*g = g (BR-CF-PULLBACK)",
+   "objects": [
+    "CF1",
+    "CF12"
+   ],
+   "strength": "EXACT IDENTITY",
+   "sources": [
+    "SRC-LEE-2018",
+    "SRC-FULTON-HARRIS-1991"
+   ],
+   "assumptions": "a pairing T of tangent vectors; F smooth (linear for the matrix form)",
+   "failureCondition": "none for the identity; a map that is not a symmetry fails F*T = T (CFT1c, CFT2b)"
+  },
+  {
+   "id": "BR37",
+   "left": "coordinate change",
+   "right": "tensor law",
+   "connector": "θ = θ(φ): g_φ = Jᵀ g(θ(φ)) J, verified against direct Fisher computation; ds², vector lengths, K and rank invariant; component eigenvalues not",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "CFT3c",
+    "CFT4c",
+    "CFT4e",
+    "CFT5d",
+    "CFT5e"
+   ],
+   "doesNotProve": "that a coordinate change is a symmetry (it is never written F*g = g)",
+   "objects": [
+    "CF13",
+    "CF10"
+   ],
+   "strength": "EXACT IDENTITY",
+   "sources": [
+    "SRC-LEE-2018",
+    "SRC-AMARI-2016",
+    "SRC-CHENTSOV-1982"
+   ],
+   "assumptions": "a regular model; an invertible reparametrization J",
+   "failureCondition": "a coordinate-dependent pseudo-structure fails the law (CFT10a); component eigenvalues change (CFT5e)"
+  },
+  {
+   "id": "BR38",
+   "left": "system-supplied symmetry",
+   "right": "Fisher null",
+   "connector": "Y∘S = Y ⇒ S*g = g and Jv = 0 at fixed points for dS v = −v",
+   "status": "DERIVED",
+   "scope": "project-specific",
+   "cards": [
+    "CFT5a",
+    "CFT5b",
+    "CFT5c"
+   ],
+   "doesNotProve": "that Fisher nulls require a symmetry (F-C′ has one without, CFT5c)",
+   "objects": [
+    "Z13",
+    "Z9"
+   ],
+   "strength": "EXACT IMPLICATION",
+   "sources": [],
+   "assumptions": "an involution S with Y∘S = Y; a fixed point of S",
+   "failureCondition": "no symmetry: the lemma predicts nothing, and a null can still occur (CFT5c)"
+  },
+  {
+   "id": "BR39",
+   "left": "isometries of T",
+   "right": "system-supplied transformations",
+   "connector": "normal family: the isometry group of g (3-dimensional) strictly contains the location–scale group (2-dimensional) induced by x ↦ ax + b",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "CFT11a",
+    "CFT4d"
+   ],
+   "doesNotProve": "that \"admissible\" means \"preserves T\": the two classes differ",
+   "objects": [
+    "CF12",
+    "CF10"
+   ],
+   "strength": "FAILED CONNECTION",
+   "sources": [
+    "SRC-LEE-2018"
+   ],
+   "assumptions": "the normal family with its Fisher metric",
+   "failureCondition": "none: the hyperbolic inversion is an isometry no data map induces (CFT11a)"
+  },
+  {
+   "id": "BR40",
+   "left": "weighted centering",
+   "right": "symmetries of (D, line span{1})",
+   "connector": "C_m is a D-orthogonal, D-self-adjoint projector, not an isometry; A C_m = C_m A exactly for D-isometries preserving the line span{1}",
+   "status": "ESTABLISHED",
+   "scope": "project-specific",
+   "cards": [
+    "CFT8a",
+    "CFT8b",
+    "CFT8c"
+   ],
+   "doesNotProve": "that C_m is a structure-preserving transformation (it is a derived, equivariant operator)",
+   "objects": [
+    "H4",
+    "CF9"
+   ],
+   "strength": "EXACT IMPLICATION",
+   "sources": [],
+   "assumptions": "positive weights; D = diag(m)",
+   "failureCondition": "a D-isometry not preserving span{1}, or a non-isometry fixing 1, does not commute (CFT8c)"
+  },
+  {
    "id": "BR35",
    "left": "wavelet transform",
    "right": "translation",
@@ -4255,6 +4585,7 @@
     "CF2",
     "CF4",
     "CF11-A",
+    "CF12",
     "QZ3"
    ],
    "bearsOn": [
@@ -4297,6 +4628,7 @@
     "CF5",
     "CF6",
     "CF7",
+    "CF12",
     "Z2"
    ],
    "bearsOn": [],
@@ -4558,7 +4890,8 @@
    "doesNotEstablish": "the Transtrum–Sethna model-manifold results; C7",
    "supports": [
     "CF10",
-    "Z9"
+    "Z9",
+    "CF13"
    ],
    "bearsOn": [
     "M4"
@@ -4828,6 +5161,65 @@
    "checked": "bibliographic record checked by web search of publisher / index records, 2026-11-12; full text not opened in this environment"
   },
   {
+   "id": "SRC-LEE-2018",
+   "authors": "John M. Lee",
+   "title": "Introduction to Riemannian Manifolds (2nd ed., Graduate Texts in Mathematics 176)",
+   "year": "2018",
+   "sourceType": "book",
+   "identifier": "Springer; DOI 10.1007/978-3-319-91755-9",
+   "sourceClass": "textbook",
+   "status": "METADATA VERIFIED; CLAIM NOT QUOTED",
+   "claim": "tensor fields and their transformation law under coordinate changes; pullbacks; isometries (F*g = g); Gaussian curvature as an isometry invariant; isometries of flat space",
+   "doesNotEstablish": "any project architecture claim (CF11-B, CF11-R)",
+   "supports": [
+    "CF12",
+    "CF13"
+   ],
+   "bearsOn": [
+    "CF11-B",
+    "CF11-R"
+   ],
+   "checked": "bibliographic record checked by web search of publisher / index records, 2026-11-12; full text not opened in this environment"
+  },
+  {
+   "id": "SRC-MYERS-STEENROD-1939",
+   "authors": "S. B. Myers; N. E. Steenrod",
+   "title": "The group of isometries of a Riemannian manifold",
+   "year": "1939",
+   "sourceType": "journal article",
+   "identifier": "Annals of Mathematics 40(2), 400–416; DOI 10.2307/1968928",
+   "sourceClass": "primary",
+   "status": "METADATA VERIFIED; CLAIM NOT QUOTED",
+   "claim": "the isometry group of a Riemannian manifold is a Lie group (finite-dimensional), and distance-preserving maps are smooth isometries",
+   "doesNotEstablish": "that a given (e.g. Fisher) metric has nontrivial isometries; generic metrics have none",
+   "supports": [
+    "CF12"
+   ],
+   "bearsOn": [
+    "CF11-B"
+   ],
+   "checked": "bibliographic record checked by web search of publisher / index records, 2026-11-12; full text not opened in this environment"
+  },
+  {
+   "id": "SRC-CHENTSOV-1982",
+   "authors": "N. N. Čencov (Chentsov)",
+   "title": "Statistical Decision Rules and Optimal Inference (Translations of Mathematical Monographs 53)",
+   "year": "1982",
+   "sourceType": "book",
+   "identifier": "American Mathematical Society (some records give 1981; ISBN not verified)",
+   "sourceClass": "primary",
+   "status": "METADATA PARTLY VERIFIED; CLAIM NOT QUOTED",
+   "claim": "the Fisher metric is, up to scale, the unique Riemannian metric on statistical models invariant under sufficient statistics (Markov morphisms): a naturality theorem for the Fisher metric",
+   "doesNotEstablish": "the project's CF11 architecture; anything about sloppiness or C7",
+   "supports": [
+    "CF13"
+   ],
+   "bearsOn": [
+    "CF11-R"
+   ],
+   "checked": "bibliographic record checked by web search of publisher / index records, 2026-11-12; full text not opened in this environment"
+  },
+  {
    "id": "SRC-PROJECT-SPEC",
    "authors": "assistant-written project document",
    "title": "Mathematical Basis and Interactive Design Spec",
@@ -4935,10 +5327,22 @@
    "id": "D6",
    "name": "Common-form architecture as project hypothesis",
    "objects": [
-    "CF11-B"
+    "CF11-B",
+    "CF11-R"
    ],
-   "status": "NEEDS CROSS-DOMAIN TEST",
-   "note": "no test chosen in advance; none run in Pass 2 (stop condition)"
+   "status": "SOURCE+CARD COMPLETE",
+   "note": "Pass 3 preregistered test: CF11-F2; CF11-B classified REFINED; adopting the explicit refinement (CF11-R) as wording is Nadia's decision"
+  },
+  {
+   "id": "D27",
+   "name": "Coordinate-free common form and covariance",
+   "objects": [
+    "CF12",
+    "CF13",
+    "Z13"
+   ],
+   "status": "SOURCE+CARD COMPLETE",
+   "note": "F*T = T across constant-form, symplectic and Fisher isometries; naturality of the Fisher metric; symmetry-forced null (sufficient, not necessary)"
   },
   {
    "id": "D7",
@@ -5010,7 +5414,7 @@
     "M2"
    ],
    "status": "SOURCE+CARD COMPLETE",
-   "note": "quinn2023 quote pending (P-2); M1 rests on the weak S14b; the MBAM procedure is source-only"
+   "note": "quinn2023 quote pending (P-2); M1 rests on the weak S14b and is a statement in log-parameter coordinates (component eigenvalues are not invariant, CFT5e); the MBAM procedure is source-only"
   },
   {
    "id": "D13",
@@ -5164,36 +5568,57 @@
    "note": "name the kind of \"energy\" every time"
   }
  ],
+ "cf11b": {
+  "outcome": "CF11-F2",
+  "classification": "REFINED",
+  "outcomes": [
+   "CF11-F1",
+   "CF11-F2",
+   "CF11-F3",
+   "CF11-F4"
+  ],
+  "classifications": [
+   "LOCKED FOR V1",
+   "NEEDS ONE MORE TEST",
+   "REFINED",
+   "FAILED",
+   "OPEN LONG-TERM"
+  ],
+  "prereg": "research/constructions/cf11b_fisher_prereg.md",
+  "preregCommit": "e6f3db8",
+  "record": "research/constructions/cf11b_fisher_test.md",
+  "pullbackCommonForm": "YES"
+ },
  "ratings": [
   {
    "dimension": "Foundation architecture completeness",
-   "rating": 80,
-   "previous": 65,
-   "reason": "Two framing contradictions removed: the two-map lock (master map = research ontology, Act map = teaching order) and the single meaning of \"Foundation\". Wavelets / scattering and effective / reduced representations now have mathematics in the repository (FB10, FB11) and primary sources. CF11 is split into an established pattern and a project hypothesis. Still short of complete: DYADIC PACKETS has no definition yet, CF11-B is untested, the effective-representation question has examples but no general statement, and the application layer has no mathematics here."
+   "rating": 85,
+   "previous": 80,
+   "reason": "Pass 3 settles the status of the common-form mechanism: CF11-B tested (preregistered, CF11-F2), its exact coordinate-free form identified (CF12: F*T = T), and its second mechanism stated (CF13: naturality). Still short: DYADIC PACKETS undefined, the effective-representation question without a general statement, no application mathematics, and the refinement not yet adopted as wording."
   },
   {
    "dimension": "Mathematical verification coverage",
    "rating": 95,
-   "previous": 78,
-   "reason": "59 of 62 established or derived objects have PASS cards (computed). The eight bridge gaps are carded by FB1–FB8 (37 new cards in FB1–FB11, all PASS on the first ledger run). Not carded: R7 (definitional), OB1 (definitional), A3 (wording). Five carded objects are carded by instances or exact parts only, with the general theorem source-only: T5, CF7, W2, M2, H7."
+   "previous": 95,
+   "reason": "62 of 65 established or derived objects have PASS cards (computed). New and carded in Pass 3: CF12, CF13, Z13 (CFT cards). Not carded: R7 (definitional), OB1 (definitional), A3 (wording)."
   },
   {
    "dimension": "Cross-domain validation",
-   "rating": 20,
+   "rating": 30,
    "previous": 20,
-   "reason": "Unchanged. No cross-domain test was run in this pass (stop condition). The two structural transfers stand; no predictive transfer; no empirical system."
+   "reason": "One preregistered cross-domain test of a project architecture ran across three independent mathematical systems (constant-form, symplectic, Fisher) with two boundary cases, and could have failed. Outcome partial (CF11-F2). Still no predictive transfer and no empirical system."
   },
   {
    "dimension": "Project-specific construction maturity",
    "rating": 45,
    "previous": 45,
-   "reason": "Unchanged. No new construction was made. The new cards verify textbook bridges the constructions rely on; they do not mature the constructions themselves."
+   "reason": "Unchanged. Pass 3 formalized an architecture claim; it made no new construction."
   },
   {
    "dimension": "Paper / source coverage",
    "rating": 55,
-   "previous": 20,
-   "reason": "38 external sources registered with verified bibliographic records (6 only partly verified), each with the exact claim it supports and what it does not establish. 43 of 44 external-claim objects have a source; R5 is SOURCE MISSING. Held down because no full text was opened or quoted in this environment, the quinn2023 PDF is still pending, and the spec and master map remain assistant-written."
+   "previous": 55,
+   "reason": "41 external sources registered with verified bibliographic records (7 only partly verified), each with the exact claim it supports and what it does not establish. 45 of 46 external-claim objects have a source; R5 is SOURCE MISSING. Unchanged rating: three differential-geometry sources were added, but nothing is yet quoted at full text and the quinn2023 PDF is pending."
   },
   {
    "dimension": "Application validation",

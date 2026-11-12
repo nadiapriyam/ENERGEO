@@ -11369,8 +11369,8 @@
         "date": "2026-11-12",
         "mathematicalStatus": "TEXTBOOK / KNOWN",
         "breadth": "multiple independent mathematical families",
-        "backboneSupport": 55,
-        "slopRisk": 10,
+        "backboneSupport": 60,
+        "slopRisk": 8,
         "why": "The pattern is textbook (Klein's Erlangen program; classical groups as form-preserving groups) and carded in five geometries: Euclidean, unitary, general bilinear, Lorentz, symplectic, plus the project's weighted metric. CF3 shows it is not universal: a preserved zero resultant characterizes no form.",
         "increase": "A geometry the project needs, characterized by its preserved relation, that was not chosen because it fits.",
         "falsify": "A geometry in the project's table whose transformations preserving its relation fail to characterize it (CF3 is already such a boundary).",
@@ -11387,8 +11387,17 @@
         "transferDepth": "TRIVIAL CONSEQUENCE",
         "mathematicalCorrectness": "established",
         "prediction": null,
-        "ratingHistory": [],
-        "applicationBreadth": 4,
+        "ratingHistory": [
+          {
+            "date": "2026-11-12",
+            "fromBackbone": 55,
+            "fromSlop": 10,
+            "toBackbone": 60,
+            "toSlop": 8,
+            "reason": "Pass 3: the pattern holds in coordinate-free form (F*T = T) across constant-form, symplectic and homogeneous Fisher geometries, and its boundary is now exact (generic Fisher geometry is not characterized by a transformation group, CFT5f). Application Breadth corrected from 4 to 3: the rubric reserves 4 for a physical/empirical system"
+          }
+        ],
+        "applicationBreadth": 3,
         "novelty": null
       }
     },
@@ -11409,17 +11418,42 @@
         {
           "ref": "card:FS2e",
           "note": "the four-spin zero is organized by an independently given group action (Schur)"
+        },
+        {
+          "ref": "card:CFT1a",
+          "note": "one law: F*B = B ⟺ AᵀMA = M for constant forms"
+        },
+        {
+          "ref": "card:CFT2a",
+          "note": "the same law expresses nonlinear symplectomorphisms"
+        },
+        {
+          "ref": "card:CFT4d",
+          "note": "the same law expresses Fisher isometries supplied by the system (location–scale)"
+        },
+        {
+          "ref": "card:CFT11b",
+          "note": "with naturality (P2) the architecture covers F-C′"
         }
       ],
       "evidenceAgainst": [
         {
           "ref": "card:Z4b",
           "note": "the zero-resultant relation is preserved by all of GL and characterizes no metric (CF3)"
+        },
+        {
+          "ref": "card:CFT5c",
+          "note": "F-C′: an exact null with no supplied symmetry; one meaning of \"preserved\" (P1) organizes it only vacuously"
+        },
+        {
+          "ref": "card:CFT5f",
+          "note": "F-C is not homogeneous: its structure is carried by g, not by a transformation group"
         }
       ],
       "boundaries": [
         "HYPOTHESIS / OPEN. Not supported merely by CF11-A: the established pattern does not show that the project's own geometries are organized this way.",
-        "No cross-domain test chosen in advance yet; none is run in Pass 2 (stop condition)."
+        "No cross-domain test chosen in advance yet; none is run in Pass 2 (stop condition).",
+        "Pass 3 (preregistered, e6f3db8): outcome CF11-F2, PARTIAL SURVIVAL. \"Preserved\" needs more than one precise meaning: P1 invariance F*T = T (symmetries), P2 naturality g_φ = Jᵀ g J (reparametrizations), P3 operator equivariance (derived operators). Wording unchanged."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -11428,6 +11462,12 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "CFT11b",
+        "CFT1a",
+        "CFT2a",
+        "CFT4d",
+        "CFT5c",
+        "CFT5f",
         "FS2e",
         "G5b",
         "Z4b"
@@ -11456,6 +11496,10 @@
         {
           "date": "2026-11-12",
           "change": "CF11 split: this record holds the project hypothesis (Foundation object CF11-B)"
+        },
+        {
+          "date": "2026-11-12",
+          "change": "Pass 3: CF11-F2 (PARTIAL SURVIVAL); classified REFINED"
         }
       ],
       "relatedActsRev3": [],
@@ -11534,11 +11578,34 @@
       "origin": "user",
       "kind": "hypothesis",
       "status": "hypothesis",
-      "evidenceFor": [],
-      "evidenceAgainst": [],
+      "evidenceFor": [
+        {
+          "ref": "card:CFT3c",
+          "note": "P2 verified against direct computation (F-A, nonlinear chart)"
+        },
+        {
+          "ref": "card:CFT4c",
+          "note": "P2 verified in natural parameters (F-B)"
+        },
+        {
+          "ref": "card:CFT11b",
+          "note": "P2 carries F-C′'s null structure without any symmetry"
+        },
+        {
+          "ref": "card:CFT10a",
+          "note": "non-vacuous: a coordinate-dependent pseudo-structure fails P2"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:CFT8b",
+          "note": "weighted centering fits neither P1 nor P2: it needs operator equivariance (P3, CFT8c)"
+        }
+      ],
       "boundaries": [
         "Candidate only: tested in Pass 3, not adopted before the test (preregistration research/constructions/cf11b_fisher_prereg.md).",
-        "Tested only in explicit form: tensor T; F*T = T for symmetries; T_(p∘θ) = θ*T_p for reparametrizations; invariants; failure cases. Without a stated law, \"transforms coherently\" is too generic."
+        "Tested only in explicit form: tensor T; F*T = T for symmetries; T_(p∘θ) = θ*T_p for reparametrizations; invariants; failure cases. Without a stated law, \"transforms coherently\" is too generic.",
+        "Pass 3: supported in explicit form (tensor T; F*T = T for symmetries; g_(p∘θ) = θ*g_p for reparametrizations; invariants ds², K, rank; failure cases). Not adopted as project wording: that is Nadia's decision."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -11546,7 +11613,13 @@
         "all"
       ],
       "relatedObjects": [],
-      "relatedCards": [],
+      "relatedCards": [
+        "CFT10a",
+        "CFT11b",
+        "CFT3c",
+        "CFT4c",
+        "CFT8b"
+      ],
       "sourceDocs": [
         "docs/restructure_decisions.md"
       ],
@@ -11569,6 +11642,10 @@
         {
           "date": "2026-11-12",
           "change": "recorded before the CF11-B Fisher test"
+        },
+        {
+          "date": "2026-11-12",
+          "change": "Pass 3: tested in explicit form; supported (outcome CF11-F2); not adopted"
         }
       ],
       "relatedActsRev3": [],
@@ -11582,11 +11659,38 @@
       "normalizedStatement": null,
       "origin": "user",
       "kind": "open-question",
-      "status": "open",
-      "evidenceFor": [],
-      "evidenceAgainst": [],
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:CFT1a",
+          "note": "(F*B)(u, v) = uᵀ(AᵀMA)v: the matrix law is the coordinate form of F*B = B"
+        },
+        {
+          "ref": "card:CFT1b",
+          "note": "(F*T)_x = dF_xᵀ M(F(x)) dF_x for any F and tensor field"
+        },
+        {
+          "ref": "card:CFT2a",
+          "note": "symplectic: F*ω = ω, nonlinear F"
+        },
+        {
+          "ref": "card:CFT4d",
+          "note": "Fisher isometries: F*g = g"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:CFT2c",
+          "note": "one law, different preserving classes"
+        },
+        {
+          "ref": "card:CFT5f",
+          "note": "generic Fisher geometry has no transitive isometry group"
+        }
+      ],
       "boundaries": [
-        "Evaluated in Pass 3 against preregistered criteria (YES / PARTIAL / NO); Fisher coordinate reparametrization is never counted as F*g = g unless F is an isometry."
+        "Evaluated in Pass 3 against preregistered criteria (YES / PARTIAL / NO); Fisher coordinate reparametrization is never counted as F*g = g unless F is an isometry.",
+        "Pass 3 answer: YES by the preregistered criteria, with scope: several major geometries in the Foundation admit F*T = T as a common coordinate-free preservation form for their symmetries; not all geometry, not reparametrizations."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -11594,7 +11698,14 @@
         "Guide"
       ],
       "relatedObjects": [],
-      "relatedCards": [],
+      "relatedCards": [
+        "CFT1a",
+        "CFT1b",
+        "CFT2a",
+        "CFT2c",
+        "CFT4d",
+        "CFT5f"
+      ],
       "sourceDocs": [
         "docs/restructure_decisions.md"
       ],
@@ -11617,6 +11728,10 @@
         {
           "date": "2026-11-12",
           "change": "recorded before the CF11-B Fisher test"
+        },
+        {
+          "date": "2026-11-12",
+          "change": "Pass 3: answered YES (scope stated)"
         }
       ],
       "relatedActsRev3": [],

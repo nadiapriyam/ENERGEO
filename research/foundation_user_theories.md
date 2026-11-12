@@ -75,7 +75,7 @@ Every user-origin record in `research/theories.json`, with its original wording,
 | T-BEYOND-3D | Could a mathematical description contain relationships that cannot be represented directly in our familiar three spatial dimensions? | — | open-question | open | — |
 | T-PREDICTION-INFINITE | Then introduce your question about a possible infinite prediction space. | — | open-question | open | — |
 | T-4D-EVENTS | This display could introduce your speculative connection to a four-dimensional description in which events exist together, while carefully distinguishing a model's prediction space from physical spacetime. | — | philosophical-exploration | open | — |
-| T-INFOGEO | prediction manifold, Fisher metric, stiff / sloppy directions, exact null direction, model boundaries, effective models | — | open-question | open | R7, Z9, M2 |
+| T-INFOGEO | prediction manifold, Fisher metric, stiff / sloppy directions, exact null direction, model boundaries, effective models | — | open-question | open | R7, Z9, Z13, M2 |
 | T-MAGPHASE | If a norm/energy-like quantity is preserved, what information still distinguishes representations? | — | open-question | open | W4 |
 | T-SAME-SPECTRUM | Same power spectrum can preserve second-order information while failing to determine the original signal. | — | established | established | T3 |
 | T-WAVELETS | wavelet zero/cancellation, zero crossings, modulus before averaging, higher scattering paths, what survives averaging, DYADIC PACKETS | — | open-question | open | W1, W2 |
@@ -143,5 +143,5 @@ Every user-origin record in `research/theories.json`, with its original wording,
 | T-CF11-A | In many established geometries, a relational structure together with the transformations preserving it characterizes substantial geometric structure. | — | derived-connection | derived | CF11-A |
 | T-CF11-B | Can relation + admissible transformations + preserved structure provide a broader organizing architecture across the geometries investigated in this project? | — | hypothesis | hypothesis | CF11-B |
 | T-EFFECTIVE-Q | What survives when a richer source description is reduced to an effective representation? | — | open-question | open | H6 |
-| T-CF11-REFINEMENT | A geometry may be characterized by relational structure together with transformations under which that structure is preserved or transforms coherently. | — | hypothesis | hypothesis | — |
-| T-CF-PULLBACK-Q | Is pullback preservation a more general common-form bridge than fixed matrix equality? | — | open-question | open | — |
+| T-CF11-REFINEMENT | A geometry may be characterized by relational structure together with transformations under which that structure is preserved or transforms coherently. | — | hypothesis | hypothesis | CF11-R |
+| T-CF-PULLBACK-Q | Is pullback preservation a more general common-form bridge than fixed matrix equality? | — | open-question | derived | CF12 |

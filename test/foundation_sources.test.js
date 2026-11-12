@@ -60,7 +60,7 @@ test('3. CF11-A and CF11-B are separate records with separate ratings', () => {
   assert.equal(a.status, 'DERIVED');
   assert.equal(b.status, 'HYPOTHESIS');
   assert.equal(a.mathematicalStatus, 'TEXTBOOK / KNOWN');
-  assert.equal(b.mathematicalStatus, 'SPECULATIVE MAPPING');
+  assert.equal(b.mathematicalStatus, 'PROJECT-DERIVED FROM KNOWN DEFINITIONS', 'Pass 3 formalized it (was SPECULATIVE MAPPING in Pass 2)');
   assert.ok(a.backboneSupport !== b.backboneSupport || a.slopRisk !== b.slopRisk, 'not one shared rating');
   assert.ok(b.dependsOn.includes('CF11-A') && b.sources.length === 0, 'B rests on A without inheriting its sources');
   assert.equal(reg.get('T-CF11-A').words, 'In many established geometries, a relational structure together with the transformations preserving it characterizes substantial geometric structure.');

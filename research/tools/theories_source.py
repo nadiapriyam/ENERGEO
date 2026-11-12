@@ -941,9 +941,40 @@ byid['T-MASS-SECOND-MOMENT']['assessment']['novelty'] = 'VALIDATION OF KNOWN MAT
 rate('T-ZERO-SYMMETRY-ARCHITECTURE', KN, MULTI, 35, 20, 'The same precise object appears unchanged in a quantum and a non-quantum zero: an independent group acting covariantly on the zero-producing tuple, with a commuting hidden quadratic that is scalar on irreducible blocks. The roles of geometry and symmetry are inverted between the two systems, so only the architecture transfers, not the pattern. The object is Schur\'s lemma.',
      'A third system, chosen before testing, where the architecture predicts a hidden quantity that is not textbook-implied.', 'A system with an independent symmetry and a commuting hidden quadratic where neither geometry nor symmetry carries the hidden label.', GC, ('pass', 'pass', 'pass', 'pass', 'pass'), depth=STRUCT)
 byid['T-ZERO-SYMMETRY-ARCHITECTURE']['assessment']['novelty'] = 'VALIDATION OF KNOWN MATHEMATICS'
-BREADTH.update({'T-QACP-EXCHANGE': 1, 'T-QACP-OBSTRUCTION-RESTRICTED': 1, 'T-FOURSPIN-GEOMETRY-BLIND': 1, 'T-FOURSPIN-SYMMETRY': 1, 'T-FOURSPIN-SIMPLEX': 2, 'T-MASS-SECOND-MOMENT': 1, 'T-ZERO-SYMMETRY-ARCHITECTURE': 2, 'T-CF11-A': 4})
+BREADTH.update({'T-QACP-EXCHANGE': 1, 'T-QACP-OBSTRUCTION-RESTRICTED': 1, 'T-FOURSPIN-GEOMETRY-BLIND': 1, 'T-FOURSPIN-SYMMETRY': 1, 'T-FOURSPIN-SIMPLEX': 2, 'T-MASS-SECOND-MOMENT': 1, 'T-ZERO-SYMMETRY-ARCHITECTURE': 2, 'T-CF11-A': 3})
 for k, b in BREADTH.items():
     byid[k]['assessment']['applicationBreadth'] = b
+
+# ── Pass 3 (2026-11-12): the CF11-B Fisher test (prereg e6f3db8; result research/constructions/cf11b_fisher_test.md) ──
+CF_TEST = 'research/constructions/cf11b_fisher_test.md'
+def evidence(rid, pro=(), con=(), bound=None, change=None, status=None):
+    r = byid[rid]
+    r['evidenceFor'] += [dict(ref=a, note=b) for a, b in pro]
+    r['evidenceAgainst'] += [dict(ref=a, note=b) for a, b in con]
+    r['relatedCards'] = sorted(set(r['relatedCards']) | {a.split(':', 1)[1] for a, _ in list(pro) + list(con) if a.startswith('card:')})
+    if bound: r['boundaries'].append(bound)
+    if change: r['history'].append(dict(date='2026-11-12', change=change))
+    if status: r['status'] = status
+evidence('T-CF11-B',
+         pro=[('card:CFT1a', 'one law: F*B = B ⟺ AᵀMA = M for constant forms'), ('card:CFT2a', 'the same law expresses nonlinear symplectomorphisms'),
+              ('card:CFT4d', 'the same law expresses Fisher isometries supplied by the system (location–scale)'), ('card:CFT11b', 'with naturality (P2) the architecture covers F-C′')],
+         con=[('card:CFT5c', 'F-C′: an exact null with no supplied symmetry; one meaning of "preserved" (P1) organizes it only vacuously'),
+              ('card:CFT5f', 'F-C is not homogeneous: its structure is carried by g, not by a transformation group')],
+         bound='Pass 3 (preregistered, e6f3db8): outcome CF11-F2, PARTIAL SURVIVAL. "Preserved" needs more than one precise meaning: P1 invariance F*T = T (symmetries), P2 naturality g_φ = Jᵀ g J (reparametrizations), P3 operator equivariance (derived operators). Wording unchanged.',
+         change='Pass 3: CF11-F2 (PARTIAL SURVIVAL); classified REFINED')
+evidence('T-CF11-REFINEMENT',
+         pro=[('card:CFT3c', 'P2 verified against direct computation (F-A, nonlinear chart)'), ('card:CFT4c', 'P2 verified in natural parameters (F-B)'),
+              ('card:CFT11b', 'P2 carries F-C′\'s null structure without any symmetry'), ('card:CFT10a', 'non-vacuous: a coordinate-dependent pseudo-structure fails P2')],
+         con=[('card:CFT8b', 'weighted centering fits neither P1 nor P2: it needs operator equivariance (P3, CFT8c)')],
+         bound='Pass 3: supported in explicit form (tensor T; F*T = T for symmetries; g_(p∘θ) = θ*g_p for reparametrizations; invariants ds², K, rank; failure cases). Not adopted as project wording: that is Nadia\'s decision.',
+         change='Pass 3: tested in explicit form; supported (outcome CF11-F2); not adopted')
+evidence('T-CF-PULLBACK-Q',
+         pro=[('card:CFT1a', '(F*B)(u, v) = uᵀ(AᵀMA)v: the matrix law is the coordinate form of F*B = B'), ('card:CFT1b', '(F*T)_x = dF_xᵀ M(F(x)) dF_x for any F and tensor field'),
+              ('card:CFT2a', 'symplectic: F*ω = ω, nonlinear F'), ('card:CFT4d', 'Fisher isometries: F*g = g')],
+         con=[('card:CFT2c', 'one law, different preserving classes'), ('card:CFT5f', 'generic Fisher geometry has no transitive isometry group')],
+         bound='Pass 3 answer: YES by the preregistered criteria, with scope: several major geometries in the Foundation admit F*T = T as a common coordinate-free preservation form for their symmetries; not all geometry, not reparametrizations.',
+         change='Pass 3: answered YES (scope stated)', status='derived')
+update('T-CF11-A', TRIV, bs=60, slop=8, reason='Pass 3: the pattern holds in coordinate-free form (F*T = T) across constant-form, symplectic and homogeneous Fisher geometries, and its boundary is now exact (generic Fisher geometry is not characterized by a transformation group, CFT5f). Application Breadth corrected from 4 to 3: the rubric reserves 4 for a physical/empirical system')
 
 for r in R:
     for i in r['related']:
