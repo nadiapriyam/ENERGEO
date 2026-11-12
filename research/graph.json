@@ -667,6 +667,35 @@
         "Q.cancellation-information",
         "Q.pairA",
         "Q.zero-distinguishable"
+      ],
+      "exactSpecialCaseBridges": [
+        {
+          "id": "bridge.A.equal-mass-simplex",
+          "description": "Exact special-case bridge: Equal-mass centering of the standard basis produces the same regular-simplex zero configuration as projection of an orthonormal basis onto 1⊥.",
+          "statement": "For equal masses at r_i = e_i: R_CM = (1/n)1, so r_i − R_CM = e_i − (1/n)1 = P_n e_i; with G2i, for n = 4 these are Stage 2's first-state vectors up to the isometry Φ.",
+          "transferDepth": "STRUCTURAL TRANSFER",
+          "status": "established",
+          "cards": [
+            "G4m",
+            "G2n",
+            "G2i"
+          ],
+          "claims": [
+            "construction.paira-bridge"
+          ],
+          "layers": {
+            "sharedZeroAlgebra": "pair.A.sharedAlgebraicForm (unchanged)",
+            "exactSharedConstruction": "equal masses, any positions: the unchanged operator P_n; equal masses at e_i: the full regular-simplex configuration",
+            "possibleBroaderGeometry": "not constructed (see doesNotEstablish)"
+          },
+          "doesNotEstablish": [
+            "a universal Pair A solution",
+            "that unequal-mass balance shares T′ (it fails unchanged; it shares only the separate C_G construction, G5d)",
+            "that the directional ensemble (no positions, no masses) has a mass-centering source",
+            "anything about physical protons",
+            "the pair's deeper common relation (candidateCommonRelation stays null)"
+          ]
+        }
       ]
     },
     {

@@ -3257,7 +3257,9 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "T-PAIRA-BRIDGE"
+      ],
       "history": [
         {
           "date": "2026-11-12",
@@ -6222,7 +6224,11 @@
           "outOfSample": "not-yet"
         },
         "branchState": "active",
-        "failures": []
+        "failures": [],
+        "transferDepth": "STRUCTURAL TRANSFER",
+        "mathematicalCorrectness": "established under assumptions",
+        "prediction": null,
+        "ratingHistory": []
       }
     },
     {
@@ -7373,7 +7379,11 @@
           "outOfSample": "not-yet"
         },
         "branchState": "low-confidence-active",
-        "failures": []
+        "failures": [],
+        "transferDepth": "NOT YET FORMALIZED",
+        "mathematicalCorrectness": "not established",
+        "prediction": null,
+        "ratingHistory": []
       }
     },
     {
@@ -7669,7 +7679,11 @@
           "outOfSample": "n/a"
         },
         "branchState": "active",
-        "failures": []
+        "failures": [],
+        "transferDepth": "NOT YET FORMALIZED",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": []
       }
     },
     {
@@ -7747,7 +7761,11 @@
           "outOfSample": "not-yet"
         },
         "branchState": "active",
-        "failures": []
+        "failures": [],
+        "transferDepth": "STRUCTURAL TRANSFER",
+        "mathematicalCorrectness": "established under assumptions",
+        "prediction": null,
+        "ratingHistory": []
       }
     },
     {
@@ -7842,7 +7860,11 @@
           "outOfSample": "not-yet"
         },
         "branchState": "active",
-        "failures": []
+        "failures": [],
+        "transferDepth": "NOT YET FORMALIZED",
+        "mathematicalCorrectness": "established under assumptions",
+        "prediction": null,
+        "ratingHistory": []
       }
     },
     {
@@ -7909,7 +7931,8 @@
         "lastResearchOutcome": "proved"
       },
       "related": [
-        "T-R4-TETRA"
+        "T-R4-TETRA",
+        "Q-WMC-1"
       ],
       "history": [
         {
@@ -7936,7 +7959,11 @@
           "outOfSample": "not-yet"
         },
         "branchState": "active",
-        "failures": []
+        "failures": [],
+        "transferDepth": "NOT YET FORMALIZED",
+        "mathematicalCorrectness": "established under assumptions",
+        "prediction": null,
+        "ratingHistory": []
       }
     },
     {
@@ -8087,7 +8114,11 @@
           "outOfSample": "n/a"
         },
         "branchState": "active",
-        "failures": []
+        "failures": [],
+        "transferDepth": "NOT YET FORMALIZED",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": []
       }
     },
     {
@@ -8176,7 +8207,11 @@
           "outOfSample": "n/a"
         },
         "branchState": "active",
-        "failures": []
+        "failures": [],
+        "transferDepth": "NOT YET FORMALIZED",
+        "mathematicalCorrectness": "established under assumptions",
+        "prediction": null,
+        "ratingHistory": []
       }
     },
     {
@@ -8261,7 +8296,11 @@
           "outOfSample": "n/a"
         },
         "branchState": "active",
-        "failures": []
+        "failures": [],
+        "transferDepth": "NOT YET FORMALIZED",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": []
       }
     },
     {
@@ -8363,7 +8402,11 @@
           "outOfSample": "n/a"
         },
         "branchState": "low-confidence-active",
-        "failures": []
+        "failures": [],
+        "transferDepth": "STRUCTURAL TRANSFER",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": []
       }
     },
     {
@@ -8473,7 +8516,9 @@
       "related": [
         "T-R4-GENERAL",
         "Q-R4-7",
-        "Q-R4-3"
+        "Q-R4-3",
+        "T-PAIRA-BRIDGE",
+        "T-CENTERING-OPERATOR"
       ],
       "history": [],
       "relatedActsRev3": [],
@@ -8495,7 +8540,11 @@
           "outOfSample": "not-yet"
         },
         "branchState": "active",
-        "failures": []
+        "failures": [],
+        "transferDepth": "STRUCTURAL TRANSFER",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": []
       }
     },
     {
@@ -8557,8 +8606,8 @@
         "date": "2026-11-12",
         "mathematicalStatus": "Known theorem / textbook identity",
         "breadth": "multiple independent mathematical families",
-        "backboneSupport": 35,
-        "slopRisk": 15,
+        "backboneSupport": 20,
+        "slopRisk": 10,
         "why": "The statement is exact for every linear map and holds unchanged on four independent linear rows of the application matrix. In three of them it is only the textbook kernel statement. The inverse problem is obstructed without the map (G4c), and nonlinear zeros are outside it.",
         "increase": "A nonlinear extension that reduces to it (Q-CONNECT-2), and recovery results for wider source classes (Q-CONNECT-1).",
         "falsify": "None for the linear statement itself; the connector reading weakens wherever zeros are inherited rather than created.",
@@ -8571,7 +8620,20 @@
           "outOfSample": "not-yet"
         },
         "branchState": "active",
-        "failures": []
+        "failures": [],
+        "transferDepth": "TRIVIAL CONSEQUENCE",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [
+          {
+            "date": "2026-11-12",
+            "fromBackbone": 35,
+            "fromSlop": 15,
+            "toBackbone": 20,
+            "toSlop": 10,
+            "reason": "transfer-depth discipline: on every independent row the linear connector is the textbook kernel statement (TRIVIAL CONSEQUENCE)"
+          }
+        ]
       }
     },
     {
@@ -8667,7 +8729,7 @@
         "date": "2026-11-12",
         "mathematicalStatus": "Speculative mapping",
         "breadth": "multiple independent mathematical families",
-        "backboneSupport": 30,
+        "backboneSupport": 25,
         "slopRisk": 30,
         "why": "The linear case is exact and transfers in the kernel sense. Recovering the source relation needs the map or the source class, and some zeros connect to nothing (|x|² = 0) or are inherited. The general interface claim goes beyond the mathematics so far.",
         "increase": "A nonlinear template, and a system where the connector reading predicts something the kernel statement alone does not.",
@@ -8681,7 +8743,20 @@
           "outOfSample": "not-yet"
         },
         "branchState": "active",
-        "failures": []
+        "failures": [],
+        "transferDepth": "STRUCTURAL TRANSFER",
+        "mathematicalCorrectness": "not established",
+        "prediction": null,
+        "ratingHistory": [
+          {
+            "date": "2026-11-12",
+            "fromBackbone": 30,
+            "fromSlop": 30,
+            "toBackbone": 25,
+            "toSlop": 30,
+            "reason": "rows 3–5 are trivial consequences; the one structural transfer is equal-mass centering, which belongs to the centering construction more than to the connector"
+          }
+        ]
       }
     },
     {
@@ -8773,7 +8848,11 @@
           "outOfSample": "n/a"
         },
         "branchState": "active",
-        "failures": []
+        "failures": [],
+        "transferDepth": "NOT YET FORMALIZED",
+        "mathematicalCorrectness": "established under assumptions",
+        "prediction": null,
+        "ratingHistory": []
       }
     },
     {
@@ -8874,6 +8953,14 @@
         {
           "ref": "card:W1d",
           "note": "the A–B coherence (1/2) becomes 0 while S_z = 0 holds"
+        },
+        {
+          "ref": "card:W2c",
+          "note": "the composition of the zero changes: ⟨S_z⁽¹⁾⟩ goes ħ/2 → 0 and ⟨S_z⁽²⁾⟩ −ħ/2 → 0 while S_z = 0 holds"
+        },
+        {
+          "ref": "card:W2e",
+          "note": "two incompatible zero-preserving interrogations: S² and S_z⁽¹⁾ both commute with S_z but not with each other"
         }
       ],
       "evidenceAgainst": [],
@@ -8889,7 +8976,9 @@
       "relatedObjects": [],
       "relatedCards": [
         "Q1h",
-        "W1d"
+        "W1d",
+        "W2c",
+        "W2e"
       ],
       "sourceDocs": [
         "docs/restructure_decisions.md"
@@ -8908,7 +8997,8 @@
       "related": [
         "B-ZERO-PRESERVE",
         "B-ZERO-LOSS",
-        "B-JOINT-ALTERNATIVES"
+        "B-JOINT-ALTERNATIVES",
+        "T-S2-DEPHASING"
       ],
       "history": [],
       "relatedActsRev3": [],
@@ -8916,7 +9006,7 @@
         "date": "2026-11-12",
         "mathematicalStatus": "Constructive example",
         "breadth": "one configuration",
-        "backboneSupport": 25,
+        "backboneSupport": 30,
         "slopRisk": 25,
         "why": "One exact instance exists: S² measured on |↑↓⟩ keeps S_z = 0 and destroys the A–B coherence (W1d). There is no second system yet.",
         "increase": "A classical instance (for example, inside Stage 2's zero set) where an operation within the zero destroys a relation.",
@@ -8930,7 +9020,20 @@
           "outOfSample": "n/a"
         },
         "branchState": "active",
-        "failures": []
+        "failures": [],
+        "transferDepth": "NOT YET FORMALIZED",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [
+          {
+            "date": "2026-11-12",
+            "fromBackbone": 25,
+            "fromSlop": 25,
+            "toBackbone": 30,
+            "toSlop": 25,
+            "reason": "W2c computes what changes inside the zero (⟨S_z⁽¹⁾⟩: ħ/2 → 0) and W2e gives two incompatible zero-preserving interrogations; still one system"
+          }
+        ]
       }
     },
     {
@@ -8958,11 +9061,21 @@
         {
           "ref": "card:W1d",
           "note": "the same structure inside stage 2b, with the defining zero preserved"
+        },
+        {
+          "ref": "card:W2d",
+          "note": "exact overlap: the same dephasing map [[a, c], [c*, b]] → [[a, 0], [0, b]] on a two-sector decomposition, in both systems"
+        },
+        {
+          "ref": "card:W2e",
+          "note": "inside one zero: obtaining S² information destroys the S_z⁽¹⁾ definiteness and conversely"
         }
       ],
       "evidenceAgainst": [],
       "boundaries": [
         "No claim that a conscious viewer causes collapse; the terms are measurement, interaction, which-path information.",
+        "The double-slit / which-path model has no defining zero; it does not prove B-ZERO-LOSS.",
+        "Kept apart: A leaving the defining zero; B changing the state while remaining inside the zero condition; C extracting information while preserving both zero and the relevant internal relation.",
         "Not claimed to be the same mechanism as information loss at a natural zero; the exact relation is to be constructed first.",
         "No physical data used."
       ],
@@ -8976,7 +9089,9 @@
         "W1a",
         "W1b",
         "W1c",
-        "W1d"
+        "W1d",
+        "W2d",
+        "W2e"
       ],
       "sourceDocs": [
         "docs/restructure_decisions.md"
@@ -8995,7 +9110,8 @@
       "related": [
         "B-ZERO-INTERNAL-CHANGE",
         "B-ZERO-LOSS",
-        "T-H1-SIGNATURE"
+        "T-H1-SIGNATURE",
+        "T-S2-DEPHASING"
       ],
       "history": [],
       "relatedActsRev3": [],
@@ -9017,7 +9133,515 @@
           "outOfSample": "not-yet"
         },
         "branchState": "active",
-        "failures": []
+        "failures": [],
+        "transferDepth": "TRIVIAL CONSEQUENCE",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": []
+      }
+    },
+    {
+      "id": "T-PAIRA-BRIDGE",
+      "label": "Pair A: exact special-case bridge",
+      "words": "Exact special-case bridge: Equal-mass centering of the standard basis produces the same regular-simplex zero configuration as projection of an orthonormal basis onto 1⊥.",
+      "variants": [],
+      "normalizedStatement": "For equal masses at r_i = e_i: R_CM = (1/n)1, so r_i − R_CM = e_i − (1/n)1 = P_n e_i (G4m); for n = 4 these are Stage 2's first-state vectors up to the isometry of G2i.",
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:G4m",
+          "note": ""
+        },
+        {
+          "ref": "card:G2n",
+          "note": ""
+        },
+        {
+          "ref": "card:G2i",
+          "note": "n = 4: Stage 2's first state"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Not a universal Pair A solution; Pair A's shared algebraic form is unchanged; the deeper common relation stays unfilled.",
+        "Unequal masses do not share T′ (FAIL unchanged)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I",
+        "III"
+      ],
+      "relatedObjects": [
+        "obj.distribution",
+        "obj.moments"
+      ],
+      "relatedCards": [
+        "G2i",
+        "G2n",
+        "G4m"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "transfer 2",
+      "audit": {
+        "before": "new",
+        "note": "transfer pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": "pair.A.exactSpecialCaseBridges",
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-PAIRA-SHARED",
+        "T-SIMPLEX-FAMILY",
+        "T-WMC"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Known theorem / textbook identity",
+        "breadth": "one mathematical family",
+        "backboneSupport": 45,
+        "slopRisk": 8,
+        "why": "T′'s operator Pₙ transfers unchanged to every equal-mass configuration, and with positions eᵢ the full regular-simplex configuration reappears. It links Pair A's two sides through Stage 2's first state (G2i). It covers equal masses only, and mean-centering is a standard operation.",
+        "increase": "An unequal-mass or non-mass system using the same unchanged operator, or a prediction made from it.",
+        "falsify": "Already bounded: unequal masses fail T′ unchanged (G4m).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "not-yet"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "STRUCTURAL TRANSFER",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": []
+      }
+    },
+    {
+      "id": "T-WMC",
+      "label": "WMC — Weighted Mass Centering (a separate construction, not T′)",
+      "words": "WMC — Weighted Mass Centering",
+      "variants": [],
+      "normalizedStatement": "C_m = I − 1mᵀ/M, u = D C_m X with D = diag(m): Σu_i = 0; C_m idempotent, kernel span{1}, image m⊥, D-self-adjoint, Euclidean-oblique; L_m = D C_m symmetric PSD, image 1⊥, not idempotent.",
+      "origin": "established-support",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:G5a",
+          "note": ""
+        },
+        {
+          "ref": "card:G5b",
+          "note": ""
+        },
+        {
+          "ref": "card:G5c",
+          "note": ""
+        },
+        {
+          "ref": "card:G5e",
+          "note": "configurations for unequal masses"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Not T′ and not a repaired T′.",
+        "Does not apply to the directional ensemble (no positions or masses)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I",
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "G5a",
+        "G5b",
+        "G5c",
+        "G5e"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "transfer 4",
+      "audit": {
+        "before": "new",
+        "note": "transfer pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-CENTERING-OPERATOR",
+        "T-PAIRA-BRIDGE",
+        "Q-WMC-1",
+        "Q-WMC-2"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Known theorem / textbook identity",
+        "breadth": "one mathematical family",
+        "backboneSupport": 30,
+        "slopRisk": 10,
+        "why": "Weighted centering is standard mechanics. Deriving it outside-in shows the metric D emerging from the zero relation itself (G5b). It is a separate construction from T′.",
+        "increase": "An application to a weighted zero not built from masses, with depth above TRIVIAL CONSEQUENCE.",
+        "falsify": "Weights with Σmᵢ = 0 or non-positive weights (outside its definition).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "not-yet",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "NOT YET FORMALIZED",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": []
+      }
+    },
+    {
+      "id": "T-CENTERING-OPERATOR",
+      "label": "One operator containing T′ and WMC",
+      "words": "G-orthogonal removal of the uniform direction",
+      "variants": [],
+      "normalizedStatement": "C_G = I − 1 1ᵀG/(1ᵀG1), G positive diagonal: idempotent, kills 1, G-self-adjoint, ⟨1, C_G x⟩_G = 0; G = I gives P_n, G = diag(m) gives C_m; the metric is read off each zero relation.",
+      "origin": "established-support",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:G5d",
+          "note": ""
+        },
+        {
+          "ref": "card:G5b",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:G5f",
+          "note": "boundaries: content only with a nonzero removed mode; undefined for 1ᵀG1 = 0; complex weights excluded"
+        }
+      ],
+      "boundaries": [
+        "Operator and zero-relation level only; the regular-simplex configuration is the special case G ∝ I.",
+        "A standard object (weighted centering); allowing any removed direction would make it contain every hyperplane zero, so that is not adopted."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "G5b",
+        "G5d",
+        "G5f"
+      ],
+      "sourceDocs": [
+        "research/constructions/centering_comparison.md"
+      ],
+      "auditRef": "transfer 5",
+      "audit": {
+        "before": "new",
+        "note": "transfer pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-WMC",
+        "Q-CENTERING",
+        "T-SIMPLEX-FAMILY"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Project-derived theorem",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 45,
+        "slopRisk": 15,
+        "why": "One unchanged operator family C_G contains T′ (G = I) and WMC (G = D) exactly, with the metric read off each zero relation. It excludes Fourier k ≠ 0, weights with Σ = 0 and nonlinear zeros (G5f), so it can fail. It is the standard weighted-centering object and has one independent system so far.",
+        "increase": "A third independent system with a nonzero removed uniform mode and positive weights, or a prediction from C_G verified before computing it.",
+        "falsify": "A system with this zero-relation form where C_G does not reproduce the zero, or evidence that it is only a relabelling of every weighted zero.",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "not-yet"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "STRUCTURAL TRANSFER",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": []
+      }
+    },
+    {
+      "id": "Q-CENTERING",
+      "label": "A general centering geometry?",
+      "words": "Is there a general geometry of centering/removing a distinguished direction or weighted mode that contains the simplex projection and mass balance as exact cases?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:G5d",
+          "note": "an exact operator-level construction for the uniform direction with diagonal weights"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Formulated as a research question only after the operator comparison; whether it is a project geometry or only standard weighted centering is open."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "G5d"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "transfer 17",
+      "audit": {
+        "before": "new",
+        "note": "transfer pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": {
+        "targetStatement": "Is there a general geometry of centering/removing a distinguished direction or weighted mode that contains the simplex projection and mass balance as exact cases?",
+        "targetSource": "docs/restructure_decisions.md",
+        "requiredObjects": [],
+        "requiredMaps": [],
+        "candidateInvariants": [],
+        "requiredEquivalences": [],
+        "proofObligations": [],
+        "exactSearchQueries": [],
+        "knownTheorems": [],
+        "unresolvedObligations": [],
+        "previousTargets": [],
+        "lastResearchOutcome": "constructive-realization"
+      },
+      "related": [
+        "T-CENTERING-OPERATOR"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "Q-WMC-1",
+      "label": "WMC reconstruction in the D-metric",
+      "words": "Does a reconstruction analogous to G3b hold for WMC in the D-metric?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "assistant-proposed",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "research/constructions/weighted_mass_centering.md"
+      ],
+      "auditRef": "WMC 10",
+      "audit": {
+        "before": "new",
+        "note": "transfer pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-WMC",
+        "Q-R4-2"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "Q-WMC-2",
+      "label": "Stage 3's zero-preserving changes as D-orthogonal maps",
+      "words": "Which of Stage 3's zero-preserving changes, if any, are induced by D-orthogonal maps of the index space that fix",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "assistant-proposed",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I",
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "research/constructions/weighted_mass_centering.md"
+      ],
+      "auditRef": "WMC 10",
+      "audit": {
+        "before": "new",
+        "note": "transfer pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-WMC"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-S2-DEPHASING",
+      "label": "Stage 2b under an S² measurement (outcome ignored)",
+      "words": "relative coherence between the two S² sectors is lost",
+      "variants": [
+        {
+          "words": "S_z remains zero",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "S² information becomes available",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "ρ = |↑↓⟩⟨↑↓|, in the {|1,0⟩, |0,0⟩} basis [[½, ½], [½, ½]] → ρ' = [[½, 0], [0, ½]]; S_z ρ' = 0; outcomes 2ħ² and 0 with probability ½ each; purity 1 → ½; ⟨S_z⁽¹⁾⟩: ħ/2 → 0, ⟨S_z⁽²⁾⟩: −ħ/2 → 0.",
+      "origin": "established-support",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:W2a",
+          "note": ""
+        },
+        {
+          "ref": "card:W2b",
+          "note": ""
+        },
+        {
+          "ref": "card:W2c",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I",
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "W2a",
+        "W2b",
+        "W2c"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "transfer 11",
+      "audit": {
+        "before": "new",
+        "note": "transfer pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "B-ZERO-INTERNAL-CHANGE",
+        "B-JOINT-ALTERNATIVES"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Known theorem / textbook identity",
+        "breadth": "one configuration",
+        "backboneSupport": 25,
+        "slopRisk": 15,
+        "why": "A textbook Lüders measurement computed exactly. The defining zero is kept, while the sector coherence and the ±ħ/2 composition of the zero are lost. It is the same dephasing map as which-path marking (W2d), but the double slit has no defining zero.",
+        "increase": "A non-quantum zero where an operation inside the zero destroys a relation in the same way.",
+        "falsify": "None for the calculation; the project mapping fails if the parallel holds for no non-quantum zero.",
+        "classification": "EXAMPLE",
+        "validity": {
+          "construction": "pass",
+          "generalization": "not-yet",
+          "transfer": "not-yet",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "TRIVIAL CONSEQUENCE",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": []
       }
     }
   ]

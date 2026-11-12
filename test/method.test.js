@@ -272,7 +272,15 @@ test('ratings: every assessment is complete and consistent with the evaluation r
     if (a.classification === 'BACKBONE PROOF') assert.ok(a.validity.generalization === 'pass' && a.validity.transfer === 'pass', `${r.id}: backbone proof needs generalization and transfer`);
     if (a.backboneSupport === 100) assert.ok(a.classification === 'BACKBONE PROOF' && ['pass', 'n/a'].includes(a.validity.outOfSample), `${r.id}: 100% needs independent application`);
     assert.ok(['active', 'low-confidence-active', 'inactive-archived'].includes(a.branchState), r.id);
-    if (a.branchState === 'inactive-archived') assert.ok(a.failures.length >= 3, `${r.id}: archive only after repeated independent failure`);
+    assert.ok(['TRIVIAL CONSEQUENCE', 'STRUCTURAL TRANSFER', 'NONTRIVIAL PREDICTIVE TRANSFER', 'FAIL', 'NOT YET FORMALIZED'].includes(a.transferDepth), `${r.id}: transfer depth`);
+    assert.ok(['established', 'established under assumptions', 'not established'].includes(a.mathematicalCorrectness), `${r.id}: correctness rated separately`);
+    if (a.transferDepth === 'NONTRIVIAL PREDICTIVE TRANSFER')
+      assert.ok(a.prediction && a.prediction.statement && a.prediction.recordedOn && a.prediction.verifiedBy, `${r.id}: a predictive transfer needs the prediction recorded before its verifying card`);
+    if (a.branchState === 'inactive-archived') {
+      const kinds = new Set(a.failures.map((f) => f.kind));
+      assert.ok(kinds.has('formulation') && kinds.has('application') && a.noGeneralizationSurvives && a.noEstablishedSupport && a.failures.length >= 4, `${r.id}: archive only when all four conditions hold`);
+    }
+    for (const h of a.ratingHistory) assert.ok(h.reason, `${r.id}: a rating change states its reason`);
   }
 });
 
@@ -302,7 +310,7 @@ test('Stage 2 stays ORTHOGONALLY EQUIVALENT; Q-R4-2 is proved under its stated e
 test('construction records share the eleven-section format; the application matrix has its columns and records failures', () => {
   const SECTIONS = ['1. Construction target', '2. Source geometry', '3. Projection map', '4. Exact identities', '5. Lower-dimensional realization',
     '6. What is established', '7. What is derived', '8. What is NOT established', '9. Connection to Stage 2', '10. Questions generated', '11. Next construction tests'];
-  for (const f of ['research/constructions/r4_tetrahedral_zero.md', 'research/constructions/zero_connector_linear.md'])
+  for (const f of ['research/constructions/r4_tetrahedral_zero.md', 'research/constructions/zero_connector_linear.md', 'research/constructions/weighted_mass_centering.md'])
     assert.deepEqual(read(f).split('\n').filter((l) => l.startsWith('## ')).map((l) => l.slice(3)), SECTIONS, f);
   const m = read('research/application_matrix.md');
   assert.ok(m.includes('| System / dataset | Observed zero / relation | Source representation | Target representation | Candidate larger geometry | Map | What becomes zero | What survives | What is lost | Independent of construction example? | Mathematical status | Backbone Support % | AI Slop Risk % | Failure condition |'));
@@ -311,4 +319,55 @@ test('construction records share the eleven-section format; the application matr
   assert.match(results, /fails/, 'failures are recorded, not hidden');
   for (const cell of results.split('\n').filter((l) => /^\| \d\./.test(l)).flatMap((l) => l.replace(/\\\|/g, '¦').split('|').slice(2, 4)))
     assert.match(cell.trim(), /^(same rule works|partially works|fails|not yet formalized)/, `result label: ${cell.trim()}`);
+});
+
+// ── transfer pass (2026-11-12) ──────────────────────────────────────────────────────────────────
+
+test('transfer depth is defined in the method and used in the application matrix version 2, with version 1 kept', () => {
+  for (const d of ['TRIVIAL CONSEQUENCE', 'STRUCTURAL TRANSFER', 'NONTRIVIAL PREDICTIVE TRANSFER', 'FAIL', 'NOT YET FORMALIZED']) assert.ok(method.includes(`| ${d} |`), d);
+  assert.ok(method.includes('Construct first. Apply unchanged. Record what survives and what fails.'));
+  assert.ok(method.includes('One failure is never enough.'));
+  const m = read('research/application_matrix.md');
+  assert.ok(m.indexOf('## Version 2') < m.indexOf('## Version 1'), 'version 1 kept as history below version 2');
+  assert.ok(m.includes('| Observed zero | Zero kind | Underlying objects | Map / relation | Source structure | Target structure | Known or inferred larger geometry | What becomes zero | What survives | What is lost | Transfer Depth | Same rule unchanged? | Backbone Support % | AI Slop / Delusion Risk % | Exact failure condition |'));
+  const v2 = m.slice(m.indexOf('## Version 2'), m.indexOf('## Version 1'));
+  const rows = v2.split('\n').filter((l) => /^\| \d\. /.test(l));
+  assert.equal(rows.length, 7, 'the seven systems of the pass');
+  for (const r of rows) assert.match(r, /TRIVIAL CONSEQUENCE|STRUCTURAL TRANSFER|NONTRIVIAL PREDICTIVE TRANSFER|FAIL|NOT YET FORMALIZED/, r.slice(0, 40));
+  assert.ok(!/NONTRIVIAL PREDICTIVE TRANSFER/.test(v2.slice(v2.indexOf('| 1.'))), 'no predictive transfer claimed in this pass');
+  assert.ok(!/T′_(mass|quantum|Fourier|orthogonality)/.test(m) && !reg.theories.some((r) => /T′_/.test(r.id + r.label)), 'no per-system rescue variants of T′ (the method names them only to forbid them)');
+});
+
+test('Pair A: the equal-mass bridge is added beside, not instead of, the shared algebraic form', () => {
+  const graph = JSON.parse(read('research/graph.json'));
+  const ledger = JSON.parse(read('verify/ledger/latest.json')).cards;
+  const pa = graph.pairs.find((p) => p.id === 'pair.A');
+  assert.ok(pa.sharedAlgebraicForm && pa.sharedAlgebraicForm.status === 'established', 'shared algebraic form kept');
+  assert.equal(pa.candidateCommonRelation, null);
+  assert.equal(pa.status, 'open');
+  const [b] = pa.exactSpecialCaseBridges;
+  assert.equal(b.transferDepth, 'STRUCTURAL TRANSFER');
+  assert.ok(b.description.startsWith('Exact special-case bridge: Equal-mass centering of the standard basis'));
+  for (const c of b.cards) assert.equal(ledger[c]?.verdict, 'PASS', c);
+  assert.ok(b.doesNotEstablish.some((x) => /universal Pair A solution/.test(x)));
+  assert.deepEqual(Object.keys(b.layers), ['sharedZeroAlgebra', 'exactSharedConstruction', 'possibleBroaderGeometry']);
+});
+
+test('WMC is its own construction; the comparison follows the six steps and answers with an allowed label', () => {
+  const wmc = byId.get('T-WMC');
+  assert.ok(wmc.boundaries.some((x) => /Not T′/.test(x)));
+  const cmp = read('research/constructions/centering_comparison.md');
+  const steps = cmp.split('\n').filter((l) => l.startsWith('## Step ')).map((l) => l.slice(3, 9));
+  assert.deepEqual(steps, ['Step 1', 'Step 2', 'Step 3', 'Step 4', 'Step 5', 'Step 6']);
+  assert.match(cmp, /\*\*Answer: (YES — exact construction|YES — special case only|PARTIAL|NO UNDER CURRENT DEFINITIONS|OPEN — missing specific derivation)\*\*/);
+  assert.ok(cmp.indexOf('## Step 6') > cmp.indexOf('## Step 5'), 'existing mathematics searched only after the derivation');
+  assert.equal(byId.get('Q-CENTERING').status, 'open', 'the geometry question stays open');
+});
+
+test('the zero taxonomy is descriptive and explicitly non-exhaustive', () => {
+  const t = read('research/zero_taxonomy.md');
+  assert.ok(t.includes('These are known/project-observed categories, not an exhaustive classification.'));
+  for (const c of ['A. Additive / resultant zero', 'B. Linear-functional zero', 'C. Inner-product / bilinear zero', 'D. Quadratic null', 'E. Observable / eigenvalue zero', 'F. Coefficient / spectral zero', 'G. Balance / moment zero'])
+    assert.ok(t.includes(c), c);
+  assert.ok(!/theorem:/i.test(t.split('\n')[0]));
 });

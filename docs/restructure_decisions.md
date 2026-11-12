@@ -901,3 +901,89 @@ Nadia's decisions, verbatim. LaTeX boxes converted to plain text and lists joine
 > Archive only after repeated independent mathematical/empirical failure.
 
 > Do not invent a geometry that only works because we designed it around the answer.
+
+## Transfer pass: transfer depth, weighted centering, Pair A bridge (2026-11-12)
+
+Nadia's decisions, verbatim. LaTeX converted to plain text and lists joined; nothing else changed.
+
+> Construct first. Apply unchanged. Record what survives and what fails.
+
+> Do not optimize for a high Backbone Support score.
+
+> A failure is useful if it tells us where the geometry stops applying.
+
+### Transfer Depth
+
+> TRIVIAL CONSEQUENCE
+
+> A broad textbook identity applies, but no project-specific structure has transferred.
+
+> STRUCTURAL TRANSFER
+
+> A nontrivial configuration, representation, invariant, Gram structure, geometric constraint, or construction derived in one setting reappears in another setting without altering the mathematical rule.
+
+> NONTRIVIAL PREDICTIVE TRANSFER
+
+> A rule constructed before examining the target system predicts a mathematically non-obvious relation in that target, and the prediction is subsequently verified.
+
+> Do not award this classification retrospectively merely because two known equations look alike.
+
+> FAIL
+
+> The unchanged construction does not apply.
+
+> Do not repair it merely to avoid the FAIL.
+
+### Pair A
+
+> Exact special-case bridge: Equal-mass centering of the standard basis produces the same regular-simplex zero configuration as projection of an orthonormal basis onto 1⊥.
+
+> Do NOT replace Pair A’s broader shared algebraic form.
+
+### Weighted centering and the comparison
+
+> WMC — Weighted Mass Centering
+
+> Do not yet claim WMC and T′ belong to one geometry.
+
+> What mathematical structure is common to T′ and weighted centering, if any?
+
+> Do not assume Euclidean orthogonality is the correct metric in the weighted case.
+
+> Is there a general geometry of centering/removing a distinguished direction or weighted mode that contains the simplex projection and mass balance as exact cases?
+
+### Zero as interface; taxonomy; measurement
+
+> 0 can function as an interface/resultant between relational structure in one representation and what appears in another.
+
+> These are known/project-observed categories, not an exhaustive classification.
+
+> Can obtaining one kind of information destroy relational information represented in another form?
+
+### Application standard and repeated failure
+
+> Does the rule predict anything?
+
+> Can the rule compress multiple cases?
+
+> Can the rule distinguish cases that should differ?
+
+> Can it fail?
+
+> Does it survive new data?
+
+> multiple independent mathematical formulations fail AND multiple applications fail AND no generalization survives AND there is no meaningful established mathematics supporting the connection
+
+> One failure is never enough.
+
+> A branch with one exact connection remains in the graph even if broad generalization fails.
+
+Quantum calculation targets (verbatim):
+
+> S_z remains zero
+
+> S² information becomes available
+
+> relative coherence between the two S² sectors is lost
+
+> leaving the defining zero; changing the state while remaining inside the zero condition; extracting information while preserving both zero and the relevant internal relation

@@ -10,6 +10,8 @@ G4 = 'docs/gate4_decisions.md'
 AP = 'docs/author_philosophy.md'
 CX = 'research/constructions/r4_tetrahedral_zero.md'
 ZC = 'research/constructions/zero_connector_linear.md'
+CM = 'research/constructions/centering_comparison.md'
+WM = 'research/constructions/weighted_mass_centering.md'
 H1, H2, H3 = 'research/hypotheses/H1.md', 'research/hypotheses/H2.md', 'research/hypotheses/H3.md'
 
 def line_from(path, start):
@@ -594,14 +596,50 @@ T('Q-CONNECT-1', 'Which source classes make the removed relation recoverable?', 
 T('Q-CONNECT-2', 'A connector template for nonlinear zeros?', 'Is there a connector template for nonlinear zero conditions', ZC, A, 'open-question', 'open',
   acts=['III'], audit=A_AUDIT, related=['T-ZERO-CONNECTOR', 'T-H1-TWO-ZEROS'], ref='connector 10')
 T('B-ZERO-INTERNAL-CHANGE', 'Change inside the same zero', 'What information can change, be destroyed, become distinguishable, or become inaccessible while the system remains inside the same defining zero condition?', RD, U, 'open-question', 'open',
-  pro=[('card:Q1h', 'S² measured on |↑↓⟩ keeps S_z = 0 and changes the state'), ('card:W1d', 'the A–B coherence (1/2) becomes 0 while S_z = 0 holds')],
+  pro=[('card:Q1h', 'S² measured on |↑↓⟩ keeps S_z = 0 and changes the state'), ('card:W1d', 'the A–B coherence (1/2) becomes 0 while S_z = 0 holds'),
+       ('card:W2c', 'the composition of the zero changes: ⟨S_z⁽¹⁾⟩ goes ħ/2 → 0 and ⟨S_z⁽²⁾⟩ −ħ/2 → 0 while S_z = 0 holds'),
+       ('card:W2e', 'two incompatible zero-preserving interrogations: S² and S_z⁽¹⁾ both commute with S_z but not with each other')],
   bounds=['Distinct from leaving the zero (B-ZERO-LOSS) and from state-preserving interrogation; the three operations are not merged.'],
   acts=['I', 'III'], audit=A_AUDIT, related=['B-ZERO-PRESERVE', 'B-ZERO-LOSS', 'B-JOINT-ALTERNATIVES'], ref='application 9')
 T('B-JOINT-ALTERNATIVES', 'Information that destroys a joint relation (measurement branch)', 'Can obtaining one form of information destroy another relation that existed only while alternatives remained jointly represented?', RD, U, 'open-question', 'open',
   pro=[('card:W1a', 'two-path reference: the cross term is weighted by the marker overlap'), ('card:W1b', 'orthogonal markers (full which-path information) zero the cross term'),
-       ('card:W1c', 'V² + D² = 1'), ('card:W1d', 'the same structure inside stage 2b, with the defining zero preserved')],
-  bounds=['No claim that a conscious viewer causes collapse; the terms are measurement, interaction, which-path information.', 'Not claimed to be the same mechanism as information loss at a natural zero; the exact relation is to be constructed first.', 'No physical data used.'],
+       ('card:W1c', 'V² + D² = 1'), ('card:W1d', 'the same structure inside stage 2b, with the defining zero preserved'),
+       ('card:W2d', 'exact overlap: the same dephasing map [[a, c], [c*, b]] → [[a, 0], [0, b]] on a two-sector decomposition, in both systems'),
+       ('card:W2e', 'inside one zero: obtaining S² information destroys the S_z⁽¹⁾ definiteness and conversely')],
+  bounds=['No claim that a conscious viewer causes collapse; the terms are measurement, interaction, which-path information.',
+          'The double-slit / which-path model has no defining zero; it does not prove B-ZERO-LOSS.',
+          'Kept apart: A leaving the defining zero; B changing the state while remaining inside the zero condition; C extracting information while preserving both zero and the relevant internal relation.', 'Not claimed to be the same mechanism as information loss at a natural zero; the exact relation is to be constructed first.', 'No physical data used.'],
   acts=['III'], audit=A_AUDIT, related=['B-ZERO-INTERNAL-CHANGE', 'B-ZERO-LOSS', 'T-H1-SIGNATURE'], ref='application 10')
+
+
+# ── transfer pass (2026-11-12): Pair A bridge, WMC, the centering operator, quantum dephasing ─────
+T_AUDIT = ('new', 'transfer pass (2026-11-12)')
+T('T-PAIRA-BRIDGE', 'Pair A: exact special-case bridge', 'Exact special-case bridge: Equal-mass centering of the standard basis produces the same regular-simplex zero configuration as projection of an orthonormal basis onto 1⊥.', RD, U, 'established', 'established',
+  norm='For equal masses at r_i = e_i: R_CM = (1/n)1, so r_i − R_CM = e_i − (1/n)1 = P_n e_i (G4m); for n = 4 these are Stage 2\'s first-state vectors up to the isometry of G2i.',
+  pro=[('card:G4m', ''), ('card:G2n', ''), ('card:G2i', 'n = 4: Stage 2\'s first state')],
+  bounds=['Not a universal Pair A solution; Pair A\'s shared algebraic form is unchanged; the deeper common relation stays unfilled.', 'Unequal masses do not share T′ (FAIL unchanged).'],
+  acts=['I', 'III'], objs=['obj.distribution', 'obj.moments'], audit=T_AUDIT, related=['T-PAIRA-SHARED', 'T-SIMPLEX-FAMILY', 'T-WMC'], graph='pair.A.exactSpecialCaseBridges', ref='transfer 2')
+T('T-WMC', 'WMC — Weighted Mass Centering (a separate construction, not T′)', 'WMC — Weighted Mass Centering', RD, 'established-support', 'established', 'established',
+  norm='C_m = I − 1mᵀ/M, u = D C_m X with D = diag(m): Σu_i = 0; C_m idempotent, kernel span{1}, image m⊥, D-self-adjoint, Euclidean-oblique; L_m = D C_m symmetric PSD, image 1⊥, not idempotent.',
+  pro=[('card:G5a', ''), ('card:G5b', ''), ('card:G5c', ''), ('card:G5e', 'configurations for unequal masses')],
+  bounds=['Not T′ and not a repaired T′.', 'Does not apply to the directional ensemble (no positions or masses).'],
+  acts=['I', 'III'], audit=T_AUDIT, related=['T-CENTERING-OPERATOR', 'T-PAIRA-BRIDGE', 'Q-WMC-1'], ref='transfer 4')
+T('T-CENTERING-OPERATOR', 'One operator containing T′ and WMC', 'G-orthogonal removal of the uniform direction', CM, 'established-support', 'established', 'established',
+  norm='C_G = I − 1 1ᵀG/(1ᵀG1), G positive diagonal: idempotent, kills 1, G-self-adjoint, ⟨1, C_G x⟩_G = 0; G = I gives P_n, G = diag(m) gives C_m; the metric is read off each zero relation.',
+  pro=[('card:G5d', ''), ('card:G5b', '')], con=[('card:G5f', 'boundaries: content only with a nonzero removed mode; undefined for 1ᵀG1 = 0; complex weights excluded')],
+  bounds=['Operator and zero-relation level only; the regular-simplex configuration is the special case G ∝ I.', 'A standard object (weighted centering); allowing any removed direction would make it contain every hyperplane zero, so that is not adopted.'],
+  acts=['III'], audit=T_AUDIT, related=['T-WMC', 'Q-CENTERING', 'T-SIMPLEX-FAMILY'], ref='transfer 5')
+T('Q-CENTERING', 'A general centering geometry?', 'Is there a general geometry of centering/removing a distinguished direction or weighted mode that contains the simplex projection and mass balance as exact cases?', RD, U, 'open-question', 'open',
+  pro=[('card:G5d', 'an exact operator-level construction for the uniform direction with diagonal weights')],
+  target=dict(targetStatement='Is there a general geometry of centering/removing a distinguished direction or weighted mode that contains the simplex projection and mass balance as exact cases?', lastResearchOutcome='constructive-realization'),
+  bounds=['Formulated as a research question only after the operator comparison; whether it is a project geometry or only standard weighted centering is open.'],
+  acts=['III'], audit=T_AUDIT, related=['T-CENTERING-OPERATOR'], ref='transfer 17')
+T('Q-WMC-1', 'WMC reconstruction in the D-metric', 'Does a reconstruction analogous to G3b hold for WMC in the D-metric?', WM, A, 'open-question', 'open', acts=['III'], audit=T_AUDIT, related=['T-WMC', 'Q-R4-2'], ref='WMC 10')
+T('Q-WMC-2', "Stage 3's zero-preserving changes as D-orthogonal maps", "Which of Stage 3's zero-preserving changes, if any, are induced by D-orthogonal maps of the index space that fix", WM, A, 'open-question', 'open', acts=['I', 'III'], audit=T_AUDIT, related=['T-WMC'], ref='WMC 10')
+T('T-S2-DEPHASING', 'Stage 2b under an S² measurement (outcome ignored)', 'relative coherence between the two S² sectors is lost', RD, 'established-support', 'established', 'established',
+  variants=[('S_z remains zero', RD), ('S² information becomes available', RD)],
+  norm='ρ = |↑↓⟩⟨↑↓|, in the {|1,0⟩, |0,0⟩} basis [[½, ½], [½, ½]] → ρ\' = [[½, 0], [0, ½]]; S_z ρ\' = 0; outcomes 2ħ² and 0 with probability ½ each; purity 1 → ½; ⟨S_z⁽¹⁾⟩: ħ/2 → 0, ⟨S_z⁽²⁾⟩: −ħ/2 → 0.',
+  pro=[('card:W2a', ''), ('card:W2b', ''), ('card:W2c', '')], acts=['I', 'III'], audit=T_AUDIT, related=['B-ZERO-INTERNAL-CHANGE', 'B-JOINT-ALTERNATIVES'], ref='transfer 11')
 
 PAIR_A = proof_target('Starting from the established common zero-sum form Σv_i = 0, identify all additional invariants/relations of the mass system that can be translated into mathematically meaningful tests on the directional cancellation system.',
                       requiredObjects=['the established shared form Σv_i = 0 (pair.A.sharedAlgebraicForm)'])
@@ -649,10 +687,11 @@ for k, ids in RELATED.items():
 # ── ratings (docs/research_method.md §12); every substantive result carries both percentages ───────
 KN, PD, CE, EC, SM = 'Known theorem / textbook identity', 'Project-derived theorem', 'Constructive example', 'Empirical correlation', 'Speculative mapping'
 ONE, FAM, MULTI, PHYS, DATA = 'one configuration', 'one mathematical family', 'multiple independent mathematical families', 'multiple physical systems', 'real dataset(s)'
-def rate(id, status, breadth, bs, slop, why, increase, falsify, cls, validity, state='active'):
+def rate(id, status, breadth, bs, slop, why, increase, falsify, cls, validity, state='active', depth='NOT YET FORMALIZED', correct='established'):
     v = dict(zip(('construction', 'generalization', 'transfer', 'failureCondition', 'outOfSample'), validity))
     byid[id]['assessment'] = dict(date='2026-11-12', mathematicalStatus=status, breadth=breadth, backboneSupport=bs, slopRisk=slop, why=why,
-                                  increase=increase, falsify=falsify, classification=cls, validity=v, branchState=state, failures=[])
+                                  increase=increase, falsify=falsify, classification=cls, validity=v, branchState=state, failures=[],
+                                  transferDepth=depth, mathematicalCorrectness=correct, prediction=None, ratingHistory=[])
 GC, EX = 'GENERAL CONSTRUCTION', 'EXAMPLE'
 rate('T-R4-STAGE2', CE, ONE, 10, 5, 'An exact coordinate identity computed from the app\'s own TETRA. It records provenance only. It says nothing about what a zero carries.',
      'None needed; it is a provenance fact.', 'A change to TETRA that breaks G2i.', EX, ('pass', 'n/a', 'n/a', 'pass', 'n/a'))
@@ -687,6 +726,34 @@ rate('B-JOINT-ALTERNATIVES', CE, FAM, 25, 35, 'Established physics: which-path i
      'An exact map from the marker model to zero-preserving interrogation, or a non-quantum system with the same structure.', 'The exact relation failing to hold beyond the projective-measurement family.', EX, ('pass', 'partial', 'partial', 'pass', 'not-yet'))
 rate('B-ZERO-LOSS', SM, ONE, 10, 40, 'No card shows information destroyed by leaving a natural zero. The nearest exact result (W1d) concerns change inside the zero, which is a different operation.',
      'A construction where leaving a zero and returning provably loses a relation, compared with a zero-preserving route.', 'Natural zeros where leaving and returning always loses nothing.', EX, ('not-yet', 'not-yet', 'not-yet', 'pass', 'not-yet'), 'low-confidence-active')
+
+def update(id, depth, correct='established', bs=None, slop=None, reason=None):
+    a = byid[id]['assessment']
+    a['transferDepth'], a['mathematicalCorrectness'] = depth, correct
+    if bs is not None and (bs != a['backboneSupport'] or slop != a['slopRisk']):
+        a['ratingHistory'].append(dict(date='2026-11-12', fromBackbone=a['backboneSupport'], fromSlop=a['slopRisk'], toBackbone=bs, toSlop=slop, reason=reason))
+        a['backboneSupport'], a['slopRisk'] = bs, slop
+NYF, TRIV, STRUCT = 'NOT YET FORMALIZED', 'TRIVIAL CONSEQUENCE', 'STRUCTURAL TRANSFER'
+for i in ('T-R4-STAGE2', 'Q-R4-4', 'Q-R4-6'): update(i, NYF)
+for i in ('Q-R4-1', 'Q-R4-2', 'Q-R4-5', 'Q-R4-8-INVERSE'): update(i, NYF, 'established under assumptions')
+update('T-SIMPLEX-FAMILY', STRUCT)
+update('B-HIGHER-GEOMETRY', STRUCT, 'established under assumptions')
+update('B-HIGHER-GEOMETRY-CHAIN', STRUCT, 'established under assumptions')
+update('Q-R4-7', STRUCT)
+update('T-ZERO-CONNECTOR-LINEAR', TRIV, bs=20, slop=10, reason='transfer-depth discipline: on every independent row the linear connector is the textbook kernel statement (TRIVIAL CONSEQUENCE)')
+update('T-ZERO-CONNECTOR', STRUCT, 'not established', bs=25, slop=30, reason='rows 3–5 are trivial consequences; the one structural transfer is equal-mass centering, which belongs to the centering construction more than to the connector')
+update('B-ZERO-INTERNAL-CHANGE', NYF, bs=30, slop=25, reason='W2c computes what changes inside the zero (⟨S_z⁽¹⁾⟩: ħ/2 → 0) and W2e gives two incompatible zero-preserving interrogations; still one system')
+update('B-JOINT-ALTERNATIVES', TRIV)
+update('B-ZERO-LOSS', NYF, 'not established')
+rate('T-PAIRA-BRIDGE', KN, FAM, 45, 8, 'T′\'s operator Pₙ transfers unchanged to every equal-mass configuration, and with positions eᵢ the full regular-simplex configuration reappears. It links Pair A\'s two sides through Stage 2\'s first state (G2i). It covers equal masses only, and mean-centering is a standard operation.',
+     'An unequal-mass or non-mass system using the same unchanged operator, or a prediction made from it.', 'Already bounded: unequal masses fail T′ unchanged (G4m).', GC, ('pass', 'pass', 'partial', 'pass', 'not-yet'), depth=STRUCT)
+rate('T-WMC', KN, FAM, 30, 10, 'Weighted centering is standard mechanics. Deriving it outside-in shows the metric D emerging from the zero relation itself (G5b). It is a separate construction from T′.',
+     'An application to a weighted zero not built from masses, with depth above TRIVIAL CONSEQUENCE.', 'Weights with Σmᵢ = 0 or non-positive weights (outside its definition).', GC, ('pass', 'pass', 'not-yet', 'pass', 'n/a'))
+rate('T-CENTERING-OPERATOR', PD, MULTI, 45, 15, 'One unchanged operator family C_G contains T′ (G = I) and WMC (G = D) exactly, with the metric read off each zero relation. It excludes Fourier k ≠ 0, weights with Σ = 0 and nonlinear zeros (G5f), so it can fail. It is the standard weighted-centering object and has one independent system so far.',
+     'A third independent system with a nonzero removed uniform mode and positive weights, or a prediction from C_G verified before computing it.', 'A system with this zero-relation form where C_G does not reproduce the zero, or evidence that it is only a relabelling of every weighted zero.', GC,
+     ('pass', 'pass', 'partial', 'pass', 'not-yet'), depth=STRUCT)
+rate('T-S2-DEPHASING', KN, ONE, 25, 15, 'A textbook Lüders measurement computed exactly. The defining zero is kept, while the sector coherence and the ±ħ/2 composition of the zero are lost. It is the same dephasing map as which-path marking (W2d), but the double slit has no defining zero.',
+     'A non-quantum zero where an operation inside the zero destroys a relation in the same way.', 'None for the calculation; the project mapping fails if the parallel holds for no non-quantum zero.', EX, ('pass', 'not-yet', 'not-yet', 'pass', 'n/a'), depth=TRIV)
 
 for r in R:
     for i in r['related']:

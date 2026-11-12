@@ -11,6 +11,8 @@ carries the ratings of §12.
 
 > construct first → derive consequences → test across contexts → compare to existing mathematics
 
+> **Construct first. Apply unchanged. Record what survives and what fails.**
+>
 > **Construct first. Classify second.**
 >
 > **Preserve the zero. Investigate its geometry.**
@@ -249,6 +251,25 @@ fiber, manifold, orbit, variety, equivalence class or null space before that.
 
 Zero-preserving interrogation covers the second and third rows. The Zero Preservation Rule forbids only the first,
 done merely to obtain observability. These operations are not merged.
+
+In Nadia's terms (transfer pass) these are:
+
+- **A.** leaving the defining zero;
+- **B.** changing the state while remaining inside the zero condition;
+- **C.** extracting information while preserving both the zero and the relevant internal relation.
+
+In quantum examples these are kept apart:
+
+| Notion | Card that shows it |
+|---|---|
+| state change | Q1h |
+| loss of off-diagonal coherence | W2a: ⟨1,0\|ρ\|0,0⟩ goes from ½ to 0 |
+| which-path information | W1b |
+| measurement backaction on an internal relation | W2c: ⟨S_z⁽¹⁾⟩ goes from ħ/2 to 0 |
+| the observable value remaining zero | W2b |
+| incompatible zero-preserving interrogations | W2e |
+
+The double-slit model has no defining zero and does not prove B-ZERO-LOSS.
 
 ## 5. Anti-closure rule
 
@@ -548,6 +569,30 @@ Would falsify         the exact failure condition
 
 The registry carries this as each assessed record's `assessment` field.
 
+### 12.2a Transfer Depth and the separate dimensions of a rating
+
+Every transfer (an application of a construction to a system it was not built from) gets one **Transfer Depth**:
+
+| Value | Definition |
+|---|---|
+| TRIVIAL CONSEQUENCE | A broad textbook identity applies, but no project-specific structure has transferred. For example, L(x) = 0 ⟺ x ∈ ker L applied to a Fourier coefficient. |
+| STRUCTURAL TRANSFER | A nontrivial configuration, representation, invariant, Gram structure, geometric constraint, or construction derived in one setting reappears in another setting without altering the mathematical rule. |
+| NONTRIVIAL PREDICTIVE TRANSFER | A rule constructed before examining the target system predicts a mathematically non-obvious relation in that target, and the prediction is subsequently verified. Never awarded retrospectively because two known equations look alike. The registry requires the prediction's statement and date, recorded before the verifying card. |
+| FAIL | The unchanged construction does not apply. It is not repaired merely to avoid the FAIL. |
+| NOT YET FORMALIZED | No transfer has been attempted or stated precisely yet. |
+
+Three things are rated separately and never conflated:
+
+- **mathematical correctness**: established, established under assumptions, or not established;
+- **Backbone Support %**;
+- **Transfer Depth**.
+
+A textbook identity can be essentially certain, rate 20% Backbone Support, and be a TRIVIAL CONSEQUENCE.
+
+A failed template is never rescued by renaming per-system variants (T′_mass, T′_Fourier, …). If another system needs
+a different construction, that construction is recorded separately under its own name. Whether both are instances of
+a broader geometry is asked afterwards.
+
 ### 12.3 Application validity
 
 | Test | Question |
@@ -557,6 +602,15 @@ The registry carries this as each assessed record's `assessment` field.
 | Transfer | Can the same rule be used unchanged on a system/domain not used to construct it? |
 | Failure condition | What data/configuration would make the proposed structure fail? |
 | Out-of-sample | Where applicable, does it hold on new data or a new domain without changing the rule? |
+
+**The application standard.** For every proposed common structure, ask:
+
+- Does the rule predict anything? A restatement does not count.
+- Can it compress multiple cases, with one unchanged object explaining several rows?
+- Can it distinguish cases that should differ? If every zero is called a "connector", the rule has no discriminating
+  power.
+- Can it fail? There must be explicit configurations where it says "not this structure".
+- Does it survive new data?
 
 A one-context construction is an **EXAMPLE**, not a **BACKBONE PROOF**. The application matrix
 (`research/application_matrix.md`) records the transfer tests. The template is never altered to force agreement, and
@@ -576,12 +630,15 @@ Before a construction is accepted:
 Weak evidence ≠ discard. A branch with any coherent mathematical or empirical connection stays active; at low ratings
 it is a *low-confidence active branch*. The ratings are not a search-ending mechanism.
 
-A branch is archived only after repeated independent failure:
+A branch is flagged as a candidate for inactive status only when **all** of these hold:
 
-- multiple derivation attempts fail;
-- multiple independent systems or datasets fail;
-- multiple reformulations fail;
-- or exact counterexamples repeatedly destroy the intended connection.
+- multiple independent mathematical formulations fail;
+- multiple applications fail;
+- no generalization survives;
+- there is no meaningful established mathematics supporting the connection.
+
+One failure is never enough. A branch with one exact connection remains in the graph even if broad generalization
+fails.
 
 Even then it is archived as an *inactive research branch*, never deleted, with its provenance and failed reasoning
 kept.

@@ -12,7 +12,7 @@ Read these before any work, in this order:
 
 **Permanent rules:** Zero is a connector/interface, not automatically a lower-dimensional object. A construction must survive independent application before it can count as backbone proof. Low support means continue carefully, not discard. Archive only after repeated independent mathematical/empirical failure. Do not invent a geometry that only works because we designed it around the answer.
 
-**Every substantive research result** carries a Backbone Support % and an AI Slop / Delusion Risk %, with the audit and application-validity tests of `docs/research_method.md` §12. Transfer tests go in `research/application_matrix.md`. A one-context construction is an EXAMPLE, not a BACKBONE PROOF.
+**Every substantive research result** carries a Backbone Support %, an AI Slop / Delusion Risk % and, for every transfer, a Transfer Depth (TRIVIAL CONSEQUENCE, STRUCTURAL TRANSFER, NONTRIVIAL PREDICTIVE TRANSFER, FAIL, NOT YET FORMALIZED), with the audit and application-validity tests of `docs/research_method.md` §12. Construct first. Apply unchanged. Record what survives and what fails. Transfer tests go in `research/application_matrix.md`. A one-context construction is an EXAMPLE, not a BACKBONE PROOF.
 
 **Research stance (within construction):** Every user-origin theory is a target theorem. Search narrowly for its exact representation, proof, invariant, transformation law or obstruction. Do not begin with plausibility assessment or adjacent analogies. Search as if the theorem holds; report only what the mathematics establishes.
 
@@ -53,7 +53,8 @@ Reported status (ESTABLISHED, DERIVED CONNECTION, HYPOTHESIS, OPEN QUESTION) is 
 - Map Nadia's geometry into a known theory, or choose a structure (Hilbert space, Fourier, a group, a fiber, …) because existing mathematics uses it. Map known theory into the project's geometry, where justified, after construction.
 - Call zero "the lower-dimensional object", or say a higher dimension automatically explains a zero.
 - Use vague praise ("stronger", "closer", "promising", "interesting", "important", "suggestive") without the exact mathematical change, the Backbone Support % and why.
-- Award 100% Backbone Support because a bespoke example fits, or alter a template to force agreement in the application matrix.
+- Award 100% Backbone Support because a bespoke example fits, or alter a template to force agreement in the application matrix. A failed template is not rescued by per-system variants under its name (no T′_mass, T′_Fourier); a different construction gets its own name.
+- Award NONTRIVIAL PREDICTIVE TRANSFER retrospectively: the prediction must be recorded, with its date, before the card that verifies it.
 - Discard a branch because its percentages are low. Archive (never delete) only after repeated independent failure, keeping its provenance and failed reasoning.
 - Treat a mathematical construction as physical validation (e.g. of proton/MRI behavior) because a visual resembles it; physical validation needs physical theory or data.
 - Claim that a conscious observer causes collapse; use "measurement", "interaction" or "which-path information".

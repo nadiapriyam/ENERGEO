@@ -70,9 +70,9 @@ ${['preserved', 'partial', 'title-only', 'missing', 'new'].map((k) => `| ${BEFOR
 Backbone Support % and AI Slop / Delusion Risk % for every assessed result. Low support means continue carefully,
 not discard. The transfer tests are in \`research/application_matrix.md\`.
 
-| ID | Status | Backbone Support | AI Slop Risk | Classification | Breadth | Branch |
-|---|---|---|---|---|---|---|
-${theories.filter((r) => r.assessment).map((r) => { const a = r.assessment; return `| ${r.id} | ${STATUS[r.status]} | ${a.backboneSupport}% | ${a.slopRisk}% | ${a.classification} | ${a.breadth} | ${a.branchState} |`; }).join('\n')}
+| ID | Status | Correctness | Backbone Support | AI Slop Risk | Transfer Depth | Classification | Breadth | Branch |
+|---|---|---|---|---|---|---|---|---|
+${theories.filter((r) => r.assessment).map((r) => { const a = r.assessment; const h = a.ratingHistory.map((x) => ` (was ${x.fromBackbone}%/${x.fromSlop}%)`).join(''); return `| ${r.id} | ${STATUS[r.status]} | ${a.mathematicalCorrectness} | ${a.backboneSupport}%${h} | ${a.slopRisk}% | ${a.transferDepth} | ${a.classification} | ${a.breadth} | ${a.branchState} |`; }).join('\n')}
 
 ## Constructions
 
@@ -80,6 +80,8 @@ ${theories.filter((r) => r.assessment).map((r) => { const a = r.assessment; retu
 |---|---|---|
 | R4 orthogonal-source construction (tetrahedral zero construction) | \`research/constructions/r4_tetrahedral_zero.md\` | G2a–G2k, G2n, G3a–G3d, G3n |
 | Zero as connector, linear case | \`research/constructions/zero_connector_linear.md\` | G4a–G4c, G4m |
+| WMC — Weighted Mass Centering | \`research/constructions/weighted_mass_centering.md\` | G5a–G5c, G5e |
+| T′ vs WMC comparison (C_G) | \`research/constructions/centering_comparison.md\` | G5b–G5f |
 
 ## Backbone records
 

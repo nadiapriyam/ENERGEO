@@ -1,6 +1,45 @@
 # Application matrix
 
-Pass 4 (2026-11-12): independent application of the zero-connector template. Each row applies the templates
+## Version 2 (transfer pass, 2026-11-12): current
+
+Each construction is applied unchanged, and what survives and what fails is recorded. The constructions under test
+are these:
+
+- **T (linear connector).** A target zero is the image of a source relation in ker L (G4a, G4b, G4c).
+- **T′ (orthonormal source, uniform direction removed, Euclidean).** Pₙ = I − (1/n)**1****1**ᵀ (G2, G3).
+- **C_G (G-orthogonal removal of the uniform direction, positive diagonal G).** This is a separate construction
+  containing T′ (G = I) and WMC (G = diag(m)) exactly (G5d). It is not a repaired T′.
+- **Layer-1 form.** A zero resultant of nonzero vector contributions (Pair A's shared algebraic form).
+
+| Observed zero | Zero kind | Underlying objects | Map / relation | Source structure | Target structure | Known or inferred larger geometry | What becomes zero | What survives | What is lost | Transfer Depth | Same rule unchanged? | Backbone Support % | AI Slop / Delusion Risk % | Exact failure condition |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1. Equal-mass balance: Σ(rᵢ − r̄) = 0 | balance / moment (G), additive (A) | n equal masses at positions rᵢ | Pₙ on the index space (T′'s operator) | positions, any; e₁ … eₙ is an orthonormal source | centered positions | configuration space; removed mode: the uniform translation **1** ⊗ r̄ | the sum of the centered positions | every difference rᵢ − rⱼ | the mean position r̄ | STRUCTURAL TRANSFER (T′'s operator unchanged; the full regular-simplex configuration when rᵢ = eᵢ, G4m) | yes (Pₙ) | 45 | 8 | unequal masses (row 2) |
+| 2. Unequal-mass balance: Σmᵢ(rᵢ − R_CM) = 0 | balance / moment (G), additive (A) | masses mᵢ > 0, positions rᵢ | C_m = I − **1**mᵀ/M; moments L_m = D C_m | positions, any | centered positions; moments uᵢ | configuration space; removed mode **1** ⊗ R_CM, in the D-metric | the weighted sum; the plain sum of the moments | every difference rᵢ − rⱼ | R_CM | FAIL for T′ (G4m); STRUCTURAL TRANSFER for C_G with G = D (G5d) | T′: no. C_G: yes. | 40 | 12 | Σmᵢ = 0 or weights not positive (C_G undefined, G5f) |
+| 3. Quantum S_z = 0 | observable / eigenvalue (E), additive at the vector level (A) | two spin-½, ψ ∈ ℂ⁴ | ψ ↦ S_zψ = S_z⁽¹⁾ψ + S_z⁽²⁾ψ | the state space, given | the S_z value | not derived; the state space is given | ψ ∈ span_C{\|↑↓⟩, \|↓↑⟩}; for \|1,0⟩ the contributions ±(ħ/2)\|0,0⟩ cancel (W2f) | commuting observables (S²); the zero under S² measurement (W2b) | from the zero alone, which state in a two-dimensional complex family (Q1d) | TRIVIAL CONSEQUENCE (T's kernel statement; the Layer-1 opposed pair is forced for any two summands); FAIL for T′ and C_G | T: yes. T′, C_G: no. | 15 | 25 | T′ and C_G: no orthonormal source is mapped and no uniform mode is removed |
+| 4. Fourier coefficient zero: f̂(k) = 0 | coefficient / spectral (F), linear functional (B), additive (A) | a signal f | f ↦ ⟨f, e_k⟩ | L²[0,1] with {e_k} | f̂(k) ∈ ℂ | L² with the orthonormal basis | f ∈ e_k^⊥ | every other coefficient (Parseval) | only the e_k component, which is 0 | TRIVIAL CONSEQUENCE (T; T′ at k = 0 only, as a fixed point of Pₙ); FAIL for T′ and C_G when k ≠ 0 (complex weights, G5f) | T: yes. T′, C_G: k = 0 only. | 15 | 15 | k ≠ 0 for T′ and C_G |
+| 5. Ordinary orthogonality: ⟨u, v⟩ = 0 | inner-product / bilinear (C), linear functional (B), additive (A) | u, v ∈ ℝⁿ | v ↦ ⟨u, v⟩ | ℝⁿ | ⟨u, v⟩ ∈ ℝ | ℝⁿ; the zero connects to the hyperplane u^⊥ | v ∈ u^⊥ | v's components within u^⊥ | only the u-component, which is 0 | TRIVIAL CONSEQUENCE (T; C_G for u > 0 componentwise, by the definition of the image); FAIL for C_G with mixed signs and Σuᵢ = 0 (G5f), and for T′ unless u ∝ **1** | T: yes. T′: u ∝ **1** only. C_G: u > 0 only. | 15 | 15 | u with Σuᵢ = 0, or mixed signs (C_G) |
+| 6. Quadratic null vector: q_η(v) = 0, v ≠ 0 | quadratic null (D) | v = (x, ct) | v ↦ q_η(v) | ℝ² with η | q ∈ ℝ | none identified | the null cone (two lines) | the cone directions | — | FAIL (T, T′, C_G: not linear) | no | 10 | 20 | q is not linear. The factorization q = (x − ct)(x + ct) is a different construction (Q-CONNECT-2). |
+| 7. ‖x‖² = 0 | quadratic, definite (D) | x ∈ ℝⁿ | x ↦ ‖x‖² | ℝⁿ | ℝ | none | only x = 0 | — | nothing; the zero identifies the state | FAIL (T, T′, C_G) | no | 0 | 5 | always: a zero that connects to no nonzero source relation (Z5a) |
+
+**Rating changes from version 1, with the mathematical reason:**
+
+| Row | Change | Reason |
+|---|---|---|
+| Mass balance | 35 → equal masses 45, unequal 40 | T′'s operator now transfers unchanged to every equal-mass configuration, not only those at eᵢ. Unequal masses transfer only through the separate C_G construction. |
+| Fourier | 25 → 15 | The transfer is a TRIVIAL CONSEQUENCE. |
+| Orthogonality | 20 → 15 | The transfer is a TRIVIAL CONSEQUENCE. |
+| Quantum | unchanged at 15 | W2f's vector-level cancellation is forced for any two summands, so it adds no transfer depth. |
+
+**What transfers unchanged, what needs a new construction, what fails:**
+
+- **Transfers unchanged as STRUCTURAL TRANSFER:** T′'s operator, to equal-mass balance (row 1).
+- **Needs a new construction:** unequal-mass balance (row 2), through C_G.
+- **TRIVIAL CONSEQUENCE only:** rows 3–5.
+- **Fails:** nonlinear zeros (rows 6–7).
+
+## Version 1 (application pass, 2026-11-12), kept as history
+
+Pass 4 (2026-11-12, superseded by version 2): independent application of the zero-connector template. Each row applies the templates
 **unchanged**. Rows are not forced into one geometry, and failures are recorded. Rows 7 and 8 were added by Claude
 as boundary cases already in the project.
 

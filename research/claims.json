@@ -370,6 +370,25 @@
         "G2j"
       ],
       "source": "research/constructions/r4_tetrahedral_zero.md"
+    },
+    "construction.paira-bridge": {
+      "level": 1,
+      "text": "Exact special-case bridge: Equal-mass centering of the standard basis produces the same regular-simplex zero configuration as projection of an orthonormal basis onto 1⊥.",
+      "cards": [
+        "G4m",
+        "G2n",
+        "G2i"
+      ],
+      "source": "docs/restructure_decisions.md"
+    },
+    "construction.centering-operator": {
+      "level": 1,
+      "text": "C_G = I − 1 1ᵀ G / (1ᵀ G 1), for positive diagonal G, is idempotent, kills 1, is G-self-adjoint, and contains T′ (G = I) and weighted mass centering (G = diag(m)) exactly.",
+      "cards": [
+        "G5b",
+        "G5d"
+      ],
+      "source": "research/constructions/centering_comparison.md"
     }
   }
 }
