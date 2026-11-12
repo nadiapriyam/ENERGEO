@@ -129,6 +129,26 @@ A distinguished direction may only enter a construction if it is independently s
 - **The current state:** C_G stays locked to the uniform direction **1**, with positive diagonal G. The general case
   remains an open question (`Q-DISTINGUISHED-MODE`), not an active family.
 
+**Independent-symmetry rule** (B-INDEPENDENT-SYMMETRY, 2026-11-12):
+
+A zero may be analyzed together with structures or symmetries independently supplied by its system.
+
+Examples include:
+
+- particle/subsystem exchange;
+- rotational symmetry;
+- translation symmetry;
+- permutation symmetry;
+- reflection;
+- time translation;
+- another independently defined group action.
+
+These are known examples, not an exhaustive classification for this project.
+
+A symmetry cannot be introduced because it happens to distinguish the zero states after inspection. It must exist
+independently in the system before the desired distinction is examined. No symmetry is part of the universal
+definition of a zero.
+
 **Possible architecture, not formalized.** The final geometry need not reduce every zero to one operator. It may be
 one broader geometry containing several zero mechanisms. Examples so far:
 
@@ -587,8 +607,8 @@ assigned.
 ### 12.2 The audit (every construction meant to support the backbone)
 
 ```
-Mathematical status   Known theorem / textbook identity | Project-derived theorem | Constructive example
-                      | Empirical correlation | Speculative mapping
+Mathematical status   TEXTBOOK / KNOWN | PROJECT-DERIVED FROM KNOWN DEFINITIONS | NEW PROJECT CONSTRUCTION
+                      | EMPIRICAL | SPECULATIVE MAPPING
 Breadth               one configuration | one mathematical family | multiple independent mathematical families
                       | multiple physical systems | real dataset(s)
 Backbone Support      XX%
@@ -638,6 +658,24 @@ A textbook identity can be essentially certain, rate 20% Backbone Support, and b
 A failed template is never rescued by renaming per-system variants (T′_mass, T′_Fourier, …). If another system needs
 a different construction, that construction is recorded separately under its own name. Whether both are instances of
 a broader geometry is asked afterwards.
+
+**Blind tests and knowledge leakage.** Claude knows the standard theory, so procedural blindness alone is not
+enough. Two properties are kept apart:
+
+- **Procedurally blind:** the code or record defining the descriptor was committed before the target labels were
+  calculated. The ledger's commit field shows the order.
+- **Mathematically novel:** the descriptor predicts a relationship not already implied by known theory.
+
+A blind result that reproduces a known relation is reported as **VALIDATION OF KNOWN MATHEMATICS**, never as a new
+predictive theorem.
+
+The protocol is:
+
+1. Commit the preregistration: the protocol, the target amplitudes or configurations, and the descriptor code.
+2. Run the descriptor cards.
+3. Write and run the reveal cards.
+
+The first instance is `research/constructions/fourspin_mass_protocol.md`.
 
 ### 12.3 Application validity
 

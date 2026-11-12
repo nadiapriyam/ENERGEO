@@ -1041,3 +1041,57 @@ Nadia's decisions, verbatim. LaTeX converted to plain text and lists joined; not
 > Do not assume the final Geometry of Representation must reduce every zero to the same operator.
 
 > one broader geometry ↓ different zero mechanisms ↓ additive, centering, orthogonal, quadratic, spectral, observable, ...
+
+## Four spins and a non-quantum transfer (2026-11-12)
+
+Nadia's decisions, verbatim. LaTeX converted to plain text and lists joined; nothing else changed.
+
+> derive first → preregister → test blind → preserve failures
+
+### Corrected obstruction; symmetry rule
+
+> Do not claim this covers every conceivable descriptor.
+
+> A zero may be analyzed together with structures or symmetries independently supplied by its system.
+
+> particle/subsystem exchange; rotational symmetry; translation symmetry; permutation symmetry; reflection; time translation; another independently defined group action
+
+> A symmetry cannot be introduced because it happens to distinguish the zero states after inspection. It must exist independently in the system before the desired distinction is examined.
+
+> B-INDEPENDENT-SYMMETRY
+
+> same S_z=0 + different action under an independently defined swap → two distinguishable zero states
+
+> all hidden information in zero is symmetry information
+
+> exchange is the geometry of zero.
+
+(the two sentences above are quoted as unsupported normalizations not to be made)
+
+### Knowledge leakage and classification
+
+> Procedurally blind
+
+> The code/record defining the descriptor was committed before the target labels were calculated.
+
+> Mathematically novel
+
+> The descriptor predicts a relationship not already implied by known spin/permutation theory.
+
+> VALIDATION OF KNOWN MATHEMATICS
+
+> FOUR-SPIN-A; FOUR-SPIN-B; FOUR-SPIN-C; FOUR-SPIN-D
+
+> same visible zero + internal relational/symmetry structure → distinguishable hidden states.
+
+> zero/resultant + relationships preserved within the zero → information about the hidden configuration.
+
+> use only relations/symmetries independently present in the system while preserving the zero.
+
+> TEXTBOOK / KNOWN; PROJECT-DERIVED FROM KNOWN DEFINITIONS; NEW PROJECT CONSTRUCTION; EMPIRICAL; SPECULATIVE MAPPING
+
+> If the words “Geometry of Representation” were removed, would this still be a mathematically meaningful statement?
+
+> Four subsystems have nothing automatically to do with four spatial dimensions.
+
+> The goal is not infinite research. The goal is a geometry that survives application.

@@ -72,7 +72,7 @@ not discard. The transfer tests are in \`research/application_matrix.md\`.
 
 | ID | Status | Correctness | Backbone Support | AI Slop Risk | Transfer Depth | Application Breadth (0–5) | Classification | Breadth | Branch |
 |---|---|---|---|---|---|---|---|---|---|
-${theories.filter((r) => r.assessment).map((r) => { const a = r.assessment; const h = a.ratingHistory.map((x) => ` (was ${x.fromBackbone}%/${x.fromSlop}%)`).join(''); return `| ${r.id} | ${STATUS[r.status]} | ${a.mathematicalCorrectness} | ${a.backboneSupport}%${h} | ${a.slopRisk}% | ${a.transferDepth} | ${a.applicationBreadth} | ${a.classification} | ${a.breadth} | ${a.branchState} |`; }).join('\n')}
+${theories.filter((r) => r.assessment).map((r) => { const a = r.assessment; const h = a.ratingHistory.map((x) => ` (was ${x.fromBackbone}%/${x.fromSlop}%)`).join(''); return `| ${r.id} | ${STATUS[r.status]} | ${a.mathematicalCorrectness} | ${a.backboneSupport}%${h} | ${a.slopRisk}% | ${a.transferDepth} | ${a.applicationBreadth} | ${a.classification}${a.novelty ? ` (${a.novelty})` : ''} | ${a.breadth} | ${a.branchState} |`; }).join('\n')}
 
 ## Constructions
 
@@ -82,7 +82,9 @@ ${theories.filter((r) => r.assessment).map((r) => { const a = r.assessment; cons
 | Zero as connector, linear case | \`research/constructions/zero_connector_linear.md\` | G4a–G4c, G4m |
 | WMC — Weighted Mass Centering | \`research/constructions/weighted_mass_centering.md\` | G5a–G5c, G5e |
 | T′ vs WMC comparison (C_G, locked to **1**) | \`research/constructions/centering_comparison.md\` | G5b–G5f |
-| Quantum Additive Cancellation Pair | \`research/constructions/quantum_additive_cancellation.md\` (blind protocol: \`qacp_blind_protocol.md\`) | Q2a–Q2g, W3a–W3b |
+| Quantum Additive Cancellation Pair | \`research/constructions/quantum_additive_cancellation.md\` (blind protocol: \`qacp_blind_protocol.md\`) | Q2a–Q2h, W3a–W3b |
+| Four labelled spin-½ (blind) | \`research/constructions/four_spin_zero.md\` (protocol: \`fourspin_mass_protocol.md\`) | FS1a–FS1f, FS2a–FS2e |
+| Mass second moment (blind) | \`research/constructions/mass_second_moment.md\` | MB1a–MB1b, MB2a–MB2c |
 
 ## Backbone records
 

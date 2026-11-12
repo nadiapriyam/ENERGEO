@@ -1,6 +1,23 @@
 # Application matrix
 
-## Version 3 (two-zeros pass, 2026-11-12): current
+## Version 4 (four-spin and mass pass, 2026-11-12): current
+
+This version tests the analysis architecture: zero-producing contributions, plus an independently supplied symmetry,
+give a descriptor of a hidden label. It is tested blind in a quantum system and a non-quantum system. The
+preregistration (`research/constructions/fourspin_mass_protocol.md`) was committed at 966be69, before any label.
+
+| System | Visible zero (kept) | Hidden target | Contribution geometry (D1/E1) | Independent symmetry (D4/E2) | Result | Transfer Depth | Mathematical Status | Backbone Support % | AI Slop / Delusion Risk % | Application Breadth | Exact failure condition |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Two spin-½ | S_z = 0 | \|1,0⟩ vs \|0,0⟩ (S²) | FAIL (Q2b; restricted lemma Q2h) | exchange P separates (Q2d) | geometry blind, symmetry decisive | NOT YET FORMALIZED (within the spin family) | PROJECT-DERIVED FROM KNOWN DEFINITIONS | 40 | 8 | 1 | non-eigenstates of P (Q2g) |
+| Four labelled spin-½ | S_z = 0 (dim H₀ = 6) | the S² sectors S = 0, 1, 2 | FAIL (FS1c, FS2c: identical Grams across sectors) | the S₄ cyclic dimension 1/3/2 separates all sectors, blind (FS2b) | FOUR-SPIN-B | NOT YET FORMALIZED (within the spin family) | TEXTBOOK / KNOWN (Schur–Weyl, FS2e) | 40 | 8 | 1 | none in H₀ |
+| Four-spin S₄-fixed zero | S_z = 0 | — (prediction P1) | regular-simplex Gram (ħ²/3)(I − J/4), as predicted (FS1e) | full S₄ stabilizer | the T′ n = 4 configuration reappears | STRUCTURAL TRANSFER | PROJECT-DERIVED FROM KNOWN DEFINITIONS | 35 | 10 | 2 | the converse: the same Gram occurs at S = 0 (FS2d) |
+| Mass balance, equal masses, M1–M6 | Σuᵢ = 0 | second-moment isotropy | R2 right for all six (MB2a, MB2b) | R1 right when it predicts (M1, M4); misses M5 | geometry decisive, symmetry sound but incomplete | NOT YET FORMALIZED (within mass) | TEXTBOOK / KNOWN | 25 | 5 | 1 | R1: accidental isotropy without symmetry (M5) |
+| Cross-domain architecture | both zeros kept | S² / second moment | inverted roles | in both, a group acting covariantly on the zero-producing tuple; the commuting hidden quadratic is scalar on irreducible blocks (Schur) | the same precise object in both systems | STRUCTURAL TRANSFER | TEXTBOOK / KNOWN | 35 | 20 | 2 | a system where neither geometry nor symmetry carries the hidden label |
+
+**Novelty.** Every blind result above is procedurally blind and reproduces known mathematics. All are classified as
+VALIDATION OF KNOWN MATHEMATICS. No nontrivial predictive transfer.
+
+## Version 3 (two-zeros pass, 2026-11-12): kept
 
 Nothing was forced. The seven rows of version 2 stand unchanged (below). This version adds two things:
 

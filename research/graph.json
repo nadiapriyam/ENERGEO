@@ -223,6 +223,17 @@
         "obj.moments"
       ],
       "note": "A separate research object, not part of Pair A: the spin pair stays distinct from the MRI-motivated ensemble."
+    },
+    {
+      "id": "obj.four-spin",
+      "label": "four labelled spin-½ subsystems in the S_z = 0 space H₀ (dim 6)",
+      "stage": null,
+      "journeyId": null,
+      "act": "III",
+      "distinctFrom": [
+        "obj.moments"
+      ],
+      "note": "Four subsystems, not four spatial dimensions."
     }
   ],
   "relations": [
@@ -607,6 +618,90 @@
       "doesNotEstablish": [
         "information beyond the known exchange parity / S² labels",
         "a nontrivial predictive transfer (the S² link is the textbook identity S² = ħ²(1 + P))"
+      ]
+    },
+    {
+      "id": "rel.fourspin-geometry-blind",
+      "object": "obj.four-spin",
+      "representation": "(c_1, …, c_4) = (S_z^(i) ψ)",
+      "measurement": "contribution Gram and span data",
+      "status": "established",
+      "cards": [
+        "FS1c",
+        "FS2c"
+      ],
+      "claims": [
+        "fourspin.geometry-blind"
+      ],
+      "connectsTo": [
+        "obj.qacp"
+      ],
+      "doesNotEstablish": [
+        "that no added structure separates the sectors"
+      ]
+    },
+    {
+      "id": "rel.fourspin-symmetry",
+      "object": "obj.four-spin",
+      "representation": "the canonical S_4 factor permutations acting on ψ and C(ψ)",
+      "measurement": "cyclic dimension dim span{P_σ ψ}",
+      "status": "established",
+      "cards": [
+        "FS1d",
+        "FS1f",
+        "FS2b",
+        "FS2e"
+      ],
+      "claims": [
+        "fourspin.symmetry"
+      ],
+      "connectsTo": [
+        "obj.qacp"
+      ],
+      "doesNotEstablish": [
+        "a relation not implied by known spin/permutation theory (VALIDATION OF KNOWN MATHEMATICS)",
+        "that hidden information in a zero is in general symmetry information"
+      ]
+    },
+    {
+      "id": "rel.fourspin-simplex",
+      "object": "obj.four-spin",
+      "representation": "the S_4-fixed state of H₀",
+      "measurement": "contribution Gram",
+      "status": "established",
+      "cards": [
+        "FS1e",
+        "FS2d"
+      ],
+      "claims": [
+        "fourspin.simplex"
+      ],
+      "connectsTo": [
+        "obj.r4-source"
+      ],
+      "doesNotEstablish": [
+        "the converse (the regular-simplex Gram also occurs at S = 0)"
+      ]
+    },
+    {
+      "id": "rel.mass-second-moment",
+      "object": "obj.distribution",
+      "representation": "u_i = r_i − R_CM, equal masses",
+      "measurement": "contribution Gram spectrum; stabilizer action",
+      "status": "established",
+      "cards": [
+        "MB1b",
+        "MB2a",
+        "MB2b",
+        "MB2c"
+      ],
+      "claims": [
+        "mass.second-moment"
+      ],
+      "connectsTo": [],
+      "doesNotEstablish": [
+        "anything physical beyond center-of-mass mechanics",
+        "that symmetry carries the hidden information (here the contribution geometry does)"
       ]
     }
   ],

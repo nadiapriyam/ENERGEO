@@ -58,10 +58,19 @@ swap of the two sector states. The zero of each state is built from the *other* 
 ## 6. What is established
 
 - **Both zeros are exact cancellations of nonzero vectors (Q2a).** This is ESTABLISHED.
-- **Obstruction (Q2b, Q2c).** The zero-producing structure alone cannot tell the two zeros apart. Here that structure
-  means the state, the two contribution operators and the inner product. A symmetry of that structure (U) maps one
-  internal-zero configuration exactly onto the other. Every descriptor built from it agrees on both states: Gram
-  matrices, norms, signs, spans up to that symmetry.
+- **Restricted obstruction (Q2h, corrected 2026-11-12).**
+  - Let C(ψ) = (ψ, S_z⁽¹⁾ψ, S_z⁽²⁾ψ). U = exp(iπS_z⁽¹⁾/ħ) acts on ℂ² ⊗ ℂ² and commutes with S_z⁽¹⁾, S_z⁽²⁾ and S_z.
+  - It maps C(|1,0⟩) to i·C(|0,0⟩).
+  - So every descriptor D with D(WC) = D(C), for all unitaries W commuting with S_z⁽¹⁾ and S_z⁽²⁾, and with
+    D(e^{iφ}C) = D(C), takes equal values on the two states.
+  - That class contains every function of the Gram matrix of C: norms, inner products, the relative cancellation
+    c₂ = −c₁, and spans up to such W.
+  - It does **not** cover every conceivable descriptor. A descriptor that uses an operator not commuting with U
+    (the exchange P, for example) is outside the class.
+
+  *Superseded wording, too broad (kept for record T-QACP-OBSTRUCTION):*
+
+  "The zero-producing structure alone cannot tell the two zeros apart."
 - **What separates them (Q2d).** The canonical exchange of the two identical subsystems, P, which commutes with S_z.
   With P, the relation between the two contributions differs: Pc₁ = +c₂ for the triplet and Pc₁ = −c₂ for the singlet.
   Equivalently, the triplet's contributions lie in the exchange-antisymmetric sector and the singlet's in the symmetric

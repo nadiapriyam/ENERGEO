@@ -255,7 +255,7 @@ test('zero is never called the lower-dimensional object', () => {
 });
 
 test('ratings: every assessment is complete and consistent with the evaluation rules', () => {
-  const STATUSES = ['Known theorem / textbook identity', 'Project-derived theorem', 'Constructive example', 'Empirical correlation', 'Speculative mapping'];
+  const STATUSES = ['TEXTBOOK / KNOWN', 'PROJECT-DERIVED FROM KNOWN DEFINITIONS', 'NEW PROJECT CONSTRUCTION', 'EMPIRICAL', 'SPECULATIVE MAPPING'];
   const BREADTH = ['one configuration', 'one mathematical family', 'multiple independent mathematical families', 'multiple physical systems', 'real dataset(s)'];
   const V = ['pass', 'partial', 'fail', 'not-yet', 'n/a'];
   const rated = reg.theories.filter((r) => r.assessment);
@@ -311,7 +311,7 @@ test('Stage 2 stays ORTHOGONALLY EQUIVALENT; Q-R4-2 is proved under its stated e
 test('construction records share the eleven-section format; the application matrix has its columns and records failures', () => {
   const SECTIONS = ['1. Construction target', '2. Source geometry', '3. Projection map', '4. Exact identities', '5. Lower-dimensional realization',
     '6. What is established', '7. What is derived', '8. What is NOT established', '9. Connection to Stage 2', '10. Questions generated', '11. Next construction tests'];
-  for (const f of ['research/constructions/r4_tetrahedral_zero.md', 'research/constructions/zero_connector_linear.md', 'research/constructions/weighted_mass_centering.md', 'research/constructions/quantum_additive_cancellation.md'])
+  for (const f of ['research/constructions/r4_tetrahedral_zero.md', 'research/constructions/zero_connector_linear.md', 'research/constructions/weighted_mass_centering.md', 'research/constructions/quantum_additive_cancellation.md', 'research/constructions/four_spin_zero.md', 'research/constructions/mass_second_moment.md'])
     assert.deepEqual(read(f).split('\n').filter((l) => l.startsWith('## ')).map((l) => l.slice(3)), SECTIONS, f);
   const m = read('research/application_matrix.md');
   assert.ok(m.includes('| System / dataset | Observed zero / relation | Source representation | Target representation | Candidate larger geometry | Map | What becomes zero | What survives | What is lost | Independent of construction example? | Mathematical status | Backbone Support % | AI Slop Risk % | Failure condition |'));
@@ -416,4 +416,42 @@ test('application breadth, the four quantum events, and matrix version 3', () =>
   assert.ok(v3.includes('| System | Observed zero | Contributions | Exchange acting on contributions | ε | Transfer Depth | Same rule unchanged? | Backbone Support % | AI Slop / Delusion Risk % | Application Breadth | Exact failure condition |'));
   assert.match(v3, /\| FAIL/, 'failures recorded');
   assert.match(v3, /NOT YET FORMALIZED/);
+});
+
+// ── four spins and a non-quantum transfer (2026-11-12) ──────────────────────────────────────────
+
+test('preregistration came first: the blind descriptor ran before the reveal, at an earlier commit', () => {
+  const rows = read('verify/ledger/ledger.jsonl').trim().split('\n').map((l) => JSON.parse(l));
+  const first = (id) => rows.findIndex((r) => r.id === id);
+  for (const [blind, reveal] of [['FS1d', 'FS2b'], ['MB1b', 'MB2a']]) {
+    assert.ok(first(blind) >= 0 && first(reveal) > first(blind), `${blind} before ${reveal}`);
+    assert.notEqual(rows[first(blind)].commit, rows[first(reveal)].commit, `${reveal} first ran after a new commit (the preregistration)`);
+  }
+  const proto = read('research/constructions/fourspin_mass_protocol.md');
+  for (const s of ['Procedurally blind', 'Mathematically novel', 'VALIDATION OF KNOWN MATHEMATICS', 'P1.', 'P2.', 'P3.', 'R1 (symmetry)', 'R2 (contribution geometry)'])
+    assert.ok(proto.includes(s), s);
+  assert.ok(proto.includes('Four subsystems have nothing to do with four spatial dimensions'));
+});
+
+test('independent-symmetry rule; corrected obstruction keeps the old wording as superseded', () => {
+  assert.equal(byId.get('B-INDEPENDENT-SYMMETRY').status, 'governance');
+  assert.ok(method.includes('A symmetry cannot be introduced because it happens to distinguish the zero states after inspection.'));
+  assert.equal(byId.get('T-QACP-OBSTRUCTION').supersededBy, 'T-QACP-OBSTRUCTION-RESTRICTED');
+  assert.match(byId.get('T-QACP-OBSTRUCTION-RESTRICTED').normalizedStatement, /outside the class/);
+  const q = read('research/constructions/quantum_additive_cancellation.md');
+  assert.match(q, /It does \*\*not\*\* cover every conceivable descriptor/);
+  assert.match(read('CLAUDE.md'), /Introduce a symmetry because it separates zero states after inspection/);
+});
+
+test('four-spin result is FOUR-SPIN-B, classified as validation; the mass result inverts the roles; nothing is called a new theorem', () => {
+  const f = read('research/constructions/four_spin_zero.md');
+  assert.match(f, /\*\*Result: FOUR-SPIN-B\.\*\*/);
+  assert.match(f, /VALIDATION OF KNOWN MATHEMATICS/);
+  const ledger = JSON.parse(read('verify/ledger/latest.json')).cards;
+  for (const c of ['FS1a', 'FS1b', 'FS1c', 'FS1d', 'FS1e', 'FS2a', 'FS2b', 'FS2c', 'FS2d', 'FS2e', 'MB1a', 'MB1b', 'MB2a', 'MB2b', 'MB2c', 'Q2h']) assert.equal(ledger[c]?.verdict, 'PASS', c);
+  for (const id of ['T-FOURSPIN-SYMMETRY', 'T-FOURSPIN-SIMPLEX', 'T-MASS-SECOND-MOMENT', 'T-ZERO-SYMMETRY-ARCHITECTURE', 'T-QACP-EXCHANGE'])
+    assert.equal(byId.get(id).assessment.novelty, 'VALIDATION OF KNOWN MATHEMATICS', id);
+  const m = read('research/application_matrix.md');
+  assert.ok(m.indexOf('## Version 4') < m.indexOf('## Version 3'));
+  assert.match(m.slice(m.indexOf('## Version 4'), m.indexOf('## Version 3')), /No nontrivial predictive transfer/);
 });

@@ -55,6 +55,8 @@ Reported status (ESTABLISHED, DERIVED CONNECTION, HYPOTHESIS, OPEN QUESTION) is 
 - Use vague praise ("stronger", "closer", "promising", "interesting", "important", "suggestive") without the exact mathematical change, the Backbone Support % and why.
 - Award 100% Backbone Support because a bespoke example fits, or alter a template to force agreement in the application matrix. A failed template is not rescued by per-system variants under its name (no T′_mass, T′_Fourier); a different construction gets its own name.
 - Award NONTRIVIAL PREDICTIVE TRANSFER retrospectively: the prediction must be recorded, with its date, before the card that verifies it.
+- Introduce a symmetry because it separates zero states after inspection. A symmetry enters the analysis only if the system supplies it independently (B-INDEPENDENT-SYMMETRY); no symmetry is part of the universal definition of a zero.
+- Call a blind result a new predictive theorem when it reproduces known mathematics; that is VALIDATION OF KNOWN MATHEMATICS. Procedural blindness (preregistration committed first) and mathematical novelty are different.
 - Choose a distinguished direction after seeing the zero it should explain. A direction enters a construction only if the system specifies it independently first (order: system identifies d → derive the map → predict the zero → test). C_G stays locked to the uniform direction 1.
 - Discard a branch because its percentages are low. Archive (never delete) only after repeated independent failure, keeping its provenance and failed reasoning.
 - Treat a mathematical construction as physical validation (e.g. of proton/MRI behavior) because a visual resembles it; physical validation needs physical theory or data.

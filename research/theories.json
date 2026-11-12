@@ -6213,7 +6213,7 @@
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Constructive example",
+        "mathematicalStatus": "NEW PROJECT CONSTRUCTION",
         "breadth": "one mathematical family",
         "backboneSupport": 35,
         "slopRisk": 25,
@@ -6234,7 +6234,8 @@
         "mathematicalCorrectness": "established under assumptions",
         "prediction": null,
         "ratingHistory": [],
-        "applicationBreadth": 2
+        "applicationBreadth": 2,
+        "novelty": null
       }
     },
     {
@@ -7369,7 +7370,7 @@
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Speculative mapping",
+        "mathematicalStatus": "SPECULATIVE MAPPING",
         "breadth": "one configuration",
         "backboneSupport": 10,
         "slopRisk": 40,
@@ -7390,7 +7391,8 @@
         "mathematicalCorrectness": "not established",
         "prediction": null,
         "ratingHistory": [],
-        "applicationBreadth": 0
+        "applicationBreadth": 0,
+        "novelty": null
       }
     },
     {
@@ -7659,7 +7661,8 @@
       "proofTarget": null,
       "related": [
         "T-R4-TETRA",
-        "T-HIDDEN-FAMILY"
+        "T-HIDDEN-FAMILY",
+        "T-FOURSPIN-SIMPLEX"
       ],
       "history": [
         {
@@ -7670,7 +7673,7 @@
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Constructive example",
+        "mathematicalStatus": "NEW PROJECT CONSTRUCTION",
         "breadth": "one configuration",
         "backboneSupport": 10,
         "slopRisk": 5,
@@ -7691,7 +7694,8 @@
         "mathematicalCorrectness": "established",
         "prediction": null,
         "ratingHistory": [],
-        "applicationBreadth": 0
+        "applicationBreadth": 0,
+        "novelty": null
       }
     },
     {
@@ -7753,7 +7757,7 @@
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Project-derived theorem",
+        "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
         "breadth": "one mathematical family",
         "backboneSupport": 40,
         "slopRisk": 15,
@@ -7774,7 +7778,8 @@
         "mathematicalCorrectness": "established under assumptions",
         "prediction": null,
         "ratingHistory": [],
-        "applicationBreadth": 2
+        "applicationBreadth": 2,
+        "novelty": null
       }
     },
     {
@@ -7853,7 +7858,7 @@
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Project-derived theorem",
+        "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
         "breadth": "one mathematical family",
         "backboneSupport": 35,
         "slopRisk": 10,
@@ -7874,7 +7879,8 @@
         "mathematicalCorrectness": "established under assumptions",
         "prediction": null,
         "ratingHistory": [],
-        "applicationBreadth": 1
+        "applicationBreadth": 1,
+        "novelty": null
       }
     },
     {
@@ -7953,7 +7959,7 @@
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Project-derived theorem",
+        "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
         "breadth": "one mathematical family",
         "backboneSupport": 40,
         "slopRisk": 10,
@@ -7974,7 +7980,8 @@
         "mathematicalCorrectness": "established under assumptions",
         "prediction": null,
         "ratingHistory": [],
-        "applicationBreadth": 1
+        "applicationBreadth": 1,
+        "novelty": null
       }
     },
     {
@@ -8109,7 +8116,7 @@
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Known theorem / textbook identity",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
         "breadth": "one mathematical family",
         "backboneSupport": 25,
         "slopRisk": 5,
@@ -8130,7 +8137,8 @@
         "mathematicalCorrectness": "established",
         "prediction": null,
         "ratingHistory": [],
-        "applicationBreadth": 1
+        "applicationBreadth": 1,
+        "novelty": null
       }
     },
     {
@@ -8203,7 +8211,7 @@
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Project-derived theorem",
+        "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
         "breadth": "one mathematical family",
         "backboneSupport": 35,
         "slopRisk": 10,
@@ -8224,7 +8232,8 @@
         "mathematicalCorrectness": "established under assumptions",
         "prediction": null,
         "ratingHistory": [],
-        "applicationBreadth": 1
+        "applicationBreadth": 1,
+        "novelty": null
       }
     },
     {
@@ -8293,7 +8302,7 @@
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Project-derived theorem",
+        "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
         "breadth": "one mathematical family",
         "backboneSupport": 40,
         "slopRisk": 10,
@@ -8314,7 +8323,8 @@
         "mathematicalCorrectness": "established",
         "prediction": null,
         "ratingHistory": [],
-        "applicationBreadth": 1
+        "applicationBreadth": 1,
+        "novelty": null
       }
     },
     {
@@ -8400,7 +8410,7 @@
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Constructive example",
+        "mathematicalStatus": "NEW PROJECT CONSTRUCTION",
         "breadth": "one mathematical family",
         "backboneSupport": 15,
         "slopRisk": 35,
@@ -8421,7 +8431,8 @@
         "mathematicalCorrectness": "established",
         "prediction": null,
         "ratingHistory": [],
-        "applicationBreadth": 1
+        "applicationBreadth": 1,
+        "novelty": null
       }
     },
     {
@@ -8534,13 +8545,14 @@
         "Q-R4-3",
         "T-PAIRA-BRIDGE",
         "T-CENTERING-OPERATOR",
-        "T-QACP-EXCHANGE"
+        "T-QACP-EXCHANGE",
+        "T-FOURSPIN-SIMPLEX"
       ],
       "history": [],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Known theorem / textbook identity",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
         "breadth": "one mathematical family",
         "backboneSupport": 30,
         "slopRisk": 5,
@@ -8561,7 +8573,8 @@
         "mathematicalCorrectness": "established",
         "prediction": null,
         "ratingHistory": [],
-        "applicationBreadth": 2
+        "applicationBreadth": 2,
+        "novelty": null
       }
     },
     {
@@ -8621,7 +8634,7 @@
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Known theorem / textbook identity",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
         "breadth": "multiple independent mathematical families",
         "backboneSupport": 20,
         "slopRisk": 10,
@@ -8651,7 +8664,8 @@
             "reason": "transfer-depth discipline: on every independent row the linear connector is the textbook kernel statement (TRIVIAL CONSEQUENCE)"
           }
         ],
-        "applicationBreadth": 3
+        "applicationBreadth": 3,
+        "novelty": null
       }
     },
     {
@@ -8745,7 +8759,7 @@
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Speculative mapping",
+        "mathematicalStatus": "SPECULATIVE MAPPING",
         "breadth": "multiple independent mathematical families",
         "backboneSupport": 25,
         "slopRisk": 30,
@@ -8775,7 +8789,8 @@
             "reason": "rows 3–5 are trivial consequences; the one structural transfer is equal-mass centering, which belongs to the centering construction more than to the connector"
           }
         ],
-        "applicationBreadth": 3
+        "applicationBreadth": 3,
+        "novelty": null
       }
     },
     {
@@ -8851,7 +8866,7 @@
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Project-derived theorem",
+        "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
         "breadth": "one mathematical family",
         "backboneSupport": 35,
         "slopRisk": 15,
@@ -8872,7 +8887,8 @@
         "mathematicalCorrectness": "established under assumptions",
         "prediction": null,
         "ratingHistory": [],
-        "applicationBreadth": 1
+        "applicationBreadth": 1,
+        "novelty": null
       }
     },
     {
@@ -9030,7 +9046,7 @@
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Constructive example",
+        "mathematicalStatus": "NEW PROJECT CONSTRUCTION",
         "breadth": "one configuration",
         "backboneSupport": 30,
         "slopRisk": 25,
@@ -9060,7 +9076,8 @@
             "reason": "W2c computes what changes inside the zero (⟨S_z⁽¹⁾⟩: ħ/2 → 0) and W2e gives two incompatible zero-preserving interrogations; still one system"
           }
         ],
-        "applicationBreadth": 1
+        "applicationBreadth": 1,
+        "novelty": null
       }
     },
     {
@@ -9145,7 +9162,7 @@
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Constructive example",
+        "mathematicalStatus": "NEW PROJECT CONSTRUCTION",
         "breadth": "one mathematical family",
         "backboneSupport": 25,
         "slopRisk": 35,
@@ -9166,7 +9183,8 @@
         "mathematicalCorrectness": "established",
         "prediction": null,
         "ratingHistory": [],
-        "applicationBreadth": 2
+        "applicationBreadth": 2,
+        "novelty": null
       }
     },
     {
@@ -9235,7 +9253,7 @@
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Known theorem / textbook identity",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
         "breadth": "one mathematical family",
         "backboneSupport": 45,
         "slopRisk": 8,
@@ -9256,7 +9274,8 @@
         "mathematicalCorrectness": "established",
         "prediction": null,
         "ratingHistory": [],
-        "applicationBreadth": 2
+        "applicationBreadth": 2,
+        "novelty": null
       }
     },
     {
@@ -9322,13 +9341,14 @@
         "T-CENTERING-OPERATOR",
         "T-PAIRA-BRIDGE",
         "Q-WMC-1",
-        "Q-WMC-2"
+        "Q-WMC-2",
+        "T-MASS-SECOND-MOMENT"
       ],
       "history": [],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Known theorem / textbook identity",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
         "breadth": "one mathematical family",
         "backboneSupport": 30,
         "slopRisk": 10,
@@ -9349,7 +9369,8 @@
         "mathematicalCorrectness": "established",
         "prediction": null,
         "ratingHistory": [],
-        "applicationBreadth": 1
+        "applicationBreadth": 1,
+        "novelty": null
       }
     },
     {
@@ -9421,7 +9442,7 @@
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Project-derived theorem",
+        "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
         "breadth": "multiple independent mathematical families",
         "backboneSupport": 45,
         "slopRisk": 15,
@@ -9442,7 +9463,8 @@
         "mathematicalCorrectness": "established",
         "prediction": null,
         "ratingHistory": [],
-        "applicationBreadth": 2
+        "applicationBreadth": 2,
+        "novelty": null
       }
     },
     {
@@ -9661,7 +9683,7 @@
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Known theorem / textbook identity",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
         "breadth": "one configuration",
         "backboneSupport": 25,
         "slopRisk": 15,
@@ -9682,7 +9704,8 @@
         "mathematicalCorrectness": "established",
         "prediction": null,
         "ratingHistory": [],
-        "applicationBreadth": 0
+        "applicationBreadth": 0,
+        "novelty": null
       }
     },
     {
@@ -9728,7 +9751,8 @@
       "proofTarget": null,
       "related": [
         "T-CENTERING-OPERATOR",
-        "Q-DISTINGUISHED-MODE"
+        "Q-DISTINGUISHED-MODE",
+        "B-INDEPENDENT-SYMMETRY"
       ],
       "history": [],
       "relatedActsRev3": [],
@@ -9838,13 +9862,14 @@
         "T-QACP-OBSTRUCTION",
         "T-QACP-EXCHANGE",
         "Q-QACP-C",
-        "T-QUANTUM-ZERO"
+        "T-QUANTUM-ZERO",
+        "T-QACP-OBSTRUCTION-RESTRICTED"
       ],
       "history": [],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Known theorem / textbook identity",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
         "breadth": "one mathematical family",
         "backboneSupport": 20,
         "slopRisk": 10,
@@ -9865,12 +9890,13 @@
         "mathematicalCorrectness": "established",
         "prediction": null,
         "ratingHistory": [],
-        "applicationBreadth": 1
+        "applicationBreadth": 1,
+        "novelty": null
       }
     },
     {
       "id": "T-QACP-OBSTRUCTION",
-      "label": "The zero-producing structure alone does not separate the two zeros",
+      "label": "The zero-producing structure alone does not separate the two zeros (wording superseded: too broad)",
       "words": "The zero-producing structure alone cannot tell the two zeros apart.",
       "variants": [],
       "normalizedStatement": "U = exp(iπS_z^(1)/ħ) commutes with S_z^(1) and S_z^(2) and maps |1,0⟩ → i|0,0⟩ with every contribution; Gram(c1, c2), Gram(ψ, c1, c2), norms and signs coincide (Q2b, Q2c).",
@@ -9889,7 +9915,7 @@
       ],
       "evidenceAgainst": [],
       "boundaries": [],
-      "supersededBy": null,
+      "supersededBy": "T-QACP-OBSTRUCTION-RESTRICTED",
       "supersedes": null,
       "relatedActs": [
         "I",
@@ -9920,11 +9946,16 @@
         "T-QACP",
         "Q-SAME-ZERO"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-12d",
+          "change": "wording superseded (Nadia): too strong; replaced by the restricted lemma T-QACP-OBSTRUCTION-RESTRICTED (card Q2h); the cards Q2b, Q2c stand"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Project-derived theorem",
+        "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
         "breadth": "one mathematical family",
         "backboneSupport": 35,
         "slopRisk": 10,
@@ -9945,14 +9976,20 @@
         "mathematicalCorrectness": "established",
         "prediction": null,
         "ratingHistory": [],
-        "applicationBreadth": 0
+        "applicationBreadth": 0,
+        "novelty": null
       }
     },
     {
       "id": "T-QACP-EXCHANGE",
       "label": "Exchange separates the two zeros",
       "words": "With P, the relation between the two contributions differs: Pc₁ = +c₂ for the triplet and Pc₁ = −c₂ for the singlet.",
-      "variants": [],
+      "variants": [
+        {
+          "words": "same S_z=0 + different action under an independently defined swap → two distinguishable zero states",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
       "normalizedStatement": "ε (P c1 = ε c2, P the canonical exchange) = +1 for |1,0⟩, −1 for |0,0⟩; ε = the state's exchange parity (covariance); undefined for non-eigenstates (|↑↓⟩) and for a non-canonical summand swap V = PU. Blind test (protocol pre-registered): separation PASS; prediction of S² from the project geometry NOT YET POSSIBLE (only via the textbook identity S² = ħ²(1 + P)).",
       "origin": "established-support",
       "kind": "established",
@@ -9978,7 +10015,8 @@
       "evidenceAgainst": [],
       "boundaries": [
         "Carries the same information as the known exchange parity / S²; adds where the distinction lives, not a new label.",
-        "Not a nontrivial predictive transfer: the test was procedurally blind, not blind in knowledge."
+        "Not a nontrivial predictive transfer: the test was procedurally blind, not blind in knowledge.",
+        "Not normalized into \"all hidden information in zero is symmetry information\" or \"exchange is the geometry of zero\" (unsupported, Nadia)."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -9996,7 +10034,8 @@
         "Q2g"
       ],
       "sourceDocs": [
-        "research/constructions/quantum_additive_cancellation.md"
+        "research/constructions/quantum_additive_cancellation.md",
+        "docs/restructure_decisions.md"
       ],
       "auditRef": "two-zeros 7–10",
       "audit": {
@@ -10014,16 +10053,17 @@
         "Q-SAME-ZERO",
         "T-SIMPLEX-FAMILY",
         "Q-QACP-1",
-        "Q-QACP-2"
+        "Q-QACP-2",
+        "T-FOURSPIN-SYMMETRY"
       ],
       "history": [],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Project-derived theorem",
+        "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
         "breadth": "multiple independent mathematical families",
-        "backboneSupport": 30,
-        "slopRisk": 20,
+        "backboneSupport": 40,
+        "slopRisk": 8,
         "why": "The canonical exchange separates the two zeros through the sign ε of P acting on the cancelling contributions (blind separation PASS). The same covariance identity governs T′, whose source transpositions act with ε = +1, matching the triplet only. ε equals the known exchange parity, so it adds location, not a new label.",
         "increase": "A system where ε (or its S_n analogue) separates states that no known label separates, tested blind.",
         "falsify": "ε failing to be defined on the next system (only exchange eigenstates qualify, Q2g).",
@@ -10037,11 +10077,21 @@
         },
         "branchState": "active",
         "failures": [],
-        "transferDepth": "STRUCTURAL TRANSFER",
+        "transferDepth": "NOT YET FORMALIZED",
         "mathematicalCorrectness": "established",
         "prediction": null,
-        "ratingHistory": [],
-        "applicationBreadth": 2
+        "ratingHistory": [
+          {
+            "date": "2026-11-12",
+            "fromBackbone": 30,
+            "fromSlop": 20,
+            "toBackbone": 40,
+            "toSlop": 8,
+            "reason": "baseline set by Nadia at 42% / 7% (breadth 1); four spins reproduce the same pattern (symmetry separates, geometry blind: FS2b, FS2c), but the mass test inverts the roles (geometry decisive there), so the specific pattern is not cross-domain: 40% / 8%"
+          }
+        ],
+        "applicationBreadth": 1,
+        "novelty": "VALIDATION OF KNOWN MATHEMATICS"
       }
     },
     {
@@ -10099,7 +10149,7 @@
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Known theorem / textbook identity",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
         "breadth": "one mathematical family",
         "backboneSupport": 25,
         "slopRisk": 20,
@@ -10120,7 +10170,8 @@
         "mathematicalCorrectness": "established",
         "prediction": null,
         "ratingHistory": [],
-        "applicationBreadth": 2
+        "applicationBreadth": 2,
+        "novelty": null
       }
     },
     {
@@ -10239,7 +10290,7 @@
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
-        "mathematicalStatus": "Project-derived theorem",
+        "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
         "breadth": "one mathematical family",
         "backboneSupport": 35,
         "slopRisk": 15,
@@ -10260,7 +10311,8 @@
         "mathematicalCorrectness": "established",
         "prediction": null,
         "ratingHistory": [],
-        "applicationBreadth": 0
+        "applicationBreadth": 0,
+        "novelty": null
       }
     },
     {
@@ -10338,6 +10390,701 @@
       "proofTarget": null,
       "related": [
         "T-QACP-EXCHANGE"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "B-INDEPENDENT-SYMMETRY",
+      "label": "Symmetries must be supplied independently by the system",
+      "words": "A zero may be analyzed together with structures or symmetries independently supplied by its system.",
+      "variants": [
+        {
+          "words": "A symmetry cannot be introduced because it happens to distinguish the zero states after inspection. It must exist independently in the system before the desired distinction is examined.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "method-rule",
+      "status": "governance",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "No symmetry is part of the universal definition of a zero."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "all"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "four-spin 2",
+      "audit": {
+        "before": "new",
+        "note": "four-spin and mass pass (2026-11-12)"
+      },
+      "interactive": "none (method)",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "B-INDEPENDENT-DIRECTION",
+        "T-ZERO-SYMMETRY-ARCHITECTURE",
+        "T-FOURSPIN-SYMMETRY"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-QACP-OBSTRUCTION-RESTRICTED",
+      "label": "Two-spin obstruction, restricted to its exact class",
+      "words": "U = exp(iπS_z⁽¹⁾/ħ) acts on ℂ² ⊗ ℂ² and commutes with S_z⁽¹⁾, S_z⁽²⁾ and S_z.",
+      "variants": [],
+      "normalizedStatement": "U maps C(|1,0⟩) = (ψ, S_z^(1)ψ, S_z^(2)ψ) to i·C(|0,0⟩); every descriptor invariant under unitaries commuting with S_z^(1), S_z^(2) and under global phase (every function of the Gram matrix of C: norms, inner products, c2 = −c1) is equal on the two; descriptors using an operator not commuting with U (e.g. the exchange P) are outside the class.",
+      "origin": "established-support",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:Q2h",
+          "note": ""
+        },
+        {
+          "ref": "card:Q2b",
+          "note": ""
+        },
+        {
+          "ref": "card:Q2c",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": "T-QACP-OBSTRUCTION",
+      "relatedActs": [
+        "I",
+        "III"
+      ],
+      "relatedObjects": [
+        "obj.qacp"
+      ],
+      "relatedCards": [
+        "Q2b",
+        "Q2c",
+        "Q2h"
+      ],
+      "sourceDocs": [
+        "research/constructions/quantum_additive_cancellation.md"
+      ],
+      "auditRef": "four-spin 1",
+      "audit": {
+        "before": "new",
+        "note": "four-spin and mass pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-QACP",
+        "T-FOURSPIN-GEOMETRY-BLIND"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
+        "breadth": "one mathematical family",
+        "backboneSupport": 30,
+        "slopRisk": 5,
+        "why": "An exact lemma with its class stated: descriptors invariant under unitaries commuting with the contribution operators cannot separate the two zeros. Its four-spin form (FS1c) shows the same blindness to phases. It says where the contribution geometry stops, not what lies beyond.",
+        "increase": "The same lemma in a non-quantum system, or a system where the class is broader.",
+        "falsify": "A descriptor in the stated class that separates the two (impossible by Q2h).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "not-yet",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "NOT YET FORMALIZED",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 1,
+        "novelty": null
+      }
+    },
+    {
+      "id": "T-FOURSPIN-ZERO",
+      "label": "The four-spin zero space and its contributions",
+      "words": "H₀ = ker S_z, with dim H₀ = 6",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "established-support",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:FS1a",
+          "note": ""
+        },
+        {
+          "ref": "card:FS1b",
+          "note": "covariant factor permutations"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [
+        "obj.four-spin"
+      ],
+      "relatedCards": [
+        "FS1a",
+        "FS1b"
+      ],
+      "sourceDocs": [
+        "research/constructions/four_spin_zero.md"
+      ],
+      "auditRef": "four-spin 4–5",
+      "audit": {
+        "before": "new",
+        "note": "four-spin and mass pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-FOURSPIN-SYMMETRY"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-FOURSPIN-GEOMETRY-BLIND",
+      "label": "Contribution geometry is blind to the four-spin sectors",
+      "words": "D1 and D2 (Gram, rank, eigenvalues, norms) are blind to the relative phases between raw states.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "established-support",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:FS1c",
+          "note": "diagonal unitaries commute with every contribution operator"
+        },
+        {
+          "ref": "card:FS2c",
+          "note": "identical Grams across S = 0 / 1 and S = 0 / 2"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [
+        "obj.four-spin"
+      ],
+      "relatedCards": [
+        "FS1c",
+        "FS2c"
+      ],
+      "sourceDocs": [
+        "research/constructions/four_spin_zero.md"
+      ],
+      "auditRef": "four-spin 6",
+      "audit": {
+        "before": "new",
+        "note": "four-spin and mass pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": "rel.fourspin-geometry-blind",
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-QACP-OBSTRUCTION-RESTRICTED",
+        "T-FOURSPIN-SYMMETRY"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
+        "breadth": "one mathematical family",
+        "backboneSupport": 30,
+        "slopRisk": 5,
+        "why": "Exact: the four-spin contribution Gram depends only on |amplitudes|², and explicit pairs share a Gram across sectors. It is a precise boundary of the zero-producing geometry as a descriptor in quantum systems. In the mass system the opposite holds.",
+        "increase": "A characterization of exactly which hidden labels a contribution Gram can and cannot see.",
+        "falsify": "None for the lemma.",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "fail",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "FAIL",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 1,
+        "novelty": null
+      }
+    },
+    {
+      "id": "T-FOURSPIN-SYMMETRY",
+      "label": "FOUR-SPIN-B: the independent S₄ action separates the hidden sectors",
+      "words": "The contribution geometry does not distinguish the sectors; the independently supplied symmetry does.",
+      "variants": [
+        {
+          "words": "same visible zero + internal relational/symmetry structure → distinguishable hidden states.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "Blind (preregistered at 966be69): classes by cyclic dimension 1, 3, 2 = sectors S = 2, 1, 0 for all six targets (FS2b). Known theory: Schur–Weyl in the S_z = 0 weight space (FS2e). VALIDATION OF KNOWN MATHEMATICS.",
+      "origin": "established-support",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:FS1d",
+          "note": "blind descriptors"
+        },
+        {
+          "ref": "card:FS1f",
+          "note": "classes fixed before the reveal"
+        },
+        {
+          "ref": "card:FS2b",
+          "note": ""
+        },
+        {
+          "ref": "card:FS2e",
+          "note": "secondary match"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [
+        "obj.four-spin"
+      ],
+      "relatedCards": [
+        "FS1d",
+        "FS1f",
+        "FS2b",
+        "FS2e"
+      ],
+      "sourceDocs": [
+        "research/constructions/four_spin_zero.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "four-spin 6–11",
+      "audit": {
+        "before": "new",
+        "note": "four-spin and mass pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": "rel.fourspin-symmetry",
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-QACP-EXCHANGE",
+        "B-INDEPENDENT-SYMMETRY",
+        "Q-SYM-NOVEL",
+        "T-FOURSPIN-ZERO",
+        "T-FOURSPIN-GEOMETRY-BLIND",
+        "T-ZERO-SYMMETRY-ARCHITECTURE"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
+        "breadth": "one mathematical family",
+        "backboneSupport": 40,
+        "slopRisk": 8,
+        "why": "The exact rule \"same visible zero + independently specified symmetry → distinguishable hidden states\" holds blind for all three four-spin sectors. The symmetry was specified before the distinction (B-INDEPENDENT-SYMMETRY), and the preregistration predates the reveal. It is Schur–Weyl duality, so it is a validation, not a new theorem.",
+        "increase": "Q-SYM-NOVEL: a system where the descriptor separates states that no known label separates.",
+        "falsify": "A sector pair not separated by the S₄ action (none in H₀; FS2e).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "pass"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "NOT YET FORMALIZED",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 1,
+        "novelty": "VALIDATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "T-FOURSPIN-SIMPLEX",
+      "label": "The S₄-fixed zero state has the T′ regular-simplex contributions",
+      "words": "The S₄-fixed zero state has the regular-simplex contributions, and that is the T′ n = 4 configuration.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "established-support",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:FS1e",
+          "note": "preregistered prediction P1"
+        },
+        {
+          "ref": "card:G3c",
+          "note": "the reason, derived before"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:FS2d",
+          "note": "the converse fails: the regular-simplex Gram also occurs at S = 0"
+        }
+      ],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [
+        "obj.four-spin"
+      ],
+      "relatedCards": [
+        "FS1e",
+        "FS2d",
+        "G3c"
+      ],
+      "sourceDocs": [
+        "research/constructions/four_spin_zero.md"
+      ],
+      "auditRef": "four-spin P1",
+      "audit": {
+        "before": "new",
+        "note": "four-spin and mass pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": "rel.fourspin-simplex",
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-SIMPLEX-FAMILY",
+        "T-R4-STAGE2"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 35,
+        "slopRisk": 10,
+        "why": "The preregistered prediction P1 (from G3c, derived before) held: the S₄-fixed four-spin zero has exactly the T′ regular-simplex contributions, the same configuration as Stage 2's first state and the mass tetrahedron. Its converse fails (FS2d). The correlations themselves are known.",
+        "increase": "A system where the simplex configuration of the contributions predicts a label not implied by its symmetry.",
+        "falsify": "Already bounded: the regular-simplex Gram also occurs at S = 0.",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "pass",
+          "failureCondition": "pass",
+          "outOfSample": "pass"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "STRUCTURAL TRANSFER",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 2,
+        "novelty": "VALIDATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "T-MASS-SECOND-MOMENT",
+      "label": "Mass zero: the contributions predict the hidden second moment",
+      "words": "R2 cannot fail, because T and G share their nonzero spectrum.",
+      "variants": [],
+      "normalizedStatement": "Blind (preregistered at 966be69): R2 (contribution Gram spectrum) right for M1–M6; R1 (symmetry) right whenever it predicts (M1, M4), silent on M2, M3, M6, misses M5 (isotropic, trivial symmetry).",
+      "origin": "established-support",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:MB1b",
+          "note": "blind predictions"
+        },
+        {
+          "ref": "card:MB2a",
+          "note": ""
+        },
+        {
+          "ref": "card:MB2b",
+          "note": ""
+        },
+        {
+          "ref": "card:MB2c",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I",
+        "III"
+      ],
+      "relatedObjects": [
+        "obj.distribution"
+      ],
+      "relatedCards": [
+        "MB1b",
+        "MB2a",
+        "MB2b",
+        "MB2c"
+      ],
+      "sourceDocs": [
+        "research/constructions/mass_second_moment.md"
+      ],
+      "auditRef": "four-spin 14–16",
+      "audit": {
+        "before": "new",
+        "note": "four-spin and mass pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": "rel.mass-second-moment",
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-ZERO-SYMMETRY-ARCHITECTURE",
+        "T-WMC"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
+        "breadth": "one mathematical family",
+        "backboneSupport": 25,
+        "slopRisk": 5,
+        "why": "Blind and correct, but textbook: the contribution Gram shares its nonzero spectrum with the second-moment tensor, so it predicts isotropy for every configuration. Symmetry predicts only when it acts irreducibly and misses accidental isotropy.",
+        "increase": "A hidden mass-system quantity that the contribution Gram cannot see but an independent symmetry can.",
+        "falsify": "None for the theorem.",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "not-yet",
+          "failureCondition": "pass",
+          "outOfSample": "pass"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "NOT YET FORMALIZED",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 1,
+        "novelty": "VALIDATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "T-ZERO-SYMMETRY-ARCHITECTURE",
+      "label": "Zero + independent symmetry: the architecture across quantum and mass",
+      "words": "An independently supplied group acts covariantly on the zero-producing tuple, and a hidden quadratic quantity commutes with that action.",
+      "variants": [
+        {
+          "words": "zero/resultant + relationships preserved within the zero → information about the hidden configuration.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "Both systems: the hidden quadratic (S², T) commutes with the independent group and is scalar on each irreducible block (Schur). Roles inverted: four spins, geometry blind and symmetry decisive; mass, geometry decisive and symmetry sound but incomplete.",
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:FS2e",
+          "note": "quantum: Schur–Weyl"
+        },
+        {
+          "ref": "card:MB2c",
+          "note": "mass: Schur"
+        },
+        {
+          "ref": "card:FS1e",
+          "note": "S_n-invariant zero → T′ simplex, quantum"
+        },
+        {
+          "ref": "card:G2i",
+          "note": "and mass / Stage 2"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:FS2c",
+          "note": "contribution geometry fails in the quantum system"
+        },
+        {
+          "ref": "card:MB2a",
+          "note": "symmetry misses M5 in the mass system"
+        }
+      ],
+      "boundaries": [
+        "The common object is textbook (Schur's lemma); what transfers is the analysis architecture, not a new theorem."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "FS1e",
+        "FS2c",
+        "FS2e",
+        "G2i",
+        "MB2a",
+        "MB2c"
+      ],
+      "sourceDocs": [
+        "research/constructions/mass_second_moment.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "four-spin 16–17",
+      "audit": {
+        "before": "new",
+        "note": "four-spin and mass pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "B-INDEPENDENT-SYMMETRY",
+        "T-FOURSPIN-SYMMETRY",
+        "T-MASS-SECOND-MOMENT"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 35,
+        "slopRisk": 20,
+        "why": "The same precise object appears unchanged in a quantum and a non-quantum zero: an independent group acting covariantly on the zero-producing tuple, with a commuting hidden quadratic that is scalar on irreducible blocks. The roles of geometry and symmetry are inverted between the two systems, so only the architecture transfers, not the pattern. The object is Schur's lemma.",
+        "increase": "A third system, chosen before testing, where the architecture predicts a hidden quantity that is not textbook-implied.",
+        "falsify": "A system with an independent symmetry and a commuting hidden quadratic where neither geometry nor symmetry carries the hidden label.",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "pass",
+          "failureCondition": "pass",
+          "outOfSample": "pass"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "STRUCTURAL TRANSFER",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 2,
+        "novelty": "VALIDATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "Q-SYM-NOVEL",
+      "label": "A system where the zero + symmetry descriptor separates what no known label separates?",
+      "words": "Is there a system where \"zero-producing tuple + independently supplied symmetry\" separates states that no already-known label separates?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "assistant-proposed",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "research/constructions/four_spin_zero.md"
+      ],
+      "auditRef": "four-spin 10",
+      "audit": {
+        "before": "new",
+        "note": "four-spin and mass pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-FOURSPIN-SYMMETRY"
       ],
       "history": [],
       "relatedActsRev3": [],

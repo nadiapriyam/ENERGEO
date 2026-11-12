@@ -415,6 +415,42 @@
         "Q2e"
       ],
       "source": "research/constructions/quantum_additive_cancellation.md"
+    },
+    "fourspin.geometry-blind": {
+      "level": 1,
+      "text": "D1 and D2 (Gram, rank, eigenvalues, norms) are blind to the relative phases between raw states.",
+      "cards": [
+        "FS1c",
+        "FS2c"
+      ],
+      "source": "research/constructions/four_spin_zero.md"
+    },
+    "fourspin.symmetry": {
+      "level": 1,
+      "text": "The contribution geometry does not distinguish the sectors; the independently supplied symmetry does.",
+      "cards": [
+        "FS2b",
+        "FS2e"
+      ],
+      "source": "research/constructions/four_spin_zero.md"
+    },
+    "fourspin.simplex": {
+      "level": 1,
+      "text": "The S₄-fixed zero state has the regular-simplex contributions, and that is the T′ n = 4 configuration.",
+      "cards": [
+        "FS1e",
+        "FS2d"
+      ],
+      "source": "research/constructions/four_spin_zero.md"
+    },
+    "mass.second-moment": {
+      "level": 1,
+      "text": "R2 cannot fail, because T and G share their nonzero spectrum.",
+      "cards": [
+        "MB2a",
+        "MB2b"
+      ],
+      "source": "research/constructions/mass_second_moment.md"
     }
   }
 }

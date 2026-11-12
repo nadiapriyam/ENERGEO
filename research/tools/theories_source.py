@@ -12,6 +12,8 @@ CX = 'research/constructions/r4_tetrahedral_zero.md'
 ZC = 'research/constructions/zero_connector_linear.md'
 CM = 'research/constructions/centering_comparison.md'
 CQ = 'research/constructions/quantum_additive_cancellation.md'
+F4 = 'research/constructions/four_spin_zero.md'
+MS = 'research/constructions/mass_second_moment.md'
 WM = 'research/constructions/weighted_mass_centering.md'
 H1, H2, H3 = 'research/hypotheses/H1.md', 'research/hypotheses/H2.md', 'research/hypotheses/H3.md'
 
@@ -657,13 +659,16 @@ T('T-QACP', 'Quantum Additive Cancellation Pair', 'The zero is produced by two n
   variants=[('one state + decomposition of an observable → two nonzero state-space contributions → exact zero total action', RD)],
   pro=[('card:Q2a', ''), ('card:W2f', '')], bounds=['Not part of Pair A; the spin pair stays distinct from the MRI-motivated ensemble.', 'Level A (additive algebra) is trivial; Level C (larger geometry) is open.'],
   acts=['I', 'III'], objs=['obj.qacp'], audit=Z_AUDIT, related=['T-QACP-OBSTRUCTION', 'T-QACP-EXCHANGE', 'Q-QACP-C', 'T-QUANTUM-ZERO'], graph='rel.qacp-cancellation', ref='two-zeros 3')
-T('T-QACP-OBSTRUCTION', 'The zero-producing structure alone does not separate the two zeros', 'The zero-producing structure alone cannot tell the two zeros apart.', CQ, 'established-support', 'established', 'established',
+T('T-QACP-OBSTRUCTION', 'The zero-producing structure alone does not separate the two zeros (wording superseded: too broad)', 'The zero-producing structure alone cannot tell the two zeros apart.', CQ, 'established-support', 'established', 'established',
+  sup='T-QACP-OBSTRUCTION-RESTRICTED', history=[('2026-11-12d', 'wording superseded (Nadia): too strong; replaced by the restricted lemma T-QACP-OBSTRUCTION-RESTRICTED (card Q2h); the cards Q2b, Q2c stand')],
   norm='U = exp(iπS_z^(1)/ħ) commutes with S_z^(1) and S_z^(2) and maps |1,0⟩ → i|0,0⟩ with every contribution; Gram(c1, c2), Gram(ψ, c1, c2), norms and signs coincide (Q2b, Q2c).',
   pro=[('card:Q2b', ''), ('card:Q2c', '')], acts=['I', 'III'], objs=['obj.qacp'], audit=Z_AUDIT, related=['T-QACP', 'Q-SAME-ZERO'], graph='rel.qacp-obstruction', ref='two-zeros 7–8')
 T('T-QACP-EXCHANGE', 'Exchange separates the two zeros', 'With P, the relation between the two contributions differs: Pc₁ = +c₂ for the triplet and Pc₁ = −c₂ for the singlet.', CQ, 'established-support', 'established', 'established',
+  variants=[('same S_z=0 + different action under an independently defined swap → two distinguishable zero states', RD)],
   norm='ε (P c1 = ε c2, P the canonical exchange) = +1 for |1,0⟩, −1 for |0,0⟩; ε = the state\'s exchange parity (covariance); undefined for non-eigenstates (|↑↓⟩) and for a non-canonical summand swap V = PU. Blind test (protocol pre-registered): separation PASS; prediction of S² from the project geometry NOT YET POSSIBLE (only via the textbook identity S² = ħ²(1 + P)).',
   pro=[('card:Q2d', ''), ('card:Q2e', 'reveal after the descriptor was fixed'), ('card:Q2f', 'T′: source transpositions act with sign +1'), ('card:Q2g', 'domain: exchange eigenstates only')],
-  bounds=['Carries the same information as the known exchange parity / S²; adds where the distinction lives, not a new label.', 'Not a nontrivial predictive transfer: the test was procedurally blind, not blind in knowledge.'],
+  bounds=['Carries the same information as the known exchange parity / S²; adds where the distinction lives, not a new label.', 'Not a nontrivial predictive transfer: the test was procedurally blind, not blind in knowledge.',
+          'Not normalized into "all hidden information in zero is symmetry information" or "exchange is the geometry of zero" (unsupported, Nadia).'],
   acts=['I', 'III'], objs=['obj.qacp'], audit=Z_AUDIT, related=['T-QACP', 'Q-SAME-ZERO', 'T-SIMPLEX-FAMILY'], graph='rel.qacp-exchange', ref='two-zeros 7–10')
 T('T-QACP-CROSSTERM', 'What the S² dephasing removes from the zero', '⟨S_z⁽¹⁾⟩ = ħ Re ρ_AB', CQ, 'established-support', 'established', 'established',
   norm='For ψ = α|1,0⟩ + β|0,0⟩, S_z^(1) is a pure cross-term observable in the S² basis; its expectation (the expectation-level composition of the zero) is ħ Re ρ_AB and vanishes under S² dephasing (W3a); the shared mathematics with which-path dephasing is the generic two-sector map (W3b).',
@@ -677,6 +682,42 @@ T('Q-SAME-ZERO', 'Two systems, the same exact zero', 'Can two systems with the s
   acts=['I', 'III'], audit=Z_AUDIT, related=['T-QACP-OBSTRUCTION', 'T-QACP-EXCHANGE', 'B-ZERO-PRESERVE', 'T-Q.zero-distinguishable'], ref='two-zeros 20')
 T('Q-QACP-1', 'Four spin-½: does the internal-zero representation with S₄ separate states?', 'For four spin-½ (S_z = 0 requires an even number)', CQ, A, 'open-question', 'open', acts=['III'], audit=Z_AUDIT, related=['T-QACP-EXCHANGE'], ref='QACP 10')
 T('Q-QACP-2', 'A non-quantum system of the quantum type?', 'Is there a non-quantum system where the contributions to a zero are generated from one source by exchange-related maps', CQ, A, 'open-question', 'open', acts=['III'], audit=Z_AUDIT, related=['T-QACP-EXCHANGE'], ref='QACP 10')
+
+
+# ── four spins and a non-quantum transfer (2026-11-12) ────────────────────────────────────────────
+F_AUDIT = ('new', 'four-spin and mass pass (2026-11-12)')
+T('B-INDEPENDENT-SYMMETRY', 'Symmetries must be supplied independently by the system', 'A zero may be analyzed together with structures or symmetries independently supplied by its system.', RD, U, MR, GOV,
+  variants=[('A symmetry cannot be introduced because it happens to distinguish the zero states after inspection. It must exist independently in the system before the desired distinction is examined.', RD)],
+  bounds=['No symmetry is part of the universal definition of a zero.'], acts=['all'], audit=F_AUDIT, ui='none (method)', related=['B-INDEPENDENT-DIRECTION', 'T-ZERO-SYMMETRY-ARCHITECTURE'], ref='four-spin 2')
+T('T-QACP-OBSTRUCTION-RESTRICTED', 'Two-spin obstruction, restricted to its exact class', 'U = exp(iπS_z⁽¹⁾/ħ) acts on ℂ² ⊗ ℂ² and commutes with S_z⁽¹⁾, S_z⁽²⁾ and S_z.', CQ, 'established-support', 'established', 'established',
+  norm='U maps C(|1,0⟩) = (ψ, S_z^(1)ψ, S_z^(2)ψ) to i·C(|0,0⟩); every descriptor invariant under unitaries commuting with S_z^(1), S_z^(2) and under global phase (every function of the Gram matrix of C: norms, inner products, c2 = −c1) is equal on the two; descriptors using an operator not commuting with U (e.g. the exchange P) are outside the class.',
+  pro=[('card:Q2h', ''), ('card:Q2b', ''), ('card:Q2c', '')], supers='T-QACP-OBSTRUCTION', acts=['I', 'III'], objs=['obj.qacp'], audit=F_AUDIT, related=['T-QACP', 'T-FOURSPIN-GEOMETRY-BLIND'], ref='four-spin 1')
+T('T-FOURSPIN-ZERO', 'The four-spin zero space and its contributions', 'H₀ = ker S_z, with dim H₀ = 6', F4, 'established-support', 'established', 'established',
+  pro=[('card:FS1a', ''), ('card:FS1b', 'covariant factor permutations')], acts=['III'], objs=['obj.four-spin'], audit=F_AUDIT, related=['T-FOURSPIN-SYMMETRY'], ref='four-spin 4–5')
+T('T-FOURSPIN-GEOMETRY-BLIND', 'Contribution geometry is blind to the four-spin sectors', 'D1 and D2 (Gram, rank, eigenvalues, norms) are blind to the relative phases between raw states.', F4, 'established-support', 'established', 'established',
+  pro=[('card:FS1c', 'diagonal unitaries commute with every contribution operator'), ('card:FS2c', 'identical Grams across S = 0 / 1 and S = 0 / 2')],
+  acts=['III'], objs=['obj.four-spin'], audit=F_AUDIT, related=['T-QACP-OBSTRUCTION-RESTRICTED', 'T-FOURSPIN-SYMMETRY'], graph='rel.fourspin-geometry-blind', ref='four-spin 6')
+T('T-FOURSPIN-SYMMETRY', 'FOUR-SPIN-B: the independent S₄ action separates the hidden sectors', 'The contribution geometry does not distinguish the sectors; the independently supplied symmetry does.', F4, 'established-support', 'established', 'established',
+  norm='Blind (preregistered at 966be69): classes by cyclic dimension 1, 3, 2 = sectors S = 2, 1, 0 for all six targets (FS2b). Known theory: Schur–Weyl in the S_z = 0 weight space (FS2e). VALIDATION OF KNOWN MATHEMATICS.',
+  variants=[('same visible zero + internal relational/symmetry structure → distinguishable hidden states.', RD)],
+  pro=[('card:FS1d', 'blind descriptors'), ('card:FS1f', 'classes fixed before the reveal'), ('card:FS2b', ''), ('card:FS2e', 'secondary match')],
+  acts=['III'], objs=['obj.four-spin'], audit=F_AUDIT, related=['T-QACP-EXCHANGE', 'B-INDEPENDENT-SYMMETRY', 'Q-SYM-NOVEL'], graph='rel.fourspin-symmetry', ref='four-spin 6–11')
+T('T-FOURSPIN-SIMPLEX', 'The S₄-fixed zero state has the T′ regular-simplex contributions', 'The S₄-fixed zero state has the regular-simplex contributions, and that is the T′ n = 4 configuration.', F4, 'established-support', 'established', 'established',
+  pro=[('card:FS1e', 'preregistered prediction P1'), ('card:G3c', 'the reason, derived before')], con=[('card:FS2d', 'the converse fails: the regular-simplex Gram also occurs at S = 0')],
+  acts=['III'], objs=['obj.four-spin'], audit=F_AUDIT, related=['T-SIMPLEX-FAMILY', 'T-R4-STAGE2'], graph='rel.fourspin-simplex', ref='four-spin P1')
+T('T-MASS-SECOND-MOMENT', 'Mass zero: the contributions predict the hidden second moment', 'R2 cannot fail, because T and G share their nonzero spectrum.', MS, 'established-support', 'established', 'established',
+  norm='Blind (preregistered at 966be69): R2 (contribution Gram spectrum) right for M1–M6; R1 (symmetry) right whenever it predicts (M1, M4), silent on M2, M3, M6, misses M5 (isotropic, trivial symmetry).',
+  pro=[('card:MB1b', 'blind predictions'), ('card:MB2a', ''), ('card:MB2b', ''), ('card:MB2c', '')], acts=['I', 'III'], objs=['obj.distribution'], audit=F_AUDIT,
+  related=['T-ZERO-SYMMETRY-ARCHITECTURE', 'T-WMC'], graph='rel.mass-second-moment', ref='four-spin 14–16')
+T('T-ZERO-SYMMETRY-ARCHITECTURE', 'Zero + independent symmetry: the architecture across quantum and mass', 'An independently supplied group acts covariantly on the zero-producing tuple, and a hidden quadratic quantity commutes with that action.', MS, U, 'derived-connection', 'derived',
+  variants=[('zero/resultant + relationships preserved within the zero → information about the hidden configuration.', RD)],
+  norm='Both systems: the hidden quadratic (S², T) commutes with the independent group and is scalar on each irreducible block (Schur). Roles inverted: four spins, geometry blind and symmetry decisive; mass, geometry decisive and symmetry sound but incomplete.',
+  pro=[('card:FS2e', 'quantum: Schur–Weyl'), ('card:MB2c', 'mass: Schur'), ('card:FS1e', 'S_n-invariant zero → T′ simplex, quantum'), ('card:G2i', 'and mass / Stage 2')],
+  con=[('card:FS2c', 'contribution geometry fails in the quantum system'), ('card:MB2a', 'symmetry misses M5 in the mass system')],
+  bounds=['The common object is textbook (Schur\'s lemma); what transfers is the analysis architecture, not a new theorem.'],
+  acts=['III'], audit=F_AUDIT, related=['B-INDEPENDENT-SYMMETRY', 'T-FOURSPIN-SYMMETRY', 'T-MASS-SECOND-MOMENT'], ref='four-spin 16–17')
+T('Q-SYM-NOVEL', 'A system where the zero + symmetry descriptor separates what no known label separates?', 'Is there a system where "zero-producing tuple + independently supplied symmetry" separates states that no already-known label separates?', F4, A, 'open-question', 'open',
+  acts=['III'], audit=F_AUDIT, related=['T-FOURSPIN-SYMMETRY'], ref='four-spin 10')
 
 PAIR_A = proof_target('Starting from the established common zero-sum form Σv_i = 0, identify all additional invariants/relations of the mass system that can be translated into mathematically meaningful tests on the directional cancellation system.',
                       requiredObjects=['the established shared form Σv_i = 0 (pair.A.sharedAlgebraicForm)'])
@@ -722,13 +763,13 @@ for k, ids in RELATED.items():
     byid[k]['related'] += [i for i in ids if i not in byid[k]['related']]
 
 # ── ratings (docs/research_method.md §12); every substantive result carries both percentages ───────
-KN, PD, CE, EC, SM = 'Known theorem / textbook identity', 'Project-derived theorem', 'Constructive example', 'Empirical correlation', 'Speculative mapping'
+KN, PD, CE, EC, SM = 'TEXTBOOK / KNOWN', 'PROJECT-DERIVED FROM KNOWN DEFINITIONS', 'NEW PROJECT CONSTRUCTION', 'EMPIRICAL', 'SPECULATIVE MAPPING'   # names set 2026-11-12
 ONE, FAM, MULTI, PHYS, DATA = 'one configuration', 'one mathematical family', 'multiple independent mathematical families', 'multiple physical systems', 'real dataset(s)'
 def rate(id, status, breadth, bs, slop, why, increase, falsify, cls, validity, state='active', depth='NOT YET FORMALIZED', correct='established'):
     v = dict(zip(('construction', 'generalization', 'transfer', 'failureCondition', 'outOfSample'), validity))
     byid[id]['assessment'] = dict(date='2026-11-12', mathematicalStatus=status, breadth=breadth, backboneSupport=bs, slopRisk=slop, why=why,
                                   increase=increase, falsify=falsify, classification=cls, validity=v, branchState=state, failures=[],
-                                  transferDepth=depth, mathematicalCorrectness=correct, prediction=None, ratingHistory=[], applicationBreadth=None)
+                                  transferDepth=depth, mathematicalCorrectness=correct, prediction=None, ratingHistory=[], applicationBreadth=None, novelty=None)
 GC, EX = 'GENERAL CONSTRUCTION', 'EXAMPLE'
 rate('T-R4-STAGE2', CE, ONE, 10, 5, 'An exact coordinate identity computed from the app\'s own TETRA. It records provenance only. It says nothing about what a zero carries.',
      'None needed; it is a provenance fact.', 'A change to TETRA that breaks G2i.', EX, ('pass', 'n/a', 'n/a', 'pass', 'n/a'))
@@ -806,6 +847,28 @@ rate('T-QACP-CROSSTERM', KN, FAM, 25, 20, 'The S² dephasing removes exactly the
 rate('Q-SAME-ZERO', PD, FAM, 35, 15, 'For the first rigorous test (triplet / singlet) the answer is exact: not with the zero-producing structure alone (Q2c), yes once the exchange structure, which preserves the zero, is included (Q2d). The separating structure coincides with known quantum labels, so no new information was found.',
      'A second system, and a blind test where the separating structure is not already equivalent to a known label.', 'The separating structure always reducing to a known label in every system tested.', GC, ('pass', 'partial', 'not-yet', 'pass', 'not-yet'))
 BREADTH.update({'T-QACP': 1, 'T-QACP-OBSTRUCTION': 0, 'T-QACP-EXCHANGE': 2, 'T-QACP-CROSSTERM': 2, 'Q-SAME-ZERO': 0})
+for k, b in BREADTH.items():
+    byid[k]['assessment']['applicationBreadth'] = b
+
+update('T-QACP-EXCHANGE', NYF, bs=40, slop=8, reason='baseline set by Nadia at 42% / 7% (breadth 1); four spins reproduce the same pattern (symmetry separates, geometry blind: FS2b, FS2c), but the mass test inverts the roles (geometry decisive there), so the specific pattern is not cross-domain: 40% / 8%')
+byid['T-QACP-EXCHANGE']['assessment']['novelty'] = 'VALIDATION OF KNOWN MATHEMATICS'
+rate('T-QACP-OBSTRUCTION-RESTRICTED', PD, FAM, 30, 5, 'An exact lemma with its class stated: descriptors invariant under unitaries commuting with the contribution operators cannot separate the two zeros. Its four-spin form (FS1c) shows the same blindness to phases. It says where the contribution geometry stops, not what lies beyond.',
+     'The same lemma in a non-quantum system, or a system where the class is broader.', 'A descriptor in the stated class that separates the two (impossible by Q2h).', GC, ('pass', 'pass', 'not-yet', 'pass', 'n/a'))
+rate('T-FOURSPIN-GEOMETRY-BLIND', PD, FAM, 30, 5, 'Exact: the four-spin contribution Gram depends only on |amplitudes|², and explicit pairs share a Gram across sectors. It is a precise boundary of the zero-producing geometry as a descriptor in quantum systems. In the mass system the opposite holds.',
+     'A characterization of exactly which hidden labels a contribution Gram can and cannot see.', 'None for the lemma.', GC, ('pass', 'pass', 'fail', 'pass', 'n/a'), depth='FAIL')
+rate('T-FOURSPIN-SYMMETRY', KN, FAM, 40, 8, 'The exact rule "same visible zero + independently specified symmetry → distinguishable hidden states" holds blind for all three four-spin sectors. The symmetry was specified before the distinction (B-INDEPENDENT-SYMMETRY), and the preregistration predates the reveal. It is Schur–Weyl duality, so it is a validation, not a new theorem.',
+     'Q-SYM-NOVEL: a system where the descriptor separates states that no known label separates.', 'A sector pair not separated by the S₄ action (none in H₀; FS2e).', GC, ('pass', 'pass', 'partial', 'pass', 'pass'))
+byid['T-FOURSPIN-SYMMETRY']['assessment']['novelty'] = 'VALIDATION OF KNOWN MATHEMATICS'
+rate('T-FOURSPIN-SIMPLEX', PD, MULTI, 35, 10, 'The preregistered prediction P1 (from G3c, derived before) held: the S₄-fixed four-spin zero has exactly the T′ regular-simplex contributions, the same configuration as Stage 2\'s first state and the mass tetrahedron. Its converse fails (FS2d). The correlations themselves are known.',
+     'A system where the simplex configuration of the contributions predicts a label not implied by its symmetry.', 'Already bounded: the regular-simplex Gram also occurs at S = 0.', GC, ('pass', 'pass', 'pass', 'pass', 'pass'), depth=STRUCT)
+byid['T-FOURSPIN-SIMPLEX']['assessment']['novelty'] = 'VALIDATION OF KNOWN MATHEMATICS'
+rate('T-MASS-SECOND-MOMENT', KN, FAM, 25, 5, 'Blind and correct, but textbook: the contribution Gram shares its nonzero spectrum with the second-moment tensor, so it predicts isotropy for every configuration. Symmetry predicts only when it acts irreducibly and misses accidental isotropy.',
+     'A hidden mass-system quantity that the contribution Gram cannot see but an independent symmetry can.', 'None for the theorem.', GC, ('pass', 'pass', 'not-yet', 'pass', 'pass'))
+byid['T-MASS-SECOND-MOMENT']['assessment']['novelty'] = 'VALIDATION OF KNOWN MATHEMATICS'
+rate('T-ZERO-SYMMETRY-ARCHITECTURE', KN, MULTI, 35, 20, 'The same precise object appears unchanged in a quantum and a non-quantum zero: an independent group acting covariantly on the zero-producing tuple, with a commuting hidden quadratic that is scalar on irreducible blocks. The roles of geometry and symmetry are inverted between the two systems, so only the architecture transfers, not the pattern. The object is Schur\'s lemma.',
+     'A third system, chosen before testing, where the architecture predicts a hidden quantity that is not textbook-implied.', 'A system with an independent symmetry and a commuting hidden quadratic where neither geometry nor symmetry carries the hidden label.', GC, ('pass', 'pass', 'pass', 'pass', 'pass'), depth=STRUCT)
+byid['T-ZERO-SYMMETRY-ARCHITECTURE']['assessment']['novelty'] = 'VALIDATION OF KNOWN MATHEMATICS'
+BREADTH.update({'T-QACP-EXCHANGE': 1, 'T-QACP-OBSTRUCTION-RESTRICTED': 1, 'T-FOURSPIN-GEOMETRY-BLIND': 1, 'T-FOURSPIN-SYMMETRY': 1, 'T-FOURSPIN-SIMPLEX': 2, 'T-MASS-SECOND-MOMENT': 1, 'T-ZERO-SYMMETRY-ARCHITECTURE': 2})
 for k, b in BREADTH.items():
     byid[k]['assessment']['applicationBreadth'] = b
 
