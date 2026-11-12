@@ -143,3 +143,5 @@ Every user-origin record in `research/theories.json`, with its original wording,
 | T-CF11-A | In many established geometries, a relational structure together with the transformations preserving it characterizes substantial geometric structure. | — | derived-connection | derived | CF11-A |
 | T-CF11-B | Can relation + admissible transformations + preserved structure provide a broader organizing architecture across the geometries investigated in this project? | — | hypothesis | hypothesis | CF11-B |
 | T-EFFECTIVE-Q | What survives when a richer source description is reduced to an effective representation? | — | open-question | open | H6 |
+| T-CF11-REFINEMENT | A geometry may be characterized by relational structure together with transformations under which that structure is preserved or transforms coherently. | — | hypothesis | hypothesis | — |
+| T-CF-PULLBACK-Q | Is pullback preservation a more general common-form bridge than fixed matrix equality? | — | open-question | open | — |

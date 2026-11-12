@@ -762,6 +762,17 @@ T('T-EFFECTIVE-Q', 'Effective / reduced representations (question)', 'What survi
           'Recorded in Pass 2 (2026-11-12): the question was in the V1 decision record without a registry record (provenance correction).'],
   acts=['III', 'Guide'], audit=('missing', 'stated in the Foundation V1 message (2026-11-12); registry record added in Pass 2'), ref='Foundation 36', history=[(P2, 'registry record added (provenance correction)')])
 
+# ── Foundation Completion Pass 3 (2026-11-12): CF11-B test, records stated before the test ──
+P3_AUDIT = ('missing', 'stated in Foundation Completion Pass 3 (2026-11-12), recorded before the CF11-B test')
+ACTS_ALREADY_NEW |= {'T-CF11-REFINEMENT', 'T-CF-PULLBACK-Q'}
+T('T-CF11-REFINEMENT', 'CF11-CANDIDATE-REFINEMENT', 'A geometry may be characterized by relational structure together with transformations under which that structure is preserved or transforms coherently.', RD, U, 'hypothesis', 'hypothesis',
+  bounds=['Candidate only: tested in Pass 3, not adopted before the test (preregistration research/constructions/cf11b_fisher_prereg.md).',
+          'Tested only in explicit form: tensor T; F*T = T for symmetries; T_(p∘θ) = θ*T_p for reparametrizations; invariants; failure cases. Without a stated law, "transforms coherently" is too generic.'],
+  acts=['all'], audit=P3_AUDIT, related=['T-CF11-B', 'T-CF11-A'], ref='Foundation Pass 3, 18', history=[('2026-11-12', 'recorded before the CF11-B Fisher test')])
+T('T-CF-PULLBACK-Q', 'Pullback preservation as a common form (question)', 'Is pullback preservation a more general common-form bridge than fixed matrix equality?', RD, U, 'open-question', 'open',
+  bounds=['Evaluated in Pass 3 against preregistered criteria (YES / PARTIAL / NO); Fisher coordinate reparametrization is never counted as F*g = g unless F is an isometry.'],
+  acts=['Guide'], audit=P3_AUDIT, related=['T-CF11-B', 'T-CF11-A'], ref='Foundation Pass 3, 17', history=[('2026-11-12', 'recorded before the CF11-B Fisher test')])
+
 PAIR_A = proof_target('Starting from the established common zero-sum form Σv_i = 0, identify all additional invariants/relations of the mass system that can be translated into mathematically meaningful tests on the directional cancellation system.',
                       requiredObjects=['the established shared form Σv_i = 0 (pair.A.sharedAlgebraicForm)'])
 next(r for r in R if r['id'] == 'T-Q.pairA-transfer')['proofTarget'] = PAIR_A

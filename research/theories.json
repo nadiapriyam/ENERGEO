@@ -11354,7 +11354,9 @@
       "related": [
         "T-CF11-B",
         "T-BACKBONE-INVARIANT",
-        "T-H2-ROLES"
+        "T-H2-ROLES",
+        "T-CF11-REFINEMENT",
+        "T-CF-PULLBACK-Q"
       ],
       "history": [
         {
@@ -11446,7 +11448,9 @@
       "proofTarget": null,
       "related": [
         "T-CF11-A",
-        "T-BACKBONE-INVARIANT"
+        "T-BACKBONE-INVARIANT",
+        "T-CF11-REFINEMENT",
+        "T-CF-PULLBACK-Q"
       ],
       "history": [
         {
@@ -11516,6 +11520,103 @@
         {
           "date": "2026-11-12",
           "change": "registry record added (provenance correction)"
+        }
+      ],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-CF11-REFINEMENT",
+      "label": "CF11-CANDIDATE-REFINEMENT",
+      "words": "A geometry may be characterized by relational structure together with transformations under which that structure is preserved or transforms coherently.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Candidate only: tested in Pass 3, not adopted before the test (preregistration research/constructions/cf11b_fisher_prereg.md).",
+        "Tested only in explicit form: tensor T; F*T = T for symmetries; T_(p∘θ) = θ*T_p for reparametrizations; invariants; failure cases. Without a stated law, \"transforms coherently\" is too generic."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "all"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Foundation Pass 3, 18",
+      "audit": {
+        "before": "missing",
+        "note": "stated in Foundation Completion Pass 3 (2026-11-12), recorded before the CF11-B test"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-CF11-B",
+        "T-CF11-A"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "recorded before the CF11-B Fisher test"
+        }
+      ],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-CF-PULLBACK-Q",
+      "label": "Pullback preservation as a common form (question)",
+      "words": "Is pullback preservation a more general common-form bridge than fixed matrix equality?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Evaluated in Pass 3 against preregistered criteria (YES / PARTIAL / NO); Fisher coordinate reparametrization is never counted as F*g = g unless F is an isometry."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Foundation Pass 3, 17",
+      "audit": {
+        "before": "missing",
+        "note": "stated in Foundation Completion Pass 3 (2026-11-12), recorded before the CF11-B test"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-CF11-B",
+        "T-CF11-A"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "recorded before the CF11-B Fisher test"
         }
       ],
       "relatedActsRev3": [],

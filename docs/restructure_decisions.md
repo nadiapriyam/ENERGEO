@@ -1267,3 +1267,61 @@ Nadia's decisions, verbatim. LaTeX converted to plain text and lists joined; not
 (None of these is conducted in this pass.)
 
 > The objective is to finish Foundation V1 in a small number of disciplined passes, not to expand the project indefinitely.
+
+## Foundation Completion Pass 3: CF11-B, preregistered cross-domain test (2026-11-12)
+
+Nadia's decisions, verbatim. LaTeX converted to plain text and lists joined; nothing else changed. Preregistration: `research/constructions/cf11b_fisher_prereg.md` (committed before any card of the test). Reveal: `research/constructions/cf11b_fisher_test.md`.
+
+### The test
+
+> Do not modify CF11-B after seeing the test result.
+
+> relation + admissible transformations + preserved structure → geometric organization
+
+> Fisher / Riemannian information geometry
+
+> Does CF11-B survive when the preserved structure is coordinate-invariant rather than a fixed matrix invariant?
+
+> Is "preserved relation" the invariant geometric object, even when its coordinate matrix changes?
+
+> CF11-F1 — STRONG SURVIVAL; CF11-F2 — PARTIAL SURVIVAL; CF11-F3 — DOMAIN-SPECIFIC ONLY; CF11-F4 — FAIL / TOO GENERIC
+
+> No fifth outcome may be invented after seeing the result.
+
+> But do not select whichever one happens to make the test pass.
+
+> Do not conflate Type A and Type B.
+
+> Do not describe this as: g is unchanged.
+
+> Do NOT invent a zero merely to connect Fisher geometry to the latest zero research.
+
+> zero metric length ↔ nonidentifiable tangent direction
+
+> Does CF11-B need to generalize from invariants of a transformation group to natural/covariant geometric structures?
+
+> Is pullback preservation a more general common-form bridge than fixed matrix equality?
+
+> A geometry may be characterized by relational structure together with transformations under which that structure is preserved or transforms coherently.
+
+> Could almost any mathematical theory satisfy CF11-CANDIDATE-REFINEMENT merely by choosing some relation and saying it transforms coherently?
+
+> specified mathematical object; specified admissible transformation class; explicit transformation law; explicit preserved/invariant quantity or structure; failure cases
+
+> same model / different coordinates; different model / different geometric structure.
+
+> If the rule must be rewritten separately for each domain, classify: NO STRUCTURAL TRANSFER
+
+### The common form
+
+> Several major geometries in the Foundation admit a common coordinate-free preservation form in which an admissible symmetry preserves a defining tensor/form under pullback.
+
+> DO NOT include Fisher coordinate reparameterization as: F*g = g unless F is actually an isometry.
+
+> Fourier transform ≠ geometric symmetry of physical spacetime.
+
+> KNOWN MATHEMATICS; HIGH FOUNDATION RELEVANCE
+
+> LOCKED FOR V1; NEEDS ONE MORE TEST; REFINED; FAILED; OPEN LONG-TERM
+
+> The goal is to determine whether one of the oldest project ideas — a common mathematical form across different geometries — has a precise coordinate-free version, a narrower valid domain, or a genuine failure boundary.
