@@ -2586,7 +2586,9 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "T-QACP"
+      ],
       "history": [
         {
           "date": "2026-11-12",
@@ -2939,7 +2941,9 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "Q-SAME-ZERO"
+      ],
       "history": [
         {
           "date": "2026-11-12",
@@ -6089,7 +6093,8 @@
         "T-Q.pairA-transfer",
         "T-EXISTENCE-ZERO",
         "B-ZERO-LOSS",
-        "B-ZERO-INTERNAL-CHANGE"
+        "B-ZERO-INTERNAL-CHANGE",
+        "Q-SAME-ZERO"
       ],
       "history": [
         {
@@ -6228,7 +6233,8 @@
         "transferDepth": "STRUCTURAL TRANSFER",
         "mathematicalCorrectness": "established under assumptions",
         "prediction": null,
-        "ratingHistory": []
+        "ratingHistory": [],
+        "applicationBreadth": 2
       }
     },
     {
@@ -7383,7 +7389,8 @@
         "transferDepth": "NOT YET FORMALIZED",
         "mathematicalCorrectness": "not established",
         "prediction": null,
-        "ratingHistory": []
+        "ratingHistory": [],
+        "applicationBreadth": 0
       }
     },
     {
@@ -7683,7 +7690,8 @@
         "transferDepth": "NOT YET FORMALIZED",
         "mathematicalCorrectness": "established",
         "prediction": null,
-        "ratingHistory": []
+        "ratingHistory": [],
+        "applicationBreadth": 0
       }
     },
     {
@@ -7765,7 +7773,8 @@
         "transferDepth": "STRUCTURAL TRANSFER",
         "mathematicalCorrectness": "established under assumptions",
         "prediction": null,
-        "ratingHistory": []
+        "ratingHistory": [],
+        "applicationBreadth": 2
       }
     },
     {
@@ -7864,7 +7873,8 @@
         "transferDepth": "NOT YET FORMALIZED",
         "mathematicalCorrectness": "established under assumptions",
         "prediction": null,
-        "ratingHistory": []
+        "ratingHistory": [],
+        "applicationBreadth": 1
       }
     },
     {
@@ -7963,7 +7973,8 @@
         "transferDepth": "NOT YET FORMALIZED",
         "mathematicalCorrectness": "established under assumptions",
         "prediction": null,
-        "ratingHistory": []
+        "ratingHistory": [],
+        "applicationBreadth": 1
       }
     },
     {
@@ -8118,7 +8129,8 @@
         "transferDepth": "NOT YET FORMALIZED",
         "mathematicalCorrectness": "established",
         "prediction": null,
-        "ratingHistory": []
+        "ratingHistory": [],
+        "applicationBreadth": 1
       }
     },
     {
@@ -8211,7 +8223,8 @@
         "transferDepth": "NOT YET FORMALIZED",
         "mathematicalCorrectness": "established under assumptions",
         "prediction": null,
-        "ratingHistory": []
+        "ratingHistory": [],
+        "applicationBreadth": 1
       }
     },
     {
@@ -8300,7 +8313,8 @@
         "transferDepth": "NOT YET FORMALIZED",
         "mathematicalCorrectness": "established",
         "prediction": null,
-        "ratingHistory": []
+        "ratingHistory": [],
+        "applicationBreadth": 1
       }
     },
     {
@@ -8406,7 +8420,8 @@
         "transferDepth": "STRUCTURAL TRANSFER",
         "mathematicalCorrectness": "established",
         "prediction": null,
-        "ratingHistory": []
+        "ratingHistory": [],
+        "applicationBreadth": 1
       }
     },
     {
@@ -8518,7 +8533,8 @@
         "Q-R4-7",
         "Q-R4-3",
         "T-PAIRA-BRIDGE",
-        "T-CENTERING-OPERATOR"
+        "T-CENTERING-OPERATOR",
+        "T-QACP-EXCHANGE"
       ],
       "history": [],
       "relatedActsRev3": [],
@@ -8544,7 +8560,8 @@
         "transferDepth": "STRUCTURAL TRANSFER",
         "mathematicalCorrectness": "established",
         "prediction": null,
-        "ratingHistory": []
+        "ratingHistory": [],
+        "applicationBreadth": 2
       }
     },
     {
@@ -8633,7 +8650,8 @@
             "toSlop": 10,
             "reason": "transfer-depth discipline: on every independent row the linear connector is the textbook kernel statement (TRIVIAL CONSEQUENCE)"
           }
-        ]
+        ],
+        "applicationBreadth": 3
       }
     },
     {
@@ -8756,7 +8774,8 @@
             "toSlop": 30,
             "reason": "rows 3–5 are trivial consequences; the one structural transfer is equal-mass centering, which belongs to the centering construction more than to the connector"
           }
-        ]
+        ],
+        "applicationBreadth": 3
       }
     },
     {
@@ -8852,7 +8871,8 @@
         "transferDepth": "NOT YET FORMALIZED",
         "mathematicalCorrectness": "established under assumptions",
         "prediction": null,
-        "ratingHistory": []
+        "ratingHistory": [],
+        "applicationBreadth": 1
       }
     },
     {
@@ -8961,6 +8981,10 @@
         {
           "ref": "card:W2e",
           "note": "two incompatible zero-preserving interrogations: S² and S_z⁽¹⁾ both commute with S_z but not with each other"
+        },
+        {
+          "ref": "card:W3a",
+          "note": "for every S_z = 0 state, the expectation-level composition of the zero is ħ Re ρ_AB, removed by S² dephasing"
         }
       ],
       "evidenceAgainst": [],
@@ -8978,7 +9002,8 @@
         "Q1h",
         "W1d",
         "W2c",
-        "W2e"
+        "W2e",
+        "W3a"
       ],
       "sourceDocs": [
         "docs/restructure_decisions.md"
@@ -8998,7 +9023,8 @@
         "B-ZERO-PRESERVE",
         "B-ZERO-LOSS",
         "B-JOINT-ALTERNATIVES",
-        "T-S2-DEPHASING"
+        "T-S2-DEPHASING",
+        "T-QACP-CROSSTERM"
       ],
       "history": [],
       "relatedActsRev3": [],
@@ -9033,7 +9059,8 @@
             "toSlop": 25,
             "reason": "W2c computes what changes inside the zero (⟨S_z⁽¹⁾⟩: ħ/2 → 0) and W2e gives two incompatible zero-preserving interrogations; still one system"
           }
-        ]
+        ],
+        "applicationBreadth": 1
       }
     },
     {
@@ -9111,7 +9138,8 @@
         "B-ZERO-INTERNAL-CHANGE",
         "B-ZERO-LOSS",
         "T-H1-SIGNATURE",
-        "T-S2-DEPHASING"
+        "T-S2-DEPHASING",
+        "T-QACP-CROSSTERM"
       ],
       "history": [],
       "relatedActsRev3": [],
@@ -9137,7 +9165,8 @@
         "transferDepth": "TRIVIAL CONSEQUENCE",
         "mathematicalCorrectness": "established",
         "prediction": null,
-        "ratingHistory": []
+        "ratingHistory": [],
+        "applicationBreadth": 2
       }
     },
     {
@@ -9226,7 +9255,8 @@
         "transferDepth": "STRUCTURAL TRANSFER",
         "mathematicalCorrectness": "established",
         "prediction": null,
-        "ratingHistory": []
+        "ratingHistory": [],
+        "applicationBreadth": 2
       }
     },
     {
@@ -9318,7 +9348,8 @@
         "transferDepth": "NOT YET FORMALIZED",
         "mathematicalCorrectness": "established",
         "prediction": null,
-        "ratingHistory": []
+        "ratingHistory": [],
+        "applicationBreadth": 1
       }
     },
     {
@@ -9378,9 +9409,15 @@
       "related": [
         "T-WMC",
         "Q-CENTERING",
-        "T-SIMPLEX-FAMILY"
+        "T-SIMPLEX-FAMILY",
+        "B-INDEPENDENT-DIRECTION"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-12c",
+          "change": "locked (Nadia): the distinguished direction stays the uniform direction 1 with positive diagonal G; removal of an arbitrary direction d is not an active family (see B-INDEPENDENT-DIRECTION, Q-DISTINGUISHED-MODE)"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-12",
@@ -9404,7 +9441,8 @@
         "transferDepth": "STRUCTURAL TRANSFER",
         "mathematicalCorrectness": "established",
         "prediction": null,
-        "ratingHistory": []
+        "ratingHistory": [],
+        "applicationBreadth": 2
       }
     },
     {
@@ -9463,7 +9501,8 @@
         "lastResearchOutcome": "constructive-realization"
       },
       "related": [
-        "T-CENTERING-OPERATOR"
+        "T-CENTERING-OPERATOR",
+        "Q-DISTINGUISHED-MODE"
       ],
       "history": [],
       "relatedActsRev3": [],
@@ -9615,7 +9654,8 @@
       "proofTarget": null,
       "related": [
         "B-ZERO-INTERNAL-CHANGE",
-        "B-JOINT-ALTERNATIVES"
+        "B-JOINT-ALTERNATIVES",
+        "T-QACP-CROSSTERM"
       ],
       "history": [],
       "relatedActsRev3": [],
@@ -9641,8 +9681,667 @@
         "transferDepth": "TRIVIAL CONSEQUENCE",
         "mathematicalCorrectness": "established",
         "prediction": null,
-        "ratingHistory": []
+        "ratingHistory": [],
+        "applicationBreadth": 0
       }
+    },
+    {
+      "id": "B-INDEPENDENT-DIRECTION",
+      "label": "Distinguished directions must be specified independently",
+      "words": "A distinguished direction may only enter a construction if it is independently specified by the system before observing the desired zero.",
+      "variants": [
+        {
+          "words": "system identifies d independently → derive its map → predict the zero → test the prediction",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "method-rule",
+      "status": "governance",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Forbidden order: observe zero → choose d that makes the map work."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "all"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "two-zeros 1",
+      "audit": {
+        "before": "new",
+        "note": "two-zeros pass (2026-11-12)"
+      },
+      "interactive": "none (method)",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-CENTERING-OPERATOR",
+        "Q-DISTINGUISHED-MODE"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "Q-DISTINGUISHED-MODE",
+      "label": "Independent systems with a naturally distinguished removed mode",
+      "words": "Are there independent systems in which a distinguished source mode d arises naturally and is removed by the representation, with zero/resultant structure appearing in the target?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "An open construction target, not an active family."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "two-zeros 2",
+      "audit": {
+        "before": "new",
+        "note": "two-zeros pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "B-INDEPENDENT-DIRECTION",
+        "Q-CENTERING"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-QACP",
+      "label": "Quantum Additive Cancellation Pair",
+      "words": "The zero is produced by two nonzero vectors in the Hilbert space cancelling exactly.",
+      "variants": [
+        {
+          "words": "one state + decomposition of an observable → two nonzero state-space contributions → exact zero total action",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "S_z^(1)|1,0⟩ = +(ħ/2)|0,0⟩, S_z^(2)|1,0⟩ = −(ħ/2)|0,0⟩; S_z^(1)|0,0⟩ = +(ħ/2)|1,0⟩, S_z^(2)|0,0⟩ = −(ħ/2)|1,0⟩. Each zero is built from the other state.",
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:Q2a",
+          "note": ""
+        },
+        {
+          "ref": "card:W2f",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Not part of Pair A; the spin pair stays distinct from the MRI-motivated ensemble.",
+        "Level A (additive algebra) is trivial; Level C (larger geometry) is open."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I",
+        "III"
+      ],
+      "relatedObjects": [
+        "obj.qacp"
+      ],
+      "relatedCards": [
+        "Q2a",
+        "W2f"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "two-zeros 3",
+      "audit": {
+        "before": "new",
+        "note": "two-zeros pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": "rel.qacp-cancellation",
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-QACP-OBSTRUCTION",
+        "T-QACP-EXCHANGE",
+        "Q-QACP-C",
+        "T-QUANTUM-ZERO"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Known theorem / textbook identity",
+        "breadth": "one mathematical family",
+        "backboneSupport": 20,
+        "slopRisk": 10,
+        "why": "Both S_z = 0 zeros are exact cancellations of nonzero state-space vectors. At Level A this is additive algebra and carries little backbone weight. Its value is as the object on which the two-zeros test runs.",
+        "increase": "A Level-C result: a representation that relates this source construction to another zero without being chosen for it.",
+        "falsify": "None for the calculation.",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "not-yet",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "TRIVIAL CONSEQUENCE",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 1
+      }
+    },
+    {
+      "id": "T-QACP-OBSTRUCTION",
+      "label": "The zero-producing structure alone does not separate the two zeros",
+      "words": "The zero-producing structure alone cannot tell the two zeros apart.",
+      "variants": [],
+      "normalizedStatement": "U = exp(iπS_z^(1)/ħ) commutes with S_z^(1) and S_z^(2) and maps |1,0⟩ → i|0,0⟩ with every contribution; Gram(c1, c2), Gram(ψ, c1, c2), norms and signs coincide (Q2b, Q2c).",
+      "origin": "established-support",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:Q2b",
+          "note": ""
+        },
+        {
+          "ref": "card:Q2c",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I",
+        "III"
+      ],
+      "relatedObjects": [
+        "obj.qacp"
+      ],
+      "relatedCards": [
+        "Q2b",
+        "Q2c"
+      ],
+      "sourceDocs": [
+        "research/constructions/quantum_additive_cancellation.md"
+      ],
+      "auditRef": "two-zeros 7–8",
+      "audit": {
+        "before": "new",
+        "note": "two-zeros pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": "rel.qacp-obstruction",
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-QACP",
+        "Q-SAME-ZERO"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Project-derived theorem",
+        "breadth": "one mathematical family",
+        "backboneSupport": 35,
+        "slopRisk": 10,
+        "why": "It answers the two-zeros question exactly for the zero-producing structure: nothing in it separates the triplet and singlet zeros, because a symmetry of that structure maps one onto the other. It also states precisely what must be added. It is limited to one system.",
+        "increase": "The same obstruction-plus-added-structure pattern in a second, independent system.",
+        "falsify": "A descriptor built only from (ψ, S_z^(1), S_z^(2), ⟨·,·⟩) that separates them (impossible by Q2c).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "not-yet",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "NOT YET FORMALIZED",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 0
+      }
+    },
+    {
+      "id": "T-QACP-EXCHANGE",
+      "label": "Exchange separates the two zeros",
+      "words": "With P, the relation between the two contributions differs: Pc₁ = +c₂ for the triplet and Pc₁ = −c₂ for the singlet.",
+      "variants": [],
+      "normalizedStatement": "ε (P c1 = ε c2, P the canonical exchange) = +1 for |1,0⟩, −1 for |0,0⟩; ε = the state's exchange parity (covariance); undefined for non-eigenstates (|↑↓⟩) and for a non-canonical summand swap V = PU. Blind test (protocol pre-registered): separation PASS; prediction of S² from the project geometry NOT YET POSSIBLE (only via the textbook identity S² = ħ²(1 + P)).",
+      "origin": "established-support",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:Q2d",
+          "note": ""
+        },
+        {
+          "ref": "card:Q2e",
+          "note": "reveal after the descriptor was fixed"
+        },
+        {
+          "ref": "card:Q2f",
+          "note": "T′: source transpositions act with sign +1"
+        },
+        {
+          "ref": "card:Q2g",
+          "note": "domain: exchange eigenstates only"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Carries the same information as the known exchange parity / S²; adds where the distinction lives, not a new label.",
+        "Not a nontrivial predictive transfer: the test was procedurally blind, not blind in knowledge."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I",
+        "III"
+      ],
+      "relatedObjects": [
+        "obj.qacp"
+      ],
+      "relatedCards": [
+        "Q2d",
+        "Q2e",
+        "Q2f",
+        "Q2g"
+      ],
+      "sourceDocs": [
+        "research/constructions/quantum_additive_cancellation.md"
+      ],
+      "auditRef": "two-zeros 7–10",
+      "audit": {
+        "before": "new",
+        "note": "two-zeros pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": "rel.qacp-exchange",
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-QACP",
+        "Q-SAME-ZERO",
+        "T-SIMPLEX-FAMILY",
+        "Q-QACP-1",
+        "Q-QACP-2"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Project-derived theorem",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 30,
+        "slopRisk": 20,
+        "why": "The canonical exchange separates the two zeros through the sign ε of P acting on the cancelling contributions (blind separation PASS). The same covariance identity governs T′, whose source transpositions act with ε = +1, matching the triplet only. ε equals the known exchange parity, so it adds location, not a new label.",
+        "increase": "A system where ε (or its S_n analogue) separates states that no known label separates, tested blind.",
+        "falsify": "ε failing to be defined on the next system (only exchange eigenstates qualify, Q2g).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "partial",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "not-yet"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "STRUCTURAL TRANSFER",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 2
+      }
+    },
+    {
+      "id": "T-QACP-CROSSTERM",
+      "label": "What the S² dephasing removes from the zero",
+      "words": "⟨S_z⁽¹⁾⟩ = ħ Re ρ_AB",
+      "variants": [],
+      "normalizedStatement": "For ψ = α|1,0⟩ + β|0,0⟩, S_z^(1) is a pure cross-term observable in the S² basis; its expectation (the expectation-level composition of the zero) is ħ Re ρ_AB and vanishes under S² dephasing (W3a); the shared mathematics with which-path dephasing is the generic two-sector map (W3b).",
+      "origin": "established-support",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:W3a",
+          "note": ""
+        },
+        {
+          "ref": "card:W3b",
+          "note": "generic: any zero-diagonal observable"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I",
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "W3a",
+        "W3b"
+      ],
+      "sourceDocs": [
+        "research/constructions/quantum_additive_cancellation.md"
+      ],
+      "auditRef": "two-zeros 12–13",
+      "audit": {
+        "before": "new",
+        "note": "two-zeros pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "B-ZERO-INTERNAL-CHANGE",
+        "B-JOINT-ALTERNATIVES",
+        "T-S2-DEPHASING"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Known theorem / textbook identity",
+        "breadth": "one mathematical family",
+        "backboneSupport": 25,
+        "slopRisk": 20,
+        "why": "The S² dephasing removes exactly the expectation-level composition of the zero (⟨S_z^(1)⟩ = ħ Re ρ_AB) and keeps S_z = 0. The shared mathematics with which-path dephasing is the generic two-sector map (W3b). The specific part, that the removed cross term is the zero's own internal composition, has no double-slit counterpart.",
+        "increase": "A non-quantum zero whose internal composition is a pure cross term under some sector decomposition.",
+        "falsify": "None for the calculation.",
+        "classification": "EXAMPLE",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "TRIVIAL CONSEQUENCE",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 2
+      }
+    },
+    {
+      "id": "Q-QACP-C",
+      "label": "Level C of the quantum cancellation pair",
+      "words": "Does the source construction reveal a representation/geometric structure analogous to any previously constructed zero?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "two-zeros 4",
+      "audit": {
+        "before": "new",
+        "note": "two-zeros pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-QACP"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "Q-SAME-ZERO",
+      "label": "Two systems, the same exact zero",
+      "words": "Can two systems with the same exact zero be geometrically distinguished using structure that remains present while the zero is preserved?",
+      "variants": [
+        {
+          "words": "What distinguishes two exact zeros while both remain zero?",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:Q2d",
+          "note": "separated once the exchange structure is included; [P, S_z] = 0"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:Q2c",
+          "note": "not separated by the zero-producing structure alone"
+        }
+      ],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I",
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "Q2c",
+        "Q2d"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "two-zeros 20",
+      "audit": {
+        "before": "new",
+        "note": "two-zeros pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": {
+        "targetStatement": "Can two systems with the same exact zero be geometrically distinguished using structure that remains present while the zero is preserved?",
+        "targetSource": "docs/restructure_decisions.md",
+        "requiredObjects": [],
+        "requiredMaps": [],
+        "candidateInvariants": [],
+        "requiredEquivalences": [],
+        "proofObligations": [],
+        "exactSearchQueries": [],
+        "knownTheorems": [],
+        "unresolvedObligations": [],
+        "previousTargets": [],
+        "lastResearchOutcome": "special-case"
+      },
+      "related": [
+        "T-QACP-OBSTRUCTION",
+        "T-QACP-EXCHANGE",
+        "B-ZERO-PRESERVE",
+        "T-Q.zero-distinguishable"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-12",
+        "mathematicalStatus": "Project-derived theorem",
+        "breadth": "one mathematical family",
+        "backboneSupport": 35,
+        "slopRisk": 15,
+        "why": "For the first rigorous test (triplet / singlet) the answer is exact: not with the zero-producing structure alone (Q2c), yes once the exchange structure, which preserves the zero, is included (Q2d). The separating structure coincides with known quantum labels, so no new information was found.",
+        "increase": "A second system, and a blind test where the separating structure is not already equivalent to a known label.",
+        "falsify": "The separating structure always reducing to a known label in every system tested.",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "partial",
+          "transfer": "not-yet",
+          "failureCondition": "pass",
+          "outOfSample": "not-yet"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "NOT YET FORMALIZED",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 0
+      }
+    },
+    {
+      "id": "Q-QACP-1",
+      "label": "Four spin-½: does the internal-zero representation with S₄ separate states?",
+      "words": "For four spin-½ (S_z = 0 requires an even number)",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "assistant-proposed",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "research/constructions/quantum_additive_cancellation.md"
+      ],
+      "auditRef": "QACP 10",
+      "audit": {
+        "before": "new",
+        "note": "two-zeros pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-QACP-EXCHANGE"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "Q-QACP-2",
+      "label": "A non-quantum system of the quantum type?",
+      "words": "Is there a non-quantum system where the contributions to a zero are generated from one source by exchange-related maps",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "assistant-proposed",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "research/constructions/quantum_additive_cancellation.md"
+      ],
+      "auditRef": "QACP 10",
+      "audit": {
+        "before": "new",
+        "note": "two-zeros pass (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-QACP-EXCHANGE"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
     }
   ]
 }

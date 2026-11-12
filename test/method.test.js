@@ -281,6 +281,7 @@ test('ratings: every assessment is complete and consistent with the evaluation r
       assert.ok(kinds.has('formulation') && kinds.has('application') && a.noGeneralizationSurvives && a.noEstablishedSupport && a.failures.length >= 4, `${r.id}: archive only when all four conditions hold`);
     }
     for (const h of a.ratingHistory) assert.ok(h.reason, `${r.id}: a rating change states its reason`);
+    assert.ok(Number.isInteger(a.applicationBreadth) && a.applicationBreadth >= 0 && a.applicationBreadth <= 5, `${r.id}: application breadth 0–5`);
   }
 });
 
@@ -310,7 +311,7 @@ test('Stage 2 stays ORTHOGONALLY EQUIVALENT; Q-R4-2 is proved under its stated e
 test('construction records share the eleven-section format; the application matrix has its columns and records failures', () => {
   const SECTIONS = ['1. Construction target', '2. Source geometry', '3. Projection map', '4. Exact identities', '5. Lower-dimensional realization',
     '6. What is established', '7. What is derived', '8. What is NOT established', '9. Connection to Stage 2', '10. Questions generated', '11. Next construction tests'];
-  for (const f of ['research/constructions/r4_tetrahedral_zero.md', 'research/constructions/zero_connector_linear.md', 'research/constructions/weighted_mass_centering.md'])
+  for (const f of ['research/constructions/r4_tetrahedral_zero.md', 'research/constructions/zero_connector_linear.md', 'research/constructions/weighted_mass_centering.md', 'research/constructions/quantum_additive_cancellation.md'])
     assert.deepEqual(read(f).split('\n').filter((l) => l.startsWith('## ')).map((l) => l.slice(3)), SECTIONS, f);
   const m = read('research/application_matrix.md');
   assert.ok(m.includes('| System / dataset | Observed zero / relation | Source representation | Target representation | Candidate larger geometry | Map | What becomes zero | What survives | What is lost | Independent of construction example? | Mathematical status | Backbone Support % | AI Slop Risk % | Failure condition |'));
@@ -370,4 +371,49 @@ test('the zero taxonomy is descriptive and explicitly non-exhaustive', () => {
   for (const c of ['A. Additive / resultant zero', 'B. Linear-functional zero', 'C. Inner-product / bilinear zero', 'D. Quadratic null', 'E. Observable / eigenvalue zero', 'F. Coefficient / spectral zero', 'G. Balance / moment zero'])
     assert.ok(t.includes(c), c);
   assert.ok(!/theorem:/i.test(t.split('\n')[0]));
+});
+
+// ── two-zeros pass (2026-11-12) ─────────────────────────────────────────────────────────────────
+
+test('C_G is locked to the uniform direction; distinguished directions must be specified before the zero', () => {
+  assert.ok(method.includes('A distinguished direction may only enter a construction if it is independently specified by the system before observing the desired zero.'));
+  assert.ok(method.includes('**Forbidden order:** observe zero → choose d that makes the map work.'));
+  assert.equal(byId.get('B-INDEPENDENT-DIRECTION').status, 'governance');
+  assert.equal(byId.get('Q-DISTINGUISHED-MODE').status, 'open', 'arbitrary d stays an open question, not an active family');
+  assert.ok(byId.get('T-CENTERING-OPERATOR').history.some((h) => /locked/.test(h.change)));
+  assert.match(read('CLAUDE.md'), /Choose a distinguished direction after seeing the zero/);
+});
+
+test('the quantum cancellation pair is its own object, outside Pair A, with both states derived', () => {
+  const graph = JSON.parse(read('research/graph.json'));
+  const q = graph.objects.find((o) => o.id === 'obj.qacp');
+  assert.ok(q && q.distinctFrom.includes('obj.moments'));
+  for (const p of graph.pairs) assert.ok(![p.sourceObject.id, p.targetObject.id].includes('obj.qacp'), `${p.id} must not contain the quantum pair`);
+  const ledger = JSON.parse(read('verify/ledger/latest.json')).cards;
+  for (const c of ['Q2a', 'Q2b', 'Q2c', 'Q2d', 'Q2e', 'Q2f', 'Q2g', 'W3a', 'W3b']) assert.equal(ledger[c]?.verdict, 'PASS', c);
+  assert.equal(byId.get('T-QACP').status, 'established');
+  assert.equal(byId.get('Q-QACP-C').status, 'open', 'Level C stays open');
+});
+
+test('the blind-label test was pre-registered and is not called a predictive transfer', () => {
+  const proto = read('research/constructions/qacp_blind_protocol.md');
+  assert.match(proto, /pre-registered/i);
+  assert.match(proto, /Pre-registered prediction rule/);
+  assert.match(proto, /not blind in knowledge/);
+  const ex = byId.get('T-QACP-EXCHANGE');
+  assert.notEqual(ex.assessment.transferDepth, 'NONTRIVIAL PREDICTIVE TRANSFER');
+  assert.match(ex.normalizedStatement, /separation PASS/);
+  assert.match(ex.normalizedStatement, /NOT YET POSSIBLE/);
+  for (const r of reg.theories) if (r.assessment) assert.notEqual(r.assessment.transferDepth, 'NONTRIVIAL PREDICTIVE TRANSFER', `${r.id}: none found in any pass so far`);
+});
+
+test('application breadth, the four quantum events, and matrix version 3', () => {
+  assert.ok(method.includes('**Application Breadth (0–5)**'));
+  for (const e of ['**Structural zero:**', '**Internal cancellation:**', '**Measurement intervention:**', '**Dephasing:**']) assert.ok(method.includes(e), e);
+  const m = read('research/application_matrix.md');
+  assert.ok(m.indexOf('## Version 3') < m.indexOf('## Version 2') && m.indexOf('## Version 2') < m.indexOf('## Version 1'), 'versions kept in order');
+  const v3 = m.slice(m.indexOf('## Version 3'), m.indexOf('## Version 2'));
+  assert.ok(v3.includes('| System | Observed zero | Contributions | Exchange acting on contributions | ε | Transfer Depth | Same rule unchanged? | Backbone Support % | AI Slop / Delusion Risk % | Application Breadth | Exact failure condition |'));
+  assert.match(v3, /\| FAIL/, 'failures recorded');
+  assert.match(v3, /NOT YET FORMALIZED/);
 });

@@ -389,6 +389,32 @@
         "G5d"
       ],
       "source": "research/constructions/centering_comparison.md"
+    },
+    "qacp.cancellation": {
+      "level": 1,
+      "text": "The zero is produced by two nonzero vectors in the Hilbert space cancelling exactly.",
+      "cards": [
+        "Q2a"
+      ],
+      "source": "docs/restructure_decisions.md"
+    },
+    "qacp.obstruction": {
+      "level": 1,
+      "text": "The zero-producing structure alone (state, the two contribution operators, inner products) cannot distinguish the triplet and singlet zeros: a unitary commuting with both contribution operators maps one internal-zero configuration onto the other.",
+      "cards": [
+        "Q2b",
+        "Q2c"
+      ],
+      "source": "research/constructions/quantum_additive_cancellation.md"
+    },
+    "qacp.exchange": {
+      "level": 1,
+      "text": "With the canonical exchange P of the two particles, P c1 = ε c2 with ε = +1 for |1,0⟩ and ε = −1 for |0,0⟩; ε equals the state's exchange parity.",
+      "cards": [
+        "Q2d",
+        "Q2e"
+      ],
+      "source": "research/constructions/quantum_additive_cancellation.md"
     }
   }
 }

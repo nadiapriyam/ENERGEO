@@ -213,6 +213,16 @@
       "stage": null,
       "journeyId": null,
       "act": "III"
+    },
+    {
+      "id": "obj.qacp",
+      "label": "Quantum Additive Cancellation Pair: (S_z^(1)ψ, S_z^(2)ψ) for the S_z = 0 states |1,0⟩ and |0,0⟩",
+      "stage": "2b",
+      "journeyId": null,
+      "distinctFrom": [
+        "obj.moments"
+      ],
+      "note": "A separate research object, not part of Pair A: the spin pair stays distinct from the MRI-motivated ensemble."
     }
   ],
   "relations": [
@@ -535,6 +545,68 @@
       "doesNotEstablish": [
         "that Stage 2 was designed from this construction",
         "anything about physical protons"
+      ]
+    },
+    {
+      "id": "rel.qacp-cancellation",
+      "object": "obj.qacp",
+      "representation": "ℂ² ⊗ ℂ²",
+      "measurement": "ψ ↦ (S_z^(1)ψ, S_z^(2)ψ)",
+      "status": "established",
+      "cards": [
+        "Q2a"
+      ],
+      "claims": [
+        "qacp.cancellation"
+      ],
+      "connectsTo": [
+        "obj.spin-pair"
+      ],
+      "doesNotEstablish": [
+        "any link to the MRI-motivated ensemble or to protons",
+        "Level C (a larger geometry)"
+      ]
+    },
+    {
+      "id": "rel.qacp-obstruction",
+      "object": "obj.qacp",
+      "representation": "(ψ, S_z^(1), S_z^(2), ⟨·,·⟩)",
+      "measurement": "descriptors invariant under unitaries commuting with S_z^(1), S_z^(2)",
+      "status": "established",
+      "cards": [
+        "Q2b",
+        "Q2c"
+      ],
+      "claims": [
+        "qacp.obstruction"
+      ],
+      "connectsTo": [
+        "obj.spin-pair"
+      ],
+      "doesNotEstablish": [
+        "that no added structure can separate the two zeros"
+      ]
+    },
+    {
+      "id": "rel.qacp-exchange",
+      "object": "obj.qacp",
+      "representation": "with the canonical exchange P of the two factors",
+      "measurement": "P c1 = ε c2",
+      "status": "established",
+      "cards": [
+        "Q2d",
+        "Q2e",
+        "Q2g"
+      ],
+      "claims": [
+        "qacp.exchange"
+      ],
+      "connectsTo": [
+        "obj.spin-pair"
+      ],
+      "doesNotEstablish": [
+        "information beyond the known exchange parity / S² labels",
+        "a nontrivial predictive transfer (the S² link is the textbook identity S² = ħ²(1 + P))"
       ]
     }
   ],

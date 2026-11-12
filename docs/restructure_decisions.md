@@ -987,3 +987,57 @@ Quantum calculation targets (verbatim):
 > relative coherence between the two S² sectors is lost
 
 > leaving the defining zero; changing the state while remaining inside the zero condition; extracting information while preserving both zero and the relevant internal relation
+
+## Two zeros, one value: the quantum cancellation pass (2026-11-12)
+
+Nadia's decisions, verbatim. LaTeX converted to plain text and lists joined; nothing else changed.
+
+> derive relation → construct geometry → apply unchanged → classify against known mathematics
+
+> Do not expand a construction simply so that more application-matrix rows pass.
+
+### C_G and distinguished directions
+
+> A distinguished direction may only enter a construction if it is independently specified by the system before observing the desired zero.
+
+> Are there independent systems in which a distinguished source mode d arises naturally and is removed by the representation, with zero/resultant structure appearing in the target?
+
+> system identifies d independently → derive its map → predict the zero → test the prediction
+
+> observe zero → choose d that makes the map work
+
+(the order above is quoted as forbidden)
+
+> Do not spend further time trying to fit Fourier or orthogonality into C_G.
+
+### The quantum cancellation pair
+
+> Quantum Additive Cancellation Pair
+
+> The zero is produced by two nonzero vectors in the Hilbert space cancelling exactly.
+
+> one state + decomposition of an observable → two nonzero state-space contributions → exact zero total action
+
+> Does the source construction reveal a representation/geometric structure analogous to any previously constructed zero?
+
+> What distinguishes two exact zeros while both remain zero?
+
+> Can the difference that S² detects be recognized from the internal geometry of the zero-producing contributions themselves?
+
+> S² is validation data
+
+> Do NOT call it predictive transfer if the descriptor was chosen after looking at the S² labels.
+
+> Can two systems with the same exact zero be geometrically distinguished using structure that remains present while the zero is preserved?
+
+> Is the mathematical information being lost of the same kind?
+
+### Application Breadth and architecture
+
+> 0 = one bespoke configuration; 1 = one mathematical family; 2 = two independent mathematical systems; 3 = multiple independent mathematical systems; 4 = at least one physical/empirical system beyond the construction domain; 5 = repeated cross-domain/data validation
+
+> Do not increase breadth merely because a general theorem has infinitely many parameter values.
+
+> Do not assume the final Geometry of Representation must reduce every zero to the same operator.
+
+> one broader geometry ↓ different zero mechanisms ↓ additive, centering, orthogonal, quadratic, spectral, observable, ...

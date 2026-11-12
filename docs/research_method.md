@@ -118,6 +118,30 @@ The final common structure is not decided in advance to be an equation, an invar
 category, a manifold, a Fourier representation, or any currently named object. The geometry is primary; its
 classification is secondary.
 
+**Distinguished-direction rule** (methodology decision, 2026-11-12):
+
+A distinguished direction may only enter a construction if it is independently specified by the system before observing the desired zero.
+
+- **Required order:** system identifies d independently → derive its map → predict the zero → test the prediction.
+- **Forbidden order:** observe zero → choose d that makes the map work.
+- **Why:** if d is chosen after the zero is seen, almost any codimension-one relation can be written as the removal
+  of a chosen direction, and the construction loses its power to discriminate.
+- **The current state:** C_G stays locked to the uniform direction **1**, with positive diagonal G. The general case
+  remains an open question (`Q-DISTINGUISHED-MODE`), not an active family.
+
+**Possible architecture, not formalized.** The final geometry need not reduce every zero to one operator. It may be
+one broader geometry containing several zero mechanisms. Examples so far:
+
+- additive;
+- centering;
+- orthogonal;
+- quadratic;
+- spectral;
+- observable.
+
+These are known examples, not an exhaustive classification for this project. A branch is not rejected because it
+fails C_G.
+
 **Representation-change template.** Every construction records:
 
 - the source object;
@@ -270,6 +294,13 @@ In quantum examples these are kept apart:
 | incompatible zero-preserving interrogations | W2e |
 
 The double-slit model has no defining zero and does not prove B-ZERO-LOSS.
+
+Four different mathematical events, never merged:
+
+1. **Structural zero:** S_zψ = 0.
+2. **Internal cancellation:** S_z⁽¹⁾ψ + S_z⁽²⁾ψ = 0, with both terms nonzero.
+3. **Measurement intervention:** measuring S².
+4. **Dephasing:** loss of off-diagonal coherence when the outcome is ignored.
 
 ## 5. Anti-closure rule
 
@@ -580,6 +611,21 @@ Every transfer (an application of a construction to a system it was not built fr
 | NONTRIVIAL PREDICTIVE TRANSFER | A rule constructed before examining the target system predicts a mathematically non-obvious relation in that target, and the prediction is subsequently verified. Never awarded retrospectively because two known equations look alike. The registry requires the prediction's statement and date, recorded before the verifying card. |
 | FAIL | The unchanged construction does not apply. It is not repaired merely to avoid the FAIL. |
 | NOT YET FORMALIZED | No transfer has been attempted or stated precisely yet. |
+
+**Application Breadth (0–5)** is a count, recorded in research summaries. It is not a third confidence percentage.
+It records how widely the rule has actually been tested.
+
+| Breadth | Meaning |
+|---|---|
+| 0 | one bespoke configuration |
+| 1 | one mathematical family |
+| 2 | two independent mathematical systems |
+| 3 | multiple independent mathematical systems |
+| 4 | at least one physical/empirical system beyond the construction domain |
+| 5 | repeated cross-domain/data validation |
+
+Breadth is not increased because a general theorem has infinitely many parameter values. Only independent systems
+count.
 
 Three things are rated separately and never conflated:
 

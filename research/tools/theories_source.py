@@ -11,6 +11,7 @@ AP = 'docs/author_philosophy.md'
 CX = 'research/constructions/r4_tetrahedral_zero.md'
 ZC = 'research/constructions/zero_connector_linear.md'
 CM = 'research/constructions/centering_comparison.md'
+CQ = 'research/constructions/quantum_additive_cancellation.md'
 WM = 'research/constructions/weighted_mass_centering.md'
 H1, H2, H3 = 'research/hypotheses/H1.md', 'research/hypotheses/H2.md', 'research/hypotheses/H3.md'
 
@@ -598,7 +599,8 @@ T('Q-CONNECT-2', 'A connector template for nonlinear zeros?', 'Is there a connec
 T('B-ZERO-INTERNAL-CHANGE', 'Change inside the same zero', 'What information can change, be destroyed, become distinguishable, or become inaccessible while the system remains inside the same defining zero condition?', RD, U, 'open-question', 'open',
   pro=[('card:Q1h', 'S² measured on |↑↓⟩ keeps S_z = 0 and changes the state'), ('card:W1d', 'the A–B coherence (1/2) becomes 0 while S_z = 0 holds'),
        ('card:W2c', 'the composition of the zero changes: ⟨S_z⁽¹⁾⟩ goes ħ/2 → 0 and ⟨S_z⁽²⁾⟩ −ħ/2 → 0 while S_z = 0 holds'),
-       ('card:W2e', 'two incompatible zero-preserving interrogations: S² and S_z⁽¹⁾ both commute with S_z but not with each other')],
+       ('card:W2e', 'two incompatible zero-preserving interrogations: S² and S_z⁽¹⁾ both commute with S_z but not with each other'),
+       ('card:W3a', 'for every S_z = 0 state, the expectation-level composition of the zero is ħ Re ρ_AB, removed by S² dephasing')],
   bounds=['Distinct from leaving the zero (B-ZERO-LOSS) and from state-preserving interrogation; the three operations are not merged.'],
   acts=['I', 'III'], audit=A_AUDIT, related=['B-ZERO-PRESERVE', 'B-ZERO-LOSS', 'B-JOINT-ALTERNATIVES'], ref='application 9')
 T('B-JOINT-ALTERNATIVES', 'Information that destroys a joint relation (measurement branch)', 'Can obtaining one form of information destroy another relation that existed only while alternatives remained jointly represented?', RD, U, 'open-question', 'open',
@@ -625,6 +627,7 @@ T('T-WMC', 'WMC — Weighted Mass Centering (a separate construction, not T′)'
   bounds=['Not T′ and not a repaired T′.', 'Does not apply to the directional ensemble (no positions or masses).'],
   acts=['I', 'III'], audit=T_AUDIT, related=['T-CENTERING-OPERATOR', 'T-PAIRA-BRIDGE', 'Q-WMC-1'], ref='transfer 4')
 T('T-CENTERING-OPERATOR', 'One operator containing T′ and WMC', 'G-orthogonal removal of the uniform direction', CM, 'established-support', 'established', 'established',
+  history=[('2026-11-12c', 'locked (Nadia): the distinguished direction stays the uniform direction 1 with positive diagonal G; removal of an arbitrary direction d is not an active family (see B-INDEPENDENT-DIRECTION, Q-DISTINGUISHED-MODE)')],
   norm='C_G = I − 1 1ᵀG/(1ᵀG1), G positive diagonal: idempotent, kills 1, G-self-adjoint, ⟨1, C_G x⟩_G = 0; G = I gives P_n, G = diag(m) gives C_m; the metric is read off each zero relation.',
   pro=[('card:G5d', ''), ('card:G5b', '')], con=[('card:G5f', 'boundaries: content only with a nonzero removed mode; undefined for 1ᵀG1 = 0; complex weights excluded')],
   bounds=['Operator and zero-relation level only; the regular-simplex configuration is the special case G ∝ I.', 'A standard object (weighted centering); allowing any removed direction would make it contain every hyperplane zero, so that is not adopted.'],
@@ -640,6 +643,40 @@ T('T-S2-DEPHASING', 'Stage 2b under an S² measurement (outcome ignored)', 'rela
   variants=[('S_z remains zero', RD), ('S² information becomes available', RD)],
   norm='ρ = |↑↓⟩⟨↑↓|, in the {|1,0⟩, |0,0⟩} basis [[½, ½], [½, ½]] → ρ\' = [[½, 0], [0, ½]]; S_z ρ\' = 0; outcomes 2ħ² and 0 with probability ½ each; purity 1 → ½; ⟨S_z⁽¹⁾⟩: ħ/2 → 0, ⟨S_z⁽²⁾⟩: −ħ/2 → 0.',
   pro=[('card:W2a', ''), ('card:W2b', ''), ('card:W2c', '')], acts=['I', 'III'], audit=T_AUDIT, related=['B-ZERO-INTERNAL-CHANGE', 'B-JOINT-ALTERNATIVES'], ref='transfer 11')
+
+
+# ── two-zeros pass (2026-11-12): distinguished directions, the quantum cancellation pair ──────────
+Z_AUDIT = ('new', 'two-zeros pass (2026-11-12)')
+T('B-INDEPENDENT-DIRECTION', 'Distinguished directions must be specified independently', 'A distinguished direction may only enter a construction if it is independently specified by the system before observing the desired zero.', RD, U, MR, GOV,
+  variants=[('system identifies d independently → derive its map → predict the zero → test the prediction', RD)],
+  bounds=['Forbidden order: observe zero → choose d that makes the map work.'], acts=['all'], audit=Z_AUDIT, ui='none (method)', related=['T-CENTERING-OPERATOR', 'Q-DISTINGUISHED-MODE'], ref='two-zeros 1')
+T('Q-DISTINGUISHED-MODE', 'Independent systems with a naturally distinguished removed mode', 'Are there independent systems in which a distinguished source mode d arises naturally and is removed by the representation, with zero/resultant structure appearing in the target?', RD, U, 'open-question', 'open',
+  bounds=['An open construction target, not an active family.'], acts=['III'], audit=Z_AUDIT, related=['B-INDEPENDENT-DIRECTION', 'Q-CENTERING'], ref='two-zeros 2')
+T('T-QACP', 'Quantum Additive Cancellation Pair', 'The zero is produced by two nonzero vectors in the Hilbert space cancelling exactly.', RD, U, 'established', 'established',
+  norm='S_z^(1)|1,0⟩ = +(ħ/2)|0,0⟩, S_z^(2)|1,0⟩ = −(ħ/2)|0,0⟩; S_z^(1)|0,0⟩ = +(ħ/2)|1,0⟩, S_z^(2)|0,0⟩ = −(ħ/2)|1,0⟩. Each zero is built from the other state.',
+  variants=[('one state + decomposition of an observable → two nonzero state-space contributions → exact zero total action', RD)],
+  pro=[('card:Q2a', ''), ('card:W2f', '')], bounds=['Not part of Pair A; the spin pair stays distinct from the MRI-motivated ensemble.', 'Level A (additive algebra) is trivial; Level C (larger geometry) is open.'],
+  acts=['I', 'III'], objs=['obj.qacp'], audit=Z_AUDIT, related=['T-QACP-OBSTRUCTION', 'T-QACP-EXCHANGE', 'Q-QACP-C', 'T-QUANTUM-ZERO'], graph='rel.qacp-cancellation', ref='two-zeros 3')
+T('T-QACP-OBSTRUCTION', 'The zero-producing structure alone does not separate the two zeros', 'The zero-producing structure alone cannot tell the two zeros apart.', CQ, 'established-support', 'established', 'established',
+  norm='U = exp(iπS_z^(1)/ħ) commutes with S_z^(1) and S_z^(2) and maps |1,0⟩ → i|0,0⟩ with every contribution; Gram(c1, c2), Gram(ψ, c1, c2), norms and signs coincide (Q2b, Q2c).',
+  pro=[('card:Q2b', ''), ('card:Q2c', '')], acts=['I', 'III'], objs=['obj.qacp'], audit=Z_AUDIT, related=['T-QACP', 'Q-SAME-ZERO'], graph='rel.qacp-obstruction', ref='two-zeros 7–8')
+T('T-QACP-EXCHANGE', 'Exchange separates the two zeros', 'With P, the relation between the two contributions differs: Pc₁ = +c₂ for the triplet and Pc₁ = −c₂ for the singlet.', CQ, 'established-support', 'established', 'established',
+  norm='ε (P c1 = ε c2, P the canonical exchange) = +1 for |1,0⟩, −1 for |0,0⟩; ε = the state\'s exchange parity (covariance); undefined for non-eigenstates (|↑↓⟩) and for a non-canonical summand swap V = PU. Blind test (protocol pre-registered): separation PASS; prediction of S² from the project geometry NOT YET POSSIBLE (only via the textbook identity S² = ħ²(1 + P)).',
+  pro=[('card:Q2d', ''), ('card:Q2e', 'reveal after the descriptor was fixed'), ('card:Q2f', 'T′: source transpositions act with sign +1'), ('card:Q2g', 'domain: exchange eigenstates only')],
+  bounds=['Carries the same information as the known exchange parity / S²; adds where the distinction lives, not a new label.', 'Not a nontrivial predictive transfer: the test was procedurally blind, not blind in knowledge.'],
+  acts=['I', 'III'], objs=['obj.qacp'], audit=Z_AUDIT, related=['T-QACP', 'Q-SAME-ZERO', 'T-SIMPLEX-FAMILY'], graph='rel.qacp-exchange', ref='two-zeros 7–10')
+T('T-QACP-CROSSTERM', 'What the S² dephasing removes from the zero', '⟨S_z⁽¹⁾⟩ = ħ Re ρ_AB', CQ, 'established-support', 'established', 'established',
+  norm='For ψ = α|1,0⟩ + β|0,0⟩, S_z^(1) is a pure cross-term observable in the S² basis; its expectation (the expectation-level composition of the zero) is ħ Re ρ_AB and vanishes under S² dephasing (W3a); the shared mathematics with which-path dephasing is the generic two-sector map (W3b).',
+  pro=[('card:W3a', ''), ('card:W3b', 'generic: any zero-diagonal observable')], acts=['I', 'III'], audit=Z_AUDIT, related=['B-ZERO-INTERNAL-CHANGE', 'B-JOINT-ALTERNATIVES', 'T-S2-DEPHASING'], ref='two-zeros 12–13')
+T('Q-QACP-C', 'Level C of the quantum cancellation pair', 'Does the source construction reveal a representation/geometric structure analogous to any previously constructed zero?', RD, U, 'open-question', 'open',
+  acts=['III'], audit=Z_AUDIT, related=['T-QACP'], ref='two-zeros 4')
+T('Q-SAME-ZERO', 'Two systems, the same exact zero', 'Can two systems with the same exact zero be geometrically distinguished using structure that remains present while the zero is preserved?', RD, U, 'open-question', 'open',
+  variants=[('What distinguishes two exact zeros while both remain zero?', RD)],
+  pro=[('card:Q2d', 'separated once the exchange structure is included; [P, S_z] = 0')], con=[('card:Q2c', 'not separated by the zero-producing structure alone')],
+  target=dict(targetStatement='Can two systems with the same exact zero be geometrically distinguished using structure that remains present while the zero is preserved?', lastResearchOutcome='special-case'),
+  acts=['I', 'III'], audit=Z_AUDIT, related=['T-QACP-OBSTRUCTION', 'T-QACP-EXCHANGE', 'B-ZERO-PRESERVE', 'T-Q.zero-distinguishable'], ref='two-zeros 20')
+T('Q-QACP-1', 'Four spin-½: does the internal-zero representation with S₄ separate states?', 'For four spin-½ (S_z = 0 requires an even number)', CQ, A, 'open-question', 'open', acts=['III'], audit=Z_AUDIT, related=['T-QACP-EXCHANGE'], ref='QACP 10')
+T('Q-QACP-2', 'A non-quantum system of the quantum type?', 'Is there a non-quantum system where the contributions to a zero are generated from one source by exchange-related maps', CQ, A, 'open-question', 'open', acts=['III'], audit=Z_AUDIT, related=['T-QACP-EXCHANGE'], ref='QACP 10')
 
 PAIR_A = proof_target('Starting from the established common zero-sum form Σv_i = 0, identify all additional invariants/relations of the mass system that can be translated into mathematically meaningful tests on the directional cancellation system.',
                       requiredObjects=['the established shared form Σv_i = 0 (pair.A.sharedAlgebraicForm)'])
@@ -691,7 +728,7 @@ def rate(id, status, breadth, bs, slop, why, increase, falsify, cls, validity, s
     v = dict(zip(('construction', 'generalization', 'transfer', 'failureCondition', 'outOfSample'), validity))
     byid[id]['assessment'] = dict(date='2026-11-12', mathematicalStatus=status, breadth=breadth, backboneSupport=bs, slopRisk=slop, why=why,
                                   increase=increase, falsify=falsify, classification=cls, validity=v, branchState=state, failures=[],
-                                  transferDepth=depth, mathematicalCorrectness=correct, prediction=None, ratingHistory=[])
+                                  transferDepth=depth, mathematicalCorrectness=correct, prediction=None, ratingHistory=[], applicationBreadth=None)
 GC, EX = 'GENERAL CONSTRUCTION', 'EXAMPLE'
 rate('T-R4-STAGE2', CE, ONE, 10, 5, 'An exact coordinate identity computed from the app\'s own TETRA. It records provenance only. It says nothing about what a zero carries.',
      'None needed; it is a provenance fact.', 'A change to TETRA that breaks G2i.', EX, ('pass', 'n/a', 'n/a', 'pass', 'n/a'))
@@ -754,6 +791,23 @@ rate('T-CENTERING-OPERATOR', PD, MULTI, 45, 15, 'One unchanged operator family C
      ('pass', 'pass', 'partial', 'pass', 'not-yet'), depth=STRUCT)
 rate('T-S2-DEPHASING', KN, ONE, 25, 15, 'A textbook Lüders measurement computed exactly. The defining zero is kept, while the sector coherence and the ±ħ/2 composition of the zero are lost. It is the same dephasing map as which-path marking (W2d), but the double slit has no defining zero.',
      'A non-quantum zero where an operation inside the zero destroys a relation in the same way.', 'None for the calculation; the project mapping fails if the parallel holds for no non-quantum zero.', EX, ('pass', 'not-yet', 'not-yet', 'pass', 'n/a'), depth=TRIV)
+
+BREADTH = {'B-HIGHER-GEOMETRY': 2, 'B-ZERO-LOSS': 0, 'T-R4-STAGE2': 0, 'B-HIGHER-GEOMETRY-CHAIN': 2, 'Q-R4-1': 1, 'Q-R4-2': 1, 'Q-R4-4': 1, 'Q-R4-5': 1,
+           'Q-R4-6': 1, 'Q-R4-7': 1, 'T-SIMPLEX-FAMILY': 2, 'T-ZERO-CONNECTOR-LINEAR': 3, 'T-ZERO-CONNECTOR': 3, 'Q-R4-8-INVERSE': 1, 'B-ZERO-INTERNAL-CHANGE': 1,
+           'B-JOINT-ALTERNATIVES': 2, 'T-PAIRA-BRIDGE': 2, 'T-WMC': 1, 'T-CENTERING-OPERATOR': 2, 'T-S2-DEPHASING': 0}
+rate('T-QACP', KN, FAM, 20, 10, 'Both S_z = 0 zeros are exact cancellations of nonzero state-space vectors. At Level A this is additive algebra and carries little backbone weight. Its value is as the object on which the two-zeros test runs.',
+     'A Level-C result: a representation that relates this source construction to another zero without being chosen for it.', 'None for the calculation.', GC, ('pass', 'pass', 'not-yet', 'pass', 'n/a'), depth=TRIV)
+rate('T-QACP-OBSTRUCTION', PD, FAM, 35, 10, 'It answers the two-zeros question exactly for the zero-producing structure: nothing in it separates the triplet and singlet zeros, because a symmetry of that structure maps one onto the other. It also states precisely what must be added. It is limited to one system.',
+     'The same obstruction-plus-added-structure pattern in a second, independent system.', 'A descriptor built only from (ψ, S_z^(1), S_z^(2), ⟨·,·⟩) that separates them (impossible by Q2c).', GC, ('pass', 'pass', 'not-yet', 'pass', 'n/a'))
+rate('T-QACP-EXCHANGE', PD, MULTI, 30, 20, 'The canonical exchange separates the two zeros through the sign ε of P acting on the cancelling contributions (blind separation PASS). The same covariance identity governs T′, whose source transpositions act with ε = +1, matching the triplet only. ε equals the known exchange parity, so it adds location, not a new label.',
+     'A system where ε (or its S_n analogue) separates states that no known label separates, tested blind.', 'ε failing to be defined on the next system (only exchange eigenstates qualify, Q2g).', GC, ('pass', 'partial', 'partial', 'pass', 'not-yet'), depth=STRUCT)
+rate('T-QACP-CROSSTERM', KN, FAM, 25, 20, 'The S² dephasing removes exactly the expectation-level composition of the zero (⟨S_z^(1)⟩ = ħ Re ρ_AB) and keeps S_z = 0. The shared mathematics with which-path dephasing is the generic two-sector map (W3b). The specific part, that the removed cross term is the zero\'s own internal composition, has no double-slit counterpart.',
+     'A non-quantum zero whose internal composition is a pure cross term under some sector decomposition.', 'None for the calculation.', EX, ('pass', 'pass', 'partial', 'pass', 'n/a'), depth=TRIV)
+rate('Q-SAME-ZERO', PD, FAM, 35, 15, 'For the first rigorous test (triplet / singlet) the answer is exact: not with the zero-producing structure alone (Q2c), yes once the exchange structure, which preserves the zero, is included (Q2d). The separating structure coincides with known quantum labels, so no new information was found.',
+     'A second system, and a blind test where the separating structure is not already equivalent to a known label.', 'The separating structure always reducing to a known label in every system tested.', GC, ('pass', 'partial', 'not-yet', 'pass', 'not-yet'))
+BREADTH.update({'T-QACP': 1, 'T-QACP-OBSTRUCTION': 0, 'T-QACP-EXCHANGE': 2, 'T-QACP-CROSSTERM': 2, 'Q-SAME-ZERO': 0})
+for k, b in BREADTH.items():
+    byid[k]['assessment']['applicationBreadth'] = b
 
 for r in R:
     for i in r['related']:

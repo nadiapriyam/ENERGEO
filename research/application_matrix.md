@@ -1,6 +1,43 @@
 # Application matrix
 
-## Version 2 (transfer pass, 2026-11-12): current
+## Version 3 (two-zeros pass, 2026-11-12): current
+
+Nothing was forced. The seven rows of version 2 stand unchanged (below). This version adds two things:
+
+- the internal-zero descriptor ε, applied unchanged to every system where its ingredients exist;
+- an Application Breadth count for every construction (`docs/research_method.md` §12.2a).
+
+**Descriptor under test.** Write the zero as a sum of contributions c₁ + c₂ (+ …) = 0, generated from a source. Let
+the system's own exchange of labels act on the contributions. ε is the sign in E c_i = ε c_j.
+
+**Ingredients required, all specified by the system before the zero is looked at:**
+
+- a decomposition of the zero into labelled contributions;
+- a canonical exchange that acts on the space where the contributions live.
+
+| System | Observed zero | Contributions | Exchange acting on contributions | ε | Transfer Depth | Same rule unchanged? | Backbone Support % | AI Slop / Delusion Risk % | Application Breadth | Exact failure condition |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Quantum \|1,0⟩ (State X, blind) | S_zψ = 0 | ±(ħ/2)\|0,0⟩ (Q2a) | P, the canonical swap of the two factors | +1 (Q2d) | STRUCTURAL TRANSFER (exchange covariance with sign +1, as in T′) | yes | 30 | 20 | 2 | — |
+| Quantum \|0,0⟩ (State Y, blind) | S_zψ = 0 | ±(ħ/2)\|1,0⟩ | P | −1 (Q2d) | FAIL for the T′ sign; the covariance identity still holds (ε = −1 = the state's parity) | yes | 30 | 20 | 2 | sign −1: T′'s source permutations never produce it |
+| Quantum \|↑↓⟩ | S_zψ = 0 | ±(ħ/2)\|↑↓⟩ | P | undefined (Q2g) | FAIL | yes | 10 | 15 | 2 | the state is not an exchange eigenstate |
+| T′ family (n = 2, 3, 4) | Σvᵢ = 0 | vᵢ = Pₙeᵢ | transpositions of the source basis (they commute with Pₙ) | +1 (Q2f) | the construction domain itself (defines the +1 behavior) | yes | 30 | 5 | 1 | — |
+| Equal-mass balance | Σ(rᵢ − r̄) = 0 | rᵢ − r̄ | none acting on ℝᵈ unless the configuration has a symmetry; relabelling is not an action | — | NOT YET FORMALIZED | — | — | — | — | no canonical exchange on the codomain |
+| Stage 1 learner pair (v, −v) | v + (−v) = 0 | v, −v | none (no source, no tensor structure) | — | NOT YET FORMALIZED | — | — | — | — | no exchange is specified by the system |
+| Stage 2 later states | Σcⱼ = 0 | cⱼ, varied magnitudes | none unless the configuration has a symmetry | — | NOT YET FORMALIZED | — | — | — | — | no exchange is specified by the system |
+
+**Application Breadth of every construction so far:**
+
+| Construction | Breadth | Independent systems actually tested |
+|---|---|---|
+| T′ / simplex family | 2 | the projected orthonormal basis; equal-mass balance |
+| C_G (locked to **1**) | 2 | T′; mass balance |
+| WMC | 1 | mass balance |
+| Linear connector T | 3 | mass, quantum, Fourier, orthogonality (TRIVIAL CONSEQUENCE in three of them) |
+| R4 reconstruction (G3) | 1 | the simplex family only |
+| Exchange descriptor ε | 2 | T′ family; quantum S_z = 0 pair |
+| Stage 2b dephasing / cross-term (W2, W3) | 2 | quantum S_z = 0 sector; the two-path model (generic map) |
+
+## Version 2 (transfer pass, 2026-11-12): its seven rows still stand
 
 Each construction is applied unchanged, and what survives and what fails is recorded. The constructions under test
 are these:
