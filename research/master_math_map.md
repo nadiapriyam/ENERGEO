@@ -518,8 +518,10 @@ x → x ∗ ψ_λ → |x ∗ ψ_λ| → further wavelet transforms → averaging
 
 | Operation | Survives | Disappears | Becomes invariant | Recoverable | Needs higher order |
 |---|---|---|---|---|---|
-| single filter x ↦ x ∗ ψ_λ | its band | out-of-band content (constants, for a zero-mean filter): not invertible (RIC2a) | — (translation-covariant: (T_a x) ∗ ψ_λ = T_a(x ∗ ψ_λ), FB10c) | not from one filter | — |
-| complete wavelet transform / filter bank | everything, under its stated assumptions (continuous: admissible wavelet and all scales, Grossmann–Morlet, source; discrete: no common spectral zero, RIC2a) | the dropped bands, if scales are restricted | — (translation-covariant) | yes, under those assumptions | — |
+| single wavelet / filter channel x ↦ x ∗ ψ_λ | where ψ̂_λ ≠ 0 | need not be invertible, decided by the signal space and the multiplier: finite periodic, a zero-mean channel annihilates the constant mode (RIC2a); L²(ℝ), not decided by zero mean (the constant is not in L²): a measure-zero zero set gives injectivity, possibly without a bounded inverse (Mexican hat, RIC3a); a positive-measure zero set gives a nontrivial kernel (RIC3b) | — (translation-covariant: (T_a x) ∗ ψ_λ = T_a(x ∗ ψ_λ), FB10c) | not from one channel in general | — |
+| complete continuous wavelet transform | everything, under the standard admissibility and finite-energy assumptions (reconstruction formula, Grossmann–Morlet, source) | the dropped bands, if scales are restricted | — (translation-covariant) | yes, under those assumptions | — |
+| undecimated analysis bank x ↦ (H₁x, …, H_m x) | everything, when the multipliers have no common zero on the stated signal space (finite periodic: every DFT bin, RIC3c) | content at common zeros | — (translation-covariant) | yes, when there is no common zero (finite periodic: a left inverse, RIC2a) | — |
+| critically sampled / multirate bank | everything, when the polyphase system is invertible: R(z)E(z) = c z^(−K) I (Haar, RIC3d) | the scalar no-common-zero condition is not sufficient (RIC3d) | — | iff the polyphase system is invertible | — |
 | modulus | the envelope in each band | phase within the band | — (commutes with translations) | partly, through other bands and orders (source) | — |
 | higher-order propagation | part of what averaging removes (source-only) | — | — | — | yes (source-only) |
 | finite-scale low-pass averaging (∗ φ_J) | structure coarser than the averaging scale | finer detail; high-frequency structure | none exactly: translation-covariant, (T_a x) ∗ φ_J = T_a(x ∗ φ_J) (RIC2b); local invariance at the averaging scale is the sourced theorem (Mallat 2012) | no | the high-frequency structure (source-only) |
@@ -527,7 +529,10 @@ x → x ∗ ψ_λ → |x ∗ ψ_λ| → further wavelet transforms → averaging
 
 - **Established and carded:** the zero mean and admissibility (FB10a, FB10b); translation covariance of filtering and
   of finite-scale averaging (FB10c, RIC2b); exact invariance of the global average under circular shifts, and its
-  many-to-one behaviour (FB10c); a single filter is not invertible while a complete filter bank is (RIC2a).
+  many-to-one behaviour (FB10c). Invertibility is scoped to the signal space: a zero-mean channel annihilates the
+  constant mode on finite periodic signals (RIC2a); on L²(ℝ) a single channel is decided by its multiplier ψ̂_λ
+  (RIC3a, RIC3b); undecimated banks are injective without a common zero (RIC3c); critically sampled banks need an
+  invertible polyphase system (RIC3d).
 - **Covariance is not invariance.** Exact translation invariance is stated only with its averaging assumption (global
   sum, or the limit of infinite scale).
 - **Source-only:** deformation stability, energy, higher-order recovery.

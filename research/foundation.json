@@ -5554,14 +5554,18 @@
    "id": "BR53",
    "left": "scattering operations",
    "right": "Reduction / Information-Changing Architecture",
-   "connector": "filtering (translation-covariant; one filter is not invertible, a complete filter bank / wavelet transform admits reconstruction under its stated assumptions), modulus (discards phase), finite-scale averaging (translation-covariant; local invariance at the averaging scale is source-only), global averaging (exactly invariant under circular shifts)",
+   "connector": "filtering (translation-covariant; a single channel need not be invertible, decided by the signal space and its multiplier; an undecimated bank is injective when its multipliers have no common zero on the stated signal space; a critically sampled bank needs an invertible polyphase system, R(z)E(z) = c z^(−K) I; the complete CWT admits reconstruction under admissibility), modulus (discards phase), finite-scale averaging (translation-covariant; local invariance at the averaging scale is source-only), global averaging (exactly invariant under circular shifts)",
    "status": "ESTABLISHED",
    "scope": "established",
    "cards": [
     "FB10a",
     "FB10c",
     "RIC2a",
-    "RIC2b"
+    "RIC2b",
+    "RIC3a",
+    "RIC3b",
+    "RIC3c",
+    "RIC3d"
    ],
    "doesNotProve": "that Mallat proves hidden information in zero; that scattering is the universal form of reduction; higher-order recovery (source-only)",
    "objects": [
@@ -7092,50 +7096,96 @@
    "symmetry": "not carded in the repository"
   },
   {
-   "name": "Single wavelet filter (x ↦ x ∗ ψ_λ)",
+   "name": "Single wavelet / filter channel (x ↦ x ∗ ψ_λ)",
    "objects": [
     "W1",
     "W2"
    ],
    "cards": [
     "RIC2a",
+    "RIC3a",
+    "RIC3b",
     "FB10c"
    ],
-   "axisA": "noninvertible in general (a zero-mean filter annihilates constants, RIC2a); information-changing",
+   "axisA": "need not be invertible: injectivity depends on the signal space and the frequency response. Finite periodic / discrete: a zero-mean channel annihilates the constant mode (RIC2a). L²(ℝ): decided by the multiplier ψ̂_λ, not by zero mean alone; a zero set of measure zero gives injectivity (Mexican hat), possibly without a bounded inverse (RIC3a); a zero set of positive measure gives a nontrivial kernel (RIC3b). Information-changing whenever not injective, or not boundedly invertible",
    "axisB": [
     "equivariant"
    ],
    "status": "carded",
-   "survives": "the part of x in the band passed by ψ_λ",
-   "collapses": "signals differing only outside that band",
-   "zero": "components outside the band (constants, for a zero-mean filter)",
-   "lost": "out-of-band content",
-   "reconstructible": "not from one filter",
-   "fibers": "x + (the out-of-band subspace)",
+   "survives": "the part of x where ψ̂_λ is nonzero",
+   "collapses": "signals differing only where ψ̂_λ vanishes (finite periodic: the constant mode of a zero-mean channel; L²(ℝ): a nontrivial set only if that zero set has positive measure)",
+   "zero": "x with x̂ supported in the zero set of ψ̂_λ",
+   "lost": "content where ψ̂_λ vanishes; where ψ̂_λ is small, recoverable only without a bounded inverse",
+   "reconstructible": "not from one channel in general; an injective channel on L²(ℝ) may lack a bounded inverse (RIC3a)",
+   "fibers": "x + {y : ŷ supported in the zero set of ψ̂_λ}",
    "symmetry": "translation covariance (T_a x) ∗ ψ_λ = T_a(x ∗ ψ_λ): an equivariance (R3) relation, not invariance"
   },
   {
-   "name": "Complete wavelet transform / filter bank",
+   "name": "Complete continuous wavelet transform (all required scales / translations)",
+   "objects": [
+    "W1",
+    "W2"
+   ],
+   "cards": [
+    "FB10a"
+   ],
+   "axisA": "invertible on L²(ℝ) by the reconstruction formula, under the standard admissibility and finite-energy assumptions (Grossmann–Morlet; source-only); information-preserving under those assumptions. Different from the invertibility of one fixed channel",
+   "axisB": [
+    "equivariant"
+   ],
+   "status": "source-only (reconstruction); admissibility carded (FB10a)",
+   "survives": "everything, under the stated assumptions",
+   "collapses": "nothing, under the stated assumptions",
+   "zero": "only 0, under the stated assumptions",
+   "lost": "nothing under the assumptions; with restricted scales, the dropped bands",
+   "reconstructible": "yes: the reconstruction formula, under admissibility and finite energy (source-only)",
+   "fibers": "single points, under the stated assumptions",
+   "symmetry": "translation covariance (R3)"
+  },
+  {
+   "name": "Undecimated convolutional analysis bank x ↦ (H₁x, …, H_m x)",
    "objects": [
     "W1",
     "W2"
    ],
    "cards": [
     "RIC2a",
-    "FB10a"
+    "RIC3c"
    ],
-   "axisA": "invertible on its range under its stated assumptions (continuous: an admissible wavelet and all scales, Grossmann–Morlet, source-only; discrete: a filter bank with no common spectral zero, RIC2a); information-preserving under those assumptions",
+   "axisA": "injective iff, at every frequency of the stated signal space, some channel multiplier is nonzero (finite periodic: every DFT bin, carded RIC3c; L²(ℝ): almost every frequency, stated not carded); information-preserving when injective",
    "axisB": [
     "equivariant"
    ],
-   "status": "discrete filter bank carded; continuous case source-only",
-   "survives": "everything, under the stated assumptions",
-   "collapses": "nothing, under the stated assumptions",
-   "zero": "only 0, under the stated assumptions",
-   "lost": "nothing under the assumptions; with restricted scales, the dropped bands",
-   "reconstructible": "yes, under the stated assumptions (reconstruction formula / left inverse)",
-   "fibers": "single points, under the stated assumptions",
+   "status": "carded",
+   "survives": "everything, when the multipliers have no common zero on the signal space",
+   "collapses": "signals differing only at common zeros of all multipliers",
+   "zero": "x supported at the common zeros",
+   "lost": "content at the common zeros",
+   "reconstructible": "a left inverse exists in the finite periodic case when there is no common zero (RIC2a, RIC3c)",
+   "fibers": "x + {y supported at the common zeros}",
    "symmetry": "translation covariance (R3)"
+  },
+  {
+   "name": "Critically sampled / multirate filter bank",
+   "objects": [
+    "W1",
+    "W2"
+   ],
+   "cards": [
+    "RIC3d"
+   ],
+   "axisA": "perfect reconstruction requires the analysis / synthesis polyphase system to be invertible, R(z)E(z) = c z^(−K) I (type-1 convention); the scalar no-common-zero condition is not sufficient (RIC3d: filters with no common zero, injective undecimated, give a non-invertible decimated bank); Haar satisfies R E = I",
+   "axisB": [
+    "equivariant"
+   ],
+   "status": "carded (finite periodic instances)",
+   "survives": "everything, when the polyphase system is invertible (Haar, RIC3d)",
+   "collapses": "when det E(z) vanishes on the unit circle: the corresponding polyphase component (RIC3d)",
+   "zero": "as for collapse",
+   "lost": "as for collapse",
+   "reconstructible": "iff the polyphase system is invertible; FIR perfect reconstruction iff R(z)E(z) = c z^(−K) I with FIR R",
+   "fibers": "x + ker of the decimated analysis map",
+   "symmetry": "covariant under shifts by the decimation factor only (not under all integer shifts)"
   },
   {
    "name": "Wavelet modulus (|x ∗ ψ_λ|)",

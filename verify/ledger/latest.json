@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-13T15:04:16+00:00",
- "commit": "fb0b486",
+ "generated": "2026-11-13T15:21:57+00:00",
+ "commit": "3e16de5",
  "cards": {
   "B1a": {
    "script": "verify_B1_B7.py",
@@ -1177,6 +1177,30 @@
    "verdict": "PASS",
    "everFailed": false,
    "claim": "[Zero | collapsed zero] the fiber over zero decides: for the injective filter bank, Φ⁻¹(0) = {0}, so a target zero implies a zero source; for Pₙ (n = 4), Φ⁻¹(0) = span{1}, so the target zero has nonzero preimages (a COLLAPSED ZERO). Not every target zero implies a nonzero hidden source"
+  },
+  "RIC3a": {
+   "script": "verify_RIC3.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[Reduction | one channel on L²(ℝ)] the Mexican-hat multiplier ψ̂(ω) = √(2π)ω²e^{−ω²/2} vanishes only at ω = 0, a null set; so x ↦ x ∗ ψ is injective on L²(ℝ) (ψ̂x̂ = 0 a.e. ⟹ x̂ = 0 a.e.; Plancherel), although ∫ψ = 0. It has no bounded inverse: inf|ψ̂| = 0 (ψ̂ → 0 at ω = 0 and as |ω| → ∞). Zero mean alone decides nothing on L²(ℝ); the constant mode is not in L²(ℝ)"
+  },
+  "RIC3b": {
+   "script": "verify_RIC3.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[Reduction | one channel on L²(ℝ), positive-measure zero set] if ψ̂_λ vanishes on a set of positive measure, the channel has a nontrivial kernel: with ψ̂ = 1 on π ≤ |ω| ≤ 2π and 0 elsewhere, the signal with x̂ = 1 on [0, 1) has ‖x̂‖² = 1 but ψ̂x̂ = 0 (so x ∗ ψ = 0 with x ≠ 0). The assumption is the positive-measure zero set, not zero mean"
+  },
+  "RIC3c": {
+   "script": "verify_RIC3.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[Reduction | undecimated analysis bank, finite periodic ℂ⁸] x ↦ (H₁x, …, H_m x) with circular convolutions is injective iff at every DFT frequency some channel multiplier is nonzero: (1, −2, 1) with (1, 2, 1)/4 has no common zero and rank 8; (1, −2, 1) with (1, 0, −1) share the zero at frequency 0 and have rank 7 (the constant mode is lost). On L²(ℝ) the analogous condition is no common zero almost everywhere (stated, not carded)"
+  },
+  "RIC3d": {
+   "script": "verify_RIC3.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[Reduction | critically sampled bank] perfect reconstruction needs an invertible polyphase system, R(z)E(z) = c z^(−K) I (type-1 convention H_i(z) = E_i0(z²) + z⁻¹E_i1(z²)), not the scalar no-common-zero condition: H₀ = 1 + z⁻¹ and H₁ = 1 + z⁻² share no zero and the UNDECIMATED bank is injective (rank 8 on ℂ⁸), yet after decimation by 2 det E(z) = −(1 + z⁻¹) vanishes at z = −1 and the decimated analysis map on ℂ⁸ has rank 7. Haar: E(z) is constant and invertible, R = E⁻¹ gives R E = I (K = 0, c = 1), and the decimated Haar map is orthogonal"
   },
   "S1a": {
    "script": "verify_S1_S5.py",

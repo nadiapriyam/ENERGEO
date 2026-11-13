@@ -1463,3 +1463,15 @@ Nadia's decisions, verbatim. LaTeX converted to plain text; nothing else changed
 > A target zero may have nonzero preimages. The fiber Φ⁻¹(0), and for a linear map the kernel, describes the ambiguity/source states collapsed to that zero.
 
 > x ≠ 0, Φ(x) = 0 is one exact example of a COLLAPSED ZERO, but not every target zero implies a nonzero hidden source.
+
+## Reduction architecture: wavelet / filter-bank scope correction (2026-11-13)
+
+Nadia's decisions, verbatim. LaTeX converted to plain text; nothing else changed. No architecture, rating, DYADIC status, R1 / R2 / R3, CF11-F2 or other conclusion changes.
+
+> A single wavelet/filter channel need not be invertible. Noninjectivity must be established from the specified signal space and the filter's frequency response. In finite periodic/discrete settings, a zero-mean channel annihilates the constant mode. In L²(ℝ), invertibility/injectivity must be analyzed through the Fourier multiplier ψ̂_λ(ω), not inferred from zero mean alone.
+
+> Do not replace this with the scalar "no common zero" condition.
+
+> R(z)E(z) = c z^(−K) I
+
+> Under the standard admissibility and finite-energy assumptions, the complete continuous wavelet transform over the required scales/translations admits reconstruction.

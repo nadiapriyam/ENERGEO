@@ -148,15 +148,15 @@ test('precision 2: the source Gram does not survive; the projected simplex has G
 });
 
 test('precision 3: a single filter is not invertible; finite-scale averaging is covariant, not invariant', () => {
-  const single = rmap('Single wavelet filter');
-  assert.match(single.axisA, /^noninvertible/);
+  const single = rmap('Single wavelet / filter channel');
+  assert.match(single.axisA, /^need not be invertible: injectivity depends on the signal space and the frequency response/);
   assert.match(single.symmetry, /translation covariance/);
-  assert.match(rmap('Complete wavelet transform / filter bank').axisA, /under its stated assumptions/);
+  assert.match(rmap('Complete continuous wavelet transform').axisA, /admissibility and finite-energy assumptions/);
   const fin = rmap('Finite-scale low-pass averaging');
   assert.ok(!fin.axisB.includes('invariant'));
   assert.match(fin.symmetry, /NOT exact invariance/);
   for (const r of F.reductionMaps) {
-    if (/single|one filter/i.test(r.name)) assert.ok(!/^invertible/.test(r.axisA), r.name);
+    if (/single|one filter|channel/i.test(r.name)) assert.ok(!/^invertible/.test(r.axisA), r.name);
     if (r.axisB.includes('invariant') && /average|averaging|scattering/i.test(r.name)) assert.match(r.symmetry, /full-domain|global|limit/, `${r.name}: invariance needs its assumption`);
   }
   for (const line of read('research/master_math_map.md').split('\n'))
@@ -172,4 +172,23 @@ test('precision 4: a target zero need not have a nonzero preimage; preserved ≠
   assert.match(obj.get('RI2').foundationRole, /not every target zero implies a nonzero hidden source/);
   assert.equal(br.get('BR51').strength, 'FAILED CONNECTION');
   assert.ok(pass('RIC2c'));
+});
+
+test('scope: wavelet / filter-bank invertibility claims name their signal space and bank type', () => {
+  const single = rmap('Single wavelet / filter channel');
+  for (const k of ['Finite periodic / discrete: a zero-mean channel annihilates the constant mode', 'L²(ℝ): decided by the multiplier ψ̂_λ, not by zero mean alone', 'positive measure gives a nontrivial kernel'])
+    assert.ok(single.axisA.includes(k), k);
+  const und = rmap('Undecimated convolutional analysis bank');
+  assert.match(und.axisA, /^injective iff, at every frequency of the stated signal space/);
+  const crit = rmap('Critically sampled / multirate filter bank');
+  assert.match(crit.axisA, /R\(z\)E\(z\) = c z\^\(−K\) I/);
+  assert.match(crit.axisA, /no-common-zero condition is not sufficient/);
+  assert.ok(pass('RIC3a', 'RIC3b', 'RIC3c', 'RIC3d', 'RIC2a'));
+  for (const f of scanned) for (const line of read(f).split('\n')) {
+    if (/no common (spectral )?zero/i.test(line) && /reconstruct|invertib|injectiv/i.test(line)) assert.match(line, /undecimated|finite periodic|DFT|not sufficient|Undecimated/i, `${f}: "${line.slice(0, 100)}"`);
+    assert.ok(!/single (wavelet )?filter is not invertible|one filter is not invertible/i.test(line), `${f}: unscoped single-filter claim`);
+  }
+  assert.match(rmap('Finite-scale low-pass averaging').symmetry, /translation covariance \(T_a x\) ∗ φ_J = T_a\(x ∗ φ_J\)/);
+  const w3 = obj.get('W3');
+  assert.ok(w3.status === 'OPEN' && w3.equation.startsWith('ORIGINAL USER RESEARCH TERM; OPEN DEFINITION.') && w3.equation.includes('DYADIC STRUCTURE — CANDIDATE, NOT UNIVERSAL'));
 });
