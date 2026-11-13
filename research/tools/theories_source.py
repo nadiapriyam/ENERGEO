@@ -796,6 +796,28 @@ T('T-CENCOV-CHECK', 'Čencov / Chentsov: future high-relevance check', "Does the
   bounds=['KNOWN THEOREM, NOT YET INTEGRATED (SRC-CHENTSOV-1982). Not used as evidence and not used to raise any rating until examined precisely in a later pass.'],
   acts=['Guide'], audit=PC_AUDIT, related=['T-TRANSFORMATION-ARCH'], ref='Pass 3 correction, 21')
 
+# ── Reduction / Information-Changing Architecture (2026-11-13) ──
+RD_AUDIT = ('missing', 'stated in the Reduction / Information-Changing Architecture amendment (2026-11-13)')
+ACTS_ALREADY_NEW |= {'T-REDUCTION-ARCH', 'T-SOURCE-MANIFEST', 'T-DYADIC-Q1', 'T-DYADIC-Q2', 'T-TRANSFORM-REDUCE'}
+T('T-REDUCTION-ARCH', 'Reduction / Information-Changing Architecture', 'What information survives, collapses, is discarded, or remains reconstructible under Φ?', RD, U, 'derived-connection', 'derived',
+  norm='For a map Φ: X → Y (not necessarily invertible) record what survives, what collapses (Φ(x₁) = Φ(x₂)), what becomes zero, what is lost, what is reconstructible (and under which assumptions), the fibers Φ⁻¹(y), and whether Φ respects a symmetry (Φ ρ_X(g) = ρ_Y(g) Φ, an R3 relationship that does not make Φ lossless).',
+  pro=[('card:RIC1a', 'simplex projection: one mode collapses, every difference survives'), ('card:RIC1b', 'weighted centering: the weighted mean is lost, relative positions survive'),
+       ('card:RIC1c', 'a lossy Fourier-side operation can be equivariant (band-limiting) or invariant (magnitude)'), ('card:G3b', 'reconstruction of the source under stated assumptions')],
+  con=[('card:G4c', 'without the source class, the removed relation is not recoverable')],
+  bounds=['PROJECT-LEVEL ORGANIZING ARCHITECTURE, DERIVED FROM ESTABLISHED MATHEMATICS; parallel to the Transformation Architecture, not an R4 inside it.',
+          'Not reduced to kernels. Open: whether a shared analysis of SURVIVAL + COLLAPSE + ZERO + RECONSTRUCTION + SYMMETRY COMPATIBILITY gives a useful cross-domain geometry of representation.'],
+  acts=['III', 'Guide'], audit=RD_AUDIT, related=['T-TRANSFORMATION-ARCH', 'T-SOURCE-MANIFEST', 'T-TRANSFORM-REDUCE', 'T-DYADIC'], ref='Reduction amendment, 2–3')
+T('T-SOURCE-MANIFEST', 'What a reduced manifestation tells about its source (question)', 'What can a reduced manifestation tell us about the richer source structure that generated it?', RD, U, 'open-question', 'open',
+  pro=[('card:G3b', 'simplex: the source is recovered up to a sign and an isometry when its class is known')], con=[('card:G4c', 'with the class unknown, recovery fails')],
+  bounds=['Source does not automatically mean higher physical spatial dimension; reduction does not automatically mean projection. The source may be higher-dimensional, higher-information, higher-resolution, more parameterized, less averaged or less quotient-like, depending on the system.'],
+  acts=['III'], audit=RD_AUDIT, related=['T-REDUCTION-ARCH', 'B-HIGHER-GEOMETRY'], ref='Reduction amendment, 16')
+T('T-DYADIC-Q1', 'DYADIC PACKETS research question 1', 'Can a hierarchy of packets encode how information survives, separates, disappears, or remains reconstructible under repeated reduction?', RD, U, 'open-question', 'open',
+  bounds=['An open question, not a theorem and not the definition of DYADIC PACKETS. DYADIC STRUCTURE — CANDIDATE, NOT UNIVERSAL.'], acts=['Guide'], audit=RD_AUDIT, related=['T-DYADIC', 'T-DYADIC-Q2'], ref='Reduction amendment, 12')
+T('T-DYADIC-Q2', 'DYADIC PACKETS research question 2', 'Can relationships between packets preserve information not visible in any one packet individually?', RD, U, 'open-question', 'open',
+  bounds=['Not connected yet to Fourier components, wavelet scales, scattering paths, source / reduced geometry, zero relations or projection: those links are for later passes.'], acts=['Guide'], audit=RD_AUDIT, related=['T-DYADIC', 'T-DYADIC-Q1'], ref='Reduction amendment, 12')
+T('T-TRANSFORM-REDUCE', 'Transform vs reduce (question)', 'Is the Geometry of Representation fundamentally governed by both how structure behaves under transformations and how structure behaves under reduction?', RD, U, 'open-question', 'open',
+  bounds=['OPEN PROJECT QUESTION; not promoted.'], acts=['all'], audit=RD_AUDIT, related=['T-TRANSFORMATION-ARCH', 'T-REDUCTION-ARCH'], ref='Reduction amendment, 19')
+
 PAIR_A = proof_target('Starting from the established common zero-sum form Σv_i = 0, identify all additional invariants/relations of the mass system that can be translated into mathematically meaningful tests on the directional cancellation system.',
                       requiredObjects=['the established shared form Σv_i = 0 (pair.A.sharedAlgebraicForm)'])
 next(r for r in R if r['id'] == 'T-Q.pairA-transfer')['proofTarget'] = PAIR_A
@@ -1003,6 +1025,9 @@ for rid, note in (('T-CF11-B', 'Correction (Pass 3 architectural correction): P1
                   ('T-CF11-REFINEMENT', 'Correction (Pass 3 architectural correction): superseded by T-TRANSFORMATION-ARCH. The reading "preserved or transforms coherently" compressed three distinct relationships (R1, R2, R3) into one word; it is kept as the historical step between CF11-F2 and the Transformation Architecture.')):
     byid[rid]['boundaries'].append(note)
     byid[rid]['history'].append(dict(date='2026-11-12', change='Pass 3 architectural correction: P1/P2/P3 re-recorded as R2/R1/R3 (Transformation Architecture)'))
+byid['T-DYADIC']['boundaries'].append('Reduction amendment (2026-11-13): still ORIGINAL USER RESEARCH TERM, OPEN DEFINITION. Current candidate architectural role (not the definition): a hierarchical organization of information across repeated splits/reductions, schematically X → (X₀, X₁) → (X₀₀, X₀₁, X₁₀, X₁₁) → …; investigated within the Reduction / Information-Changing Architecture. DYADIC STRUCTURE — CANDIDATE, NOT UNIVERSAL: no significance is drawn from base 2. Not identified with standard wavelet packets, dyadic wavelet trees, scattering paths or multiresolution analysis.')
+byid['T-DYADIC']['history'].append(dict(date='2026-11-13', change='candidate architectural role recorded (Reduction / Information-Changing Architecture); definition still open'))
+byid['T-DYADIC']['related'] += ['T-DYADIC-Q1', 'T-DYADIC-Q2', 'T-REDUCTION-ARCH']
 update('T-CF11-A', TRIV, bs=60, slop=8, reason='Pass 3: the pattern holds in coordinate-free form (F*T = T) across constant-form, symplectic and homogeneous Fisher geometries, and its boundary is now exact (generic Fisher geometry is not characterized by a transformation group, CFT5f). Application Breadth corrected from 4 to 3: the rubric reserves 4 for a physical/empirical system')
 
 for r in R:

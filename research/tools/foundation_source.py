@@ -122,6 +122,27 @@ obj('TAC', 'Čencov / Chentsov: future high-relevance check', OQ, ['GEOMETRY', '
     "Does the characterization of the Fisher metric under statistically meaningful transformations provide a deeper example of the project's transformation-class → distinguished-geometry relationship?", 'OPEN',
     reg=['T-CENCOV-CHECK'], bs=None, slop=None, fail='—', role='KNOWN THEOREM, NOT YET INTEGRATED; not evidence; no rating raised by it', guide='Guide: model manifolds')
 
+obj('RI0', 'Reduction / Information-Changing Architecture', PD, ['REPRESENTATION', 'ZERO / BALANCE / NULL', 'INFORMATION', 'GEOMETRY'],
+    'For Φ: X → Y, not necessarily invertible: what survives, what collapses (Φ(x₁) = Φ(x₂)), what becomes zero (Φ(x) = 0), what is lost, what is reconstructible and under which assumptions, the fibers Φ⁻¹(y) (ker Φ in the linear case; not reduced to kernels), and whether Φ ρ_X(g) = ρ_Y(g) Φ (an R3 relationship that does not make Φ lossless)', 'DERIVED',
+    cards=['RIC1a', 'RIC1b', 'RIC1c', 'RIC1d', 'G3b', 'G4c', 'FB1d', 'FB10c'], depends=['H1', 'H2', 'H4', 'W2', 'QZ4'], reg=['T-REDUCTION-ARCH', 'T-SOURCE-MANIFEST'], bears=['T-H2'],
+    bs=45, slop=20, td='STRUCTURAL TRANSFER', breadth=3,
+    fail='breadth: almost every non-injective map can be described this way; it organizes only while each placement names the map, its domain, what survives, the fibers and a reconstruction statement with its assumptions',
+    role='PROJECT-LEVEL ORGANIZING ARCHITECTURE, DERIVED FROM ESTABLISHED MATHEMATICS; parallel to the Transformation Architecture (TA0), not an R4 inside it', guide='Act III / Guide')
+obj('RI1', 'Information-changing maps that are also equivariant', PD, ['INFORMATION', 'TRANSFORMATION'],
+    'Φ ρ_X(g) = ρ_Y(g) Φ with Φ not invertible: Pₙ commutes with permutations; C_m commutes with D-isometries preserving span{1}; band-limiting commutes with integer cyclic shifts; |x̂| is shift-invariant (equivariant with trivial target action); the averaged wavelet modulus is translation-invariant', 'DERIVED',
+    cards=['RIC1c', 'TRA4b', 'CFT8c', 'FB10c', 'RIC1a'], depends=['RI0', 'TA3'], bs=50, slop=10, td='STRUCTURAL TRANSFER', breadth=3,
+    fail='equivariance does not make a map lossless (RIC1c); not every reduction is equivariant', role='the explicit intersection of the two architectures', guide='Act III / Guide')
+obj('RI2', 'PRESERVED ZERO vs COLLAPSED ZERO', PD, ['ZERO / BALANCE / NULL', 'TRANSFORMATION', 'INFORMATION'],
+    'preserved zero (R2): F*T = T and T(u, v) = 0 ⟹ T(dF u, dF v) = 0, with the vectors surviving; collapsed zero (reduction): a nonzero source x with Φ(x) = 0 (linear: x ∈ ker Φ). Different mechanisms; an additional relationship, not a replacement of the zero taxonomy', 'DERIVED',
+    cards=['RIC1d', 'TRA2a', 'RIC1a', 'RIC1b'], depends=['TA2', 'RI0'], bs=40, slop=10, td='STRUCTURAL TRANSFER', breadth=3,
+    fail='zeros that are neither (a definite form, Z10; an observable zero, Z6)', role='zero in the target ↔ hidden source structure is ONE exact mechanism (collapsed zero); not all zeros arise from projection or hidden higher dimensions', guide='Act III')
+obj('RI3', 'Transform vs reduce (open project question)', UT, ['TRANSFORMATION', 'INFORMATION', 'CROSS-SYSTEM TRANSFER'],
+    'Is the Geometry of Representation fundamentally governed by both how structure behaves under transformations and how structure behaves under reduction?', 'OPEN',
+    depends=['TA0', 'RI0'], reg=['T-TRANSFORM-REDUCE'], bs=None, slop=None, fail='—', role='OPEN PROJECT QUESTION; not promoted', guide='all Acts')
+obj('W5', 'DYADIC PACKETS research questions (open)', UT, ['INFORMATION', 'REPRESENTATION'],
+    'Can a hierarchy of packets encode how information survives, separates, disappears, or remains reconstructible under repeated reduction? Can relationships between packets preserve information not visible in any one packet individually?', 'OPEN',
+    depends=['W3', 'RI0'], reg=['T-DYADIC-Q1', 'T-DYADIC-Q2'], bs=None, slop=None, fail='—', role='open questions, not theorems; no connection to Fourier, wavelets, scattering, zero or projection is asserted yet', guide='Guide: wavelets')
+
 # ── zero / balance / null (Layer 3) ────────────────────────────────────────────────────────────
 obj('Z1', 'Additive / resultant zero', E, ['ZERO / BALANCE / NULL'], 'Σ v_j = 0 with nonzero v_j', 'ESTABLISHED', cards=['Z1a2', 'Z1b', 'Z2a', 'Z2b2', 'Z2c'], docs=['research/zero_taxonomy.md'],
     bs=20, slop=5, fail='—', role='Chapter I stages 1–2', guide='Act I')
@@ -218,7 +239,8 @@ obj('W1', 'Wavelet cancellation and admissibility', E, ['ZERO / BALANCE / NULL',
 obj('W2', 'Scattering: filter → modulus → average, iterated', PB, ['INFORMATION', 'REPRESENTATION'], 'S x = (x ∗ φ, |x ∗ ψ_λ₁| ∗ φ, ||x ∗ ψ_λ₁| ∗ ψ_λ₂| ∗ φ, …)', 'ESTABLISHED', cards=['FB10c'], reg=['T-WAVELETS'],
     bs=15, slop=15, fail='the first-order invariant is many-to-one (FB10c)', role='information destroyed by averaging and retained by modulus at the next order', guide='Guide: wavelets / scattering (Foundation ontology)',
     gap='exact first-order covariance and invariance carded (FB10c); deformation stability, energy preservation and the higher-order results are source-only')
-obj('W3', 'DYADIC PACKETS', UT, ['REPRESENTATION'], 'ORIGINAL USER RESEARCH TERM; OPEN DEFINITION. Intended thematic role: organizing or preserving frequency/scale information within the wavelet/scattering branch. Not identified with standard wavelet packets, dyadic wavelet decomposition or Mallat scattering paths.', 'OPEN', reg=['T-DYADIC'], bs=None, slop=None, fail='—', role='user-origin research term (open definition)', guide='Guide: wavelets')
+obj('W3', 'DYADIC PACKETS', UT, ['REPRESENTATION', 'INFORMATION'], 'ORIGINAL USER RESEARCH TERM; OPEN DEFINITION. Intended thematic role: organizing or preserving frequency/scale information within the wavelet/scattering branch. Current candidate architectural role (not the definition): a hierarchical organization of information across repeated splits/reductions, schematically X → (X₀, X₁) → (X₀₀, X₀₁, X₁₀, X₁₁) → …, investigated within the Reduction / Information-Changing Architecture. DYADIC STRUCTURE — CANDIDATE, NOT UNIVERSAL. Not identified with standard wavelet packets, dyadic wavelet trees, scattering paths or multiresolution analysis.', 'OPEN', reg=['T-DYADIC'], depends=['RI0'],
+    bs=15, slop=40, fail='—', role='user-origin research term (open definition); rating is of the candidate role only (preserved term, architecture fit, existing analogues), not of a definition', guide='Guide: wavelets')
 obj('W4', 'Information lost and recovered (question)', OQ, ['INFORMATION'], 'when a representation suppresses information, what relational structure survives and what representation exposes it?', 'OPEN',
     cards=['P1b', 'P1c', 'G4c', 'W2a', 'W3a'], reg=['T-MAGPHASE', 'T-REP-COMPLETE', 'T-VISIBLE-HIDDEN'], bs=None, slop=None, fail='—', role='unifies a question, not a mechanism', guide='Act III / Guide')
 
@@ -326,14 +348,59 @@ UO, TB, PP, PDM, PCN, SPC, PHL = PROVENANCE
 PROV = {}
 for ids, cls in (('R9 R10 CF11-B Z11 ON6 ON8 ON9 L4 I2 I3 W3 W4 H5 H6 QZ5 P2 MW1 MW3 A1 A2', UO), ('M4', SPC), ('PL1', PHL),
                  ('R8 CF9 H1 H2 H3 H4 QZ2 QZ3', PCN), ('OB1 CF3 CF8 CF11-A Z8 Z12 ON7 T2 T3 T4 A3 F1', PDM),
-                 ('R7 M1 M2 M3 W2 H7', PP), ('CF11-R', UO), ('Z13', PDM), ('TA0', PDM), ('TA1 TA2 TA2I TA3', TB), ('TAH TAC', UO),
+                 ('R7 M1 M2 M3 W2 H7', PP), ('CF11-R', UO), ('Z13', PDM), ('TA0', PDM), ('TA1 TA2 TA2I TA3', TB), ('TAH TAC RI3 W5', UO), ('RI0 RI1 RI2', PDM),
                  ('R1 R2 R3 R4 R5 R6 CF1 CF2 CF4 CF5 CF6 CF7 CF10 CF12 CF13 Z1 Z2 Z3 Z4 Z5 Z6 Z7 Z9 Z10 ON1 ON2 ON3 ON4 ON5 T1 T5 L1 L2 L3 I1 W1 QZ1 QZ4 P1 MW2', TB)):
     for i in ids.split():
         assert i not in PROV, i
         PROV[i] = cls
 EXTERNAL = (TB, PP)                  # records whose central claim comes from outside the project: each needs a source or SOURCE MISSING
-TLEVEL = {'TA1': ['R1'], 'CF13': ['R1'], 'TA2': ['R2'], 'TA2I': ['R2'], 'CF12': ['R2'], 'CF1': ['R2'], 'CF2': ['R2'], 'CF4': ['R2'], 'CF5': ['R2'], 'CF6': ['R2'], 'CF7': ['R2'],
+TLEVEL = {'TA1': ['R1'], 'CF13': ['R1'], 'R5': ['R1'], 'R3': ['R1'], 'R2': ['R1'], 'RI1': ['R3'], 'RI2': ['R2'], 'TA2': ['R2'], 'TA2I': ['R2'], 'CF12': ['R2'], 'CF1': ['R2'], 'CF2': ['R2'], 'CF4': ['R2'], 'CF5': ['R2'], 'CF6': ['R2'], 'CF7': ['R2'],
           'L1': ['R2'], 'Z8': ['R2'], 'Z13': ['R2'], 'TA3': ['R3'], 'R4': ['R3'], 'H4': ['R3'], 'QZ3': ['R3'], 'QZ2': ['R3'], 'TA0': ['R1', 'R2', 'R3'], 'CF11-B': ['R1', 'R2', 'R3'], 'CF11-R': ['R1', 'R2', 'R3']}
+REDROLE = {i: 'INFORMATION-CHANGING' for i in ('R8', 'H1', 'H4', 'ON3', 'T3', 'Z7', 'W2', 'QZ4', 'M2', 'M3', 'H7', 'ON5', 'RI0', 'RI1')}
+IC = ['survives', 'collapses', 'zero', 'lost', 'reconstructible', 'fibers', 'symmetry']
+RMAPS = []
+def rmap(name, objs, cards, axisA, axisB, ic, status='carded'):
+    assert set(ic) == set(IC), name
+    RMAPS.append(dict(name=name, objects=objs, cards=cards, axisA=axisA, axisB=axisB, status=status, **ic))
+rmap('Simplex projection Pₙ: ℝⁿ → 1^⊥', ['R8', 'H1', 'H2'], ['RIC1a', 'G2n', 'G3b', 'G3n', 'G4c', 'Q2f'], 'noninvertible; information-changing', ['equivariant'],
+     dict(survives='every difference: vᵢ − vⱼ = eᵢ − eⱼ; Σvᵢ = 0; the regular-simplex Gram', collapses='x and x + c1 (one mode)', zero='Pₙ1 = 0: a nonzero source with zero image; Pₙx = 0 ⟺ x ∈ span{1}',
+          lost='the common component 1ᵀx/n', reconstructible='under the orthonormal-source assumptions: the source as vᵢ + w, |w|² = 1/n, unique up to ±n̂ and an isometry (G3b, G3n); without the source class, no (G4c)',
+          fibers='x + span{1} = x + ker Pₙ', symmetry='commutes with permutations (R3)'))
+rmap('Weighted centering C_m = I − 1mᵀ/M', ['H4', 'CF9'], ['RIC1b', 'CFT8a', 'CFT8b', 'CFT8c', 'G5b'], 'noninvertible; information-changing', ['equivariant'],
+     dict(survives='relative positions: (C_m y)ᵢ − (C_m y)ⱼ = yᵢ − yⱼ', collapses='y and y + c1 (the weighted common / translation mode)', zero='C_m1 = 0; C_m y = 0 ⟺ y ∈ span{1}',
+          lost='the weighted mean mᵀy/M (R_CM)', reconstructible='y from (C_m y, mᵀy/M); not from C_m y alone', fibers='y + span{1}', symmetry='commutes with D-isometries preserving span{1} (R3, CFT8c); not an isometry'))
+rmap('Fourier transform (unitary)', ['R1', 'R2', 'R3', 'R5'], ['CFT9a', 'RIC1c', 'S2b', 'TRA3a'], 'invertible; information-preserving', ['covariant', 'equivariant'],
+     dict(survives='everything: inner products (Parseval)', collapses='nothing', zero='only 0 ↦ 0', lost='nothing', reconstructible='fully (inverse transform)', fibers='single points',
+          symmetry='R1 (change of orthonormal basis) and R3 (F T_a = M_a F)'))
+rmap('Keeping Fourier magnitudes only (x ↦ |x̂|)', ['T3'], ['RIC1c', 'FB1d', 'P1a', 'P1b', 'P1c'], 'noninvertible; nonlinear; information-changing', ['invariant'],
+     dict(survives='the power spectrum, equivalently the autocorrelation (second-order information)', collapses='all translates; reversals of real signals; and signals unrelated by these (P1c)', zero='|x̂| ≡ 0 only for x = 0',
+          lost='phase', reconstructible='not in general (phase retrieval needs extra assumptions; none carded)', fibers='signals with equal power spectrum (not a linear subspace)', symmetry='invariant under translations'))
+rmap('Discarding Fourier coefficients / band-limiting', ['Z7', 'ON3'], ['RIC1c', 'O2a'], 'noninvertible; information-changing', ['equivariant'],
+     dict(survives='the kept coefficients', collapses='signals differing only in the discarded modes', zero='P x = 0 ⟺ x lies in the discarded modes', lost='the discarded modes',
+          reconstructible='only for signals known to lie in the kept band', fibers='x + span(discarded modes)', symmetry='commutes with integer cyclic shifts (R3)'))
+rmap('Thresholding; subsampling', [], [], 'noninvertible; information-changing', ['none'],
+     {k: 'not carded in the repository' for k in IC}, status='listed, not carded')
+rmap('Wavelet transform / filtering (x ↦ x ∗ ψ_λ)', ['W1', 'W2'], ['FB10a', 'FB10c'], 'invertible on L² with an admissible wavelet and all scales (source: Grossmann–Morlet); information-changing when scales are restricted', ['equivariant'],
+     dict(survives='with all scales: everything (reconstruction formula)', collapses='with all scales: nothing', zero='x ∗ ψ_λ = 0 for components outside ψ_λ\'s band', lost='with restricted scales: the bands not kept',
+          reconstructible='with all scales and an admissible wavelet (source-only)', fibers='trivial with all scales', symmetry='translation-covariant (R3, FB10c)'))
+rmap('Wavelet modulus (|x ∗ ψ_λ|)', ['W2'], ['FB10c'], 'noninvertible; nonlinear; information-changing', ['equivariant'],
+     dict(survives='the envelope (local amplitude) in each band', collapses='signals differing by phase within a band', zero='where the band component vanishes', lost='phase within the band',
+          reconstructible='partly, through other bands and higher orders (source-only)', fibers='not a linear subspace', symmetry='commutes with translations'))
+rmap('Higher-order scattering propagation', ['W2'], [], 'information-changing at each order', ['equivariant'],
+     dict(survives='part of what first-order averaging removes (source-only: Bruna–Mallat 2013)', collapses='source-only', zero='source-only', lost='source-only',
+          reconstructible='source-only', fibers='source-only', symmetry='translation covariance kept (source-only)'), status='source-only')
+rmap('Low-pass averaging (∗ φ, or the full average)', ['W2'], ['FB10c'], 'noninvertible; information-changing', ['invariant'],
+     dict(survives='first-order averaged modulus Σ|x ⊛ ψ| (FB10c)', collapses='translates; also x and its reversal (FB10c)', zero='—', lost='position; high-frequency structure (requires higher orders to retain, source-only)',
+          reconstructible='no, from the average alone', fibers='many-to-one (FB10c)', symmetry='translation invariance; deformation stability (source-only, Mallat 2012)'))
+rmap('Non-selective measurement / dephasing (quantum)', ['QZ4'], ['W2a', 'W3a', 'W3b'], 'noninvertible; information-changing', ['none'],
+     dict(survives='the zero S_z = 0; sector populations', collapses='states differing only in sector coherence', zero='the cross term ρ_AB → 0 (the zero\'s ±ħ/2 composition, W3a)', lost='sector coherence',
+          reconstructible='not from the dephased state alone', fibers='states with the same block-diagonal part', symmetry='not carded'))
+rmap('Model reduction / manifold boundary (placeholder)', ['M2', 'M3'], ['FB11a', 'FB11c'], 'information-changing', ['none'],
+     dict(survives='instances only: K_M and V_max (FB11a); θ₁ (FB11c). In general: LATER PASS (model-manifold invariance audit)', collapses='instances only: one rate-constant combination; θ₂',
+          zero='LATER PASS', lost='instances only', reconstructible='LATER PASS', fibers='LATER PASS', symmetry='LATER PASS'), status='placeholder; not pre-answered')
+rmap('Coarse-graining / RG decimation (instance)', ['H7'], ['FB11d'], 'noninvertible; information-changing', ['none'],
+     dict(survives='the nearest-neighbour coupling form, renormalized: tanh K′ = tanh²K', collapses='configurations of the decimated spins', zero='—', lost='the decimated spins',
+          reconstructible='no', fibers='spin configurations agreeing on the kept spins', symmetry='not carded'), status='one instance; general RG source-only')
 TRANSFORMATION_CLASSES = ['REPRESENTATION CHANGES', 'GEOMETRIC SYMMETRIES', 'SYSTEM-SUPPLIED TRANSFORMATIONS', 'OPERATOR-COMPATIBLE TRANSFORMATIONS']
 RC, GS, SS, OC = TRANSFORMATION_CLASSES
 TCLASS = [
@@ -348,8 +415,8 @@ TCLASS = [
 ]
 MISSING = {'R5': 'SOURCE MISSING: Hermite functions as eigenfunctions of the Fourier transform (textbook); no source verified in Pass 2'}
 MATH_STATUS = {'CF11-A': 'TEXTBOOK / KNOWN', 'CF11-B': 'PROJECT-DERIVED FROM KNOWN DEFINITIONS', 'CF11-R': 'PROJECT-DERIVED FROM KNOWN DEFINITIONS', 'CF12': 'TEXTBOOK / KNOWN',
-               'CF1': 'TEXTBOOK / KNOWN', 'TA1': 'TEXTBOOK / KNOWN', 'TA2': 'TEXTBOOK / KNOWN', 'TA2I': 'TEXTBOOK / KNOWN', 'TA3': 'TEXTBOOK / KNOWN', 'TA0': 'PROJECT-DERIVED FROM KNOWN DEFINITIONS', 'TAH': 'SPECULATIVE MAPPING'}
-NOVELTY = {'TA1': 'KNOWN MATHEMATICS', 'TA2': 'KNOWN MATHEMATICS', 'TA2I': 'KNOWN MATHEMATICS', 'TA3': 'KNOWN MATHEMATICS', 'CF1': 'KNOWN MATHEMATICS', 'CF12': 'KNOWN MATHEMATICS', 'TA0': 'PROJECT ARCHITECTURAL SYNTHESIS', 'TAH': 'PROJECT ARCHITECTURAL SYNTHESIS (open)'}
+               'CF1': 'TEXTBOOK / KNOWN', 'TA1': 'TEXTBOOK / KNOWN', 'TA2': 'TEXTBOOK / KNOWN', 'TA2I': 'TEXTBOOK / KNOWN', 'TA3': 'TEXTBOOK / KNOWN', 'TA0': 'PROJECT-DERIVED FROM KNOWN DEFINITIONS', 'TAH': 'SPECULATIVE MAPPING', 'RI0': 'PROJECT-DERIVED FROM KNOWN DEFINITIONS', 'RI1': 'PROJECT-DERIVED FROM KNOWN DEFINITIONS', 'RI2': 'PROJECT-DERIVED FROM KNOWN DEFINITIONS'}
+NOVELTY = {'TA1': 'KNOWN MATHEMATICS', 'TA2': 'KNOWN MATHEMATICS', 'TA2I': 'KNOWN MATHEMATICS', 'TA3': 'KNOWN MATHEMATICS', 'CF1': 'KNOWN MATHEMATICS', 'CF12': 'KNOWN MATHEMATICS', 'TA0': 'PROJECT ARCHITECTURAL SYNTHESIS', 'TAH': 'PROJECT ARCHITECTURAL SYNTHESIS (open)', 'RI0': 'PROJECT ARCHITECTURAL SYNTHESIS', 'RI1': 'KNOWN MATHEMATICS (examples); PROJECT CLASSIFICATION', 'RI2': 'PROJECT CLASSIFICATION OF KNOWN MATHEMATICS'}
 
 STRENGTHS = ['EXACT IDENTITY', 'EXACT IMPLICATION', 'THEOREM', 'SPECIAL-CASE CONSTRUCTION', 'STRUCTURAL ANALOGUE', 'OPEN CONNECTION', 'FAILED CONNECTION']
 EI, EIM, THM, SCC, SAN, OPC, FC = STRENGTHS
@@ -544,12 +611,28 @@ bridge('BR44', 'invariant form', 'invariant zero relation', 'F*T = T and T(u, v)
        'that every zero is generated by symmetry or arises from a preserved form; the converse fails (2I keeps every zero, TRA2b)', ['TA2', 'CF2'])
 bridge('BR45', 'symmetry', 'stabilizer', 'Aut(T) = {F : F*T = T} is the stabilizer of T under the action of maps on structures; for a group acting on x, G_x = {g : g·x = x}; D_x(g) = 0 ⟺ g ∈ G_x (Z8)', 'ESTABLISHED', EST,
        ['B5b', 'B5c', 'CFT4d'], 'that an automorphism group of a structure equals the signal stabilizer of Z8 (they act on different objects)', ['TA2', 'Z8', 'T1'])
-bridge('BR46', 'Fourier transform', 'translation / modulation intertwining', 'R3: F T_a = M_a F, i.e. (T_a f)^(ω) = e^{−iωa} f̂(ω): translation in one representation ↔ phase multiplication in another', 'ESTABLISHED', EST,
+bridge('BR46', 'Fourier transform', 'translation / modulation intertwining', 'R3: F T_a = M_a F, i.e. (T_a f)^(ω) = e^{−iωa} f̂(ω) for the continuous transform; for the finite DFT the identity holds for integer cyclic sample shifts modulo N (TRA3a; no interpolated shift is defined in the repository): translation in one representation ↔ phase multiplication in another', 'ESTABLISHED', EST,
        ['TRA3a', 'FB1a', 'S3'], 'that the Fourier transform is a physical spacetime symmetry; that T_a and M_a are the same operator', ['TA3', 'R4'])
 bridge('BR47', 'commuting symmetry', 'representation-sector decomposition', 'an operator commuting with a group action preserves its isotypic sectors and is scalar on each multiplicity-free irreducible block (Schur)', 'ESTABLISHED', EST,
        ['FS2e', 'MB2c', 'Q2e'], 'labels beyond known ones (four spins: VALIDATION OF KNOWN MATHEMATICS); that particle exchange is universal', ['TA3', 'QZ3', 'Z12'])
 bridge('BR48', 'projection', 'representation change', 'Pₙ is not invertible and does not keep inner products (Pe₁·Pe₂ = −1/3 while e₁·e₂ = 0); its transformation relationship is R3 (commutes with permutations)', 'ESTABLISHED', PS,
        ['TRA4b', 'G2n', 'Q2f'], 'that a lossy representation map is a covariant change of description', ['TA1', 'R8'])
+bridge('BR49', 'information-changing map', 'fibers / collapse', 'linear Φ: Φ(x₁) = Φ(x₂) ⟺ x₁ − x₂ ∈ ker Φ; Pₙ: fibers x + span{1}; C_m: y + span{1}', 'ESTABLISHED', EST, ['RIC1a', 'RIC1b'],
+       'that fibers are kernels in general (|x̂| and scattering are nonlinear: their fibers are not subspaces)', ['RI0', 'H1'])
+bridge('BR50', 'collapsed zero', 'hidden source structure', 'Φ(x) = 0 with x ≠ 0; linear case x ∈ ker Φ: Pₙ1 = 0, C_m1 = 0', 'DERIVED', PS, ['RIC1a', 'RIC1b', 'RIC1d'],
+       'that all zeros arise from projection or are hidden higher dimensions; the zero taxonomy is broader', ['RI2', 'Z3', 'H1'])
+bridge('BR51', 'preserved zero', 'collapsed zero', 'preserved: F*T = T keeps T(u, v) = 0 with dF u ≠ 0; collapsed: a non-invertible Φ sends x ≠ 0 to 0', 'ESTABLISHED', EST, ['RIC1d', 'TRA2a'],
+       'that the two are one mechanism', ['RI2', 'TA2'])
+bridge('BR52', 'information-changing map', 'equivariance', 'Φ ρ_X(g) = ρ_Y(g) Φ with Φ not invertible: Pₙ with permutations, C_m with D-isometries preserving span{1}, band-limiting with integer cyclic shifts, |x̂| invariant under shifts', 'DERIVED', PS,
+       ['RIC1c', 'TRA4b', 'CFT8c', 'FB10c'], 'that equivariance makes a map lossless; that every reduction is equivariant', ['RI1', 'TA3', 'RI0'])
+bridge('BR53', 'scattering operations', 'Reduction / Information-Changing Architecture', 'filtering (covariant; invertible with all scales), modulus (discards phase), averaging (discards position; translation-invariant): carded first-order parts', 'ESTABLISHED', EST, ['FB10a', 'FB10c'],
+       'that Mallat proves hidden information in zero; that scattering is the universal form of reduction; higher-order recovery (source-only)', ['W2', 'RI0'])
+bridge('BR54', 'model reduction / manifold boundary', 'Reduction / Information-Changing Architecture', 'placeholder: instances FB11a, FB11c; invariants, coordinate dependence and effective variables are for a later pass', 'OPEN', PS, ['FB11a', 'FB11c'],
+       'what invariants survive, what coordinate dependence remains, which effective variables are retained (not pre-answered)', ['M2', 'M3', 'RI0'])
+bridge('BR55', 'coarse-graining / RG', 'Reduction / Information-Changing Architecture', 'instance: 1D decimation (FB11d); general RG source-only', 'OPEN', PS, ['FB11d'],
+       'equivalence with projection, wavelet packets, Mallat scattering or model manifolds', ['H7', 'RI0'])
+bridge('BR56', 'transform', 'reduce', 'Transformation Architecture (R1 / R2 / R3) and Reduction / Information-Changing Architecture; intersection: information-changing maps that are also equivariant (RI1)', 'OPEN', PS, [],
+       'that the project is governed by these two (OPEN PROJECT QUESTION, not promoted)', ['TA0', 'RI0', 'RI3'])
 bridge('BR35', 'wavelet transform', 'translation', '(T_τx) ∗ ψ = T_τ(x ∗ ψ); Σ|x ⊛ ψ| invariant under circular shifts', 'ESTABLISHED', EST, ['FB10c'], 'deformation stability or higher-order recovery (source-only)', ['W2', 'R4'])
 BMETA.update({
  'BR29': (FC, ['SRC-ARNOLD-1989', 'SRC-MINKOWSKI-1909'], 'J antisymmetric; η indefinite', 'none: the distinction holds for every antisymmetric J and indefinite η'),
@@ -564,6 +647,14 @@ BMETA.update({
  'BR38': (EIM, [], 'an involution S with Y∘S = Y; a fixed point of S', 'no symmetry: the lemma predicts nothing, and a null can still occur (CFT5c)'),
  'BR39': (FC, ['SRC-LEE-2018'], 'the normal family with its Fisher metric', 'none: the hyperbolic inversion is an isometry no data map induces (CFT11a)'),
  'BR40': (EIM, [], 'positive weights; D = diag(m)', 'a D-isometry not preserving span{1}, or a non-isometry fixing 1, does not commute (CFT8c)'),
+ 'BR49': (EI, ['SRC-AXLER-2015'], 'a linear map Φ', 'nonlinear maps: fibers are not cosets of a kernel'),
+ 'BR50': (EIM, [], 'a non-invertible linear Φ', 'zeros that do not arise from collapse (Z5 preserved nulls, Z10)'),
+ 'BR51': (FC, ['SRC-LEE-2018'], 'F invertible with F*T = T; Φ non-invertible', 'none: the distinction holds for every such pair'),
+ 'BR52': (SCC, ['SRC-FULTON-HARRIS-1991'], 'a group acting on source and target; the stated maps', 'a reduction that respects no supplied symmetry'),
+ 'BR53': (SCC, ['SRC-MALLAT-2012', 'SRC-MALLAT-2009', 'SRC-GROSSMANN-MORLET-1984'], 'admissible wavelets; exact hypotheses in the sources', 'the first-order invariant is many-to-one (FB10c)'),
+ 'BR54': (OPC, [], 'none established', 'not pre-answered'),
+ 'BR55': (OPC, [], 'none established', 'no equivalence asserted'),
+ 'BR56': (OPC, [], 'none established', 'not promoted'),
  'BR41': (EI, ['SRC-LEE-2018', 'SRC-AXLER-2015'], 'an invertible change of representation (P or J invertible)', 'a non-invertible map is not a change of representation (TRA4b)'),
  'BR42': (EI, ['SRC-LEE-2018'], 'a pairing T of tangent vectors; F a smooth map of the space to itself', 'a non-symmetry fails (CFT1c, CFT2b, CFT4d)'),
  'BR43': (THM, ['SRC-LEE-2018', 'SRC-ARNOLD-1989'], 'a smooth one-parameter group F_t with generator X', 'a non-Killing field: L_X g ≠ 0 (TRA1b)'),
@@ -584,6 +675,7 @@ for o in O:
     o['mathematicalStatus'] = MATH_STATUS.get(o['id'])
     o['transformationLevel'] = TLEVEL.get(o['id'], [])
     o['novelty'] = NOVELTY.get(o['id'])
+    o['reductionRole'] = REDROLE.get(o['id'])
     if o['provenance'] in EXTERNAL:
         assert o['sources'] or o['sourceStatus'], f"{o['id']}: external claim without a source"
 
@@ -600,6 +692,8 @@ dom('D5', 'Common forms, generators, conservation', 'CF1 CF2 CF3 CF4 CF5 CF6 CF7
 dom('D6', 'Common-form architecture as project hypothesis', 'CF11-B CF11-R', 'SOURCE+CARD COMPLETE', 'Pass 3 preregistered test: CF11-F2 (stands); CF11-B classified REFINED; architectural correction: CF11-R superseded by the Transformation Architecture (D28)')
 dom('D28', 'Transformation Architecture (R1 / R2 / R3)', 'TA0 TA1 TA2 TA2I TA3', 'SOURCE+CARD COMPLETE', 'each level is known mathematics, carded and sourced; TA0 is the project-level organizing architecture')
 dom('D29', 'Deeper transformation–zero question; Čencov check', 'TAH TAC', 'OPEN LONG-TERM', 'TAH: HYPOTHESIS / OPEN; TAC: KNOWN THEOREM, NOT YET INTEGRATED')
+dom('D30', 'Reduction / Information-Changing Architecture', 'RI0 RI1 RI2', 'SOURCE+CARD COMPLETE', 'every existing lossy map answers the seven questions where carded; model reduction and coarse-graining are placeholders for later passes')
+dom('D31', 'Transform vs reduce; DYADIC packet hierarchy questions', 'RI3 W5', 'OPEN LONG-TERM', 'OPEN PROJECT QUESTION; DYADIC STRUCTURE — CANDIDATE, NOT UNIVERSAL')
 dom('D27', 'Coordinate-free common form and covariance', 'CF12 CF13 Z13', 'SOURCE+CARD COMPLETE', 'F*T = T across constant-form, symplectic and Fisher isometries; naturality of the Fisher metric; symmetry-forced null (sufficient, not necessary)')
 dom('D7', 'Zero taxonomy', 'Z1 Z2 Z3 Z5 Z6 Z8 Z9 Z12', 'SOURCE+CARD COMPLETE', 'Z9 now separates exact structural null, sloppy direction, Lorentz null (FB7)')
 dom('D8', 'Zero as connector; the inverse problem', 'Z11 H3', 'OPEN LONG-TERM', 'special cases proved; general statement open')
@@ -609,7 +703,7 @@ dom('D11', 'Known continuation behaviours', 'I1', 'SOURCE+CARD COMPLETE', '—')
 dom('D12', 'Model manifolds and Fisher geometry', 'R7 CF10 Z9 M1 M2', 'SOURCE+CARD COMPLETE', 'quinn2023 quote pending (P-2); M1 rests on the weak S14b and is a statement in log-parameter coordinates (component eigenvalues are not invariant, CFT5e); the MBAM procedure is source-only')
 dom('D13', 'C7: coefficient decay vs Fisher eigenvalue decay', 'M4', 'NEEDS DERIVATION', 'an explicit operator / map / asymptotic theorem, or an exact obstruction')
 dom('D14', 'Wavelets and scattering', 'W1 W2', 'SOURCE-COMPLETE', 'W1 carded; W2: exact first-order parts carded, deformation stability and higher orders source-only')
-dom('D15', 'DYADIC PACKETS; information lost and recovered', 'W3 W4', 'OPEN LONG-TERM', 'DYADIC PACKETS: ORIGINAL USER RESEARCH TERM, OPEN DEFINITION')
+dom('D15', 'DYADIC PACKETS; information lost and recovered', 'W3 W4', 'OPEN LONG-TERM', 'DYADIC PACKETS: ORIGINAL USER RESEARCH TERM, OPEN DEFINITION; candidate role in the Reduction / Information-Changing Architecture (not the definition)')
 dom('D16', 'Effective / reduced representations (examples)', 'M3 M2 H7', 'SOURCE+CARD COMPLETE', 'three reductions, each with what survives; compared, not equated. The question itself (H6) is OPEN LONG-TERM')
 dom('D17', 'Higher / source constructions', 'R8 H1 H2 H4 CF9', 'MATH-CARDED', 'project constructions: carded with assumptions and failure conditions; no external source needed beyond textbook linear algebra')
 dom('D18', 'Quantum same-zero', 'Z6 QZ1 QZ2 QZ3 QZ4', 'SOURCE+CARD COMPLETE', 'QZ3 is VALIDATION OF KNOWN MATHEMATICS (Schur–Weyl)')
@@ -634,17 +728,17 @@ CF11B = dict(outcome='CF11-F2', classification='REFINED', outcomes=['CF11-F1', '
              prereg='research/constructions/cf11b_fisher_prereg.md', preregCommit='e6f3db8', record='research/constructions/cf11b_fisher_test.md', pullbackCommonForm='YES',
              correction='architectural correction (2026-11-12): P1, P2, P3 are not three meanings of one word; they are R2 structural invariance, R1 representation covariance and R3 equivariance / intertwining of the Transformation Architecture (TA0). CF11-F2 is unchanged.')
 RATINGS = [
- ('Foundation architecture completeness', 88, 85, 'The TRANSFORMATION → PRESERVED STRUCTURE step of the spine now has an explicit three-level organization (R1 representation covariance, R2 structural invariance, R3 equivariance / intertwining) with exact laws and failure cases, and the earlier rules sort into it (generators, conservation, stabilizers, invariant zero relations, Fourier shift, Schur sectors, weighted centering). Still short: DYADIC PACKETS undefined, no general statement for effective representations, no application mathematics, and the model-manifold invariance audit open.'),
- ('Mathematical verification coverage', round(100 * len(carded) / len(est)), 95, f'{len(carded)} of {len(est)} established or derived objects have PASS cards (computed). New and carded in the correction: TA0–TA3, TA2I (TRA cards). Not carded: R7 (definitional), OB1 (definitional), A3 (wording).'),
- ('Cross-domain validation', 30, 30, 'Unchanged: no experiment was run in the correction.'),
+ ('Foundation architecture completeness', 90, 88, 'Lossy maps now have their own architecture, parallel to the Transformation Architecture: the seven questions are answered for every existing information-changing map where carded (simplex, centering, Fourier magnitude and band-limiting, scattering stages, dephasing, reduction and decimation instances), the intersection with equivariance is explicit, preserved and collapsed zeros are distinguished, and DYADIC PACKETS has a candidate architectural home (still undefined). Still short: DYADIC definition, no general statement for effective representations, no application mathematics, the model-manifold invariance audit.'),
+ ('Mathematical verification coverage', round(100 * len(carded) / len(est)), 96, f'{len(carded)} of {len(est)} established or derived objects have PASS cards (computed). New and carded: RI0–RI2 (RIC cards). Not carded: R7 (definitional), OB1 (definitional), A3 (wording).'),
+ ('Cross-domain validation', 30, 30, 'Unchanged.'),
  ('Project-specific construction maturity', 45, 45, 'Unchanged.'),
- ('Paper / source coverage', 55, 55, f'{sum(1 for x in S if x["sourceClass"] in ("primary", "textbook", "review"))} external sources registered with verified bibliographic records ({sum(1 for x in S if x["status"] == SP)} only partly verified), each with the exact claim it supports and what it does not establish. {len(ext_src)} of {len(ext)} external-claim objects have a source; R5 is SOURCE MISSING. Unchanged: Čencov was moved from support to bears-on (not yet integrated).'),
+ ('Paper / source coverage', 55, 55, f'{sum(1 for x in S if x["sourceClass"] in ("primary", "textbook", "review"))} external sources registered with verified bibliographic records ({sum(1 for x in S if x["status"] == SP)} only partly verified), each with the exact claim it supports and what it does not establish. {len(ext_src)} of {len(ext)} external-claim objects have a source; R5 is SOURCE MISSING. Unchanged.'),
  ('Application validation', 0, 0, 'Unchanged.'),
 ]
 data = dict(about='Foundation dependency architecture (V1, revised in Pass 2, 2026-11-12). Generated by research/tools/foundation_source.py.', layers=LAYERS, stages=STAGES, statuses=STATUS, transferDepths=TD,
             provenanceClasses=PROVENANCE, bridgeStrengths=STRENGTHS, sourceStatuses=SOURCE_STATUSES, sourceClasses=SOURCE_CLASSES, domainStatuses=DOMAIN_STATUSES, externalProvenance=list(EXTERNAL),
             objects=O, bridges=B, sources=S, domains=D, cf11b=CF11B, transformationClasses=TRANSFORMATION_CLASSES,
-            transformationClassesByDomain=[dict(domain=a, classes=b) for a, b in TCLASS], ratings=[dict(dimension=a, rating=b, previous=c, reason=d) for a, b, c, d in RATINGS])
+            transformationClassesByDomain=[dict(domain=a, classes=b) for a, b in TCLASS], reductionMaps=RMAPS, reductionQuestions=IC, ratings=[dict(dimension=a, rating=b, previous=c, reason=d) for a, b, c, d in RATINGS])
 (ROOT / 'research/foundation.json').write_text(json.dumps(data, ensure_ascii=False, indent=1) + '\n')
 
 cell = lambda x: '—' if x in (None, '', []) else str(x).replace('|', '\\|')
@@ -693,7 +787,8 @@ cl = ['# Foundation completion ledger (Pass 2)', '', 'Generated from `research/t
       '- **CF11** is two records, rated separately: CF11-A (established pattern) and CF11-B (project hypothesis).',
       '- **DYADIC PACKETS** is an ORIGINAL USER RESEARCH TERM with an OPEN DEFINITION.',
       '- **Classification systems:** seven provenance classes, seven bridge strength classes, the source registry, and the domain statuses below.',
-      '- **Transformation Architecture (TA0, Pass 3 correction):** R1 representation covariance; R2 structural invariance / symmetry (F*T = T); R3 equivariance / intertwining (C ρ_V(g) = ρ_W(g) C). Related but distinct; never collapsed. Transformation classes named in every domain: ' + '; '.join(TRANSFORMATION_CLASSES) + '.', '',
+      '- **Transformation Architecture (TA0, Pass 3 correction):** R1 representation covariance; R2 structural invariance / symmetry (F*T = T); R3 equivariance / intertwining (C ρ_V(g) = ρ_W(g) C). Related but distinct; never collapsed. Transformation classes named in every domain: ' + '; '.join(TRANSFORMATION_CLASSES) + '.',
+      '- **Reduction / Information-Changing Architecture (RI0, 2026-11-13):** for Φ: X → Y, what survives, collapses, becomes zero, is lost, is reconstructible, the fibers, and symmetry compatibility. Parallel to the Transformation Architecture, not an R4; their intersection is information-changing maps that are also equivariant (RI1). PRESERVED ZERO vs COLLAPSED ZERO (RI2) is an additional relationship in the zero architecture. The seven answers per map are in `research/foundation_reduction_maps.md`.', '',
       '## CF11-B after Pass 3', '',
       f"- **Outcome:** {CF11B['outcome']} (PARTIAL SURVIVAL), by the decision rule preregistered in `{CF11B['prereg']}` (commit {CF11B['preregCommit']}). Result: `{CF11B['record']}`.",
       f"- **Classification:** {CF11B['classification']}. The wording of CF11-B is unchanged.",
@@ -710,19 +805,27 @@ cl += ['', '## Blocking items for Foundation V1', '', '| Kind | Item |', '|---|-
        '| undefined central object | none (DYADIC PACKETS is an open user term, not a central object of the spine) |',
        '| incorrect mathematical bridge | none found; every bridge has a strength class, assumptions, a failure condition and what it does not prove |',
        '| provenance loss | the quinn2023 PDF (P-2); ThermaLens mathematics (APPLICATION PROVENANCE INCOMPLETE); the original mass-attraction wording (ORIGINAL VERBATIM NOT RECOVERED); no source opened at full text |',
-       '', '## Foundation ratings (separate dimensions, no overall score)', '', '| Dimension | Rating | Previous (Pass 3) | Reason for the change |', '|---|---|---|---|']
+       '', '## Foundation ratings (separate dimensions, no overall score)', '', '| Dimension | Rating | Previous (Pass 3 correction) | Reason for the change |', '|---|---|---|---|']
 for a, b_, c, d in RATINGS:
     cl.append(f"| {a} | {b_}% | {c}% | {d} |")
 cl += ['', '## CF11 and Transformation Architecture ratings (separate records)', '', '| Record | Statement | Mathematical Status | Novelty | Transfer Depth | Backbone Support | AI Slop Risk | Application Breadth |', '|---|---|---|---|---|---|---|---|']
 short = {'CF11-A': 'In many established geometries, a relational structure together with the transformations preserving it characterizes substantial geometric structure', 'CF11-B': None, 'CF11-R': 'A geometry may be characterized by relational structure together with transformations under which that structure is preserved or transforms coherently (explicit form: P1 + P2, P3 for derived operators)', 'CF12': 'F*T = T, the coordinate-free common form (BR36)'}
 short.update({'CF1': 'A†MA = M (R2, matrix form)', 'TA1': 'R1 representation covariance', 'TA2': 'R2 structural invariance, F*T = T', 'TA2I': 'R2 infinitesimal, L_X T = 0; KᵀM + MK = 0', 'TA3': 'R3 equivariance / intertwining', 'TA0': 'Transformation Architecture (project-level organizing architecture)', 'TAH': None})
-for i in ('CF11-A', 'CF11-B', 'CF11-R', 'CF12', 'TA1', 'TA2', 'CF1', 'TA2I', 'TA3', 'TA0', 'TAH'):
+short.update({'RI0': 'Reduction / Information-Changing Architecture', 'RI1': 'information-changing maps that are also equivariant', 'RI2': 'PRESERVED ZERO vs COLLAPSED ZERO', 'W3': 'DYADIC PACKETS: candidate role only (ORIGINAL USER RESEARCH TERM; OPEN DEFINITION)'})
+for i in ('CF11-A', 'CF11-B', 'CF11-R', 'CF12', 'TA1', 'TA2', 'CF1', 'TA2I', 'TA3', 'TA0', 'TAH', 'RI0', 'RI1', 'RI2', 'W3'):
     o = next(o for o in O if o['id'] == i)
     cl.append(f"| {i} ({o['status']}) | {short[i] or o['equation']} | {o['mathematicalStatus']} | {o.get('novelty') or '—'} | {o['transferDepth']} | {o['backboneSupport']}% | {o['slopRisk']}% | {o['applicationBreadth']} |")
 cl += ['', 'CF11-A\'s confidence does not transfer to CF11-B. Pass 3 changes: CF11-A 55% / 10% → 60% / 8% (breadth corrected 4 → 3 to the rubric); CF11-B 30% / 30% → 35% / 25%, NOT YET FORMALIZED → STRUCTURAL TRANSFER (with the refinement), SPECULATIVE MAPPING → PROJECT-DERIVED FROM KNOWN DEFINITIONS, breadth 2 → 3. Mathematical novelty of CF12: none (KNOWN MATHEMATICS); Foundation relevance: high.', '',
        '## Recommended next pass (one primary obligation)', '',
        '**Model-manifold invariance audit.** Pass 3 found that the component eigenvalues of a Fisher metric are not coordinate invariants (CFT5e), and the project\'s sloppy-spectrum card S14 (M1) is computed in log-parameter coordinates. Before any C7 work, restate every model-manifold quantity the Foundation uses (the sloppy spectrum, hyperribbon widths, null directions, the C7 comparison object) as either coordinate-invariant, with its invariant definition, or explicitly coordinate-stated, and card the difference.']
 (ROOT / 'research/foundation_completion.md').write_text('\n'.join(cl) + '\n')
+
+rl = ['# Reduction / information-changing maps', '', 'Generated from `research/tools/foundation_source.py` (`research/foundation.json`, key `reductionMaps`). Do not edit by hand. 2026-11-13.', '',
+      'For each map Φ: X → Y: what survives, what collapses, what becomes zero, what is lost, what is reconstructible (with its assumptions), the fibers Φ⁻¹(y), and whether Φ respects a symmetry. Axis A: invertible or not, information-preserving or information-changing. Axis B: covariant, invariant, equivariant or none. These are an analytic tool for Foundation V1, not final universal categories. Mechanisms are kept separate; the shared item is the question, not one theorem.', '',
+      '| Map | Axis A | Axis B | Survives | Collapses | Becomes zero | Lost | Reconstructible | Fibers | Symmetry compatibility | Cards | Status |', '|' + '---|' * 12]
+for r in RMAPS:
+    rl.append(f"| {cell(r['name'])} | {cell(r['axisA'])} | {', '.join(r['axisB'])} | {cell(r['survives'])} | {cell(r['collapses'])} | {cell(r['zero'])} | {cell(r['lost'])} | {cell(r['reconstructible'])} | {cell(r['fibers'])} | {cell(r['symmetry'])} | {cell(', '.join(r['cards']))} | {r['status']} |")
+(ROOT / 'research/foundation_reduction_maps.md').write_text('\n'.join(rl) + '\n')
 
 ul = ['# Original user theories (Foundation Part X, detail)', '', 'Every user-origin record in `research/theories.json`, with its original wording, normalized reading and status kept separate. Generated; do not edit by hand.', '',
       '| Registry ID | Original wording | Normalized interpretation | Kind | Status | Foundation objects |', '|---|---|---|---|---|---|']

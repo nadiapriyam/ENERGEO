@@ -15,6 +15,7 @@ Foundation V1 may contain open questions. What blocks completion is limited to: 
 - **DYADIC PACKETS** is an ORIGINAL USER RESEARCH TERM with an OPEN DEFINITION.
 - **Classification systems:** seven provenance classes, seven bridge strength classes, the source registry, and the domain statuses below.
 - **Transformation Architecture (TA0, Pass 3 correction):** R1 representation covariance; R2 structural invariance / symmetry (F*T = T); R3 equivariance / intertwining (C ρ_V(g) = ρ_W(g) C). Related but distinct; never collapsed. Transformation classes named in every domain: REPRESENTATION CHANGES; GEOMETRIC SYMMETRIES; SYSTEM-SUPPLIED TRANSFORMATIONS; OPERATOR-COMPATIBLE TRANSFORMATIONS.
+- **Reduction / Information-Changing Architecture (RI0, 2026-11-13):** for Φ: X → Y, what survives, collapses, becomes zero, is lost, is reconstructible, the fibers, and symmetry compatibility. Parallel to the Transformation Architecture, not an R4; their intersection is information-changing maps that are also equivariant (RI1). PRESERVED ZERO vs COLLAPSED ZERO (RI2) is an additional relationship in the zero architecture. The seven answers per map are in `research/foundation_reduction_maps.md`.
 
 ## CF11-B after Pass 3
 
@@ -38,6 +39,8 @@ Statuses: LOCKED; SOURCE-COMPLETE; MATH-CARDED; SOURCE+CARD COMPLETE; NEEDS DERI
 | D6. Common-form architecture as project hypothesis | CF11-B, CF11-R | SOURCE+CARD COMPLETE | Pass 3 preregistered test: CF11-F2 (stands); CF11-B classified REFINED; architectural correction: CF11-R superseded by the Transformation Architecture (D28) |
 | D28. Transformation Architecture (R1 / R2 / R3) | TA0, TA1, TA2, TA2I, TA3 | SOURCE+CARD COMPLETE | each level is known mathematics, carded and sourced; TA0 is the project-level organizing architecture |
 | D29. Deeper transformation–zero question; Čencov check | TAH, TAC | OPEN LONG-TERM | TAH: HYPOTHESIS / OPEN; TAC: KNOWN THEOREM, NOT YET INTEGRATED |
+| D30. Reduction / Information-Changing Architecture | RI0, RI1, RI2 | SOURCE+CARD COMPLETE | every existing lossy map answers the seven questions where carded; model reduction and coarse-graining are placeholders for later passes |
+| D31. Transform vs reduce; DYADIC packet hierarchy questions | RI3, W5 | OPEN LONG-TERM | OPEN PROJECT QUESTION; DYADIC STRUCTURE — CANDIDATE, NOT UNIVERSAL |
 | D27. Coordinate-free common form and covariance | CF12, CF13, Z13 | SOURCE+CARD COMPLETE | F*T = T across constant-form, symplectic and Fisher isometries; naturality of the Fisher metric; symmetry-forced null (sufficient, not necessary) |
 | D7. Zero taxonomy | Z1, Z2, Z3, Z5, Z6, Z8, Z9, Z12 | SOURCE+CARD COMPLETE | Z9 now separates exact structural null, sloppy direction, Lorentz null (FB7) |
 | D8. Zero as connector; the inverse problem | Z11, H3 | OPEN LONG-TERM | special cases proved; general statement open |
@@ -47,7 +50,7 @@ Statuses: LOCKED; SOURCE-COMPLETE; MATH-CARDED; SOURCE+CARD COMPLETE; NEEDS DERI
 | D12. Model manifolds and Fisher geometry | R7, CF10, Z9, M1, M2 | SOURCE+CARD COMPLETE | quinn2023 quote pending (P-2); M1 rests on the weak S14b and is a statement in log-parameter coordinates (component eigenvalues are not invariant, CFT5e); the MBAM procedure is source-only |
 | D13. C7: coefficient decay vs Fisher eigenvalue decay | M4 | NEEDS DERIVATION | an explicit operator / map / asymptotic theorem, or an exact obstruction |
 | D14. Wavelets and scattering | W1, W2 | SOURCE-COMPLETE | W1 carded; W2: exact first-order parts carded, deformation stability and higher orders source-only |
-| D15. DYADIC PACKETS; information lost and recovered | W3, W4 | OPEN LONG-TERM | DYADIC PACKETS: ORIGINAL USER RESEARCH TERM, OPEN DEFINITION |
+| D15. DYADIC PACKETS; information lost and recovered | W3, W4 | OPEN LONG-TERM | DYADIC PACKETS: ORIGINAL USER RESEARCH TERM, OPEN DEFINITION; candidate role in the Reduction / Information-Changing Architecture (not the definition) |
 | D16. Effective / reduced representations (examples) | M3, M2, H7 | SOURCE+CARD COMPLETE | three reductions, each with what survives; compared, not equated. The question itself (H6) is OPEN LONG-TERM |
 | D17. Higher / source constructions | R8, H1, H2, H4, CF9 | MATH-CARDED | project constructions: carded with assumptions and failure conditions; no external source needed beyond textbook linear algebra |
 | D18. Quantum same-zero | Z6, QZ1, QZ2, QZ3, QZ4 | SOURCE+CARD COMPLETE | QZ3 is VALIDATION OF KNOWN MATHEMATICS (Schur–Weyl) |
@@ -72,13 +75,13 @@ Statuses: LOCKED; SOURCE-COMPLETE; MATH-CARDED; SOURCE+CARD COMPLETE; NEEDS DERI
 
 ## Foundation ratings (separate dimensions, no overall score)
 
-| Dimension | Rating | Previous (Pass 3) | Reason for the change |
+| Dimension | Rating | Previous (Pass 3 correction) | Reason for the change |
 |---|---|---|---|
-| Foundation architecture completeness | 88% | 85% | The TRANSFORMATION → PRESERVED STRUCTURE step of the spine now has an explicit three-level organization (R1 representation covariance, R2 structural invariance, R3 equivariance / intertwining) with exact laws and failure cases, and the earlier rules sort into it (generators, conservation, stabilizers, invariant zero relations, Fourier shift, Schur sectors, weighted centering). Still short: DYADIC PACKETS undefined, no general statement for effective representations, no application mathematics, and the model-manifold invariance audit open. |
-| Mathematical verification coverage | 96% | 95% | 67 of 70 established or derived objects have PASS cards (computed). New and carded in the correction: TA0–TA3, TA2I (TRA cards). Not carded: R7 (definitional), OB1 (definitional), A3 (wording). |
-| Cross-domain validation | 30% | 30% | Unchanged: no experiment was run in the correction. |
+| Foundation architecture completeness | 90% | 88% | Lossy maps now have their own architecture, parallel to the Transformation Architecture: the seven questions are answered for every existing information-changing map where carded (simplex, centering, Fourier magnitude and band-limiting, scattering stages, dephasing, reduction and decimation instances), the intersection with equivariance is explicit, preserved and collapsed zeros are distinguished, and DYADIC PACKETS has a candidate architectural home (still undefined). Still short: DYADIC definition, no general statement for effective representations, no application mathematics, the model-manifold invariance audit. |
+| Mathematical verification coverage | 96% | 96% | 70 of 73 established or derived objects have PASS cards (computed). New and carded: RI0–RI2 (RIC cards). Not carded: R7 (definitional), OB1 (definitional), A3 (wording). |
+| Cross-domain validation | 30% | 30% | Unchanged. |
 | Project-specific construction maturity | 45% | 45% | Unchanged. |
-| Paper / source coverage | 55% | 55% | 41 external sources registered with verified bibliographic records (7 only partly verified), each with the exact claim it supports and what it does not establish. 49 of 50 external-claim objects have a source; R5 is SOURCE MISSING. Unchanged: Čencov was moved from support to bears-on (not yet integrated). |
+| Paper / source coverage | 55% | 55% | 41 external sources registered with verified bibliographic records (7 only partly verified), each with the exact claim it supports and what it does not establish. 49 of 50 external-claim objects have a source; R5 is SOURCE MISSING. Unchanged. |
 | Application validation | 0% | 0% | Unchanged. |
 
 ## CF11 and Transformation Architecture ratings (separate records)
@@ -96,6 +99,10 @@ Statuses: LOCKED; SOURCE-COMPLETE; MATH-CARDED; SOURCE+CARD COMPLETE; NEEDS DERI
 | TA3 (ESTABLISHED) | R3 equivariance / intertwining | TEXTBOOK / KNOWN | KNOWN MATHEMATICS | STRUCTURAL TRANSFER | 60% | 5% | 3 |
 | TA0 (DERIVED) | Transformation Architecture (project-level organizing architecture) | PROJECT-DERIVED FROM KNOWN DEFINITIONS | PROJECT ARCHITECTURAL SYNTHESIS | STRUCTURAL TRANSFER | 45% | 15% | 3 |
 | TAH (HYPOTHESIS) | Do recurring relationships among representation covariance, structural invariance, zero relations, and equivariance reveal a deeper common architecture across the systems studied in Geometry of Representation? | SPECULATIVE MAPPING | PROJECT ARCHITECTURAL SYNTHESIS (open) | NOT YET FORMALIZED | 25% | 35% | 2 |
+| RI0 (DERIVED) | Reduction / Information-Changing Architecture | PROJECT-DERIVED FROM KNOWN DEFINITIONS | PROJECT ARCHITECTURAL SYNTHESIS | STRUCTURAL TRANSFER | 45% | 20% | 3 |
+| RI1 (DERIVED) | information-changing maps that are also equivariant | PROJECT-DERIVED FROM KNOWN DEFINITIONS | KNOWN MATHEMATICS (examples); PROJECT CLASSIFICATION | STRUCTURAL TRANSFER | 50% | 10% | 3 |
+| RI2 (DERIVED) | PRESERVED ZERO vs COLLAPSED ZERO | PROJECT-DERIVED FROM KNOWN DEFINITIONS | PROJECT CLASSIFICATION OF KNOWN MATHEMATICS | STRUCTURAL TRANSFER | 40% | 10% | 3 |
+| W3 (OPEN) | DYADIC PACKETS: candidate role only (ORIGINAL USER RESEARCH TERM; OPEN DEFINITION) | None | — | not a transfer | 15% | 40% | None |
 
 CF11-A's confidence does not transfer to CF11-B. Pass 3 changes: CF11-A 55% / 10% → 60% / 8% (breadth corrected 4 → 3 to the rubric); CF11-B 30% / 30% → 35% / 25%, NOT YET FORMALIZED → STRUCTURAL TRANSFER (with the refinement), SPECULATIVE MAPPING → PROJECT-DERIVED FROM KNOWN DEFINITIONS, breadth 2 → 3. Mathematical novelty of CF12: none (KNOWN MATHEMATICS); Foundation relevance: high.
 

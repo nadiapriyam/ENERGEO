@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-12T23:56:37+00:00",
- "commit": "f91574b",
+ "generated": "2026-11-13T02:02:33+00:00",
+ "commit": "76eb590",
  "cards": {
   "B1a": {
    "script": "verify_B1_B7.py",
@@ -1135,6 +1135,30 @@
    "verdict": "PASS",
    "everFailed": false,
    "claim": "restricted obstruction: U = exp(i pi S_z^(1)/hbar) acts on C^2 (x) C^2, commutes with S_z^(1), S_z^(2) and S_z, and maps the configuration C = (psi, S_z^(1)psi, S_z^(2)psi) of |1,0> to i times that of |0,0>. Hence every descriptor D with D(W C) = D(C) for all unitaries W commuting with S_z^(1) and S_z^(2), and D(e^{i phi} C) = D(C), takes equal values on the two; this class contains every function of the Gram matrix of C (norms, inner products, the relative cancellation c2 = -c1, spans up to such W). It does NOT contain descriptors using an operator that does not commute with U, e.g. <c1, P c1> = -hbar^2/4 vs +hbar^2/4"
+  },
+  "RIC1a": {
+   "script": "verify_RIC.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[Reduction | simplex projection Pₙ = I − 11ᵀ/n, n = 4] survives: every difference vᵢ − vⱼ = eᵢ − eⱼ; collapses: x and x + c1 have the same image (fibers x + span{1}); zero: Pₙ1 = 0, a nonzero source with zero image, and Pₙx = 0 ⟺ x ∈ span{1}; lost: the common component 1ᵀx/n; Σvᵢ = 0; not invertible (rank n − 1); compatible with symmetry: Pₙ commutes with permutations (R3). Reconstruction holds only under the orthonormal-source assumptions (G3b, G3n)"
+  },
+  "RIC1b": {
+   "script": "verify_RIC.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[Reduction | weighted centering C_m = I − 1mᵀ/M, m = (1, 2, 3)] survives: every difference (C_m y)ᵢ − (C_m y)ⱼ = yᵢ − yⱼ (relative positions); collapses: y and y + c1 (fibers y + span{1}); zero: C_m1 = 0, and C_m y = 0 ⟺ y ∈ span{1}; lost: the weighted mean mᵀy/M (R_CM); y is recovered from (C_m y, mᵀy/M). Its R3 role (commuting with D-isometries preserving span{1}) is CFT8c"
+  },
+  "RIC1c": {
+   "script": "verify_RIC.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[Reduction vs R1 | Fourier] the unitary DFT is invertible (U†U = I: lossless, R1); band-limiting P = U† diag(1,1,0,0,0,1) U is information-changing (P² = P, rank 3 < 6) yet commutes with the integer cyclic shift (equivariant, R3); keeping magnitudes only, x ↦ |x̂|, is invariant under the cyclic shift and many-to-one (the shifted signal differs, the magnitudes agree)"
+  },
+  "RIC1d": {
+   "script": "verify_RIC.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[Zero | PRESERVED ZERO vs COLLAPSED ZERO] preserved: under the Lorentz symmetry Λ (R2) the light-like v = (1, 1) keeps q_η = 0 and stays a nonzero vector (Λv = e^s(1, 1)); collapsed: under the reduction Pₙ the nonzero source 1 becomes the zero vector (Pₙ1 = 0). Different mechanisms: an invertible symmetry keeps a zero relation between surviving vectors; a non-invertible map sends a nonzero state to 0"
   },
   "S1a": {
    "script": "verify_S1_S5.py",

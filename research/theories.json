@@ -4687,7 +4687,8 @@
       "evidenceAgainst": [],
       "boundaries": [
         "Definition OPEN (AMB-13). The literal term is kept; no conventional meaning is assumed.",
-        "ORIGINAL USER RESEARCH TERM; OPEN DEFINITION (Pass 2 decision). Intended thematic role: connected to organizing or preserving frequency/scale information within the wavelet/scattering branch. Not identified with standard wavelet packets, dyadic wavelet decomposition or Mallat scattering paths."
+        "ORIGINAL USER RESEARCH TERM; OPEN DEFINITION (Pass 2 decision). Intended thematic role: connected to organizing or preserving frequency/scale information within the wavelet/scattering branch. Not identified with standard wavelet packets, dyadic wavelet decomposition or Mallat scattering paths.",
+        "Reduction amendment (2026-11-13): still ORIGINAL USER RESEARCH TERM, OPEN DEFINITION. Current candidate architectural role (not the definition): a hierarchical organization of information across repeated splits/reductions, schematically X → (X₀, X₁) → (X₀₀, X₀₁, X₁₀, X₁₁) → …; investigated within the Reduction / Information-Changing Architecture. DYADIC STRUCTURE — CANDIDATE, NOT UNIVERSAL: no significance is drawn from base 2. Not identified with standard wavelet packets, dyadic wavelet trees, scattering paths or multiresolution analysis."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -4710,7 +4711,11 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "T-DYADIC-Q1",
+        "T-DYADIC-Q2",
+        "T-REDUCTION-ARCH"
+      ],
       "history": [
         {
           "date": "2026-11-12",
@@ -4719,6 +4724,10 @@
         {
           "date": "2026-11-12",
           "change": "Pass 2: recorded as ORIGINAL USER RESEARCH TERM / OPEN DEFINITION with its thematic role; still undefined"
+        },
+        {
+          "date": "2026-11-13",
+          "change": "candidate architectural role recorded (Reduction / Information-Changing Architecture); definition still open"
         }
       ],
       "relatedActsRev3": [
@@ -6235,7 +6244,8 @@
         "T-HIDDEN-FAMILY",
         "T-R4-TETRA",
         "B-HIGHER-GEOMETRY-CHAIN",
-        "T-ZERO-CONNECTOR"
+        "T-ZERO-CONNECTOR",
+        "T-SOURCE-MANIFEST"
       ],
       "history": [],
       "relatedActsRev3": [],
@@ -11843,7 +11853,9 @@
         "T-CF-PULLBACK-Q",
         "T-TRANSFORMATION-DEEP",
         "T-H2",
-        "T-CENCOV-CHECK"
+        "T-CENCOV-CHECK",
+        "T-REDUCTION-ARCH",
+        "T-TRANSFORM-REDUCE"
       ],
       "history": [
         {
@@ -11968,6 +11980,266 @@
       "proofTarget": null,
       "related": [
         "T-TRANSFORMATION-ARCH"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-REDUCTION-ARCH",
+      "label": "Reduction / Information-Changing Architecture",
+      "words": "What information survives, collapses, is discarded, or remains reconstructible under Φ?",
+      "variants": [],
+      "normalizedStatement": "For a map Φ: X → Y (not necessarily invertible) record what survives, what collapses (Φ(x₁) = Φ(x₂)), what becomes zero, what is lost, what is reconstructible (and under which assumptions), the fibers Φ⁻¹(y), and whether Φ respects a symmetry (Φ ρ_X(g) = ρ_Y(g) Φ, an R3 relationship that does not make Φ lossless).",
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:RIC1a",
+          "note": "simplex projection: one mode collapses, every difference survives"
+        },
+        {
+          "ref": "card:RIC1b",
+          "note": "weighted centering: the weighted mean is lost, relative positions survive"
+        },
+        {
+          "ref": "card:RIC1c",
+          "note": "a lossy Fourier-side operation can be equivariant (band-limiting) or invariant (magnitude)"
+        },
+        {
+          "ref": "card:G3b",
+          "note": "reconstruction of the source under stated assumptions"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:G4c",
+          "note": "without the source class, the removed relation is not recoverable"
+        }
+      ],
+      "boundaries": [
+        "PROJECT-LEVEL ORGANIZING ARCHITECTURE, DERIVED FROM ESTABLISHED MATHEMATICS; parallel to the Transformation Architecture, not an R4 inside it.",
+        "Not reduced to kernels. Open: whether a shared analysis of SURVIVAL + COLLAPSE + ZERO + RECONSTRUCTION + SYMMETRY COMPATIBILITY gives a useful cross-domain geometry of representation."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III",
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "G3b",
+        "G4c",
+        "RIC1a",
+        "RIC1b",
+        "RIC1c"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Reduction amendment, 2–3",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Reduction / Information-Changing Architecture amendment (2026-11-13)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-TRANSFORMATION-ARCH",
+        "T-SOURCE-MANIFEST",
+        "T-TRANSFORM-REDUCE",
+        "T-DYADIC"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-SOURCE-MANIFEST",
+      "label": "What a reduced manifestation tells about its source (question)",
+      "words": "What can a reduced manifestation tell us about the richer source structure that generated it?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:G3b",
+          "note": "simplex: the source is recovered up to a sign and an isometry when its class is known"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:G4c",
+          "note": "with the class unknown, recovery fails"
+        }
+      ],
+      "boundaries": [
+        "Source does not automatically mean higher physical spatial dimension; reduction does not automatically mean projection. The source may be higher-dimensional, higher-information, higher-resolution, more parameterized, less averaged or less quotient-like, depending on the system."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "III"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "G3b",
+        "G4c"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Reduction amendment, 16",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Reduction / Information-Changing Architecture amendment (2026-11-13)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-REDUCTION-ARCH",
+        "B-HIGHER-GEOMETRY"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-DYADIC-Q1",
+      "label": "DYADIC PACKETS research question 1",
+      "words": "Can a hierarchy of packets encode how information survives, separates, disappears, or remains reconstructible under repeated reduction?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "An open question, not a theorem and not the definition of DYADIC PACKETS. DYADIC STRUCTURE — CANDIDATE, NOT UNIVERSAL."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Reduction amendment, 12",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Reduction / Information-Changing Architecture amendment (2026-11-13)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-DYADIC",
+        "T-DYADIC-Q2"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-DYADIC-Q2",
+      "label": "DYADIC PACKETS research question 2",
+      "words": "Can relationships between packets preserve information not visible in any one packet individually?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Not connected yet to Fourier components, wavelet scales, scattering paths, source / reduced geometry, zero relations or projection: those links are for later passes."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Reduction amendment, 12",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Reduction / Information-Changing Architecture amendment (2026-11-13)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-DYADIC",
+        "T-DYADIC-Q1"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-TRANSFORM-REDUCE",
+      "label": "Transform vs reduce (question)",
+      "words": "Is the Geometry of Representation fundamentally governed by both how structure behaves under transformations and how structure behaves under reduction?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "OPEN PROJECT QUESTION; not promoted."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "all"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Reduction amendment, 19",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Reduction / Information-Changing Architecture amendment (2026-11-13)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-TRANSFORMATION-ARCH",
+        "T-REDUCTION-ARCH"
       ],
       "history": [],
       "relatedActsRev3": [],

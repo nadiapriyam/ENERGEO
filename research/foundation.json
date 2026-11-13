@@ -120,7 +120,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "R1",
@@ -159,7 +160,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "R2",
@@ -196,8 +198,11 @@
    ],
    "sourceStatus": null,
    "mathematicalStatus": null,
-   "transformationLevel": [],
-   "novelty": null
+   "transformationLevel": [
+    "R1"
+   ],
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "R3",
@@ -238,8 +243,11 @@
    ],
    "sourceStatus": null,
    "mathematicalStatus": null,
-   "transformationLevel": [],
-   "novelty": null
+   "transformationLevel": [
+    "R1"
+   ],
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "R4",
@@ -281,7 +289,8 @@
    "transformationLevel": [
     "R3"
    ],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "R5",
@@ -316,8 +325,11 @@
    "sources": [],
    "sourceStatus": "SOURCE MISSING: Hermite functions as eigenfunctions of the Fourier transform (textbook); no source verified in Pass 2",
    "mathematicalStatus": null,
-   "transformationLevel": [],
-   "novelty": null
+   "transformationLevel": [
+    "R1"
+   ],
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "R6",
@@ -356,7 +368,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "R7",
@@ -395,7 +408,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "R8",
@@ -431,7 +445,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": "INFORMATION-CHANGING"
   },
   {
    "id": "R9",
@@ -465,7 +480,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "R10",
@@ -498,7 +514,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "CF1",
@@ -545,7 +562,8 @@
    "transformationLevel": [
     "R2"
    ],
-   "novelty": "KNOWN MATHEMATICS"
+   "novelty": "KNOWN MATHEMATICS",
+   "reductionRole": null
   },
   {
    "id": "CF2",
@@ -588,7 +606,8 @@
    "transformationLevel": [
     "R2"
    ],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "CF3",
@@ -624,7 +643,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "CF4",
@@ -670,7 +690,8 @@
    "transformationLevel": [
     "R2"
    ],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "CF5",
@@ -712,7 +733,8 @@
    "transformationLevel": [
     "R2"
    ],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "CF6",
@@ -757,7 +779,8 @@
    "transformationLevel": [
     "R2"
    ],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "CF7",
@@ -799,7 +822,8 @@
    "transformationLevel": [
     "R2"
    ],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "CF8",
@@ -843,7 +867,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "CF9",
@@ -880,7 +905,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "CF10",
@@ -923,7 +949,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "CF11-A",
@@ -977,7 +1004,8 @@
    "sourceStatus": null,
    "mathematicalStatus": "TEXTBOOK / KNOWN",
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "CF11-B",
@@ -1036,7 +1064,8 @@
     "R2",
     "R3"
    ],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "CF11-R",
@@ -1088,7 +1117,8 @@
     "R2",
     "R3"
    ],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "CF12",
@@ -1147,7 +1177,8 @@
    "transformationLevel": [
     "R2"
    ],
-   "novelty": "KNOWN MATHEMATICS"
+   "novelty": "KNOWN MATHEMATICS",
+   "reductionRole": null
   },
   {
    "id": "CF13",
@@ -1197,7 +1228,8 @@
    "transformationLevel": [
     "R1"
    ],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "TA0",
@@ -1253,7 +1285,8 @@
     "R2",
     "R3"
    ],
-   "novelty": "PROJECT ARCHITECTURAL SYNTHESIS"
+   "novelty": "PROJECT ARCHITECTURAL SYNTHESIS",
+   "reductionRole": null
   },
   {
    "id": "TA1",
@@ -1300,7 +1333,8 @@
    "transformationLevel": [
     "R1"
    ],
-   "novelty": "KNOWN MATHEMATICS"
+   "novelty": "KNOWN MATHEMATICS",
+   "reductionRole": null
   },
   {
    "id": "TA2",
@@ -1348,7 +1382,8 @@
    "transformationLevel": [
     "R2"
    ],
-   "novelty": "KNOWN MATHEMATICS"
+   "novelty": "KNOWN MATHEMATICS",
+   "reductionRole": null
   },
   {
    "id": "TA2I",
@@ -1392,7 +1427,8 @@
    "transformationLevel": [
     "R2"
    ],
-   "novelty": "KNOWN MATHEMATICS"
+   "novelty": "KNOWN MATHEMATICS",
+   "reductionRole": null
   },
   {
    "id": "TA3",
@@ -1438,7 +1474,8 @@
    "transformationLevel": [
     "R3"
    ],
-   "novelty": "KNOWN MATHEMATICS"
+   "novelty": "KNOWN MATHEMATICS",
+   "reductionRole": null
   },
   {
    "id": "TAH",
@@ -1477,7 +1514,8 @@
    "sourceStatus": null,
    "mathematicalStatus": "SPECULATIVE MAPPING",
    "transformationLevel": [],
-   "novelty": "PROJECT ARCHITECTURAL SYNTHESIS (open)"
+   "novelty": "PROJECT ARCHITECTURAL SYNTHESIS (open)",
+   "reductionRole": null
   },
   {
    "id": "TAC",
@@ -1510,7 +1548,224 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
+  },
+  {
+   "id": "RI0",
+   "name": "Reduction / Information-Changing Architecture",
+   "layer": "PROJECT-DERIVED CONNECTION",
+   "stages": [
+    "REPRESENTATION",
+    "ZERO / BALANCE / NULL",
+    "INFORMATION",
+    "GEOMETRY"
+   ],
+   "equation": "For Φ: X → Y, not necessarily invertible: what survives, what collapses (Φ(x₁) = Φ(x₂)), what becomes zero (Φ(x) = 0), what is lost, what is reconstructible and under which assumptions, the fibers Φ⁻¹(y) (ker Φ in the linear case; not reduced to kernels), and whether Φ ρ_X(g) = ρ_Y(g) Φ (an R3 relationship that does not make Φ lossless)",
+   "status": "DERIVED",
+   "cards": [
+    "RIC1a",
+    "RIC1b",
+    "RIC1c",
+    "RIC1d",
+    "G3b",
+    "G4c",
+    "FB1d",
+    "FB10c"
+   ],
+   "docs": [],
+   "registry": [
+    "T-REDUCTION-ARCH",
+    "T-SOURCE-MANIFEST"
+   ],
+   "dependsOn": [
+    "H1",
+    "H2",
+    "H4",
+    "W2",
+    "QZ4"
+   ],
+   "supports": [],
+   "bearsOn": [
+    "T-H2"
+   ],
+   "backboneSupport": 45,
+   "slopRisk": 20,
+   "transferDepth": "STRUCTURAL TRANSFER",
+   "applicationBreadth": 3,
+   "failureCondition": "breadth: almost every non-injective map can be described this way; it organizes only while each placement names the map, its domain, what survives, the fibers and a reconstruction statement with its assumptions",
+   "foundationRole": "PROJECT-LEVEL ORGANIZING ARCHITECTURE, DERIVED FROM ESTABLISHED MATHEMATICS; parallel to the Transformation Architecture (TA0), not an R4 inside it",
+   "guideLocation": "Act III / Guide",
+   "gap": null,
+   "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
+   "transformationLevel": [],
+   "novelty": "PROJECT ARCHITECTURAL SYNTHESIS",
+   "reductionRole": "INFORMATION-CHANGING"
+  },
+  {
+   "id": "RI1",
+   "name": "Information-changing maps that are also equivariant",
+   "layer": "PROJECT-DERIVED CONNECTION",
+   "stages": [
+    "INFORMATION",
+    "TRANSFORMATION"
+   ],
+   "equation": "Φ ρ_X(g) = ρ_Y(g) Φ with Φ not invertible: Pₙ commutes with permutations; C_m commutes with D-isometries preserving span{1}; band-limiting commutes with integer cyclic shifts; |x̂| is shift-invariant (equivariant with trivial target action); the averaged wavelet modulus is translation-invariant",
+   "status": "DERIVED",
+   "cards": [
+    "RIC1c",
+    "TRA4b",
+    "CFT8c",
+    "FB10c",
+    "RIC1a"
+   ],
+   "docs": [],
+   "registry": [],
+   "dependsOn": [
+    "RI0",
+    "TA3"
+   ],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": 50,
+   "slopRisk": 10,
+   "transferDepth": "STRUCTURAL TRANSFER",
+   "applicationBreadth": 3,
+   "failureCondition": "equivariance does not make a map lossless (RIC1c); not every reduction is equivariant",
+   "foundationRole": "the explicit intersection of the two architectures",
+   "guideLocation": "Act III / Guide",
+   "gap": null,
+   "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
+   "transformationLevel": [
+    "R3"
+   ],
+   "novelty": "KNOWN MATHEMATICS (examples); PROJECT CLASSIFICATION",
+   "reductionRole": "INFORMATION-CHANGING"
+  },
+  {
+   "id": "RI2",
+   "name": "PRESERVED ZERO vs COLLAPSED ZERO",
+   "layer": "PROJECT-DERIVED CONNECTION",
+   "stages": [
+    "ZERO / BALANCE / NULL",
+    "TRANSFORMATION",
+    "INFORMATION"
+   ],
+   "equation": "preserved zero (R2): F*T = T and T(u, v) = 0 ⟹ T(dF u, dF v) = 0, with the vectors surviving; collapsed zero (reduction): a nonzero source x with Φ(x) = 0 (linear: x ∈ ker Φ). Different mechanisms; an additional relationship, not a replacement of the zero taxonomy",
+   "status": "DERIVED",
+   "cards": [
+    "RIC1d",
+    "TRA2a",
+    "RIC1a",
+    "RIC1b"
+   ],
+   "docs": [],
+   "registry": [],
+   "dependsOn": [
+    "TA2",
+    "RI0"
+   ],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": 40,
+   "slopRisk": 10,
+   "transferDepth": "STRUCTURAL TRANSFER",
+   "applicationBreadth": 3,
+   "failureCondition": "zeros that are neither (a definite form, Z10; an observable zero, Z6)",
+   "foundationRole": "zero in the target ↔ hidden source structure is ONE exact mechanism (collapsed zero); not all zeros arise from projection or hidden higher dimensions",
+   "guideLocation": "Act III",
+   "gap": null,
+   "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
+   "transformationLevel": [
+    "R2"
+   ],
+   "novelty": "PROJECT CLASSIFICATION OF KNOWN MATHEMATICS",
+   "reductionRole": null
+  },
+  {
+   "id": "RI3",
+   "name": "Transform vs reduce (open project question)",
+   "layer": "ORIGINAL USER THEORY",
+   "stages": [
+    "TRANSFORMATION",
+    "INFORMATION",
+    "CROSS-SYSTEM TRANSFER"
+   ],
+   "equation": "Is the Geometry of Representation fundamentally governed by both how structure behaves under transformations and how structure behaves under reduction?",
+   "status": "OPEN",
+   "cards": [],
+   "docs": [],
+   "registry": [
+    "T-TRANSFORM-REDUCE"
+   ],
+   "dependsOn": [
+    "TA0",
+    "RI0"
+   ],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": null,
+   "slopRisk": null,
+   "transferDepth": "not a transfer",
+   "applicationBreadth": null,
+   "failureCondition": "—",
+   "foundationRole": "OPEN PROJECT QUESTION; not promoted",
+   "guideLocation": "all Acts",
+   "gap": null,
+   "provenance": "USER-ORIGIN",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null,
+   "reductionRole": null
+  },
+  {
+   "id": "W5",
+   "name": "DYADIC PACKETS research questions (open)",
+   "layer": "ORIGINAL USER THEORY",
+   "stages": [
+    "INFORMATION",
+    "REPRESENTATION"
+   ],
+   "equation": "Can a hierarchy of packets encode how information survives, separates, disappears, or remains reconstructible under repeated reduction? Can relationships between packets preserve information not visible in any one packet individually?",
+   "status": "OPEN",
+   "cards": [],
+   "docs": [],
+   "registry": [
+    "T-DYADIC-Q1",
+    "T-DYADIC-Q2"
+   ],
+   "dependsOn": [
+    "W3",
+    "RI0"
+   ],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": null,
+   "slopRisk": null,
+   "transferDepth": "not a transfer",
+   "applicationBreadth": null,
+   "failureCondition": "—",
+   "foundationRole": "open questions, not theorems; no connection to Fourier, wavelets, scattering, zero or projection is asserted yet",
+   "guideLocation": "Guide: wavelets",
+   "gap": null,
+   "provenance": "USER-ORIGIN",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "Z1",
@@ -1550,7 +1805,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "Z2",
@@ -1588,7 +1844,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "Z3",
@@ -1625,7 +1882,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "Z4",
@@ -1663,7 +1921,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "Z5",
@@ -1702,7 +1961,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "Z6",
@@ -1741,7 +2001,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "Z7",
@@ -1778,7 +2039,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": "INFORMATION-CHANGING"
   },
   {
    "id": "Z8",
@@ -1814,7 +2076,8 @@
    "transformationLevel": [
     "R2"
    ],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "Z9",
@@ -1858,7 +2121,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "Z10",
@@ -1892,7 +2156,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "Z11",
@@ -1929,7 +2194,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "Z12",
@@ -1972,7 +2238,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "Z13",
@@ -2016,7 +2283,8 @@
    "transformationLevel": [
     "R2"
    ],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "ON1",
@@ -2054,7 +2322,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "ON2",
@@ -2099,7 +2368,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "ON3",
@@ -2138,7 +2408,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": "INFORMATION-CHANGING"
   },
   {
    "id": "ON4",
@@ -2177,7 +2448,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "ON5",
@@ -2215,7 +2487,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": "INFORMATION-CHANGING"
   },
   {
    "id": "ON6",
@@ -2254,7 +2527,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "ON7",
@@ -2293,7 +2567,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "ON8",
@@ -2328,7 +2603,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "ON9",
@@ -2365,7 +2641,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "T1",
@@ -2400,7 +2677,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "T2",
@@ -2436,7 +2714,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "T3",
@@ -2483,7 +2762,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": "INFORMATION-CHANGING"
   },
   {
    "id": "T4",
@@ -2523,7 +2803,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "T5",
@@ -2568,7 +2849,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "L1",
@@ -2610,7 +2892,8 @@
    "transformationLevel": [
     "R2"
    ],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "L2",
@@ -2648,7 +2931,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "L3",
@@ -2689,7 +2973,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "L4",
@@ -2726,7 +3011,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "I1",
@@ -2768,7 +3054,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "I2",
@@ -2800,7 +3087,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "I3",
@@ -2839,7 +3127,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "M1",
@@ -2879,7 +3168,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "M2",
@@ -2923,7 +3213,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": "INFORMATION-CHANGING"
   },
   {
    "id": "M3",
@@ -2962,7 +3253,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": "INFORMATION-CHANGING"
   },
   {
    "id": "M4",
@@ -3000,7 +3292,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "W1",
@@ -3040,7 +3333,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "W2",
@@ -3079,31 +3373,35 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": "INFORMATION-CHANGING"
   },
   {
    "id": "W3",
    "name": "DYADIC PACKETS",
    "layer": "ORIGINAL USER THEORY",
    "stages": [
-    "REPRESENTATION"
+    "REPRESENTATION",
+    "INFORMATION"
    ],
-   "equation": "ORIGINAL USER RESEARCH TERM; OPEN DEFINITION. Intended thematic role: organizing or preserving frequency/scale information within the wavelet/scattering branch. Not identified with standard wavelet packets, dyadic wavelet decomposition or Mallat scattering paths.",
+   "equation": "ORIGINAL USER RESEARCH TERM; OPEN DEFINITION. Intended thematic role: organizing or preserving frequency/scale information within the wavelet/scattering branch. Current candidate architectural role (not the definition): a hierarchical organization of information across repeated splits/reductions, schematically X → (X₀, X₁) → (X₀₀, X₀₁, X₁₀, X₁₁) → …, investigated within the Reduction / Information-Changing Architecture. DYADIC STRUCTURE — CANDIDATE, NOT UNIVERSAL. Not identified with standard wavelet packets, dyadic wavelet trees, scattering paths or multiresolution analysis.",
    "status": "OPEN",
    "cards": [],
    "docs": [],
    "registry": [
     "T-DYADIC"
    ],
-   "dependsOn": [],
+   "dependsOn": [
+    "RI0"
+   ],
    "supports": [],
    "bearsOn": [],
-   "backboneSupport": null,
-   "slopRisk": null,
+   "backboneSupport": 15,
+   "slopRisk": 40,
    "transferDepth": "not a transfer",
    "applicationBreadth": null,
    "failureCondition": "—",
-   "foundationRole": "user-origin research term (open definition)",
+   "foundationRole": "user-origin research term (open definition); rating is of the candidate role only (preserved term, architecture fit, existing analogues), not of a definition",
    "guideLocation": "Guide: wavelets",
    "gap": null,
    "provenance": "USER-ORIGIN",
@@ -3111,7 +3409,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "W4",
@@ -3151,7 +3450,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "H1",
@@ -3192,7 +3492,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": "INFORMATION-CHANGING"
   },
   {
    "id": "H2",
@@ -3233,7 +3534,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "H3",
@@ -3268,7 +3570,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "H4",
@@ -3318,7 +3621,8 @@
    "transformationLevel": [
     "R3"
    ],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": "INFORMATION-CHANGING"
   },
   {
    "id": "H5",
@@ -3356,7 +3660,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "H6",
@@ -3399,7 +3704,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "H7",
@@ -3434,7 +3740,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": "INFORMATION-CHANGING"
   },
   {
    "id": "QZ1",
@@ -3475,7 +3782,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "QZ2",
@@ -3519,7 +3827,8 @@
    "transformationLevel": [
     "R3"
    ],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "QZ3",
@@ -3567,7 +3876,8 @@
    "transformationLevel": [
     "R3"
    ],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "QZ4",
@@ -3615,7 +3925,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": "INFORMATION-CHANGING"
   },
   {
    "id": "QZ5",
@@ -3650,7 +3961,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "P1",
@@ -3689,7 +4001,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "P2",
@@ -3723,7 +4036,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "MW1",
@@ -3759,7 +4073,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "MW2",
@@ -3801,7 +4116,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "MW3",
@@ -3833,7 +4149,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "A1",
@@ -3866,7 +4183,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "A2",
@@ -3898,7 +4216,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "A3",
@@ -3935,7 +4254,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "PL1",
@@ -3977,7 +4297,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   },
   {
    "id": "F1",
@@ -4022,7 +4343,8 @@
    "sourceStatus": null,
    "mathematicalStatus": null,
    "transformationLevel": [],
-   "novelty": null
+   "novelty": null,
+   "reductionRole": null
   }
  ],
  "bridges": [
@@ -5064,7 +5386,7 @@
    "id": "BR46",
    "left": "Fourier transform",
    "right": "translation / modulation intertwining",
-   "connector": "R3: F T_a = M_a F, i.e. (T_a f)^(ω) = e^{−iωa} f̂(ω): translation in one representation ↔ phase multiplication in another",
+   "connector": "R3: F T_a = M_a F, i.e. (T_a f)^(ω) = e^{−iωa} f̂(ω) for the continuous transform; for the finite DFT the identity holds for integer cyclic sample shifts modulo N (TRA3a; no interpolated shift is defined in the repository): translation in one representation ↔ phase multiplication in another",
    "status": "ESTABLISHED",
    "scope": "established",
    "cards": [
@@ -5130,6 +5452,187 @@
    "sources": [],
    "assumptions": "Pₙ = I − 11ᵀ/n",
    "failureCondition": "none: the distinction holds for every n ≥ 2"
+  },
+  {
+   "id": "BR49",
+   "left": "information-changing map",
+   "right": "fibers / collapse",
+   "connector": "linear Φ: Φ(x₁) = Φ(x₂) ⟺ x₁ − x₂ ∈ ker Φ; Pₙ: fibers x + span{1}; C_m: y + span{1}",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "RIC1a",
+    "RIC1b"
+   ],
+   "doesNotProve": "that fibers are kernels in general (|x̂| and scattering are nonlinear: their fibers are not subspaces)",
+   "objects": [
+    "RI0",
+    "H1"
+   ],
+   "strength": "EXACT IDENTITY",
+   "sources": [
+    "SRC-AXLER-2015"
+   ],
+   "assumptions": "a linear map Φ",
+   "failureCondition": "nonlinear maps: fibers are not cosets of a kernel"
+  },
+  {
+   "id": "BR50",
+   "left": "collapsed zero",
+   "right": "hidden source structure",
+   "connector": "Φ(x) = 0 with x ≠ 0; linear case x ∈ ker Φ: Pₙ1 = 0, C_m1 = 0",
+   "status": "DERIVED",
+   "scope": "project-specific",
+   "cards": [
+    "RIC1a",
+    "RIC1b",
+    "RIC1d"
+   ],
+   "doesNotProve": "that all zeros arise from projection or are hidden higher dimensions; the zero taxonomy is broader",
+   "objects": [
+    "RI2",
+    "Z3",
+    "H1"
+   ],
+   "strength": "EXACT IMPLICATION",
+   "sources": [],
+   "assumptions": "a non-invertible linear Φ",
+   "failureCondition": "zeros that do not arise from collapse (Z5 preserved nulls, Z10)"
+  },
+  {
+   "id": "BR51",
+   "left": "preserved zero",
+   "right": "collapsed zero",
+   "connector": "preserved: F*T = T keeps T(u, v) = 0 with dF u ≠ 0; collapsed: a non-invertible Φ sends x ≠ 0 to 0",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "RIC1d",
+    "TRA2a"
+   ],
+   "doesNotProve": "that the two are one mechanism",
+   "objects": [
+    "RI2",
+    "TA2"
+   ],
+   "strength": "FAILED CONNECTION",
+   "sources": [
+    "SRC-LEE-2018"
+   ],
+   "assumptions": "F invertible with F*T = T; Φ non-invertible",
+   "failureCondition": "none: the distinction holds for every such pair"
+  },
+  {
+   "id": "BR52",
+   "left": "information-changing map",
+   "right": "equivariance",
+   "connector": "Φ ρ_X(g) = ρ_Y(g) Φ with Φ not invertible: Pₙ with permutations, C_m with D-isometries preserving span{1}, band-limiting with integer cyclic shifts, |x̂| invariant under shifts",
+   "status": "DERIVED",
+   "scope": "project-specific",
+   "cards": [
+    "RIC1c",
+    "TRA4b",
+    "CFT8c",
+    "FB10c"
+   ],
+   "doesNotProve": "that equivariance makes a map lossless; that every reduction is equivariant",
+   "objects": [
+    "RI1",
+    "TA3",
+    "RI0"
+   ],
+   "strength": "SPECIAL-CASE CONSTRUCTION",
+   "sources": [
+    "SRC-FULTON-HARRIS-1991"
+   ],
+   "assumptions": "a group acting on source and target; the stated maps",
+   "failureCondition": "a reduction that respects no supplied symmetry"
+  },
+  {
+   "id": "BR53",
+   "left": "scattering operations",
+   "right": "Reduction / Information-Changing Architecture",
+   "connector": "filtering (covariant; invertible with all scales), modulus (discards phase), averaging (discards position; translation-invariant): carded first-order parts",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "FB10a",
+    "FB10c"
+   ],
+   "doesNotProve": "that Mallat proves hidden information in zero; that scattering is the universal form of reduction; higher-order recovery (source-only)",
+   "objects": [
+    "W2",
+    "RI0"
+   ],
+   "strength": "SPECIAL-CASE CONSTRUCTION",
+   "sources": [
+    "SRC-MALLAT-2012",
+    "SRC-MALLAT-2009",
+    "SRC-GROSSMANN-MORLET-1984"
+   ],
+   "assumptions": "admissible wavelets; exact hypotheses in the sources",
+   "failureCondition": "the first-order invariant is many-to-one (FB10c)"
+  },
+  {
+   "id": "BR54",
+   "left": "model reduction / manifold boundary",
+   "right": "Reduction / Information-Changing Architecture",
+   "connector": "placeholder: instances FB11a, FB11c; invariants, coordinate dependence and effective variables are for a later pass",
+   "status": "OPEN",
+   "scope": "project-specific",
+   "cards": [
+    "FB11a",
+    "FB11c"
+   ],
+   "doesNotProve": "what invariants survive, what coordinate dependence remains, which effective variables are retained (not pre-answered)",
+   "objects": [
+    "M2",
+    "M3",
+    "RI0"
+   ],
+   "strength": "OPEN CONNECTION",
+   "sources": [],
+   "assumptions": "none established",
+   "failureCondition": "not pre-answered"
+  },
+  {
+   "id": "BR55",
+   "left": "coarse-graining / RG",
+   "right": "Reduction / Information-Changing Architecture",
+   "connector": "instance: 1D decimation (FB11d); general RG source-only",
+   "status": "OPEN",
+   "scope": "project-specific",
+   "cards": [
+    "FB11d"
+   ],
+   "doesNotProve": "equivalence with projection, wavelet packets, Mallat scattering or model manifolds",
+   "objects": [
+    "H7",
+    "RI0"
+   ],
+   "strength": "OPEN CONNECTION",
+   "sources": [],
+   "assumptions": "none established",
+   "failureCondition": "no equivalence asserted"
+  },
+  {
+   "id": "BR56",
+   "left": "transform",
+   "right": "reduce",
+   "connector": "Transformation Architecture (R1 / R2 / R3) and Reduction / Information-Changing Architecture; intersection: information-changing maps that are also equivariant (RI1)",
+   "status": "OPEN",
+   "scope": "project-specific",
+   "cards": [],
+   "doesNotProve": "that the project is governed by these two (OPEN PROJECT QUESTION, not promoted)",
+   "objects": [
+    "TA0",
+    "RI0",
+    "RI3"
+   ],
+   "strength": "OPEN CONNECTION",
+   "sources": [],
+   "assumptions": "none established",
+   "failureCondition": "not promoted"
   },
   {
    "id": "BR35",
@@ -6090,6 +6593,27 @@
    "note": "TAH: HYPOTHESIS / OPEN; TAC: KNOWN THEOREM, NOT YET INTEGRATED"
   },
   {
+   "id": "D30",
+   "name": "Reduction / Information-Changing Architecture",
+   "objects": [
+    "RI0",
+    "RI1",
+    "RI2"
+   ],
+   "status": "SOURCE+CARD COMPLETE",
+   "note": "every existing lossy map answers the seven questions where carded; model reduction and coarse-graining are placeholders for later passes"
+  },
+  {
+   "id": "D31",
+   "name": "Transform vs reduce; DYADIC packet hierarchy questions",
+   "objects": [
+    "RI3",
+    "W5"
+   ],
+   "status": "OPEN LONG-TERM",
+   "note": "OPEN PROJECT QUESTION; DYADIC STRUCTURE — CANDIDATE, NOT UNIVERSAL"
+  },
+  {
    "id": "D27",
    "name": "Coordinate-free common form and covariance",
    "objects": [
@@ -6199,7 +6723,7 @@
     "W4"
    ],
    "status": "OPEN LONG-TERM",
-   "note": "DYADIC PACKETS: ORIGINAL USER RESEARCH TERM, OPEN DEFINITION"
+   "note": "DYADIC PACKETS: ORIGINAL USER RESEARCH TERM, OPEN DEFINITION; candidate role in the Reduction / Information-Changing Architecture (not the definition)"
   },
   {
    "id": "D16",
@@ -6414,24 +6938,333 @@
    }
   }
  ],
+ "reductionMaps": [
+  {
+   "name": "Simplex projection Pₙ: ℝⁿ → 1^⊥",
+   "objects": [
+    "R8",
+    "H1",
+    "H2"
+   ],
+   "cards": [
+    "RIC1a",
+    "G2n",
+    "G3b",
+    "G3n",
+    "G4c",
+    "Q2f"
+   ],
+   "axisA": "noninvertible; information-changing",
+   "axisB": [
+    "equivariant"
+   ],
+   "status": "carded",
+   "survives": "every difference: vᵢ − vⱼ = eᵢ − eⱼ; Σvᵢ = 0; the regular-simplex Gram",
+   "collapses": "x and x + c1 (one mode)",
+   "zero": "Pₙ1 = 0: a nonzero source with zero image; Pₙx = 0 ⟺ x ∈ span{1}",
+   "lost": "the common component 1ᵀx/n",
+   "reconstructible": "under the orthonormal-source assumptions: the source as vᵢ + w, |w|² = 1/n, unique up to ±n̂ and an isometry (G3b, G3n); without the source class, no (G4c)",
+   "fibers": "x + span{1} = x + ker Pₙ",
+   "symmetry": "commutes with permutations (R3)"
+  },
+  {
+   "name": "Weighted centering C_m = I − 1mᵀ/M",
+   "objects": [
+    "H4",
+    "CF9"
+   ],
+   "cards": [
+    "RIC1b",
+    "CFT8a",
+    "CFT8b",
+    "CFT8c",
+    "G5b"
+   ],
+   "axisA": "noninvertible; information-changing",
+   "axisB": [
+    "equivariant"
+   ],
+   "status": "carded",
+   "survives": "relative positions: (C_m y)ᵢ − (C_m y)ⱼ = yᵢ − yⱼ",
+   "collapses": "y and y + c1 (the weighted common / translation mode)",
+   "zero": "C_m1 = 0; C_m y = 0 ⟺ y ∈ span{1}",
+   "lost": "the weighted mean mᵀy/M (R_CM)",
+   "reconstructible": "y from (C_m y, mᵀy/M); not from C_m y alone",
+   "fibers": "y + span{1}",
+   "symmetry": "commutes with D-isometries preserving span{1} (R3, CFT8c); not an isometry"
+  },
+  {
+   "name": "Fourier transform (unitary)",
+   "objects": [
+    "R1",
+    "R2",
+    "R3",
+    "R5"
+   ],
+   "cards": [
+    "CFT9a",
+    "RIC1c",
+    "S2b",
+    "TRA3a"
+   ],
+   "axisA": "invertible; information-preserving",
+   "axisB": [
+    "covariant",
+    "equivariant"
+   ],
+   "status": "carded",
+   "survives": "everything: inner products (Parseval)",
+   "collapses": "nothing",
+   "zero": "only 0 ↦ 0",
+   "lost": "nothing",
+   "reconstructible": "fully (inverse transform)",
+   "fibers": "single points",
+   "symmetry": "R1 (change of orthonormal basis) and R3 (F T_a = M_a F)"
+  },
+  {
+   "name": "Keeping Fourier magnitudes only (x ↦ |x̂|)",
+   "objects": [
+    "T3"
+   ],
+   "cards": [
+    "RIC1c",
+    "FB1d",
+    "P1a",
+    "P1b",
+    "P1c"
+   ],
+   "axisA": "noninvertible; nonlinear; information-changing",
+   "axisB": [
+    "invariant"
+   ],
+   "status": "carded",
+   "survives": "the power spectrum, equivalently the autocorrelation (second-order information)",
+   "collapses": "all translates; reversals of real signals; and signals unrelated by these (P1c)",
+   "zero": "|x̂| ≡ 0 only for x = 0",
+   "lost": "phase",
+   "reconstructible": "not in general (phase retrieval needs extra assumptions; none carded)",
+   "fibers": "signals with equal power spectrum (not a linear subspace)",
+   "symmetry": "invariant under translations"
+  },
+  {
+   "name": "Discarding Fourier coefficients / band-limiting",
+   "objects": [
+    "Z7",
+    "ON3"
+   ],
+   "cards": [
+    "RIC1c",
+    "O2a"
+   ],
+   "axisA": "noninvertible; information-changing",
+   "axisB": [
+    "equivariant"
+   ],
+   "status": "carded",
+   "survives": "the kept coefficients",
+   "collapses": "signals differing only in the discarded modes",
+   "zero": "P x = 0 ⟺ x lies in the discarded modes",
+   "lost": "the discarded modes",
+   "reconstructible": "only for signals known to lie in the kept band",
+   "fibers": "x + span(discarded modes)",
+   "symmetry": "commutes with integer cyclic shifts (R3)"
+  },
+  {
+   "name": "Thresholding; subsampling",
+   "objects": [],
+   "cards": [],
+   "axisA": "noninvertible; information-changing",
+   "axisB": [
+    "none"
+   ],
+   "status": "listed, not carded",
+   "survives": "not carded in the repository",
+   "collapses": "not carded in the repository",
+   "zero": "not carded in the repository",
+   "lost": "not carded in the repository",
+   "reconstructible": "not carded in the repository",
+   "fibers": "not carded in the repository",
+   "symmetry": "not carded in the repository"
+  },
+  {
+   "name": "Wavelet transform / filtering (x ↦ x ∗ ψ_λ)",
+   "objects": [
+    "W1",
+    "W2"
+   ],
+   "cards": [
+    "FB10a",
+    "FB10c"
+   ],
+   "axisA": "invertible on L² with an admissible wavelet and all scales (source: Grossmann–Morlet); information-changing when scales are restricted",
+   "axisB": [
+    "equivariant"
+   ],
+   "status": "carded",
+   "survives": "with all scales: everything (reconstruction formula)",
+   "collapses": "with all scales: nothing",
+   "zero": "x ∗ ψ_λ = 0 for components outside ψ_λ's band",
+   "lost": "with restricted scales: the bands not kept",
+   "reconstructible": "with all scales and an admissible wavelet (source-only)",
+   "fibers": "trivial with all scales",
+   "symmetry": "translation-covariant (R3, FB10c)"
+  },
+  {
+   "name": "Wavelet modulus (|x ∗ ψ_λ|)",
+   "objects": [
+    "W2"
+   ],
+   "cards": [
+    "FB10c"
+   ],
+   "axisA": "noninvertible; nonlinear; information-changing",
+   "axisB": [
+    "equivariant"
+   ],
+   "status": "carded",
+   "survives": "the envelope (local amplitude) in each band",
+   "collapses": "signals differing by phase within a band",
+   "zero": "where the band component vanishes",
+   "lost": "phase within the band",
+   "reconstructible": "partly, through other bands and higher orders (source-only)",
+   "fibers": "not a linear subspace",
+   "symmetry": "commutes with translations"
+  },
+  {
+   "name": "Higher-order scattering propagation",
+   "objects": [
+    "W2"
+   ],
+   "cards": [],
+   "axisA": "information-changing at each order",
+   "axisB": [
+    "equivariant"
+   ],
+   "status": "source-only",
+   "survives": "part of what first-order averaging removes (source-only: Bruna–Mallat 2013)",
+   "collapses": "source-only",
+   "zero": "source-only",
+   "lost": "source-only",
+   "reconstructible": "source-only",
+   "fibers": "source-only",
+   "symmetry": "translation covariance kept (source-only)"
+  },
+  {
+   "name": "Low-pass averaging (∗ φ, or the full average)",
+   "objects": [
+    "W2"
+   ],
+   "cards": [
+    "FB10c"
+   ],
+   "axisA": "noninvertible; information-changing",
+   "axisB": [
+    "invariant"
+   ],
+   "status": "carded",
+   "survives": "first-order averaged modulus Σ|x ⊛ ψ| (FB10c)",
+   "collapses": "translates; also x and its reversal (FB10c)",
+   "zero": "—",
+   "lost": "position; high-frequency structure (requires higher orders to retain, source-only)",
+   "reconstructible": "no, from the average alone",
+   "fibers": "many-to-one (FB10c)",
+   "symmetry": "translation invariance; deformation stability (source-only, Mallat 2012)"
+  },
+  {
+   "name": "Non-selective measurement / dephasing (quantum)",
+   "objects": [
+    "QZ4"
+   ],
+   "cards": [
+    "W2a",
+    "W3a",
+    "W3b"
+   ],
+   "axisA": "noninvertible; information-changing",
+   "axisB": [
+    "none"
+   ],
+   "status": "carded",
+   "survives": "the zero S_z = 0; sector populations",
+   "collapses": "states differing only in sector coherence",
+   "zero": "the cross term ρ_AB → 0 (the zero's ±ħ/2 composition, W3a)",
+   "lost": "sector coherence",
+   "reconstructible": "not from the dephased state alone",
+   "fibers": "states with the same block-diagonal part",
+   "symmetry": "not carded"
+  },
+  {
+   "name": "Model reduction / manifold boundary (placeholder)",
+   "objects": [
+    "M2",
+    "M3"
+   ],
+   "cards": [
+    "FB11a",
+    "FB11c"
+   ],
+   "axisA": "information-changing",
+   "axisB": [
+    "none"
+   ],
+   "status": "placeholder; not pre-answered",
+   "survives": "instances only: K_M and V_max (FB11a); θ₁ (FB11c). In general: LATER PASS (model-manifold invariance audit)",
+   "collapses": "instances only: one rate-constant combination; θ₂",
+   "zero": "LATER PASS",
+   "lost": "instances only",
+   "reconstructible": "LATER PASS",
+   "fibers": "LATER PASS",
+   "symmetry": "LATER PASS"
+  },
+  {
+   "name": "Coarse-graining / RG decimation (instance)",
+   "objects": [
+    "H7"
+   ],
+   "cards": [
+    "FB11d"
+   ],
+   "axisA": "noninvertible; information-changing",
+   "axisB": [
+    "none"
+   ],
+   "status": "one instance; general RG source-only",
+   "survives": "the nearest-neighbour coupling form, renormalized: tanh K′ = tanh²K",
+   "collapses": "configurations of the decimated spins",
+   "zero": "—",
+   "lost": "the decimated spins",
+   "reconstructible": "no",
+   "fibers": "spin configurations agreeing on the kept spins",
+   "symmetry": "not carded"
+  }
+ ],
+ "reductionQuestions": [
+  "survives",
+  "collapses",
+  "zero",
+  "lost",
+  "reconstructible",
+  "fibers",
+  "symmetry"
+ ],
  "ratings": [
   {
    "dimension": "Foundation architecture completeness",
-   "rating": 88,
-   "previous": 85,
-   "reason": "The TRANSFORMATION → PRESERVED STRUCTURE step of the spine now has an explicit three-level organization (R1 representation covariance, R2 structural invariance, R3 equivariance / intertwining) with exact laws and failure cases, and the earlier rules sort into it (generators, conservation, stabilizers, invariant zero relations, Fourier shift, Schur sectors, weighted centering). Still short: DYADIC PACKETS undefined, no general statement for effective representations, no application mathematics, and the model-manifold invariance audit open."
+   "rating": 90,
+   "previous": 88,
+   "reason": "Lossy maps now have their own architecture, parallel to the Transformation Architecture: the seven questions are answered for every existing information-changing map where carded (simplex, centering, Fourier magnitude and band-limiting, scattering stages, dephasing, reduction and decimation instances), the intersection with equivariance is explicit, preserved and collapsed zeros are distinguished, and DYADIC PACKETS has a candidate architectural home (still undefined). Still short: DYADIC definition, no general statement for effective representations, no application mathematics, the model-manifold invariance audit."
   },
   {
    "dimension": "Mathematical verification coverage",
    "rating": 96,
-   "previous": 95,
-   "reason": "67 of 70 established or derived objects have PASS cards (computed). New and carded in the correction: TA0–TA3, TA2I (TRA cards). Not carded: R7 (definitional), OB1 (definitional), A3 (wording)."
+   "previous": 96,
+   "reason": "70 of 73 established or derived objects have PASS cards (computed). New and carded: RI0–RI2 (RIC cards). Not carded: R7 (definitional), OB1 (definitional), A3 (wording)."
   },
   {
    "dimension": "Cross-domain validation",
    "rating": 30,
    "previous": 30,
-   "reason": "Unchanged: no experiment was run in the correction."
+   "reason": "Unchanged."
   },
   {
    "dimension": "Project-specific construction maturity",
@@ -6443,7 +7276,7 @@
    "dimension": "Paper / source coverage",
    "rating": 55,
    "previous": 55,
-   "reason": "41 external sources registered with verified bibliographic records (7 only partly verified), each with the exact claim it supports and what it does not establish. 49 of 50 external-claim objects have a source; R5 is SOURCE MISSING. Unchanged: Čencov was moved from support to bears-on (not yet integrated)."
+   "reason": "41 external sources registered with verified bibliographic records (7 only partly verified), each with the exact claim it supports and what it does not establish. 49 of 50 external-claim objects have a source; R5 is SOURCE MISSING. Unchanged."
   },
   {
    "dimension": "Application validation",

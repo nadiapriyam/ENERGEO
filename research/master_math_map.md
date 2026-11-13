@@ -56,6 +56,22 @@ relationships, never collapsed (Transformation Architecture, TA0; Part III):
 
 Transformation is not symmetry, and representation change is not physical change.
 
+**Cross-cutting branch at REPRESENTATION (2026-11-13).** Two related architectures leave the REPRESENTATION stage.
+Both feed zero, geometry, information, reconstruction, dynamics and cross-system transfer.
+
+```
+                                   REPRESENTATION
+                    ┌───────────────────┴────────────────────┐
+     TRANSFORMATION RELATIONSHIPS (TA0)        REDUCTION / INFORMATION CHANGE (RI0)
+     R1 covariance · R2 invariance ·           Φ: X → Y — what survives, collapses, becomes zero,
+     R3 equivariance                           is lost, is reconstructible; fibers; symmetry
+                    └───────── intersection: information-changing maps that are also equivariant (RI1) ─────────┘
+                                                        ↓
+                    zero · geometry · information · reconstruction · dynamics · cross-system transfer
+```
+
+The linear spine is not rewritten; this is a cross-cutting architecture.
+
 | Stage | Foundation objects | Notes |
 |---|---|---|
 | OBJECT | OB1, MW1, A3, PL1 | What is the object before we choose how to represent or measure it? Shared vocabulary does not imply a shared object. |
@@ -197,8 +213,8 @@ transformation law.
   - prediction-space and parameter coordinates (Fisher reparametrization);
   - spacetime coordinate descriptions.
 - **Scope correction.** Higher-dimensional *projections* are not R1. Pₙ is not invertible and does not keep inner
-  products (TRA4b, BR48). A projection is a representation *map* that loses information. Its transformation
-  relationship is R3: Pₙ commutes with permutations.
+  products (TRA4b, BR48). A projection is a representation *map* that loses information, recorded in the Reduction /
+  Information-Changing Architecture (Part VI). Its transformation relationship is R3: Pₙ commutes with permutations.
 - **R1 formalizes part of the old H2 program.** It gives an exact criterion for "same object, different coordinates ≠
   different object" (CFT7) and for "coordinate-dependent components ≠ coordinate-invariant quantities" (CFT5e,
   CFT10a). H2 is unchanged and not promoted to a theorem.
@@ -236,7 +252,7 @@ transformation law.
 
 | Example | Equation | Card / bridge |
 |---|---|---|
-| Fourier | F T_a = M_a F: (T_a f)^(ω) = e^{−iωa} f̂(ω). Translation in one representation ↔ phase multiplication in another. Not a physical spacetime symmetry. | TRA3a, FB1a, BR46 |
+| Fourier | F T_a = M_a F: (T_a f)^(ω) = e^{−iωa} f̂(ω) for the continuous transform. For the finite DFT the identity holds for integer cyclic sample shifts modulo N (TRA3a's "every a" ranges over these; no interpolated shift is defined in the repository). Translation in one representation ↔ phase multiplication in another. Not a physical spacetime symmetry. | TRA3a, FB1a, BR46 |
 | Weighted centering | C_m is a geometry-derived operator compatible with a symmetry subgroup, not a symmetry: a D-orthogonal, D-self-adjoint projector, not an isometry, with A C_m = C_m A for D-isometries preserving span{1} | CFT8a–c, BR40 |
 | Quantum (results unchanged) | group action (S₄, the exchange P) → representation sectors → operators commuting with the action (S² with P_σ) → Schur-type restrictions (scalar on multiplicity-free blocks). Particle exchange is not universalized. | FS2e, Q2d/Q2e, MB2c, BR47 |
 | Projections | Pₙ commutes with the permutations of its source basis | TRA4b, Q2f |
@@ -336,6 +352,19 @@ Known/project-observed categories. Not logically exhaustive. Not reduced to kern
 Not a zero category: the symplectic self-pairing ω(v, v) = 0 holds for every v (alternating, FB9a). It is kept out of
 the taxonomy because it selects nothing.
 
+**PRESERVED ZERO vs COLLAPSED ZERO (RI2, 2026-11-13).** An additional relationship that does not replace the
+taxonomy above:
+
+| | Mechanism | Card / bridge |
+|---|---|---|
+| **Preserved zero** (transformation) | under R2, F*T = T and T(u, v) = 0 ⟹ T(dF u, dF v) = 0, and the vectors themselves survive (Λv ≠ 0) | TRA2a, RIC1d, BR44 |
+| **Collapsed zero** (reduction) | a nonzero source x has Φ(x) = 0 (linear: x ∈ ker Φ; Pₙ1 = 0, C_m1 = 0) | RIC1a, RIC1b, RIC1d, BR50 |
+
+- They are different mechanisms (BR51).
+- "Zero in the target ↔ hidden source structure" is ONE exact mechanism, the collapsed zero.
+- Not written: all zeros arise from projection; all zeros are hidden higher dimensions.
+- Some zeros are neither, for example Z10 and Z6.
+
 **Zero as connector (Z11)**, a HYPOTHESIS:
 
 > 0 may function as an interface/resultant between relational structure in one representation and structure visible in another.
@@ -405,6 +434,124 @@ The mechanisms below are kept separate. These are known examples, not an exhaust
 | Scattering (Mallat) | first order: translation-invariant averaged modulus (FB10c); the next order recovers part of what averaging removed (source-only) | phase, position | W2 (SRC-MALLAT-2012, SRC-BRUNA-MALLAT-2013) |
 | Quantum dephasing / measurement | the zero (S_z = 0); sector populations | sector coherence ρ_AB; the zero's ±ħ/2 composition (W2c, W3a) | QZ4 |
 | Shadows of ℝⁿ | the projected configuration | true angles (O1b) | ON5 |
+
+### Reduction / Information-Changing Architecture (RI0, 2026-11-13)
+
+A project-level organizing architecture, derived from established mathematics. It runs **parallel** to the
+Transformation Architecture and is not an R4 inside it. It studies maps Φ: X → Y, where Φ need not be invertible:
+maps that project, compress, aggregate, average, filter, coarse-grain, reduce dimension, discard degrees of freedom,
+or collapse several source states to one target state. The defining question is not "information is always lost":
+
+> What information survives, collapses, is discarded, or remains reconstructible under Φ?
+
+**For every map, seven questions.** These are not reduced to kernels.
+
+| | Question |
+|---|---|
+| IC1 | What survives? |
+| IC2 | What collapses (Φ(x₁) = Φ(x₂))? |
+| IC3 | What becomes zero (Φ(x) = 0)? |
+| IC4 | What is lost? |
+| IC5 | What is reconstructible, and under which assumptions? |
+| IC6 | What are the fibers Φ⁻¹(y) (ker Φ in the linear case)? |
+| IC7 | Does Φ ρ_X(g) = ρ_Y(g) Φ hold? |
+
+The full table, one row per map, is generated in `research/foundation_reduction_maps.md`.
+
+**Distinctions (locked).**
+
+- information-changing ≠ symmetry;
+- information-changing ≠ change of coordinates;
+- **an information-changing map may still be equivariant.**
+
+The intersection of the two architectures is explicit (RI1, BR52): information-changing maps that are also
+equivariant.
+
+| Map | Axis A | Axis B (R-relationship) |
+|---|---|---|
+| Fourier transform (unitary) | invertible; information-preserving | R1 (change of basis) + R3 (translation ↔ phase) |
+| Simplex projection Pₙ | noninvertible; information-changing | R3: commutes with permutations |
+| Weighted centering C_m | noninvertible; information-changing | R3 under the D-isometries preserving span{1} |
+| Band-limiting / discarding coefficients | noninvertible; information-changing | R3: commutes with integer cyclic shifts (RIC1c) |
+| Magnitude only, x ↦ \|x̂\| | noninvertible, nonlinear; information-changing | invariant under translations |
+| Scattering averaging | information-changing | produces translation invariance and deformation stability (source-only) |
+
+Axes A and B are an analytic tool for Foundation V1, not final universal categories.
+
+**Simplex projection, revisited (RIC1a, G3b, G3n, G4c).**
+
+| Question | Pₙ: ℝⁿ → 1^⊥ |
+|---|---|
+| What survives | every difference, vᵢ − vⱼ = eᵢ − eⱼ; Σvᵢ = 0; the regular-simplex Gram |
+| What collapses | x and x + c1, one mode |
+| What becomes zero | Pₙ1 = 0, a nonzero source with zero image |
+| What is lost | the common component 1ᵀx/n |
+| What is reconstructible | only under the orthonormal-source assumptions: the source as vᵢ + w with \|w\|² = 1/n, up to ±n̂ and an isometry; not without the source class (G4c) |
+| Fibers | x + span{1} |
+
+This is COLLAPSE of one mode + PRESERVATION of selected relational structure. It is one example, not a universal
+theorem.
+
+**Weighted centering, dual placement (RIC1b, CFT8).**
+
+- *Information-changing role:* C_m removes the weighted common / translation mode. The weighted mean is lost and
+  relative positions survive.
+- *R3 role:* A C_m = C_m A for the D-isometries preserving span{1}.
+- Both roles are recorded; neither replaces the other. C_m is not an isometry.
+
+**Fourier: the transform vs lossy derived operations.**
+
+- The unitary Fourier transform is not lossy. It is R1, a change of representation, and its translation-to-phase
+  relation is R3.
+- The following *are* information-changing and are kept distinct from the transform itself:
+  - discarding coefficients;
+  - keeping magnitudes only;
+  - band-limiting;
+  - averaging;
+  - thresholding and subsampling (listed; not carded).
+
+**Mallat / wavelets, by operation.** Mallat does not prove the project architecture. Schematically:
+
+```
+x → x ∗ ψ_λ → |x ∗ ψ_λ| → further wavelet transforms → averaging
+```
+
+| Operation | Survives | Disappears | Becomes invariant | Recoverable | Needs higher order |
+|---|---|---|---|---|---|
+| wavelet transform / filtering | everything, with all scales and an admissible wavelet (Grossmann–Morlet, source) | the dropped bands, if scales are restricted | — (translation-covariant, FB10c) | yes, with all scales (source) | — |
+| modulus | the envelope in each band | phase within the band | — (commutes with translations) | partly, through other bands and orders (source) | — |
+| higher-order propagation | part of what averaging removes (source-only) | — | — | — | yes (source-only) |
+| low-pass averaging | the averaged modulus (FB10c) | position; high-frequency structure | translation invariance (FB10c); deformation stability (source-only) | no, from the average alone | the high-frequency structure (source-only) |
+
+- **Established and carded:** the zero mean and admissibility (FB10a, FB10b); translation covariance, first-order
+  invariance and many-to-one behaviour (FB10c).
+- **Source-only:** deformation stability, energy, higher-order recovery.
+- **Not written:** "Mallat proves hidden information in zero"; "scattering is the universal form of reduction".
+
+**Source / manifestation.**
+
+> What can a reduced manifestation tell us about the richer source structure that generated it?
+
+- A source does not automatically mean a higher physical spatial dimension, and a reduction does not automatically
+  mean a projection.
+- The source may be higher-dimensional, higher-information, higher-resolution, more parameterized, less averaged or
+  less quotient-like, depending on the system.
+
+**Placeholders, not pre-answered.**
+
+- **Model reduction / manifold boundary (BR54):** the invariants, coordinate dependence and effective variables are
+  for the model-manifold invariance audit.
+- **Coarse-graining / RG (BR55):** one carded instance (FB11d). No equivalence with projection, wavelet packets,
+  Mallat or model manifolds is asserted.
+
+**Open project question (RI3, BR56).**
+
+> Is the Geometry of Representation fundamentally governed by both how structure behaves under transformations and how structure behaves under reduction?
+
+OPEN PROJECT QUESTION, not promoted. The project-specific part is whether a shared analysis of SURVIVAL + COLLAPSE +
+ZERO + RECONSTRUCTION + SYMMETRY COMPATIBILITY gives a useful cross-domain geometry of representation. Each object
+involved is known mathematics: linear projection, kernels, quotients / fibers, wavelet decomposition, scattering,
+coarse-graining, equivariance.
 
 ## Part VII. Finite / infinite and continuation
 
@@ -482,9 +629,18 @@ Every user-origin record, with its original wording, normalized reading and stat
   historical first wording, kept (T-TIME-CIRCLE-0).
 - **Orthogonality and form:** B-ORTHO-FORM.
 - **Information:**
-  - **DYADIC PACKETS** (T-DYADIC): ORIGINAL USER RESEARCH TERM, OPEN DEFINITION. Intended thematic role: connected
-    to organizing or preserving frequency/scale information within the wavelet/scattering branch. It is not
-    identified with standard wavelet packets, dyadic wavelet decomposition or Mallat scattering paths.
+  - **DYADIC PACKETS** (T-DYADIC): ORIGINAL USER RESEARCH TERM, OPEN DEFINITION.
+    - Intended thematic role: connected to organizing or preserving frequency/scale information within the
+      wavelet/scattering branch.
+    - *Current candidate architectural role (2026-11-13), not the definition:* a hierarchical organization of
+      information across repeated splits/reductions, schematically X → (X₀, X₁) → (X₀₀, X₀₁, X₁₀, X₁₁) → …. It is
+      investigated within the Reduction / Information-Changing Architecture.
+    - DYADIC STRUCTURE — CANDIDATE, NOT UNIVERSAL: no significance is drawn from base 2.
+    - Not identified with standard wavelet packets, dyadic wavelet trees, scattering paths or multiresolution
+      analysis.
+    - Open questions (W5): *Can a hierarchy of packets encode how information survives, separates, disappears, or
+      remains reconstructible under repeated reduction?* *Can relationships between packets preserve information not
+      visible in any one packet individually?*
   - Information loss (T-MAGPHASE, T-REP-COMPLETE); effective representations (T-EFFECTIVE-Q, registry record added
     in Pass 2).
   - *Provenance correction (Pass 2):* C7 (T-C7) was listed here in V1, but the registry records it as an
@@ -518,6 +674,10 @@ Only explicit candidates are listed. Ratings are per proposition.
 | CF11-R | A geometry may be characterized by relational structure together with transformations under which that structure is preserved or transforms coherently (explicit form) | HYPOTHESIS (historical; superseded by TA0) | 45% / 20% | STRUCTURAL TRANSFER | 3 |
 | TA0 | Transformation Architecture: (1) representation covariance, (2) structural invariance, (3) compatible maps / operators | PROJECT-LEVEL ORGANIZING ARCHITECTURE | 45% / 15% | STRUCTURAL TRANSFER | 3 |
 | TAH | Do recurring relationships among representation covariance, structural invariance, zero relations, and equivariance reveal a deeper common architecture across the systems studied in Geometry of Representation? | HYPOTHESIS / OPEN | 25% / 35% | NOT YET FORMALIZED | 2 |
+| RI0 | Reduction / Information-Changing Architecture: what survives, collapses, becomes zero, is lost, is reconstructible under Φ | PROJECT-LEVEL ORGANIZING ARCHITECTURE | 45% / 20% | STRUCTURAL TRANSFER | 3 |
+| RI1 | information-changing maps that are also equivariant | DERIVED | 50% / 10% | STRUCTURAL TRANSFER | 3 |
+| RI2 | PRESERVED ZERO vs COLLAPSED ZERO | DERIVED | 40% / 10% | STRUCTURAL TRANSFER | 3 |
+| RI3 | Is the Geometry of Representation fundamentally governed by both how structure behaves under transformations and how structure behaves under reduction? | OPEN PROJECT QUESTION | — | — | — |
 | Z11 | zero as connector / interface | HYPOTHESIS | 25% / 30% | STRUCTURAL | 3 |
 | Z12 | the visible zero does not determine where hidden information lives | DERIVED | 35% / 20% | STRUCTURAL | 2 |
 | H5 | the larger generating geometry | HYPOTHESIS | 35% / 25% | STRUCTURAL | 2 |

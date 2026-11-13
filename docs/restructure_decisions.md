@@ -1383,3 +1383,63 @@ Nadia's decisions, verbatim. LaTeX converted to plain text and lists joined; not
 > Do not let: transformation become synonymous with: symmetry.
 
 > Do not let: representation change become synonymous with: physical change.
+
+## Reduction / Information-Changing Architecture (2026-11-13)
+
+Nadia's decisions, verbatim. LaTeX converted to plain text and lists joined; nothing else changed. An architecture amendment, not a new experiment: CF11-F2 and R1 / R2 / R3 are unchanged.
+
+> Do NOT create an R4 inside the Transformation Architecture
+
+> REDUCTION / INFORMATION-CHANGING MAPS
+
+> PROJECT-LEVEL ORGANIZING ARCHITECTURE; DERIVED FROM ESTABLISHED MATHEMATICS
+
+> What information survives, collapses, is discarded, or remains reconstructible under Φ?
+
+> Do NOT reduce the general architecture to kernels.
+
+> information-changing ≠ symmetry
+
+> information-changing ≠ change of coordinates
+
+> an information-changing map may still be equivariant.
+
+> some information collapses while some relational information survives exactly.
+
+> zero in the target ↔ hidden source structure
+
+> Do not write: all zeros arise from projection or: all zeros are hidden higher dimensions.
+
+> integer cyclic sample shifts modulo N
+
+> Mallat proves hidden information in zero; scattering is the universal form of reduction.
+
+(Both are lines not to be written.)
+
+> ORIGINAL USER RESEARCH TERM; OPEN DEFINITION
+
+> a hierarchical organization of information across repeated splits/reductions
+
+> Can a hierarchy of packets encode how information survives, separates, disappears, or remains reconstructible under repeated reduction?
+
+> Can relationships between packets preserve information not visible in any one packet individually?
+
+> DYADIC STRUCTURE — CANDIDATE, NOT UNIVERSAL
+
+> What can a reduced manifestation tell us about the richer source structure that generated it?
+
+> source does not automatically mean higher physical spatial dimension
+
+> reduction does not automatically mean projection.
+
+> information-changing maps that are also equivariant
+
+> Is the Geometry of Representation fundamentally governed by both how structure behaves under transformations and how structure behaves under reduction?
+
+> OPEN PROJECT QUESTION
+
+> PRESERVED ZERO vs COLLAPSED ZERO
+
+> COLLAPSE of one mode + PRESERVATION of selected relational structure.
+
+> SURVIVAL + COLLAPSE + ZERO + RECONSTRUCTION + SYMMETRY COMPATIBILITY
