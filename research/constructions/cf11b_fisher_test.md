@@ -195,3 +195,24 @@ admissible symmetry preserves a defining tensor/form under pullback. What this d
 
 **CF11-B: REFINED.** The wording is unchanged. The test supports the explicit refinement (P1 + P2, with P3 for
 derived operators) as the precise reading. Adopting it as project wording is Nadia's decision.
+
+## 11. Architectural correction (2026-11-12, after the result; nothing above is changed)
+
+The result above stands: CF11-F2, and CF11-B is classified REFINED. The preregistration, the observed card verdicts and
+the anticipated outcome are unchanged.
+
+**What is corrected is the interpretation in §2.** That section wrote that "preserved" has more than one precise
+meaning, and called P1, P2 and P3 readings of one word. That compression is withdrawn. They are three related but
+mathematically distinct **transformation relationships**, recorded as the Transformation Architecture (TA0;
+`research/master_math_map.md`, Part III):
+
+| Pass 3 label | Corrected level | Law | Card (TRA) |
+|---|---|---|---|
+| P2, naturality / covariance | **R1, representation covariance**: the same object in a new representation | g_φ = Jᵀ g_θ J, ds² unchanged; never F*g = g for a passive change | TRA4a |
+| P1, invariance | **R2, structural invariance / symmetry**: active maps preserving the structure | F*T = T; matrix form A†MA = M; infinitesimal L_X T = 0, KᵀM + MK = 0 | TRA1a–c |
+| P3, operator equivariance | **R3, equivariance / intertwining**: maps compatible with transformations | C ρ_V(g) = ρ_W(g) C; Fourier F T_a = M_a F | TRA3a, TRA3b |
+
+**Two scope corrections came with it** (TRA4b):
+
+- projections are not R1;
+- the Čencov theorem is a future check, not completed evidence.

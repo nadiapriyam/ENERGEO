@@ -34,7 +34,7 @@ obj('R2', 'Fourier coefficient is a projection', E, ['REPRESENTATION'], 'f̂(k) 
 obj('R3', 'Parseval / Plancherel', E, ['PRESERVED STRUCTURE'], '‖f‖² = Σ|f̂(k)|²', 'ESTABLISHED', cards=['S2b', 'B4a', 'O2b', 'CFT9a'], depends=['R1', 'R2'], bears=['T-ENERGY-MEANING'], bs=25, slop=5,
     fail='none', role='what one representation change preserves', guide='Guide: Fourier (#7, #8)')
 obj('R4', 'Translation becomes phase', E, ['TRANSFORMATION', 'REPRESENTATION'], 'T_τ e_k = e^{−2πikτ} e_k', 'ESTABLISHED', cards=['S3', 'CFT9c'], depends=['R1'], supports=['T-H2'], bs=20, slop=5,
-    fail='none', role='a transformation diagonalized by a representation', guide='Guide: Fourier')
+    fail='none', role='a transformation diagonalized by a representation; R3: the Fourier transform intertwines translation and phase multiplication (BR46)', guide='Guide: Fourier')
 obj('R5', 'Fourier transform as a quarter-turn', E, ['REPRESENTATION', 'TRANSFORMATION'], 'F h_n = (−i)^n h_n, F⁴ = I; oscillator flow (x, p) → (p, −x)', 'ESTABLISHED', cards=['S11', 'S11b'],
     docs=['research/connections/C4.md'], bs=20, slop=5, fail='none', role='representation change as a group action (C4a)', guide='Guide: Fourier')
 obj('R6', 'Circle / phase representation of an unbounded parameter', E, ['REPRESENTATION', 'DYNAMICS / CONTINUATION'], 't ↦ e^{iωt} ∈ S¹, t ∈ ℝ', 'ESTABLISHED', cards=['C8a', 'G1c'],
@@ -50,14 +50,14 @@ obj('R10', 'Common structural law rather than analogy', UT, ['REPRESENTATION', '
 
 # ── relation / common form (Layer 2) ───────────────────────────────────────────────────────────
 obj('CF1', 'Form preservation ⟺ AᵀMA = M', E, ['RELATION', 'PRESERVED STRUCTURE', 'GEOMETRY'], '(AᵀMA)_ij = B_M(Ae_i, Ae_j); B_M(Ax, Ay) = B_M(x, y) ∀x,y ⟺ AᵀMA = M', 'ESTABLISHED',
-    cards=['C1b', 'S4e', 'S4f', 'S5c', 'O1a'], docs=['research/connections/C1.md'], supports=['T-BACKBONE-INVARIANT'], bs=40, slop=10,
-    fail='none (theorem)', role='the common-form core: a relation and the transformations that keep it', guide='Foundation (currently Guide: forms; see decision L1)')
+    cards=['C1b', 'S4e', 'S4f', 'S5c', 'O1a', 'CFT1a'], docs=['research/connections/C1.md'], supports=['T-BACKBONE-INVARIANT'], bs=65, slop=5,
+    fail='none (theorem)', role='the common-form core: a relation and the transformations that keep it; R2 in matrix coordinates (A†MA = M is the coordinate form of F*T = T, BR36)', guide='Foundation (currently Guide: forms; see decision L1)')
 obj('CF2', 'Zero relations are kept by form-preserving maps', E, ['ZERO / BALANCE / NULL', 'PRESERVED STRUCTURE'], 'AᵀMA = M ⇒ (B_M(x, y) = 0 ⇒ B_M(Ax, Ay) = 0)', 'ESTABLISHED',
     cards=['C1b'], depends=['CF1'], supports=['T-BACKBONE-INVARIANT'], bears=['T-ZERO-ORTHOGONAL-B'], bs=40, slop=10, fail='none', role='where invariant-form work and zero work meet', guide='Act IV / Guide')
 obj('CF3', 'Preserving zero resultants identifies no form', NG, ['ZERO / BALANCE / NULL', 'PRESERVED STRUCTURE'], 'every linear A keeps Σv = 0; 2I keeps every zero resultant but DᵀMD = M only for M = 0', 'ESTABLISHED',
     cards=['Z4a', 'Z4b'], reg=['T-ZERO-NO-FORM'], bs=30, slop=5, fail='—', role='boundary: a zero relation alone does not fix a geometry', guide='Act III (research note)')
 obj('CF4', 'Global preserved form → generator rule', E, ['TRANSFORMATION', 'PRESERVED STRUCTURE'], 'exp(sK)ᵀ M exp(sK) = M ∀s ⟺ KᵀM + MK = 0', 'ESTABLISHED', cards=['S9', 'S9(2)', 'S9(3)', 'B1a', 'C9c'],
-    docs=['research/connections/C1.md'], depends=['CF1'], bs=35, slop=10, fail='none', role='global geometry → infinitesimal rule (rotation, boost, symplectic)', guide='Guide: forms / generators')
+    docs=['research/connections/C1.md'], depends=['CF1'], bs=35, slop=10, fail='none', role='global geometry → infinitesimal rule (rotation, boost, symplectic); the matrix case of L_X T = 0 (TA2I)', guide='Guide: forms / generators')
 obj('CF5', 'Invariant form ⟺ conservation along a linear flow', E, ['DYNAMICS / CONTINUATION', 'PRESERVED STRUCTURE'], 'z\' = Kz: d/dt(zᵀMz) = zᵀ(KᵀM + MK)z = 0 ⟺ KᵀM + MK = 0 (M symmetric)', 'ESTABLISHED',
     cards=['S9b', 'C2a'], docs=['research/connections/C2.md'], depends=['CF4'], bs=35, slop=10, fail='none', role='symmetry → conservation, linear case', guide='Guide: conservation')
 obj('CF6', 'Hamiltonian flow conserves H; the symplectic pairing', E, ['DYNAMICS / CONTINUATION', 'RELATION'], 'ż = J∇H with J constant antisymmetric and H time-independent ⇒ dH/dt = ∇HᵀJ∇H = 0. Symplectic pairing ω(u, v) = uᵀJv: ω(u, v) = 0 is symplectic orthogonality; ω(v, v) = 0 for every v because ω is alternating (an alternating self-pairing zero, not a Lorentz-type null vector)', 'ESTABLISHED', cards=['C1a', 'C1a(2)', 'C1c', 'S9(3)', 'FB5c', 'FB9a', 'FB9c'],
@@ -78,19 +78,49 @@ obj('CF11-A', 'Common-form pattern in established geometries', PD, ['RELATION', 
 obj('CF11-B', 'Common-form architecture across the project\'s geometries', UT, ['RELATION', 'TRANSFORMATION', 'PRESERVED STRUCTURE', 'GEOMETRY', 'CROSS-SYSTEM TRANSFER'],
     'Can relation + admissible transformations + preserved structure provide a broader organizing architecture across the geometries investigated in this project?', 'HYPOTHESIS', depends=['CF11-A', 'CF3', 'CF9', 'CF10', 'CF12', 'CF13'], reg=['T-CF11-B', 'T-BACKBONE-INVARIANT'],
     cards=['CFT1a', 'CFT2a', 'CFT4d', 'CFT5a', 'CFT5c', 'CFT5f', 'CFT11b'], docs=['research/constructions/cf11b_fisher_prereg.md', 'research/constructions/cf11b_fisher_test.md'],
-    bs=35, slop=25, td='STRUCTURAL TRANSFER', breadth=3, fail='read with one meaning of "preserved" (P1), it organizes generic Fisher geometry only vacuously (F-C′: CFT5a, CFT5c)', role='Pass 3 (preregistered): CF11-F2, PARTIAL SURVIVAL; classified REFINED; wording unchanged', guide='all Acts')
+    bs=35, slop=25, td='STRUCTURAL TRANSFER', breadth=3, fail='with structural invariance alone (P1 = R2) it organizes generic Fisher geometry only vacuously (F-C′: CFT5a, CFT5c)', role='Pass 3 (preregistered): CF11-F2, PARTIAL SURVIVAL; classified REFINED; wording unchanged; architectural correction: recorded as the Transformation Architecture (TA0)', guide='all Acts')
 obj('CF11-R', 'CF11-CANDIDATE-REFINEMENT (explicit form)', UT, ['RELATION', 'TRANSFORMATION', 'PRESERVED STRUCTURE', 'GEOMETRY', 'CROSS-SYSTEM TRANSFER'],
     'A geometry may be characterized by relational structure together with transformations under which that structure is preserved or transforms coherently. Explicit form tested: tensor T; P1 F*T = T for symmetries; P2 g_(p∘θ) = θ*g_p (g_φ = Jᵀ g J) for reparametrizations; P3 A C = C A for derived operators; invariants ds², K, rank; failure cases', 'HYPOTHESIS',
     cards=['CFT3c', 'CFT4c', 'CFT11b', 'CFT10a', 'CFT8c'], depends=['CF11-B', 'CF12', 'CF13'], reg=['T-CF11-REFINEMENT'], docs=['research/constructions/cf11b_fisher_test.md'],
-    bs=45, slop=20, td='STRUCTURAL TRANSFER', breadth=3, fail='"transforms coherently" without a stated law (too generic); weighted centering needs P3, beyond P1 and P2', role='supported in explicit form by the Pass 3 test; adoption as project wording is Nadia\'s decision', guide='all Acts')
+    bs=45, slop=20, td='STRUCTURAL TRANSFER', breadth=3, fail='"transforms coherently" without a stated law (too generic); weighted centering needs P3, beyond P1 and P2', role='historical step between CF11-F2 and the Transformation Architecture; superseded by TA0 (architectural correction): P1, P2, P3 are R2, R1, R3, not three meanings of one word', guide='all Acts')
 obj('CF12', 'Pullback preservation: the coordinate-free common form', E, ['RELATION', 'TRANSFORMATION', 'PRESERVED STRUCTURE', 'GEOMETRY'],
     'F*T = T, i.e. T_{F(x)}(dF u, dF v) = T_x(u, v); coordinates: dF(x)ᵀ M(F(x)) dF(x) = M(x); constant form and linear F: AᵀMA = M (A†HA = H); covers Euclidean, unitary, Lorentz, symplectic (nonlinear maps allowed) and Fisher isometries', 'ESTABLISHED',
     cards=['CFT1a', 'CFT1b', 'CFT1c', 'CFT1d', 'CFT2a', 'CFT2b', 'CFT2c', 'CFT3b', 'CFT4d', 'CFT6c', 'CFT9a', 'CFT9b', 'CFT11a'], depends=['CF1', 'CF4'], reg=['T-CF-PULLBACK-Q'],
-    bs=70, slop=5, td='STRUCTURAL TRANSFER', breadth=3, fail='a map that is not a symmetry (shear, generic matrix, (q, 2p), non-isometries: CFT1c, CFT2b, CFT4d); a reparametrization is not F*g = g', role='KNOWN MATHEMATICS, HIGH FOUNDATION RELEVANCE: the common form behind AᵀMA = M', guide='Guide: forms (Foundation ontology)')
+    bs=70, slop=5, td='STRUCTURAL TRANSFER', breadth=3, fail='a map that is not a symmetry (shear, generic matrix, (q, 2p), non-isometries: CFT1c, CFT2b, CFT4d); a reparametrization is not F*g = g', role='KNOWN MATHEMATICS, HIGH FOUNDATION RELEVANCE: the common form behind AᵀMA = M; the Pass 3 record of R2 (TA2)', guide='Guide: forms (Foundation ontology)')
 obj('CF13', 'Naturality of the Fisher metric; coordinate invariants', E, ['REPRESENTATION', 'GEOMETRY', 'INFORMATION'],
     'reparametrization θ = θ(φ): g_φ = Jᵀ g(θ(φ)) J (the pullback of the model\'s metric); invariant: ds², vector lengths, Gaussian curvature, rank and null directions, total length; not invariant: the component eigenvalues of g', 'ESTABLISHED',
     cards=['CFT3c', 'CFT4c', 'CFT4e', 'CFT5d', 'CFT5e', 'CFT6b2', 'CFT7a', 'CFT7b', 'CFT10a', 'CFT11b'], depends=['CF10'],
-    bs=30, slop=5, fail='a coordinate-dependent pseudo-structure (the identity matrix in every chart) fails the law (CFT10a)', role='separates same model / different coordinates from different model / different geometry (H2)', guide='Guide: model manifolds (Foundation ontology)')
+    bs=30, slop=5, fail='a coordinate-dependent pseudo-structure (the identity matrix in every chart) fails the law (CFT10a)', role='separates same model / different coordinates from different model / different geometry (H2); an R1 instance (TA1)', guide='Guide: model manifolds (Foundation ontology)')
+
+obj('TA0', 'Transformation Architecture (R1 / R2 / R3)', PD, ['REPRESENTATION', 'TRANSFORMATION', 'PRESERVED STRUCTURE', 'GEOMETRY'],
+    'A mathematical structure may be investigated by distinguishing: (1) how it transforms when its representation changes, (2) which transformations leave the structure invariant, and (3) which maps/operators remain compatible with those transformations. R1 representation covariance; R2 structural invariance / symmetry (F*T = T); R3 equivariance / intertwining (C ρ_V(g) = ρ_W(g) C)', 'DERIVED',
+    cards=['TRA4a', 'TRA1b', 'TRA2a', 'TRA3a', 'TRA3b', 'TRA4b', 'CFT4c', 'CFT8c'], depends=['TA1', 'TA2', 'TA3'], reg=['T-TRANSFORMATION-ARCH'], bears=['T-H2'],
+    docs=['research/constructions/cf11b_fisher_test.md'], bs=45, slop=15, td='STRUCTURAL TRANSFER', breadth=3,
+    fail='vacuity: if every transformation could be sorted into some level, the architecture would organize nothing; each level must name its class, law, invariant and a failure (TRA2b, TRA3b, TRA4a, TRA4b)',
+    role='PROJECT-LEVEL ORGANIZING ARCHITECTURE, DERIVED FROM ESTABLISHED MATHEMATICS (not a new theorem); supersedes CF11-R; history: CF11 → Fisher test → CF11-F2 → architectural correction → R1/R2/R3', guide='all Acts')
+obj('TA1', 'R1 — Representation covariance', E, ['REPRESENTATION', 'TRANSFORMATION'],
+    'same abstract object, different coordinate representation, covariant transformation law: bilinear form M′ = PᵀMP for x = Px′; metric g_φ = Jᵀ g_θ J; vectors v_φ = J⁻¹ v_θ; scalars unchanged (ds² = dθᵀ g_θ dθ = dφᵀ g_φ dφ). A change of description, not an active symmetry: never written F*g = g', 'ESTABLISHED',
+    cards=['TRA4a', 'CFT3c', 'CFT4c', 'CFT4e', 'CFT5d', 'CFT11b', 'S2b'], depends=['CF13'], bears=['T-H2'], bs=65, slop=5, td='STRUCTURAL TRANSFER', breadth=3,
+    fail='a lossy map (projection) is not R1 (TRA4b); a coordinate-dependent pseudo-structure does not transform covariantly (CFT10a)', role='formalizes one of the oldest project questions (H2): different representations may look different while preserving deeper structure', guide='all Acts')
+obj('TA2', 'R2 — Structural invariance / symmetry', E, ['TRANSFORMATION', 'PRESERVED STRUCTURE', 'GEOMETRY'],
+    'active symmetry: F*T = T. Riemannian F*g = g; symplectic F*ω = ω; Lorentz F*η = η; constant form and linear F: A†MA = M (CF1); infinitesimal: L_X T = 0 (TA2I); consequences: invariant zero relations (BR44), the symmetry set Aut(T) = {F : F*T = T} (BR45), conservation under Noether\'s assumptions (CF5–CF7)', 'ESTABLISHED',
+    cards=['CFT1a', 'CFT1b', 'CFT2a', 'CFT4d', 'CFT5a', 'TRA2a', 'TRA2b'], depends=['CF12', 'CF1'], bs=70, slop=5, td='STRUCTURAL TRANSFER', breadth=3,
+    fail='non-symmetries fail (CFT1c, CFT2b, CFT4d); preserving zeros does not imply invariance (TRA2b)', role='Several major geometries in the Foundation admit a coordinate-free symmetry condition in which a defining tensor/form is preserved under pullback (established mathematics)', guide='Guide: forms (Foundation ontology)')
+obj('TA2I', 'R2, infinitesimal: L_X T = 0', E, ['TRANSFORMATION', 'PRESERVED STRUCTURE', 'DYNAMICS / CONTINUATION'],
+    'F_t*T = T for a one-parameter group with generator X ⟹ L_X T = 0; coordinates (L_X g)_ij = X^k∂_k g_ij + g_kj∂_iX^k + g_ik∂_jX^k; constant matrix form, A(t) = e^{tK}: KᵀM + MK = 0 (K†M + MK = 0)', 'ESTABLISHED',
+    cards=['TRA1a', 'TRA1b', 'TRA1c', 'S9'], depends=['TA2', 'CF4'], bs=60, slop=5, td='STRUCTURAL TRANSFER', breadth=3,
+    fail='a non-Killing field (σ∂_μ on the normal family) has L_X g ≠ 0 (TRA1b)', role='R2 → generator → (under Noether\'s assumptions) conservation: a downstream branch of R2, not of R3', guide='Guide: generators / conservation')
+obj('TA3', 'R3 — Equivariance / intertwining', E, ['TRANSFORMATION', 'INFORMATION'],
+    'C ρ_V(g) = ρ_W(g) C for a map C: V → W (intertwiner); when V = W with one representation, C ρ(g) = ρ(g) C (commuting operator). Examples: Fourier F T_a = M_a F (translation ↔ phase multiplication); weighted centering A C_m = C_m A for D-isometries preserving span{1}; Pₙ commutes with permutations; S² commutes with the S₄ action (Schur sectors)', 'ESTABLISHED',
+    cards=['TRA3a', 'TRA3b', 'TRA4b', 'CFT8c', 'CFT9c', 'FB1a', 'FS2e', 'MB2c', 'Q2f'], bs=60, slop=5, td='STRUCTURAL TRANSFER', breadth=3,
+    fail='commuting or intertwining is not invariance: C_m is not an isometry, the DFT is not a symmetry of the shift (TRA3b)', role='compatibility of derived maps / operators with transformations; not another form of structural invariance', guide='Guide: Fourier / symmetry')
+obj('TAH', 'A deeper common transformation–zero architecture?', UT, ['TRANSFORMATION', 'ZERO / BALANCE / NULL', 'INFORMATION', 'CROSS-SYSTEM TRANSFER'],
+    'Do recurring relationships among representation covariance, structural invariance, zero relations, and equivariance reveal a deeper common architecture across the systems studied in Geometry of Representation?', 'HYPOTHESIS',
+    depends=['TA0', 'Z12', 'Z13'], reg=['T-TRANSFORMATION-DEEP'], bs=25, slop=35, td='NOT YET FORMALIZED', breadth=2,
+    fail='the recurring relationships are each textbook and compose into no statement beyond their parts', role='open project question; keeps the three-level architecture from being the final theory', guide='all Acts')
+obj('TAC', 'Čencov / Chentsov: future high-relevance check', OQ, ['GEOMETRY', 'TRANSFORMATION'],
+    "Does the characterization of the Fisher metric under statistically meaningful transformations provide a deeper example of the project's transformation-class → distinguished-geometry relationship?", 'OPEN',
+    reg=['T-CENCOV-CHECK'], bs=None, slop=None, fail='—', role='KNOWN THEOREM, NOT YET INTEGRATED; not evidence; no rating raised by it', guide='Guide: model manifolds')
 
 # ── zero / balance / null (Layer 3) ────────────────────────────────────────────────────────────
 obj('Z1', 'Additive / resultant zero', E, ['ZERO / BALANCE / NULL'], 'Σ v_j = 0 with nonzero v_j', 'ESTABLISHED', cards=['Z1a2', 'Z1b', 'Z2a', 'Z2b2', 'Z2c'], docs=['research/zero_taxonomy.md'],
@@ -201,7 +231,7 @@ obj('H3', 'Inverse problem: removed relation from the zero alone', PC, ['INFORMA
     bs=35, slop=15, fail='—', role='open', guide='Act III')
 obj('H4', 'Weighted mass centering and C_G', PC, ['RELATION', 'ZERO / BALANCE / NULL'], 'C_G = I − 11ᵀG/(1ᵀG1), G positive diagonal: G = I gives P_n, G = diag(m) gives C_m', 'ESTABLISHED',
     cards=['G5a', 'G5b', 'G5c', 'G5d', 'G5e', 'G5f', 'G4m', 'CFT8a', 'CFT8b', 'CFT8c'], reg=['T-WMC', 'T-CENTERING-OPERATOR', 'T-PAIRA-BRIDGE'], depends=['H1'], bs=45, slop=15, td='STRUCTURAL TRANSFER', breadth=2,
-    fail='Fourier k ≠ 0, Σ weights = 0, nonlinear zeros', role='GENERAL CONSTRUCTION (locked to 1)', guide='Act III')
+    fail='Fourier k ≠ 0, Σ weights = 0, nonlinear zeros', role='GENERAL CONSTRUCTION (locked to 1); R3: C_m is a geometry-derived operator compatible with a symmetry subgroup, not a symmetry (BR40)', guide='Act III')
 obj('H5', 'Larger generating geometry', UT, ['GEOMETRY', 'ZERO / BALANCE / NULL'], 'hidden information in a lower-dimensional manifestation may be encoded in the larger geometry that generates it', 'HYPOTHESIS',
     depends=['H1', 'H2', 'H3'], reg=['B-HIGHER-GEOMETRY', 'B-HIGHER-GEOMETRY-CHAIN'], bs=35, slop=25, td='STRUCTURAL TRANSFER', breadth=2, fail='zeros with no source reconstruction under any class', role='backbone hypothesis', guide='Act III')
 obj('H6', 'Effective / reduced representations (question)', OQ, ['INFORMATION'], 'What survives when a richer source description is reduced to an effective representation?', 'OPEN', cards=['FB11a', 'FB11c', 'FB11d'], depends=['ON3', 'H1', 'H4', 'M2', 'M3', 'H7'], reg=['T-EFFECTIVE-Q'],
@@ -218,7 +248,7 @@ obj('QZ2', 'Quantum cancellation pair, restricted obstruction, exchange', PC, ['
     cards=['Q2a', 'Q2b', 'Q2c', 'Q2d', 'Q2e', 'Q2h'], reg=['T-QACP', 'T-QACP-OBSTRUCTION-RESTRICTED', 'T-QACP-EXCHANGE'], bs=40, slop=8, breadth=1, fail='non-eigenstates of P (Q2g)', role='same-zero test 1', guide='Act I / III')
 obj('QZ3', 'Four spins: FOUR-SPIN-B', PC, ['ZERO / BALANCE / NULL', 'TRANSFORMATION', 'INFORMATION'], 'contribution Gram blind (phases); S₄ cyclic dimension 1/3/2 = S 2/1/0', 'ESTABLISHED',
     cards=['FS1a', 'FS1c', 'FS1d', 'FS1e', 'FS2b', 'FS2c', 'FS2e'], reg=['T-FOURSPIN-SYMMETRY', 'T-FOURSPIN-GEOMETRY-BLIND', 'T-FOURSPIN-SIMPLEX'], bs=40, slop=8, breadth=1,
-    fail='none in H₀', role='same-zero test 2 (VALIDATION OF KNOWN MATHEMATICS)', guide='Act III')
+    fail='none in H₀', role='same-zero test 2 (VALIDATION OF KNOWN MATHEMATICS); R3: S² commutes with the S₄ action (BR47)', guide='Act III')
 obj('QZ4', 'Measurement, dephasing, which-path', E, ['INFORMATION'], 'non-selective S² measurement: ρ_AB → 0, S_z = 0 kept; which-path markers: cross term × ⟨m_a|m_b⟩', 'ESTABLISHED',
     cards=['W1a', 'W1b', 'W1c', 'W2a', 'W2b', 'W2c', 'W2d', 'W3a', 'W3b', 'Q1g', 'Q1h'], reg=['B-JOINT-ALTERNATIVES', 'B-ZERO-INTERNAL-CHANGE', 'T-S2-DEPHASING'], bs=25, slop=25, td='TRIVIAL CONSEQUENCE', breadth=2,
     fail='—', role='leave / change within / interrogate: kept apart', guide='Act III')
@@ -296,14 +326,30 @@ UO, TB, PP, PDM, PCN, SPC, PHL = PROVENANCE
 PROV = {}
 for ids, cls in (('R9 R10 CF11-B Z11 ON6 ON8 ON9 L4 I2 I3 W3 W4 H5 H6 QZ5 P2 MW1 MW3 A1 A2', UO), ('M4', SPC), ('PL1', PHL),
                  ('R8 CF9 H1 H2 H3 H4 QZ2 QZ3', PCN), ('OB1 CF3 CF8 CF11-A Z8 Z12 ON7 T2 T3 T4 A3 F1', PDM),
-                 ('R7 M1 M2 M3 W2 H7', PP), ('CF11-R', UO), ('Z13', PDM),
+                 ('R7 M1 M2 M3 W2 H7', PP), ('CF11-R', UO), ('Z13', PDM), ('TA0', PDM), ('TA1 TA2 TA2I TA3', TB), ('TAH TAC', UO),
                  ('R1 R2 R3 R4 R5 R6 CF1 CF2 CF4 CF5 CF6 CF7 CF10 CF12 CF13 Z1 Z2 Z3 Z4 Z5 Z6 Z7 Z9 Z10 ON1 ON2 ON3 ON4 ON5 T1 T5 L1 L2 L3 I1 W1 QZ1 QZ4 P1 MW2', TB)):
     for i in ids.split():
         assert i not in PROV, i
         PROV[i] = cls
 EXTERNAL = (TB, PP)                  # records whose central claim comes from outside the project: each needs a source or SOURCE MISSING
+TLEVEL = {'TA1': ['R1'], 'CF13': ['R1'], 'TA2': ['R2'], 'TA2I': ['R2'], 'CF12': ['R2'], 'CF1': ['R2'], 'CF2': ['R2'], 'CF4': ['R2'], 'CF5': ['R2'], 'CF6': ['R2'], 'CF7': ['R2'],
+          'L1': ['R2'], 'Z8': ['R2'], 'Z13': ['R2'], 'TA3': ['R3'], 'R4': ['R3'], 'H4': ['R3'], 'QZ3': ['R3'], 'QZ2': ['R3'], 'TA0': ['R1', 'R2', 'R3'], 'CF11-B': ['R1', 'R2', 'R3'], 'CF11-R': ['R1', 'R2', 'R3']}
+TRANSFORMATION_CLASSES = ['REPRESENTATION CHANGES', 'GEOMETRIC SYMMETRIES', 'SYSTEM-SUPPLIED TRANSFORMATIONS', 'OPERATOR-COMPATIBLE TRANSFORMATIONS']
+RC, GS, SS, OC = TRANSFORMATION_CLASSES
+TCLASS = [
+ ('Constant forms (Euclidean, Lorentz, unitary)', {RC: 'basis changes: M′ = PᵀMP (TRA4a)', GS: 'A†MA = M (CFT1a, CFT1c)'}),
+ ('Symplectic', {GS: 'symplectomorphisms, F*ω = ω, nonlinear allowed (CFT2a)', SS: 'the Hamiltonian flow of a given H (preserves ω and H, CF6)'}),
+ ('Fisher / Riemannian', {RC: 'reparametrizations: g_φ = Jᵀ g J (CFT3c, CFT4c)', GS: 'isometries, F*g = g (CFT4d, CFT11a)', SS: 'location–scale from x ↦ ax + b; the exchange in F-C; none in F-C′ (CFT4d, CFT5a); a proper subset of the isometries in F-B (CFT11a)'}),
+ ('Fourier', {RC: 'change to the Fourier basis (Parseval, S2b)', SS: 'translations T_a', OC: 'F intertwines T_a and M_a (TRA3a)'}),
+ ('Weighted centering', {GS: 'D-isometries', OC: 'the D-isometries preserving span{1} commute with C_m (CFT8c)'}),
+ ('Quantum same-zero', {GS: 'unitaries commuting with every S_z⁽ⁱ⁾ (Q2h class)', SS: 'factor permutations S₄; the exchange P (FS1b, Q2d)', OC: 'S² commutes with the S₄ action (FS2e)'}),
+ ('Mass balance', {SS: 'permutations of equal masses; O(d) (MB1b)', GS: 'the configuration\'s isometries (stabilizer, MB1b)', OC: 'the second-moment tensor commutes with the stabilizer isometries (MB2c)'}),
+ ('Simplex projection', {SS: 'permutations of the source basis', OC: 'Pₙ commutes with them (TRA4b, Q2f)'}),
+]
 MISSING = {'R5': 'SOURCE MISSING: Hermite functions as eigenfunctions of the Fourier transform (textbook); no source verified in Pass 2'}
-MATH_STATUS = {'CF11-A': 'TEXTBOOK / KNOWN', 'CF11-B': 'PROJECT-DERIVED FROM KNOWN DEFINITIONS', 'CF11-R': 'PROJECT-DERIVED FROM KNOWN DEFINITIONS', 'CF12': 'TEXTBOOK / KNOWN'}
+MATH_STATUS = {'CF11-A': 'TEXTBOOK / KNOWN', 'CF11-B': 'PROJECT-DERIVED FROM KNOWN DEFINITIONS', 'CF11-R': 'PROJECT-DERIVED FROM KNOWN DEFINITIONS', 'CF12': 'TEXTBOOK / KNOWN',
+               'CF1': 'TEXTBOOK / KNOWN', 'TA1': 'TEXTBOOK / KNOWN', 'TA2': 'TEXTBOOK / KNOWN', 'TA2I': 'TEXTBOOK / KNOWN', 'TA3': 'TEXTBOOK / KNOWN', 'TA0': 'PROJECT-DERIVED FROM KNOWN DEFINITIONS', 'TAH': 'SPECULATIVE MAPPING'}
+NOVELTY = {'TA1': 'KNOWN MATHEMATICS', 'TA2': 'KNOWN MATHEMATICS', 'TA2I': 'KNOWN MATHEMATICS', 'TA3': 'KNOWN MATHEMATICS', 'CF1': 'KNOWN MATHEMATICS', 'CF12': 'KNOWN MATHEMATICS', 'TA0': 'PROJECT ARCHITECTURAL SYNTHESIS', 'TAH': 'PROJECT ARCHITECTURAL SYNTHESIS (open)'}
 
 STRENGTHS = ['EXACT IDENTITY', 'EXACT IMPLICATION', 'THEOREM', 'SPECIAL-CASE CONSTRUCTION', 'STRUCTURAL ANALOGUE', 'OPEN CONNECTION', 'FAILED CONNECTION']
 EI, EIM, THM, SCC, SAN, OPC, FC = STRENGTHS
@@ -320,7 +366,7 @@ def src(id, authors, title, year, typ, ident, cls, status, claim, not_est, suppo
 # Fourier, translation, uncertainty
 src('SRC-STEIN-SHAKARCHI-2003', 'Elias M. Stein; Rami Shakarchi', 'Fourier Analysis: An Introduction (Princeton Lectures in Analysis I)', '2003', 'book', 'Princeton University Press; ISBN 978-0-691-11384-5', 'textbook', SV,
     'Fourier series and transform: orthonormal exponentials, Parseval / Plancherel, translation ↔ multiplication by a phase, conjugate symmetry for real functions, mean-square convergence, Weyl equidistribution, the Heisenberg uncertainty inequality (in the book\'s 2π normalization)',
-    'the project\'s defect identities (T3, T4: project-derived, FB1–FB2); anything about physical pairs (P2) or about periodicity of rule-bound geometries (★)', ['R1', 'R2', 'R3', 'R4', 'R6', 'Z7', 'P1', 'I1', 'T5'], ['P2', 'I2'])
+    'the project\'s defect identities (T3, T4: project-derived, FB1–FB2); anything about physical pairs (P2) or about periodicity of rule-bound geometries (★)', ['R1', 'R2', 'R3', 'R4', 'R6', 'Z7', 'P1', 'I1', 'T5', 'TA3'], ['P2', 'I2'])
 src('SRC-WIENER-1930', 'Norbert Wiener', 'Generalized harmonic analysis', '1930', 'journal article', 'Acta Mathematica 55, 117–258; DOI 10.1007/BF02546511', 'primary', SV,
     'the spectrum of a signal with finite power is the Fourier transform of its autocorrelation (the deterministic Wiener–Khinchin relation)',
     'the project\'s defect identity D_x(τ) = 1 − Re⟨x, T_τx⟩/‖x‖² (project-derived, FB1b); that the spectrum determines the signal (it does not, FB1d)', ['T3'])
@@ -341,7 +387,7 @@ src('SRC-DUMMIT-FOOTE-2004', 'David S. Dummit; Richard M. Foote', 'Abstract Alge
     'group actions, orbits and stabilizers; |orbit| · |stabilizer| = |G|', 'the project\'s symmetry defect (T2, project-defined)', ['T1'])
 src('SRC-FULTON-HARRIS-1991', 'William Fulton; Joe Harris', 'Representation Theory: A First Course (Graduate Texts in Mathematics 129)', '1991', 'book', 'Springer; DOI 10.1007/978-1-4612-0979-9 (later printing)', 'textbook', SV,
     'the classical groups as groups preserving a bilinear form (AᵀMA = M) and their Lie algebras (XᵀM + MX = 0); Schur\'s lemma; representations of the symmetric group; Schur–Weyl duality',
-    'that the project\'s geometries are organized by preserved relations (CF11-B); a label beyond Schur–Weyl for four spins (Q-SYM-NOVEL)', ['CF1', 'CF2', 'CF4', 'CF11-A', 'CF12', 'QZ3'], ['CF11-B'])
+    'that the project\'s geometries are organized by preserved relations (CF11-B); a label beyond Schur–Weyl for four spins (Q-SYM-NOVEL)', ['CF1', 'CF2', 'CF4', 'CF11-A', 'CF12', 'TA2', 'TA3', 'QZ3'], ['CF11-B'])
 src('SRC-KLEIN-1872', 'Felix Klein', 'Vergleichende Betrachtungen über neuere geometrische Forschungen (the Erlangen program)', '1872 (reprinted 1893)', 'programme / journal article', 'Erlangen, 1872; Mathematische Annalen 43, 63–100 (1893); EuDML 157672 (no DOI found)', 'primary', SV,
     'a geometry is studied through the invariants of a group of transformations of a space; different groups give different geometries',
     'CF11-B (the project hypothesis); that every geometry the project needs is a preserved-relation geometry (CF3 is a counter-case)', ['CF11-A'], ['CF11-B'])
@@ -421,11 +467,11 @@ src('SRC-NIELSEN-CHUANG-2010', 'Michael A. Nielsen; Isaac L. Chuang', 'Quantum C
     'projective measurement and the non-selective measurement map (off-diagonal blocks removed); dephasing', 'that dephasing and which-path marking are one physical mechanism (generic map only, BR26); B-ZERO-LOSS', ['QZ4'])
 # differential geometry (Pass 3)
 src('SRC-LEE-2018', 'John M. Lee', 'Introduction to Riemannian Manifolds (2nd ed., Graduate Texts in Mathematics 176)', '2018', 'book', 'Springer; DOI 10.1007/978-3-319-91755-9', 'textbook', SV,
-    'tensor fields and their transformation law under coordinate changes; pullbacks; isometries (F*g = g); Gaussian curvature as an isometry invariant; isometries of flat space', 'any project architecture claim (CF11-B, CF11-R)', ['CF12', 'CF13'], ['CF11-B', 'CF11-R'])
+    'tensor fields and their transformation law under coordinate changes; pullbacks; isometries (F*g = g); Gaussian curvature as an isometry invariant; isometries of flat space', 'any project architecture claim (CF11-B, CF11-R, TA0)', ['CF12', 'CF13', 'TA1', 'TA2', 'TA2I'], ['CF11-B', 'CF11-R', 'TA0'])
 src('SRC-MYERS-STEENROD-1939', 'S. B. Myers; N. E. Steenrod', 'The group of isometries of a Riemannian manifold', '1939', 'journal article', 'Annals of Mathematics 40(2), 400–416; DOI 10.2307/1968928', 'primary', SV,
     'the isometry group of a Riemannian manifold is a Lie group (finite-dimensional), and distance-preserving maps are smooth isometries', 'that a given (e.g. Fisher) metric has nontrivial isometries; generic metrics have none', ['CF12'], ['CF11-B'])
 src('SRC-CHENTSOV-1982', 'N. N. Čencov (Chentsov)', 'Statistical Decision Rules and Optimal Inference (Translations of Mathematical Monographs 53)', '1982', 'book', 'American Mathematical Society (some records give 1981; ISBN not verified)', 'primary', SP,
-    'the Fisher metric is, up to scale, the unique Riemannian metric on statistical models invariant under sufficient statistics (Markov morphisms): a naturality theorem for the Fisher metric', 'the project\'s CF11 architecture; anything about sloppiness or C7', ['CF13'], ['CF11-R'])
+    'the Fisher metric is, up to scale, the unique Riemannian metric on statistical models invariant under sufficient statistics (Markov morphisms): a naturality theorem for the Fisher metric', 'the project\'s CF11 architecture or Transformation Architecture; anything about sloppiness or C7. KNOWN THEOREM, NOT YET INTEGRATED: bears on CF13 and TAC; not used as evidence', [], ['TAC', 'CF13'])
 # project notes and application work
 src('SRC-PROJECT-SPEC', 'assistant-written project document', 'Mathematical Basis and Interactive Design Spec', '2026', 'project note', 'docs/Mathematical_Basis_Interactive_Design_Spec.md', 'project note', SN,
     'the project\'s block-by-block plan; it supports no external claim', 'any external mathematical claim', [], [], checked='repository file')
@@ -486,8 +532,24 @@ bridge('BR37', 'coordinate change', 'tensor law', 'θ = θ(φ): g_φ = Jᵀ g(θ
 bridge('BR38', 'system-supplied symmetry', 'Fisher null', 'Y∘S = Y ⇒ S*g = g and Jv = 0 at fixed points for dS v = −v', 'DERIVED', PS, ['CFT5a', 'CFT5b', 'CFT5c'], 'that Fisher nulls require a symmetry (F-C′ has one without, CFT5c)', ['Z13', 'Z9'])
 bridge('BR39', 'isometries of T', 'system-supplied transformations', 'normal family: the isometry group of g (3-dimensional) strictly contains the location–scale group (2-dimensional) induced by x ↦ ax + b', 'ESTABLISHED', EST, ['CFT11a', 'CFT4d'],
        'that "admissible" means "preserves T": the two classes differ', ['CF12', 'CF10'])
-bridge('BR40', 'weighted centering', 'symmetries of (D, line span{1})', 'C_m is a D-orthogonal, D-self-adjoint projector, not an isometry; A C_m = C_m A exactly for D-isometries preserving the line span{1}', 'ESTABLISHED', PS, ['CFT8a', 'CFT8b', 'CFT8c'],
+bridge('BR40', 'weighted centering (geometry-derived operator)', 'symmetries of (D, line span{1})', 'R3: C_m is a D-orthogonal, D-self-adjoint projector, not an isometry; A C_m = C_m A exactly for D-isometries preserving the line span{1}', 'ESTABLISHED', PS, ['CFT8a', 'CFT8b', 'CFT8c'],
        'that C_m is a structure-preserving transformation (it is a derived, equivariant operator)', ['H4', 'CF9'])
+bridge('BR41', 'representation change', 'covariance', 'R1: x = Px′ gives M′ = PᵀMP; a metric changes as g_φ = Jᵀ g_θ J, vectors as v_φ = J⁻¹ v_θ; scalars (B(x, y), ds²) unchanged', 'ESTABLISHED', EST,
+       ['TRA4a', 'CFT3c', 'CFT4c', 'CFT4e'], 'that a representation change is a symmetry or a physical change; lossy maps (projections) are not R1 (TRA4b)', ['TA1', 'CF13'])
+bridge('BR42', 'structural symmetry', 'pullback invariance', 'R2: F is a symmetry of T ⟺ F*T = T ⟺ T_{F(x)}(dF u, dF v) = T_x(u, v)', 'ESTABLISHED', EST, ['CFT1b', 'CFT2a', 'CFT4d'],
+       'that all geometry is F*T = T; that the preserving classes of different T are alike (CFT2c)', ['TA2', 'CF12'])
+bridge('BR43', 'finite symmetry', 'infinitesimal generator', 'F_t*T = T for all t ⟹ L_X T = 0; matrix case A(t)ᵀMA(t) = M ⟹ KᵀM + MK = 0 (K†M + MK = 0)', 'ESTABLISHED', EST, ['TRA1a', 'TRA1b', 'TRA1c'],
+       'conservation without Noether\'s assumptions; the converse (L_X T = 0 ⟹ global symmetry) needs a complete flow', ['TA2I', 'CF4'])
+bridge('BR44', 'invariant form', 'invariant zero relation', 'F*T = T and T(u, v) = 0 ⟹ T(dF u, dF v) = 0; constant forms: A†MA = M ⟹ (B_M(x, y) = 0 ⟹ B_M(Ax, Ay) = 0)', 'ESTABLISHED', EST, ['TRA2a', 'TRA2b', 'C1b'],
+       'that every zero is generated by symmetry or arises from a preserved form; the converse fails (2I keeps every zero, TRA2b)', ['TA2', 'CF2'])
+bridge('BR45', 'symmetry', 'stabilizer', 'Aut(T) = {F : F*T = T} is the stabilizer of T under the action of maps on structures; for a group acting on x, G_x = {g : g·x = x}; D_x(g) = 0 ⟺ g ∈ G_x (Z8)', 'ESTABLISHED', EST,
+       ['B5b', 'B5c', 'CFT4d'], 'that an automorphism group of a structure equals the signal stabilizer of Z8 (they act on different objects)', ['TA2', 'Z8', 'T1'])
+bridge('BR46', 'Fourier transform', 'translation / modulation intertwining', 'R3: F T_a = M_a F, i.e. (T_a f)^(ω) = e^{−iωa} f̂(ω): translation in one representation ↔ phase multiplication in another', 'ESTABLISHED', EST,
+       ['TRA3a', 'FB1a', 'S3'], 'that the Fourier transform is a physical spacetime symmetry; that T_a and M_a are the same operator', ['TA3', 'R4'])
+bridge('BR47', 'commuting symmetry', 'representation-sector decomposition', 'an operator commuting with a group action preserves its isotypic sectors and is scalar on each multiplicity-free irreducible block (Schur)', 'ESTABLISHED', EST,
+       ['FS2e', 'MB2c', 'Q2e'], 'labels beyond known ones (four spins: VALIDATION OF KNOWN MATHEMATICS); that particle exchange is universal', ['TA3', 'QZ3', 'Z12'])
+bridge('BR48', 'projection', 'representation change', 'Pₙ is not invertible and does not keep inner products (Pe₁·Pe₂ = −1/3 while e₁·e₂ = 0); its transformation relationship is R3 (commutes with permutations)', 'ESTABLISHED', PS,
+       ['TRA4b', 'G2n', 'Q2f'], 'that a lossy representation map is a covariant change of description', ['TA1', 'R8'])
 bridge('BR35', 'wavelet transform', 'translation', '(T_τx) ∗ ψ = T_τ(x ∗ ψ); Σ|x ⊛ ψ| invariant under circular shifts', 'ESTABLISHED', EST, ['FB10c'], 'deformation stability or higher-order recovery (source-only)', ['W2', 'R4'])
 BMETA.update({
  'BR29': (FC, ['SRC-ARNOLD-1989', 'SRC-MINKOWSKI-1909'], 'J antisymmetric; η indefinite', 'none: the distinction holds for every antisymmetric J and indefinite η'),
@@ -498,10 +560,18 @@ BMETA.update({
  'BR34': (EI, ['SRC-NELSON-FISHER-1975'], 'zero field, nearest-neighbour couplings', 'a field h ≠ 0 needs a renormalized field too (FB11d)'),
  'BR35': (EI, ['SRC-MALLAT-2009'], 'convolution with a fixed wavelet; circular shifts for the discrete invariant', 'the invariant is many-to-one (FB10c)'),
  'BR36': (EI, ['SRC-LEE-2018', 'SRC-FULTON-HARRIS-1991'], 'a pairing T of tangent vectors; F smooth (linear for the matrix form)', 'none for the identity; a map that is not a symmetry fails F*T = T (CFT1c, CFT2b)'),
- 'BR37': (EI, ['SRC-LEE-2018', 'SRC-AMARI-2016', 'SRC-CHENTSOV-1982'], 'a regular model; an invertible reparametrization J', 'a coordinate-dependent pseudo-structure fails the law (CFT10a); component eigenvalues change (CFT5e)'),
+ 'BR37': (EI, ['SRC-LEE-2018', 'SRC-AMARI-2016'], 'a regular model; an invertible reparametrization J', 'a coordinate-dependent pseudo-structure fails the law (CFT10a); component eigenvalues change (CFT5e)'),
  'BR38': (EIM, [], 'an involution S with Y∘S = Y; a fixed point of S', 'no symmetry: the lemma predicts nothing, and a null can still occur (CFT5c)'),
  'BR39': (FC, ['SRC-LEE-2018'], 'the normal family with its Fisher metric', 'none: the hyperbolic inversion is an isometry no data map induces (CFT11a)'),
  'BR40': (EIM, [], 'positive weights; D = diag(m)', 'a D-isometry not preserving span{1}, or a non-isometry fixing 1, does not commute (CFT8c)'),
+ 'BR41': (EI, ['SRC-LEE-2018', 'SRC-AXLER-2015'], 'an invertible change of representation (P or J invertible)', 'a non-invertible map is not a change of representation (TRA4b)'),
+ 'BR42': (EI, ['SRC-LEE-2018'], 'a pairing T of tangent vectors; F a smooth map of the space to itself', 'a non-symmetry fails (CFT1c, CFT2b, CFT4d)'),
+ 'BR43': (THM, ['SRC-LEE-2018', 'SRC-ARNOLD-1989'], 'a smooth one-parameter group F_t with generator X', 'a non-Killing field: L_X g ≠ 0 (TRA1b)'),
+ 'BR44': (EIM, ['SRC-LEE-2018', 'SRC-FULTON-HARRIS-1991'], 'F*T = T', 'the converse fails: zero preservation without invariance (TRA2b)'),
+ 'BR45': (EI, ['SRC-DUMMIT-FOOTE-2004', 'SRC-LEE-2018'], 'a group acting on a set (structures, or signals)', 'none for the identity; the two stabilizers concern different objects'),
+ 'BR46': (EI, ['SRC-STEIN-SHAKARCHI-2003'], 'the project convention x̂(ω) = ∫x e^{−iωt}dt; the DFT for the discrete form', 'none for the identity; a different sign convention flips the phase'),
+ 'BR47': (THM, ['SRC-FULTON-HARRIS-1991'], 'a finite group (or compact group) acting linearly; an operator commuting with the action', 'with multiplicities, an operator need not be scalar on an isotypic sector'),
+ 'BR48': (FC, [], 'Pₙ = I − 11ᵀ/n', 'none: the distinction holds for every n ≥ 2'),
 })
 for b in B:
     st, srcs, asm, fl = BMETA[b['id']]
@@ -512,6 +582,8 @@ for o in O:
     o['sources'] = [x['id'] for x in S if o['id'] in x['supports']]
     o['sourceStatus'] = MISSING.get(o['id'])
     o['mathematicalStatus'] = MATH_STATUS.get(o['id'])
+    o['transformationLevel'] = TLEVEL.get(o['id'], [])
+    o['novelty'] = NOVELTY.get(o['id'])
     if o['provenance'] in EXTERNAL:
         assert o['sources'] or o['sourceStatus'], f"{o['id']}: external claim without a source"
 
@@ -525,7 +597,9 @@ dom('D2', 'Status, provenance and bridge-strength systems; method rules', 'QZ5',
 dom('D3', 'Fourier / L² representation', 'R1 R2 R3 R4 R5 R6 Z7 P1', 'SOURCE+CARD COMPLETE', 'R5 (Fourier transform as a quarter-turn) is carded but SOURCE MISSING')
 dom('D4', 'Orthogonality and norm', 'ON1 ON2 ON3 ON4 ON5 ON7 Z4 Z10', 'SOURCE+CARD COMPLETE', '—')
 dom('D5', 'Common forms, generators, conservation', 'CF1 CF2 CF3 CF4 CF5 CF6 CF7 CF8 CF9 CF10 CF11-A', 'SOURCE+CARD COMPLETE', 'Noether in general is source-only (FB5 cards an instance); CF11-A is the established pattern')
-dom('D6', 'Common-form architecture as project hypothesis', 'CF11-B CF11-R', 'SOURCE+CARD COMPLETE', 'Pass 3 preregistered test: CF11-F2; CF11-B classified REFINED; adopting the explicit refinement (CF11-R) as wording is Nadia\'s decision')
+dom('D6', 'Common-form architecture as project hypothesis', 'CF11-B CF11-R', 'SOURCE+CARD COMPLETE', 'Pass 3 preregistered test: CF11-F2 (stands); CF11-B classified REFINED; architectural correction: CF11-R superseded by the Transformation Architecture (D28)')
+dom('D28', 'Transformation Architecture (R1 / R2 / R3)', 'TA0 TA1 TA2 TA2I TA3', 'SOURCE+CARD COMPLETE', 'each level is known mathematics, carded and sourced; TA0 is the project-level organizing architecture')
+dom('D29', 'Deeper transformation–zero question; Čencov check', 'TAH TAC', 'OPEN LONG-TERM', 'TAH: HYPOTHESIS / OPEN; TAC: KNOWN THEOREM, NOT YET INTEGRATED')
 dom('D27', 'Coordinate-free common form and covariance', 'CF12 CF13 Z13', 'SOURCE+CARD COMPLETE', 'F*T = T across constant-form, symplectic and Fisher isometries; naturality of the Fisher metric; symmetry-forced null (sufficient, not necessary)')
 dom('D7', 'Zero taxonomy', 'Z1 Z2 Z3 Z5 Z6 Z8 Z9 Z12', 'SOURCE+CARD COMPLETE', 'Z9 now separates exact structural null, sloppy direction, Lorentz null (FB7)')
 dom('D8', 'Zero as connector; the inverse problem', 'Z11 H3', 'OPEN LONG-TERM', 'special cases proved; general statement open')
@@ -557,18 +631,20 @@ carded = [o for o in est if o['cards']]
 ext = [o for o in O if o['provenance'] in EXTERNAL]
 ext_src = [o for o in ext if o['sources']]
 CF11B = dict(outcome='CF11-F2', classification='REFINED', outcomes=['CF11-F1', 'CF11-F2', 'CF11-F3', 'CF11-F4'], classifications=['LOCKED FOR V1', 'NEEDS ONE MORE TEST', 'REFINED', 'FAILED', 'OPEN LONG-TERM'],
-             prereg='research/constructions/cf11b_fisher_prereg.md', preregCommit='e6f3db8', record='research/constructions/cf11b_fisher_test.md', pullbackCommonForm='YES')
+             prereg='research/constructions/cf11b_fisher_prereg.md', preregCommit='e6f3db8', record='research/constructions/cf11b_fisher_test.md', pullbackCommonForm='YES',
+             correction='architectural correction (2026-11-12): P1, P2, P3 are not three meanings of one word; they are R2 structural invariance, R1 representation covariance and R3 equivariance / intertwining of the Transformation Architecture (TA0). CF11-F2 is unchanged.')
 RATINGS = [
- ('Foundation architecture completeness', 85, 80, 'Pass 3 settles the status of the common-form mechanism: CF11-B tested (preregistered, CF11-F2), its exact coordinate-free form identified (CF12: F*T = T), and its second mechanism stated (CF13: naturality). Still short: DYADIC PACKETS undefined, the effective-representation question without a general statement, no application mathematics, and the refinement not yet adopted as wording.'),
- ('Mathematical verification coverage', round(100 * len(carded) / len(est)), 95, f'{len(carded)} of {len(est)} established or derived objects have PASS cards (computed). New and carded in Pass 3: CF12, CF13, Z13 (CFT cards). Not carded: R7 (definitional), OB1 (definitional), A3 (wording).'),
- ('Cross-domain validation', 30, 20, 'One preregistered cross-domain test of a project architecture ran across three independent mathematical systems (constant-form, symplectic, Fisher) with two boundary cases, and could have failed. Outcome partial (CF11-F2). Still no predictive transfer and no empirical system.'),
- ('Project-specific construction maturity', 45, 45, 'Unchanged. Pass 3 formalized an architecture claim; it made no new construction.'),
- ('Paper / source coverage', 55, 55, f'{sum(1 for x in S if x["sourceClass"] in ("primary", "textbook", "review"))} external sources registered with verified bibliographic records ({sum(1 for x in S if x["status"] == SP)} only partly verified), each with the exact claim it supports and what it does not establish. {len(ext_src)} of {len(ext)} external-claim objects have a source; R5 is SOURCE MISSING. Unchanged rating: three differential-geometry sources were added, but nothing is yet quoted at full text and the quinn2023 PDF is pending.'),
- ('Application validation', 0, 0, 'Unchanged. Energeo is untested and the ThermaLens mathematics is not in the repository (APPLICATION PROVENANCE INCOMPLETE).'),
+ ('Foundation architecture completeness', 88, 85, 'The TRANSFORMATION → PRESERVED STRUCTURE step of the spine now has an explicit three-level organization (R1 representation covariance, R2 structural invariance, R3 equivariance / intertwining) with exact laws and failure cases, and the earlier rules sort into it (generators, conservation, stabilizers, invariant zero relations, Fourier shift, Schur sectors, weighted centering). Still short: DYADIC PACKETS undefined, no general statement for effective representations, no application mathematics, and the model-manifold invariance audit open.'),
+ ('Mathematical verification coverage', round(100 * len(carded) / len(est)), 95, f'{len(carded)} of {len(est)} established or derived objects have PASS cards (computed). New and carded in the correction: TA0–TA3, TA2I (TRA cards). Not carded: R7 (definitional), OB1 (definitional), A3 (wording).'),
+ ('Cross-domain validation', 30, 30, 'Unchanged: no experiment was run in the correction.'),
+ ('Project-specific construction maturity', 45, 45, 'Unchanged.'),
+ ('Paper / source coverage', 55, 55, f'{sum(1 for x in S if x["sourceClass"] in ("primary", "textbook", "review"))} external sources registered with verified bibliographic records ({sum(1 for x in S if x["status"] == SP)} only partly verified), each with the exact claim it supports and what it does not establish. {len(ext_src)} of {len(ext)} external-claim objects have a source; R5 is SOURCE MISSING. Unchanged: Čencov was moved from support to bears-on (not yet integrated).'),
+ ('Application validation', 0, 0, 'Unchanged.'),
 ]
 data = dict(about='Foundation dependency architecture (V1, revised in Pass 2, 2026-11-12). Generated by research/tools/foundation_source.py.', layers=LAYERS, stages=STAGES, statuses=STATUS, transferDepths=TD,
             provenanceClasses=PROVENANCE, bridgeStrengths=STRENGTHS, sourceStatuses=SOURCE_STATUSES, sourceClasses=SOURCE_CLASSES, domainStatuses=DOMAIN_STATUSES, externalProvenance=list(EXTERNAL),
-            objects=O, bridges=B, sources=S, domains=D, cf11b=CF11B, ratings=[dict(dimension=a, rating=b, previous=c, reason=d) for a, b, c, d in RATINGS])
+            objects=O, bridges=B, sources=S, domains=D, cf11b=CF11B, transformationClasses=TRANSFORMATION_CLASSES,
+            transformationClassesByDomain=[dict(domain=a, classes=b) for a, b in TCLASS], ratings=[dict(dimension=a, rating=b, previous=c, reason=d) for a, b, c, d in RATINGS])
 (ROOT / 'research/foundation.json').write_text(json.dumps(data, ensure_ascii=False, indent=1) + '\n')
 
 cell = lambda x: '—' if x in (None, '', []) else str(x).replace('|', '\\|')
@@ -616,11 +692,13 @@ cl = ['# Foundation completion ledger (Pass 2)', '', 'Generated from `research/t
       '- **Two maps:** `research/master_math_map.md` is the research ontology; `docs/act_map.md` is the teaching / discovery order. They need not share an ordering.',
       '- **CF11** is two records, rated separately: CF11-A (established pattern) and CF11-B (project hypothesis).',
       '- **DYADIC PACKETS** is an ORIGINAL USER RESEARCH TERM with an OPEN DEFINITION.',
-      '- **Classification systems:** seven provenance classes, seven bridge strength classes, the source registry, and the domain statuses below.', '',
+      '- **Classification systems:** seven provenance classes, seven bridge strength classes, the source registry, and the domain statuses below.',
+      '- **Transformation Architecture (TA0, Pass 3 correction):** R1 representation covariance; R2 structural invariance / symmetry (F*T = T); R3 equivariance / intertwining (C ρ_V(g) = ρ_W(g) C). Related but distinct; never collapsed. Transformation classes named in every domain: ' + '; '.join(TRANSFORMATION_CLASSES) + '.', '',
       '## CF11-B after Pass 3', '',
       f"- **Outcome:** {CF11B['outcome']} (PARTIAL SURVIVAL), by the decision rule preregistered in `{CF11B['prereg']}` (commit {CF11B['preregCommit']}). Result: `{CF11B['record']}`.",
       f"- **Classification:** {CF11B['classification']}. The wording of CF11-B is unchanged.",
-      '- **Why:** one law, F*T = T, expresses the symmetries of constant-form, symplectic and Fisher geometry, but read with that single meaning of "preserved" it organizes generic Fisher geometry only vacuously (F-C′ has an exact null and no supplied symmetry). The explicit refinement adds naturality under reparametrization (P2) and covers it non-vacuously; derived operators such as weighted centering need equivariance (P3).',
+      '- **Why:** one law, F*T = T, expresses the symmetries of constant-form, symplectic and Fisher geometry, but structural invariance alone organizes generic Fisher geometry only vacuously (F-C′ has an exact null and no supplied symmetry). Representation covariance under reparametrization covers it non-vacuously; derived operators such as weighted centering need equivariance.',
+      f"- **Architectural correction:** {CF11B['correction']} History: CF11 original → Fisher preregistered test → CF11-F2 → architectural correction → Transformation Architecture R1/R2/R3.",
       f"- **Pullback common form:** {CF11B['pullbackCommonForm']}. Several major geometries in the Foundation admit a common coordinate-free preservation form in which an admissible symmetry preserves a defining tensor/form under pullback (CF12, BR36). Not all geometry; not reparametrizations.", '',
       '## Domain statuses', '', 'Statuses: ' + '; '.join(DOMAIN_STATUSES) + '.', '',
       '| Domain | Foundation objects | Status | Note |', '|---|---|---|---|']
@@ -632,14 +710,15 @@ cl += ['', '## Blocking items for Foundation V1', '', '| Kind | Item |', '|---|-
        '| undefined central object | none (DYADIC PACKETS is an open user term, not a central object of the spine) |',
        '| incorrect mathematical bridge | none found; every bridge has a strength class, assumptions, a failure condition and what it does not prove |',
        '| provenance loss | the quinn2023 PDF (P-2); ThermaLens mathematics (APPLICATION PROVENANCE INCOMPLETE); the original mass-attraction wording (ORIGINAL VERBATIM NOT RECOVERED); no source opened at full text |',
-       '', '## Foundation ratings (separate dimensions, no overall score)', '', '| Dimension | Rating | Previous (Pass 2) | Reason for the change |', '|---|---|---|---|']
+       '', '## Foundation ratings (separate dimensions, no overall score)', '', '| Dimension | Rating | Previous (Pass 3) | Reason for the change |', '|---|---|---|---|']
 for a, b_, c, d in RATINGS:
     cl.append(f"| {a} | {b_}% | {c}% | {d} |")
-cl += ['', '## CF11 ratings (separate records)', '', '| Record | Statement | Mathematical Status | Transfer Depth | Backbone Support | AI Slop Risk | Application Breadth |', '|---|---|---|---|---|---|---|']
+cl += ['', '## CF11 and Transformation Architecture ratings (separate records)', '', '| Record | Statement | Mathematical Status | Novelty | Transfer Depth | Backbone Support | AI Slop Risk | Application Breadth |', '|---|---|---|---|---|---|---|---|']
 short = {'CF11-A': 'In many established geometries, a relational structure together with the transformations preserving it characterizes substantial geometric structure', 'CF11-B': None, 'CF11-R': 'A geometry may be characterized by relational structure together with transformations under which that structure is preserved or transforms coherently (explicit form: P1 + P2, P3 for derived operators)', 'CF12': 'F*T = T, the coordinate-free common form (BR36)'}
-for i in ('CF11-A', 'CF11-B', 'CF11-R', 'CF12'):
+short.update({'CF1': 'A†MA = M (R2, matrix form)', 'TA1': 'R1 representation covariance', 'TA2': 'R2 structural invariance, F*T = T', 'TA2I': 'R2 infinitesimal, L_X T = 0; KᵀM + MK = 0', 'TA3': 'R3 equivariance / intertwining', 'TA0': 'Transformation Architecture (project-level organizing architecture)', 'TAH': None})
+for i in ('CF11-A', 'CF11-B', 'CF11-R', 'CF12', 'TA1', 'TA2', 'CF1', 'TA2I', 'TA3', 'TA0', 'TAH'):
     o = next(o for o in O if o['id'] == i)
-    cl.append(f"| {i} ({o['status']}) | {short[i] or o['equation']} | {o['mathematicalStatus']} | {o['transferDepth']} | {o['backboneSupport']}% | {o['slopRisk']}% | {o['applicationBreadth']} |")
+    cl.append(f"| {i} ({o['status']}) | {short[i] or o['equation']} | {o['mathematicalStatus']} | {o.get('novelty') or '—'} | {o['transferDepth']} | {o['backboneSupport']}% | {o['slopRisk']}% | {o['applicationBreadth']} |")
 cl += ['', 'CF11-A\'s confidence does not transfer to CF11-B. Pass 3 changes: CF11-A 55% / 10% → 60% / 8% (breadth corrected 4 → 3 to the rubric); CF11-B 30% / 30% → 35% / 25%, NOT YET FORMALIZED → STRUCTURAL TRANSFER (with the refinement), SPECULATIVE MAPPING → PROJECT-DERIVED FROM KNOWN DEFINITIONS, breadth 2 → 3. Mathematical novelty of CF12: none (KNOWN MATHEMATICS); Foundation relevance: high.', '',
        '## Recommended next pass (one primary obligation)', '',
        '**Model-manifold invariance audit.** Pass 3 found that the component eigenvalues of a Fisher metric are not coordinate invariants (CFT5e), and the project\'s sloppy-spectrum card S14 (M1) is computed in log-parameter coordinates. Before any C7 work, restate every model-manifold quantity the Foundation uses (the sloppy spectrum, hyperribbon widths, null directions, the C7 comparison object) as either coordinate-invariant, with its invariant definition, or explicitly coordinate-stated, and card the difference.']

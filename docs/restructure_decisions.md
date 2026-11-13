@@ -1325,3 +1325,61 @@ Nadia's decisions, verbatim. LaTeX converted to plain text and lists joined; not
 > LOCKED FOR V1; NEEDS ONE MORE TEST; REFINED; FAILED; OPEN LONG-TERM
 
 > The goal is to determine whether one of the oldest project ideas — a common mathematical form across different geometries — has a precise coordinate-free version, a narrower valid domain, or a genuine failure boundary.
+
+## Pass 3 architectural correction: the Transformation Architecture (2026-11-12)
+
+Nadia's decisions, verbatim. LaTeX converted to plain text and lists joined; nothing else changed. This corrects the architectural interpretation of the Pass 3 result; it is not a new experiment, and CF11-B → CF11-F2 stands.
+
+> The preregistered result remains historically valid.
+
+> The purpose of this prompt is to correct the ARCHITECTURAL INTERPRETATION of that result.
+
+> Do NOT describe the following as: "three meanings of preserved"
+
+> REPRESENTATION COVARIANCE; STRUCTURAL INVARIANCE / SYMMETRY; EQUIVARIANCE / INTERTWINING
+
+> These are related but mathematically distinct.
+
+> TRANSFORMATION ARCHITECTURE
+
+> PROJECT-LEVEL ORGANIZING ARCHITECTURE; DERIVED FROM ESTABLISHED MATHEMATICS
+
+> How does the same mathematical structure appear when its representation or coordinates change?
+
+> Which actual transformations of the object or space preserve the defining structure?
+
+> Which derived maps/operators remain compatible with those transformations?
+
+> same abstract object; different coordinate representation; covariant transformation law
+
+> Several major geometries in the Foundation admit a coordinate-free symmetry condition in which a defining tensor/form is preserved under pullback.
+
+> structural invariance → preservation of zero relations defined by that structure
+
+> invariance identifies a stabilizer / symmetry set
+
+> translation in one representation ↔ phase multiplication in another representation
+
+> geometry-derived operator compatible with a symmetry subgroup
+
+> A mathematical structure may be investigated by distinguishing: (1) how it transforms when its representation changes, (2) which transformations leave the structure invariant, and (3) which maps/operators remain compatible with those transformations.
+
+> Do recurring relationships among representation covariance, structural invariance, zero relations, and equivariance reveal a deeper common architecture across the systems studied in Geometry of Representation?
+
+> REPRESENTATION CHANGES; GEOMETRIC SYMMETRIES; SYSTEM-SUPPLIED TRANSFORMATIONS; OPERATOR-COMPATIBLE TRANSFORMATIONS
+
+> These sets may overlap. They need not coincide.
+
+> ČENCOV / CHENTSOV — FUTURE HIGH-RELEVANCE CHECK
+
+> Does the characterization of the Fisher metric under statistically meaningful transformations provide a deeper example of the project's transformation-class → distinguished-geometry relationship?
+
+> KNOWN THEOREM; NOT YET INTEGRATED
+
+> CF11 original → Fisher preregistered test → CF11-F2 → architectural correction → Transformation Architecture R1/R2/R3
+
+> representation → covariance → symmetry → zero relations → equivariant structure → information → generated behavior
+
+> Do not let: transformation become synonymous with: symmetry.
+
+> Do not let: representation change become synonymous with: physical change.

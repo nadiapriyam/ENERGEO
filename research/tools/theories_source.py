@@ -773,6 +773,29 @@ T('T-CF-PULLBACK-Q', 'Pullback preservation as a common form (question)', 'Is pu
   bounds=['Evaluated in Pass 3 against preregistered criteria (YES / PARTIAL / NO); Fisher coordinate reparametrization is never counted as F*g = g unless F is an isometry.'],
   acts=['Guide'], audit=P3_AUDIT, related=['T-CF11-B', 'T-CF11-A'], ref='Foundation Pass 3, 17', history=[('2026-11-12', 'recorded before the CF11-B Fisher test')])
 
+# ── Pass 3 architectural correction (2026-11-12): the Transformation Architecture ──
+PC_AUDIT = ('missing', 'stated in the Pass 3 architectural correction (2026-11-12)')
+ACTS_ALREADY_NEW |= {'T-TRANSFORMATION-ARCH', 'T-TRANSFORMATION-DEEP', 'T-CENCOV-CHECK'}
+T('T-TRANSFORMATION-ARCH', 'Transformation Architecture (R1 / R2 / R3)', 'A mathematical structure may be investigated by distinguishing: (1) how it transforms when its representation changes, (2) which transformations leave the structure invariant, and (3) which maps/operators remain compatible with those transformations.', RD, U, 'derived-connection', 'derived',
+  variants=[('How does the same mathematical structure appear when its representation or coordinates change?', RD), ('Which actual transformations of the object or space preserve the defining structure?', RD),
+            ('Which derived maps/operators remain compatible with those transformations?', RD)],
+  norm='R1 representation covariance (components transform by a covariant law, invariants unchanged; e.g. g_φ = Jᵀ g_θ J); R2 structural invariance / symmetry (F*T = T; matrix case A†MA = M; infinitesimal L_X T = 0, matrix K†M + MK = 0); R3 equivariance / intertwining (C ρ_V(g) = ρ_W(g) C; commuting operator when V = W).',
+  pro=[('card:TRA4a', 'R1 and R2 are distinct questions even with the same matrix'), ('card:TRA1b', 'R2 → infinitesimal: F_t*g = g ⟹ L_X g = 0'), ('card:TRA3a', 'R3: the DFT intertwines translation and modulation'),
+       ('card:CFT4c', 'R1 verified against direct computation'), ('card:CFT8c', 'R3: weighted centering commutes with a symmetry subgroup')],
+  con=[('card:TRA4b', 'projections are not R1: lossy representation maps sit outside the three levels (their compatibility is R3)')],
+  bounds=['PROJECT-LEVEL ORGANIZING ARCHITECTURE, DERIVED FROM ESTABLISHED MATHEMATICS; not a new mathematical theorem. Each level is known mathematics, sourced separately.',
+          'History: CF11 original → Fisher preregistered test → CF11-F2 → architectural correction → Transformation Architecture R1/R2/R3. CF11-B → CF11-F2 stands.'],
+  supers='T-CF11-REFINEMENT', acts=['all'], audit=PC_AUDIT, related=['T-CF11-B', 'T-CF-PULLBACK-Q', 'T-TRANSFORMATION-DEEP', 'T-H2'], ref='Pass 3 correction, 17',
+  history=[('2026-11-12', 'recorded in the Pass 3 architectural correction; supersedes the "three meanings of preserved" reading of T-CF11-REFINEMENT')])
+T('T-TRANSFORMATION-DEEP', 'Representation covariance, invariance, zero relations and equivariance: a deeper common architecture?', 'Do recurring relationships among representation covariance, structural invariance, zero relations, and equivariance reveal a deeper common architecture across the systems studied in Geometry of Representation?', RD, U, 'hypothesis', 'hypothesis',
+  pro=[('card:TRA2a', 'R2 keeps the zero relations its structure defines'), ('card:CFT5b', 'a supplied symmetry forces a Fisher null at its fixed points'), ('card:FS2b', 'four spins: an independent symmetry separates states sharing a zero')],
+  con=[('card:CFT5c', 'a Fisher null without any symmetry'), ('card:TRA2b', 'zero preservation does not imply invariance'), ('card:MB2a', 'mass: geometry, not symmetry, carries the hidden label')],
+  bounds=['HYPOTHESIS / OPEN. The three-level architecture is not the final theory; this record keeps the larger question open.'],
+  acts=['all'], audit=PC_AUDIT, related=['T-TRANSFORMATION-ARCH', 'T-ZERO-SYMMETRY-ARCHITECTURE', 'T-CF11-B'], ref='Pass 3 correction, 18')
+T('T-CENCOV-CHECK', 'Čencov / Chentsov: future high-relevance check', "Does the characterization of the Fisher metric under statistically meaningful transformations provide a deeper example of the project's transformation-class → distinguished-geometry relationship?", RD, U, 'open-question', 'open',
+  bounds=['KNOWN THEOREM, NOT YET INTEGRATED (SRC-CHENTSOV-1982). Not used as evidence and not used to raise any rating until examined precisely in a later pass.'],
+  acts=['Guide'], audit=PC_AUDIT, related=['T-TRANSFORMATION-ARCH'], ref='Pass 3 correction, 21')
+
 PAIR_A = proof_target('Starting from the established common zero-sum form Σv_i = 0, identify all additional invariants/relations of the mass system that can be translated into mathematically meaningful tests on the directional cancellation system.',
                       requiredObjects=['the established shared form Σv_i = 0 (pair.A.sharedAlgebraicForm)'])
 next(r for r in R if r['id'] == 'T-Q.pairA-transfer')['proofTarget'] = PAIR_A
@@ -974,6 +997,12 @@ evidence('T-CF-PULLBACK-Q',
          con=[('card:CFT2c', 'one law, different preserving classes'), ('card:CFT5f', 'generic Fisher geometry has no transitive isometry group')],
          bound='Pass 3 answer: YES by the preregistered criteria, with scope: several major geometries in the Foundation admit F*T = T as a common coordinate-free preservation form for their symmetries; not all geometry, not reparametrizations.',
          change='Pass 3: answered YES (scope stated)', status='derived')
+# Pass 3 architectural correction: append corrections; the Pass 3 notes above stay as written
+byid['T-CF11-REFINEMENT']['supersededBy'] = 'T-TRANSFORMATION-ARCH'
+for rid, note in (('T-CF11-B', 'Correction (Pass 3 architectural correction): P1, P2 and P3 are not three meanings of "preserved". They are three distinct transformation relationships: R2 structural invariance (P1, F*T = T), R1 representation covariance (P2, g_φ = Jᵀ g J) and R3 equivariance / intertwining (P3). CF11-F2 stands; the architecture is recorded as T-TRANSFORMATION-ARCH.'),
+                  ('T-CF11-REFINEMENT', 'Correction (Pass 3 architectural correction): superseded by T-TRANSFORMATION-ARCH. The reading "preserved or transforms coherently" compressed three distinct relationships (R1, R2, R3) into one word; it is kept as the historical step between CF11-F2 and the Transformation Architecture.')):
+    byid[rid]['boundaries'].append(note)
+    byid[rid]['history'].append(dict(date='2026-11-12', change='Pass 3 architectural correction: P1/P2/P3 re-recorded as R2/R1/R3 (Transformation Architecture)'))
 update('T-CF11-A', TRIV, bs=60, slop=8, reason='Pass 3: the pattern holds in coordinate-free form (F*T = T) across constant-form, symplectic and homogeneous Fisher geometries, and its boundary is now exact (generic Fisher geometry is not characterized by a transformation group, CFT5f). Application Breadth corrected from 4 to 3: the rubric reserves 4 for a physical/empirical system')
 
 for r in R:

@@ -830,7 +830,9 @@
         "previousTargets": [],
         "lastResearchOutcome": null
       },
-      "related": [],
+      "related": [
+        "T-TRANSFORMATION-ARCH"
+      ],
       "history": [
         {
           "date": "2026-11-12",
@@ -11050,7 +11052,8 @@
       "related": [
         "B-INDEPENDENT-SYMMETRY",
         "T-FOURSPIN-SYMMETRY",
-        "T-MASS-SECOND-MOMENT"
+        "T-MASS-SECOND-MOMENT",
+        "T-TRANSFORMATION-DEEP"
       ],
       "history": [],
       "relatedActsRev3": [],
@@ -11453,7 +11456,8 @@
       "boundaries": [
         "HYPOTHESIS / OPEN. Not supported merely by CF11-A: the established pattern does not show that the project's own geometries are organized this way.",
         "No cross-domain test chosen in advance yet; none is run in Pass 2 (stop condition).",
-        "Pass 3 (preregistered, e6f3db8): outcome CF11-F2, PARTIAL SURVIVAL. \"Preserved\" needs more than one precise meaning: P1 invariance F*T = T (symmetries), P2 naturality g_φ = Jᵀ g J (reparametrizations), P3 operator equivariance (derived operators). Wording unchanged."
+        "Pass 3 (preregistered, e6f3db8): outcome CF11-F2, PARTIAL SURVIVAL. \"Preserved\" needs more than one precise meaning: P1 invariance F*T = T (symmetries), P2 naturality g_φ = Jᵀ g J (reparametrizations), P3 operator equivariance (derived operators). Wording unchanged.",
+        "Correction (Pass 3 architectural correction): P1, P2 and P3 are not three meanings of \"preserved\". They are three distinct transformation relationships: R2 structural invariance (P1, F*T = T), R1 representation covariance (P2, g_φ = Jᵀ g J) and R3 equivariance / intertwining (P3). CF11-F2 stands; the architecture is recorded as T-TRANSFORMATION-ARCH."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -11490,7 +11494,9 @@
         "T-CF11-A",
         "T-BACKBONE-INVARIANT",
         "T-CF11-REFINEMENT",
-        "T-CF-PULLBACK-Q"
+        "T-CF-PULLBACK-Q",
+        "T-TRANSFORMATION-ARCH",
+        "T-TRANSFORMATION-DEEP"
       ],
       "history": [
         {
@@ -11500,6 +11506,10 @@
         {
           "date": "2026-11-12",
           "change": "Pass 3: CF11-F2 (PARTIAL SURVIVAL); classified REFINED"
+        },
+        {
+          "date": "2026-11-12",
+          "change": "Pass 3 architectural correction: P1/P2/P3 re-recorded as R2/R1/R3 (Transformation Architecture)"
         }
       ],
       "relatedActsRev3": [],
@@ -11605,9 +11615,10 @@
       "boundaries": [
         "Candidate only: tested in Pass 3, not adopted before the test (preregistration research/constructions/cf11b_fisher_prereg.md).",
         "Tested only in explicit form: tensor T; F*T = T for symmetries; T_(p∘θ) = θ*T_p for reparametrizations; invariants; failure cases. Without a stated law, \"transforms coherently\" is too generic.",
-        "Pass 3: supported in explicit form (tensor T; F*T = T for symmetries; g_(p∘θ) = θ*g_p for reparametrizations; invariants ds², K, rank; failure cases). Not adopted as project wording: that is Nadia's decision."
+        "Pass 3: supported in explicit form (tensor T; F*T = T for symmetries; g_(p∘θ) = θ*g_p for reparametrizations; invariants ds², K, rank; failure cases). Not adopted as project wording: that is Nadia's decision.",
+        "Correction (Pass 3 architectural correction): superseded by T-TRANSFORMATION-ARCH. The reading \"preserved or transforms coherently\" compressed three distinct relationships (R1, R2, R3) into one word; it is kept as the historical step between CF11-F2 and the Transformation Architecture."
       ],
-      "supersededBy": null,
+      "supersededBy": "T-TRANSFORMATION-ARCH",
       "supersedes": null,
       "relatedActs": [
         "all"
@@ -11646,6 +11657,10 @@
         {
           "date": "2026-11-12",
           "change": "Pass 3: tested in explicit form; supported (outcome CF11-F2); not adopted"
+        },
+        {
+          "date": "2026-11-12",
+          "change": "Pass 3 architectural correction: P1/P2/P3 re-recorded as R2/R1/R3 (Transformation Architecture)"
         }
       ],
       "relatedActsRev3": [],
@@ -11722,7 +11737,8 @@
       "proofTarget": null,
       "related": [
         "T-CF11-B",
-        "T-CF11-A"
+        "T-CF11-A",
+        "T-TRANSFORMATION-ARCH"
       ],
       "history": [
         {
@@ -11734,6 +11750,226 @@
           "change": "Pass 3: answered YES (scope stated)"
         }
       ],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-TRANSFORMATION-ARCH",
+      "label": "Transformation Architecture (R1 / R2 / R3)",
+      "words": "A mathematical structure may be investigated by distinguishing: (1) how it transforms when its representation changes, (2) which transformations leave the structure invariant, and (3) which maps/operators remain compatible with those transformations.",
+      "variants": [
+        {
+          "words": "How does the same mathematical structure appear when its representation or coordinates change?",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "Which actual transformations of the object or space preserve the defining structure?",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "Which derived maps/operators remain compatible with those transformations?",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "R1 representation covariance (components transform by a covariant law, invariants unchanged; e.g. g_φ = Jᵀ g_θ J); R2 structural invariance / symmetry (F*T = T; matrix case A†MA = M; infinitesimal L_X T = 0, matrix K†M + MK = 0); R3 equivariance / intertwining (C ρ_V(g) = ρ_W(g) C; commuting operator when V = W).",
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:TRA4a",
+          "note": "R1 and R2 are distinct questions even with the same matrix"
+        },
+        {
+          "ref": "card:TRA1b",
+          "note": "R2 → infinitesimal: F_t*g = g ⟹ L_X g = 0"
+        },
+        {
+          "ref": "card:TRA3a",
+          "note": "R3: the DFT intertwines translation and modulation"
+        },
+        {
+          "ref": "card:CFT4c",
+          "note": "R1 verified against direct computation"
+        },
+        {
+          "ref": "card:CFT8c",
+          "note": "R3: weighted centering commutes with a symmetry subgroup"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:TRA4b",
+          "note": "projections are not R1: lossy representation maps sit outside the three levels (their compatibility is R3)"
+        }
+      ],
+      "boundaries": [
+        "PROJECT-LEVEL ORGANIZING ARCHITECTURE, DERIVED FROM ESTABLISHED MATHEMATICS; not a new mathematical theorem. Each level is known mathematics, sourced separately.",
+        "History: CF11 original → Fisher preregistered test → CF11-F2 → architectural correction → Transformation Architecture R1/R2/R3. CF11-B → CF11-F2 stands."
+      ],
+      "supersededBy": null,
+      "supersedes": "T-CF11-REFINEMENT",
+      "relatedActs": [
+        "all"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "CFT4c",
+        "CFT8c",
+        "TRA1b",
+        "TRA3a",
+        "TRA4a",
+        "TRA4b"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Pass 3 correction, 17",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Pass 3 architectural correction (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-CF11-B",
+        "T-CF-PULLBACK-Q",
+        "T-TRANSFORMATION-DEEP",
+        "T-H2",
+        "T-CENCOV-CHECK"
+      ],
+      "history": [
+        {
+          "date": "2026-11-12",
+          "change": "recorded in the Pass 3 architectural correction; supersedes the \"three meanings of preserved\" reading of T-CF11-REFINEMENT"
+        }
+      ],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-TRANSFORMATION-DEEP",
+      "label": "Representation covariance, invariance, zero relations and equivariance: a deeper common architecture?",
+      "words": "Do recurring relationships among representation covariance, structural invariance, zero relations, and equivariance reveal a deeper common architecture across the systems studied in Geometry of Representation?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:TRA2a",
+          "note": "R2 keeps the zero relations its structure defines"
+        },
+        {
+          "ref": "card:CFT5b",
+          "note": "a supplied symmetry forces a Fisher null at its fixed points"
+        },
+        {
+          "ref": "card:FS2b",
+          "note": "four spins: an independent symmetry separates states sharing a zero"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:CFT5c",
+          "note": "a Fisher null without any symmetry"
+        },
+        {
+          "ref": "card:TRA2b",
+          "note": "zero preservation does not imply invariance"
+        },
+        {
+          "ref": "card:MB2a",
+          "note": "mass: geometry, not symmetry, carries the hidden label"
+        }
+      ],
+      "boundaries": [
+        "HYPOTHESIS / OPEN. The three-level architecture is not the final theory; this record keeps the larger question open."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "all"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "CFT5b",
+        "CFT5c",
+        "FS2b",
+        "MB2a",
+        "TRA2a",
+        "TRA2b"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Pass 3 correction, 18",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Pass 3 architectural correction (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-TRANSFORMATION-ARCH",
+        "T-ZERO-SYMMETRY-ARCHITECTURE",
+        "T-CF11-B"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-CENCOV-CHECK",
+      "label": "Čencov / Chentsov: future high-relevance check",
+      "words": "Does the characterization of the Fisher metric under statistically meaningful transformations provide a deeper example of the project's transformation-class → distinguished-geometry relationship?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "KNOWN THEOREM, NOT YET INTEGRATED (SRC-CHENTSOV-1982). Not used as evidence and not used to raise any rating until examined precisely in a later pass."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Pass 3 correction, 21",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Pass 3 architectural correction (2026-11-12)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-TRANSFORMATION-ARCH"
+      ],
+      "history": [],
       "relatedActsRev3": [],
       "assessment": null
     }

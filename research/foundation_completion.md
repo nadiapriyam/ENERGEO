@@ -14,12 +14,14 @@ Foundation V1 may contain open questions. What blocks completion is limited to: 
 - **CF11** is two records, rated separately: CF11-A (established pattern) and CF11-B (project hypothesis).
 - **DYADIC PACKETS** is an ORIGINAL USER RESEARCH TERM with an OPEN DEFINITION.
 - **Classification systems:** seven provenance classes, seven bridge strength classes, the source registry, and the domain statuses below.
+- **Transformation Architecture (TA0, Pass 3 correction):** R1 representation covariance; R2 structural invariance / symmetry (F*T = T); R3 equivariance / intertwining (C ρ_V(g) = ρ_W(g) C). Related but distinct; never collapsed. Transformation classes named in every domain: REPRESENTATION CHANGES; GEOMETRIC SYMMETRIES; SYSTEM-SUPPLIED TRANSFORMATIONS; OPERATOR-COMPATIBLE TRANSFORMATIONS.
 
 ## CF11-B after Pass 3
 
 - **Outcome:** CF11-F2 (PARTIAL SURVIVAL), by the decision rule preregistered in `research/constructions/cf11b_fisher_prereg.md` (commit e6f3db8). Result: `research/constructions/cf11b_fisher_test.md`.
 - **Classification:** REFINED. The wording of CF11-B is unchanged.
-- **Why:** one law, F*T = T, expresses the symmetries of constant-form, symplectic and Fisher geometry, but read with that single meaning of "preserved" it organizes generic Fisher geometry only vacuously (F-C′ has an exact null and no supplied symmetry). The explicit refinement adds naturality under reparametrization (P2) and covers it non-vacuously; derived operators such as weighted centering need equivariance (P3).
+- **Why:** one law, F*T = T, expresses the symmetries of constant-form, symplectic and Fisher geometry, but structural invariance alone organizes generic Fisher geometry only vacuously (F-C′ has an exact null and no supplied symmetry). Representation covariance under reparametrization covers it non-vacuously; derived operators such as weighted centering need equivariance.
+- **Architectural correction:** architectural correction (2026-11-12): P1, P2, P3 are not three meanings of one word; they are R2 structural invariance, R1 representation covariance and R3 equivariance / intertwining of the Transformation Architecture (TA0). CF11-F2 is unchanged. History: CF11 original → Fisher preregistered test → CF11-F2 → architectural correction → Transformation Architecture R1/R2/R3.
 - **Pullback common form:** YES. Several major geometries in the Foundation admit a common coordinate-free preservation form in which an admissible symmetry preserves a defining tensor/form under pullback (CF12, BR36). Not all geometry; not reparametrizations.
 
 ## Domain statuses
@@ -33,7 +35,9 @@ Statuses: LOCKED; SOURCE-COMPLETE; MATH-CARDED; SOURCE+CARD COMPLETE; NEEDS DERI
 | D3. Fourier / L² representation | R1, R2, R3, R4, R5, R6, Z7, P1 | SOURCE+CARD COMPLETE | R5 (Fourier transform as a quarter-turn) is carded but SOURCE MISSING |
 | D4. Orthogonality and norm | ON1, ON2, ON3, ON4, ON5, ON7, Z4, Z10 | SOURCE+CARD COMPLETE | — |
 | D5. Common forms, generators, conservation | CF1, CF2, CF3, CF4, CF5, CF6, CF7, CF8, CF9, CF10, CF11-A | SOURCE+CARD COMPLETE | Noether in general is source-only (FB5 cards an instance); CF11-A is the established pattern |
-| D6. Common-form architecture as project hypothesis | CF11-B, CF11-R | SOURCE+CARD COMPLETE | Pass 3 preregistered test: CF11-F2; CF11-B classified REFINED; adopting the explicit refinement (CF11-R) as wording is Nadia's decision |
+| D6. Common-form architecture as project hypothesis | CF11-B, CF11-R | SOURCE+CARD COMPLETE | Pass 3 preregistered test: CF11-F2 (stands); CF11-B classified REFINED; architectural correction: CF11-R superseded by the Transformation Architecture (D28) |
+| D28. Transformation Architecture (R1 / R2 / R3) | TA0, TA1, TA2, TA2I, TA3 | SOURCE+CARD COMPLETE | each level is known mathematics, carded and sourced; TA0 is the project-level organizing architecture |
+| D29. Deeper transformation–zero question; Čencov check | TAH, TAC | OPEN LONG-TERM | TAH: HYPOTHESIS / OPEN; TAC: KNOWN THEOREM, NOT YET INTEGRATED |
 | D27. Coordinate-free common form and covariance | CF12, CF13, Z13 | SOURCE+CARD COMPLETE | F*T = T across constant-form, symplectic and Fisher isometries; naturality of the Fisher metric; symmetry-forced null (sufficient, not necessary) |
 | D7. Zero taxonomy | Z1, Z2, Z3, Z5, Z6, Z8, Z9, Z12 | SOURCE+CARD COMPLETE | Z9 now separates exact structural null, sloppy direction, Lorentz null (FB7) |
 | D8. Zero as connector; the inverse problem | Z11, H3 | OPEN LONG-TERM | special cases proved; general statement open |
@@ -68,23 +72,30 @@ Statuses: LOCKED; SOURCE-COMPLETE; MATH-CARDED; SOURCE+CARD COMPLETE; NEEDS DERI
 
 ## Foundation ratings (separate dimensions, no overall score)
 
-| Dimension | Rating | Previous (Pass 2) | Reason for the change |
+| Dimension | Rating | Previous (Pass 3) | Reason for the change |
 |---|---|---|---|
-| Foundation architecture completeness | 85% | 80% | Pass 3 settles the status of the common-form mechanism: CF11-B tested (preregistered, CF11-F2), its exact coordinate-free form identified (CF12: F*T = T), and its second mechanism stated (CF13: naturality). Still short: DYADIC PACKETS undefined, the effective-representation question without a general statement, no application mathematics, and the refinement not yet adopted as wording. |
-| Mathematical verification coverage | 95% | 95% | 62 of 65 established or derived objects have PASS cards (computed). New and carded in Pass 3: CF12, CF13, Z13 (CFT cards). Not carded: R7 (definitional), OB1 (definitional), A3 (wording). |
-| Cross-domain validation | 30% | 20% | One preregistered cross-domain test of a project architecture ran across three independent mathematical systems (constant-form, symplectic, Fisher) with two boundary cases, and could have failed. Outcome partial (CF11-F2). Still no predictive transfer and no empirical system. |
-| Project-specific construction maturity | 45% | 45% | Unchanged. Pass 3 formalized an architecture claim; it made no new construction. |
-| Paper / source coverage | 55% | 55% | 41 external sources registered with verified bibliographic records (7 only partly verified), each with the exact claim it supports and what it does not establish. 45 of 46 external-claim objects have a source; R5 is SOURCE MISSING. Unchanged rating: three differential-geometry sources were added, but nothing is yet quoted at full text and the quinn2023 PDF is pending. |
-| Application validation | 0% | 0% | Unchanged. Energeo is untested and the ThermaLens mathematics is not in the repository (APPLICATION PROVENANCE INCOMPLETE). |
+| Foundation architecture completeness | 88% | 85% | The TRANSFORMATION → PRESERVED STRUCTURE step of the spine now has an explicit three-level organization (R1 representation covariance, R2 structural invariance, R3 equivariance / intertwining) with exact laws and failure cases, and the earlier rules sort into it (generators, conservation, stabilizers, invariant zero relations, Fourier shift, Schur sectors, weighted centering). Still short: DYADIC PACKETS undefined, no general statement for effective representations, no application mathematics, and the model-manifold invariance audit open. |
+| Mathematical verification coverage | 96% | 95% | 67 of 70 established or derived objects have PASS cards (computed). New and carded in the correction: TA0–TA3, TA2I (TRA cards). Not carded: R7 (definitional), OB1 (definitional), A3 (wording). |
+| Cross-domain validation | 30% | 30% | Unchanged: no experiment was run in the correction. |
+| Project-specific construction maturity | 45% | 45% | Unchanged. |
+| Paper / source coverage | 55% | 55% | 41 external sources registered with verified bibliographic records (7 only partly verified), each with the exact claim it supports and what it does not establish. 49 of 50 external-claim objects have a source; R5 is SOURCE MISSING. Unchanged: Čencov was moved from support to bears-on (not yet integrated). |
+| Application validation | 0% | 0% | Unchanged. |
 
-## CF11 ratings (separate records)
+## CF11 and Transformation Architecture ratings (separate records)
 
-| Record | Statement | Mathematical Status | Transfer Depth | Backbone Support | AI Slop Risk | Application Breadth |
-|---|---|---|---|---|---|---|
-| CF11-A (DERIVED) | In many established geometries, a relational structure together with the transformations preserving it characterizes substantial geometric structure | TEXTBOOK / KNOWN | TRIVIAL CONSEQUENCE | 60% | 8% | 3 |
-| CF11-B (HYPOTHESIS) | Can relation + admissible transformations + preserved structure provide a broader organizing architecture across the geometries investigated in this project? | PROJECT-DERIVED FROM KNOWN DEFINITIONS | STRUCTURAL TRANSFER | 35% | 25% | 3 |
-| CF11-R (HYPOTHESIS) | A geometry may be characterized by relational structure together with transformations under which that structure is preserved or transforms coherently (explicit form: P1 + P2, P3 for derived operators) | PROJECT-DERIVED FROM KNOWN DEFINITIONS | STRUCTURAL TRANSFER | 45% | 20% | 3 |
-| CF12 (ESTABLISHED) | F*T = T, the coordinate-free common form (BR36) | TEXTBOOK / KNOWN | STRUCTURAL TRANSFER | 70% | 5% | 3 |
+| Record | Statement | Mathematical Status | Novelty | Transfer Depth | Backbone Support | AI Slop Risk | Application Breadth |
+|---|---|---|---|---|---|---|---|
+| CF11-A (DERIVED) | In many established geometries, a relational structure together with the transformations preserving it characterizes substantial geometric structure | TEXTBOOK / KNOWN | — | TRIVIAL CONSEQUENCE | 60% | 8% | 3 |
+| CF11-B (HYPOTHESIS) | Can relation + admissible transformations + preserved structure provide a broader organizing architecture across the geometries investigated in this project? | PROJECT-DERIVED FROM KNOWN DEFINITIONS | — | STRUCTURAL TRANSFER | 35% | 25% | 3 |
+| CF11-R (HYPOTHESIS) | A geometry may be characterized by relational structure together with transformations under which that structure is preserved or transforms coherently (explicit form: P1 + P2, P3 for derived operators) | PROJECT-DERIVED FROM KNOWN DEFINITIONS | — | STRUCTURAL TRANSFER | 45% | 20% | 3 |
+| CF12 (ESTABLISHED) | F*T = T, the coordinate-free common form (BR36) | TEXTBOOK / KNOWN | KNOWN MATHEMATICS | STRUCTURAL TRANSFER | 70% | 5% | 3 |
+| TA1 (ESTABLISHED) | R1 representation covariance | TEXTBOOK / KNOWN | KNOWN MATHEMATICS | STRUCTURAL TRANSFER | 65% | 5% | 3 |
+| TA2 (ESTABLISHED) | R2 structural invariance, F*T = T | TEXTBOOK / KNOWN | KNOWN MATHEMATICS | STRUCTURAL TRANSFER | 70% | 5% | 3 |
+| CF1 (ESTABLISHED) | A†MA = M (R2, matrix form) | TEXTBOOK / KNOWN | KNOWN MATHEMATICS | not a transfer | 65% | 5% | None |
+| TA2I (ESTABLISHED) | R2 infinitesimal, L_X T = 0; KᵀM + MK = 0 | TEXTBOOK / KNOWN | KNOWN MATHEMATICS | STRUCTURAL TRANSFER | 60% | 5% | 3 |
+| TA3 (ESTABLISHED) | R3 equivariance / intertwining | TEXTBOOK / KNOWN | KNOWN MATHEMATICS | STRUCTURAL TRANSFER | 60% | 5% | 3 |
+| TA0 (DERIVED) | Transformation Architecture (project-level organizing architecture) | PROJECT-DERIVED FROM KNOWN DEFINITIONS | PROJECT ARCHITECTURAL SYNTHESIS | STRUCTURAL TRANSFER | 45% | 15% | 3 |
+| TAH (HYPOTHESIS) | Do recurring relationships among representation covariance, structural invariance, zero relations, and equivariance reveal a deeper common architecture across the systems studied in Geometry of Representation? | SPECULATIVE MAPPING | PROJECT ARCHITECTURAL SYNTHESIS (open) | NOT YET FORMALIZED | 25% | 35% | 2 |
 
 CF11-A's confidence does not transfer to CF11-B. Pass 3 changes: CF11-A 55% / 10% → 60% / 8% (breadth corrected 4 → 3 to the rubric); CF11-B 30% / 30% → 35% / 25%, NOT YET FORMALIZED → STRUCTURAL TRANSFER (with the refinement), SPECULATIVE MAPPING → PROJECT-DERIVED FROM KNOWN DEFINITIONS, breadth 2 → 3. Mathematical novelty of CF12: none (KNOWN MATHEMATICS); Foundation relevance: high.
 

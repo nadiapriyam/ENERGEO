@@ -118,7 +118,9 @@
    "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "R1",
@@ -155,7 +157,9 @@
     "SRC-STEIN-SHAKARCHI-2003"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "R2",
@@ -191,7 +195,9 @@
     "SRC-STEIN-SHAKARCHI-2003"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "R3",
@@ -231,7 +237,9 @@
     "SRC-STEIN-SHAKARCHI-2003"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "R4",
@@ -261,7 +269,7 @@
    "transferDepth": "not a transfer",
    "applicationBreadth": null,
    "failureCondition": "none",
-   "foundationRole": "a transformation diagonalized by a representation",
+   "foundationRole": "a transformation diagonalized by a representation; R3: the Fourier transform intertwines translation and phase multiplication (BR46)",
    "guideLocation": "Guide: Fourier",
    "gap": null,
    "provenance": "TEXTBOOK / STANDARD",
@@ -269,7 +277,11 @@
     "SRC-STEIN-SHAKARCHI-2003"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [
+    "R3"
+   ],
+   "novelty": null
   },
   {
    "id": "R5",
@@ -303,7 +315,9 @@
    "provenance": "TEXTBOOK / STANDARD",
    "sources": [],
    "sourceStatus": "SOURCE MISSING: Hermite functions as eigenfunctions of the Fourier transform (textbook); no source verified in Pass 2",
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "R6",
@@ -340,7 +354,9 @@
     "SRC-STEIN-SHAKARCHI-2003"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "R7",
@@ -377,7 +393,9 @@
     "SRC-QUINN-2023"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "R8",
@@ -411,7 +429,9 @@
    "provenance": "PROJECT-CONSTRUCTION",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "R9",
@@ -443,7 +463,9 @@
    "provenance": "USER-ORIGIN",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "R10",
@@ -474,7 +496,9 @@
    "provenance": "USER-ORIGIN",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "CF1",
@@ -492,7 +516,8 @@
     "S4e",
     "S4f",
     "S5c",
-    "O1a"
+    "O1a",
+    "CFT1a"
    ],
    "docs": [
     "research/connections/C1.md"
@@ -503,12 +528,12 @@
     "T-BACKBONE-INVARIANT"
    ],
    "bearsOn": [],
-   "backboneSupport": 40,
-   "slopRisk": 10,
+   "backboneSupport": 65,
+   "slopRisk": 5,
    "transferDepth": "not a transfer",
    "applicationBreadth": null,
    "failureCondition": "none (theorem)",
-   "foundationRole": "the common-form core: a relation and the transformations that keep it",
+   "foundationRole": "the common-form core: a relation and the transformations that keep it; R2 in matrix coordinates (A†MA = M is the coordinate form of F*T = T, BR36)",
    "guideLocation": "Foundation (currently Guide: forms; see decision L1)",
    "gap": null,
    "provenance": "TEXTBOOK / STANDARD",
@@ -516,7 +541,11 @@
     "SRC-FULTON-HARRIS-1991"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": "TEXTBOOK / KNOWN",
+   "transformationLevel": [
+    "R2"
+   ],
+   "novelty": "KNOWN MATHEMATICS"
   },
   {
    "id": "CF2",
@@ -555,7 +584,11 @@
     "SRC-FULTON-HARRIS-1991"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [
+    "R2"
+   ],
+   "novelty": null
   },
   {
    "id": "CF3",
@@ -589,7 +622,9 @@
    "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "CF4",
@@ -622,7 +657,7 @@
    "transferDepth": "not a transfer",
    "applicationBreadth": null,
    "failureCondition": "none",
-   "foundationRole": "global geometry → infinitesimal rule (rotation, boost, symplectic)",
+   "foundationRole": "global geometry → infinitesimal rule (rotation, boost, symplectic); the matrix case of L_X T = 0 (TA2I)",
    "guideLocation": "Guide: forms / generators",
    "gap": null,
    "provenance": "TEXTBOOK / STANDARD",
@@ -631,7 +666,11 @@
     "SRC-ARNOLD-1989"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [
+    "R2"
+   ],
+   "novelty": null
   },
   {
    "id": "CF5",
@@ -669,7 +708,11 @@
     "SRC-ARNOLD-1989"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [
+    "R2"
+   ],
+   "novelty": null
   },
   {
    "id": "CF6",
@@ -710,7 +753,11 @@
     "SRC-ARNOLD-1989"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [
+    "R2"
+   ],
+   "novelty": null
   },
   {
    "id": "CF7",
@@ -748,7 +795,11 @@
     "SRC-NOETHER-1918"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [
+    "R2"
+   ],
+   "novelty": null
   },
   {
    "id": "CF8",
@@ -790,7 +841,9 @@
    "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "CF9",
@@ -825,7 +878,9 @@
    "provenance": "PROJECT-CONSTRUCTION",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "CF10",
@@ -866,7 +921,9 @@
     "SRC-TMS-2011"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "CF11-A",
@@ -918,7 +975,9 @@
     "SRC-KLEIN-1872"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": "TEXTBOOK / KNOWN"
+   "mathematicalStatus": "TEXTBOOK / KNOWN",
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "CF11-B",
@@ -964,14 +1023,20 @@
    "slopRisk": 25,
    "transferDepth": "STRUCTURAL TRANSFER",
    "applicationBreadth": 3,
-   "failureCondition": "read with one meaning of \"preserved\" (P1), it organizes generic Fisher geometry only vacuously (F-C′: CFT5a, CFT5c)",
-   "foundationRole": "Pass 3 (preregistered): CF11-F2, PARTIAL SURVIVAL; classified REFINED; wording unchanged",
+   "failureCondition": "with structural invariance alone (P1 = R2) it organizes generic Fisher geometry only vacuously (F-C′: CFT5a, CFT5c)",
+   "foundationRole": "Pass 3 (preregistered): CF11-F2, PARTIAL SURVIVAL; classified REFINED; wording unchanged; architectural correction: recorded as the Transformation Architecture (TA0)",
    "guideLocation": "all Acts",
    "gap": null,
    "provenance": "USER-ORIGIN",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS"
+   "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
+   "transformationLevel": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "novelty": null
   },
   {
    "id": "CF11-R",
@@ -1011,13 +1076,19 @@
    "transferDepth": "STRUCTURAL TRANSFER",
    "applicationBreadth": 3,
    "failureCondition": "\"transforms coherently\" without a stated law (too generic); weighted centering needs P3, beyond P1 and P2",
-   "foundationRole": "supported in explicit form by the Pass 3 test; adoption as project wording is Nadia's decision",
+   "foundationRole": "historical step between CF11-F2 and the Transformation Architecture; superseded by TA0 (architectural correction): P1, P2, P3 are R2, R1, R3, not three meanings of one word",
    "guideLocation": "all Acts",
    "gap": null,
    "provenance": "USER-ORIGIN",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS"
+   "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
+   "transformationLevel": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "novelty": null
   },
   {
    "id": "CF12",
@@ -1061,7 +1132,7 @@
    "transferDepth": "STRUCTURAL TRANSFER",
    "applicationBreadth": 3,
    "failureCondition": "a map that is not a symmetry (shear, generic matrix, (q, 2p), non-isometries: CFT1c, CFT2b, CFT4d); a reparametrization is not F*g = g",
-   "foundationRole": "KNOWN MATHEMATICS, HIGH FOUNDATION RELEVANCE: the common form behind AᵀMA = M",
+   "foundationRole": "KNOWN MATHEMATICS, HIGH FOUNDATION RELEVANCE: the common form behind AᵀMA = M; the Pass 3 record of R2 (TA2)",
    "guideLocation": "Guide: forms (Foundation ontology)",
    "gap": null,
    "provenance": "TEXTBOOK / STANDARD",
@@ -1072,7 +1143,11 @@
     "SRC-MYERS-STEENROD-1939"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": "TEXTBOOK / KNOWN"
+   "mathematicalStatus": "TEXTBOOK / KNOWN",
+   "transformationLevel": [
+    "R2"
+   ],
+   "novelty": "KNOWN MATHEMATICS"
   },
   {
    "id": "CF13",
@@ -1109,17 +1184,333 @@
    "transferDepth": "not a transfer",
    "applicationBreadth": null,
    "failureCondition": "a coordinate-dependent pseudo-structure (the identity matrix in every chart) fails the law (CFT10a)",
-   "foundationRole": "separates same model / different coordinates from different model / different geometry (H2)",
+   "foundationRole": "separates same model / different coordinates from different model / different geometry (H2); an R1 instance (TA1)",
    "guideLocation": "Guide: model manifolds (Foundation ontology)",
    "gap": null,
    "provenance": "TEXTBOOK / STANDARD",
    "sources": [
     "SRC-AMARI-2016",
-    "SRC-LEE-2018",
-    "SRC-CHENTSOV-1982"
+    "SRC-LEE-2018"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [
+    "R1"
+   ],
+   "novelty": null
+  },
+  {
+   "id": "TA0",
+   "name": "Transformation Architecture (R1 / R2 / R3)",
+   "layer": "PROJECT-DERIVED CONNECTION",
+   "stages": [
+    "REPRESENTATION",
+    "TRANSFORMATION",
+    "PRESERVED STRUCTURE",
+    "GEOMETRY"
+   ],
+   "equation": "A mathematical structure may be investigated by distinguishing: (1) how it transforms when its representation changes, (2) which transformations leave the structure invariant, and (3) which maps/operators remain compatible with those transformations. R1 representation covariance; R2 structural invariance / symmetry (F*T = T); R3 equivariance / intertwining (C ρ_V(g) = ρ_W(g) C)",
+   "status": "DERIVED",
+   "cards": [
+    "TRA4a",
+    "TRA1b",
+    "TRA2a",
+    "TRA3a",
+    "TRA3b",
+    "TRA4b",
+    "CFT4c",
+    "CFT8c"
+   ],
+   "docs": [
+    "research/constructions/cf11b_fisher_test.md"
+   ],
+   "registry": [
+    "T-TRANSFORMATION-ARCH"
+   ],
+   "dependsOn": [
+    "TA1",
+    "TA2",
+    "TA3"
+   ],
+   "supports": [],
+   "bearsOn": [
+    "T-H2"
+   ],
+   "backboneSupport": 45,
+   "slopRisk": 15,
+   "transferDepth": "STRUCTURAL TRANSFER",
+   "applicationBreadth": 3,
+   "failureCondition": "vacuity: if every transformation could be sorted into some level, the architecture would organize nothing; each level must name its class, law, invariant and a failure (TRA2b, TRA3b, TRA4a, TRA4b)",
+   "foundationRole": "PROJECT-LEVEL ORGANIZING ARCHITECTURE, DERIVED FROM ESTABLISHED MATHEMATICS (not a new theorem); supersedes CF11-R; history: CF11 → Fisher test → CF11-F2 → architectural correction → R1/R2/R3",
+   "guideLocation": "all Acts",
+   "gap": null,
+   "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
+   "transformationLevel": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "novelty": "PROJECT ARCHITECTURAL SYNTHESIS"
+  },
+  {
+   "id": "TA1",
+   "name": "R1 — Representation covariance",
+   "layer": "ESTABLISHED MATHEMATICS",
+   "stages": [
+    "REPRESENTATION",
+    "TRANSFORMATION"
+   ],
+   "equation": "same abstract object, different coordinate representation, covariant transformation law: bilinear form M′ = PᵀMP for x = Px′; metric g_φ = Jᵀ g_θ J; vectors v_φ = J⁻¹ v_θ; scalars unchanged (ds² = dθᵀ g_θ dθ = dφᵀ g_φ dφ). A change of description, not an active symmetry: never written F*g = g",
+   "status": "ESTABLISHED",
+   "cards": [
+    "TRA4a",
+    "CFT3c",
+    "CFT4c",
+    "CFT4e",
+    "CFT5d",
+    "CFT11b",
+    "S2b"
+   ],
+   "docs": [],
+   "registry": [],
+   "dependsOn": [
+    "CF13"
+   ],
+   "supports": [],
+   "bearsOn": [
+    "T-H2"
+   ],
+   "backboneSupport": 65,
+   "slopRisk": 5,
+   "transferDepth": "STRUCTURAL TRANSFER",
+   "applicationBreadth": 3,
+   "failureCondition": "a lossy map (projection) is not R1 (TRA4b); a coordinate-dependent pseudo-structure does not transform covariantly (CFT10a)",
+   "foundationRole": "formalizes one of the oldest project questions (H2): different representations may look different while preserving deeper structure",
+   "guideLocation": "all Acts",
+   "gap": null,
+   "provenance": "TEXTBOOK / STANDARD",
+   "sources": [
+    "SRC-LEE-2018"
+   ],
+   "sourceStatus": null,
+   "mathematicalStatus": "TEXTBOOK / KNOWN",
+   "transformationLevel": [
+    "R1"
+   ],
+   "novelty": "KNOWN MATHEMATICS"
+  },
+  {
+   "id": "TA2",
+   "name": "R2 — Structural invariance / symmetry",
+   "layer": "ESTABLISHED MATHEMATICS",
+   "stages": [
+    "TRANSFORMATION",
+    "PRESERVED STRUCTURE",
+    "GEOMETRY"
+   ],
+   "equation": "active symmetry: F*T = T. Riemannian F*g = g; symplectic F*ω = ω; Lorentz F*η = η; constant form and linear F: A†MA = M (CF1); infinitesimal: L_X T = 0 (TA2I); consequences: invariant zero relations (BR44), the symmetry set Aut(T) = {F : F*T = T} (BR45), conservation under Noether's assumptions (CF5–CF7)",
+   "status": "ESTABLISHED",
+   "cards": [
+    "CFT1a",
+    "CFT1b",
+    "CFT2a",
+    "CFT4d",
+    "CFT5a",
+    "TRA2a",
+    "TRA2b"
+   ],
+   "docs": [],
+   "registry": [],
+   "dependsOn": [
+    "CF12",
+    "CF1"
+   ],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": 70,
+   "slopRisk": 5,
+   "transferDepth": "STRUCTURAL TRANSFER",
+   "applicationBreadth": 3,
+   "failureCondition": "non-symmetries fail (CFT1c, CFT2b, CFT4d); preserving zeros does not imply invariance (TRA2b)",
+   "foundationRole": "Several major geometries in the Foundation admit a coordinate-free symmetry condition in which a defining tensor/form is preserved under pullback (established mathematics)",
+   "guideLocation": "Guide: forms (Foundation ontology)",
+   "gap": null,
+   "provenance": "TEXTBOOK / STANDARD",
+   "sources": [
+    "SRC-FULTON-HARRIS-1991",
+    "SRC-LEE-2018"
+   ],
+   "sourceStatus": null,
+   "mathematicalStatus": "TEXTBOOK / KNOWN",
+   "transformationLevel": [
+    "R2"
+   ],
+   "novelty": "KNOWN MATHEMATICS"
+  },
+  {
+   "id": "TA2I",
+   "name": "R2, infinitesimal: L_X T = 0",
+   "layer": "ESTABLISHED MATHEMATICS",
+   "stages": [
+    "TRANSFORMATION",
+    "PRESERVED STRUCTURE",
+    "DYNAMICS / CONTINUATION"
+   ],
+   "equation": "F_t*T = T for a one-parameter group with generator X ⟹ L_X T = 0; coordinates (L_X g)_ij = X^k∂_k g_ij + g_kj∂_iX^k + g_ik∂_jX^k; constant matrix form, A(t) = e^{tK}: KᵀM + MK = 0 (K†M + MK = 0)",
+   "status": "ESTABLISHED",
+   "cards": [
+    "TRA1a",
+    "TRA1b",
+    "TRA1c",
+    "S9"
+   ],
+   "docs": [],
+   "registry": [],
+   "dependsOn": [
+    "TA2",
+    "CF4"
+   ],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": 60,
+   "slopRisk": 5,
+   "transferDepth": "STRUCTURAL TRANSFER",
+   "applicationBreadth": 3,
+   "failureCondition": "a non-Killing field (σ∂_μ on the normal family) has L_X g ≠ 0 (TRA1b)",
+   "foundationRole": "R2 → generator → (under Noether's assumptions) conservation: a downstream branch of R2, not of R3",
+   "guideLocation": "Guide: generators / conservation",
+   "gap": null,
+   "provenance": "TEXTBOOK / STANDARD",
+   "sources": [
+    "SRC-LEE-2018"
+   ],
+   "sourceStatus": null,
+   "mathematicalStatus": "TEXTBOOK / KNOWN",
+   "transformationLevel": [
+    "R2"
+   ],
+   "novelty": "KNOWN MATHEMATICS"
+  },
+  {
+   "id": "TA3",
+   "name": "R3 — Equivariance / intertwining",
+   "layer": "ESTABLISHED MATHEMATICS",
+   "stages": [
+    "TRANSFORMATION",
+    "INFORMATION"
+   ],
+   "equation": "C ρ_V(g) = ρ_W(g) C for a map C: V → W (intertwiner); when V = W with one representation, C ρ(g) = ρ(g) C (commuting operator). Examples: Fourier F T_a = M_a F (translation ↔ phase multiplication); weighted centering A C_m = C_m A for D-isometries preserving span{1}; Pₙ commutes with permutations; S² commutes with the S₄ action (Schur sectors)",
+   "status": "ESTABLISHED",
+   "cards": [
+    "TRA3a",
+    "TRA3b",
+    "TRA4b",
+    "CFT8c",
+    "CFT9c",
+    "FB1a",
+    "FS2e",
+    "MB2c",
+    "Q2f"
+   ],
+   "docs": [],
+   "registry": [],
+   "dependsOn": [],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": 60,
+   "slopRisk": 5,
+   "transferDepth": "STRUCTURAL TRANSFER",
+   "applicationBreadth": 3,
+   "failureCondition": "commuting or intertwining is not invariance: C_m is not an isometry, the DFT is not a symmetry of the shift (TRA3b)",
+   "foundationRole": "compatibility of derived maps / operators with transformations; not another form of structural invariance",
+   "guideLocation": "Guide: Fourier / symmetry",
+   "gap": null,
+   "provenance": "TEXTBOOK / STANDARD",
+   "sources": [
+    "SRC-STEIN-SHAKARCHI-2003",
+    "SRC-FULTON-HARRIS-1991"
+   ],
+   "sourceStatus": null,
+   "mathematicalStatus": "TEXTBOOK / KNOWN",
+   "transformationLevel": [
+    "R3"
+   ],
+   "novelty": "KNOWN MATHEMATICS"
+  },
+  {
+   "id": "TAH",
+   "name": "A deeper common transformation–zero architecture?",
+   "layer": "ORIGINAL USER THEORY",
+   "stages": [
+    "TRANSFORMATION",
+    "ZERO / BALANCE / NULL",
+    "INFORMATION",
+    "CROSS-SYSTEM TRANSFER"
+   ],
+   "equation": "Do recurring relationships among representation covariance, structural invariance, zero relations, and equivariance reveal a deeper common architecture across the systems studied in Geometry of Representation?",
+   "status": "HYPOTHESIS",
+   "cards": [],
+   "docs": [],
+   "registry": [
+    "T-TRANSFORMATION-DEEP"
+   ],
+   "dependsOn": [
+    "TA0",
+    "Z12",
+    "Z13"
+   ],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": 25,
+   "slopRisk": 35,
+   "transferDepth": "NOT YET FORMALIZED",
+   "applicationBreadth": 2,
+   "failureCondition": "the recurring relationships are each textbook and compose into no statement beyond their parts",
+   "foundationRole": "open project question; keeps the three-level architecture from being the final theory",
+   "guideLocation": "all Acts",
+   "gap": null,
+   "provenance": "USER-ORIGIN",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": "SPECULATIVE MAPPING",
+   "transformationLevel": [],
+   "novelty": "PROJECT ARCHITECTURAL SYNTHESIS (open)"
+  },
+  {
+   "id": "TAC",
+   "name": "Čencov / Chentsov: future high-relevance check",
+   "layer": "OPEN RESEARCH QUESTION",
+   "stages": [
+    "GEOMETRY",
+    "TRANSFORMATION"
+   ],
+   "equation": "Does the characterization of the Fisher metric under statistically meaningful transformations provide a deeper example of the project's transformation-class → distinguished-geometry relationship?",
+   "status": "OPEN",
+   "cards": [],
+   "docs": [],
+   "registry": [
+    "T-CENCOV-CHECK"
+   ],
+   "dependsOn": [],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": null,
+   "slopRisk": null,
+   "transferDepth": "not a transfer",
+   "applicationBreadth": null,
+   "failureCondition": "—",
+   "foundationRole": "KNOWN THEOREM, NOT YET INTEGRATED; not evidence; no rating raised by it",
+   "guideLocation": "Guide: model manifolds",
+   "gap": null,
+   "provenance": "USER-ORIGIN",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "Z1",
@@ -1157,7 +1548,9 @@
     "SRC-AXLER-2015"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "Z2",
@@ -1193,7 +1586,9 @@
     "SRC-ARNOLD-1989"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "Z3",
@@ -1228,7 +1623,9 @@
     "SRC-AXLER-2015"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "Z4",
@@ -1264,7 +1661,9 @@
     "SRC-AXLER-2015"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "Z5",
@@ -1301,7 +1700,9 @@
     "SRC-MINKOWSKI-1909"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "Z6",
@@ -1338,7 +1739,9 @@
     "SRC-SAKURAI-2017"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "Z7",
@@ -1373,7 +1776,9 @@
     "SRC-STEIN-SHAKARCHI-2003"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "Z8",
@@ -1405,7 +1810,11 @@
    "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [
+    "R2"
+   ],
+   "novelty": null
   },
   {
    "id": "Z9",
@@ -1447,7 +1856,9 @@
     "SRC-TMS-2011"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "Z10",
@@ -1479,7 +1890,9 @@
     "SRC-AXLER-2015"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "Z11",
@@ -1514,7 +1927,9 @@
    "provenance": "USER-ORIGIN",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "Z12",
@@ -1555,7 +1970,9 @@
    "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "Z13",
@@ -1595,7 +2012,11 @@
    "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [
+    "R2"
+   ],
+   "novelty": null
   },
   {
    "id": "ON1",
@@ -1631,7 +2052,9 @@
     "SRC-AXLER-2015"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "ON2",
@@ -1674,7 +2097,9 @@
     "SRC-AXLER-2015"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "ON3",
@@ -1711,7 +2136,9 @@
     "SRC-AXLER-2015"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "ON4",
@@ -1748,7 +2175,9 @@
     "SRC-AXLER-2015"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "ON5",
@@ -1784,7 +2213,9 @@
     "SRC-AXLER-2015"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "ON6",
@@ -1821,7 +2252,9 @@
    "provenance": "USER-ORIGIN",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "ON7",
@@ -1858,7 +2291,9 @@
    "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "ON8",
@@ -1891,7 +2326,9 @@
    "provenance": "USER-ORIGIN",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "ON9",
@@ -1926,7 +2363,9 @@
    "provenance": "USER-ORIGIN",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "T1",
@@ -1959,7 +2398,9 @@
     "SRC-DUMMIT-FOOTE-2004"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "T2",
@@ -1993,7 +2434,9 @@
    "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "T3",
@@ -2038,7 +2481,9 @@
     "SRC-KHINTCHINE-1934"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "T4",
@@ -2076,7 +2521,9 @@
    "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "T5",
@@ -2119,7 +2566,9 @@
     "SRC-FOLLAND-SITARAM-1997"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "L1",
@@ -2157,7 +2606,11 @@
     "SRC-MINKOWSKI-1909"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [
+    "R2"
+   ],
+   "novelty": null
   },
   {
    "id": "L2",
@@ -2193,7 +2646,9 @@
     "SRC-EINSTEIN-1905"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "L3",
@@ -2232,7 +2687,9 @@
     "SRC-LEVY-LEBLOND-1965"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "L4",
@@ -2267,7 +2724,9 @@
    "provenance": "USER-ORIGIN",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "I1",
@@ -2307,7 +2766,9 @@
     "SRC-STEIN-SHAKARCHI-2003"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "I2",
@@ -2337,7 +2798,9 @@
    "provenance": "USER-ORIGIN",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "I3",
@@ -2374,7 +2837,9 @@
    "provenance": "USER-ORIGIN",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "M1",
@@ -2412,7 +2877,9 @@
     "SRC-QUINN-2023"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "M2",
@@ -2454,7 +2921,9 @@
     "SRC-QUINN-2023"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "M3",
@@ -2491,7 +2960,9 @@
     "SRC-SEGEL-SLEMROD-1989"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "M4",
@@ -2527,7 +2998,9 @@
    "provenance": "SPECULATIVE PROJECT CONNECTION",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "W1",
@@ -2565,7 +3038,9 @@
     "SRC-MALLAT-2009"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "W2",
@@ -2602,7 +3077,9 @@
     "SRC-BRUNA-MALLAT-2013"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "W3",
@@ -2632,7 +3109,9 @@
    "provenance": "USER-ORIGIN",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "W4",
@@ -2670,7 +3149,9 @@
    "provenance": "USER-ORIGIN",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "H1",
@@ -2709,7 +3190,9 @@
    "provenance": "PROJECT-CONSTRUCTION",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "H2",
@@ -2748,7 +3231,9 @@
    "provenance": "PROJECT-CONSTRUCTION",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "H3",
@@ -2781,7 +3266,9 @@
    "provenance": "PROJECT-CONSTRUCTION",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "H4",
@@ -2821,13 +3308,17 @@
    "transferDepth": "STRUCTURAL TRANSFER",
    "applicationBreadth": 2,
    "failureCondition": "Fourier k ≠ 0, Σ weights = 0, nonlinear zeros",
-   "foundationRole": "GENERAL CONSTRUCTION (locked to 1)",
+   "foundationRole": "GENERAL CONSTRUCTION (locked to 1); R3: C_m is a geometry-derived operator compatible with a symmetry subgroup, not a symmetry (BR40)",
    "guideLocation": "Act III",
    "gap": null,
    "provenance": "PROJECT-CONSTRUCTION",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [
+    "R3"
+   ],
+   "novelty": null
   },
   {
    "id": "H5",
@@ -2863,7 +3354,9 @@
    "provenance": "USER-ORIGIN",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "H6",
@@ -2904,7 +3397,9 @@
    "provenance": "USER-ORIGIN",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "H7",
@@ -2937,7 +3432,9 @@
     "SRC-NELSON-FISHER-1975"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "QZ1",
@@ -2976,7 +3473,9 @@
     "SRC-SAKURAI-2017"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "QZ2",
@@ -3016,7 +3515,11 @@
    "provenance": "PROJECT-CONSTRUCTION",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [
+    "R3"
+   ],
+   "novelty": null
   },
   {
    "id": "QZ3",
@@ -3052,7 +3555,7 @@
    "transferDepth": "not a transfer",
    "applicationBreadth": 1,
    "failureCondition": "none in H₀",
-   "foundationRole": "same-zero test 2 (VALIDATION OF KNOWN MATHEMATICS)",
+   "foundationRole": "same-zero test 2 (VALIDATION OF KNOWN MATHEMATICS); R3: S² commutes with the S₄ action (BR47)",
    "guideLocation": "Act III",
    "gap": null,
    "provenance": "PROJECT-CONSTRUCTION",
@@ -3060,7 +3563,11 @@
     "SRC-FULTON-HARRIS-1991"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [
+    "R3"
+   ],
+   "novelty": null
   },
   {
    "id": "QZ4",
@@ -3106,7 +3613,9 @@
     "SRC-NIELSEN-CHUANG-2010"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "QZ5",
@@ -3139,7 +3648,9 @@
    "provenance": "USER-ORIGIN",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "P1",
@@ -3176,7 +3687,9 @@
     "SRC-STEIN-SHAKARCHI-2003"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "P2",
@@ -3208,7 +3721,9 @@
    "provenance": "USER-ORIGIN",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "MW1",
@@ -3242,7 +3757,9 @@
    "provenance": "USER-ORIGIN",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "MW2",
@@ -3282,7 +3799,9 @@
     "SRC-KLEIN-GORDON-1926"
    ],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "MW3",
@@ -3312,7 +3831,9 @@
    "provenance": "USER-ORIGIN",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "A1",
@@ -3343,7 +3864,9 @@
    "provenance": "USER-ORIGIN",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "A2",
@@ -3373,7 +3896,9 @@
    "provenance": "USER-ORIGIN",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "A3",
@@ -3408,7 +3933,9 @@
    "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "PL1",
@@ -3448,7 +3975,9 @@
    "provenance": "PHILOSOPHICAL",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   },
   {
    "id": "F1",
@@ -3491,7 +4020,9 @@
    "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
    "sources": [],
    "sourceStatus": null,
-   "mathematicalStatus": null
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null
   }
  ],
  "bridges": [
@@ -4331,8 +4862,7 @@
    "strength": "EXACT IDENTITY",
    "sources": [
     "SRC-LEE-2018",
-    "SRC-AMARI-2016",
-    "SRC-CHENTSOV-1982"
+    "SRC-AMARI-2016"
    ],
    "assumptions": "a regular model; an invertible reparametrization J",
    "failureCondition": "a coordinate-dependent pseudo-structure fails the law (CFT10a); component eigenvalues change (CFT5e)"
@@ -4384,9 +4914,9 @@
   },
   {
    "id": "BR40",
-   "left": "weighted centering",
+   "left": "weighted centering (geometry-derived operator)",
    "right": "symmetries of (D, line span{1})",
-   "connector": "C_m is a D-orthogonal, D-self-adjoint projector, not an isometry; A C_m = C_m A exactly for D-isometries preserving the line span{1}",
+   "connector": "R3: C_m is a D-orthogonal, D-self-adjoint projector, not an isometry; A C_m = C_m A exactly for D-isometries preserving the line span{1}",
    "status": "ESTABLISHED",
    "scope": "project-specific",
    "cards": [
@@ -4403,6 +4933,203 @@
    "sources": [],
    "assumptions": "positive weights; D = diag(m)",
    "failureCondition": "a D-isometry not preserving span{1}, or a non-isometry fixing 1, does not commute (CFT8c)"
+  },
+  {
+   "id": "BR41",
+   "left": "representation change",
+   "right": "covariance",
+   "connector": "R1: x = Px′ gives M′ = PᵀMP; a metric changes as g_φ = Jᵀ g_θ J, vectors as v_φ = J⁻¹ v_θ; scalars (B(x, y), ds²) unchanged",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "TRA4a",
+    "CFT3c",
+    "CFT4c",
+    "CFT4e"
+   ],
+   "doesNotProve": "that a representation change is a symmetry or a physical change; lossy maps (projections) are not R1 (TRA4b)",
+   "objects": [
+    "TA1",
+    "CF13"
+   ],
+   "strength": "EXACT IDENTITY",
+   "sources": [
+    "SRC-LEE-2018",
+    "SRC-AXLER-2015"
+   ],
+   "assumptions": "an invertible change of representation (P or J invertible)",
+   "failureCondition": "a non-invertible map is not a change of representation (TRA4b)"
+  },
+  {
+   "id": "BR42",
+   "left": "structural symmetry",
+   "right": "pullback invariance",
+   "connector": "R2: F is a symmetry of T ⟺ F*T = T ⟺ T_{F(x)}(dF u, dF v) = T_x(u, v)",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "CFT1b",
+    "CFT2a",
+    "CFT4d"
+   ],
+   "doesNotProve": "that all geometry is F*T = T; that the preserving classes of different T are alike (CFT2c)",
+   "objects": [
+    "TA2",
+    "CF12"
+   ],
+   "strength": "EXACT IDENTITY",
+   "sources": [
+    "SRC-LEE-2018"
+   ],
+   "assumptions": "a pairing T of tangent vectors; F a smooth map of the space to itself",
+   "failureCondition": "a non-symmetry fails (CFT1c, CFT2b, CFT4d)"
+  },
+  {
+   "id": "BR43",
+   "left": "finite symmetry",
+   "right": "infinitesimal generator",
+   "connector": "F_t*T = T for all t ⟹ L_X T = 0; matrix case A(t)ᵀMA(t) = M ⟹ KᵀM + MK = 0 (K†M + MK = 0)",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "TRA1a",
+    "TRA1b",
+    "TRA1c"
+   ],
+   "doesNotProve": "conservation without Noether's assumptions; the converse (L_X T = 0 ⟹ global symmetry) needs a complete flow",
+   "objects": [
+    "TA2I",
+    "CF4"
+   ],
+   "strength": "THEOREM",
+   "sources": [
+    "SRC-LEE-2018",
+    "SRC-ARNOLD-1989"
+   ],
+   "assumptions": "a smooth one-parameter group F_t with generator X",
+   "failureCondition": "a non-Killing field: L_X g ≠ 0 (TRA1b)"
+  },
+  {
+   "id": "BR44",
+   "left": "invariant form",
+   "right": "invariant zero relation",
+   "connector": "F*T = T and T(u, v) = 0 ⟹ T(dF u, dF v) = 0; constant forms: A†MA = M ⟹ (B_M(x, y) = 0 ⟹ B_M(Ax, Ay) = 0)",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "TRA2a",
+    "TRA2b",
+    "C1b"
+   ],
+   "doesNotProve": "that every zero is generated by symmetry or arises from a preserved form; the converse fails (2I keeps every zero, TRA2b)",
+   "objects": [
+    "TA2",
+    "CF2"
+   ],
+   "strength": "EXACT IMPLICATION",
+   "sources": [
+    "SRC-LEE-2018",
+    "SRC-FULTON-HARRIS-1991"
+   ],
+   "assumptions": "F*T = T",
+   "failureCondition": "the converse fails: zero preservation without invariance (TRA2b)"
+  },
+  {
+   "id": "BR45",
+   "left": "symmetry",
+   "right": "stabilizer",
+   "connector": "Aut(T) = {F : F*T = T} is the stabilizer of T under the action of maps on structures; for a group acting on x, G_x = {g : g·x = x}; D_x(g) = 0 ⟺ g ∈ G_x (Z8)",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "B5b",
+    "B5c",
+    "CFT4d"
+   ],
+   "doesNotProve": "that an automorphism group of a structure equals the signal stabilizer of Z8 (they act on different objects)",
+   "objects": [
+    "TA2",
+    "Z8",
+    "T1"
+   ],
+   "strength": "EXACT IDENTITY",
+   "sources": [
+    "SRC-DUMMIT-FOOTE-2004",
+    "SRC-LEE-2018"
+   ],
+   "assumptions": "a group acting on a set (structures, or signals)",
+   "failureCondition": "none for the identity; the two stabilizers concern different objects"
+  },
+  {
+   "id": "BR46",
+   "left": "Fourier transform",
+   "right": "translation / modulation intertwining",
+   "connector": "R3: F T_a = M_a F, i.e. (T_a f)^(ω) = e^{−iωa} f̂(ω): translation in one representation ↔ phase multiplication in another",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "TRA3a",
+    "FB1a",
+    "S3"
+   ],
+   "doesNotProve": "that the Fourier transform is a physical spacetime symmetry; that T_a and M_a are the same operator",
+   "objects": [
+    "TA3",
+    "R4"
+   ],
+   "strength": "EXACT IDENTITY",
+   "sources": [
+    "SRC-STEIN-SHAKARCHI-2003"
+   ],
+   "assumptions": "the project convention x̂(ω) = ∫x e^{−iωt}dt; the DFT for the discrete form",
+   "failureCondition": "none for the identity; a different sign convention flips the phase"
+  },
+  {
+   "id": "BR47",
+   "left": "commuting symmetry",
+   "right": "representation-sector decomposition",
+   "connector": "an operator commuting with a group action preserves its isotypic sectors and is scalar on each multiplicity-free irreducible block (Schur)",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "FS2e",
+    "MB2c",
+    "Q2e"
+   ],
+   "doesNotProve": "labels beyond known ones (four spins: VALIDATION OF KNOWN MATHEMATICS); that particle exchange is universal",
+   "objects": [
+    "TA3",
+    "QZ3",
+    "Z12"
+   ],
+   "strength": "THEOREM",
+   "sources": [
+    "SRC-FULTON-HARRIS-1991"
+   ],
+   "assumptions": "a finite group (or compact group) acting linearly; an operator commuting with the action",
+   "failureCondition": "with multiplicities, an operator need not be scalar on an isotypic sector"
+  },
+  {
+   "id": "BR48",
+   "left": "projection",
+   "right": "representation change",
+   "connector": "Pₙ is not invertible and does not keep inner products (Pe₁·Pe₂ = −1/3 while e₁·e₂ = 0); its transformation relationship is R3 (commutes with permutations)",
+   "status": "ESTABLISHED",
+   "scope": "project-specific",
+   "cards": [
+    "TRA4b",
+    "G2n",
+    "Q2f"
+   ],
+   "doesNotProve": "that a lossy representation map is a covariant change of description",
+   "objects": [
+    "TA1",
+    "R8"
+   ],
+   "strength": "FAILED CONNECTION",
+   "sources": [],
+   "assumptions": "Pₙ = I − 11ᵀ/n",
+   "failureCondition": "none: the distinction holds for every n ≥ 2"
   },
   {
    "id": "BR35",
@@ -4448,7 +5175,8 @@
     "Z7",
     "P1",
     "I1",
-    "T5"
+    "T5",
+    "TA3"
    ],
    "bearsOn": [
     "P2",
@@ -4586,6 +5314,8 @@
     "CF4",
     "CF11-A",
     "CF12",
+    "TA2",
+    "TA3",
     "QZ3"
    ],
    "bearsOn": [
@@ -5170,14 +5900,18 @@
    "sourceClass": "textbook",
    "status": "METADATA VERIFIED; CLAIM NOT QUOTED",
    "claim": "tensor fields and their transformation law under coordinate changes; pullbacks; isometries (F*g = g); Gaussian curvature as an isometry invariant; isometries of flat space",
-   "doesNotEstablish": "any project architecture claim (CF11-B, CF11-R)",
+   "doesNotEstablish": "any project architecture claim (CF11-B, CF11-R, TA0)",
    "supports": [
     "CF12",
-    "CF13"
+    "CF13",
+    "TA1",
+    "TA2",
+    "TA2I"
    ],
    "bearsOn": [
     "CF11-B",
-    "CF11-R"
+    "CF11-R",
+    "TA0"
    ],
    "checked": "bibliographic record checked by web search of publisher / index records, 2026-11-12; full text not opened in this environment"
   },
@@ -5210,12 +5944,11 @@
    "sourceClass": "primary",
    "status": "METADATA PARTLY VERIFIED; CLAIM NOT QUOTED",
    "claim": "the Fisher metric is, up to scale, the unique Riemannian metric on statistical models invariant under sufficient statistics (Markov morphisms): a naturality theorem for the Fisher metric",
-   "doesNotEstablish": "the project's CF11 architecture; anything about sloppiness or C7",
-   "supports": [
-    "CF13"
-   ],
+   "doesNotEstablish": "the project's CF11 architecture or Transformation Architecture; anything about sloppiness or C7. KNOWN THEOREM, NOT YET INTEGRATED: bears on CF13 and TAC; not used as evidence",
+   "supports": [],
    "bearsOn": [
-    "CF11-R"
+    "TAC",
+    "CF13"
    ],
    "checked": "bibliographic record checked by web search of publisher / index records, 2026-11-12; full text not opened in this environment"
   },
@@ -5331,7 +6064,30 @@
     "CF11-R"
    ],
    "status": "SOURCE+CARD COMPLETE",
-   "note": "Pass 3 preregistered test: CF11-F2; CF11-B classified REFINED; adopting the explicit refinement (CF11-R) as wording is Nadia's decision"
+   "note": "Pass 3 preregistered test: CF11-F2 (stands); CF11-B classified REFINED; architectural correction: CF11-R superseded by the Transformation Architecture (D28)"
+  },
+  {
+   "id": "D28",
+   "name": "Transformation Architecture (R1 / R2 / R3)",
+   "objects": [
+    "TA0",
+    "TA1",
+    "TA2",
+    "TA2I",
+    "TA3"
+   ],
+   "status": "SOURCE+CARD COMPLETE",
+   "note": "each level is known mathematics, carded and sourced; TA0 is the project-level organizing architecture"
+  },
+  {
+   "id": "D29",
+   "name": "Deeper transformation–zero question; Čencov check",
+   "objects": [
+    "TAH",
+    "TAC"
+   ],
+   "status": "OPEN LONG-TERM",
+   "note": "TAH: HYPOTHESIS / OPEN; TAC: KNOWN THEOREM, NOT YET INTEGRATED"
   },
   {
    "id": "D27",
@@ -5587,44 +6343,113 @@
   "prereg": "research/constructions/cf11b_fisher_prereg.md",
   "preregCommit": "e6f3db8",
   "record": "research/constructions/cf11b_fisher_test.md",
-  "pullbackCommonForm": "YES"
+  "pullbackCommonForm": "YES",
+  "correction": "architectural correction (2026-11-12): P1, P2, P3 are not three meanings of one word; they are R2 structural invariance, R1 representation covariance and R3 equivariance / intertwining of the Transformation Architecture (TA0). CF11-F2 is unchanged."
  },
+ "transformationClasses": [
+  "REPRESENTATION CHANGES",
+  "GEOMETRIC SYMMETRIES",
+  "SYSTEM-SUPPLIED TRANSFORMATIONS",
+  "OPERATOR-COMPATIBLE TRANSFORMATIONS"
+ ],
+ "transformationClassesByDomain": [
+  {
+   "domain": "Constant forms (Euclidean, Lorentz, unitary)",
+   "classes": {
+    "REPRESENTATION CHANGES": "basis changes: M′ = PᵀMP (TRA4a)",
+    "GEOMETRIC SYMMETRIES": "A†MA = M (CFT1a, CFT1c)"
+   }
+  },
+  {
+   "domain": "Symplectic",
+   "classes": {
+    "GEOMETRIC SYMMETRIES": "symplectomorphisms, F*ω = ω, nonlinear allowed (CFT2a)",
+    "SYSTEM-SUPPLIED TRANSFORMATIONS": "the Hamiltonian flow of a given H (preserves ω and H, CF6)"
+   }
+  },
+  {
+   "domain": "Fisher / Riemannian",
+   "classes": {
+    "REPRESENTATION CHANGES": "reparametrizations: g_φ = Jᵀ g J (CFT3c, CFT4c)",
+    "GEOMETRIC SYMMETRIES": "isometries, F*g = g (CFT4d, CFT11a)",
+    "SYSTEM-SUPPLIED TRANSFORMATIONS": "location–scale from x ↦ ax + b; the exchange in F-C; none in F-C′ (CFT4d, CFT5a); a proper subset of the isometries in F-B (CFT11a)"
+   }
+  },
+  {
+   "domain": "Fourier",
+   "classes": {
+    "REPRESENTATION CHANGES": "change to the Fourier basis (Parseval, S2b)",
+    "SYSTEM-SUPPLIED TRANSFORMATIONS": "translations T_a",
+    "OPERATOR-COMPATIBLE TRANSFORMATIONS": "F intertwines T_a and M_a (TRA3a)"
+   }
+  },
+  {
+   "domain": "Weighted centering",
+   "classes": {
+    "GEOMETRIC SYMMETRIES": "D-isometries",
+    "OPERATOR-COMPATIBLE TRANSFORMATIONS": "the D-isometries preserving span{1} commute with C_m (CFT8c)"
+   }
+  },
+  {
+   "domain": "Quantum same-zero",
+   "classes": {
+    "GEOMETRIC SYMMETRIES": "unitaries commuting with every S_z⁽ⁱ⁾ (Q2h class)",
+    "SYSTEM-SUPPLIED TRANSFORMATIONS": "factor permutations S₄; the exchange P (FS1b, Q2d)",
+    "OPERATOR-COMPATIBLE TRANSFORMATIONS": "S² commutes with the S₄ action (FS2e)"
+   }
+  },
+  {
+   "domain": "Mass balance",
+   "classes": {
+    "SYSTEM-SUPPLIED TRANSFORMATIONS": "permutations of equal masses; O(d) (MB1b)",
+    "GEOMETRIC SYMMETRIES": "the configuration's isometries (stabilizer, MB1b)",
+    "OPERATOR-COMPATIBLE TRANSFORMATIONS": "the second-moment tensor commutes with the stabilizer isometries (MB2c)"
+   }
+  },
+  {
+   "domain": "Simplex projection",
+   "classes": {
+    "SYSTEM-SUPPLIED TRANSFORMATIONS": "permutations of the source basis",
+    "OPERATOR-COMPATIBLE TRANSFORMATIONS": "Pₙ commutes with them (TRA4b, Q2f)"
+   }
+  }
+ ],
  "ratings": [
   {
    "dimension": "Foundation architecture completeness",
-   "rating": 85,
-   "previous": 80,
-   "reason": "Pass 3 settles the status of the common-form mechanism: CF11-B tested (preregistered, CF11-F2), its exact coordinate-free form identified (CF12: F*T = T), and its second mechanism stated (CF13: naturality). Still short: DYADIC PACKETS undefined, the effective-representation question without a general statement, no application mathematics, and the refinement not yet adopted as wording."
+   "rating": 88,
+   "previous": 85,
+   "reason": "The TRANSFORMATION → PRESERVED STRUCTURE step of the spine now has an explicit three-level organization (R1 representation covariance, R2 structural invariance, R3 equivariance / intertwining) with exact laws and failure cases, and the earlier rules sort into it (generators, conservation, stabilizers, invariant zero relations, Fourier shift, Schur sectors, weighted centering). Still short: DYADIC PACKETS undefined, no general statement for effective representations, no application mathematics, and the model-manifold invariance audit open."
   },
   {
    "dimension": "Mathematical verification coverage",
-   "rating": 95,
+   "rating": 96,
    "previous": 95,
-   "reason": "62 of 65 established or derived objects have PASS cards (computed). New and carded in Pass 3: CF12, CF13, Z13 (CFT cards). Not carded: R7 (definitional), OB1 (definitional), A3 (wording)."
+   "reason": "67 of 70 established or derived objects have PASS cards (computed). New and carded in the correction: TA0–TA3, TA2I (TRA cards). Not carded: R7 (definitional), OB1 (definitional), A3 (wording)."
   },
   {
    "dimension": "Cross-domain validation",
    "rating": 30,
-   "previous": 20,
-   "reason": "One preregistered cross-domain test of a project architecture ran across three independent mathematical systems (constant-form, symplectic, Fisher) with two boundary cases, and could have failed. Outcome partial (CF11-F2). Still no predictive transfer and no empirical system."
+   "previous": 30,
+   "reason": "Unchanged: no experiment was run in the correction."
   },
   {
    "dimension": "Project-specific construction maturity",
    "rating": 45,
    "previous": 45,
-   "reason": "Unchanged. Pass 3 formalized an architecture claim; it made no new construction."
+   "reason": "Unchanged."
   },
   {
    "dimension": "Paper / source coverage",
    "rating": 55,
    "previous": 55,
-   "reason": "41 external sources registered with verified bibliographic records (7 only partly verified), each with the exact claim it supports and what it does not establish. 45 of 46 external-claim objects have a source; R5 is SOURCE MISSING. Unchanged rating: three differential-geometry sources were added, but nothing is yet quoted at full text and the quinn2023 PDF is pending."
+   "reason": "41 external sources registered with verified bibliographic records (7 only partly verified), each with the exact claim it supports and what it does not establish. 49 of 50 external-claim objects have a source; R5 is SOURCE MISSING. Unchanged: Čencov was moved from support to bears-on (not yet integrated)."
   },
   {
    "dimension": "Application validation",
    "rating": 0,
    "previous": 0,
-   "reason": "Unchanged. Energeo is untested and the ThermaLens mathematics is not in the repository (APPLICATION PROVENANCE INCOMPLETE)."
+   "reason": "Unchanged."
   }
  ]
 }

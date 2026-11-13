@@ -47,13 +47,22 @@ OBJECT → REPRESENTATION → RELATION → ZERO / BALANCE / NULL → TRANSFORMAT
        → GEOMETRY → INFORMATION → DYNAMICS / CONTINUATION → CROSS-SYSTEM TRANSFER  ⟶  APPLICATION
 ```
 
+**Annotation of TRANSFORMATION → PRESERVED STRUCTURE (Pass 3 correction).** This step distinguishes three
+relationships, never collapsed (Transformation Architecture, TA0; Part III):
+
+- **R1, representation covariance:** the same structure in a new representation;
+- **R2, actual structural invariance:** F*T = T;
+- **R3, operator equivariance / intertwining:** C ρ_V(g) = ρ_W(g) C.
+
+Transformation is not symmetry, and representation change is not physical change.
+
 | Stage | Foundation objects | Notes |
 |---|---|---|
 | OBJECT | OB1, MW1, A3, PL1 | What is the object before we choose how to represent or measure it? Shared vocabulary does not imply a shared object. |
 | REPRESENTATION | R1–R10, ON4, ON5, W1–W3, P1, MW1 | x → R(x): Fourier, basis changes, Lorentz frames, prediction maps, phase, projection |
 | RELATION | CF1, CF9, CF10, CF11-A, CF11-B, ON1–ON3, ON6, ON7, ON9, T2, Z4, P1, MW2 | the common-form / preserved-relation architecture (Part III) |
 | ZERO / BALANCE / NULL | Z1–Z12, CF2, CF3, ON6, R8, H1, H4, H5, QZ1–QZ5, W1 | the zero taxonomy (Part IV); zero as connector (Z11, hypothesis) |
-| TRANSFORMATION | CF4, CF7, R4, R5, T1–T4, L3, QZ2, QZ3 | groups, generators, orbits, stabilizers |
+| TRANSFORMATION | TA0–TA3, TA2I, CF4, CF7, R4, R5, T1–T4, L3, QZ2, QZ3 | R1 representation covariance; R2 symmetry (groups, generators, orbits, stabilizers); R3 equivariance / intertwining |
 | PRESERVED STRUCTURE | CF1, CF2, CF3, CF4, CF5, R3, ON2, L1 | what a transformation keeps |
 | GEOMETRY | CF1, CF8–CF10, CF11-A, CF11-B, R7, ON7, ON8, L1, L3, L4, I3, H1, H2, H5, Z9 | a geometry characterized by a preserved relation (pattern CF11-A; project hypothesis CF11-B) |
 | INFORMATION | ON3, ON5, T3–T5, M1–M4, W2, W4, H2, H3, H6, H7, QZ1, QZ3, QZ4, Z12 | what a representation keeps, hides, loses or recovers |
@@ -127,66 +136,185 @@ zero / null column names a different object in each row (`research/foundation_so
     theorem about all geometry: the zero-resultant row is a counter-case (CF3).
   - Mathematical Status TEXTBOOK / KNOWN. Backbone Support 55%, AI Slop / Delusion Risk 10%, Application Breadth 4,
     TRIVIAL CONSEQUENCE across the textbook rows.
-- **CF11-B, project hypothesis (HYPOTHESIS / OPEN):** *Can relation + admissible transformations + preserved
-  structure provide a broader organizing architecture across the geometries investigated in this project?*
+- **CF11-B, project hypothesis (HYPOTHESIS / OPEN):** *Can relation + admissible transformations + preserved structure provide a broader organizing architecture across the geometries investigated in this project?*
   - Mathematical Status SPECULATIVE MAPPING. Backbone Support 30%, AI Slop / Delusion Risk 30%, Application
     Breadth 2, NOT YET FORMALIZED.
   - CF11-A's confidence does not transfer to CF11-B. No cross-domain test has been chosen in advance.
 - The earlier single wording ("choose a relation → find the transformations that preserve it → the geometry is the
   pair", 35% / 25%) is superseded: it compressed CF11-A and CF11-B into one claim.
 
-### Pass 3 result: the coordinate-free common form and its boundary
+### Pass 3 result (historical) and the Transformation Architecture
 
-The preregistered test (`research/constructions/cf11b_fisher_prereg.md`, result `cf11b_fisher_test.md`, cards CFT)
-gave **CF11-F2, PARTIAL SURVIVAL**. CF11-B is classified **REFINED**; its wording is unchanged.
+**The historical result is unchanged.**
 
-**The common form (CF12, BR36): pullback preservation.**
+- The preregistered test (`research/constructions/cf11b_fisher_prereg.md`, result `cf11b_fisher_test.md`, cards
+  CFT) gave **CF11-F2, PARTIAL SURVIVAL**. CF11-B is classified **REFINED**, and its wording is unchanged.
+- History: CF11 original → Fisher preregistered test → CF11-F2 → architectural correction → Transformation
+  Architecture R1/R2/R3.
+- *Superseded framing (the Pass 3 report):* "three meanings of preserved" (P1, P2, P3). That wording compressed three
+  distinct transformation relationships into one word. P1 is R2, P2 is R1 and P3 is R3 below. CF11-R is kept as the
+  historical step and is superseded by TA0.
 
-- Definition: F*T = T, i.e. T_{F(x)}(dF u, dF v) = T_x(u, v).
-- In coordinates: dF(x)ᵀ M(F(x)) dF(x) = M(x) (CFT1b).
-- For a constant form and a linear F this is exactly AᵀMA = M (A†HA = H in the complex case) (CFT1a). The old
-  matrix law is the coordinate expression of a coordinate-free one.
-- Several major geometries in the Foundation admit a common coordinate-free preservation form in which an admissible
-  symmetry preserves a defining tensor/form under pullback. Not all geometry, and not reparametrizations.
+#### The Transformation Architecture (TA0): a project-level organizing architecture, derived from established mathematics
 
-**"Preserved" has three precise meanings, not one.** The test showed they are needed separately:
+> A mathematical structure may be investigated by distinguishing: (1) how it transforms when its representation changes, (2) which transformations leave the structure invariant, and (3) which maps/operators remain compatible with those transformations.
 
-| Reading | Law | Acts on | Where it organizes |
-|---|---|---|---|
-| P1, invariance | F*T = T | active symmetries | constant-form rows, symplectic, homogeneous Fisher models |
-| P2, naturality / covariance | g_φ = Jᵀ g(θ(φ)) J (the model's metric pulls back) | passive reparametrizations | generic Fisher geometry, where symmetries are absent (F-C′) |
-| P3, equivariance | A C = C A | operators derived from a geometry | weighted centering |
+It is not a new theorem. Each level is known mathematics, sourced and carded separately.
 
-**Preservation types across the rows.** The rows do not share one preservation equation:
+```
+                        ABSTRACT STRUCTURE T
+        ┌──────────────────────┼────────────────────────────┐
+  R1 (TA1)                 R2 (TA2)                     R3 (TA3)
+  How does the same        Which actual transformations Which derived maps / operators
+  structure change         preserve the structure?      remain compatible with them?
+  representation?          F*T = T                      C ρ_V(g) = ρ_W(g) C
+  covariance law           ├─ matrix: A†MA = M (CF1)     (commuting operator when V = W)
+                           ├─ infinitesimal: L_X T = 0,
+                           │  KᵀM + MK = 0 (TA2I) → conservation (Noether, CF5–CF7)
+                           ├─ invariant zero relations (BR44)
+                           └─ symmetry set Aut(T) = stabilizer (BR45)
+```
 
-| Geometry | Defining structure | Kind | Active symmetry (P1) | Passive coordinate change | Preserving class | Cards |
+The three levels are related, but none is collapsed into another:
+
+- *transformation* is not *symmetry*;
+- *representation change* is not *physical change*.
+
+**R1, representation covariance (TA1).** Same abstract object, different coordinate representation, covariant
+transformation law.
+
+| Object | Law |
+|---|---|
+| bilinear form | x = Px′ gives M′ = PᵀMP, and B′(x′, y′) = B(Px′, Py′) (TRA4a) |
+| metric | g_φ = Jᵀ g_θ J, with dθᵀ g_θ dθ = dφᵀ g_φ dφ (CFT3c, CFT4c, CFT4e) |
+| vector | v_φ = J⁻¹ v_θ (CFT5d) |
+
+- The matrix entries change and the geometric quantities do not. Never "g is numerically unchanged", and never F*g = g
+  for a passive change.
+- Examples:
+  - signal ↔ Fourier coefficients (a change of orthonormal basis; Parseval, S2b);
+  - basis changes;
+  - prediction-space and parameter coordinates (Fisher reparametrization);
+  - spacetime coordinate descriptions.
+- **Scope correction.** Higher-dimensional *projections* are not R1. Pₙ is not invertible and does not keep inner
+  products (TRA4b, BR48). A projection is a representation *map* that loses information. Its transformation
+  relationship is R3: Pₙ commutes with permutations.
+- **R1 formalizes part of the old H2 program.** It gives an exact criterion for "same object, different coordinates ≠
+  different object" (CFT7) and for "coordinate-dependent components ≠ coordinate-invariant quantities" (CFT5e,
+  CFT10a). H2 is unchanged and not promoted to a theorem.
+
+**R2, structural invariance / symmetry (TA2).** Active symmetries.
+
+| Structure | Symmetry condition | Cards |
+|---|---|---|
+| any defining tensor/form T | F*T = T | CFT1b, BR42 |
+| Riemannian / Fisher metric | F*g = g | CFT4d |
+| symplectic form | F*ω = ω | CFT2a |
+| Lorentz metric | F*η = η | CFT1c |
+
+- **Matrix bridge (exact, BR36).** For F(x) = Ax and B_M(x, y) = xᵀMy, F*B_M = B_M ⟺ AᵀMA = M. In the complex case,
+  A†HA = H (CFT1a). The old central form A†MA = M is the coordinate / matrix realization of F*T = T.
+- **Scope.** Several major geometries in the Foundation admit a coordinate-free symmetry condition in which a defining
+  tensor/form is preserved under pullback. Not all geometry.
+- **Infinitesimal (TA2I, BR43).** F_t*T = T ⟹ L_X T = 0 (TRA1b), with
+  (L_X g)_ij = X^k∂_k g_ij + g_kj∂_iX^k + g_ik∂_jX^k. For constant forms with A(t) = e^{tK}, this becomes
+  KᵀM + MK = 0, or K†M + MK = 0 in the complex case (TRA1a, TRA1c, CF4).
+- **Downstream: conservation** under Noether's assumptions (CF5–CF7). This branch belongs to R2, not to R3.
+- **Zero relations (BR44).** F*T = T and T(u, v) = 0 ⟹ T(dF u, dF v) = 0 (TRA2a, C1b): structural invariance
+  preserves the zero relations defined by that structure. The converse fails: 2I keeps every zero without preserving
+  B_M (TRA2b). This is one exact mechanism inside the zero architecture. It does not say that every zero is generated
+  by symmetry.
+- **Stabilizer (BR45).** Aut(T) = {F : F*T = T} is the stabilizer of T. Invariance identifies a stabilizer / symmetry
+  set, conceptually linked to G_x = {g : g·x = x} and to D_x(g) = 0 ⟺ g ∈ G_x (Z8). The two act on different
+  objects and are not equated.
+
+**R3, equivariance / intertwining (TA3).** Maps compatible with transformations.
+
+- **The law.** C ρ_V(g) = ρ_W(g) C. This is an intertwiner when the source and target representations differ, and a
+  commuting operator when V = W.
+- **R3 is not R2 (TRA3b).** Commuting or intertwining is not invariance of a structure.
+
+| Example | Equation | Card / bridge |
+|---|---|---|
+| Fourier | F T_a = M_a F: (T_a f)^(ω) = e^{−iωa} f̂(ω). Translation in one representation ↔ phase multiplication in another. Not a physical spacetime symmetry. | TRA3a, FB1a, BR46 |
+| Weighted centering | C_m is a geometry-derived operator compatible with a symmetry subgroup, not a symmetry: a D-orthogonal, D-self-adjoint projector, not an isometry, with A C_m = C_m A for D-isometries preserving span{1} | CFT8a–c, BR40 |
+| Quantum (results unchanged) | group action (S₄, the exchange P) → representation sectors → operators commuting with the action (S² with P_σ) → Schur-type restrictions (scalar on multiplicity-free blocks). Particle exchange is not universalized. | FS2e, Q2d/Q2e, MB2c, BR47 |
+| Projections | Pₙ commutes with the permutations of its source basis | TRA4b, Q2f |
+
+**Classification note (Fourier).** F T_a F⁻¹ = M_a also states how the translation operator is represented in the
+Fourier basis, which is an R1 reading for operators. As an equation between two representations of the translation
+group, it is an intertwining relation. It is classified under R3, and the R1 reading is recorded, not collapsed.
+
+**The four transformation sets.** These are not the same set. They may overlap, but they need not coincide.
+"Admissible transformation" is never used without naming the class.
+
+| Domain | REPRESENTATION CHANGES | GEOMETRIC SYMMETRIES | SYSTEM-SUPPLIED TRANSFORMATIONS | OPERATOR-COMPATIBLE TRANSFORMATIONS |
+|---|---|---|---|---|
+| Constant forms (Euclidean, Lorentz, unitary) | basis changes M′ = PᵀMP (TRA4a) | A†MA = M | — | — |
+| Symplectic | — | symplectomorphisms (nonlinear allowed) | the Hamiltonian flow of a given H | — |
+| Fisher / Riemannian | reparametrizations g_φ = Jᵀ g J | isometries F*g = g | location–scale (F-B), the exchange (F-C), none (F-C′); a proper subset of the isometries in F-B (CFT11a) | — (none defined) |
+| Fourier | change to the Fourier basis | — | translations T_a | F intertwines T_a and M_a |
+| Weighted centering | — | D-isometries | — | D-isometries preserving span{1} (commute with C_m) |
+| Quantum same-zero | — | unitaries commuting with every S_z⁽ⁱ⁾ | S₄ factor permutations; the exchange P | S² commutes with the S₄ action |
+| Mass balance | — | the configuration's isometries | permutations of equal masses; O(d) | the second moment commutes with the stabilizer isometries |
+| Simplex projection | not R1 (lossy) | — | permutations of the source basis | Pₙ commutes with them |
+
+**Fisher placement.**
+
+- **R1:** reparametrization, g_φ = Jᵀ g_θ J.
+- **R2:** actual isometries, F*g = g. These are the location–scale maps and the exchange.
+- **Zero branch:** g(v, v) = 0 with g = JᵀJ/σ² ⟺ Jv = 0, a nonidentifiable tangent direction (FB7, CFT5, Z13). None
+  exists in positive-definite cases (F-B).
+- **R3:** no derived operator is defined, so none is listed.
+
+**ČENCOV / CHENTSOV — FUTURE HIGH-RELEVANCE CHECK (TAC).** *Does the characterization of the Fisher metric under
+statistically meaningful transformations provide a deeper example of the project's transformation-class →
+distinguished-geometry relationship?* KNOWN THEOREM, NOT YET INTEGRATED (SRC-CHENTSOV-1982 bears on CF13 and TAC). It
+is not used as evidence.
+
+**Old Foundation rules, re-sorted (none changed).**
+
+| Level | Rules |
+|---|---|
+| R1 | Fourier as a change of orthonormal basis (R1–R3, Parseval); Fisher reparametrization (CF13); the coordinate law of the S14 parameters (log-coordinates) |
+| R2 | AᵀMA = M (CF1); zero relations kept by form-preserving maps (CF2); the generator rule (CF4); linear and Hamiltonian conservation, Noether (CF5–CF7); Lorentz invariance (L1); defect zero ⟺ stabilizer (Z8, T2); the pullback common form (CF12); the symmetry-forced Fisher null (Z13); the quantum restricted obstruction (Q2h: the class of unitaries commuting with S_z⁽ⁱ⁾) |
+| R3 | translation → phase (R4, BR5, BR46); symmetry averaging as projection (ON3, C6); Pₙ and permutations (Q2f); weighted centering (H4, CFT8); S² and the S₄ action (FS2e); T and the stabilizer (MB2c) |
+
+**The deeper question stays open (TAH, HYPOTHESIS / OPEN).**
+
+> Do recurring relationships among representation covariance, structural invariance, zero relations, and equivariance reveal a deeper common architecture across the systems studied in Geometry of Representation?
+
+Novelty is kept separate:
+
+- F*T = T, A†MA = M, Lie derivatives, intertwiners and the Fourier shift theorem are KNOWN MATHEMATICS.
+- The open project question is whether the chain representation → covariance → symmetry → zero relations →
+  equivariant structure → information → generated behavior is a useful common architecture across the domains.
+
+**Ratings (separate records; no single number).**
+
+| Record | Mathematical Status | Novelty | Transfer Depth | Backbone Support | AI Slop Risk | Breadth |
 |---|---|---|---|---|---|---|
-| Euclidean | δ | fixed form | F*δ = δ; AᵀA = I, F affine | components transform by JᵀJ in non-orthonormal charts | finite-dimensional (affine) | CFT1a, CFT1c, CFT1d |
-| Unitary / Hilbert, Fourier | h | fixed form | F*h = h; A†A = I | — | unitary group; the DFT is one member | CFT1a, CFT9a–c |
-| Lorentz | η | fixed form, indefinite | F*η = η; ΛᵀηΛ = η | — | finite-dimensional | CFT1c |
-| Symplectic | ω | fixed form, alternating | F*ω = ω; dF(x)ᵀ J dF(x) = J pointwise, F may be nonlinear | — | infinite-dimensional | CFT2a–c |
-| Fisher F-A (location) | g = 1/σ₀² | constant metric | F*g = g: translations, reflections | g_φ = (1 + 3φ²)²/σ₀² under μ = φ + φ³ (varying in that chart) | transitive | CFT3a–c |
-| Fisher F-B (normal family) | g = diag(1, 2)/σ², K = −1/2 | varying metric tensor | F*g = g: location–scale (system-supplied) and more (CFT11a) | natural parameters: g_η = Jᵀ g J; K invariant | 3-dimensional; contains the 2-dimensional supplied group | CFT4a–e, CFT11a |
-| Fisher F-C / F-C′ (exponentials) | g = JᵀJ, K varies | varying, degenerate on θ₁ = θ₂ | F-C: the exchange only; F-C′: none supplied | P2 carries rank and nulls; component eigenvalues are not invariant | discrete / none | CFT5a–f, CFT11b |
-| Weighted centering | (D, line span{1}) | fixed form plus a distinguished line | not P1: C_m is a derived projector (not an isometry) | — | P3: commutes exactly with D-isometries preserving span{1} | CFT8a–c |
+| TA1, R1 | TEXTBOOK / KNOWN | KNOWN MATHEMATICS | STRUCTURAL TRANSFER | 65% | 5% | 3 |
+| TA2, R2 (= CF12) | TEXTBOOK / KNOWN | KNOWN MATHEMATICS | STRUCTURAL TRANSFER | 70% | 5% | 3 |
+| CF1, matrix form A†MA = M | TEXTBOOK / KNOWN | KNOWN MATHEMATICS | STRUCTURAL TRANSFER | 65% (was 40%) | 5% (was 10%) | 3 |
+| TA2I, infinitesimal L_X T = 0 | TEXTBOOK / KNOWN | KNOWN MATHEMATICS | STRUCTURAL TRANSFER | 60% | 5% | 3 |
+| TA3, R3 | TEXTBOOK / KNOWN | KNOWN MATHEMATICS | STRUCTURAL TRANSFER | 60% | 5% | 3 |
+| TA0, Transformation Architecture | PROJECT-DERIVED FROM KNOWN DEFINITIONS | PROJECT ARCHITECTURAL SYNTHESIS | STRUCTURAL TRANSFER | 45% | 15% | 3 |
+| TAH, deeper common-architecture hypothesis | SPECULATIVE MAPPING | PROJECT ARCHITECTURAL SYNTHESIS (open) | NOT YET FORMALIZED | 25% | 35% | 2 |
+| CF11-A / CF11-B / CF11-R (historical) | as in Pass 3 | — | — | 60% / 35% / 45% | 8% / 25% / 20% | 3 |
 
-**Erlangen boundary.**
+**How to read these numbers.**
 
-- F-C's curvature varies from point to point (CFT5f), so no transformation group acts transitively.
-- Generic Fisher geometry is organized by its tensor and by naturality, not by invariants of a transformation group.
-- The isometries of T and the transformations a system supplies are different classes (CFT11a, BR39).
+- **The mathematics of R1, R2, R3, the matrix form and the infinitesimal form is established and carded.** Their
+  mathematical status is TEXTBOOK / KNOWN. Backbone Support is not that confidence: it measures how much each record
+  carries the project architecture across independent systems, so it stays below 100%.
+- **Breadth is 3:** three independent mathematical systems, none empirical.
+- **CF1 changes from 40% / 10% to 65% / 5%.** CFT1a shows CF1 to be the exact coordinate form of R2 across every
+  constant-form row.
 
-**Ratings after Pass 3 (separate records).**
-
-| Record | Mathematical Status | Transfer Depth | Backbone Support | AI Slop Risk | Breadth |
-|---|---|---|---|---|---|
-| CF11-A | TEXTBOOK / KNOWN | TRIVIAL CONSEQUENCE | 60% | 8% | 3 |
-| CF11-B | PROJECT-DERIVED FROM KNOWN DEFINITIONS | STRUCTURAL TRANSFER (with the refinement); FAIL with P1 alone on F-C′ | 35% | 25% | 3 |
-| CF11-R, CANDIDATE-REFINEMENT (explicit form) | PROJECT-DERIVED FROM KNOWN DEFINITIONS | STRUCTURAL TRANSFER | 45% | 20% | 3 |
-| CF12, pullback F*T = T | TEXTBOOK / KNOWN (KNOWN MATHEMATICS, HIGH FOUNDATION RELEVANCE) | STRUCTURAL TRANSFER | 70% | 5% | 3 |
-
-Breadth is counted by independent mathematical system: constant-form, symplectic, Fisher. These are not empirical
-applications.
+**Old Pass 3 tables, kept.** The preservation-type table and the Erlangen boundary from the Pass 3 report are kept in
+`research/constructions/cf11b_fisher_test.md`. Their column "P1" reads as R2, "passive coordinate change" as R1, and
+"P3" as R3.
 
 ## Part IV. Zero taxonomy
 
@@ -387,7 +515,9 @@ Only explicit candidates are listed. Ratings are per proposition.
 | Candidate | Statement | Status | Support / Slop | Transfer Depth | Breadth |
 |---|---|---|---|---|---|
 | CF11-B | Can relation + admissible transformations + preserved structure provide a broader organizing architecture across the geometries investigated in this project? | HYPOTHESIS (Pass 3: CF11-F2, REFINED) | 35% / 25% | STRUCTURAL TRANSFER (with the refinement) | 3 |
-| CF11-R | A geometry may be characterized by relational structure together with transformations under which that structure is preserved or transforms coherently (explicit form) | HYPOTHESIS (supported in explicit form; not adopted) | 45% / 20% | STRUCTURAL TRANSFER | 3 |
+| CF11-R | A geometry may be characterized by relational structure together with transformations under which that structure is preserved or transforms coherently (explicit form) | HYPOTHESIS (historical; superseded by TA0) | 45% / 20% | STRUCTURAL TRANSFER | 3 |
+| TA0 | Transformation Architecture: (1) representation covariance, (2) structural invariance, (3) compatible maps / operators | PROJECT-LEVEL ORGANIZING ARCHITECTURE | 45% / 15% | STRUCTURAL TRANSFER | 3 |
+| TAH | Do recurring relationships among representation covariance, structural invariance, zero relations, and equivariance reveal a deeper common architecture across the systems studied in Geometry of Representation? | HYPOTHESIS / OPEN | 25% / 35% | NOT YET FORMALIZED | 2 |
 | Z11 | zero as connector / interface | HYPOTHESIS | 25% / 30% | STRUCTURAL | 3 |
 | Z12 | the visible zero does not determine where hidden information lives | DERIVED | 35% / 20% | STRUCTURAL | 2 |
 | H5 | the larger generating geometry | HYPOTHESIS | 35% / 25% | STRUCTURAL | 2 |
@@ -423,8 +553,8 @@ Only explicit candidates are listed. Ratings are per proposition.
   established.
 - **No nontrivial predictive transfer** has been found in any pass.
 - **Pass 3 (CF11-B Fisher test):**
-  - With one meaning of "preserved" (P1), CF11-B does not organize generic Fisher geometry: F-C′ has an exact null and
-    no supplied symmetry (CFT5c).
+  - With structural invariance alone (P1, now R2), CF11-B does not organize generic Fisher geometry: F-C′ has an exact
+    null and no supplied symmetry (CFT5c).
   - Fisher nulls do not require a symmetry (CFT5c).
   - The component eigenvalues of g are parametrization-dependent (CFT5e).
   - F-C is not homogeneous (CFT5f).
@@ -451,8 +581,8 @@ Only material gaps; the full ledger, with a status for each domain, is `research
    - Pass 3 showed that component eigenvalues of a Fisher metric are not coordinate invariants (CFT5e).
    - The sloppy spectrum (M1, S14) is stated in log-parameter coordinates.
    - Every model-manifold quantity the Foundation uses must be stated as invariant or as coordinate-stated before C7.
-2. **The CF11 refinement awaits a wording decision.** The test supports CF11-CANDIDATE-REFINEMENT in explicit form
-   (P1 + P2, with P3 for derived operators). Adopting it is Nadia's decision.
+2. **The CF11 refinement is resolved by the architectural correction.** It is recorded as the Transformation
+   Architecture (TA0: R1 / R2 / R3); CF11-R is superseded. The deeper hypothesis (TAH) stays open.
 3. **Provenance.**
    - The quinn2023 PDF (P-2).
    - The ThermaLens mathematics (APPLICATION PROVENANCE INCOMPLETE).
