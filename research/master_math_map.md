@@ -358,10 +358,10 @@ taxonomy above:
 | | Mechanism | Card / bridge |
 |---|---|---|
 | **Preserved zero** (transformation) | under R2, F*T = T and T(u, v) = 0 ⟹ T(dF u, dF v) = 0, and the vectors themselves survive (Λv ≠ 0) | TRA2a, RIC1d, BR44 |
-| **Collapsed zero** (reduction) | a nonzero source x has Φ(x) = 0 (linear: x ∈ ker Φ; Pₙ1 = 0, C_m1 = 0) | RIC1a, RIC1b, RIC1d, BR50 |
+| **Collapsed zero** (reduction) | a target zero may have nonzero preimages: the fiber Φ⁻¹(0) (for a linear map, ker Φ) describes the source states collapsed to it; x ≠ 0 with Φ(x) = 0 is a collapsed zero (Pₙ1 = 0, C_m1 = 0). When Φ⁻¹(0) = {0}, a target zero implies a zero source (RIC2c) | RIC1a, RIC1b, RIC1d, RIC2c, BR50 |
 
 - They are different mechanisms (BR51).
-- "Zero in the target ↔ hidden source structure" is ONE exact mechanism, the collapsed zero.
+- A target zero may have nonzero preimages. The fiber Φ⁻¹(0), and for a linear map the kernel, describes the ambiguity: the source states collapsed to that zero. x ≠ 0 with Φ(x) = 0 is one exact example of a COLLAPSED ZERO, but not every target zero implies a nonzero hidden source (RIC2c).
 - Not written: all zeros arise from projection; all zeros are hidden higher dimensions.
 - Some zeros are neither, for example Z10 and Z6.
 
@@ -431,7 +431,7 @@ The mechanisms below are kept separate. These are known examples, not an exhaust
 | Quasi-steady-state reduction (Michaelis–Menten) | K_M and V_max | one combination of (k₁, k₋₁, k₂); validity needs e₀/(S₀ + K_M) ≪ 1 | M3 (FB11a, FB11b) |
 | Coarse-graining by decimation (1D Ising) | the coupling form, renormalized: tanh K′ = tanh²K | the decimated spins | H7 (FB11d) |
 | Manifold boundaries | effective model (θ₁ in the two-exponential example) | the limit parameter (θ₂) | M2 (FB11c; MBAM source-only) |
-| Scattering (Mallat) | first order: translation-invariant averaged modulus (FB10c); the next order recovers part of what averaging removed (source-only) | phase, position | W2 (SRC-MALLAT-2012, SRC-BRUNA-MALLAT-2013) |
+| Scattering (Mallat) | first order: finite-scale averaging is translation-covariant (RIC2b); the global (full-domain) average of the modulus is invariant under circular shifts (FB10c); the next order recovers part of what averaging removed (source-only) | phase, position | W2 (SRC-MALLAT-2012, SRC-BRUNA-MALLAT-2013) |
 | Quantum dephasing / measurement | the zero (S_z = 0); sector populations | sector coherence ρ_AB; the zero's ±ħ/2 composition (W2c, W3a) | QZ4 |
 | Shadows of ℝⁿ | the projected configuration | true angles (O1b) | ON5 |
 
@@ -474,7 +474,7 @@ equivariant.
 | Weighted centering C_m | noninvertible; information-changing | R3 under the D-isometries preserving span{1} |
 | Band-limiting / discarding coefficients | noninvertible; information-changing | R3: commutes with integer cyclic shifts (RIC1c) |
 | Magnitude only, x ↦ \|x̂\| | noninvertible, nonlinear; information-changing | invariant under translations |
-| Scattering averaging | information-changing | produces translation invariance and deformation stability (source-only) |
+| Scattering averaging | information-changing | finite scale: translation-covariant, with local invariance (translation insensitivity) at the averaging scale under the sourced theorem; global or limiting average: exactly translation-invariant |
 
 Axes A and B are an analytic tool for Foundation V1, not final universal categories.
 
@@ -482,7 +482,7 @@ Axes A and B are an analytic tool for Foundation V1, not final universal categor
 
 | Question | Pₙ: ℝⁿ → 1^⊥ |
 |---|---|
-| What survives | every difference, vᵢ − vⱼ = eᵢ − eⱼ; Σvᵢ = 0; the regular-simplex Gram |
+| What survives | pairwise differences vᵢ − vⱼ = eᵢ − eⱼ survive exactly while the common mode is removed; Σvᵢ = 0. The source Gram I does not survive: the projected simplex has the exact Gram matrix Pₙ = I − 11ᵀ/n (\|vᵢ\|² = (n − 1)/n, vᵢ·vⱼ = −1/n for i ≠ j; G2n) |
 | What collapses | x and x + c1, one mode |
 | What becomes zero | Pₙ1 = 0, a nonzero source with zero image |
 | What is lost | the common component 1ᵀx/n |
@@ -518,13 +518,18 @@ x → x ∗ ψ_λ → |x ∗ ψ_λ| → further wavelet transforms → averaging
 
 | Operation | Survives | Disappears | Becomes invariant | Recoverable | Needs higher order |
 |---|---|---|---|---|---|
-| wavelet transform / filtering | everything, with all scales and an admissible wavelet (Grossmann–Morlet, source) | the dropped bands, if scales are restricted | — (translation-covariant, FB10c) | yes, with all scales (source) | — |
+| single filter x ↦ x ∗ ψ_λ | its band | out-of-band content (constants, for a zero-mean filter): not invertible (RIC2a) | — (translation-covariant: (T_a x) ∗ ψ_λ = T_a(x ∗ ψ_λ), FB10c) | not from one filter | — |
+| complete wavelet transform / filter bank | everything, under its stated assumptions (continuous: admissible wavelet and all scales, Grossmann–Morlet, source; discrete: no common spectral zero, RIC2a) | the dropped bands, if scales are restricted | — (translation-covariant) | yes, under those assumptions | — |
 | modulus | the envelope in each band | phase within the band | — (commutes with translations) | partly, through other bands and orders (source) | — |
 | higher-order propagation | part of what averaging removes (source-only) | — | — | — | yes (source-only) |
-| low-pass averaging | the averaged modulus (FB10c) | position; high-frequency structure | translation invariance (FB10c); deformation stability (source-only) | no, from the average alone | the high-frequency structure (source-only) |
+| finite-scale low-pass averaging (∗ φ_J) | structure coarser than the averaging scale | finer detail; high-frequency structure | none exactly: translation-covariant, (T_a x) ∗ φ_J = T_a(x ∗ φ_J) (RIC2b); local invariance at the averaging scale is the sourced theorem (Mallat 2012) | no | the high-frequency structure (source-only) |
+| global average (full-domain sum, or the limit of infinite scale) | the global average Σ\|x ⊛ ψ\| (FB10c) | all position information | exact invariance under circular shifts for the full-domain sum (FB10c, RIC2b); in the continuous limit, source-only | no | — |
 
-- **Established and carded:** the zero mean and admissibility (FB10a, FB10b); translation covariance, first-order
-  invariance and many-to-one behaviour (FB10c).
+- **Established and carded:** the zero mean and admissibility (FB10a, FB10b); translation covariance of filtering and
+  of finite-scale averaging (FB10c, RIC2b); exact invariance of the global average under circular shifts, and its
+  many-to-one behaviour (FB10c); a single filter is not invertible while a complete filter bank is (RIC2a).
+- **Covariance is not invariance.** Exact translation invariance is stated only with its averaging assumption (global
+  sum, or the limit of infinite scale).
 - **Source-only:** deformation stability, energy, higher-order recovery.
 - **Not written:** "Mallat proves hidden information in zero"; "scattering is the universal form of reduction".
 
@@ -595,7 +600,7 @@ supports only the established or derived object it states; it may bear on a hypo
 | Fourier analysis | orthonormality, Parseval, translation → phase, conjugate symmetry, Weyl equidistribution (SRC-STEIN-SHAKARCHI-2003); Wiener–Khinchin (SRC-WIENER-1930, SRC-KHINTCHINE-1934) | the founding evidence | conjugacy and physical pairs (P2) | the defect identities T3, T4 are project-derived (FB1, FB2) |
 | Uncertainty / localization | Δt·Δω ≥ 1/2, equality for Gaussians (SRC-KENNARD-1927, SRC-FOLLAND-SITARAM-1997; convention FB3c) | T5 | the link to spectral spread (BR31) | a different result from the second-moment identity (FB3d) |
 | Conservation | Noether's theorems (SRC-NOETHER-1918); Hamiltonian mechanics and the mechanics form of Noether (SRC-ARNOLD-1989) | CF5–CF7 | what law follows from a constraint | the linear card CF5 is not Noether's theorem |
-| Wavelets / scattering | admissibility and zero mean (SRC-GROSSMANN-MORLET-1984, SRC-DAUBECHIES-1992, SRC-MALLAT-2009); scattering, translation invariance, deformation stability (SRC-MALLAT-2012); higher orders (SRC-BRUNA-MALLAT-2013) | information destroyed and retained (W1, W2) | DYADIC PACKETS (W3, open definition) | Mallat does not prove the zero theory, nor that information is hidden inside every zero |
+| Wavelets / scattering | admissibility and zero mean (SRC-GROSSMANN-MORLET-1984, SRC-DAUBECHIES-1992, SRC-MALLAT-2009); scattering, translation invariance in the limit of large averaging scale (translation insensitivity at finite scale), deformation stability (SRC-MALLAT-2012); higher orders (SRC-BRUNA-MALLAT-2013) | information destroyed and retained (W1, W2) | DYADIC PACKETS (W3, open definition) | Mallat does not prove the zero theory, nor that information is hidden inside every zero |
 | Reductions | quasi-steady state (SRC-BRIGGS-HALDANE-1925, SRC-JOHNSON-GOODY-2011) and its validity (SRC-SEGEL-SLEMROD-1989); decimation RG (SRC-NELSON-FISHER-1975); block spins and RG (SRC-KADANOFF-1966, SRC-WILSON-KOGUT-1974, source-only) | M3, H7, M2 | H6 | compared, not equated |
 | Representation theory | Schur's lemma; Schur–Weyl duality; classical groups as form-preserving groups (SRC-FULTON-HARRIS-1991) | secondary match for FS2e, MB2c; CF1, CF4 | Q-SYM-NOVEL | four spins are VALIDATION OF KNOWN MATHEMATICS |
 | Quantum mechanics | spin addition (SRC-SAKURAI-2017); projective measurement and dephasing (SRC-NIELSEN-CHUANG-2010) | QZ1, QZ4 | B-ZERO-LOSS | dephasing and which-path share a generic map only |

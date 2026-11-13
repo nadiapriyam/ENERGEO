@@ -129,13 +129,13 @@ obj('RI0', 'Reduction / Information-Changing Architecture', PD, ['REPRESENTATION
     fail='breadth: almost every non-injective map can be described this way; it organizes only while each placement names the map, its domain, what survives, the fibers and a reconstruction statement with its assumptions',
     role='PROJECT-LEVEL ORGANIZING ARCHITECTURE, DERIVED FROM ESTABLISHED MATHEMATICS; parallel to the Transformation Architecture (TA0), not an R4 inside it', guide='Act III / Guide')
 obj('RI1', 'Information-changing maps that are also equivariant', PD, ['INFORMATION', 'TRANSFORMATION'],
-    'Φ ρ_X(g) = ρ_Y(g) Φ with Φ not invertible: Pₙ commutes with permutations; C_m commutes with D-isometries preserving span{1}; band-limiting commutes with integer cyclic shifts; |x̂| is shift-invariant (equivariant with trivial target action); the averaged wavelet modulus is translation-invariant', 'DERIVED',
+    'Φ ρ_X(g) = ρ_Y(g) Φ with Φ not invertible: Pₙ commutes with permutations; C_m commutes with D-isometries preserving span{1}; band-limiting commutes with integer cyclic shifts; |x̂| is shift-invariant (equivariant with trivial target action); finite-scale averaging is translation-covariant, and the global average of the wavelet modulus is invariant under circular shifts', 'DERIVED',
     cards=['RIC1c', 'TRA4b', 'CFT8c', 'FB10c', 'RIC1a'], depends=['RI0', 'TA3'], bs=50, slop=10, td='STRUCTURAL TRANSFER', breadth=3,
     fail='equivariance does not make a map lossless (RIC1c); not every reduction is equivariant', role='the explicit intersection of the two architectures', guide='Act III / Guide')
 obj('RI2', 'PRESERVED ZERO vs COLLAPSED ZERO', PD, ['ZERO / BALANCE / NULL', 'TRANSFORMATION', 'INFORMATION'],
     'preserved zero (R2): F*T = T and T(u, v) = 0 ⟹ T(dF u, dF v) = 0, with the vectors surviving; collapsed zero (reduction): a nonzero source x with Φ(x) = 0 (linear: x ∈ ker Φ). Different mechanisms; an additional relationship, not a replacement of the zero taxonomy', 'DERIVED',
-    cards=['RIC1d', 'TRA2a', 'RIC1a', 'RIC1b'], depends=['TA2', 'RI0'], bs=40, slop=10, td='STRUCTURAL TRANSFER', breadth=3,
-    fail='zeros that are neither (a definite form, Z10; an observable zero, Z6)', role='zero in the target ↔ hidden source structure is ONE exact mechanism (collapsed zero); not all zeros arise from projection or hidden higher dimensions', guide='Act III')
+    cards=['RIC1d', 'TRA2a', 'RIC1a', 'RIC1b', 'RIC2c'], depends=['TA2', 'RI0'], bs=40, slop=10, td='STRUCTURAL TRANSFER', breadth=3,
+    fail='zeros that are neither (a definite form, Z10; an observable zero, Z6)', role='a target zero may have nonzero preimages: the fiber Φ⁻¹(0) (for a linear map, the kernel) describes the ambiguity / source states collapsed to that zero; x ≠ 0 with Φ(x) = 0 is one exact example of a COLLAPSED ZERO, but not every target zero implies a nonzero hidden source (RIC2c); not all zeros arise from projection or hidden higher dimensions', guide='Act III')
 obj('RI3', 'Transform vs reduce (open project question)', UT, ['TRANSFORMATION', 'INFORMATION', 'CROSS-SYSTEM TRANSFER'],
     'Is the Geometry of Representation fundamentally governed by both how structure behaves under transformations and how structure behaves under reduction?', 'OPEN',
     depends=['TA0', 'RI0'], reg=['T-TRANSFORM-REDUCE'], bs=None, slop=None, fail='—', role='OPEN PROJECT QUESTION; not promoted', guide='all Acts')
@@ -238,7 +238,7 @@ obj('W1', 'Wavelet cancellation and admissibility', E, ['ZERO / BALANCE / NULL',
     guide='Guide: wavelets / scattering (Foundation ontology)')
 obj('W2', 'Scattering: filter → modulus → average, iterated', PB, ['INFORMATION', 'REPRESENTATION'], 'S x = (x ∗ φ, |x ∗ ψ_λ₁| ∗ φ, ||x ∗ ψ_λ₁| ∗ ψ_λ₂| ∗ φ, …)', 'ESTABLISHED', cards=['FB10c'], reg=['T-WAVELETS'],
     bs=15, slop=15, fail='the first-order invariant is many-to-one (FB10c)', role='information destroyed by averaging and retained by modulus at the next order', guide='Guide: wavelets / scattering (Foundation ontology)',
-    gap='exact first-order covariance and invariance carded (FB10c); deformation stability, energy preservation and the higher-order results are source-only')
+    gap='translation covariance and the invariance of the global average under circular shifts carded (FB10c, RIC2b); local invariance at finite scale, deformation stability, energy preservation and the higher-order results are source-only')
 obj('W3', 'DYADIC PACKETS', UT, ['REPRESENTATION', 'INFORMATION'], 'ORIGINAL USER RESEARCH TERM; OPEN DEFINITION. Intended thematic role: organizing or preserving frequency/scale information within the wavelet/scattering branch. Current candidate architectural role (not the definition): a hierarchical organization of information across repeated splits/reductions, schematically X → (X₀, X₁) → (X₀₀, X₀₁, X₁₀, X₁₁) → …, investigated within the Reduction / Information-Changing Architecture. DYADIC STRUCTURE — CANDIDATE, NOT UNIVERSAL. Not identified with standard wavelet packets, dyadic wavelet trees, scattering paths or multiresolution analysis.', 'OPEN', reg=['T-DYADIC'], depends=['RI0'],
     bs=15, slop=40, fail='—', role='user-origin research term (open definition); rating is of the candidate role only (preserved term, architecture fit, existing analogues), not of a definition', guide='Guide: wavelets')
 obj('W4', 'Information lost and recovered (question)', OQ, ['INFORMATION'], 'when a representation suppresses information, what relational structure survives and what representation exposes it?', 'OPEN',
@@ -362,8 +362,8 @@ RMAPS = []
 def rmap(name, objs, cards, axisA, axisB, ic, status='carded'):
     assert set(ic) == set(IC), name
     RMAPS.append(dict(name=name, objects=objs, cards=cards, axisA=axisA, axisB=axisB, status=status, **ic))
-rmap('Simplex projection Pₙ: ℝⁿ → 1^⊥', ['R8', 'H1', 'H2'], ['RIC1a', 'G2n', 'G3b', 'G3n', 'G4c', 'Q2f'], 'noninvertible; information-changing', ['equivariant'],
-     dict(survives='every difference: vᵢ − vⱼ = eᵢ − eⱼ; Σvᵢ = 0; the regular-simplex Gram', collapses='x and x + c1 (one mode)', zero='Pₙ1 = 0: a nonzero source with zero image; Pₙx = 0 ⟺ x ∈ span{1}',
+rmap('Simplex projection Pₙ: ℝⁿ → 1^⊥', ['R8', 'H1', 'H2'], ['RIC1a', 'G2n', 'G2j', 'G3b', 'G3n', 'G4c', 'Q2f'], 'noninvertible; information-changing', ['equivariant'],
+     dict(survives='pairwise differences vᵢ − vⱼ = eᵢ − eⱼ survive exactly while the common mode is removed; Σvᵢ = 0. The source Gram I does not survive: the projected simplex has the exact Gram matrix Pₙ = I − 11ᵀ/n (|vᵢ|² = (n − 1)/n, vᵢ·vⱼ = −1/n, G2n)', collapses='x and x + c1 (one mode)', zero='Pₙ1 = 0: a nonzero source with zero image; Pₙx = 0 ⟺ x ∈ span{1}',
           lost='the common component 1ᵀx/n', reconstructible='under the orthonormal-source assumptions: the source as vᵢ + w, |w|² = 1/n, unique up to ±n̂ and an isometry (G3b, G3n); without the source class, no (G4c)',
           fibers='x + span{1} = x + ker Pₙ', symmetry='commutes with permutations (R3)'))
 rmap('Weighted centering C_m = I − 1mᵀ/M', ['H4', 'CF9'], ['RIC1b', 'CFT8a', 'CFT8b', 'CFT8c', 'G5b'], 'noninvertible; information-changing', ['equivariant'],
@@ -380,18 +380,24 @@ rmap('Discarding Fourier coefficients / band-limiting', ['Z7', 'ON3'], ['RIC1c',
           reconstructible='only for signals known to lie in the kept band', fibers='x + span(discarded modes)', symmetry='commutes with integer cyclic shifts (R3)'))
 rmap('Thresholding; subsampling', [], [], 'noninvertible; information-changing', ['none'],
      {k: 'not carded in the repository' for k in IC}, status='listed, not carded')
-rmap('Wavelet transform / filtering (x ↦ x ∗ ψ_λ)', ['W1', 'W2'], ['FB10a', 'FB10c'], 'invertible on L² with an admissible wavelet and all scales (source: Grossmann–Morlet); information-changing when scales are restricted', ['equivariant'],
-     dict(survives='with all scales: everything (reconstruction formula)', collapses='with all scales: nothing', zero='x ∗ ψ_λ = 0 for components outside ψ_λ\'s band', lost='with restricted scales: the bands not kept',
-          reconstructible='with all scales and an admissible wavelet (source-only)', fibers='trivial with all scales', symmetry='translation-covariant (R3, FB10c)'))
+rmap('Single wavelet filter (x ↦ x ∗ ψ_λ)', ['W1', 'W2'], ['RIC2a', 'FB10c'], 'noninvertible in general (a zero-mean filter annihilates constants, RIC2a); information-changing', ['equivariant'],
+     dict(survives='the part of x in the band passed by ψ_λ', collapses='signals differing only outside that band', zero='components outside the band (constants, for a zero-mean filter)', lost='out-of-band content',
+          reconstructible='not from one filter', fibers='x + (the out-of-band subspace)', symmetry='translation covariance (T_a x) ∗ ψ_λ = T_a(x ∗ ψ_λ): an equivariance (R3) relation, not invariance'))
+rmap('Complete wavelet transform / filter bank', ['W1', 'W2'], ['RIC2a', 'FB10a'], 'invertible on its range under its stated assumptions (continuous: an admissible wavelet and all scales, Grossmann–Morlet, source-only; discrete: a filter bank with no common spectral zero, RIC2a); information-preserving under those assumptions', ['equivariant'],
+     dict(survives='everything, under the stated assumptions', collapses='nothing, under the stated assumptions', zero='only 0, under the stated assumptions', lost='nothing under the assumptions; with restricted scales, the dropped bands',
+          reconstructible='yes, under the stated assumptions (reconstruction formula / left inverse)', fibers='single points, under the stated assumptions', symmetry='translation covariance (R3)'), status='discrete filter bank carded; continuous case source-only')
 rmap('Wavelet modulus (|x ∗ ψ_λ|)', ['W2'], ['FB10c'], 'noninvertible; nonlinear; information-changing', ['equivariant'],
      dict(survives='the envelope (local amplitude) in each band', collapses='signals differing by phase within a band', zero='where the band component vanishes', lost='phase within the band',
           reconstructible='partly, through other bands and higher orders (source-only)', fibers='not a linear subspace', symmetry='commutes with translations'))
 rmap('Higher-order scattering propagation', ['W2'], [], 'information-changing at each order', ['equivariant'],
      dict(survives='part of what first-order averaging removes (source-only: Bruna–Mallat 2013)', collapses='source-only', zero='source-only', lost='source-only',
           reconstructible='source-only', fibers='source-only', symmetry='translation covariance kept (source-only)'), status='source-only')
-rmap('Low-pass averaging (∗ φ, or the full average)', ['W2'], ['FB10c'], 'noninvertible; information-changing', ['invariant'],
-     dict(survives='first-order averaged modulus Σ|x ⊛ ψ| (FB10c)', collapses='translates; also x and its reversal (FB10c)', zero='—', lost='position; high-frequency structure (requires higher orders to retain, source-only)',
-          reconstructible='no, from the average alone', fibers='many-to-one (FB10c)', symmetry='translation invariance; deformation stability (source-only, Mallat 2012)'))
+rmap('Finite-scale low-pass averaging (∗ φ_J)', ['W2'], ['RIC2b'], 'noninvertible in general; information-changing', ['equivariant'],
+     dict(survives='content passed by φ_J (structure coarser than the averaging scale)', collapses='signals differing only in what φ_J suppresses', zero='components in the zeros of φ̂_J', lost='detail finer than the averaging scale; high-frequency structure (higher orders retain part, source-only)',
+          reconstructible='not in general', fibers='x + (the suppressed subspace)', symmetry='translation covariance (T_a x) ∗ φ_J = T_a(x ∗ φ_J) (RIC2b), NOT exact invariance; translation insensitivity / local invariance at the averaging scale is the sourced theorem (Mallat 2012), not carded'))
+rmap('Global average (full-domain sum, or the limit of infinite averaging scale)', ['W2'], ['FB10c', 'RIC2b'], 'noninvertible; information-changing', ['invariant'],
+     dict(survives='the global average Σ|x ⊛ ψ| of the first-order modulus (FB10c)', collapses='all translates; also x and its reversal (FB10c)', zero='—', lost='all position information',
+          reconstructible='no, from the average alone', fibers='many-to-one (FB10c)', symmetry='exact translation invariance under circular shifts for the full-domain sum (FB10c, RIC2b); in the continuous setting, invariance in the limit of infinite averaging scale (source-only, Mallat 2012); deformation stability (source-only)'))
 rmap('Non-selective measurement / dephasing (quantum)', ['QZ4'], ['W2a', 'W3a', 'W3b'], 'noninvertible; information-changing', ['none'],
      dict(survives='the zero S_z = 0; sector populations', collapses='states differing only in sector coherence', zero='the cross term ρ_AB → 0 (the zero\'s ±ħ/2 composition, W3a)', lost='sector coherence',
           reconstructible='not from the dephased state alone', fibers='states with the same block-diagonal part', symmetry='not carded'))
@@ -487,7 +493,7 @@ src('SRC-DAUBECHIES-1992', 'Ingrid Daubechies', 'Ten Lectures on Wavelets (CBMS-
 src('SRC-MALLAT-2009', 'Stéphane Mallat', 'A Wavelet Tour of Signal Processing: The Sparse Way (3rd ed.)', '2009', 'book', 'Academic Press / Elsevier; ISBN 978-0-12-374370-1', 'textbook', SV,
     'the wavelet transform as convolution with dilated wavelets, its translation covariance, admissibility; wavelet packets (the standard definition)', 'that standard wavelet packets are DYADIC PACKETS (an open user term)', ['W1', 'W2'])
 src('SRC-MALLAT-2012', 'Stéphane Mallat', 'Group Invariant Scattering', '2012', 'journal article', 'Communications on Pure and Applied Mathematics 65(10), 1331–1398; DOI 10.1002/cpa.21413; arXiv:1101.2286', 'primary', SV,
-    'the scattering transform (iterated wavelet convolutions and moduli along paths, then low-pass averaging); translation invariance as the averaging scale grows; Lipschitz continuity to the action of C² diffeomorphisms (deformation stability); norm preservation; all under the paper\'s admissibility conditions, whose exact statements are not quoted here',
+    'the scattering transform (iterated wavelet convolutions and moduli along paths, then low-pass averaging); translation invariance in the limit of large averaging scale (translation insensitivity at finite scale); Lipschitz continuity to the action of C² diffeomorphisms (deformation stability); norm preservation; all under the paper\'s admissibility conditions, whose exact statements are not quoted here',
     'the zero theory; that information is hidden inside every zero; DYADIC PACKETS', ['W2'], ['W4'])
 src('SRC-BRUNA-MALLAT-2013', 'Joan Bruna; Stéphane Mallat', 'Invariant Scattering Convolution Networks', '2013', 'journal article', 'IEEE Transactions on Pattern Analysis and Machine Intelligence 35(8), 1872–1886; DOI 10.1109/TPAMI.2012.230; arXiv:1203.1513', 'primary', SV,
     'windowed scattering networks; higher-order coefficients restore high-frequency information that averaging removes at first order; in the reported experiments most energy lies in paths of order ≤ 2',
@@ -615,17 +621,17 @@ bridge('BR46', 'Fourier transform', 'translation / modulation intertwining', 'R3
        ['TRA3a', 'FB1a', 'S3'], 'that the Fourier transform is a physical spacetime symmetry; that T_a and M_a are the same operator', ['TA3', 'R4'])
 bridge('BR47', 'commuting symmetry', 'representation-sector decomposition', 'an operator commuting with a group action preserves its isotypic sectors and is scalar on each multiplicity-free irreducible block (Schur)', 'ESTABLISHED', EST,
        ['FS2e', 'MB2c', 'Q2e'], 'labels beyond known ones (four spins: VALIDATION OF KNOWN MATHEMATICS); that particle exchange is universal', ['TA3', 'QZ3', 'Z12'])
-bridge('BR48', 'projection', 'representation change', 'Pₙ is not invertible and does not keep inner products (Pe₁·Pe₂ = −1/3 while e₁·e₂ = 0); its transformation relationship is R3 (commutes with permutations)', 'ESTABLISHED', PS,
+bridge('BR48', 'projection', 'representation change', 'Pₙ is not invertible and does not keep inner products: (Pₙeᵢ)·(Pₙeⱼ) = −1/n for i ≠ j while eᵢ·eⱼ = 0, and |Pₙeᵢ|² = (n − 1)/n (G2n; the explicit n = 3 case gives −1/3, TRA4b); its transformation relationship is R3 (commutes with permutations)', 'ESTABLISHED', PS,
        ['TRA4b', 'G2n', 'Q2f'], 'that a lossy representation map is a covariant change of description', ['TA1', 'R8'])
 bridge('BR49', 'information-changing map', 'fibers / collapse', 'linear Φ: Φ(x₁) = Φ(x₂) ⟺ x₁ − x₂ ∈ ker Φ; Pₙ: fibers x + span{1}; C_m: y + span{1}', 'ESTABLISHED', EST, ['RIC1a', 'RIC1b'],
        'that fibers are kernels in general (|x̂| and scattering are nonlinear: their fibers are not subspaces)', ['RI0', 'H1'])
-bridge('BR50', 'collapsed zero', 'hidden source structure', 'Φ(x) = 0 with x ≠ 0; linear case x ∈ ker Φ: Pₙ1 = 0, C_m1 = 0', 'DERIVED', PS, ['RIC1a', 'RIC1b', 'RIC1d'],
-       'that all zeros arise from projection or are hidden higher dimensions; the zero taxonomy is broader', ['RI2', 'Z3', 'H1'])
+bridge('BR50', 'collapsed zero', 'the zero fiber Φ⁻¹(0)', 'a target zero may have nonzero preimages: Φ⁻¹(0) (linear: ker Φ) is the set of source states collapsed to 0; x ≠ 0 with Φ(x) = 0 is a COLLAPSED ZERO (Pₙ1 = 0, C_m1 = 0); when Φ⁻¹(0) = {0} (an injective map) a target zero implies a zero source (RIC2c)', 'DERIVED', PS, ['RIC1a', 'RIC1b', 'RIC1d', 'RIC2c'],
+       'that every target zero implies a nonzero hidden source; that all zeros arise from projection or are hidden higher dimensions; the zero taxonomy is broader', ['RI2', 'Z3', 'H1'])
 bridge('BR51', 'preserved zero', 'collapsed zero', 'preserved: F*T = T keeps T(u, v) = 0 with dF u ≠ 0; collapsed: a non-invertible Φ sends x ≠ 0 to 0', 'ESTABLISHED', EST, ['RIC1d', 'TRA2a'],
        'that the two are one mechanism', ['RI2', 'TA2'])
 bridge('BR52', 'information-changing map', 'equivariance', 'Φ ρ_X(g) = ρ_Y(g) Φ with Φ not invertible: Pₙ with permutations, C_m with D-isometries preserving span{1}, band-limiting with integer cyclic shifts, |x̂| invariant under shifts', 'DERIVED', PS,
        ['RIC1c', 'TRA4b', 'CFT8c', 'FB10c'], 'that equivariance makes a map lossless; that every reduction is equivariant', ['RI1', 'TA3', 'RI0'])
-bridge('BR53', 'scattering operations', 'Reduction / Information-Changing Architecture', 'filtering (covariant; invertible with all scales), modulus (discards phase), averaging (discards position; translation-invariant): carded first-order parts', 'ESTABLISHED', EST, ['FB10a', 'FB10c'],
+bridge('BR53', 'scattering operations', 'Reduction / Information-Changing Architecture', 'filtering (translation-covariant; one filter is not invertible, a complete filter bank / wavelet transform admits reconstruction under its stated assumptions), modulus (discards phase), finite-scale averaging (translation-covariant; local invariance at the averaging scale is source-only), global averaging (exactly invariant under circular shifts)', 'ESTABLISHED', EST, ['FB10a', 'FB10c', 'RIC2a', 'RIC2b'],
        'that Mallat proves hidden information in zero; that scattering is the universal form of reduction; higher-order recovery (source-only)', ['W2', 'RI0'])
 bridge('BR54', 'model reduction / manifold boundary', 'Reduction / Information-Changing Architecture', 'placeholder: instances FB11a, FB11c; invariants, coordinate dependence and effective variables are for a later pass', 'OPEN', PS, ['FB11a', 'FB11c'],
        'what invariants survive, what coordinate dependence remains, which effective variables are retained (not pre-answered)', ['M2', 'M3', 'RI0'])

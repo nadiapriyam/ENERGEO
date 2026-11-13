@@ -1443,3 +1443,23 @@ Nadia's decisions, verbatim. LaTeX converted to plain text and lists joined; not
 > COLLAPSE of one mode + PRESERVATION of selected relational structure.
 
 > SURVIVAL + COLLAPSE + ZERO + RECONSTRUCTION + SYMMETRY COMPATIBILITY
+
+## Reduction architecture: four precision corrections (2026-11-13)
+
+Nadia's decisions, verbatim. LaTeX converted to plain text; nothing else changed. The architecture, ratings, CF11-F2, R1 / R2 / R3 and the DYADIC status are unchanged.
+
+> (P_ne_i)·(P_ne_j) = −1/n, i ≠ j.
+
+> Use −1/3 only in the explicit n = 3 case.
+
+> The projected simplex has the exact Gram matrix P_n; pairwise differences v_i − v_j = e_i − e_j survive exactly while the common mode is removed.
+
+> Do not say an individual filtering map x ↦ x∗ψ_λ is invertible.
+
+> Any claim of exact translation invariance must state the precise averaging/global/limiting assumptions.
+
+> This distinction is important because covariance and invariance are separate Foundation categories.
+
+> A target zero may have nonzero preimages. The fiber Φ⁻¹(0), and for a linear map the kernel, describes the ambiguity/source states collapsed to that zero.
+
+> x ≠ 0, Φ(x) = 0 is one exact example of a COLLAPSED ZERO, but not every target zero implies a nonzero hidden source.

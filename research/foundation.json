@@ -1613,7 +1613,7 @@
     "INFORMATION",
     "TRANSFORMATION"
    ],
-   "equation": "Φ ρ_X(g) = ρ_Y(g) Φ with Φ not invertible: Pₙ commutes with permutations; C_m commutes with D-isometries preserving span{1}; band-limiting commutes with integer cyclic shifts; |x̂| is shift-invariant (equivariant with trivial target action); the averaged wavelet modulus is translation-invariant",
+   "equation": "Φ ρ_X(g) = ρ_Y(g) Φ with Φ not invertible: Pₙ commutes with permutations; C_m commutes with D-isometries preserving span{1}; band-limiting commutes with integer cyclic shifts; |x̂| is shift-invariant (equivariant with trivial target action); finite-scale averaging is translation-covariant, and the global average of the wavelet modulus is invariant under circular shifts",
    "status": "DERIVED",
    "cards": [
     "RIC1c",
@@ -1663,7 +1663,8 @@
     "RIC1d",
     "TRA2a",
     "RIC1a",
-    "RIC1b"
+    "RIC1b",
+    "RIC2c"
    ],
    "docs": [],
    "registry": [],
@@ -1678,7 +1679,7 @@
    "transferDepth": "STRUCTURAL TRANSFER",
    "applicationBreadth": 3,
    "failureCondition": "zeros that are neither (a definite form, Z10; an observable zero, Z6)",
-   "foundationRole": "zero in the target ↔ hidden source structure is ONE exact mechanism (collapsed zero); not all zeros arise from projection or hidden higher dimensions",
+   "foundationRole": "a target zero may have nonzero preimages: the fiber Φ⁻¹(0) (for a linear map, the kernel) describes the ambiguity / source states collapsed to that zero; x ≠ 0 with Φ(x) = 0 is one exact example of a COLLAPSED ZERO, but not every target zero implies a nonzero hidden source (RIC2c); not all zeros arise from projection or hidden higher dimensions",
    "guideLocation": "Act III",
    "gap": null,
    "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
@@ -3363,7 +3364,7 @@
    "failureCondition": "the first-order invariant is many-to-one (FB10c)",
    "foundationRole": "information destroyed by averaging and retained by modulus at the next order",
    "guideLocation": "Guide: wavelets / scattering (Foundation ontology)",
-   "gap": "exact first-order covariance and invariance carded (FB10c); deformation stability, energy preservation and the higher-order results are source-only",
+   "gap": "translation covariance and the invariance of the global average under circular shifts carded (FB10c, RIC2b); local invariance at finite scale, deformation stability, energy preservation and the higher-order results are source-only",
    "provenance": "PRIMARY-PAPER BACKED",
    "sources": [
     "SRC-MALLAT-2009",
@@ -5435,7 +5436,7 @@
    "id": "BR48",
    "left": "projection",
    "right": "representation change",
-   "connector": "Pₙ is not invertible and does not keep inner products (Pe₁·Pe₂ = −1/3 while e₁·e₂ = 0); its transformation relationship is R3 (commutes with permutations)",
+   "connector": "Pₙ is not invertible and does not keep inner products: (Pₙeᵢ)·(Pₙeⱼ) = −1/n for i ≠ j while eᵢ·eⱼ = 0, and |Pₙeᵢ|² = (n − 1)/n (G2n; the explicit n = 3 case gives −1/3, TRA4b); its transformation relationship is R3 (commutes with permutations)",
    "status": "ESTABLISHED",
    "scope": "project-specific",
    "cards": [
@@ -5479,16 +5480,17 @@
   {
    "id": "BR50",
    "left": "collapsed zero",
-   "right": "hidden source structure",
-   "connector": "Φ(x) = 0 with x ≠ 0; linear case x ∈ ker Φ: Pₙ1 = 0, C_m1 = 0",
+   "right": "the zero fiber Φ⁻¹(0)",
+   "connector": "a target zero may have nonzero preimages: Φ⁻¹(0) (linear: ker Φ) is the set of source states collapsed to 0; x ≠ 0 with Φ(x) = 0 is a COLLAPSED ZERO (Pₙ1 = 0, C_m1 = 0); when Φ⁻¹(0) = {0} (an injective map) a target zero implies a zero source (RIC2c)",
    "status": "DERIVED",
    "scope": "project-specific",
    "cards": [
     "RIC1a",
     "RIC1b",
-    "RIC1d"
+    "RIC1d",
+    "RIC2c"
    ],
-   "doesNotProve": "that all zeros arise from projection or are hidden higher dimensions; the zero taxonomy is broader",
+   "doesNotProve": "that every target zero implies a nonzero hidden source; that all zeros arise from projection or are hidden higher dimensions; the zero taxonomy is broader",
    "objects": [
     "RI2",
     "Z3",
@@ -5552,12 +5554,14 @@
    "id": "BR53",
    "left": "scattering operations",
    "right": "Reduction / Information-Changing Architecture",
-   "connector": "filtering (covariant; invertible with all scales), modulus (discards phase), averaging (discards position; translation-invariant): carded first-order parts",
+   "connector": "filtering (translation-covariant; one filter is not invertible, a complete filter bank / wavelet transform admits reconstruction under its stated assumptions), modulus (discards phase), finite-scale averaging (translation-covariant; local invariance at the averaging scale is source-only), global averaging (exactly invariant under circular shifts)",
    "status": "ESTABLISHED",
    "scope": "established",
    "cards": [
     "FB10a",
-    "FB10c"
+    "FB10c",
+    "RIC2a",
+    "RIC2b"
    ],
    "doesNotProve": "that Mallat proves hidden information in zero; that scattering is the universal form of reduction; higher-order recovery (source-only)",
    "objects": [
@@ -6062,7 +6066,7 @@
    "identifier": "Communications on Pure and Applied Mathematics 65(10), 1331–1398; DOI 10.1002/cpa.21413; arXiv:1101.2286",
    "sourceClass": "primary",
    "status": "METADATA VERIFIED; CLAIM NOT QUOTED",
-   "claim": "the scattering transform (iterated wavelet convolutions and moduli along paths, then low-pass averaging); translation invariance as the averaging scale grows; Lipschitz continuity to the action of C² diffeomorphisms (deformation stability); norm preservation; all under the paper's admissibility conditions, whose exact statements are not quoted here",
+   "claim": "the scattering transform (iterated wavelet convolutions and moduli along paths, then low-pass averaging); translation invariance in the limit of large averaging scale (translation insensitivity at finite scale); Lipschitz continuity to the action of C² diffeomorphisms (deformation stability); norm preservation; all under the paper's admissibility conditions, whose exact statements are not quoted here",
    "doesNotEstablish": "the zero theory; that information is hidden inside every zero; DYADIC PACKETS",
    "supports": [
     "W2"
@@ -6949,6 +6953,7 @@
    "cards": [
     "RIC1a",
     "G2n",
+    "G2j",
     "G3b",
     "G3n",
     "G4c",
@@ -6959,7 +6964,7 @@
     "equivariant"
    ],
    "status": "carded",
-   "survives": "every difference: vᵢ − vⱼ = eᵢ − eⱼ; Σvᵢ = 0; the regular-simplex Gram",
+   "survives": "pairwise differences vᵢ − vⱼ = eᵢ − eⱼ survive exactly while the common mode is removed; Σvᵢ = 0. The source Gram I does not survive: the projected simplex has the exact Gram matrix Pₙ = I − 11ᵀ/n (|vᵢ|² = (n − 1)/n, vᵢ·vⱼ = −1/n, G2n)",
    "collapses": "x and x + c1 (one mode)",
    "zero": "Pₙ1 = 0: a nonzero source with zero image; Pₙx = 0 ⟺ x ∈ span{1}",
    "lost": "the common component 1ᵀx/n",
@@ -7087,27 +7092,50 @@
    "symmetry": "not carded in the repository"
   },
   {
-   "name": "Wavelet transform / filtering (x ↦ x ∗ ψ_λ)",
+   "name": "Single wavelet filter (x ↦ x ∗ ψ_λ)",
    "objects": [
     "W1",
     "W2"
    ],
    "cards": [
-    "FB10a",
+    "RIC2a",
     "FB10c"
    ],
-   "axisA": "invertible on L² with an admissible wavelet and all scales (source: Grossmann–Morlet); information-changing when scales are restricted",
+   "axisA": "noninvertible in general (a zero-mean filter annihilates constants, RIC2a); information-changing",
    "axisB": [
     "equivariant"
    ],
    "status": "carded",
-   "survives": "with all scales: everything (reconstruction formula)",
-   "collapses": "with all scales: nothing",
-   "zero": "x ∗ ψ_λ = 0 for components outside ψ_λ's band",
-   "lost": "with restricted scales: the bands not kept",
-   "reconstructible": "with all scales and an admissible wavelet (source-only)",
-   "fibers": "trivial with all scales",
-   "symmetry": "translation-covariant (R3, FB10c)"
+   "survives": "the part of x in the band passed by ψ_λ",
+   "collapses": "signals differing only outside that band",
+   "zero": "components outside the band (constants, for a zero-mean filter)",
+   "lost": "out-of-band content",
+   "reconstructible": "not from one filter",
+   "fibers": "x + (the out-of-band subspace)",
+   "symmetry": "translation covariance (T_a x) ∗ ψ_λ = T_a(x ∗ ψ_λ): an equivariance (R3) relation, not invariance"
+  },
+  {
+   "name": "Complete wavelet transform / filter bank",
+   "objects": [
+    "W1",
+    "W2"
+   ],
+   "cards": [
+    "RIC2a",
+    "FB10a"
+   ],
+   "axisA": "invertible on its range under its stated assumptions (continuous: an admissible wavelet and all scales, Grossmann–Morlet, source-only; discrete: a filter bank with no common spectral zero, RIC2a); information-preserving under those assumptions",
+   "axisB": [
+    "equivariant"
+   ],
+   "status": "discrete filter bank carded; continuous case source-only",
+   "survives": "everything, under the stated assumptions",
+   "collapses": "nothing, under the stated assumptions",
+   "zero": "only 0, under the stated assumptions",
+   "lost": "nothing under the assumptions; with restricted scales, the dropped bands",
+   "reconstructible": "yes, under the stated assumptions (reconstruction formula / left inverse)",
+   "fibers": "single points, under the stated assumptions",
+   "symmetry": "translation covariance (R3)"
   },
   {
    "name": "Wavelet modulus (|x ∗ ψ_λ|)",
@@ -7150,25 +7178,47 @@
    "symmetry": "translation covariance kept (source-only)"
   },
   {
-   "name": "Low-pass averaging (∗ φ, or the full average)",
+   "name": "Finite-scale low-pass averaging (∗ φ_J)",
    "objects": [
     "W2"
    ],
    "cards": [
-    "FB10c"
+    "RIC2b"
+   ],
+   "axisA": "noninvertible in general; information-changing",
+   "axisB": [
+    "equivariant"
+   ],
+   "status": "carded",
+   "survives": "content passed by φ_J (structure coarser than the averaging scale)",
+   "collapses": "signals differing only in what φ_J suppresses",
+   "zero": "components in the zeros of φ̂_J",
+   "lost": "detail finer than the averaging scale; high-frequency structure (higher orders retain part, source-only)",
+   "reconstructible": "not in general",
+   "fibers": "x + (the suppressed subspace)",
+   "symmetry": "translation covariance (T_a x) ∗ φ_J = T_a(x ∗ φ_J) (RIC2b), NOT exact invariance; translation insensitivity / local invariance at the averaging scale is the sourced theorem (Mallat 2012), not carded"
+  },
+  {
+   "name": "Global average (full-domain sum, or the limit of infinite averaging scale)",
+   "objects": [
+    "W2"
+   ],
+   "cards": [
+    "FB10c",
+    "RIC2b"
    ],
    "axisA": "noninvertible; information-changing",
    "axisB": [
     "invariant"
    ],
    "status": "carded",
-   "survives": "first-order averaged modulus Σ|x ⊛ ψ| (FB10c)",
-   "collapses": "translates; also x and its reversal (FB10c)",
+   "survives": "the global average Σ|x ⊛ ψ| of the first-order modulus (FB10c)",
+   "collapses": "all translates; also x and its reversal (FB10c)",
    "zero": "—",
-   "lost": "position; high-frequency structure (requires higher orders to retain, source-only)",
+   "lost": "all position information",
    "reconstructible": "no, from the average alone",
    "fibers": "many-to-one (FB10c)",
-   "symmetry": "translation invariance; deformation stability (source-only, Mallat 2012)"
+   "symmetry": "exact translation invariance under circular shifts for the full-domain sum (FB10c, RIC2b); in the continuous setting, invariance in the limit of infinite averaging scale (source-only, Mallat 2012); deformation stability (source-only)"
   },
   {
    "name": "Non-selective measurement / dephasing (quantum)",

@@ -122,3 +122,54 @@ test('12. no equivalence among coarse-graining, scattering, model reduction and 
     if (kw.filter((r) => r.test(line)).length >= 2 && /equivalent|the same mechanism|is a form of|reduces to/i.test(line)) assert.match(line, /\bnot\b|no equivalence/i, line.slice(0, 120));
   }
 });
+
+// Four precision corrections (2026-11-13): generic simplex values, the Gram, wavelet invertibility / invariance, and
+// the collapsed-zero wording. Architecture, ratings, CF11-F2, R1 / R2 / R3 and the DYADIC status are unchanged.
+const scanned = ['research/master_math_map.md', 'research/foundation_bridges.md', 'research/foundation_dependencies.md', 'research/foundation_reduction_maps.md', 'research/foundation_completion.md'];
+
+test('precision 1: generic simplex inner products are −1/n; −1/3 only for n = 3', () => {
+  const b = br.get('BR48');
+  assert.match(b.connector, /\(Pₙeᵢ\)·\(Pₙeⱼ\) = −1\/n for i ≠ j/);
+  assert.match(b.connector, /\|Pₙeᵢ\|² = \(n − 1\)\/n/);
+  assert.ok(b.cards.includes('G2n') && pass('G2n', 'TRA4b'));
+  for (const f of scanned) for (const line of read(f).split('\n'))
+    if (/−1\/3|-1\/3/.test(line)) assert.match(line, /n = 3/, `${f}: −1/3 without n = 3: "${line.slice(0, 90)}"`);
+});
+
+test('precision 2: the source Gram does not survive; the projected simplex has Gram Pₙ', () => {
+  const s = rmap('Simplex projection');
+  assert.match(s.survives, /exact Gram matrix Pₙ = I − 11ᵀ\/n/);
+  assert.match(s.survives, /source Gram I does not survive/);
+  assert.match(s.survives, /survive exactly while the common mode is removed/);
+  assert.ok(!/regular-simplex Gram/.test(s.survives), 'the old "regular-simplex Gram survives" wording is gone');
+  const row = map.split('\n').find((l) => l.startsWith('| What survives | pairwise differences'));
+  assert.ok(row && row.includes('exact Gram matrix Pₙ') && row.includes('does not survive'), 'master map simplex row corrected');
+  assert.match(s.reconstructible, /orthonormal-source assumptions/);
+});
+
+test('precision 3: a single filter is not invertible; finite-scale averaging is covariant, not invariant', () => {
+  const single = rmap('Single wavelet filter');
+  assert.match(single.axisA, /^noninvertible/);
+  assert.match(single.symmetry, /translation covariance/);
+  assert.match(rmap('Complete wavelet transform / filter bank').axisA, /under its stated assumptions/);
+  const fin = rmap('Finite-scale low-pass averaging');
+  assert.ok(!fin.axisB.includes('invariant'));
+  assert.match(fin.symmetry, /NOT exact invariance/);
+  for (const r of F.reductionMaps) {
+    if (/single|one filter/i.test(r.name)) assert.ok(!/^invertible/.test(r.axisA), r.name);
+    if (r.axisB.includes('invariant') && /average|averaging|scattering/i.test(r.name)) assert.match(r.symmetry, /full-domain|global|limit/, `${r.name}: invariance needs its assumption`);
+  }
+  for (const line of read('research/master_math_map.md').split('\n'))
+    if (/translation[- ]invarian/i.test(line) && /averag/i.test(line)) assert.match(line, /global|limit|full-domain|circular|local|source|insensitiv|Group Invariant/i, line.slice(0, 120));
+  assert.ok(pass('RIC2a', 'RIC2b'));
+});
+
+test('precision 4: a target zero need not have a nonzero preimage; preserved ≠ collapsed', () => {
+  for (const f of scanned) assert.ok(!/zero in the target ↔ hidden source structure|target zero ↔ hidden source structure/i.test(read(f)), f);
+  const b = br.get('BR50');
+  assert.match(b.connector, /Φ⁻¹\(0\)/);
+  assert.match(b.doesNotProve, /every target zero implies a nonzero hidden source/);
+  assert.match(obj.get('RI2').foundationRole, /not every target zero implies a nonzero hidden source/);
+  assert.equal(br.get('BR51').strength, 'FAILED CONNECTION');
+  assert.ok(pass('RIC2c'));
+});
