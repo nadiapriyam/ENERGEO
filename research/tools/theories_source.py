@@ -818,6 +818,77 @@ T('T-DYADIC-Q2', 'DYADIC PACKETS research question 2', 'Can relationships betwee
 T('T-TRANSFORM-REDUCE', 'Transform vs reduce (question)', 'Is the Geometry of Representation fundamentally governed by both how structure behaves under transformations and how structure behaves under reduction?', RD, U, 'open-question', 'open',
   bounds=['OPEN PROJECT QUESTION; not promoted.'], acts=['all'], audit=RD_AUDIT, related=['T-TRANSFORMATION-ARCH', 'T-REDUCTION-ARCH'], ref='Reduction amendment, 19')
 
+# ── Model-manifold invariance + research-story audit (2026-11-13) ──
+MM_AUDIT = ('missing', 'stated in the model-manifold invariance + research-story audit (2026-11-13)')
+ACTS_ALREADY_NEW |= {'T-MM-GOV', 'T-MM-STORY', 'T-MM-RULES', 'T-MM-RULES-Q', 'T-MM-DISTINGUISHED-Q', 'T-RULES-GEOMETRY', 'T-ZERO-LENGTH', 'T-MM-OBSERVE',
+                     'T-VIEWER-FORM', 'T-PHYSICAL-MANIFEST-Q', 'T-GEOM-INFO-Q', 'T-SIMPLER-BOUNDARY-Q'}
+MMS = 'research/model_manifold_story.md'
+T('T-MM-GOV', 'Audit the status of each connection, not the story', 'Do not audit away the research story. Audit the status of each connection.', RD, U, MR, GOV,
+  variants=[('The paper is not the thesis.', RD)],
+  norm='Method / governance rule: every arrow of the research story keeps its record and receives its own status (ESTABLISHED MATHEMATICS, PAPER-BACKED RESULT, PROJECT-DERIVED CONNECTION, PROJECT HYPOTHESIS, OPEN CONNECTION, PHILOSOPHICAL / QUANTUM-LIKE HYPOTHESIS, FAILED / NEGATIVE RESULT). A weak arrow is labelled, not removed; a paper result does not prove the project interpretation, and the project interpretation is not paper novelty.',
+  acts=['all'], audit=MM_AUDIT, related=['T-MM-STORY'], ref='model-manifold audit, 0')
+T('T-MM-STORY', 'The research story: possibility space → allowable manifold → manifestation', 'larger prediction / possibility space → rules constrain an allowable manifold → representations expose different aspects of it → observation / reduction may expose an accessible manifestation → ask what geometry and information survive', RD, U, 'hypothesis', 'hypothesis',
+  variants=[('possibility / prediction space → rules constrain an allowable manifold → geometry organizes distinguishability → observation/reduction exposes an accessible manifestation → ask what survives, disappears, or becomes observable', RD)],
+  norm='Arrow by arrow (research/model_manifold_story.md): (1) prediction space P ⊇ M = Y(Θ): ESTABLISHED MATHEMATICS; (2) the model rule Y and the parameter domain Θ fix M: ESTABLISHED (definition), with the broader rules → geometry reading a PROJECT HYPOTHESIS; (3) representations expose different aspects (charts, noise metrics, embeddings; R1 vs metric dependence, cards MMIa–MMIf): PROJECT-DERIVED CONNECTION; (4) observation / reduction exposes an accessible manifestation: OPEN CONNECTION in general, exact only for stated maps (boundary limits MMIg; non-selective quantum measurement W2a); (5) what survives: answered per map by the Reduction / Information-Changing Architecture, OPEN as a general law.',
+  pro=[('card:MMIa', 'rank, nullity and the volume element survive every change of parametrization'), ('card:MMId', 'lengths are chart-invariant and equal prediction-space arc length'),
+       ('card:MMIg', 'a boundary limit is a property of the set; the dimension drops 2 → 1'), ('card:W2a', 'one exact observation map (non-selective measurement) that keeps the zero and removes a coherence')],
+  con=[('card:MMIb', 'raw eigenvalues and the condition number are representation artifacts: not every visible spectrum is geometry'), ('card:MMIe', 'magnitudes depend on the noise model, so "the" geometry needs a stated prediction-space metric')],
+  bounds=['KNOWN MODEL-MANIFOLD / INFORMATION GEOMETRY (arrows 1–2, 3 in part); PROJECT SYNTHESIS (the chain as one story); OPEN PHYSICAL / QUANTUM-LIKE INTERPRETATION (arrow 4 beyond stated maps).',
+          'parameter space ≠ prediction space; prediction space ≠ physical spacetime; model manifold ≠ quantum state space.'],
+  acts=['Guide'], audit=MM_AUDIT, related=['T-MM-GOV', 'T-MM-RULES', 'T-MM-OBSERVE', 'T-PREDICTION-INFINITE', 'T-INFOGEO', 'T-REDUCTION-ARCH', 'T-SOURCE-MANIFEST'], ref='model-manifold audit, story')
+T('T-MM-RULES', 'The rules of the manifold were the model parameters', 'the rules of the manifold were the model parameters.', RD, U, 'derived-connection', 'derived',
+  norm='the model structure and parameterization constrain the set of allowable predictions. Unpacked: the model rule Y (the functional form) and the parameter domain Θ fix the allowable set M = Y(Θ) ⊆ P; a particular parameter value is a point coordinate on M, not a constraint on it; the domain\'s limits give M\'s boundaries (θ₂ → ∞, MMIg); the parametrization is a chart, so a reparametrization leaves M unchanged (MMIa, MMIf).',
+  variants=[('the model structure and parameterization constrain the set of allowable predictions.', RD)],
+  pro=[('card:MMIf', 'the same set in three charts has one width'), ('card:MMIg', 'the parameter domain\'s limit is a boundary of the set'), ('card:FB11c', 'what survives the boundary: θ₁')],
+  con=[('card:MMIi', 'parameter values are coordinates on one manifold, not structure constants of a form: the parameter ↔ c reading needs this distinction')],
+  bounds=['The definition M = Y(Θ) is ESTABLISHED MATHEMATICS (Transtrum–Machta–Sethna 2010/2011; Quinn et al. 2023). The project connection is the reading "rules constrain an allowable set", which is PROJECT-DERIVED and exact in this definitional sense.'],
+  acts=['Guide'], audit=MM_AUDIT, related=['T-MM-STORY', 'T-MM-RULES-Q', 'T-RULES-GEOMETRY'], ref='model-manifold audit, parameters')
+T('T-MM-RULES-Q', 'Do governing rules shape allowable geometry more broadly?', 'Do governing parameters/rules play a broader role in determining the geometry of allowable representations?', RD, U, 'hypothesis', 'hypothesis',
+  pro=[('card:MMIg', 'model rule: a parameter limit drops the dimension'), ('card:C9b', 'Lorentz form: c → ∞ degenerates the form (rank drop)')],
+  con=[('card:MMIi', 'for finite c, c is absorbed by a change of units; a model parameter is a coordinate. The two "rules" act on different objects')],
+  bounds=['PROJECT HYPOTHESIS. The shared exact content found so far is limited to "a parameter limit is a degenerate boundary with a rank drop" (T-RULES-GEOMETRY).'],
+  acts=['Guide'], audit=MM_AUDIT, related=['T-MM-RULES', 'T-RULES-GEOMETRY', 'T-MM-DISTINGUISHED-Q', 'T-C-ROLES'], ref='model-manifold audit, parameters')
+T('T-MM-DISTINGUISHED-Q', 'What does a distinguished rule/parameter determine?', 'What role does a distinguished rule/parameter play in determining allowable transformations, allowable states, or geometric structure?', RD, U, 'open-question', 'open',
+  bounds=['Known instance: c fixes the Lorentz group (the transformations keeping η_c) and the allowed set uᵀηu = 1 (one boost orbit, MMIi). Model-manifold instance: Y and Θ fix M; no transformation group is fixed by a model parameter in general (CFT5f). These are known examples, not an exhaustive classification for this project.'],
+  acts=['Guide'], audit=MM_AUDIT, related=['T-MM-RULES-Q', 'T-RULES-GEOMETRY', 'T-C-ROLES'], ref='model-manifold audit, c')
+T('T-RULES-GEOMETRY', 'Rules constrain a geometry of allowed states: c and model manifolds', 'Do both illustrate a broader pattern in which rules constrain a geometry of allowed states?', RD, U, 'open-question', 'open',
+  variants=[('larger ambient possibility space → constrained allowed manifold', RD)],
+  pro=[('card:MMIi', 'both have a parameter limit that is a degenerate boundary (c → ∞: diag(1, 0), rank 1; θ₂ → ∞: rank 2 → 1)'), ('card:MMIg', 'model boundary: rank drop'), ('card:C9b', 'form boundary: rank drop')],
+  con=[('card:MMIi', 'the invariant-form role does not transfer: η_c is one form up to units (signature is the invariant), the Lorentz allowed set is one group orbit, while a model manifold is not homogeneous (CFT5f) and its parameters are coordinates')],
+  bounds=['Verdict (2026-11-13, from STRUCTURAL CONNECTION / USEFUL ANALOGY / TOO WEAK / FAIL): STRUCTURAL CONNECTION for the parameter-limit → degenerate-boundary role only (both a rank drop; Quinn et al. 2023 treat c as a model parameter, PDF quote pending); TOO WEAK for "rules constrain allowed states" stated generally (every constraint does that); the invariant-form role: FAIL as a transfer (model parameters are not structure constants).',
+          'Spacetime geometry ≠ model-manifold geometry (Gate 3).'],
+  acts=['Guide'], audit=MM_AUDIT, related=['T-MM-RULES-Q', 'T-C-ROLES', 'T-MM-DISTINGUISHED-Q'], ref='model-manifold audit, c verdict')
+T('T-ZERO-LENGTH', 'A zero geometric length exposes non-identifiability', 'a zero geometric length can expose hidden non-identifiability / redundancy.', RD, U, 'derived-connection', 'derived',
+  norm='For a Fisher metric g = JᵀΣ⁻¹J (Σ SPD), g(v, v) = 0 ⟺ Jv = 0: a zero-length tangent vector is a first-order non-identifiable direction (exact, any chart, any SPD noise model). A curve whose tangent has zero length everywhere is a set of parameter values with identical predictions (exact redundancy, FB7a). Distinct from a sloppy direction (small, nonzero), a Lorentz null (vᵀηv = 0 with ηv ≠ 0) and a collapsed zero of a lossy map.',
+  pro=[('card:FB7b', 'uᵀgu = 0 ⟺ Ju = 0 ⟺ gu = 0'), ('card:FB7a', 'a zero-length curve: θ₁ + θ₂ fixed'), ('card:MMIe', 'the null survives a change of noise model'), ('card:CFT5d', 'and a change of chart')],
+  con=[('card:FB7c', 'a sloppy direction is not a zero length'), ('card:FB7d', 'a Lorentz null is not a kernel vector')],
+  bounds=['PROJECT-DERIVED FROM ESTABLISHED MATHEMATICS; first-order statement. Global identifiability needs the whole fiber Y⁻¹(Y(θ)) (F-C is 2-to-1 by exchange off the diagonal while g has full rank there).'],
+  acts=['Guide'], audit=MM_AUDIT, related=['T-INFOGEO', 'T-GEOM-INFO-Q'], ref='model-manifold audit, null')
+T('T-MM-OBSERVE', 'Observation as a map to a restricted manifestation', 'Can observation or measurement be modeled geometrically as a map from a richer state/representation space to a more restricted observable manifestation?', RD, U, 'open-question', 'open',
+  pro=[('card:W2a', 'non-selective S² measurement: ρ ↦ P_t ρ P_t + P_s ρ P_s removes the sector coherence (an information-changing map)'), ('card:W2d', 'the same map as two-path which-path dephasing'), ('card:RIC1a', 'a classical reduction with stated survivors, collapses and fiber')],
+  con=[('card:Q2b', 'states with the same zero can look identical to every blind descriptor: a manifestation need not determine its source')],
+  bounds=['OPEN CONNECTION. Exact only for stated maps: quantum non-selective measurement / dephasing, projections, coarse-graining, boundary limits. No general measurement theory is claimed. Observation here means measurement, interaction or which-path information.'],
+  acts=['Guide'], audit=MM_AUDIT, related=['T-VIEWER-FORM', 'T-REDUCTION-ARCH', 'T-SOURCE-MANIFEST', 'T-QUANTUM-ZERO', 'T-MM-STORY'], ref='model-manifold audit, observation')
+T('T-VIEWER-FORM', 'Matter does not form until a viewer looks at it (historical intuition)', 'matter does not form until a viewer looks at it.', RD, U, 'philosophical-exploration', 'open',
+  norm='What changes when a richer state/representation becomes an observable manifestation?',
+  variants=[('What changes when a richer state/representation becomes an observable manifestation?', RD)],
+  bounds=['ORIGINAL VERBATIM NOT RECOVERED: recorded as given on 2026-11-13 ("approximately"); the historical wording is not in the repository.',
+          'ORIGINAL USER INTUITION; PHILOSOPHICAL / QUANTUM-INTERPRETIVE; NOT ESTABLISHED PHYSICS.',
+          'conscious observer requirement = NOT ESTABLISHED. The investigable part is the normalized question: which maps from a richer state to an observable manifestation exist, and what each keeps, removes or creates (T-MM-OBSERVE). Both wordings are kept.'],
+  acts=['Final'], audit=MM_AUDIT, related=['T-MM-OBSERVE', 'T-SUBCONSCIOUS', 'T-PHYSICAL-MANIFEST-Q'], ref='model-manifold audit, quantum-like')
+T('T-PHYSICAL-MANIFEST-Q', 'Physical manifestation through a geometry of constraints?', 'Could physical manifestation eventually be understood through a similar geometry-of-constraints framework?', RD, U, 'open-question', 'open',
+  bounds=['PHILOSOPHICAL / QUANTUM-LIKE HYPOTHESIS, long-term. No physical theory or data in the repository addresses it; a mathematical construction is not physical validation.'],
+  acts=['Final'], audit=MM_AUDIT, related=['T-VIEWER-FORM', 'T-MM-OBSERVE', 'T-RULES-GEOMETRY'], ref='model-manifold audit, quantum-like')
+T('T-GEOM-INFO-Q', 'Can geometry encode accessible and indistinguishable information?', 'Can geometry encode what information is accessible, inaccessible, or indistinguishable in a representation?', RD, U, 'open-question', 'open',
+  variants=[('What does the geometry say about distinguishability?', RD)],
+  pro=[('card:FB7b', 'local: a zero-length direction is first-order indistinguishable'), ('card:MMId', 'Fisher length = prediction-space distance (local distinguishability)'), ('card:Q2b', 'quantum: same zero, descriptors that cannot distinguish')],
+  bounds=['Exact locally for Fisher geometry (distinguishability per unit noise). Shannon, identifiability, reconstruction, phase and quantum information are different quantities (research/model_manifold_story.md, information distinctions); no single geometry is claimed to encode them all.'],
+  acts=['Guide'], audit=MM_AUDIT, related=['T-ZERO-LENGTH', 'T-MAGPHASE', 'T-SAME-SPECTRUM', 'T-QUANTUM-ZERO'], ref='model-manifold audit, information')
+T('T-SIMPLER-BOUNDARY-Q', 'Simpler observable structure as a boundary of a richer model?', 'Can simpler observable structure emerge as a boundary/reduction of a richer model?', RD, U, 'open-question', 'open',
+  pro=[('card:MMIg', 'the one-exponential model is a boundary of the two-exponential model'), ('card:FB11c', 'what survives: θ₁'), ('card:C9b', 'Newtonian kinematics as the c → ∞ boundary of the form')],
+  bounds=['Exact for stated limits (paper-backed: Transtrum–Qiu 2014, Quinn et al. 2023). A limit is not a map on states: the Reduction architecture records it as a family degeneration, not as Φ: X → Y.'],
+  acts=['Guide'], audit=MM_AUDIT, related=['T-EFFECTIVE-Q', 'T-REDUCTION-ARCH', 'T-MM-STORY'], ref='model-manifold audit, boundaries')
+
 PAIR_A = proof_target('Starting from the established common zero-sum form Σv_i = 0, identify all additional invariants/relations of the mass system that can be translated into mathematically meaningful tests on the directional cancellation system.',
                       requiredObjects=['the established shared form Σv_i = 0 (pair.A.sharedAlgebraicForm)'])
 next(r for r in R if r['id'] == 'T-Q.pairA-transfer')['proofTarget'] = PAIR_A
@@ -1028,6 +1099,37 @@ for rid, note in (('T-CF11-B', 'Correction (Pass 3 architectural correction): P1
 byid['T-DYADIC']['boundaries'].append('Reduction amendment (2026-11-13): still ORIGINAL USER RESEARCH TERM, OPEN DEFINITION. Current candidate architectural role (not the definition): a hierarchical organization of information across repeated splits/reductions, schematically X → (X₀, X₁) → (X₀₀, X₀₁, X₁₀, X₁₁) → …; investigated within the Reduction / Information-Changing Architecture. DYADIC STRUCTURE — CANDIDATE, NOT UNIVERSAL: no significance is drawn from base 2. Not identified with standard wavelet packets, dyadic wavelet trees, scattering paths or multiresolution analysis.')
 byid['T-DYADIC']['history'].append(dict(date='2026-11-13', change='candidate architectural role recorded (Reduction / Information-Changing Architecture); definition still open'))
 byid['T-DYADIC']['related'] += ['T-DYADIC-Q1', 'T-DYADIC-Q2', 'T-REDUCTION-ARCH']
+# Model-manifold invariance + research-story audit (2026-11-13): notes appended; earlier wording unchanged
+def note(rid, bound, change, pro=(), con=()):
+    r = byid[rid]
+    r['boundaries'].append(bound)
+    r['history'].append(dict(date='2026-11-13', change=change))
+    r['evidenceFor'] += [dict(ref=a, note=b) for a, b in pro]
+    r['evidenceAgainst'] += [dict(ref=a, note=b) for a, b in con]
+    r['relatedCards'] = sorted(set(r['relatedCards']) | {a.split(':', 1)[1] for a, _ in list(pro) + list(con) if a.startswith('card:')})
+note('T-C7', 'C7 target gate (2026-11-13), answering "What exact mathematical object on the model-manifold side should be compared?": raw FIM eigenvalues are NOT the object (coordinate-dependent, MMIb, CFT5e: a NEGATIVE result for that reading). Recommended object: the hyperribbon widths of the model manifold (cross-sectional extents of the image set in a stated prediction-space metric; parametrization-independent, metric-dependent, MMIf). Known mathematics already bounds them by Chebyshev coefficient decay for analytic models (Quinn, Wilber, Townsend, Sethna 2019), so a C7 derivation must state its project-specific residue first. T-C7 stays OPEN; no derivation begun.',
+     'C7 target recommendation (no derivation)', con=[('card:MMIb', 'raw eigenvalues are not geometric invariants')], pro=[('card:MMIf', 'widths are a property of the set and the ambient metric')])
+note('T-PREDICTION-INFINITE', 'Model-manifold audit (2026-11-13): for finitely many outputs P = ℝᵐ (finite); for a continuously indexed output with a stated inner product P is a function space (L²), infinite-dimensional, while M keeps the dimension of its identifiable parameters (MMIh: g_ij = 2/(θᵢ + θⱼ)³). "Infinite prediction space" is exact in this sense; it is not physical spacetime and not a quantum state space.',
+     'finite vs function-space prediction space recorded', pro=[('card:MMIh', 'function-space prediction space with a finite metric')])
+note('T-INFOGEO', 'Model-manifold audit (2026-11-13): research/model_manifold_invariance.md classifies each quantity. Invariant under reparametrization: rank, nullity, null directions, lengths, the volume element, curvature, widths, the boundary set. Not invariant: matrix entries, det, raw eigenvalues, condition number, Jacobian singular values. Dependent on the noise model: all magnitudes; not the null directions. AMB-14 ("exact null direction") resolved for this branch: the statistical null g(v, v) = 0 ⟺ Jv = 0.',
+     'invariance audit recorded', pro=[('card:MMIa', ''), ('card:MMIe', '')], con=[('card:MMIb', 'raw spectra are chart-dependent')])
+note('T-QUANTUM-ZERO', 'Model-manifold audit (2026-11-13): stated in the same audit as "observable zero does not uniquely specify underlying state." The comparison with observationally indistinguishable model parameters (same predictions, different θ) is a STRUCTURAL ANALOGUE / OPEN CONNECTION: no explicit map between the quantum states and a parameter manifold is given.',
+     'link to the model-manifold audit recorded')
+byid['T-QUANTUM-ZERO']['related'] += ['T-MM-OBSERVE', 'T-GEOM-INFO-Q']
+byid['T-C7']['related'] += ['T-INFOGEO']
+MM_RATE = '2026-11-13'
+def rate_mm(rid, breadth_int, *a, **k):
+    rate(rid, *a, **k)
+    byid[rid]['assessment']['date'] = MM_RATE
+    byid[rid]['assessment']['applicationBreadth'] = breadth_int
+rate_mm('T-MM-RULES', 2, KN, MULTI, 40, 5, 'M = Y(Θ) is the definition of a model manifold; the parameters chart it and its domain limits give its boundaries. The project reading adds only the word "rules" for Y and Θ. Exact on F-C, the one-exponential curve and the function-space model.',
+        'A system where the parameter domain alone, not the model rule, determines a non-trivial feature of M.', 'None for the definitional statement.', GC, ('pass', 'pass', 'n/a', 'pass', 'n/a'), depth='TRIVIAL CONSEQUENCE')
+rate_mm('T-RULES-GEOMETRY', 2, PD, MULTI, 25, 20, 'One shared exact feature: a parameter limit that is a degenerate boundary with a rank drop (C9b, MMIg). The invariant-form role does not transfer, and the general phrase is too weak to test.',
+        'A further shared invariant beyond the rank drop, stated before it is checked.', 'A model family whose parameter limits never drop rank, or a precise sense in which the Lorentz and model-manifold boundaries differ in kind.', GC, ('pass', 'partial', 'partial', 'pass', 'not-yet'), depth='STRUCTURAL TRANSFER')
+rate_mm('T-MM-OBSERVE', 1, SM, FAM, 15, 35, 'Exact for named maps (non-selective measurement W2a, simplex projection RIC1a, boundary limits). There is no general construction of "observation" as one map class. It stays an open connection.',
+        'A single construction covering quantum dephasing and a classical reduction with the same stated survivors, written before checking.', 'A measurement process whose effect is not representable as a map from a richer description (none known).', EX, ('pass', 'not-yet', 'not-yet', 'pass', 'not-yet'), depth='NOT YET FORMALIZED', correct='established under assumptions')
+rate_mm('T-MM-STORY', 2, SM, MULTI, 30, 30, 'Arrows 1–3 are established or project-derived (MMIa–MMIh). Arrow 4 is exact only for named maps, and arrow 5 is answered per map, not as a law. The chain is a project synthesis.',
+        'A system where the chain makes a prediction the separate arrows do not.', 'A system whose observable manifestation is not a reduction of any richer description in the stated sense.', GC, ('pass', 'partial', 'partial', 'pass', 'not-yet'), depth='NOT YET FORMALIZED', correct='established under assumptions')
 update('T-CF11-A', TRIV, bs=60, slop=8, reason='Pass 3: the pattern holds in coordinate-free form (F*T = T) across constant-form, symplectic and homogeneous Fisher geometries, and its boundary is now exact (generic Fisher geometry is not characterized by a transformation group, CFT5f). Application Breadth corrected from 4 to 3: the rubric reserves 4 for a physical/empirical system')
 
 for r in R:

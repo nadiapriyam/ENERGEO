@@ -1475,3 +1475,63 @@ Nadia's decisions, verbatim. LaTeX converted to plain text; nothing else changed
 > R(z)E(z) = c z^(−K) I
 
 > Under the standard admissibility and finite-energy assumptions, the complete continuous wavelet transform over the required scales/translations admits reconstruction.
+
+## Model-manifold invariance + research-story audit (2026-11-13)
+
+Nadia's decisions, verbatim. LaTeX converted to plain text and lists joined; nothing else changed. R1 / R2 / R3, the Reduction / Information-Changing Architecture, CF11-F2 and DYADIC PACKETS are unchanged.
+
+> Do not audit away the research story. Audit the status of each connection.
+
+> ESTABLISHED MATHEMATICS; PAPER-BACKED RESULT; PROJECT-DERIVED CONNECTION; PROJECT HYPOTHESIS; OPEN CONNECTION; PHILOSOPHICAL / QUANTUM-LIKE HYPOTHESIS; FAILED / NEGATIVE RESULT
+
+> The paper is not the thesis.
+
+> larger prediction / possibility space → rules constrain an allowable manifold → representations expose different aspects of it → observation / reduction may expose an accessible manifestation → ask what geometry and information survive
+
+> parameter space ≠ prediction space; prediction space ≠ physical spacetime; model manifold ≠ quantum state space
+
+> the rules of the manifold were the model parameters.
+
+> the model structure and parameterization constrain the set of allowable predictions.
+
+> Do governing parameters/rules play a broader role in determining the geometry of allowable representations?
+
+> What role does a distinguished rule/parameter play in determining allowable transformations, allowable states, or geometric structure?
+
+> a zero geometric length can expose hidden non-identifiability / redundancy.
+
+> What exact mathematical object on the model-manifold side should be compared?
+
+> larger ambient possibility space → constrained allowed manifold
+
+> Can observation or measurement be modeled geometrically as a map from a richer state/representation space to a more restricted observable manifestation?
+
+> matter does not form until a viewer looks at it.
+
+(Recorded as given in this message, "approximately"; the historical verbatim is not in the repository.)
+
+> ORIGINAL USER INTUITION; PHILOSOPHICAL / QUANTUM-INTERPRETIVE; NOT ESTABLISHED PHYSICS
+
+> What changes when a richer state/representation becomes an observable manifestation?
+
+> conscious observer requirement = NOT ESTABLISHED
+
+> observable zero does not uniquely specify underlying state.
+
+> Can simpler observable structure emerge as a boundary/reduction of a richer model?
+
+> Could physical manifestation eventually be understood through a similar geometry-of-constraints framework?
+
+> Do both illustrate a broader pattern in which rules constrain a geometry of allowed states?
+
+> STRUCTURAL CONNECTION; USEFUL ANALOGY; TOO WEAK; FAIL
+
+> What does the geometry say about distinguishability?
+
+> Can geometry encode what information is accessible, inaccessible, or indistinguishable in a representation?
+
+> Shannon information; Fisher information; parameter identifiability; prediction sensitivity; observable distinguishability; reconstruction information; phase information; quantum information
+
+> possibility / prediction space → rules constrain an allowable manifold → geometry organizes distinguishability → observation/reduction exposes an accessible manifestation → ask what survives, disappears, or becomes observable
+
+> KNOWN MODEL-MANIFOLD / INFORMATION GEOMETRY; PROJECT SYNTHESIS; OPEN PHYSICAL / QUANTUM-LIKE INTERPRETATION

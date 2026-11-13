@@ -676,6 +676,113 @@ BMETA.update({
  'BR47': (THM, ['SRC-FULTON-HARRIS-1991'], 'a finite group (or compact group) acting linearly; an operator commuting with the action', 'with multiplicities, an operator need not be scalar on an isotypic sector'),
  'BR48': (FC, [], 'Pₙ = I − 11ᵀ/n', 'none: the distinction holds for every n ≥ 2'),
 })
+
+# ══ Model-manifold invariance + research-story audit (2026-11-13) ═════════════════════════════════
+# Decisions: docs/restructure_decisions.md, "Model-manifold invariance + research-story audit". Cards: verify/verify_MMI.py.
+# Story and invariance tables: research/model_manifold_story.md, research/model_manifold_invariance.md (research/tools/model_manifold_source.py).
+MMDOCS = ['research/model_manifold_story.md', 'research/model_manifold_invariance.md']
+obj('MM0', 'Model-manifold research story (status per arrow)', UT, ['REPRESENTATION', 'GEOMETRY', 'INFORMATION'],
+    'larger prediction / possibility space → rules constrain an allowable manifold → representations expose different aspects of it → observation / reduction may expose an accessible manifestation → ask what geometry and information survive', 'HYPOTHESIS',
+    docs=MMDOCS, reg=['T-MM-STORY', 'T-MM-GOV'], depends=['MM1', 'MM2', 'MM4', 'MM6', 'RI0'], bs=30, slop=30, td='NOT YET FORMALIZED', breadth=2,
+    fail='a system whose observable manifestation is not a reduction of any richer description in the stated sense', role='the story kept whole; each arrow carries its own status (T-MM-GOV: audit the status of each connection)', guide='Guide: model manifolds')
+obj('MM1', 'Prediction space and model manifold M = Y(Θ) ⊆ P', PB, ['REPRESENTATION', 'GEOMETRY'],
+    'P = ℝᵐ with metric Σ⁻¹ (m outputs), or a function space with a stated inner product (continuously indexed outputs: g_ij = 2/(θᵢ + θⱼ)³ for e^{−θ₁T} + e^{−θ₂T} in L²(0, ∞)); M = Y(Θ), dimension rank J', 'ESTABLISHED',
+    cards=['MMIh', 'MMIg'], docs=MMDOCS + ['research/sources/quinn2023.md'], reg=['T-PREDICTION-INFINITE', 'T-INFOGEO'], depends=['R7'], bs=25, slop=5, fail='none for the definition; an infinite-dimensional P does not make M infinite-dimensional (MMIh)',
+    role='parameter space ≠ prediction space; prediction space ≠ physical spacetime; model manifold ≠ quantum state space', guide='Guide: model manifolds')
+obj('MM2', 'Model rule and parameter domain fix the allowable set', PD, ['OBJECT', 'GEOMETRY'],
+    'the model rule Y and the domain Θ fix M = Y(Θ); a parameter value is a point coordinate on M; a reparametrization is a chart change (M unchanged); the domain\'s limits give M\'s boundaries', 'DERIVED',
+    cards=['MMIa', 'MMIf', 'MMIg'], docs=MMDOCS, reg=['T-MM-RULES'], depends=['MM1'], bs=40, slop=5, td='TRIVIAL CONSEQUENCE', breadth=2, fail='a feature of M that changes with the chart (none: MMIa, MMIf)',
+    role='"the rules of the manifold were the model parameters", unpacked', guide='Guide: model manifolds')
+obj('MM3', 'Broader role of governing rules (question)', UT, ['GEOMETRY', 'CROSS-SYSTEM TRANSFER'],
+    'Do governing parameters/rules play a broader role in determining the geometry of allowable representations? What role does a distinguished rule/parameter play in determining allowable transformations, allowable states, or geometric structure?', 'HYPOTHESIS',
+    reg=['T-MM-RULES-Q', 'T-MM-DISTINGUISHED-Q'], depends=['MM2', 'MM5'], bs=None, slop=None, fail='—', role='PROJECT HYPOTHESIS; shared exact content so far: a parameter limit is a rank-drop boundary (MM5)', guide='Guide: model manifolds')
+obj('MM4', 'Model-manifold invariance audit', PD, ['TRANSFORMATION', 'PRESERVED STRUCTURE', 'GEOMETRY'],
+    'under an invertible reparametrization (R1): rank, nullity, null directions, lengths, √det g dθ, curvature, widths and the boundary set are invariant; entries, det (×det(P)²), raw eigenvalues, condition number and Jacobian singular values are not; every magnitude depends on the noise model Σ, the null directions do not (SPD Σ)', 'DERIVED',
+    cards=['MMIa', 'MMIb', 'MMIc', 'MMId', 'MMIe', 'MMIf', 'CFT5d', 'CFT5e', 'CFT5f'], docs=MMDOCS, reg=['T-INFOGEO'], depends=['CF10', 'CF13', 'TA1'], bs=35, slop=5, td='not a transfer', breadth=3,
+    fail='an orthogonal linear reparametrization keeps the eigenvalues; the audit concerns general charts', role='separates geometry from chart artifacts before any C7 comparison', guide='Guide: model manifolds')
+obj('MM5', 'c ↔ model-parameter limit: rank-drop boundary', PD, ['GEOMETRY', 'CROSS-SYSTEM TRANSFER'],
+    'η_c = Pᵀ diag(1, −1) P, P = diag(1, 1/c): finite c is a change of units (R1); c → ∞: diag(1, 0), rank 1. Model: θ₂ → ∞, rank J 2 → 1. Verdict: STRUCTURAL CONNECTION for the limit role only; FAIL for the invariant-form role; TOO WEAK in general', 'DERIVED',
+    cards=['MMIi', 'MMIg', 'C9b'], docs=MMDOCS, reg=['T-RULES-GEOMETRY'], bears=['T-C-ROLES'], depends=['L3', 'M2', 'MM1'], bs=25, slop=20, td='STRUCTURAL TRANSFER', breadth=2,
+    fail='the invariant-form role: model parameters are coordinates, the Lorentz allowed set is one orbit while M is not homogeneous (CFT5f)', role='the exact content of "rules constrain a geometry of allowed states" for c', guide='Guide: model manifolds / Act IV')
+obj('MM6', 'Observation as an information-changing map (open)', OQ, ['INFORMATION', 'REPRESENTATION'],
+    'Can observation or measurement be modeled geometrically as a map from a richer state/representation space to a more restricted observable manifestation? Exact instances: ρ ↦ Σₖ PₖρPₖ (W2a), projection (RIC1a), boundary limits (MMIg)', 'OPEN',
+    cards=['W2a', 'W2b', 'RIC1a', 'MMIg'], reg=['T-MM-OBSERVE'], depends=['RI0', 'QZ4'], bs=15, slop=35, td='NOT YET FORMALIZED', breadth=1,
+    fail='no single construction covers the instances', role='OPEN CONNECTION; measurement, interaction or which-path information, never a conscious-observer claim', guide='Guide: model manifolds / Act III')
+obj('MM7', 'Viewer intuition (historical)', PL, ['INFORMATION'],
+    'matter does not form until a viewer looks at it. Normalized question: What changes when a richer state/representation becomes an observable manifestation?', 'OPEN',
+    reg=['T-VIEWER-FORM'], bs=None, slop=None, fail='—', role='ORIGINAL USER INTUITION; PHILOSOPHICAL / QUANTUM-INTERPRETIVE; NOT ESTABLISHED PHYSICS; conscious observer requirement = NOT ESTABLISHED; ORIGINAL VERBATIM NOT RECOVERED', guide='Final / About the Author')
+obj('MM8', 'Physical manifestation through a geometry of constraints (question)', OQ, ['APPLICATION', 'GEOMETRY'],
+    'Could physical manifestation eventually be understood through a similar geometry-of-constraints framework?', 'OPEN', reg=['T-PHYSICAL-MANIFEST-Q'], bs=None, slop=None, fail='—',
+    role='long-term; needs physical theory or data, not a construction', guide='Final')
+obj('MM9', 'Geometry and distinguishability (question)', OQ, ['INFORMATION', 'GEOMETRY', 'ZERO / BALANCE / NULL'],
+    'Can geometry encode what information is accessible, inaccessible, or indistinguishable in a representation? Exact locally: Fisher length = distinguishability per unit noise (MMId); g(v, v) = 0 ⟺ Jv = 0 (FB7b)', 'OPEN',
+    cards=['MMId', 'FB7b'], reg=['T-GEOM-INFO-Q', 'T-ZERO-LENGTH'], depends=['Z9', 'MM4'], bs=None, slop=None, fail='—', role='eight information notions kept apart (research/model_manifold_story.md)', guide='Guide: model manifolds')
+obj('MM10', 'Simpler structure as a boundary of a richer model (question)', OQ, ['INFORMATION', 'GEOMETRY'],
+    'Can simpler observable structure emerge as a boundary/reduction of a richer model? Exact for stated limits: e^{−θ₁t} as the θ₂ → ∞ face (MMIg, FB11c); Newtonian kinematics as c → ∞ (C9b)', 'OPEN',
+    cards=['MMIg', 'FB11c', 'C9b'], reg=['T-SIMPLER-BOUNDARY-Q'], depends=['M2', 'MM5'], bs=None, slop=None, fail='—', role='a limit is a family degeneration, not a map on states', guide='Guide: model manifolds')
+obj('MM11', 'Hyperribbon widths', PB, ['GEOMETRY', 'INFORMATION'],
+    'cross-sectional extents of M in (P, Σ⁻¹): measured along geodesics (TMS 2011); a bounding hyperellipsoid with geometrically decaying widths for analytic models, via Chebyshev approximation (Quinn et al. 2019). Chart-independent, metric-dependent (MMIf)', 'ESTABLISHED',
+    cards=['MMIf'], docs=MMDOCS, reg=['T-INFOGEO'], bears=['T-C7'], depends=['MM1', 'MM4'], bs=15, slop=15, fail='a non-analytic model: algebraic decay only (per the source)',
+    role='the recommended C7 target object (four gates; no derivation)', guide='Guide: model manifolds', gap='carded only as a 1-D illustration of chart independence and metric dependence (MMIf); multi-dimensional widths and the Chebyshev bound are source-only; PDFs not opened')
+for o in O:
+    if o['id'] == 'R7':
+        o['cards'] = ['MMIh', 'MMIg']; o['gap'] = 'quinn2023 PDF pending (P-2); the prediction space is finite (ℝᵐ) or a function space (MMIh)'
+    if o['id'] == 'M1':
+        o['cards'] += ['MMIb']; o['failureCondition'] = 'S14a FAIL kept (span 3.1 decades, threshold 4); raw eigenvalues are not coordinate invariants (MMIb, CFT5e)'
+    if o['id'] == 'M2':
+        o['cards'] += ['MMIg', 'MMIf']; o['gap'] = 'boundary limit carded with its rank drop and chart independence (FB11c, MMIg); widths carded as a 1-D illustration (MMIf); the MBAM geodesic procedure is source-only; quinn2023 PDF pending (P-2)'
+    if o['id'] == 'M4':
+        o['cards'] += ['MMIb', 'MMIf']; o['foundationRole'] = 'active open comparison; target object recommended: hyperribbon widths (MM11), with four gates; the raw-spectrum reading is NEGATIVE (MMIb, CFT5e); no derivation begun'
+    if o['id'] == 'Z9':
+        o['registry'] += ['T-ZERO-LENGTH']; o['cards'] += ['MMIe']
+PROV.update({'MM0': UO, 'MM1': PP, 'MM2': PDM, 'MM3': UO, 'MM4': PDM, 'MM5': PDM, 'MM6': UO, 'MM7': PHL, 'MM8': UO, 'MM9': UO, 'MM10': UO, 'MM11': PP})
+MATH_STATUS.update({'MM1': 'TEXTBOOK / KNOWN', 'MM2': 'PROJECT-DERIVED FROM KNOWN DEFINITIONS', 'MM4': 'PROJECT-DERIVED FROM KNOWN DEFINITIONS', 'MM5': 'PROJECT-DERIVED FROM KNOWN DEFINITIONS', 'MM11': 'TEXTBOOK / KNOWN', 'MM0': 'SPECULATIVE MAPPING'})
+NOVELTY.update({'MM0': 'PROJECT SYNTHESIS', 'MM1': 'KNOWN MATHEMATICS', 'MM2': 'KNOWN MATHEMATICS (definition); PROJECT READING', 'MM4': 'PROJECT CLASSIFICATION OF KNOWN MATHEMATICS', 'MM5': 'PROJECT SYNTHESIS (restricted structural connection)',
+                'MM7': 'OPEN PHYSICAL / QUANTUM-LIKE INTERPRETATION', 'MM11': 'KNOWN MATHEMATICS'})
+TLEVEL.update({'MM4': ['R1'], 'MM5': ['R1']})
+REDROLE.update({'MM6': 'INFORMATION-CHANGING', 'MM10': 'INFORMATION-CHANGING'})
+src('SRC-QUINN-2019', 'Katherine N. Quinn; Heather Wilber; Alex Townsend; James P. Sethna', 'Chebyshev approximation and the global geometry of model predictions', '2019', 'journal article',
+    'Physical Review Letters 122, 158302; DOI 10.1103/PhysRevLett.122.158302; arXiv:1809.08280', 'primary', SV,
+    'the hyperribbon structure of model manifolds follows from smoothness: Chebyshev approximation bounds the cross-sectional widths of a hyperellipsoid enclosing the model manifold, with geometric decay for analytic models',
+    'C7 as posed (one signal\'s Fourier / Bessel coefficients vs Fisher spectra); any statement about raw FIM eigenvalues; the project story', ['MM11'], ['M4', 'MM0'],
+    checked='bibliographic record and abstract checked by web search, 2026-11-13; full text not opened')
+for x in S:
+    if x['id'] == 'SRC-TMS-2011': x['supports'] += ['MM1', 'MM11']
+    if x['id'] == 'SRC-TMS-2010': x['supports'] += ['MM1']
+    if x['id'] == 'SRC-QUINN-2023': x['bearsOn'] += ['MM5']
+    if x['id'] == 'SRC-NIELSEN-CHUANG-2010': x['bearsOn'] += ['MM6']
+for m in RMAPS:
+    if m['name'] == 'Model reduction / manifold boundary (placeholder)':
+        m.update(name='Model reduction / manifold boundary (a limit, not a map)', objects=['M2', 'M3', 'MM10'], cards=['FB11a', 'FB11c', 'MMIg'],
+                 axisA='a degeneration of the model family (a limit), not a map Φ: X → Y on states; information-changing (dimension 2 → 1)',
+                 survives='θ₁ (FB11c, MMIg); K_M and V_max (FB11a); the boundary set itself is chart-independent (MMIg)', collapses='the removed parameter: ∂Y/∂λ₂ → 0, the dimension drops 2 → 1 (MMIg)',
+                 zero='the tangent direction of the removed parameter has zero length on the face (rank drop)', lost='the removed parameter (θ₂); one rate-constant combination (FB11a)',
+                 reconstructible='no: every value of the removed parameter has the same limit', fibers='not defined for a limit; near the face, a shrinking width (source-only)',
+                 symmetry='none supplied; only the approach rate depends on the chart (MMIg)', status='carded instances; MBAM source-only')
+for b in B:
+    if b['id'] == 'BR54':
+        b['connector'] = 'a manifold boundary is a limit (a degeneration of the model family), not a map on states: the limit set is chart-independent, the dimension drops 2 → 1, θ₁ survives (MMIg, FB11c); QSSA keeps K_M, V_max (FB11a). Whether every reduction has a boundary form stays open'
+        b['cards'] = ['FB11a', 'FB11c', 'MMIg']; b['objects'] = ['M2', 'M3', 'RI0', 'MM10']
+bridge('BR57', 'prediction space', 'model manifold', 'M = Y(Θ) ⊆ P, P = ℝᵐ (finite outputs) or a function space with a stated inner product; dim M = rank J (MMIh: L²(0, ∞) gives a 2-dimensional M with g_ij = 2/(θᵢ + θⱼ)³)', 'ESTABLISHED', EST, ['MMIh', 'MMIg'],
+       'that P is a quantum state space or physical spacetime; that an infinite-dimensional P makes M infinite-dimensional', ['MM1', 'R7'])
+bridge('BR58', 'raw FIM eigenvalues', 'geometric invariant', 'eigenvalues of the component matrix g change under a change of units or chart (MMIb, CFT5e); the invariants are rank, nullity, lengths, √det g dθ, curvature, widths (MM4)', 'ESTABLISHED', EST, ['MMIb', 'CFT5e', 'MMIc'],
+       'that sloppiness is only a chart artifact (widths are invariant and carry the hierarchy)', ['M1', 'MM4', 'M4'])
+bridge('BR59', 'hyperribbon widths', 'Chebyshev coefficient decay', 'for analytic model predictions the widths of a hyperellipsoid enclosing M are bounded through Chebyshev coefficients and decay geometrically (Quinn, Wilber, Townsend, Sethna 2019; source-only)', 'ESTABLISHED', EST, [],
+       'C7 as posed (one signal\'s Fourier / Bessel coefficients vs Fisher spectra); anything about raw eigenvalues; not carded here', ['MM11', 'M4'])
+bridge('BR60', 'c', 'model-parameter limit', 'both are degenerate boundaries with a rank drop: η_c → diag(1, 0) as c → ∞; rank J 2 → 1 as θ₂ → ∞ (MMIi, MMIg, C9b)', 'DERIVED', PS, ['MMIi', 'MMIg', 'C9b'],
+       'that spacetime is a model manifold; that c is a model coordinate; the invariant-form role (FAIL: finite c is a change of units)', ['MM5', 'L3', 'M2'])
+bridge('BR61', 'observation', 'information-changing map', 'non-selective measurement ρ ↦ Σₖ PₖρPₖ keeps S_z = 0 and removes the sector coherence (W2a, W3a); projection (RIC1a) and boundary limits (MMIg) are other named instances', 'OPEN', PS, ['W2a', 'W3a', 'RIC1a'],
+       'a general theory of observation; any conscious-observer requirement (NOT ESTABLISHED); that matter forms on being observed', ['MM6', 'QZ4', 'RI0'])
+bridge('BR62', 'same-zero quantum states', 'observationally indistinguishable parameters', 'both: an observed value that does not fix what underlies it (S_z = 0 on a 2-dimensional eigenspace, Q1d, Q2b; Y(θ) constant along θ₁ + θ₂ = const, FB7a)', 'OPEN', PS, ['Q1d', 'Q2b', 'FB7a'],
+       'an explicit map between a quantum state space and a parameter manifold (none given); that a model manifold is a quantum state space', ['QZ1', 'Z9', 'MM9'])
+BMETA.update({
+ 'BR57': (EI, ['SRC-TMS-2011'], 'differentiable Y; a stated metric (inner product) on P', 'none for the definition'),
+ 'BR58': (FC, ['SRC-LEE-2018'], 'an invertible change of parameters that is not orthogonal-linear', 'orthogonal linear reparametrizations do keep the eigenvalues'),
+ 'BR59': (THM, ['SRC-QUINN-2019', 'SRC-TMS-2011'], 'analytic predictions on a bounded input interval; the exact hypotheses of the source', 'non-analytic models: algebraic decay only (per the source)'),
+ 'BR60': (SAN, ['SRC-QUINN-2023', 'SRC-INONU-WIGNER-1953'], 'the stated limits', 'the invariant-form role: for finite c, c is absorbed by a change of units (MMIi)'),
+ 'BR61': (OPC, ['SRC-NIELSEN-CHUANG-2010'], 'named maps only', 'no single construction covers the instances'),
+ 'BR62': (SAN, [], 'none beyond the two separate facts', 'an explicit map showing the two indistinguishabilities differ in kind'),
+})
 for b in B:
     st, srcs, asm, fl = BMETA[b['id']]
     b.update(strength=st, sources=srcs, assumptions=asm, failureCondition=fl)
@@ -712,8 +819,10 @@ dom('D8', 'Zero as connector; the inverse problem', 'Z11 H3', 'OPEN LONG-TERM', 
 dom('D9', 'Translation, correlation, spectrum, localization', 'T1 T2 T3 T4 T5', 'SOURCE+CARD COMPLETE', 'T3/T4 project-derived and carded; the uncertainty inequality itself is source-only (FB3 cards its instances)')
 dom('D10', 'Lorentz and c', 'L1 L2 L3', 'SOURCE+CARD COMPLETE', 'İnönü–Wigner sourced for the c → ∞ contraction; it is not evidence for L4')
 dom('D11', 'Known continuation behaviours', 'I1', 'SOURCE+CARD COMPLETE', '—')
-dom('D12', 'Model manifolds and Fisher geometry', 'R7 CF10 Z9 M1 M2', 'SOURCE+CARD COMPLETE', 'quinn2023 quote pending (P-2); M1 rests on the weak S14b and is a statement in log-parameter coordinates (component eigenvalues are not invariant, CFT5e); the MBAM procedure is source-only')
-dom('D13', 'C7: coefficient decay vs Fisher eigenvalue decay', 'M4', 'NEEDS DERIVATION', 'an explicit operator / map / asymptotic theorem, or an exact obstruction')
+dom('D12', 'Model manifolds and Fisher geometry', 'R7 CF10 Z9 M1 M2', 'SOURCE+CARD COMPLETE', 'quinn2023 quote pending (P-2); M1 rests on the weak S14b and is a statement in log-parameter coordinates (component eigenvalues are not invariant, CFT5e, MMIb); the MBAM procedure is source-only; invariance classified in D33 (research/model_manifold_invariance.md)')
+dom('D13', 'C7: coefficient decay vs Fisher eigenvalue decay', 'M4', 'NEEDS DERIVATION', 'an explicit operator / map / asymptotic theorem, or an exact obstruction. Target object recommended (2026-11-13): hyperribbon widths (MM11), with four gates; the raw-spectrum reading is NEGATIVE (MMIb, CFT5e); derivation not begun')
+dom('D32', 'Model-manifold research story and extensions', 'MM0 MM3 MM6 MM7 MM8 MM9 MM10', 'OPEN LONG-TERM', 'every arrow of the story has a status (research/model_manifold_story.md); observation, manifestation and the viewer intuition stay open or philosophical; conscious observer requirement = NOT ESTABLISHED')
+dom('D33', 'Model-manifold invariance', 'MM1 MM2 MM4 MM5 MM11', 'SOURCE+CARD COMPLETE', 'MMI cards; widths carded as a 1-D illustration, the Chebyshev bound source-only; c verdict: STRUCTURAL CONNECTION for the limit role only')
 dom('D14', 'Wavelets and scattering', 'W1 W2', 'SOURCE-COMPLETE', 'W1 carded; W2: exact first-order parts carded, deformation stability and higher orders source-only')
 dom('D15', 'DYADIC PACKETS; information lost and recovered', 'W3 W4', 'OPEN LONG-TERM', 'DYADIC PACKETS: ORIGINAL USER RESEARCH TERM, OPEN DEFINITION; candidate role in the Reduction / Information-Changing Architecture (not the definition)')
 dom('D16', 'Effective / reduced representations (examples)', 'M3 M2 H7', 'SOURCE+CARD COMPLETE', 'three reductions, each with what survives; compared, not equated. The question itself (H6) is OPEN LONG-TERM')
@@ -740,11 +849,11 @@ CF11B = dict(outcome='CF11-F2', classification='REFINED', outcomes=['CF11-F1', '
              prereg='research/constructions/cf11b_fisher_prereg.md', preregCommit='e6f3db8', record='research/constructions/cf11b_fisher_test.md', pullbackCommonForm='YES',
              correction='architectural correction (2026-11-12): P1, P2, P3 are not three meanings of one word; they are R2 structural invariance, R1 representation covariance and R3 equivariance / intertwining of the Transformation Architecture (TA0). CF11-F2 is unchanged.')
 RATINGS = [
- ('Foundation architecture completeness', 90, 88, 'Lossy maps now have their own architecture, parallel to the Transformation Architecture: the seven questions are answered for every existing information-changing map where carded (simplex, centering, Fourier magnitude and band-limiting, scattering stages, dephasing, reduction and decimation instances), the intersection with equivariance is explicit, preserved and collapsed zeros are distinguished, and DYADIC PACKETS has a candidate architectural home (still undefined). Still short: DYADIC definition, no general statement for effective representations, no application mathematics, the model-manifold invariance audit.'),
- ('Mathematical verification coverage', round(100 * len(carded) / len(est)), 96, f'{len(carded)} of {len(est)} established or derived objects have PASS cards (computed). New and carded: RI0–RI2 (RIC cards). Not carded: R7 (definitional), OB1 (definitional), A3 (wording).'),
+ ('Foundation architecture completeness', 91, 90, 'The model-manifold branch is audited: which quantities are invariant, chart-dependent, noise-dependent or reduction-dependent (MM4, MMI cards); the research story is kept whole with a status per arrow (MM0); the c connection has a restricted verdict (MM5); observation and the viewer intuition are recorded and kept open (MM6, MM7); C7 has one recommended target object (MM11). Still short: DYADIC definition, no general statement for effective representations, no application mathematics, the C7 derivation.'),
+ ('Mathematical verification coverage', round(100 * len(carded) / len(est)), 96, f'{len(carded)} of {len(est)} established or derived objects have PASS cards (computed). New and carded: MM1, MM2, MM4, MM5, MM11 (MMI cards); R7 now carded (MMIh). Not carded: OB1 (definitional), A3 (wording).'),
  ('Cross-domain validation', 30, 30, 'Unchanged.'),
  ('Project-specific construction maturity', 45, 45, 'Unchanged.'),
- ('Paper / source coverage', 55, 55, f'{sum(1 for x in S if x["sourceClass"] in ("primary", "textbook", "review"))} external sources registered with verified bibliographic records ({sum(1 for x in S if x["status"] == SP)} only partly verified), each with the exact claim it supports and what it does not establish. {len(ext_src)} of {len(ext)} external-claim objects have a source; R5 is SOURCE MISSING. Unchanged.'),
+ ('Paper / source coverage', 55, 55, f'{sum(1 for x in S if x["sourceClass"] in ("primary", "textbook", "review"))} external sources registered with verified bibliographic records ({sum(1 for x in S if x["status"] == SP)} only partly verified), each with the exact claim it supports and what it does not establish. {len(ext_src)} of {len(ext)} external-claim objects have a source; R5 is SOURCE MISSING. Unchanged (SRC-QUINN-2019 added; no text quoted).'),
  ('Application validation', 0, 0, 'Unchanged.'),
 ]
 data = dict(about='Foundation dependency architecture (V1, revised in Pass 2, 2026-11-12). Generated by research/tools/foundation_source.py.', layers=LAYERS, stages=STAGES, statuses=STATUS, transferDepths=TD,
@@ -817,7 +926,7 @@ cl += ['', '## Blocking items for Foundation V1', '', '| Kind | Item |', '|---|-
        '| undefined central object | none (DYADIC PACKETS is an open user term, not a central object of the spine) |',
        '| incorrect mathematical bridge | none found; every bridge has a strength class, assumptions, a failure condition and what it does not prove |',
        '| provenance loss | the quinn2023 PDF (P-2); ThermaLens mathematics (APPLICATION PROVENANCE INCOMPLETE); the original mass-attraction wording (ORIGINAL VERBATIM NOT RECOVERED); no source opened at full text |',
-       '', '## Foundation ratings (separate dimensions, no overall score)', '', '| Dimension | Rating | Previous (Pass 3 correction) | Reason for the change |', '|---|---|---|---|']
+       '', '## Foundation ratings (separate dimensions, no overall score)', '', '| Dimension | Rating | Previous (Reduction architecture pass) | Reason for the change |', '|---|---|---|---|']
 for a, b_, c, d in RATINGS:
     cl.append(f"| {a} | {b_}% | {c}% | {d} |")
 cl += ['', '## CF11 and Transformation Architecture ratings (separate records)', '', '| Record | Statement | Mathematical Status | Novelty | Transfer Depth | Backbone Support | AI Slop Risk | Application Breadth |', '|---|---|---|---|---|---|---|---|']

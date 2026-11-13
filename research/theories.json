@@ -1591,7 +1591,11 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "T-MM-RULES-Q",
+        "T-MM-DISTINGUISHED-Q",
+        "T-RULES-GEOMETRY"
+      ],
       "history": [
         {
           "date": "2026-11-12",
@@ -2570,7 +2574,9 @@
         }
       ],
       "evidenceAgainst": [],
-      "boundaries": [],
+      "boundaries": [
+        "Model-manifold audit (2026-11-13): stated in the same audit as \"observable zero does not uniquely specify underlying state.\" The comparison with observationally indistinguishable model parameters (same predictions, different θ) is a STRUCTURAL ANALOGUE / OPEN CONNECTION: no explicit map between the quantum states and a parameter manifold is given."
+      ],
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
@@ -2600,12 +2606,18 @@
       "construction": null,
       "proofTarget": null,
       "related": [
+        "T-MM-OBSERVE",
+        "T-GEOM-INFO-Q",
         "T-QACP"
       ],
       "history": [
         {
           "date": "2026-11-12",
           "change": "Act labels remapped to the new Act map (rev 3: I)"
+        },
+        {
+          "date": "2026-11-13",
+          "change": "link to the model-manifold audit recorded"
         }
       ],
       "relatedActsRev3": [
@@ -4275,16 +4287,25 @@
       "origin": "user",
       "kind": "open-question",
       "status": "open",
-      "evidenceFor": [],
+      "evidenceFor": [
+        {
+          "ref": "card:MMIh",
+          "note": "function-space prediction space with a finite metric"
+        }
+      ],
       "evidenceAgainst": [],
-      "boundaries": [],
+      "boundaries": [
+        "Model-manifold audit (2026-11-13): for finitely many outputs P = ℝᵐ (finite); for a continuously indexed output with a stated inner product P is a function space (L²), infinite-dimensional, while M keeps the dimension of its identifiable parameters (MMIh: g_ij = 2/(θᵢ + θⱼ)³). \"Infinite prediction space\" is exact in this sense; it is not physical spacetime and not a quantum state space."
+      ],
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
         "Guide"
       ],
       "relatedObjects": [],
-      "relatedCards": [],
+      "relatedCards": [
+        "MMIh"
+      ],
       "sourceDocs": [
         "docs/Interactive_Master_Map.extracted.md",
         "docs/restructure_decisions.md"
@@ -4300,11 +4321,17 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "T-MM-STORY"
+      ],
       "history": [
         {
           "date": "2026-11-12",
           "change": "Act labels remapped to the new Act map (rev 3: VII)"
+        },
+        {
+          "date": "2026-11-13",
+          "change": "finite vs function-space prediction space recorded"
         }
       ],
       "relatedActsRev3": [
@@ -4380,16 +4407,29 @@
         {
           "ref": "source:research/sources/quinn2023.md",
           "note": ""
+        },
+        {
+          "ref": "card:MMIa",
+          "note": ""
+        },
+        {
+          "ref": "card:MMIe",
+          "note": ""
         }
       ],
       "evidenceAgainst": [
         {
           "ref": "card:S14a",
           "note": "FAIL kept: span 3.1 decades, not > 4"
+        },
+        {
+          "ref": "card:MMIb",
+          "note": "raw spectra are chart-dependent"
         }
       ],
       "boundaries": [
-        "\"Exact null direction\" has three possible readings (AMB-14)."
+        "\"Exact null direction\" has three possible readings (AMB-14).",
+        "Model-manifold audit (2026-11-13): research/model_manifold_invariance.md classifies each quantity. Invariant under reparametrization: rank, nullity, null directions, lengths, the volume element, curvature, widths, the boundary set. Not invariant: matrix entries, det, raw eigenvalues, condition number, Jacobian singular values. Dependent on the noise model: all magnitudes; not the null directions. AMB-14 (\"exact null direction\") resolved for this branch: the statistical null g(v, v) = 0 ⟺ Jv = 0."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -4398,6 +4438,9 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "MMIa",
+        "MMIb",
+        "MMIe",
         "S14a",
         "S14b"
       ],
@@ -4415,11 +4458,19 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "T-C7",
+        "T-MM-STORY",
+        "T-ZERO-LENGTH"
+      ],
       "history": [
         {
           "date": "2026-11-12",
           "change": "Act labels remapped to the new Act map (rev 3: VII)"
+        },
+        {
+          "date": "2026-11-13",
+          "change": "invariance audit recorded"
         }
       ],
       "relatedActsRev3": [
@@ -4444,16 +4495,25 @@
         {
           "ref": "card:S14b",
           "note": "weak"
+        },
+        {
+          "ref": "card:MMIf",
+          "note": "widths are a property of the set and the ambient metric"
         }
       ],
       "evidenceAgainst": [
         {
           "ref": "card:S14a",
           "note": "FAIL kept"
+        },
+        {
+          "ref": "card:MMIb",
+          "note": "raw eigenvalues are not geometric invariants"
         }
       ],
       "boundaries": [
-        "Bessel concerns one vector's coefficients; the sloppy spectrum is a metric's eigenvalues (Gate 3, C7). Kept as an open analogy."
+        "Bessel concerns one vector's coefficients; the sloppy spectrum is a metric's eigenvalues (Gate 3, C7). Kept as an open analogy.",
+        "C7 target gate (2026-11-13), answering \"What exact mathematical object on the model-manifold side should be compared?\": raw FIM eigenvalues are NOT the object (coordinate-dependent, MMIb, CFT5e: a NEGATIVE result for that reading). Recommended object: the hyperribbon widths of the model manifold (cross-sectional extents of the image set in a stated prediction-space metric; parametrization-independent, metric-dependent, MMIf). Known mathematics already bounds them by Chebyshev coefficient decay for analytic models (Quinn, Wilber, Townsend, Sethna 2019), so a C7 derivation must state its project-specific residue first. T-C7 stays OPEN; no derivation begun."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -4462,6 +4522,8 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "MMIb",
+        "MMIf",
         "S14a",
         "S14b",
         "S7"
@@ -4480,11 +4542,17 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "T-INFOGEO"
+      ],
       "history": [
         {
           "date": "2026-11-12",
           "change": "Act labels remapped to the new Act map (rev 3: VII)"
+        },
+        {
+          "date": "2026-11-13",
+          "change": "C7 target recommendation (no derivation)"
         }
       ],
       "relatedActsRev3": [
@@ -4548,7 +4616,9 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "T-GEOM-INFO-Q"
+      ],
       "history": [
         {
           "date": "2026-11-12",
@@ -4615,7 +4685,9 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "T-GEOM-INFO-Q"
+      ],
       "history": [
         {
           "date": "2026-11-12",
@@ -4895,7 +4967,9 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "T-VIEWER-FORM"
+      ],
       "history": [
         {
           "date": "2026-11-12",
@@ -11579,7 +11653,9 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "T-SIMPLER-BOUNDARY-Q"
+      ],
       "history": [
         {
           "date": "2026-11-12",
@@ -12054,7 +12130,10 @@
         "T-TRANSFORMATION-ARCH",
         "T-SOURCE-MANIFEST",
         "T-TRANSFORM-REDUCE",
-        "T-DYADIC"
+        "T-DYADIC",
+        "T-MM-STORY",
+        "T-MM-OBSERVE",
+        "T-SIMPLER-BOUNDARY-Q"
       ],
       "history": [],
       "relatedActsRev3": [],
@@ -12110,7 +12189,9 @@
       "proofTarget": null,
       "related": [
         "T-REDUCTION-ARCH",
-        "B-HIGHER-GEOMETRY"
+        "B-HIGHER-GEOMETRY",
+        "T-MM-STORY",
+        "T-MM-OBSERVE"
       ],
       "history": [],
       "relatedActsRev3": [],
@@ -12240,6 +12321,867 @@
       "related": [
         "T-TRANSFORMATION-ARCH",
         "T-REDUCTION-ARCH"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-MM-GOV",
+      "label": "Audit the status of each connection, not the story",
+      "words": "Do not audit away the research story. Audit the status of each connection.",
+      "variants": [
+        {
+          "words": "The paper is not the thesis.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "Method / governance rule: every arrow of the research story keeps its record and receives its own status (ESTABLISHED MATHEMATICS, PAPER-BACKED RESULT, PROJECT-DERIVED CONNECTION, PROJECT HYPOTHESIS, OPEN CONNECTION, PHILOSOPHICAL / QUANTUM-LIKE HYPOTHESIS, FAILED / NEGATIVE RESULT). A weak arrow is labelled, not removed; a paper result does not prove the project interpretation, and the project interpretation is not paper novelty.",
+      "origin": "user",
+      "kind": "method-rule",
+      "status": "governance",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "all"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "model-manifold audit, 0",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the model-manifold invariance + research-story audit (2026-11-13)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-MM-STORY"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-MM-STORY",
+      "label": "The research story: possibility space → allowable manifold → manifestation",
+      "words": "larger prediction / possibility space → rules constrain an allowable manifold → representations expose different aspects of it → observation / reduction may expose an accessible manifestation → ask what geometry and information survive",
+      "variants": [
+        {
+          "words": "possibility / prediction space → rules constrain an allowable manifold → geometry organizes distinguishability → observation/reduction exposes an accessible manifestation → ask what survives, disappears, or becomes observable",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "Arrow by arrow (research/model_manifold_story.md): (1) prediction space P ⊇ M = Y(Θ): ESTABLISHED MATHEMATICS; (2) the model rule Y and the parameter domain Θ fix M: ESTABLISHED (definition), with the broader rules → geometry reading a PROJECT HYPOTHESIS; (3) representations expose different aspects (charts, noise metrics, embeddings; R1 vs metric dependence, cards MMIa–MMIf): PROJECT-DERIVED CONNECTION; (4) observation / reduction exposes an accessible manifestation: OPEN CONNECTION in general, exact only for stated maps (boundary limits MMIg; non-selective quantum measurement W2a); (5) what survives: answered per map by the Reduction / Information-Changing Architecture, OPEN as a general law.",
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:MMIa",
+          "note": "rank, nullity and the volume element survive every change of parametrization"
+        },
+        {
+          "ref": "card:MMId",
+          "note": "lengths are chart-invariant and equal prediction-space arc length"
+        },
+        {
+          "ref": "card:MMIg",
+          "note": "a boundary limit is a property of the set; the dimension drops 2 → 1"
+        },
+        {
+          "ref": "card:W2a",
+          "note": "one exact observation map (non-selective measurement) that keeps the zero and removes a coherence"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:MMIb",
+          "note": "raw eigenvalues and the condition number are representation artifacts: not every visible spectrum is geometry"
+        },
+        {
+          "ref": "card:MMIe",
+          "note": "magnitudes depend on the noise model, so \"the\" geometry needs a stated prediction-space metric"
+        }
+      ],
+      "boundaries": [
+        "KNOWN MODEL-MANIFOLD / INFORMATION GEOMETRY (arrows 1–2, 3 in part); PROJECT SYNTHESIS (the chain as one story); OPEN PHYSICAL / QUANTUM-LIKE INTERPRETATION (arrow 4 beyond stated maps).",
+        "parameter space ≠ prediction space; prediction space ≠ physical spacetime; model manifold ≠ quantum state space."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "MMIa",
+        "MMIb",
+        "MMId",
+        "MMIe",
+        "MMIg",
+        "W2a"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "model-manifold audit, story",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the model-manifold invariance + research-story audit (2026-11-13)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-MM-GOV",
+        "T-MM-RULES",
+        "T-MM-OBSERVE",
+        "T-PREDICTION-INFINITE",
+        "T-INFOGEO",
+        "T-REDUCTION-ARCH",
+        "T-SOURCE-MANIFEST",
+        "T-SIMPLER-BOUNDARY-Q"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-13",
+        "mathematicalStatus": "SPECULATIVE MAPPING",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 30,
+        "slopRisk": 30,
+        "why": "Arrows 1–3 are established or project-derived (MMIa–MMIh). Arrow 4 is exact only for named maps, and arrow 5 is answered per map, not as a law. The chain is a project synthesis.",
+        "increase": "A system where the chain makes a prediction the separate arrows do not.",
+        "falsify": "A system whose observable manifestation is not a reduction of any richer description in the stated sense.",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "partial",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "not-yet"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "NOT YET FORMALIZED",
+        "mathematicalCorrectness": "established under assumptions",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 2,
+        "novelty": null
+      }
+    },
+    {
+      "id": "T-MM-RULES",
+      "label": "The rules of the manifold were the model parameters",
+      "words": "the rules of the manifold were the model parameters.",
+      "variants": [
+        {
+          "words": "the model structure and parameterization constrain the set of allowable predictions.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "the model structure and parameterization constrain the set of allowable predictions. Unpacked: the model rule Y (the functional form) and the parameter domain Θ fix the allowable set M = Y(Θ) ⊆ P; a particular parameter value is a point coordinate on M, not a constraint on it; the domain's limits give M's boundaries (θ₂ → ∞, MMIg); the parametrization is a chart, so a reparametrization leaves M unchanged (MMIa, MMIf).",
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:MMIf",
+          "note": "the same set in three charts has one width"
+        },
+        {
+          "ref": "card:MMIg",
+          "note": "the parameter domain's limit is a boundary of the set"
+        },
+        {
+          "ref": "card:FB11c",
+          "note": "what survives the boundary: θ₁"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:MMIi",
+          "note": "parameter values are coordinates on one manifold, not structure constants of a form: the parameter ↔ c reading needs this distinction"
+        }
+      ],
+      "boundaries": [
+        "The definition M = Y(Θ) is ESTABLISHED MATHEMATICS (Transtrum–Machta–Sethna 2010/2011; Quinn et al. 2023). The project connection is the reading \"rules constrain an allowable set\", which is PROJECT-DERIVED and exact in this definitional sense."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "FB11c",
+        "MMIf",
+        "MMIg",
+        "MMIi"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "model-manifold audit, parameters",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the model-manifold invariance + research-story audit (2026-11-13)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-MM-STORY",
+        "T-MM-RULES-Q",
+        "T-RULES-GEOMETRY"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-13",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 40,
+        "slopRisk": 5,
+        "why": "M = Y(Θ) is the definition of a model manifold; the parameters chart it and its domain limits give its boundaries. The project reading adds only the word \"rules\" for Y and Θ. Exact on F-C, the one-exponential curve and the function-space model.",
+        "increase": "A system where the parameter domain alone, not the model rule, determines a non-trivial feature of M.",
+        "falsify": "None for the definitional statement.",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "n/a",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "TRIVIAL CONSEQUENCE",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 2,
+        "novelty": null
+      }
+    },
+    {
+      "id": "T-MM-RULES-Q",
+      "label": "Do governing rules shape allowable geometry more broadly?",
+      "words": "Do governing parameters/rules play a broader role in determining the geometry of allowable representations?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:MMIg",
+          "note": "model rule: a parameter limit drops the dimension"
+        },
+        {
+          "ref": "card:C9b",
+          "note": "Lorentz form: c → ∞ degenerates the form (rank drop)"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:MMIi",
+          "note": "for finite c, c is absorbed by a change of units; a model parameter is a coordinate. The two \"rules\" act on different objects"
+        }
+      ],
+      "boundaries": [
+        "PROJECT HYPOTHESIS. The shared exact content found so far is limited to \"a parameter limit is a degenerate boundary with a rank drop\" (T-RULES-GEOMETRY)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C9b",
+        "MMIg",
+        "MMIi"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "model-manifold audit, parameters",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the model-manifold invariance + research-story audit (2026-11-13)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-MM-RULES",
+        "T-RULES-GEOMETRY",
+        "T-MM-DISTINGUISHED-Q",
+        "T-C-ROLES"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-MM-DISTINGUISHED-Q",
+      "label": "What does a distinguished rule/parameter determine?",
+      "words": "What role does a distinguished rule/parameter play in determining allowable transformations, allowable states, or geometric structure?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Known instance: c fixes the Lorentz group (the transformations keeping η_c) and the allowed set uᵀηu = 1 (one boost orbit, MMIi). Model-manifold instance: Y and Θ fix M; no transformation group is fixed by a model parameter in general (CFT5f). These are known examples, not an exhaustive classification for this project."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "model-manifold audit, c",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the model-manifold invariance + research-story audit (2026-11-13)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-MM-RULES-Q",
+        "T-RULES-GEOMETRY",
+        "T-C-ROLES"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-RULES-GEOMETRY",
+      "label": "Rules constrain a geometry of allowed states: c and model manifolds",
+      "words": "Do both illustrate a broader pattern in which rules constrain a geometry of allowed states?",
+      "variants": [
+        {
+          "words": "larger ambient possibility space → constrained allowed manifold",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:MMIi",
+          "note": "both have a parameter limit that is a degenerate boundary (c → ∞: diag(1, 0), rank 1; θ₂ → ∞: rank 2 → 1)"
+        },
+        {
+          "ref": "card:MMIg",
+          "note": "model boundary: rank drop"
+        },
+        {
+          "ref": "card:C9b",
+          "note": "form boundary: rank drop"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:MMIi",
+          "note": "the invariant-form role does not transfer: η_c is one form up to units (signature is the invariant), the Lorentz allowed set is one group orbit, while a model manifold is not homogeneous (CFT5f) and its parameters are coordinates"
+        }
+      ],
+      "boundaries": [
+        "Verdict (2026-11-13, from STRUCTURAL CONNECTION / USEFUL ANALOGY / TOO WEAK / FAIL): STRUCTURAL CONNECTION for the parameter-limit → degenerate-boundary role only (both a rank drop; Quinn et al. 2023 treat c as a model parameter, PDF quote pending); TOO WEAK for \"rules constrain allowed states\" stated generally (every constraint does that); the invariant-form role: FAIL as a transfer (model parameters are not structure constants).",
+        "Spacetime geometry ≠ model-manifold geometry (Gate 3)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C9b",
+        "MMIg",
+        "MMIi"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "model-manifold audit, c verdict",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the model-manifold invariance + research-story audit (2026-11-13)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-MM-RULES-Q",
+        "T-C-ROLES",
+        "T-MM-DISTINGUISHED-Q",
+        "T-MM-RULES",
+        "T-PHYSICAL-MANIFEST-Q"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-13",
+        "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 25,
+        "slopRisk": 20,
+        "why": "One shared exact feature: a parameter limit that is a degenerate boundary with a rank drop (C9b, MMIg). The invariant-form role does not transfer, and the general phrase is too weak to test.",
+        "increase": "A further shared invariant beyond the rank drop, stated before it is checked.",
+        "falsify": "A model family whose parameter limits never drop rank, or a precise sense in which the Lorentz and model-manifold boundaries differ in kind.",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "partial",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "not-yet"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "STRUCTURAL TRANSFER",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 2,
+        "novelty": null
+      }
+    },
+    {
+      "id": "T-ZERO-LENGTH",
+      "label": "A zero geometric length exposes non-identifiability",
+      "words": "a zero geometric length can expose hidden non-identifiability / redundancy.",
+      "variants": [],
+      "normalizedStatement": "For a Fisher metric g = JᵀΣ⁻¹J (Σ SPD), g(v, v) = 0 ⟺ Jv = 0: a zero-length tangent vector is a first-order non-identifiable direction (exact, any chart, any SPD noise model). A curve whose tangent has zero length everywhere is a set of parameter values with identical predictions (exact redundancy, FB7a). Distinct from a sloppy direction (small, nonzero), a Lorentz null (vᵀηv = 0 with ηv ≠ 0) and a collapsed zero of a lossy map.",
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:FB7b",
+          "note": "uᵀgu = 0 ⟺ Ju = 0 ⟺ gu = 0"
+        },
+        {
+          "ref": "card:FB7a",
+          "note": "a zero-length curve: θ₁ + θ₂ fixed"
+        },
+        {
+          "ref": "card:MMIe",
+          "note": "the null survives a change of noise model"
+        },
+        {
+          "ref": "card:CFT5d",
+          "note": "and a change of chart"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:FB7c",
+          "note": "a sloppy direction is not a zero length"
+        },
+        {
+          "ref": "card:FB7d",
+          "note": "a Lorentz null is not a kernel vector"
+        }
+      ],
+      "boundaries": [
+        "PROJECT-DERIVED FROM ESTABLISHED MATHEMATICS; first-order statement. Global identifiability needs the whole fiber Y⁻¹(Y(θ)) (F-C is 2-to-1 by exchange off the diagonal while g has full rank there)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "CFT5d",
+        "FB7a",
+        "FB7b",
+        "FB7c",
+        "FB7d",
+        "MMIe"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "model-manifold audit, null",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the model-manifold invariance + research-story audit (2026-11-13)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-INFOGEO",
+        "T-GEOM-INFO-Q"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-MM-OBSERVE",
+      "label": "Observation as a map to a restricted manifestation",
+      "words": "Can observation or measurement be modeled geometrically as a map from a richer state/representation space to a more restricted observable manifestation?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:W2a",
+          "note": "non-selective S² measurement: ρ ↦ P_t ρ P_t + P_s ρ P_s removes the sector coherence (an information-changing map)"
+        },
+        {
+          "ref": "card:W2d",
+          "note": "the same map as two-path which-path dephasing"
+        },
+        {
+          "ref": "card:RIC1a",
+          "note": "a classical reduction with stated survivors, collapses and fiber"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:Q2b",
+          "note": "states with the same zero can look identical to every blind descriptor: a manifestation need not determine its source"
+        }
+      ],
+      "boundaries": [
+        "OPEN CONNECTION. Exact only for stated maps: quantum non-selective measurement / dephasing, projections, coarse-graining, boundary limits. No general measurement theory is claimed. Observation here means measurement, interaction or which-path information."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "Q2b",
+        "RIC1a",
+        "W2a",
+        "W2d"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "model-manifold audit, observation",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the model-manifold invariance + research-story audit (2026-11-13)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-VIEWER-FORM",
+        "T-REDUCTION-ARCH",
+        "T-SOURCE-MANIFEST",
+        "T-QUANTUM-ZERO",
+        "T-MM-STORY",
+        "T-PHYSICAL-MANIFEST-Q"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-13",
+        "mathematicalStatus": "SPECULATIVE MAPPING",
+        "breadth": "one mathematical family",
+        "backboneSupport": 15,
+        "slopRisk": 35,
+        "why": "Exact for named maps (non-selective measurement W2a, simplex projection RIC1a, boundary limits). There is no general construction of \"observation\" as one map class. It stays an open connection.",
+        "increase": "A single construction covering quantum dephasing and a classical reduction with the same stated survivors, written before checking.",
+        "falsify": "A measurement process whose effect is not representable as a map from a richer description (none known).",
+        "classification": "EXAMPLE",
+        "validity": {
+          "construction": "pass",
+          "generalization": "not-yet",
+          "transfer": "not-yet",
+          "failureCondition": "pass",
+          "outOfSample": "not-yet"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "NOT YET FORMALIZED",
+        "mathematicalCorrectness": "established under assumptions",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 1,
+        "novelty": null
+      }
+    },
+    {
+      "id": "T-VIEWER-FORM",
+      "label": "Matter does not form until a viewer looks at it (historical intuition)",
+      "words": "matter does not form until a viewer looks at it.",
+      "variants": [
+        {
+          "words": "What changes when a richer state/representation becomes an observable manifestation?",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "What changes when a richer state/representation becomes an observable manifestation?",
+      "origin": "user",
+      "kind": "philosophical-exploration",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "ORIGINAL VERBATIM NOT RECOVERED: recorded as given on 2026-11-13 (\"approximately\"); the historical wording is not in the repository.",
+        "ORIGINAL USER INTUITION; PHILOSOPHICAL / QUANTUM-INTERPRETIVE; NOT ESTABLISHED PHYSICS.",
+        "conscious observer requirement = NOT ESTABLISHED. The investigable part is the normalized question: which maps from a richer state to an observable manifestation exist, and what each keeps, removes or creates (T-MM-OBSERVE). Both wordings are kept."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Final"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "model-manifold audit, quantum-like",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the model-manifold invariance + research-story audit (2026-11-13)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-MM-OBSERVE",
+        "T-SUBCONSCIOUS",
+        "T-PHYSICAL-MANIFEST-Q"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-PHYSICAL-MANIFEST-Q",
+      "label": "Physical manifestation through a geometry of constraints?",
+      "words": "Could physical manifestation eventually be understood through a similar geometry-of-constraints framework?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "PHILOSOPHICAL / QUANTUM-LIKE HYPOTHESIS, long-term. No physical theory or data in the repository addresses it; a mathematical construction is not physical validation."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Final"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "model-manifold audit, quantum-like",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the model-manifold invariance + research-story audit (2026-11-13)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-VIEWER-FORM",
+        "T-MM-OBSERVE",
+        "T-RULES-GEOMETRY"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-GEOM-INFO-Q",
+      "label": "Can geometry encode accessible and indistinguishable information?",
+      "words": "Can geometry encode what information is accessible, inaccessible, or indistinguishable in a representation?",
+      "variants": [
+        {
+          "words": "What does the geometry say about distinguishability?",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:FB7b",
+          "note": "local: a zero-length direction is first-order indistinguishable"
+        },
+        {
+          "ref": "card:MMId",
+          "note": "Fisher length = prediction-space distance (local distinguishability)"
+        },
+        {
+          "ref": "card:Q2b",
+          "note": "quantum: same zero, descriptors that cannot distinguish"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Exact locally for Fisher geometry (distinguishability per unit noise). Shannon, identifiability, reconstruction, phase and quantum information are different quantities (research/model_manifold_story.md, information distinctions); no single geometry is claimed to encode them all."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "FB7b",
+        "MMId",
+        "Q2b"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "model-manifold audit, information",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the model-manifold invariance + research-story audit (2026-11-13)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-ZERO-LENGTH",
+        "T-MAGPHASE",
+        "T-SAME-SPECTRUM",
+        "T-QUANTUM-ZERO"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-SIMPLER-BOUNDARY-Q",
+      "label": "Simpler observable structure as a boundary of a richer model?",
+      "words": "Can simpler observable structure emerge as a boundary/reduction of a richer model?",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:MMIg",
+          "note": "the one-exponential model is a boundary of the two-exponential model"
+        },
+        {
+          "ref": "card:FB11c",
+          "note": "what survives: θ₁"
+        },
+        {
+          "ref": "card:C9b",
+          "note": "Newtonian kinematics as the c → ∞ boundary of the form"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Exact for stated limits (paper-backed: Transtrum–Qiu 2014, Quinn et al. 2023). A limit is not a map on states: the Reduction architecture records it as a family degeneration, not as Φ: X → Y."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C9b",
+        "FB11c",
+        "MMIg"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "model-manifold audit, boundaries",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the model-manifold invariance + research-story audit (2026-11-13)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-EFFECTIVE-Q",
+        "T-REDUCTION-ARCH",
+        "T-MM-STORY"
       ],
       "history": [],
       "relatedActsRev3": [],

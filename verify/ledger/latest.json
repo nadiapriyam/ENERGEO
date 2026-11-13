@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-13T15:21:57+00:00",
- "commit": "3e16de5",
+ "generated": "2026-11-13T17:05:16+00:00",
+ "commit": "4c8880f",
  "cards": {
   "B1a": {
    "script": "verify_B1_B7.py",
@@ -925,6 +925,60 @@
    "verdict": "PASS",
    "everFailed": false,
    "claim": "why R1 is sound but incomplete (Schur, textbook): T commutes with every stabilizer isometry Q of every configuration (checked), so a one-dimensional symmetric commutant forces T to be scalar; isotropy can also occur with trivial symmetry (M5)"
+  },
+  "MMIa": {
+   "script": "verify_MMI.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[model-manifold invariance] under an invertible change of parameters (Jacobian P): rank and nullity of g are unchanged (instances: rank 1 on the diagonal, rank 2 off it); det g is NOT invariant, det(PᵀgP) = det(P)² det g (generic 2×2, symbolic); hence the volume element √det g |dθ| IS invariant (change of variables)"
+  },
+  "MMIb": {
+   "script": "verify_MMI.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[model-manifold invariance] raw eigenvalues of g are NOT invariant: F-C at θ = (1, 6/5) gives 0.001285, 0.36; after the change of units θ = diag(1, 10)θ′ they are 0.003487, 13.26, and the condition number moves from 280.2 to 3804 (cf. the nonlinear chart, CFT5e). Generalized eigenvalues of g relative to a second tensor h ARE invariant: eig((PᵀhP)⁻¹PᵀgP) = eig(h⁻¹g) (same characteristic polynomial), but they depend on choosing h, and parameter space supplies no canonical h"
+  },
+  "MMIc": {
+   "script": "verify_MMI.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[model-manifold invariance] singular values of J are NOT invariant: at θ = (1, 6/5) they are 0.03584, 0.6 in θ, 0.03996, 0.6458 in log-coordinates, and 0.04871, 0.7233 under the prediction metric diag(1, 2, 3); they depend on both the parametrization and the prediction-space metric. The kernel is invariant: on the diagonal J(1, −1) = 0 and (W J)(1, −1) = 0"
+  },
+  "MMId": {
+   "script": "verify_MMI.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[model-manifold invariance] the length of a curve in parameter space, ∫√(θ′ᵀ g θ′) ds, is the same in θ and in log-coordinates (the integrands agree exactly) and equals the Euclidean arc length of the image curve Y(θ(s)) in prediction space (g = JᵀJ is the induced metric): for θ(s) = (1 + s, 2 + s), s ∈ [0, 1], L = 0.350545. Lengths are chart-invariant but depend on the prediction-space metric (the noise model)"
+  },
+  "MMIe": {
+   "script": "verify_MMI.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[model-manifold invariance] the same model and parametrization with noise covariance Σ = diag(1, 2, 3) has metric JᵀΣ⁻¹J ≠ JᵀJ (magnitudes and eigenvalues are noise-model dependent); the null direction is not: on the diagonal JᵀΣ⁻¹J (1, −1) = 0 and the rank stays 1, off the diagonal it stays 2"
+  },
+  "MMIf": {
+   "script": "verify_MMI.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[hyperribbon widths, 1-D illustration] the one-parameter model Y(θ) = (e^{−θ}, e^{−2θ}, e^{−3θ}), θ ∈ (0, ∞), is the curve (u, u², u³), u ∈ (0, 1); its extent (total length, the only width of a 1-D manifold) is the same in every chart (θ, λ = log θ, u = e^{−θ}: the speed transforms by the chain rule exactly) and equals 1.863023 (θ-chart quadrature 1.863023), but 3.9345441 under the prediction metric diag(1, 4, 9). Widths are parametrization-independent and depend on the ambient (prediction / noise) metric"
+  },
+  "MMIg": {
+   "script": "verify_MMI.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[manifold boundaries] the boundary reached as θ₂ → ∞ is the one-exponential model e^{−θ₁t} whether approached in θ₂ or in λ₂ = log θ₂ (the limit set is parametrization-independent; only the approach rate depends on coordinates); the tangent direction of the removed parameter vanishes (∂Y/∂λ₂ → 0), and the boundary model's Jacobian has rank 1 versus rank 2 for the full model at (1, 2): the dimension drops from 2 to 1"
+  },
+  "MMIh": {
+   "script": "verify_MMI.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[prediction space] for continuously indexed outputs Y(T; θ) = e^{−θ₁T} + e^{−θ₂T} in L²(0, ∞) (white noise per unit time), the metric is finite: g_ij = 2/(θᵢ + θⱼ)³, rank 2 off the diagonal and rank 1 on it: a 2-dimensional manifold. Its linear span is not finite-dimensional: any finite set of distinct exponentials is linearly independent (Gram det for a = 1…5 is nonzero). 'Function-dimensional ambient space' is justified once the outputs form a function with a stated inner product; the manifold's own dimension stays the number of identifiable parameters"
+  },
+  "MMIi": {
+   "script": "verify_MMI.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[c vs model parameters] for finite c the form η_c = diag(1, −1/c²) equals Pᵀ diag(1, −1) P with P = diag(1, 1/c): different finite c are related by a change of units (R1), so the invariant content is the signature; the limit c → ∞ gives diag(1, 0), rank 1, which no invertible change reaches: a degenerate boundary of the family (C9b). The model-manifold boundary also drops rank (MMIg). Difference kept: the Lorentz allowed set uᵀη₁u = 1, u⁰ > 0 is one orbit of the boosts (homogeneous: (1, 0) ↦ (cosh s, sinh s)), whereas F-C's curvature varies (CFT5f): model parameters are coordinates on one non-homogeneous manifold, not structure constants of a form"
   },
   "O1a": {
    "script": "verify_O1.py",

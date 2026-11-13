@@ -47,8 +47,10 @@ Statuses: LOCKED; SOURCE-COMPLETE; MATH-CARDED; SOURCE+CARD COMPLETE; NEEDS DERI
 | D9. Translation, correlation, spectrum, localization | T1, T2, T3, T4, T5 | SOURCE+CARD COMPLETE | T3/T4 project-derived and carded; the uncertainty inequality itself is source-only (FB3 cards its instances) |
 | D10. Lorentz and c | L1, L2, L3 | SOURCE+CARD COMPLETE | İnönü–Wigner sourced for the c → ∞ contraction; it is not evidence for L4 |
 | D11. Known continuation behaviours | I1 | SOURCE+CARD COMPLETE | — |
-| D12. Model manifolds and Fisher geometry | R7, CF10, Z9, M1, M2 | SOURCE+CARD COMPLETE | quinn2023 quote pending (P-2); M1 rests on the weak S14b and is a statement in log-parameter coordinates (component eigenvalues are not invariant, CFT5e); the MBAM procedure is source-only |
-| D13. C7: coefficient decay vs Fisher eigenvalue decay | M4 | NEEDS DERIVATION | an explicit operator / map / asymptotic theorem, or an exact obstruction |
+| D12. Model manifolds and Fisher geometry | R7, CF10, Z9, M1, M2 | SOURCE+CARD COMPLETE | quinn2023 quote pending (P-2); M1 rests on the weak S14b and is a statement in log-parameter coordinates (component eigenvalues are not invariant, CFT5e, MMIb); the MBAM procedure is source-only; invariance classified in D33 (research/model_manifold_invariance.md) |
+| D13. C7: coefficient decay vs Fisher eigenvalue decay | M4 | NEEDS DERIVATION | an explicit operator / map / asymptotic theorem, or an exact obstruction. Target object recommended (2026-11-13): hyperribbon widths (MM11), with four gates; the raw-spectrum reading is NEGATIVE (MMIb, CFT5e); derivation not begun |
+| D32. Model-manifold research story and extensions | MM0, MM3, MM6, MM7, MM8, MM9, MM10 | OPEN LONG-TERM | every arrow of the story has a status (research/model_manifold_story.md); observation, manifestation and the viewer intuition stay open or philosophical; conscious observer requirement = NOT ESTABLISHED |
+| D33. Model-manifold invariance | MM1, MM2, MM4, MM5, MM11 | SOURCE+CARD COMPLETE | MMI cards; widths carded as a 1-D illustration, the Chebyshev bound source-only; c verdict: STRUCTURAL CONNECTION for the limit role only |
 | D14. Wavelets and scattering | W1, W2 | SOURCE-COMPLETE | W1 carded; W2: exact first-order parts carded, deformation stability and higher orders source-only |
 | D15. DYADIC PACKETS; information lost and recovered | W3, W4 | OPEN LONG-TERM | DYADIC PACKETS: ORIGINAL USER RESEARCH TERM, OPEN DEFINITION; candidate role in the Reduction / Information-Changing Architecture (not the definition) |
 | D16. Effective / reduced representations (examples) | M3, M2, H7 | SOURCE+CARD COMPLETE | three reductions, each with what survives; compared, not equated. The question itself (H6) is OPEN LONG-TERM |
@@ -75,13 +77,13 @@ Statuses: LOCKED; SOURCE-COMPLETE; MATH-CARDED; SOURCE+CARD COMPLETE; NEEDS DERI
 
 ## Foundation ratings (separate dimensions, no overall score)
 
-| Dimension | Rating | Previous (Pass 3 correction) | Reason for the change |
+| Dimension | Rating | Previous (Reduction architecture pass) | Reason for the change |
 |---|---|---|---|
-| Foundation architecture completeness | 90% | 88% | Lossy maps now have their own architecture, parallel to the Transformation Architecture: the seven questions are answered for every existing information-changing map where carded (simplex, centering, Fourier magnitude and band-limiting, scattering stages, dephasing, reduction and decimation instances), the intersection with equivariance is explicit, preserved and collapsed zeros are distinguished, and DYADIC PACKETS has a candidate architectural home (still undefined). Still short: DYADIC definition, no general statement for effective representations, no application mathematics, the model-manifold invariance audit. |
-| Mathematical verification coverage | 96% | 96% | 70 of 73 established or derived objects have PASS cards (computed). New and carded: RI0–RI2 (RIC cards). Not carded: R7 (definitional), OB1 (definitional), A3 (wording). |
+| Foundation architecture completeness | 91% | 90% | The model-manifold branch is audited: which quantities are invariant, chart-dependent, noise-dependent or reduction-dependent (MM4, MMI cards); the research story is kept whole with a status per arrow (MM0); the c connection has a restricted verdict (MM5); observation and the viewer intuition are recorded and kept open (MM6, MM7); C7 has one recommended target object (MM11). Still short: DYADIC definition, no general statement for effective representations, no application mathematics, the C7 derivation. |
+| Mathematical verification coverage | 97% | 96% | 76 of 78 established or derived objects have PASS cards (computed). New and carded: MM1, MM2, MM4, MM5, MM11 (MMI cards); R7 now carded (MMIh). Not carded: OB1 (definitional), A3 (wording). |
 | Cross-domain validation | 30% | 30% | Unchanged. |
 | Project-specific construction maturity | 45% | 45% | Unchanged. |
-| Paper / source coverage | 55% | 55% | 41 external sources registered with verified bibliographic records (7 only partly verified), each with the exact claim it supports and what it does not establish. 49 of 50 external-claim objects have a source; R5 is SOURCE MISSING. Unchanged. |
+| Paper / source coverage | 55% | 55% | 42 external sources registered with verified bibliographic records (7 only partly verified), each with the exact claim it supports and what it does not establish. 51 of 52 external-claim objects have a source; R5 is SOURCE MISSING. Unchanged (SRC-QUINN-2019 added; no text quoted). |
 | Application validation | 0% | 0% | Unchanged. |
 
 ## CF11 and Transformation Architecture ratings (separate records)
