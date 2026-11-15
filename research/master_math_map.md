@@ -552,7 +552,8 @@ x → x ∗ ψ_λ → |x ∗ ψ_λ| → further wavelet transforms → averaging
 - **Model reduction / manifold boundary (BR54), updated 2026-11-13:**
   - A boundary is a limit (a degeneration of the model family), not a map on states.
   - The limit set is chart-independent; only the approach rate depends on coordinates.
-  - The dimension drops 2 → 1, and θ₁ survives (MMIg, FB11c).
+  - In the F-C example the dimension drops 2 → 1 and θ₁ survives (MMIg, FB11c). Other limits give a point or no
+    limit (MMPl), and ∂Θ need not give an image boundary (MMPi).
   - Whether every reduction has a boundary form stays OPEN.
 - **Coarse-graining / RG (BR55):** one carded instance (FB11d). No equivalence with projection, wavelet packets,
   Mallat or model manifolds is asserted.
@@ -603,8 +604,8 @@ supports only the established or derived object it states; it may bear on a hypo
 | Standard Fisher geometry | Fisher information as a Riemannian metric (SRC-RAO-1945, SRC-AMARI-2016); g = JᵀJ/σ² for Gaussian noise (FB6a) | a metric induced by a representation (CF10) | C7 (M4) | the textbook metric is not a Transtrum–Sethna result |
 | Transtrum / Sethna model manifolds | bounded hyperribbons, hierarchical widths, boundaries, sloppy spectra (SRC-TMS-2010, SRC-TMS-2011, SRC-GUTENKUNST-2007, SRC-MACHTA-2013); MBAM (SRC-TRANSTRUM-QIU-2014) | prediction space as a representation geometry (R7, M1, M2) | higher / infinite prediction spaces (T-PREDICTION-INFINITE) | FB11c checks one boundary limit, not MBAM |
 | Quinn et al. (review) | c as a model parameter; the c → ∞ boundary gives Newtonian kinematics (SRC-QUINN-2023; PDF pending, P-2) | the model-manifold boundary statement only | the two roles of c (L4) | C9 is not inferred from it; spacetime ≠ model manifold |
-| Chebyshev widths (Quinn, Wilber, Townsend, Sethna 2019) | smoothness bounds the widths of a hyperellipsoid enclosing the model manifold; geometric decay for analytic models (SRC-QUINN-2019; abstract-level, full text not opened) | hyperribbon widths (MM11) | the recommended C7 target object (MM11, M4) | it is not C7 as posed: C7 compares one signal's coefficients with model geometry |
-| Project C7 | — (no source contains the relation C7 needs) | — | coefficient decay vs Fisher decay (M4; SPECULATIVE PROJECT CONNECTION) | no paper is evidence for C7 | (2026-11-13: target object recommended, MM11; see below)
+| Chebyshev widths (Quinn, Wilber, Townsend, Sethna 2019) | smoothness bounds the widths of a hyperellipsoid enclosing the model manifold; geometric decay for analytic models (SRC-QUINN-2019; abstract-level, full text not opened) | hyperribbon widths (MM11) | one of two width notions kept for C7 (MM11, M4); no single definition chosen (2026-11-15) | it is not C7 as posed: C7 compares one signal's coefficients with model geometry |
+| Project C7 | — (no source contains the relation C7 needs) | — | coefficient decay vs Fisher decay (M4; SPECULATIVE PROJECT CONNECTION) | no paper is evidence for C7 | (2026-11-13: target object recommended, MM11; revised 2026-11-15: no single width definition chosen, five preconditions recorded; see below)
 | Relativity | Lorentz transformations (SRC-EINSTEIN-1905); the invariant interval and light cone (SRC-MINKOWSKI-1909); contraction to Galilei as c → ∞ (SRC-INONU-WIGNER-1953) and the Carroll limit (SRC-LEVY-LEBLOND-1965) | c in the form and in the limit (L1–L3) | L4: *the same parameter participating in invariant geometry and theory transition may encode a deeper structural relation* (project-origin) | the contraction is not evidence for L4 |
 | Fourier analysis | orthonormality, Parseval, translation → phase, conjugate symmetry, Weyl equidistribution (SRC-STEIN-SHAKARCHI-2003); Wiener–Khinchin (SRC-WIENER-1930, SRC-KHINTCHINE-1934) | the founding evidence | conjugacy and physical pairs (P2) | the defect identities T3, T4 are project-derived (FB1, FB2) |
 | Uncertainty / localization | Δt·Δω ≥ 1/2, equality for Gaussians (SRC-KENNARD-1927, SRC-FOLLAND-SITARAM-1997; convention FB3c) | T5 | the link to spectral spread (BR31) | a different result from the second-moment identity (FB3d) |
@@ -615,96 +616,198 @@ supports only the established or derived object it states; it may bear on a hypo
 | Quantum mechanics | spin addition (SRC-SAKURAI-2017); projective measurement and dephasing (SRC-NIELSEN-CHUANG-2010) | QZ1, QZ4 | B-ZERO-LOSS | dephasing and which-path share a generic map only |
 | Differential geometry | tensor law, pullbacks, isometries, curvature invariance (SRC-LEE-2018); isometry groups are Lie groups (SRC-MYERS-STEENROD-1939); uniqueness of the Fisher metric under sufficient statistics (SRC-CHENTSOV-1982) | CF12, CF13 | CF11-B, CF11-R | the textbook statements are not evidence for the project architecture; the CFT test is |
 
-### Model manifolds: invariance and the research story (MM0–MM11, 2026-11-13)
+### Model manifolds: invariance and the research story (MM0–MM11, 2026-11-13; corrected 2026-11-15)
 
 > Do not audit away the research story. Audit the status of each connection. (T-MM-GOV)
 
-Generated tables: `research/model_manifold_story.md` (story table, arrows, information distinctions, spine, ratings)
-and `research/model_manifold_invariance.md` (invariance table). Cards: MMIa–MMIi. The paper is not the thesis:
-paper results are not evidence for the project interpretation, and the interpretation is not paper novelty.
+Generated tables: `research/model_manifold_story.md` (precision corrections, story arrows, story table, nulls,
+measurement channel, observation-type operations, c roles, C7 preconditions, ratings) and
+`research/model_manifold_invariance.md` (invariance table). Cards: MMIa–MMIi (2026-11-13) and MMPa–MMPo (2026-11-15).
+The paper is not the thesis: paper results are not evidence for the project interpretation, and the interpretation
+is not paper novelty.
+
+**Precision corrections (2026-11-15).** The 2026-11-13 wording overstated eight points. Each old claim is kept, with
+its correction, in `research/model_manifold_story.md` (Precision corrections) and in the registry histories:
+
+- the model image was called a manifold without regularity assumptions;
+- parameter values were called coordinates;
+- the null equivalence lacked its positive-definite hypothesis, and noise-model independence was stated too broadly;
+- widths and "the boundary set" were listed as invariants;
+- the function-space metric was not labelled as one example;
+- "finite c is a change of units" was used to fail c's invariant role, and the 2 → 1 dimension drop was generalized;
+- the measurement channel was stated generically;
+- one C7 width object was recommended before its definition was fixed.
 
 Kept apart: parameter space ≠ prediction space; prediction space ≠ physical spacetime; model manifold ≠ quantum
 state space.
 
-**The story, a status per arrow (T-MM-STORY, MM0).**
+**The story, a status per arrow (T-MM-STORY, MM0).** Arrow statuses use ESTABLISHED MATHEMATICS / PROJECT-DERIVED /
+STRUCTURAL ANALOGY / OPEN / PHILOSOPHICAL / HISTORICAL INTUITION.
 
-1. Larger prediction / possibility space → rules constrain an allowable manifold.
+1. Larger prediction / possibility space → rules constrain an allowable family (model image).
    - ESTABLISHED MATHEMATICS: M = Y(Θ) ⊆ P.
-   - PROJECT-DERIVED CONNECTION: reading Y and Θ as the "rules".
-2. → Representations expose different aspects of it. PROJECT-DERIVED CONNECTION (MMIa–MMIf).
-3. → Observation / reduction may expose an accessible manifestation.
-   - OPEN CONNECTION in general.
-   - Exact only for named maps: boundary limits (paper-backed), projection, non-selective quantum measurement.
+   - PROJECT-DERIVED: reading Y and Θ as the "rules".
+2. → Representations expose different aspects of it. PROJECT-DERIVED (MMIa–MMId, MMPc, MMPf, MMPg).
+3. → Observation / reduction may expose an accessible manifestation. OPEN.
+   - Exact only for named maps: boundary limits, projection, and the named S² channel.
+   - These are different operations (MMPo).
 4. → Ask what geometry and information survive.
-   - PROJECT-DERIVED CONNECTION, per map (the seven IC questions).
+   - PROJECT-DERIVED per map (the seven IC questions).
    - OPEN as a general law.
+
+Cross-links:
+
+- c's theory-family limit ↔ model-family limits: STRUCTURAL ANALOGY.
+- Same-zero quantum states ↔ indistinguishable parameters: STRUCTURAL ANALOGY.
+- The viewer intuition: PHILOSOPHICAL / HISTORICAL INTUITION.
+
+**Model image and parameters (MM1, MM2).**
+
+- M = Y(Θ) ⊆ P is the model image (a set) in general.
+- It may be called a smooth model manifold only on a regular region: constant local rank and local injectivity.
+- Rank loss, non-identifiability, self-intersections, singular strata and boundary strata can occur:
+  - a cusp and a node (MMPa);
+  - F-C's image has an edge coming from interior rank-drop points (MMPj).
+- *the rules of the manifold were the model parameters.* (T-MM-RULES), unpacked:
+  - θ ∈ Θ is a parameter value and Y(θ) its prediction.
+  - Parameters parameterize the image, and give local coordinates only where the parameterization is locally regular
+    and locally identifiable.
+  - Different parameter values may represent the same prediction (MMPb).
+  - The project reading (rules and the domain constrain the allowable family) is kept. It is not a coordinate claim.
 
 **Prediction space (MM1).**
 
 - Finite outputs: P = ℝᵐ with metric Σ⁻¹.
-- Continuously indexed outputs with a stated inner product: P is a function space. M keeps the dimension of its
-  identifiable parameters (MMIh: g_ij = 2/(θᵢ + θⱼ)³ in L²(0, ∞), rank 2).
+- Continuously indexed outputs with a stated inner product: P is a function space.
+- For the specific model e^{−θ₁T} + e^{−θ₂T} in L²(0, ∞), the Fisher metric is g_ij = 2/(θᵢ + θⱼ)³ (MMIh).
+  - This is not a general formula: another model has a constant metric (MMPk).
+- dim P = ∞ while dim M = 2.
 
-**Parameters, rule, image (MM2).** *the rules of the manifold were the model parameters.* (T-MM-RULES)
+**Notation and invariance (MM4).**
 
-- Unpacked: the model rule Y and the domain Θ fix M.
-- A parameter value is a point coordinate on M.
-- A reparametrization is a chart change; M is unchanged.
-- The domain's limits give M's boundaries.
-
-**Invariance (MM4).**
-
-- Invariant under charts: rank, nullity, null directions, lengths (= prediction-space arc length), √det g dθ,
-  curvature, widths, the boundary set.
+- Notation: J_Y = ∂Y/∂θ and g_θ = J_Yᵀ Σ⁻¹ J_Y. For θ = θ(φ), A = ∂θ/∂φ and g_φ = Aᵀ g_θ A (MMPc).
+  - The tensor is one object; g_θ and g_φ are its component matrices.
+  - Older records (CF13, TA1, BR37, BR41) write A as J, with a notation note.
+- Invariant under charts:
+  - rank;
+  - nullity and null directions;
+  - lengths (= prediction-space arc length);
+  - the full volume element √det g_θ dθ¹⋯dθⁿ;
+  - curvature;
+  - quantities defined from the image set.
 - Not invariant:
   - matrix entries;
-  - det g (scales by det(P)²);
-  - raw eigenvalues and the condition number (MMIb, CFT5e);
-  - Jacobian singular values (MMIc).
-- Every magnitude depends on the noise model; the null directions do not (MMIe).
-- The Fisher metric is a tensor: R1 components g_φ = Jᵀ g J, R2 isometries only when the system supplies them. No R3
-  relationship is claimed for model manifolds here. A change of noise model changes the metric itself (not R1, R2 or
-  R3). A boundary limit is a degeneration of the family, recorded in the Reduction architecture.
+  - det g, and √det g alone (MMPf);
+  - raw Fisher and Hessian eigenvalues (MMIb, MMPh);
+  - the condition number;
+  - J_Y singular values (MMIc);
+  - chart-defined widths (MMPg).
+- Noise model, restricted theorem: for g = J_Yᵀ Σ⁻¹ J_Y with a fixed positive-definite Σ⁻¹, ker g = ker J_Y and
+  rank g = rank J_Y. A change between such weightings keeps them.
+  - Not claimed for singular observation metrics (MMPd).
+  - Not claimed for a θ-dependent covariance, or noise laws adding Fisher terms (MMPe).
+- No R3 relationship is claimed for model manifolds.
+- A boundary limit is a degeneration of the family, recorded in the Reduction architecture.
 
-**Nulls, kept distinct.**
+**Widths (MM11).**
 
-- Fisher null: g(v, v) = 0 ⟺ Jv = 0, *a zero geometric length can expose hidden non-identifiability / redundancy.*
-  (T-ZERO-LENGTH).
-- Sloppy direction (small, nonzero).
+- A. Geometric widths, defined from the image set with a fixed prediction metric, may be reparametrization-invariant:
+  - Transtrum-style geodesic widths, with geometrically fixed directions;
+  - Quinn-style enclosing-hyperellipsoid widths.
+- B. Coordinate proxies are not invariant in general:
+  - raw Fisher and Hessian eigenvalues;
+  - J_Y singular values;
+  - parameter-axis lengths;
+  - the condition number;
+  - widths along a chart's FIM eigendirections (MMPg).
+- Both geometric notions are kept. Their exact definitions are to be taken from the source texts.
+
+**Boundaries (MM10).** Five objects are kept apart:
+
+- ∂Θ;
+- parameter limits;
+- their images in P;
+- limiting boundary strata (MBAM sense);
+- the topological boundary of Y(Θ) in P.
+
+A model-manifold boundary can arise as a limiting / degenerate model family in P. Not every parameter-domain boundary
+gives one (MMPi), and an image edge can come from interior points (MMPj). The 2 → 1 drop is a result of the F-C
+example and that limit (MMPl).
+
+**Nulls, kept distinct.** No one type of nullity is universal:
+
+- J_Y v = 0 (local non-identifiability).
+- Zero Fisher length: g(v, v) = 0, equivalent to J_Y v = 0 for a positive-definite fixed Σ⁻¹ (MMPd, MMPe).
+  *a zero geometric length can expose hidden non-identifiability / redundancy.* (T-ZERO-LENGTH)
+- Sloppy direction (not a null).
 - Lorentz null (vᵀηv = 0 with ηv ≠ 0).
-- Bilinear null.
+- Bilinear-form null.
 - Collapsed zero (Φ(x) = 0, x ≠ 0).
+- Equal expectation values.
+- Same-zero quantum examples.
+- Symmetry-dependent distinctions, using independently supplied symmetries only.
 
-**c verdict (MM5, T-RULES-GEOMETRY).**
+**c: three roles (MM5, T-RULES-GEOMETRY), superseding the 2026-11-13 verdict.**
 
-- STRUCTURAL CONNECTION, for the parameter-limit → degenerate-boundary role only: c → ∞ gives diag(1, 0), rank 1;
-  θ₂ → ∞ gives rank 2 → 1 (MMIi, MMIg, C9b).
-- FAIL for the invariant-form role: finite c is a change of units, the invariant is the signature, and model
-  parameters are coordinates on a non-homogeneous manifold (CFT5f).
-- TOO WEAK as the general phrase "rules constrain allowed states".
+- **Role 1, representation / coefficient.** For the matrix η_c = diag(1, −1/c²) on (t, x), η_c = P_cᵀ diag(1, −1) P_c
+  with P_c = diag(1, 1/c).
+  - ESTABLISHED for that form.
+  - It does not prove that physical c has no invariant significance.
+- **Role 2, invariant geometric / physical.** The Lorentzian interval and light cone (C9a, S5c).
+  - ESTABLISHED PHYSICS in its native setting.
+- **Role 3, theory family / singular limit.** c → ∞ gives the degenerate limiting bilinear form diag(1, 0) (C9b, MMPm).
+  - Rank 1, and zero on every purely spatial displacement.
+  - No change of representation reaches it.
+  - It is not by itself "the Newtonian metric": Galilean / Newton–Cartan structure needs more.
+  - STRUCTURAL ANALOGY worth preserving, with model-family limits.
+- **Transfer to arbitrary model-manifold geometry:** OPEN.
+- **"Rules constrain states", stated universally:** TOO WEAK by itself.
 
-**C7 gate (MM11; T-C7 stays OPEN).**
+**C7 preconditions (M4, MM11; T-C7 stays OPEN; no derivation).**
 
-- One recommended target object: the hyperribbon widths of the model manifold.
-- Raw FIM eigenvalues are rejected as the object (NEGATIVE: chart-dependent).
-- Gates before any derivation:
-  - the width definition, from the source text;
-  - a stated noise metric;
-  - C7's project-specific residue relative to Quinn et al. 2019 (otherwise VALIDATION OF KNOWN MATHEMATICS).
-- No derivation in this pass.
+- C7 requires an explicitly defined geometric width object before any invariant spectral-decay claim can be
+  evaluated.
+- C7 is not "hyperribbon widths exist" (established literature).
+- Candidate bridge: Fourier / spectral / coefficient decay ?⟹ coordinate-independent geometric width hierarchy.
+- A possible chain, NOT established: Fourier/spectral decay → approximation/coefficient decay → Quinn-style width
+  bounds.
+- Preconditions:
+  1. the exact geometric width object;
+  2. the prediction/noise metric;
+  3. the class of models/functions;
+  4. the exact spectral/coefficient-decay object;
+  5. what the result adds beyond Quinn et al. 2019 and existing approximation theory.
+- Both width notions are kept. The 2026-11-13 single recommendation is superseded, and kept as history.
 
 **Quantum-like extension, separated from the mathematics.**
 
 - *Can observation or measurement be modeled geometrically as a map from a richer state/representation space to a
-  more restricted observable manifestation?* (T-MM-OBSERVE, MM6): OPEN CONNECTION. Exact instances: non-selective
-  measurement (W2a), projection (RIC1a), boundary limits (MMIg).
-- Same-zero quantum states and observationally indistinguishable parameters (BR62): STRUCTURAL ANALOGUE / OPEN
-  CONNECTION. No explicit map between them is given.
-- *matter does not form until a viewer looks at it.* (T-VIEWER-FORM, MM7):
+  more restricted observable manifestation?* (T-MM-OBSERVE, MM6): OPEN.
+- The named channel (MMPn):
+  - D(ρ) = P_t ρ P_t + P_s ρ P_s, the non-selective measurement of total spin S², applied to ρ = |ud⟩⟨ud|.
+  - It removes ⟨1,0|ρ|0,0⟩ = ⟨0,0|ρ|1,0⟩ = 1/2.
+  - S_z = 0 survives because [P_t, S_z] = [P_s, S_z] = 0.
+  - A non-selective S_x⁽¹⁾ measurement would give ⟨S_z⟩ = −ħ/2.
+- Generically: a non-selective projective measurement in a specified basis removes coherence between the measured
+  eigenspaces. Preservation of a quantity such as S_z must be checked explicitly.
+- These are different operations (MMPo):
+  - quantum measurement;
+  - projection;
+  - marginalization;
+  - quotient / reduction;
+  - manifold boundary limits;
+  - coarse graining;
+  - parameter non-identifiability.
+- The open research question is whether they share a deeper structural pattern. It is NOT established that they are
+  the same operation.
+- Same-zero quantum states and observationally indistinguishable parameters (BR62): STRUCTURAL ANALOGY / OPEN. No
+  explicit map between them is given.
+- *matter does not form until a viewer looks at it.* (T-VIEWER-FORM, MM7): historical / project provenance only.
   - ORIGINAL USER INTUITION; PHILOSOPHICAL / QUANTUM-INTERPRETIVE; NOT ESTABLISHED PHYSICS.
   - ORIGINAL VERBATIM NOT RECOVERED.
-  - The normalized question, kept beside it: *What changes when a richer state/representation becomes an observable
-    manifestation?*
+  - Investigable forms: *What changes when a richer state or representation is mapped to an observable
+    manifestation?* and *Which structures survive a specified map, reduction, observation, quotient, projection, or
+    limit?*
 - conscious observer requirement = NOT ESTABLISHED.
 
 **Manifestation terminology.**
@@ -846,10 +949,19 @@ Only explicit candidates are listed. Ratings are per proposition.
   - Raw FIM eigenvalues, the condition number, det g and Jacobian singular values are not coordinate invariants
     (MMIb, MMIc, MMIa).
   - C7 read as raw eigenvalue decay compares a chart-dependent number.
-  - The invariant-form role of c does not transfer to model parameters (MMIi).
+  - Revised 2026-11-15: "the invariant-form role of c does not transfer to model parameters (MMIi)" was too strong.
+    MMIi is a representation-level normalization. What stands: no representation change reaches the c → ∞ form
+    (MMPm), and a generic model image is not homogeneous (CFT5f). The transfer is OPEN.
   - "Rules constrain allowed states" stated generally is too weak to test.
   - A function-space prediction space does not make M infinite-dimensional (MMIh).
   - No single construction of "observation" covers dephasing, projection and boundary limits.
+- **Model-manifold precision pass (2026-11-15):**
+  - Widths along a chart's FIM eigendirections are chart-dependent (MMPg).
+  - The raw Hessian is not tensorial off a critical point (MMPh).
+  - Zero Fisher length is not the same as J_Y v = 0 without a positive-definite, θ-independent weight (MMPd, MMPe).
+  - A parameter → ∞ need not drop the dimension 2 → 1, nor give a boundary (MMPl).
+  - A parameter-domain boundary need not give an image boundary (MMPi).
+  - An immersion's image need not be a manifold (MMPa).
 
 ## Part XIV. Application layer
 
@@ -866,9 +978,12 @@ Only explicit candidates are listed. Ratings are per proposition.
 
 Only material gaps; the full ledger, with a status for each domain, is `research/foundation_completion.md`.
 
-1. **C7 derivation (not begun).**
-   - Target object recommended: hyperribbon widths (MM11).
-   - Gates: the width definition from source text; a stated noise metric; the residue relative to Quinn et al. 2019.
+1. **C7 derivation (not begun; NOT READY).** Five preconditions (M4):
+   - the exact geometric width object (Transtrum-style or Quinn-style; both kept);
+   - the prediction/noise metric;
+   - the class of models/functions;
+   - the exact spectral/coefficient-decay object;
+   - what the result adds beyond Quinn et al. 2019 and existing approximation theory.
 2. **The CF11 refinement is resolved by the architectural correction.** It is recorded as the Transformation
    Architecture (TA0: R1 / R2 / R3); CF11-R is superseded. The deeper hypothesis (TAH) stays open.
 3. **Provenance.**
@@ -895,4 +1010,7 @@ Resolved:
   - invariance classified (MM4; MMIa–MMIi);
   - the research story kept, with a status per arrow (MM0);
   - the c verdict (MM5);
-  - one C7 target object (MM11).
+  - one C7 target object (MM11), superseded 2026-11-15 by the C7 preconditions.
+- **Model-manifold precision pass (2026-11-15):** the MMP cards scope the audit's wording (model image, coordinates,
+  J_Y / A notation, null hypothesis, noise theorem, volume element, widths, boundaries, function-space example, c
+  roles, the measurement channel, observation-type operations).

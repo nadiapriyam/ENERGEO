@@ -1130,6 +1130,75 @@ rate_mm('T-MM-OBSERVE', 1, SM, FAM, 15, 35, 'Exact for named maps (non-selective
         'A single construction covering quantum dephasing and a classical reduction with the same stated survivors, written before checking.', 'A measurement process whose effect is not representable as a map from a richer description (none known).', EX, ('pass', 'not-yet', 'not-yet', 'pass', 'not-yet'), depth='NOT YET FORMALIZED', correct='established under assumptions')
 rate_mm('T-MM-STORY', 2, SM, MULTI, 30, 30, 'Arrows 1–3 are established or project-derived (MMIa–MMIh). Arrow 4 is exact only for named maps, and arrow 5 is answered per map, not as a law. The chain is a project synthesis.',
         'A system where the chain makes a prediction the separate arrows do not.', 'A system whose observable manifestation is not a reduction of any richer description in the stated sense.', GC, ('pass', 'partial', 'partial', 'pass', 'not-yet'), depth='NOT YET FORMALIZED', correct='established under assumptions')
+# Model-manifold precision corrections (2026-11-15): overstated wording revised explicitly; the previous wording is kept in each record's history
+PREC = '2026-11-15'
+def revise(rid, field, new, why):
+    r = byid[rid]
+    old = r[field]
+    r[field] = new
+    r['history'].append(dict(date=PREC, change=f'{field} revised (precision pass): {why}. Previous wording: {old}'))
+def renote(rid, ref, old_start, new_note, why):
+    r = byid[rid]
+    for e in r['evidenceFor'] + r['evidenceAgainst']:
+        if e['ref'] == ref and e['note'].startswith(old_start):
+            r['history'].append(dict(date=PREC, change=f'evidence note on {ref} revised (precision pass): {why}. Previous note: {e["note"]}'))
+            e['note'] = new_note
+            return
+    raise SystemExit(f'{rid}: no note {ref} {old_start}')
+def note15(rid, bound, change, pro=(), con=()):
+    r = byid[rid]
+    r['boundaries'].append(bound)
+    r['history'].append(dict(date=PREC, change=change))
+    r['evidenceFor'] += [dict(ref=a, note=b) for a, b in pro]
+    r['evidenceAgainst'] += [dict(ref=a, note=b) for a, b in con]
+    r['relatedCards'] = sorted(set(r['relatedCards']) | {a.split(':', 1)[1] for a, _ in list(pro) + list(con) if a.startswith('card:')})
+def add_variant(rid, words):
+    byid[rid]['variants'].append(dict(words=words, source=RD))
+    byid[rid]['sourceDocs'].append(RD)
+def rerate(rid, bs, slop, depth, why_new, reason):
+    a = byid[rid]['assessment']
+    a['ratingHistory'].append(dict(date=PREC, fromBackbone=a['backboneSupport'], fromSlop=a['slopRisk'], toBackbone=bs, toSlop=slop, fromDepth=a['transferDepth'], toDepth=depth, reason=reason))
+    a['backboneSupport'], a['slopRisk'], a['transferDepth'] = bs, slop, depth
+    a['why'] = why_new
+revise('T-MM-RULES', 'normalizedStatement', 'the model structure and parameterization constrain the set of allowable predictions. Unpacked (2026-11-15): the model rule Y and the parameter domain Θ fix the model image M = Y(Θ) ⊆ P (a set; a smooth model manifold only on a regular region of constant local rank and local injectivity, MMPa). θ ∈ Θ is a parameter value and Y(θ) its prediction; parameters parameterize the image and give local coordinates only where the parameterization is locally regular and locally identifiable; different parameter values may represent the same prediction (MMPb). Parameter limits can produce limiting strata of the image; the parameter-domain boundary, parameter limits, their images, MBAM boundary strata and the topological boundary of Y(Θ) are different objects (MMPi, MMPj).',
+       'parameters are not automatically coordinates, and the domain\'s limits are not automatically the boundaries of the image')
+note15('T-MM-RULES', 'Precision pass (2026-11-15): "a parameter value is a point coordinate on M" and "the domain\'s limits give M\'s boundaries" were too strong and are superseded (see history and research/model_manifold_story.md, Precision corrections). The project interpretation (rules and the parameter domain constrain the allowable family) is kept; it is not a differential-geometric coordinate claim.',
+       'precision pass: coordinate and boundary claims scoped', pro=[('card:MMPb', 'parameters give local coordinates only on regular identifiable regions'), ('card:MMPi', 'parameter-domain boundary ≠ image boundary')])
+rerate('T-MM-RULES', 35, 5, 'TRIVIAL CONSEQUENCE', 'M = Y(Θ) is the definition of the model image; parameters give local coordinates only on regular identifiable regions, and parameter limits give limiting strata, not "the boundaries". The project reading adds only the word "rules" for Y and Θ. Exact on F-C, e^{−(θ₁+θ₂)t}, the one-exponential curve and the function-space models.',
+       'the unpacking no longer includes the coordinate and boundary claims (MMPb, MMPi)')
+note15('T-RULES-GEOMETRY', 'Verdict revised (2026-11-15), superseding the 2026-11-13 verdict above (kept): three roles of c are kept apart. Role 1, representation/coefficient: η_c = P_cᵀ diag(1, −1) P_c for the stated matrix form (ESTABLISHED for that form; it does not prove that physical c has no invariant significance). Role 2, invariant geometric/physical: the Lorentzian interval and light cone (ESTABLISHED PHYSICS in its native setting). Role 3, theory-family / singular limit: c → ∞ gives the degenerate limiting bilinear form diag(1, 0) (STRUCTURAL ANALOGY worth preserving; not by itself the Newtonian metric). Transfer to arbitrary model-manifold geometry: OPEN. The universal "rules constrain states" reading: TOO WEAK by itself. The model-side drop 2 → 1 is a result of the F-C example (MMPl).',
+       'precision pass: c verdict revised to three roles', pro=[('card:MMPm', 'no change of representation reaches the c → ∞ form; it is degenerate')], con=[('card:MMPl', 'dimension drops depend on the model and the limit')])
+renote('T-RULES-GEOMETRY', 'card:MMIi', 'the invariant-form role does not transfer', 'MMIi checks a representation-level normalization (η_c = P_cᵀ diag(1, −1) P_c, Role 1); it does not remove the invariant physical role of c (Role 2). Whether that role transfers to model-manifold geometry is OPEN; a generic model image is not homogeneous (CFT5f)',
+       'the old note read a representation-level fact as a failed transfer')
+renote('T-MM-RULES-Q', 'card:MMIi', 'for finite c, c is absorbed', 'MMIi is a representation-level normalization of the matrix η_c (Role 1); c\'s invariant role (Role 2) and its theory-family limit (Role 3) are separate. Model parameters parameterize an image and are local coordinates only on regular regions. Transfer between the two kinds of "rule" is OPEN',
+       '"a finite c is just a change of units" collapsed distinct roles of c')
+rerate('T-RULES-GEOMETRY', 20, 20, 'NOT YET FORMALIZED', 'Three roles of c are kept apart. The theory-family limit and model-family limits are both degenerate limits (a structural analogy); whether c\'s invariant role transfers to model-manifold geometry is OPEN; the general phrase is too weak to test.',
+       'the 2026-11-13 verdict collapsed the roles of c and generalized one example (MMPm, MMPl)')
+note15('T-C-ROLES', 'Precision pass (2026-11-15): three roles are kept apart. The two roles named here are Role 2 (within a theory, c helps define the invariant Lorentzian structure) and Role 3 (across theories, c → ∞ is a singular limit giving the degenerate form diag(1, 0), not by itself the Newtonian metric). Role 1 is a representation-level fact added to avoid conflation: for the matrix η_c = diag(1, −1/c²), a finite c can be normalized by rescaling x; this does not remove Role 2. The transition between Roles 2 and 3 stays the question.',
+       'precision pass: three roles of c recorded', pro=[('card:MMPm', 'Role 1 vs Role 3: no representation change reaches the limit')])
+note15('T-C7', 'C7 target revised (2026-11-15), superseding the 2026-11-13 recommendation above (kept): C7 requires an explicitly defined geometric width object before any invariant spectral-decay claim can be evaluated. No single width definition is chosen; Transtrum-style geodesic widths and Quinn-style enclosing-hyperellipsoid widths are both kept until the next construction pass. C7 is not "hyperribbon widths exist" (established literature). Candidate bridge: Fourier / spectral / coefficient decay ?⟹ coordinate-independent geometric width hierarchy; a possible chain (NOT established): Fourier/spectral decay → approximation/coefficient decay → Quinn-style width bounds. Preconditions: (1) the exact geometric width object; (2) the prediction/noise metric; (3) the class of models/functions; (4) the exact spectral/coefficient-decay object; (5) what the result adds beyond Quinn et al. 2019 and existing approximation theory. T-C7 stays OPEN; no derivation begun.',
+       'precision pass: C7 preconditions recorded; the single target object withdrawn', con=[('card:MMPg', 'widths along a chart\'s FIM eigendirections are chart-dependent')])
+renote('T-C7', 'card:MMIf', 'widths are a property', 'a width defined from the image set with a fixed prediction metric is chart-independent (1-D illustration: total length); operational width definitions must still be checked (MMPg)', 'widths were stated as parametrization-independent without separating geometric widths from chart proxies')
+revise('T-ZERO-LENGTH', 'normalizedStatement', 'For g = J_Yᵀ Σ⁻¹ J_Y with J_Y = ∂Y/∂θ and a fixed (θ-independent) positive-definite Σ⁻¹: g(v, v) = (J_Y v)ᵀ Σ⁻¹ (J_Y v) = 0 ⟺ J_Y v = 0: a zero-length tangent vector is a first-order non-identifiable direction (exact, any chart). Without positive definiteness (a singular observation weight, MMPd) or with a θ-dependent noise law (MMPe) the equivalence can fail. A curve whose tangent has zero length everywhere is a set of parameter values with identical predictions (exact redundancy, FB7a). Distinct from a sloppy direction, a Lorentz null, a bilinear null, a collapsed zero, equal expectation values, same-zero quantum states and symmetry-dependent distinctions.',
+       'the positive-definite and fixed-noise hypotheses attached; J_Y notation')
+note15('T-ZERO-LENGTH', 'Precision pass (2026-11-15): the equivalence needs a positive-definite, θ-independent Σ⁻¹ (MMPd, MMPe).', 'precision pass: hypothesis attached',
+       pro=[('card:MMPd', 'positive-definite weight: zero length ⟺ J_Y v = 0')], con=[('card:MMPd', 'a singular weight breaks it'), ('card:MMPe', 'a θ-dependent noise law breaks it')])
+note15('T-PREDICTION-INFINITE', 'Precision pass (2026-11-15): g_ij = 2/(θᵢ + θⱼ)³ is the Fisher metric of the specific model e^{−θ₁T} + e^{−θ₂T} in L²(0, ∞), not a general formula (the linear model θ₁e^{−T} + θ₂e^{−2T} has a constant metric). Kept: dim P = ∞ while dim M = 2; a prediction space can be infinite-dimensional while the model image remains finite-dimensional.',
+       'precision pass: function-space formula labelled as example-specific', pro=[('card:MMPk', 'dim P = ∞, dim M = 2; formula model-specific')])
+note15('T-INFOGEO', 'Precision pass (2026-11-15), correcting the 2026-11-13 note above (kept): widths are reparametrization-invariant only when defined from the image set with a fixed prediction metric (chart FIM-eigendirection widths are not, MMPg); "the boundary set" splits into five objects (∂Θ, parameter limits, their images, MBAM strata, the topological boundary of Y(Θ); MMPi, MMPj); null directions and rank are unchanged only between fixed positive-definite weights (MMPd, MMPe); the invariant volume object is √det g_θ dθ¹⋯dθⁿ, not √det g alone (MMPf); raw Hessian eigenvalues are chart proxies (MMPh).',
+       'precision pass: invariance note corrected', pro=[('card:MMPf', 'the full volume element is invariant')], con=[('card:MMPg', 'chart-defined widths'), ('card:MMPh', 'raw Hessian')])
+note15('T-SIMPLER-BOUNDARY-Q', 'Precision pass (2026-11-15): a model-manifold boundary can arise as a limiting / degenerate model family in prediction space as parameters approach appropriate limits; not every parameter-domain boundary gives one (MMPi), an image edge can come from interior parameter points (MMPj), and the 2 → 1 drop of F-C is example-specific (MMPl).',
+       'precision pass: boundary language', pro=[('card:MMPj', 'an image edge from interior rank-drop points')], con=[('card:MMPl', 'limits need not give a face')])
+add_variant('T-MM-OBSERVE', 'Which structures survive a specified map, reduction, observation, quotient, projection, or limit?')
+note15('T-MM-OBSERVE', 'Precision pass (2026-11-15): the existing quantum instance is the named channel D(ρ) = P_t ρ P_t + P_s ρ P_s (non-selective S² measurement) on |ud⟩: it removes ⟨1,0|ρ|0,0⟩ = ⟨0,0|ρ|1,0⟩ = 1/2, and S_z = 0 survives because [P_t, S_z] = [P_s, S_z] = 0 (a non-selective S_x⁽¹⁾ measurement would not keep it, MMPn). Quantum measurement, projection, marginalization, quotient / reduction, manifold boundary limits, coarse graining and parameter non-identifiability are different operations (MMPo). The open research question is whether they share a deeper structural pattern. It is NOT established that they are the same operation.',
+       'precision pass: named channel and non-universality', pro=[('card:MMPn', 'the named channel'), ('card:MMPo', 'the operations differ')])
+add_variant('T-VIEWER-FORM', 'What changes when a richer state or representation is mapped to an observable manifestation?')
+note15('T-VIEWER-FORM', 'Precision pass (2026-11-15): kept as historical / project provenance only; not converted into established quantum physics. Investigable forms: "What changes when a richer state or representation is mapped to an observable manifestation?" and "Which structures survive a specified map, reduction, observation, quotient, projection, or limit?" (T-MM-OBSERVE).',
+       'precision pass: provenance-only status recorded')
+note15('T-MM-STORY', 'Precision pass (2026-11-15): every arrow also carries a status in ESTABLISHED MATHEMATICS / PROJECT-DERIVED / STRUCTURAL ANALOGY / OPEN / PHILOSOPHICAL / HISTORICAL INTUITION (research/model_manifold_story.md); "allowable manifold" reads as the allowable family / model image, a smooth manifold only on regular regions. The chain is kept whole.',
+       'precision pass: arrow statuses (five classes)', pro=[('card:MMPa', 'model image vs manifold')])
+add_variant('T-MM-GOV', 'Do not assume the previous audit wording is automatically correct merely because its tests pass.')
+byid['T-MM-GOV']['history'].append(dict(date=PREC, change='variant added (precision pass)'))
 update('T-CF11-A', TRIV, bs=60, slop=8, reason='Pass 3: the pattern holds in coordinate-free form (F*T = T) across constant-form, symplectic and homogeneous Fisher geometries, and its boundary is now exact (generic Fisher geometry is not characterized by a transformation group, CFT5f). Application Breadth corrected from 4 to 3: the rubric reserves 4 for a physical/empirical system')
 
 for r in R:

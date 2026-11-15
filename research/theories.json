@@ -1558,11 +1558,16 @@
         {
           "ref": "source:research/sources/quinn2023.md",
           "note": "c → ∞ as a model-manifold boundary (PDF pending, P-2)"
+        },
+        {
+          "ref": "card:MMPm",
+          "note": "Role 1 vs Role 3: no representation change reaches the limit"
         }
       ],
       "evidenceAgainst": [],
       "boundaries": [
-        "C9 is not inferred from the paper; the two manifolds are linked only through c (Gate 3)."
+        "C9 is not inferred from the paper; the two manifolds are linked only through c (Gate 3).",
+        "Precision pass (2026-11-15): three roles are kept apart. The two roles named here are Role 2 (within a theory, c helps define the invariant Lorentzian structure) and Role 3 (across theories, c → ∞ is a singular limit giving the degenerate form diag(1, 0), not by itself the Newtonian metric). Role 1 is a representation-level fact added to avoid conflation: for the matrix η_c = diag(1, −1/c²), a finite c can be normalized by rescaling x; this does not remove Role 2. The transition between Roles 2 and 3 stays the question."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -1574,6 +1579,7 @@
         "C9a",
         "C9b",
         "C9c",
+        "MMPm",
         "S5d"
       ],
       "sourceDocs": [
@@ -1600,6 +1606,10 @@
         {
           "date": "2026-11-12",
           "change": "Act labels remapped to the new Act map (rev 3: VIII)"
+        },
+        {
+          "date": "2026-11-15",
+          "change": "precision pass: three roles of c recorded"
         }
       ],
       "relatedActsRev3": [
@@ -4291,11 +4301,16 @@
         {
           "ref": "card:MMIh",
           "note": "function-space prediction space with a finite metric"
+        },
+        {
+          "ref": "card:MMPk",
+          "note": "dim P = ∞, dim M = 2; formula model-specific"
         }
       ],
       "evidenceAgainst": [],
       "boundaries": [
-        "Model-manifold audit (2026-11-13): for finitely many outputs P = ℝᵐ (finite); for a continuously indexed output with a stated inner product P is a function space (L²), infinite-dimensional, while M keeps the dimension of its identifiable parameters (MMIh: g_ij = 2/(θᵢ + θⱼ)³). \"Infinite prediction space\" is exact in this sense; it is not physical spacetime and not a quantum state space."
+        "Model-manifold audit (2026-11-13): for finitely many outputs P = ℝᵐ (finite); for a continuously indexed output with a stated inner product P is a function space (L²), infinite-dimensional, while M keeps the dimension of its identifiable parameters (MMIh: g_ij = 2/(θᵢ + θⱼ)³). \"Infinite prediction space\" is exact in this sense; it is not physical spacetime and not a quantum state space.",
+        "Precision pass (2026-11-15): g_ij = 2/(θᵢ + θⱼ)³ is the Fisher metric of the specific model e^{−θ₁T} + e^{−θ₂T} in L²(0, ∞), not a general formula (the linear model θ₁e^{−T} + θ₂e^{−2T} has a constant metric). Kept: dim P = ∞ while dim M = 2; a prediction space can be infinite-dimensional while the model image remains finite-dimensional."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -4304,7 +4319,8 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
-        "MMIh"
+        "MMIh",
+        "MMPk"
       ],
       "sourceDocs": [
         "docs/Interactive_Master_Map.extracted.md",
@@ -4332,6 +4348,10 @@
         {
           "date": "2026-11-13",
           "change": "finite vs function-space prediction space recorded"
+        },
+        {
+          "date": "2026-11-15",
+          "change": "precision pass: function-space formula labelled as example-specific"
         }
       ],
       "relatedActsRev3": [
@@ -4415,6 +4435,10 @@
         {
           "ref": "card:MMIe",
           "note": ""
+        },
+        {
+          "ref": "card:MMPf",
+          "note": "the full volume element is invariant"
         }
       ],
       "evidenceAgainst": [
@@ -4425,11 +4449,20 @@
         {
           "ref": "card:MMIb",
           "note": "raw spectra are chart-dependent"
+        },
+        {
+          "ref": "card:MMPg",
+          "note": "chart-defined widths"
+        },
+        {
+          "ref": "card:MMPh",
+          "note": "raw Hessian"
         }
       ],
       "boundaries": [
         "\"Exact null direction\" has three possible readings (AMB-14).",
-        "Model-manifold audit (2026-11-13): research/model_manifold_invariance.md classifies each quantity. Invariant under reparametrization: rank, nullity, null directions, lengths, the volume element, curvature, widths, the boundary set. Not invariant: matrix entries, det, raw eigenvalues, condition number, Jacobian singular values. Dependent on the noise model: all magnitudes; not the null directions. AMB-14 (\"exact null direction\") resolved for this branch: the statistical null g(v, v) = 0 ⟺ Jv = 0."
+        "Model-manifold audit (2026-11-13): research/model_manifold_invariance.md classifies each quantity. Invariant under reparametrization: rank, nullity, null directions, lengths, the volume element, curvature, widths, the boundary set. Not invariant: matrix entries, det, raw eigenvalues, condition number, Jacobian singular values. Dependent on the noise model: all magnitudes; not the null directions. AMB-14 (\"exact null direction\") resolved for this branch: the statistical null g(v, v) = 0 ⟺ Jv = 0.",
+        "Precision pass (2026-11-15), correcting the 2026-11-13 note above (kept): widths are reparametrization-invariant only when defined from the image set with a fixed prediction metric (chart FIM-eigendirection widths are not, MMPg); \"the boundary set\" splits into five objects (∂Θ, parameter limits, their images, MBAM strata, the topological boundary of Y(Θ); MMPi, MMPj); null directions and rank are unchanged only between fixed positive-definite weights (MMPd, MMPe); the invariant volume object is √det g_θ dθ¹⋯dθⁿ, not √det g alone (MMPf); raw Hessian eigenvalues are chart proxies (MMPh)."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -4441,6 +4474,9 @@
         "MMIa",
         "MMIb",
         "MMIe",
+        "MMPf",
+        "MMPg",
+        "MMPh",
         "S14a",
         "S14b"
       ],
@@ -4471,6 +4507,10 @@
         {
           "date": "2026-11-13",
           "change": "invariance audit recorded"
+        },
+        {
+          "date": "2026-11-15",
+          "change": "precision pass: invariance note corrected"
         }
       ],
       "relatedActsRev3": [
@@ -4498,7 +4538,7 @@
         },
         {
           "ref": "card:MMIf",
-          "note": "widths are a property of the set and the ambient metric"
+          "note": "a width defined from the image set with a fixed prediction metric is chart-independent (1-D illustration: total length); operational width definitions must still be checked (MMPg)"
         }
       ],
       "evidenceAgainst": [
@@ -4509,11 +4549,16 @@
         {
           "ref": "card:MMIb",
           "note": "raw eigenvalues are not geometric invariants"
+        },
+        {
+          "ref": "card:MMPg",
+          "note": "widths along a chart's FIM eigendirections are chart-dependent"
         }
       ],
       "boundaries": [
         "Bessel concerns one vector's coefficients; the sloppy spectrum is a metric's eigenvalues (Gate 3, C7). Kept as an open analogy.",
-        "C7 target gate (2026-11-13), answering \"What exact mathematical object on the model-manifold side should be compared?\": raw FIM eigenvalues are NOT the object (coordinate-dependent, MMIb, CFT5e: a NEGATIVE result for that reading). Recommended object: the hyperribbon widths of the model manifold (cross-sectional extents of the image set in a stated prediction-space metric; parametrization-independent, metric-dependent, MMIf). Known mathematics already bounds them by Chebyshev coefficient decay for analytic models (Quinn, Wilber, Townsend, Sethna 2019), so a C7 derivation must state its project-specific residue first. T-C7 stays OPEN; no derivation begun."
+        "C7 target gate (2026-11-13), answering \"What exact mathematical object on the model-manifold side should be compared?\": raw FIM eigenvalues are NOT the object (coordinate-dependent, MMIb, CFT5e: a NEGATIVE result for that reading). Recommended object: the hyperribbon widths of the model manifold (cross-sectional extents of the image set in a stated prediction-space metric; parametrization-independent, metric-dependent, MMIf). Known mathematics already bounds them by Chebyshev coefficient decay for analytic models (Quinn, Wilber, Townsend, Sethna 2019), so a C7 derivation must state its project-specific residue first. T-C7 stays OPEN; no derivation begun.",
+        "C7 target revised (2026-11-15), superseding the 2026-11-13 recommendation above (kept): C7 requires an explicitly defined geometric width object before any invariant spectral-decay claim can be evaluated. No single width definition is chosen; Transtrum-style geodesic widths and Quinn-style enclosing-hyperellipsoid widths are both kept until the next construction pass. C7 is not \"hyperribbon widths exist\" (established literature). Candidate bridge: Fourier / spectral / coefficient decay ?⟹ coordinate-independent geometric width hierarchy; a possible chain (NOT established): Fourier/spectral decay → approximation/coefficient decay → Quinn-style width bounds. Preconditions: (1) the exact geometric width object; (2) the prediction/noise metric; (3) the class of models/functions; (4) the exact spectral/coefficient-decay object; (5) what the result adds beyond Quinn et al. 2019 and existing approximation theory. T-C7 stays OPEN; no derivation begun."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -4524,6 +4569,7 @@
       "relatedCards": [
         "MMIb",
         "MMIf",
+        "MMPg",
         "S14a",
         "S14b",
         "S7"
@@ -4553,6 +4599,14 @@
         {
           "date": "2026-11-13",
           "change": "C7 target recommendation (no derivation)"
+        },
+        {
+          "date": "2026-11-15",
+          "change": "precision pass: C7 preconditions recorded; the single target object withdrawn"
+        },
+        {
+          "date": "2026-11-15",
+          "change": "evidence note on card:MMIf revised (precision pass): widths were stated as parametrization-independent without separating geometric widths from chart proxies. Previous note: widths are a property of the set and the ambient metric"
         }
       ],
       "relatedActsRev3": [
@@ -12334,6 +12388,10 @@
         {
           "words": "The paper is not the thesis.",
           "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "Do not assume the previous audit wording is automatically correct merely because its tests pass.",
+          "source": "docs/restructure_decisions.md"
         }
       ],
       "normalizedStatement": "Method / governance rule: every arrow of the research story keeps its record and receives its own status (ESTABLISHED MATHEMATICS, PAPER-BACKED RESULT, PROJECT-DERIVED CONNECTION, PROJECT HYPOTHESIS, OPEN CONNECTION, PHILOSOPHICAL / QUANTUM-LIKE HYPOTHESIS, FAILED / NEGATIVE RESULT). A weak arrow is labelled, not removed; a paper result does not prove the project interpretation, and the project interpretation is not paper novelty.",
@@ -12352,6 +12410,7 @@
       "relatedCards": [],
       "sourceDocs": [
         "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md",
         "docs/restructure_decisions.md"
       ],
       "auditRef": "model-manifold audit, 0",
@@ -12368,7 +12427,12 @@
       "related": [
         "T-MM-STORY"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-15",
+          "change": "variant added (precision pass)"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": null
     },
@@ -12402,6 +12466,10 @@
         {
           "ref": "card:W2a",
           "note": "one exact observation map (non-selective measurement) that keeps the zero and removes a coherence"
+        },
+        {
+          "ref": "card:MMPa",
+          "note": "model image vs manifold"
         }
       ],
       "evidenceAgainst": [
@@ -12416,7 +12484,8 @@
       ],
       "boundaries": [
         "KNOWN MODEL-MANIFOLD / INFORMATION GEOMETRY (arrows 1–2, 3 in part); PROJECT SYNTHESIS (the chain as one story); OPEN PHYSICAL / QUANTUM-LIKE INTERPRETATION (arrow 4 beyond stated maps).",
-        "parameter space ≠ prediction space; prediction space ≠ physical spacetime; model manifold ≠ quantum state space."
+        "parameter space ≠ prediction space; prediction space ≠ physical spacetime; model manifold ≠ quantum state space.",
+        "Precision pass (2026-11-15): every arrow also carries a status in ESTABLISHED MATHEMATICS / PROJECT-DERIVED / STRUCTURAL ANALOGY / OPEN / PHILOSOPHICAL / HISTORICAL INTUITION (research/model_manifold_story.md); \"allowable manifold\" reads as the allowable family / model image, a smooth manifold only on regular regions. The chain is kept whole."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -12430,6 +12499,7 @@
         "MMId",
         "MMIe",
         "MMIg",
+        "MMPa",
         "W2a"
       ],
       "sourceDocs": [
@@ -12457,7 +12527,12 @@
         "T-SOURCE-MANIFEST",
         "T-SIMPLER-BOUNDARY-Q"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-15",
+          "change": "precision pass: arrow statuses (five classes)"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-13",
@@ -12496,7 +12571,7 @@
           "source": "docs/restructure_decisions.md"
         }
       ],
-      "normalizedStatement": "the model structure and parameterization constrain the set of allowable predictions. Unpacked: the model rule Y (the functional form) and the parameter domain Θ fix the allowable set M = Y(Θ) ⊆ P; a particular parameter value is a point coordinate on M, not a constraint on it; the domain's limits give M's boundaries (θ₂ → ∞, MMIg); the parametrization is a chart, so a reparametrization leaves M unchanged (MMIa, MMIf).",
+      "normalizedStatement": "the model structure and parameterization constrain the set of allowable predictions. Unpacked (2026-11-15): the model rule Y and the parameter domain Θ fix the model image M = Y(Θ) ⊆ P (a set; a smooth model manifold only on a regular region of constant local rank and local injectivity, MMPa). θ ∈ Θ is a parameter value and Y(θ) its prediction; parameters parameterize the image and give local coordinates only where the parameterization is locally regular and locally identifiable; different parameter values may represent the same prediction (MMPb). Parameter limits can produce limiting strata of the image; the parameter-domain boundary, parameter limits, their images, MBAM boundary strata and the topological boundary of Y(Θ) are different objects (MMPi, MMPj).",
       "origin": "user",
       "kind": "derived-connection",
       "status": "derived",
@@ -12512,6 +12587,14 @@
         {
           "ref": "card:FB11c",
           "note": "what survives the boundary: θ₁"
+        },
+        {
+          "ref": "card:MMPb",
+          "note": "parameters give local coordinates only on regular identifiable regions"
+        },
+        {
+          "ref": "card:MMPi",
+          "note": "parameter-domain boundary ≠ image boundary"
         }
       ],
       "evidenceAgainst": [
@@ -12521,7 +12604,8 @@
         }
       ],
       "boundaries": [
-        "The definition M = Y(Θ) is ESTABLISHED MATHEMATICS (Transtrum–Machta–Sethna 2010/2011; Quinn et al. 2023). The project connection is the reading \"rules constrain an allowable set\", which is PROJECT-DERIVED and exact in this definitional sense."
+        "The definition M = Y(Θ) is ESTABLISHED MATHEMATICS (Transtrum–Machta–Sethna 2010/2011; Quinn et al. 2023). The project connection is the reading \"rules constrain an allowable set\", which is PROJECT-DERIVED and exact in this definitional sense.",
+        "Precision pass (2026-11-15): \"a parameter value is a point coordinate on M\" and \"the domain's limits give M's boundaries\" were too strong and are superseded (see history and research/model_manifold_story.md, Precision corrections). The project interpretation (rules and the parameter domain constrain the allowable family) is kept; it is not a differential-geometric coordinate claim."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -12533,7 +12617,9 @@
         "FB11c",
         "MMIf",
         "MMIg",
-        "MMIi"
+        "MMIi",
+        "MMPb",
+        "MMPi"
       ],
       "sourceDocs": [
         "docs/restructure_decisions.md",
@@ -12555,15 +12641,24 @@
         "T-MM-RULES-Q",
         "T-RULES-GEOMETRY"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-15",
+          "change": "normalizedStatement revised (precision pass): parameters are not automatically coordinates, and the domain's limits are not automatically the boundaries of the image. Previous wording: the model structure and parameterization constrain the set of allowable predictions. Unpacked: the model rule Y (the functional form) and the parameter domain Θ fix the allowable set M = Y(Θ) ⊆ P; a particular parameter value is a point coordinate on M, not a constraint on it; the domain's limits give M's boundaries (θ₂ → ∞, MMIg); the parametrization is a chart, so a reparametrization leaves M unchanged (MMIa, MMIf)."
+        },
+        {
+          "date": "2026-11-15",
+          "change": "precision pass: coordinate and boundary claims scoped"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-13",
         "mathematicalStatus": "TEXTBOOK / KNOWN",
         "breadth": "multiple independent mathematical families",
-        "backboneSupport": 40,
+        "backboneSupport": 35,
         "slopRisk": 5,
-        "why": "M = Y(Θ) is the definition of a model manifold; the parameters chart it and its domain limits give its boundaries. The project reading adds only the word \"rules\" for Y and Θ. Exact on F-C, the one-exponential curve and the function-space model.",
+        "why": "M = Y(Θ) is the definition of the model image; parameters give local coordinates only on regular identifiable regions, and parameter limits give limiting strata, not \"the boundaries\". The project reading adds only the word \"rules\" for Y and Θ. Exact on F-C, e^{−(θ₁+θ₂)t}, the one-exponential curve and the function-space models.",
         "increase": "A system where the parameter domain alone, not the model rule, determines a non-trivial feature of M.",
         "falsify": "None for the definitional statement.",
         "classification": "GENERAL CONSTRUCTION",
@@ -12579,7 +12674,18 @@
         "transferDepth": "TRIVIAL CONSEQUENCE",
         "mathematicalCorrectness": "established",
         "prediction": null,
-        "ratingHistory": [],
+        "ratingHistory": [
+          {
+            "date": "2026-11-15",
+            "fromBackbone": 40,
+            "fromSlop": 5,
+            "toBackbone": 35,
+            "toSlop": 5,
+            "fromDepth": "TRIVIAL CONSEQUENCE",
+            "toDepth": "TRIVIAL CONSEQUENCE",
+            "reason": "the unpacking no longer includes the coordinate and boundary claims (MMPb, MMPi)"
+          }
+        ],
         "applicationBreadth": 2,
         "novelty": null
       }
@@ -12606,7 +12712,7 @@
       "evidenceAgainst": [
         {
           "ref": "card:MMIi",
-          "note": "for finite c, c is absorbed by a change of units; a model parameter is a coordinate. The two \"rules\" act on different objects"
+          "note": "MMIi is a representation-level normalization of the matrix η_c (Role 1); c's invariant role (Role 2) and its theory-family limit (Role 3) are separate. Model parameters parameterize an image and are local coordinates only on regular regions. Transfer between the two kinds of \"rule\" is OPEN"
         }
       ],
       "boundaries": [
@@ -12643,7 +12749,12 @@
         "T-MM-DISTINGUISHED-Q",
         "T-C-ROLES"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-15",
+          "change": "evidence note on card:MMIi revised (precision pass): \"a finite c is just a change of units\" collapsed distinct roles of c. Previous note: for finite c, c is absorbed by a change of units; a model parameter is a coordinate. The two \"rules\" act on different objects"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": null
     },
@@ -12717,17 +12828,26 @@
         {
           "ref": "card:C9b",
           "note": "form boundary: rank drop"
+        },
+        {
+          "ref": "card:MMPm",
+          "note": "no change of representation reaches the c → ∞ form; it is degenerate"
         }
       ],
       "evidenceAgainst": [
         {
           "ref": "card:MMIi",
-          "note": "the invariant-form role does not transfer: η_c is one form up to units (signature is the invariant), the Lorentz allowed set is one group orbit, while a model manifold is not homogeneous (CFT5f) and its parameters are coordinates"
+          "note": "MMIi checks a representation-level normalization (η_c = P_cᵀ diag(1, −1) P_c, Role 1); it does not remove the invariant physical role of c (Role 2). Whether that role transfers to model-manifold geometry is OPEN; a generic model image is not homogeneous (CFT5f)"
+        },
+        {
+          "ref": "card:MMPl",
+          "note": "dimension drops depend on the model and the limit"
         }
       ],
       "boundaries": [
         "Verdict (2026-11-13, from STRUCTURAL CONNECTION / USEFUL ANALOGY / TOO WEAK / FAIL): STRUCTURAL CONNECTION for the parameter-limit → degenerate-boundary role only (both a rank drop; Quinn et al. 2023 treat c as a model parameter, PDF quote pending); TOO WEAK for \"rules constrain allowed states\" stated generally (every constraint does that); the invariant-form role: FAIL as a transfer (model parameters are not structure constants).",
-        "Spacetime geometry ≠ model-manifold geometry (Gate 3)."
+        "Spacetime geometry ≠ model-manifold geometry (Gate 3).",
+        "Verdict revised (2026-11-15), superseding the 2026-11-13 verdict above (kept): three roles of c are kept apart. Role 1, representation/coefficient: η_c = P_cᵀ diag(1, −1) P_c for the stated matrix form (ESTABLISHED for that form; it does not prove that physical c has no invariant significance). Role 2, invariant geometric/physical: the Lorentzian interval and light cone (ESTABLISHED PHYSICS in its native setting). Role 3, theory-family / singular limit: c → ∞ gives the degenerate limiting bilinear form diag(1, 0) (STRUCTURAL ANALOGY worth preserving; not by itself the Newtonian metric). Transfer to arbitrary model-manifold geometry: OPEN. The universal \"rules constrain states\" reading: TOO WEAK by itself. The model-side drop 2 → 1 is a result of the F-C example (MMPl)."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -12738,7 +12858,9 @@
       "relatedCards": [
         "C9b",
         "MMIg",
-        "MMIi"
+        "MMIi",
+        "MMPl",
+        "MMPm"
       ],
       "sourceDocs": [
         "docs/restructure_decisions.md",
@@ -12762,15 +12884,24 @@
         "T-MM-RULES",
         "T-PHYSICAL-MANIFEST-Q"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-15",
+          "change": "precision pass: c verdict revised to three roles"
+        },
+        {
+          "date": "2026-11-15",
+          "change": "evidence note on card:MMIi revised (precision pass): the old note read a representation-level fact as a failed transfer. Previous note: the invariant-form role does not transfer: η_c is one form up to units (signature is the invariant), the Lorentz allowed set is one group orbit, while a model manifold is not homogeneous (CFT5f) and its parameters are coordinates"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-13",
         "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
         "breadth": "multiple independent mathematical families",
-        "backboneSupport": 25,
+        "backboneSupport": 20,
         "slopRisk": 20,
-        "why": "One shared exact feature: a parameter limit that is a degenerate boundary with a rank drop (C9b, MMIg). The invariant-form role does not transfer, and the general phrase is too weak to test.",
+        "why": "Three roles of c are kept apart. The theory-family limit and model-family limits are both degenerate limits (a structural analogy); whether c's invariant role transfers to model-manifold geometry is OPEN; the general phrase is too weak to test.",
         "increase": "A further shared invariant beyond the rank drop, stated before it is checked.",
         "falsify": "A model family whose parameter limits never drop rank, or a precise sense in which the Lorentz and model-manifold boundaries differ in kind.",
         "classification": "GENERAL CONSTRUCTION",
@@ -12783,10 +12914,21 @@
         },
         "branchState": "active",
         "failures": [],
-        "transferDepth": "STRUCTURAL TRANSFER",
+        "transferDepth": "NOT YET FORMALIZED",
         "mathematicalCorrectness": "established",
         "prediction": null,
-        "ratingHistory": [],
+        "ratingHistory": [
+          {
+            "date": "2026-11-15",
+            "fromBackbone": 25,
+            "fromSlop": 20,
+            "toBackbone": 20,
+            "toSlop": 20,
+            "fromDepth": "STRUCTURAL TRANSFER",
+            "toDepth": "NOT YET FORMALIZED",
+            "reason": "the 2026-11-13 verdict collapsed the roles of c and generalized one example (MMPm, MMPl)"
+          }
+        ],
         "applicationBreadth": 2,
         "novelty": null
       }
@@ -12796,7 +12938,7 @@
       "label": "A zero geometric length exposes non-identifiability",
       "words": "a zero geometric length can expose hidden non-identifiability / redundancy.",
       "variants": [],
-      "normalizedStatement": "For a Fisher metric g = JᵀΣ⁻¹J (Σ SPD), g(v, v) = 0 ⟺ Jv = 0: a zero-length tangent vector is a first-order non-identifiable direction (exact, any chart, any SPD noise model). A curve whose tangent has zero length everywhere is a set of parameter values with identical predictions (exact redundancy, FB7a). Distinct from a sloppy direction (small, nonzero), a Lorentz null (vᵀηv = 0 with ηv ≠ 0) and a collapsed zero of a lossy map.",
+      "normalizedStatement": "For g = J_Yᵀ Σ⁻¹ J_Y with J_Y = ∂Y/∂θ and a fixed (θ-independent) positive-definite Σ⁻¹: g(v, v) = (J_Y v)ᵀ Σ⁻¹ (J_Y v) = 0 ⟺ J_Y v = 0: a zero-length tangent vector is a first-order non-identifiable direction (exact, any chart). Without positive definiteness (a singular observation weight, MMPd) or with a θ-dependent noise law (MMPe) the equivalence can fail. A curve whose tangent has zero length everywhere is a set of parameter values with identical predictions (exact redundancy, FB7a). Distinct from a sloppy direction, a Lorentz null, a bilinear null, a collapsed zero, equal expectation values, same-zero quantum states and symmetry-dependent distinctions.",
       "origin": "user",
       "kind": "derived-connection",
       "status": "derived",
@@ -12816,6 +12958,10 @@
         {
           "ref": "card:CFT5d",
           "note": "and a change of chart"
+        },
+        {
+          "ref": "card:MMPd",
+          "note": "positive-definite weight: zero length ⟺ J_Y v = 0"
         }
       ],
       "evidenceAgainst": [
@@ -12826,10 +12972,19 @@
         {
           "ref": "card:FB7d",
           "note": "a Lorentz null is not a kernel vector"
+        },
+        {
+          "ref": "card:MMPd",
+          "note": "a singular weight breaks it"
+        },
+        {
+          "ref": "card:MMPe",
+          "note": "a θ-dependent noise law breaks it"
         }
       ],
       "boundaries": [
-        "PROJECT-DERIVED FROM ESTABLISHED MATHEMATICS; first-order statement. Global identifiability needs the whole fiber Y⁻¹(Y(θ)) (F-C is 2-to-1 by exchange off the diagonal while g has full rank there)."
+        "PROJECT-DERIVED FROM ESTABLISHED MATHEMATICS; first-order statement. Global identifiability needs the whole fiber Y⁻¹(Y(θ)) (F-C is 2-to-1 by exchange off the diagonal while g has full rank there).",
+        "Precision pass (2026-11-15): the equivalence needs a positive-definite, θ-independent Σ⁻¹ (MMPd, MMPe)."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -12843,7 +12998,9 @@
         "FB7b",
         "FB7c",
         "FB7d",
-        "MMIe"
+        "MMIe",
+        "MMPd",
+        "MMPe"
       ],
       "sourceDocs": [
         "docs/restructure_decisions.md"
@@ -12863,7 +13020,16 @@
         "T-INFOGEO",
         "T-GEOM-INFO-Q"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-15",
+          "change": "normalizedStatement revised (precision pass): the positive-definite and fixed-noise hypotheses attached; J_Y notation. Previous wording: For a Fisher metric g = JᵀΣ⁻¹J (Σ SPD), g(v, v) = 0 ⟺ Jv = 0: a zero-length tangent vector is a first-order non-identifiable direction (exact, any chart, any SPD noise model). A curve whose tangent has zero length everywhere is a set of parameter values with identical predictions (exact redundancy, FB7a). Distinct from a sloppy direction (small, nonzero), a Lorentz null (vᵀηv = 0 with ηv ≠ 0) and a collapsed zero of a lossy map."
+        },
+        {
+          "date": "2026-11-15",
+          "change": "precision pass: hypothesis attached"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": null
     },
@@ -12871,7 +13037,12 @@
       "id": "T-MM-OBSERVE",
       "label": "Observation as a map to a restricted manifestation",
       "words": "Can observation or measurement be modeled geometrically as a map from a richer state/representation space to a more restricted observable manifestation?",
-      "variants": [],
+      "variants": [
+        {
+          "words": "Which structures survive a specified map, reduction, observation, quotient, projection, or limit?",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
       "normalizedStatement": null,
       "origin": "user",
       "kind": "open-question",
@@ -12888,6 +13059,14 @@
         {
           "ref": "card:RIC1a",
           "note": "a classical reduction with stated survivors, collapses and fiber"
+        },
+        {
+          "ref": "card:MMPn",
+          "note": "the named channel"
+        },
+        {
+          "ref": "card:MMPo",
+          "note": "the operations differ"
         }
       ],
       "evidenceAgainst": [
@@ -12897,7 +13076,8 @@
         }
       ],
       "boundaries": [
-        "OPEN CONNECTION. Exact only for stated maps: quantum non-selective measurement / dephasing, projections, coarse-graining, boundary limits. No general measurement theory is claimed. Observation here means measurement, interaction or which-path information."
+        "OPEN CONNECTION. Exact only for stated maps: quantum non-selective measurement / dephasing, projections, coarse-graining, boundary limits. No general measurement theory is claimed. Observation here means measurement, interaction or which-path information.",
+        "Precision pass (2026-11-15): the existing quantum instance is the named channel D(ρ) = P_t ρ P_t + P_s ρ P_s (non-selective S² measurement) on |ud⟩: it removes ⟨1,0|ρ|0,0⟩ = ⟨0,0|ρ|1,0⟩ = 1/2, and S_z = 0 survives because [P_t, S_z] = [P_s, S_z] = 0 (a non-selective S_x⁽¹⁾ measurement would not keep it, MMPn). Quantum measurement, projection, marginalization, quotient / reduction, manifold boundary limits, coarse graining and parameter non-identifiability are different operations (MMPo). The open research question is whether they share a deeper structural pattern. It is NOT established that they are the same operation."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -12906,12 +13086,15 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "MMPn",
+        "MMPo",
         "Q2b",
         "RIC1a",
         "W2a",
         "W2d"
       ],
       "sourceDocs": [
+        "docs/restructure_decisions.md",
         "docs/restructure_decisions.md"
       ],
       "auditRef": "model-manifold audit, observation",
@@ -12933,7 +13116,12 @@
         "T-MM-STORY",
         "T-PHYSICAL-MANIFEST-Q"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-15",
+          "change": "precision pass: named channel and non-universality"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-13",
@@ -12970,6 +13158,10 @@
         {
           "words": "What changes when a richer state/representation becomes an observable manifestation?",
           "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "What changes when a richer state or representation is mapped to an observable manifestation?",
+          "source": "docs/restructure_decisions.md"
         }
       ],
       "normalizedStatement": "What changes when a richer state/representation becomes an observable manifestation?",
@@ -12981,7 +13173,8 @@
       "boundaries": [
         "ORIGINAL VERBATIM NOT RECOVERED: recorded as given on 2026-11-13 (\"approximately\"); the historical wording is not in the repository.",
         "ORIGINAL USER INTUITION; PHILOSOPHICAL / QUANTUM-INTERPRETIVE; NOT ESTABLISHED PHYSICS.",
-        "conscious observer requirement = NOT ESTABLISHED. The investigable part is the normalized question: which maps from a richer state to an observable manifestation exist, and what each keeps, removes or creates (T-MM-OBSERVE). Both wordings are kept."
+        "conscious observer requirement = NOT ESTABLISHED. The investigable part is the normalized question: which maps from a richer state to an observable manifestation exist, and what each keeps, removes or creates (T-MM-OBSERVE). Both wordings are kept.",
+        "Precision pass (2026-11-15): kept as historical / project provenance only; not converted into established quantum physics. Investigable forms: \"What changes when a richer state or representation is mapped to an observable manifestation?\" and \"Which structures survive a specified map, reduction, observation, quotient, projection, or limit?\" (T-MM-OBSERVE)."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -12991,6 +13184,7 @@
       "relatedObjects": [],
       "relatedCards": [],
       "sourceDocs": [
+        "docs/restructure_decisions.md",
         "docs/restructure_decisions.md",
         "docs/restructure_decisions.md"
       ],
@@ -13010,7 +13204,12 @@
         "T-SUBCONSCIOUS",
         "T-PHYSICAL-MANIFEST-Q"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-15",
+          "change": "precision pass: provenance-only status recorded"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": null
     },
@@ -13147,11 +13346,21 @@
         {
           "ref": "card:C9b",
           "note": "Newtonian kinematics as the c → ∞ boundary of the form"
+        },
+        {
+          "ref": "card:MMPj",
+          "note": "an image edge from interior rank-drop points"
         }
       ],
-      "evidenceAgainst": [],
+      "evidenceAgainst": [
+        {
+          "ref": "card:MMPl",
+          "note": "limits need not give a face"
+        }
+      ],
       "boundaries": [
-        "Exact for stated limits (paper-backed: Transtrum–Qiu 2014, Quinn et al. 2023). A limit is not a map on states: the Reduction architecture records it as a family degeneration, not as Φ: X → Y."
+        "Exact for stated limits (paper-backed: Transtrum–Qiu 2014, Quinn et al. 2023). A limit is not a map on states: the Reduction architecture records it as a family degeneration, not as Φ: X → Y.",
+        "Precision pass (2026-11-15): a model-manifold boundary can arise as a limiting / degenerate model family in prediction space as parameters approach appropriate limits; not every parameter-domain boundary gives one (MMPi), an image edge can come from interior parameter points (MMPj), and the 2 → 1 drop of F-C is example-specific (MMPl)."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -13162,7 +13371,9 @@
       "relatedCards": [
         "C9b",
         "FB11c",
-        "MMIg"
+        "MMIg",
+        "MMPj",
+        "MMPl"
       ],
       "sourceDocs": [
         "docs/restructure_decisions.md"
@@ -13183,7 +13394,12 @@
         "T-REDUCTION-ARCH",
         "T-MM-STORY"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-15",
+          "change": "precision pass: boundary language"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": null
     }

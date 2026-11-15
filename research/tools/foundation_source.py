@@ -783,6 +783,88 @@ BMETA.update({
  'BR61': (OPC, ['SRC-NIELSEN-CHUANG-2010'], 'named maps only', 'no single construction covers the instances'),
  'BR62': (SAN, [], 'none beyond the two separate facts', 'an explicit map showing the two indistinguishabilities differ in kind'),
 })
+
+# ══ Model-manifold precision corrections (2026-11-15) ════════════════════════════════════════════
+# Decisions: docs/restructure_decisions.md, "Model-manifold precision corrections". Cards: verify/verify_MMP.py.
+# Overstated text is revised in place; every previous wording is kept in PRECISION (written to foundation.json).
+PRECISION = []
+NOTE_J = ' [Notation: here J = ∂θ/∂φ is the reparametrization Jacobian, written A in the model-manifold records (g_φ = Aᵀ g_θ A); the prediction Jacobian is J_Y = ∂Y/∂θ (MMPc).]'
+def fix(kind, id, field, new, why, cards=()):
+    rec = next(x for x in (O if kind == 'object' else B) if x['id'] == id)
+    PRECISION.append(dict(kind=kind, id=id, field=field, old=rec[field], new=new, reason=why, date='2026-11-15'))
+    rec[field] = new
+    key = 'cards'
+    rec[key] = rec[key] + [c for c in cards if c not in rec[key]]
+def addnote(kind, id, field, note, why):
+    rec = next(x for x in (O if kind == 'object' else B) if x['id'] == id)
+    PRECISION.append(dict(kind=kind, id=id, field=field, old=rec[field], new=rec[field] + note, reason=why, date='2026-11-15'))
+    rec[field] = rec[field] + note
+for oid in ('CF13', 'TA1'):
+    addnote('object', oid, 'equation', NOTE_J, 'one symbol J was used for two Jacobians')
+for bid in ('BR37', 'BR41'):
+    addnote('bridge', bid, 'connector', NOTE_J, 'one symbol J was used for two Jacobians')
+fix('object', 'CF10', 'equation', 'ds² = dθᵀ g_θ dθ; for y = Y(θ) + ε, ε ~ N(0, σ²I) with σ fixed: g_θ = E[∂ℓ∂ℓᵀ] = J_YᵀJ_Y/σ², J_Y = ∂Y/∂θ (unequal fixed variances: J_YᵀΣ⁻¹J_Y; a θ-dependent covariance adds further Fisher terms, MMPe)',
+    'notation J_Y; the fixed-covariance hypothesis stated', ['MMPe', 'MMPc'])
+fix('object', 'Z9', 'equation', 'g_θ = J_YᵀJ_Y/σ² ⪰ 0 with σ > 0, so the weight σ⁻²I is positive definite: vᵀgv = 0 ⟺ J_Y v = 0 ⟺ gv = 0 (first-order predictions unchanged along v). The equivalence needs a positive-definite, θ-independent weight (MMPd, MMPe). Kept apart: exact structural nonidentifiability (J_Y v = 0 everywhere), a small nonzero sloppy eigenvalue, a Lorentz null vector (vᵀηv = 0, ηv ≠ 0)',
+    'the positive-definite hypothesis attached; notation J_Y', ['MMPd', 'MMPe'])
+fix('object', 'MM1', 'name', 'Prediction space and model image M = Y(Θ) ⊆ P', 'model image vs manifold')
+fix('object', 'MM1', 'equation', 'P = ℝᵐ with metric Σ⁻¹ (m outputs), or a function space with a stated inner product. M = Y(Θ) ⊆ P is the model image (a set); it is a smooth model manifold only on a regular region (constant local rank, locally injective). Rank loss, non-identifiability, self-intersections, singular strata and boundary strata can occur (MMPa, MMPb, MMPj). Example: for the specific model e^{−θ₁T} + e^{−θ₂T} in L²(0, ∞) the Fisher metric is g_ij = 2/(θᵢ + θⱼ)³ (not a general formula, MMPk); dim P = ∞ while dim M = 2',
+    'model image vs manifold; the function-space formula labelled as example-specific', ['MMPa', 'MMPj', 'MMPk'])
+fix('object', 'MM2', 'name', 'Model rule and parameter domain fix the allowable model image', 'model image vs manifold')
+fix('object', 'MM2', 'equation', 'the model rule Y and the domain Θ fix the model image M = Y(Θ). θ ∈ Θ is a parameter value and Y(θ) its prediction; parameters parameterize the image and give local coordinates only where the parameterization is locally regular and locally identifiable; different θ may give the same prediction (MMPb). Parameter limits can produce limiting strata of the image; ∂Θ, parameter limits, their images, MBAM strata and the topological boundary of Y(Θ) are different objects (MMPi, MMPj)',
+    'parameters are not automatically coordinates; the domain\'s limits are not automatically the boundaries', ['MMPb', 'MMPi', 'MMPj'])
+fix('object', 'MM4', 'equation', 'notation: J_Y = ∂Y/∂θ, g_θ = J_Yᵀ Σ⁻¹ J_Y, A = ∂θ/∂φ, g_φ = Aᵀ g_θ A (MMPc). Under an invertible reparametrization (R1): rank, nullity, null directions, lengths, the full volume element √det g_θ dθ¹⋯dθⁿ, curvature and image-defined quantities are invariant; entries, det g, √det g alone, raw Fisher and Hessian eigenvalues, the condition number, J_Y singular values and chart-defined widths are not (MMIb, MMIc, MMPf–MMPh). For a change between fixed positive-definite weights the null directions and rank do not change; a singular weight or a θ-dependent noise law can change them (MMPd, MMPe). Geometric widths defined from the image are CONDITIONAL until their source definitions are fixed (MMPg)',
+    'notation; restricted noise theorem; volume element; widths split into geometric and proxies', ['MMPc', 'MMPd', 'MMPe', 'MMPf', 'MMPg', 'MMPh'])
+fix('object', 'MM5', 'name', 'c: three roles; theory-family limit ↔ model-family limits', 'the c verdict revised to three roles')
+fix('object', 'MM5', 'equation', 'Role 1 (representation): η_c = diag(1, −1/c²) = P_cᵀ diag(1, −1) P_c with P_c = diag(1, 1/c), for the stated matrix form (ESTABLISHED for that form). Role 2 (invariant): Λ_cᵀ η_c Λ_c = η_c and the light cone in Lorentzian spacetime (ESTABLISHED PHYSICS in its native setting). Role 3 (theory family): c → ∞ gives the degenerate limiting bilinear form diag(1, 0), rank 1, which no change of representation reaches (STRUCTURAL ANALOGY worth preserving; not by itself the Newtonian metric). Transfer to arbitrary model-manifold geometry: OPEN. "Rules constrain states" in general: TOO WEAK. Model side: θ₂ → ∞ in F-C gives a 1-dimensional face (example-specific, MMPl)',
+    '"a finite c is just a change of units" collapsed distinct roles of c; the 2 → 1 drop generalized one example', ['MMPm', 'MMPl', 'C9a'])
+fix('object', 'MM5', 'transferDepth', 'NOT YET FORMALIZED', 'transfer to model-manifold geometry is OPEN')
+fix('object', 'MM5', 'backboneSupport', 20, 'the three-role verdict replaces the restricted STRUCTURAL CONNECTION')
+fix('object', 'MM5', 'failureCondition', 'a precise sense in which the theory-family limit and model-family limits differ in kind; for Role 2, any transfer claim without a stated invariant on the model side', 'the invariant-form FAIL is withdrawn as too strong')
+fix('object', 'MM5', 'foundationRole', 'keeps the three roles of c apart; preserves the structural analogy between the c → ∞ theory limit and model-family limits; transfer OPEN', 'the c verdict revised')
+fix('object', 'MM6', 'equation', 'Can observation or measurement be modeled geometrically as a map from a richer state/representation space to a more restricted observable manifestation? Exact instances: the named channel D(ρ) = P_t ρ P_t + P_s ρ P_s (non-selective S² measurement) on |ud⟩, which removes ⟨1,0|ρ|0,0⟩ = 1/2 and keeps S_z = 0 because [P_t, S_z] = [P_s, S_z] = 0 (MMPn); projection (RIC1a); boundary limits (MMIg). These are different operations (MMPo)',
+    'the channel named; preservation of S_z checked, not generic; non-universality', ['MMPn', 'MMPo'])
+fix('object', 'MM6', 'foundationRole', 'OPEN CONNECTION: whether quantum measurement, projection, marginalization, quotient, boundary limits, coarse graining and non-identifiability share a deeper structural pattern is open; it is NOT established that they are the same operation. Measurement, interaction or which-path information, never a conscious-observer claim', 'non-universality')
+fix('object', 'MM10', 'foundationRole', 'a limit is a family degeneration, not a map on states; ∂Θ, parameter limits, their images, MBAM strata and the topological boundary of Y(Θ) are kept apart (MMPi, MMPj); dimension drops depend on the model and the limit (MMPl)', 'boundary language', ['MMPi', 'MMPj', 'MMPl'])
+fix('object', 'MM11', 'equation', 'hyperribbon structure: model images whose widths spread over many orders (TMS 2010/2011); enclosing-hyperellipsoid width bounds via Chebyshev approximation, geometric decay for analytic models (Quinn et al. 2019). Width notions kept apart: (A) geometric widths defined from the image set with a fixed prediction metric (Transtrum-style geodesic widths with geometrically fixed directions; Quinn-style enclosing-hyperellipsoid widths): potentially reparametrization-invariant, exact definitions to be taken from the sources; (B) chart proxies (raw Fisher / Hessian eigenvalues, J_Y singular values, parameter-axis lengths, condition numbers, widths along a chart\'s FIM eigendirections): not invariant (MMIb, MMIc, MMPg, MMPh)',
+    'widths are not simply invariant; geometric widths and proxies separated', ['MMPg', 'MMPh'])
+fix('object', 'MM11', 'foundationRole', 'C7 requires an explicitly defined geometric width object; both Transtrum-style and Quinn-style notions are kept until the next construction pass; no single definition is chosen', 'C7 target revised')
+fix('object', 'MM11', 'gap', 'carded only as a 1-D illustration of chart independence and metric dependence (MMIf) and the chart dependence of eigendirection widths (MMPg); the source definitions of both width notions and the Chebyshev bound are source-only; PDFs not opened', 'C7 target revised')
+fix('object', 'M4', 'foundationRole', 'active open comparison; NOT READY FOR DERIVATION: preconditions (1) the exact geometric width object, (2) the prediction/noise metric, (3) the class of models/functions, (4) the exact spectral/coefficient-decay object, (5) what the result adds beyond Quinn et al. 2019 and approximation theory. Candidate bridge: Fourier / spectral / coefficient decay ?⟹ coordinate-independent geometric width hierarchy (not established). The raw-spectrum reading is NEGATIVE (MMIb, CFT5e); no derivation begun', 'C7 target revised', ['MMPg'])
+fix('bridge', 'BR16', 'connector', 'g_θ = J_YᵀJ_Y/σ² for Gaussian noise with fixed σ (J_Y = ∂Y/∂θ)', 'notation; fixed-noise hypothesis', ['MMPc'])
+fix('bridge', 'BR17', 'connector', 'for a positive-definite fixed weight: g v = 0 ⟺ J_Y v = 0 ⟺ v changes no prediction (to first order); fails for a singular weight or a θ-dependent noise law (MMPd, MMPe)', 'the positive-definite hypothesis attached', ['MMPd', 'MMPe'])
+fix('bridge', 'BR54', 'connector', 'a manifold boundary is a limit (a degeneration of the model family), not a map on states: the image of a stated limit is chart-independent; in the F-C example θ₂ → ∞ drops the dimension 2 → 1 and θ₁ survives (MMIg, FB11c), but other limits give a point or no limit (MMPl), and ∂Θ need not give an image boundary (MMPi); QSSA keeps K_M, V_max (FB11a). Whether every reduction has a boundary form stays open',
+    'example-specific dimension drop; boundary language', ['MMPi', 'MMPl'])
+fix('bridge', 'BR57', 'connector', 'M = Y(Θ) ⊆ P (the model image; a smooth manifold only on regular regions, MMPa), P = ℝᵐ (finite outputs) or a function space with a stated inner product; on a regular region dim M = rank J_Y (MMIh, MMPk: L²(0, ∞) gives a 2-dimensional image while dim P = ∞)',
+    'model image vs manifold', ['MMPa', 'MMPk'])
+fix('bridge', 'BR58', 'connector', 'eigenvalues of the component matrix g change under a change of units or chart (MMIb, CFT5e), as do raw Hessian eigenvalues (MMPh) and widths along a chart\'s FIM eigendirections (MMPg); the invariants are rank, nullity, lengths, the full volume element √det g_θ dθ¹⋯dθⁿ, curvature; widths only when defined from the image set with a fixed metric',
+    'widths are not simply invariant', ['MMPg', 'MMPh'])
+fix('bridge', 'BR58', 'doesNotProve', 'that sloppiness is only a chart artifact (a geometric width hierarchy defined from the image may carry it; definition open)', 'widths are not simply invariant')
+fix('bridge', 'BR59', 'doesNotProve', 'C7 as posed (one signal\'s Fourier / Bessel coefficients vs Fisher spectra); which width definition C7 needs; anything about raw eigenvalues; not carded here', 'C7 target revised')
+fix('bridge', 'BR60', 'connector', 'both families have degenerate limits: c → ∞ gives the degenerate limiting bilinear form diag(1, 0), rank 1 (not by itself the Newtonian / Galilean structure; no change of representation reaches it, MMPm); in the F-C model, θ₂ → ∞ gives a 1-dimensional face (example-specific: other limits give a point or no limit, MMPl)',
+    'three roles of c; example-specific dimension drop', ['MMPm', 'MMPl'])
+fix('bridge', 'BR60', 'doesNotProve', 'that spacetime is a model manifold; that c is a model coordinate; that c\'s invariant Lorentzian role (Role 2) transfers to model-manifold geometry (OPEN); that a parameter → ∞ always drops the dimension (MMPl); that a representation-level normalization of η_c removes c\'s invariant role', 'the c verdict revised')
+fix('bridge', 'BR61', 'connector', 'the named channel D(ρ) = P_t ρ P_t + P_s ρ P_s (non-selective S² measurement) on |ud⟩ keeps S_z = 0 (because [P_t, S_z] = [P_s, S_z] = 0) and removes the triplet–singlet coherence (W2a, W3a, MMPn); a non-selective S_x⁽¹⁾ measurement would not keep S_z = 0; projection (RIC1a) and boundary limits (MMIg) are different operations (MMPo)',
+    'the channel named; non-universality', ['MMPn', 'MMPo'])
+BMETA['BR60'] = (SAN, ['SRC-QUINN-2023', 'SRC-INONU-WIGNER-1953'], 'the stated limits; the stated matrix form of η_c', 'a precise sense in which the two limits differ in kind; Role 2 (the invariant role) is not shown to transfer (OPEN)')
+PRECISION.append(dict(kind='bridgeMeta', id='BR60', field='failureCondition', old='the invariant-form role: for finite c, c is absorbed by a change of units (MMIi)', new=BMETA['BR60'][3], reason='"a finite c is just a change of units" collapsed distinct roles of c', date='2026-11-15'))
+BMETA['BR17'] = (EIM, ['SRC-AMARI-2016', 'SRC-TMS-2011'], 'g = J_YᵀΣ⁻¹J_Y with Σ⁻¹ positive definite and θ-independent', 'a small nonzero eigenvalue is sloppy, not null (FB7c); a singular weight or a θ-dependent noise law (MMPd, MMPe)')
+for m in RMAPS:
+    if m['name'].startswith('Model reduction / manifold boundary'):
+        PRECISION.append(dict(kind='reductionMap', id=m['name'], field='collapses', old=m['collapses'], new=None, reason='example-specific dimension drop', date='2026-11-15'))
+        m['collapses'] = 'in the F-C example: the removed parameter, ∂Y/∂λ₂ → 0, the dimension drops 2 → 1 (MMIg); other limits give a point or no limit (MMPl)'
+        PRECISION[-1]['new'] = m['collapses']
+        m['cards'] = m['cards'] + ['MMPi', 'MMPl']
+        PRECISION.append(dict(kind='reductionMap', id=m['name'], field='axisA', old=m['axisA'], new=None, reason='example-specific dimension drop', date='2026-11-15'))
+        m['axisA'] = 'a degeneration of the model family (a limit), not a map Φ: X → Y on states; information-changing (in the F-C example the dimension drops 2 → 1; MMPl)'
+        PRECISION[-1]['new'] = m['axisA']
+for i, (dname, cl) in enumerate(TCLASS):
+    if dname == 'Fisher / Riemannian':
+        PRECISION.append(dict(kind='transformationClass', id=dname, field=RC, old=cl[RC], new=cl[RC] + NOTE_J, reason='one symbol J was used for two Jacobians', date='2026-11-15'))
+        cl[RC] = cl[RC] + NOTE_J
+for o in O:
+    if o['id'] == 'M2':
+        o['cards'] = o['cards'] + ['MMPi', 'MMPj']
 for b in B:
     st, srcs, asm, fl = BMETA[b['id']]
     b.update(strength=st, sources=srcs, assumptions=asm, failureCondition=fl)
@@ -820,9 +902,9 @@ dom('D9', 'Translation, correlation, spectrum, localization', 'T1 T2 T3 T4 T5', 
 dom('D10', 'Lorentz and c', 'L1 L2 L3', 'SOURCE+CARD COMPLETE', 'İnönü–Wigner sourced for the c → ∞ contraction; it is not evidence for L4')
 dom('D11', 'Known continuation behaviours', 'I1', 'SOURCE+CARD COMPLETE', '—')
 dom('D12', 'Model manifolds and Fisher geometry', 'R7 CF10 Z9 M1 M2', 'SOURCE+CARD COMPLETE', 'quinn2023 quote pending (P-2); M1 rests on the weak S14b and is a statement in log-parameter coordinates (component eigenvalues are not invariant, CFT5e, MMIb); the MBAM procedure is source-only; invariance classified in D33 (research/model_manifold_invariance.md)')
-dom('D13', 'C7: coefficient decay vs Fisher eigenvalue decay', 'M4', 'NEEDS DERIVATION', 'an explicit operator / map / asymptotic theorem, or an exact obstruction. Target object recommended (2026-11-13): hyperribbon widths (MM11), with four gates; the raw-spectrum reading is NEGATIVE (MMIb, CFT5e); derivation not begun')
+dom('D13', 'C7: coefficient decay vs Fisher eigenvalue decay', 'M4', 'NEEDS DERIVATION', 'an explicit operator / map / asymptotic theorem, or an exact obstruction. Target object recommended (2026-11-13): hyperribbon widths (MM11), with four gates; revised 2026-11-15: no single width definition chosen, five preconditions recorded (M4); the raw-spectrum reading is NEGATIVE (MMIb, CFT5e); derivation not begun')
 dom('D32', 'Model-manifold research story and extensions', 'MM0 MM3 MM6 MM7 MM8 MM9 MM10', 'OPEN LONG-TERM', 'every arrow of the story has a status (research/model_manifold_story.md); observation, manifestation and the viewer intuition stay open or philosophical; conscious observer requirement = NOT ESTABLISHED')
-dom('D33', 'Model-manifold invariance', 'MM1 MM2 MM4 MM5 MM11', 'SOURCE+CARD COMPLETE', 'MMI cards; widths carded as a 1-D illustration, the Chebyshev bound source-only; c verdict: STRUCTURAL CONNECTION for the limit role only')
+dom('D33', 'Model-manifold invariance', 'MM1 MM2 MM4 MM5 MM11', 'SOURCE+CARD COMPLETE', 'MMI cards (2026-11-13) scoped by MMP cards (2026-11-15): model image vs manifold, parameters vs local coordinates, J_Y / A notation, positive-definite hypothesis, restricted noise theorem, volume element, geometric widths vs proxies (exact width definitions source-only), boundary language; c: three roles, transfer OPEN')
 dom('D14', 'Wavelets and scattering', 'W1 W2', 'SOURCE-COMPLETE', 'W1 carded; W2: exact first-order parts carded, deformation stability and higher orders source-only')
 dom('D15', 'DYADIC PACKETS; information lost and recovered', 'W3 W4', 'OPEN LONG-TERM', 'DYADIC PACKETS: ORIGINAL USER RESEARCH TERM, OPEN DEFINITION; candidate role in the Reduction / Information-Changing Architecture (not the definition)')
 dom('D16', 'Effective / reduced representations (examples)', 'M3 M2 H7', 'SOURCE+CARD COMPLETE', 'three reductions, each with what survives; compared, not equated. The question itself (H6) is OPEN LONG-TERM')
@@ -849,7 +931,7 @@ CF11B = dict(outcome='CF11-F2', classification='REFINED', outcomes=['CF11-F1', '
              prereg='research/constructions/cf11b_fisher_prereg.md', preregCommit='e6f3db8', record='research/constructions/cf11b_fisher_test.md', pullbackCommonForm='YES',
              correction='architectural correction (2026-11-12): P1, P2, P3 are not three meanings of one word; they are R2 structural invariance, R1 representation covariance and R3 equivariance / intertwining of the Transformation Architecture (TA0). CF11-F2 is unchanged.')
 RATINGS = [
- ('Foundation architecture completeness', 91, 90, 'The model-manifold branch is audited: which quantities are invariant, chart-dependent, noise-dependent or reduction-dependent (MM4, MMI cards); the research story is kept whole with a status per arrow (MM0); the c connection has a restricted verdict (MM5); observation and the viewer intuition are recorded and kept open (MM6, MM7); C7 has one recommended target object (MM11). Still short: DYADIC definition, no general statement for effective representations, no application mathematics, the C7 derivation.'),
+ ('Foundation architecture completeness', 91, 90, 'Unchanged by the 2026-11-15 precision pass, which scoped existing statements (MMP cards) without adding architecture. From the 2026-11-13 audit: the model-manifold branch is audited: which quantities are invariant, chart-dependent, noise-dependent or reduction-dependent (MM4, MMI cards); the research story is kept whole with a status per arrow (MM0); the c connection has a restricted verdict (MM5); observation and the viewer intuition are recorded and kept open (MM6, MM7); C7 has its preconditions recorded (M4, MM11; revised 2026-11-15 from one recommended object). Still short: DYADIC definition, no general statement for effective representations, no application mathematics, the C7 derivation.'),
  ('Mathematical verification coverage', round(100 * len(carded) / len(est)), 96, f'{len(carded)} of {len(est)} established or derived objects have PASS cards (computed). New and carded: MM1, MM2, MM4, MM5, MM11 (MMI cards); R7 now carded (MMIh). Not carded: OB1 (definitional), A3 (wording).'),
  ('Cross-domain validation', 30, 30, 'Unchanged.'),
  ('Project-specific construction maturity', 45, 45, 'Unchanged.'),
@@ -859,7 +941,7 @@ RATINGS = [
 data = dict(about='Foundation dependency architecture (V1, revised in Pass 2, 2026-11-12). Generated by research/tools/foundation_source.py.', layers=LAYERS, stages=STAGES, statuses=STATUS, transferDepths=TD,
             provenanceClasses=PROVENANCE, bridgeStrengths=STRENGTHS, sourceStatuses=SOURCE_STATUSES, sourceClasses=SOURCE_CLASSES, domainStatuses=DOMAIN_STATUSES, externalProvenance=list(EXTERNAL),
             objects=O, bridges=B, sources=S, domains=D, cf11b=CF11B, transformationClasses=TRANSFORMATION_CLASSES,
-            transformationClassesByDomain=[dict(domain=a, classes=b) for a, b in TCLASS], reductionMaps=RMAPS, reductionQuestions=IC, ratings=[dict(dimension=a, rating=b, previous=c, reason=d) for a, b, c, d in RATINGS])
+            transformationClassesByDomain=[dict(domain=a, classes=b) for a, b in TCLASS], reductionMaps=RMAPS, reductionQuestions=IC, ratings=[dict(dimension=a, rating=b, previous=c, reason=d) for a, b, c, d in RATINGS], precisionCorrections=PRECISION)
 (ROOT / 'research/foundation.json').write_text(json.dumps(data, ensure_ascii=False, indent=1) + '\n')
 
 cell = lambda x: '—' if x in (None, '', []) else str(x).replace('|', '\\|')

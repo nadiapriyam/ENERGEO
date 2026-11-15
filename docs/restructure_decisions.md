@@ -1535,3 +1535,77 @@ Nadia's decisions, verbatim. LaTeX converted to plain text and lists joined; not
 > possibility / prediction space → rules constrain an allowable manifold → geometry organizes distinguishability → observation/reduction exposes an accessible manifestation → ask what survives, disappears, or becomes observable
 
 > KNOWN MODEL-MANIFOLD / INFORMATION GEOMETRY; PROJECT SYNTHESIS; OPEN PHYSICAL / QUANTUM-LIKE INTERPRETATION
+
+## Model-manifold precision corrections (2026-11-15)
+
+Nadia's decisions, verbatim. LaTeX was converted to plain text; nothing else was changed. This is a precision pass on the model-manifold audit of 2026-11-13. The audit's records stay: overstated statements are superseded explicitly, with the old wording kept.
+
+> This is a precision-correction pass only. Do not expand scope into a new derivation.
+
+> Do not assume the previous audit wording is automatically correct merely because its tests pass.
+
+> M = Y(Θ) ⊆ P as the model image/model set in full generality.
+
+> It may be called a smooth model manifold on a regular region only under appropriate regularity assumptions, for example constant local rank / immersion-type conditions.
+
+> Do not globally assume smooth-manifold structure where it has not been proved.
+
+> Parameters parameterize the model image.
+
+> They give local coordinates only where the parameterization is locally regular and locally identifiable.
+
+> Different parameter values may represent the same prediction.
+
+> This equivalence holds when the prediction/noise metric Σ⁻¹ is positive definite.
+
+> Therefore changing one positive-definite weighting to another does not change those null directions/rank.
+
+> Matrix determinant components change under coordinate transformation.
+
+> The full differential volume form/element is invariant.
+
+> Do NOT write simply: "Widths are invariant under reparametrization."
+
+> C7 requires an explicitly defined geometric width object before any invariant spectral-decay claim can be evaluated.
+
+> Keep both Transtrum-style and Quinn-style width notions available until the next construction pass determines which one the proposed bridge can actually reach.
+
+> A model-manifold boundary can arise as a limiting/degenerate model family in prediction space as parameters approach appropriate limits.
+
+> Not every parameter-domain boundary gives a distinct model-manifold boundary.
+
+> Not every model-manifold boundary should be described as an ordinary finite boundary point in parameter coordinates.
+
+> A prediction space can be infinite-dimensional while the model image itself remains finite-dimensional.
+
+> Role 1 — representation/coefficient role
+
+> Role 2 — invariant geometric/physical role
+
+> Role 3 — theory-family / singular-limit role
+
+> Call this a degenerate limiting bilinear form.
+
+> Do NOT call that matrix by itself "the Newtonian metric." Galilean/Newton–Cartan structure requires more than this rank-one limit.
+
+> representation-level normalization: established for the stated form if proved; Lorentzian invariant role: established physics in its native setting; theory-family singular limit: structural analogy worth preserving; transfer to arbitrary model-manifold geometry: OPEN; universal "rules constrain states" interpretation: too weak by itself.
+
+> A non-selective projective measurement in a specified basis removes coherence between the measured eigenspaces. Preservation of a quantity such as S_z requires the relevant state/channel/observable relation to be checked explicitly.
+
+> The open research question is whether they share a deeper structural pattern.
+
+> It is NOT established that they are the same operation.
+
+> ESTABLISHED MATHEMATICS; PROJECT-DERIVED; STRUCTURAL ANALOGY; OPEN; PHILOSOPHICAL / HISTORICAL INTUITION
+
+> What changes when a richer state or representation is mapped to an observable manifestation?
+
+> Which structures survive a specified map, reduction, observation, quotient, projection, or limit?
+
+> Do not add a symmetry after seeing the desired conclusion.
+
+> Fourier / spectral / coefficient decay ?⟹ coordinate-independent geometric width hierarchy
+
+> Fourier/spectral decay → approximation/coefficient decay → Quinn-style width bounds
+
+> the exact geometric width object; the prediction/noise metric; the class of models/functions; the exact spectral/coefficient-decay object; what the proposed result adds beyond Quinn et al. 2019 and existing approximation theory.
