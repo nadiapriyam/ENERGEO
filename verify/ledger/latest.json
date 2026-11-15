@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-15T21:20:47+00:00",
- "commit": "5026f4f",
+ "generated": "2026-11-15T22:13:43+00:00",
+ "commit": "067123e",
  "cards": {
   "B1a": {
    "script": "verify_B1_B7.py",
@@ -139,6 +139,132 @@
    "verdict": "PASS",
    "everFailed": false,
    "claim": "symmetric M: K^T M + M K is symmetric, so conservation of z^T M z <=> K^T M + M K = 0; antisymmetric J: K = I conserves z^T J z trivially but K^T J + J K = 2J"
+  },
+  "C7a": {
+   "script": "verify_C7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[C7-A | identity] T_k(cos φ) = cos(kφ): checked symbolically for k = 0…12, and for every k by induction: T_0 = 1, T_1(x) = x, and T_{k+1} = 2xT_k − T_{k−1} matches cos((k+1)φ) + cos((k−1)φ) = 2 cos φ cos(kφ) (symbolic in k). Hence f(x) = Σ a_k T_k(x) on [−1, 1] ⟺ F(φ) = f(cos φ) = Σ a_k cos(kφ): the Chebyshev series of f is the cosine-Fourier series of the even, 2π-periodic F, with the same coefficients"
+  },
+  "C7b": {
+   "script": "verify_C7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[C7-A | normalization] with a_0 = (1/π)∫₀^π F(φ) dφ and a_k = (2/π)∫₀^π F(φ) cos(kφ) dφ (k ≥ 1), equivalently a_k = (2/π)∫₋₁¹ f(x)T_k(x)/√(1 − x²) dx (dx/√(1 − x²) = −dφ), the coefficients of f(x) = 1/(2 − x) are a_0 = 1/√3, a_k = (2/√3)(2 − √3)^k (both integrals agree with the closed form for k = 0…8: φ-integral error 5e-32, x-integral 2e-17, limited by the endpoint singularity of the quadrature). The complex Fourier coefficients of F are F̂(0) = a_0 and F̂(±k) = a_k/2 (k ≥ 1): the factor 2 and the halved a_0 are the only convention differences"
+  },
+  "C7c": {
+   "script": "verify_C7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[C7-B | Fourier strip ⟺ Bernstein ellipse] x = cos(φ + iη) = cos φ cosh η − i sin φ sinh η traces the Bernstein ellipse with semi-axes cosh η, sinh η, whose sum is e^η = ρ (symbolic). So 'f analytic in E_ρ with |f| ≤ M' (Quinn, Theorem 1) is 'F(φ) = f(cos φ) analytic in the strip |Im φ| < log ρ with |F| ≤ M' (a Fourier statement). For f = 1/(2 − x) the pole x = 2 = cos(iη*) gives ρ* = e^{η*} = 2 + √3, exactly the decay ratio of C7b. Theorem 1(ii) instance at ρ = 3: M = max_(E_3)|f| = 3 = 1/(2 − 5/3), and |a_0| ≤ M, |a_k| ≤ 2Mρ^(−k) for k = 1…30"
+  },
+  "C7d": {
+   "script": "verify_C7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[uniformity | counterexample A] f_θ(x) = cos(θx) has Chebyshev coefficients a_2m = 2(−1)^m J_2m(θ) (Jacobi–Anger; checked at θ = 5), so each member decays super-geometrically (|a_30(5)| < 1e−10). But over θ ∈ [0, 300] there is no uniform fast envelope: sup_θ |a_40(θ)| = 0.389, so a geometric envelope Cρ^(−k) would need C ≥ 0.39·ρ^40. The image at 6 sample points does not form a width hierarchy: for θ ∈ [0, 400] the point cloud has σ_6/σ_1 = 0.980, while for θ ∈ [0, 1] (where a uniform envelope exists) it is 7.8e-15. Pointwise spectral decay is not sufficient; C7 needs a family-wide envelope sup_θ |a_k(θ)| ≤ r_k"
+  },
+  "C7e": {
+   "script": "verify_C7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[C7-B | envelope] for the family f_θ(x) = 1/(θ − x), θ ∈ [2, 3]: a_0(θ) = 1/√(θ² − 1), a_k(θ) = (2/√(θ² − 1))(θ − √(θ² − 1))^k (checked against the cosine transform at θ = 2.5); for every k = 0…11 the supremum over θ is attained at θ = 2, so the family has the uniform envelope r_k = a_k(2) = (2/√3)(2 − √3)^k (r_0 = 1/√3). The envelope is a property of the set of functions, not of any one member"
+  },
+  "C7f": {
+   "script": "verify_C7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[C7-C | evaluation operator] at sample points x_1…x_N, the truncated part p_(m−1)(θ) = Σ_(k<m) a_k(θ)T_k evaluates as V_m a(θ) with V_ik = T_k(x_i) (exact for polynomials); the full prediction is Y(θ) = V_m a(θ) + e(θ) with every |e_i(θ)| ≤ R_m = Σ_(k≥m) r_k. For 1/(θ − x), N = 8 random points, m = 5: max |e_i| = 1.880e-03 ≤ R_5 = 2.179e-03. So Y(Θ) ⊆ V_m Q_m ⊕ [−R_m, R_m]^N, Q_m = {|a_k| ≤ r_k}"
+  },
+  "C7g": {
+   "script": "verify_C7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[C7-C | box vs ball] coordinatewise bounds |a_k| ≤ r_k define a box; its image under V is a zonotope Z = VD·[−1, 1]^m with support function h_Z(u) = ‖DVᵀu‖₁, not an ellipsoid. Relaxing the box to the ball ‖z‖₂ ≤ √m costs the factor √m: h_Z(u) ≤ √m‖DVᵀu‖₂ = h_E(u) (2000 directions, N = m = 8), and along the first principal axis h_Z/h_E = 0.354 < 1, so the end of that axis lies in E but not in Z. Quinn's box |c̃_0| ≤ M, |c̃_j| ≤ 2M has largest norm M√(4N − 3) at a corner; the stated radius 4M√(4N − 3) is valid but loose by 4; Eq. (8) uses M√(4N − 3)"
+  },
+  "C7h": {
+   "script": "verify_C7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[C7-C | axes] the ball of radius r maps under X to an ellipsoid with semi-axes rσ_j(X) (support function r‖Xᵀu_j‖ = rσ_j). Quinn's bound σ_j(JD) ≤ √N ρ^(−j+2)/√(ρ² − 1), j ≥ 2, holds at 12 random nodes (ρ = 2); the elementary bound σ_j(VD) ≤ ‖V‖₂ σ_j(D) holds as well. At Chebyshev nodes x_i = cos((2i − 1)π/2N), which are equally spaced in φ, discrete cosine orthogonality gives JᵀJ = diag(N, N/2, …, N/2), so the axes are EXACT: σ_1 = √N, σ_j = √(N/2)ρ^(−(j−1)) (j ≥ 2); Quinn's bound is loose there by 1.633 = √2ρ/√(ρ² − 1)"
+  },
+  "C7i": {
+   "script": "verify_C7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[C7-C | approximation error] a uniform envelope gives sup_θ ‖f_θ − p_(m−1)(θ)‖∞ ≤ R_m = Σ_(k≥m) r_k (|T_k| ≤ 1; the Chebyshev series of a continuous f with summable coefficients converges uniformly to f). For 1/(θ − x), θ ∈ [2, 3]: the worst sup-error over θ is ≤ R_m for m = 1…10 (m = 5: 2.179e-03 ≤ 2.179e-03). For a geometric envelope r_k = 2Mρ^(−k) this is R_m = 2Mρ^(1−m)/(ρ − 1), Quinn's Theorem 1(i); here it is also below the ρ = 3, M = 3 instance of that bound"
+  },
+  "C7j": {
+   "script": "verify_C7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[C7-C | Quinn Eq. (2), error term] exact family at N = 2 points x = ±1 (K = 2 ≤ N): f(x) = c_0 + e T_2(x) with |c_0| < r, |e| ≤ ε, so p_1 = c_0 and ‖f − p_1‖∞ = |e|. With r = 1, ε = 0.1, X = J has σ_1 = σ_2 = √2, so Eq. (2)'s hyperellipsoid is the disk of radius rσ + ε = 1.5142; the model point (c_0 + ε)(1, 1) with c_0 = 0.999 has norm 1.5542: outside. The sup-norm error is a box [−ε, ε]^N (Euclidean radius √N ε), and an ellipsoid ⊕ box is not the ellipsoid with additively enlarged axes. Valid replacements: (1) extent along the j-th axis u_j of H_P ≤ 2rσ_j + 2ε‖u_j‖₁ (≤ 2rσ_j + 2√N ε): equality is attained here; (2) Y ⊆ the ellipsoid with semi-axes √2·√(r²σ_j² + Nε²) (support functions; 20000 random family points inside)"
+  },
+  "C7k": {
+   "script": "verify_C7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[C7-C | reparametrization] the hypotheses (a uniform envelope over the SET {f_θ}) and the enclosure (V, D, R_m) do not involve θ-coordinates: for 1/(θ − x) charted by θ ∈ [2, 3] or by θ = 2 + φ³, φ ∈ [0, 1], the envelopes agree to 1e−14 for k = 0…9, so W_j^bound is unchanged. The Fisher metric at the same point is not: g_φ/g_θ = (dθ/dφ)² = 0.5625 at φ = 0.5. The enclosure is a prediction-space object; Fisher eigenvalues are chart-dependent (MMIb)"
+  },
+  "C7l": {
+   "script": "verify_C7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[metric dependence | counterexample B] the same envelope and sample points under the prediction metric W = diag(1, …, 1, 10⁶): σ_1 grows by 402× and the ratio σ_2/σ_1 moves from 3.789e-01 to 1.438e-03: the apparent hierarchy changes. What survives is the upper bound σ_j(W^(1/2)VD) ≤ ‖W^(1/2)V‖₂ r_(j): the envelope's rate with a metric-dependent constant. Widths are prediction-metric dependent"
+  },
+  "C7m": {
+   "script": "verify_C7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[sampling dependence | counterexample C] with NO coefficient decay (r_k ≡ 1), the evaluation matrix alone decides: at 10 Chebyshev nodes σ_10/σ_1 = 1/√2 (no hierarchy), at 10 points clustered in [0.9, 1] σ_10/σ_1 = 8.6e-18. Finite-N prediction-space axes depend strongly on where the model is sampled"
+  },
+  "C7n": {
+   "script": "verify_C7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[direction of implication] a uniform envelope is SUFFICIENT for the enclosure bound; it is not necessary for a width hierarchy. (1) f_θ = θT_20(x), θ ∈ [0, 1]: the image at 25 Chebyshev nodes is a segment (one nonzero width, σ_2/σ_1 < 1e−12), yet the envelope is r_20 = 1 and 0 elsewhere: hierarchy with no coefficient decay. (2) C7m: clustered sampling produces a hierarchy from a flat envelope. Hierarchies can arise for reasons unrelated to Fourier / Chebyshev smoothness"
+  },
+  "C7o": {
+   "script": "verify_C7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[upper bound only | counterexample E] f_θ(x) = θ|x|, θ ∈ [0, 1]: the coefficients of |x| decay only like k^(−2) (a_0 = 2/π, a_2m = (−1)^(m+1)·4/(π(4m² − 1))), so the enclosure's axes decay slowly (σ_2/σ_1 = 0.471 for VD at 16 Chebyshev nodes); the actual image is a segment (σ_2/σ_1 < 1e−12). Weak spectral decay does not imply a wide image: the bound is an upper bound, not the width spectrum"
+  },
+  "C7p": {
+   "script": "verify_C7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[enclosure ≠ manifold width | counterexample F] a_k(θ) = (θ/ρ)^k, θ ∈ [−1, 1], ρ = 2, i.e. f_θ(x) = (1 − (θ/ρ)x)/(1 − 2(θ/ρ)x + (θ/ρ)²) (Chebyshev generating function; checked at θ = 0.7): strong decay, but the coefficients are correlated and fill only a curve inside the envelope box. At 10 Chebyshev nodes, the image's extent along each axis of the enclosure is below the bound (zonotope + 2R_m‖u‖₁ error term) for all 10 axes, but along axis 3 it is only 0.495 of it. The image is a 1-parameter curve whose own point-cloud spectrum decays faster than the enclosure's axis ratios (j = 6: σ_6/σ_1 = 1.0e-03 for the curve vs 2.2e-02 for the enclosure)"
+  },
+  "C7q": {
+   "script": "verify_C7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[actual width vs W_j^bound] for 1/(θ − x), θ ∈ [2, 3], at 8 Chebyshev nodes: along every principal axis u_j of the enclosure, the actual extent of the model image E_j = sup_(θ,θ′) u_j·(Y(θ) − Y(θ′)) is ≤ W_j^bound = 2h_Z(u_j) + 2R_m‖u_j‖₁ on all 8 axes, with E_j/W_j^bound between 0.19 and 0.45: the bound overestimates by 2× or more on every axis. The image is close to a curve (point-cloud σ_2/σ_1 = 0.028, σ_3/σ_1 = 7.8e-04). Three objects stay distinct: the actual image's extents, the enclosing set, and the bound on its widths"
+  },
+  "C7r": {
+   "script": "verify_C7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[direct periodic route] for 2π-periodic f_θ(t) = Σ f̂_θ(k)e^(ikt) with |f̂_θ(k)| ≤ r_|k| uniformly, at N equally spaced samples the Fourier evaluation matrix has orthogonal columns (FᴴF = N·I for 2K + 1 ≤ N), so the ellipsoid axes are EXACTLY √N × the sorted envelope (each r_k twice, for ±k). At non-uniform samples only σ_j(FD) ≤ ‖F‖₂ r_(j) holds, without equality. Modes |k| ≥ N alias onto lower ones (e^(i(k+N)t_j) = e^(ikt_j)), so the tail must be counted as error. This is discrete Fourier orthogonality plus a singular-value inequality: elementary, not a new theorem"
+  },
+  "C7s": {
+   "script": "verify_C7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[function space; N-dependence] the uniform envelope gives an N-independent statement: every f_θ lies within sup-norm distance R_m of the m-dimensional polynomial space Π_(m−1), so the Kolmogorov m-width d_m({f_θ}; C[−1, 1]) ≤ R_m. At N samples (Euclidean) the distance of Y(θ) to range(V_m) is ≤ √N·R_m; in the RMS metric ‖·‖₂/√N it is ≤ R_m for every N (1/(θ − x), m = 5: 1.17e-03, 1.17e-03, 1.17e-03 ≤ R_5 = 2.18e-03 at N = 8, 32, 128). A finite-N bound with a √N factor is not, by itself, an infinite-dimensional theorem; the function-space statement is the N-free one"
+  },
+  "C7t": {
+   "script": "verify_C7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[the project's model F-C] y_θ(t) = e^(−θ₁t) + e^(−θ₂t), t ∈ [0, 1] (x = 2t − 1), θ ∈ [0, 4]² (a bounded domain is needed for a uniform envelope): the coefficients of e^(−s(x+1)) are e^(−s)I_0(s) and 2(−1)^k e^(−s)I_k(s) (checked), the uniform envelope r_k = 2·sup_s |…| decays super-geometrically (r_10/r_1 = 1.9e-07), and at 8 Chebyshev nodes the extent of the F-C image along every axis of the enclosure is below W_j^bound (all 8 axes; e.g. axis 2: 1.753e+00 ≤ 3.506e+00). The enclosure is the same for θ or log θ charts (C7k), unlike the Fisher eigenvalues (MMIb)"
+  },
+  "C7u": {
+   "script": "verify_C7.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[C7 verdict] principal status C7-KNOWN-REFORMULATION. The chain holds as a SUFFICIENT, UPPER-BOUND, restricted statement: cosine-Fourier coefficients of F_θ(φ) = f_θ(cos φ) are the Chebyshev coefficients of f_θ (exact; C7a, C7b); strip analyticity of F_θ is Bernstein-ellipse analyticity of f_θ (C7c); a FAMILY-WIDE envelope r_k ≥ sup_θ |a_k(θ)| (C7d, C7e) bounds the truncation error by R_m (C7i) and encloses Y(Θ) ⊆ ℝᴺ in V_m D_m·[−1, 1]^m ⊕ [−R_m, R_m]^N, whose widths are bounded by r_k and the evaluation operator (C7f–C7h, C7s), independently of the parameterization (C7k). Every ingredient is Quinn et al. 2019 plus standard approximation theory after x = cos φ. It is not necessary (C7n), not exact (C7o–C7q), metric- and sampling-dependent (C7l, C7m), and Quinn's Eq. (2) error term needs the correction of C7j"
   },
   "C8a": {
    "script": "verify_C8_C9.py",

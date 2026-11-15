@@ -941,7 +941,7 @@
   {
    "quantity": "Geometric widths: Transtrum-style geodesic widths",
    "definition": "widths of the image measured along geodesics in prediction space (TMS 2011; definition to be taken from the source text)",
-   "coordinateInvariant": "CONDITIONAL: potentially YES if the start point and directions are fixed geometrically in prediction space; NO if the directions are a chart's FIM eigendirections (MMPg)",
+   "coordinateInvariant": "CONDITIONAL: potentially YES if the start point and directions are fixed geometrically in prediction space; NO if the directions are a chart's FIM eigendirections (MMPg). Source-locked 2026-11-15: TMS 2011 take \"each of the eigendirections of the metric\" from \"some point located near the center\", so the source definition is chart-dependent (T-TMS-WIDTHS)",
    "embedding": "YES: depends on the prediction metric and the outputs",
    "model": "yes",
    "noise": "yes",
@@ -969,6 +969,26 @@
    "c7": "candidate C7 width object (kept)",
    "invariant": "conditional",
    "cards": [],
+   "group": "geometric"
+  },
+  {
+   "quantity": "Quinn enclosure axes W_j^bound (source-locked, C7 pass 1)",
+   "definition": "bounds on the extent of the image along the principal axes of V_m D_m·{‖z‖₂ ≤ √m} from a uniform coefficient envelope (Quinn et al. 2019 Eq. 1, 8, read in arXiv v1; error term corrected, C7j)",
+   "coordinateInvariant": "YES: built from the set {f_θ}, the sample points and the envelope only; unchanged by reparametrization (C7k), unlike the Fisher metric",
+   "embedding": "YES: depends on the sample points and the prediction metric (C7l, C7m)",
+   "model": "yes (through the envelope)",
+   "noise": "yes",
+   "reduction": "yes",
+   "source": "SRC-QUINN-2019 (full text, arXiv v1); C7f–C7k",
+   "failure": "an upper bound only: actual extents 0.19–0.45 of it (C7q)",
+   "c7": "C7's primary target (C7 pass 1)",
+   "invariant": "yes",
+   "cards": [
+    "C7k",
+    "C7h",
+    "C7f",
+    "C7q"
+   ],
    "group": "geometric"
   },
   {
@@ -1804,6 +1824,19 @@
     "why": "invariant, but needs a system-supplied reference tensor h; none is supplied"
    }
   ],
+  "pass1": {
+   "date": "2026-11-15",
+   "record": "research/constructions/c7_fourier_width.md",
+   "principal": "C7-KNOWN-REFORMULATION",
+   "preconditions": [
+    "width object: the Quinn-style enclosure W_j^bound (source-locked; Transtrum widths not used, T-TMS-WIDTHS)",
+    "metric: Euclidean on N samples; sup norm in function space",
+    "class: families on [−1, 1] with a family-wide summable coefficient envelope",
+    "decay object: r_k ≥ sup_θ |a_k(θ)| for the cosine-Fourier / Chebyshev coefficients",
+    "beyond Quinn 2019: reformulation only (x = cos φ, general envelope, zonotope form, exact axes at Chebyshev nodes, corrected Eq. (2) error term)"
+   ],
+   "result": "the bridge holds as a RESTRICTED STRUCTURAL CONNECTION (sufficient, upper bound); C7 as first posed (Fisher spectra) stays OPEN"
+  },
   "history": [
    {
     "date": "2026-11-13",

@@ -282,6 +282,13 @@ Not C7's object:
 
 Superseded (2026-11-13, kept): "hyperribbon widths" (one recommended target object, with gates). Superseded on 2026-11-15: a single width object was named before its definition was fixed, and widths were stated as parametrization-independent without separating geometric widths from chart proxies (MMPg).
 
+**Update, C7 pass 1 (2026-11-15).** The status and readiness above are the state before pass 1. Pass 1 fixed the five preconditions for a restricted class and reached principal status C7-KNOWN-REFORMULATION; the bridge holds as a RESTRICTED STRUCTURAL CONNECTION (sufficient, upper bound); C7 as first posed (Fisher spectra) stays OPEN. Record: `research/constructions/c7_fourier_width.md`.
+1. width object: the Quinn-style enclosure W_j^bound (source-locked; Transtrum widths not used, T-TMS-WIDTHS)
+2. metric: Euclidean on N samples; sup norm in function space
+3. class: families on [−1, 1] with a family-wide summable coefficient envelope
+4. decay object: r_k ≥ sup_θ |a_k(θ)| for the cosine-Fourier / Chebyshev coefficients
+5. beyond Quinn 2019: reformulation only (x = cos φ, general envelope, zonotope form, exact axes at Chebyshev nodes, corrected Eq. (2) error term)
+
 ## Negative results
 
 | Result | Status | Cards |

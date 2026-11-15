@@ -889,6 +889,43 @@ T('T-SIMPLER-BOUNDARY-Q', 'Simpler observable structure as a boundary of a riche
   bounds=['Exact for stated limits (paper-backed: Transtrum–Qiu 2014, Quinn et al. 2023). A limit is not a map on states: the Reduction architecture records it as a family degeneration, not as Φ: X → Y.'],
   acts=['Guide'], audit=MM_AUDIT, related=['T-EFFECTIVE-Q', 'T-REDUCTION-ARCH', 'T-MM-STORY'], ref='model-manifold audit, boundaries')
 
+# ── C7 construction pass 1 (2026-11-15) ──
+C7_AUDIT = ('missing', 'stated in the C7 construction pass 1 brief (2026-11-15)')
+C7REC = 'research/constructions/c7_fourier_width.md'
+ACTS_ALREADY_NEW |= {'T-C7-GOV', 'T-C7-BRIDGE', 'T-C7-SPECTRAL-CHAIN', 'T-C7-UNIFORM', 'T-C7-NOT-NECESSARY', 'T-TMS-WIDTHS'}
+T('T-C7-GOV', 'C7: do not force a positive theorem', 'Do not force a positive theorem.', RD, U, MR, GOV,
+  variants=[('Do not invent another connection merely to rescue C7.', RD), ('A restricted theorem, upper-bound theorem, equivalence under assumptions, or exact counterexample is an acceptable C7 result.', RD)],
+  norm='Method / governance rule for C7: a restricted theorem, an upper bound, an equivalence under assumptions or an exact counterexample are all acceptable outcomes; a failed arrow is preserved and named, never rescued by a new connection.',
+  acts=['Guide'], audit=C7_AUDIT, related=['T-C7', 'T-C7-BRIDGE'], ref='C7 pass 1, 0')
+T('T-C7-BRIDGE', 'C7 bridge: spectral coefficient decay ⟹ prediction-space width hierarchy', 'Fourier / spectral coefficient decay ⟹ coordinate-independent prediction-space width hierarchy', RD, U, 'derived-connection', 'derived',
+  norm='C7-R (restricted): if the cosine-Fourier coefficients of F_θ(φ) = f_θ(cos φ) (equivalently the Chebyshev coefficients of f_θ) obey a FAMILY-WIDE envelope |a_k(θ)| ≤ r_k with Σ r_k < ∞, then the model image Y(Θ) at N sample points lies in V_m D_m·[−1, 1]^m ⊕ [−R_m, R_m]^N, R_m = Σ_(k≥m) r_k, so its extent along every direction u is ≤ 2‖D_m V_mᵀu‖₁ + 2R_m‖u‖₁, its distance to an m-dimensional subspace is ≤ √N R_m, and the function family has Kolmogorov m-width ≤ R_m in C[−1, 1]. The bound is reparametrization-invariant, metric- and sampling-dependent, an UPPER bound only, and not necessary for a hierarchy.',
+  pro=[('card:C7a', 'exact coefficient identity'), ('card:C7f', 'evaluation operator and enclosure'), ('card:C7h', 'axes: exact at Chebyshev nodes; Quinn Theorem 2'), ('card:C7i', 'tail bound'),
+       ('card:C7k', 'reparametrization-invariant'), ('card:C7s', 'N-independent function-space form'), ('card:C7t', 'holds on the project\'s F-C model')],
+  con=[('card:C7d', 'pointwise decay without a uniform envelope gives nothing'), ('card:C7n', 'a hierarchy can occur without coefficient decay'), ('card:C7q', 'the bound overestimates the actual widths 2–5×'),
+       ('card:C7l', 'metric-dependent'), ('card:C7m', 'sampling-dependent')],
+  bounds=['Principal status C7-KNOWN-REFORMULATION: Quinn, Wilber, Townsend, Sethna 2019 (arXiv v1) plus standard approximation theory after x = cos φ; elementary extensions only (general envelope, zonotope form, exact axes at Chebyshev nodes). Novelty: reformulation.',
+          'RESTRICTED STRUCTURAL CONNECTION, not universal: sufficient, upper-bound, for uniformly enveloped families on an interval.'],
+  acts=['Guide'], audit=C7_AUDIT, related=['T-C7', 'T-C7-SPECTRAL-CHAIN', 'T-C7-UNIFORM', 'T-C7-NOT-NECESSARY', 'T-INFOGEO'], ref='C7 pass 1')
+T('T-C7-SPECTRAL-CHAIN', 'Orthogonal spectral representation → hierarchical model geometry', 'orthogonal spectral representation → decay of representation coefficients → bounded accessible directions in prediction space → hierarchical model geometry', RD, U, 'derived-connection', 'derived',
+  variants=[('If this chain is proved only under restricted assumptions, label it RESTRICTED STRUCTURAL CONNECTION, not universal.', RD)],
+  norm='Arrow by arrow (C7 pass 1): orthogonal representation → coefficient decay: a uniform envelope of cosine-Fourier / Chebyshev coefficients (hypothesis, exact identity C7a); → bounded accessible directions: the enclosure Y(Θ) ⊆ V_m D_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (theorem, C7f–C7i); → hierarchical model geometry: only as an UPPER bound on the image\'s widths (C7o–C7q), not as its width spectrum, and not necessary (C7n).',
+  pro=[('card:C7f', ''), ('card:C7h', ''), ('card:C7u', 'verdict')], con=[('card:C7o', 'bound, not width'), ('card:C7n', 'not necessary')],
+  bounds=['RESTRICTED STRUCTURAL CONNECTION (Nadia\'s label for a chain proved only under restricted assumptions).'],
+  acts=['Guide'], audit=C7_AUDIT, related=['T-C7-BRIDGE', 'T-C7'], ref='C7 pass 1, 13')
+T('T-C7-UNIFORM', 'Pointwise spectral decay does not constrain the global geometry', 'A single function having fast Fourier decay does not automatically constrain the global geometry of the entire model image.', RD, U, 'established', 'established',
+  pro=[('card:C7d', 'f_θ = cos(θx): every member super-geometric, no uniform envelope, no width hierarchy (σ_6/σ_1 = 0.980)')],
+  bounds=['The bridge needs a family-wide envelope sup_θ |a_k(θ)| ≤ r_k; Quinn\'s Theorem 1 states its bound "uniformly in θ".'],
+  acts=['Guide'], audit=C7_AUDIT, related=['T-C7-BRIDGE'], ref='C7 pass 1, 6')
+T('T-C7-NOT-NECESSARY', 'Hierarchies need not come from smoothness', 'A model can potentially possess hierarchical widths for reasons unrelated to Fourier/Chebyshev smoothness.', RD, U, 'established', 'established',
+  pro=[('card:C7n', 'θT_20: a one-width image with no coefficient decay'), ('card:C7m', 'clustered sampling: hierarchy from a flat envelope')],
+  bounds=['Coefficient decay is SUFFICIENT for the enclosure bound and NOT NECESSARY for a hierarchy; the implication is not reversed.'],
+  acts=['Guide'], audit=C7_AUDIT, related=['T-C7-BRIDGE'], ref='C7 pass 1, 12')
+T('T-TMS-WIDTHS', 'Geodesic widths along chart eigendirections are not an invariant spectrum', 'Geodesic length itself is coordinate invariant, but a collection of widths selected by coordinate-dependent eigendirections need not automatically define an invariant width spectrum.', RD, U, 'established', 'established',
+  variants=[('Do NOT assume that “Transtrum geodesic widths” are a coordinate-independent invariant object merely because geodesic length is invariant.', RD)],
+  pro=[('card:MMPg', 'the metric eigendirections, pushed to prediction space, rotate with the chart (0.626°, 4.43°)'), ('source:research/sources/tms2011.md', 'widths along "each of the eigendirections of the metric" from "some point located near the center"')],
+  bounds=['Transtrum-style widths are not used as C7\'s primary invariant object; the Quinn-style enclosure is.'],
+  acts=['Guide'], audit=C7_AUDIT, related=['T-C7', 'T-INFOGEO'], ref='C7 pass 1, 1')
+
 PAIR_A = proof_target('Starting from the established common zero-sum form Σv_i = 0, identify all additional invariants/relations of the mass system that can be translated into mathematically meaningful tests on the directional cancellation system.',
                       requiredObjects=['the established shared form Σv_i = 0 (pair.A.sharedAlgebraicForm)'])
 next(r for r in R if r['id'] == 'T-Q.pairA-transfer')['proofTarget'] = PAIR_A
@@ -1199,6 +1236,24 @@ note15('T-MM-STORY', 'Precision pass (2026-11-15): every arrow also carries a st
        'precision pass: arrow statuses (five classes)', pro=[('card:MMPa', 'model image vs manifold')])
 add_variant('T-MM-GOV', 'Do not assume the previous audit wording is automatically correct merely because its tests pass.')
 byid['T-MM-GOV']['history'].append(dict(date=PREC, change='variant added (precision pass)'))
+# C7 construction pass 1 (2026-11-15): notes and ratings; T-C7 stays OPEN
+note15('T-C7', 'C7 pass 1 (2026-11-15): the bridge "Fourier / spectral coefficient decay ⟹ coordinate-independent prediction-space width hierarchy" was constructed for uniformly enveloped families on an interval (T-C7-BRIDGE): principal status C7-KNOWN-REFORMULATION (Quinn et al. 2019 plus standard approximation theory after x = cos φ), an UPPER bound only, not necessary (C7n), not exact (C7o–C7q), failing for pointwise decay (C7d). C7 as first posed here (coefficient spectra vs Fisher / sloppy spectra) stays OPEN: no invariant relation to Fisher eigenvalues was found, and raw Fisher spectra are chart-dependent (MMIb). Record: research/constructions/c7_fourier_width.md.',
+       'C7 pass 1: bridge constructed (known reformulation); C7 as posed stays OPEN', pro=[('card:C7u', 'pass-1 verdict')], con=[('card:C7q', 'enclosure, not widths')])
+note15('T-INFOGEO', 'C7 pass 1 (2026-11-15): a prediction-space width bound that IS chart-independent: the Quinn-style enclosure from a uniform coefficient envelope (C7f–C7k); Transtrum-style widths along chart eigendirections are not an invariant spectrum (T-TMS-WIDTHS).',
+       'C7 pass 1: invariant enclosure recorded', pro=[('card:C7k', 'enclosure unchanged by reparametrization')])
+note15('T-PREDICTION-INFINITE', 'C7 pass 1 (2026-11-15): with a uniform coefficient envelope the function family has Kolmogorov m-width ≤ R_m in C[−1, 1], an N-independent statement; at N samples the Euclidean bound carries √N (C7s).',
+       'C7 pass 1: N-independent function-space bound recorded', pro=[('card:C7s', '')])
+C7RATE = '2026-11-15'
+def rate_c7(rid, breadth_int, *a, **k):
+    rate(rid, *a, **k)
+    byid[rid]['assessment']['date'] = C7RATE
+    byid[rid]['assessment']['applicationBreadth'] = breadth_int
+    byid[rid]['assessment']['novelty'] = 'VALIDATION OF KNOWN MATHEMATICS'
+rate_c7('T-C7-BRIDGE', 3, KN, MULTI, 30, 15, 'Valid sufficient upper bound for uniformly enveloped families, checked on four families including F-C. Every ingredient is Quinn et al. 2019 or standard approximation theory after x = cos φ. It gives no lower bound and no converse.',
+        'A lower bound on the actual widths under a stated non-degeneracy condition, or a relation to an invariant geometric spectrum stated before checking.', 'A uniformly enveloped family whose image leaves the stated enclosure (none: C7f–C7t).',
+        GC, ('pass', 'pass', 'partial', 'pass', 'n/a'), depth='STRUCTURAL TRANSFER')
+rate_c7('T-C7-SPECTRAL-CHAIN', 3, KN, MULTI, 30, 15, 'The first three arrows hold for uniformly enveloped families; the last holds only as an upper bound on the image. It is a restricted structural connection, not universal.',
+        'The same as T-C7-BRIDGE.', 'A family where the enclosure fails, or a claimed width spectrum that the bound does not control.', GC, ('pass', 'pass', 'partial', 'pass', 'n/a'), depth='STRUCTURAL TRANSFER')
 update('T-CF11-A', TRIV, bs=60, slop=8, reason='Pass 3: the pattern holds in coordinate-free form (F*T = T) across constant-form, symplectic and homogeneous Fisher geometries, and its boundary is now exact (generic Fisher geometry is not characterized by a transformation group, CFT5f). Application Breadth corrected from 4 to 3: the rubric reserves 4 for a physical/empirical system')
 
 for r in R:

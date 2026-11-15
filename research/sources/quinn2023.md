@@ -13,7 +13,13 @@ The paper treats $c$ as a model parameter. In the limit $c \to \infty$, predicti
 
 ## Verification status
 
-**Not yet quoted from the full text. A direct quote is pending the PDF.**
+**Update (2026-11-15): quoted from the full text; P-2 is closed.** The arXiv v2 text (22 Sep 2022, arXiv:2111.07176v2) was downloaded from arxiv.org and read. The published *Rep. Prog. Phys.* version was not read. The passage, from p. 18 of arXiv v2:
+
+> To begin, consider a multi-parameter model formulated in the context of special relativity and include the speed of light, c, among the parameters. Varying c defines a sequence of models of co-dimension one. In the limit of this sequence c → ∞ the predictions of the model reduce to those of classical Newtonian spacetime. This is, of course, one of the well-known classical limits and formalizes the relationship between relativity and classical kinematics. In geometric language, classical kinematics is a boundary of the manifold of special relativities.
+
+On the hyperribbon bound (p. 15), the review restates Quinn et al. 2019 (`quinn2019.md`) as "a hyper-ellipsoid whose jth largest principal axis length is bounded by a power law ρ^−j". The decay ρ^−j is geometric, not a power law. The 2019 paper, not this review, is the source for C7.
+
+**Earlier status (kept):** "Not yet quoted from the full text. A direct quote is pending the PDF."
 
 | Who | Basis |
 |---|---|

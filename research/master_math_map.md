@@ -604,8 +604,8 @@ supports only the established or derived object it states; it may bear on a hypo
 | Standard Fisher geometry | Fisher information as a Riemannian metric (SRC-RAO-1945, SRC-AMARI-2016); g = JᵀJ/σ² for Gaussian noise (FB6a) | a metric induced by a representation (CF10) | C7 (M4) | the textbook metric is not a Transtrum–Sethna result |
 | Transtrum / Sethna model manifolds | bounded hyperribbons, hierarchical widths, boundaries, sloppy spectra (SRC-TMS-2010, SRC-TMS-2011, SRC-GUTENKUNST-2007, SRC-MACHTA-2013); MBAM (SRC-TRANSTRUM-QIU-2014) | prediction space as a representation geometry (R7, M1, M2) | higher / infinite prediction spaces (T-PREDICTION-INFINITE) | FB11c checks one boundary limit, not MBAM |
 | Quinn et al. (review) | c as a model parameter; the c → ∞ boundary gives Newtonian kinematics (SRC-QUINN-2023; PDF pending, P-2) | the model-manifold boundary statement only | the two roles of c (L4) | C9 is not inferred from it; spacetime ≠ model manifold |
-| Chebyshev widths (Quinn, Wilber, Townsend, Sethna 2019) | smoothness bounds the widths of a hyperellipsoid enclosing the model manifold; geometric decay for analytic models (SRC-QUINN-2019; abstract-level, full text not opened) | hyperribbon widths (MM11) | one of two width notions kept for C7 (MM11, M4); no single definition chosen (2026-11-15) | it is not C7 as posed: C7 compares one signal's coefficients with model geometry |
-| Project C7 | — (no source contains the relation C7 needs) | — | coefficient decay vs Fisher decay (M4; SPECULATIVE PROJECT CONNECTION) | no paper is evidence for C7 | (2026-11-13: target object recommended, MM11; revised 2026-11-15: no single width definition chosen, five preconditions recorded; see below)
+| Chebyshev widths (Quinn, Wilber, Townsend, Sethna 2019) | for models analytic in the Bernstein ellipse E_ρ with |y_θ| ≤ M uniformly in θ, the predictions at N points lie in a hyperellipsoid built from X = JD with axis bounds geometric in ρ (Theorem 1, Theorem 2, Eq. 8; SRC-QUINN-2019, full text of arXiv v1 read 2026-11-15) | the source-locked C7 enclosure W_j^bound (C7C) | the C7 bridge (C7D): C7-KNOWN-REFORMULATION | an upper bound on the manifold's widths, not the widths; the Eq. (2) error term needs the ‖u_j‖₁ factor (C7j) |
+| Project C7 | — (no source contains the relation C7 needs) | — | coefficient decay vs Fisher decay (M4; SPECULATIVE PROJECT CONNECTION) | no paper is evidence for C7 | (2026-11-13: target object recommended, MM11; revised 2026-11-15: no single width definition chosen, five preconditions recorded; see below) C7 pass 1 (2026-11-15): the bridge to a prediction-space enclosure is built (C7A–C7E, principal status C7-KNOWN-REFORMULATION); C7 as first posed (Fisher spectra) stays OPEN.
 | Relativity | Lorentz transformations (SRC-EINSTEIN-1905); the invariant interval and light cone (SRC-MINKOWSKI-1909); contraction to Galilei as c → ∞ (SRC-INONU-WIGNER-1953) and the Carroll limit (SRC-LEVY-LEBLOND-1965) | c in the form and in the limit (L1–L3) | L4: *the same parameter participating in invariant geometry and theory transition may encode a deeper structural relation* (project-origin) | the contraction is not evidence for L4 |
 | Fourier analysis | orthonormality, Parseval, translation → phase, conjugate symmetry, Weyl equidistribution (SRC-STEIN-SHAKARCHI-2003); Wiener–Khinchin (SRC-WIENER-1930, SRC-KHINTCHINE-1934) | the founding evidence | conjugacy and physical pairs (P2) | the defect identities T3, T4 are project-derived (FB1, FB2) |
 | Uncertainty / localization | Δt·Δω ≥ 1/2, equality for Gaussians (SRC-KENNARD-1927, SRC-FOLLAND-SITARAM-1997; convention FB3c) | T5 | the link to spectral spread (BR31) | a different result from the second-moment identity (FB3d) |
@@ -817,6 +817,52 @@ example and that limit (MMPl).
 - Physical manifestation: open (T-PHYSICAL-MANIFEST-Q); needs physical theory or data.
 - These connect to the Reduction architecture's source / manifestation question (T-SOURCE-MANIFEST).
 
+### C7 construction pass 1: coefficient decay → prediction-space enclosure (C7A–C7E, 2026-11-15)
+
+Record: `research/constructions/c7_fourier_width.md` (generated). Cards: C7a–C7u. Sources read in full text (arXiv
+versions) and quoted: `research/sources/quinn2019.md`, `research/sources/tms2011.md`, `research/sources/quinn2023.md`.
+
+**Width object, source-locked.**
+
+- The C7 target is W_j^bound: the Quinn-style enclosure of the model image in prediction space. It is built from a
+  uniform coefficient envelope, the sample points and the evaluation operator.
+- It does not depend on the parameterization (C7k).
+- Transtrum–Machta–Sethna widths are geodesic lengths taken along "each of the eigendirections of the metric" from
+  "some point located near the center". Each length is invariant, but the directions rotate with the chart (MMPg).
+  These widths are not an invariant spectrum and are not used (T-TMS-WIDTHS).
+
+**The chain, arrow by arrow.**
+
+1. C7-A, EXACT IDENTITY (known). The Chebyshev coefficients of f_θ are the cosine-Fourier coefficients of
+   F_θ(φ) = f_θ(cos φ) (T_k(cos φ) = cos kφ):
+   - a_0 = (1/π)∫₀^π F dφ;
+   - a_k = (2/π)∫₀^π F cos kφ dφ;
+   - F̂(±k) = a_k/2.
+2. C7-B, EXACT TRANSFER (the same numbers). Strip analyticity of F_θ is Bernstein-ellipse analyticity of f_θ. A
+   family-wide envelope sup_θ |a_k(θ)| ≤ r_k is REQUIRED for anything global: pointwise decay gives nothing (C7d).
+3. Envelope → approximation control. THEOREM (known):
+   - sup_θ ‖f_θ − p_(m−1)‖∞ ≤ R_m = Σ_(k≥m) r_k;
+   - the Kolmogorov m-width of the family in C[−1, 1] is ≤ R_m, independent of N (C7i, C7s).
+4. Approximation control → prediction-space enclosure. THEOREM, UPPER BOUND ONLY (Quinn 2019, with the Eq. (2) error
+   term corrected):
+   - Y(Θ) ⊆ V_m D_m·[−1, 1]^m ⊕ [−R_m, R_m]^N;
+   - the extent along u is ≤ 2‖D_m V_mᵀu‖₁ + 2R_m‖u‖₁;
+   - at Chebyshev nodes (equally spaced in φ) the axes are exact (C7f–C7h, C7j, C7t).
+5. Enclosure → the model image's own width hierarchy. UPPER BOUND ONLY:
+   - the actual extents are 0.19–0.45 of the bound for 1/(θ − x) (C7q);
+   - the actual widths can be far smaller still (C7o, C7p);
+   - a hierarchy can arise without coefficient decay (C7n, C7m): sufficient, not necessary;
+   - the bound depends on the prediction metric and on the sampling (C7l, C7m).
+
+**Verdict.**
+
+- Principal status: **C7-KNOWN-REFORMULATION**.
+- The chain is a RESTRICTED STRUCTURAL CONNECTION, not universal.
+- Novelty: reformulation. Everything follows from Quinn et al. 2019 and standard approximation theory after
+  x = cos φ. The extensions are elementary: a general envelope, the zonotope form, exact axes at Chebyshev nodes, and
+  the corrected error term.
+- C7 as first posed (coefficient spectra vs Fisher / sloppy spectra) stays OPEN (T-C7).
+
 ## Part X. Original user theories
 
 Every user-origin record, with its original wording, normalized reading and status kept separate, is listed in
@@ -955,6 +1001,12 @@ Only explicit candidates are listed. Ratings are per proposition.
   - "Rules constrain allowed states" stated generally is too weak to test.
   - A function-space prediction space does not make M infinite-dimensional (MMIh).
   - No single construction of "observation" covers dephasing, projection and boundary limits.
+- **C7 pass 1 (2026-11-15):**
+  - Pointwise spectral decay gives no global width control without a uniform envelope (C7d).
+  - Coefficient decay is not necessary for a width hierarchy (C7n, C7m).
+  - The enclosure is an upper bound, not the model image's width spectrum (C7o–C7q).
+  - Quinn's Eq. (2) error term, as written in arXiv v1, fails on an exact two-point family (C7j); corrected forms hold.
+  - Transtrum geodesic widths along chart eigendirections are not an invariant spectrum (T-TMS-WIDTHS).
 - **Model-manifold precision pass (2026-11-15):**
   - Widths along a chart's FIM eigendirections are chart-dependent (MMPg).
   - The raw Hessian is not tensorial off a critical point (MMPh).
@@ -978,19 +1030,19 @@ Only explicit candidates are listed. Ratings are per proposition.
 
 Only material gaps; the full ledger, with a status for each domain, is `research/foundation_completion.md`.
 
-1. **C7 derivation (not begun; NOT READY).** Five preconditions (M4):
-   - the exact geometric width object (Transtrum-style or Quinn-style; both kept);
-   - the prediction/noise metric;
-   - the class of models/functions;
-   - the exact spectral/coefficient-decay object;
-   - what the result adds beyond Quinn et al. 2019 and existing approximation theory.
+1. **C7 after pass 1 (2026-11-15).**
+   - The five preconditions are fixed for a restricted class, and the bridge is built (C7-KNOWN-REFORMULATION).
+   - Open: any LOWER bound linking the coefficient envelope to the actual widths.
+   - Open: C7 as first posed (Fisher spectra).
+   - Next: an adversarial C7 lock / audit pass.
 2. **The CF11 refinement is resolved by the architectural correction.** It is recorded as the Transformation
    Architecture (TA0: R1 / R2 / R3); CF11-R is superseded. The deeper hypothesis (TAH) stays open.
 3. **Provenance.**
-   - The quinn2023 PDF (P-2), and the Quinn et al. 2019 and TMS 2011 texts (widths).
+   - Closed 2026-11-15: P-2. The quinn2023 c-boundary passage is quoted, and Quinn et al. 2019 and TMS 2010/2011 were
+     read and quoted, all in arXiv versions; published journal versions were not read.
    - The ThermaLens mathematics (APPLICATION PROVENANCE INCOMPLETE).
    - The original mass-attraction wording (ORIGINAL VERBATIM NOT RECOVERED).
-   - No source has been quoted at full text.
+   - Four sources are quoted at full text (arXiv versions); the rest are not.
    - R5 has no source.
 4. **Source-only theorems.** These are cited, with instances or exact parts carded; they are not reproved here:
    - the uncertainty inequality;
@@ -1014,3 +1066,4 @@ Resolved:
 - **Model-manifold precision pass (2026-11-15):** the MMP cards scope the audit's wording (model image, coordinates,
   J_Y / A notation, null hypothesis, noise theorem, volume element, widths, boundaries, function-space example, c
   roles, the measurement channel, observation-type operations).
+- **C7 pass 1 (2026-11-15):** the width object was source-locked and the C7 bridge built (C7A–C7E; C7a–C7u).

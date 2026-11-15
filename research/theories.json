@@ -4305,12 +4305,17 @@
         {
           "ref": "card:MMPk",
           "note": "dim P = ∞, dim M = 2; formula model-specific"
+        },
+        {
+          "ref": "card:C7s",
+          "note": ""
         }
       ],
       "evidenceAgainst": [],
       "boundaries": [
         "Model-manifold audit (2026-11-13): for finitely many outputs P = ℝᵐ (finite); for a continuously indexed output with a stated inner product P is a function space (L²), infinite-dimensional, while M keeps the dimension of its identifiable parameters (MMIh: g_ij = 2/(θᵢ + θⱼ)³). \"Infinite prediction space\" is exact in this sense; it is not physical spacetime and not a quantum state space.",
-        "Precision pass (2026-11-15): g_ij = 2/(θᵢ + θⱼ)³ is the Fisher metric of the specific model e^{−θ₁T} + e^{−θ₂T} in L²(0, ∞), not a general formula (the linear model θ₁e^{−T} + θ₂e^{−2T} has a constant metric). Kept: dim P = ∞ while dim M = 2; a prediction space can be infinite-dimensional while the model image remains finite-dimensional."
+        "Precision pass (2026-11-15): g_ij = 2/(θᵢ + θⱼ)³ is the Fisher metric of the specific model e^{−θ₁T} + e^{−θ₂T} in L²(0, ∞), not a general formula (the linear model θ₁e^{−T} + θ₂e^{−2T} has a constant metric). Kept: dim P = ∞ while dim M = 2; a prediction space can be infinite-dimensional while the model image remains finite-dimensional.",
+        "C7 pass 1 (2026-11-15): with a uniform coefficient envelope the function family has Kolmogorov m-width ≤ R_m in C[−1, 1], an N-independent statement; at N samples the Euclidean bound carries √N (C7s)."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -4319,6 +4324,7 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "C7s",
         "MMIh",
         "MMPk"
       ],
@@ -4352,6 +4358,10 @@
         {
           "date": "2026-11-15",
           "change": "precision pass: function-space formula labelled as example-specific"
+        },
+        {
+          "date": "2026-11-15",
+          "change": "C7 pass 1: N-independent function-space bound recorded"
         }
       ],
       "relatedActsRev3": [
@@ -4439,6 +4449,10 @@
         {
           "ref": "card:MMPf",
           "note": "the full volume element is invariant"
+        },
+        {
+          "ref": "card:C7k",
+          "note": "enclosure unchanged by reparametrization"
         }
       ],
       "evidenceAgainst": [
@@ -4462,7 +4476,8 @@
       "boundaries": [
         "\"Exact null direction\" has three possible readings (AMB-14).",
         "Model-manifold audit (2026-11-13): research/model_manifold_invariance.md classifies each quantity. Invariant under reparametrization: rank, nullity, null directions, lengths, the volume element, curvature, widths, the boundary set. Not invariant: matrix entries, det, raw eigenvalues, condition number, Jacobian singular values. Dependent on the noise model: all magnitudes; not the null directions. AMB-14 (\"exact null direction\") resolved for this branch: the statistical null g(v, v) = 0 ⟺ Jv = 0.",
-        "Precision pass (2026-11-15), correcting the 2026-11-13 note above (kept): widths are reparametrization-invariant only when defined from the image set with a fixed prediction metric (chart FIM-eigendirection widths are not, MMPg); \"the boundary set\" splits into five objects (∂Θ, parameter limits, their images, MBAM strata, the topological boundary of Y(Θ); MMPi, MMPj); null directions and rank are unchanged only between fixed positive-definite weights (MMPd, MMPe); the invariant volume object is √det g_θ dθ¹⋯dθⁿ, not √det g alone (MMPf); raw Hessian eigenvalues are chart proxies (MMPh)."
+        "Precision pass (2026-11-15), correcting the 2026-11-13 note above (kept): widths are reparametrization-invariant only when defined from the image set with a fixed prediction metric (chart FIM-eigendirection widths are not, MMPg); \"the boundary set\" splits into five objects (∂Θ, parameter limits, their images, MBAM strata, the topological boundary of Y(Θ); MMPi, MMPj); null directions and rank are unchanged only between fixed positive-definite weights (MMPd, MMPe); the invariant volume object is √det g_θ dθ¹⋯dθⁿ, not √det g alone (MMPf); raw Hessian eigenvalues are chart proxies (MMPh).",
+        "C7 pass 1 (2026-11-15): a prediction-space width bound that IS chart-independent: the Quinn-style enclosure from a uniform coefficient envelope (C7f–C7k); Transtrum-style widths along chart eigendirections are not an invariant spectrum (T-TMS-WIDTHS)."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -4471,6 +4486,7 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "C7k",
         "MMIa",
         "MMIb",
         "MMIe",
@@ -4497,7 +4513,9 @@
       "related": [
         "T-C7",
         "T-MM-STORY",
-        "T-ZERO-LENGTH"
+        "T-ZERO-LENGTH",
+        "T-C7-BRIDGE",
+        "T-TMS-WIDTHS"
       ],
       "history": [
         {
@@ -4511,6 +4529,10 @@
         {
           "date": "2026-11-15",
           "change": "precision pass: invariance note corrected"
+        },
+        {
+          "date": "2026-11-15",
+          "change": "C7 pass 1: invariant enclosure recorded"
         }
       ],
       "relatedActsRev3": [
@@ -4539,6 +4561,10 @@
         {
           "ref": "card:MMIf",
           "note": "a width defined from the image set with a fixed prediction metric is chart-independent (1-D illustration: total length); operational width definitions must still be checked (MMPg)"
+        },
+        {
+          "ref": "card:C7u",
+          "note": "pass-1 verdict"
         }
       ],
       "evidenceAgainst": [
@@ -4553,12 +4579,17 @@
         {
           "ref": "card:MMPg",
           "note": "widths along a chart's FIM eigendirections are chart-dependent"
+        },
+        {
+          "ref": "card:C7q",
+          "note": "enclosure, not widths"
         }
       ],
       "boundaries": [
         "Bessel concerns one vector's coefficients; the sloppy spectrum is a metric's eigenvalues (Gate 3, C7). Kept as an open analogy.",
         "C7 target gate (2026-11-13), answering \"What exact mathematical object on the model-manifold side should be compared?\": raw FIM eigenvalues are NOT the object (coordinate-dependent, MMIb, CFT5e: a NEGATIVE result for that reading). Recommended object: the hyperribbon widths of the model manifold (cross-sectional extents of the image set in a stated prediction-space metric; parametrization-independent, metric-dependent, MMIf). Known mathematics already bounds them by Chebyshev coefficient decay for analytic models (Quinn, Wilber, Townsend, Sethna 2019), so a C7 derivation must state its project-specific residue first. T-C7 stays OPEN; no derivation begun.",
-        "C7 target revised (2026-11-15), superseding the 2026-11-13 recommendation above (kept): C7 requires an explicitly defined geometric width object before any invariant spectral-decay claim can be evaluated. No single width definition is chosen; Transtrum-style geodesic widths and Quinn-style enclosing-hyperellipsoid widths are both kept until the next construction pass. C7 is not \"hyperribbon widths exist\" (established literature). Candidate bridge: Fourier / spectral / coefficient decay ?⟹ coordinate-independent geometric width hierarchy; a possible chain (NOT established): Fourier/spectral decay → approximation/coefficient decay → Quinn-style width bounds. Preconditions: (1) the exact geometric width object; (2) the prediction/noise metric; (3) the class of models/functions; (4) the exact spectral/coefficient-decay object; (5) what the result adds beyond Quinn et al. 2019 and existing approximation theory. T-C7 stays OPEN; no derivation begun."
+        "C7 target revised (2026-11-15), superseding the 2026-11-13 recommendation above (kept): C7 requires an explicitly defined geometric width object before any invariant spectral-decay claim can be evaluated. No single width definition is chosen; Transtrum-style geodesic widths and Quinn-style enclosing-hyperellipsoid widths are both kept until the next construction pass. C7 is not \"hyperribbon widths exist\" (established literature). Candidate bridge: Fourier / spectral / coefficient decay ?⟹ coordinate-independent geometric width hierarchy; a possible chain (NOT established): Fourier/spectral decay → approximation/coefficient decay → Quinn-style width bounds. Preconditions: (1) the exact geometric width object; (2) the prediction/noise metric; (3) the class of models/functions; (4) the exact spectral/coefficient-decay object; (5) what the result adds beyond Quinn et al. 2019 and existing approximation theory. T-C7 stays OPEN; no derivation begun.",
+        "C7 pass 1 (2026-11-15): the bridge \"Fourier / spectral coefficient decay ⟹ coordinate-independent prediction-space width hierarchy\" was constructed for uniformly enveloped families on an interval (T-C7-BRIDGE): principal status C7-KNOWN-REFORMULATION (Quinn et al. 2019 plus standard approximation theory after x = cos φ), an UPPER bound only, not necessary (C7n), not exact (C7o–C7q), failing for pointwise decay (C7d). C7 as first posed here (coefficient spectra vs Fisher / sloppy spectra) stays OPEN: no invariant relation to Fisher eigenvalues was found, and raw Fisher spectra are chart-dependent (MMIb). Record: research/constructions/c7_fourier_width.md."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -4567,6 +4598,8 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "C7q",
+        "C7u",
         "MMIb",
         "MMIf",
         "MMPg",
@@ -4589,7 +4622,11 @@
       "construction": null,
       "proofTarget": null,
       "related": [
-        "T-INFOGEO"
+        "T-INFOGEO",
+        "T-C7-GOV",
+        "T-C7-BRIDGE",
+        "T-C7-SPECTRAL-CHAIN",
+        "T-TMS-WIDTHS"
       ],
       "history": [
         {
@@ -4607,6 +4644,10 @@
         {
           "date": "2026-11-15",
           "change": "evidence note on card:MMIf revised (precision pass): widths were stated as parametrization-independent without separating geometric widths from chart proxies. Previous note: widths are a property of the set and the ambient metric"
+        },
+        {
+          "date": "2026-11-15",
+          "change": "C7 pass 1: bridge constructed (known reformulation); C7 as posed stays OPEN"
         }
       ],
       "relatedActsRev3": [
@@ -13400,6 +13441,459 @@
           "change": "precision pass: boundary language"
         }
       ],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-C7-GOV",
+      "label": "C7: do not force a positive theorem",
+      "words": "Do not force a positive theorem.",
+      "variants": [
+        {
+          "words": "Do not invent another connection merely to rescue C7.",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "A restricted theorem, upper-bound theorem, equivalence under assumptions, or exact counterexample is an acceptable C7 result.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "Method / governance rule for C7: a restricted theorem, an upper bound, an equivalence under assumptions or an exact counterexample are all acceptable outcomes; a failed arrow is preserved and named, never rescued by a new connection.",
+      "origin": "user",
+      "kind": "method-rule",
+      "status": "governance",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "C7 pass 1, 0",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the C7 construction pass 1 brief (2026-11-15)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-C7",
+        "T-C7-BRIDGE"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-C7-BRIDGE",
+      "label": "C7 bridge: spectral coefficient decay ⟹ prediction-space width hierarchy",
+      "words": "Fourier / spectral coefficient decay ⟹ coordinate-independent prediction-space width hierarchy",
+      "variants": [],
+      "normalizedStatement": "C7-R (restricted): if the cosine-Fourier coefficients of F_θ(φ) = f_θ(cos φ) (equivalently the Chebyshev coefficients of f_θ) obey a FAMILY-WIDE envelope |a_k(θ)| ≤ r_k with Σ r_k < ∞, then the model image Y(Θ) at N sample points lies in V_m D_m·[−1, 1]^m ⊕ [−R_m, R_m]^N, R_m = Σ_(k≥m) r_k, so its extent along every direction u is ≤ 2‖D_m V_mᵀu‖₁ + 2R_m‖u‖₁, its distance to an m-dimensional subspace is ≤ √N R_m, and the function family has Kolmogorov m-width ≤ R_m in C[−1, 1]. The bound is reparametrization-invariant, metric- and sampling-dependent, an UPPER bound only, and not necessary for a hierarchy.",
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:C7a",
+          "note": "exact coefficient identity"
+        },
+        {
+          "ref": "card:C7f",
+          "note": "evaluation operator and enclosure"
+        },
+        {
+          "ref": "card:C7h",
+          "note": "axes: exact at Chebyshev nodes; Quinn Theorem 2"
+        },
+        {
+          "ref": "card:C7i",
+          "note": "tail bound"
+        },
+        {
+          "ref": "card:C7k",
+          "note": "reparametrization-invariant"
+        },
+        {
+          "ref": "card:C7s",
+          "note": "N-independent function-space form"
+        },
+        {
+          "ref": "card:C7t",
+          "note": "holds on the project's F-C model"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:C7d",
+          "note": "pointwise decay without a uniform envelope gives nothing"
+        },
+        {
+          "ref": "card:C7n",
+          "note": "a hierarchy can occur without coefficient decay"
+        },
+        {
+          "ref": "card:C7q",
+          "note": "the bound overestimates the actual widths 2–5×"
+        },
+        {
+          "ref": "card:C7l",
+          "note": "metric-dependent"
+        },
+        {
+          "ref": "card:C7m",
+          "note": "sampling-dependent"
+        }
+      ],
+      "boundaries": [
+        "Principal status C7-KNOWN-REFORMULATION: Quinn, Wilber, Townsend, Sethna 2019 (arXiv v1) plus standard approximation theory after x = cos φ; elementary extensions only (general envelope, zonotope form, exact axes at Chebyshev nodes). Novelty: reformulation.",
+        "RESTRICTED STRUCTURAL CONNECTION, not universal: sufficient, upper-bound, for uniformly enveloped families on an interval."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C7a",
+        "C7d",
+        "C7f",
+        "C7h",
+        "C7i",
+        "C7k",
+        "C7l",
+        "C7m",
+        "C7n",
+        "C7q",
+        "C7s",
+        "C7t"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "C7 pass 1",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the C7 construction pass 1 brief (2026-11-15)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-C7",
+        "T-C7-SPECTRAL-CHAIN",
+        "T-C7-UNIFORM",
+        "T-C7-NOT-NECESSARY",
+        "T-INFOGEO",
+        "T-C7-GOV"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-15",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 30,
+        "slopRisk": 15,
+        "why": "Valid sufficient upper bound for uniformly enveloped families, checked on four families including F-C. Every ingredient is Quinn et al. 2019 or standard approximation theory after x = cos φ. It gives no lower bound and no converse.",
+        "increase": "A lower bound on the actual widths under a stated non-degeneracy condition, or a relation to an invariant geometric spectrum stated before checking.",
+        "falsify": "A uniformly enveloped family whose image leaves the stated enclosure (none: C7f–C7t).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "STRUCTURAL TRANSFER",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 3,
+        "novelty": "VALIDATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "T-C7-SPECTRAL-CHAIN",
+      "label": "Orthogonal spectral representation → hierarchical model geometry",
+      "words": "orthogonal spectral representation → decay of representation coefficients → bounded accessible directions in prediction space → hierarchical model geometry",
+      "variants": [
+        {
+          "words": "If this chain is proved only under restricted assumptions, label it RESTRICTED STRUCTURAL CONNECTION, not universal.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "Arrow by arrow (C7 pass 1): orthogonal representation → coefficient decay: a uniform envelope of cosine-Fourier / Chebyshev coefficients (hypothesis, exact identity C7a); → bounded accessible directions: the enclosure Y(Θ) ⊆ V_m D_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (theorem, C7f–C7i); → hierarchical model geometry: only as an UPPER bound on the image's widths (C7o–C7q), not as its width spectrum, and not necessary (C7n).",
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:C7f",
+          "note": ""
+        },
+        {
+          "ref": "card:C7h",
+          "note": ""
+        },
+        {
+          "ref": "card:C7u",
+          "note": "verdict"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:C7o",
+          "note": "bound, not width"
+        },
+        {
+          "ref": "card:C7n",
+          "note": "not necessary"
+        }
+      ],
+      "boundaries": [
+        "RESTRICTED STRUCTURAL CONNECTION (Nadia's label for a chain proved only under restricted assumptions)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C7f",
+        "C7h",
+        "C7n",
+        "C7o",
+        "C7u"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "C7 pass 1, 13",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the C7 construction pass 1 brief (2026-11-15)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-C7-BRIDGE",
+        "T-C7"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-15",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 30,
+        "slopRisk": 15,
+        "why": "The first three arrows hold for uniformly enveloped families; the last holds only as an upper bound on the image. It is a restricted structural connection, not universal.",
+        "increase": "The same as T-C7-BRIDGE.",
+        "falsify": "A family where the enclosure fails, or a claimed width spectrum that the bound does not control.",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "STRUCTURAL TRANSFER",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 3,
+        "novelty": "VALIDATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "T-C7-UNIFORM",
+      "label": "Pointwise spectral decay does not constrain the global geometry",
+      "words": "A single function having fast Fourier decay does not automatically constrain the global geometry of the entire model image.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:C7d",
+          "note": "f_θ = cos(θx): every member super-geometric, no uniform envelope, no width hierarchy (σ_6/σ_1 = 0.980)"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "The bridge needs a family-wide envelope sup_θ |a_k(θ)| ≤ r_k; Quinn's Theorem 1 states its bound \"uniformly in θ\"."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C7d"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "C7 pass 1, 6",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the C7 construction pass 1 brief (2026-11-15)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-C7-BRIDGE"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-C7-NOT-NECESSARY",
+      "label": "Hierarchies need not come from smoothness",
+      "words": "A model can potentially possess hierarchical widths for reasons unrelated to Fourier/Chebyshev smoothness.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:C7n",
+          "note": "θT_20: a one-width image with no coefficient decay"
+        },
+        {
+          "ref": "card:C7m",
+          "note": "clustered sampling: hierarchy from a flat envelope"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Coefficient decay is SUFFICIENT for the enclosure bound and NOT NECESSARY for a hierarchy; the implication is not reversed."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C7m",
+        "C7n"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "C7 pass 1, 12",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the C7 construction pass 1 brief (2026-11-15)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-C7-BRIDGE"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-TMS-WIDTHS",
+      "label": "Geodesic widths along chart eigendirections are not an invariant spectrum",
+      "words": "Geodesic length itself is coordinate invariant, but a collection of widths selected by coordinate-dependent eigendirections need not automatically define an invariant width spectrum.",
+      "variants": [
+        {
+          "words": "Do NOT assume that “Transtrum geodesic widths” are a coordinate-independent invariant object merely because geodesic length is invariant.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:MMPg",
+          "note": "the metric eigendirections, pushed to prediction space, rotate with the chart (0.626°, 4.43°)"
+        },
+        {
+          "ref": "source:research/sources/tms2011.md",
+          "note": "widths along \"each of the eigendirections of the metric\" from \"some point located near the center\""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Transtrum-style widths are not used as C7's primary invariant object; the Quinn-style enclosure is."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "MMPg"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "C7 pass 1, 1",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the C7 construction pass 1 brief (2026-11-15)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-C7",
+        "T-INFOGEO"
+      ],
+      "history": [],
       "relatedActsRev3": [],
       "assessment": null
     }

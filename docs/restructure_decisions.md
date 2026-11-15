@@ -1609,3 +1609,35 @@ Nadia's decisions, verbatim. LaTeX was converted to plain text; nothing else was
 > Fourier/spectral decay → approximation/coefficient decay → Quinn-style width bounds
 
 > the exact geometric width object; the prediction/noise metric; the class of models/functions; the exact spectral/coefficient-decay object; what the proposed result adds beyond Quinn et al. 2019 and existing approximation theory.
+
+## C7 construction pass 1 (2026-11-15)
+
+Nadia's decisions, verbatim. LaTeX was converted to plain text; nothing else was changed. The model-manifold precision pass is accepted provisionally, with the restriction below.
+
+> Do NOT assume that “Transtrum geodesic widths” are a coordinate-independent invariant object merely because geodesic length is invariant.
+
+> The exact width definition must be source-locked before it is used.
+
+> Fourier / spectral coefficient decay ⟹ coordinate-independent prediction-space width hierarchy
+
+> Do not force a positive theorem.
+
+> A restricted theorem, upper-bound theorem, equivalence under assumptions, or exact counterexample is an acceptable C7 result.
+
+> Geodesic length itself is coordinate invariant, but a collection of widths selected by coordinate-dependent eigendirections need not automatically define an invariant width spectrum.
+
+> the principal-axis lengths of a prediction-space enclosing hyperellipsoid, or the corresponding rigorous upper bounds on model-image widths.
+
+> Chebyshev coefficients of f_θ(x) correspond to cosine-Fourier coefficients of F_θ(φ) = f_θ(cos φ).
+
+> A single function having fast Fourier decay does not automatically constrain the global geometry of the entire model image.
+
+> A model can potentially possess hierarchical widths for reasons unrelated to Fourier/Chebyshev smoothness.
+
+> orthogonal spectral representation → decay of representation coefficients → bounded accessible directions in prediction space → hierarchical model geometry
+
+> If this chain is proved only under restricted assumptions, label it RESTRICTED STRUCTURAL CONNECTION, not universal.
+
+> C7-PROVED; C7-RESTRICTED; C7-KNOWN-REFORMULATION; C7-PARTIAL; C7-FAIL
+
+> Do not invent another connection merely to rescue C7.

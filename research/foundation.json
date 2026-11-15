@@ -62,7 +62,8 @@
   "METADATA PARTLY VERIFIED; CLAIM NOT QUOTED",
   "METADATA VERIFIED; CLAIM SNIPPET-CONFIRMED; PDF PENDING",
   "PROJECT NOTE (not an external source)",
-  "APPLICATION PROVENANCE INCOMPLETE"
+  "APPLICATION PROVENANCE INCOMPLETE",
+  "FULL TEXT READ (arXiv version); CLAIM QUOTED"
  ],
  "sourceClasses": [
   "primary",
@@ -401,7 +402,7 @@
    "failureCondition": "—",
    "foundationRole": "parameters represented as predictions",
    "guideLocation": "Guide: model manifolds (Foundation ontology)",
-   "gap": "quinn2023 PDF pending (P-2); the prediction space is finite (ℝᵐ) or a function space (MMIh)",
+   "gap": "quinn2023 c-boundary passage quoted 2026-11-15 (P-2 closed); the prediction space is finite (ℝᵐ) or a function space (MMIh)",
    "provenance": "PRIMARY-PAPER BACKED",
    "sources": [
     "SRC-TMS-2010",
@@ -3286,7 +3287,8 @@
     "S7",
     "MMIb",
     "MMIf",
-    "MMPg"
+    "MMPg",
+    "C7u"
    ],
    "docs": [
     "research/connections/C7.md"
@@ -3302,7 +3304,7 @@
    "transferDepth": "NOT YET FORMALIZED",
    "applicationBreadth": 0,
    "failureCondition": "S14a FAIL kept",
-   "foundationRole": "active open comparison; NOT READY FOR DERIVATION: preconditions (1) the exact geometric width object, (2) the prediction/noise metric, (3) the class of models/functions, (4) the exact spectral/coefficient-decay object, (5) what the result adds beyond Quinn et al. 2019 and approximation theory. Candidate bridge: Fourier / spectral / coefficient decay ?⟹ coordinate-independent geometric width hierarchy (not established). The raw-spectrum reading is NEGATIVE (MMIb, CFT5e); no derivation begun",
+   "foundationRole": "C7 as first posed (coefficient spectra vs Fisher / sloppy spectra): still OPEN. C7 pass 1 (2026-11-15) built the bridge to a prediction-space ENCLOSURE instead (C7A–C7D): principal status C7-KNOWN-REFORMULATION, upper bound only; no invariant relation to Fisher eigenvalues was found (raw Fisher spectra are chart-dependent, MMIb). The raw-spectrum reading is NEGATIVE",
    "guideLocation": "Guide: model manifolds",
    "gap": null,
    "provenance": "SPECULATIVE PROJECT CONNECTION",
@@ -4325,7 +4327,7 @@
    "stages": [
     "CROSS-SYSTEM TRANSFER"
    ],
-   "equation": "kept FAIL cards S14a, C8c, B5a, Z1a, Z2b, CFT6b (check error, re-carded CFT6b2); CF11-B with one meaning of \"preserved\" does not organize generic Fisher geometry (CFT5c); component FIM eigenvalues are not coordinate invariants (CFT5e); weighted centering is not a symmetry (CFT8b); T′ unchanged fails on unequal masses, quantum, Fourier k ≠ 0, orthogonality; contribution geometry fails for spins; R1 misses M5; P1 converse fails; ε undefined off exchange eigenstates; linear template fails on nonlinear zeros",
+   "equation": "kept FAIL cards S14a, C8c, B5a, Z1a, Z2b, CFT6b (check error, re-carded CFT6b2); CF11-B with one meaning of \"preserved\" does not organize generic Fisher geometry (CFT5c); component FIM eigenvalues are not coordinate invariants (CFT5e); weighted centering is not a symmetry (CFT8b); T′ unchanged fails on unequal masses, quantum, Fourier k ≠ 0, orthogonality; contribution geometry fails for spins; R1 misses M5; P1 converse fails; ε undefined off exchange eigenstates; linear template fails on nonlinear zeros; C7 pass 1: pointwise spectral decay gives no global width control (C7d); coefficient decay is not necessary for a width hierarchy (C7n); enclosure axes are not the model image's widths (C7o–C7q); Quinn Eq. (2) error term as written in arXiv v1 fails (C7j); Transtrum geodesic widths along chart eigendirections are not an invariant spectrum (MMPg)",
    "status": "NEGATIVE",
    "cards": [
     "S14a",
@@ -4339,7 +4341,11 @@
     "FS2d",
     "MB2a",
     "Q2g",
-    "Q2b"
+    "Q2b",
+    "C7d",
+    "C7n",
+    "C7o",
+    "C7j"
    ],
    "docs": [
     "research/application_matrix.md"
@@ -4899,6 +4905,232 @@
    "mathematicalStatus": "TEXTBOOK / KNOWN",
    "transformationLevel": [],
    "novelty": "KNOWN MATHEMATICS",
+   "reductionRole": null
+  },
+  {
+   "id": "C7A",
+   "name": "Chebyshev ↔ cosine-Fourier coefficient identity (x = cos φ)",
+   "layer": "ESTABLISHED MATHEMATICS",
+   "stages": [
+    "REPRESENTATION",
+    "RELATION"
+   ],
+   "equation": "T_k(cos φ) = cos(kφ); f(x) = Σ a_k T_k(x) ⟺ F(φ) = f(cos φ) = Σ a_k cos(kφ); a_0 = (1/π)∫₀^π F dφ, a_k = (2/π)∫₀^π F cos(kφ) dφ; F̂(0) = a_0, F̂(±k) = a_k/2",
+   "status": "ESTABLISHED",
+   "cards": [
+    "C7a",
+    "C7b"
+   ],
+   "docs": [
+    "research/constructions/c7_fourier_width.md",
+    "research/sources/quinn2019.md"
+   ],
+   "registry": [],
+   "dependsOn": [],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": 45,
+   "slopRisk": 5,
+   "transferDepth": "TRIVIAL CONSEQUENCE",
+   "applicationBreadth": 3,
+   "failureCondition": "none (identity)",
+   "foundationRole": "ties the founding Fourier representation (R1–R3) to the coefficient side of model geometry",
+   "guideLocation": "Guide: Fourier / model manifolds",
+   "gap": null,
+   "provenance": "TEXTBOOK / STANDARD",
+   "sources": [
+    "SRC-TREFETHEN-2013"
+   ],
+   "sourceStatus": null,
+   "mathematicalStatus": "TEXTBOOK / KNOWN",
+   "transformationLevel": [],
+   "novelty": "KNOWN MATHEMATICS",
+   "reductionRole": null
+  },
+  {
+   "id": "C7B",
+   "name": "Uniform coefficient envelope → uniform approximation control",
+   "layer": "ESTABLISHED MATHEMATICS",
+   "stages": [
+    "INFORMATION",
+    "REPRESENTATION"
+   ],
+   "equation": "family-wide envelope |a_k(θ)| ≤ r_k, Σ r_k < ∞ ⇒ sup_θ ‖f_θ − p_(m−1)(θ)‖∞ ≤ R_m = Σ_(k≥m) r_k; uniform analyticity in the Bernstein ellipse E_ρ (|f_θ| ≤ M) ⟺ uniform analyticity of F_θ in the strip |Im φ| < log ρ, giving r_0 = M, r_k = 2Mρ^(−k)",
+   "status": "ESTABLISHED",
+   "cards": [
+    "C7c",
+    "C7e",
+    "C7i",
+    "C7d"
+   ],
+   "docs": [
+    "research/constructions/c7_fourier_width.md",
+    "research/sources/quinn2019.md"
+   ],
+   "registry": [],
+   "dependsOn": [
+    "C7A"
+   ],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": 40,
+   "slopRisk": 5,
+   "transferDepth": "TRIVIAL CONSEQUENCE",
+   "applicationBreadth": 3,
+   "failureCondition": "pointwise decay without a uniform envelope (C7d)",
+   "foundationRole": "the hypothesis the geometric step needs",
+   "guideLocation": "Guide: model manifolds",
+   "gap": null,
+   "provenance": "TEXTBOOK / STANDARD",
+   "sources": [
+    "SRC-TREFETHEN-2013"
+   ],
+   "sourceStatus": null,
+   "mathematicalStatus": "TEXTBOOK / KNOWN",
+   "transformationLevel": [],
+   "novelty": "KNOWN MATHEMATICS",
+   "reductionRole": null
+  },
+  {
+   "id": "C7C",
+   "name": "Uniform envelope → prediction-space enclosure (W_j^bound)",
+   "layer": "PAPER-BACKED CONNECTION",
+   "stages": [
+    "GEOMETRY",
+    "INFORMATION"
+   ],
+   "equation": "Y(Θ) ⊆ V_m D_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (V_ik = T_k(x_i), D_m = diag(r_k)); extent along u ≤ 2‖D_m V_mᵀu‖₁ + 2R_m‖u‖₁ = W_j^bound for u = u_j; ellipsoid relaxation with factor √m; σ_j(V_m D_m) ≤ ‖V_m‖₂ r_(j) and Quinn Theorem 2; exact axes at Chebyshev nodes; Kolmogorov d_m(F; C[−1, 1]) ≤ R_m. Quinn Eq. (2) error term corrected (‖u_j‖₁ factor)",
+   "status": "ESTABLISHED",
+   "cards": [
+    "C7f",
+    "C7g",
+    "C7h",
+    "C7j",
+    "C7k",
+    "C7s",
+    "C7t"
+   ],
+   "docs": [
+    "research/constructions/c7_fourier_width.md",
+    "research/sources/quinn2019.md"
+   ],
+   "registry": [],
+   "dependsOn": [
+    "C7B",
+    "MM1"
+   ],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": 35,
+   "slopRisk": 10,
+   "transferDepth": "STRUCTURAL TRANSFER",
+   "applicationBreadth": 3,
+   "failureCondition": "an upper bound only: the actual widths can be far smaller (C7o–C7q); metric- and sampling-dependent (C7l, C7m)",
+   "foundationRole": "the source-locked, reparametrization-invariant width object for C7",
+   "guideLocation": "Guide: model manifolds",
+   "gap": null,
+   "provenance": "PRIMARY-PAPER BACKED",
+   "sources": [
+    "SRC-QUINN-2019"
+   ],
+   "sourceStatus": null,
+   "mathematicalStatus": "TEXTBOOK / KNOWN",
+   "transformationLevel": [],
+   "novelty": "KNOWN MATHEMATICS (Quinn 2019; error term corrected)",
+   "reductionRole": "INFORMATION-CHANGING"
+  },
+  {
+   "id": "C7D",
+   "name": "C7 chain: spectral decay → prediction-space width hierarchy (restricted)",
+   "layer": "PROJECT-DERIVED CONNECTION",
+   "stages": [
+    "REPRESENTATION",
+    "GEOMETRY",
+    "CROSS-SYSTEM TRANSFER"
+   ],
+   "equation": "orthogonal spectral representation → decay of representation coefficients → bounded accessible directions in prediction space → hierarchical model geometry: holds as a RESTRICTED STRUCTURAL CONNECTION (sufficient, upper bound, uniformly enveloped families); principal status C7-KNOWN-REFORMULATION",
+   "status": "DERIVED",
+   "cards": [
+    "C7u",
+    "C7f",
+    "C7i",
+    "C7n",
+    "C7q"
+   ],
+   "docs": [
+    "research/constructions/c7_fourier_width.md",
+    "research/sources/quinn2019.md"
+   ],
+   "registry": [
+    "T-C7-BRIDGE",
+    "T-C7-SPECTRAL-CHAIN",
+    "T-C7-UNIFORM",
+    "T-C7-NOT-NECESSARY"
+   ],
+   "dependsOn": [
+    "C7A",
+    "C7B",
+    "C7C"
+   ],
+   "supports": [],
+   "bearsOn": [
+    "T-C7"
+   ],
+   "backboneSupport": 30,
+   "slopRisk": 15,
+   "transferDepth": "STRUCTURAL TRANSFER",
+   "applicationBreadth": 3,
+   "failureCondition": "not necessary (C7n); pointwise decay insufficient (C7d); not a width spectrum (C7o–C7q)",
+   "foundationRole": "the first C7 construction; reformulation, not a new theorem",
+   "guideLocation": "Guide: model manifolds",
+   "gap": null,
+   "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
+   "transformationLevel": [],
+   "novelty": "REFORMULATION (C7-KNOWN-REFORMULATION)",
+   "reductionRole": null
+  },
+  {
+   "id": "C7E",
+   "name": "Direct periodic Fourier route",
+   "layer": "ESTABLISHED MATHEMATICS",
+   "stages": [
+    "REPRESENTATION",
+    "GEOMETRY"
+   ],
+   "equation": "periodic f_θ with |f̂_θ(k)| ≤ r_|k| uniformly: at N equally spaced samples FᴴF = N·I (2K + 1 ≤ N), so the enclosure's axes are exactly √N × the sorted envelope; non-uniform samples give only σ_j(FD) ≤ ‖F‖₂ r_(j); modes |k| ≥ N alias",
+   "status": "ESTABLISHED",
+   "cards": [
+    "C7r"
+   ],
+   "docs": [
+    "research/constructions/c7_fourier_width.md",
+    "research/sources/quinn2019.md"
+   ],
+   "registry": [],
+   "dependsOn": [
+    "R1"
+   ],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": 25,
+   "slopRisk": 5,
+   "transferDepth": "TRIVIAL CONSEQUENCE",
+   "applicationBreadth": 2,
+   "failureCondition": "aliasing must be counted as error",
+   "foundationRole": "elementary periodic analogue of C7C",
+   "guideLocation": "Guide: Fourier",
+   "gap": null,
+   "provenance": "TEXTBOOK / STANDARD",
+   "sources": [
+    "SRC-STEIN-SHAKARCHI-2003"
+   ],
+   "sourceStatus": null,
+   "mathematicalStatus": "TEXTBOOK / KNOWN",
+   "transformationLevel": [],
+   "novelty": "KNOWN MATHEMATICS (elementary)",
    "reductionRole": null
   }
  ],
@@ -6281,10 +6513,15 @@
    "id": "BR59",
    "left": "hyperribbon widths",
    "right": "Chebyshev coefficient decay",
-   "connector": "for analytic model predictions the widths of a hyperellipsoid enclosing M are bounded through Chebyshev coefficients and decay geometrically (Quinn, Wilber, Townsend, Sethna 2019; source-only)",
+   "connector": "source-locked (arXiv v1): for models analytic in E_ρ with |y_θ| ≤ M uniformly in θ, the N-point predictions lie in H_Y = X·(ball of radius r) ⊕ error, X = JD, with σ_j(X) ≤ √N ρ^(−j+2)/√(ρ² − 1) (Theorem 2) and axis bounds of Eq. (8); the Eq. (2) error term needs the ‖u_j‖₁ factor (C7j); an upper bound on the manifold's widths",
    "status": "ESTABLISHED",
    "scope": "established",
-   "cards": [],
+   "cards": [
+    "C7f",
+    "C7g",
+    "C7h",
+    "C7j"
+   ],
    "doesNotProve": "C7 as posed (one signal's Fourier / Bessel coefficients vs Fisher spectra); which width definition C7 needs; anything about raw eigenvalues; not carded here",
    "objects": [
     "MM11",
@@ -6375,6 +6612,165 @@
    "sources": [],
    "assumptions": "none beyond the two separate facts",
    "failureCondition": "an explicit map showing the two indistinguishabilities differ in kind"
+  },
+  {
+   "id": "BR63",
+   "left": "Chebyshev coefficients",
+   "right": "cosine-Fourier coefficients",
+   "connector": "T_k(cos φ) = cos(kφ): the Chebyshev series of f is the cosine series of F(φ) = f(cos φ), with a_0 halved and F̂(±k) = a_k/2",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "C7a",
+    "C7b"
+   ],
+   "doesNotProve": "anything about model geometry by itself; the identity is a change of variables",
+   "objects": [
+    "C7A",
+    "R1"
+   ],
+   "strength": "EXACT IDENTITY",
+   "sources": [
+    "SRC-TREFETHEN-2013",
+    "SRC-STEIN-SHAKARCHI-2003"
+   ],
+   "assumptions": "f continuous on [−1, 1]; the stated normalization",
+   "failureCondition": "none for the identity"
+  },
+  {
+   "id": "BR64",
+   "left": "Bernstein-ellipse analyticity",
+   "right": "Fourier-strip analyticity",
+   "connector": "x = cos(φ + iη) traces the ellipse with semi-axes cosh η, sinh η (sum e^η = ρ): f analytic in E_ρ with |f| ≤ M ⟺ F analytic in |Im φ| < log ρ with |F| ≤ M",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "C7c"
+   ],
+   "doesNotProve": "a uniform-in-θ statement (that is a separate hypothesis)",
+   "objects": [
+    "C7B"
+   ],
+   "strength": "EXACT IDENTITY",
+   "sources": [
+    "SRC-TREFETHEN-2013"
+   ],
+   "assumptions": "ρ > 1; the same bound M on both sides",
+   "failureCondition": "none for the identity"
+  },
+  {
+   "id": "BR65",
+   "left": "uniform coefficient envelope",
+   "right": "prediction-space enclosure",
+   "connector": "Y(Θ) ⊆ V_m D_m·[−1, 1]^m ⊕ [−R_m, R_m]^N; directional extents ≤ 2‖D_m V_mᵀu‖₁ + 2R_m‖u‖₁; Kolmogorov d_m ≤ R_m (sup norm)",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "C7f",
+    "C7g",
+    "C7h",
+    "C7i",
+    "C7s",
+    "C7t"
+   ],
+   "doesNotProve": "the actual widths of the model image; necessity; a relation to Fisher eigenvalues",
+   "objects": [
+    "C7C",
+    "C7B"
+   ],
+   "strength": "THEOREM",
+   "sources": [
+    "SRC-QUINN-2019",
+    "SRC-TREFETHEN-2013"
+   ],
+   "assumptions": "a family-wide envelope with Σ r_k < ∞; sample points in [−1, 1]; Euclidean prediction metric",
+   "failureCondition": "no envelope (C7d); the bound is not attained in general (C7q)"
+  },
+  {
+   "id": "BR66",
+   "left": "pointwise spectral decay",
+   "right": "global width control",
+   "connector": "cos(θx): each member decays super-geometrically, sup_θ |a_40| = 0.389, image σ_6/σ_1 = 0.980 (no hierarchy)",
+   "status": "NEGATIVE",
+   "scope": "project-specific",
+   "cards": [
+    "C7d"
+   ],
+   "doesNotProve": "that a uniform envelope is unnecessary (it is required)",
+   "objects": [
+    "C7B",
+    "C7D"
+   ],
+   "strength": "FAILED CONNECTION",
+   "sources": [],
+   "assumptions": "pointwise decay only",
+   "failureCondition": "none: the counterexample is exact"
+  },
+  {
+   "id": "BR67",
+   "left": "model-image width hierarchy",
+   "right": "coefficient decay (converse)",
+   "connector": "θT_20: a one-width image with no coefficient decay; clustered sampling: a hierarchy from a flat envelope",
+   "status": "NEGATIVE",
+   "scope": "project-specific",
+   "cards": [
+    "C7n",
+    "C7m"
+   ],
+   "doesNotProve": "that coefficient decay is irrelevant (it is sufficient for the bound)",
+   "objects": [
+    "C7D"
+   ],
+   "strength": "FAILED CONNECTION",
+   "sources": [],
+   "assumptions": "the stated families",
+   "failureCondition": "none: the counterexamples are exact"
+  },
+  {
+   "id": "BR68",
+   "left": "enclosure axes (W_j^bound)",
+   "right": "actual model-image widths",
+   "connector": "actual extents ≤ W_j^bound on every axis (ratios 0.19–0.45 for 1/(θ − x)); |x|-family: bound decays like k^(−2), image a segment",
+   "status": "NEGATIVE",
+   "scope": "project-specific",
+   "cards": [
+    "C7o",
+    "C7p",
+    "C7q"
+   ],
+   "doesNotProve": "that the bound is invalid (it holds on every axis)",
+   "objects": [
+    "C7C",
+    "C7D"
+   ],
+   "strength": "FAILED CONNECTION",
+   "sources": [
+    "SRC-QUINN-2019"
+   ],
+   "assumptions": "the stated families",
+   "failureCondition": "equality holds only in special cases"
+  },
+  {
+   "id": "BR69",
+   "left": "Transtrum geodesic widths",
+   "right": "invariant width spectrum",
+   "connector": "widths along \"each of the eigendirections of the metric\" from \"some point located near the center\" (TMS 2011): the directions rotate with the parameter chart (MMPg)",
+   "status": "NEGATIVE",
+   "scope": "project-specific",
+   "cards": [
+    "MMPg"
+   ],
+   "doesNotProve": "that each geodesic length is chart-dependent (it is invariant)",
+   "objects": [
+    "MM11",
+    "C7C"
+   ],
+   "strength": "FAILED CONNECTION",
+   "sources": [
+    "SRC-TMS-2011"
+   ],
+   "assumptions": "directions chosen as metric eigendirections in a chart",
+   "failureCondition": "directions fixed geometrically in prediction space (no such definition in the source)"
   }
  ],
  "sources": [
@@ -6399,7 +6795,8 @@
     "P1",
     "I1",
     "T5",
-    "TA3"
+    "TA3",
+    "C7E"
    ],
    "bearsOn": [
     "P2",
@@ -6859,7 +7256,7 @@
    "sourceType": "journal article",
    "identifier": "Physical Review Letters 104, 060201; DOI 10.1103/PhysRevLett.104.060201; arXiv:0909.3884",
    "sourceClass": "primary",
-   "status": "METADATA VERIFIED; CLAIM NOT QUOTED",
+   "status": "FULL TEXT READ (arXiv version); CLAIM QUOTED",
    "claim": "the model manifold of predictions is typically bounded, with widths spread over many orders of magnitude (a hyperribbon); geodesic acceleration for Levenberg–Marquardt",
    "doesNotEstablish": "C7 (no relation between coefficient decay and Fisher spectra)",
    "supports": [
@@ -6871,7 +7268,7 @@
    "bearsOn": [
     "M4"
    ],
-   "checked": "bibliographic record checked by web search of publisher / index records, 2026-11-12; full text not opened in this environment"
+   "checked": "full arXiv text read on 2026-11-15; width definition quoted in research/sources/tms2011.md; the published journal version not read"
   },
   {
    "id": "SRC-TMS-2011",
@@ -6881,7 +7278,7 @@
    "sourceType": "journal article",
    "identifier": "Physical Review E 83, 036701; DOI 10.1103/PhysRevE.83.036701; arXiv:1010.1449",
    "sourceClass": "primary",
-   "status": "METADATA VERIFIED; CLAIM NOT QUOTED",
+   "status": "FULL TEXT READ (arXiv version); CLAIM QUOTED",
    "claim": "least squares as geometry in data space: the model manifold, the induced metric JᵀJ (the Fisher metric for unit Gaussian noise), boundaries, hyperribbons, parameter-effects curvature",
    "doesNotEstablish": "C7; Quinn et al.'s c-boundary claim",
    "supports": [
@@ -6893,9 +7290,10 @@
     "MM11"
    ],
    "bearsOn": [
-    "M4"
+    "M4",
+    "C7D"
    ],
-   "checked": "bibliographic record checked by web search of publisher / index records, 2026-11-12; full text not opened in this environment"
+   "checked": "full arXiv text read on 2026-11-15; width definition quoted in research/sources/tms2011.md; the published journal version not read"
   },
   {
    "id": "SRC-GUTENKUNST-2007",
@@ -6961,7 +7359,7 @@
    "sourceType": "review article",
    "identifier": "Reports on Progress in Physics 86, 035901; DOI 10.1088/1361-6633/aca6f8; arXiv:2111.07176; source card research/sources/quinn2023.md",
    "sourceClass": "review",
-   "status": "METADATA VERIFIED; CLAIM SNIPPET-CONFIRMED; PDF PENDING",
+   "status": "FULL TEXT READ (arXiv version); CLAIM QUOTED",
    "claim": "review of model manifolds, sloppiness, hyperribbons, boundaries and effective models; the specific claim used: c as a model parameter, whose c → ∞ boundary gives Newtonian kinematics",
    "doesNotEstablish": "C9 (the degeneration of spacetime's form, Gate 3); that spacetime geometry is model-manifold geometry; C7",
    "supports": [
@@ -6974,7 +7372,7 @@
     "M4",
     "MM5"
    ],
-   "checked": "bibliographic record verified; the claim is confirmed by search-engine snippets only; PDF pending (P-2)"
+   "checked": "full arXiv v2 text read on 2026-11-15; the c-boundary passage quoted (p. 18) in research/sources/quinn2023.md (P-2 closed); the published version not read"
   },
   {
    "id": "SRC-JOHNSON-GOODY-2011",
@@ -7222,17 +7620,39 @@
    "sourceType": "journal article",
    "identifier": "Physical Review Letters 122, 158302; DOI 10.1103/PhysRevLett.122.158302; arXiv:1809.08280",
    "sourceClass": "primary",
-   "status": "METADATA VERIFIED; CLAIM NOT QUOTED",
-   "claim": "the hyperribbon structure of model manifolds follows from smoothness: Chebyshev approximation bounds the cross-sectional widths of a hyperellipsoid enclosing the model manifold, with geometric decay for analytic models",
-   "doesNotEstablish": "C7 as posed (one signal's Fourier / Bessel coefficients vs Fisher spectra); any statement about raw FIM eigenvalues; the project story",
+   "status": "FULL TEXT READ (arXiv version); CLAIM QUOTED",
+   "claim": "for models y_θ(t), t ∈ [−1, 1], analytic in the Bernstein ellipse E_ρ with |y_θ| ≤ M uniformly in θ, the predictions at N points lie in an enclosing hyperellipsoid H_Y built from X = JD (J_ij = T_(j−1)(t_(i−1)), D = diag(ρ^(−(j−1)))) whose axis lengths are bounded by 4Mρ^(−N+1)/(ρ − 1) + 2M√(4N² − 3N)ρ^(−j+2)/√(ρ² − 1) (Eq. 8); \"an upper bound on possible lengths of the manifolds\"; algebraic analogue for finitely smooth models (supplement)",
+   "doesNotEstablish": "C7 as first posed (coefficient spectra vs Fisher spectra); the actual widths of a model manifold; anything about Fisher eigenvalues; Eq. (2)'s error term as written (corrected by C7j)",
    "supports": [
-    "MM11"
+    "MM11",
+    "C7C"
    ],
    "bearsOn": [
-    "M4",
-    "MM0"
+    "MM0",
+    "C7D",
+    "M4"
    ],
-   "checked": "bibliographic record and abstract checked by web search, 2026-11-13; full text not opened"
+   "checked": "full text of arXiv v1 (22 Sep 2018) and its supplement read on 2026-11-15 and quoted in research/sources/quinn2019.md; the published PRL version not read"
+  },
+  {
+   "id": "SRC-TREFETHEN-2013",
+   "authors": "Lloyd N. Trefethen",
+   "title": "Approximation Theory and Approximation Practice",
+   "year": "2013",
+   "sourceType": "book",
+   "identifier": "SIAM, Philadelphia (as cited by Quinn et al. 2019, ref. [9]; ISBN and DOI not verified here)",
+   "sourceClass": "textbook",
+   "status": "METADATA PARTLY VERIFIED; CLAIM NOT QUOTED",
+   "claim": "Chebyshev series as Fourier cosine series under x = cos θ (Ch. 3); coefficient decay and convergence rates for functions analytic in a Bernstein ellipse (Ch. 8, Theorem 8.2: |a_k| ≤ 2Mρ^(−k), truncation error ≤ 2Mρ^(−n)/(ρ − 1)), as stated and cited by Quinn et al. 2019; the book was not opened in this pass",
+   "doesNotEstablish": "any statement about model manifolds, Fisher metrics or C7",
+   "supports": [
+    "C7A",
+    "C7B"
+   ],
+   "bearsOn": [
+    "C7D"
+   ],
+   "checked": "cited by Quinn et al. 2019 (full text read 2026-11-15); the book itself not opened"
   }
  ],
  "domains": [
@@ -7440,7 +7860,7 @@
     "M2"
    ],
    "status": "SOURCE+CARD COMPLETE",
-   "note": "quinn2023 quote pending (P-2); M1 rests on the weak S14b and is a statement in log-parameter coordinates (component eigenvalues are not invariant, CFT5e, MMIb); the MBAM procedure is source-only; invariance classified in D33 (research/model_manifold_invariance.md)"
+   "note": "quinn2023 c-boundary passage quoted 2026-11-15 (P-2 closed); M1 rests on the weak S14b and is a statement in log-parameter coordinates (component eigenvalues are not invariant, CFT5e, MMIb); the MBAM procedure is source-only; invariance classified in D33 (research/model_manifold_invariance.md)"
   },
   {
    "id": "D13",
@@ -7449,7 +7869,20 @@
     "M4"
    ],
    "status": "NEEDS DERIVATION",
-   "note": "an explicit operator / map / asymptotic theorem, or an exact obstruction. Target object recommended (2026-11-13): hyperribbon widths (MM11), with four gates; revised 2026-11-15: no single width definition chosen, five preconditions recorded (M4); the raw-spectrum reading is NEGATIVE (MMIb, CFT5e); derivation not begun"
+   "note": "an explicit operator / map / asymptotic theorem, or an exact obstruction. Target object recommended (2026-11-13): hyperribbon widths (MM11), with four gates; revised 2026-11-15: no single width definition chosen, five preconditions recorded (M4); the raw-spectrum reading is NEGATIVE (MMIb, CFT5e); derivation not begun. C7 pass 1 (2026-11-15): the enclosure bridge is constructed (D34); C7 as first posed (Fisher spectra) stays OPEN"
+  },
+  {
+   "id": "D34",
+   "name": "C7 bridge: spectral decay → prediction-space enclosure",
+   "objects": [
+    "C7A",
+    "C7B",
+    "C7C",
+    "C7D",
+    "C7E"
+   ],
+   "status": "SOURCE+CARD COMPLETE",
+   "note": "C7 pass 1 (2026-11-15): principal status C7-KNOWN-REFORMULATION; upper bound only; uniform envelope required; not necessary; sources read in full text (arXiv)"
   },
   {
    "id": "D32",
@@ -8120,15 +8553,15 @@
  "ratings": [
   {
    "dimension": "Foundation architecture completeness",
-   "rating": 91,
-   "previous": 90,
-   "reason": "Unchanged by the 2026-11-15 precision pass, which scoped existing statements (MMP cards) without adding architecture. From the 2026-11-13 audit: the model-manifold branch is audited: which quantities are invariant, chart-dependent, noise-dependent or reduction-dependent (MM4, MMI cards); the research story is kept whole with a status per arrow (MM0); the c connection has a restricted verdict (MM5); observation and the viewer intuition are recorded and kept open (MM6, MM7); C7 has its preconditions recorded (M4, MM11; revised 2026-11-15 from one recommended object). Still short: DYADIC definition, no general statement for effective representations, no application mathematics, the C7 derivation."
+   "rating": 92,
+   "previous": 91,
+   "reason": "C7 pass 1 (2026-11-15) built the C7 bridge to a source-locked, reparametrization-invariant prediction-space enclosure (C7A–C7E; principal status C7-KNOWN-REFORMULATION), with its limits carded (C7d, C7n, C7o–C7q). Still short: DYADIC definition, no general statement for effective representations, no application mathematics, C7 as first posed (Fisher spectra), no lower bound on actual widths."
   },
   {
    "dimension": "Mathematical verification coverage",
-   "rating": 97,
-   "previous": 96,
-   "reason": "76 of 78 established or derived objects have PASS cards (computed). New and carded: MM1, MM2, MM4, MM5, MM11 (MMI cards); R7 now carded (MMIh). Not carded: OB1 (definitional), A3 (wording)."
+   "rating": 98,
+   "previous": 97,
+   "reason": "81 of 83 established or derived objects have PASS cards (computed). New and carded: C7A–C7E (C7 cards). Not carded: OB1 (definitional), A3 (wording)."
   },
   {
    "dimension": "Cross-domain validation",
@@ -8140,13 +8573,13 @@
    "dimension": "Project-specific construction maturity",
    "rating": 45,
    "previous": 45,
-   "reason": "Unchanged."
+   "reason": "Unchanged: C7 pass 1 is a reformulation of known mathematics, not a new project construction."
   },
   {
    "dimension": "Paper / source coverage",
-   "rating": 55,
+   "rating": 58,
    "previous": 55,
-   "reason": "42 external sources registered with verified bibliographic records (7 only partly verified), each with the exact claim it supports and what it does not establish. 51 of 52 external-claim objects have a source; R5 is SOURCE MISSING. Unchanged (SRC-QUINN-2019 added; no text quoted)."
+   "reason": "43 external sources registered (8 only partly verified); 55 of 56 external-claim objects have a source; R5 is SOURCE MISSING. Change: first full-text reads (2026-11-15, arXiv versions) of Quinn et al. 2019 (with supplement), Transtrum–Machta–Sethna 2010 and 2011, and Quinn et al. 2023; the exact claims are quoted in research/sources/ and P-2 is closed. Published journal versions not read."
   },
   {
    "dimension": "Application validation",
@@ -8496,6 +8929,24 @@
    "old": "reparametrizations: g_φ = Jᵀ g J (CFT3c, CFT4c)",
    "new": "reparametrizations: g_φ = Jᵀ g J (CFT3c, CFT4c) [Notation: here J = ∂θ/∂φ is the reparametrization Jacobian, written A in the model-manifold records (g_φ = Aᵀ g_θ A); the prediction Jacobian is J_Y = ∂Y/∂θ (MMPc).]",
    "reason": "one symbol J was used for two Jacobians",
+   "date": "2026-11-15"
+  },
+  {
+   "kind": "object",
+   "id": "M4",
+   "field": "foundationRole",
+   "old": "active open comparison; NOT READY FOR DERIVATION: preconditions (1) the exact geometric width object, (2) the prediction/noise metric, (3) the class of models/functions, (4) the exact spectral/coefficient-decay object, (5) what the result adds beyond Quinn et al. 2019 and approximation theory. Candidate bridge: Fourier / spectral / coefficient decay ?⟹ coordinate-independent geometric width hierarchy (not established). The raw-spectrum reading is NEGATIVE (MMIb, CFT5e); no derivation begun",
+   "new": "C7 as first posed (coefficient spectra vs Fisher / sloppy spectra): still OPEN. C7 pass 1 (2026-11-15) built the bridge to a prediction-space ENCLOSURE instead (C7A–C7D): principal status C7-KNOWN-REFORMULATION, upper bound only; no invariant relation to Fisher eigenvalues was found (raw Fisher spectra are chart-dependent, MMIb). The raw-spectrum reading is NEGATIVE",
+   "reason": "C7 pass 1",
+   "date": "2026-11-15"
+  },
+  {
+   "kind": "bridge",
+   "id": "BR59",
+   "field": "connector",
+   "old": "for analytic model predictions the widths of a hyperellipsoid enclosing M are bounded through Chebyshev coefficients and decay geometrically (Quinn, Wilber, Townsend, Sethna 2019; source-only)",
+   "new": "source-locked (arXiv v1): for models analytic in E_ρ with |y_θ| ≤ M uniformly in θ, the N-point predictions lie in H_Y = X·(ball of radius r) ⊕ error, X = JD, with σ_j(X) ≤ √N ρ^(−j+2)/√(ρ² − 1) (Theorem 2) and axis bounds of Eq. (8); the Eq. (2) error term needs the ‖u_j‖₁ factor (C7j); an upper bound on the manifold's widths",
+   "reason": "C7 pass 1: source-locked and carded",
    "date": "2026-11-15"
   }
  ]
