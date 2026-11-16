@@ -1059,11 +1059,21 @@
         {
           "ref": "card:C9c",
           "note": "boost → shear as c → ∞"
+        },
+        {
+          "ref": "card:A8Ca",
+          "note": "circle instance"
         }
       ],
-      "evidenceAgainst": [],
+      "evidenceAgainst": [
+        {
+          "ref": "card:A8Sa",
+          "note": "c is a family index, not an action parameter like t"
+        }
+      ],
       "boundaries": [
-        "One universal common geometry: Level 4. A common schema with subclasses: Level 3 (Gate 3)."
+        "One universal common geometry: Level 4. A common schema with subclasses: Level 3 (Gate 3).",
+        "Act VIII (2026-11-16): this record is H3-original; status OPEN, not replaced. Components: the time–circle example is an ESTABLISHED INSTANCE in its corrected reading (A8Ca, A8Cd); \"converge to infinity\" (T-TIME-CIRCLE-0) FAIL; c as \"a rule in the manifold\" ESTABLISHED (c fixes the preserved form, A8La); \"c also converges to infinity\" like t is SUPERFICIAL (c is fixed in each theory; only the family index tends to ∞). Candidates, not renamed H3: T-H3-ACTION (PROJECT SYNTHESIS), T-H3-QUOTIENT (RESTRICTED), T-H3-C (RESTRICTED). Record: research/constructions/act8_finite_infinite_h3_c.md."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -1072,6 +1082,8 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "A8Ca",
+        "A8Sa",
         "C8a",
         "C8d",
         "C9c"
@@ -1104,12 +1116,21 @@
         "lastResearchOutcome": null
       },
       "related": [
-        "B-FINITE-INFINITE"
+        "B-FINITE-INFINITE",
+        "T-ACT8-GOV",
+        "T-UNBOUNDED-EVOLUTION",
+        "T-H3-ACTION",
+        "T-H3-QUOTIENT",
+        "T-H3-C"
       ],
       "history": [
         {
           "date": "2026-11-12",
           "change": "Act labels remapped to the new Act map (rev 3: VIII)"
+        },
+        {
+          "date": "2026-11-16",
+          "change": "Act VIII: H3-original kept; candidates recorded separately"
         }
       ],
       "relatedActsRev3": [
@@ -1151,6 +1172,14 @@
         {
           "ref": "card:S5b",
           "note": "tanh bound"
+        },
+        {
+          "ref": "card:A8Pg",
+          "note": "boundary approach ≅ drift"
+        },
+        {
+          "ref": "card:A8Pb",
+          "note": "free orbits split"
         }
       ],
       "evidenceAgainst": [
@@ -1160,7 +1189,8 @@
         }
       ],
       "boundaries": [
-        "The three behaviours are opposite at infinity (exact return, near return, convergence): \"useful evidence, not a problem\" (Gate 3)."
+        "The three behaviours are opposite at infinity (exact return, near return, convergence): \"useful evidence, not a problem\" (Gate 3).",
+        "Act VIII (2026-11-16): in the one-parameter-action framework the three behaviours are distinct classes of one decision tree: wrapping = periodic (Stab = Tℤ); quasi-periodic winding = free with compact closure and recurrence; boundary approach = drift (the velocity flow on (−1, 1) is conjugate to translation on ℝ by artanh, A8Pg). They are not the same."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -1169,6 +1199,8 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "A8Pb",
+        "A8Pg",
         "C8a",
         "C8b",
         "C8c",
@@ -1192,12 +1224,18 @@
       "construction": null,
       "proofTarget": null,
       "related": [
-        "B-FINITE-INFINITE"
+        "B-FINITE-INFINITE",
+        "T-H3-ACTION",
+        "T-H3-QUOTIENT"
       ],
       "history": [
         {
           "date": "2026-11-12",
           "change": "Act labels remapped to the new Act map (rev 3: VIII)"
+        },
+        {
+          "date": "2026-11-16",
+          "change": "Act VIII: the three behaviours classified"
         }
       ],
       "relatedActsRev3": [
@@ -1223,9 +1261,15 @@
         {
           "ref": "doc:docs/gate2_answers.md",
           "note": "Nadia, Gate 2 answer 6: \"That wording in Master Map #18 is misleading\""
+        },
+        {
+          "ref": "card:A8Cc",
+          "note": "bounded, no limit"
         }
       ],
-      "boundaries": [],
+      "boundaries": [
+        "Act VIII (2026-11-16): FAIL. For ω ≠ 0, cos ωt and sin ωt stay in [−1, 1] and have no limit as t → ∞; they neither converge nor tend to infinity (A8Cc). Kept verbatim as a historical conjecture."
+      ],
       "supersededBy": "T-TIME-CIRCLE",
       "supersedes": null,
       "relatedActs": [
@@ -1233,6 +1277,7 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "A8Cc",
         "C8a"
       ],
       "sourceDocs": [
@@ -1249,11 +1294,17 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "T-UNBOUNDED-EVOLUTION"
+      ],
       "history": [
         {
           "date": "2026-11-12",
           "change": "Act labels remapped to the new Act map (rev 3: VIII)"
+        },
+        {
+          "date": "2026-11-16",
+          "change": "Act VIII: classified FAIL"
         }
       ],
       "relatedActsRev3": [
@@ -1274,10 +1325,24 @@
         {
           "ref": "card:C8a",
           "note": ""
+        },
+        {
+          "ref": "card:A8Ce",
+          "note": "stabilizer and quotient"
+        },
+        {
+          "ref": "card:A8Cf",
+          "note": "covering"
+        },
+        {
+          "ref": "card:A8Cd",
+          "note": "lift and cycles unbounded"
         }
       ],
       "evidenceAgainst": [],
-      "boundaries": [],
+      "boundaries": [
+        "Act VIII (2026-11-16): exact form — t ∈ ℝ acts on S¹ by Φ_t(z) = e^(iωt)z; Stab = (2π/|ω|)ℤ; ℝ/Tℤ ≅ S¹ via t ↦ ωt/2π; the covering ℝ → S¹ carries the unbounded lift (A8Ce, A8Cf). The circle itself is compact and is not called infinite."
+      ],
       "supersededBy": null,
       "supersedes": "T-TIME-CIRCLE-0",
       "relatedActs": [
@@ -1286,6 +1351,9 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "A8Cd",
+        "A8Ce",
+        "A8Cf",
         "C8a"
       ],
       "sourceDocs": [
@@ -1303,12 +1371,17 @@
       "construction": null,
       "proofTarget": null,
       "related": [
-        "B-FINITE-INFINITE"
+        "B-FINITE-INFINITE",
+        "T-UNBOUNDED-EVOLUTION"
       ],
       "history": [
         {
           "date": "2026-11-12",
           "change": "Act labels remapped to the new Act map (rev 3: II, VIII)"
+        },
+        {
+          "date": "2026-11-16",
+          "change": "Act VIII: quotient / covering form"
         }
       ],
       "relatedActsRev3": [
@@ -1562,12 +1635,21 @@
         {
           "ref": "card:MMPm",
           "note": "Role 1 vs Role 3: no representation change reaches the limit"
+        },
+        {
+          "ref": "card:A8Mc",
+          "note": "degenerate limit outside the congruence class"
+        },
+        {
+          "ref": "card:A8Lc",
+          "note": "contraction: c = ∞ is the only non-isomorphic member"
         }
       ],
       "evidenceAgainst": [],
       "boundaries": [
         "C9 is not inferred from the paper; the two manifolds are linked only through c (Gate 3).",
-        "Precision pass (2026-11-15): three roles are kept apart. The two roles named here are Role 2 (within a theory, c helps define the invariant Lorentzian structure) and Role 3 (across theories, c → ∞ is a singular limit giving the degenerate form diag(1, 0), not by itself the Newtonian metric). Role 1 is a representation-level fact added to avoid conflation: for the matrix η_c = diag(1, −1/c²), a finite c can be normalized by rescaling x; this does not remove Role 2. The transition between Roles 2 and 3 stays the question."
+        "Precision pass (2026-11-15): three roles are kept apart. The two roles named here are Role 2 (within a theory, c helps define the invariant Lorentzian structure) and Role 3 (across theories, c → ∞ is a singular limit giving the degenerate form diag(1, 0), not by itself the Newtonian metric). Role 1 is a representation-level fact added to avoid conflation: for the matrix η_c = diag(1, −1/c²), a finite c can be normalized by rescaling x; this does not remove Role 2. The transition between Roles 2 and 3 stays the question.",
+        "Act VIII (2026-11-16), restricted answer to H3-1: Role 2 (c fixes the invariant form) and Role 3 (c → ∞) are roles of the same form constant. At finite c the value of c is not an isomorphism invariant (finite-c forms congruent, finite-c algebras isomorphic); the invariant content is finiteness — M_c nondegenerate and the algebra Poincaré exactly when c < ∞ (A8Ma, A8Mc, A8Lc). Known mathematics; it does not make c an instance of the circle mechanism (T-H3-C)."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -1576,6 +1658,8 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "A8Lc",
+        "A8Mc",
         "C9a",
         "C9b",
         "C9c",
@@ -1600,7 +1684,8 @@
       "related": [
         "T-MM-RULES-Q",
         "T-MM-DISTINGUISHED-Q",
-        "T-RULES-GEOMETRY"
+        "T-RULES-GEOMETRY",
+        "T-H3-C"
       ],
       "history": [
         {
@@ -1610,6 +1695,10 @@
         {
           "date": "2026-11-15",
           "change": "precision pass: three roles of c recorded"
+        },
+        {
+          "date": "2026-11-16",
+          "change": "Act VIII: H3-1 restricted answer"
         }
       ],
       "relatedActsRev3": [
@@ -3938,10 +4027,15 @@
         {
           "ref": "card:S5b",
           "note": "tanh stays bounded and never repeats: a boundary under the exact-return reading"
+        },
+        {
+          "ref": "card:A8X1",
+          "note": "the forced-periodicity reading fails on the compact torus"
         }
       ],
       "boundaries": [
-        "Whether these limit ★ depends on \"bound by rules\", \"periodic\" and \"can be\" (AMB-7 a–c)."
+        "Whether these limit ★ depends on \"bound by rules\", \"periodic\" and \"can be\" (AMB-7 a–c).",
+        "Act VIII (2026-11-16): this record is STAR-original; it keeps its wording and stays OPEN. Readings with independent statuses: T-STAR-A (forced periodicity) FAIL; T-STAR-B (existence) RESTRICTED; T-STAR-C (recurrence) RESTRICTED to Poincaré recurrence. The H3/★ hierarchy is not decided. Record: research/constructions/act8_finite_infinite_h3_c.md."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -3951,6 +4045,7 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "A8X1",
         "B7a",
         "C8a",
         "C8d",
@@ -4016,12 +4111,21 @@
         "B-NONEXHAUSTIVE",
         "B-FINITE-INFINITE",
         "B-ORTHO-FORM",
-        "T-FIXED-RELATIONS-Q"
+        "T-FIXED-RELATIONS-Q",
+        "T-ACT8-GOV",
+        "T-COMPACT-NOT-PERIODIC",
+        "T-STAR-A",
+        "T-STAR-B",
+        "T-STAR-C"
       ],
       "history": [
         {
           "date": "2026-11-12",
           "change": "Act labels remapped to the new Act map (rev 3: II, VIII)"
+        },
+        {
+          "date": "2026-11-16",
+          "change": "Act VIII: three readings tested separately"
         }
       ],
       "relatedActsRev3": [
@@ -4039,9 +4143,16 @@
       "origin": "user",
       "kind": "open-question",
       "status": "open",
-      "evidenceFor": [],
+      "evidenceFor": [
+        {
+          "ref": "card:A8Ua",
+          "note": "integer relation lattice decides"
+        }
+      ],
       "evidenceAgainst": [],
-      "boundaries": [],
+      "boundaries": [
+        "Act VIII (2026-11-16), answer in the examples: the behaviour is decided by the action (generator and stabilizer; on tori the integer relations of ω), while preserved forms confine the orbit and fix observable bounds; the same torus with the same invariants carries periodic, subtorus and dense orbits (A8Ua)."
+      ],
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
@@ -4050,7 +4161,9 @@
         "II–IV"
       ],
       "relatedObjects": [],
-      "relatedCards": [],
+      "relatedCards": [
+        "A8Ua"
+      ],
       "sourceDocs": [
         "docs/restructure_decisions.md"
       ],
@@ -4070,6 +4183,10 @@
         {
           "date": "2026-11-12",
           "change": "Act labels remapped to the new Act map (rev 3: II, V, VIII)"
+        },
+        {
+          "date": "2026-11-16",
+          "change": "Act VIII: rule identified in each example"
         }
       ],
       "relatedActsRev3": [
@@ -4167,10 +4284,20 @@
         {
           "ref": "card:C8d",
           "note": "recurrence on a torus"
+        },
+        {
+          "ref": "card:A8X1",
+          "note": ""
+        },
+        {
+          "ref": "card:A8X4",
+          "note": ""
         }
       ],
       "evidenceAgainst": [],
-      "boundaries": [],
+      "boundaries": [
+        "Act VIII (2026-11-16): confirmed — a compact image does not force periodicity (A8X1), and periodicity does not need a compact state space (A8X4)."
+      ],
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
@@ -4180,6 +4307,8 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "A8X1",
+        "A8X4",
         "B7a",
         "C8d"
       ],
@@ -4198,11 +4327,17 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "T-COMPACT-NOT-PERIODIC"
+      ],
       "history": [
         {
           "date": "2026-11-12",
           "change": "Act labels remapped to the new Act map (rev 3: II, V, VIII)"
+        },
+        {
+          "date": "2026-11-16",
+          "change": "Act VIII: two counterexamples"
         }
       ],
       "relatedActsRev3": [
@@ -6097,7 +6232,9 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "T-H3-C"
+      ],
       "history": [
         {
           "date": "2026-11-12",
@@ -6562,12 +6699,17 @@
         {
           "ref": "card:G1c",
           "note": "the compass trace closes while θ runs over all of ℝ"
+        },
+        {
+          "ref": "card:A8Da",
+          "note": "finite/infinite distinction table"
         }
       ],
       "evidenceAgainst": [],
       "boundaries": [
         "The circle is one known case; the theory is not reduced to it (Nadia).",
-        "One universal common geometry stays Level 4 (H3)."
+        "One universal common geometry stays Level 4 (H3).",
+        "Act VIII (2026-11-16): the precise form available is H3-action (PROJECT SYNTHESIS): an unbounded parameter acting on a constrained state space, with the behaviour decided by the action, its stabilizer and orbit closure; \"infinite\" names its object."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -6577,6 +6719,7 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "A8Da",
         "C8a",
         "G1c"
       ],
@@ -6624,9 +6767,15 @@
         "T-STABLE-FORM-Q",
         "T-IRREVERSIBLE-FORMATION",
         "B-ORTHO-FORM",
-        "T-FIXED-RELATIONS-Q"
+        "T-FIXED-RELATIONS-Q",
+        "T-UNBOUNDED-EVOLUTION"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-16",
+          "change": "Act VIII: precise form recorded"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": null
     },
@@ -13992,7 +14141,7 @@
           "source": "docs/restructure_decisions.md"
         }
       ],
-      "normalizedStatement": "C7-R (final, locked 2026-11-16): for F = {f_θ} ⊆ C[−1, 1] with a family-wide envelope |a_k(θ)| ≤ r_k on the Chebyshev (= cosine-Fourier of f_θ∘cos) coefficients, Σ r_k < ∞, and N sample points in a Euclidean prediction space: (1) d_m(F; C[−1, 1]) ≤ R_m = Σ_(k≥m) r_k; (2) Y(Θ) ⊆ V_mD_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (exact Minkowski enclosure); (3) width_u ≤ 2‖D_mV_mᵀu‖₁ + 2R_m‖u‖₁; (4) Y(Θ) ⊆ E(2(m·V_mD_m²V_mᵀ + NR_m²I)); (5) exact axes at Gauss–Chebyshev (first-kind) nodes, unweighted; (6) geometric envelope from uniform analyticity (even, 2π-periodic strip form); (7) all set-level, unchanged by reparametrizations that keep the set. Upper bound only.",
+      "normalizedStatement": "C7-R (final, locked 2026-11-16): for F = {f_θ} ⊆ C[−1, 1] with a family-wide envelope |a_k(θ)| ≤ r_k on the Chebyshev (= cosine-Fourier of f_θ∘cos) coefficients, Σ r_k < ∞, and N sample points in a Euclidean prediction space: (1) choosing L_m = span{T_0, …, T_(m−1)} proves d_m(F; C[−1, 1]) ≤ R_m = Σ_(k≥m) r_k (equality not guaranteed for an arbitrary enveloped family; sharpness needs an extremal family and is stated separately); (2) the exact coefficient-box/Minkowski set inclusion used in the argument is Y(Θ) ⊆ V_mD_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (equality with the model image not claimed); (3) width_u ≤ 2‖D_mV_mᵀu‖₁ + 2R_m‖u‖₁; (4) Y(Θ) ⊆ E(2(m·V_mD_m²V_mᵀ + NR_m²I)); (5) exact axes at Gauss–Chebyshev (first-kind) nodes, unweighted; (6) geometric envelope from uniform analyticity (even, 2π-periodic strip form); (7) all set-level, unchanged by reparametrizations that keep the set. Upper bound only.",
       "origin": "user",
       "kind": "derived-connection",
       "status": "derived",
@@ -14079,7 +14228,16 @@
         "T-C7-FINV",
         "T-C7-CHAIN-FINAL"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-16",
+          "change": "wording patch (Act VIII pass; C7 not reopened): \"exact Minkowski enclosure\" → exact coefficient-box/Minkowski set inclusion; Kolmogorov sharpness not claimed. Previous wording: C7-R (final, locked 2026-11-16): for F = {f_θ} ⊆ C[−1, 1] with a family-wide envelope |a_k(θ)| ≤ r_k on the Chebyshev (= cosine-Fourier of f_θ∘cos) coefficients, Σ r_k < ∞, and N sample points in a Euclidean prediction space: (1) d_m(F; C[−1, 1]) ≤ R_m = Σ_(k≥m) r_k; (2) Y(Θ) ⊆ V_mD_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (exact Minkowski enclosure); (3) width_u ≤ 2‖D_mV_mᵀu‖₁ + 2R_m‖u‖₁; (4) Y(Θ) ⊆ E(2(m·V_mD_m²V_mᵀ + NR_m²I)); (5) exact axes at Gauss–Chebyshev (first-kind) nodes, unweighted; (6) geometric envelope from uniform analyticity (even, 2π-periodic strip form); (7) all set-level, unchanged by reparametrizations that keep the set. Upper bound only."
+        },
+        {
+          "date": "2026-11-16",
+          "change": "rating \"why\" wording patch. Previous wording: The enclosure bridge survives the audit in corrected form: exact Minkowski enclosure, directional bound, a proved conservative ellipsoid, locked conventions. Every ingredient is known mathematics after x = cos φ. Upper bound only."
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-16",
@@ -14087,7 +14245,7 @@
         "breadth": "multiple independent mathematical families",
         "backboneSupport": 30,
         "slopRisk": 10,
-        "why": "The enclosure bridge survives the audit in corrected form: exact Minkowski enclosure, directional bound, a proved conservative ellipsoid, locked conventions. Every ingredient is known mathematics after x = cos φ. Upper bound only.",
+        "why": "The enclosure bridge survives the audit in corrected form: the exact coefficient-box/Minkowski set inclusion used in the argument, directional bound, a proved conservative ellipsoid, locked conventions. Every ingredient is known mathematics after x = cos φ. Upper bound only.",
         "increase": "A lower bound under stated non-degeneracy (C7-LB+), outside this locked branch.",
         "falsify": "A uniformly enveloped family leaving the stated enclosure (none found).",
         "classification": "GENERAL CONSTRUCTION",
@@ -14390,6 +14548,788 @@
       "history": [],
       "relatedActsRev3": [],
       "assessment": null
+    },
+    {
+      "id": "T-ACT8-GOV",
+      "label": "Act VIII: H3 and ★ kept apart; t and c kept apart",
+      "words": "Do not merge H3 with ★.",
+      "variants": [
+        {
+          "words": "Do not assume H3 is true.",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "Do not merge the time parameter t with the theory parameter c.",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "Do not rescue H3 by broadening it until it becomes unfalsifiable.",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "Do not rewrite ★ into whichever version survives.",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "The word “infinite” must no longer be used without naming the object.",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "Do not call either candidate H3 until the comparison with the original wording is complete.",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "Do not use “geometry” where the dynamics/action is doing the work.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "Method / governance rule (Act VIII, 2026-11-16): H3-original (T-H3) and STAR-original (T-STAR) are investigated separately and their hierarchy is not decided; t (an action parameter) and c (a family parameter) are not merged; candidate formalizations get separate records and are not renamed H3; \"infinite\" always names its object (parameter domain, lift, cycle count, orbit).",
+      "origin": "user",
+      "kind": "method-rule",
+      "status": "governance",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "II–IV"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Act VIII, 2",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Act VIII first construction pass brief (2026-11-16)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-H3",
+        "T-STAR",
+        "T-H3-ACTION",
+        "T-H3-QUOTIENT",
+        "T-H3-C",
+        "T-STAR-A",
+        "T-STAR-B",
+        "T-STAR-C"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-UNBOUNDED-EVOLUTION",
+      "label": "Corrected intuition: unbounded parameter, bounded geometry",
+      "words": "An unbounded parameter can generate indefinitely continuing evolution in a bounded geometry.",
+      "variants": [
+        {
+          "words": "But do not yet elevate that to H3.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "Instance: t ∈ ℝ, Φ_t(z) = e^(iωt)z on the compact S¹; the parameter, the lift ωt and the cycle count are unbounded while the image is S¹ and the values stay in [−1, 1].",
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:A8Ca",
+          "note": "group action; |γ_ω(t)| = 1 for every t"
+        },
+        {
+          "ref": "card:A8Cd",
+          "note": "lift and cycle count unbounded; image S¹"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Act VIII (2026-11-16): ESTABLISHED INSTANCE (the circle). Preserved and not elevated to H3. It does not say which behaviour occurs: compact images also carry non-periodic (A8X1) and non-recurrent (A8X3) evolutions."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "II–IV"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "A8Ca",
+        "A8Cd"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Act VIII, 3",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Act VIII first construction pass brief (2026-11-16)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-TIME-CIRCLE",
+        "T-TIME-CIRCLE-0",
+        "T-H3",
+        "B-FINITE-INFINITE"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-COMPACT-NOT-PERIODIC",
+      "label": "A compact image does not force an exact periodic orbit",
+      "words": "compact/constrained image ⇏ exact periodic orbit",
+      "variants": [
+        {
+          "words": "Do not call an irrational torus flow periodic.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "On the compact torus T² the flow (θ₁ + t, θ₂ + √2t) preserves |z₁| = |z₂| = 1, has no fixed point and no periodic orbit (Stab = {0} at every point); on the compact interval [0, 1] the logistic flow has no non-constant periodic orbit.",
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:A8X1",
+          "note": "irrational torus: no periodic orbit at all"
+        },
+        {
+          "ref": "card:A8X3",
+          "note": "logistic flow on [0, 1]"
+        },
+        {
+          "ref": "card:A8Ra",
+          "note": "compact ⇒ periodic rejected"
+        },
+        {
+          "ref": "card:A8Tc",
+          "note": "near return without exact return"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": "T-STAR-A",
+      "relatedActs": [
+        "II–IV"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "A8Ra",
+        "A8Tc",
+        "A8X1",
+        "A8X3"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Act VIII, 6",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Act VIII first construction pass brief (2026-11-16)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-STAR",
+        "T-STAR-A",
+        "T-CIRCLE-NOT-THESIS"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-H3-ACTION",
+      "label": "H3-action: an unbounded parameter acting on a constrained state space",
+      "words": "H3-CANDIDATE: An unbounded parameter acting on a constrained state space can produce bounded, periodic, quasi-periodic, or recurrent observable structure; which behavior occurs is controlled not by unboundedness itself but by the action, its stabilizer, orbit closure, and invariants.",
+      "variants": [],
+      "normalizedStatement": "For a continuous action Φ of (ℝ, +) on a Hausdorff space X: Stab(x) ∈ {ℝ, Tℤ, {0}} (closed subgroups of ℝ); periodicity ⟺ Stab ≠ {0}; free orbits split by orbit-closure compactness and recurrence. The same unbounded parameter domain produces every class (A8Da), so unboundedness decides nothing. Correction to the worded clause \"and invariants\": preserved invariants confine the orbit to a level set but do not decide the class; on tori the integer relations of the generator decide (A8Ua).",
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:A8Pa",
+          "note": "stabilizer trichotomy"
+        },
+        {
+          "ref": "card:A8Pb",
+          "note": "free orbits are not one class"
+        },
+        {
+          "ref": "card:A8Da",
+          "note": "the parameter domain is unbounded in every row while every behaviour varies"
+        },
+        {
+          "ref": "card:A8Ca",
+          "note": ""
+        },
+        {
+          "ref": "card:A8Tb",
+          "note": ""
+        },
+        {
+          "ref": "card:A8X2",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:A8Ua",
+          "note": "same invariants, different behaviour: the \"invariants\" clause is corrected"
+        },
+        {
+          "ref": "card:A8X6",
+          "note": "a parameter that indexes without acting is outside the candidate"
+        }
+      ],
+      "boundaries": [
+        "Act VIII (2026-11-16): PROJECT SYNTHESIS of definitions and known theorems (stabilizer trichotomy, Kronecker–Weyl, Poincaré recurrence); one clause corrected. Candidate only: not renamed H3; H3-original (T-H3) is kept."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "II–IV"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "A8Ca",
+        "A8Da",
+        "A8Pa",
+        "A8Pb",
+        "A8Tb",
+        "A8Ua",
+        "A8X2",
+        "A8X6"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Act VIII, 10",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Act VIII first construction pass brief (2026-11-16)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-H3",
+        "T-H3-QUOTIENT",
+        "T-SCHEMA",
+        "T-ACT8-GOV"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-16",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 30,
+        "slopRisk": 15,
+        "why": "Applies unchanged to every action example (circle, tori, cylinder, interval, plane, velocity flow): the stabilizer trichotomy and orbit-closure dichotomies decide the class, and the unbounded parameter domain is common to all. Its content is definitions plus known theorems; the \"invariants\" clause is corrected.",
+        "increase": "A system where the classes predict something not already in the definitions, stated before checking.",
+        "falsify": "A continuous action whose behaviour class is not fixed by its stabilizer, orbit closure and recurrence (impossible by definition).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "pass",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "STRUCTURAL TRANSFER",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 2,
+        "novelty": "VALIDATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "T-H3-QUOTIENT",
+      "label": "H3-quotient: quotient / cover / orbit closure encodes the bound",
+      "words": "The distinction between an unbounded parameter and a bounded representation is naturally encoded by a quotient, covering map, orbit, or compact orbit closure.",
+      "variants": [],
+      "normalizedStatement": "Restricted form: for Stab = Tℤ the orbit is ℝ/Tℤ ≅ S¹ and ℝ → S¹ is a covering (A8Ce, A8Cf); for free recurrent orbits the bounded representation is the compact orbit closure (A8Tb). With the alternative \"orbit\" the statement is true of every action (too broad). Boundary approach is encoded by none of quotient, covering or compact closure: the velocity orbit is injective with noncompact closure and is conjugate to translation (A8Pg).",
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:A8Ce",
+          "note": "ℝ/Tℤ ≅ S¹"
+        },
+        {
+          "ref": "card:A8Cf",
+          "note": "covering ℝ → S¹"
+        },
+        {
+          "ref": "card:A8Tb",
+          "note": "compact orbit closure without a quotient"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:A8Pg",
+          "note": "boundary approach ≅ drift: no quotient, cover or compact closure"
+        }
+      ],
+      "boundaries": [
+        "Act VIII (2026-11-16): RESTRICTED (periodic and compact-recurrent classes); too broad as worded because of \"orbit\". Candidate only: not renamed H3."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "II–IV"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "A8Ce",
+        "A8Cf",
+        "A8Pg",
+        "A8Tb"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Act VIII, 10",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Act VIII first construction pass brief (2026-11-16)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-H3",
+        "T-H3-ACTION",
+        "T-SCHEMA",
+        "T-ACT8-GOV"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-16",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
+        "breadth": "one mathematical family",
+        "backboneSupport": 20,
+        "slopRisk": 15,
+        "why": "Exact for the periodic class (quotient ℝ/Tℤ, covering) and, through the compact orbit closure, for the free recurrent class; true of everything with the alternative \"orbit\"; fails for boundary approach.",
+        "increase": "An object that encodes boundary approach (a compactification) shared with the periodic examples.",
+        "falsify": "Already restricted: boundary approach is encoded by none of the listed objects (A8Pg).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "partial",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "STRUCTURAL TRANSFER",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 1,
+        "novelty": "VALIDATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "T-H3-C",
+      "label": "H3-c: c as an instance of the H3 structure",
+      "words": "that invarient variable like the speed of light which also converges to infinity is an invarient variable that acts as a rule in the manifold",
+      "variants": [],
+      "normalizedStatement": "Tested reading: c → ∞ is an instance of the time–circle construction (an unbounded parameter through a constrained geometry). Result: t is an internal action parameter on a fixed state space; c is an external family index (not an action on spacetime) whose family is a free orbit of the dilation congruence action on forms, drifting to the degenerate diag(1, 0). Surviving restricted correspondence: both examples are one-parameter subgroups preserving a quadratic form (CF1/S4), with t ↔ rapidity s and the circle radius r ↔ c; no member or limit of the c-family is elliptic.",
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "hypothesis",
+      "evidenceFor": [
+        {
+          "ref": "card:A8La",
+          "note": "c fixes the preserved form (Role 2)"
+        },
+        {
+          "ref": "card:A8Mc",
+          "note": "c → ∞: degenerate limit (Role 3)"
+        },
+        {
+          "ref": "card:A8Lc",
+          "note": "group contraction"
+        },
+        {
+          "ref": "card:A8Sb",
+          "note": "restricted correspondence t ↔ s, r ↔ c"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:A8Sa",
+          "note": "c is not a group parameter on spacetime"
+        },
+        {
+          "ref": "card:A8X5",
+          "note": "c → ∞ with β fixed: no contraction"
+        },
+        {
+          "ref": "card:A8Sb",
+          "note": "never elliptic: the wrapping mechanism does not transfer"
+        }
+      ],
+      "boundaries": [
+        "Act VIII (2026-11-16): RESTRICTED. Same construction as t ↦ e^(iωt): NO (FAIL); \"c also converges to infinity\" like t: SUPERFICIAL; restricted structural analogy through the known preserved-form object. The words are the c-clause of H3-original, kept verbatim."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "II–IV",
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "A8La",
+        "A8Lc",
+        "A8Mc",
+        "A8Sa",
+        "A8Sb",
+        "A8X5"
+      ],
+      "sourceDocs": [
+        "docs/claude_code_prompt.md"
+      ],
+      "auditRef": "Act VIII, 16–17",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Act VIII first construction pass brief (2026-11-16)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-H3",
+        "T-C-ROLES",
+        "T-C9",
+        "T-ACT8-GOV"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-16",
+        "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
+        "breadth": "one mathematical family",
+        "backboneSupport": 10,
+        "slopRisk": 25,
+        "why": "The wrapping mechanism does not transfer to c: c is a family index, its family drifts to a degenerate boundary form, and no member or limit has an elliptic generator. What survives is the known preserved-form correspondence (t ↔ rapidity s, circle radius r ↔ c) and finiteness of c as the invariant content.",
+        "increase": "An exact object, stated before checking, shared by the time–circle action and the c-family beyond the known preserved-form subgroup.",
+        "falsify": "Already falsified as \"same construction\" (A8Sa, A8Sb).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "fail",
+          "transfer": "fail",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "low-confidence-active",
+        "failures": [],
+        "transferDepth": "FAIL",
+        "mathematicalCorrectness": "established under assumptions",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 1,
+        "novelty": "VALIDATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "T-STAR-A",
+      "label": "STAR-A: constrained geometry forces periodicity",
+      "words": "A constrained geometry forces every admissible evolution to be periodic.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "historical-conjecture",
+      "status": "hypothesis",
+      "evidenceFor": [],
+      "evidenceAgainst": [
+        {
+          "ref": "card:A8X1",
+          "note": "compact T², preserved invariants, no periodic orbit"
+        },
+        {
+          "ref": "card:A8X3",
+          "note": "compact [0, 1], no non-constant periodic orbit"
+        },
+        {
+          "ref": "card:A8Ra",
+          "note": "compact ⇒ periodic rejected"
+        }
+      ],
+      "boundaries": [
+        "Act VIII (2026-11-16): FAIL. A reading of ★ (T-STAR), which keeps its wording; superseded by the established negative T-COMPACT-NOT-PERIODIC."
+      ],
+      "supersededBy": "T-COMPACT-NOT-PERIODIC",
+      "supersedes": null,
+      "relatedActs": [
+        "II–IV"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "A8Ra",
+        "A8X1",
+        "A8X3"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Act VIII, 9",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Act VIII first construction pass brief (2026-11-16)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-STAR",
+        "T-STAR-B",
+        "T-STAR-C",
+        "T-ACT8-GOV",
+        "T-COMPACT-NOT-PERIODIC"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-16",
+        "mathematicalStatus": "SPECULATIVE MAPPING",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 0,
+        "slopRisk": 5,
+        "why": "Fails on compact spaces: the irrational torus flow has no periodic orbit; the logistic flow on [0, 1] has no non-constant periodic orbit.",
+        "increase": "None for this reading; ★ itself stays open.",
+        "falsify": "Already falsified (A8X1, A8X3).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "fail",
+          "generalization": "fail",
+          "transfer": "fail",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "low-confidence-active",
+        "failures": [],
+        "transferDepth": "FAIL",
+        "mathematicalCorrectness": "not established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 1,
+        "novelty": "VALIDATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "T-STAR-B",
+      "label": "STAR-B: constrained geometry admits a periodic evolution",
+      "words": "A constrained geometry admits at least one periodic evolution.",
+      "variants": [],
+      "normalizedStatement": "Restricted form: with fixed points counted as periodic the claim is vacuous (the trivial flow); for a non-constant periodic orbit it is false on ℝ and on intervals (orbits are monotone), true on S¹, and true on every smooth manifold of dimension ≥ 2 (rotation field in a coordinate disk times a bump function; local model A8X4; the general construction is a project argument, not carded). It depends on the class of spaces and dynamics, not on \"bound by rules\".",
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:A8Pe",
+          "note": "trivial flow; monotone orbits on intervals; circle has periodic orbits"
+        },
+        {
+          "ref": "card:A8X4",
+          "note": "local model: rotation of ℝ²"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Act VIII (2026-11-16): RESTRICTED. A reading of ★ (T-STAR), which keeps its wording."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "II–IV"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "A8Pe",
+        "A8X4"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Act VIII, 9",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Act VIII first construction pass brief (2026-11-16)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-STAR",
+        "T-STAR-A",
+        "T-STAR-C",
+        "T-ACT8-GOV"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-16",
+        "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 15,
+        "slopRisk": 20,
+        "why": "Vacuous if fixed points count; for non-constant periodic orbits it depends on the space (false on intervals, true on S¹ and on manifolds of dimension ≥ 2).",
+        "increase": "A carded proof of the dimension ≥ 2 construction.",
+        "falsify": "A smooth manifold of dimension ≥ 2 with no flow having a non-constant periodic orbit (none: the bump construction gives one).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "partial",
+          "transfer": "n/a",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "NOT YET FORMALIZED",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 2,
+        "novelty": "PROJECT CLASSIFICATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "T-STAR-C",
+      "label": "STAR-C: constrained geometry tends to produce recurrence",
+      "words": "Compact/constrained geometry tends to produce recurrence or near return.",
+      "variants": [],
+      "normalizedStatement": "Restricted form = the Poincaré recurrence theorem: for a measure-preserving flow on a space of finite total measure, almost every point is recurrent. Each hypothesis is needed (A8Pd: infinite measure — cylinder; non-invariant Lebesgue — logistic; δ₀ the only invariant probability — θ̇ = 1 − cos θ on S¹). Compactness alone gives only topological recurrence of some point (minimal sets), source-only here.",
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:A8Pd",
+          "note": "every hypothesis needed; almost-every conclusion"
+        },
+        {
+          "ref": "card:A8Tc",
+          "note": "near return on the torus"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Act VIII (2026-11-16): RESTRICTED to Poincaré recurrence (known; PROVED under its hypotheses). A reading of ★ (T-STAR), which keeps its wording."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "II–IV"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "A8Pd",
+        "A8Tc"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Act VIII, 9",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Act VIII first construction pass brief (2026-11-16)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-STAR",
+        "T-STAR-A",
+        "T-STAR-B",
+        "T-ACT8-GOV"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-16",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 15,
+        "slopRisk": 10,
+        "why": "Reduces to the Poincaré recurrence theorem with all its hypotheses (invariant measure, finite total measure, almost every point); each hypothesis is needed.",
+        "increase": "A recurrence statement that needs fewer hypotheses for a stated class of rule-bound geometries.",
+        "falsify": "A measure-preserving flow on a finite measure space with a positive-measure set of non-recurrent points (impossible by the theorem).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "n/a",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "TRIVIAL CONSEQUENCE",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 2,
+        "novelty": "VALIDATION OF KNOWN MATHEMATICS"
+      }
     }
   ]
 }

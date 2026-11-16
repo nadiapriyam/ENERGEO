@@ -582,6 +582,37 @@ coarse-graining, equivariance.
   Research question: what repeated or continuing behavior follows from the internal constraints of a geometry?
 - **H3 and B-FINITE-INFINITE (I3)** are kept as separate records.
 
+### Act VIII first construction (2026-11-16): finite / infinite representation, H3, ★, c
+
+Record: `research/constructions/act8_finite_infinite_h3_c.md` (cards A8Ca–A8Za, `verify/verify_A8.py`). H3 and ★ are
+investigated separately (their hierarchy is not decided); t and c are kept apart (T-ACT8-GOV).
+
+- **Testbed (A8A):** a one-parameter action Φ: ℝ × X → X. Stab(x) is a closed subgroup of ℝ, so it is ℝ (fixed),
+  Tℤ (periodic) or {0} (free) — a theorem. Free orbits split by orbit-closure compactness, recurrence and escape;
+  these dichotomies are exhaustive as a decision tree, and the named examples are not a logically exhaustive
+  classification.
+- **Circle (A8C):** |γ_ω(t)| = 1, minimal period 2π/|ω|, no limit as t → ∞; Stab = (2π/|ω|)ℤ and ℝ/Tℤ ≅ S¹ via
+  t ↦ ωt/2π; the covering ℝ → S¹ carries the unbounded lift. The old wording "sines and cosines converge to
+  infinity" FAILS (A8Cc). The corrected intuition is an ESTABLISHED INSTANCE and is not elevated to H3
+  (T-UNBOUNDED-EVOLUTION).
+- **Torus (A8T):** periodic ⟺ ∃T > 0 with Tω_j ∈ 2πℤ for all j (commensurable frequencies); rationally independent
+  frequencies give a dense orbit (Kronecker–Weyl, source-locked). Compact/constrained image ⇏ exact periodic orbit
+  (T-COMPACT-NOT-PERIODIC). The orbit-closure dimension is n − rank of the integer relations of ω: the generator's
+  arithmetic decides, not the torus or its invariants (A8Ua).
+- **Cylinder (A8X2, A8Yb):** periodic projection, non-periodic noncompact full state.
+- **Distinction table (A8D):** ten properties, separated pairwise over ten systems; boundary approach is drift up to
+  the conjugacy artanh (A8Pg), so "bounded" is metric-dependent and compact orbit closure is not.
+- **★ readings (A8SA–A8SC):** STAR-A forced periodicity FAIL; STAR-B existence RESTRICTED (vacuous with fixed points,
+  class-dependent otherwise); STAR-C recurrence RESTRICTED to Poincaré recurrence (finite invariant measure, almost
+  every point). ★ keeps its wording and stays OPEN.
+- **H3 candidates:** H3-action PROJECT SYNTHESIS (A8HA; the "invariants" clause corrected); H3-quotient RESTRICTED
+  (A8HQ; too broad with "orbit"; fails for boundary approach); H3-original stays OPEN.
+- **c (A8M, A8L, A8K):** M_c = P_cᵀηP_c is finite-c congruence only; c → ∞ gives the degenerate bilinear form
+  diag(1, 0), which is not by itself the Newtonian metric and whose preservation group is not automatically Galilean (A8Me);
+  form degeneration and group contraction are related but not identical (A8Lc). t vs c: STRUCTURAL ANALOGY only
+  through a one-parameter subgroup preserving a quadratic form, with t ↔ rapidity s and the circle radius r ↔ c;
+  same construction NO; H3-c RESTRICTED (A8HC).
+
 ## Part VIII. Higher / source / effective representations
 
 | Construction | Exact content | Status |
@@ -924,6 +955,9 @@ Every user-origin record, with its original wording, normalized reading and stat
 - **Representation:** "Are these different objects, or different descriptions of one object?" (T-REPRESENTATION);
   common structural law rather than analogy (T-BACKBONE-SECONDARY).
 - **c:** the two roles of c (T-C-ROLES).
+- **Act VIII names (2026-11-16):** H3-original is T-H3 and STAR-original is T-STAR, both kept verbatim and OPEN.
+  Candidate readings have separate records: T-H3-ACTION, T-H3-QUOTIENT, T-H3-C (the c-clause of H3, verbatim);
+  T-STAR-A, T-STAR-B, T-STAR-C; the corrected intuition T-UNBOUNDED-EVOLUTION. Governance: T-ACT8-GOV.
 - **Continuation:** finite rule / infinite structure (B-FINITE-INFINITE, T-SCHEMA, T-TIME-CIRCLE); and its
   historical first wording, kept (T-TIME-CIRCLE-0).
 - **Orthogonality and form:** B-ORTHO-FORM.
@@ -1002,6 +1036,14 @@ Only explicit candidates are listed. Ratings are per proposition.
 
 ## Part XIII. Failed and negative results (what does not unify)
 
+- **Act VIII (2026-11-16):**
+  - "Sines and cosines converge to infinity" fails: they stay in [−1, 1] with no limit (A8Cc).
+  - Compact geometry ⇒ periodicity fails: the irrational torus flow has no periodic orbit (A8X1); STAR-A fails (A8X3).
+  - Bounded observable ⇒ convergence, unbounded parameter ⇒ unbounded observable, and parameter → ∞ ⇒ dimension
+    loss are rejected; a rank drop need not occur (β = v/c fixed, A8X5) and depends on the scaling (A8Ra–A8Rd).
+  - H3-c as the same construction as t ↦ e^(iωt) fails: c is a family index, not an action parameter on spacetime
+    (A8Sa); no member or limit of the c-family has an elliptic generator (A8Sb).
+  - H3-quotient fails for boundary approach (A8Pg); the "orbit" alternative makes it true of everything.
 - **Kept FAIL cards:**
   - S14a (sloppy span);
   - C8c (pointwise convergence);
@@ -1091,6 +1133,12 @@ Only material gaps; the full ledger, with a status for each domain, is `research
    - flat-space rigidity;
    - Myers–Steenrod.
 
+5. **Act VIII (first construction, 2026-11-16).** H3-original stays OPEN. To lock: the STAR-B dimension ≥ 2
+   statement (carded only through its local model A8X4), the free-orbit class "noncompact closure, not escaping" (no
+   carded example), and the finiteness-invariant answer to H3-1 (A8Mc, A8Lc). Source-only here: the Kronecker–Weyl
+   theorem in continuous time, the Poincaré recurrence theorem, topological recurrence (minimal sets), the covering
+   ℝ → S¹ (metadata verified, claims not quoted).
+
 Resolved:
 
 - **Pass 2:** the act-map framing; the two meanings of "Foundation"; the eight uncarded bridges; the wavelet and
@@ -1108,3 +1156,5 @@ Resolved:
 - **C7 final audit (2026-11-16):**
   - C7 is split and the branch locked (C7F, C7G, C7H, C7Q; C7La–C7Lr).
   - The published Quinn text is read.
+- **Act VIII first construction (2026-11-16):** the finite/infinite testbed, ★ readings, H3 candidates and the
+  c-family are carded (A8Ca–A8Za) and recorded (D37–D39); statuses kept separate (no umbrella verdict).

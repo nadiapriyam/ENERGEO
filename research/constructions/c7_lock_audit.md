@@ -42,7 +42,7 @@ Not claimed: not "the published paper is wrong" in every reading: under a readin
 | Object | Exact statement | Status | Cards |
 |---|---|---|---|
 | error set | [−ε, ε]^N (a box), ε = sup_θ ‖y_θ − p_(N−1)(θ)‖∞ | PROVED | C7Lb |
-| exact enclosure | Y(Θ) ⊆ H_P ⊕ [−ε, ε]^N (Quinn's ball form) and Y(Θ) ⊆ V_mD_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (box / zonotope form): Minkowski sums, not ellipsoids in general | PROVED | C7Lb, C7Ld |
+| coefficient-box / Minkowski set inclusion | the exact coefficient-box/Minkowski set inclusion used in the argument is Y(Θ) ⊆ H_P ⊕ [−ε, ε]^N (Quinn's ball form) and Y(Θ) ⊆ V_mD_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (box / zonotope form): Minkowski sums, not ellipsoids in general; equality between the model image and these sets is NOT claimed | PROVED | C7Lb, C7Ld |
 | directional width bound | width_u(Y) ≤ width_u(H_P) + 2ε‖u‖₁ = 2r‖Xᵀu‖ + 2ε‖u‖₁; along the j-th axis of H_P: 2rσ_j + 2ε‖u_j‖₁ ≤ 2rσ_j + 2√N ε; zonotope form 2‖D_mV_mᵀu‖₁ + 2R_m‖u‖₁ | PROVED | C7Lb, C7Lc |
 | conservative enclosing ellipsoid | H_P ⊕ [−ε, ε]^N ⊆ E(2(AAᵀ + Nε²I)), A = rX: semi-axes √2·√(r²σ_j² + Nε²); proof by support functions, h_(E(Q))(u) = √(uᵀQu) ≥ ‖Aᵀu‖ + δ; the √2 cannot be dropped in general | PROVED | C7Le |
 | Eq. (2) additive ellipsoid | the ellipsoid with semi-axes rσ_j + ε: does NOT contain Y in general (C7Lc), and does not contain H_P ⊕ B₂(ε) for unequal axes (C7Ld) | FAIL | C7Lc, C7Ld |
@@ -55,7 +55,7 @@ Hypotheses:
 
 Conclusions:
 - (1) sup_θ ‖f_θ − Σ_(k<m) a_k(θ)T_k‖∞ ≤ R_m = Σ_(k≥m) r_k, so d_m(F; C[−1, 1]) ≤ R_m (N-free)
-- (2) exact enclosure: Y(Θ) ⊆ V_mD_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (a Minkowski sum)
+- (2) the exact coefficient-box/Minkowski set inclusion used in the argument is Y(Θ) ⊆ V_mD_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (equality with the model image is not claimed)
 - (3) directional widths: width_u(Y(Θ)) ≤ 2‖D_mV_mᵀu‖₁ + 2R_m‖u‖₁ for every Euclidean unit u
 - (4) conservative ellipsoid: Y(Θ) ⊆ E(2(m·V_mD_m²V_mᵀ + N R_m² I)), semi-axes √2·√(mσ_j(V_mD_m)² + NR_m²)
 - (5) at Gauss–Chebyshev (first-kind) nodes, unweighted: σ(V_mD_m) = {√N r_0} ∪ {√(N/2) r_k : 1 ≤ k < m}, m ≤ N
@@ -68,7 +68,7 @@ Conventions locked:
 
 - **Chebyshev nodes**: exact axes σ(VD) = {√N r_0} ∪ {√(N/2) r_k} hold for Gauss–Chebyshev (first-kind) nodes x_i = cos((i + 1/2)π/N), i = 0…N − 1, with the unweighted Euclidean metric; they fail for Chebyshev–Lobatto (extrema) nodes unless the weights (1/2, 1, …, 1, 1/2) are used (norms N − 1 at k = 0, N − 1, (N − 1)/2 otherwise) (C7Li)
 - **periodic Fourier route**: "exactly √N × the envelope" holds in the complex basis e^(ikt), |k| ≤ K, with an envelope on the complex coefficients and 2K + 1 ≤ N equally spaced samples (each r_k twice for ±k); in the real basis (1, cos kt, sin kt) the axes are √N r_0 and √(N/2) r_k; the Nyquist mode (N even, k = N/2) is degenerate and excluded; modes alias mod N (C7Lj)
-- **Kolmogorov width**: d_m(F; C[−1, 1]) = inf_(dim L = m) sup_(f∈F) inf_(g∈L) ‖f − g‖∞ ≤ R_m = Σ_(k≥m) r_k with L_m = span{T_0, …, T_(m−1)}; for this L_m the bound is attained (1/(θ − x) at θ = 2, x = 1), so the index cannot shift to R_(m+1); a function-space width, not a prediction-space ellipsoid axis (C7Lk)
+- **Kolmogorov width**: d_m(F; C[−1, 1]) = inf_(dim L = m) sup_(f∈F) inf_(g∈L) ‖f − g‖∞. Choosing L_m = span{T_0, …, T_(m−1)} proves d_m(F; C[−1, 1]) ≤ R_m = Σ_(k≥m) r_k. Equality is not guaranteed for an arbitrary family satisfying only the coefficient envelope; sharpness requires an appropriate extremal family / function and must be stated separately (for 1/(θ − x) at θ = 2, x = 1 the TRUNCATION error equals R_m, which is a statement about that truncation, not about d_m). A function-space width, not a prediction-space ellipsoid axis (C7Lk)
 - **reparametrization**: unchanged under a parameter change that keeps the set {f_θ}: the coefficient set, the family-wide envelope (a supremum over the set), the sampled prediction set Y(Θ), the exact Minkowski enclosure and the Quinn-style enclosure built from them; changed: the raw Fisher matrix and its eigenvalues (C7Lo)
 
 ## F. C7-F(raw): FAIL
@@ -167,6 +167,13 @@ Novelty discipline:
 | conclusion (c), enclosing ellipsoid with semi-axes √2·√(mσ_j² + NR_m²), asserted with a sketch | proved by support functions (C7Le) |
 | "Quinn's Eq. (2) error term needs the correction of C7j" | Counterexample to Eq. (2) as written under the ordinary Euclidean prediction-space interpretation. The containment claim also fails under the Euclidean-ball reading for unequal axes (C7Ld). |
 | "the stated radius 4M√(4N − 3) is valid but loose by 4" | internal constant inconsistency / likely typographical factor; not a new mathematical result |
+
+## Wording patches (2026-11-16, Act VIII pass; C7 not reopened)
+
+| Superseded wording | Replacement |
+|---|---|
+| the Kolmogorov bound is attained for that choice of L_m (C7Lk: "for this L_m the bound is attained (1/(θ − x) at θ = 2, x = 1), so the index cannot shift to R_(m+1)"; report: "The bound is attained for that choice of L_m") | Choosing L_m = span{T_0, …, T_(m−1)} proves d_m(F; C[−1, 1]) ≤ R_m. Equality is not guaranteed for an arbitrary family satisfying only the coefficient envelope. Sharpness requires an appropriate extremal family / function and must be stated separately. |
+| "exact enclosure" / "the exact enclosure is the Minkowski set ..." | "the exact coefficient-box/Minkowski set inclusion used in the argument is ..." (equality between the model image and the enclosing set has not been proved and is not claimed) |
 
 ## M. Branch lock decision
 

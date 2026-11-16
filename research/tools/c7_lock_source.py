@@ -34,7 +34,7 @@ CONSTANT = dict(verdict='internal constant inconsistency / likely typographical 
                        'Eq. (8)\'s second term 4Mρ^(−N+1)/(ρ − 1) = 2ε is the additive Eq. (2) error term and inherits its issue (C7Lg)'])
 GEOMETRY = [
  dict(object='error set', exact='[−ε, ε]^N (a box), ε = sup_θ ‖y_θ − p_(N−1)(θ)‖∞', status='PROVED', cards=['C7Lb']),
- dict(object='exact enclosure', exact='Y(Θ) ⊆ H_P ⊕ [−ε, ε]^N (Quinn\'s ball form) and Y(Θ) ⊆ V_mD_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (box / zonotope form): Minkowski sums, not ellipsoids in general', status='PROVED', cards=['C7Lb', 'C7Ld']),
+ dict(object='coefficient-box / Minkowski set inclusion', exact='the exact coefficient-box/Minkowski set inclusion used in the argument is Y(Θ) ⊆ H_P ⊕ [−ε, ε]^N (Quinn\'s ball form) and Y(Θ) ⊆ V_mD_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (box / zonotope form): Minkowski sums, not ellipsoids in general; equality between the model image and these sets is NOT claimed', status='PROVED', cards=['C7Lb', 'C7Ld']),
  dict(object='directional width bound', exact='width_u(Y) ≤ width_u(H_P) + 2ε‖u‖₁ = 2r‖Xᵀu‖ + 2ε‖u‖₁; along the j-th axis of H_P: 2rσ_j + 2ε‖u_j‖₁ ≤ 2rσ_j + 2√N ε; zonotope form 2‖D_mV_mᵀu‖₁ + 2R_m‖u‖₁', status='PROVED', cards=['C7Lb', 'C7Lc']),
  dict(object='conservative enclosing ellipsoid', exact='H_P ⊕ [−ε, ε]^N ⊆ E(2(AAᵀ + Nε²I)), A = rX: semi-axes √2·√(r²σ_j² + Nε²); proof by support functions, h_(E(Q))(u) = √(uᵀQu) ≥ ‖Aᵀu‖ + δ; the √2 cannot be dropped in general', status='PROVED', cards=['C7Le']),
  dict(object='Eq. (2) additive ellipsoid', exact='the ellipsoid with semi-axes rσ_j + ε: does NOT contain Y in general (C7Lc), and does not contain H_P ⊕ B₂(ε) for unequal axes (C7Ld)', status='FAIL', cards=['C7Lc', 'C7Ld']),
@@ -44,14 +44,14 @@ ANALYTICITY = dict(statement='With z = e^(iφ), φ = α + iβ, |z| = e^(−β): 
 CONVENTIONS = [
  dict(item='Chebyshev nodes', statement='exact axes σ(VD) = {√N r_0} ∪ {√(N/2) r_k} hold for Gauss–Chebyshev (first-kind) nodes x_i = cos((i + 1/2)π/N), i = 0…N − 1, with the unweighted Euclidean metric; they fail for Chebyshev–Lobatto (extrema) nodes unless the weights (1/2, 1, …, 1, 1/2) are used (norms N − 1 at k = 0, N − 1, (N − 1)/2 otherwise)', cards=['C7Li']),
  dict(item='periodic Fourier route', statement='"exactly √N × the envelope" holds in the complex basis e^(ikt), |k| ≤ K, with an envelope on the complex coefficients and 2K + 1 ≤ N equally spaced samples (each r_k twice for ±k); in the real basis (1, cos kt, sin kt) the axes are √N r_0 and √(N/2) r_k; the Nyquist mode (N even, k = N/2) is degenerate and excluded; modes alias mod N', cards=['C7Lj']),
- dict(item='Kolmogorov width', statement='d_m(F; C[−1, 1]) = inf_(dim L = m) sup_(f∈F) inf_(g∈L) ‖f − g‖∞ ≤ R_m = Σ_(k≥m) r_k with L_m = span{T_0, …, T_(m−1)}; for this L_m the bound is attained (1/(θ − x) at θ = 2, x = 1), so the index cannot shift to R_(m+1); a function-space width, not a prediction-space ellipsoid axis', cards=['C7Lk']),
+ dict(item='Kolmogorov width', statement='d_m(F; C[−1, 1]) = inf_(dim L = m) sup_(f∈F) inf_(g∈L) ‖f − g‖∞. Choosing L_m = span{T_0, …, T_(m−1)} proves d_m(F; C[−1, 1]) ≤ R_m = Σ_(k≥m) r_k. Equality is not guaranteed for an arbitrary family satisfying only the coefficient envelope; sharpness requires an appropriate extremal family / function and must be stated separately (for 1/(θ − x) at θ = 2, x = 1 the TRUNCATION error equals R_m, which is a statement about that truncation, not about d_m). A function-space width, not a prediction-space ellipsoid axis', cards=['C7Lk']),
  dict(item='reparametrization', statement='unchanged under a parameter change that keeps the set {f_θ}: the coefficient set, the family-wide envelope (a supremum over the set), the sampled prediction set Y(Θ), the exact Minkowski enclosure and the Quinn-style enclosure built from them; changed: the raw Fisher matrix and its eigenvalues', cards=['C7Lo']),
 ]
 THEOREM = dict(name='C7-R (final, locked)',
  hypotheses=['a family F = {f_θ} ⊆ C[−1, 1] with a family-wide envelope |a_k(θ)| ≤ r_k on its Chebyshev coefficients (= the cosine-Fourier coefficients of F_θ(φ) = f_θ(cos φ)), Σ r_k < ∞',
              'sample points x_1…x_N ∈ [−1, 1]; prediction space ℝᴺ with the Euclidean metric'],
  conclusions=['(1) sup_θ ‖f_θ − Σ_(k<m) a_k(θ)T_k‖∞ ≤ R_m = Σ_(k≥m) r_k, so d_m(F; C[−1, 1]) ≤ R_m (N-free)',
-              '(2) exact enclosure: Y(Θ) ⊆ V_mD_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (a Minkowski sum)',
+              '(2) the exact coefficient-box/Minkowski set inclusion used in the argument is Y(Θ) ⊆ V_mD_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (equality with the model image is not claimed)',
               '(3) directional widths: width_u(Y(Θ)) ≤ 2‖D_mV_mᵀu‖₁ + 2R_m‖u‖₁ for every Euclidean unit u',
               '(4) conservative ellipsoid: Y(Θ) ⊆ E(2(m·V_mD_m²V_mᵀ + N R_m² I)), semi-axes √2·√(mσ_j(V_mD_m)² + NR_m²)',
               '(5) at Gauss–Chebyshev (first-kind) nodes, unweighted: σ(V_mD_m) = {√N r_0} ∪ {√(N/2) r_k : 1 ≤ k < m}, m ≤ N',
@@ -84,6 +84,12 @@ TABLE = [
  dict(id='Q-Eq2', claim='Quinn Eq. (2) as written (published PRL)', status='FAIL', scope='under the ordinary Euclidean prediction-space interpretation (counterexample); see EQ2.notClaimed', cards=['C7Lc', 'C7Ld']),
  dict(id='Q-Eq2-fix', claim='directional width bound 2rσ_j + 2ε‖u_j‖₁ and enclosing ellipsoid √2·√(r²σ_j² + Nε²)', status='PROVED', scope='elementary; no priority claimed', cards=['C7Lb', 'C7Le']),
  dict(id='Q-const', claim='coefficient radius M√(4N − 3) and Eq. (8) constants', status='PROVED', scope='internal constant inconsistency / likely typographical factor recorded; not a new result', cards=['C7Lf', 'C7Lg']),
+]
+WORDING_PATCHES = [
+ dict(date='2026-11-16', context='Act VIII pass, non-research wording patch (C7 stays locked)', old="the Kolmogorov bound is attained for that choice of L_m (C7Lk: \"for this L_m the bound is attained (1/(θ − x) at θ = 2, x = 1), so the index cannot shift to R_(m+1)\"; report: \"The bound is attained for that choice of L_m\")",
+      new='Choosing L_m = span{T_0, …, T_(m−1)} proves d_m(F; C[−1, 1]) ≤ R_m. Equality is not guaranteed for an arbitrary family satisfying only the coefficient envelope. Sharpness requires an appropriate extremal family / function and must be stated separately.'),
+ dict(date='2026-11-16', context='Act VIII pass, non-research wording patch (C7 stays locked)', old='"exact enclosure" / "the exact enclosure is the Minkowski set ..."',
+      new='"the exact coefficient-box/Minkowski set inclusion used in the argument is ..." (equality between the model image and the enclosing set has not been proved and is not claimed)'),
 ]
 SUPERSEDED = [
  dict(passOne='"the published PRL version not read" / Eq. (2) "may already be fixed" in the published version', now='the published PRL text was read: Eq. (2) is unchanged except for the subscript; no official correction was located'),
@@ -118,7 +124,7 @@ LOCK = dict(decision='LOCK C7-R / CLOSE THIS BRANCH', reason='the audit found no
 
 data = dict(about='Final adversarial C7 lock / audit (2026-11-16). Generated by research/tools/c7_lock_source.py.', terminalStatuses=TERMINAL, cards=CARDS, source=SOURCE, eq2=EQ2, constant=CONSTANT,
             geometry=GEOMETRY, analyticity=ANALYTICITY, conventions=CONVENTIONS, theorem=THEOREM, fisherRaw=FISHER_RAW, fisherInv=FISHER_INV, lowerBound=LOWER, table=TABLE,
-            superseded=SUPERSEDED, backbone=BACKBONE, novelty=NOVELTY, ratings=RATINGS, lock=LOCK, auditOf='research/constructions/c7_fourier_width.md')
+            superseded=SUPERSEDED, wordingPatches=WORDING_PATCHES, backbone=BACKBONE, novelty=NOVELTY, ratings=RATINGS, lock=LOCK, auditOf='research/constructions/c7_fourier_width.md')
 (ROOT / 'research/c7_lock.json').write_text(json.dumps(data, ensure_ascii=False, indent=1) + '\n')
 
 cell = lambda x: '—' if x in (None, '', []) else str(x).replace('|', '\\|')
@@ -141,6 +147,7 @@ L += ['', '## J. Backbone interpretation', '', f'Surviving chain: "{BACKBONE["su
 L += ['', 'Novelty discipline:', '', '- Known mathematics: ' + '; '.join(NOVELTY['known']) + '.', '- Project contribution / synthesis: ' + '; '.join(NOVELTY['synthesis']) + '.', '- Possible correction / observation: ' + '; '.join(NOVELTY['observation']) + '.', f'- {NOVELTY["discipline"]}.']
 L += ['', '## K. Ratings (separate; no overall score)', '', '| Item | Backbone Support | AI Slop Risk | Transfer Depth | Breadth | Novelty |', '|---|---|---|---|---|---|'] + [f'| {r["item"]} | {r["bs"]}% | {r["slop"]}% | {r["td"]} | {r["breadth"]} | {r["novelty"]} |' for r in RATINGS]
 L += ['', '## Pass-1 statements refined by this audit (pass-1 record kept)', '', '| Pass 1 | Now |', '|---|---|'] + [f'| {cell(s["passOne"])} | {cell(s["now"])} |' for s in SUPERSEDED]
+L += ['', '## Wording patches (2026-11-16, Act VIII pass; C7 not reopened)', '', '| Superseded wording | Replacement |', '|---|---|'] + [f'| {cell(w["old"])} | {cell(w["new"])} |' for w in WORDING_PATCHES]
 L += ['', f'## M. Branch lock decision', '', f'**{LOCK["decision"]}**', '', 'Stop: no work on C7-F(inv), H3, mass-wave, quantum, relativity or Energeo.']
 (ROOT / 'research/constructions/c7_lock_audit.md').write_text('\n'.join(L) + '\n')
 print(f'{len(TABLE)} status rows; decision: {LOCK["decision"]}')

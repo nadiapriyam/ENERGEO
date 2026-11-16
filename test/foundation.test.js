@@ -85,5 +85,5 @@ test('Foundation ratings are separate dimensions; verification coverage is the c
     assert.ok(comp.includes(`| ${d.id}. ${d.name} |`) && d.objects.every((i) => ids.has(i)), `${d.id} rendered with real objects`);
   }
   for (const r of F.ratings) assert.ok(comp.includes(`| ${r.dimension} | ${r.rating}% | ${r.previous}% |`), `${r.dimension}: rating and previous value`);
-  assert.deepEqual(F.ratings.map((r) => r.previous), [92, 98, 30, 45, 58, 0], 'previous (C7 pass 1) ratings kept for the comparison');
+  assert.deepEqual(F.ratings.map((r) => r.previous), [93, 98, 30, 45, 59, 0], 'previous (C7 lock) ratings kept for the comparison');
 });

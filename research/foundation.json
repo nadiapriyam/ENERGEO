@@ -341,11 +341,12 @@
     "REPRESENTATION",
     "DYNAMICS / CONTINUATION"
    ],
-   "equation": "t ↦ e^{iωt} ∈ S¹, t ∈ ℝ",
+   "equation": "t ↦ e^{iωt} ∈ S¹, t ∈ ℝ; Stab = (2π/|ω|)ℤ and ℝ/Tℤ ≅ S¹ (A8C)",
    "status": "ESTABLISHED",
    "cards": [
     "C8a",
-    "G1c"
+    "G1c",
+    "A8Ce"
    ],
    "docs": [],
    "registry": [],
@@ -2954,13 +2955,14 @@
     "TRANSFORMATION",
     "GEOMETRY"
    ],
-   "equation": "M_c = diag(1, −1/c²) → diag(1, 0); boost → shear",
+   "equation": "M_c = diag(1, −1/c²) → diag(1, 0); boost → shear; the limit form's preservation group is larger than the Galilean boosts (A8Me)",
    "status": "ESTABLISHED",
    "cards": [
     "S5d",
     "C9b",
     "C9c",
-    "C9d"
+    "C9d",
+    "A8Me"
    ],
    "docs": [
     "research/connections/C9.md"
@@ -2998,7 +3000,10 @@
    ],
    "equation": "c fixes η and indexes the limit c → ∞",
    "status": "HYPOTHESIS",
-   "cards": [],
+   "cards": [
+    "A8Mc",
+    "A8Lc"
+   ],
    "docs": [],
    "registry": [
     "T-C-ROLES",
@@ -3010,12 +3015,12 @@
    ],
    "supports": [],
    "bearsOn": [],
-   "backboneSupport": 25,
+   "backboneSupport": 30,
    "slopRisk": 30,
    "transferDepth": "not a transfer",
    "applicationBreadth": null,
    "failureCondition": "—",
-   "foundationRole": "H3-1 (user)",
+   "foundationRole": "H3-1 (user). Act VIII restricted answer: Role 2 and Role 3 are roles of the same form constant; at finite c the value of c is not an isomorphism invariant (finite-c forms congruent, finite-c algebras isomorphic); the invariant content is finiteness (M_c nondegenerate and Poincaré algebra exactly when c < ∞; A8Ma, A8Mc, A8Lc). Known mathematics; not an instance of the circle mechanism (A8K)",
    "guideLocation": "Act IV / Guide",
    "gap": null,
    "provenance": "USER-ORIGIN",
@@ -3033,13 +3038,14 @@
    "stages": [
     "DYNAMICS / CONTINUATION"
    ],
-   "equation": "exact return (C8a); near-return (C8d); boundary approach (C8b, S5b); mean-square convergence (C8c2)",
+   "equation": "exact return (C8a); near-return (C8d); boundary approach (C8b, S5b) — topologically conjugate to drift (A8Pg); mean-square convergence (C8c2)",
    "status": "ESTABLISHED",
    "cards": [
     "C8a",
     "C8b",
     "C8d",
-    "C8c2"
+    "C8c2",
+    "A8Pg"
    ],
    "docs": [
     "research/connections/C8.md"
@@ -3078,7 +3084,11 @@
    ],
    "equation": "—",
    "status": "HYPOTHESIS",
-   "cards": [],
+   "cards": [
+    "A8X1",
+    "A8Pe",
+    "A8Pd"
+   ],
    "docs": [],
    "registry": [
     "T-STAR"
@@ -3086,12 +3096,12 @@
    "dependsOn": [],
    "supports": [],
    "bearsOn": [],
-   "backboneSupport": 20,
+   "backboneSupport": 15,
    "slopRisk": 30,
    "transferDepth": "not a transfer",
    "applicationBreadth": null,
    "failureCondition": "—",
-   "foundationRole": "user hypothesis",
+   "foundationRole": "user hypothesis (STAR-original, kept verbatim and OPEN). Act VIII readings: STAR-A forced periodicity FAIL (A8SA); STAR-B existence RESTRICTED (A8SB); STAR-C recurrence RESTRICTED to Poincaré (A8SC). Hierarchy with H3 not decided",
    "guideLocation": "Act IV",
    "gap": null,
    "provenance": "USER-ORIGIN",
@@ -3131,7 +3141,7 @@
    "transferDepth": "not a transfer",
    "applicationBreadth": null,
    "failureCondition": "—",
-   "foundationRole": "H3 and the 2026-11-11 backbone",
+   "foundationRole": "H3 and the 2026-11-11 backbone. Act VIII: H3-original OPEN; precise candidates H3-action (PROJECT SYNTHESIS, A8HA) and H3-quotient (RESTRICTED, A8HQ); H3-c RESTRICTED (A8HC, A8K)",
    "guideLocation": "Act II / IV",
    "gap": null,
    "provenance": "USER-ORIGIN",
@@ -4330,7 +4340,7 @@
    "stages": [
     "CROSS-SYSTEM TRANSFER"
    ],
-   "equation": "kept FAIL cards S14a, C8c, B5a, Z1a, Z2b, CFT6b (check error, re-carded CFT6b2); CF11-B with one meaning of \"preserved\" does not organize generic Fisher geometry (CFT5c); component FIM eigenvalues are not coordinate invariants (CFT5e); weighted centering is not a symmetry (CFT8b); T′ unchanged fails on unequal masses, quantum, Fourier k ≠ 0, orthogonality; contribution geometry fails for spins; R1 misses M5; P1 converse fails; ε undefined off exchange eigenstates; linear template fails on nonlinear zeros; C7 pass 1: pointwise spectral decay gives no global width control (C7d); coefficient decay is not necessary for a width hierarchy (C7n); enclosure axes are not the model image's widths (C7o–C7q); Quinn Eq. (2) error term as written in arXiv v1 fails (C7j); Transtrum geodesic widths along chart eigendirections are not an invariant spectrum (MMPg); final C7 audit: C7-F(raw) fails as an invariant universal claim (C7Lm); an envelope alone gives no lower bound (C7Ll); Quinn's published Eq. (2) fails under the Euclidean reading (C7Lc, C7Ld)",
+   "equation": "kept FAIL cards S14a, C8c, B5a, Z1a, Z2b, CFT6b (check error, re-carded CFT6b2); CF11-B with one meaning of \"preserved\" does not organize generic Fisher geometry (CFT5c); component FIM eigenvalues are not coordinate invariants (CFT5e); weighted centering is not a symmetry (CFT8b); T′ unchanged fails on unequal masses, quantum, Fourier k ≠ 0, orthogonality; contribution geometry fails for spins; R1 misses M5; P1 converse fails; ε undefined off exchange eigenstates; linear template fails on nonlinear zeros; C7 pass 1: pointwise spectral decay gives no global width control (C7d); coefficient decay is not necessary for a width hierarchy (C7n); enclosure axes are not the model image's widths (C7o–C7q); Quinn Eq. (2) error term as written in arXiv v1 fails (C7j); Transtrum geodesic widths along chart eigendirections are not an invariant spectrum (MMPg); final C7 audit: C7-F(raw) fails as an invariant universal claim (C7Lm); an envelope alone gives no lower bound (C7Ll); Quinn's published Eq. (2) fails under the Euclidean reading (C7Lc, C7Ld); Act VIII: \"sines and cosines converge to infinity\" fails (A8Cc); compact ⇒ periodic fails (A8X1); STAR-A fails (A8X3); H3-c as the same construction as t ↦ e^(iωt) fails (A8Sa)",
    "status": "NEGATIVE",
    "cards": [
     "S14a",
@@ -4351,7 +4361,10 @@
     "C7j",
     "C7Lm",
     "C7Ll",
-    "C7Lc"
+    "C7Lc",
+    "A8Cc",
+    "A8X1",
+    "A8Sa"
    ],
    "docs": [
     "research/application_matrix.md"
@@ -5007,7 +5020,7 @@
     "GEOMETRY",
     "INFORMATION"
    ],
-   "equation": "exact enclosure Y(Θ) ⊆ V_mD_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (a Minkowski sum); directional widths ≤ 2‖D_mV_mᵀu‖₁ + 2R_m‖u‖₁; proved conservative ellipsoid E(2(m·V_mD_m²V_mᵀ + NR_m²I)) (C7Le); exact axes {√N r_0} ∪ {√(N/2) r_k} at Gauss–Chebyshev (first-kind) nodes, unweighted (C7Li); d_m(F; C[−1, 1]) ≤ R_m with L_m = span{T_0…T_(m−1)} (C7Lk); set-level, unchanged by reparametrizations that keep the set (C7Lo). Quinn's Eq. (2) additive ellipsoid is NOT used (C7Lc)",
+   "equation": "the exact coefficient-box/Minkowski set inclusion used in the argument is Y(Θ) ⊆ V_mD_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (a Minkowski sum; equality with the model image not claimed); directional widths ≤ 2‖D_mV_mᵀu‖₁ + 2R_m‖u‖₁; proved conservative ellipsoid E(2(m·V_mD_m²V_mᵀ + NR_m²I)) (C7Le); exact axes {√N r_0} ∪ {√(N/2) r_k} at Gauss–Chebyshev (first-kind) nodes, unweighted (C7Li); choosing L_m = span{T_0…T_(m−1)} proves d_m(F; C[−1, 1]) ≤ R_m; equality is not guaranteed for an arbitrary enveloped family (C7Lk); set-level, unchanged by reparametrizations that keep the set (C7Lo). Quinn's Eq. (2) additive ellipsoid is NOT used (C7Lc)",
    "status": "ESTABLISHED",
    "cards": [
     "C7f",
@@ -5309,6 +5322,664 @@
    "mathematicalStatus": null,
    "transformationLevel": [],
    "novelty": "CORRECTION / OBSERVATION (not a new theorem)",
+   "reductionRole": null
+  },
+  {
+   "id": "A8A",
+   "name": "One-parameter action: stabilizer trichotomy and orbit classes",
+   "layer": "ESTABLISHED MATHEMATICS",
+   "stages": [
+    "DYNAMICS / CONTINUATION",
+    "TRANSFORMATION"
+   ],
+   "equation": "Φ: ℝ × X → X continuous, Φ_t∘Φ_s = Φ_(t+s); Stab(x) ∈ {ℝ, Tℤ, {0}} (closed subgroups of ℝ); free orbits split by orbit-closure compactness, recurrence and escape (decision tree; named examples not exhaustive)",
+   "status": "ESTABLISHED",
+   "cards": [
+    "A8Pa",
+    "A8Pb",
+    "A8Pc",
+    "A8Pg"
+   ],
+   "docs": [
+    "research/constructions/act8_finite_infinite_h3_c.md"
+   ],
+   "registry": [
+    "T-H3-ACTION"
+   ],
+   "dependsOn": [],
+   "supports": [],
+   "bearsOn": [
+    "T-H3",
+    "T-SCHEMA"
+   ],
+   "backboneSupport": 30,
+   "slopRisk": 15,
+   "transferDepth": "STRUCTURAL TRANSFER",
+   "applicationBreadth": 2,
+   "failureCondition": "a parameter that indexes a family without acting on the state space is outside it (A8Sa, A8X6)",
+   "foundationRole": "the main H3 testbed: the behaviour class is decided by the action, its stabilizer and orbit closure",
+   "guideLocation": "Act II–IV (rev-3 Act VIII)",
+   "gap": null,
+   "provenance": "TEXTBOOK / STANDARD",
+   "sources": [
+    "SRC-KATOK-HASSELBLATT-1995"
+   ],
+   "sourceStatus": null,
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": "KNOWN MATHEMATICS",
+   "reductionRole": null
+  },
+  {
+   "id": "A8C",
+   "name": "Circle: the unbounded parameter as quotient and cover",
+   "layer": "ESTABLISHED MATHEMATICS",
+   "stages": [
+    "REPRESENTATION",
+    "DYNAMICS / CONTINUATION"
+   ],
+   "equation": "Φ_t(z) = e^(iωt)z: |γ_ω| = 1, minimal period 2π/|ω|, no limit as t → ∞; Stab = (2π/|ω|)ℤ; ℝ/Tℤ ≅ ℝ/ℤ ≅ S¹ via t ↦ ωt/2π; covering p(σ) = e^(2πiσ) carries the unbounded lift",
+   "status": "ESTABLISHED",
+   "cards": [
+    "A8Ca",
+    "A8Cb",
+    "A8Cc",
+    "A8Cd",
+    "A8Ce",
+    "A8Cf"
+   ],
+   "docs": [
+    "research/constructions/act8_finite_infinite_h3_c.md"
+   ],
+   "registry": [
+    "T-UNBOUNDED-EVOLUTION",
+    "T-TIME-CIRCLE"
+   ],
+   "dependsOn": [
+    "R6",
+    "A8A"
+   ],
+   "supports": [],
+   "bearsOn": [
+    "T-TIME-CIRCLE-0",
+    "T-H3-QUOTIENT"
+   ],
+   "backboneSupport": 35,
+   "slopRisk": 5,
+   "transferDepth": "TRIVIAL CONSEQUENCE",
+   "applicationBreadth": 1,
+   "failureCondition": "none; the old wording \"sines and cosines converge to infinity\" FAILS (A8Cc)",
+   "foundationRole": "the exact finite/infinite relation of the circle; S¹ is compact and is not called infinite",
+   "guideLocation": "Act II–IV (rev-3 Act VIII)",
+   "gap": null,
+   "provenance": "TEXTBOOK / STANDARD",
+   "sources": [
+    "SRC-HATCHER-2002"
+   ],
+   "sourceStatus": null,
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": "KNOWN MATHEMATICS",
+   "reductionRole": null
+  },
+  {
+   "id": "A8T",
+   "name": "Torus flows: commensurability, Kronecker density, subtori",
+   "layer": "ESTABLISHED MATHEMATICS",
+   "stages": [
+    "DYNAMICS / CONTINUATION",
+    "GEOMETRY"
+   ],
+   "equation": "periodic ⟺ ∃T > 0: Tω_j ∈ 2πℤ ∀j ⟺ all ratios rational; rationally independent ⇒ dense (Kronecker–Weyl); orbit-closure dimension n − rank(integer relation lattice of ω); near return ≠ exact return",
+   "status": "ESTABLISHED",
+   "cards": [
+    "A8Ta",
+    "A8Tb",
+    "A8Tc",
+    "A8Te",
+    "A8Ua"
+   ],
+   "docs": [
+    "research/constructions/act8_finite_infinite_h3_c.md"
+   ],
+   "registry": [
+    "T-COMPACT-NOT-PERIODIC"
+   ],
+   "dependsOn": [
+    "A8A"
+   ],
+   "supports": [],
+   "bearsOn": [
+    "T-STAR",
+    "T-CIRCLE-NOT-THESIS",
+    "T-GEOM-RULES"
+   ],
+   "backboneSupport": 30,
+   "slopRisk": 8,
+   "transferDepth": "STRUCTURAL TRANSFER",
+   "applicationBreadth": 2,
+   "failureCondition": "—",
+   "foundationRole": "compact image ⇏ exact periodic orbit; the \"rule\" is the integer relation lattice of the generator",
+   "guideLocation": "Act II–IV (rev-3 Act VIII)",
+   "gap": null,
+   "provenance": "TEXTBOOK / STANDARD",
+   "sources": [
+    "SRC-STEIN-SHAKARCHI-2003",
+    "SRC-KATOK-HASSELBLATT-1995",
+    "SRC-HARDY-WRIGHT-2008",
+    "SRC-WEYL-1916"
+   ],
+   "sourceStatus": null,
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": "KNOWN MATHEMATICS",
+   "reductionRole": null
+  },
+  {
+   "id": "A8D",
+   "name": "Finite / infinite distinction table",
+   "layer": "PROJECT-DERIVED CONNECTION",
+   "stages": [
+    "DYNAMICS / CONTINUATION"
+   ],
+   "equation": "ten properties (unbounded parameter domain, compact orbit closure, unbounded lift, bounded observable, infinitely many cycles, convergence, recurrence, periodicity, dense orbit, noncompact drift) separated pairwise over ten systems; boundary approach ≅ drift (artanh conjugacy); \"bounded\" is metric-dependent, compact orbit closure is not",
+   "status": "DERIVED",
+   "cards": [
+    "A8Da",
+    "A8Db",
+    "A8Pg",
+    "A8X2"
+   ],
+   "docs": [
+    "research/constructions/act8_finite_infinite_h3_c.md"
+   ],
+   "registry": [
+    "T-ACT8-GOV"
+   ],
+   "dependsOn": [
+    "A8A",
+    "A8C",
+    "A8T"
+   ],
+   "supports": [],
+   "bearsOn": [
+    "T-INF-FIN",
+    "B-FINITE-INFINITE",
+    "T-SCHEMA"
+   ],
+   "backboneSupport": 25,
+   "slopRisk": 10,
+   "transferDepth": "not a transfer",
+   "applicationBreadth": null,
+   "failureCondition": "—",
+   "foundationRole": "\"infinite\" names its object",
+   "guideLocation": "Act II–IV (rev-3 Act VIII)",
+   "gap": null,
+   "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": "PROJECT CLASSIFICATION OF KNOWN MATHEMATICS",
+   "reductionRole": null
+  },
+  {
+   "id": "A8SA",
+   "name": "STAR-A: a constrained geometry forces periodicity (FAIL)",
+   "layer": "FAILED / NEGATIVE RESULT",
+   "stages": [
+    "DYNAMICS / CONTINUATION"
+   ],
+   "equation": "compact T² with preserved |z₁| = |z₂| = 1 and the (1, √2) flow: no periodic orbit; compact [0, 1] with the logistic flow: no non-constant periodic orbit",
+   "status": "NEGATIVE",
+   "cards": [
+    "A8X1",
+    "A8X3",
+    "A8Ra"
+   ],
+   "docs": [
+    "research/constructions/act8_finite_infinite_h3_c.md"
+   ],
+   "registry": [
+    "T-STAR-A",
+    "T-COMPACT-NOT-PERIODIC"
+   ],
+   "dependsOn": [],
+   "supports": [],
+   "bearsOn": [
+    "T-STAR"
+   ],
+   "backboneSupport": null,
+   "slopRisk": null,
+   "transferDepth": "FAIL",
+   "applicationBreadth": null,
+   "failureCondition": "—",
+   "foundationRole": "★ reading A: FAIL; ★ keeps its wording (T-STAR stays a hypothesis)",
+   "guideLocation": "Act II–IV (rev-3 Act VIII)",
+   "gap": null,
+   "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null,
+   "reductionRole": null
+  },
+  {
+   "id": "A8SB",
+   "name": "STAR-B: a constrained geometry admits a periodic evolution (restricted)",
+   "layer": "PROJECT-DERIVED CONNECTION",
+   "stages": [
+    "DYNAMICS / CONTINUATION"
+   ],
+   "equation": "vacuous if fixed points count (Φ_t = id); no non-constant periodic orbit for flows on ℝ or an interval; S¹ and every smooth manifold of dimension ≥ 2 admit one (bump construction, local model A8X4; general step a project argument)",
+   "status": "DERIVED",
+   "cards": [
+    "A8Pe",
+    "A8X4"
+   ],
+   "docs": [
+    "research/constructions/act8_finite_infinite_h3_c.md"
+   ],
+   "registry": [
+    "T-STAR-B"
+   ],
+   "dependsOn": [],
+   "supports": [],
+   "bearsOn": [
+    "T-STAR"
+   ],
+   "backboneSupport": 15,
+   "slopRisk": 20,
+   "transferDepth": "not a transfer",
+   "applicationBreadth": null,
+   "failureCondition": "—",
+   "foundationRole": "★ reading B: RESTRICTED (depends on the class, not on \"bound by rules\")",
+   "guideLocation": "Act II–IV (rev-3 Act VIII)",
+   "gap": null,
+   "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null,
+   "reductionRole": null
+  },
+  {
+   "id": "A8SC",
+   "name": "STAR-C: recurrence is Poincaré recurrence (restricted)",
+   "layer": "ESTABLISHED MATHEMATICS",
+   "stages": [
+    "DYNAMICS / CONTINUATION",
+    "INFORMATION"
+   ],
+   "equation": "measure-preserving flow on a space of finite total measure ⇒ almost every point recurrent; each hypothesis needed (cylinder: μ = ∞; logistic: Lebesgue not invariant; θ̇ = 1 − cos θ: only δ₀ invariant)",
+   "status": "ESTABLISHED",
+   "cards": [
+    "A8Pd",
+    "A8Tc"
+   ],
+   "docs": [
+    "research/constructions/act8_finite_infinite_h3_c.md"
+   ],
+   "registry": [
+    "T-STAR-C"
+   ],
+   "dependsOn": [],
+   "supports": [],
+   "bearsOn": [
+    "T-STAR"
+   ],
+   "backboneSupport": 15,
+   "slopRisk": 10,
+   "transferDepth": "TRIVIAL CONSEQUENCE",
+   "applicationBreadth": null,
+   "failureCondition": "infinite measure or a non-invariant measure",
+   "foundationRole": "★ reading C: RESTRICTED to a known theorem",
+   "guideLocation": "Act II–IV (rev-3 Act VIII)",
+   "gap": null,
+   "provenance": "TEXTBOOK / STANDARD",
+   "sources": [
+    "SRC-WALTERS-1982",
+    "SRC-POINCARE-1890"
+   ],
+   "sourceStatus": null,
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null,
+   "reductionRole": null
+  },
+  {
+   "id": "A8HA",
+   "name": "H3-action: unbounded parameter acting on a constrained state space",
+   "layer": "PROJECT-DERIVED CONNECTION",
+   "stages": [
+    "DYNAMICS / CONTINUATION",
+    "CROSS-SYSTEM TRANSFER"
+   ],
+   "equation": "the behaviour class is fixed by the action (stabilizer, orbit closure, recurrence), never by unboundedness of the parameter (constant across all classes, A8Da); preserved invariants confine but do not decide (A8Ua)",
+   "status": "DERIVED",
+   "cards": [
+    "A8Pa",
+    "A8Pb",
+    "A8Da",
+    "A8Ua"
+   ],
+   "docs": [
+    "research/constructions/act8_finite_infinite_h3_c.md"
+   ],
+   "registry": [
+    "T-H3-ACTION"
+   ],
+   "dependsOn": [
+    "A8A",
+    "A8D"
+   ],
+   "supports": [],
+   "bearsOn": [
+    "T-H3"
+   ],
+   "backboneSupport": 30,
+   "slopRisk": 15,
+   "transferDepth": "STRUCTURAL TRANSFER",
+   "applicationBreadth": 2,
+   "failureCondition": "a parameter that does not act (A8Sa, A8X6)",
+   "foundationRole": "PROJECT SYNTHESIS; candidate only, not renamed H3",
+   "guideLocation": "Act II–IV (rev-3 Act VIII)",
+   "gap": null,
+   "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": "PROJECT ARCHITECTURAL SYNTHESIS",
+   "reductionRole": null
+  },
+  {
+   "id": "A8HQ",
+   "name": "H3-quotient: quotient / cover / compact closure encodes the bound (restricted)",
+   "layer": "PROJECT-DERIVED CONNECTION",
+   "stages": [
+    "REPRESENTATION",
+    "DYNAMICS / CONTINUATION"
+   ],
+   "equation": "periodic class: orbit ≅ ℝ/Tℤ, covering ℝ → S¹; free recurrent class: compact orbit closure; boundary approach: none of the three (A8Pg); with \"orbit\" the statement is true of every action (too broad)",
+   "status": "DERIVED",
+   "cards": [
+    "A8Ce",
+    "A8Cf",
+    "A8Tb",
+    "A8Pg"
+   ],
+   "docs": [
+    "research/constructions/act8_finite_infinite_h3_c.md"
+   ],
+   "registry": [
+    "T-H3-QUOTIENT"
+   ],
+   "dependsOn": [
+    "A8C",
+    "A8T"
+   ],
+   "supports": [],
+   "bearsOn": [
+    "T-H3"
+   ],
+   "backboneSupport": 20,
+   "slopRisk": 15,
+   "transferDepth": "STRUCTURAL TRANSFER",
+   "applicationBreadth": 1,
+   "failureCondition": "boundary approach / drift (A8Pg)",
+   "foundationRole": "RESTRICTED; candidate only, not renamed H3",
+   "guideLocation": "Act II–IV (rev-3 Act VIII)",
+   "gap": null,
+   "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": "PROJECT CLASSIFICATION OF KNOWN MATHEMATICS",
+   "reductionRole": null
+  },
+  {
+   "id": "A8HC",
+   "name": "H3-c: c as an instance of the H3 structure",
+   "layer": "ORIGINAL USER THEORY",
+   "stages": [
+    "CROSS-SYSTEM TRANSFER",
+    "GEOMETRY"
+   ],
+   "equation": "—",
+   "status": "HYPOTHESIS",
+   "cards": [
+    "A8Sa",
+    "A8Sb"
+   ],
+   "docs": [
+    "research/constructions/act8_finite_infinite_h3_c.md"
+   ],
+   "registry": [
+    "T-H3-C"
+   ],
+   "dependsOn": [],
+   "supports": [],
+   "bearsOn": [
+    "T-H3",
+    "T-C-ROLES"
+   ],
+   "backboneSupport": 10,
+   "slopRisk": 25,
+   "transferDepth": "FAIL",
+   "applicationBreadth": 1,
+   "failureCondition": "same construction as t ↦ e^(iωt): NO (A8Sa, A8Sb)",
+   "foundationRole": "RESTRICTED: the c-clause of H3-original, kept verbatim; surviving content is the preserved-form correspondence (A8K)",
+   "guideLocation": "Act II–IV (rev-3 Act VIII) / Guide: relativity",
+   "gap": null,
+   "provenance": "USER-ORIGIN",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null,
+   "reductionRole": null
+  },
+  {
+   "id": "A8M",
+   "name": "The c-family of forms and its degenerate limit",
+   "layer": "ESTABLISHED MATHEMATICS",
+   "stages": [
+    "GEOMETRY",
+    "PRESERVED STRUCTURE"
+   ],
+   "equation": "M_c = diag(1, −1/c²) = P_cᵀηP_c (finite-c congruence only; SᵀM_(c₂)S = M_(c₁)); det −1/c², rank 2, signature (1, 1); null cone x = ±ct; c → ∞: M_∞ = diag(1, 0) (rank 1, outside every congruence class), c⁻²M_c⁻¹ → h = diag(0, −1), M_∞ = ττᵀ with hτ = 0; Aut(M_∞) = {[[±1, 0], [k, d]]} is not the Galilean group",
+   "status": "ESTABLISHED",
+   "cards": [
+    "A8Ma",
+    "A8Mb",
+    "A8Mc",
+    "A8Md",
+    "A8Me"
+   ],
+   "docs": [
+    "research/constructions/act8_finite_infinite_h3_c.md"
+   ],
+   "registry": [
+    "T-C9"
+   ],
+   "dependsOn": [
+    "L1",
+    "L3"
+   ],
+   "supports": [],
+   "bearsOn": [
+    "T-C-ROLES",
+    "T-H3-C"
+   ],
+   "backboneSupport": 25,
+   "slopRisk": 10,
+   "transferDepth": "not a transfer",
+   "applicationBreadth": null,
+   "failureCondition": "—",
+   "foundationRole": "c as a form constant; diag(1, 0) is a degenerate bilinear form, not \"the Newtonian metric\"",
+   "guideLocation": "Guide: relativity",
+   "gap": null,
+   "provenance": "TEXTBOOK / STANDARD",
+   "sources": [
+    "SRC-MINKOWSKI-1909",
+    "SRC-MALAMENT-2012"
+   ],
+   "sourceStatus": null,
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": "KNOWN MATHEMATICS",
+   "reductionRole": null
+  },
+  {
+   "id": "A8L",
+   "name": "Lorentz → Galilean: form degeneration vs group contraction",
+   "layer": "ESTABLISHED MATHEMATICS",
+   "stages": [
+    "TRANSFORMATION",
+    "PRESERVED STRUCTURE"
+   ],
+   "equation": "boost ΛᵀM_cΛ = M_c; fixed v: Λ_c(v) → [[1, 0], [−v, 1]], v₁ ⊕ v₂ → v₁ + v₂; [K_c, P] = −H/c² → 0 (derived algebra of dimension 2 for finite c, 1 at c = ∞: Poincaré(1+1) ≇ Galilei(1+1); all finite c isomorphic); the limit form's preservation group (2 parameters) is larger than the contracted boost group (1); β = v/c fixed: no contraction",
+   "status": "ESTABLISHED",
+   "cards": [
+    "A8La",
+    "A8Lb",
+    "A8Lc",
+    "A8X5"
+   ],
+   "docs": [
+    "research/constructions/act8_finite_infinite_h3_c.md"
+   ],
+   "registry": [
+    "T-C9"
+   ],
+   "dependsOn": [
+    "L1",
+    "L3",
+    "A8M"
+   ],
+   "supports": [],
+   "bearsOn": [
+    "T-C-ROLES",
+    "T-H3-C"
+   ],
+   "backboneSupport": 25,
+   "slopRisk": 10,
+   "transferDepth": "not a transfer",
+   "applicationBreadth": null,
+   "failureCondition": "—",
+   "foundationRole": "related but not identical statements; \"c → ∞\" needs a stated scaling",
+   "guideLocation": "Guide: relativity",
+   "gap": null,
+   "provenance": "TEXTBOOK / STANDARD",
+   "sources": [
+    "SRC-INONU-WIGNER-1953"
+   ],
+   "sourceStatus": null,
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": "KNOWN MATHEMATICS",
+   "reductionRole": null
+  },
+  {
+   "id": "A8K",
+   "name": "t versus c: the restricted correspondence",
+   "layer": "PROJECT-DERIVED CONNECTION",
+   "stages": [
+    "CROSS-SYSTEM TRANSFER",
+    "GEOMETRY"
+   ],
+   "equation": "t is an internal action parameter on S¹; c is an external family index (not an action on spacetime; an action on forms through log c). Shared exact object: a one-parameter subgroup preserving a quadratic form (CF1/S4): t ↔ rapidity s, circle radius r ↔ c; elliptic (ωJ)² = −ω²I vs hyperbolic K̂² = I (parabolic at c = ∞); no member or limit of the c-family is elliptic",
+   "status": "DERIVED",
+   "cards": [
+    "A8Sa",
+    "A8Sb"
+   ],
+   "docs": [
+    "research/constructions/act8_finite_infinite_h3_c.md"
+   ],
+   "registry": [
+    "T-ACT8-GOV"
+   ],
+   "dependsOn": [
+    "A8C",
+    "A8M",
+    "A8L",
+    "CF1"
+   ],
+   "supports": [],
+   "bearsOn": [
+    "T-H3-C",
+    "T-C-ROLES",
+    "T-H3"
+   ],
+   "backboneSupport": 10,
+   "slopRisk": 25,
+   "transferDepth": "STRUCTURAL TRANSFER",
+   "applicationBreadth": 1,
+   "failureCondition": "same construction: NO; \"c converges to infinity like t\": SUPERFICIAL",
+   "foundationRole": "outcome: STRUCTURAL ANALOGY through the known preserved-form object only",
+   "guideLocation": "Act II–IV (rev-3 Act VIII) / Guide: relativity",
+   "gap": null,
+   "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": "PROJECT CLASSIFICATION OF KNOWN MATHEMATICS",
+   "reductionRole": null
+  },
+  {
+   "id": "A8X",
+   "name": "H3 / ★ counterexamples X1–X6 and rejected implications",
+   "layer": "FAILED / NEGATIVE RESULT",
+   "stages": [
+    "DYNAMICS / CONTINUATION",
+    "CROSS-SYSTEM TRANSFER"
+   ],
+   "equation": "X1 irrational torus; X2 cylinder; X3 logistic on [0, 1]; X4 rotation of ℝ²; X5 c → ∞ with β fixed; X6 truncation index vs flow time. Rejected: compact ⇒ periodic; bounded ⇒ convergent; unbounded parameter ⇒ unbounded observable; parameter → ∞ ⇒ dimension loss",
+   "status": "NEGATIVE",
+   "cards": [
+    "A8X1",
+    "A8X2",
+    "A8X3",
+    "A8X4",
+    "A8X5",
+    "A8X6",
+    "A8Ra",
+    "A8Rb",
+    "A8Rc",
+    "A8Rd"
+   ],
+   "docs": [
+    "research/constructions/act8_finite_infinite_h3_c.md"
+   ],
+   "registry": [
+    "T-COMPACT-NOT-PERIODIC"
+   ],
+   "dependsOn": [],
+   "supports": [],
+   "bearsOn": [
+    "T-STAR",
+    "T-H3"
+   ],
+   "backboneSupport": null,
+   "slopRisk": null,
+   "transferDepth": "FAIL",
+   "applicationBreadth": null,
+   "failureCondition": "—",
+   "foundationRole": "every failed generalization kept",
+   "guideLocation": "Act II–IV (rev-3 Act VIII)",
+   "gap": null,
+   "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null,
    "reductionRole": null
   }
  ],
@@ -7057,6 +7728,145 @@
    "sources": [],
    "assumptions": "a supplied tensor h and metric W",
    "failureCondition": "no such structure is supplied by the model"
+  },
+  {
+   "id": "BR75",
+   "left": "unbounded parameter t ∈ ℝ",
+   "right": "compact circle S¹",
+   "connector": "Stab = Tℤ: ℝ/Tℤ ≅ S¹; covering p(σ) = e^(2πiσ) with γ_ω(t) = p(ωt/2π)",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "A8Ce",
+    "A8Cf"
+   ],
+   "doesNotProve": "that every bounded representation of an unbounded parameter is a quotient (boundary approach is not, A8Pg)",
+   "objects": [
+    "A8C",
+    "R6"
+   ],
+   "strength": "THEOREM",
+   "sources": [
+    "SRC-HATCHER-2002"
+   ],
+   "assumptions": "ω ≠ 0; continuous action",
+   "failureCondition": "ω = 0 (Stab = ℝ: the orbit is a point)"
+  },
+  {
+   "id": "BR76",
+   "left": "compact / constrained image",
+   "right": "exact periodic orbit",
+   "connector": "(1, √2) flow on T²: compact, |z₁| = |z₂| = 1 preserved, Stab = {0} at every point; logistic flow on [0, 1]",
+   "status": "NEGATIVE",
+   "scope": "project-specific",
+   "cards": [
+    "A8X1",
+    "A8X3"
+   ],
+   "doesNotProve": "that compactness is irrelevant (it gives a compact orbit closure and, with a finite invariant measure, almost-every recurrence)",
+   "objects": [
+    "A8SA",
+    "A8T"
+   ],
+   "strength": "FAILED CONNECTION",
+   "sources": [],
+   "assumptions": "the stated flows",
+   "failureCondition": "none: the counterexamples are exact"
+  },
+  {
+   "id": "BR77",
+   "left": "boundary approach (velocity flow on (−1, 1))",
+   "right": "drift (translation on ℝ)",
+   "connector": "artanh(ψ_s(v)) = artanh(v) + s: a topological conjugacy",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "A8Pg",
+    "S5a"
+   ],
+   "doesNotProve": "that boundedness is a dynamical invariant (it is not; compactness of the orbit closure is)",
+   "objects": [
+    "A8D",
+    "I1",
+    "L2"
+   ],
+   "strength": "EXACT IDENTITY",
+   "sources": [
+    "SRC-KATOK-HASSELBLATT-1995"
+   ],
+   "assumptions": "the open interval with its own topology; the Euclidean v-coordinate for \"bounded\"",
+   "failureCondition": "none for the conjugacy"
+  },
+  {
+   "id": "BR78",
+   "left": "t (action parameter on S¹)",
+   "right": "c (family parameter of Lorentz forms)",
+   "connector": "shared object: a one-parameter subgroup preserving a quadratic form (CF1/S4) — t ↔ rapidity s, circle radius r ↔ c; (ωJ)² = −ω²I vs K̂_c² = I, K_∞² = 0; c is not a group parameter on spacetime",
+   "status": "ESTABLISHED",
+   "scope": "project-specific",
+   "cards": [
+    "A8Sa",
+    "A8Sb"
+   ],
+   "doesNotProve": "that c plays the role of t (same construction: NO); that the periodic mechanism transfers to c",
+   "objects": [
+    "A8K",
+    "A8HC",
+    "CF1",
+    "L4"
+   ],
+   "strength": "STRUCTURAL ANALOGUE",
+   "sources": [],
+   "assumptions": "the stated forms on ℝ²; c fixed inside each theory",
+   "failureCondition": "the same-construction reading (A8Sa, A8Sb)"
+  },
+  {
+   "id": "BR79",
+   "left": "form degeneration M_c → diag(1, 0)",
+   "right": "group contraction (Lorentz → Galilean boosts)",
+   "connector": "related, not identical: Aut(M_∞) has 2 parameters (contains dilations), the contracted boost group 1; contraction: [K_c, P] = −H/c² → 0, derived algebra of dimension 2 for finite c and 1 at c = ∞",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "A8Lc",
+    "A8Me",
+    "A8Mc"
+   ],
+   "doesNotProve": "that the limit form determines the limit group",
+   "objects": [
+    "A8M",
+    "A8L",
+    "L3"
+   ],
+   "strength": "FAILED CONNECTION",
+   "sources": [
+    "SRC-INONU-WIGNER-1953"
+   ],
+   "assumptions": "v and x held fixed as c → ∞",
+   "failureCondition": "β = v/c held fixed: nothing contracts (A8X5)"
+  },
+  {
+   "id": "BR80",
+   "left": "rule-bound (compact) geometry",
+   "right": "recurrence",
+   "connector": "Poincaré: invariant measure + finite total measure ⇒ almost every point recurrent; each hypothesis needed (cylinder, logistic, θ̇ = 1 − cos θ)",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "A8Pd"
+   ],
+   "doesNotProve": "periodicity; recurrence of every point; recurrence from compactness alone",
+   "objects": [
+    "A8SC",
+    "I2"
+   ],
+   "strength": "THEOREM",
+   "sources": [
+    "SRC-WALTERS-1982",
+    "SRC-POINCARE-1890"
+   ],
+   "assumptions": "a measure-preserving flow on a finite measure space",
+   "failureCondition": "infinite measure, or a measure that is not invariant"
   }
  ],
  "sources": [
@@ -7082,7 +7892,8 @@
     "I1",
     "T5",
     "TA3",
-    "C7E"
+    "C7E",
+    "A8T"
    ],
    "bearsOn": [
     "P2",
@@ -7321,7 +8132,8 @@
    "doesNotEstablish": "L4; anything about model manifolds",
    "supports": [
     "L1",
-    "Z5"
+    "Z5",
+    "A8M"
    ],
    "bearsOn": [
     "L4"
@@ -7340,10 +8152,12 @@
    "claim": "group contraction: a singular limit of the generators gives a new group; the relativistic group contracts to the Galilei group as c → ∞",
    "doesNotEstablish": "Nadia's deeper hypothesis that the same parameter participating in invariant geometry and theory transition may encode a deeper structural relation (L4, project-origin)",
    "supports": [
-    "L3"
+    "L3",
+    "A8L"
    ],
    "bearsOn": [
-    "L4"
+    "L4",
+    "A8HC"
    ],
    "checked": "bibliographic record checked by web search of publisher / index records, 2026-11-12; full text not opened in this environment"
   },
@@ -7362,7 +8176,8 @@
     "L3"
    ],
    "bearsOn": [
-    "L4"
+    "L4",
+    "A8L"
    ],
    "checked": "bibliographic record checked by web search of publisher / index records, 2026-11-12; full text not opened in this environment"
   },
@@ -7939,6 +8754,135 @@
     "C7D"
    ],
    "checked": "cited by Quinn et al. 2019 (full text read 2026-11-15); the book itself not opened"
+  },
+  {
+   "id": "SRC-HATCHER-2002",
+   "authors": "Allen Hatcher",
+   "title": "Algebraic Topology",
+   "year": "2002",
+   "sourceType": "book",
+   "identifier": "Cambridge University Press; ISBN 0-521-79540-0 (paperback); also distributed free by the author",
+   "sourceClass": "textbook",
+   "status": "METADATA VERIFIED; CLAIM NOT QUOTED",
+   "claim": "covering spaces; the covering ℝ → S¹ and the fundamental group of the circle; lifting of paths through a covering",
+   "doesNotEstablish": "anything about H3 or ★; that the circle is \"infinite\" (the unbounded object is the covering coordinate)",
+   "supports": [
+    "A8C"
+   ],
+   "bearsOn": [
+    "A8HQ"
+   ],
+   "checked": "bibliographic record checked by web search of publisher / library / index records, 2026-11-16; full text not opened in this environment; claim not quoted (the author's free PDF host was not reachable from this environment)"
+  },
+  {
+   "id": "SRC-KATOK-HASSELBLATT-1995",
+   "authors": "Anatole Katok; Boris Hasselblatt",
+   "title": "Introduction to the Modern Theory of Dynamical Systems (Encyclopedia of Mathematics and its Applications 54)",
+   "year": "1995",
+   "sourceType": "book",
+   "identifier": "Cambridge University Press; ISBN 978-0-521-34187-5",
+   "sourceClass": "textbook",
+   "status": "METADATA VERIFIED; CLAIM NOT QUOTED",
+   "claim": "flows, orbits and conjugacy; translations and linear flows on tori (minimal exactly when the frequencies are rationally independent); recurrence and minimal sets; Poincaré recurrence",
+   "doesNotEstablish": "any project hypothesis (H3, ★); that compactness forces periodicity (it does not, A8X1)",
+   "supports": [
+    "A8A",
+    "A8T"
+   ],
+   "bearsOn": [
+    "A8SA",
+    "A8HA"
+   ],
+   "checked": "bibliographic record checked by web search of publisher / library / index records, 2026-11-16; full text not opened in this environment; claim not quoted; section numbers not verified"
+  },
+  {
+   "id": "SRC-HARDY-WRIGHT-2008",
+   "authors": "G. H. Hardy; E. M. Wright (revised by D. R. Heath-Brown and J. H. Silverman)",
+   "title": "An Introduction to the Theory of Numbers (6th ed.)",
+   "year": "2008",
+   "sourceType": "book",
+   "identifier": "Oxford University Press; ISBN 978-0-19-921985-8 (hardback), 978-0-19-921986-5 (paperback)",
+   "sourceClass": "textbook",
+   "status": "METADATA VERIFIED; CLAIM NOT QUOTED",
+   "claim": "Kronecker's theorem on simultaneous Diophantine approximation (density of (nθ₁, …, nθ_k) mod 1 when 1, θ₁, …, θ_k are linearly independent over ℚ); continued fractions",
+   "doesNotEstablish": "the continuous-time torus statement (a corollary, not quoted); anything about H3 or ★",
+   "supports": [
+    "A8T"
+   ],
+   "bearsOn": [],
+   "checked": "bibliographic record checked by web search of publisher / library / index records, 2026-11-16; full text not opened in this environment; claim not quoted; chapter numbering not verified"
+  },
+  {
+   "id": "SRC-WEYL-1916",
+   "authors": "Hermann Weyl",
+   "title": "Über die Gleichverteilung von Zahlen mod. Eins",
+   "year": "1916",
+   "sourceType": "journal article",
+   "identifier": "Mathematische Annalen 77, 313–352; DOI 10.1007/BF01475864",
+   "sourceClass": "primary",
+   "status": "METADATA VERIFIED; CLAIM NOT QUOTED",
+   "claim": "equidistribution modulo one; Weyl's criterion by exponential sums; equidistribution of nα for irrational α",
+   "doesNotEstablish": "H3, ★; the continuous-time multidimensional statement used here is taken from the textbooks",
+   "supports": [
+    "A8T"
+   ],
+   "bearsOn": [],
+   "checked": "bibliographic record checked by web search of publisher / library / index records, 2026-11-16; full text not opened in this environment; claim not quoted"
+  },
+  {
+   "id": "SRC-WALTERS-1982",
+   "authors": "Peter Walters",
+   "title": "An Introduction to Ergodic Theory (Graduate Texts in Mathematics 79)",
+   "year": "1982",
+   "sourceType": "book",
+   "identifier": "Springer; ISBN 978-0-387-90599-0 (softcover reprint 2000: 978-0-387-95152-2)",
+   "sourceClass": "textbook",
+   "status": "METADATA VERIFIED; CLAIM NOT QUOTED",
+   "claim": "measure-preserving transformations of probability spaces; the Poincaré recurrence theorem (almost every point of a set of positive measure returns to it); recurrence",
+   "doesNotEstablish": "recurrence of every point; recurrence without a finite invariant measure; periodicity",
+   "supports": [
+    "A8SC"
+   ],
+   "bearsOn": [
+    "A8SA"
+   ],
+   "checked": "bibliographic record checked by web search of publisher / library / index records, 2026-11-16; full text not opened in this environment; claim not quoted; theorem number not verified"
+  },
+  {
+   "id": "SRC-POINCARE-1890",
+   "authors": "Henri Poincaré",
+   "title": "Sur le problème des trois corps et les équations de la dynamique",
+   "year": "1890",
+   "sourceType": "journal article",
+   "identifier": "Acta Mathematica 13, 1–270 (DOI not verified)",
+   "sourceClass": "primary",
+   "status": "METADATA PARTLY VERIFIED; CLAIM NOT QUOTED",
+   "claim": "the recurrence theorem in its original form, for volume-preserving motion confined to a bounded region",
+   "doesNotEstablish": "the modern measure-theoretic statement (Walters); anything about ★ or H3",
+   "supports": [
+    "A8SC"
+   ],
+   "bearsOn": [],
+   "checked": "bibliographic record checked by web search of publisher / library / index records, 2026-11-16; full text not opened in this environment; claim not quoted"
+  },
+  {
+   "id": "SRC-MALAMENT-2012",
+   "authors": "David B. Malament",
+   "title": "Topics in the Foundations of General Relativity and Newtonian Gravitation Theory (Chicago Lectures in Physics)",
+   "year": "2012",
+   "sourceType": "book",
+   "identifier": "University of Chicago Press; ISBN 978-0-226-50245-8 (listings also give 978-0-226-50247-2)",
+   "sourceClass": "textbook",
+   "status": "METADATA PARTLY VERIFIED; CLAIM NOT QUOTED",
+   "claim": "classical (Galilean / Newton–Cartan) spacetime structure: a temporal one-form t_a and a degenerate spatial metric h^ab with h^ab t_b = 0, together with a connection; the geometrized formulation of Newtonian gravitation",
+   "doesNotEstablish": "that diag(1, 0) alone is a Galilean or \"Newtonian\" metric (it is one degenerate form; the structure needs h and more); anything about H3",
+   "supports": [
+    "A8M"
+   ],
+   "bearsOn": [
+    "A8L"
+   ],
+   "checked": "bibliographic record checked by web search of publisher / library / index records, 2026-11-16; full text not opened in this environment; claim not quoted; ISBN listings disagree"
   }
  ],
  "domains": [
@@ -8189,6 +9133,44 @@
    ],
    "status": "OPEN LONG-TERM",
    "note": "needs independently supplied structure (C7Ln); separate future question; not attempted"
+  },
+  {
+   "id": "D37",
+   "name": "Act VIII: one-parameter actions and finite / infinite representation",
+   "objects": [
+    "A8A",
+    "A8C",
+    "A8T",
+    "A8D",
+    "A8X"
+   ],
+   "status": "SOURCE+CARD COMPLETE",
+   "note": "stabilizer trichotomy, circle quotient / cover, torus criterion and Kronecker density (source-locked, numerical instance carded), distinction table, counterexamples X1–X6"
+  },
+  {
+   "id": "D38",
+   "name": "Act VIII: H3 and ★ readings",
+   "objects": [
+    "A8HA",
+    "A8HQ",
+    "A8HC",
+    "A8SA",
+    "A8SB",
+    "A8SC"
+   ],
+   "status": "OPEN LONG-TERM",
+   "note": "H3-original OPEN; H3-action PROJECT SYNTHESIS; H3-quotient RESTRICTED; H3-c RESTRICTED; STAR-A FAIL; STAR-B RESTRICTED; STAR-C RESTRICTED (Poincaré); H3 / ★ hierarchy not decided"
+  },
+  {
+   "id": "D39",
+   "name": "Act VIII: c-indexed forms, the Galilean limit, t versus c",
+   "objects": [
+    "A8M",
+    "A8L",
+    "A8K"
+   ],
+   "status": "SOURCE+CARD COMPLETE",
+   "note": "finite-c congruence only; degenerate limit outside every congruence class; form degeneration ≠ group contraction; t vs c: STRUCTURAL ANALOGY through the preserved-form subgroup only"
   },
   {
    "id": "D32",
@@ -8859,33 +9841,33 @@
  "ratings": [
   {
    "dimension": "Foundation architecture completeness",
-   "rating": 93,
-   "previous": 92,
-   "reason": "The final C7 audit (2026-11-16) split C7 into separately decided questions (C7-A/B/R KNOWN-REFORMULATION and locked; C7-LB FAIL; C7-F(raw) FAIL; C7-F(inv) OPEN), corrected the enclosure geometry and closed the branch. Still short: DYADIC definition, no general statement for effective representations, no application mathematics, C7-F(inv)."
+   "rating": 94,
+   "previous": 93,
+   "reason": "Act VIII first construction (2026-11-16): the finite/infinite branch now has an exact testbed (one-parameter actions, A8A), the circle / torus / cylinder results, separate ★ readings and H3 candidates, and the c-family with form degeneration kept apart from group contraction (D37–D39). Still short: DYADIC definition, no general statement for effective representations, no application mathematics, C7-F(inv), H3-original OPEN."
   },
   {
    "dimension": "Mathematical verification coverage",
    "rating": 98,
    "previous": 98,
-   "reason": "81 of 83 established or derived objects have PASS cards (computed). New: the C7 audit objects (C7F, C7G, C7H, C7Q) are NEGATIVE or OPEN and carded. Not carded: OB1 (definitional), A3 (wording)."
+   "reason": "92 of 94 established or derived objects have PASS cards (computed). New: every Act VIII object is carded (A8 cards). Not carded: OB1 (definitional), A3 (wording)."
   },
   {
    "dimension": "Cross-domain validation",
    "rating": 30,
    "previous": 30,
-   "reason": "Unchanged."
+   "reason": "Unchanged: the Act VIII examples are mathematical; relativity enters only through the known preserved-form object."
   },
   {
    "dimension": "Project-specific construction maturity",
    "rating": 45,
    "previous": 45,
-   "reason": "Unchanged: the audit corrects and locks a reformulation of known mathematics."
+   "reason": "Unchanged: every surviving Act VIII statement is known mathematics or a classification of it."
   },
   {
    "dimension": "Paper / source coverage",
-   "rating": 59,
-   "previous": 58,
-   "reason": "43 external sources registered (8 only partly verified); 55 of 56 external-claim objects have a source; R5 is SOURCE MISSING. Change: the published PRL text of Quinn et al. 2019 was read (typeset copy at NSF PAR) and a corrections search run (Crossref, web; none located)."
+   "rating": 60,
+   "previous": 59,
+   "reason": "50 external sources registered (10 only partly verified); 61 of 62 external-claim objects have a source; R5 is SOURCE MISSING. Change: seven Act VIII sources registered (Hatcher, Katok–Hasselblatt, Hardy–Wright, Weyl 1916, Walters, Poincaré 1890, Malament); metadata only, claims not quoted."
   },
   {
    "dimension": "Application validation",
@@ -9308,6 +10290,87 @@
    "new": "f analytic in the open region bounded by E_ρ with |f| ≤ M ⟺ F = f∘cos analytic in |Im φ| < log ρ with |F| ≤ M (F is automatically even and 2π-periodic); conversely an even, 2π-periodic, strip-analytic F descends to such an f (z = e^(iφ): annulus ρ^(−1) < |z| < ρ ↔ strip; x = (z + z^(−1))/2 folds z ↔ 1/z); without evenness the descent fails",
    "reason": "final audit: exact even-periodic statement",
    "date": "2026-11-15"
+  },
+  {
+   "kind": "object",
+   "id": "C7C",
+   "field": "equation",
+   "old": "exact enclosure Y(Θ) ⊆ V_mD_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (a Minkowski sum); directional widths ≤ 2‖D_mV_mᵀu‖₁ + 2R_m‖u‖₁; proved conservative ellipsoid E(2(m·V_mD_m²V_mᵀ + NR_m²I)) (C7Le); exact axes {√N r_0} ∪ {√(N/2) r_k} at Gauss–Chebyshev (first-kind) nodes, unweighted (C7Li); d_m(F; C[−1, 1]) ≤ R_m with L_m = span{T_0…T_(m−1)} (C7Lk); set-level, unchanged by reparametrizations that keep the set (C7Lo). Quinn's Eq. (2) additive ellipsoid is NOT used (C7Lc)",
+   "new": "the exact coefficient-box/Minkowski set inclusion used in the argument is Y(Θ) ⊆ V_mD_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (a Minkowski sum; equality with the model image not claimed); directional widths ≤ 2‖D_mV_mᵀu‖₁ + 2R_m‖u‖₁; proved conservative ellipsoid E(2(m·V_mD_m²V_mᵀ + NR_m²I)) (C7Le); exact axes {√N r_0} ∪ {√(N/2) r_k} at Gauss–Chebyshev (first-kind) nodes, unweighted (C7Li); choosing L_m = span{T_0…T_(m−1)} proves d_m(F; C[−1, 1]) ≤ R_m; equality is not guaranteed for an arbitrary enveloped family (C7Lk); set-level, unchanged by reparametrizations that keep the set (C7Lo). Quinn's Eq. (2) additive ellipsoid is NOT used (C7Lc)",
+   "reason": "C7 wording patch (Act VIII pass): \"exact enclosure\" → the exact coefficient-box/Minkowski set inclusion used in the argument; Kolmogorov sharpness not claimed",
+   "date": "2026-11-16"
+  },
+  {
+   "kind": "object",
+   "id": "I2",
+   "field": "foundationRole",
+   "old": "user hypothesis",
+   "new": "user hypothesis (STAR-original, kept verbatim and OPEN). Act VIII readings: STAR-A forced periodicity FAIL (A8SA); STAR-B existence RESTRICTED (A8SB); STAR-C recurrence RESTRICTED to Poincaré (A8SC). Hierarchy with H3 not decided",
+   "reason": "Act VIII: three readings tested separately",
+   "date": "2026-11-16"
+  },
+  {
+   "kind": "object",
+   "id": "I2",
+   "field": "backboneSupport",
+   "old": 20,
+   "new": 15,
+   "reason": "Act VIII: STAR-A fails on compact spaces (A8X1, A8X3); STAR-B vacuous with fixed points; STAR-C is Poincaré with its hypotheses (from 20%)",
+   "date": "2026-11-16"
+  },
+  {
+   "kind": "object",
+   "id": "L4",
+   "field": "foundationRole",
+   "old": "H3-1 (user)",
+   "new": "H3-1 (user). Act VIII restricted answer: Role 2 and Role 3 are roles of the same form constant; at finite c the value of c is not an isomorphism invariant (finite-c forms congruent, finite-c algebras isomorphic); the invariant content is finiteness (M_c nondegenerate and Poincaré algebra exactly when c < ∞; A8Ma, A8Mc, A8Lc). Known mathematics; not an instance of the circle mechanism (A8K)",
+   "reason": "Act VIII: H3-1 restricted answer",
+   "date": "2026-11-16"
+  },
+  {
+   "kind": "object",
+   "id": "L4",
+   "field": "backboneSupport",
+   "old": 25,
+   "new": 30,
+   "reason": "Act VIII: an exact restricted link between the two roles (finiteness of c as the invariant content; A8Mc, A8Lc) — known mathematics, no transfer to the circle mechanism (from 25%)",
+   "date": "2026-11-16"
+  },
+  {
+   "kind": "object",
+   "id": "I3",
+   "field": "foundationRole",
+   "old": "H3 and the 2026-11-11 backbone",
+   "new": "H3 and the 2026-11-11 backbone. Act VIII: H3-original OPEN; precise candidates H3-action (PROJECT SYNTHESIS, A8HA) and H3-quotient (RESTRICTED, A8HQ); H3-c RESTRICTED (A8HC, A8K)",
+   "reason": "Act VIII: candidates recorded separately",
+   "date": "2026-11-16"
+  },
+  {
+   "kind": "object",
+   "id": "R6",
+   "field": "equation",
+   "old": "t ↦ e^{iωt} ∈ S¹, t ∈ ℝ",
+   "new": "t ↦ e^{iωt} ∈ S¹, t ∈ ℝ; Stab = (2π/|ω|)ℤ and ℝ/Tℤ ≅ S¹ (A8C)",
+   "reason": "Act VIII: quotient form",
+   "date": "2026-11-16"
+  },
+  {
+   "kind": "object",
+   "id": "I1",
+   "field": "equation",
+   "old": "exact return (C8a); near-return (C8d); boundary approach (C8b, S5b); mean-square convergence (C8c2)",
+   "new": "exact return (C8a); near-return (C8d); boundary approach (C8b, S5b) — topologically conjugate to drift (A8Pg); mean-square convergence (C8c2)",
+   "reason": "Act VIII: boundary approach ≅ drift",
+   "date": "2026-11-16"
+  },
+  {
+   "kind": "object",
+   "id": "L3",
+   "field": "equation",
+   "old": "M_c = diag(1, −1/c²) → diag(1, 0); boost → shear",
+   "new": "M_c = diag(1, −1/c²) → diag(1, 0); boost → shear; the limit form's preservation group is larger than the Galilean boosts (A8Me)",
+   "reason": "Act VIII: preservation group of the limit",
+   "date": "2026-11-16"
   }
  ]
 }

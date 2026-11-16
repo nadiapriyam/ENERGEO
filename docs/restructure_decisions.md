@@ -1679,3 +1679,75 @@ Nadia's decisions, verbatim. LaTeX was converted to plain text; nothing else was
 > spectral hierarchy ⟹ universal Fisher hierarchy
 
 > Do not attempt to solve C7-F(inv).
+
+## Act VIII first construction pass: finite/infinite representation, H3, ★, c (2026-11-16)
+
+Nadia's decisions, verbatim. LaTeX was converted to plain text (inline "(c)" written as c); nothing else was changed.
+
+> This is Act VIII, not a continuation of C7.
+
+> an unbounded parameter can move through or index a constrained geometry while the observable representation remains bounded or structured, with invariants supplied by the system's rules.
+
+> Do not assume H3 is true.
+
+> Do not merge H3 with ★.
+
+> Do not merge the time parameter t with the theory parameter c.
+
+> Do not silently replace old project wording with a mathematically cleaner hypothesis.
+
+> Record the old “converge to infinity” statement as FAIL.
+
+> An unbounded parameter can generate indefinitely continuing evolution in a bounded geometry.
+
+> But do not yet elevate that to H3.
+
+> an unbounded covering parameter can represent a compact periodic geometry because points separated by the period are identified.
+
+> Do not describe the circle itself as infinite merely because its covering coordinate is unbounded.
+
+> compact/constrained image ⇏ exact periodic orbit
+
+> Do not call an irrational torus flow periodic.
+
+> The word “infinite” must no longer be used without naming the object.
+
+> A constrained geometry forces every admissible evolution to be periodic.
+
+> A constrained geometry admits at least one periodic evolution.
+
+> Compact/constrained geometry tends to produce recurrence or near return.
+
+> Do not rewrite ★ into whichever version survives.
+
+> H3-CANDIDATE: An unbounded parameter acting on a constrained state space can produce bounded, periodic, quasi-periodic, or recurrent observable structure; which behavior occurs is controlled not by unboundedness itself but by the action, its stabilizer, orbit closure, and invariants.
+
+> The distinction between an unbounded parameter and a bounded representation is naturally encoded by a quotient, covering map, orbit, or compact orbit closure.
+
+> Do not call either candidate H3 until the comparison with the original wording is complete.
+
+> Do not use “geometry” where the dynamics/action is doing the work.
+
+> Interpret this only as finite-c congruence/representation normalization.
+
+> Do not infer that physical c is meaningless.
+
+> Do not call the two operations equivalent.
+
+> the limit is a degenerate bilinear form.
+
+> the preservation group of the degenerate limiting form is not automatically the Galilean group.
+
+> These are related but not identical mathematical statements.
+
+> same mathematical construction; structural analogy; superficial analogy; no transfer
+
+> Do not rescue H3 by broadening it until it becomes unfalsifiable.
+
+> PROVED; ESTABLISHED INSTANCE; RESTRICTED; PROJECT SYNTHESIS; FAIL; OPEN
+
+> Do not collapse all of them into one verdict.
+
+> Low Backbone Support is not a reason to discard a coherent branch.
+
+> Stop after the finite/infinite/H3/c construction.

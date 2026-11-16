@@ -52,6 +52,9 @@ Statuses: LOCKED; SOURCE-COMPLETE; MATH-CARDED; SOURCE+CARD COMPLETE; NEEDS DERI
 | D34. C7 bridge: spectral decay → prediction-space enclosure | C7A, C7B, C7C, C7D, C7E | LOCKED | C7-R: KNOWN-REFORMULATION, RESTRICTED STRUCTURAL CONNECTION; locked by the final audit (2026-11-16, T-C7-LOCK); published Quinn text read; enclosure geometry corrected (C7La–C7Lr) |
 | D35. C7 negative results and source audit | C7F, C7H, C7Q | LOCKED | C7-F(raw) FAIL; C7-LB FAIL; Quinn Eq. (2) counterexample under the Euclidean reading; constant inconsistency recorded; no official correction located |
 | D36. C7-F(inv): invariant Fisher / local-sensitivity reformulation | C7G | OPEN LONG-TERM | needs independently supplied structure (C7Ln); separate future question; not attempted |
+| D37. Act VIII: one-parameter actions and finite / infinite representation | A8A, A8C, A8T, A8D, A8X | SOURCE+CARD COMPLETE | stabilizer trichotomy, circle quotient / cover, torus criterion and Kronecker density (source-locked, numerical instance carded), distinction table, counterexamples X1–X6 |
+| D38. Act VIII: H3 and ★ readings | A8HA, A8HQ, A8HC, A8SA, A8SB, A8SC | OPEN LONG-TERM | H3-original OPEN; H3-action PROJECT SYNTHESIS; H3-quotient RESTRICTED; H3-c RESTRICTED; STAR-A FAIL; STAR-B RESTRICTED; STAR-C RESTRICTED (Poincaré); H3 / ★ hierarchy not decided |
+| D39. Act VIII: c-indexed forms, the Galilean limit, t versus c | A8M, A8L, A8K | SOURCE+CARD COMPLETE | finite-c congruence only; degenerate limit outside every congruence class; form degeneration ≠ group contraction; t vs c: STRUCTURAL ANALOGY through the preserved-form subgroup only |
 | D32. Model-manifold research story and extensions | MM0, MM3, MM6, MM7, MM8, MM9, MM10 | OPEN LONG-TERM | every arrow of the story has a status (research/model_manifold_story.md); observation, manifestation and the viewer intuition stay open or philosophical; conscious observer requirement = NOT ESTABLISHED |
 | D33. Model-manifold invariance | MM1, MM2, MM4, MM5, MM11 | SOURCE+CARD COMPLETE | MMI cards (2026-11-13) scoped by MMP cards (2026-11-15): model image vs manifold, parameters vs local coordinates, J_Y / A notation, positive-definite hypothesis, restricted noise theorem, volume element, geometric widths vs proxies (exact width definitions source-only), boundary language; c: three roles, transfer OPEN |
 | D14. Wavelets and scattering | W1, W2 | SOURCE-COMPLETE | W1 carded; W2: exact first-order parts carded, deformation stability and higher orders source-only |
@@ -80,13 +83,13 @@ Statuses: LOCKED; SOURCE-COMPLETE; MATH-CARDED; SOURCE+CARD COMPLETE; NEEDS DERI
 
 ## Foundation ratings (separate dimensions, no overall score)
 
-| Dimension | Rating | Previous (C7 pass 1) | Reason for the change |
+| Dimension | Rating | Previous (C7 lock) | Reason for the change |
 |---|---|---|---|
-| Foundation architecture completeness | 93% | 92% | The final C7 audit (2026-11-16) split C7 into separately decided questions (C7-A/B/R KNOWN-REFORMULATION and locked; C7-LB FAIL; C7-F(raw) FAIL; C7-F(inv) OPEN), corrected the enclosure geometry and closed the branch. Still short: DYADIC definition, no general statement for effective representations, no application mathematics, C7-F(inv). |
-| Mathematical verification coverage | 98% | 98% | 81 of 83 established or derived objects have PASS cards (computed). New: the C7 audit objects (C7F, C7G, C7H, C7Q) are NEGATIVE or OPEN and carded. Not carded: OB1 (definitional), A3 (wording). |
-| Cross-domain validation | 30% | 30% | Unchanged. |
-| Project-specific construction maturity | 45% | 45% | Unchanged: the audit corrects and locks a reformulation of known mathematics. |
-| Paper / source coverage | 59% | 58% | 43 external sources registered (8 only partly verified); 55 of 56 external-claim objects have a source; R5 is SOURCE MISSING. Change: the published PRL text of Quinn et al. 2019 was read (typeset copy at NSF PAR) and a corrections search run (Crossref, web; none located). |
+| Foundation architecture completeness | 94% | 93% | Act VIII first construction (2026-11-16): the finite/infinite branch now has an exact testbed (one-parameter actions, A8A), the circle / torus / cylinder results, separate ★ readings and H3 candidates, and the c-family with form degeneration kept apart from group contraction (D37–D39). Still short: DYADIC definition, no general statement for effective representations, no application mathematics, C7-F(inv), H3-original OPEN. |
+| Mathematical verification coverage | 98% | 98% | 92 of 94 established or derived objects have PASS cards (computed). New: every Act VIII object is carded (A8 cards). Not carded: OB1 (definitional), A3 (wording). |
+| Cross-domain validation | 30% | 30% | Unchanged: the Act VIII examples are mathematical; relativity enters only through the known preserved-form object. |
+| Project-specific construction maturity | 45% | 45% | Unchanged: every surviving Act VIII statement is known mathematics or a classification of it. |
+| Paper / source coverage | 60% | 59% | 50 external sources registered (10 only partly verified); 61 of 62 external-claim objects have a source; R5 is SOURCE MISSING. Change: seven Act VIII sources registered (Hatcher, Katok–Hasselblatt, Hardy–Wright, Weyl 1916, Walters, Poincaré 1890, Malament); metadata only, claims not quoted. |
 | Application validation | 0% | 0% | Unchanged. |
 
 ## CF11 and Transformation Architecture ratings (separate records)

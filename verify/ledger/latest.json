@@ -1,7 +1,253 @@
 {
- "generated": "2026-11-16T03:01:27+00:00",
- "commit": "eee609b",
+ "generated": "2026-11-16T14:58:48+00:00",
+ "commit": "3315aa3",
  "cards": {
+  "A8Ca": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "circle action: Φ_0 = id, Φ_t∘Φ_s = Φ_(t+s), |γ_ω(t)| = |e^(iωt)| = 1 for every real t (ω ≷ 0); cos ωt and sin ωt have range [−1, 1] although t ranges over all of ℝ"
+  },
+  "A8Cb": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "γ_ω(t + T) = γ_ω(t) with T = 2π/|ω| (both signs of ω); minimal: e^(iωT′) = 1 with 0 < |ω|T′ < 2π is impossible (cos φ = 1 has no solution in (0, 2π))"
+  },
+  "A8Cc": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "for ω ≠ 0, lim_(t→∞) cos ωt and sin ωt do not exist (AccumBounds(−1, 1)); t_n = 2πn/|ω| gives cos = 1 and t_n = (2n+1)π/|ω| gives cos = −1; |cos|, |sin| ≤ 1, so neither tends to ±∞: the wording 'sines and cosines converge to infinity' is FALSE"
+  },
+  "A8Cd": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "phase lift θ(t) = ωt → ∞ and cycle count N(t) = ⌊|ω|t/2π⌋ → ∞ as t → ∞, while the image is S¹ = {|z| = 1} (closed and bounded in ℂ, hence compact): every e^(iα), α ∈ [0, 2π), is reached at t = α/ω ∈ [0, T)"
+  },
+  "A8Ce": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Stab(z) = (2π/|ω|)ℤ for every z ∈ S¹ (solved as cos ωu = 1; ω = ±3, 1/2, √2: kT ∈ Stab, T/2 and T/3 ∉ Stab); Stab = ℝ when ω = 0; the orbit map induces a bijection ℝ/Tℤ → S¹ (e^(iωt) = e^(iωs) ⟺ t − s ∈ Tℤ), and γ_ω(t) = p(ωt/2π) with p(σ) = e^(2πiσ): ℝ/Tℤ ≅ ℝ/ℤ ≅ S¹ by t ↦ ωt/2π (T ↦ ±1)"
+  },
+  "A8Cf": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "p(σ) = e^(2πiσ): fibre p⁻¹(1) = ℤ (so p is injective on every interval of length < 1), deck translations σ ↦ σ + n satisfy p(σ + n) = p(σ), |p′| = 2π ≠ 0 (local diffeomorphism); the lift of γ_ω through p from 0 is σ(t) = ωt/2π, unbounded, while S¹ itself is compact: the unbounded object is the covering coordinate, not the circle"
+  },
+  "A8Ta": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "torus periodicity criterion: if Tω_1 = 2πm and Tω_2 = 2πn then ω_1/ω_2 = m/n ∈ ℚ; conversely ω_1/ω_2 = p/q gives T = 2πq/ω_2; minimal period T/2π = lcm(b_j)/gcd(a_j) for ω_j = a_j/b_j, checked against brute force ((1, 3/2): 4π; (2, 3): 2π; (1/2, 1/3): 12π; (3/4, 5/6, 1/10))"
+  },
+  "A8Tb": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "irrational torus flow ω = (1, √2): Tω ∈ 2πℤ² forces √2 ∈ ℚ, so Stab = {0} at every point (orbit map ℝ → T² injective); density (Kronecker, source-locked): 400 section returns come within 0.016 < 0.1 of every point of a 50×50 grid, while the commensurable flow (1, 3/2) meets each section in 2 points and misses grid points by 1.55 > 1.0"
+  },
+  "A8Tc": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "near-recurrence of (1, √2) at t = 2πq: distance 2|sin(π√2 q)| = [1.9278, 1.0266, 0.4428, 0.1847, 0.0766, 0.0317, 0.0131, 0.0054] decreases below 0.01 (q = 408) but is never 0 (√2q ∉ ℤ): recurrent, not periodic"
+  },
+  "A8Te": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "ω = (1, √2, 1 + √2): the integer relation lattice {m ∈ ℤ³ : m·ω = 0} = ℤ(1, 1, −1) has rank 1, z₃·z̄₁·z̄₂ ≡ 1 along the orbit (a 2-dimensional subtorus), and the orbit is not periodic (it contains the (1, √2) flow)"
+  },
+  "A8Ua": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "same compact torus, same invariants |z_j| = 1 for every ω; orbit-closure dimension n − rank(relation lattice) = {'(1, 3/2)': 1, '(2, 3)': 1, '(1, √2)': 2, '(1, √2, 1+√2)': 2}: dimension 1 exactly in the commensurable (periodic) cases. The frequency vector's integer relations decide the behaviour; compactness and the invariant norms do not"
+  },
+  "A8X1": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "H3-X1 / STAR-A: on the compact torus T² the flow (θ₁ + t, θ₂ + √2 t) preserves |z₁| = |z₂| = 1 and has no fixed point, but Stab = {0} at EVERY point (the stabilizer equation does not involve the base point): unbounded parameter + compact image + no exact periodicity anywhere"
+  },
+  "A8X2": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "H3-X2: on S¹ × ℝ, Φ_t(z, x) = (e^(iωt)z, x + vt), v ≠ 0: the angular projection has period 2π/ω, but the full state has Stab = {0} (vT = 0 ⇒ T = 0), |x(t)| = |v|·|t| → ∞ (the orbit leaves every compact set; no recurrence): periodic representation, non-periodic noncompact state"
+  },
+  "A8X3": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "H3-X3: the logistic flow φ_t(x) = xe^t/(1 − x + xe^t) on the compact interval [0, 1] is a one-parameter group (ẋ = x(1 − x)); the orbit of 1/2 has Stab = {0}, increases strictly from 0 to 1 and never returns near 1/2 (non-recurrent), its closure [0, 1] is compact. With A8X1 (compact, recurrent, non-periodic): compactness forces neither periodicity nor recurrence"
+  },
+  "A8X4": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "H3-X4: R(ωt) on ℝ² is a one-parameter group, every orbit is periodic with period 2π/ω (the origin is fixed), and ℝ² is not compact: compactness of the state space is not necessary for periodicity"
+  },
+  "A8X5": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "H3-X5: with β = v/c fixed, Λ_c(βc) has entry −γβc → −∞ in (t, x) (no limit), and in x̃ = x/c it is the c-independent γ_β[[1, −β], [−β, 1]] with c-independent form η: c → ∞ produces no contraction and no rank loss. 'c → ∞' has content only once what is held fixed (v, x) is specified"
+  },
+  "A8X6": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "H3-X6: on one coefficient space, the truncation index N gives S_N S_M = S_min(N,M), S_N² = S_N, S_N singular for N < K (an idempotent semigroup; N → ∞ is approximation, ‖f − S_N f‖ → 0), while flow time t gives a group of invertible U_t = diag(e^(ikωt)) with no limit as t → ∞; both indices are unbounded, the structures share no group law, no orbit and no limit type"
+  },
+  "A8Yb": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "a periodic state makes every observable periodic (f(γ(t + T)) = f(γ(t)) for arbitrary f); on the cylinder the observable Re z is periodic while x(t + T) − x(t) = 2πv/ω ≠ 0: periodicity of a projection does not imply periodicity of the state"
+  },
+  "A8Pa": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "stabilizer classes: ω = 0 circle Stab = ℝ (fixed); ω = 3 circle Stab = (2π/3)ℤ (periodic); (1, √2) torus, cylinder and logistic orbit Stab = {0} (free); the subgroup ℤ + √2ℤ has elements in (0, 3.6e-04) ⊂ (0, 10⁻³), so it is dense, not closed, and cannot be the stabilizer of a continuous action on a Hausdorff space (a stabilizer is the preimage of a point)"
+  },
+  "A8Pb": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "free orbits (Stab = {0}) are not one class: (1, √2) torus: compact closure, recurrent; logistic orbit: compact closure, non-recurrent (converges to fixed points); cylinder: noncompact, escapes. 'Aperiodic recurrent' needs recurrence, not compactness"
+  },
+  "A8Pc": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "periodic ⇒ recurrent (γ(kT) = γ(0) for every k ∈ ℤ); the table (periodic, recurrent): circle (yes, yes), fixed point (yes, yes), (1, √2) torus (no, yes), cylinder (no, no), logistic (no, no): recurrence and periodicity are different properties"
+  },
+  "A8Pd": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Poincaré recurrence needs (i) an invariant measure, (ii) finite total measure, and gives (iii) almost-every recurrence: T² translation flow: Jacobian I, μ(T²) = 4π² — hypotheses hold, every point recurs (A8Tc); cylinder: Jacobian I but μ = ∞ — no point recurs (A8X2); logistic on [0, 1]: μ finite but dφ_t/dx ≠ 1 (Lebesgue not invariant) — no interior point recurs (A8X3); θ̇ = 1 − cos θ on compact S¹: the only invariant probability is δ₀, and every orbit except the fixed point goes from 0 to 2π ≡ 0 without returning (θ(t) = π + 2 arctan t): recurrence holds only δ₀-almost everywhere"
+  },
+  "A8Pe": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "STAR-B: every space carries the trivial flow Φ_t = id (all points fixed, Stab = ℝ), so 'admits a periodic evolution' is vacuous if fixed points count; flows on ℝ or an interval have strictly monotone non-constant orbits (logistic: φ̇ = φ(1 − φ) > 0 on (0, 1)), so no non-constant periodic orbit exists there (a continuous injection ℝ/Tℤ → ℝ is impossible), while the circle (also 1-dimensional) has them: the answer depends on the specified class, not on 'bound by rules'"
+  },
+  "A8Pg": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "boundary approach is drift: ψ_s(v) = (v + tanh s)/(1 + v tanh s) is a flow on (−1, 1) with artanh(ψ_s(v)) = artanh(v) + s (conjugate to translation on ℝ); the orbit of 0 is all of (−1, 1) (bounded in the Euclidean v-coordinate), leaves every compact subset, and tends to 1 ∉ (−1, 1). Boundedness is not preserved by conjugacy; compactness of the orbit closure is"
+  },
+  "A8Da": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "finite/infinite table (10 systems × 10 properties, entries from the cited cards; bounded/convergent entries recomputed from closed forms): the parameter domain is unbounded in every row, and every pair of the other nine properties differs in some row — no two may be identified"
+  },
+  "A8Db": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "implications that hold in every row: periodic ⇒ recurrent, infinitely many cycles ⇒ periodic, periodic ⇒ compact closure, compact closure ⇒ bounded, recurrent ⇒ no drift, compact closure ⇒ no drift; non-implications witnessed: compact ⇏ periodic, bounded ⇏ convergent, unbounded parameter ⇏ unbounded observable, recurrent ⇏ periodic, dense ⇏ recurrent, convergent ⇏ bounded, periodic ⇏ unbounded lift (rotation of simply connected ℝ²)"
+  },
+  "A8Ma": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "M_c = diag(1, −1/c²) = P_cᵀηP_c with P_c = diag(1, 1/c), η = diag(1, −1); q_c(t, x) = t² − x²/c²; for finite c₁, c₂ the spatial rescaling S = diag(1, c₂/c₁) gives SᵀM_(c₂)S = M_(c₁): every finite c is congruent to η (a representation-level normalization)"
+  },
+  "A8Mb": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "finite c > 0: det M_c = −1/c² ≠ 0, rank 2, eigenvalues {1, −1/c²}, signature (1, 1), inverse M_c⁻¹ = diag(1, −c²)"
+  },
+  "A8Mc": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "c → ∞: M_c → M_∞ = diag(1, 0) (det 0, rank 1, eigenvalues {1, 0}, signature (+, 0)), no inverse; M_c⁻¹ = diag(1, −c²) diverges while c⁻²M_c⁻¹ → h = diag(0, −1) (rank 1); M_∞ = ττᵀ with τ = dt and hτ = 0 (a degenerate clock form and a degenerate spatial cometric); P_c → diag(1, 0) is singular and det(PᵀηP) = −det(P)² ≠ 0 for every invertible P: no change of coordinates reaches M_∞"
+  },
+  "A8Md": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "finite c: q_c = 0 ⟺ x = ±ct, null directions (1, ±c)/√(1 + c²) → (0, ±1) as c → ∞; q_∞ = t² vanishes only on the line t = 0 (a double root). In x̃ = x/c every finite-c cone is x̃ = ±t: inside one finite-c theory the cone's slope is a coordinate choice, but no coordinate change produces the c → ∞ limit (A8Mc)"
+  },
+  "A8Me": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "AᵀM_∞A = M_∞ ⟺ A = [[±1, 0], [k, d]] with k free and d ≠ 0 free: a 2-parameter identity component containing spatial dilations x ↦ dx (e.g. diag(1, 2)) that are not Galilean boosts; also preserving the cometric h forces d = ±1. The preservation group of the degenerate form alone is NOT the Galilean group"
+  },
+  "A8La": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Lorentz boost t′ = γ_c(t − vx/c²), x′ = γ_c(x − vt): ΛᵀM_cΛ = M_c, det Λ = 1, q_c(t′, x′) = q_c(t, x) (|v| < c); in rapidity Λ = B_c(s), v = c tanh s, with B_c(s)B_c(t) = B_c(s + t), and velocities compose by (v₁ + v₂)/(1 + v₁v₂/c²)"
+  },
+  "A8Lb": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "for fixed finite v: γ_c → 1, Λ_c(v) → [[1, 0], [−v, 1]] (t′ = t, x′ = x − vt), velocity addition → v₁ + v₂ (the Galilean boost limit); the Galilean boost preserves both M_∞ and h"
+  },
+  "A8Lc": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "group contraction: with H, P, K_c on (t, x, 1), [K_c, H] = −P, [K_c, P] = −H/c², [H, P] = 0; the derived algebra has dimension 2 (c = 1), 2 (c = 7), 1 (c = ∞): Poincaré(1+1) and Galilei(1+1) algebras are not isomorphic, while every finite c is isomorphic to every other (basis K′ = cK, P′ = cP gives c-free constants). Form degeneration is different: the limit form's preservation group (A8Me, 2 parameters) is larger than the contracted boost group (1 parameter)"
+  },
+  "A8Sa": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "internal vs external: t is the parameter of one action on one state space (A8Ca); at fixed c the boosts B_c(s) form a one-parameter group in the rapidity s, and c is not a group parameter on spacetime: B_1(1)B_2(1) preserves no M_(c₃), c₃ > 0 (residual 0.526 > 0.01). The family itself is the orbit of η under the congruence action of D_σ = diag(1, e^(−σ)), σ = log c, on the space of forms (D_σ D_τ = D_(σ+τ), Stab(η) = {0}), drifting to the degenerate M_∞ outside the orbit"
+  },
+  "A8Sb": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "exact correspondence: the circle generator ωJ preserves |·|² with (ωJ)² = −ω²I (elliptic: compact periodic orbits); the boost generator K̂_c preserves M_c with K̂_c² = I (hyperbolic: noncompact orbits) and the velocity-normalized K_c² = I/c² → 0 (parabolic at c = ∞): no member or limit of the c-family is elliptic. The bound r of r·cos ωt is attained; the bound c of c·tanh s is not (boundary approach, ≅ drift by A8Pg). So t corresponds to the rapidity s, and c corresponds to the form constant r, not to t"
+  },
+  "A8Ra": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "REJECTED: compact geometry ⇒ periodicity (A8X1: compact T², no periodic orbit; A8X3: compact [0, 1], no periodic non-fixed orbit)"
+  },
+  "A8Rb": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "REJECTED: bounded observable ⇒ convergence (cos ωt is bounded with no limit, A8Cc)"
+  },
+  "A8Rc": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "REJECTED: unbounded parameter ⇒ unbounded observable (cos ωt ∈ [−1, 1] for t ∈ ℝ, A8Ca; c·tanh s ∈ (−c, c) for s ∈ ℝ, A8Sb)"
+  },
+  "A8Rd": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "REJECTED: parameter → ∞ ⇒ dimension loss (β fixed: rank 2 for every c, A8X5; ω → ∞: e^(iω) has no limit at all; v fixed: rank 2 → 1, A8Mc): any rank drop depends on what the limit holds fixed"
+  },
+  "A8Za": {
+   "script": "verify_A8.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "final statuses (each derived only if all its evidence cards pass): T-TIME-CIRCLE-0 (old infinity wording): FAIL; corrected intuition (unbounded parameter, bounded geometry): ESTABLISHED INSTANCE; H3-original: OPEN; H3-action: PROJECT SYNTHESIS; H3-quotient: RESTRICTED; H3-c: RESTRICTED; STAR-A: FAIL; STAR-B: RESTRICTED; STAR-C: RESTRICTED"
+  },
   "B1a": {
    "script": "verify_B1_B7.py",
    "verdict": "PASS",

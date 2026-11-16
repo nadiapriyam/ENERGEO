@@ -51,11 +51,14 @@ function decided(t) { return decisions.includes(t); }
 
 test('4. directional width, exact Minkowski enclosure and ellipsoid containment are kept apart; the relaxation is proved', () => {
   const g = new Map(K.geometry.map((x) => [x.object, x]));
-  for (const o of ['error set', 'exact enclosure', 'directional width bound', 'conservative enclosing ellipsoid', 'Eq. (2) additive ellipsoid']) assert.ok(g.has(o), o);
+  // 2026-11-16 wording patch (Act VIII pass): 'exact enclosure' renamed; the old name is kept in wordingPatches
+  for (const o of ['error set', 'coefficient-box / Minkowski set inclusion', 'directional width bound', 'conservative enclosing ellipsoid', 'Eq. (2) additive ellipsoid']) assert.ok(g.has(o), o);
+  assert.ok(K.wordingPatches.some((w) => /exact enclosure/.test(w.old)) && K.wordingPatches.some((w) => /attained/.test(w.old)));
+  assert.match(g.get('coefficient-box / Minkowski set inclusion').exact, /equality between the model image and these sets is NOT claimed/);
   assert.equal(g.get('conservative enclosing ellipsoid').status, 'PROVED');
   assert.match(g.get('conservative enclosing ellipsoid').exact, /E\(2\(AAᵀ \+ Nε²I\)\)/);
   assert.equal(g.get('Eq. (2) additive ellipsoid').status, 'FAIL');
-  assert.match(g.get('exact enclosure').exact, /Minkowski sums, not ellipsoids/);
+  assert.match(g.get('coefficient-box / Minkowski set inclusion').exact, /Minkowski sums, not ellipsoids/);
   assert.ok(pass('C7Ld', 'C7Le'));
   assert.equal(br.get('BR72').strength, 'EXACT IMPLICATION');
   assert.equal(br.get('BR73').strength, 'FAILED CONNECTION');
@@ -78,6 +81,7 @@ test('6. analyticity, node and periodic conventions are stated exactly', () => {
   assert.match(conv.get('Chebyshev nodes'), /fail for Chebyshev–Lobatto/);
   assert.match(conv.get('periodic Fourier route'), /complex basis[\s\S]*2K \+ 1 ≤ N[\s\S]*Nyquist/);
   assert.match(conv.get('Kolmogorov width'), /inf_\(dim L = m\)[\s\S]*span\{T_0, …, T_\(m−1\)\}[\s\S]*not a prediction-space ellipsoid axis/);
+  assert.match(conv.get('Kolmogorov width'), /Equality is not guaranteed for an arbitrary family satisfying only the coefficient envelope/);
   assert.match(conv.get('reparametrization'), /changed: the raw Fisher matrix/);
 });
 

@@ -961,6 +961,60 @@ T('T-C7-CHAIN-FINAL', 'The surviving spectral chain', 'orthogonal spectral repre
   bounds=['Holds for uniformly enveloped families as an upper-bound statement about accessible prediction-space directions; it is not "spectral hierarchy ⟹ universal Fisher hierarchy" (T-C7-FRAW, FAIL).'],
   acts=['Guide'], audit=C7L_AUDIT, related=['T-C7-SPECTRAL-CHAIN', 'T-C7-R', 'T-C7-FRAW'], ref='C7 lock, 15')
 
+# ── Act VIII first construction pass (2026-11-16): finite/infinite representation, H3, ★, c ──
+A8_AUDIT = ('missing', 'stated in the Act VIII first construction pass brief (2026-11-16)')
+A8_REC = 'research/constructions/act8_finite_infinite_h3_c.md'
+ACTS_ALREADY_NEW |= {'T-ACT8-GOV', 'T-UNBOUNDED-EVOLUTION', 'T-COMPACT-NOT-PERIODIC', 'T-H3-ACTION', 'T-H3-QUOTIENT', 'T-H3-C', 'T-STAR-A', 'T-STAR-B', 'T-STAR-C'}
+T('T-ACT8-GOV', 'Act VIII: H3 and ★ kept apart; t and c kept apart', 'Do not merge H3 with ★.', RD, U, MR, GOV,
+  variants=[('Do not assume H3 is true.', RD), ('Do not merge the time parameter t with the theory parameter c.', RD), ('Do not rescue H3 by broadening it until it becomes unfalsifiable.', RD),
+            ('Do not rewrite ★ into whichever version survives.', RD), ('The word “infinite” must no longer be used without naming the object.', RD),
+            ('Do not call either candidate H3 until the comparison with the original wording is complete.', RD), ('Do not use “geometry” where the dynamics/action is doing the work.', RD)],
+  norm='Method / governance rule (Act VIII, 2026-11-16): H3-original (T-H3) and STAR-original (T-STAR) are investigated separately and their hierarchy is not decided; t (an action parameter) and c (a family parameter) are not merged; candidate formalizations get separate records and are not renamed H3; "infinite" always names its object (parameter domain, lift, cycle count, orbit).',
+  acts=['II–IV'], audit=A8_AUDIT, related=['T-H3', 'T-STAR', 'T-H3-ACTION', 'T-H3-QUOTIENT', 'T-H3-C', 'T-STAR-A', 'T-STAR-B', 'T-STAR-C'], ref='Act VIII, 2')
+T('T-UNBOUNDED-EVOLUTION', 'Corrected intuition: unbounded parameter, bounded geometry', 'An unbounded parameter can generate indefinitely continuing evolution in a bounded geometry.', RD, U, 'established', 'established',
+  variants=[('But do not yet elevate that to H3.', RD)],
+  norm='Instance: t ∈ ℝ, Φ_t(z) = e^(iωt)z on the compact S¹; the parameter, the lift ωt and the cycle count are unbounded while the image is S¹ and the values stay in [−1, 1].',
+  pro=[('card:A8Ca', 'group action; |γ_ω(t)| = 1 for every t'), ('card:A8Cd', 'lift and cycle count unbounded; image S¹')],
+  bounds=['Act VIII (2026-11-16): ESTABLISHED INSTANCE (the circle). Preserved and not elevated to H3. It does not say which behaviour occurs: compact images also carry non-periodic (A8X1) and non-recurrent (A8X3) evolutions.'],
+  acts=['II–IV'], audit=A8_AUDIT, related=['T-TIME-CIRCLE', 'T-TIME-CIRCLE-0', 'T-H3', 'B-FINITE-INFINITE'], ref='Act VIII, 3')
+T('T-COMPACT-NOT-PERIODIC', 'A compact image does not force an exact periodic orbit', 'compact/constrained image ⇏ exact periodic orbit', RD, U, 'established', 'established',
+  variants=[('Do not call an irrational torus flow periodic.', RD)],
+  norm='On the compact torus T² the flow (θ₁ + t, θ₂ + √2t) preserves |z₁| = |z₂| = 1, has no fixed point and no periodic orbit (Stab = {0} at every point); on the compact interval [0, 1] the logistic flow has no non-constant periodic orbit.',
+  pro=[('card:A8X1', 'irrational torus: no periodic orbit at all'), ('card:A8X3', 'logistic flow on [0, 1]'), ('card:A8Ra', 'compact ⇒ periodic rejected'), ('card:A8Tc', 'near return without exact return')],
+  supers='T-STAR-A', acts=['II–IV'], audit=A8_AUDIT, related=['T-STAR', 'T-STAR-A', 'T-CIRCLE-NOT-THESIS'], ref='Act VIII, 6')
+T('T-H3-ACTION', 'H3-action: an unbounded parameter acting on a constrained state space', 'H3-CANDIDATE: An unbounded parameter acting on a constrained state space can produce bounded, periodic, quasi-periodic, or recurrent observable structure; which behavior occurs is controlled not by unboundedness itself but by the action, its stabilizer, orbit closure, and invariants.', RD, U, 'derived-connection', 'derived',
+  norm='For a continuous action Φ of (ℝ, +) on a Hausdorff space X: Stab(x) ∈ {ℝ, Tℤ, {0}} (closed subgroups of ℝ); periodicity ⟺ Stab ≠ {0}; free orbits split by orbit-closure compactness and recurrence. The same unbounded parameter domain produces every class (A8Da), so unboundedness decides nothing. Correction to the worded clause "and invariants": preserved invariants confine the orbit to a level set but do not decide the class; on tori the integer relations of the generator decide (A8Ua).',
+  pro=[('card:A8Pa', 'stabilizer trichotomy'), ('card:A8Pb', 'free orbits are not one class'), ('card:A8Da', 'the parameter domain is unbounded in every row while every behaviour varies'), ('card:A8Ca', ''), ('card:A8Tb', ''), ('card:A8X2', '')],
+  con=[('card:A8Ua', 'same invariants, different behaviour: the "invariants" clause is corrected'), ('card:A8X6', 'a parameter that indexes without acting is outside the candidate')],
+  bounds=['Act VIII (2026-11-16): PROJECT SYNTHESIS of definitions and known theorems (stabilizer trichotomy, Kronecker–Weyl, Poincaré recurrence); one clause corrected. Candidate only: not renamed H3; H3-original (T-H3) is kept.'],
+  acts=['II–IV'], audit=A8_AUDIT, related=['T-H3', 'T-H3-QUOTIENT', 'T-SCHEMA', 'T-ACT8-GOV'], ref='Act VIII, 10')
+T('T-H3-QUOTIENT', 'H3-quotient: quotient / cover / orbit closure encodes the bound', 'The distinction between an unbounded parameter and a bounded representation is naturally encoded by a quotient, covering map, orbit, or compact orbit closure.', RD, U, 'derived-connection', 'derived',
+  norm='Restricted form: for Stab = Tℤ the orbit is ℝ/Tℤ ≅ S¹ and ℝ → S¹ is a covering (A8Ce, A8Cf); for free recurrent orbits the bounded representation is the compact orbit closure (A8Tb). With the alternative "orbit" the statement is true of every action (too broad). Boundary approach is encoded by none of quotient, covering or compact closure: the velocity orbit is injective with noncompact closure and is conjugate to translation (A8Pg).',
+  pro=[('card:A8Ce', 'ℝ/Tℤ ≅ S¹'), ('card:A8Cf', 'covering ℝ → S¹'), ('card:A8Tb', 'compact orbit closure without a quotient')],
+  con=[('card:A8Pg', 'boundary approach ≅ drift: no quotient, cover or compact closure')],
+  bounds=['Act VIII (2026-11-16): RESTRICTED (periodic and compact-recurrent classes); too broad as worded because of "orbit". Candidate only: not renamed H3.'],
+  acts=['II–IV'], audit=A8_AUDIT, related=['T-H3', 'T-H3-ACTION', 'T-SCHEMA'], ref='Act VIII, 10')
+T('T-H3-C', 'H3-c: c as an instance of the H3 structure', 'that invarient variable like the speed of light which also converges to infinity is an invarient variable that acts as a rule in the manifold', P, U, 'hypothesis', 'hypothesis',
+  norm='Tested reading: c → ∞ is an instance of the time–circle construction (an unbounded parameter through a constrained geometry). Result: t is an internal action parameter on a fixed state space; c is an external family index (not an action on spacetime) whose family is a free orbit of the dilation congruence action on forms, drifting to the degenerate diag(1, 0). Surviving restricted correspondence: both examples are one-parameter subgroups preserving a quadratic form (CF1/S4), with t ↔ rapidity s and the circle radius r ↔ c; no member or limit of the c-family is elliptic.',
+  pro=[('card:A8La', 'c fixes the preserved form (Role 2)'), ('card:A8Mc', 'c → ∞: degenerate limit (Role 3)'), ('card:A8Lc', 'group contraction'), ('card:A8Sb', 'restricted correspondence t ↔ s, r ↔ c')],
+  con=[('card:A8Sa', 'c is not a group parameter on spacetime'), ('card:A8X5', 'c → ∞ with β fixed: no contraction'), ('card:A8Sb', 'never elliptic: the wrapping mechanism does not transfer')],
+  bounds=['Act VIII (2026-11-16): RESTRICTED. Same construction as t ↦ e^(iωt): NO (FAIL); "c also converges to infinity" like t: SUPERFICIAL; restricted structural analogy through the known preserved-form object. The words are the c-clause of H3-original, kept verbatim.'],
+  acts=['II–IV', 'Guide'], audit=A8_AUDIT, related=['T-H3', 'T-C-ROLES', 'T-C9', 'T-ACT8-GOV'], ref='Act VIII, 16–17')
+T('T-STAR-A', 'STAR-A: constrained geometry forces periodicity', 'A constrained geometry forces every admissible evolution to be periodic.', RD, U, 'historical-conjecture', 'hypothesis',
+  con=[('card:A8X1', 'compact T², preserved invariants, no periodic orbit'), ('card:A8X3', 'compact [0, 1], no non-constant periodic orbit'), ('card:A8Ra', 'compact ⇒ periodic rejected')],
+  bounds=['Act VIII (2026-11-16): FAIL. A reading of ★ (T-STAR), which keeps its wording; superseded by the established negative T-COMPACT-NOT-PERIODIC.'],
+  sup='T-COMPACT-NOT-PERIODIC', acts=['II–IV'], audit=A8_AUDIT, related=['T-STAR', 'T-STAR-B', 'T-STAR-C'], ref='Act VIII, 9')
+T('T-STAR-B', 'STAR-B: constrained geometry admits a periodic evolution', 'A constrained geometry admits at least one periodic evolution.', RD, U, 'derived-connection', 'derived',
+  norm='Restricted form: with fixed points counted as periodic the claim is vacuous (the trivial flow); for a non-constant periodic orbit it is false on ℝ and on intervals (orbits are monotone), true on S¹, and true on every smooth manifold of dimension ≥ 2 (rotation field in a coordinate disk times a bump function; local model A8X4; the general construction is a project argument, not carded). It depends on the class of spaces and dynamics, not on "bound by rules".',
+  pro=[('card:A8Pe', 'trivial flow; monotone orbits on intervals; circle has periodic orbits'), ('card:A8X4', 'local model: rotation of ℝ²')],
+  bounds=['Act VIII (2026-11-16): RESTRICTED. A reading of ★ (T-STAR), which keeps its wording.'],
+  acts=['II–IV'], audit=A8_AUDIT, related=['T-STAR', 'T-STAR-A', 'T-STAR-C'], ref='Act VIII, 9')
+T('T-STAR-C', 'STAR-C: constrained geometry tends to produce recurrence', 'Compact/constrained geometry tends to produce recurrence or near return.', RD, U, 'derived-connection', 'derived',
+  norm='Restricted form = the Poincaré recurrence theorem: for a measure-preserving flow on a space of finite total measure, almost every point is recurrent. Each hypothesis is needed (A8Pd: infinite measure — cylinder; non-invariant Lebesgue — logistic; δ₀ the only invariant probability — θ̇ = 1 − cos θ on S¹). Compactness alone gives only topological recurrence of some point (minimal sets), source-only here.',
+  pro=[('card:A8Pd', 'every hypothesis needed; almost-every conclusion'), ('card:A8Tc', 'near return on the torus')],
+  bounds=['Act VIII (2026-11-16): RESTRICTED to Poincaré recurrence (known; PROVED under its hypotheses). A reading of ★ (T-STAR), which keeps its wording.'],
+  acts=['II–IV'], audit=A8_AUDIT, related=['T-STAR', 'T-STAR-A', 'T-STAR-B'], ref='Act VIII, 9')
+
 PAIR_A = proof_target('Starting from the established common zero-sum form Σv_i = 0, identify all additional invariants/relations of the mass system that can be translated into mathematically meaningful tests on the directional cancellation system.',
                       requiredObjects=['the established shared form Σv_i = 0 (pair.A.sharedAlgebraicForm)'])
 next(r for r in R if r['id'] == 'T-Q.pairA-transfer')['proofTarget'] = PAIR_A
@@ -1307,6 +1361,52 @@ byid['T-C7-R']['assessment'].update(date='2026-11-16', applicationBreadth=3, nov
 rate('T-C7-FRAW', SM, MULTI, 0, 5, 'Reparametrizations that keep the function set rescale or reshape the raw Fisher spectrum arbitrarily, while every output-side object is fixed. So no universal chart-independent implication from coefficient decay to raw Fisher decay exists.',
      'None for the raw reading; an invariant reading is T-C7-FINV.', 'Already falsified as a universal claim (C7Lm).', GC, ('fail', 'fail', 'fail', 'pass', 'n/a'), state='low-confidence-active', depth='FAIL', correct='not established')
 byid['T-C7-FRAW']['assessment'].update(date='2026-11-16', applicationBreadth=3)
+# C7 lock wording patches (2026-11-16, Act VIII pass; C7 not reopened)
+_r = byid['T-C7-R']
+_old = _r['normalizedStatement']
+_r['normalizedStatement'] = _old.replace('(2) Y(Θ) ⊆ V_mD_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (exact Minkowski enclosure)', '(2) the exact coefficient-box/Minkowski set inclusion used in the argument is Y(Θ) ⊆ V_mD_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (equality with the model image not claimed)').replace('(1) d_m(F; C[−1, 1]) ≤ R_m = Σ_(k≥m) r_k;', '(1) choosing L_m = span{T_0, …, T_(m−1)} proves d_m(F; C[−1, 1]) ≤ R_m = Σ_(k≥m) r_k (equality not guaranteed for an arbitrary enveloped family; sharpness needs an extremal family and is stated separately);')
+assert _r['normalizedStatement'] != _old
+_r['history'].append(dict(date='2026-11-16', change=f'wording patch (Act VIII pass; C7 not reopened): "exact Minkowski enclosure" → exact coefficient-box/Minkowski set inclusion; Kolmogorov sharpness not claimed. Previous wording: {_old}'))
+_a = _r['assessment']; _oldwhy = _a['why']
+_a['why'] = _oldwhy.replace('exact Minkowski enclosure', 'the exact coefficient-box/Minkowski set inclusion used in the argument')
+_r['history'].append(dict(date='2026-11-16', change=f'rating "why" wording patch. Previous wording: {_oldwhy}'))
+# Act VIII first construction pass (2026-11-16): notes on the existing records and ratings of the new ones
+A8REC = 'research/constructions/act8_finite_infinite_h3_c.md'
+note16('T-H3', f'Act VIII (2026-11-16): this record is H3-original; status OPEN, not replaced. Components: the time–circle example is an ESTABLISHED INSTANCE in its corrected reading (A8Ca, A8Cd); "converge to infinity" (T-TIME-CIRCLE-0) FAIL; c as "a rule in the manifold" ESTABLISHED (c fixes the preserved form, A8La); "c also converges to infinity" like t is SUPERFICIAL (c is fixed in each theory; only the family index tends to ∞). Candidates, not renamed H3: T-H3-ACTION (PROJECT SYNTHESIS), T-H3-QUOTIENT (RESTRICTED), T-H3-C (RESTRICTED). Record: {A8REC}.',
+       'Act VIII: H3-original kept; candidates recorded separately', pro=[('card:A8Ca', 'circle instance')], con=[('card:A8Sa', 'c is a family index, not an action parameter like t')])
+note16('T-STAR', f'Act VIII (2026-11-16): this record is STAR-original; it keeps its wording and stays OPEN. Readings with independent statuses: T-STAR-A (forced periodicity) FAIL; T-STAR-B (existence) RESTRICTED; T-STAR-C (recurrence) RESTRICTED to Poincaré recurrence. The H3/★ hierarchy is not decided. Record: {A8REC}.',
+       'Act VIII: three readings tested separately', con=[('card:A8X1', 'the forced-periodicity reading fails on the compact torus')])
+note16('T-TIME-CIRCLE-0', 'Act VIII (2026-11-16): FAIL. For ω ≠ 0, cos ωt and sin ωt stay in [−1, 1] and have no limit as t → ∞; they neither converge nor tend to infinity (A8Cc). Kept verbatim as a historical conjecture.',
+       'Act VIII: classified FAIL', con=[('card:A8Cc', 'bounded, no limit')])
+note16('T-TIME-CIRCLE', 'Act VIII (2026-11-16): exact form — t ∈ ℝ acts on S¹ by Φ_t(z) = e^(iωt)z; Stab = (2π/|ω|)ℤ; ℝ/Tℤ ≅ S¹ via t ↦ ωt/2π; the covering ℝ → S¹ carries the unbounded lift (A8Ce, A8Cf). The circle itself is compact and is not called infinite.',
+       'Act VIII: quotient / covering form', pro=[('card:A8Ce', 'stabilizer and quotient'), ('card:A8Cf', 'covering'), ('card:A8Cd', 'lift and cycles unbounded')])
+note16('T-SCHEMA', 'Act VIII (2026-11-16): in the one-parameter-action framework the three behaviours are distinct classes of one decision tree: wrapping = periodic (Stab = Tℤ); quasi-periodic winding = free with compact closure and recurrence; boundary approach = drift (the velocity flow on (−1, 1) is conjugate to translation on ℝ by artanh, A8Pg). They are not the same.',
+       'Act VIII: the three behaviours classified', pro=[('card:A8Pg', 'boundary approach ≅ drift'), ('card:A8Pb', 'free orbits split')])
+note16('T-C-ROLES', 'Act VIII (2026-11-16), restricted answer to H3-1: Role 2 (c fixes the invariant form) and Role 3 (c → ∞) are roles of the same form constant. At finite c the value of c is not an isomorphism invariant (finite-c forms congruent, finite-c algebras isomorphic); the invariant content is finiteness — M_c nondegenerate and the algebra Poincaré exactly when c < ∞ (A8Ma, A8Mc, A8Lc). Known mathematics; it does not make c an instance of the circle mechanism (T-H3-C).',
+       'Act VIII: H3-1 restricted answer', pro=[('card:A8Mc', 'degenerate limit outside the congruence class'), ('card:A8Lc', 'contraction: c = ∞ is the only non-isomorphic member')])
+note16('T-GEOM-RULES', 'Act VIII (2026-11-16), answer in the examples: the behaviour is decided by the action (generator and stabilizer; on tori the integer relations of ω), while preserved forms confine the orbit and fix observable bounds; the same torus with the same invariants carries periodic, subtorus and dense orbits (A8Ua).',
+       'Act VIII: rule identified in each example', pro=[('card:A8Ua', 'integer relation lattice decides')])
+note16('T-CIRCLE-NOT-THESIS', 'Act VIII (2026-11-16): confirmed — a compact image does not force periodicity (A8X1), and periodicity does not need a compact state space (A8X4).',
+       'Act VIII: two counterexamples', pro=[('card:A8X1', ''), ('card:A8X4', '')])
+note16('B-FINITE-INFINITE', 'Act VIII (2026-11-16): the precise form available is H3-action (PROJECT SYNTHESIS): an unbounded parameter acting on a constrained state space, with the behaviour decided by the action, its stabilizer and orbit closure; "infinite" names its object.',
+       'Act VIII: precise form recorded', pro=[('card:A8Da', 'finite/infinite distinction table')])
+def rate_a8(rid, breadth_int, novelty, *a, **k):
+    rate(rid, *a, **k)
+    byid[rid]['assessment'].update(date='2026-11-16', applicationBreadth=breadth_int, novelty=novelty)
+VKM = 'VALIDATION OF KNOWN MATHEMATICS'
+rate_a8('T-H3-ACTION', 2, VKM, KN, MULTI, 30, 15, 'Applies unchanged to every action example (circle, tori, cylinder, interval, plane, velocity flow): the stabilizer trichotomy and orbit-closure dichotomies decide the class, and the unbounded parameter domain is common to all. Its content is definitions plus known theorems; the "invariants" clause is corrected.',
+        'A system where the classes predict something not already in the definitions, stated before checking.', 'A continuous action whose behaviour class is not fixed by its stabilizer, orbit closure and recurrence (impossible by definition).', GC, ('pass', 'pass', 'pass', 'pass', 'n/a'), depth='STRUCTURAL TRANSFER')
+rate_a8('T-H3-QUOTIENT', 1, VKM, KN, FAM, 20, 15, 'Exact for the periodic class (quotient ℝ/Tℤ, covering) and, through the compact orbit closure, for the free recurrent class; true of everything with the alternative "orbit"; fails for boundary approach.',
+        'An object that encodes boundary approach (a compactification) shared with the periodic examples.', 'Already restricted: boundary approach is encoded by none of the listed objects (A8Pg).', GC, ('pass', 'partial', 'partial', 'pass', 'n/a'), depth='STRUCTURAL TRANSFER')
+rate_a8('T-H3-C', 1, VKM, PD, FAM, 10, 25, 'The wrapping mechanism does not transfer to c: c is a family index, its family drifts to a degenerate boundary form, and no member or limit has an elliptic generator. What survives is the known preserved-form correspondence (t ↔ rapidity s, circle radius r ↔ c) and finiteness of c as the invariant content.',
+        'An exact object, stated before checking, shared by the time–circle action and the c-family beyond the known preserved-form subgroup.', 'Already falsified as "same construction" (A8Sa, A8Sb).', GC, ('pass', 'fail', 'fail', 'pass', 'n/a'), state='low-confidence-active', depth='FAIL', correct='established under assumptions')
+rate_a8('T-STAR-A', 1, VKM, SM, MULTI, 0, 5, 'Fails on compact spaces: the irrational torus flow has no periodic orbit; the logistic flow on [0, 1] has no non-constant periodic orbit.',
+        'None for this reading; ★ itself stays open.', 'Already falsified (A8X1, A8X3).', GC, ('fail', 'fail', 'fail', 'pass', 'n/a'), state='low-confidence-active', depth='FAIL', correct='not established')
+rate_a8('T-STAR-B', 2, 'PROJECT CLASSIFICATION OF KNOWN MATHEMATICS', PD, MULTI, 15, 20, 'Vacuous if fixed points count; for non-constant periodic orbits it depends on the space (false on intervals, true on S¹ and on manifolds of dimension ≥ 2).',
+        'A carded proof of the dimension ≥ 2 construction.', 'A smooth manifold of dimension ≥ 2 with no flow having a non-constant periodic orbit (none: the bump construction gives one).', GC, ('pass', 'partial', 'n/a', 'pass', 'n/a'))
+rate_a8('T-STAR-C', 2, VKM, KN, MULTI, 15, 10, 'Reduces to the Poincaré recurrence theorem with all its hypotheses (invariant measure, finite total measure, almost every point); each hypothesis is needed.',
+        'A recurrence statement that needs fewer hypotheses for a stated class of rule-bound geometries.', 'A measure-preserving flow on a finite measure space with a positive-measure set of non-recurrent points (impossible by the theorem).', GC, ('pass', 'pass', 'n/a', 'pass', 'n/a'), depth='TRIVIAL CONSEQUENCE')
+
 update('T-CF11-A', TRIV, bs=60, slop=8, reason='Pass 3: the pattern holds in coordinate-free form (F*T = T) across constant-form, symplectic and homogeneous Fisher geometries, and its boundary is now exact (generic Fisher geometry is not characterized by a transformation group, CFT5f). Application Breadth corrected from 4 to 3: the rubric reserves 4 for a physical/empirical system')
 
 for r in R:
