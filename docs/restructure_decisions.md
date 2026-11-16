@@ -1641,3 +1641,41 @@ Nadia's decisions, verbatim. LaTeX was converted to plain text; nothing else was
 > C7-PROVED; C7-RESTRICTED; C7-KNOWN-REFORMULATION; C7-PARTIAL; C7-FAIL
 
 > Do not invent another connection merely to rescue C7.
+
+## Final adversarial C7 lock / audit (2026-11-16)
+
+Nadia's decisions, verbatim. LaTeX was converted to plain text; nothing else was changed.
+
+> This is the FINAL ADVERSARIAL C7 LOCK/AUDIT PASS.
+
+> After this pass, the Fourier/Chebyshev/model-manifold enclosure branch should be considered LOCKED unless the audit discovers a genuine mathematical failure.
+
+> This pass is for closing the current branch, not opening the next one.
+
+> No official correction was located in this audit.
+
+> Counterexample to Eq. (2) as written under the ordinary Euclidean prediction-space interpretation.
+
+> C7-R — representation/enclosure bridge
+
+> C7-F(raw) — Fourier/coefficient decay vs raw Fisher/sloppy eigenvalue spectrum
+
+> C7-F(inv) — invariant reformulation
+
+> C7-R = KNOWN-REFORMULATION
+
+> C7-F(raw) = FAIL
+
+> C7-F(inv) = OPEN
+
+> Envelope alone ⇏ nonzero actual-width lower bound.
+
+> Transtrum width spectrum as a universal reparametrization-invariant ordered spectrum: NOT ESTABLISHED.
+
+> PROVED; KNOWN-REFORMULATION; RESTRICTED; FAIL; OPEN
+
+> orthogonal spectral representation → coefficient hierarchy → restricted accessible coefficient region → bounded prediction-space directions
+
+> spectral hierarchy ⟹ universal Fisher hierarchy
+
+> Do not attempt to solve C7-F(inv).

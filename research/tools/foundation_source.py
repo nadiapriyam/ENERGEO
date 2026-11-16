@@ -433,8 +433,9 @@ NOVELTY = {'TA1': 'KNOWN MATHEMATICS', 'TA2': 'KNOWN MATHEMATICS', 'TA2I': 'KNOW
 STRENGTHS = ['EXACT IDENTITY', 'EXACT IMPLICATION', 'THEOREM', 'SPECIAL-CASE CONSTRUCTION', 'STRUCTURAL ANALOGUE', 'OPEN CONNECTION', 'FAILED CONNECTION']
 EI, EIM, THM, SCC, SAN, OPC, FC = STRENGTHS
 SOURCE_STATUSES = ['METADATA VERIFIED; CLAIM NOT QUOTED', 'METADATA PARTLY VERIFIED; CLAIM NOT QUOTED', 'METADATA VERIFIED; CLAIM SNIPPET-CONFIRMED; PDF PENDING',
-                   'PROJECT NOTE (not an external source)', 'APPLICATION PROVENANCE INCOMPLETE', 'FULL TEXT READ (arXiv version); CLAIM QUOTED']
-SV, SP, SQ, SN, SA, SFT = SOURCE_STATUSES
+                   'PROJECT NOTE (not an external source)', 'APPLICATION PROVENANCE INCOMPLETE', 'FULL TEXT READ (arXiv version); CLAIM QUOTED',
+                   'FULL TEXT READ (published version); CLAIM QUOTED']
+SV, SP, SQ, SN, SA, SFT, SFP = SOURCE_STATUSES
 SOURCE_CLASSES = ['primary', 'textbook', 'review', 'project note', 'application']
 CHK = 'bibliographic record checked by web search of publisher / index records, 2026-11-12; full text not opened in this environment'
 S = []
@@ -937,6 +938,54 @@ BMETA.update({
 for bid in ('BR59',):
     fix('bridge', bid, 'connector', 'source-locked (arXiv v1): for models analytic in E_ρ with |y_θ| ≤ M uniformly in θ, the N-point predictions lie in H_Y = X·(ball of radius r) ⊕ error, X = JD, with σ_j(X) ≤ √N ρ^(−j+2)/√(ρ² − 1) (Theorem 2) and axis bounds of Eq. (8); the Eq. (2) error term needs the ‖u_j‖₁ factor (C7j); an upper bound on the manifold\'s widths',
         'C7 pass 1: source-locked and carded', ['C7f', 'C7g', 'C7h', 'C7j'])
+# ══ Final adversarial C7 lock / audit (2026-11-16) ═════════════════════════════════════════════════
+# Decisions: docs/restructure_decisions.md, "Final adversarial C7 lock / audit". Cards: verify/verify_C7L.py. Record: research/constructions/c7_lock_audit.md.
+C7LDOCS = ['research/constructions/c7_lock_audit.md', 'research/sources/quinn2019.md']
+obj('C7F', 'C7-F(raw): coefficient decay ⟹ raw Fisher spectrum (FAIL)', NG, ['GEOMETRY', 'CROSS-SYSTEM TRANSFER'],
+    'θ = aφ: g_φ = a²g_θ; θ = θ₀ + A(φ − φ₀): g_φ = Aᵀg_θA realizes any positive spectrum, while the function set, its coefficients, envelope, prediction image and enclosure are unchanged: no universal chart-independent implication from output coefficient decay to raw Fisher eigenvalue decay', 'NEGATIVE',
+    cards=['C7Lm', 'C7Lq', 'C7Lo'], docs=C7LDOCS, reg=['T-C7-FRAW'], bears=['T-C7'], bs=None, slop=None, td='FAIL', fail='—', role='FINAL STATUS FAIL (invariant universal claim); the original C7 wording is kept (T-C7)', guide='Guide: model manifolds')
+obj('C7G', 'C7-F(inv): invariant reformulation (open)', OQ, ['GEOMETRY', 'INFORMATION'],
+    'an invariant comparison needs independently supplied structure: a parameter metric h transforming as a tensor and a prediction metric W (σ(W^(1/2)J_Yh^(−1/2)) is then invariant), generalized eigenvalues of (g, h), or prediction-space geometric widths', 'OPEN',
+    cards=['C7Ln', 'C7Lr'], docs=C7LDOCS, reg=['T-C7-FINV'], bs=None, slop=None, td='NOT YET FORMALIZED', fail='—', role='FINAL STATUS OPEN; separate future question; not attempted', guide='Guide: model manifolds')
+obj('C7H', 'C7-LB: envelope alone gives no lower bound (FAIL)', NG, ['GEOMETRY'],
+    'for every envelope and every η > 0 a family satisfying it has image diameter < η (and {0} satisfies it): Envelope alone ⇏ nonzero actual-width lower bound', 'NEGATIVE',
+    cards=['C7Ll'], docs=C7LDOCS, reg=['T-C7-LB'], bs=None, slop=None, td='FAIL', fail='—', role='FINAL STATUS FAIL; a lower bound needs occupancy / surjectivity / bi-Lipschitz assumptions (C7-LB+, OPEN, optional)', guide='Guide: model manifolds')
+obj('C7Q', 'Quinn et al. 2019, published Eq. (2) and constants (audit)', NG, ['GEOMETRY'],
+    'published Eq. (2), ℓj(HY) = 2rσj(X) + 2‖y − pN−1‖∞ for an enclosing hyperellipsoid: counterexample under the ordinary Euclidean prediction-space interpretation (C7Lc), and the additive ellipsoid fails even for a Euclidean-ball error with unequal axes (C7Ld); valid replacements: width_(u_j) ≤ 2rσ_j + 2ε‖u_j‖₁ and H_P ⊕ [−ε, ε]^N ⊆ E(2(AAᵀ + Nε²I)) (C7Le). Constants: ‖c̃‖₂ ≤ M√(4N − 3); printed 4M√(4N − 3) valid but loose; Eq. (8) uses the tight radius (internal constant inconsistency, likely typographical)', 'NEGATIVE',
+    cards=['C7La', 'C7Lb', 'C7Lc', 'C7Ld', 'C7Le', 'C7Lf', 'C7Lg'], docs=C7LDOCS, bs=None, slop=None, td='FAIL', fail='—', role='source audit; no official correction was located; no priority or novelty claimed', guide='research record')
+PROV.update({'C7F': PDM, 'C7G': UO, 'C7H': PDM, 'C7Q': PDM})
+NOVELTY.update({'C7F': 'PROJECT CLASSIFICATION (negative) OF KNOWN MATHEMATICS', 'C7H': 'ELEMENTARY (negative)', 'C7Q': 'CORRECTION / OBSERVATION (not a new theorem)'})
+fix('object', 'C7B', 'equation', 'family-wide envelope |a_k(θ)| ≤ r_k, Σ r_k < ∞ ⇒ sup_θ ‖f_θ − p_(m−1)(θ)‖∞ ≤ R_m = Σ_(k≥m) r_k; exact analyticity link (C7Lh): f analytic in the open region bounded by E_ρ with |f| ≤ M ⟺ F = f∘cos analytic in |Im φ| < log ρ with |F| ≤ M (F automatically even and 2π-periodic); an even, 2π-periodic, strip-analytic F descends to such an f; giving r_0 = M, r_k = 2Mρ^(−k)', 'final audit: exact even-periodic statement', ['C7Lh', 'C7Lk'])
+fix('object', 'C7C', 'equation', 'exact enclosure Y(Θ) ⊆ V_mD_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (a Minkowski sum); directional widths ≤ 2‖D_mV_mᵀu‖₁ + 2R_m‖u‖₁; proved conservative ellipsoid E(2(m·V_mD_m²V_mᵀ + NR_m²I)) (C7Le); exact axes {√N r_0} ∪ {√(N/2) r_k} at Gauss–Chebyshev (first-kind) nodes, unweighted (C7Li); d_m(F; C[−1, 1]) ≤ R_m with L_m = span{T_0…T_(m−1)} (C7Lk); set-level, unchanged by reparametrizations that keep the set (C7Lo). Quinn\'s Eq. (2) additive ellipsoid is NOT used (C7Lc)', 'final audit: corrected enclosure geometry', ['C7Lb', 'C7Le', 'C7Li', 'C7Lk', 'C7Lo'])
+fix('object', 'C7D', 'foundationRole', 'C7-R, FINAL STATUS KNOWN-REFORMULATION, transfer depth RESTRICTED STRUCTURAL CONNECTION, LOCKED 2026-11-16 (T-C7-LOCK). Split from the pass-1 umbrella status: C7-LB FAIL (C7H), C7-F(raw) FAIL (C7F), C7-F(inv) OPEN (C7G)', 'final audit: split statuses; branch locked', ['C7Lp'])
+fix('object', 'C7E', 'equation', 'complex basis e^(ikt), |k| ≤ K, envelope |f̂_θ(k)| ≤ r_|k|, N equally spaced samples with 2K + 1 ≤ N: FᴴF = N·I, axes exactly √N·r_|k| (each r_k twice); real basis (1, cos kt, sin kt): axes √N r_0 and √(N/2) r_k; the Nyquist mode (N even, k = N/2) is degenerate and excluded; modes alias mod N', 'final audit: periodic convention locked', ['C7Lj'])
+fix('object', 'M4', 'foundationRole', 'C7 as first posed: SPLIT on 2026-11-16. Raw reading (coefficient decay ⟹ raw Fisher spectrum): FAIL (C7F, T-C7-FRAW). Invariant reading: OPEN (C7G, T-C7-FINV). The enclosure bridge C7-R is KNOWN-REFORMULATION and locked (C7D). The original C7 wording is kept (T-C7)', 'final audit: C7 split', ['C7Lq', 'C7Lr'])
+for o in O:
+    if o['id'] == 'F1':
+        o['equation'] += '; final C7 audit: C7-F(raw) fails as an invariant universal claim (C7Lm); an envelope alone gives no lower bound (C7Ll); Quinn\'s published Eq. (2) fails under the Euclidean reading (C7Lc, C7Ld)'
+        o['cards'] += ['C7Lm', 'C7Ll', 'C7Lc']
+for x in S:
+    if x['id'] == 'SRC-QUINN-2019':
+        x.update(status=SFP, checked='published PRL text read on 2026-11-16 (typeset copy deposited at NSF PAR record 10101033; the APS site not accessed); arXiv v1 read 2026-11-15; Crossref lists no correction and none was located; quoted in research/sources/quinn2019.md',
+                 doesNotEstablish=x['doesNotEstablish'] + '; the additive Eq. (2) hyperellipsoid (counterexample under the Euclidean reading, C7Lc)')
+fix('bridge', 'BR64', 'connector', 'f analytic in the open region bounded by E_ρ with |f| ≤ M ⟺ F = f∘cos analytic in |Im φ| < log ρ with |F| ≤ M (F is automatically even and 2π-periodic); conversely an even, 2π-periodic, strip-analytic F descends to such an f (z = e^(iφ): annulus ρ^(−1) < |z| < ρ ↔ strip; x = (z + z^(−1))/2 folds z ↔ 1/z); without evenness the descent fails', 'final audit: exact even-periodic statement', ['C7Lh'])
+bridge('BR70', 'output coefficient envelope', 'raw Fisher eigenvalue spectrum', 'θ = aφ: g_φ = a²g_θ; θ = θ₀ + A(φ − φ₀): any positive spectrum at a point, the function set unchanged', 'NEGATIVE', PS, ['C7Lm', 'C7Lq'],
+       'that coefficient decay is irrelevant to model geometry (it bounds the prediction-space enclosure, C7-R)', ['C7F', 'C7D'])
+bridge('BR71', 'coefficient envelope', 'actual-width lower bound', 'families of arbitrarily small diameter, and {0}, satisfy every envelope', 'NEGATIVE', PS, ['C7Ll'],
+       'that no lower bound is possible under additional occupancy / non-degeneracy assumptions (C7-LB+, OPEN)', ['C7H'])
+bridge('BR72', 'H_P ⊕ [−ε, ε]^N', 'enclosing ellipsoid E(2(AAᵀ + Nε²I))', 'support functions: √(uᵀQu) = √2·√(‖Aᵀu‖² + Nε²) ≥ ‖Aᵀu‖ + √N ε ≥ h_(H_P)(u) + ε‖u‖₁', 'ESTABLISHED', EST, ['C7Le', 'C7Lb'],
+       'that the √2 factor is optimal; that an additive-axes ellipsoid encloses the sum', ['C7C', 'C7Q'])
+bridge('BR73', 'Quinn Eq. (2) additive hyperellipsoid', 'model image Y', 'exact two- and three-point families leave the ellipsoid with semi-axes rσ_j + ε (Euclidean prediction space)', 'NEGATIVE', PS, ['C7Lc', 'C7Ld'],
+       'that Quinn\'s overall hyperribbon conclusion fails (the corrected bounds keep the geometric decay)', ['C7Q'])
+bridge('BR74', 'tensor parameter metric h + prediction metric W', 'invariant local sensitivity spectrum', 'σ(W^(1/2)J_Yh^(−1/2)) is invariant under reparametrization when h_φ = Aᵀh_θA; not when h = I in every chart', 'OPEN', PS, ['C7Ln'],
+       'that coefficient decay controls this spectrum (not derived; C7-F(inv) OPEN)', ['C7G'])
+BMETA.update({
+ 'BR70': (FC, ['SRC-AMARI-2016', 'SRC-LEE-2018'], 'a reparametrization keeping the function set', 'none: the obstruction is exact'),
+ 'BR71': (FC, [], 'an upper envelope only', 'none: the families are exact'),
+ 'BR72': (EIM, ['SRC-LEE-2018'], 'compact convex sets; δ = √N ε', 'none for the inclusion; it is not tight'),
+ 'BR73': (FC, ['SRC-QUINN-2019'], 'Euclidean prediction space; sup-norm error as in the paper', 'a reading with a Euclidean-ball error and directional widths along the axes (not the paper\'s error bound)'),
+ 'BR74': (OPC, [], 'a supplied tensor h and metric W', 'no such structure is supplied by the model'),
+})
 for b in B:
     st, srcs, asm, fl = BMETA[b['id']]
     b.update(strength=st, sources=srcs, assumptions=asm, failureCondition=fl)
@@ -974,8 +1023,10 @@ dom('D9', 'Translation, correlation, spectrum, localization', 'T1 T2 T3 T4 T5', 
 dom('D10', 'Lorentz and c', 'L1 L2 L3', 'SOURCE+CARD COMPLETE', 'İnönü–Wigner sourced for the c → ∞ contraction; it is not evidence for L4')
 dom('D11', 'Known continuation behaviours', 'I1', 'SOURCE+CARD COMPLETE', '—')
 dom('D12', 'Model manifolds and Fisher geometry', 'R7 CF10 Z9 M1 M2', 'SOURCE+CARD COMPLETE', 'quinn2023 c-boundary passage quoted 2026-11-15 (P-2 closed); M1 rests on the weak S14b and is a statement in log-parameter coordinates (component eigenvalues are not invariant, CFT5e, MMIb); the MBAM procedure is source-only; invariance classified in D33 (research/model_manifold_invariance.md)')
-dom('D13', 'C7: coefficient decay vs Fisher eigenvalue decay', 'M4', 'NEEDS DERIVATION', 'an explicit operator / map / asymptotic theorem, or an exact obstruction. Target object recommended (2026-11-13): hyperribbon widths (MM11), with four gates; revised 2026-11-15: no single width definition chosen, five preconditions recorded (M4); the raw-spectrum reading is NEGATIVE (MMIb, CFT5e); derivation not begun. C7 pass 1 (2026-11-15): the enclosure bridge is constructed (D34); C7 as first posed (Fisher spectra) stays OPEN')
-dom('D34', 'C7 bridge: spectral decay → prediction-space enclosure', 'C7A C7B C7C C7D C7E', 'SOURCE+CARD COMPLETE', 'C7 pass 1 (2026-11-15): principal status C7-KNOWN-REFORMULATION; upper bound only; uniform envelope required; not necessary; sources read in full text (arXiv)')
+dom('D13', 'C7: coefficient decay vs Fisher eigenvalue decay', 'M4', 'OPEN LONG-TERM', 'an explicit operator / map / asymptotic theorem, or an exact obstruction. Target object recommended (2026-11-13): hyperribbon widths (MM11), with four gates; revised 2026-11-15: no single width definition chosen, five preconditions recorded (M4); the raw-spectrum reading is NEGATIVE (MMIb, CFT5e); derivation not begun. C7 pass 1 (2026-11-15): the enclosure bridge is constructed (D34); C7 as first posed (Fisher spectra) stays OPEN. Final audit (2026-11-16): split into C7-F(raw) FAIL (D35) and C7-F(inv) OPEN (D36)')
+dom('D34', 'C7 bridge: spectral decay → prediction-space enclosure', 'C7A C7B C7C C7D C7E', 'LOCKED', 'C7-R: KNOWN-REFORMULATION, RESTRICTED STRUCTURAL CONNECTION; locked by the final audit (2026-11-16, T-C7-LOCK); published Quinn text read; enclosure geometry corrected (C7La–C7Lr)')
+dom('D35', 'C7 negative results and source audit', 'C7F C7H C7Q', 'LOCKED', 'C7-F(raw) FAIL; C7-LB FAIL; Quinn Eq. (2) counterexample under the Euclidean reading; constant inconsistency recorded; no official correction located')
+dom('D36', 'C7-F(inv): invariant Fisher / local-sensitivity reformulation', 'C7G', 'OPEN LONG-TERM', 'needs independently supplied structure (C7Ln); separate future question; not attempted')
 dom('D32', 'Model-manifold research story and extensions', 'MM0 MM3 MM6 MM7 MM8 MM9 MM10', 'OPEN LONG-TERM', 'every arrow of the story has a status (research/model_manifold_story.md); observation, manifestation and the viewer intuition stay open or philosophical; conscious observer requirement = NOT ESTABLISHED')
 dom('D33', 'Model-manifold invariance', 'MM1 MM2 MM4 MM5 MM11', 'SOURCE+CARD COMPLETE', 'MMI cards (2026-11-13) scoped by MMP cards (2026-11-15): model image vs manifold, parameters vs local coordinates, J_Y / A notation, positive-definite hypothesis, restricted noise theorem, volume element, geometric widths vs proxies (exact width definitions source-only), boundary language; c: three roles, transfer OPEN')
 dom('D14', 'Wavelets and scattering', 'W1 W2', 'SOURCE-COMPLETE', 'W1 carded; W2: exact first-order parts carded, deformation stability and higher orders source-only')
@@ -1004,11 +1055,11 @@ CF11B = dict(outcome='CF11-F2', classification='REFINED', outcomes=['CF11-F1', '
              prereg='research/constructions/cf11b_fisher_prereg.md', preregCommit='e6f3db8', record='research/constructions/cf11b_fisher_test.md', pullbackCommonForm='YES',
              correction='architectural correction (2026-11-12): P1, P2, P3 are not three meanings of one word; they are R2 structural invariance, R1 representation covariance and R3 equivariance / intertwining of the Transformation Architecture (TA0). CF11-F2 is unchanged.')
 RATINGS = [
- ('Foundation architecture completeness', 92, 91, 'C7 pass 1 (2026-11-15) built the C7 bridge to a source-locked, reparametrization-invariant prediction-space enclosure (C7A–C7E; principal status C7-KNOWN-REFORMULATION), with its limits carded (C7d, C7n, C7o–C7q). Still short: DYADIC definition, no general statement for effective representations, no application mathematics, C7 as first posed (Fisher spectra), no lower bound on actual widths.'),
- ('Mathematical verification coverage', round(100 * len(carded) / len(est)), 97, f'{len(carded)} of {len(est)} established or derived objects have PASS cards (computed). New and carded: C7A–C7E (C7 cards). Not carded: OB1 (definitional), A3 (wording).'),
+ ('Foundation architecture completeness', 93, 92, 'The final C7 audit (2026-11-16) split C7 into separately decided questions (C7-A/B/R KNOWN-REFORMULATION and locked; C7-LB FAIL; C7-F(raw) FAIL; C7-F(inv) OPEN), corrected the enclosure geometry and closed the branch. Still short: DYADIC definition, no general statement for effective representations, no application mathematics, C7-F(inv).'),
+ ('Mathematical verification coverage', round(100 * len(carded) / len(est)), 98, f'{len(carded)} of {len(est)} established or derived objects have PASS cards (computed). New: the C7 audit objects (C7F, C7G, C7H, C7Q) are NEGATIVE or OPEN and carded. Not carded: OB1 (definitional), A3 (wording).'),
  ('Cross-domain validation', 30, 30, 'Unchanged.'),
- ('Project-specific construction maturity', 45, 45, 'Unchanged: C7 pass 1 is a reformulation of known mathematics, not a new project construction.'),
- ('Paper / source coverage', 58, 55, f'{sum(1 for x in S if x["sourceClass"] in ("primary", "textbook", "review"))} external sources registered ({sum(1 for x in S if x["status"] == SP)} only partly verified); {len(ext_src)} of {len(ext)} external-claim objects have a source; R5 is SOURCE MISSING. Change: first full-text reads (2026-11-15, arXiv versions) of Quinn et al. 2019 (with supplement), Transtrum–Machta–Sethna 2010 and 2011, and Quinn et al. 2023; the exact claims are quoted in research/sources/ and P-2 is closed. Published journal versions not read.'),
+ ('Project-specific construction maturity', 45, 45, 'Unchanged: the audit corrects and locks a reformulation of known mathematics.'),
+ ('Paper / source coverage', 59, 58, f'{sum(1 for x in S if x["sourceClass"] in ("primary", "textbook", "review"))} external sources registered ({sum(1 for x in S if x["status"] == SP)} only partly verified); {len(ext_src)} of {len(ext)} external-claim objects have a source; R5 is SOURCE MISSING. Change: the published PRL text of Quinn et al. 2019 was read (typeset copy at NSF PAR) and a corrections search run (Crossref, web; none located).'),
  ('Application validation', 0, 0, 'Unchanged.'),
 ]
 data = dict(about='Foundation dependency architecture (V1, revised in Pass 2, 2026-11-12). Generated by research/tools/foundation_source.py.', layers=LAYERS, stages=STAGES, statuses=STATUS, transferDepths=TD,
@@ -1081,7 +1132,7 @@ cl += ['', '## Blocking items for Foundation V1', '', '| Kind | Item |', '|---|-
        '| undefined central object | none (DYADIC PACKETS is an open user term, not a central object of the spine) |',
        '| incorrect mathematical bridge | none found; every bridge has a strength class, assumptions, a failure condition and what it does not prove |',
        '| provenance loss | the quinn2023 passage is quoted (P-2 closed, 2026-11-15); ThermaLens mathematics (APPLICATION PROVENANCE INCOMPLETE); the original mass-attraction wording (ORIGINAL VERBATIM NOT RECOVERED); four sources opened at full text in arXiv versions (2026-11-15); published journal versions not read |',
-       '', '## Foundation ratings (separate dimensions, no overall score)', '', '| Dimension | Rating | Previous (model-manifold passes) | Reason for the change |', '|---|---|---|---|']
+       '', '## Foundation ratings (separate dimensions, no overall score)', '', '| Dimension | Rating | Previous (C7 pass 1) | Reason for the change |', '|---|---|---|---|']
 for a, b_, c, d in RATINGS:
     cl.append(f"| {a} | {b_}% | {c}% | {d} |")
 cl += ['', '## CF11 and Transformation Architecture ratings (separate records)', '', '| Record | Statement | Mathematical Status | Novelty | Transfer Depth | Backbone Support | AI Slop Risk | Application Breadth |', '|---|---|---|---|---|---|---|---|']

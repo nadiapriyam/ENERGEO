@@ -926,6 +926,41 @@ T('T-TMS-WIDTHS', 'Geodesic widths along chart eigendirections are not an invari
   bounds=['Transtrum-style widths are not used as C7\'s primary invariant object; the Quinn-style enclosure is.'],
   acts=['Guide'], audit=C7_AUDIT, related=['T-C7', 'T-INFOGEO'], ref='C7 pass 1, 1')
 
+# ── Final adversarial C7 lock / audit (2026-11-16) ──
+C7L_AUDIT = ('missing', 'stated in the final adversarial C7 lock / audit brief (2026-11-16)')
+ACTS_ALREADY_NEW |= {'T-C7-LOCK', 'T-C7-R', 'T-C7-FRAW', 'T-C7-FINV', 'T-C7-LB', 'T-C7-CHAIN-FINAL'}
+T('T-C7-LOCK', 'C7 enclosure branch locked', 'After this pass, the Fourier/Chebyshev/model-manifold enclosure branch should be considered LOCKED unless the audit discovers a genuine mathematical failure.', RD, U, MR, GOV,
+  variants=[('This pass is for closing the current branch, not opening the next one.', RD), ('Do not attempt to solve C7-F(inv).', RD)],
+  norm='Method / governance rule: C7-R is locked after the final audit (2026-11-16, decision LOCK C7-R / CLOSE THIS BRANCH); reopening needs a genuine mathematical failure. C7-F(inv) and C7-LB+ are separate future questions, not part of this branch.',
+  acts=['Guide'], audit=C7L_AUDIT, related=['T-C7-R', 'T-C7-FINV', 'T-C7'], ref='C7 lock')
+T('T-C7-R', 'C7-R: representation / enclosure bridge (locked)', 'C7-R — representation/enclosure bridge', RD, U, 'derived-connection', 'derived',
+  variants=[('C7-R = KNOWN-REFORMULATION', RD)],
+  norm='C7-R (final, locked 2026-11-16): for F = {f_θ} ⊆ C[−1, 1] with a family-wide envelope |a_k(θ)| ≤ r_k on the Chebyshev (= cosine-Fourier of f_θ∘cos) coefficients, Σ r_k < ∞, and N sample points in a Euclidean prediction space: (1) d_m(F; C[−1, 1]) ≤ R_m = Σ_(k≥m) r_k; (2) Y(Θ) ⊆ V_mD_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (exact Minkowski enclosure); (3) width_u ≤ 2‖D_mV_mᵀu‖₁ + 2R_m‖u‖₁; (4) Y(Θ) ⊆ E(2(m·V_mD_m²V_mᵀ + NR_m²I)); (5) exact axes at Gauss–Chebyshev (first-kind) nodes, unweighted; (6) geometric envelope from uniform analyticity (even, 2π-periodic strip form); (7) all set-level, unchanged by reparametrizations that keep the set. Upper bound only.',
+  pro=[('card:C7Lp', 'final status'), ('card:C7Le', 'proved enclosing ellipsoid'), ('card:C7Lb', 'error-box support function'), ('card:C7Lh', 'exact analyticity statement'), ('card:C7Li', 'node convention'), ('card:C7Lk', 'Kolmogorov width'), ('card:C7Lo', 'set-level invariance')],
+  con=[('card:C7Ll', 'no lower bound from an envelope alone'), ('card:C7Lc', 'Quinn\'s Eq. (2) additive ellipsoid fails (Euclidean reading)')],
+  bounds=['FINAL STATUS: KNOWN-REFORMULATION; transfer depth RESTRICTED STRUCTURAL CONNECTION; LOCKED (2026-11-16). Refines the pass-1 umbrella status of T-C7-BRIDGE (kept).'],
+  acts=['Guide'], audit=C7L_AUDIT, related=['T-C7-BRIDGE', 'T-C7-LOCK', 'T-C7-LB', 'T-C7-FRAW', 'T-C7-FINV'], ref='C7 lock, 6')
+T('T-C7-FRAW', 'C7-F(raw): coefficient decay vs raw Fisher spectrum', 'C7-F(raw) — Fourier/coefficient decay vs raw Fisher/sloppy eigenvalue spectrum', RD, U, 'historical-conjecture', 'hypothesis',
+  variants=[('C7-F(raw) = FAIL', RD), ('spectral hierarchy ⟹ universal Fisher hierarchy', RD)],
+  norm='The raw-spectrum reading of C7: output coefficient decay implies a decay of the raw Fisher / sloppy eigenvalues, universally and chart-independently.',
+  con=[('card:C7Lm', 'θ = aφ gives g_φ = a²g_θ; θ = θ₀ + A(φ − φ₀) realizes any positive spectrum, with the function set unchanged'), ('card:C7Lq', 'final status FAIL'), ('card:MMIb', 'raw eigenvalues are chart-dependent'), ('card:CFT5e', 'component eigenvalues are not invariants')],
+  bounds=['FINAL STATUS: FAIL as an invariant universal claim (2026-11-16). Kept as a historical conjecture, superseded by the invariant question T-C7-FINV; the original C7 wording stays in T-C7.'],
+  sup='T-C7-FINV', acts=['Guide'], audit=C7L_AUDIT, related=['T-C7', 'T-C7-FINV'], ref='C7 lock, 6')
+T('T-C7-FINV', 'C7-F(inv): invariant reformulation (open)', 'C7-F(inv) — invariant reformulation', RD, U, 'open-question', 'open',
+  variants=[('C7-F(inv) = OPEN', RD)],
+  norm='Which independently supplied structure (a parameter metric h transforming as a tensor and a prediction metric W; generalized eigenvalues of a metric pair; or prediction-space geometric widths) would make a spectral comparison with coefficient decay invariant, and does coefficient decay then control it? Not attempted.',
+  pro=[('card:C7Ln', 'with a tensor h and a metric W, σ(W^(1/2)J_Yh^(−1/2)) is invariant; with h = I in every chart it is not')],
+  bounds=['FINAL STATUS: OPEN (2026-11-16). A separate future research question; the C7-R lock does not cover it.'],
+  supers='T-C7-FRAW', acts=['Guide'], audit=C7L_AUDIT, related=['T-C7', 'T-C7-FRAW', 'T-C7-LOCK'], ref='C7 lock, 6')
+T('T-C7-LB', 'An envelope alone gives no lower bound on actual widths', 'Envelope alone ⇏ nonzero actual-width lower bound.', RD, U, 'established', 'established',
+  pro=[('card:C7Ll', 'families of arbitrarily small diameter, and the singleton {0}, satisfy every envelope')],
+  bounds=['FINAL STATUS of the claim "an envelope gives a nonzero lower bound": FAIL (2026-11-16). A lower bound would need occupancy of a coefficient region, surjectivity, a bi-Lipschitz map θ ↦ a(θ) or a lower singular-value bound: a future optional branch (C7-LB+, OPEN), not pursued.'],
+  acts=['Guide'], audit=C7L_AUDIT, related=['T-C7-R', 'T-C7-BRIDGE'], ref='C7 lock, 9')
+T('T-C7-CHAIN-FINAL', 'The surviving spectral chain', 'orthogonal spectral representation → coefficient hierarchy → restricted accessible coefficient region → bounded prediction-space directions', RD, U, 'derived-connection', 'derived',
+  pro=[('card:C7Lp', 'C7-R final'), ('card:C7a', 'coefficient identity'), ('card:C7Le', 'enclosure')], con=[('card:C7Lm', 'not a universal Fisher hierarchy'), ('card:C7Ll', 'no lower bound')],
+  bounds=['Holds for uniformly enveloped families as an upper-bound statement about accessible prediction-space directions; it is not "spectral hierarchy ⟹ universal Fisher hierarchy" (T-C7-FRAW, FAIL).'],
+  acts=['Guide'], audit=C7L_AUDIT, related=['T-C7-SPECTRAL-CHAIN', 'T-C7-R', 'T-C7-FRAW'], ref='C7 lock, 15')
+
 PAIR_A = proof_target('Starting from the established common zero-sum form Σv_i = 0, identify all additional invariants/relations of the mass system that can be translated into mathematically meaningful tests on the directional cancellation system.',
                       requiredObjects=['the established shared form Σv_i = 0 (pair.A.sharedAlgebraicForm)'])
 next(r for r in R if r['id'] == 'T-Q.pairA-transfer')['proofTarget'] = PAIR_A
@@ -1254,6 +1289,24 @@ rate_c7('T-C7-BRIDGE', 3, KN, MULTI, 30, 15, 'Valid sufficient upper bound for u
         GC, ('pass', 'pass', 'partial', 'pass', 'n/a'), depth='STRUCTURAL TRANSFER')
 rate_c7('T-C7-SPECTRAL-CHAIN', 3, KN, MULTI, 30, 15, 'The first three arrows hold for uniformly enveloped families; the last holds only as an upper bound on the image. It is a restricted structural connection, not universal.',
         'The same as T-C7-BRIDGE.', 'A family where the enclosure fails, or a claimed width spectrum that the bound does not control.', GC, ('pass', 'pass', 'partial', 'pass', 'n/a'), depth='STRUCTURAL TRANSFER')
+# Final adversarial C7 lock / audit (2026-11-16): notes and ratings; T-C7 stays OPEN (invariant reading)
+def note16(rid, bound, change, pro=(), con=()):
+    r = byid[rid]
+    r['boundaries'].append(bound)
+    r['history'].append(dict(date='2026-11-16', change=change))
+    r['evidenceFor'] += [dict(ref=a, note=b) for a, b in pro]
+    r['evidenceAgainst'] += [dict(ref=a, note=b) for a, b in con]
+    r['relatedCards'] = sorted(set(r['relatedCards']) | {a.split(':', 1)[1] for a, _ in list(pro) + list(con) if a.startswith('card:')})
+note16('T-C7', 'Final C7 audit (2026-11-16): C7 is split. C7-A, C7-B and C7-R (the enclosure bridge) are KNOWN-REFORMULATION and locked (T-C7-R); C7-LB (envelope → lower bound) FAIL (T-C7-LB); C7-F(raw), the raw Fisher-spectrum reading of this record, FAIL as an invariant universal claim (T-C7-FRAW); C7-F(inv), the invariant reading, OPEN (T-C7-FINV). This record keeps its original wording and stays OPEN in its invariant reading. Record: research/constructions/c7_lock_audit.md.',
+       'final C7 audit: split statuses recorded', pro=[('card:C7Lr', 'C7-F(inv) OPEN')], con=[('card:C7Lq', 'C7-F(raw) FAIL')])
+note16('T-C7-BRIDGE', 'Final C7 audit (2026-11-16): refined, not erased. The pass-1 umbrella status C7-KNOWN-REFORMULATION is split: this bridge is now C7-R (T-C7-R, KNOWN-REFORMULATION, locked). Corrections: the analyticity link needs the even, 2π-periodic statement (C7Lh); exact axes hold at Gauss–Chebyshev (first-kind) nodes only (C7Li); the periodic "√N × envelope" holds in the complex convention with 2K + 1 ≤ N (C7Lj); the enclosing ellipsoid is proved (C7Le); reparametrization invariance is set-level (C7Lo).',
+       'final C7 audit: scope refined to C7-R', pro=[('card:C7Lp', 'C7-R final')])
+rate('T-C7-R', KN, MULTI, 30, 10, 'The enclosure bridge survives the audit in corrected form: exact Minkowski enclosure, directional bound, a proved conservative ellipsoid, locked conventions. Every ingredient is known mathematics after x = cos φ. Upper bound only.',
+     'A lower bound under stated non-degeneracy (C7-LB+), outside this locked branch.', 'A uniformly enveloped family leaving the stated enclosure (none found).', GC, ('pass', 'pass', 'partial', 'pass', 'n/a'), depth='STRUCTURAL TRANSFER')
+byid['T-C7-R']['assessment'].update(date='2026-11-16', applicationBreadth=3, novelty='VALIDATION OF KNOWN MATHEMATICS')
+rate('T-C7-FRAW', SM, MULTI, 0, 5, 'Reparametrizations that keep the function set rescale or reshape the raw Fisher spectrum arbitrarily, while every output-side object is fixed. So no universal chart-independent implication from coefficient decay to raw Fisher decay exists.',
+     'None for the raw reading; an invariant reading is T-C7-FINV.', 'Already falsified as a universal claim (C7Lm).', GC, ('fail', 'fail', 'fail', 'pass', 'n/a'), state='low-confidence-active', depth='FAIL', correct='not established')
+byid['T-C7-FRAW']['assessment'].update(date='2026-11-16', applicationBreadth=3)
 update('T-CF11-A', TRIV, bs=60, slop=8, reason='Pass 3: the pattern holds in coordinate-free form (F*T = T) across constant-form, symplectic and homogeneous Fisher geometries, and its boundary is now exact (generic Fisher geometry is not characterized by a transformation group, CFT5f). Application Breadth corrected from 4 to 3: the rubric reserves 4 for a physical/empirical system')
 
 for r in R:

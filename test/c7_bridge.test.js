@@ -31,7 +31,9 @@ test('2. the width objects are source-locked with verbatim quotations', () => {
   const tms = read('research/sources/tms2011.md');
   for (const s of ['each of the eigendirections of the metric', 'some point located near the center', 'may not agree if the parameters utilize different units']) assert.ok(tms.includes(s), s);
   assert.ok(read('research/sources/quinn2023.md').includes('classical kinematics is a boundary of the manifold of special relativities'), 'P-2 quotation');
-  for (const id of ['SRC-QUINN-2019', 'SRC-TMS-2010', 'SRC-TMS-2011', 'SRC-QUINN-2023']) assert.equal(srcs.get(id).status, 'FULL TEXT READ (arXiv version); CLAIM QUOTED', id);
+  // 2026-11-16 (final C7 audit): Quinn 2019 was then read in its published version, a stronger status than pass 1's
+  assert.equal(srcs.get('SRC-QUINN-2019').status, 'FULL TEXT READ (published version); CLAIM QUOTED');
+  for (const id of ['SRC-TMS-2010', 'SRC-TMS-2011', 'SRC-QUINN-2023']) assert.equal(srcs.get(id).status, 'FULL TEXT READ (arXiv version); CLAIM QUOTED', id);
   assert.ok(F.sourceStatuses.includes('FULL TEXT READ (arXiv version); CLAIM QUOTED'));
 });
 

@@ -63,7 +63,8 @@
   "METADATA VERIFIED; CLAIM SNIPPET-CONFIRMED; PDF PENDING",
   "PROJECT NOTE (not an external source)",
   "APPLICATION PROVENANCE INCOMPLETE",
-  "FULL TEXT READ (arXiv version); CLAIM QUOTED"
+  "FULL TEXT READ (arXiv version); CLAIM QUOTED",
+  "FULL TEXT READ (published version); CLAIM QUOTED"
  ],
  "sourceClasses": [
   "primary",
@@ -3288,7 +3289,9 @@
     "MMIb",
     "MMIf",
     "MMPg",
-    "C7u"
+    "C7u",
+    "C7Lq",
+    "C7Lr"
    ],
    "docs": [
     "research/connections/C7.md"
@@ -3304,7 +3307,7 @@
    "transferDepth": "NOT YET FORMALIZED",
    "applicationBreadth": 0,
    "failureCondition": "S14a FAIL kept",
-   "foundationRole": "C7 as first posed (coefficient spectra vs Fisher / sloppy spectra): still OPEN. C7 pass 1 (2026-11-15) built the bridge to a prediction-space ENCLOSURE instead (C7A–C7D): principal status C7-KNOWN-REFORMULATION, upper bound only; no invariant relation to Fisher eigenvalues was found (raw Fisher spectra are chart-dependent, MMIb). The raw-spectrum reading is NEGATIVE",
+   "foundationRole": "C7 as first posed: SPLIT on 2026-11-16. Raw reading (coefficient decay ⟹ raw Fisher spectrum): FAIL (C7F, T-C7-FRAW). Invariant reading: OPEN (C7G, T-C7-FINV). The enclosure bridge C7-R is KNOWN-REFORMULATION and locked (C7D). The original C7 wording is kept (T-C7)",
    "guideLocation": "Guide: model manifolds",
    "gap": null,
    "provenance": "SPECULATIVE PROJECT CONNECTION",
@@ -4327,7 +4330,7 @@
    "stages": [
     "CROSS-SYSTEM TRANSFER"
    ],
-   "equation": "kept FAIL cards S14a, C8c, B5a, Z1a, Z2b, CFT6b (check error, re-carded CFT6b2); CF11-B with one meaning of \"preserved\" does not organize generic Fisher geometry (CFT5c); component FIM eigenvalues are not coordinate invariants (CFT5e); weighted centering is not a symmetry (CFT8b); T′ unchanged fails on unequal masses, quantum, Fourier k ≠ 0, orthogonality; contribution geometry fails for spins; R1 misses M5; P1 converse fails; ε undefined off exchange eigenstates; linear template fails on nonlinear zeros; C7 pass 1: pointwise spectral decay gives no global width control (C7d); coefficient decay is not necessary for a width hierarchy (C7n); enclosure axes are not the model image's widths (C7o–C7q); Quinn Eq. (2) error term as written in arXiv v1 fails (C7j); Transtrum geodesic widths along chart eigendirections are not an invariant spectrum (MMPg)",
+   "equation": "kept FAIL cards S14a, C8c, B5a, Z1a, Z2b, CFT6b (check error, re-carded CFT6b2); CF11-B with one meaning of \"preserved\" does not organize generic Fisher geometry (CFT5c); component FIM eigenvalues are not coordinate invariants (CFT5e); weighted centering is not a symmetry (CFT8b); T′ unchanged fails on unequal masses, quantum, Fourier k ≠ 0, orthogonality; contribution geometry fails for spins; R1 misses M5; P1 converse fails; ε undefined off exchange eigenstates; linear template fails on nonlinear zeros; C7 pass 1: pointwise spectral decay gives no global width control (C7d); coefficient decay is not necessary for a width hierarchy (C7n); enclosure axes are not the model image's widths (C7o–C7q); Quinn Eq. (2) error term as written in arXiv v1 fails (C7j); Transtrum geodesic widths along chart eigendirections are not an invariant spectrum (MMPg); final C7 audit: C7-F(raw) fails as an invariant universal claim (C7Lm); an envelope alone gives no lower bound (C7Ll); Quinn's published Eq. (2) fails under the Euclidean reading (C7Lc, C7Ld)",
    "status": "NEGATIVE",
    "cards": [
     "S14a",
@@ -4345,7 +4348,10 @@
     "C7d",
     "C7n",
     "C7o",
-    "C7j"
+    "C7j",
+    "C7Lm",
+    "C7Ll",
+    "C7Lc"
    ],
    "docs": [
     "research/application_matrix.md"
@@ -4955,13 +4961,15 @@
     "INFORMATION",
     "REPRESENTATION"
    ],
-   "equation": "family-wide envelope |a_k(θ)| ≤ r_k, Σ r_k < ∞ ⇒ sup_θ ‖f_θ − p_(m−1)(θ)‖∞ ≤ R_m = Σ_(k≥m) r_k; uniform analyticity in the Bernstein ellipse E_ρ (|f_θ| ≤ M) ⟺ uniform analyticity of F_θ in the strip |Im φ| < log ρ, giving r_0 = M, r_k = 2Mρ^(−k)",
+   "equation": "family-wide envelope |a_k(θ)| ≤ r_k, Σ r_k < ∞ ⇒ sup_θ ‖f_θ − p_(m−1)(θ)‖∞ ≤ R_m = Σ_(k≥m) r_k; exact analyticity link (C7Lh): f analytic in the open region bounded by E_ρ with |f| ≤ M ⟺ F = f∘cos analytic in |Im φ| < log ρ with |F| ≤ M (F automatically even and 2π-periodic); an even, 2π-periodic, strip-analytic F descends to such an f; giving r_0 = M, r_k = 2Mρ^(−k)",
    "status": "ESTABLISHED",
    "cards": [
     "C7c",
     "C7e",
     "C7i",
-    "C7d"
+    "C7d",
+    "C7Lh",
+    "C7Lk"
    ],
    "docs": [
     "research/constructions/c7_fourier_width.md",
@@ -4999,7 +5007,7 @@
     "GEOMETRY",
     "INFORMATION"
    ],
-   "equation": "Y(Θ) ⊆ V_m D_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (V_ik = T_k(x_i), D_m = diag(r_k)); extent along u ≤ 2‖D_m V_mᵀu‖₁ + 2R_m‖u‖₁ = W_j^bound for u = u_j; ellipsoid relaxation with factor √m; σ_j(V_m D_m) ≤ ‖V_m‖₂ r_(j) and Quinn Theorem 2; exact axes at Chebyshev nodes; Kolmogorov d_m(F; C[−1, 1]) ≤ R_m. Quinn Eq. (2) error term corrected (‖u_j‖₁ factor)",
+   "equation": "exact enclosure Y(Θ) ⊆ V_mD_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (a Minkowski sum); directional widths ≤ 2‖D_mV_mᵀu‖₁ + 2R_m‖u‖₁; proved conservative ellipsoid E(2(m·V_mD_m²V_mᵀ + NR_m²I)) (C7Le); exact axes {√N r_0} ∪ {√(N/2) r_k} at Gauss–Chebyshev (first-kind) nodes, unweighted (C7Li); d_m(F; C[−1, 1]) ≤ R_m with L_m = span{T_0…T_(m−1)} (C7Lk); set-level, unchanged by reparametrizations that keep the set (C7Lo). Quinn's Eq. (2) additive ellipsoid is NOT used (C7Lc)",
    "status": "ESTABLISHED",
    "cards": [
     "C7f",
@@ -5008,7 +5016,12 @@
     "C7j",
     "C7k",
     "C7s",
-    "C7t"
+    "C7t",
+    "C7Lb",
+    "C7Le",
+    "C7Li",
+    "C7Lk",
+    "C7Lo"
    ],
    "docs": [
     "research/constructions/c7_fourier_width.md",
@@ -5055,7 +5068,8 @@
     "C7f",
     "C7i",
     "C7n",
-    "C7q"
+    "C7q",
+    "C7Lp"
    ],
    "docs": [
     "research/constructions/c7_fourier_width.md",
@@ -5081,7 +5095,7 @@
    "transferDepth": "STRUCTURAL TRANSFER",
    "applicationBreadth": 3,
    "failureCondition": "not necessary (C7n); pointwise decay insufficient (C7d); not a width spectrum (C7o–C7q)",
-   "foundationRole": "the first C7 construction; reformulation, not a new theorem",
+   "foundationRole": "C7-R, FINAL STATUS KNOWN-REFORMULATION, transfer depth RESTRICTED STRUCTURAL CONNECTION, LOCKED 2026-11-16 (T-C7-LOCK). Split from the pass-1 umbrella status: C7-LB FAIL (C7H), C7-F(raw) FAIL (C7F), C7-F(inv) OPEN (C7G)",
    "guideLocation": "Guide: model manifolds",
    "gap": null,
    "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
@@ -5100,10 +5114,11 @@
     "REPRESENTATION",
     "GEOMETRY"
    ],
-   "equation": "periodic f_θ with |f̂_θ(k)| ≤ r_|k| uniformly: at N equally spaced samples FᴴF = N·I (2K + 1 ≤ N), so the enclosure's axes are exactly √N × the sorted envelope; non-uniform samples give only σ_j(FD) ≤ ‖F‖₂ r_(j); modes |k| ≥ N alias",
+   "equation": "complex basis e^(ikt), |k| ≤ K, envelope |f̂_θ(k)| ≤ r_|k|, N equally spaced samples with 2K + 1 ≤ N: FᴴF = N·I, axes exactly √N·r_|k| (each r_k twice); real basis (1, cos kt, sin kt): axes √N r_0 and √(N/2) r_k; the Nyquist mode (N even, k = N/2) is degenerate and excluded; modes alias mod N",
    "status": "ESTABLISHED",
    "cards": [
-    "C7r"
+    "C7r",
+    "C7Lj"
    ],
    "docs": [
     "research/constructions/c7_fourier_width.md",
@@ -5131,6 +5146,169 @@
    "mathematicalStatus": "TEXTBOOK / KNOWN",
    "transformationLevel": [],
    "novelty": "KNOWN MATHEMATICS (elementary)",
+   "reductionRole": null
+  },
+  {
+   "id": "C7F",
+   "name": "C7-F(raw): coefficient decay ⟹ raw Fisher spectrum (FAIL)",
+   "layer": "FAILED / NEGATIVE RESULT",
+   "stages": [
+    "GEOMETRY",
+    "CROSS-SYSTEM TRANSFER"
+   ],
+   "equation": "θ = aφ: g_φ = a²g_θ; θ = θ₀ + A(φ − φ₀): g_φ = Aᵀg_θA realizes any positive spectrum, while the function set, its coefficients, envelope, prediction image and enclosure are unchanged: no universal chart-independent implication from output coefficient decay to raw Fisher eigenvalue decay",
+   "status": "NEGATIVE",
+   "cards": [
+    "C7Lm",
+    "C7Lq",
+    "C7Lo"
+   ],
+   "docs": [
+    "research/constructions/c7_lock_audit.md",
+    "research/sources/quinn2019.md"
+   ],
+   "registry": [
+    "T-C7-FRAW"
+   ],
+   "dependsOn": [],
+   "supports": [],
+   "bearsOn": [
+    "T-C7"
+   ],
+   "backboneSupport": null,
+   "slopRisk": null,
+   "transferDepth": "FAIL",
+   "applicationBreadth": null,
+   "failureCondition": "—",
+   "foundationRole": "FINAL STATUS FAIL (invariant universal claim); the original C7 wording is kept (T-C7)",
+   "guideLocation": "Guide: model manifolds",
+   "gap": null,
+   "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": "PROJECT CLASSIFICATION (negative) OF KNOWN MATHEMATICS",
+   "reductionRole": null
+  },
+  {
+   "id": "C7G",
+   "name": "C7-F(inv): invariant reformulation (open)",
+   "layer": "OPEN RESEARCH QUESTION",
+   "stages": [
+    "GEOMETRY",
+    "INFORMATION"
+   ],
+   "equation": "an invariant comparison needs independently supplied structure: a parameter metric h transforming as a tensor and a prediction metric W (σ(W^(1/2)J_Yh^(−1/2)) is then invariant), generalized eigenvalues of (g, h), or prediction-space geometric widths",
+   "status": "OPEN",
+   "cards": [
+    "C7Ln",
+    "C7Lr"
+   ],
+   "docs": [
+    "research/constructions/c7_lock_audit.md",
+    "research/sources/quinn2019.md"
+   ],
+   "registry": [
+    "T-C7-FINV"
+   ],
+   "dependsOn": [],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": null,
+   "slopRisk": null,
+   "transferDepth": "NOT YET FORMALIZED",
+   "applicationBreadth": null,
+   "failureCondition": "—",
+   "foundationRole": "FINAL STATUS OPEN; separate future question; not attempted",
+   "guideLocation": "Guide: model manifolds",
+   "gap": null,
+   "provenance": "USER-ORIGIN",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null,
+   "reductionRole": null
+  },
+  {
+   "id": "C7H",
+   "name": "C7-LB: envelope alone gives no lower bound (FAIL)",
+   "layer": "FAILED / NEGATIVE RESULT",
+   "stages": [
+    "GEOMETRY"
+   ],
+   "equation": "for every envelope and every η > 0 a family satisfying it has image diameter < η (and {0} satisfies it): Envelope alone ⇏ nonzero actual-width lower bound",
+   "status": "NEGATIVE",
+   "cards": [
+    "C7Ll"
+   ],
+   "docs": [
+    "research/constructions/c7_lock_audit.md",
+    "research/sources/quinn2019.md"
+   ],
+   "registry": [
+    "T-C7-LB"
+   ],
+   "dependsOn": [],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": null,
+   "slopRisk": null,
+   "transferDepth": "FAIL",
+   "applicationBreadth": null,
+   "failureCondition": "—",
+   "foundationRole": "FINAL STATUS FAIL; a lower bound needs occupancy / surjectivity / bi-Lipschitz assumptions (C7-LB+, OPEN, optional)",
+   "guideLocation": "Guide: model manifolds",
+   "gap": null,
+   "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": "ELEMENTARY (negative)",
+   "reductionRole": null
+  },
+  {
+   "id": "C7Q",
+   "name": "Quinn et al. 2019, published Eq. (2) and constants (audit)",
+   "layer": "FAILED / NEGATIVE RESULT",
+   "stages": [
+    "GEOMETRY"
+   ],
+   "equation": "published Eq. (2), ℓj(HY) = 2rσj(X) + 2‖y − pN−1‖∞ for an enclosing hyperellipsoid: counterexample under the ordinary Euclidean prediction-space interpretation (C7Lc), and the additive ellipsoid fails even for a Euclidean-ball error with unequal axes (C7Ld); valid replacements: width_(u_j) ≤ 2rσ_j + 2ε‖u_j‖₁ and H_P ⊕ [−ε, ε]^N ⊆ E(2(AAᵀ + Nε²I)) (C7Le). Constants: ‖c̃‖₂ ≤ M√(4N − 3); printed 4M√(4N − 3) valid but loose; Eq. (8) uses the tight radius (internal constant inconsistency, likely typographical)",
+   "status": "NEGATIVE",
+   "cards": [
+    "C7La",
+    "C7Lb",
+    "C7Lc",
+    "C7Ld",
+    "C7Le",
+    "C7Lf",
+    "C7Lg"
+   ],
+   "docs": [
+    "research/constructions/c7_lock_audit.md",
+    "research/sources/quinn2019.md"
+   ],
+   "registry": [],
+   "dependsOn": [],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": null,
+   "slopRisk": null,
+   "transferDepth": "FAIL",
+   "applicationBreadth": null,
+   "failureCondition": "—",
+   "foundationRole": "source audit; no official correction was located; no priority or novelty claimed",
+   "guideLocation": "research record",
+   "gap": null,
+   "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": "CORRECTION / OBSERVATION (not a new theorem)",
    "reductionRole": null
   }
  ],
@@ -6641,11 +6819,12 @@
    "id": "BR64",
    "left": "Bernstein-ellipse analyticity",
    "right": "Fourier-strip analyticity",
-   "connector": "x = cos(φ + iη) traces the ellipse with semi-axes cosh η, sinh η (sum e^η = ρ): f analytic in E_ρ with |f| ≤ M ⟺ F analytic in |Im φ| < log ρ with |F| ≤ M",
+   "connector": "f analytic in the open region bounded by E_ρ with |f| ≤ M ⟺ F = f∘cos analytic in |Im φ| < log ρ with |F| ≤ M (F is automatically even and 2π-periodic); conversely an even, 2π-periodic, strip-analytic F descends to such an f (z = e^(iφ): annulus ρ^(−1) < |z| < ρ ↔ strip; x = (z + z^(−1))/2 folds z ↔ 1/z); without evenness the descent fails",
    "status": "ESTABLISHED",
    "scope": "established",
    "cards": [
-    "C7c"
+    "C7c",
+    "C7Lh"
    ],
    "doesNotProve": "a uniform-in-θ statement (that is a separate hypothesis)",
    "objects": [
@@ -6771,6 +6950,113 @@
    ],
    "assumptions": "directions chosen as metric eigendirections in a chart",
    "failureCondition": "directions fixed geometrically in prediction space (no such definition in the source)"
+  },
+  {
+   "id": "BR70",
+   "left": "output coefficient envelope",
+   "right": "raw Fisher eigenvalue spectrum",
+   "connector": "θ = aφ: g_φ = a²g_θ; θ = θ₀ + A(φ − φ₀): any positive spectrum at a point, the function set unchanged",
+   "status": "NEGATIVE",
+   "scope": "project-specific",
+   "cards": [
+    "C7Lm",
+    "C7Lq"
+   ],
+   "doesNotProve": "that coefficient decay is irrelevant to model geometry (it bounds the prediction-space enclosure, C7-R)",
+   "objects": [
+    "C7F",
+    "C7D"
+   ],
+   "strength": "FAILED CONNECTION",
+   "sources": [
+    "SRC-AMARI-2016",
+    "SRC-LEE-2018"
+   ],
+   "assumptions": "a reparametrization keeping the function set",
+   "failureCondition": "none: the obstruction is exact"
+  },
+  {
+   "id": "BR71",
+   "left": "coefficient envelope",
+   "right": "actual-width lower bound",
+   "connector": "families of arbitrarily small diameter, and {0}, satisfy every envelope",
+   "status": "NEGATIVE",
+   "scope": "project-specific",
+   "cards": [
+    "C7Ll"
+   ],
+   "doesNotProve": "that no lower bound is possible under additional occupancy / non-degeneracy assumptions (C7-LB+, OPEN)",
+   "objects": [
+    "C7H"
+   ],
+   "strength": "FAILED CONNECTION",
+   "sources": [],
+   "assumptions": "an upper envelope only",
+   "failureCondition": "none: the families are exact"
+  },
+  {
+   "id": "BR72",
+   "left": "H_P ⊕ [−ε, ε]^N",
+   "right": "enclosing ellipsoid E(2(AAᵀ + Nε²I))",
+   "connector": "support functions: √(uᵀQu) = √2·√(‖Aᵀu‖² + Nε²) ≥ ‖Aᵀu‖ + √N ε ≥ h_(H_P)(u) + ε‖u‖₁",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "C7Le",
+    "C7Lb"
+   ],
+   "doesNotProve": "that the √2 factor is optimal; that an additive-axes ellipsoid encloses the sum",
+   "objects": [
+    "C7C",
+    "C7Q"
+   ],
+   "strength": "EXACT IMPLICATION",
+   "sources": [
+    "SRC-LEE-2018"
+   ],
+   "assumptions": "compact convex sets; δ = √N ε",
+   "failureCondition": "none for the inclusion; it is not tight"
+  },
+  {
+   "id": "BR73",
+   "left": "Quinn Eq. (2) additive hyperellipsoid",
+   "right": "model image Y",
+   "connector": "exact two- and three-point families leave the ellipsoid with semi-axes rσ_j + ε (Euclidean prediction space)",
+   "status": "NEGATIVE",
+   "scope": "project-specific",
+   "cards": [
+    "C7Lc",
+    "C7Ld"
+   ],
+   "doesNotProve": "that Quinn's overall hyperribbon conclusion fails (the corrected bounds keep the geometric decay)",
+   "objects": [
+    "C7Q"
+   ],
+   "strength": "FAILED CONNECTION",
+   "sources": [
+    "SRC-QUINN-2019"
+   ],
+   "assumptions": "Euclidean prediction space; sup-norm error as in the paper",
+   "failureCondition": "a reading with a Euclidean-ball error and directional widths along the axes (not the paper's error bound)"
+  },
+  {
+   "id": "BR74",
+   "left": "tensor parameter metric h + prediction metric W",
+   "right": "invariant local sensitivity spectrum",
+   "connector": "σ(W^(1/2)J_Yh^(−1/2)) is invariant under reparametrization when h_φ = Aᵀh_θA; not when h = I in every chart",
+   "status": "OPEN",
+   "scope": "project-specific",
+   "cards": [
+    "C7Ln"
+   ],
+   "doesNotProve": "that coefficient decay controls this spectrum (not derived; C7-F(inv) OPEN)",
+   "objects": [
+    "C7G"
+   ],
+   "strength": "OPEN CONNECTION",
+   "sources": [],
+   "assumptions": "a supplied tensor h and metric W",
+   "failureCondition": "no such structure is supplied by the model"
   }
  ],
  "sources": [
@@ -7620,9 +7906,9 @@
    "sourceType": "journal article",
    "identifier": "Physical Review Letters 122, 158302; DOI 10.1103/PhysRevLett.122.158302; arXiv:1809.08280",
    "sourceClass": "primary",
-   "status": "FULL TEXT READ (arXiv version); CLAIM QUOTED",
+   "status": "FULL TEXT READ (published version); CLAIM QUOTED",
    "claim": "for models y_θ(t), t ∈ [−1, 1], analytic in the Bernstein ellipse E_ρ with |y_θ| ≤ M uniformly in θ, the predictions at N points lie in an enclosing hyperellipsoid H_Y built from X = JD (J_ij = T_(j−1)(t_(i−1)), D = diag(ρ^(−(j−1)))) whose axis lengths are bounded by 4Mρ^(−N+1)/(ρ − 1) + 2M√(4N² − 3N)ρ^(−j+2)/√(ρ² − 1) (Eq. 8); \"an upper bound on possible lengths of the manifolds\"; algebraic analogue for finitely smooth models (supplement)",
-   "doesNotEstablish": "C7 as first posed (coefficient spectra vs Fisher spectra); the actual widths of a model manifold; anything about Fisher eigenvalues; Eq. (2)'s error term as written (corrected by C7j)",
+   "doesNotEstablish": "C7 as first posed (coefficient spectra vs Fisher spectra); the actual widths of a model manifold; anything about Fisher eigenvalues; Eq. (2)'s error term as written (corrected by C7j); the additive Eq. (2) hyperellipsoid (counterexample under the Euclidean reading, C7Lc)",
    "supports": [
     "MM11",
     "C7C"
@@ -7632,7 +7918,7 @@
     "C7D",
     "M4"
    ],
-   "checked": "full text of arXiv v1 (22 Sep 2018) and its supplement read on 2026-11-15 and quoted in research/sources/quinn2019.md; the published PRL version not read"
+   "checked": "published PRL text read on 2026-11-16 (typeset copy deposited at NSF PAR record 10101033; the APS site not accessed); arXiv v1 read 2026-11-15; Crossref lists no correction and none was located; quoted in research/sources/quinn2019.md"
   },
   {
    "id": "SRC-TREFETHEN-2013",
@@ -7868,8 +8154,8 @@
    "objects": [
     "M4"
    ],
-   "status": "NEEDS DERIVATION",
-   "note": "an explicit operator / map / asymptotic theorem, or an exact obstruction. Target object recommended (2026-11-13): hyperribbon widths (MM11), with four gates; revised 2026-11-15: no single width definition chosen, five preconditions recorded (M4); the raw-spectrum reading is NEGATIVE (MMIb, CFT5e); derivation not begun. C7 pass 1 (2026-11-15): the enclosure bridge is constructed (D34); C7 as first posed (Fisher spectra) stays OPEN"
+   "status": "OPEN LONG-TERM",
+   "note": "an explicit operator / map / asymptotic theorem, or an exact obstruction. Target object recommended (2026-11-13): hyperribbon widths (MM11), with four gates; revised 2026-11-15: no single width definition chosen, five preconditions recorded (M4); the raw-spectrum reading is NEGATIVE (MMIb, CFT5e); derivation not begun. C7 pass 1 (2026-11-15): the enclosure bridge is constructed (D34); C7 as first posed (Fisher spectra) stays OPEN. Final audit (2026-11-16): split into C7-F(raw) FAIL (D35) and C7-F(inv) OPEN (D36)"
   },
   {
    "id": "D34",
@@ -7881,8 +8167,28 @@
     "C7D",
     "C7E"
    ],
-   "status": "SOURCE+CARD COMPLETE",
-   "note": "C7 pass 1 (2026-11-15): principal status C7-KNOWN-REFORMULATION; upper bound only; uniform envelope required; not necessary; sources read in full text (arXiv)"
+   "status": "LOCKED",
+   "note": "C7-R: KNOWN-REFORMULATION, RESTRICTED STRUCTURAL CONNECTION; locked by the final audit (2026-11-16, T-C7-LOCK); published Quinn text read; enclosure geometry corrected (C7La–C7Lr)"
+  },
+  {
+   "id": "D35",
+   "name": "C7 negative results and source audit",
+   "objects": [
+    "C7F",
+    "C7H",
+    "C7Q"
+   ],
+   "status": "LOCKED",
+   "note": "C7-F(raw) FAIL; C7-LB FAIL; Quinn Eq. (2) counterexample under the Euclidean reading; constant inconsistency recorded; no official correction located"
+  },
+  {
+   "id": "D36",
+   "name": "C7-F(inv): invariant Fisher / local-sensitivity reformulation",
+   "objects": [
+    "C7G"
+   ],
+   "status": "OPEN LONG-TERM",
+   "note": "needs independently supplied structure (C7Ln); separate future question; not attempted"
   },
   {
    "id": "D32",
@@ -8553,15 +8859,15 @@
  "ratings": [
   {
    "dimension": "Foundation architecture completeness",
-   "rating": 92,
-   "previous": 91,
-   "reason": "C7 pass 1 (2026-11-15) built the C7 bridge to a source-locked, reparametrization-invariant prediction-space enclosure (C7A–C7E; principal status C7-KNOWN-REFORMULATION), with its limits carded (C7d, C7n, C7o–C7q). Still short: DYADIC definition, no general statement for effective representations, no application mathematics, C7 as first posed (Fisher spectra), no lower bound on actual widths."
+   "rating": 93,
+   "previous": 92,
+   "reason": "The final C7 audit (2026-11-16) split C7 into separately decided questions (C7-A/B/R KNOWN-REFORMULATION and locked; C7-LB FAIL; C7-F(raw) FAIL; C7-F(inv) OPEN), corrected the enclosure geometry and closed the branch. Still short: DYADIC definition, no general statement for effective representations, no application mathematics, C7-F(inv)."
   },
   {
    "dimension": "Mathematical verification coverage",
    "rating": 98,
-   "previous": 97,
-   "reason": "81 of 83 established or derived objects have PASS cards (computed). New and carded: C7A–C7E (C7 cards). Not carded: OB1 (definitional), A3 (wording)."
+   "previous": 98,
+   "reason": "81 of 83 established or derived objects have PASS cards (computed). New: the C7 audit objects (C7F, C7G, C7H, C7Q) are NEGATIVE or OPEN and carded. Not carded: OB1 (definitional), A3 (wording)."
   },
   {
    "dimension": "Cross-domain validation",
@@ -8573,13 +8879,13 @@
    "dimension": "Project-specific construction maturity",
    "rating": 45,
    "previous": 45,
-   "reason": "Unchanged: C7 pass 1 is a reformulation of known mathematics, not a new project construction."
+   "reason": "Unchanged: the audit corrects and locks a reformulation of known mathematics."
   },
   {
    "dimension": "Paper / source coverage",
-   "rating": 58,
-   "previous": 55,
-   "reason": "43 external sources registered (8 only partly verified); 55 of 56 external-claim objects have a source; R5 is SOURCE MISSING. Change: first full-text reads (2026-11-15, arXiv versions) of Quinn et al. 2019 (with supplement), Transtrum–Machta–Sethna 2010 and 2011, and Quinn et al. 2023; the exact claims are quoted in research/sources/ and P-2 is closed. Published journal versions not read."
+   "rating": 59,
+   "previous": 58,
+   "reason": "43 external sources registered (8 only partly verified); 55 of 56 external-claim objects have a source; R5 is SOURCE MISSING. Change: the published PRL text of Quinn et al. 2019 was read (typeset copy at NSF PAR) and a corrections search run (Crossref, web; none located)."
   },
   {
    "dimension": "Application validation",
@@ -8947,6 +9253,60 @@
    "old": "for analytic model predictions the widths of a hyperellipsoid enclosing M are bounded through Chebyshev coefficients and decay geometrically (Quinn, Wilber, Townsend, Sethna 2019; source-only)",
    "new": "source-locked (arXiv v1): for models analytic in E_ρ with |y_θ| ≤ M uniformly in θ, the N-point predictions lie in H_Y = X·(ball of radius r) ⊕ error, X = JD, with σ_j(X) ≤ √N ρ^(−j+2)/√(ρ² − 1) (Theorem 2) and axis bounds of Eq. (8); the Eq. (2) error term needs the ‖u_j‖₁ factor (C7j); an upper bound on the manifold's widths",
    "reason": "C7 pass 1: source-locked and carded",
+   "date": "2026-11-15"
+  },
+  {
+   "kind": "object",
+   "id": "C7B",
+   "field": "equation",
+   "old": "family-wide envelope |a_k(θ)| ≤ r_k, Σ r_k < ∞ ⇒ sup_θ ‖f_θ − p_(m−1)(θ)‖∞ ≤ R_m = Σ_(k≥m) r_k; uniform analyticity in the Bernstein ellipse E_ρ (|f_θ| ≤ M) ⟺ uniform analyticity of F_θ in the strip |Im φ| < log ρ, giving r_0 = M, r_k = 2Mρ^(−k)",
+   "new": "family-wide envelope |a_k(θ)| ≤ r_k, Σ r_k < ∞ ⇒ sup_θ ‖f_θ − p_(m−1)(θ)‖∞ ≤ R_m = Σ_(k≥m) r_k; exact analyticity link (C7Lh): f analytic in the open region bounded by E_ρ with |f| ≤ M ⟺ F = f∘cos analytic in |Im φ| < log ρ with |F| ≤ M (F automatically even and 2π-periodic); an even, 2π-periodic, strip-analytic F descends to such an f; giving r_0 = M, r_k = 2Mρ^(−k)",
+   "reason": "final audit: exact even-periodic statement",
+   "date": "2026-11-15"
+  },
+  {
+   "kind": "object",
+   "id": "C7C",
+   "field": "equation",
+   "old": "Y(Θ) ⊆ V_m D_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (V_ik = T_k(x_i), D_m = diag(r_k)); extent along u ≤ 2‖D_m V_mᵀu‖₁ + 2R_m‖u‖₁ = W_j^bound for u = u_j; ellipsoid relaxation with factor √m; σ_j(V_m D_m) ≤ ‖V_m‖₂ r_(j) and Quinn Theorem 2; exact axes at Chebyshev nodes; Kolmogorov d_m(F; C[−1, 1]) ≤ R_m. Quinn Eq. (2) error term corrected (‖u_j‖₁ factor)",
+   "new": "exact enclosure Y(Θ) ⊆ V_mD_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (a Minkowski sum); directional widths ≤ 2‖D_mV_mᵀu‖₁ + 2R_m‖u‖₁; proved conservative ellipsoid E(2(m·V_mD_m²V_mᵀ + NR_m²I)) (C7Le); exact axes {√N r_0} ∪ {√(N/2) r_k} at Gauss–Chebyshev (first-kind) nodes, unweighted (C7Li); d_m(F; C[−1, 1]) ≤ R_m with L_m = span{T_0…T_(m−1)} (C7Lk); set-level, unchanged by reparametrizations that keep the set (C7Lo). Quinn's Eq. (2) additive ellipsoid is NOT used (C7Lc)",
+   "reason": "final audit: corrected enclosure geometry",
+   "date": "2026-11-15"
+  },
+  {
+   "kind": "object",
+   "id": "C7D",
+   "field": "foundationRole",
+   "old": "the first C7 construction; reformulation, not a new theorem",
+   "new": "C7-R, FINAL STATUS KNOWN-REFORMULATION, transfer depth RESTRICTED STRUCTURAL CONNECTION, LOCKED 2026-11-16 (T-C7-LOCK). Split from the pass-1 umbrella status: C7-LB FAIL (C7H), C7-F(raw) FAIL (C7F), C7-F(inv) OPEN (C7G)",
+   "reason": "final audit: split statuses; branch locked",
+   "date": "2026-11-15"
+  },
+  {
+   "kind": "object",
+   "id": "C7E",
+   "field": "equation",
+   "old": "periodic f_θ with |f̂_θ(k)| ≤ r_|k| uniformly: at N equally spaced samples FᴴF = N·I (2K + 1 ≤ N), so the enclosure's axes are exactly √N × the sorted envelope; non-uniform samples give only σ_j(FD) ≤ ‖F‖₂ r_(j); modes |k| ≥ N alias",
+   "new": "complex basis e^(ikt), |k| ≤ K, envelope |f̂_θ(k)| ≤ r_|k|, N equally spaced samples with 2K + 1 ≤ N: FᴴF = N·I, axes exactly √N·r_|k| (each r_k twice); real basis (1, cos kt, sin kt): axes √N r_0 and √(N/2) r_k; the Nyquist mode (N even, k = N/2) is degenerate and excluded; modes alias mod N",
+   "reason": "final audit: periodic convention locked",
+   "date": "2026-11-15"
+  },
+  {
+   "kind": "object",
+   "id": "M4",
+   "field": "foundationRole",
+   "old": "C7 as first posed (coefficient spectra vs Fisher / sloppy spectra): still OPEN. C7 pass 1 (2026-11-15) built the bridge to a prediction-space ENCLOSURE instead (C7A–C7D): principal status C7-KNOWN-REFORMULATION, upper bound only; no invariant relation to Fisher eigenvalues was found (raw Fisher spectra are chart-dependent, MMIb). The raw-spectrum reading is NEGATIVE",
+   "new": "C7 as first posed: SPLIT on 2026-11-16. Raw reading (coefficient decay ⟹ raw Fisher spectrum): FAIL (C7F, T-C7-FRAW). Invariant reading: OPEN (C7G, T-C7-FINV). The enclosure bridge C7-R is KNOWN-REFORMULATION and locked (C7D). The original C7 wording is kept (T-C7)",
+   "reason": "final audit: C7 split",
+   "date": "2026-11-15"
+  },
+  {
+   "kind": "bridge",
+   "id": "BR64",
+   "field": "connector",
+   "old": "x = cos(φ + iη) traces the ellipse with semi-axes cosh η, sinh η (sum e^η = ρ): f analytic in E_ρ with |f| ≤ M ⟺ F analytic in |Im φ| < log ρ with |F| ≤ M",
+   "new": "f analytic in the open region bounded by E_ρ with |f| ≤ M ⟺ F = f∘cos analytic in |Im φ| < log ρ with |F| ≤ M (F is automatically even and 2π-periodic); conversely an even, 2π-periodic, strip-analytic F descends to such an f (z = e^(iφ): annulus ρ^(−1) < |z| < ρ ↔ strip; x = (z + z^(−1))/2 folds z ↔ 1/z); without evenness the descent fails",
+   "reason": "final audit: exact even-periodic statement",
    "date": "2026-11-15"
   }
  ]

@@ -604,7 +604,7 @@ supports only the established or derived object it states; it may bear on a hypo
 | Standard Fisher geometry | Fisher information as a Riemannian metric (SRC-RAO-1945, SRC-AMARI-2016); g = JᵀJ/σ² for Gaussian noise (FB6a) | a metric induced by a representation (CF10) | C7 (M4) | the textbook metric is not a Transtrum–Sethna result |
 | Transtrum / Sethna model manifolds | bounded hyperribbons, hierarchical widths, boundaries, sloppy spectra (SRC-TMS-2010, SRC-TMS-2011, SRC-GUTENKUNST-2007, SRC-MACHTA-2013); MBAM (SRC-TRANSTRUM-QIU-2014) | prediction space as a representation geometry (R7, M1, M2) | higher / infinite prediction spaces (T-PREDICTION-INFINITE) | FB11c checks one boundary limit, not MBAM |
 | Quinn et al. (review) | c as a model parameter; the c → ∞ boundary gives Newtonian kinematics (SRC-QUINN-2023; PDF pending, P-2) | the model-manifold boundary statement only | the two roles of c (L4) | C9 is not inferred from it; spacetime ≠ model manifold |
-| Chebyshev widths (Quinn, Wilber, Townsend, Sethna 2019) | for models analytic in the Bernstein ellipse E_ρ with |y_θ| ≤ M uniformly in θ, the predictions at N points lie in a hyperellipsoid built from X = JD with axis bounds geometric in ρ (Theorem 1, Theorem 2, Eq. 8; SRC-QUINN-2019, full text of arXiv v1 read 2026-11-15) | the source-locked C7 enclosure W_j^bound (C7C) | the C7 bridge (C7D): C7-KNOWN-REFORMULATION | an upper bound on the manifold's widths, not the widths; the Eq. (2) error term needs the ‖u_j‖₁ factor (C7j) |
+| Chebyshev widths (Quinn, Wilber, Townsend, Sethna 2019) | for models analytic in the Bernstein ellipse E_ρ with |y_θ| ≤ M uniformly in θ, the predictions at N points lie in a hyperellipsoid built from X = JD with axis bounds geometric in ρ (Theorem 1, Theorem 2, Eq. 8; SRC-QUINN-2019: arXiv v1 read 2026-11-15, published PRL text read 2026-11-16) | the source-locked C7 enclosure W_j^bound (C7C) | the C7 bridge (C7D): C7-KNOWN-REFORMULATION | an upper bound on the manifold's widths, not the widths; published Eq. (2) fails under the Euclidean reading (C7Lc); proved replacements C7Le |
 | Project C7 | — (no source contains the relation C7 needs) | — | coefficient decay vs Fisher decay (M4; SPECULATIVE PROJECT CONNECTION) | no paper is evidence for C7 | (2026-11-13: target object recommended, MM11; revised 2026-11-15: no single width definition chosen, five preconditions recorded; see below) C7 pass 1 (2026-11-15): the bridge to a prediction-space enclosure is built (C7A–C7E, principal status C7-KNOWN-REFORMULATION); C7 as first posed (Fisher spectra) stays OPEN.
 | Relativity | Lorentz transformations (SRC-EINSTEIN-1905); the invariant interval and light cone (SRC-MINKOWSKI-1909); contraction to Galilei as c → ∞ (SRC-INONU-WIGNER-1953) and the Carroll limit (SRC-LEVY-LEBLOND-1965) | c in the form and in the limit (L1–L3) | L4: *the same parameter participating in invariant geometry and theory transition may encode a deeper structural relation* (project-origin) | the contraction is not evidence for L4 |
 | Fourier analysis | orthonormality, Parseval, translation → phase, conjugate symmetry, Weyl equidistribution (SRC-STEIN-SHAKARCHI-2003); Wiener–Khinchin (SRC-WIENER-1930, SRC-KHINTCHINE-1934) | the founding evidence | conjugacy and physical pairs (P2) | the defect identities T3, T4 are project-derived (FB1, FB2) |
@@ -863,6 +863,43 @@ versions) and quoted: `research/sources/quinn2019.md`, `research/sources/tms2011
   the corrected error term.
 - C7 as first posed (coefficient spectra vs Fisher / sloppy spectra) stays OPEN (T-C7).
 
+### C7 final adversarial lock / audit (2026-11-16): LOCK C7-R / CLOSE THIS BRANCH
+
+Record: `research/constructions/c7_lock_audit.md` (generated). Cards: C7La–C7Lr. The pass-1 record is kept and audited,
+not erased.
+
+**Published source.** The published PRL text was read: the typeset copy deposited at NSF PAR (record 10101033).
+- Eq. (2) is printed as "we can define a hyperellipsoid HY that must enclose model manifold Y, where the
+  cross-sectional widths are given by ℓj(HY) = 2rσj(X) + 2‖y − pN−1‖∞".
+- No official correction was located in this audit (Crossref lists no update; a web search found none).
+
+**Verdicts.**
+- Counterexample to Eq. (2) as written under the ordinary Euclidean prediction-space interpretation (C7Lc). The
+  sampled error lies in a box, and its extent along u is 2ε‖u‖₁ (C7Lb).
+- Directional width ≠ ellipsoid containment (C7Ld).
+- Proved replacement: H_P ⊕ [−ε, ε]^N ⊆ E(2(AAᵀ + Nε²I)) (C7Le).
+- Constants: an internal constant inconsistency, likely a typographical factor of 4. Eq. (8) uses the tight radius
+  M√(4N − 3) (C7Lf, C7Lg).
+- Analyticity: an exact even-periodic equivalence. f is analytic inside E_ρ ⟺ F = f∘cos is analytic in
+  |Im φ| < log ρ, and F is then automatically even and 2π-periodic; descent from a general periodic F needs
+  evenness (C7Lh).
+- Exact axes hold at Gauss–Chebyshev (first-kind) nodes only (C7Li).
+- The periodic factor √N × envelope holds in the complex convention with 2K + 1 ≤ N (C7Lj).
+- d_m ≤ R_m with L_m = span{T_0…T_(m−1)} (C7Lk).
+- Reparametrization invariance is set-level (C7Lo).
+
+**Final statuses** (terminal: PROVED, KNOWN-REFORMULATION, RESTRICTED, FAIL, OPEN).
+- C7-A, C7-B, C7-R: KNOWN-REFORMULATION. C7-R is a RESTRICTED STRUCTURAL CONNECTION and is LOCKED.
+- C7-LB (envelope → lower bound): FAIL (C7Ll).
+- C7-F(raw) (coefficient decay → raw Fisher spectrum): FAIL (C7Lm). A reparametrization keeps the function set and
+  realizes any Fisher spectrum.
+- C7-F(inv): OPEN. It needs independently supplied structure (C7Ln) and is a separate future question.
+- Transtrum width spectrum: OPEN (NOT ESTABLISHED).
+
+The surviving chain is "orthogonal spectral representation → coefficient hierarchy → restricted accessible
+coefficient region → bounded prediction-space directions". It is not "spectral hierarchy ⟹ universal Fisher
+hierarchy".
+
 ## Part X. Original user theories
 
 Every user-origin record, with its original wording, normalized reading and status kept separate, is listed in
@@ -1001,6 +1038,10 @@ Only explicit candidates are listed. Ratings are per proposition.
   - "Rules constrain allowed states" stated generally is too weak to test.
   - A function-space prediction space does not make M infinite-dimensional (MMIh).
   - No single construction of "observation" covers dephasing, projection and boundary limits.
+- **C7 final audit (2026-11-16):**
+  - C7-F(raw) FAILS as an invariant universal claim (C7Lm).
+  - An envelope alone gives no lower bound on actual widths (C7Ll).
+  - Quinn's published Eq. (2) fails under the Euclidean reading (C7Lc, C7Ld).
 - **C7 pass 1 (2026-11-15):**
   - Pointwise spectral decay gives no global width control without a uniform envelope (C7d).
   - Coefficient decay is not necessary for a width hierarchy (C7n, C7m).
@@ -1030,11 +1071,8 @@ Only explicit candidates are listed. Ratings are per proposition.
 
 Only material gaps; the full ledger, with a status for each domain, is `research/foundation_completion.md`.
 
-1. **C7 after pass 1 (2026-11-15).**
-   - The five preconditions are fixed for a restricted class, and the bridge is built (C7-KNOWN-REFORMULATION).
-   - Open: any LOWER bound linking the coefficient envelope to the actual widths.
-   - Open: C7 as first posed (Fisher spectra).
-   - Next: an adversarial C7 lock / audit pass.
+1. **C7: closed (2026-11-16).** C7-R is locked (KNOWN-REFORMULATION). Remaining open, as separate future questions,
+   not blockers: C7-F(inv) (OPEN) and the optional C7-LB+ (lower bounds under extra assumptions).
 2. **The CF11 refinement is resolved by the architectural correction.** It is recorded as the Transformation
    Architecture (TA0: R1 / R2 / R3); CF11-R is superseded. The deeper hypothesis (TAH) stays open.
 3. **Provenance.**
@@ -1067,3 +1105,6 @@ Resolved:
   J_Y / A notation, null hypothesis, noise theorem, volume element, widths, boundaries, function-space example, c
   roles, the measurement channel, observation-type operations).
 - **C7 pass 1 (2026-11-15):** the width object was source-locked and the C7 bridge built (C7A–C7E; C7a–C7u).
+- **C7 final audit (2026-11-16):**
+  - C7 is split and the branch locked (C7F, C7G, C7H, C7Q; C7La–C7Lr).
+  - The published Quinn text is read.

@@ -492,6 +492,7 @@ L += ['', 'Not C7\'s object:'] + [f'- {x["object"]}: {x["why"]}' for x in C7['re
 h = C7['history'][0]
 L += ['', f'Superseded ({h["date"]}, kept): "{h["recommendation"]}" ({h["note"]}). Superseded on {h["supersededOn"]}: {h["reason"]}.']
 p1 = C7['pass1']
+L += ['', '**Update, final C7 audit (2026-11-16).** C7 is split. C7-R is KNOWN-REFORMULATION and LOCKED; C7-LB FAIL; C7-F(raw) FAIL (raw Fisher spectra can be set arbitrarily by reparametrization); C7-F(inv) OPEN. Record: `research/constructions/c7_lock_audit.md`.']
 L += ['', f'**Update, C7 pass 1 ({p1["date"]}).** The status and readiness above are the state before pass 1. Pass 1 fixed the five preconditions for a restricted class and reached principal status {p1["principal"]}; {p1["result"]}. Record: `{p1["record"]}`.'] + [f'{i}. {x}' for i, x in enumerate(p1['preconditions'], 1)]
 L += ['', '## Negative results', '', '| Result | Status | Cards |', '|---|---|---|'] + [f'| {cell(n["result"])}{(" — " + n["revision"]) if n.get("revision") else ""} | {n["status"]} | {cell(", ".join(n["cards"]))} |' for n in NEGATIVE]
 L += ['', '## Ratings (separate dimensions; no overall score)', '', '| Dimension | Backbone Support | AI Slop Risk | Transfer Depth | Application Breadth | Status | Why | Change |', '|---|---|---|---|---|---|---|---|']

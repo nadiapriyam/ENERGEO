@@ -464,5 +464,6 @@
   "C7s",
   "C7t",
   "C7u"
- ]
+ ],
+ "auditedBy": "research/constructions/c7_lock_audit.md"
 }

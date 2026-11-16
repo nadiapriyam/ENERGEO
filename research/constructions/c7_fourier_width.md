@@ -2,6 +2,8 @@
 
 Generated from `research/tools/c7_source.py` (`research/c7_bridge.json`). Do not edit by hand. Decisions: `docs/restructure_decisions.md`, "C7 construction pass 1". Cards: `verify/verify_C7.py` (C7a–C7u).
 
+**Audited and locked on 2026-11-16:** see `research/constructions/c7_lock_audit.md`, which splits C7 into C7-A, C7-B, C7-R (KNOWN-REFORMULATION), C7-LB (FAIL), C7-F(raw) (FAIL), C7-F(inv) (OPEN) and refines several statements below; this pass-1 record is kept unchanged.
+
 **Principal status: C7-KNOWN-REFORMULATION.** Novelty: reformulation (reformulation of Quinn et al. 2019 and standard approximation theory under x = cos φ, with elementary extensions (general envelope, zonotope form, exact axes at Chebyshev nodes) and a precision correction of Quinn's Eq. (2); not a new theorem). Label of the chain: RESTRICTED STRUCTURAL CONNECTION.
 
 ## A. Source-locked definitions

@@ -4565,6 +4565,10 @@
         {
           "ref": "card:C7u",
           "note": "pass-1 verdict"
+        },
+        {
+          "ref": "card:C7Lr",
+          "note": "C7-F(inv) OPEN"
         }
       ],
       "evidenceAgainst": [
@@ -4583,13 +4587,18 @@
         {
           "ref": "card:C7q",
           "note": "enclosure, not widths"
+        },
+        {
+          "ref": "card:C7Lq",
+          "note": "C7-F(raw) FAIL"
         }
       ],
       "boundaries": [
         "Bessel concerns one vector's coefficients; the sloppy spectrum is a metric's eigenvalues (Gate 3, C7). Kept as an open analogy.",
         "C7 target gate (2026-11-13), answering \"What exact mathematical object on the model-manifold side should be compared?\": raw FIM eigenvalues are NOT the object (coordinate-dependent, MMIb, CFT5e: a NEGATIVE result for that reading). Recommended object: the hyperribbon widths of the model manifold (cross-sectional extents of the image set in a stated prediction-space metric; parametrization-independent, metric-dependent, MMIf). Known mathematics already bounds them by Chebyshev coefficient decay for analytic models (Quinn, Wilber, Townsend, Sethna 2019), so a C7 derivation must state its project-specific residue first. T-C7 stays OPEN; no derivation begun.",
         "C7 target revised (2026-11-15), superseding the 2026-11-13 recommendation above (kept): C7 requires an explicitly defined geometric width object before any invariant spectral-decay claim can be evaluated. No single width definition is chosen; Transtrum-style geodesic widths and Quinn-style enclosing-hyperellipsoid widths are both kept until the next construction pass. C7 is not \"hyperribbon widths exist\" (established literature). Candidate bridge: Fourier / spectral / coefficient decay ?⟹ coordinate-independent geometric width hierarchy; a possible chain (NOT established): Fourier/spectral decay → approximation/coefficient decay → Quinn-style width bounds. Preconditions: (1) the exact geometric width object; (2) the prediction/noise metric; (3) the class of models/functions; (4) the exact spectral/coefficient-decay object; (5) what the result adds beyond Quinn et al. 2019 and existing approximation theory. T-C7 stays OPEN; no derivation begun.",
-        "C7 pass 1 (2026-11-15): the bridge \"Fourier / spectral coefficient decay ⟹ coordinate-independent prediction-space width hierarchy\" was constructed for uniformly enveloped families on an interval (T-C7-BRIDGE): principal status C7-KNOWN-REFORMULATION (Quinn et al. 2019 plus standard approximation theory after x = cos φ), an UPPER bound only, not necessary (C7n), not exact (C7o–C7q), failing for pointwise decay (C7d). C7 as first posed here (coefficient spectra vs Fisher / sloppy spectra) stays OPEN: no invariant relation to Fisher eigenvalues was found, and raw Fisher spectra are chart-dependent (MMIb). Record: research/constructions/c7_fourier_width.md."
+        "C7 pass 1 (2026-11-15): the bridge \"Fourier / spectral coefficient decay ⟹ coordinate-independent prediction-space width hierarchy\" was constructed for uniformly enveloped families on an interval (T-C7-BRIDGE): principal status C7-KNOWN-REFORMULATION (Quinn et al. 2019 plus standard approximation theory after x = cos φ), an UPPER bound only, not necessary (C7n), not exact (C7o–C7q), failing for pointwise decay (C7d). C7 as first posed here (coefficient spectra vs Fisher / sloppy spectra) stays OPEN: no invariant relation to Fisher eigenvalues was found, and raw Fisher spectra are chart-dependent (MMIb). Record: research/constructions/c7_fourier_width.md.",
+        "Final C7 audit (2026-11-16): C7 is split. C7-A, C7-B and C7-R (the enclosure bridge) are KNOWN-REFORMULATION and locked (T-C7-R); C7-LB (envelope → lower bound) FAIL (T-C7-LB); C7-F(raw), the raw Fisher-spectrum reading of this record, FAIL as an invariant universal claim (T-C7-FRAW); C7-F(inv), the invariant reading, OPEN (T-C7-FINV). This record keeps its original wording and stays OPEN in its invariant reading. Record: research/constructions/c7_lock_audit.md."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -4598,6 +4607,8 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "C7Lq",
+        "C7Lr",
         "C7q",
         "C7u",
         "MMIb",
@@ -4626,7 +4637,10 @@
         "T-C7-GOV",
         "T-C7-BRIDGE",
         "T-C7-SPECTRAL-CHAIN",
-        "T-TMS-WIDTHS"
+        "T-TMS-WIDTHS",
+        "T-C7-LOCK",
+        "T-C7-FRAW",
+        "T-C7-FINV"
       ],
       "history": [
         {
@@ -4648,6 +4662,10 @@
         {
           "date": "2026-11-15",
           "change": "C7 pass 1: bridge constructed (known reformulation); C7 as posed stays OPEN"
+        },
+        {
+          "date": "2026-11-16",
+          "change": "final C7 audit: split statuses recorded"
         }
       ],
       "relatedActsRev3": [
@@ -13533,6 +13551,10 @@
         {
           "ref": "card:C7t",
           "note": "holds on the project's F-C model"
+        },
+        {
+          "ref": "card:C7Lp",
+          "note": "C7-R final"
         }
       ],
       "evidenceAgainst": [
@@ -13559,7 +13581,8 @@
       ],
       "boundaries": [
         "Principal status C7-KNOWN-REFORMULATION: Quinn, Wilber, Townsend, Sethna 2019 (arXiv v1) plus standard approximation theory after x = cos φ; elementary extensions only (general envelope, zonotope form, exact axes at Chebyshev nodes). Novelty: reformulation.",
-        "RESTRICTED STRUCTURAL CONNECTION, not universal: sufficient, upper-bound, for uniformly enveloped families on an interval."
+        "RESTRICTED STRUCTURAL CONNECTION, not universal: sufficient, upper-bound, for uniformly enveloped families on an interval.",
+        "Final C7 audit (2026-11-16): refined, not erased. The pass-1 umbrella status C7-KNOWN-REFORMULATION is split: this bridge is now C7-R (T-C7-R, KNOWN-REFORMULATION, locked). Corrections: the analyticity link needs the even, 2π-periodic statement (C7Lh); exact axes hold at Gauss–Chebyshev (first-kind) nodes only (C7Li); the periodic \"√N × envelope\" holds in the complex convention with 2K + 1 ≤ N (C7Lj); the enclosing ellipsoid is proved (C7Le); reparametrization invariance is set-level (C7Lo)."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -13568,6 +13591,7 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "C7Lp",
         "C7a",
         "C7d",
         "C7f",
@@ -13601,9 +13625,16 @@
         "T-C7-UNIFORM",
         "T-C7-NOT-NECESSARY",
         "T-INFOGEO",
-        "T-C7-GOV"
+        "T-C7-GOV",
+        "T-C7-R",
+        "T-C7-LB"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-16",
+          "change": "final C7 audit: scope refined to C7-R"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-15",
@@ -13703,7 +13734,8 @@
       "proofTarget": null,
       "related": [
         "T-C7-BRIDGE",
-        "T-C7"
+        "T-C7",
+        "T-C7-CHAIN-FINAL"
       ],
       "history": [],
       "relatedActsRev3": [],
@@ -13892,6 +13924,468 @@
       "related": [
         "T-C7",
         "T-INFOGEO"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-C7-LOCK",
+      "label": "C7 enclosure branch locked",
+      "words": "After this pass, the Fourier/Chebyshev/model-manifold enclosure branch should be considered LOCKED unless the audit discovers a genuine mathematical failure.",
+      "variants": [
+        {
+          "words": "This pass is for closing the current branch, not opening the next one.",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "Do not attempt to solve C7-F(inv).",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "Method / governance rule: C7-R is locked after the final audit (2026-11-16, decision LOCK C7-R / CLOSE THIS BRANCH); reopening needs a genuine mathematical failure. C7-F(inv) and C7-LB+ are separate future questions, not part of this branch.",
+      "origin": "user",
+      "kind": "method-rule",
+      "status": "governance",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "C7 lock",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the final adversarial C7 lock / audit brief (2026-11-16)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-C7-R",
+        "T-C7-FINV",
+        "T-C7"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-C7-R",
+      "label": "C7-R: representation / enclosure bridge (locked)",
+      "words": "C7-R — representation/enclosure bridge",
+      "variants": [
+        {
+          "words": "C7-R = KNOWN-REFORMULATION",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "C7-R (final, locked 2026-11-16): for F = {f_θ} ⊆ C[−1, 1] with a family-wide envelope |a_k(θ)| ≤ r_k on the Chebyshev (= cosine-Fourier of f_θ∘cos) coefficients, Σ r_k < ∞, and N sample points in a Euclidean prediction space: (1) d_m(F; C[−1, 1]) ≤ R_m = Σ_(k≥m) r_k; (2) Y(Θ) ⊆ V_mD_m·[−1, 1]^m ⊕ [−R_m, R_m]^N (exact Minkowski enclosure); (3) width_u ≤ 2‖D_mV_mᵀu‖₁ + 2R_m‖u‖₁; (4) Y(Θ) ⊆ E(2(m·V_mD_m²V_mᵀ + NR_m²I)); (5) exact axes at Gauss–Chebyshev (first-kind) nodes, unweighted; (6) geometric envelope from uniform analyticity (even, 2π-periodic strip form); (7) all set-level, unchanged by reparametrizations that keep the set. Upper bound only.",
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:C7Lp",
+          "note": "final status"
+        },
+        {
+          "ref": "card:C7Le",
+          "note": "proved enclosing ellipsoid"
+        },
+        {
+          "ref": "card:C7Lb",
+          "note": "error-box support function"
+        },
+        {
+          "ref": "card:C7Lh",
+          "note": "exact analyticity statement"
+        },
+        {
+          "ref": "card:C7Li",
+          "note": "node convention"
+        },
+        {
+          "ref": "card:C7Lk",
+          "note": "Kolmogorov width"
+        },
+        {
+          "ref": "card:C7Lo",
+          "note": "set-level invariance"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:C7Ll",
+          "note": "no lower bound from an envelope alone"
+        },
+        {
+          "ref": "card:C7Lc",
+          "note": "Quinn's Eq. (2) additive ellipsoid fails (Euclidean reading)"
+        }
+      ],
+      "boundaries": [
+        "FINAL STATUS: KNOWN-REFORMULATION; transfer depth RESTRICTED STRUCTURAL CONNECTION; LOCKED (2026-11-16). Refines the pass-1 umbrella status of T-C7-BRIDGE (kept)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C7Lb",
+        "C7Lc",
+        "C7Le",
+        "C7Lh",
+        "C7Li",
+        "C7Lk",
+        "C7Ll",
+        "C7Lo",
+        "C7Lp"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "C7 lock, 6",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the final adversarial C7 lock / audit brief (2026-11-16)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-C7-BRIDGE",
+        "T-C7-LOCK",
+        "T-C7-LB",
+        "T-C7-FRAW",
+        "T-C7-FINV",
+        "T-C7-CHAIN-FINAL"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-16",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 30,
+        "slopRisk": 10,
+        "why": "The enclosure bridge survives the audit in corrected form: exact Minkowski enclosure, directional bound, a proved conservative ellipsoid, locked conventions. Every ingredient is known mathematics after x = cos φ. Upper bound only.",
+        "increase": "A lower bound under stated non-degeneracy (C7-LB+), outside this locked branch.",
+        "falsify": "A uniformly enveloped family leaving the stated enclosure (none found).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "STRUCTURAL TRANSFER",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 3,
+        "novelty": "VALIDATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "T-C7-FRAW",
+      "label": "C7-F(raw): coefficient decay vs raw Fisher spectrum",
+      "words": "C7-F(raw) — Fourier/coefficient decay vs raw Fisher/sloppy eigenvalue spectrum",
+      "variants": [
+        {
+          "words": "C7-F(raw) = FAIL",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "spectral hierarchy ⟹ universal Fisher hierarchy",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "The raw-spectrum reading of C7: output coefficient decay implies a decay of the raw Fisher / sloppy eigenvalues, universally and chart-independently.",
+      "origin": "user",
+      "kind": "historical-conjecture",
+      "status": "hypothesis",
+      "evidenceFor": [],
+      "evidenceAgainst": [
+        {
+          "ref": "card:C7Lm",
+          "note": "θ = aφ gives g_φ = a²g_θ; θ = θ₀ + A(φ − φ₀) realizes any positive spectrum, with the function set unchanged"
+        },
+        {
+          "ref": "card:C7Lq",
+          "note": "final status FAIL"
+        },
+        {
+          "ref": "card:MMIb",
+          "note": "raw eigenvalues are chart-dependent"
+        },
+        {
+          "ref": "card:CFT5e",
+          "note": "component eigenvalues are not invariants"
+        }
+      ],
+      "boundaries": [
+        "FINAL STATUS: FAIL as an invariant universal claim (2026-11-16). Kept as a historical conjecture, superseded by the invariant question T-C7-FINV; the original C7 wording stays in T-C7."
+      ],
+      "supersededBy": "T-C7-FINV",
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C7Lm",
+        "C7Lq",
+        "CFT5e",
+        "MMIb"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "C7 lock, 6",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the final adversarial C7 lock / audit brief (2026-11-16)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-C7",
+        "T-C7-FINV",
+        "T-C7-R",
+        "T-C7-CHAIN-FINAL"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-16",
+        "mathematicalStatus": "SPECULATIVE MAPPING",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 0,
+        "slopRisk": 5,
+        "why": "Reparametrizations that keep the function set rescale or reshape the raw Fisher spectrum arbitrarily, while every output-side object is fixed. So no universal chart-independent implication from coefficient decay to raw Fisher decay exists.",
+        "increase": "None for the raw reading; an invariant reading is T-C7-FINV.",
+        "falsify": "Already falsified as a universal claim (C7Lm).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "fail",
+          "generalization": "fail",
+          "transfer": "fail",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "low-confidence-active",
+        "failures": [],
+        "transferDepth": "FAIL",
+        "mathematicalCorrectness": "not established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 3,
+        "novelty": null
+      }
+    },
+    {
+      "id": "T-C7-FINV",
+      "label": "C7-F(inv): invariant reformulation (open)",
+      "words": "C7-F(inv) — invariant reformulation",
+      "variants": [
+        {
+          "words": "C7-F(inv) = OPEN",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "Which independently supplied structure (a parameter metric h transforming as a tensor and a prediction metric W; generalized eigenvalues of a metric pair; or prediction-space geometric widths) would make a spectral comparison with coefficient decay invariant, and does coefficient decay then control it? Not attempted.",
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:C7Ln",
+          "note": "with a tensor h and a metric W, σ(W^(1/2)J_Yh^(−1/2)) is invariant; with h = I in every chart it is not"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "FINAL STATUS: OPEN (2026-11-16). A separate future research question; the C7-R lock does not cover it."
+      ],
+      "supersededBy": null,
+      "supersedes": "T-C7-FRAW",
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C7Ln"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "C7 lock, 6",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the final adversarial C7 lock / audit brief (2026-11-16)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-C7",
+        "T-C7-FRAW",
+        "T-C7-LOCK",
+        "T-C7-R"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-C7-LB",
+      "label": "An envelope alone gives no lower bound on actual widths",
+      "words": "Envelope alone ⇏ nonzero actual-width lower bound.",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:C7Ll",
+          "note": "families of arbitrarily small diameter, and the singleton {0}, satisfy every envelope"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "FINAL STATUS of the claim \"an envelope gives a nonzero lower bound\": FAIL (2026-11-16). A lower bound would need occupancy of a coefficient region, surjectivity, a bi-Lipschitz map θ ↦ a(θ) or a lower singular-value bound: a future optional branch (C7-LB+, OPEN), not pursued."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C7Ll"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "C7 lock, 9",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the final adversarial C7 lock / audit brief (2026-11-16)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-C7-R",
+        "T-C7-BRIDGE"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-C7-CHAIN-FINAL",
+      "label": "The surviving spectral chain",
+      "words": "orthogonal spectral representation → coefficient hierarchy → restricted accessible coefficient region → bounded prediction-space directions",
+      "variants": [],
+      "normalizedStatement": null,
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:C7Lp",
+          "note": "C7-R final"
+        },
+        {
+          "ref": "card:C7a",
+          "note": "coefficient identity"
+        },
+        {
+          "ref": "card:C7Le",
+          "note": "enclosure"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:C7Lm",
+          "note": "not a universal Fisher hierarchy"
+        },
+        {
+          "ref": "card:C7Ll",
+          "note": "no lower bound"
+        }
+      ],
+      "boundaries": [
+        "Holds for uniformly enveloped families as an upper-bound statement about accessible prediction-space directions; it is not \"spectral hierarchy ⟹ universal Fisher hierarchy\" (T-C7-FRAW, FAIL)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "C7Le",
+        "C7Ll",
+        "C7Lm",
+        "C7Lp",
+        "C7a"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "C7 lock, 15",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the final adversarial C7 lock / audit brief (2026-11-16)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-C7-SPECTRAL-CHAIN",
+        "T-C7-R",
+        "T-C7-FRAW"
       ],
       "history": [],
       "relatedActsRev3": [],

@@ -282,6 +282,8 @@ Not C7's object:
 
 Superseded (2026-11-13, kept): "hyperribbon widths" (one recommended target object, with gates). Superseded on 2026-11-15: a single width object was named before its definition was fixed, and widths were stated as parametrization-independent without separating geometric widths from chart proxies (MMPg).
 
+**Update, final C7 audit (2026-11-16).** C7 is split. C7-R is KNOWN-REFORMULATION and LOCKED; C7-LB FAIL; C7-F(raw) FAIL (raw Fisher spectra can be set arbitrarily by reparametrization); C7-F(inv) OPEN. Record: `research/constructions/c7_lock_audit.md`.
+
 **Update, C7 pass 1 (2026-11-15).** The status and readiness above are the state before pass 1. Pass 1 fixed the five preconditions for a restricted class and reached principal status C7-KNOWN-REFORMULATION; the bridge holds as a RESTRICTED STRUCTURAL CONNECTION (sufficient, upper bound); C7 as first posed (Fisher spectra) stays OPEN. Record: `research/constructions/c7_fourier_width.md`.
 1. width object: the Quinn-style enclosure W_j^bound (source-locked; Transtrum widths not used, T-TMS-WIDTHS)
 2. metric: Euclidean on N samples; sup norm in function space
