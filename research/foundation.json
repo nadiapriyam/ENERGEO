@@ -6037,7 +6037,7 @@
    "transferDepth": "STRUCTURAL TRANSFER",
    "applicationBreadth": 2,
    "failureCondition": "a K violating the equation (A8Gc); a form not supplied by the system",
-   "foundationRole": "places Act VIII after the common-form chart: PRESERVED STRUCTURE → GEOMETRY → DYNAMICS/CONTINUATION",
+   "foundationRole": "supporting mathematics (canonical story category C): the theorem KᵀM + MK = 0 ⟺ e^(sK)ᵀMe^(sK) = M is the existing CF4 / BR11, re-carded (A8Ga–A8Gc); only the step to orbit behaviour (BR81) is new. It links #14 (A†MA = M) to #18 / #19 and explains part of the #18 question without replacing it",
    "guideLocation": "Act II–IV (rev-3 Act VIII) / Guide: forms and groups",
    "gap": null,
    "provenance": "TEXTBOOK / STANDARD",
@@ -6084,7 +6084,7 @@
    "transferDepth": "STRUCTURAL TRANSFER",
    "applicationBreadth": 2,
    "failureCondition": "signature alone does not decide the dynamics in dimension 3 (A8Ec)",
-   "foundationRole": "exact canonical comparison (2D); θ ↔ φ as group parameters",
+   "foundationRole": "connects existing questions (category B): #14 (preserved forms I, η) with #18 (rotation) and #19 (boost). Re-cards the rotation / boost cases of the existing S4 trichotomy (S4, B1b, B1c); new only in the 3D scope check (A8Ec)",
    "guideLocation": "Act II–IV (rev-3 Act VIII) / Guide: forms and groups",
    "gap": null,
    "provenance": "TEXTBOOK / STANDARD",
@@ -6133,7 +6133,7 @@
    "transferDepth": "TRIVIAL CONSEQUENCE",
    "applicationBreadth": 2,
    "failureCondition": "ω = 0 (trivial character, ker = ℝ)",
-   "foundationRole": "translation → phase → Fourier representation → compact phase geometry; the circle is compact, not infinite",
+   "foundationRole": "connects existing questions (category B): #4 (\"What remains unchanged when the pattern shifts?\") and #12 (translation ↔ phase, R4) with #18 (the circle) — the circle is the phase by which translation acts; no new theorem beyond R4, R6 and A8Ce",
    "guideLocation": "Guide: Fourier / Act II–IV",
    "gap": null,
    "provenance": "TEXTBOOK / STANDARD",
@@ -6234,7 +6234,7 @@
    "transferDepth": "STRUCTURAL TRANSFER",
    "applicationBreadth": 2,
    "failureCondition": "normalized coordinates: ωJ → 0 gives the identity (A8Qb); β fixed: nothing contracts (A8X5)",
-   "foundationRole": "exact place of c beside the circle frequency (κ = det K); no physical identification of oscillator time with boosts",
+   "foundationRole": "PARKED AS OPTIONAL (canonical story diagnostic): a later synthesis that answers no historical question; its circle is the oscillator in (p, q), not the Fourier circle of #6 / #18, and its shared limit depends on the scaling held fixed. Kept (cards A8Qa, A8Qb); not a story node, not a bridge the story uses; no further κ-research",
    "guideLocation": "Guide: relativity / forms and groups",
    "gap": null,
    "provenance": "TEXTBOOK / STANDARD",
@@ -8431,7 +8431,7 @@
     "A8Qa",
     "A8Qb"
    ],
-   "doesNotProve": "that oscillator time evolution and boosts are the same physics; that c corresponds to t",
+   "doesNotProve": "that oscillator time evolution and boosts are the same physics; that c corresponds to t. PARKED: an optional later construction the canonical story does not use",
    "objects": [
     "A8Q",
     "A8HCF",
@@ -9823,7 +9823,7 @@
   },
   {
    "id": "D40",
-   "name": "Preserved geometry → generator → dynamics (Act VIII story integration)",
+   "name": "Supporting mathematics for #14 → #18 / #19 (Act VIII)",
    "objects": [
     "A8G",
     "A8E",
@@ -9833,7 +9833,7 @@
     "A8GD"
    ],
    "status": "SOURCE+CARD COMPLETE",
-   "note": "the common-form chart continued to orbit behaviour: generator theorem, SO(2) vs SO(1,1), the Fourier character, kernel vs orbit closure, the M_κ family; A8GD is PROJECT SYNTHESIS (exact in the canonical examples, not universal)"
+   "note": "renamed by the canonical story diagnostic (2026-11-16; previous name \"Preserved geometry → generator → dynamics (Act VIII story integration)\"): connecting and supporting mathematics, not a story node. A8G re-cards CF4; A8E re-cards the S4 rotation / boost cases; A8F connects R4 and R6; A8KC answers #3 / #18; A8Q (κ-family) PARKED as optional; A8GD is PROJECT SYNTHESIS (exact in the canonical examples, not universal)"
   },
   {
    "id": "D39",
@@ -11134,6 +11134,51 @@
    "old": "global geometry → infinitesimal rule (rotation, boost, symplectic); the matrix case of L_X T = 0 (TA2I)",
    "new": "global geometry → infinitesimal rule (rotation, boost, symplectic); the matrix case of L_X T = 0 (TA2I); continued in Act VIII: the generator gives a one-parameter transformation whose stabilizer and orbit closure give the continuation type (A8G, BR81)",
    "reason": "story pass: chart → Act VIII",
+   "date": "2026-11-16"
+  },
+  {
+   "kind": "object",
+   "id": "A8G",
+   "field": "foundationRole",
+   "old": "places Act VIII after the common-form chart: PRESERVED STRUCTURE → GEOMETRY → DYNAMICS/CONTINUATION",
+   "new": "supporting mathematics (canonical story category C): the theorem KᵀM + MK = 0 ⟺ e^(sK)ᵀMe^(sK) = M is the existing CF4 / BR11, re-carded (A8Ga–A8Gc); only the step to orbit behaviour (BR81) is new. It links #14 (A†MA = M) to #18 / #19 and explains part of the #18 question without replacing it",
+   "reason": "canonical story: duplicate theorem relabelled as a re-carding; not a story node",
+   "date": "2026-11-16"
+  },
+  {
+   "kind": "object",
+   "id": "A8E",
+   "field": "foundationRole",
+   "old": "exact canonical comparison (2D); θ ↔ φ as group parameters",
+   "new": "connects existing questions (category B): #14 (preserved forms I, η) with #18 (rotation) and #19 (boost). Re-cards the rotation / boost cases of the existing S4 trichotomy (S4, B1b, B1c); new only in the 3D scope check (A8Ec)",
+   "reason": "canonical story: re-carding of the S4 trichotomy",
+   "date": "2026-11-16"
+  },
+  {
+   "kind": "object",
+   "id": "A8F",
+   "field": "foundationRole",
+   "old": "translation → phase → Fourier representation → compact phase geometry; the circle is compact, not infinite",
+   "new": "connects existing questions (category B): #4 (\"What remains unchanged when the pattern shifts?\") and #12 (translation ↔ phase, R4) with #18 (the circle) — the circle is the phase by which translation acts; no new theorem beyond R4, R6 and A8Ce",
+   "reason": "canonical story: connector between R4 and R6",
+   "date": "2026-11-16"
+  },
+  {
+   "kind": "object",
+   "id": "A8Q",
+   "field": "foundationRole",
+   "old": "exact place of c beside the circle frequency (κ = det K); no physical identification of oscillator time with boosts",
+   "new": "PARKED AS OPTIONAL (canonical story diagnostic): a later synthesis that answers no historical question; its circle is the oscillator in (p, q), not the Fourier circle of #6 / #18, and its shared limit depends on the scaling held fixed. Kept (cards A8Qa, A8Qb); not a story node, not a bridge the story uses; no further κ-research",
+   "reason": "canonical story: κ-family parked",
+   "date": "2026-11-16"
+  },
+  {
+   "kind": "bridge",
+   "id": "BR85",
+   "field": "doesNotProve",
+   "old": "that oscillator time evolution and boosts are the same physics; that c corresponds to t",
+   "new": "that oscillator time evolution and boosts are the same physics; that c corresponds to t. PARKED: an optional later construction the canonical story does not use",
+   "reason": "canonical story: κ-family parked",
    "date": "2026-11-16"
   }
  ]

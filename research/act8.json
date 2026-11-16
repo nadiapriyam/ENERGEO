@@ -1284,13 +1284,14 @@
    "APPLICATION"
   ],
   "advances": "PRESERVED STRUCTURE → GEOMETRY → DYNAMICS/CONTINUATION",
-  "contribution": "Act VIII supplies the exact link from a preserved relation to continuation behaviour. The preserved form M fixes the preserving group G_M = {A : AᵀMA = M} and its generators 𝔤_M = {K : KᵀM + MK = 0} (the common-form chart, CF1/CF4); a generator K ∈ 𝔤_M gives a one-parameter transformation e^(sK); its stabilizer (kernel) and orbit closure give the continuation type — periodic, quasi-periodic/dense, hyperbolic/free, drifting. It also ties back to REPRESENTATION/TRANSFORMATION: the circle e^(iωt) is the translation character χ_ω, the phase by which translation acts on a Fourier mode (R4).",
+  "contribution": "Act VIII answers and refines the Master Story's circle / time question (#18) and the relativity / c question (#19). It applies the existing common-form chart (CF1, CF4: preserved form → preserving group → generator) to orbit behaviour (stabilizer and orbit closure decide the continuation type), which explains part of the #18 question; it connects #14 (A†MA = M), #4 / #12 (translation → phase) and #18 / #19. It does not replace the circle / periodicity / infinity question, and its theorems re-card existing Foundation results (CF4; the S4 rotation / boost cases; R4, R6).",
   "failedOverreach": "geometry alone forces periodicity (STAR-A FAIL: A8X1, A8X3)",
   "lesson": "geometry alone does not determine periodicity: on one torus with the same invariants |z_j| = 1, the integer relations of the generator decide between periodic, subtorus and dense orbits (A8Ua); on one Lorentzian form diag(1, 1, −1), elliptic, hyperbolic and parabolic generators coexist (A8Ec)",
   "surviving": "action/generator/stabilizer determine the continuation type under the supplied geometry",
   "starAvsBackbone": "STAR-A failing is not the Foundation/backbone failing. The backbone claims that preserved relations encode geometry; STAR-A claimed that geometry forces one dynamical outcome. Its failure names the missing condition — the generator/action — and the chain below supplies it.",
   "nextQuestion": "Given a preserved geometric relation, what transformations preserve it, what generators produce those transformations, and what observable dynamics follow?",
-  "percentages": "Backbone Support remains secondary metadata. It is kept, and contextualized by the story contribution of each item; no branch is downgraded because STAR-A failed."
+  "percentages": "Backbone Support remains secondary metadata. It is kept, and contextualized by the story contribution of each item; no branch is downgraded because STAR-A failed.",
+  "placement": "research/canonical_story.md, section D (categories A–E)"
  },
  "generatorTheorem": {
   "statement": "For a constant matrix M and A(s) = e^(sK): KᵀM + MK = 0 ⟺ A(s)ᵀMA(s) = M for every s.",
@@ -1439,8 +1440,144 @@
   "cards": [
    "A8Qa",
    "A8Qb"
-  ]
+  ],
+  "status": "PARKED AS OPTIONAL (canonical story diagnostic, 2026-11-16): a later synthesis answering no historical question; kept with its cards, not a story node, no further κ-research"
  },
+ "placement": [
+  {
+   "item": "circle: |e^(iωt)| = 1, period, no limit, ℝ/Tℤ ≅ S¹, covering",
+   "objects": "A8C",
+   "category": "A",
+   "question": "M18: G2 6 and 8 (unbounded t, bounded S¹)",
+   "note": "answers the question as Nadia restated it; the old \"converge to infinity\" wording is E (FAIL, kept)"
+  },
+  {
+   "item": "distinction table (parameter, lift, cycles, bounded, convergence, recurrence, periodicity, density, drift)",
+   "objects": "A8D",
+   "category": "A",
+   "question": "M18: \"compare what happens to elapsed time, number of revolutions, sine and cosine values, cumulative quantities, and mathematical limits\" (MM); G2 6 \"two very different kinds of infinity\"",
+   "note": "answers"
+  },
+  {
+   "item": "torus: commensurability; dense irrational flow, never periodic; kernel vs orbit closure",
+   "objects": "A8T, A8KC",
+   "category": "A",
+   "question": "M3 (\"try a nonperiodic sound\", MM) and M18 (G2 8: \"deeper analogues\")",
+   "note": "answers; also E for STAR-A"
+  },
+  {
+   "item": "cylinder: periodic projection, unbounded state",
+   "objects": "A8X2",
+   "category": "A",
+   "question": "M18: \"extend the picture into a cylindrical geometry\" (MM)",
+   "note": "answers"
+  },
+  {
+   "item": "stabilizer / orbit framework",
+   "objects": "A8A",
+   "category": "C",
+   "question": "M3, M18 (periodicity is a nontrivial stabilizer)",
+   "note": "supporting machinery"
+  },
+  {
+   "item": "★ readings STAR-A/B/C; STAR-A lesson",
+   "objects": "A8SA–A8SC, A8GD",
+   "category": "E",
+   "question": "Pair B / ★ (RD)",
+   "note": "refines the ★ question; ★ kept verbatim and open"
+  },
+  {
+   "item": "H3 candidates (H3-action, H3-quotient)",
+   "objects": "A8HA, A8HQ",
+   "category": "C",
+   "question": "H3 (CP §1a)",
+   "note": "formalizations; H3-original stays open"
+  },
+  {
+   "item": "rapidity: tanh φ = v/c; θ ↔ φ",
+   "objects": "A8Eb, A8Wa",
+   "category": "A",
+   "question": "M19 (which transformations change the observer)",
+   "note": "answers; and E: corrects the literal t ↔ c analogy"
+  },
+  {
+   "item": "c-family M_c; restricted content of c",
+   "objects": "A8M, A8Wc",
+   "category": "A",
+   "question": "M19 and G2 3 (what goes to infinity)",
+   "note": "answers"
+  },
+  {
+   "item": "c → ∞: degenerate form, Galilean boosts, contraction",
+   "objects": "A8L",
+   "category": "B",
+   "question": "M15 (the c → ∞ boundary of the model manifold, G2 3) → M19",
+   "note": "connects"
+  },
+  {
+   "item": "SO(2) / SO(1,1)",
+   "objects": "A8E",
+   "category": "B",
+   "question": "M14 (preserved forms I, η) → M18 (rotation) and M19 (boost)",
+   "note": "connects; re-cards the existing trichotomy (S4, B1b, B1c), adding only the 3D scope check"
+  },
+  {
+   "item": "generator theorem KᵀM + MK = 0 ⟺ e^(sK) preserves M",
+   "objects": "A8G",
+   "category": "C",
+   "question": "M14 → M18 / M19",
+   "note": "supporting: the theorem is the existing CF4 (BR11), re-carded; only the step to orbit behaviour (BR81) is new. It explains part of the M18 question and does not replace it"
+  },
+  {
+   "item": "Fourier character χ_ω",
+   "objects": "A8F",
+   "category": "B",
+   "question": "M4 (translation) and M12 (translation ↔ phase, R4) → M18 (the circle)",
+   "note": "connects existing nodes R4 and R6; no new theorem"
+  },
+  {
+   "item": "elliptic / parabolic / hyperbolic language",
+   "objects": "A8Ec",
+   "category": "C",
+   "question": "Part VII \"Trichotomy: rotation / boost / shear by the sign of the invariant\" (S4)",
+   "note": "pre-existing vocabulary, supporting"
+  },
+  {
+   "item": "κ-family M_κ",
+   "objects": "A8Q",
+   "category": "D",
+   "question": "none required (see E)",
+   "note": "optional later construction"
+  },
+  {
+   "item": "H3-c split (direct / group / family)",
+   "objects": "A8HCD, A8HG, A8HCF",
+   "category": "E",
+   "question": "H3 c-clause (CP §1a), G2 3",
+   "note": "direct FAIL kept; group = the rotation/boost connection (B); family answers G2 3 (A)"
+  },
+  {
+   "item": "counterexamples X1–X6",
+   "objects": "A8X",
+   "category": "E",
+   "question": "M18, ★, G2 2 (X6: an index that converges vs a flow that does not), G2 3 (X5: scaling)",
+   "note": "each refines a question"
+  },
+  {
+   "item": "boundary approach ≅ drift",
+   "objects": "A8Pg",
+   "category": "B",
+   "question": "C8 (wrapping / near return / boundary approach) and S5b (tanh bound) → M18",
+   "note": "connects"
+  },
+  {
+   "item": "T-GEN-DYN-Q",
+   "objects": "A8G",
+   "category": "E",
+   "question": "created by STAR-A's failure",
+   "note": "the next question of the ★ chain — a refinement of the original question"
+  }
+ ],
  "geomGenDyn": {
   "record": "T-GEOM-GEN-DYN",
   "words": "geometry constrains the admissible symmetry/action structure, but the generator/action determines whether the resulting orbit is periodic, recurrent, hyperbolic, dense, or drifting.",
@@ -1763,6 +1900,12 @@
     "Not begun (stop list): mass-wave/conjugacy, dispersion, quantum work, Energeo, the final Foundation freeze. The mass-wave handoff note is preparation only."
    ],
    "why": "story-integration pass completed the missing bridges"
+  },
+  {
+   "where": "story contribution (canonical story diagnostic)",
+   "old": "Act VIII supplies the exact link from a preserved relation to continuation behaviour. The preserved form M fixes the preserving group G_M = {A : AᵀMA = M} and its generators 𝔤_M = {K : KᵀM + MK = 0} (the common-form chart, CF1/CF4); a generator K ∈ 𝔤_M gives a one-parameter transformation e^(sK); its stabilizer (kernel) and orbit closure give the continuation type — periodic, quasi-periodic/dense, hyperbolic/free, drifting. It also ties back to REPRESENTATION/TRANSFORMATION: the circle e^(iωt) is the translation character χ_ω, the phase by which translation acts on a Fourier mode (R4).",
+   "new": "Act VIII answers and refines the Master Story's circle / time question (#18) and the relativity / c question (#19). It applies the existing common-form chart (CF1, CF4: preserved form → preserving group → generator) to orbit behaviour (stabilizer and orbit closure decide the continuation type), which explains part of the #18 question; it connects #14 (A†MA = M), #4 / #12 (translation → phase) and #18 / #19. It does not replace the circle / periodicity / infinity question, and its theorems re-card existing Foundation results (CF4; the S4 rotation / boost cases; R4, R6).",
+   "why": "\"Act VIII supplies the exact link\" overstated novelty: the link CF1 → CF4 already existed"
   }
  ]
 }

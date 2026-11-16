@@ -1905,7 +1905,9 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "T-PAIRA-Q"
+      ],
       "history": [
         {
           "date": "2026-11-12",
@@ -3428,7 +3430,8 @@
       "construction": null,
       "proofTarget": null,
       "related": [
-        "T-PAIRA-BRIDGE"
+        "T-PAIRA-BRIDGE",
+        "T-PAIRA-Q"
       ],
       "history": [
         {
@@ -4082,7 +4085,8 @@
       "boundaries": [
         "Whether these limit ★ depends on \"bound by rules\", \"periodic\" and \"can be\" (AMB-7 a–c, docs/restructure_report_rev3.md).",
         "Act VIII (2026-11-16): this record is STAR-original; it keeps its wording and stays OPEN. Readings with independent statuses: T-STAR-A (forced periodicity) FAIL; T-STAR-B (existence) RESTRICTED; T-STAR-C (recurrence) RESTRICTED to Poincaré recurrence. The H3/★ hierarchy is not decided. Record: research/constructions/act8_finite_infinite_h3_c.md.",
-        "Story-integration pass (2026-11-16): STAR-A's FAIL is kept and its lesson recorded (T-STAR-A-LESSON: geometry alone does not determine periodicity); it is not a failure of the backbone. The terms of ★ left open in AMB-7 (a)–(c) are in docs/restructure_report_rev3.md."
+        "Story-integration pass (2026-11-16): STAR-A's FAIL is kept and its lesson recorded (T-STAR-A-LESSON: geometry alone does not determine periodicity); it is not a failure of the backbone. The terms of ★ left open in AMB-7 (a)–(c) are in docs/restructure_report_rev3.md.",
+        "Canonical story (2026-11-16): the Act VIII readings refine the original question (\"What observable rules arise because an object is constrained by a particular geometry?\") and keep it; the original question is not replaced by \"generators\". Graph: research/canonical_story.md, Chain PB."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -4181,6 +4185,10 @@
         {
           "date": "2026-11-16",
           "change": "story pass: STAR-A lesson; AMB-7 recovered"
+        },
+        {
+          "date": "2026-11-16",
+          "change": "canonical story: refinement, not replacement"
         }
       ],
       "relatedActsRev3": [
@@ -9679,7 +9687,8 @@
       "related": [
         "T-PAIRA-SHARED",
         "T-SIMPLEX-FAMILY",
-        "T-WMC"
+        "T-WMC",
+        "T-PAIRA-Q"
       ],
       "history": [],
       "relatedActsRev3": [],
@@ -15589,7 +15598,8 @@
       ],
       "evidenceAgainst": [],
       "boundaries": [
-        "Story-integration pass (2026-11-16): ESTABLISHED INSTANCE (established structural pattern in the canonical examples; the generator theorem is proved). An exact canonical 2D comparison: signature alone does not decide the dynamics in higher dimensions (A8Ec)."
+        "Story-integration pass (2026-11-16): ESTABLISHED INSTANCE (established structural pattern in the canonical examples; the generator theorem is proved). An exact canonical 2D comparison: signature alone does not decide the dynamics in higher dimensions (A8Ec).",
+        "Canonical story (2026-11-16): connects #14 (preserved forms I, η) with #18 (rotation) and #19 (boost); its cards re-card the existing S4 rotation / boost cases and CF4. Graph: research/canonical_story.md, section D (category B)."
       ],
       "supersededBy": null,
       "supersedes": "T-H3-C-DIRECT",
@@ -15625,7 +15635,12 @@
         "T-H3-C-FAMILY",
         "T-GEOM-GEN-DYN"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-16",
+          "change": "canonical story: placement; re-carding noted"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-16",
@@ -15696,7 +15711,8 @@
         }
       ],
       "boundaries": [
-        "Story-integration pass (2026-11-16): RESTRICTED (established pieces); the project connection to H3 remains OPEN. One of three records split from T-H3-C; not merged back."
+        "Story-integration pass (2026-11-16): RESTRICTED (established pieces); the project connection to H3 remains OPEN. One of three records split from T-H3-C; not merged back.",
+        "Canonical story (2026-11-16): the c-indexed family and its Galilean limit answer Gate 2 answer 3 (what goes to infinity) at #19; the κ-family part (A8Qa, A8Qb) is PARKED AS OPTIONAL — it answers no historical question. Graph: research/canonical_story.md, section E."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -15736,7 +15752,12 @@
         "T-H3-C-DIRECT",
         "T-H3-GROUP"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-16",
+          "change": "canonical story: κ-family parked"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-16",
@@ -15794,7 +15815,8 @@
       ],
       "evidenceAgainst": [],
       "boundaries": [
-        "Story-integration pass (2026-11-16): PROJECT SYNTHESIS, exact in the canonical examples (2×2 forms, tori, diag(1, 1, −1)); not a universal theorem — \"geometry constrains\" is defined here only as M ↦ (G_M, 𝔤_M). The main explanatory bridge GEOMETRY → DYNAMICS/CONTINUATION."
+        "Story-integration pass (2026-11-16): PROJECT SYNTHESIS, exact in the canonical examples (2×2 forms, tori, diag(1, 1, −1)); not a universal theorem — \"geometry constrains\" is defined here only as M ↦ (G_M, 𝔤_M). The main explanatory bridge GEOMETRY → DYNAMICS/CONTINUATION.",
+        "Canonical story (2026-11-16): explains part of the Master Map #18 question (and refines ★); it does not replace it. Graph: research/canonical_story.md, section D."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -15830,7 +15852,12 @@
         "T-GEN-DYN-Q",
         "T-H3-GROUP"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-16",
+          "change": "canonical story: placement"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-16",
@@ -15959,7 +15986,9 @@
         }
       ],
       "evidenceAgainst": [],
-      "boundaries": [],
+      "boundaries": [
+        "Canonical story (2026-11-16): the next question of the Pair B / ★ chain, created by STAR-A's failure (\"geometry alone does not force exact periodicity\") — a refinement of the original ★ question, not a replacement for the circle / periodicity / infinity question. Graph: research/canonical_story.md, Chain PB."
+      ],
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
@@ -15991,6 +16020,68 @@
         "T-GEOM-GEN-DYN",
         "T-GEOM-RULES",
         "T-STAR"
+      ],
+      "history": [
+        {
+          "date": "2026-11-16",
+          "change": "canonical story: placement"
+        }
+      ],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-PAIRA-Q",
+      "label": "Pair A: the question that created it",
+      "words": "A mass-balance zero identifies a distinguished structural location.",
+      "variants": [
+        {
+          "words": "Could another zero/cancellation state likewise encode hidden structural information?",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "Known structure behind zero A (the mass-balance zero fixes the centre of mass) → transfer questions (TQ-1–TQ-6) → zero B (proton cancellation) → search for structure. The common relation is deliberately left unfilled; the analogy is not a theorem.",
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:MB1b",
+          "note": "the mass-balance zero and its distinguished point"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Canonical story diagnostic (2026-11-16): recorded so that Pair A keeps the question that created it; Pair A was not created because the systems were proven equivalent. Graph: research/canonical_story.md, Chain PA."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "I"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "MB1b"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "canonical story, Chain PA",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the canonical story diagnostic brief (2026-11-16)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-PAIRA-SHARED",
+        "T-PAIRA-BRIDGE",
+        "T-BACKBONE-PRIMARY"
       ],
       "history": [],
       "relatedActsRev3": [],

@@ -1855,3 +1855,96 @@ changed.
 > Do not replace the percentages; contextualize them.
 
 > Do NOT derive the mass-wave theory in this pass.
+
+## Canonical story diagnostic (2026-11-16)
+
+Nadia's decisions, verbatim. LaTeX was converted to plain text (inline math written as plain symbols); nothing else was
+changed. The questions of Chain A are her recollection of the historical questions from the project conversations
+("Refine ThermaLens Thesis", "Paper Structure Review", "Explain Translation Invariance", "Sustainability Essay
+Outline"); those conversations are not in this repository.
+
+> Question → mathematical relation discovered → next question created by that relation.
+
+> A question and answer become a story when the answer exposes a relation that naturally creates the next question.
+
+> Do not replace this with a theorem-first ordering.
+
+> 1. What is a signal?
+> 2. Music / structured signal as an intuitive entry point.
+> 3. Periodicity.
+> 4. Symmetry.
+> 5. Representation.
+> 6. Fourier series.
+> 7. Fourier coefficients.
+> 8. Orthogonality and zero.
+> 9. Geometry beyond directly visible dimensions.
+> 10. Mean-square convergence.
+> 11. Squared coefficients / L^2 magnitude / energy-like quantity.
+> 12. Fourier pairs.
+> 13. Zero as a mathematical cornerstone, while keeping distinct meanings of zero.
+> 14. Quadratic geometry and the identity matrix.
+> 15. Information geometry.
+> 16. Prediction/model spaces.
+> 17. Conjugacy and possible physical pairs.
+> 18. Finite circle / unbounded time / infinity question.
+> 19. Relativity and c.
+> 20. Finite-energy/application question.
+
+> is a higher-level summary of the same story, not a replacement for the historical sequence.
+
+> Master Story: the actual question-by-question journey.
+
+> Foundation Spine: the abstract categories those questions eventually revealed.
+
+> What is x?
+
+> What does it mean for x to be relative to zero?
+
+> Why does the squared norm look energy-like?
+
+> What does it mean when the quantity is mathematical L^2 magnitude rather than physical energy?
+
+> What happens when M ≠ I?
+
+> what must happen for the relation to remain the same?
+
+> Do not present A^†MA=M as an isolated theorem disconnected from the earlier questions about zero, norm, squared norm and M.
+
+> It means a relation between f and the mode e_k.
+
+> Do not introduce orthogonality before the zero projection has created the need for it.
+
+> same visible result “0” can arise from different hidden relations.
+
+> A mass-balance zero identifies a distinguished structural location.
+> Could another zero/cancellation state likewise encode hidden structural information?
+
+> geometry alone does not force exact periodicity.
+
+> the geometry, allowed transformations, generator/frequency relations, stabilizer and orbit closure all bear on the observed continuation.
+
+> This is a refinement of the original question, not a new story.
+
+> What does distance mean when the valid representations lie on a model/prediction manifold?
+
+> Do not make C7 the reason model manifolds exist in the story.
+
+> The question is whether they share a deeper structural pattern.
+
+> Do not move c earlier merely because it fits a general generator framework.
+
+> ThermaLens is downstream testing/application of the representation ideas.
+
+> It may explain part of it.
+
+> Formal equations appear because a prior question demanded them.
+
+> What question did this failure force us to ask next?
+
+> NO CANONICAL STORY PLACEMENT YET.
+
+> KEEP; MOVE; RECLASSIFY; ADD CONNECTIVE SENTENCE; ADD DIAGRAM EDGE; SPLIT; PARK AS OPTIONAL; SUPERSEDE WORDING; DELETE DUPLICATE/ASSISTANT-INVENTED LIVE CLAIM
+
+> READY FOR ACT VIII ADVERSARIAL LOCK AFTER STORY ALIGNMENT
+
+> STORY ALIGNMENT STILL HAS A SPECIFIC GAP

@@ -2,7 +2,7 @@
 
 Generated from `research/tools/act8_source.py` (`research/act8.json`). Do not edit by hand. Decisions: `docs/restructure_decisions.md`, "Act VIII first construction pass" and "Act VIII story-integration and mathematical-correction pass". Cards: `verify/verify_A8.py` (A8Ca, A8Cb, A8Cc, A8Cd, A8Ce, A8Cf, A8Ta, A8Tb, A8Tc, A8Te, A8Ua, A8X1, A8X2, A8X3, A8X4, A8X5, A8X6, A8Yb, A8Pa, A8Pb, A8Pc, A8Pd, A8Pe, A8Pg, A8Da, A8Db, A8Ma, A8Mb, A8Mc, A8Md, A8Me, A8La, A8Lb, A8Lc, A8Sa, A8Sb, A8Ra, A8Rb, A8Rc, A8Rd, A8Za); `verify/verify_A8S.py` (A8Ga, A8Gb, A8Gc, A8Ea, A8Eb, A8Ec, A8Fa, A8Fb, A8Ka, A8Kb, A8Ba, A8Va, A8Wa, A8Wb, A8Wc, A8Qa, A8Qb, A8Zb).
 
-Story-integration pass (2026-11-16): sections S1–S9 below place Act VIII in the Foundation spine; corrected statements keep their old wording under "Superseded wording".
+Canonical story placement (2026-11-16): the results below answer and refine the Master Story's #18 (circle / unbounded time) and #19 (relativity / c) questions; sections S1–S9 are connecting and supporting mathematics that explain part of #18 and do not replace it (`research/canonical_story.md`). Superseded wording, kept: "sections S1–S9 below place Act VIII in the Foundation spine". Corrected statements keep their old wording under "Superseded wording".
 
 H3 and ★ are investigated separately and their hierarchy is not decided. The time parameter t and the theory parameter c are kept apart. Statuses: PROVED; ESTABLISHED INSTANCE; RESTRICTED; PROJECT SYNTHESIS; FAIL; OPEN.
 
@@ -343,7 +343,7 @@ Low Backbone Support is not a reason to discard a branch: every weak and negativ
 
 **Spine transition advanced:** PRESERVED STRUCTURE → GEOMETRY → DYNAMICS/CONTINUATION.
 
-Act VIII supplies the exact link from a preserved relation to continuation behaviour. The preserved form M fixes the preserving group G_M = {A : AᵀMA = M} and its generators 𝔤_M = {K : KᵀM + MK = 0} (the common-form chart, CF1/CF4); a generator K ∈ 𝔤_M gives a one-parameter transformation e^(sK); its stabilizer (kernel) and orbit closure give the continuation type — periodic, quasi-periodic/dense, hyperbolic/free, drifting. It also ties back to REPRESENTATION/TRANSFORMATION: the circle e^(iωt) is the translation character χ_ω, the phase by which translation acts on a Fourier mode (R4).
+Act VIII answers and refines the Master Story's circle / time question (#18) and the relativity / c question (#19). It applies the existing common-form chart (CF1, CF4: preserved form → preserving group → generator) to orbit behaviour (stabilizer and orbit closure decide the continuation type), which explains part of the #18 question; it connects #14 (A†MA = M), #4 / #12 (translation → phase) and #18 / #19. It does not replace the circle / periodicity / infinity question, and its theorems re-card existing Foundation results (CF4; the S4 rotation / boost cases; R4, R6).
 
 - **Failed overreach:** geometry alone forces periodicity (STAR-A FAIL: A8X1, A8X3).
 - **What the failure teaches:** geometry alone does not determine periodicity: on one torus with the same invariants |z_j| = 1, the integer relations of the generator decide between periodic, subtorus and dense orbits (A8Ua); on one Lorentzian form diag(1, 1, −1), elliptic, hyperbolic and parabolic generators coexist (A8Ec).
@@ -414,6 +414,8 @@ The pass-1 record H3-c (T-H3-C) mixed these three claims; it keeps its verbatim 
 
 ### S7. Rapidity, c and the family M_κ
 
+**PARKED AS OPTIONAL (canonical story diagnostic, 2026-11-16): a later synthesis answering no historical question; kept with its cards, not a story node, no further κ-research.**
+
 - Family: M_κ = diag(1, κ), K_κ = [[0, κ], [−1, 0]]: K_κᵀM_κ + M_κK_κ = 0, K_κ² = −κI, det K_κ = κ (a similarity invariant of the generator in the system's own parameter).
 - Members: κ = ω²: e^(sK) = I cos ωs + K sin(ωs)/ω; with s = −t, the harmonic oscillator on (p, q) with its supplied form p² + ω²q² (period 2π/ω). κ = −1/c²: e^(sK) = I cosh(s/c) + cK sinh(s/c), the boost generator dΛ/dv at v = 0 (s = cφ). κ = 0: the Galilean shear.
 - Limit: with s fixed, ω → 0 and c → ∞ give the same parabolic limit [[1, 0], [−s, 1]]; with planar translations, [K, H] = −P, [K, P] = κH: Euclidean e(2) (κ > 0), Poincaré(1+1) (κ < 0), Galilei(1+1) (κ = 0) (A8Qa).
@@ -434,6 +436,32 @@ Scope: exact in the canonical examples (2×2 forms, tori, diag(1, 1, −1)); not
 Handoff only; nothing derived. The planned mass-wave / pairs branch treats the dispersion relation as a quadratic form in (ω, k), with the massless case as its null cone. Act VIII prepares it with: the Lorentz quadratic form η and its c-family M_c (A8Ma); the null cone x = ±ct (A8Md); the role of c kept separate from group parameters (A8Wa, A8Wc); the one-parameter Lorentz symmetry e^(φK) (A8Eb); and generator preservation KᵀM + MK = 0 ⟹ e^(sK)ᵀMe^(sK) = M (A8Ga).
 
 No dispersion form, mass shell or wave–particle statement is derived here (stop list).
+
+## Canonical story placement (2026-11-16)
+
+Category A answers an existing question; B connects two existing questions; C supporting mathematics; D optional branch; E refines an old conjecture.
+
+| Result | Objects | Category | Historical question | Note |
+|---|---|---|---|---|
+| circle: \|e^(iωt)\| = 1, period, no limit, ℝ/Tℤ ≅ S¹, covering | A8C | A | M18: G2 6 and 8 (unbounded t, bounded S¹) | answers the question as Nadia restated it; the old "converge to infinity" wording is E (FAIL, kept) |
+| distinction table (parameter, lift, cycles, bounded, convergence, recurrence, periodicity, density, drift) | A8D | A | M18: "compare what happens to elapsed time, number of revolutions, sine and cosine values, cumulative quantities, and mathematical limits" (MM); G2 6 "two very different kinds of infinity" | answers |
+| torus: commensurability; dense irrational flow, never periodic; kernel vs orbit closure | A8T, A8KC | A | M3 ("try a nonperiodic sound", MM) and M18 (G2 8: "deeper analogues") | answers; also E for STAR-A |
+| cylinder: periodic projection, unbounded state | A8X2 | A | M18: "extend the picture into a cylindrical geometry" (MM) | answers |
+| stabilizer / orbit framework | A8A | C | M3, M18 (periodicity is a nontrivial stabilizer) | supporting machinery |
+| ★ readings STAR-A/B/C; STAR-A lesson | A8SA–A8SC, A8GD | E | Pair B / ★ (RD) | refines the ★ question; ★ kept verbatim and open |
+| H3 candidates (H3-action, H3-quotient) | A8HA, A8HQ | C | H3 (CP §1a) | formalizations; H3-original stays open |
+| rapidity: tanh φ = v/c; θ ↔ φ | A8Eb, A8Wa | A | M19 (which transformations change the observer) | answers; and E: corrects the literal t ↔ c analogy |
+| c-family M_c; restricted content of c | A8M, A8Wc | A | M19 and G2 3 (what goes to infinity) | answers |
+| c → ∞: degenerate form, Galilean boosts, contraction | A8L | B | M15 (the c → ∞ boundary of the model manifold, G2 3) → M19 | connects |
+| SO(2) / SO(1,1) | A8E | B | M14 (preserved forms I, η) → M18 (rotation) and M19 (boost) | connects; re-cards the existing trichotomy (S4, B1b, B1c), adding only the 3D scope check |
+| generator theorem KᵀM + MK = 0 ⟺ e^(sK) preserves M | A8G | C | M14 → M18 / M19 | supporting: the theorem is the existing CF4 (BR11), re-carded; only the step to orbit behaviour (BR81) is new. It explains part of the M18 question and does not replace it |
+| Fourier character χ_ω | A8F | B | M4 (translation) and M12 (translation ↔ phase, R4) → M18 (the circle) | connects existing nodes R4 and R6; no new theorem |
+| elliptic / parabolic / hyperbolic language | A8Ec | C | Part VII "Trichotomy: rotation / boost / shear by the sign of the invariant" (S4) | pre-existing vocabulary, supporting |
+| κ-family M_κ | A8Q | D | none required (see E) | optional later construction |
+| H3-c split (direct / group / family) | A8HCD, A8HG, A8HCF | E | H3 c-clause (CP §1a), G2 3 | direct FAIL kept; group = the rotation/boost connection (B); family answers G2 3 (A) |
+| counterexamples X1–X6 | A8X | E | M18, ★, G2 2 (X6: an index that converges vs a flow that does not), G2 3 (X5: scaling) | each refines a question |
+| boundary approach ≅ drift | A8Pg | B | C8 (wrapping / near return / boundary approach) and S5b (tanh bound) → M18 | connects |
+| T-GEN-DYN-Q | A8G | E | created by STAR-A's failure | the next question of the ★ chain — a refinement of the original question |
 
 ## Superseded wording (kept; replaced by this pass)
 
@@ -464,3 +492,4 @@ No dispersion form, mass shell or wave–particle statement is derived here (sto
 | status table, STAR-C basis | = Poincaré recurrence under its hypotheses (PROVED, known); fails without them | hypotheses vs recurrence |
 | ratings | [{"item": "circle finite/infinite relation", "bs": 35, "slop": 5, "td": "TRIVIAL CONSEQUENCE", "breadth": 1, "status": "ESTABLISHED INSTANCE (old wording FAIL)", "why": "exact (ℝ/Tℤ ≅ S¹, covering ℝ → S¹); known mathematics; immediate from the definitions"}, {"item": "torus extension", "bs": 30, "slop": 8, "td": "STRUCTURAL TRANSFER", "breadth": 2, "status": "PROVED (criterion); Kronecker source-locked", "why": "the action/stabilizer framework applies unchanged from circle to torus and changes the verdict: the arithmetic of ω decides; a counterexample to compact ⇒ periodic"}, {"item": "H3-action", "bs": 30, "slop": 15, "td": "STRUCTURAL TRANSFER", "breadth": 2, "status": "PROJECT SYNTHESIS", "why": "applies unchanged to every action example (circle, tori, cylinder, interval, plane, velocity flow); content is definitions plus known theorems; risk: close to a restatement of dynamical-systems vocabulary"}, {"item": "H3-quotient", "bs": 20, "slop": 15, "td": "STRUCTURAL TRANSFER", "breadth": 1, "status": "RESTRICTED", "why": "exact for the periodic class and (as compact closure) the recurrent class; vacuous with \"orbit\"; fails for boundary approach"}, {"item": "H3-c", "bs": 10, "slop": 25, "td": "FAIL", "breadth": 1, "status": "RESTRICTED", "why": "the H3 wrapping mechanism does not transfer to c (transfer depth FAIL); what survives is the known CF1/S4 correspondence t ↔ s, r ↔ c, and finiteness of c as the invariant content"}, {"item": "★", "bs": 15, "slop": 20, "td": "NOT YET FORMALIZED", "breadth": 2, "status": "STAR-original OPEN; STAR-A FAIL; STAR-B RESTRICTED; STAR-C RESTRICTED", "why": "the forced reading fails on compact spaces; the existence reading is vacuous or class-dependent; the recurrence reading is Poincaré's theorem with its hypotheses"}, {"item": "Act VIII overall", "bs": 25, "slop": 15, "td": "STRUCTURAL TRANSFER", "breadth": 2, "status": "mixed (see the status table; no umbrella verdict)", "why": "the action/stabilizer framework is exact and applies unchanged across the examples; c relates only through the known preserved-form object; every surviving statement is known mathematics"}] | percentages contextualized by the story; H3-c split |
 | next pass | ["One adversarial lock pass for Act VIII, then close it: re-derive the STAR-B dimension ≥ 2 statement (carded only through its local model A8X4), the free-orbit decision tree and its \"noncompact, not escaping\" class (no carded example), the boundary-approach ≅ drift classification against C8 and S5b, and the finiteness-invariant answer to H3-1; check that no record calls an irrational flow periodic or M_∞ \"the Newtonian metric\".", "A narrower second construction is not recommended: the open item (H3-original) has no candidate object beyond the known ones found here.", "Not begun (stop list): mass-wave/conjugacy, dispersion, quantum work, Energeo, the final Foundation freeze."] | story-integration pass completed the missing bridges |
+| story contribution (canonical story diagnostic) | Act VIII supplies the exact link from a preserved relation to continuation behaviour. The preserved form M fixes the preserving group G_M = {A : AᵀMA = M} and its generators 𝔤_M = {K : KᵀM + MK = 0} (the common-form chart, CF1/CF4); a generator K ∈ 𝔤_M gives a one-parameter transformation e^(sK); its stabilizer (kernel) and orbit closure give the continuation type — periodic, quasi-periodic/dense, hyperbolic/free, drifting. It also ties back to REPRESENTATION/TRANSFORMATION: the circle e^(iωt) is the translation character χ_ω, the phase by which translation acts on a Fourier mode (R4). | "Act VIII supplies the exact link" overstated novelty: the link CF1 → CF4 already existed |

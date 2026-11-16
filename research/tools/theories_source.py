@@ -1050,6 +1050,15 @@ T('T-GEN-DYN-Q', 'Preserved relation → generator → dynamics', 'Given a prese
   pro=[('card:A8Ga', 'generator theorem'), ('card:A8Fa', 'Fourier character'), ('card:A8Ka', 'torus kernel')],
   acts=['II–IV'], audit=A8S_AUDIT, related=['T-GEOM-GEN-DYN', 'T-GEOM-RULES', 'T-STAR'], ref='Act VIII story pass')
 
+# ── Canonical story diagnostic (2026-11-16): the question that created Pair A (missing connector F8) ──
+ACTS_ALREADY_NEW |= {'T-PAIRA-Q'}
+T('T-PAIRA-Q', 'Pair A: the question that created it', 'A mass-balance zero identifies a distinguished structural location.', RD, U, 'open-question', 'open',
+  variants=[('Could another zero/cancellation state likewise encode hidden structural information?', RD)],
+  norm='Known structure behind zero A (the mass-balance zero fixes the centre of mass) → transfer questions (TQ-1–TQ-6) → zero B (proton cancellation) → search for structure. The common relation is deliberately left unfilled; the analogy is not a theorem.',
+  pro=[('card:MB1b', 'the mass-balance zero and its distinguished point')],
+  bounds=['Canonical story diagnostic (2026-11-16): recorded so that Pair A keeps the question that created it; Pair A was not created because the systems were proven equivalent. Graph: research/canonical_story.md, Chain PA.'],
+  acts=['I'], audit=('missing', 'stated in the canonical story diagnostic brief (2026-11-16)'), related=['T-PAIRA-SHARED', 'T-PAIRA-BRIDGE', 'T-BACKBONE-PRIMARY'], ref='canonical story, Chain PA')
+
 PAIR_A = proof_target('Starting from the established common zero-sum form Σv_i = 0, identify all additional invariants/relations of the mass system that can be translated into mathematically meaningful tests on the directional cancellation system.',
                       requiredObjects=['the established shared form Σv_i = 0 (pair.A.sharedAlgebraicForm)'])
 next(r for r in R if r['id'] == 'T-Q.pairA-transfer')['proofTarget'] = PAIR_A
@@ -1490,6 +1499,14 @@ rate_a8s('T-H3-C-FAMILY', 2, VKM, KN, MULTI, 20, 20, 'Established pieces (degene
          'An exact object linking the family limit to the time–circle continuation beyond the shared parabolic member, stated before checking.', 'A scaling in which the stated limits fail (A8X5 already shows one where nothing contracts).', GC, ('pass', 'partial', 'partial', 'pass', 'n/a'), depth='STRUCTURAL TRANSFER')
 rate_a8s('T-GEOM-GEN-DYN', 2, 'PROJECT CLASSIFICATION OF KNOWN MATHEMATICS', PD, MULTI, 30, 15, 'Exact in the canonical examples: the supplied form fixes G_M and 𝔤_M; the generator decides the orbit type (det sign in 2D; integer relations on tori; three types on one 3D Lorentzian form). Not a universal theorem. Story contribution: the main GEOMETRY → DYNAMICS/CONTINUATION bridge.',
          'A general classification of continuation types from (M, K) in a stated class, proved.', 'A supplied form whose generators all give the same continuation type although they differ in the deciding invariant (not found).', GC, ('pass', 'partial', 'n/a', 'pass', 'n/a'), depth='STRUCTURAL TRANSFER')
+
+# Canonical story diagnostic (2026-11-16): placement notes (no new mathematics)
+CSG = 'research/canonical_story.md'
+note16('T-GEN-DYN-Q', f'Canonical story (2026-11-16): the next question of the Pair B / ★ chain, created by STAR-A\'s failure ("geometry alone does not force exact periodicity") — a refinement of the original ★ question, not a replacement for the circle / periodicity / infinity question. Graph: {CSG}, Chain PB.', 'canonical story: placement')
+note16('T-GEOM-GEN-DYN', f'Canonical story (2026-11-16): explains part of the Master Map #18 question (and refines ★); it does not replace it. Graph: {CSG}, section D.', 'canonical story: placement')
+note16('T-H3-GROUP', f'Canonical story (2026-11-16): connects #14 (preserved forms I, η) with #18 (rotation) and #19 (boost); its cards re-card the existing S4 rotation / boost cases and CF4. Graph: {CSG}, section D (category B).', 'canonical story: placement; re-carding noted')
+note16('T-H3-C-FAMILY', f'Canonical story (2026-11-16): the c-indexed family and its Galilean limit answer Gate 2 answer 3 (what goes to infinity) at #19; the κ-family part (A8Qa, A8Qb) is PARKED AS OPTIONAL — it answers no historical question. Graph: {CSG}, section E.', 'canonical story: κ-family parked')
+note16('T-STAR', f'Canonical story (2026-11-16): the Act VIII readings refine the original question ("What observable rules arise because an object is constrained by a particular geometry?") and keep it; the original question is not replaced by "generators". Graph: {CSG}, Chain PB.', 'canonical story: refinement, not replacement')
 
 update('T-CF11-A', TRIV, bs=60, slop=8, reason='Pass 3: the pattern holds in coordinate-free form (F*T = T) across constant-form, symplectic and homogeneous Fisher geometries, and its boundary is now exact (generic Fisher geometry is not characterized by a transformation group, CFT5f). Application Breadth corrected from 4 to 3: the rubric reserves 4 for a physical/empirical system')
 

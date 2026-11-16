@@ -49,7 +49,9 @@ test('3. the generator theorem places Act VIII after the common-form chart', () 
   assert.match(A.generatorTheorem.scope, /no universal M/);
   assert.deepEqual(A.chartRows.map((r) => r.row), ['Euclidean / SO(2)', 'Lorentz / SO(1,1)', 'Fourier character ℝ → U(1)', 'multi-frequency torus flow']);
   for (const r of A.chartRows) assert.ok(r.notProved.length > 10 && pass(...r.cards), r.row);
-  assert.ok(map.includes('### Act VIII story integration (2026-11-16): preserved geometry → generator → dynamics'));
+  // canonical story diagnostic (2026-11-16): the block is reclassified as supporting mathematics; its old heading is kept as superseded wording
+  assert.ok(map.includes('### Supporting mathematics for #14 → #18 / #19 (Act VIII, 2026-11-16): preserved form → generator → orbit'));
+  assert.ok(map.includes('Superseded heading and wording, kept: "Act VIII story integration (2026-11-16): preserved geometry →'));
   assert.ok(map.includes('B_M → G_M = {A : AᵀMA = M} → 𝔤_M = {K : KᵀM + MK = 0} → e^(sK) → orbit / stabilizer → dynamical'));
   assert.equal(br.get('BR81').objects.join(' '), 'A8G CF4 A8A');
   assert.match(obj.get('CF4').foundationRole, /continued in Act VIII/);
