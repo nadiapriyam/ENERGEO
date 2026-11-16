@@ -1,6 +1,8 @@
-# Act VIII: finite / infinite representation, H3, ★ and c (first construction pass)
+# Act VIII: finite / infinite representation, H3, ★ and c (first construction pass + story-integration pass)
 
-Generated from `research/tools/act8_source.py` (`research/act8.json`). Do not edit by hand. Decisions: `docs/restructure_decisions.md`, "Act VIII first construction pass". Cards: `verify/verify_A8.py` (A8Ca, A8Cb, A8Cc, A8Cd, A8Ce, A8Cf, A8Ta, A8Tb, A8Tc, A8Te, A8Ua, A8X1, A8X2, A8X3, A8X4, A8X5, A8X6, A8Yb, A8Pa, A8Pb, A8Pc, A8Pd, A8Pe, A8Pg, A8Da, A8Db, A8Ma, A8Mb, A8Mc, A8Md, A8Me, A8La, A8Lb, A8Lc, A8Sa, A8Sb, A8Ra, A8Rb, A8Rc, A8Rd, A8Za).
+Generated from `research/tools/act8_source.py` (`research/act8.json`). Do not edit by hand. Decisions: `docs/restructure_decisions.md`, "Act VIII first construction pass" and "Act VIII story-integration and mathematical-correction pass". Cards: `verify/verify_A8.py` (A8Ca, A8Cb, A8Cc, A8Cd, A8Ce, A8Cf, A8Ta, A8Tb, A8Tc, A8Te, A8Ua, A8X1, A8X2, A8X3, A8X4, A8X5, A8X6, A8Yb, A8Pa, A8Pb, A8Pc, A8Pd, A8Pe, A8Pg, A8Da, A8Db, A8Ma, A8Mb, A8Mc, A8Md, A8Me, A8La, A8Lb, A8Lc, A8Sa, A8Sb, A8Ra, A8Rb, A8Rc, A8Rd, A8Za); `verify/verify_A8S.py` (A8Ga, A8Gb, A8Gc, A8Ea, A8Eb, A8Ec, A8Fa, A8Fb, A8Ka, A8Kb, A8Ba, A8Va, A8Wa, A8Wb, A8Wc, A8Qa, A8Qb, A8Zb).
+
+Story-integration pass (2026-11-16): sections S1–S9 below place Act VIII in the Foundation spine; corrected statements keep their old wording under "Superseded wording".
 
 H3 and ★ are investigated separately and their hierarchy is not decided. The time parameter t and the theory parameter c are kept apart. Statuses: PROVED; ESTABLISHED INSTANCE; RESTRICTED; PROJECT SYNTHESIS; FAIL; OPEN.
 
@@ -19,11 +21,14 @@ H3 and ★ are investigated separately and their hierarchy is not decided. The t
 
 Read for this pass: H3 (research/hypotheses/H3.md); ★ (T-STAR, T-GEOM-RULES, T-CIRCLE-NOT-THESIS); C8, C9, C3 (supporting only), C5; cards S4a–d, S5a–d, S10, S12, B5c, B7a, G1c, C8a–d, C9a–d; spec Blocks 9, 10, 14; Master Map #18, #19; the c records (T-C-ROLES, T-C9, T-RULES-GEOMETRY, T-MANIFOLDS) and the model-manifold three-role verdict (research/model_manifold_story.md, MMPm, MMIi).
 
-Not in the repository:
-- the "Acts I–IX restructuring report" (revision 3): no copy is in the repository; its Act VIII content is known only through registry records that cite it (audit fields "quoted only in the report")
-- AMB-1: no record anywhere in the repository (searched docs/, research/, src/, test/)
-- AMB-7: known only through T-STAR's boundary ("bound by rules", "periodic", "can be": a–c)
-- AMB-15: known only through T-TIME-CIRCLE-0's audit field ("quoted only in the report (AMB-15)")
+Not in the repository (story-integration pass: recovered):
+- none: every AMB entry cited by a live record (AMB-1, 7, 13, 14, 15, 16, 18) is in docs/restructure_report_rev3.md
+
+Recovered provenance:
+- the Acts I–IX Restructure Report (revision 3): its decision table, ambiguity register AMB-1 to AMB-23, Act rows and open decisions are now in docs/restructure_report_rev3.md (recovered from the session copy of the report; the report is Claude's proposal document, not Nadia's words)
+- AMB-1 (decided, D1): H1–H3 not replaced, merged or rewritten; ★ a distinct HYPOTHESIS cross-linked to H3 — Nadia's D1 words are in docs/restructure_decisions.md
+- AMB-7 (Pair B decided; the terms of ★ (a)–(c) left open, tested in Act VIII as STAR-A/B/C) — Nadia's Pair B decision is now recorded verbatim in docs/restructure_decisions.md ("Revision 2 decision: Pair B (recovered 2026-11-16)")
+- AMB-15: the Gate 2 wording applies; the Master Map #18 wording is the historical conjecture T-TIME-CIRCLE-0 (FAIL)
 
 ## B. Finite / infinite taxonomy
 
@@ -138,8 +143,8 @@ It explains which behaviour occurs from objects the system supplies: the stabili
 | Reading | Wording (verbatim) | Status | Verdict | Cards |
 |---|---|---|---|---|
 | STAR-A (forced periodicity) | A constrained geometry forces every admissible evolution to be periodic. | FAIL | FAIL. Compact T² with preserved invariants \|z₁\| = \|z₂\| = 1 and the (1, √2) flow has no periodic orbit at all (A8X1); compact [0, 1] with the logistic flow has no periodic non-fixed orbit (A8X3). Rejected: compact geometry ⇒ periodicity (A8Ra). | A8X1, A8X3, A8Ra |
-| STAR-B (existence) | A constrained geometry admits at least one periodic evolution. | RESTRICTED | RESTRICTED. If fixed points count as periodic, the claim is vacuous: every space carries Φ_t = id (A8Pe). For a non-constant periodic orbit the answer depends on the class: flows on ℝ or an interval have none (orbits are monotone; a continuous injection ℝ/Tℤ → ℝ is impossible), the circle has them, and every smooth manifold of dimension ≥ 2 admits one (a rotation field in a coordinate disk multiplied by a bump function; the local model is A8X4; this general construction is a project argument, not carded). "Bound by rules" does not decide it; the topology of the space and the admissible class of dynamics do. | A8Pe, A8X4 |
-| STAR-C (recurrence) | Compact/constrained geometry tends to produce recurrence or near return. | RESTRICTED | RESTRICTED to the Poincaré recurrence theorem (known; PROVED under its hypotheses): an invariant measure, finite total measure, conclusion for almost every point. Each hypothesis is needed (A8Pd): infinite measure (cylinder) — no point recurs; Lebesgue not invariant (logistic) — no interior point recurs; on compact S¹ with θ̇ = 1 − cos θ the only invariant probability is δ₀ and every other orbit is non-recurrent. Topological recurrence (some recurrent point exists on a compact metric space — a minimal set, Birkhoff) is a separate, weaker statement, source-only here. | A8Pd, A8Tc |
+| STAR-B (existence) | A constrained geometry admits at least one periodic evolution. | RESTRICTED | RESTRICTED, in an explicitly defined category. Category: smooth manifolds without boundary (Hausdorff, second countable); admissible dynamics: flows of smooth complete vector fields. Statement: such a manifold carries a flow with a non-constant periodic orbit ⟺ some component has dimension ≥ 2 or is diffeomorphic to S¹. ⇐: a compactly supported bump-rotation field in a chart (A8Ba; compact support gives completeness, Lee 2013), or rotation of S¹. ⇒: otherwise every component is a point or ℝ (classification of 1-manifolds, Milnor 1965) and a flow on ℝ has no non-constant periodic orbit (A8Pe). If fixed points count as periodic, the claim is vacuous (Φ_t = id). Not stated for arbitrary "geometrical objects". | A8Ba, A8Pe, A8X4 |
+| STAR-C (recurrence) | Compact/constrained geometry tends to produce recurrence or near return. | RESTRICTED | RESTRICTED to the Poincaré recurrence theorem (known; PROVED under its hypotheses): for a measure-preserving flow on a space of finite total measure, almost every point is recurrent. These are the hypotheses of the standard theorem — of its guarantee — not necessary conditions for recurrence: the rotation of ℝ² (infinite measure) and θ̇ = 2 + cos θ on S¹ (Lebesgue not invariant; invariant density 1/(2 + cos θ)) recur everywhere (A8Va). In A8Pd's examples (cylinder: μ = ∞; logistic: Lebesgue not invariant; θ̇ = 1 − cos θ: only δ₀ invariant) the guarantee is unavailable and recurrence in fact fails there. Topological recurrence (some recurrent point on a compact metric space: minimal sets, Birkhoff) is a separate, weaker statement, source-only here. | A8Pd, A8Va, A8Tc |
 
 ## H. H3 candidate formalizations
 
@@ -162,16 +167,16 @@ Scope: It covers parameters that act (group actions); a parameter that indexes a
 
 > The distinction between an unbounded parameter and a bounded representation is naturally encoded by a quotient, covering map, orbit, or compact orbit closure.
 
-Classification: too broad as worded (with "orbit"); RESTRICTED without it.
+Classification: too broad as worded (with "orbit"); RESTRICTED without it; corrected so that the periodic and the dense case use different objects (kernel/quotient vs orbit closure).
 
 | Clause | Verdict |
 |---|---|
 | "orbit" | TOO BROAD: every representation of an action is an orbit image, so this alternative makes the statement true of everything |
-| "quotient, covering map" | PROVED for the periodic class: Stab = Tℤ gives the orbit ≅ ℝ/Tℤ and the covering ℝ → S¹ (A8Ce, A8Cf); also for a periodic projection (cylinder) |
-| "compact orbit closure" | PROVED for the free recurrent class: the (1, √2) orbit is injective (no quotient) and its bounded representation is its compact closure T² (A8Tb) |
+| "quotient, covering map" | PROVED for the periodic case only: for a continuous homomorphism χ: ℝ → S¹ or Tⁿ with kernel Tℤ ≠ {0}, ℝ/ker χ ≅ image (a homeomorphism) and ℝ → S¹ is a covering (A8Fa, A8Ka, A8Ce, A8Cf) |
+| "compact orbit closure" | PROVED for the dense / quasi-periodic case, as a DIFFERENT object: ker χ = {0}, the image is not closed and χ is not a homeomorphism onto it; the bounded representation is the orbit closure, a subtorus of dimension n − rank(integer relations) (A8Kb, A8Te, A8Ua) |
 | boundary approach / drift | NOT ENCODED by any of the three: the velocity orbit is all of (−1, 1), injective, with noncompact closure; its boundedness is an artifact of the coordinate, removed by the conjugacy artanh (A8Pg) |
 
-Scope: Holds for the periodic and compact-recurrent classes; fails for boundary approach, which needs a compactification (added limit points) — a different object.
+Scope: Periodic case: quotient/kernel structure. Quasi-periodic/dense case: orbit closure/subtorus structure. Boundary approach: neither (it needs added limit points, a compactification). The same quotient statement is not used for two of these situations.
 
 ### H3-original (T-H3): OPEN
 
@@ -179,10 +184,10 @@ Scope: Holds for the periodic and compact-recurrent classes; fails for boundary 
 |---|---|
 | "a common structure where infinite things are combined my a finite thing to produce a representation" | too weak as stated ("parameters can be infinite while outputs are finite" is too weak, decision item 20); the exact candidates are H3-action (PROJECT SYNTHESIS) and H3-quotient (RESTRICTED) |
 | "like time and a finite circle geometry producing an infinite sine and cosine with bounds" | ESTABLISHED INSTANCE in the corrected reading: unbounded t, unbounded continuation and cycle count, bounded values (A8Ca, A8Cd); "converge to infinity" FAIL (A8Cc) |
-| "that invarient variable like the speed of light which also converges to infinity" | c does not converge inside a theory; it is fixed. Only the family index tends to infinity (Role 3); in the circle the corresponding role is played by the form constant r, not by t (A8Sb) |
-| "is an invarient variable that acts as a rule in the manifold" | ESTABLISHED (Role 2): c fixes the preserved form M_c, the null cone x = ±ct and the boost group (A8La); restricted common object with the circle: a one-parameter subgroup preserving a quadratic form (A8Sb) |
+| "that invarient variable like the speed of light which also converges to infinity" | c does not converge inside a theory; it is fixed. Only the family index tends to infinity (Role 3). The literal analogy t ↔ c → ∞ FAILS (H3-c-direct, A8Wa); the group parameter on the Lorentz side is the rapidity φ (θ ↔ φ), and c is a distinct object — a form/unit constant, entering the generator family as κ = det K = −1/c² (A8Wa, A8Qa) |
+| "is an invarient variable that acts as a rule in the manifold" | ESTABLISHED (Role 2): c fixes the preserved form M_c, the null cone x = ±ct and the boost group (A8La). Common object with the circle (H3-group, ESTABLISHED INSTANCE): one-parameter groups preserving quadratic forms, generated by K with KᵀM + MK = 0 (A8Ga, A8Ea, A8Eb) |
 
-H3-original is not replaced by either candidate; neither candidate is called H3. Its strongest surviving exact content is H3-action (PROJECT SYNTHESIS) and the restricted t/c correspondence (H3-c).
+H3-original is not replaced by any candidate; none is called H3. Its strongest surviving exact content: H3-action (PROJECT SYNTHESIS), H3-group (ESTABLISHED INSTANCE) and H3-c-family (RESTRICTED; connection to H3 OPEN). H3-c-direct FAILS.
 
 Neither candidate reproduces H3-original: H3-original names a common structure linking the time–circle example with c; H3-action does not reach c (c is not an action on spacetime) and H3-quotient fails for the boundary-approach behaviour that c-bounded velocities show. The comparison is complete; neither candidate is renamed H3.
 
@@ -194,7 +199,7 @@ Neither candidate reproduces H3-original: H3-original names a common structure l
 | finite c > 0: det = −1/c², rank 2, eigenvalues {1, −1/c²}, signature (1, 1), inverse diag(1, −c²) | PROVED | A8Mb |
 | null cone x = ±ct; null directions (1, ±c)/√(1 + c²) → (0, ±1); in x̃ = x/c every finite-c cone is x̃ = ±t. Changing coordinates inside one finite-c theory moves the cone's slope; changing c across the family is a different operation, and only the family reaches the limit | PROVED | A8Md |
 
-Not inferred: that physical c is meaningless. The congruence says only that, inside one theory, the value of c is fixed by the choice of spatial unit; the invariant content of the family is whether c is finite (A8Mc, A8Lc).
+Not inferred: that physical c is meaningless. Restricted result (A8Wc): for the bare family M_c = diag(1, −1/c²), all finite c > 0 forms are congruent under a spatial rescaling, so the congruence class of this isolated bilinear form does not distinguish the numerical finite value of c. This does NOT mean that physical c has no significance beyond finiteness. Kept distinct: (1) finite-c coordinate/unit normalization; (2) causal/Lorentzian structure (the null cone x = ±ct, A8Md); (3) dimensionless physical ratios such as v/c (tanh φ = v/c, A8Wa, A8Wc); (4) the external theory-family limit c → ∞ (A8Mc, A8Lb).
 
 ## J. c → ∞: form degeneration and the Lorentz / Galilean limit
 
@@ -224,12 +229,12 @@ Not inferred: that physical c is meaningless. The congruence says only that, ins
 | internal or external | internal: acts on the state of one system | external: indexes systems; acts only on the space of forms |
 | flow / action | yes: Φ: ℝ × S¹ → S¹ | not an action on spacetime (B_1(1)B_2(1) preserves no M_(c₃)); yes on Sym(2) through σ = log c |
 | changes the theory | no | yes (in fixed units); c = ∞ is the only non-isomorphic member (A8Lc) |
-| role under the shared exact object (one-parameter subgroup preserving a quadratic form) | t ↔ the rapidity s (group parameter); the circle radius r ↔ c | generator type: elliptic (ωJ)² = −ω²I for the circle; hyperbolic K̂² = I for boosts, parabolic K_∞² = 0 at c = ∞; no member of the c-family is elliptic (A8Sb) |
+| role under the shared exact object (one-parameter group preserving a quadratic form) | θ = ωt, exactly linear in t, is the group parameter of e^(θJ); orbit invariant r² = \|z₀\|²; κ = det(ωJ) = ω² | the rapidity φ (tanh φ = v/c) is the group parameter of e^(φK); c is not a group parameter; orbit invariant q_c on the orbit (t₀² − x₀²/c²); κ = det K_c = −1/c² in the velocity parametrization; no member or limit of the c-family is elliptic (A8Wa, A8Wb, A8Qa, A8Sb) |
 
 **Outcome: STRUCTURAL ANALOGY** (from: same mathematical construction, structural analogy, superficial analogy, no transfer).
 
 - Same construction: NO: t is an internal action parameter on a fixed state space; c is an external family index (A8Sa).
-- Structural analogy: STRUCTURAL ANALOGY through one exact object shared by both examples: a one-parameter subgroup of the preservation group of a nondegenerate quadratic form on ℝ², with orbits in level sets (the known CF1/S4 trichotomy). Under it t corresponds to the rapidity s and c corresponds to the circle's radius r (the form constant that sets the observable bound); the bound r is attained, the bound c is not (A8Sb).
+- Structural analogy: STRUCTURAL ANALOGY through one exact object shared by both examples (H3-group): a one-parameter group e^(sK) preserving a quadratic form, KᵀM + MK = 0 (A8Ga). The correct comparison is θ ↔ φ — the angle θ = ωt of e^(θJ) and the rapidity φ (tanh φ = v/c) of e^(φK) — not t ↔ c (A8Wa). c is a distinct object: in the family M_κ = diag(1, κ), K_κ = [[0, κ], [−1, 0]], the circle realized as the oscillator (κ = ω²) and the boosts (κ = −1/c²) lie on opposite sides of the parabolic member κ = 0, which ω → 0 and c → ∞ both reach when the physical variables are held fixed (A8Qa, A8Qb). The earlier "circle radius r ↔ c" has no exact map and is discarded (A8Wb).
 - Superficial: SUPERFICIAL as H3-original states it ("c also converges to infinity" like t): t ranges over ℝ inside one system; c is fixed inside each system and only the family index tends to infinity.
 - No transfer: the periodic (wrapping) mechanism does not transfer to c: no member or limit of the c-family has an elliptic generator, and the c-family itself drifts to a degenerate boundary point (never periodic, never recurrent).
 
@@ -238,13 +243,13 @@ Not inferred: that physical c is meaningless. The congruence says only that, ins
 | Question | Answer |
 |---|---|
 | Does finite c function as an invariant rule inside Lorentzian geometry? | YES (A8La): c fixes the preserved form M_c, the null cone x = ±ct and the boost group; known mathematics and physics |
-| Does varying c give a meaningful family of geometries/forms? | YES in fixed units (t, x) (A8Ma, A8Md), but every finite member is congruent to η: inside one theory the value of c is a unit choice; the family's invariant content is finiteness (A8Mc, A8Lc) |
+| Does varying c give a meaningful family of geometries/forms? | YES in fixed units (t, x) (A8Ma, A8Md). Restricted: the bare forms M_c for finite c are congruent by a spatial rescaling, so the congruence class of the isolated form does not distinguish the finite value of c (A8Wc); c still enters the causal structure (x = ±ct), the dimensionless ratio v/c and the family limit |
 | Does c → ∞ produce a singular/degenerate limit? | YES with v and x fixed: the rank drops from 2 to 1, the limit lies outside every congruence class, and the algebra contracts (A8Mc, A8Lc); the drop need not occur under another scaling: NO with β = v/c fixed (A8X5) |
 | Is that structurally the same phenomenon as t ∈ ℝ ↦ e^(iωt) ∈ S¹? | NO (A8Sa, A8Sb): an external family parameter drifting to a degenerate boundary point, not an internal action wrapping onto a compact orbit |
-| If not the same, is there a narrower common categorical/geometric statement? | YES, restricted: both examples are one-parameter subgroups preserving a quadratic form, with t ↔ rapidity s and r ↔ c (A8Sb); and both c and the circle family are orbits of one-parameter groups (on different spaces: S¹ vs Sym(2)) with opposite behaviour classes |
-| If even that is too weak, record the negative result. | Recorded: the H3 wrapping mechanism does not transfer to c (FAIL as same construction); "c converges to infinity like t" is SUPERFICIAL. The surviving correspondence is the known CF1/S4 object, not a new H3 structure |
+| If not the same, is there a narrower common categorical/geometric statement? | YES, restricted (H3-group, ESTABLISHED INSTANCE): both are one-parameter groups preserving a quadratic form; the correspondence is θ ↔ φ (A8Wa), with c a form/unit constant (κ = −1/c², A8Qa); the c-family and the circle orbit are orbits of one-parameter groups on different spaces (Sym(2) vs S¹) with different behaviour classes |
+| If even that is too weak, record the negative result. | Recorded: the literal analogy t ↔ c → ∞ FAILS (H3-c-direct); "c converges to infinity like t" is SUPERFICIAL. What survives is H3-group (ESTABLISHED INSTANCE) and H3-c-family (RESTRICTED; its connection to H3 OPEN) |
 
-H3-1 (the two roles of c), restricted answer: Role 2 (c fixes the invariant form) and Role 3 (c → ∞) are roles of the same form constant. At finite c the value of c is not an isomorphism invariant (all finite-c forms are congruent and all finite-c algebras isomorphic); what is invariant is finiteness: M_c is nondegenerate and the algebra is Poincaré exactly when c < ∞ (A8Ma, A8Mc, A8Lc). This is known mathematics; it does not by itself make c an instance of the circle mechanism.
+H3-1 (the two roles of c), restricted answer: in the velocity parametrization the boost generator is K_c = [[0, −1/c²], [−1, 0]] with det K_c = κ = −1/c² (A8Qa). Role 2 (c fixes the invariant form M_c and the hyperbolic generator) and Role 3 (c → ∞ at fixed v: κ → 0⁻, the parabolic Galilean member; A8Lb, A8Lc) are two aspects of this one constant. The bare congruence class of M_c does not distinguish finite values of c (A8Wc); this is not a claim that c means only finiteness. Known mathematics; the connection to H3 stays OPEN.
 
 ## L. Counterexamples (all kept)
 
@@ -274,10 +279,10 @@ Required: an exact object shared by more than one example: quotient by a stabili
 |---|---|---|
 | quotient by a stabilizer / covering | circle, rational torus, cylinder projection, rotation of ℝ² (the periodic class) | shared exactly; known |
 | compact orbit closure | irrational and subtorus flows, logistic orbit | shared; recurrence must be stated separately |
-| one-parameter subgroup preserving a quadratic form | circle rotation and Lorentz boosts (and Galilean shears at c = ∞) | shared exactly (CF1/S4); t ↔ s, r ↔ c |
-| singular limit of a family of forms + group contraction | the c-family only in this pass | not shared with the time–circle example: the circle family has no contraction (its algebra is ℝ for every ω) |
+| one-parameter group preserving a quadratic form (generator theorem) | circle rotation and Lorentz boosts (and Galilean shears at c = ∞) | shared exactly (CF1/CF4, A8Ga); θ ↔ φ as group parameters; c is not a group parameter (A8Wa) |
+| singular limit of a family of forms + group contraction | the c-family; the circle when it is realized as the oscillator with its supplied form p² + ω²q² (κ = ω²) | shared exactly within the family M_κ: ω → 0 and c → ∞ reach the same parabolic (Galilean) member when the physical variables are held fixed (A8Qa, A8Qb); for the pure Fourier character (form \|z\|², generator ωJ) ω → 0 gives the identity, not a contraction |
 
-Structural-transfer credit is given only to the preserved-form / one-parameter-subgroup object (already Foundation CF1) and to the stabilizer/quotient object within the action examples. No new object shared by the time–circle example and the c-family was found.
+Structural-transfer credit goes to the preserved-form / one-parameter-group object (H3-group; Foundation CF1/CF4, made explicit by the generator theorem A8Ga) and to the kernel/stabilizer object within the action examples. The singular-limit object is shared by the c-family and the oscillator realization of the circle (A8Qa), and it is scaling-dependent on both sides (A8X5, A8Qb). No object makes t correspond to c.
 
 ## M. H3 status table
 
@@ -287,39 +292,175 @@ Separate statuses; no umbrella verdict. Derived by fixed rules from the card ver
 |---|---|---|---|---|
 | H3-original | T-H3 | OPEN | not proved and not failed; components: circle instance ESTABLISHED, "converge to infinity" FAIL, c-as-rule ESTABLISHED, the common structure only restricted (H3-c) | A8Ca, A8Cc, A8La, A8Sb |
 | H3-action | T-H3-ACTION | PROJECT SYNTHESIS | definitions + known theorems (stabilizer trichotomy, Kronecker, Poincaré); the "invariants" clause corrected | A8Pa, A8Pb, A8Da, A8Ua |
-| H3-quotient | T-H3-QUOTIENT | RESTRICTED | periodic and compact-recurrent classes only; too broad with "orbit"; fails for boundary approach | A8Ce, A8Cf, A8Tb, A8Pg |
-| H3-c | T-H3-C | RESTRICTED | same construction FAIL; superficial as worded; restricted structural analogy through the preserved-form subgroup (t ↔ s, r ↔ c) | A8Sa, A8Sb, A8Mc, A8Lc |
+| H3-quotient | T-H3-QUOTIENT | RESTRICTED | periodic case: kernel/quotient (A8Fa, A8Ka); dense case: orbit closure/subtorus, a different object (A8Kb); too broad with "orbit"; fails for boundary approach | A8Ce, A8Cf, A8Fa, A8Ka, A8Kb, A8Pg |
+| H3-c-direct | T-H3-C-DIRECT | FAIL | t is the additive parameter of one action on one fixed state space; c is fixed inside each theory and is not a group parameter on spacetime (A8Sa); the Lorentz group parameter is the rapidity φ, tanh φ = v/c (A8Wa); "radius r ↔ c" has no exact map (A8Wb). As H3-original words it ("c also converges to infinity" like t): SUPERFICIAL | A8Sa, A8Wa, A8Wb |
+| H3-group | T-H3-GROUP | ESTABLISHED INSTANCE | the generator theorem is PROVED (A8Ga) and realized on supplied forms (A8Gb); circle rotations (A8Ea) and Lorentz boosts (A8Eb) are its canonical instances, with θ ↔ φ as the group parameters; the continuation types differ (A8Ec) | A8Ga, A8Gb, A8Ea, A8Eb, A8Ec |
+| H3-c-family | T-H3-C-FAMILY | RESTRICTED | established pieces: the c-family M_c and its degenerate limit (A8Mc), the fixed-v Galilean boost limit (A8Lb), group contraction (A8Lc), the restricted content of c (A8Wc), and the family M_κ in which κ = −1/c² and the oscillator κ = ω² reach the same parabolic member (A8Qa, A8Qb); restricted because every limit depends on what is held fixed (A8X5, A8Qb). Connection to H3: OPEN; connection to H3: OPEN | A8Mc, A8Lb, A8Lc, A8Wc, A8Qa, A8Qb |
 | STAR-A | T-STAR-A | FAIL | irrational torus; logistic interval | A8X1, A8X3 |
-| STAR-B | T-STAR-B | RESTRICTED | vacuous with fixed points; class-dependent for non-constant periodic orbits | A8Pe |
-| STAR-C | T-STAR-C | RESTRICTED | = Poincaré recurrence under its hypotheses (PROVED, known); fails without them | A8Pd |
+| STAR-B | T-STAR-B | RESTRICTED | vacuous with fixed points; in the smooth-manifold category: a non-constant periodic orbit exists ⟺ some component has dimension ≥ 2 or is S¹ | A8Pe, A8Ba |
+| STAR-C | T-STAR-C | RESTRICTED | = Poincaré recurrence under its hypotheses (PROVED, known); the hypotheses are those of the guarantee, not necessary for recurrence | A8Pd, A8Va |
 | old infinity wording | T-TIME-CIRCLE-0 | FAIL | sin, cos bounded with no limit | A8Cc |
 | corrected intuition | T-UNBOUNDED-EVOLUTION | ESTABLISHED INSTANCE | circle; not elevated to H3 | A8Ca, A8Cd |
 | STAR-original | T-STAR | OPEN | kept; readings decided separately | A8X1, A8Pe, A8Pd |
+| geometry constrains, generator decides | T-GEOM-GEN-DYN | PROJECT SYNTHESIS | exact in the canonical examples (2×2 forms, tori, diag(1, 1, −1)); not a universal theorem: no classification of continuation types from (M, K) in every dimension or for nonlinear flows is claimed | A8Ga, A8Gc, A8Ec, A8Ua |
+| STAR-A lesson: geometry alone does not determine periodicity | T-STAR-A-LESSON | PROVED | same torus, same invariants, different behaviour (A8Ua); three generator types on one form (A8Ec) | A8Ua, A8Ec, A8X1 |
 
 ## N. Backbone assessment and ratings (separate; no overall score)
 
-| Item | Backbone Support | AI Slop Risk | Transfer Depth | Breadth | Status | Why |
-|---|---|---|---|---|---|---|
-| circle finite/infinite relation | 35% | 5% | TRIVIAL CONSEQUENCE | 1 | ESTABLISHED INSTANCE (old wording FAIL) | exact (ℝ/Tℤ ≅ S¹, covering ℝ → S¹); known mathematics; immediate from the definitions |
-| torus extension | 30% | 8% | STRUCTURAL TRANSFER | 2 | PROVED (criterion); Kronecker source-locked | the action/stabilizer framework applies unchanged from circle to torus and changes the verdict: the arithmetic of ω decides; a counterexample to compact ⇒ periodic |
-| H3-action | 30% | 15% | STRUCTURAL TRANSFER | 2 | PROJECT SYNTHESIS | applies unchanged to every action example (circle, tori, cylinder, interval, plane, velocity flow); content is definitions plus known theorems; risk: close to a restatement of dynamical-systems vocabulary |
-| H3-quotient | 20% | 15% | STRUCTURAL TRANSFER | 1 | RESTRICTED | exact for the periodic class and (as compact closure) the recurrent class; vacuous with "orbit"; fails for boundary approach |
-| H3-c | 10% | 25% | FAIL | 1 | RESTRICTED | the H3 wrapping mechanism does not transfer to c (transfer depth FAIL); what survives is the known CF1/S4 correspondence t ↔ s, r ↔ c, and finiteness of c as the invariant content |
-| ★ | 15% | 20% | NOT YET FORMALIZED | 2 | STAR-original OPEN; STAR-A FAIL; STAR-B RESTRICTED; STAR-C RESTRICTED | the forced reading fails on compact spaces; the existence reading is vacuous or class-dependent; the recurrence reading is Poincaré's theorem with its hypotheses |
-| Act VIII overall | 25% | 15% | STRUCTURAL TRANSFER | 2 | mixed (see the status table; no umbrella verdict) | the action/stabilizer framework is exact and applies unchanged across the examples; c relates only through the known preserved-form object; every surviving statement is known mathematics |
+| Item | Backbone Support | AI Slop Risk | Transfer Depth | Breadth | Status | Backbone story contribution | Why |
+|---|---|---|---|---|---|---|---|
+| circle finite/infinite relation | 35% | 5% | TRIVIAL CONSEQUENCE | 1 | ESTABLISHED INSTANCE (old wording FAIL) | REPRESENTATION → DYNAMICS/CONTINUATION: the circle is the image of the translation character, ℝ/ker χ_ω ≅ S¹ (A8Fa, A8Fb) | exact (ℝ/Tℤ ≅ S¹, covering ℝ → S¹); known mathematics; immediate from the definitions |
+| torus extension | 30% | 8% | STRUCTURAL TRANSFER | 2 | PROVED (criterion); Kronecker source-locked | GEOMETRY → DYNAMICS/CONTINUATION: same compact geometry, behaviour decided by the generator's integer relations; kernel and orbit closure separated (A8Ua, A8Ka, A8Kb) | the action/stabilizer framework applies unchanged from circle to torus and changes the verdict: the arithmetic of ω decides; a counterexample to compact ⇒ periodic |
+| H3-action | 30% | 15% | STRUCTURAL TRANSFER | 2 | PROJECT SYNTHESIS | PRESERVED STRUCTURE → GEOMETRY → DYNAMICS/CONTINUATION: stabilizer and orbit closure of the generated action decide the continuation type | applies unchanged to every action example (circle, tori, cylinder, interval, plane, velocity flow); content is definitions plus known theorems; risk: close to a restatement of dynamical-systems vocabulary |
+| H3-quotient | 20% | 15% | STRUCTURAL TRANSFER | 1 | RESTRICTED | REPRESENTATION → DYNAMICS/CONTINUATION, periodic case only (quotient by the kernel); dense case handled by orbit closure | exact for the periodic class and (as compact closure) the recurrent class; vacuous with "orbit"; fails for boundary approach |
+| H3-c-direct | 0% | 5% | FAIL | 1 | FAIL | none: a failed overreach, kept | t is an action parameter, c a form/unit constant; the literal analogy has no exact map |
+| H3-group | 35% | 10% | STRUCTURAL TRANSFER | 2 | ESTABLISHED INSTANCE | PRESERVED STRUCTURE → TRANSFORMATION → DYNAMICS/CONTINUATION: the common-form chart (CF1/CF4) now reaches orbit behaviour | the generator theorem is proved and realized on supplied forms; circle and boost are its canonical instances |
+| H3-c-family | 20% | 20% | STRUCTURAL TRANSFER | 2 | RESTRICTED (H3 connection OPEN) | GEOMETRY → CROSS-SYSTEM TRANSFER (prepared): the family of forms and its singular limit; handoff to the mass-wave branch | established pieces (degenerate limit, Galilean limit, contraction, the κ-family); every limit depends on the scaling held fixed |
+| ★ | 20% | 20% | NOT YET FORMALIZED | 2 | STAR-original OPEN; STAR-A FAIL; STAR-B RESTRICTED; STAR-C RESTRICTED | GEOMETRY → DYNAMICS/CONTINUATION: STAR-A's failure identifies the missing condition (the generator); STAR-B and STAR-C are restricted to named categories and theorems | the forced reading fails on compact spaces; the existence reading is vacuous or class-dependent; the recurrence reading is Poincaré's theorem with its hypotheses; story-integration pass: Backbone Support restored from 15% to 20% — STAR-A's failure identified the missing condition and does not reduce ★'s research question |
+| Act VIII overall | 25% | 15% | STRUCTURAL TRANSFER | 2 | mixed (see the status table; no umbrella verdict) | PRESERVED STRUCTURE → GEOMETRY → DYNAMICS/CONTINUATION, made exact by the generator theorem and the chain preserved relation → group → generator → one-parameter transformation → orbit/stabilizer → dynamics | the action/stabilizer framework is exact and applies unchanged across the examples; c relates only through the known preserved-form object; every surviving statement is known mathematics |
 
 Foundation rating changes:
 - I2 (★): Backbone Support 20% → 15% (STAR-A fails on compact spaces (A8X1, A8X3); STAR-B is vacuous with fixed points; STAR-C is Poincaré with its hypotheses).
-- L4 (two roles of c): Backbone Support 25% → 30% (restricted exact answer: both roles belong to the same form constant, and the invariant content is finiteness (A8Mc, A8Lc); known mathematics, no transfer to the circle mechanism).
+- L4 (two roles of c): Backbone Support 25% → 30% ([reason superseded on 2026-11-16 by the story-integration entry below; kept as history] restricted exact answer: both roles belong to the same form constant, and the invariant content is finiteness (A8Mc, A8Lc); known mathematics, no transfer to the circle mechanism).
+- I2 (★): Backbone Support 15% → 20% (story-integration pass: the reduction rested on STAR-A alone; STAR-A's failure identifies the missing condition (the generator) and the governing criterion is the Foundation story, not the percentage).
+- L4 (two roles of c): Backbone Support 30% → 30% (percentage kept; reason replaced: the deleted finiteness statement is superseded by the restricted link κ = det K_c = −1/c² (Role 2: the hyperbolic generator; Role 3: κ → 0⁻) (A8Qa, A8Wc)).
 
 Low Backbone Support is not a reason to discard a branch: every weak and negative connection above is kept.
 
 ## O. Files
 
 - `verify/verify_A8.py` (41 cards, one ledger run); `research/tools/act8_source.py` → `research/act8.json`, this record; registry records T-ACT8-GOV, T-UNBOUNDED-EVOLUTION, T-COMPACT-NOT-PERIODIC, T-H3-ACTION, T-H3-QUOTIENT, T-H3-C, T-STAR-A, T-STAR-B, T-STAR-C; Foundation objects A8A, A8C, A8T, A8D, A8S, A8H, A8M, A8L, A8K, A8X, bridges BR75–BR80, domains D37–D39; sources SRC-HATCHER-2002, SRC-KATOK-HASSELBLATT-1995, SRC-HARDY-WRIGHT-2008, SRC-WEYL-1916, SRC-WALTERS-1982, SRC-POINCARE-1890, SRC-MALAMENT-2012; `test/act8.test.js`.
+- Story-integration pass: `verify/verify_A8S.py` (18 cards, one ledger run); `docs/restructure_report_rev3.md` (recovered); registry records T-H3-C-DIRECT, T-H3-GROUP, T-H3-C-FAMILY, T-GEOM-GEN-DYN, T-STAR-A-LESSON, T-GEN-DYN-Q; Foundation objects A8G, A8E, A8F, A8KC, A8Q, A8GD, A8HCD, A8HG, A8HCF, bridges BR81–BR86, domain D40; sources SRC-LEE-2012, SRC-MILNOR-1965, SRC-YAGLOM-1979; `test/act8_story.test.js`.
 
 ## P. Recommendation for the next pass
 
-- One adversarial lock pass for Act VIII, then close it: re-derive the STAR-B dimension ≥ 2 statement (carded only through its local model A8X4), the free-orbit decision tree and its "noncompact, not escaping" class (no carded example), the boundary-approach ≅ drift classification against C8 and S5b, and the finiteness-invariant answer to H3-1; check that no record calls an irrational flow periodic or M_∞ "the Newtonian metric".
-- A narrower second construction is not recommended: the open item (H3-original) has no candidate object beyond the known ones found here.
-- Not begun (stop list): mass-wave/conjugacy, dispersion, quantum work, Energeo, the final Foundation freeze.
+- READY FOR ADVERSARIAL LOCK, with these targets: the STAR-B category statement (A8Ba, with the completeness and 1-manifold classification theorems source-only); the free-orbit class "noncompact closure, not escaping" (no carded example; kept as a class); the κ-family scope (2D; scaling-dependent); every superseded statement checked absent from live text.
+- Not begun (stop list): mass-wave/conjugacy, dispersion, quantum work, Energeo, the final Foundation freeze. The mass-wave handoff note is preparation only.
+
+## Story integration (2026-11-16): Act VIII in the Foundation spine
+
+**Spine (unchanged):** OBJECT → REPRESENTATION → RELATION → ZERO/BALANCE/NULL → TRANSFORMATION → PRESERVED STRUCTURE → GEOMETRY → INFORMATION → DYNAMICS/CONTINUATION → CROSS-SYSTEM TRANSFER → APPLICATION.
+
+**Spine transition advanced:** PRESERVED STRUCTURE → GEOMETRY → DYNAMICS/CONTINUATION.
+
+Act VIII supplies the exact link from a preserved relation to continuation behaviour. The preserved form M fixes the preserving group G_M = {A : AᵀMA = M} and its generators 𝔤_M = {K : KᵀM + MK = 0} (the common-form chart, CF1/CF4); a generator K ∈ 𝔤_M gives a one-parameter transformation e^(sK); its stabilizer (kernel) and orbit closure give the continuation type — periodic, quasi-periodic/dense, hyperbolic/free, drifting. It also ties back to REPRESENTATION/TRANSFORMATION: the circle e^(iωt) is the translation character χ_ω, the phase by which translation acts on a Fourier mode (R4).
+
+- **Failed overreach:** geometry alone forces periodicity (STAR-A FAIL: A8X1, A8X3).
+- **What the failure teaches:** geometry alone does not determine periodicity: on one torus with the same invariants |z_j| = 1, the integer relations of the generator decide between periodic, subtorus and dense orbits (A8Ua); on one Lorentzian form diag(1, 1, −1), elliptic, hyperbolic and parabolic generators coexist (A8Ec).
+- **Surviving structural result:** action/generator/stabilizer determine the continuation type under the supplied geometry.
+
+STAR-A failing is not the Foundation/backbone failing. The backbone claims that preserved relations encode geometry; STAR-A claimed that geometry forces one dynamical outcome. Its failure names the missing condition — the generator/action — and the chain below supplies it.
+
+Next question: *Given a preserved geometric relation, what transformations preserve it, what generators produce those transformations, and what observable dynamics follow?*
+
+Backbone Support remains secondary metadata. It is kept, and contextualized by the story contribution of each item; no branch is downgraded because STAR-A failed.
+
+### S1. The generator theorem: the common-form chart → Act VIII
+
+**Theorem.** For a constant matrix M and A(s) = e^(sK): KᵀM + MK = 0 ⟺ A(s)ᵀMA(s) = M for every s.
+
+Proof. Let F(s) = A(s)ᵀMA(s). Since A′ = KA, F′ = (KA)ᵀMA + AᵀM(KA) = Aᵀ(KᵀM + MK)A (A8Ga, generic 3×3). ⇒: F′ ≡ 0 and F(0) = M, so F ≡ M. ⇐: differentiate F(s) = M at s = 0.
+
+Chart objects: CF1 (AᵀMA = M ⟺ B_M preserved), CF4 and bridge BR11 (exp(sK) preserves M ⟺ KᵀM + MK = 0). Cards: A8Ga, A8Gb, A8Gc.
+
+Act VIII sits after the chart: preserved relation → preserving group → generator → one-parameter transformation → orbit/stabilizer → observable dynamics.
+
+Applied only when the form and the transformation family are supplied by the system (A8Gb: six supplied forms, no universal M); the same K can preserve one form and not another (A8Gc).
+
+### S2. Preserved geometry → generator → dynamics (master-chart block)
+
+B_M → G_M = {A : AᵀMA = M} → 𝔤_M = {K : KᵀM + MK = 0} → e^(sK) → orbit / stabilizer → dynamical behaviour
+
+| Row | B_M | G_M | 𝔤_M | One-parameter transformation | Orbit / stabilizer | Behaviour | Cards | Does NOT prove |
+|---|---|---|---|---|---|---|---|---|
+| Euclidean / SO(2) | B_I(x, y) = xᵀy on ℝ² | SO(2) (with reflections O(2)) | span{J}, J = [[0, −1], [1, 0]], J² = −I | e^(θJ) = I cos θ + J sin θ | circles \|x\| = r; Stab = 2πℤ (x ≠ 0) | periodic (elliptic) | A8Ea, A8Gb | that every compact orbit comes from a rotation; anything about other forms or higher dimensions |
+| Lorentz / SO(1,1) | B_η(x, y) = x₀y₀ − x₁y₁ on ℝ² (x₀ = ct) | SO⁺(1,1) | span{K}, K = [[0, 1], [1, 0]], K² = I | e^(φK) = I cosh φ + K sinh φ, tanh φ = v/c | hyperbola branches and null rays; Stab = {0} (x ≠ 0) | free, noncompact; slope tanh φ → ±1 (boundary approach ≅ drift, A8Pg) | A8Eb, A8Wa | that signature decides the dynamics in higher dimensions (it does not, A8Ec); any physical claim beyond 1+1 boosts |
+| Fourier character ℝ → U(1) | the Hermitian form \|z\|² on ℂ (preserved by multiplication by χ_ω(t)) | U(1) | iℝ (the generator iω) | χ_ω(t) = e^(iωt), the phase by which translation acts on e_ω (A8Fb) | S¹ = ℝ/ker χ_ω, ker χ_ω = (2π/\|ω\|)ℤ | periodic; the unbounded translation parameter is represented in the compact phase S¹ because values differing by the kernel are identified | A8Fa, A8Fb, A8Ce, A8Cf | that every representation of an unbounded parameter is a quotient (boundary approach is not, A8Pg); that the circle itself is infinite |
+| multi-frequency torus flow | the n Hermitian forms \|z_j\|² | Tⁿ = U(1)ⁿ | iℝⁿ; the generator is the frequency vector ω | χ_ω(t) = (e^(iω₁t), …, e^(iω_nt)) | ker χ_ω = ∩ ker χ_(ω_j); periodic ⟺ ker ≠ {0} ⟺ commensurable; otherwise orbit closure = subtorus of dimension n − rank(integer relations) | periodic, or quasi-periodic dense on a subtorus (recurrent, not periodic) | A8Ka, A8Kb, A8Ta, A8Te, A8Ua | that compactness gives periodicity (compact image ⇏ nontrivial kernel); that a dense orbit is a quotient of ℝ (it is not, A8Kb) |
+
+### S3. SO(2) versus SO(1,1): an exact canonical comparison
+
+- Elliptic: J = [[0, −1], [1, 0]], J² = −I, JᵀI + IJ = 0, e^(θJ) = I cos θ + J sin θ: compact, periodic, Stab = 2πℤ (A8Ea).
+- Hyperbolic: K = [[0, 1], [1, 0]], K² = I, Kᵀη + ηK = 0 (η = diag(1, −1)), e^(φK) = I cosh φ + K sinh φ: noncompact, free, ‖e^(φK)‖ = e^|φ| (A8Eb).
+
+Both are one-parameter groups generated by matrices satisfying the same abstract infinitesimal preservation equation KᵀM + MK = 0; the form and the generator algebra (K² = −det(K)·I for traceless 2×2 K: det > 0 elliptic, det < 0 hyperbolic, det = 0 parabolic) lead to different continuation behaviour (A8Ec).
+
+Scope: An exact canonical comparison in 2D. Not generalized: in 3D one Lorentzian form diag(1, 1, −1) carries elliptic, hyperbolic and parabolic generators (A8Ec), so signature alone does not determine the dynamics.
+
+### S4. The circle as a Fourier character
+
+- χ_ω: ℝ → U(1), χ_ω(t) = e^(iωt), is a continuous one-dimensional unitary representation (character) of the additive translation group (A8Fa).
+- ker χ_ω = (2π/|ω|)ℤ for ω ≠ 0, so ℝ/ker χ_ω ≅ S¹ (a continuous bijection from a compact space onto a Hausdorff space is a homeomorphism) (A8Fa).
+- translation → phase → Fourier representation: (T_τ e_ω)(t) = e_ω(t − τ) = χ_ω(−τ)e_ω(t), and on the period-1 basis T_τ e_k = e^(−2πikτ)e_k (R4); a trigonometric polynomial is translation-periodic exactly on the common kernel of its modes' characters (A8Fb).
+
+Exact finite/infinite relation: an unbounded translation parameter can be represented in a compact phase geometry because the representation identifies values differing by the kernel. The circle itself is compact and is not called infinite.
+
+### S5. Kernel versus orbit closure (torus)
+
+- periodic case — quotient/kernel structure: ker χ_ω = Tℤ ≠ {0}; the image is closed and ℝ/Tℤ → image is a homeomorphism; ℝ → S¹ is a covering (A8Fa, A8Ka, A8Ce, A8Cf).
+- quasi-periodic/dense case — orbit closure/subtorus structure: ker χ_ω = {0}; the image is not closed ((1, −1) is in the closure but not the image) and χ is a continuous bijection onto the image that is not a homeomorphism (χ(2πq) → χ(0) while 2πq → ∞); the bounded representation is the orbit closure, a subtorus of dimension n − rank(integer relations) (A8Kb, A8Te, A8Ua).
+
+compact image ⇏ nontrivial kernel ⇏ periodicity — read exactly: a compact image does not imply a nontrivial kernel ((1, √2), A8Ka), and for a homomorphism χ: ℝ → Tⁿ periodicity is equivalent to a nontrivial kernel; hence a compact image does not imply periodicity. The kernel/stabilizer and the orbit closure are kept distinct.
+
+### S6. H3-c split into three records
+
+The pass-1 record H3-c (T-H3-C) mixed these three claims; it keeps its verbatim c-clause of H3-original and no longer carries a combined status. The three records are not merged back together.
+
+| ID | Record | Wording (verbatim) | Status | Basis | Cards |
+|---|---|---|---|---|---|
+| H3-c-direct | T-H3-C-DIRECT | H3-c-direct: literal analogy between unbounded time t and c→∞. Status: FAIL / superficial. | FAIL | t is the additive parameter of one action on one fixed state space; c is fixed inside each theory and is not a group parameter on spacetime (A8Sa); the Lorentz group parameter is the rapidity φ, tanh φ = v/c (A8Wa); "radius r ↔ c" has no exact map (A8Wb). As H3-original words it ("c also converges to infinity" like t): SUPERFICIAL | A8Sa, A8Wa, A8Wb |
+| H3-group | T-H3-GROUP | H3-group: circle rotations and Lorentz boosts are both one-parameter symmetry groups preserving quadratic forms and satisfying the generator equation. Status: established structural pattern in the canonical examples. | ESTABLISHED INSTANCE | the generator theorem is PROVED (A8Ga) and realized on supplied forms (A8Gb); circle rotations (A8Ea) and Lorentz boosts (A8Eb) are its canonical instances, with θ ↔ φ as the group parameters; the continuation types differ (A8Ec) | A8Ga, A8Gb, A8Ea, A8Eb, A8Ec |
+| H3-c-family | T-H3-C-FAMILY | H3-c-family: varying c indexes a family of Lorentzian structures/forms whose c→∞ limit is singular and whose Lorentz transformations have a Galilean limit under fixed-v scaling. Status: restricted/established pieces; project connection to H3 remains open. | RESTRICTED | established pieces: the c-family M_c and its degenerate limit (A8Mc), the fixed-v Galilean boost limit (A8Lb), group contraction (A8Lc), the restricted content of c (A8Wc), and the family M_κ in which κ = −1/c² and the oscillator κ = ω² reach the same parabolic member (A8Qa, A8Qb); restricted because every limit depends on what is held fixed (A8X5, A8Qb). Connection to H3: OPEN | A8Mc, A8Lb, A8Lc, A8Wc, A8Qa, A8Qb |
+
+### S7. Rapidity, c and the family M_κ
+
+- Family: M_κ = diag(1, κ), K_κ = [[0, κ], [−1, 0]]: K_κᵀM_κ + M_κK_κ = 0, K_κ² = −κI, det K_κ = κ (a similarity invariant of the generator in the system's own parameter).
+- Members: κ = ω²: e^(sK) = I cos ωs + K sin(ωs)/ω; with s = −t, the harmonic oscillator on (p, q) with its supplied form p² + ω²q² (period 2π/ω). κ = −1/c²: e^(sK) = I cosh(s/c) + cK sinh(s/c), the boost generator dΛ/dv at v = 0 (s = cφ). κ = 0: the Galilean shear.
+- Limit: with s fixed, ω → 0 and c → ∞ give the same parabolic limit [[1, 0], [−s, 1]]; with planar translations, [K, H] = −P, [K, P] = κH: Euclidean e(2) (κ > 0), Poincaré(1+1) (κ < 0), Galilei(1+1) (κ = 0) (A8Qa).
+- Scaling: scaling-dependent on both sides: in normalized coordinates ωJ → 0 gives the identity (A8Qb), as c → ∞ with β fixed gives nothing (A8X5).
+- Roles: θ = ωt ↔ φ = s/c (group parameters); ω² ↔ −1/c² (the value κ = det K); r² ↔ q_c on the orbit (orbit invariants, A8Wb).
+- Does NOT prove: a physical identification of oscillator time evolution with boosts; any meaning for "imaginary frequency"; anything about the pure Fourier character, whose form |z|² carries no ω; anything beyond the 2D family.
+
+### S8. Geometry constrains; the generator decides
+
+> geometry constrains the admissible symmetry/action structure, but the generator/action determines whether the resulting orbit is periodic, recurrent, hyperbolic, dense, or drifting.
+
+Status: PROJECT SYNTHESIS (T-GEOM-GEN-DYN). Formal content: "geometry constrains" is given a formal meaning only as M ↦ (G_M, 𝔤_M): the supplied form fixes which transformations and generators are admissible (CF1, CF4, A8Ga); "the generator decides": for K ∈ 𝔤_M, the orbit type of e^(sK) is fixed by K — by the sign of det K for traceless 2×2 K (A8Ec), by the integer relations of ω on tori (A8Ua) — and not by M alone (A8Ec: three types on one form).
+
+Scope: exact in the canonical examples (2×2 forms, tori, diag(1, 1, −1)); not a universal theorem: no classification of continuation types from (M, K) in every dimension or for nonlinear flows is claimed. Role: the main explanatory bridge from GEOMETRY to DYNAMICS/CONTINUATION in the Foundation story. Cards: A8Ga, A8Gc, A8Ec, A8Ua.
+
+### S9. Mass-wave handoff (preparation only)
+
+Handoff only; nothing derived. The planned mass-wave / pairs branch treats the dispersion relation as a quadratic form in (ω, k), with the massless case as its null cone. Act VIII prepares it with: the Lorentz quadratic form η and its c-family M_c (A8Ma); the null cone x = ±ct (A8Md); the role of c kept separate from group parameters (A8Wa, A8Wc); the one-parameter Lorentz symmetry e^(φK) (A8Eb); and generator preservation KᵀM + MK = 0 ⟹ e^(sK)ᵀMe^(sK) = M (A8Ga).
+
+No dispersion form, mass shell or wave–particle statement is derived here (stop list).
+
+## Superseded wording (kept; replaced by this pass)
+
+| Where | Old wording | Why replaced |
+|---|---|---|
+| A. not in the repository | ["the \"Acts I–IX restructuring report\" (revision 3): no copy is in the repository; its Act VIII content is known only through registry records that cite it (audit fields \"quoted only in the report\")", "AMB-1: no record anywhere in the repository (searched docs/, research/, src/, test/)", "AMB-7: known only through T-STAR's boundary (\"bound by rules\", \"periodic\", \"can be\": a–c)", "AMB-15: known only through T-TIME-CIRCLE-0's audit field (\"quoted only in the report (AMB-15)\")"] | provenance recovered from project history |
+| STAR-B verdict | RESTRICTED. If fixed points count as periodic, the claim is vacuous: every space carries Φ_t = id (A8Pe). For a non-constant periodic orbit the answer depends on the class: flows on ℝ or an interval have none (orbits are monotone; a continuous injection ℝ/Tℤ → ℝ is impossible), the circle has them, and every smooth manifold of dimension ≥ 2 admits one (a rotation field in a coordinate disk multiplied by a bump function; the local model is A8X4; this general construction is a project argument, not carded). "Bound by rules" does not decide it; the topology of the space and the admissible class of dynamics do. | the pass-1 "every smooth manifold of dimension ≥ 2" was stated without a carded construction or a named category |
+| STAR-C verdict | RESTRICTED to the Poincaré recurrence theorem (known; PROVED under its hypotheses): an invariant measure, finite total measure, conclusion for almost every point. Each hypothesis is needed (A8Pd): infinite measure (cylinder) — no point recurs; Lebesgue not invariant (logistic) — no interior point recurs; on compact S¹ with θ̇ = 1 − cos θ the only invariant probability is δ₀ and every other orbit is non-recurrent. Topological recurrence (some recurrent point exists on a compact metric space — a minimal set, Birkhoff) is a separate, weaker statement, source-only here. | "each hypothesis is needed" read as necessity for recurrence itself; it is necessity only for the theorem's guarantee |
+| H3-quotient classification | too broad as worded (with "orbit"); RESTRICTED without it | one quotient statement was used for two different situations |
+| H3-quotient clauses | [["\"orbit\"", "TOO BROAD: every representation of an action is an orbit image, so this alternative makes the statement true of everything"], ["\"quotient, covering map\"", "PROVED for the periodic class: Stab = Tℤ gives the orbit ≅ ℝ/Tℤ and the covering ℝ → S¹ (A8Ce, A8Cf); also for a periodic projection (cylinder)"], ["\"compact orbit closure\"", "PROVED for the free recurrent class: the (1, √2) orbit is injective (no quotient) and its bounded representation is its compact closure T² (A8Tb)"], ["boundary approach / drift", "NOT ENCODED by any of the three: the velocity orbit is all of (−1, 1), injective, with noncompact closure; its boundedness is an artifact of the coordinate, removed by the conjugacy artanh (A8Pg)"]] | kernel/stabilizer and orbit closure kept distinct |
+| H3-quotient scope | Holds for the periodic and compact-recurrent classes; fails for boundary approach, which needs a compactification (added limit points) — a different object. | separate quotient from orbit closure |
+| H3-original, phrase 3 | c does not converge inside a theory; it is fixed. Only the family index tends to infinity (Role 3); in the circle the corresponding role is played by the form constant r, not by t (A8Sb) | "r ↔ c" had no exact map |
+| H3-original, phrase 4 | ESTABLISHED (Role 2): c fixes the preserved form M_c, the null cone x = ±ct and the boost group (A8La); restricted common object with the circle: a one-parameter subgroup preserving a quadratic form (A8Sb) | the common object named through the generator theorem |
+| H3-original note | H3-original is not replaced by either candidate; neither candidate is called H3. Its strongest surviving exact content is H3-action (PROJECT SYNTHESIS) and the restricted t/c correspondence (H3-c). | H3-c split |
+| c-family note | Not inferred: that physical c is meaningless. The congruence says only that, inside one theory, the value of c is fixed by the choice of spatial unit; the invariant content of the family is whether c is finite (A8Mc, A8Lc). | "the invariant content of the family is whether c is finite" was too broad |
+| t vs c table, last row | ["role under the shared exact object (one-parameter subgroup preserving a quadratic form)", "t ↔ the rapidity s (group parameter); the circle radius r ↔ c", "generator type: elliptic (ωJ)² = −ω²I for the circle; hyperbolic K̂² = I for boosts, parabolic K_∞² = 0 at c = ∞; no member of the c-family is elliptic (A8Sb)"] | "the circle radius r ↔ c" had no exact map |
+| t vs c: analogy | STRUCTURAL ANALOGY through one exact object shared by both examples: a one-parameter subgroup of the preservation group of a nondegenerate quadratic form on ℝ², with orbits in level sets (the known CF1/S4 trichotomy). Under it t corresponds to the rapidity s and c corresponds to the circle's radius r (the form constant that sets the observable bound); the bound r is attained, the bound c is not (A8Sb) | "r ↔ c" discarded; θ ↔ φ |
+| six questions, Q2 | YES in fixed units (t, x) (A8Ma, A8Md), but every finite member is congruent to η: inside one theory the value of c is a unit choice; the family's invariant content is finiteness (A8Mc, A8Lc) | finiteness claim too broad |
+| six questions, Q5 | YES, restricted: both examples are one-parameter subgroups preserving a quadratic form, with t ↔ rapidity s and r ↔ c (A8Sb); and both c and the circle family are orbits of one-parameter groups (on different spaces: S¹ vs Sym(2)) with opposite behaviour classes | "t ↔ rapidity s and r ↔ c" corrected |
+| six questions, Q6 | Recorded: the H3 wrapping mechanism does not transfer to c (FAIL as same construction); "c converges to infinity like t" is SUPERFICIAL. The surviving correspondence is the known CF1/S4 object, not a new H3 structure | H3-c split |
+| H3-1 restricted answer | H3-1 (the two roles of c), restricted answer: Role 2 (c fixes the invariant form) and Role 3 (c → ∞) are roles of the same form constant. At finite c the value of c is not an isomorphism invariant (all finite-c forms are congruent and all finite-c algebras isomorphic); what is invariant is finiteness: M_c is nondegenerate and the algebra is Poincaré exactly when c < ∞ (A8Ma, A8Mc, A8Lc). This is known mathematics; it does not by itself make c an instance of the circle mechanism. | "the invariant content of c is whether it is finite, not its value" deleted as too broad |
+| real-result table, singular-limit row | ["singular limit of a family of forms + group contraction", "the c-family only in this pass", "not shared with the time–circle example: the circle family has no contraction (its algebra is ℝ for every ω)"] | the oscillator realization was not considered in pass 1 |
+| real-result table, preserved-form row | ["one-parameter subgroup preserving a quadratic form", "circle rotation and Lorentz boosts (and Galilean shears at c = ∞)", "shared exactly (CF1/S4); t ↔ s, r ↔ c"] | "t ↔ s, r ↔ c" corrected |
+| real-result verdict | Structural-transfer credit is given only to the preserved-form / one-parameter-subgroup object (already Foundation CF1) and to the stabilizer/quotient object within the action examples. No new object shared by the time–circle example and the c-family was found. | κ-family added; t ↔ c excluded |
+| status table, H3-c row | {"id": "H3-c", "record": "T-H3-C", "status": "RESTRICTED", "basis": "same construction FAIL; superficial as worded; restricted structural analogy through the preserved-form subgroup (t ↔ s, r ↔ c)", "cards": ["A8Sa", "A8Sb", "A8Mc", "A8Lc"]} | the H3-c entry mixed three claims |
+| status table, H3-quotient basis | periodic and compact-recurrent classes only; too broad with "orbit"; fails for boundary approach | kernel vs closure |
+| status table, STAR-B basis | vacuous with fixed points; class-dependent for non-constant periodic orbits | explicit category |
+| status table, STAR-C basis | = Poincaré recurrence under its hypotheses (PROVED, known); fails without them | hypotheses vs recurrence |
+| ratings | [{"item": "circle finite/infinite relation", "bs": 35, "slop": 5, "td": "TRIVIAL CONSEQUENCE", "breadth": 1, "status": "ESTABLISHED INSTANCE (old wording FAIL)", "why": "exact (ℝ/Tℤ ≅ S¹, covering ℝ → S¹); known mathematics; immediate from the definitions"}, {"item": "torus extension", "bs": 30, "slop": 8, "td": "STRUCTURAL TRANSFER", "breadth": 2, "status": "PROVED (criterion); Kronecker source-locked", "why": "the action/stabilizer framework applies unchanged from circle to torus and changes the verdict: the arithmetic of ω decides; a counterexample to compact ⇒ periodic"}, {"item": "H3-action", "bs": 30, "slop": 15, "td": "STRUCTURAL TRANSFER", "breadth": 2, "status": "PROJECT SYNTHESIS", "why": "applies unchanged to every action example (circle, tori, cylinder, interval, plane, velocity flow); content is definitions plus known theorems; risk: close to a restatement of dynamical-systems vocabulary"}, {"item": "H3-quotient", "bs": 20, "slop": 15, "td": "STRUCTURAL TRANSFER", "breadth": 1, "status": "RESTRICTED", "why": "exact for the periodic class and (as compact closure) the recurrent class; vacuous with \"orbit\"; fails for boundary approach"}, {"item": "H3-c", "bs": 10, "slop": 25, "td": "FAIL", "breadth": 1, "status": "RESTRICTED", "why": "the H3 wrapping mechanism does not transfer to c (transfer depth FAIL); what survives is the known CF1/S4 correspondence t ↔ s, r ↔ c, and finiteness of c as the invariant content"}, {"item": "★", "bs": 15, "slop": 20, "td": "NOT YET FORMALIZED", "breadth": 2, "status": "STAR-original OPEN; STAR-A FAIL; STAR-B RESTRICTED; STAR-C RESTRICTED", "why": "the forced reading fails on compact spaces; the existence reading is vacuous or class-dependent; the recurrence reading is Poincaré's theorem with its hypotheses"}, {"item": "Act VIII overall", "bs": 25, "slop": 15, "td": "STRUCTURAL TRANSFER", "breadth": 2, "status": "mixed (see the status table; no umbrella verdict)", "why": "the action/stabilizer framework is exact and applies unchanged across the examples; c relates only through the known preserved-form object; every surviving statement is known mathematics"}] | percentages contextualized by the story; H3-c split |
+| next pass | ["One adversarial lock pass for Act VIII, then close it: re-derive the STAR-B dimension ≥ 2 statement (carded only through its local model A8X4), the free-orbit decision tree and its \"noncompact, not escaping\" class (no carded example), the boundary-approach ≅ drift classification against C8 and S5b, and the finiteness-invariant answer to H3-1; check that no record calls an irrational flow periodic or M_∞ \"the Newtonian metric\".", "A narrower second construction is not recommended: the open item (H3-original) has no candidate object beyond the known ones found here.", "Not begun (stop list): mass-wave/conjugacy, dispersion, quantum work, Energeo, the final Foundation freeze."] | story-integration pass completed the missing bridges |

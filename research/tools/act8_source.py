@@ -257,6 +257,150 @@ NEXT = ['One adversarial lock pass for Act VIII, then close it: re-derive the ST
         'Not begun (stop list): mass-wave/conjugacy, dispersion, quantum work, Energeo, the final Foundation freeze.']
 SOURCES = ['SRC-HATCHER-2002', 'SRC-KATOK-HASSELBLATT-1995', 'SRC-HARDY-WRIGHT-2008', 'SRC-WEYL-1916', 'SRC-WALTERS-1982', 'SRC-POINCARE-1890', 'SRC-MALAMENT-2012', 'SRC-INONU-WIGNER-1953', 'SRC-LEVY-LEBLOND-1965', 'SRC-STEIN-SHAKARCHI-2003']
 
+# ══ Story-integration and mathematical-correction pass (2026-11-16) ═══════════════════════════════════
+# Decisions: docs/restructure_decisions.md, "Act VIII story-integration and mathematical-correction pass". Cards: verify/verify_A8S.py.
+# Every corrected live statement is replaced through supersede(), which keeps the old wording (rendered as "Superseded wording").
+STORY_CARDS = ['A8Ga', 'A8Gb', 'A8Gc', 'A8Ea', 'A8Eb', 'A8Ec', 'A8Fa', 'A8Fb', 'A8Ka', 'A8Kb', 'A8Ba', 'A8Va', 'A8Wa', 'A8Wb', 'A8Wc', 'A8Qa', 'A8Qb', 'A8Zb']
+SUPERSEDED = []
+def supersede(where, old, new, why):
+    SUPERSEDED.append(dict(where=where, old=old, new=new, why=why))
+    return new
+SPINE = ['OBJECT', 'REPRESENTATION', 'RELATION', 'ZERO/BALANCE/NULL', 'TRANSFORMATION', 'PRESERVED STRUCTURE', 'GEOMETRY', 'INFORMATION', 'DYNAMICS/CONTINUATION', 'CROSS-SYSTEM TRANSFER', 'APPLICATION']
+STORY = dict(
+ spine=SPINE, advances='PRESERVED STRUCTURE → GEOMETRY → DYNAMICS/CONTINUATION',
+ contribution='Act VIII supplies the exact link from a preserved relation to continuation behaviour. The preserved form M fixes the preserving group G_M = {A : AᵀMA = M} and its generators 𝔤_M = {K : KᵀM + MK = 0} (the common-form chart, CF1/CF4); a generator K ∈ 𝔤_M gives a one-parameter transformation e^(sK); its stabilizer (kernel) and orbit closure give the continuation type — periodic, quasi-periodic/dense, hyperbolic/free, drifting. It also ties back to REPRESENTATION/TRANSFORMATION: the circle e^(iωt) is the translation character χ_ω, the phase by which translation acts on a Fourier mode (R4).',
+ failedOverreach='geometry alone forces periodicity (STAR-A FAIL: A8X1, A8X3)',
+ lesson='geometry alone does not determine periodicity: on one torus with the same invariants |z_j| = 1, the integer relations of the generator decide between periodic, subtorus and dense orbits (A8Ua); on one Lorentzian form diag(1, 1, −1), elliptic, hyperbolic and parabolic generators coexist (A8Ec)',
+ surviving='action/generator/stabilizer determine the continuation type under the supplied geometry',
+ starAvsBackbone='STAR-A failing is not the Foundation/backbone failing. The backbone claims that preserved relations encode geometry; STAR-A claimed that geometry forces one dynamical outcome. Its failure names the missing condition — the generator/action — and the chain below supplies it.',
+ nextQuestion='Given a preserved geometric relation, what transformations preserve it, what generators produce those transformations, and what observable dynamics follow?',
+ percentages='Backbone Support remains secondary metadata. It is kept, and contextualized by the story contribution of each item; no branch is downgraded because STAR-A failed.')
+GEN_THEOREM = dict(
+ statement='For a constant matrix M and A(s) = e^(sK): KᵀM + MK = 0 ⟺ A(s)ᵀMA(s) = M for every s.',
+ proof='Let F(s) = A(s)ᵀMA(s). Since A′ = KA, F′ = (KA)ᵀMA + AᵀM(KA) = Aᵀ(KᵀM + MK)A (A8Ga, generic 3×3). ⇒: F′ ≡ 0 and F(0) = M, so F ≡ M. ⇐: differentiate F(s) = M at s = 0.',
+ cards=['A8Ga', 'A8Gb', 'A8Gc'], chart='CF1 (AᵀMA = M ⟺ B_M preserved), CF4 and bridge BR11 (exp(sK) preserves M ⟺ KᵀM + MK = 0)',
+ chain='preserved relation → preserving group → generator → one-parameter transformation → orbit/stabilizer → observable dynamics',
+ scope='Applied only when the form and the transformation family are supplied by the system (A8Gb: six supplied forms, no universal M); the same K can preserve one form and not another (A8Gc).')
+CHART_ROWS = [
+ dict(row='Euclidean / SO(2)', B='B_I(x, y) = xᵀy on ℝ²', G='SO(2) (with reflections O(2))', g='span{J}, J = [[0, −1], [1, 0]], J² = −I', flow='e^(θJ) = I cos θ + J sin θ', orbit='circles |x| = r; Stab = 2πℤ (x ≠ 0)', behaviour='periodic (elliptic)', cards=['A8Ea', 'A8Gb'],
+      notProved='that every compact orbit comes from a rotation; anything about other forms or higher dimensions'),
+ dict(row='Lorentz / SO(1,1)', B='B_η(x, y) = x₀y₀ − x₁y₁ on ℝ² (x₀ = ct)', G='SO⁺(1,1)', g='span{K}, K = [[0, 1], [1, 0]], K² = I', flow='e^(φK) = I cosh φ + K sinh φ, tanh φ = v/c', orbit='hyperbola branches and null rays; Stab = {0} (x ≠ 0)', behaviour='free, noncompact; slope tanh φ → ±1 (boundary approach ≅ drift, A8Pg)', cards=['A8Eb', 'A8Wa'],
+      notProved='that signature decides the dynamics in higher dimensions (it does not, A8Ec); any physical claim beyond 1+1 boosts'),
+ dict(row='Fourier character ℝ → U(1)', B='the Hermitian form |z|² on ℂ (preserved by multiplication by χ_ω(t))', G='U(1)', g='iℝ (the generator iω)', flow='χ_ω(t) = e^(iωt), the phase by which translation acts on e_ω (A8Fb)', orbit='S¹ = ℝ/ker χ_ω, ker χ_ω = (2π/|ω|)ℤ', behaviour='periodic; the unbounded translation parameter is represented in the compact phase S¹ because values differing by the kernel are identified', cards=['A8Fa', 'A8Fb', 'A8Ce', 'A8Cf'],
+      notProved='that every representation of an unbounded parameter is a quotient (boundary approach is not, A8Pg); that the circle itself is infinite'),
+ dict(row='multi-frequency torus flow', B='the n Hermitian forms |z_j|²', G='Tⁿ = U(1)ⁿ', g='iℝⁿ; the generator is the frequency vector ω', flow='χ_ω(t) = (e^(iω₁t), …, e^(iω_nt))', orbit='ker χ_ω = ∩ ker χ_(ω_j); periodic ⟺ ker ≠ {0} ⟺ commensurable; otherwise orbit closure = subtorus of dimension n − rank(integer relations)', behaviour='periodic, or quasi-periodic dense on a subtorus (recurrent, not periodic)', cards=['A8Ka', 'A8Kb', 'A8Ta', 'A8Te', 'A8Ua'],
+      notProved='that compactness gives periodicity (compact image ⇏ nontrivial kernel); that a dense orbit is a quotient of ℝ (it is not, A8Kb)'),
+]
+SO2_SO11 = dict(
+ elliptic='J = [[0, −1], [1, 0]], J² = −I, JᵀI + IJ = 0, e^(θJ) = I cos θ + J sin θ: compact, periodic, Stab = 2πℤ (A8Ea)',
+ hyperbolic='K = [[0, 1], [1, 0]], K² = I, Kᵀη + ηK = 0 (η = diag(1, −1)), e^(φK) = I cosh φ + K sinh φ: noncompact, free, ‖e^(φK)‖ = e^|φ| (A8Eb)',
+ result='Both are one-parameter groups generated by matrices satisfying the same abstract infinitesimal preservation equation KᵀM + MK = 0; the form and the generator algebra (K² = −det(K)·I for traceless 2×2 K: det > 0 elliptic, det < 0 hyperbolic, det = 0 parabolic) lead to different continuation behaviour (A8Ec).',
+ scope='An exact canonical comparison in 2D. Not generalized: in 3D one Lorentzian form diag(1, 1, −1) carries elliptic, hyperbolic and parabolic generators (A8Ec), so signature alone does not determine the dynamics.')
+FOURIER = dict(
+ character='χ_ω: ℝ → U(1), χ_ω(t) = e^(iωt), is a continuous one-dimensional unitary representation (character) of the additive translation group (A8Fa)',
+ kernel='ker χ_ω = (2π/|ω|)ℤ for ω ≠ 0, so ℝ/ker χ_ω ≅ S¹ (a continuous bijection from a compact space onto a Hausdorff space is a homeomorphism) (A8Fa)',
+ bridge='translation → phase → Fourier representation: (T_τ e_ω)(t) = e_ω(t − τ) = χ_ω(−τ)e_ω(t), and on the period-1 basis T_τ e_k = e^(−2πikτ)e_k (R4); a trigonometric polynomial is translation-periodic exactly on the common kernel of its modes\' characters (A8Fb)',
+ finiteInfinite='an unbounded translation parameter can be represented in a compact phase geometry because the representation identifies values differing by the kernel. The circle itself is compact and is not called infinite.')
+KERNEL_CLOSURE = dict(
+ periodic='periodic case — quotient/kernel structure: ker χ_ω = Tℤ ≠ {0}; the image is closed and ℝ/Tℤ → image is a homeomorphism; ℝ → S¹ is a covering (A8Fa, A8Ka, A8Ce, A8Cf)',
+ dense='quasi-periodic/dense case — orbit closure/subtorus structure: ker χ_ω = {0}; the image is not closed ((1, −1) is in the closure but not the image) and χ is a continuous bijection onto the image that is not a homeomorphism (χ(2πq) → χ(0) while 2πq → ∞); the bounded representation is the orbit closure, a subtorus of dimension n − rank(integer relations) (A8Kb, A8Te, A8Ua)',
+ chain='compact image ⇏ nontrivial kernel ⇏ periodicity — read exactly: a compact image does not imply a nontrivial kernel ((1, √2), A8Ka), and for a homomorphism χ: ℝ → Tⁿ periodicity is equivalent to a nontrivial kernel; hence a compact image does not imply periodicity. The kernel/stabilizer and the orbit closure are kept distinct.')
+H3_SPLIT = [
+ dict(id='H3-c-direct', record='T-H3-C-DIRECT', words='H3-c-direct: literal analogy between unbounded time t and c→∞. Status: FAIL / superficial.', status='FAIL',
+      basis='t is the additive parameter of one action on one fixed state space; c is fixed inside each theory and is not a group parameter on spacetime (A8Sa); the Lorentz group parameter is the rapidity φ, tanh φ = v/c (A8Wa); "radius r ↔ c" has no exact map (A8Wb). As H3-original words it ("c also converges to infinity" like t): SUPERFICIAL', cards=['A8Sa', 'A8Wa', 'A8Wb']),
+ dict(id='H3-group', record='T-H3-GROUP', words='H3-group: circle rotations and Lorentz boosts are both one-parameter symmetry groups preserving quadratic forms and satisfying the generator equation. Status: established structural pattern in the canonical examples.', status='ESTABLISHED INSTANCE',
+      basis='the generator theorem is PROVED (A8Ga) and realized on supplied forms (A8Gb); circle rotations (A8Ea) and Lorentz boosts (A8Eb) are its canonical instances, with θ ↔ φ as the group parameters; the continuation types differ (A8Ec)', cards=['A8Ga', 'A8Gb', 'A8Ea', 'A8Eb', 'A8Ec']),
+ dict(id='H3-c-family', record='T-H3-C-FAMILY', words='H3-c-family: varying c indexes a family of Lorentzian structures/forms whose c→∞ limit is singular and whose Lorentz transformations have a Galilean limit under fixed-v scaling. Status: restricted/established pieces; project connection to H3 remains open.', status='RESTRICTED',
+      basis='established pieces: the c-family M_c and its degenerate limit (A8Mc), the fixed-v Galilean boost limit (A8Lb), group contraction (A8Lc), the restricted content of c (A8Wc), and the family M_κ in which κ = −1/c² and the oscillator κ = ω² reach the same parabolic member (A8Qa, A8Qb); restricted because every limit depends on what is held fixed (A8X5, A8Qb). Connection to H3: OPEN', cards=['A8Mc', 'A8Lb', 'A8Lc', 'A8Wc', 'A8Qa', 'A8Qb'], h3Connection='OPEN'),
+]
+H3_SPLIT_NOTE = 'The pass-1 record H3-c (T-H3-C) mixed these three claims; it keeps its verbatim c-clause of H3-original and no longer carries a combined status. The three records are not merged back together.'
+KAPPA = dict(
+ family='M_κ = diag(1, κ), K_κ = [[0, κ], [−1, 0]]: K_κᵀM_κ + M_κK_κ = 0, K_κ² = −κI, det K_κ = κ (a similarity invariant of the generator in the system\'s own parameter)',
+ members='κ = ω²: e^(sK) = I cos ωs + K sin(ωs)/ω; with s = −t, the harmonic oscillator on (p, q) with its supplied form p² + ω²q² (period 2π/ω). κ = −1/c²: e^(sK) = I cosh(s/c) + cK sinh(s/c), the boost generator dΛ/dv at v = 0 (s = cφ). κ = 0: the Galilean shear.',
+ limit='with s fixed, ω → 0 and c → ∞ give the same parabolic limit [[1, 0], [−s, 1]]; with planar translations, [K, H] = −P, [K, P] = κH: Euclidean e(2) (κ > 0), Poincaré(1+1) (κ < 0), Galilei(1+1) (κ = 0) (A8Qa)',
+ scaling='scaling-dependent on both sides: in normalized coordinates ωJ → 0 gives the identity (A8Qb), as c → ∞ with β fixed gives nothing (A8X5)',
+ roles='θ = ωt ↔ φ = s/c (group parameters); ω² ↔ −1/c² (the value κ = det K); r² ↔ q_c on the orbit (orbit invariants, A8Wb)',
+ notProved='a physical identification of oscillator time evolution with boosts; any meaning for "imaginary frequency"; anything about the pure Fourier character, whose form |z|² carries no ω; anything beyond the 2D family',
+ cards=['A8Qa', 'A8Qb'])
+GEOM_GEN_DYN = dict(record='T-GEOM-GEN-DYN', words='geometry constrains the admissible symmetry/action structure, but the generator/action determines whether the resulting orbit is periodic, recurrent, hyperbolic, dense, or drifting.', status='PROJECT SYNTHESIS',
+ definition='"geometry constrains" is given a formal meaning only as M ↦ (G_M, 𝔤_M): the supplied form fixes which transformations and generators are admissible (CF1, CF4, A8Ga); "the generator decides": for K ∈ 𝔤_M, the orbit type of e^(sK) is fixed by K — by the sign of det K for traceless 2×2 K (A8Ec), by the integer relations of ω on tori (A8Ua) — and not by M alone (A8Ec: three types on one form)',
+ scope='exact in the canonical examples (2×2 forms, tori, diag(1, 1, −1)); not a universal theorem: no classification of continuation types from (M, K) in every dimension or for nonlinear flows is claimed',
+ role='the main explanatory bridge from GEOMETRY to DYNAMICS/CONTINUATION in the Foundation story', cards=['A8Ga', 'A8Gc', 'A8Ec', 'A8Ua'])
+MASS_WAVE_HANDOFF = dict(note='Handoff only; nothing derived. The planned mass-wave / pairs branch treats the dispersion relation as a quadratic form in (ω, k), with the massless case as its null cone. Act VIII prepares it with: the Lorentz quadratic form η and its c-family M_c (A8Ma); the null cone x = ±ct (A8Md); the role of c kept separate from group parameters (A8Wa, A8Wc); the one-parameter Lorentz symmetry e^(φK) (A8Eb); and generator preservation KᵀM + MK = 0 ⟹ e^(sK)ᵀMe^(sK) = M (A8Ga).',
+ notBegun='No dispersion form, mass shell or wave–particle statement is derived here (stop list).')
+RECOVERED = ['the Acts I–IX Restructure Report (revision 3): its decision table, ambiguity register AMB-1 to AMB-23, Act rows and open decisions are now in docs/restructure_report_rev3.md (recovered from the session copy of the report; the report is Claude\'s proposal document, not Nadia\'s words)',
+             'AMB-1 (decided, D1): H1–H3 not replaced, merged or rewritten; ★ a distinct HYPOTHESIS cross-linked to H3 — Nadia\'s D1 words are in docs/restructure_decisions.md',
+             'AMB-7 (Pair B decided; the terms of ★ (a)–(c) left open, tested in Act VIII as STAR-A/B/C) — Nadia\'s Pair B decision is now recorded verbatim in docs/restructure_decisions.md ("Revision 2 decision: Pair B (recovered 2026-11-16)")',
+             'AMB-15: the Gate 2 wording applies; the Master Map #18 wording is the historical conjecture T-TIME-CIRCLE-0 (FAIL)']
+MISSING[:] = supersede('A. not in the repository', list(MISSING), ['none: every AMB entry cited by a live record (AMB-1, 7, 13, 14, 15, 16, 18) is in docs/restructure_report_rev3.md'], 'provenance recovered from project history')
+
+# corrections to pass-1 live statements (old wording kept in SUPERSEDED)
+STAR[1]['verdict'] = supersede('STAR-B verdict', STAR[1]['verdict'], 'RESTRICTED, in an explicitly defined category. Category: smooth manifolds without boundary (Hausdorff, second countable); admissible dynamics: flows of smooth complete vector fields. Statement: such a manifold carries a flow with a non-constant periodic orbit ⟺ some component has dimension ≥ 2 or is diffeomorphic to S¹. ⇐: a compactly supported bump-rotation field in a chart (A8Ba; compact support gives completeness, Lee 2013), or rotation of S¹. ⇒: otherwise every component is a point or ℝ (classification of 1-manifolds, Milnor 1965) and a flow on ℝ has no non-constant periodic orbit (A8Pe). If fixed points count as periodic, the claim is vacuous (Φ_t = id). Not stated for arbitrary "geometrical objects".', 'the pass-1 "every smooth manifold of dimension ≥ 2" was stated without a carded construction or a named category')
+STAR[1]['cards'] = ['A8Ba', 'A8Pe', 'A8X4']
+STAR[2]['verdict'] = supersede('STAR-C verdict', STAR[2]['verdict'], 'RESTRICTED to the Poincaré recurrence theorem (known; PROVED under its hypotheses): for a measure-preserving flow on a space of finite total measure, almost every point is recurrent. These are the hypotheses of the standard theorem — of its guarantee — not necessary conditions for recurrence: the rotation of ℝ² (infinite measure) and θ̇ = 2 + cos θ on S¹ (Lebesgue not invariant; invariant density 1/(2 + cos θ)) recur everywhere (A8Va). In A8Pd\'s examples (cylinder: μ = ∞; logistic: Lebesgue not invariant; θ̇ = 1 − cos θ: only δ₀ invariant) the guarantee is unavailable and recurrence in fact fails there. Topological recurrence (some recurrent point on a compact metric space: minimal sets, Birkhoff) is a separate, weaker statement, source-only here.', '"each hypothesis is needed" read as necessity for recurrence itself; it is necessity only for the theorem\'s guarantee')
+STAR[2]['cards'] = ['A8Pd', 'A8Va', 'A8Tc']
+hq = H3_CANDIDATES[1]
+hq['classification'] = supersede('H3-quotient classification', hq['classification'], 'too broad as worded (with "orbit"); RESTRICTED without it; corrected so that the periodic and the dense case use different objects (kernel/quotient vs orbit closure)', 'one quotient statement was used for two different situations')
+hq['clauses'] = supersede('H3-quotient clauses', [list(x) for x in hq['clauses']], [
+ ['"orbit"', 'TOO BROAD: every representation of an action is an orbit image, so this alternative makes the statement true of everything'],
+ ['"quotient, covering map"', 'PROVED for the periodic case only: for a continuous homomorphism χ: ℝ → S¹ or Tⁿ with kernel Tℤ ≠ {0}, ℝ/ker χ ≅ image (a homeomorphism) and ℝ → S¹ is a covering (A8Fa, A8Ka, A8Ce, A8Cf)'],
+ ['"compact orbit closure"', 'PROVED for the dense / quasi-periodic case, as a DIFFERENT object: ker χ = {0}, the image is not closed and χ is not a homeomorphism onto it; the bounded representation is the orbit closure, a subtorus of dimension n − rank(integer relations) (A8Kb, A8Te, A8Ua)'],
+ ['boundary approach / drift', 'NOT ENCODED by any of the three: the velocity orbit is all of (−1, 1), injective, with noncompact closure; its boundedness is an artifact of the coordinate, removed by the conjugacy artanh (A8Pg)']], 'kernel/stabilizer and orbit closure kept distinct')
+hq['clauses'] = [tuple(x) for x in hq['clauses']]
+hq['scope'] = supersede('H3-quotient scope', hq['scope'], 'Periodic case: quotient/kernel structure. Quasi-periodic/dense case: orbit closure/subtorus structure. Boundary approach: neither (it needs added limit points, a compactification). The same quotient statement is not used for two of these situations.', 'separate quotient from orbit closure')
+_c = [list(x) for x in H3_ORIGINAL['components']]
+_c[2][1] = supersede('H3-original, phrase 3', _c[2][1], 'c does not converge inside a theory; it is fixed. Only the family index tends to infinity (Role 3). The literal analogy t ↔ c → ∞ FAILS (H3-c-direct, A8Wa); the group parameter on the Lorentz side is the rapidity φ (θ ↔ φ), and c is a distinct object — a form/unit constant, entering the generator family as κ = det K = −1/c² (A8Wa, A8Qa)', '"r ↔ c" had no exact map')
+_c[3][1] = supersede('H3-original, phrase 4', _c[3][1], 'ESTABLISHED (Role 2): c fixes the preserved form M_c, the null cone x = ±ct and the boost group (A8La). Common object with the circle (H3-group, ESTABLISHED INSTANCE): one-parameter groups preserving quadratic forms, generated by K with KᵀM + MK = 0 (A8Ga, A8Ea, A8Eb)', 'the common object named through the generator theorem')
+H3_ORIGINAL['components'] = [tuple(x) for x in _c]
+H3_ORIGINAL['note'] = supersede('H3-original note', H3_ORIGINAL['note'], 'H3-original is not replaced by any candidate; none is called H3. Its strongest surviving exact content: H3-action (PROJECT SYNTHESIS), H3-group (ESTABLISHED INSTANCE) and H3-c-family (RESTRICTED; connection to H3 OPEN). H3-c-direct FAILS.', 'H3-c split')
+CFAMILY_NOTE = supersede('c-family note', CFAMILY_NOTE, 'Not inferred: that physical c is meaningless. Restricted result (A8Wc): for the bare family M_c = diag(1, −1/c²), all finite c > 0 forms are congruent under a spatial rescaling, so the congruence class of this isolated bilinear form does not distinguish the numerical finite value of c. This does NOT mean that physical c has no significance beyond finiteness. Kept distinct: (1) finite-c coordinate/unit normalization; (2) causal/Lorentzian structure (the null cone x = ±ct, A8Md); (3) dimensionless physical ratios such as v/c (tanh φ = v/c, A8Wa, A8Wc); (4) the external theory-family limit c → ∞ (A8Mc, A8Lb).', '"the invariant content of the family is whether c is finite" was too broad')
+TC_TABLE[-1] = supersede('t vs c table, last row', TC_TABLE[-1], ('role under the shared exact object (one-parameter group preserving a quadratic form)', 'θ = ωt, exactly linear in t, is the group parameter of e^(θJ); orbit invariant r² = |z₀|²; κ = det(ωJ) = ω²', 'the rapidity φ (tanh φ = v/c) is the group parameter of e^(φK); c is not a group parameter; orbit invariant q_c on the orbit (t₀² − x₀²/c²); κ = det K_c = −1/c² in the velocity parametrization; no member or limit of the c-family is elliptic (A8Wa, A8Wb, A8Qa, A8Sb)'), '"the circle radius r ↔ c" had no exact map')
+TC_VERDICT['analogy'] = supersede('t vs c: analogy', TC_VERDICT['analogy'], 'STRUCTURAL ANALOGY through one exact object shared by both examples (H3-group): a one-parameter group e^(sK) preserving a quadratic form, KᵀM + MK = 0 (A8Ga). The correct comparison is θ ↔ φ — the angle θ = ωt of e^(θJ) and the rapidity φ (tanh φ = v/c) of e^(φK) — not t ↔ c (A8Wa). c is a distinct object: in the family M_κ = diag(1, κ), K_κ = [[0, κ], [−1, 0]], the circle realized as the oscillator (κ = ω²) and the boosts (κ = −1/c²) lie on opposite sides of the parabolic member κ = 0, which ω → 0 and c → ∞ both reach when the physical variables are held fixed (A8Qa, A8Qb). The earlier "circle radius r ↔ c" has no exact map and is discarded (A8Wb)', '"r ↔ c" discarded; θ ↔ φ')
+_six = [list(x) for x in SIX]
+_six[1][1] = supersede('six questions, Q2', _six[1][1], 'YES in fixed units (t, x) (A8Ma, A8Md). Restricted: the bare forms M_c for finite c are congruent by a spatial rescaling, so the congruence class of the isolated form does not distinguish the finite value of c (A8Wc); c still enters the causal structure (x = ±ct), the dimensionless ratio v/c and the family limit', 'finiteness claim too broad')
+_six[4][1] = supersede('six questions, Q5', _six[4][1], 'YES, restricted (H3-group, ESTABLISHED INSTANCE): both are one-parameter groups preserving a quadratic form; the correspondence is θ ↔ φ (A8Wa), with c a form/unit constant (κ = −1/c², A8Qa); the c-family and the circle orbit are orbits of one-parameter groups on different spaces (Sym(2) vs S¹) with different behaviour classes', '"t ↔ rapidity s and r ↔ c" corrected')
+_six[5][1] = supersede('six questions, Q6', _six[5][1], 'Recorded: the literal analogy t ↔ c → ∞ FAILS (H3-c-direct); "c converges to infinity like t" is SUPERFICIAL. What survives is H3-group (ESTABLISHED INSTANCE) and H3-c-family (RESTRICTED; its connection to H3 OPEN)', 'H3-c split')
+SIX = [tuple(x) for x in _six]
+ROLES_LINK = supersede('H3-1 restricted answer', ROLES_LINK, 'H3-1 (the two roles of c), restricted answer: in the velocity parametrization the boost generator is K_c = [[0, −1/c²], [−1, 0]] with det K_c = κ = −1/c² (A8Qa). Role 2 (c fixes the invariant form M_c and the hyperbolic generator) and Role 3 (c → ∞ at fixed v: κ → 0⁻, the parabolic Galilean member; A8Lb, A8Lc) are two aspects of this one constant. The bare congruence class of M_c does not distinguish finite values of c (A8Wc); this is not a claim that c means only finiteness. Known mathematics; the connection to H3 stays OPEN.', '"the invariant content of c is whether it is finite, not its value" deleted as too broad')
+_rr = [list(x) for x in REAL_RESULT['found']]
+_rr[3] = supersede('real-result table, singular-limit row', _rr[3], ['singular limit of a family of forms + group contraction', 'the c-family; the circle when it is realized as the oscillator with its supplied form p² + ω²q² (κ = ω²)', 'shared exactly within the family M_κ: ω → 0 and c → ∞ reach the same parabolic (Galilean) member when the physical variables are held fixed (A8Qa, A8Qb); for the pure Fourier character (form |z|², generator ωJ) ω → 0 gives the identity, not a contraction'], 'the oscillator realization was not considered in pass 1')
+_rr[2] = supersede('real-result table, preserved-form row', _rr[2], ['one-parameter group preserving a quadratic form (generator theorem)', 'circle rotation and Lorentz boosts (and Galilean shears at c = ∞)', 'shared exactly (CF1/CF4, A8Ga); θ ↔ φ as group parameters; c is not a group parameter (A8Wa)'], '"t ↔ s, r ↔ c" corrected')
+REAL_RESULT['found'] = [tuple(x) for x in _rr]
+REAL_RESULT['verdict'] = supersede('real-result verdict', REAL_RESULT['verdict'], 'Structural-transfer credit goes to the preserved-form / one-parameter-group object (H3-group; Foundation CF1/CF4, made explicit by the generator theorem A8Ga) and to the kernel/stabilizer object within the action examples. The singular-limit object is shared by the c-family and the oscillator realization of the circle (A8Qa), and it is scaling-dependent on both sides (A8X5, A8Qb). No object makes t correspond to c.', 'κ-family added; t ↔ c excluded')
+_st = {r['id']: r for r in STATUS_TABLE}
+SUPERSEDED.append(dict(where='status table, H3-c row', old=dict(_st['H3-c']), new='split into H3-c-direct, H3-group, H3-c-family', why='the H3-c entry mixed three claims'))
+STATUS_TABLE[:] = [r for r in STATUS_TABLE if r['id'] != 'H3-c']
+_i = [r['id'] for r in STATUS_TABLE].index('H3-quotient') + 1
+STATUS_TABLE[_i:_i] = [dict(id=h['id'], record=h['record'], status=h['status'], basis=h['basis'] + (f'; connection to H3: {h["h3Connection"]}' if h.get('h3Connection') else ''), cards=h['cards']) for h in H3_SPLIT]
+for r in STATUS_TABLE:
+    if r['id'] == 'H3-quotient': r.update(basis=supersede('status table, H3-quotient basis', r['basis'], 'periodic case: kernel/quotient (A8Fa, A8Ka); dense case: orbit closure/subtorus, a different object (A8Kb); too broad with "orbit"; fails for boundary approach', 'kernel vs closure'), cards=['A8Ce', 'A8Cf', 'A8Fa', 'A8Ka', 'A8Kb', 'A8Pg'])
+    if r['id'] == 'STAR-B': r.update(basis=supersede('status table, STAR-B basis', r['basis'], 'vacuous with fixed points; in the smooth-manifold category: a non-constant periodic orbit exists ⟺ some component has dimension ≥ 2 or is S¹', 'explicit category'), cards=['A8Pe', 'A8Ba'])
+    if r['id'] == 'STAR-C': r.update(basis=supersede('status table, STAR-C basis', r['basis'], '= Poincaré recurrence under its hypotheses (PROVED, known); the hypotheses are those of the guarantee, not necessary for recurrence', 'hypotheses vs recurrence'), cards=['A8Pd', 'A8Va'])
+STATUS_TABLE.append(dict(id='geometry constrains, generator decides', record='T-GEOM-GEN-DYN', status='PROJECT SYNTHESIS', basis=GEOM_GEN_DYN['scope'], cards=GEOM_GEN_DYN['cards']))
+STATUS_TABLE.append(dict(id='STAR-A lesson: geometry alone does not determine periodicity', record='T-STAR-A-LESSON', status='PROVED', basis='same torus, same invariants, different behaviour (A8Ua); three generator types on one form (A8Ec)', cards=['A8Ua', 'A8Ec', 'A8X1']))
+STORY_STATUS_CARD = 'A8Zb'
+SUPERSEDED.append(dict(where='ratings', old=[dict(r) for r in RATINGS], new='story contribution added; ★ and H3-c rows revised', why='percentages contextualized by the story; H3-c split'))
+STORYC = {'circle finite/infinite relation': 'REPRESENTATION → DYNAMICS/CONTINUATION: the circle is the image of the translation character, ℝ/ker χ_ω ≅ S¹ (A8Fa, A8Fb)',
+          'torus extension': 'GEOMETRY → DYNAMICS/CONTINUATION: same compact geometry, behaviour decided by the generator\'s integer relations; kernel and orbit closure separated (A8Ua, A8Ka, A8Kb)',
+          'H3-action': 'PRESERVED STRUCTURE → GEOMETRY → DYNAMICS/CONTINUATION: stabilizer and orbit closure of the generated action decide the continuation type',
+          'H3-quotient': 'REPRESENTATION → DYNAMICS/CONTINUATION, periodic case only (quotient by the kernel); dense case handled by orbit closure',
+          '★': 'GEOMETRY → DYNAMICS/CONTINUATION: STAR-A\'s failure identifies the missing condition (the generator); STAR-B and STAR-C are restricted to named categories and theorems',
+          'Act VIII overall': 'PRESERVED STRUCTURE → GEOMETRY → DYNAMICS/CONTINUATION, made exact by the generator theorem and the chain preserved relation → group → generator → one-parameter transformation → orbit/stabilizer → dynamics'}
+RATINGS = [dict(r, story=STORYC.get(r['item'], '')) for r in RATINGS if r['item'] != 'H3-c']
+for r in RATINGS:
+    if r['item'] == '★': r.update(bs=20, why=r['why'] + '; story-integration pass: Backbone Support restored from 15% to 20% — STAR-A\'s failure identified the missing condition and does not reduce ★\'s research question')
+_k = [r['item'] for r in RATINGS].index('★')
+RATINGS[_k:_k] = [
+ dict(item='H3-c-direct', bs=0, slop=5, td='FAIL', breadth=1, status='FAIL', why='t is an action parameter, c a form/unit constant; the literal analogy has no exact map', story='none: a failed overreach, kept'),
+ dict(item='H3-group', bs=35, slop=10, td='STRUCTURAL TRANSFER', breadth=2, status='ESTABLISHED INSTANCE', why='the generator theorem is proved and realized on supplied forms; circle and boost are its canonical instances', story='PRESERVED STRUCTURE → TRANSFORMATION → DYNAMICS/CONTINUATION: the common-form chart (CF1/CF4) now reaches orbit behaviour'),
+ dict(item='H3-c-family', bs=20, slop=20, td='STRUCTURAL TRANSFER', breadth=2, status='RESTRICTED (H3 connection OPEN)', why='established pieces (degenerate limit, Galilean limit, contraction, the κ-family); every limit depends on the scaling held fixed', story='GEOMETRY → CROSS-SYSTEM TRANSFER (prepared): the family of forms and its singular limit; handoff to the mass-wave branch')]
+for _rc in RATING_CHANGES:
+    if _rc['object'].startswith('L4') and 'finiteness' in _rc['reason']: _rc['reason'] = '[reason superseded on 2026-11-16 by the story-integration entry below; kept as history] ' + _rc['reason']
+RATING_CHANGES.append(dict(object='I2 (★)', fromBs=15, toBs=20, reason='story-integration pass: the reduction rested on STAR-A alone; STAR-A\'s failure identifies the missing condition (the generator) and the governing criterion is the Foundation story, not the percentage'))
+RATING_CHANGES.append(dict(object='L4 (two roles of c)', fromBs=30, toBs=30, reason='percentage kept; reason replaced: the deleted finiteness statement is superseded by the restricted link κ = det K_c = −1/c² (Role 2: the hyperbolic generator; Role 3: κ → 0⁻) (A8Qa, A8Wc)'))
+NEXT = supersede('next pass', NEXT, ['READY FOR ADVERSARIAL LOCK, with these targets: the STAR-B category statement (A8Ba, with the completeness and 1-manifold classification theorems source-only); the free-orbit class "noncompact closure, not escaping" (no carded example; kept as a class); the κ-family scope (2D; scaling-dependent); every superseded statement checked absent from live text.',
+ 'Not begun (stop list): mass-wave/conjugacy, dispersion, quantum work, Energeo, the final Foundation freeze. The mass-wave handoff note is preparation only.'], 'story-integration pass completed the missing bridges')
+
 data = dict(about='Act VIII first construction pass (2026-11-16). Generated by research/tools/act8_source.py.', statuses=STATUSES, outcomes=OUTCOMES, cards=CARDS,
             originals=ORIGINALS, missing=MISSING, read=READ, taxonomy=TAXONOMY, circle=CIRCLE, circleNote=CIRCLE_NOTE, torus=TORUS, cylinder=CYLINDER, cylinderNote=CYLINDER_NOTE,
             framework=FRAMEWORK, star=STAR, starNote=STAR_NOTE, h3Candidates=[dict(c, clauses=[dict(clause=a, verdict=b) for a, b in c['clauses']]) for c in H3_CANDIDATES],
@@ -264,17 +408,20 @@ data = dict(about='Act VIII first construction pass (2026-11-16). Generated by r
             rules=RULES, rulesNote=RULES_NOTE, cFamily=CFAMILY, cFamilyNote=CFAMILY_NOTE, cLimit=CLIMIT,
             tVsC=[dict(aspect=a, t=b, c=c) for a, b, c in TC_TABLE], tVsCVerdict=TC_VERDICT, sixQuestions=[dict(question=a, answer=b) for a, b in SIX], rolesLink=ROLES_LINK,
             counterexamples=COUNTER, rejected=REJECTED, realResult=dict(REAL_RESULT, found=[dict(object=a, examples=b, verdict=c) for a, b, c in REAL_RESULT['found']]),
-            statusTable=STATUS_TABLE, statusCard=DERIVED_STATUSES_CARD, ratings=RATINGS, ratingChanges=RATING_CHANGES, next=NEXT, sources=SOURCES)
+            statusTable=STATUS_TABLE, statusCard=DERIVED_STATUSES_CARD, ratings=RATINGS, ratingChanges=RATING_CHANGES, next=NEXT, sources=SOURCES,
+            storyCards=STORY_CARDS, story=STORY, generatorTheorem=GEN_THEOREM, chartRows=CHART_ROWS, so2so11=SO2_SO11, fourier=FOURIER, kernelClosure=KERNEL_CLOSURE,
+            h3Split=H3_SPLIT, h3SplitNote=H3_SPLIT_NOTE, kappa=KAPPA, geomGenDyn=GEOM_GEN_DYN, massWaveHandoff=MASS_WAVE_HANDOFF, recovered=RECOVERED, storyStatusCard=STORY_STATUS_CARD, superseded=SUPERSEDED)
 (ROOT / 'research/act8.json').write_text(json.dumps(data, ensure_ascii=False, indent=1) + '\n')
 
 cell = lambda x: '—' if x in (None, '', []) else str(x).replace('|', '\\|')
 yn = lambda b: 'yes' if b else 'no'
-L = ['# Act VIII: finite / infinite representation, H3, ★ and c (first construction pass)', '',
-     'Generated from `research/tools/act8_source.py` (`research/act8.json`). Do not edit by hand. Decisions: `docs/restructure_decisions.md`, "Act VIII first construction pass". Cards: `verify/verify_A8.py` (' + ', '.join(CARDS) + ').', '',
+L = ['# Act VIII: finite / infinite representation, H3, ★ and c (first construction pass + story-integration pass)', '',
+     'Generated from `research/tools/act8_source.py` (`research/act8.json`). Do not edit by hand. Decisions: `docs/restructure_decisions.md`, "Act VIII first construction pass" and "Act VIII story-integration and mathematical-correction pass". Cards: `verify/verify_A8.py` (' + ', '.join(CARDS) + '); `verify/verify_A8S.py` (' + ', '.join(STORY_CARDS) + ').', '',
+     'Story-integration pass (2026-11-16): sections S1–S9 below place Act VIII in the Foundation spine; corrected statements keep their old wording under "Superseded wording".', '',
      'H3 and ★ are investigated separately and their hierarchy is not decided. The time parameter t and the theory parameter c are kept apart. Statuses: ' + '; '.join(STATUSES) + '.', '',
      '## A. Historical wording', '', '| Name | Record | Wording (verbatim) | Source | Note |', '|---|---|---|---|---|']
 L += [f'| {o["id"]} | {o["record"]} | {cell(o["words"])} | `{o["source"]}` | {cell(o["note"])} |' for o in ORIGINALS]
-L += ['', 'Read for this pass: ' + '; '.join(READ) + '.', '', 'Not in the repository:'] + [f'- {m}' for m in MISSING]
+L += ['', 'Read for this pass: ' + '; '.join(READ) + '.', '', 'Not in the repository (story-integration pass: recovered):'] + [f'- {m}' for m in MISSING] + ['', 'Recovered provenance:'] + [f'- {m}' for m in RECOVERED]
 L += ['', '## B. Finite / infinite taxonomy', '', '| Property | Definition | Example |', '|---|---|---|'] + [f'| {p["name"]} | {cell(p["definition"])} | {cell(p["example"])} |' for p in TAXONOMY['properties']]
 L += ['', '| System | ' + ' | '.join(p[0] for p in PROPS) + ' |', '|---|' + '---|' * len(PROPS)] + [f'| {s} | ' + ' | '.join(yn(x) for x in v) + ' |' for s, v in TABLE_ROWS]
 L += ['', 'Implications that hold: ' + '; '.join(TAXONOMY['implications']) + '.', '', 'Non-implications, each witnessed by a row: ' + '; '.join(TAXONOMY['nonImplications']) + ' (A8Da, A8Db).', '', TAXONOMY['note']]
@@ -298,11 +445,32 @@ L += ['', 'Rejected implications:', '', '| Claim | Status | Card |', '|---|---|-
 L += ['', '### What would count as a real H3 result', '', f'Required: {REAL_RESULT["required"]}.', '', '| Object | Examples sharing it | Verdict |', '|---|---|---|'] + [f'| {a} | {cell(b)} | {cell(c)} |' for a, b, c in REAL_RESULT['found']] + ['', REAL_RESULT['verdict']]
 L += ['', '## M. H3 status table', '', f'Separate statuses; no umbrella verdict. Derived by fixed rules from the card verdicts in {DERIVED_STATUSES_CARD}.', '', '| Item | Record | Status | Basis | Cards |', '|---|---|---|---|---|']
 L += [f'| {s["id"]} | {s["record"]} | {s["status"]} | {cell(s["basis"])} | {", ".join(s["cards"])} |' for s in STATUS_TABLE]
-L += ['', '## N. Backbone assessment and ratings (separate; no overall score)', '', '| Item | Backbone Support | AI Slop Risk | Transfer Depth | Breadth | Status | Why |', '|---|---|---|---|---|---|---|']
-L += [f'| {r["item"]} | {r["bs"]}% | {r["slop"]}% | {r["td"]} | {r["breadth"]} | {cell(r["status"])} | {cell(r["why"])} |' for r in RATINGS]
+L += ['', '## N. Backbone assessment and ratings (separate; no overall score)', '', '| Item | Backbone Support | AI Slop Risk | Transfer Depth | Breadth | Status | Backbone story contribution | Why |', '|---|---|---|---|---|---|---|---|']
+L += [f'| {r["item"]} | {r["bs"]}% | {r["slop"]}% | {r["td"]} | {r["breadth"]} | {cell(r["status"])} | {cell(r.get("story"))} | {cell(r["why"])} |' for r in RATINGS]
 L += ['', 'Foundation rating changes:'] + [f'- {c["object"]}: Backbone Support {c["fromBs"]}% → {c["toBs"]}% ({c["reason"]}).' for c in RATING_CHANGES]
 L += ['', 'Low Backbone Support is not a reason to discard a branch: every weak and negative connection above is kept.', '',
       '## O. Files', '', '- `verify/verify_A8.py` (41 cards, one ledger run); `research/tools/act8_source.py` → `research/act8.json`, this record; registry records T-ACT8-GOV, T-UNBOUNDED-EVOLUTION, T-COMPACT-NOT-PERIODIC, T-H3-ACTION, T-H3-QUOTIENT, T-H3-C, T-STAR-A, T-STAR-B, T-STAR-C; Foundation objects A8A, A8C, A8T, A8D, A8S, A8H, A8M, A8L, A8K, A8X, bridges BR75–BR80, domains D37–D39; sources ' + ', '.join(SOURCES[:7]) + '; `test/act8.test.js`.',
+      '- Story-integration pass: `verify/verify_A8S.py` (18 cards, one ledger run); `docs/restructure_report_rev3.md` (recovered); registry records T-H3-C-DIRECT, T-H3-GROUP, T-H3-C-FAMILY, T-GEOM-GEN-DYN, T-STAR-A-LESSON, T-GEN-DYN-Q; Foundation objects A8G, A8E, A8F, A8KC, A8Q, A8GD, A8HCD, A8HG, A8HCF, bridges BR81–BR86, domain D40; sources SRC-LEE-2012, SRC-MILNOR-1965, SRC-YAGLOM-1979; `test/act8_story.test.js`.',
       '', '## P. Recommendation for the next pass', ''] + [f'- {n}' for n in NEXT]
+L += ['', '## Story integration (2026-11-16): Act VIII in the Foundation spine', '', '**Spine (unchanged):** ' + ' → '.join(STORY['spine']) + '.', '',
+      f'**Spine transition advanced:** {STORY["advances"]}.', '', STORY['contribution'], '',
+      f'- **Failed overreach:** {STORY["failedOverreach"]}.', f'- **What the failure teaches:** {STORY["lesson"]}.', f'- **Surviving structural result:** {STORY["surviving"]}.', '',
+      STORY['starAvsBackbone'], '', f'Next question: *{STORY["nextQuestion"]}*', '', STORY['percentages'],
+      '', '### S1. The generator theorem: the common-form chart → Act VIII', '', f'**Theorem.** {GEN_THEOREM["statement"]}', '', f'Proof. {GEN_THEOREM["proof"]}', '',
+      f'Chart objects: {GEN_THEOREM["chart"]}. Cards: {", ".join(GEN_THEOREM["cards"])}.', '', f'Act VIII sits after the chart: {GEN_THEOREM["chain"]}.', '', GEN_THEOREM['scope'],
+      '', '### S2. Preserved geometry → generator → dynamics (master-chart block)', '', 'B_M → G_M = {A : AᵀMA = M} → 𝔤_M = {K : KᵀM + MK = 0} → e^(sK) → orbit / stabilizer → dynamical behaviour', '',
+      '| Row | B_M | G_M | 𝔤_M | One-parameter transformation | Orbit / stabilizer | Behaviour | Cards | Does NOT prove |', '|---|---|---|---|---|---|---|---|---|']
+L += [f'| {r["row"]} | {cell(r["B"])} | {cell(r["G"])} | {cell(r["g"])} | {cell(r["flow"])} | {cell(r["orbit"])} | {cell(r["behaviour"])} | {", ".join(r["cards"])} | {cell(r["notProved"])} |' for r in CHART_ROWS]
+L += ['', '### S3. SO(2) versus SO(1,1): an exact canonical comparison', '', f'- Elliptic: {SO2_SO11["elliptic"]}.', f'- Hyperbolic: {SO2_SO11["hyperbolic"]}.', '', SO2_SO11['result'], '', f'Scope: {SO2_SO11["scope"]}',
+      '', '### S4. The circle as a Fourier character', ''] + [f'- {FOURIER[k]}.' for k in ('character', 'kernel', 'bridge')] + ['', f'Exact finite/infinite relation: {FOURIER["finiteInfinite"]}']
+L += ['', '### S5. Kernel versus orbit closure (torus)', '', f'- {KERNEL_CLOSURE["periodic"]}.', f'- {KERNEL_CLOSURE["dense"]}.', '', KERNEL_CLOSURE['chain'],
+      '', '### S6. H3-c split into three records', '', H3_SPLIT_NOTE, '', '| ID | Record | Wording (verbatim) | Status | Basis | Cards |', '|---|---|---|---|---|---|']
+L += [f'| {h["id"]} | {h["record"]} | {cell(h["words"])} | {h["status"]} | {cell(h["basis"])} | {", ".join(h["cards"])} |' for h in H3_SPLIT]
+L += ['', '### S7. Rapidity, c and the family M_κ', '', f'- Family: {KAPPA["family"]}.', f'- Members: {KAPPA["members"]}', f'- Limit: {KAPPA["limit"]}.', f'- Scaling: {KAPPA["scaling"]}.', f'- Roles: {KAPPA["roles"]}.', f'- Does NOT prove: {KAPPA["notProved"]}.',
+      '', '### S8. Geometry constrains; the generator decides', '', f'> {GEOM_GEN_DYN["words"]}', '', f'Status: {GEOM_GEN_DYN["status"]} ({GEOM_GEN_DYN["record"]}). Formal content: {GEOM_GEN_DYN["definition"]}.', '',
+      f'Scope: {GEOM_GEN_DYN["scope"]}. Role: {GEOM_GEN_DYN["role"]}. Cards: {", ".join(GEOM_GEN_DYN["cards"])}.',
+      '', '### S9. Mass-wave handoff (preparation only)', '', MASS_WAVE_HANDOFF['note'], '', MASS_WAVE_HANDOFF['notBegun'],
+      '', '## Superseded wording (kept; replaced by this pass)', '', '| Where | Old wording | Why replaced |', '|---|---|---|']
+L += [f'| {x["where"]} | {cell(json.dumps(x["old"], ensure_ascii=False) if not isinstance(x["old"], str) else x["old"])} | {cell(x["why"])} |' for x in SUPERSEDED]
 (ROOT / 'research/constructions/act8_finite_infinite_h3_c.md').write_text('\n'.join(L) + '\n')
-print(f'{len(CARDS)} cards; {len(STATUS_TABLE)} status rows; t vs c: {TC_VERDICT["outcome"]}')
+print(f'{len(CARDS)} + {len(STORY_CARDS)} cards; {len(STATUS_TABLE)} status rows; t vs c: {TC_VERDICT["outcome"]}; {len(SUPERSEDED)} superseded statements')

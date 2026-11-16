@@ -1,7 +1,7 @@
 # Restructuring decisions (November 2026)
 
 Nadia's words, quoted exactly from the restructuring gate. The full report, with every ambiguity and risk, is the
-"Acts I–IX Restructure Report" (revision 3). This file records the statements the research graph cites and the
+"Acts I–IX Restructure Report" (revision 3); its ambiguity register, decision table and Act rows were recovered on 2026-11-16 to `docs/restructure_report_rev3.md`. This file records the statements the research graph cites and the
 decisions that govern Chapter I. Nothing here is paraphrased.
 
 ## Backbone (brief, revision 1)
@@ -1751,3 +1751,107 @@ Nadia's decisions, verbatim. LaTeX was converted to plain text (inline "(c)" wri
 > Low Backbone Support is not a reason to discard a coherent branch.
 
 > Stop after the finite/infinite/H3/c construction.
+
+## Revision 2 decision: Pair B (recovered 2026-11-16)
+
+Nadia's words, verbatim, from the revision-2 gate. They were applied in the revision-2 report (AMB-7, now in
+`docs/restructure_report_rev3.md`) but were not copied into this file at the time; recovered from the session record on
+2026-11-16. LaTeX was converted to plain text; nothing else was changed.
+
+> The previous ambiguity framed Pair B too narrowly as whether S^1 is acting as a domain or codomain.
+> That distinction is mathematically relevant, but it is not the main research question.
+
+> A geometric structure carries rules. Repeated observable behavior may arise from those rules.
+
+> The circle is especially important because its symmetries make periodic behavior highly recognizable, and many familiar periodic relations such as sine and cosine can be represented through circular geometry.
+
+> However, do not encode the theory as: periodicity = circular geometry or all periodicity comes from S¹.
+
+> Treat that sentence as the user's hypothesis / research direction, not as an established theorem.
+
+> geometric structure → constraints / symmetries → repeated behavior.
+
+> But future geometric objects must be examined separately.
+
+> For this geometry:
+> 1. What rules constrain the object?
+> 2. Which relations are preserved?
+> 3. What repeated or structured behavior follows?
+> 4. Is the observed periodicity specific to this geometry or shared by a broader class?
+
+> Update AMB-7. Do not reduce Pair B to “both use a circle.”
+
+## Act VIII story-integration and mathematical-correction pass (2026-11-16)
+
+Nadia's decisions, verbatim. LaTeX was converted to plain text (inline math written as plain symbols); nothing else was
+changed.
+
+> The governing criterion is the user's established Foundation architecture and mathematical story, not Backbone Support percentages. A failed subclaim is not grounds to downgrade or discard a branch if the failure identifies the missing mathematical condition and strengthens the larger story.
+
+> Do not replace this architecture.
+
+> Keep H3-original and STAR-original exactly as historical/project hypotheses.
+
+> Keep STAR-A's failure.
+
+> Keep every counterexample.
+
+> Do not rewrite the user's hypothesis into the version that survives.
+
+> In particular, STAR-A failing must not be treated as equivalent to the Foundation/backbone failing.
+
+> geometry alone does not determine periodicity.
+
+> Given a preserved geometric relation, what transformations preserve it, what generators produce those transformations, and what observable dynamics follow?
+
+> preserved relation → preserving group → generator → one-parameter transformation → orbit/stabilizer → observable dynamics.
+
+> Do not claim one universal M.
+
+> Only apply this construction when the form and transformation family are independently supplied by the system.
+
+> Do NOT generalize this into the universal statement that metric signature alone determines all dynamics in higher dimensions.
+
+> an unbounded translation parameter can be represented in a compact phase geometry because the representation identifies values differing by the kernel.
+
+> compact image ⇏ nontrivial kernel ⇏ periodicity.
+
+> The kernel/stabilizer and orbit closure must be kept distinct.
+
+> Do not use the same quotient statement for these two situations.
+
+> Keep STAR-B RESTRICTED.
+
+> Preserve STAR-C as RESTRICTED.
+
+> The group parameter in the Lorentz one-parameter subgroup is rapidity φ, not c.
+
+> Keep c as a distinct object.
+
+> This does NOT mean that physical c has no significance beyond finiteness.
+
+> H3-c-direct: literal analogy between unbounded time t and c→∞. Status: FAIL / superficial.
+
+> H3-group: circle rotations and Lorentz boosts are both one-parameter symmetry groups preserving quadratic forms and satisfying the generator equation. Status: established structural pattern in the canonical examples.
+
+> H3-c-family: varying c indexes a family of Lorentzian structures/forms whose c→∞ limit is singular and whose Lorentz transformations have a Galilean limit under fixed-v scaling. Status: restricted/established pieces; project connection to H3 remains open.
+
+> Do not merge these back together.
+
+> geometry constrains the admissible symmetry/action structure, but the generator/action determines whether the resulting orbit is periodic, recurrent, hyperbolic, dense, or drifting.
+
+> Do not call it a universal theorem if “geometry constrains” has not been formally defined beyond the provided examples.
+
+> Do not allow live research objects to point to missing ambiguity/governance records.
+
+> Do not reduce branch importance solely because STAR-A failed.
+
+> Backbone Support remains secondary metadata.
+
+> failed overreach: geometry alone forces periodicity
+
+> surviving structural result: action/generator/stabilizer determine the continuation type under the supplied geometry.
+
+> Do not replace the percentages; contextualize them.
+
+> Do NOT derive the mass-wave theory in this pass.

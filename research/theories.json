@@ -1063,6 +1063,14 @@
         {
           "ref": "card:A8Ca",
           "note": "circle instance"
+        },
+        {
+          "ref": "card:A8Ga",
+          "note": "generator theorem"
+        },
+        {
+          "ref": "card:A8Fa",
+          "note": "Fourier character"
         }
       ],
       "evidenceAgainst": [
@@ -1073,7 +1081,8 @@
       ],
       "boundaries": [
         "One universal common geometry: Level 4. A common schema with subclasses: Level 3 (Gate 3).",
-        "Act VIII (2026-11-16): this record is H3-original; status OPEN, not replaced. Components: the time–circle example is an ESTABLISHED INSTANCE in its corrected reading (A8Ca, A8Cd); \"converge to infinity\" (T-TIME-CIRCLE-0) FAIL; c as \"a rule in the manifold\" ESTABLISHED (c fixes the preserved form, A8La); \"c also converges to infinity\" like t is SUPERFICIAL (c is fixed in each theory; only the family index tends to ∞). Candidates, not renamed H3: T-H3-ACTION (PROJECT SYNTHESIS), T-H3-QUOTIENT (RESTRICTED), T-H3-C (RESTRICTED). Record: research/constructions/act8_finite_infinite_h3_c.md."
+        "Act VIII (2026-11-16): this record is H3-original; status OPEN, not replaced. Components: the time–circle example is an ESTABLISHED INSTANCE in its corrected reading (A8Ca, A8Cd); \"converge to infinity\" (T-TIME-CIRCLE-0) FAIL; c as \"a rule in the manifold\" ESTABLISHED (c fixes the preserved form, A8La); \"c also converges to infinity\" like t is SUPERFICIAL (c is fixed in each theory; only the family index tends to ∞). Candidates, not renamed H3: T-H3-ACTION (PROJECT SYNTHESIS), T-H3-QUOTIENT (RESTRICTED), T-H3-C (RESTRICTED). Record: research/constructions/act8_finite_infinite_h3_c.md.",
+        "Story-integration pass (2026-11-16): H3-original kept verbatim and OPEN. The pass-1 candidate H3-c is split: H3-c-direct FAIL / superficial; H3-group ESTABLISHED INSTANCE (θ ↔ φ, the generator theorem); H3-c-family RESTRICTED, connection to H3 OPEN. Correct comparison: θ ↔ φ (rapidity), not t ↔ c."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -1083,6 +1092,8 @@
       "relatedObjects": [],
       "relatedCards": [
         "A8Ca",
+        "A8Fa",
+        "A8Ga",
         "A8Sa",
         "C8a",
         "C8d",
@@ -1121,7 +1132,10 @@
         "T-UNBOUNDED-EVOLUTION",
         "T-H3-ACTION",
         "T-H3-QUOTIENT",
-        "T-H3-C"
+        "T-H3-C",
+        "T-H3-C-DIRECT",
+        "T-H3-GROUP",
+        "T-H3-C-FAMILY"
       ],
       "history": [
         {
@@ -1131,6 +1145,10 @@
         {
           "date": "2026-11-16",
           "change": "Act VIII: H3-original kept; candidates recorded separately"
+        },
+        {
+          "date": "2026-11-16",
+          "change": "story pass: H3-c split"
         }
       ],
       "relatedActsRev3": [
@@ -1286,7 +1304,7 @@
       "auditRef": "R7; Master Map #18",
       "audit": {
         "before": "title-only",
-        "note": "quoted only in the report (AMB-15); no record"
+        "note": "quoted in the report (AMB-15), recovered to docs/restructure_report_rev3.md on 2026-11-16"
       },
       "interactive": "none",
       "graphRecord": null,
@@ -1305,6 +1323,10 @@
         {
           "date": "2026-11-16",
           "change": "Act VIII: classified FAIL"
+        },
+        {
+          "date": "2026-11-16",
+          "change": "story-integration pass: AMB-15 recovered to docs/restructure_report_rev3.md; audit note updated. Previous audit: {'before': 'title-only', 'note': 'quoted only in the report (AMB-15); no record'}"
         }
       ],
       "relatedActsRev3": [
@@ -1643,13 +1665,22 @@
         {
           "ref": "card:A8Lc",
           "note": "contraction: c = ∞ is the only non-isomorphic member"
+        },
+        {
+          "ref": "card:A8Wc",
+          "note": ""
+        },
+        {
+          "ref": "card:A8Qa",
+          "note": ""
         }
       ],
       "evidenceAgainst": [],
       "boundaries": [
         "C9 is not inferred from the paper; the two manifolds are linked only through c (Gate 3).",
         "Precision pass (2026-11-15): three roles are kept apart. The two roles named here are Role 2 (within a theory, c helps define the invariant Lorentzian structure) and Role 3 (across theories, c → ∞ is a singular limit giving the degenerate form diag(1, 0), not by itself the Newtonian metric). Role 1 is a representation-level fact added to avoid conflation: for the matrix η_c = diag(1, −1/c²), a finite c can be normalized by rescaling x; this does not remove Role 2. The transition between Roles 2 and 3 stays the question.",
-        "Act VIII (2026-11-16), restricted answer to H3-1: Role 2 (c fixes the invariant form) and Role 3 (c → ∞) are roles of the same form constant. At finite c the value of c is not an isomorphism invariant (finite-c forms congruent, finite-c algebras isomorphic); the invariant content is finiteness — M_c nondegenerate and the algebra Poincaré exactly when c < ∞ (A8Ma, A8Mc, A8Lc). Known mathematics; it does not make c an instance of the circle mechanism (T-H3-C)."
+        "SUPERSEDED (2026-11-16, story-integration pass; too broad): Act VIII (2026-11-16), restricted answer to H3-1: Role 2 (c fixes the invariant form) and Role 3 (c → ∞) are roles of the same form constant. At finite c the value of c is not an isomorphism invariant (finite-c forms congruent, finite-c algebras isomorphic); the invariant content is finiteness — M_c nondegenerate and the algebra Poincaré exactly when c < ∞ (A8Ma, A8Mc, A8Lc). Known mathematics; it does not make c an instance of the circle mechanism (T-H3-C).",
+        "Story-integration pass (2026-11-16), restricted answer to H3-1 (replaces the superseded finiteness statement): for the bare family M_c = diag(1, −1/c²), all finite c > 0 forms are congruent under a spatial rescaling, so the congruence class of this isolated form does not distinguish the finite value of c (A8Wc). This does NOT mean that physical c has no significance beyond finiteness: kept distinct are finite-c unit normalization, the causal structure (x = ±ct), dimensionless ratios such as v/c (tanh φ = v/c), and the external family limit c → ∞. In the velocity parametrization det K_c = −1/c² links Role 2 (the hyperbolic generator) and Role 3 (κ → 0⁻) (A8Qa)."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -1660,6 +1691,8 @@
       "relatedCards": [
         "A8Lc",
         "A8Mc",
+        "A8Qa",
+        "A8Wc",
         "C9a",
         "C9b",
         "C9c",
@@ -1685,7 +1718,8 @@
         "T-MM-RULES-Q",
         "T-MM-DISTINGUISHED-Q",
         "T-RULES-GEOMETRY",
-        "T-H3-C"
+        "T-H3-C",
+        "T-H3-C-FAMILY"
       ],
       "history": [
         {
@@ -1699,6 +1733,14 @@
         {
           "date": "2026-11-16",
           "change": "Act VIII: H3-1 restricted answer"
+        },
+        {
+          "date": "2026-11-16",
+          "change": "story-integration pass: the boundary \"the invariant content is finiteness\" marked SUPERSEDED (kept verbatim) and replaced by the restricted statement"
+        },
+        {
+          "date": "2026-11-16",
+          "change": "story pass: restricted content of c"
         }
       ],
       "relatedActsRev3": [
@@ -4017,6 +4059,10 @@
         {
           "ref": "card:B7a",
           "note": "a cyclic shift of three samples repeats with period 3"
+        },
+        {
+          "ref": "card:A8Ua",
+          "note": "the generator decides"
         }
       ],
       "evidenceAgainst": [
@@ -4034,8 +4080,9 @@
         }
       ],
       "boundaries": [
-        "Whether these limit ★ depends on \"bound by rules\", \"periodic\" and \"can be\" (AMB-7 a–c).",
-        "Act VIII (2026-11-16): this record is STAR-original; it keeps its wording and stays OPEN. Readings with independent statuses: T-STAR-A (forced periodicity) FAIL; T-STAR-B (existence) RESTRICTED; T-STAR-C (recurrence) RESTRICTED to Poincaré recurrence. The H3/★ hierarchy is not decided. Record: research/constructions/act8_finite_infinite_h3_c.md."
+        "Whether these limit ★ depends on \"bound by rules\", \"periodic\" and \"can be\" (AMB-7 a–c, docs/restructure_report_rev3.md).",
+        "Act VIII (2026-11-16): this record is STAR-original; it keeps its wording and stays OPEN. Readings with independent statuses: T-STAR-A (forced periodicity) FAIL; T-STAR-B (existence) RESTRICTED; T-STAR-C (recurrence) RESTRICTED to Poincaré recurrence. The H3/★ hierarchy is not decided. Record: research/constructions/act8_finite_infinite_h3_c.md.",
+        "Story-integration pass (2026-11-16): STAR-A's FAIL is kept and its lesson recorded (T-STAR-A-LESSON: geometry alone does not determine periodicity); it is not a failure of the backbone. The terms of ★ left open in AMB-7 (a)–(c) are in docs/restructure_report_rev3.md."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -4045,6 +4092,7 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "A8Ua",
         "A8X1",
         "B7a",
         "C8a",
@@ -4116,7 +4164,10 @@
         "T-COMPACT-NOT-PERIODIC",
         "T-STAR-A",
         "T-STAR-B",
-        "T-STAR-C"
+        "T-STAR-C",
+        "T-GEOM-GEN-DYN",
+        "T-STAR-A-LESSON",
+        "T-GEN-DYN-Q"
       ],
       "history": [
         {
@@ -4126,6 +4177,10 @@
         {
           "date": "2026-11-16",
           "change": "Act VIII: three readings tested separately"
+        },
+        {
+          "date": "2026-11-16",
+          "change": "story pass: STAR-A lesson; AMB-7 recovered"
         }
       ],
       "relatedActsRev3": [
@@ -4178,7 +4233,9 @@
       "researchDirection": "outside-in",
       "construction": null,
       "proofTarget": null,
-      "related": [],
+      "related": [
+        "T-GEN-DYN-Q"
+      ],
       "history": [
         {
           "date": "2026-11-12",
@@ -6233,7 +6290,8 @@
       "construction": null,
       "proofTarget": null,
       "related": [
-        "T-H3-C"
+        "T-H3-C",
+        "T-H3-C-FAMILY"
       ],
       "history": [
         {
@@ -14847,7 +14905,8 @@
         "T-H3",
         "T-H3-QUOTIENT",
         "T-SCHEMA",
-        "T-ACT8-GOV"
+        "T-ACT8-GOV",
+        "T-GEOM-GEN-DYN"
       ],
       "history": [],
       "relatedActsRev3": [],
@@ -14883,7 +14942,7 @@
       "label": "H3-quotient: quotient / cover / orbit closure encodes the bound",
       "words": "The distinction between an unbounded parameter and a bounded representation is naturally encoded by a quotient, covering map, orbit, or compact orbit closure.",
       "variants": [],
-      "normalizedStatement": "Restricted form: for Stab = Tℤ the orbit is ℝ/Tℤ ≅ S¹ and ℝ → S¹ is a covering (A8Ce, A8Cf); for free recurrent orbits the bounded representation is the compact orbit closure (A8Tb). With the alternative \"orbit\" the statement is true of every action (too broad). Boundary approach is encoded by none of quotient, covering or compact closure: the velocity orbit is injective with noncompact closure and is conjugate to translation (A8Pg).",
+      "normalizedStatement": "Restricted and corrected: periodic case — for a continuous homomorphism χ: ℝ → S¹ or Tⁿ with kernel Tℤ ≠ {0}, ℝ/ker χ ≅ image (homeomorphism) and ℝ → S¹ is a covering (A8Fa, A8Ka, A8Ce, A8Cf); quasi-periodic/dense case — ker χ = {0}, the image is not closed and χ is not a homeomorphism onto it; the bounded representation is the orbit closure, a subtorus of dimension n − rank(integer relations) (A8Kb, A8Te). The two cases use different objects. With the alternative \"orbit\" the statement is true of every action (too broad). Boundary approach is encoded by neither (A8Pg).",
       "origin": "user",
       "kind": "derived-connection",
       "status": "derived",
@@ -14899,16 +14958,29 @@
         {
           "ref": "card:A8Tb",
           "note": "compact orbit closure without a quotient"
+        },
+        {
+          "ref": "card:A8Ka",
+          "note": ""
+        },
+        {
+          "ref": "card:A8Fa",
+          "note": ""
         }
       ],
       "evidenceAgainst": [
         {
           "ref": "card:A8Pg",
           "note": "boundary approach ≅ drift: no quotient, cover or compact closure"
+        },
+        {
+          "ref": "card:A8Kb",
+          "note": "the dense case is not a quotient of ℝ"
         }
       ],
       "boundaries": [
-        "Act VIII (2026-11-16): RESTRICTED (periodic and compact-recurrent classes); too broad as worded because of \"orbit\". Candidate only: not renamed H3."
+        "Act VIII (2026-11-16): RESTRICTED (periodic and compact-recurrent classes); too broad as worded because of \"orbit\". Candidate only: not renamed H3.",
+        "Story-integration pass (2026-11-16): stays RESTRICTED; the periodic case (kernel/quotient) and the dense case (orbit closure/subtorus) are kept as different objects (A8Ka, A8Kb)."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -14919,6 +14991,9 @@
       "relatedCards": [
         "A8Ce",
         "A8Cf",
+        "A8Fa",
+        "A8Ka",
+        "A8Kb",
         "A8Pg",
         "A8Tb"
       ],
@@ -14942,7 +15017,16 @@
         "T-SCHEMA",
         "T-ACT8-GOV"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-16",
+          "change": "story-integration pass: quotient and orbit closure separated. Previous wording: Restricted form: for Stab = Tℤ the orbit is ℝ/Tℤ ≅ S¹ and ℝ → S¹ is a covering (A8Ce, A8Cf); for free recurrent orbits the bounded representation is the compact orbit closure (A8Tb). With the alternative \"orbit\" the statement is true of every action (too broad). Boundary approach is encoded by none of quotient, covering or compact closure: the velocity orbit is injective with noncompact closure and is conjugate to translation (A8Pg)."
+        },
+        {
+          "date": "2026-11-16",
+          "change": "story pass: kernel vs closure"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-16",
@@ -14976,7 +15060,7 @@
       "label": "H3-c: c as an instance of the H3 structure",
       "words": "that invarient variable like the speed of light which also converges to infinity is an invarient variable that acts as a rule in the manifold",
       "variants": [],
-      "normalizedStatement": "Tested reading: c → ∞ is an instance of the time–circle construction (an unbounded parameter through a constrained geometry). Result: t is an internal action parameter on a fixed state space; c is an external family index (not an action on spacetime) whose family is a free orbit of the dilation congruence action on forms, drifting to the degenerate diag(1, 0). Surviving restricted correspondence: both examples are one-parameter subgroups preserving a quadratic form (CF1/S4), with t ↔ rapidity s and the circle radius r ↔ c; no member or limit of the c-family is elliptic.",
+      "normalizedStatement": "Tested reading: c → ∞ is an instance of the time–circle construction (an unbounded parameter through a constrained geometry). Result: t is an internal action parameter on a fixed state space; c is an external family index (not an action on spacetime) whose family is a free orbit of the dilation congruence action on forms, drifting to the degenerate diag(1, 0). Pass-1 correspondence superseded (2026-11-16): the comparison is θ ↔ φ (rapidity, tanh φ = v/c), c is a distinct object, and \"circle radius r ↔ c\" has no exact map (A8Wa, A8Wb).",
       "origin": "user",
       "kind": "hypothesis",
       "status": "hypothesis",
@@ -15013,7 +15097,8 @@
         }
       ],
       "boundaries": [
-        "Act VIII (2026-11-16): RESTRICTED. Same construction as t ↦ e^(iωt): NO (FAIL); \"c also converges to infinity\" like t: SUPERFICIAL; restricted structural analogy through the known preserved-form object. The words are the c-clause of H3-original, kept verbatim."
+        "Act VIII (2026-11-16): RESTRICTED. Same construction as t ↦ e^(iωt): NO (FAIL); \"c also converges to infinity\" like t: SUPERFICIAL; restricted structural analogy through the known preserved-form object. The words are the c-clause of H3-original, kept verbatim.",
+        "Story-integration pass (2026-11-16): SPLIT into T-H3-C-DIRECT (literal t ↔ c → ∞: FAIL / superficial), T-H3-GROUP (preserved-form one-parameter groups: ESTABLISHED INSTANCE) and T-H3-C-FAMILY (c-indexed forms, singular and Galilean limits: RESTRICTED; H3 connection OPEN). This record keeps the verbatim c-clause of H3-original; its pass-1 combined rating is superseded and the three records are not merged back."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -15048,9 +15133,21 @@
         "T-H3",
         "T-C-ROLES",
         "T-C9",
-        "T-ACT8-GOV"
+        "T-ACT8-GOV",
+        "T-H3-C-DIRECT",
+        "T-H3-GROUP",
+        "T-H3-C-FAMILY"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-16",
+          "change": "story pass: H3-c split"
+        },
+        {
+          "date": "2026-11-16",
+          "change": "story-integration pass: \"r ↔ c\" removed from the live statement. Previous wording: Tested reading: c → ∞ is an instance of the time–circle construction (an unbounded parameter through a constrained geometry). Result: t is an internal action parameter on a fixed state space; c is an external family index (not an action on spacetime) whose family is a free orbit of the dilation congruence action on forms, drifting to the degenerate diag(1, 0). Surviving restricted correspondence: both examples are one-parameter subgroups preserving a quadratic form (CF1/S4), with t ↔ rapidity s and the circle radius r ↔ c; no member or limit of the c-family is elliptic."
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-16",
@@ -15074,7 +15171,16 @@
         "transferDepth": "FAIL",
         "mathematicalCorrectness": "established under assumptions",
         "prediction": null,
-        "ratingHistory": [],
+        "ratingHistory": [
+          {
+            "date": "2026-11-16",
+            "fromBackbone": 10,
+            "fromSlop": 25,
+            "toBackbone": 10,
+            "toSlop": 25,
+            "reason": "superseded by the split (T-H3-C-DIRECT, T-H3-GROUP, T-H3-C-FAMILY); kept as history"
+          }
+        ],
         "applicationBreadth": 1,
         "novelty": "VALIDATION OF KNOWN MATHEMATICS"
       }
@@ -15136,7 +15242,9 @@
         "T-STAR-B",
         "T-STAR-C",
         "T-ACT8-GOV",
-        "T-COMPACT-NOT-PERIODIC"
+        "T-COMPACT-NOT-PERIODIC",
+        "T-GEOM-GEN-DYN",
+        "T-STAR-A-LESSON"
       ],
       "history": [],
       "relatedActsRev3": [],
@@ -15172,7 +15280,7 @@
       "label": "STAR-B: constrained geometry admits a periodic evolution",
       "words": "A constrained geometry admits at least one periodic evolution.",
       "variants": [],
-      "normalizedStatement": "Restricted form: with fixed points counted as periodic the claim is vacuous (the trivial flow); for a non-constant periodic orbit it is false on ℝ and on intervals (orbits are monotone), true on S¹, and true on every smooth manifold of dimension ≥ 2 (rotation field in a coordinate disk times a bump function; local model A8X4; the general construction is a project argument, not carded). It depends on the class of spaces and dynamics, not on \"bound by rules\".",
+      "normalizedStatement": "Restricted form, in an explicit category: smooth manifolds without boundary (Hausdorff, second countable) with flows of smooth complete vector fields. Such a manifold carries a flow with a non-constant periodic orbit ⟺ some component has dimension ≥ 2 (a compactly supported bump-rotation field in a chart, A8Ba; completeness: Lee 2012) or is diffeomorphic to S¹; otherwise every component is a point or ℝ (Milnor 1965) and flows on ℝ have no non-constant periodic orbit (A8Pe). With fixed points counted as periodic the claim is vacuous (the trivial flow). Not stated for arbitrary \"geometrical objects\".",
       "origin": "user",
       "kind": "derived-connection",
       "status": "derived",
@@ -15184,11 +15292,16 @@
         {
           "ref": "card:A8X4",
           "note": "local model: rotation of ℝ²"
+        },
+        {
+          "ref": "card:A8Ba",
+          "note": "bump-rotation field: a non-constant periodic orbit"
         }
       ],
       "evidenceAgainst": [],
       "boundaries": [
-        "Act VIII (2026-11-16): RESTRICTED. A reading of ★ (T-STAR), which keeps its wording."
+        "Act VIII (2026-11-16): RESTRICTED. A reading of ★ (T-STAR), which keeps its wording.",
+        "Story-integration pass (2026-11-16): stays RESTRICTED; the category (smooth manifolds, complete smooth flows) is now explicit and the dimension ≥ 2 construction is carded (A8Ba)."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -15197,6 +15310,7 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "A8Ba",
         "A8Pe",
         "A8X4"
       ],
@@ -15220,7 +15334,16 @@
         "T-STAR-C",
         "T-ACT8-GOV"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-16",
+          "change": "story-integration pass: restricted to an explicitly defined category (the pass-1 \"dimension ≥ 2\" was too broad). Previous wording: Restricted form: with fixed points counted as periodic the claim is vacuous (the trivial flow); for a non-constant periodic orbit it is false on ℝ and on intervals (orbits are monotone), true on S¹, and true on every smooth manifold of dimension ≥ 2 (rotation field in a coordinate disk times a bump function; local model A8X4; the general construction is a project argument, not carded). It depends on the class of spaces and dynamics, not on \"bound by rules\"."
+        },
+        {
+          "date": "2026-11-16",
+          "change": "story pass: category made explicit"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-16",
@@ -15254,7 +15377,7 @@
       "label": "STAR-C: constrained geometry tends to produce recurrence",
       "words": "Compact/constrained geometry tends to produce recurrence or near return.",
       "variants": [],
-      "normalizedStatement": "Restricted form = the Poincaré recurrence theorem: for a measure-preserving flow on a space of finite total measure, almost every point is recurrent. Each hypothesis is needed (A8Pd: infinite measure — cylinder; non-invariant Lebesgue — logistic; δ₀ the only invariant probability — θ̇ = 1 − cos θ on S¹). Compactness alone gives only topological recurrence of some point (minimal sets), source-only here.",
+      "normalizedStatement": "Restricted form = the Poincaré recurrence theorem: for a measure-preserving flow on a space of finite total measure, almost every point is recurrent. These are the hypotheses of the standard theorem (its guarantee), not necessary conditions for recurrence: the rotation of ℝ² (infinite measure) and θ̇ = 2 + cos θ on S¹ (Lebesgue not invariant; invariant density 1/(2 + cos θ)) recur everywhere (A8Va). In A8Pd's examples the guarantee is unavailable and recurrence in fact fails there. Compactness alone gives only topological recurrence of some point (minimal sets), source-only here.",
       "origin": "user",
       "kind": "derived-connection",
       "status": "derived",
@@ -15266,11 +15389,16 @@
         {
           "ref": "card:A8Tc",
           "note": "near return on the torus"
+        },
+        {
+          "ref": "card:A8Va",
+          "note": "recurrence without the hypotheses"
         }
       ],
       "evidenceAgainst": [],
       "boundaries": [
-        "Act VIII (2026-11-16): RESTRICTED to Poincaré recurrence (known; PROVED under its hypotheses). A reading of ★ (T-STAR), which keeps its wording."
+        "Act VIII (2026-11-16): RESTRICTED to Poincaré recurrence (known; PROVED under its hypotheses). A reading of ★ (T-STAR), which keeps its wording.",
+        "Story-integration pass (2026-11-16): stays RESTRICTED; wording corrected — the finite invariant measure and measure preservation are hypotheses of the standard theorem, not necessary for recurrence (A8Va)."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -15280,7 +15408,8 @@
       "relatedObjects": [],
       "relatedCards": [
         "A8Pd",
-        "A8Tc"
+        "A8Tc",
+        "A8Va"
       ],
       "sourceDocs": [
         "docs/restructure_decisions.md"
@@ -15302,7 +15431,16 @@
         "T-STAR-B",
         "T-ACT8-GOV"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-16",
+          "change": "story-integration pass: \"each hypothesis is needed\" corrected: hypotheses of the guarantee, not of recurrence itself. Previous wording: Restricted form = the Poincaré recurrence theorem: for a measure-preserving flow on a space of finite total measure, almost every point is recurrent. Each hypothesis is needed (A8Pd: infinite measure — cylinder; non-invariant Lebesgue — logistic; δ₀ the only invariant probability — θ̇ = 1 − cos θ on S¹). Compactness alone gives only topological recurrence of some point (minimal sets), source-only here."
+        },
+        {
+          "date": "2026-11-16",
+          "change": "story pass: hypotheses vs recurrence"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-16",
@@ -15330,6 +15468,533 @@
         "applicationBreadth": 2,
         "novelty": "VALIDATION OF KNOWN MATHEMATICS"
       }
+    },
+    {
+      "id": "T-H3-C-DIRECT",
+      "label": "H3-c-direct: unbounded t compared literally with c → ∞",
+      "words": "H3-c-direct: literal analogy between unbounded time t and c→∞. Status: FAIL / superficial.",
+      "variants": [],
+      "normalizedStatement": "The literal analogy: c → ∞ plays the role that unbounded time t plays in t ↦ e^(iωt) ∈ S¹.",
+      "origin": "user",
+      "kind": "historical-conjecture",
+      "status": "hypothesis",
+      "evidenceFor": [],
+      "evidenceAgainst": [
+        {
+          "ref": "card:A8Sa",
+          "note": "c is not a group parameter on spacetime"
+        },
+        {
+          "ref": "card:A8Wa",
+          "note": "the Lorentz group parameter is the rapidity φ, tanh φ = v/c"
+        },
+        {
+          "ref": "card:A8Wb",
+          "note": "no exact map \"circle radius r ↔ c\""
+        }
+      ],
+      "boundaries": [
+        "Story-integration pass (2026-11-16): FAIL / SUPERFICIAL. One of three records split from T-H3-C; not merged back. Superseded by the exact correspondence T-H3-GROUP (θ ↔ φ)."
+      ],
+      "supersededBy": "T-H3-GROUP",
+      "supersedes": null,
+      "relatedActs": [
+        "II–IV",
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "A8Sa",
+        "A8Wa",
+        "A8Wb"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Act VIII story pass, H3-c split",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Act VIII story-integration pass brief (2026-11-16)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-H3",
+        "T-H3-C",
+        "T-H3-C-FAMILY"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-16",
+        "mathematicalStatus": "SPECULATIVE MAPPING",
+        "breadth": "one mathematical family",
+        "backboneSupport": 0,
+        "slopRisk": 5,
+        "why": "c is a form/unit constant, fixed inside each theory; the group parameter is the rapidity. The literal analogy has no exact map.",
+        "increase": "None for this reading.",
+        "falsify": "Already falsified (A8Sa, A8Wa, A8Wb).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "fail",
+          "generalization": "fail",
+          "transfer": "fail",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "low-confidence-active",
+        "failures": [],
+        "transferDepth": "FAIL",
+        "mathematicalCorrectness": "not established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 1,
+        "novelty": "VALIDATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "T-H3-GROUP",
+      "label": "H3-group: rotations and boosts as preserved-form one-parameter groups",
+      "words": "H3-group: circle rotations and Lorentz boosts are both one-parameter symmetry groups preserving quadratic forms and satisfying the generator equation. Status: established structural pattern in the canonical examples.",
+      "variants": [],
+      "normalizedStatement": "For constant M and A(s) = e^(sK): KᵀM + MK = 0 ⟺ A(s)ᵀMA(s) = M (A8Ga). Canonical instances: e^(θJ) on (ℝ², I) and e^(φK) on (ℝ², η), with θ ↔ φ as group parameters (tanh φ = v/c); the continuation types differ (K² = −det(K)·I: elliptic vs hyperbolic; A8Ec).",
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:A8Ga",
+          "note": "generator theorem"
+        },
+        {
+          "ref": "card:A8Gb",
+          "note": "six supplied forms"
+        },
+        {
+          "ref": "card:A8Ea",
+          "note": "SO(2)"
+        },
+        {
+          "ref": "card:A8Eb",
+          "note": "SO(1,1)"
+        },
+        {
+          "ref": "card:A8Ec",
+          "note": "same equation, different continuation"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Story-integration pass (2026-11-16): ESTABLISHED INSTANCE (established structural pattern in the canonical examples; the generator theorem is proved). An exact canonical 2D comparison: signature alone does not decide the dynamics in higher dimensions (A8Ec)."
+      ],
+      "supersededBy": null,
+      "supersedes": "T-H3-C-DIRECT",
+      "relatedActs": [
+        "II–IV",
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "A8Ea",
+        "A8Eb",
+        "A8Ec",
+        "A8Ga",
+        "A8Gb"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Act VIII story pass, H3-c split",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Act VIII story-integration pass brief (2026-11-16)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-H3",
+        "T-H3-C",
+        "T-H3-C-FAMILY",
+        "T-GEOM-GEN-DYN"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-16",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 35,
+        "slopRisk": 10,
+        "why": "The generator theorem is proved (A8Ga) and realized on six supplied forms (A8Gb); circle rotations and Lorentz boosts are its canonical instances with θ ↔ φ; the continuation types differ (A8Ec). Story contribution: PRESERVED STRUCTURE → TRANSFORMATION → DYNAMICS/CONTINUATION.",
+        "increase": "A further independently supplied form whose generator type predicts a behaviour not yet carded, stated before checking.",
+        "falsify": "A K with KᵀM + MK = 0 whose flow fails to preserve M (impossible by A8Ga).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "pass",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "STRUCTURAL TRANSFER",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 2,
+        "novelty": "VALIDATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "T-H3-C-FAMILY",
+      "label": "H3-c-family: c-indexed Lorentzian forms and their Galilean limit",
+      "words": "H3-c-family: varying c indexes a family of Lorentzian structures/forms whose c→∞ limit is singular and whose Lorentz transformations have a Galilean limit under fixed-v scaling. Status: restricted/established pieces; project connection to H3 remains open.",
+      "variants": [],
+      "normalizedStatement": "Established pieces: M_c → diag(1, 0) outside every congruence class (A8Mc); fixed-v Galilean boost limit (A8Lb); contraction Poincaré(1+1) → Galilei(1+1) (A8Lc); the family M_κ = diag(1, κ), K_κ = [[0, κ], [−1, 0]] with κ = −1/c² for boosts and κ = ω² for the oscillator, both reaching the parabolic member κ = 0 when the physical variables are held fixed (A8Qa). Restricted: every limit depends on the scaling held fixed (A8X5, A8Qb).",
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:A8Mc",
+          "note": ""
+        },
+        {
+          "ref": "card:A8Lb",
+          "note": ""
+        },
+        {
+          "ref": "card:A8Lc",
+          "note": ""
+        },
+        {
+          "ref": "card:A8Qa",
+          "note": "the κ-family"
+        },
+        {
+          "ref": "card:A8Wc",
+          "note": "restricted content of c"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:A8X5",
+          "note": "β fixed: nothing contracts"
+        },
+        {
+          "ref": "card:A8Qb",
+          "note": "normalized circle: no contraction"
+        }
+      ],
+      "boundaries": [
+        "Story-integration pass (2026-11-16): RESTRICTED (established pieces); the project connection to H3 remains OPEN. One of three records split from T-H3-C; not merged back."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "II–IV",
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "A8Lb",
+        "A8Lc",
+        "A8Mc",
+        "A8Qa",
+        "A8Qb",
+        "A8Wc",
+        "A8X5"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Act VIII story pass, H3-c split",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Act VIII story-integration pass brief (2026-11-16)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-H3",
+        "T-H3-C",
+        "T-C-ROLES",
+        "T-C9",
+        "T-H3-C-DIRECT",
+        "T-H3-GROUP"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-16",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 20,
+        "slopRisk": 20,
+        "why": "Established pieces (degenerate limit, fixed-v Galilean limit, contraction, the κ-family shared with the oscillator); restricted because every limit depends on the scaling held fixed. Connection to H3 OPEN. Story contribution: GEOMETRY → CROSS-SYSTEM TRANSFER (prepared; mass-wave handoff).",
+        "increase": "An exact object linking the family limit to the time–circle continuation beyond the shared parabolic member, stated before checking.",
+        "falsify": "A scaling in which the stated limits fail (A8X5 already shows one where nothing contracts).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "partial",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "STRUCTURAL TRANSFER",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 2,
+        "novelty": "VALIDATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "T-GEOM-GEN-DYN",
+      "label": "Geometry constrains the action; the generator decides the continuation",
+      "words": "geometry constrains the admissible symmetry/action structure, but the generator/action determines whether the resulting orbit is periodic, recurrent, hyperbolic, dense, or drifting.",
+      "variants": [],
+      "normalizedStatement": "Formal content only as M ↦ (G_M, 𝔤_M): the supplied form fixes the admissible transformations and generators (CF1, CF4, A8Ga); for K ∈ 𝔤_M the orbit type of e^(sK) is fixed by K — the sign of det K for traceless 2×2 K (A8Ec), the integer relations of ω on tori (A8Ua) — not by M alone (three generator types on diag(1, 1, −1), A8Ec).",
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:A8Ga",
+          "note": ""
+        },
+        {
+          "ref": "card:A8Ec",
+          "note": ""
+        },
+        {
+          "ref": "card:A8Ua",
+          "note": ""
+        },
+        {
+          "ref": "card:A8Gc",
+          "note": "the equation is relative to the supplied form"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Story-integration pass (2026-11-16): PROJECT SYNTHESIS, exact in the canonical examples (2×2 forms, tori, diag(1, 1, −1)); not a universal theorem — \"geometry constrains\" is defined here only as M ↦ (G_M, 𝔤_M). The main explanatory bridge GEOMETRY → DYNAMICS/CONTINUATION."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "II–IV"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "A8Ec",
+        "A8Ga",
+        "A8Gc",
+        "A8Ua"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Act VIII story pass",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Act VIII story-integration pass brief (2026-11-16)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-STAR",
+        "T-STAR-A",
+        "T-STAR-A-LESSON",
+        "T-H3-ACTION",
+        "T-GEN-DYN-Q",
+        "T-H3-GROUP"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-16",
+        "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 30,
+        "slopRisk": 15,
+        "why": "Exact in the canonical examples: the supplied form fixes G_M and 𝔤_M; the generator decides the orbit type (det sign in 2D; integer relations on tori; three types on one 3D Lorentzian form). Not a universal theorem. Story contribution: the main GEOMETRY → DYNAMICS/CONTINUATION bridge.",
+        "increase": "A general classification of continuation types from (M, K) in a stated class, proved.",
+        "falsify": "A supplied form whose generators all give the same continuation type although they differ in the deciding invariant (not found).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "partial",
+          "transfer": "n/a",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "STRUCTURAL TRANSFER",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 2,
+        "novelty": "PROJECT CLASSIFICATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "T-STAR-A-LESSON",
+      "label": "What STAR-A's failure teaches",
+      "words": "geometry alone does not determine periodicity.",
+      "variants": [
+        {
+          "words": "In particular, STAR-A failing must not be treated as equivalent to the Foundation/backbone failing.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "One compact torus with the same invariants carries periodic, subtorus and dense orbits, decided by the generator's integer relations (A8Ua); one Lorentzian form diag(1, 1, −1) carries elliptic, hyperbolic and parabolic generators (A8Ec).",
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:A8Ua",
+          "note": ""
+        },
+        {
+          "ref": "card:A8Ec",
+          "note": ""
+        },
+        {
+          "ref": "card:A8X1",
+          "note": ""
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "Story-integration pass (2026-11-16): the lesson of STAR-A's FAIL (kept). It names the missing condition — the generator/action — and is not a failure of the Foundation backbone."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "II–IV"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "A8Ec",
+        "A8Ua",
+        "A8X1"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Act VIII story pass",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Act VIII story-integration pass brief (2026-11-16)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-STAR",
+        "T-STAR-A",
+        "T-GEOM-GEN-DYN"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-GEN-DYN-Q",
+      "label": "Preserved relation → generator → dynamics",
+      "words": "Given a preserved geometric relation, what transformations preserve it, what generators produce those transformations, and what observable dynamics follow?",
+      "variants": [
+        {
+          "words": "preserved relation → preserving group → generator → one-parameter transformation → orbit/stabilizer → observable dynamics.",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "Only apply this construction when the form and transformation family are independently supplied by the system.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "Answered exactly in the canonical rows (Euclidean/SO(2), Lorentz/SO(1,1), the Fourier character ℝ → U(1), multi-frequency torus flows; A8Ea, A8Eb, A8Fa, A8Ka); open in general.",
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:A8Ga",
+          "note": "generator theorem"
+        },
+        {
+          "ref": "card:A8Fa",
+          "note": "Fourier character"
+        },
+        {
+          "ref": "card:A8Ka",
+          "note": "torus kernel"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "II–IV"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "A8Fa",
+        "A8Ga",
+        "A8Ka"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "Act VIII story pass",
+      "audit": {
+        "before": "missing",
+        "note": "stated in the Act VIII story-integration pass brief (2026-11-16)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-GEOM-GEN-DYN",
+        "T-GEOM-RULES",
+        "T-STAR"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
     }
   ]
 }

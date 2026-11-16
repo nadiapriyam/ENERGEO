@@ -1114,6 +1114,93 @@ for o in O:
     if o['id'] == 'F1':
         o['equation'] += '; Act VIII: "sines and cosines converge to infinity" fails (A8Cc); compact ⇒ periodic fails (A8X1); STAR-A fails (A8X3); H3-c as the same construction as t ↦ e^(iωt) fails (A8Sa)'
         o['cards'] += ['A8Cc', 'A8X1', 'A8Sa']
+# ══ Act VIII story-integration and mathematical-correction pass (2026-11-16) ══════════════════════════════
+# Decisions: docs/restructure_decisions.md, "Act VIII story-integration and mathematical-correction pass". Cards: verify/verify_A8S.py.
+G8S = 'Act II–IV (rev-3 Act VIII) / Guide: forms and groups'
+obj('A8G', 'Preserved geometry → generator → dynamics (the chart continued)', E, ['PRESERVED STRUCTURE', 'TRANSFORMATION', 'GEOMETRY', 'DYNAMICS / CONTINUATION'],
+    'B_M → G_M = {A : AᵀMA = M} → 𝔤_M = {K : KᵀM + MK = 0} → e^(sK) → orbit / stabilizer → behaviour; theorem: KᵀM + MK = 0 ⟺ e^(sK)ᵀMe^(sK) = M (F′ = Aᵀ(KᵀM + MK)A); applied only to forms the system supplies', 'ESTABLISHED',
+    cards=['A8Ga', 'A8Gb', 'A8Gc'], docs=A8DOCS, depends=['CF1', 'CF4', 'A8A'], reg=['T-GEN-DYN-Q', 'T-H3-GROUP'], bears=['T-GEOM-GEN-DYN', 'T-STAR'], bs=35, slop=10, td='STRUCTURAL TRANSFER', breadth=2,
+    fail='a K violating the equation (A8Gc); a form not supplied by the system', role='places Act VIII after the common-form chart: PRESERVED STRUCTURE → GEOMETRY → DYNAMICS/CONTINUATION', guide=G8S)
+obj('A8E', 'SO(2) versus SO(1,1): one equation, two continuations', E, ['TRANSFORMATION', 'DYNAMICS / CONTINUATION'],
+    'J² = −I, e^(θJ) = I cos θ + J sin θ (compact, Stab 2πℤ); K² = I, e^(φK) = I cosh φ + K sinh φ (noncompact, free, tanh φ = v/c); K² = −det(K)·I for traceless 2×2 K; in 3D diag(1, 1, −1) carries elliptic, hyperbolic and parabolic generators', 'ESTABLISHED',
+    cards=['A8Ea', 'A8Eb', 'A8Ec'], docs=A8DOCS, depends=['A8G', 'L1'], reg=['T-H3-GROUP'], bears=['T-GEOM-GEN-DYN'], bs=35, slop=10, td='STRUCTURAL TRANSFER', breadth=2,
+    fail='signature alone does not decide the dynamics in dimension 3 (A8Ec)', role='exact canonical comparison (2D); θ ↔ φ as group parameters', guide=G8S)
+obj('A8F', 'The circle as the translation character χ_ω', E, ['REPRESENTATION', 'TRANSFORMATION', 'DYNAMICS / CONTINUATION'],
+    'χ_ω(t) = e^(iωt): a continuous homomorphism ℝ → U(1); ker χ_ω = (2π/|ω|)ℤ, ℝ/ker χ_ω ≅ S¹; (T_τ e_ω)(t) = χ_ω(−τ)e_ω(t), T_τ e_k = e^(−2πikτ)e_k (R4); a trigonometric polynomial is periodic on the common kernel of its modes', 'ESTABLISHED',
+    cards=['A8Fa', 'A8Fb'], docs=A8DOCS, depends=['R4', 'R6', 'A8C'], reg=['T-UNBOUNDED-EVOLUTION', 'T-TIME-CIRCLE'], bears=['T-H3-QUOTIENT'], bs=35, slop=5, td='TRIVIAL CONSEQUENCE', breadth=2,
+    fail='ω = 0 (trivial character, ker = ℝ)', role='translation → phase → Fourier representation → compact phase geometry; the circle is compact, not infinite', guide='Guide: Fourier / Act II–IV')
+obj('A8KC', 'Kernel versus orbit closure (torus characters)', E, ['REPRESENTATION', 'DYNAMICS / CONTINUATION', 'GEOMETRY'],
+    'periodic case: ker χ_ω = Tℤ ≠ {0}, image closed, ℝ/Tℤ ≅ image; dense case: ker = {0}, image not closed ((1, −1) in the closure of the (1, √2) orbit, not in it), χ not a homeomorphism onto its image, bounded representation = orbit closure (subtorus of dimension n − rank(relations)); compact image ⇏ nontrivial kernel ⟺ periodicity', 'ESTABLISHED',
+    cards=['A8Ka', 'A8Kb', 'A8Te', 'A8Ua'], docs=A8DOCS, depends=['A8T', 'A8F'], reg=['T-H3-QUOTIENT', 'T-COMPACT-NOT-PERIODIC'], bears=['T-STAR'], bs=30, slop=8, td='STRUCTURAL TRANSFER', breadth=2,
+    fail='—', role='quotient and orbit closure kept as different objects', guide=G8S)
+obj('A8Q', 'The family M_κ: circle (κ = ω²), boosts (κ = −1/c²), shear (κ = 0)', E, ['GEOMETRY', 'TRANSFORMATION', 'DYNAMICS / CONTINUATION'],
+    'M_κ = diag(1, κ), K_κ = [[0, κ], [−1, 0]], K_κ² = −κI, det K_κ = κ; κ = ω²: the oscillator on (p, q) with form p² + ω²q²; κ = −1/c²: the boost generator dΛ/dv; κ = 0: the Galilean shear; with s fixed ω → 0 and c → ∞ give the same limit; [K, H] = −P, [K, P] = κH (e(2), Poincaré(1+1), Galilei(1+1)); scaling-dependent', 'ESTABLISHED',
+    cards=['A8Qa', 'A8Qb'], docs=A8DOCS, depends=['A8E', 'A8M', 'A8L'], reg=['T-H3-C-FAMILY'], bears=['T-C-ROLES', 'T-H3'], bs=25, slop=15, td='STRUCTURAL TRANSFER', breadth=2,
+    fail='normalized coordinates: ωJ → 0 gives the identity (A8Qb); β fixed: nothing contracts (A8X5)', role='exact place of c beside the circle frequency (κ = det K); no physical identification of oscillator time with boosts', guide='Guide: relativity / forms and groups')
+obj('A8GD', 'Geometry constrains the action; the generator decides the continuation', PD, ['GEOMETRY', 'DYNAMICS / CONTINUATION'],
+    'formal content: M ↦ (G_M, 𝔤_M) constrains; for K ∈ 𝔤_M the orbit type of e^(sK) is fixed by K (sign of det K in 2D, integer relations of ω on tori), not by M alone; exact in the canonical examples, not a universal theorem', 'DERIVED',
+    cards=['A8Ga', 'A8Gc', 'A8Ec', 'A8Ua'], docs=A8DOCS, depends=['A8G', 'A8E', 'A8T'], reg=['T-GEOM-GEN-DYN', 'T-STAR-A-LESSON'], bears=['T-STAR', 'T-H3'], bs=30, slop=15, td='STRUCTURAL TRANSFER', breadth=2,
+    fail='a general (M, K) classification is not claimed', role='main explanatory bridge GEOMETRY → DYNAMICS/CONTINUATION; STAR-A\'s lesson: geometry alone does not determine periodicity', guide=G8S)
+obj('A8HCD', 'H3-c-direct: unbounded t compared literally with c → ∞ (FAIL)', NG, ['CROSS-SYSTEM TRANSFER'],
+    't is the additive parameter of one action on one state space; c is fixed inside each theory and is not a group parameter (A8Sa); the Lorentz group parameter is the rapidity φ, tanh φ = v/c (A8Wa); "radius r ↔ c" has no exact map (A8Wb)', 'NEGATIVE',
+    cards=['A8Sa', 'A8Wa', 'A8Wb'], docs=A8DOCS, reg=['T-H3-C-DIRECT'], bears=['T-H3', 'T-H3-C'], td='FAIL', fail='—', role='FAIL / superficial; split from H3-c, not merged back', guide=G8S + ' / Guide: relativity')
+obj('A8HG', 'H3-group: rotations and boosts as preserved-form one-parameter groups', PD, ['PRESERVED STRUCTURE', 'TRANSFORMATION', 'CROSS-SYSTEM TRANSFER'],
+    'both are e^(sK) with KᵀM + MK = 0 (M = I, η); θ ↔ φ; continuation types differ (elliptic / hyperbolic)', 'DERIVED',
+    cards=['A8Ga', 'A8Ea', 'A8Eb', 'A8Ec'], docs=A8DOCS, depends=['A8G', 'A8E'], reg=['T-H3-GROUP'], bears=['T-H3'], bs=35, slop=10, td='STRUCTURAL TRANSFER', breadth=2,
+    fail='same-construction reading (A8HCD)', role='ESTABLISHED INSTANCE (structural pattern in the canonical examples)', guide=G8S)
+obj('A8HCF', 'H3-c-family: c-indexed forms, singular limit, Galilean limit (restricted)', PD, ['GEOMETRY', 'TRANSFORMATION', 'CROSS-SYSTEM TRANSFER'],
+    'M_c → diag(1, 0) outside every congruence class; fixed-v boosts → Galilean; Poincaré(1+1) → Galilei(1+1); κ = −1/c² beside κ = ω² (A8Q); every limit scaling-dependent', 'DERIVED',
+    cards=['A8Mc', 'A8Lb', 'A8Lc', 'A8Qa', 'A8Wc'], docs=A8DOCS, depends=['A8M', 'A8L', 'A8Q'], reg=['T-H3-C-FAMILY'], bears=['T-H3', 'T-C-ROLES'], bs=20, slop=20, td='STRUCTURAL TRANSFER', breadth=2,
+    fail='β = v/c fixed (A8X5)', role='RESTRICTED (established pieces); connection to H3 OPEN; mass-wave handoff', guide='Guide: relativity')
+PROV.update({'A8G': TB, 'A8E': TB, 'A8F': TB, 'A8KC': TB, 'A8Q': TB, 'A8GD': PDM, 'A8HCD': PDM, 'A8HG': PDM, 'A8HCF': PDM})
+NOVELTY.update({'A8G': 'KNOWN MATHEMATICS', 'A8E': 'KNOWN MATHEMATICS', 'A8F': 'KNOWN MATHEMATICS', 'A8KC': 'KNOWN MATHEMATICS', 'A8Q': 'KNOWN MATHEMATICS',
+                'A8GD': 'PROJECT CLASSIFICATION OF KNOWN MATHEMATICS', 'A8HG': 'PROJECT CLASSIFICATION OF KNOWN MATHEMATICS', 'A8HCF': 'PROJECT CLASSIFICATION OF KNOWN MATHEMATICS'})
+src('SRC-LEE-2012', 'John M. Lee', 'Introduction to Smooth Manifolds (2nd ed., Graduate Texts in Mathematics 218)', '2012', 'book', 'Springer; DOI 10.1007/978-1-4419-9982-5 (often cited 2013)', 'textbook', SV,
+    'smooth manifolds, vector fields and flows; every compactly supported smooth vector field is complete (flows chapter); bump functions',
+    'anything about ★ beyond the stated category; the classification of 1-manifolds (Milnor)', ['A8SB'], checked=CHK8 + '; theorem number not verified')
+src('SRC-MILNOR-1965', 'John W. Milnor', 'Topology from the Differentiable Viewpoint', '1965', 'book', 'University Press of Virginia 1965; Princeton Landmarks reprint 1997, ISBN 0-691-04833-9', 'textbook', SV,
+    'appendix "Classifying 1-manifolds": a connected smooth 1-manifold is diffeomorphic to S¹ or to an interval of real numbers',
+    'anything about flows or ★ beyond the classification', ['A8SB'], checked=CHK8 + '; the appendix location (p. 55) confirmed in the table of contents')
+src('SRC-YAGLOM-1979', 'I. M. Yaglom (transl. A. Shenitzer)', 'A Simple Non-Euclidean Geometry and Its Physical Basis (Heidelberg Science Library)', '1979', 'book', 'Springer, New York; ISBN 0-387-90332-1 (DOI not verified)', 'textbook', SV,
+    'Galilean plane geometry and the Galilean principle of relativity; Galilean geometry as a limiting case between Euclidean and Minkowskian plane geometry',
+    'the oscillator realization (κ = ω²) and the planar-translation algebras used here (derived and carded, A8Qa); any physical identification of time evolution with boosts', ['A8Q'], ['A8HCF'], checked=CHK8)
+for x in S:
+    if x['id'] == 'SRC-INONU-WIGNER-1953': x['supports'] += ['A8Q']
+    if x['id'] == 'SRC-KATOK-HASSELBLATT-1995': x['supports'] += ['A8KC']
+    if x['id'] == 'SRC-HATCHER-2002': x['supports'] += ['A8F']
+    if x['id'] == 'SRC-STEIN-SHAKARCHI-2003': x['supports'] += ['A8F']
+    if x['id'] == 'SRC-FULTON-HARRIS-1991': x['supports'] += ['A8G', 'A8E']
+    if x['id'] == 'SRC-WEYL-1916': x['supports'] += ['A8KC']
+bridge('BR81', 'one-parameter preserving group (CF4: KᵀM + MK = 0)', 'orbit / stabilizer / continuation type (A8A)', 'e^(sK) ∈ G_M acts on the space of the form; its stabilizer (ℝ, Tℤ or {0}) and orbit closure give the continuation type', 'ESTABLISHED', EST, ['A8Ga', 'A8Gb', 'A8Pa'],
+       'that M alone decides the type (it does not, A8Ec); one universal M', ['A8G', 'CF4', 'A8A'])
+bridge('BR82', 'translation → phase (R4)', 'compact phase geometry S¹', 'T_τ e_ω = χ_ω(−τ)e_ω; ker χ_ω = (2π/|ω|)ℤ; ℝ/ker χ_ω ≅ S¹', 'ESTABLISHED', EST, ['A8Fa', 'A8Fb'],
+       'that the circle is infinite; that every bounded representation is a quotient (A8Pg)', ['A8F', 'R4', 'R6'])
+bridge('BR83', 'quotient by the kernel', 'orbit closure', 'periodic: ℝ/Tℤ ≅ closed image; dense: ker = {0}, image not closed, closure a subtorus; one quotient statement does not cover both', 'NEGATIVE', PS, ['A8Ka', 'A8Kb'],
+       'that the dense orbit lacks a bounded representation (its closure is compact)', ['A8KC', 'A8HQ'])
+bridge('BR84', 'SO(2) (elliptic)', 'SO(1,1) (hyperbolic)', 'same equation KᵀM + MK = 0; J² = −I vs K² = I; compact periodic vs noncompact free; θ ↔ φ', 'ESTABLISHED', EST, ['A8Ea', 'A8Eb', 'A8Ec'],
+       'that signature decides dynamics in higher dimensions (A8Ec); a physical identity of rotations and boosts', ['A8E', 'A8HG'])
+bridge('BR85', 'circle frequency ω (κ = ω²)', 'c (κ = −1/c²)', 'M_κ = diag(1, κ), K_κ = [[0, κ], [−1, 0]], det K_κ = κ; ω → 0 and c → ∞ reach the same parabolic shear when the physical variables are held fixed', 'ESTABLISHED', EST, ['A8Qa', 'A8Qb'],
+       'that oscillator time evolution and boosts are the same physics; that c corresponds to t', ['A8Q', 'A8HCF', 'L4'])
+bridge('BR86', 'signature of the supplied form', 'continuation type', 'diag(1, 1, −1) carries elliptic (R₁₂), hyperbolic (B₁₃) and parabolic (R₁₂ + B₁₃) generators', 'NEGATIVE', PS, ['A8Ec'],
+       'that the form is irrelevant (it fixes 𝔤_M)', ['A8GD', 'A8E'])
+BMETA.update({
+ 'BR81': (THM, ['SRC-FULTON-HARRIS-1991', 'SRC-KATOK-HASSELBLATT-1995'], 'constant M; a continuous action', 'K not in 𝔤_M (A8Gc)'),
+ 'BR82': (EI, ['SRC-STEIN-SHAKARCHI-2003', 'SRC-HATCHER-2002'], 'ω ≠ 0', 'ω = 0: the trivial character'),
+ 'BR83': (FC, [], 'the stated torus characters', 'none: exact'),
+ 'BR84': (SAN, ['SRC-FULTON-HARRIS-1991'], '2×2 real forms I and η', 'dimension ≥ 3 (A8Ec)'),
+ 'BR85': (THM, ['SRC-YAGLOM-1979', 'SRC-INONU-WIGNER-1953'], 'the oscillator realized with its supplied form p² + ω²q²; v and x held fixed for the boosts', 'normalized coordinates (A8Qb) or β fixed (A8X5)'),
+ 'BR86': (FC, [], 'the stated generators', 'none: exact'),
+})
+fix8('object', 'A8K', 'equation', 't is an internal action parameter on S¹; c is an external family index (not an action on spacetime; an action on forms through log c). Shared exact object: a one-parameter group preserving a quadratic form (A8G); the correct comparison is θ ↔ φ (rapidity, tanh φ = v/c), not t ↔ c; c is a distinct object (κ = det K_c = −1/c², A8Q); no member or limit of the c-family is elliptic', 'story pass: "circle radius r ↔ c" removed (no exact map, A8Wb)', ['A8Wa', 'A8Wb', 'A8Qa'])
+fix8('bridge', 'BR78', 'connector', 'shared object: a one-parameter group preserving a quadratic form (CF4, A8Ga) — θ ↔ rapidity φ (tanh φ = v/c); (ωJ)² = −ω²I vs K̂_c² = I, K_∞² = 0; c is not a group parameter on spacetime; "circle radius r ↔ c" discarded (A8Wb)', 'story pass: θ ↔ φ; r ↔ c removed', ['A8Wa', 'A8Wb'])
+fix8('object', 'L4', 'foundationRole', 'H3-1 (user). Story-pass restricted answer (replaces the superseded "invariant content is finiteness"): the bare forms M_c for finite c are congruent by a spatial rescaling, so the congruence class of the isolated form does not distinguish the finite value of c (A8Wc) — this is not a claim that c means only finiteness; kept distinct: unit normalization, causal structure (x = ±ct), dimensionless ratios such as v/c, the family limit. Role 2 and Role 3 meet in det K_c = −1/c² (A8Q). Known mathematics; the connection to H3 stays open', 'story pass: finiteness statement superseded as too broad', ['A8Wc', 'A8Qa'])
+fix8('object', 'A8HC', 'foundationRole', 'the c-clause of H3-original, kept verbatim; split on 2026-11-16 into H3-c-direct (FAIL, A8HCD), H3-group (ESTABLISHED INSTANCE, A8HG) and H3-c-family (RESTRICTED, connection to H3 OPEN, A8HCF); not merged back', 'story pass: H3-c split', ['A8Wa'])
+fix8('object', 'A8HQ', 'equation', 'periodic case: ker χ = Tℤ, orbit ≅ ℝ/Tℤ, covering ℝ → S¹ (quotient/kernel); dense case: ker = {0}, image not closed, bounded representation = orbit closure (a subtorus) — a different object (A8Kb); boundary approach: neither (A8Pg); with "orbit" the statement is true of everything (too broad)', 'story pass: quotient and orbit closure separated', ['A8Ka', 'A8Kb', 'A8Fa'])
+fix8('object', 'A8SB', 'equation', 'category: smooth manifolds without boundary with flows of smooth complete vector fields: a non-constant periodic orbit exists ⟺ some component has dimension ≥ 2 (bump-rotation field, A8Ba) or is S¹; components ℝ admit none (A8Pe); vacuous if fixed points count; not stated for arbitrary geometrical objects', 'story pass: explicit category', ['A8Ba'])
+fix8('object', 'A8SC', 'equation', 'Poincaré: a measure-preserving flow on a space of finite total measure has almost every point recurrent; these are hypotheses of the theorem\'s guarantee, not necessary for recurrence (rotation of ℝ², θ̇ = 2 + cos θ recur everywhere, A8Va); in the cylinder, logistic and θ̇ = 1 − cos θ examples the guarantee is unavailable and recurrence fails there', 'story pass: hypotheses vs recurrence', ['A8Va'])
+fix8('object', 'I2', 'backboneSupport', 20, 'story pass: restored from 15% — the reduction rested on STAR-A alone; its failure names the missing condition (the generator) and the governing criterion is the Foundation story')
+fix8('object', 'R6', 'equation', 't ↦ e^{iωt} ∈ S¹, t ∈ ℝ: the translation character χ_ω; ker χ_ω = (2π/|ω|)ℤ and ℝ/ker χ_ω ≅ S¹ (A8C, A8F)', 'story pass: the circle as a Fourier character', ['A8Fa'])
+fix8('object', 'CF4', 'foundationRole', next(o for o in O if o['id'] == 'CF4')['foundationRole'] + '; continued in Act VIII: the generator gives a one-parameter transformation whose stabilizer and orbit closure give the continuation type (A8G, BR81)', 'story pass: chart → Act VIII', ['A8Ga'])
 for b in B:
     st, srcs, asm, fl = BMETA[b['id']]
     b.update(strength=st, sources=srcs, assumptions=asm, failureCondition=fl)
@@ -1156,7 +1243,8 @@ dom('D34', 'C7 bridge: spectral decay → prediction-space enclosure', 'C7A C7B 
 dom('D35', 'C7 negative results and source audit', 'C7F C7H C7Q', 'LOCKED', 'C7-F(raw) FAIL; C7-LB FAIL; Quinn Eq. (2) counterexample under the Euclidean reading; constant inconsistency recorded; no official correction located')
 dom('D36', 'C7-F(inv): invariant Fisher / local-sensitivity reformulation', 'C7G', 'OPEN LONG-TERM', 'needs independently supplied structure (C7Ln); separate future question; not attempted')
 dom('D37', 'Act VIII: one-parameter actions and finite / infinite representation', 'A8A A8C A8T A8D A8X', 'SOURCE+CARD COMPLETE', 'stabilizer trichotomy, circle quotient / cover, torus criterion and Kronecker density (source-locked, numerical instance carded), distinction table, counterexamples X1–X6')
-dom('D38', 'Act VIII: H3 and ★ readings', 'A8HA A8HQ A8HC A8SA A8SB A8SC', 'OPEN LONG-TERM', 'H3-original OPEN; H3-action PROJECT SYNTHESIS; H3-quotient RESTRICTED; H3-c RESTRICTED; STAR-A FAIL; STAR-B RESTRICTED; STAR-C RESTRICTED (Poincaré); H3 / ★ hierarchy not decided')
+dom('D38', 'Act VIII: H3 and ★ readings', 'A8HA A8HQ A8HC A8HCD A8HG A8HCF A8SA A8SB A8SC', 'OPEN LONG-TERM', 'H3-original OPEN; H3-action PROJECT SYNTHESIS; H3-quotient RESTRICTED (kernel vs orbit closure separated); H3-c split (2026-11-16): H3-c-direct FAIL, H3-group ESTABLISHED INSTANCE, H3-c-family RESTRICTED (H3 connection OPEN); STAR-A FAIL (lesson: geometry alone does not determine periodicity); STAR-B RESTRICTED (smooth-manifold category); STAR-C RESTRICTED (Poincaré: hypotheses of the guarantee); H3 / ★ hierarchy not decided')
+dom('D40', 'Preserved geometry → generator → dynamics (Act VIII story integration)', 'A8G A8E A8F A8KC A8Q A8GD', 'SOURCE+CARD COMPLETE', 'the common-form chart continued to orbit behaviour: generator theorem, SO(2) vs SO(1,1), the Fourier character, kernel vs orbit closure, the M_κ family; A8GD is PROJECT SYNTHESIS (exact in the canonical examples, not universal)')
 dom('D39', 'Act VIII: c-indexed forms, the Galilean limit, t versus c', 'A8M A8L A8K', 'SOURCE+CARD COMPLETE', 'finite-c congruence only; degenerate limit outside every congruence class; form degeneration ≠ group contraction; t vs c: STRUCTURAL ANALOGY through the preserved-form subgroup only')
 dom('D32', 'Model-manifold research story and extensions', 'MM0 MM3 MM6 MM7 MM8 MM9 MM10', 'OPEN LONG-TERM', 'every arrow of the story has a status (research/model_manifold_story.md); observation, manifestation and the viewer intuition stay open or philosophical; conscious observer requirement = NOT ESTABLISHED')
 dom('D33', 'Model-manifold invariance', 'MM1 MM2 MM4 MM5 MM11', 'SOURCE+CARD COMPLETE', 'MMI cards (2026-11-13) scoped by MMP cards (2026-11-15): model image vs manifold, parameters vs local coordinates, J_Y / A notation, positive-definite hypothesis, restricted noise theorem, volume element, geometric widths vs proxies (exact width definitions source-only), boundary language; c: three roles, transfer OPEN')
@@ -1186,11 +1274,11 @@ CF11B = dict(outcome='CF11-F2', classification='REFINED', outcomes=['CF11-F1', '
              prereg='research/constructions/cf11b_fisher_prereg.md', preregCommit='e6f3db8', record='research/constructions/cf11b_fisher_test.md', pullbackCommonForm='YES',
              correction='architectural correction (2026-11-12): P1, P2, P3 are not three meanings of one word; they are R2 structural invariance, R1 representation covariance and R3 equivariance / intertwining of the Transformation Architecture (TA0). CF11-F2 is unchanged.')
 RATINGS = [
- ('Foundation architecture completeness', 94, 93, 'Act VIII first construction (2026-11-16): the finite/infinite branch now has an exact testbed (one-parameter actions, A8A), the circle / torus / cylinder results, separate ★ readings and H3 candidates, and the c-family with form degeneration kept apart from group contraction (D37–D39). Still short: DYADIC definition, no general statement for effective representations, no application mathematics, C7-F(inv), H3-original OPEN.'),
- ('Mathematical verification coverage', round(100 * len(carded) / len(est)), 98, f'{len(carded)} of {len(est)} established or derived objects have PASS cards (computed). New: every Act VIII object is carded (A8 cards). Not carded: OB1 (definitional), A3 (wording).'),
- ('Cross-domain validation', 30, 30, 'Unchanged: the Act VIII examples are mathematical; relativity enters only through the known preserved-form object.'),
- ('Project-specific construction maturity', 45, 45, 'Unchanged: every surviving Act VIII statement is known mathematics or a classification of it.'),
- ('Paper / source coverage', 60, 59, f'{sum(1 for x in S if x["sourceClass"] in ("primary", "textbook", "review"))} external sources registered ({sum(1 for x in S if x["status"] == SP)} only partly verified); {len(ext_src)} of {len(ext)} external-claim objects have a source; R5 is SOURCE MISSING. Change: seven Act VIII sources registered (Hatcher, Katok–Hasselblatt, Hardy–Wright, Weyl 1916, Walters, Poincaré 1890, Malament); metadata only, claims not quoted.'),
+ ('Foundation architecture completeness', 95, 94, 'Act VIII story integration (2026-11-16): the common-form chart (CF1, CF4) is continued explicitly to orbit behaviour (A8G, D40), the circle is placed in the Fourier branch as the translation character (A8F), kernel and orbit closure are separated (A8KC), H3-c is split, and the missing report provenance (AMB register) is in the repository. Still short: DYADIC definition, effective representations, application mathematics, C7-F(inv), H3-original OPEN.'),
+ ('Mathematical verification coverage', round(100 * len(carded) / len(est)), 98, f'{len(carded)} of {len(est)} established or derived objects have PASS cards (computed). New: every story-pass object is carded (A8S cards). Not carded: OB1 (definitional), A3 (wording).'),
+ ('Cross-domain validation', 30, 30, 'Unchanged: rotations and boosts share the generator theorem (known mathematics); no new physical system.'),
+ ('Project-specific construction maturity', 45, 45, 'Unchanged: the new bridges are known mathematics placed in the project story.'),
+ ('Paper / source coverage', 61, 60, f'{sum(1 for x in S if x["sourceClass"] in ("primary", "textbook", "review"))} external sources registered ({sum(1 for x in S if x["status"] == SP)} only partly verified); {len(ext_src)} of {len(ext)} external-claim objects have a source; R5 is SOURCE MISSING. Change: Lee 2012, Milnor 1965 and Yaglom 1979 registered (metadata only, claims not quoted).'),
  ('Application validation', 0, 0, 'Unchanged.'),
 ]
 data = dict(about='Foundation dependency architecture (V1, revised in Pass 2, 2026-11-12). Generated by research/tools/foundation_source.py.', layers=LAYERS, stages=STAGES, statuses=STATUS, transferDepths=TD,
@@ -1263,7 +1351,7 @@ cl += ['', '## Blocking items for Foundation V1', '', '| Kind | Item |', '|---|-
        '| undefined central object | none (DYADIC PACKETS is an open user term, not a central object of the spine) |',
        '| incorrect mathematical bridge | none found; every bridge has a strength class, assumptions, a failure condition and what it does not prove |',
        '| provenance loss | the quinn2023 passage is quoted (P-2 closed, 2026-11-15); ThermaLens mathematics (APPLICATION PROVENANCE INCOMPLETE); the original mass-attraction wording (ORIGINAL VERBATIM NOT RECOVERED); four sources opened at full text in arXiv versions (2026-11-15); published journal versions not read |',
-       '', '## Foundation ratings (separate dimensions, no overall score)', '', '| Dimension | Rating | Previous (C7 lock) | Reason for the change |', '|---|---|---|---|']
+       '', '## Foundation ratings (separate dimensions, no overall score)', '', '| Dimension | Rating | Previous (Act VIII pass 1) | Reason for the change |', '|---|---|---|---|']
 for a, b_, c, d in RATINGS:
     cl.append(f"| {a} | {b_}% | {c}% | {d} |")
 cl += ['', '## CF11 and Transformation Architecture ratings (separate records)', '', '| Record | Statement | Mathematical Status | Novelty | Transfer Depth | Backbone Support | AI Slop Risk | Application Breadth |', '|---|---|---|---|---|---|---|---|']

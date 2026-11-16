@@ -24,7 +24,8 @@ const decided = (t) => decisions.includes(t);
 test('1. every Act VIII card is on the ledger and passes', () => {
   assert.ok(existsSync(new URL('../verify/verify_A8.py', import.meta.url)));
   assert.equal(A.cards.length, 41);
-  assert.deepEqual([...A.cards].sort(), Object.keys(latest).filter((k) => k.startsWith('A8')).sort());
+  // story-integration pass (2026-11-16) added verify/verify_A8S.py; both card sets are on the ledger
+  assert.deepEqual([...A.cards, ...A.storyCards].sort(), Object.keys(latest).filter((k) => k.startsWith('A8')).sort());
   assert.ok(pass(...A.cards));
 });
 
@@ -137,21 +138,23 @@ test('12. separate statuses from the allowed six; no umbrella verdict', () => {
   assert.deepEqual(A.statuses, ['PROVED', 'ESTABLISHED INSTANCE', 'RESTRICTED', 'PROJECT SYNTHESIS', 'FAIL', 'OPEN']);
   assert.ok(decided(A.statuses.join('; ')));
   const st = Object.fromEntries(A.statusTable.map((s) => [s.id, s.status]));
-  assert.deepEqual([st['H3-original'], st['H3-action'], st['H3-quotient'], st['H3-c'], st['STAR-A'], st['STAR-B'], st['STAR-C']],
-    ['OPEN', 'PROJECT SYNTHESIS', 'RESTRICTED', 'RESTRICTED', 'FAIL', 'RESTRICTED', 'RESTRICTED']);
+  // story-integration pass: H3-c split into three records (decision: "Do not merge these back together.")
+  assert.deepEqual([st['H3-original'], st['H3-action'], st['H3-quotient'], st['H3-c-direct'], st['H3-group'], st['H3-c-family'], st['STAR-A'], st['STAR-B'], st['STAR-C']],
+    ['OPEN', 'PROJECT SYNTHESIS', 'RESTRICTED', 'FAIL', 'ESTABLISHED INSTANCE', 'RESTRICTED', 'FAIL', 'RESTRICTED', 'RESTRICTED']);
+  assert.ok(!('H3-c' in st), 'the merged H3-c row is not live');
   for (const s of A.statusTable) assert.ok(A.statuses.includes(s.status) && pass(...s.cards), s.id);
   assert.ok(pass(A.statusCard));
   assert.match(A.ratings.find((r) => r.item === 'Act VIII overall').status, /no umbrella verdict/);
 });
 
 test('13. ratings are separate and not inflated; no predictive transfer is claimed', () => {
-  assert.deepEqual(A.ratings.map((r) => r.item), ['circle finite/infinite relation', 'torus extension', 'H3-action', 'H3-quotient', 'H3-c', '★', 'Act VIII overall']);
+  assert.deepEqual(A.ratings.map((r) => r.item), ['circle finite/infinite relation', 'torus extension', 'H3-action', 'H3-quotient', 'H3-c-direct', 'H3-group', 'H3-c-family', '★', 'Act VIII overall']);
   for (const r of A.ratings) {
     assert.ok(Number.isInteger(r.bs) && r.bs <= 40 && Number.isInteger(r.slop), r.item);
     assert.ok(['TRIVIAL CONSEQUENCE', 'STRUCTURAL TRANSFER', 'NOT YET FORMALIZED', 'FAIL'].includes(r.td), r.item);
     assert.ok(Number.isInteger(r.breadth) && r.breadth >= 0 && r.breadth <= 5, r.item);
   }
-  assert.equal(obj.get('I2').backboneSupport, 15);
+  assert.equal(obj.get('I2').backboneSupport, 20, 'story pass: restored; STAR-A alone does not lower ★');
   assert.equal(obj.get('L4').status, 'HYPOTHESIS');
 });
 
@@ -167,7 +170,8 @@ test('14. Foundation records the Act VIII objects, bridges, sources and domains'
 });
 
 test('15. the pass stops where it was told to', () => {
-  assert.ok(A.next.some((n) => /^One adversarial lock pass for Act VIII/.test(n)));
+  assert.ok(A.next.some((n) => /^READY FOR ADVERSARIAL LOCK/.test(n)));
+  assert.ok(A.superseded.some((x) => x.where === 'next pass' && x.old.some((o) => /^One adversarial lock pass for Act VIII/.test(o))), 'pass-1 recommendation kept as superseded');
   assert.ok(A.next.some((n) => /Not begun \(stop list\): mass-wave\/conjugacy, dispersion, quantum work, Energeo, the final Foundation freeze/.test(n)));
   assert.equal(reg.get('T-C7').status, 'open');
   assert.equal(reg.get('T-DYADIC').status, 'open');

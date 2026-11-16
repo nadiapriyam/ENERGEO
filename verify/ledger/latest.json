@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-16T14:58:48+00:00",
- "commit": "3315aa3",
+ "generated": "2026-11-16T15:48:38+00:00",
+ "commit": "79b88c5",
  "cards": {
   "A8Ca": {
    "script": "verify_A8.py",
@@ -247,6 +247,114 @@
    "verdict": "PASS",
    "everFailed": false,
    "claim": "final statuses (each derived only if all its evidence cards pass): T-TIME-CIRCLE-0 (old infinity wording): FAIL; corrected intuition (unbounded parameter, bounded geometry): ESTABLISHED INSTANCE; H3-original: OPEN; H3-action: PROJECT SYNTHESIS; H3-quotient: RESTRICTED; H3-c: RESTRICTED; STAR-A: FAIL; STAR-B: RESTRICTED; STAR-C: RESTRICTED"
+  },
+  "A8Ga": {
+   "script": "verify_A8S.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "generator theorem: for A(s) = e^(sK) one has A′ = KA, and for any K, M the identity (KA)ᵀMA + AᵀM(KA) = Aᵀ(KᵀM + MK)A holds (generic 3×3); so if KᵀM + MK = 0 then F(s) = A(s)ᵀMA(s) has F′ = 0 and F(0) = M, hence A(s)ᵀMA(s) = M for all s. Conversely, differentiating AᵀMA = M at s = 0 gives KᵀM + MK = 0"
+  },
+  "A8Gb": {
+   "script": "verify_A8S.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "on six supplied forms the solution space 𝔤_M = {K : KᵀM + MK = 0} has dimensions [1, 1, 1, 3, 3, 3] and every basis generator exponentiates to a one-parameter group with e^(sK)ᵀMe^(sK) = M (Euclidean, Lorentz, M_c, symplectic, I₃, diag(1, 1, −1)); no single universal M is used"
+  },
+  "A8Gc": {
+   "script": "verify_A8S.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "failure condition: K = I (e^(2s)I) and the shear [[0, 1], [0, 0]] violate KᵀI + IK = 0 and do not preserve I₂; the boost generator preserves η but not I₂. Which flows preserve a relation depends on the form the system supplies"
+  },
+  "A8Ea": {
+   "script": "verify_A8S.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "SO(2): J = [[0, −1], [1, 0]], J² = −I, JᵀI + IJ = 0, e^(θJ) = I cos θ + J sin θ (orthogonal, e^(2πJ) = I); orbits lie on |x|² = const; Stab of x ≠ 0 is 2πℤ; eigenvalues ±i: the canonical elliptic case (compact, periodic)"
+  },
+  "A8Eb": {
+   "script": "verify_A8S.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "SO(1,1): K = [[0, 1], [1, 0]], K² = I, Kᵀη + ηK = 0, e^(φK) = I cosh φ + K sinh φ preserves η; φ is additive (e^(φ₁K)e^(φ₂K) = e^((φ₁+φ₂)K)); e^(φK)(1, 0) = (cosh φ, sinh φ) has slope tanh φ ∈ (−1, 1) (= v/c in (ct, x)); Stab = {0}; eigenvalues ±1 and ‖e^(φK)‖ = e^|φ| → ∞: the canonical hyperbolic case (noncompact, free)"
+  },
+  "A8Ec": {
+   "script": "verify_A8S.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "same infinitesimal equation KᵀM + MK = 0, different continuation: for traceless 2×2 K, K² = −det(K)·I (Cayley–Hamilton), so det J = 1 (elliptic, periodic), det K = −1 (hyperbolic, noncompact), det N = 0 for the shear N = [[0, 0], [1, 0]] (parabolic, e^(sN) = I + sN, preserving diag(1, 0)). Scope: an exact canonical 2D comparison. In 3D one Lorentzian form diag(1, 1, −1) has elliptic (R₁₂, period 2π), hyperbolic (B₁₃) and parabolic (R₁₂ + B₁₃, nilpotent of order 3) generators: signature alone does not decide the continuation type"
+  },
+  "A8Fa": {
+   "script": "verify_A8S.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "χ_ω(t) = e^(iωt) is a continuous homomorphism (ℝ, +) → U(1) (χ(t + s) = χ(t)χ(s), χ(0) = 1, |χ| = 1): a one-dimensional unitary representation (character) of the translation group. ker χ_ω = (2π/|ω|)ℤ for ω ≠ 0 (ω = ±3, 1/2, √2 checked; ker = ℝ for ω = 0), so the induced map ℝ/ker χ_ω → S¹ is a continuous bijection from a compact space onto a Hausdorff space, hence a homeomorphism: ℝ/ker χ_ω ≅ S¹"
+  },
+  "A8Fb": {
+   "script": "verify_A8S.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "translation → phase → Fourier: (T_τ e_ω)(t) = e_ω(t − τ) = χ_ω(−τ)e_ω(t), so translation acts on each Fourier mode by its character; on the period-1 basis T_τ e_k = e^(−2πikτ)e_k (R4). A trigonometric polynomial is translation-periodic exactly on the common kernel of its modes' characters: e₂ + e₃ has period 1 (not 1/2), e₂ + e₄ has period 1/2 (not 1/4)"
+  },
+  "A8Ka": {
+   "script": "verify_A8S.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "torus character χ_ω(t) = (e^(iω₁t), …, e^(iω_nt)): ker χ_ω = ∩_j ker χ_(ω_j). (1, 3/2): ker = 4πℤ (2π ∉ ker since e^(3πi) = −1), the image is closed and ℝ/4πℤ → image is a homeomorphism (periodic case: quotient/kernel structure). (1, √2): ker = {0} (Tω ∈ 2πℤ² forces √2 ∈ ℚ)"
+  },
+  "A8Kb": {
+   "script": "verify_A8S.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "(1, √2): (1, −1) is not in the image (t = 2πm with √2t ∈ (2n+1)π would force √2 ∈ ℚ) but the image passes within 0.0005 < 0.01 of it (m ≤ 5000), so the image is not closed and the orbit closure (T², dimension 2 − 0) is strictly larger than the orbit. χ: ℝ → image is a continuous bijection but not a homeomorphism: χ(2πq) → χ(0) (distances [0.0766, 0.0317, 0.0131, 0.0054]) while 2πq → ∞. The quotient statement ℝ/ker ≅ image holds only algebraically here; the bounded representation is the orbit closure (dense case: orbit closure / subtorus structure)"
+  },
+  "A8Ba": {
+   "script": "verify_A8S.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "STAR-B in the category of smooth manifolds (Hausdorff, second countable) with flows of smooth complete vector fields: on ℝⁿ, n = 2, 3, X = ρ(|x|²)(−x₂, x₁, 0, …) with the smooth bump ρ (= 1 on [0, 1], = 0 on [4, ∞)) is tangent to the spheres, and x(t) = (½cos t, ½sin t, 0, …) is an integral curve with minimal period 2π. X has compact support, so it is complete (Lee 2013); transplanted through a chart it gives a non-constant periodic orbit on every smooth manifold of dimension ≥ 2. In dimension 1 a connected manifold without boundary is S¹ (rotation: periodic) or ℝ (no non-constant periodic orbit, A8Pe; classification: Milnor 1965). Not claimed for arbitrary 'geometrical objects'"
+  },
+  "A8Va": {
+   "script": "verify_A8S.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "Poincaré's hypotheses are the hypotheses of the theorem (its guarantee), not necessary conditions for recurrence: the rotation of ℝ² preserves Lebesgue measure of infinite total mass and every orbit is periodic, hence recurrent; θ̇ = 2 + cos θ on S¹ does not preserve Lebesgue measure (∂_θ(2 + cos θ) ≠ 0) and every orbit is periodic with period 2*sqrt(3)*pi/3 = 2π/√3, the invariant measure being dθ/(2 + cos θ). A8Pd's examples show only where the standard guarantee is unavailable and recurrence in fact fails"
+  },
+  "A8Wa": {
+   "script": "verify_A8S.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "rapidity, not c, is the Lorentz group parameter: in (ct, x) the boost with velocity v is e^(−φK) with tanh φ = v/c (checked for v/c = 1/3, −2/5, 3/7); rapidities add while velocities compose as (v₁ + v₂)/(1 + v₁v₂/c²); φ = artanh(v/c) = v/c + v³/(3c³) + … is linear in v only to first order, whereas the Fourier phase θ = ωt is exactly linear in t. Correct comparison: θ ↔ φ (parameters of one-parameter symmetry groups), not t ↔ c"
+  },
+  "A8Wb": {
+   "script": "verify_A8S.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "the analogy 'circle radius r ↔ c' has no exact map and is discarded: r = |z₀| is an orbit invariant (it differs from orbit to orbit under one fixed form), whereas c is a parameter of the form, the same for every orbit. The exact counterpart of r² on the Lorentz side is the value of q_c on the orbit, t₀² − x₀²/c² (preserved by every boost; it differs between orbits at fixed c)"
+  },
+  "A8Wc": {
+   "script": "verify_A8S.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "restricted content of c: the bare forms M_c (c = 2, 3 shown) are congruent by a spatial rescaling, so the congruence class of this isolated form does not distinguish the finite value of c; this is not the claim that c means only finiteness. With v given in fixed units the boost depends on c through the dimensionless ratio β = v/c (in (ct, x) it depends on β alone; v = 1 gives φ = artanh(1/2) for c = 2 and artanh(1/3) for c = 3); the null cone is x = ±ct; c → ∞ at fixed v is the external family limit (A8Lb)"
+  },
+  "A8Qa": {
+   "script": "verify_A8S.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "one family: M_κ = diag(1, κ), K_κ = [[0, κ], [−1, 0]] with K_κᵀM_κ + M_κK_κ = 0, K_κ² = −κI, det K_κ = κ (a similarity invariant). κ = ω²: e^(sK) = I cos ωs + K sin(ωs)/ω; with s = −t it is the oscillator flow on (p, q) (ṗ = −ω²q, q̇ = p; preserved form p² + ω²q²), period 2π/ω; κ = −1/c²: e^(sK) = I cosh(s/c) + cK sinh(s/c), and K_κ is the boost generator dΛ/dv at v = 0 (s = cφ); κ = 0: the Galilean shear. With s fixed, ω → 0 and c → ∞ give the same limit [[1, 0], [−s, 1]]. With translations, [K, H] = −P, [K, P] = κH: derived algebra dimension (2, 2, 1) for κ = 1, −1, 0 (Euclidean e(2), Poincaré(1+1), Galilei(1+1))"
+  },
+  "A8Qb": {
+   "script": "verify_A8S.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "the elliptic side depends on its scaling exactly as c does (A8X5): in normalized coordinates the circle generator ωJ → 0 and e^(sωJ) → I as ω → 0 (no shear); in the oscillator's physical coordinates (p, q) the same limit is the free-particle shear q(s) = q₀ + p₀s. A limit parameter has content only once what is held fixed is stated"
+  },
+  "A8Zb": {
+   "script": "verify_A8S.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "story-pass statuses (each derived only if all its evidence cards pass): H3-c-direct (t ↔ c → ∞): FAIL; H3-group (preserved-form one-parameter groups): ESTABLISHED INSTANCE; H3-c-family (c-indexed forms, Galilean limit): RESTRICTED; H3-quotient (corrected: kernel vs orbit closure): RESTRICTED; STAR-B (smooth-manifold category): RESTRICTED; STAR-C (theorem hypotheses vs recurrence): RESTRICTED; geometry constrains, generator decides: PROJECT SYNTHESIS"
   },
   "B1a": {
    "script": "verify_B1_B7.py",

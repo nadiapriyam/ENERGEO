@@ -1015,6 +1015,41 @@ T('T-STAR-C', 'STAR-C: constrained geometry tends to produce recurrence', 'Compa
   bounds=['Act VIII (2026-11-16): RESTRICTED to Poincaré recurrence (known; PROVED under its hypotheses). A reading of ★ (T-STAR), which keeps its wording.'],
   acts=['II–IV'], audit=A8_AUDIT, related=['T-STAR', 'T-STAR-A', 'T-STAR-B'], ref='Act VIII, 9')
 
+# ── Act VIII story-integration and mathematical-correction pass (2026-11-16) ──
+A8S_AUDIT = ('missing', 'stated in the Act VIII story-integration pass brief (2026-11-16)')
+ACTS_ALREADY_NEW |= {'T-H3-C-DIRECT', 'T-H3-GROUP', 'T-H3-C-FAMILY', 'T-GEOM-GEN-DYN', 'T-STAR-A-LESSON', 'T-GEN-DYN-Q'}
+T('T-H3-C-DIRECT', 'H3-c-direct: unbounded t compared literally with c → ∞', 'H3-c-direct: literal analogy between unbounded time t and c→∞. Status: FAIL / superficial.', RD, U, 'historical-conjecture', 'hypothesis',
+  norm='The literal analogy: c → ∞ plays the role that unbounded time t plays in t ↦ e^(iωt) ∈ S¹.',
+  con=[('card:A8Sa', 'c is not a group parameter on spacetime'), ('card:A8Wa', 'the Lorentz group parameter is the rapidity φ, tanh φ = v/c'), ('card:A8Wb', 'no exact map "circle radius r ↔ c"')],
+  bounds=['Story-integration pass (2026-11-16): FAIL / SUPERFICIAL. One of three records split from T-H3-C; not merged back. Superseded by the exact correspondence T-H3-GROUP (θ ↔ φ).'],
+  sup='T-H3-GROUP', acts=['II–IV', 'Guide'], audit=A8S_AUDIT, related=['T-H3', 'T-H3-C', 'T-H3-C-FAMILY'], ref='Act VIII story pass, H3-c split')
+T('T-H3-GROUP', 'H3-group: rotations and boosts as preserved-form one-parameter groups', 'H3-group: circle rotations and Lorentz boosts are both one-parameter symmetry groups preserving quadratic forms and satisfying the generator equation. Status: established structural pattern in the canonical examples.', RD, U, 'established', 'established',
+  norm='For constant M and A(s) = e^(sK): KᵀM + MK = 0 ⟺ A(s)ᵀMA(s) = M (A8Ga). Canonical instances: e^(θJ) on (ℝ², I) and e^(φK) on (ℝ², η), with θ ↔ φ as group parameters (tanh φ = v/c); the continuation types differ (K² = −det(K)·I: elliptic vs hyperbolic; A8Ec).',
+  pro=[('card:A8Ga', 'generator theorem'), ('card:A8Gb', 'six supplied forms'), ('card:A8Ea', 'SO(2)'), ('card:A8Eb', 'SO(1,1)'), ('card:A8Ec', 'same equation, different continuation')],
+  bounds=['Story-integration pass (2026-11-16): ESTABLISHED INSTANCE (established structural pattern in the canonical examples; the generator theorem is proved). An exact canonical 2D comparison: signature alone does not decide the dynamics in higher dimensions (A8Ec).'],
+  supers='T-H3-C-DIRECT', acts=['II–IV', 'Guide'], audit=A8S_AUDIT, related=['T-H3', 'T-H3-C', 'T-H3-C-FAMILY', 'T-GEOM-GEN-DYN'], ref='Act VIII story pass, H3-c split')
+T('T-H3-C-FAMILY', 'H3-c-family: c-indexed Lorentzian forms and their Galilean limit', 'H3-c-family: varying c indexes a family of Lorentzian structures/forms whose c→∞ limit is singular and whose Lorentz transformations have a Galilean limit under fixed-v scaling. Status: restricted/established pieces; project connection to H3 remains open.', RD, U, 'derived-connection', 'derived',
+  norm='Established pieces: M_c → diag(1, 0) outside every congruence class (A8Mc); fixed-v Galilean boost limit (A8Lb); contraction Poincaré(1+1) → Galilei(1+1) (A8Lc); the family M_κ = diag(1, κ), K_κ = [[0, κ], [−1, 0]] with κ = −1/c² for boosts and κ = ω² for the oscillator, both reaching the parabolic member κ = 0 when the physical variables are held fixed (A8Qa). Restricted: every limit depends on the scaling held fixed (A8X5, A8Qb).',
+  pro=[('card:A8Mc', ''), ('card:A8Lb', ''), ('card:A8Lc', ''), ('card:A8Qa', 'the κ-family'), ('card:A8Wc', 'restricted content of c')], con=[('card:A8X5', 'β fixed: nothing contracts'), ('card:A8Qb', 'normalized circle: no contraction')],
+  bounds=['Story-integration pass (2026-11-16): RESTRICTED (established pieces); the project connection to H3 remains OPEN. One of three records split from T-H3-C; not merged back.'],
+  acts=['II–IV', 'Guide'], audit=A8S_AUDIT, related=['T-H3', 'T-H3-C', 'T-C-ROLES', 'T-C9'], ref='Act VIII story pass, H3-c split')
+T('T-GEOM-GEN-DYN', 'Geometry constrains the action; the generator decides the continuation', 'geometry constrains the admissible symmetry/action structure, but the generator/action determines whether the resulting orbit is periodic, recurrent, hyperbolic, dense, or drifting.', RD, U, 'derived-connection', 'derived',
+  norm='Formal content only as M ↦ (G_M, 𝔤_M): the supplied form fixes the admissible transformations and generators (CF1, CF4, A8Ga); for K ∈ 𝔤_M the orbit type of e^(sK) is fixed by K — the sign of det K for traceless 2×2 K (A8Ec), the integer relations of ω on tori (A8Ua) — not by M alone (three generator types on diag(1, 1, −1), A8Ec).',
+  pro=[('card:A8Ga', ''), ('card:A8Ec', ''), ('card:A8Ua', ''), ('card:A8Gc', 'the equation is relative to the supplied form')],
+  bounds=['Story-integration pass (2026-11-16): PROJECT SYNTHESIS, exact in the canonical examples (2×2 forms, tori, diag(1, 1, −1)); not a universal theorem — "geometry constrains" is defined here only as M ↦ (G_M, 𝔤_M). The main explanatory bridge GEOMETRY → DYNAMICS/CONTINUATION.'],
+  acts=['II–IV'], audit=A8S_AUDIT, related=['T-STAR', 'T-STAR-A', 'T-STAR-A-LESSON', 'T-H3-ACTION', 'T-GEN-DYN-Q'], ref='Act VIII story pass')
+T('T-STAR-A-LESSON', 'What STAR-A\'s failure teaches', 'geometry alone does not determine periodicity.', RD, U, 'established', 'established',
+  variants=[('In particular, STAR-A failing must not be treated as equivalent to the Foundation/backbone failing.', RD)],
+  norm='One compact torus with the same invariants carries periodic, subtorus and dense orbits, decided by the generator\'s integer relations (A8Ua); one Lorentzian form diag(1, 1, −1) carries elliptic, hyperbolic and parabolic generators (A8Ec).',
+  pro=[('card:A8Ua', ''), ('card:A8Ec', ''), ('card:A8X1', '')],
+  bounds=['Story-integration pass (2026-11-16): the lesson of STAR-A\'s FAIL (kept). It names the missing condition — the generator/action — and is not a failure of the Foundation backbone.'],
+  acts=['II–IV'], audit=A8S_AUDIT, related=['T-STAR', 'T-STAR-A', 'T-GEOM-GEN-DYN'], ref='Act VIII story pass')
+T('T-GEN-DYN-Q', 'Preserved relation → generator → dynamics', 'Given a preserved geometric relation, what transformations preserve it, what generators produce those transformations, and what observable dynamics follow?', RD, U, 'open-question', 'open',
+  variants=[('preserved relation → preserving group → generator → one-parameter transformation → orbit/stabilizer → observable dynamics.', RD), ('Only apply this construction when the form and transformation family are independently supplied by the system.', RD)],
+  norm='Answered exactly in the canonical rows (Euclidean/SO(2), Lorentz/SO(1,1), the Fourier character ℝ → U(1), multi-frequency torus flows; A8Ea, A8Eb, A8Fa, A8Ka); open in general.',
+  pro=[('card:A8Ga', 'generator theorem'), ('card:A8Fa', 'Fourier character'), ('card:A8Ka', 'torus kernel')],
+  acts=['II–IV'], audit=A8S_AUDIT, related=['T-GEOM-GEN-DYN', 'T-GEOM-RULES', 'T-STAR'], ref='Act VIII story pass')
+
 PAIR_A = proof_target('Starting from the established common zero-sum form Σv_i = 0, identify all additional invariants/relations of the mass system that can be translated into mathematically meaningful tests on the directional cancellation system.',
                       requiredObjects=['the established shared form Σv_i = 0 (pair.A.sharedAlgebraicForm)'])
 next(r for r in R if r['id'] == 'T-Q.pairA-transfer')['proofTarget'] = PAIR_A
@@ -1406,6 +1441,55 @@ rate_a8('T-STAR-B', 2, 'PROJECT CLASSIFICATION OF KNOWN MATHEMATICS', PD, MULTI,
         'A carded proof of the dimension ≥ 2 construction.', 'A smooth manifold of dimension ≥ 2 with no flow having a non-constant periodic orbit (none: the bump construction gives one).', GC, ('pass', 'partial', 'n/a', 'pass', 'n/a'))
 rate_a8('T-STAR-C', 2, VKM, KN, MULTI, 15, 10, 'Reduces to the Poincaré recurrence theorem with all its hypotheses (invariant measure, finite total measure, almost every point); each hypothesis is needed.',
         'A recurrence statement that needs fewer hypotheses for a stated class of rule-bound geometries.', 'A measure-preserving flow on a finite measure space with a positive-measure set of non-recurrent points (impossible by the theorem).', GC, ('pass', 'pass', 'n/a', 'pass', 'n/a'), depth='TRIVIAL CONSEQUENCE')
+
+# Act VIII story-integration pass (2026-11-16): corrections keep the old wording in history; the H3-c split; recovered provenance
+RR3 = 'docs/restructure_report_rev3.md'
+def a8s_norm(rid, new, why):
+    r = byid[rid]
+    old = r['normalizedStatement']
+    r['normalizedStatement'] = new
+    r['history'].append(dict(date='2026-11-16', change=f'story-integration pass: {why}. Previous wording: {old}'))
+a8s_norm('T-STAR-B', 'Restricted form, in an explicit category: smooth manifolds without boundary (Hausdorff, second countable) with flows of smooth complete vector fields. Such a manifold carries a flow with a non-constant periodic orbit ⟺ some component has dimension ≥ 2 (a compactly supported bump-rotation field in a chart, A8Ba; completeness: Lee 2012) or is diffeomorphic to S¹; otherwise every component is a point or ℝ (Milnor 1965) and flows on ℝ have no non-constant periodic orbit (A8Pe). With fixed points counted as periodic the claim is vacuous (the trivial flow). Not stated for arbitrary "geometrical objects".', 'restricted to an explicitly defined category (the pass-1 "dimension ≥ 2" was too broad)')
+note16('T-STAR-B', 'Story-integration pass (2026-11-16): stays RESTRICTED; the category (smooth manifolds, complete smooth flows) is now explicit and the dimension ≥ 2 construction is carded (A8Ba).', 'story pass: category made explicit', pro=[('card:A8Ba', 'bump-rotation field: a non-constant periodic orbit')])
+a8s_norm('T-STAR-C', 'Restricted form = the Poincaré recurrence theorem: for a measure-preserving flow on a space of finite total measure, almost every point is recurrent. These are the hypotheses of the standard theorem (its guarantee), not necessary conditions for recurrence: the rotation of ℝ² (infinite measure) and θ̇ = 2 + cos θ on S¹ (Lebesgue not invariant; invariant density 1/(2 + cos θ)) recur everywhere (A8Va). In A8Pd\'s examples the guarantee is unavailable and recurrence in fact fails there. Compactness alone gives only topological recurrence of some point (minimal sets), source-only here.', '"each hypothesis is needed" corrected: hypotheses of the guarantee, not of recurrence itself')
+note16('T-STAR-C', 'Story-integration pass (2026-11-16): stays RESTRICTED; wording corrected — the finite invariant measure and measure preservation are hypotheses of the standard theorem, not necessary for recurrence (A8Va).', 'story pass: hypotheses vs recurrence', pro=[('card:A8Va', 'recurrence without the hypotheses')])
+a8s_norm('T-H3-QUOTIENT', 'Restricted and corrected: periodic case — for a continuous homomorphism χ: ℝ → S¹ or Tⁿ with kernel Tℤ ≠ {0}, ℝ/ker χ ≅ image (homeomorphism) and ℝ → S¹ is a covering (A8Fa, A8Ka, A8Ce, A8Cf); quasi-periodic/dense case — ker χ = {0}, the image is not closed and χ is not a homeomorphism onto it; the bounded representation is the orbit closure, a subtorus of dimension n − rank(integer relations) (A8Kb, A8Te). The two cases use different objects. With the alternative "orbit" the statement is true of every action (too broad). Boundary approach is encoded by neither (A8Pg).', 'quotient and orbit closure separated')
+note16('T-H3-QUOTIENT', 'Story-integration pass (2026-11-16): stays RESTRICTED; the periodic case (kernel/quotient) and the dense case (orbit closure/subtorus) are kept as different objects (A8Ka, A8Kb).', 'story pass: kernel vs closure', pro=[('card:A8Ka', ''), ('card:A8Fa', '')], con=[('card:A8Kb', 'the dense case is not a quotient of ℝ')])
+note16('T-H3-C', 'Story-integration pass (2026-11-16): SPLIT into T-H3-C-DIRECT (literal t ↔ c → ∞: FAIL / superficial), T-H3-GROUP (preserved-form one-parameter groups: ESTABLISHED INSTANCE) and T-H3-C-FAMILY (c-indexed forms, singular and Galilean limits: RESTRICTED; H3 connection OPEN). This record keeps the verbatim c-clause of H3-original; its pass-1 combined rating is superseded and the three records are not merged back.', 'story pass: H3-c split')
+_a = byid['T-H3-C']['assessment']
+_a['ratingHistory'].append(dict(date='2026-11-16', fromBackbone=_a['backboneSupport'], fromSlop=_a['slopRisk'], toBackbone=_a['backboneSupport'], toSlop=_a['slopRisk'], reason='superseded by the split (T-H3-C-DIRECT, T-H3-GROUP, T-H3-C-FAMILY); kept as history'))
+# branchState stays as rated (allowed values: active, low-confidence-active, inactive-archived); the split is recorded in ratingHistory and boundaries
+_old = byid['T-H3-C']['normalizedStatement']
+byid['T-H3-C']['normalizedStatement'] = _old.replace('Surviving restricted correspondence: both examples are one-parameter subgroups preserving a quadratic form (CF1/S4), with t ↔ rapidity s and the circle radius r ↔ c; no member or limit of the c-family is elliptic.', 'Pass-1 correspondence superseded (2026-11-16): the comparison is θ ↔ φ (rapidity, tanh φ = v/c), c is a distinct object, and "circle radius r ↔ c" has no exact map (A8Wa, A8Wb).')
+assert byid['T-H3-C']['normalizedStatement'] != _old
+byid['T-H3-C']['history'].append(dict(date='2026-11-16', change=f'story-integration pass: "r ↔ c" removed from the live statement. Previous wording: {_old}'))
+for _b in list(byid['T-C-ROLES']['boundaries']):
+    if 'the invariant content is finiteness' in _b:
+        i = byid['T-C-ROLES']['boundaries'].index(_b)
+        byid['T-C-ROLES']['boundaries'][i] = 'SUPERSEDED (2026-11-16, story-integration pass; too broad): ' + _b
+byid['T-C-ROLES']['history'].append(dict(date='2026-11-16', change='story-integration pass: the boundary "the invariant content is finiteness" marked SUPERSEDED (kept verbatim) and replaced by the restricted statement'))
+note16('T-C-ROLES', 'Story-integration pass (2026-11-16), restricted answer to H3-1 (replaces the superseded finiteness statement): for the bare family M_c = diag(1, −1/c²), all finite c > 0 forms are congruent under a spatial rescaling, so the congruence class of this isolated form does not distinguish the finite value of c (A8Wc). This does NOT mean that physical c has no significance beyond finiteness: kept distinct are finite-c unit normalization, the causal structure (x = ±ct), dimensionless ratios such as v/c (tanh φ = v/c), and the external family limit c → ∞. In the velocity parametrization det K_c = −1/c² links Role 2 (the hyperbolic generator) and Role 3 (κ → 0⁻) (A8Qa).',
+       'story pass: restricted content of c', pro=[('card:A8Wc', ''), ('card:A8Qa', '')])
+note16('T-H3', 'Story-integration pass (2026-11-16): H3-original kept verbatim and OPEN. The pass-1 candidate H3-c is split: H3-c-direct FAIL / superficial; H3-group ESTABLISHED INSTANCE (θ ↔ φ, the generator theorem); H3-c-family RESTRICTED, connection to H3 OPEN. Correct comparison: θ ↔ φ (rapidity), not t ↔ c.', 'story pass: H3-c split', pro=[('card:A8Ga', 'generator theorem'), ('card:A8Fa', 'Fourier character')])
+note16('T-STAR', f'Story-integration pass (2026-11-16): STAR-A\'s FAIL is kept and its lesson recorded (T-STAR-A-LESSON: geometry alone does not determine periodicity); it is not a failure of the backbone. The terms of ★ left open in AMB-7 (a)–(c) are in {RR3}.', 'story pass: STAR-A lesson; AMB-7 recovered', pro=[('card:A8Ua', 'the generator decides')])
+_r = byid['T-STAR']
+_r['boundaries'] = [b.replace('(AMB-7 a–c).', f'(AMB-7 a–c, {RR3}).') for b in _r['boundaries']]
+_r = byid['T-TIME-CIRCLE-0']
+_oa = dict(_r['audit']) if isinstance(_r['audit'], dict) else _r['audit']
+if isinstance(_r['audit'], dict) and 'note' in _r['audit']:
+    _r['audit']['note'] = _r['audit']['note'].replace('quoted only in the report (AMB-15); no record', f'quoted in the report (AMB-15), recovered to {RR3} on 2026-11-16')
+_r['history'].append(dict(date='2026-11-16', change=f'story-integration pass: AMB-15 recovered to {RR3}; audit note updated. Previous audit: {_oa}'))
+def rate_a8s(rid, breadth_int, novelty, *a, **k):
+    rate(rid, *a, **k)
+    byid[rid]['assessment'].update(date='2026-11-16', applicationBreadth=breadth_int, novelty=novelty)
+rate_a8s('T-H3-GROUP', 2, VKM, KN, MULTI, 35, 10, 'The generator theorem is proved (A8Ga) and realized on six supplied forms (A8Gb); circle rotations and Lorentz boosts are its canonical instances with θ ↔ φ; the continuation types differ (A8Ec). Story contribution: PRESERVED STRUCTURE → TRANSFORMATION → DYNAMICS/CONTINUATION.',
+         'A further independently supplied form whose generator type predicts a behaviour not yet carded, stated before checking.', 'A K with KᵀM + MK = 0 whose flow fails to preserve M (impossible by A8Ga).', GC, ('pass', 'pass', 'pass', 'pass', 'n/a'), depth='STRUCTURAL TRANSFER')
+rate_a8s('T-H3-C-DIRECT', 1, VKM, SM, FAM, 0, 5, 'c is a form/unit constant, fixed inside each theory; the group parameter is the rapidity. The literal analogy has no exact map.',
+         'None for this reading.', 'Already falsified (A8Sa, A8Wa, A8Wb).', GC, ('fail', 'fail', 'fail', 'pass', 'n/a'), state='low-confidence-active', depth='FAIL', correct='not established')
+rate_a8s('T-H3-C-FAMILY', 2, VKM, KN, MULTI, 20, 20, 'Established pieces (degenerate limit, fixed-v Galilean limit, contraction, the κ-family shared with the oscillator); restricted because every limit depends on the scaling held fixed. Connection to H3 OPEN. Story contribution: GEOMETRY → CROSS-SYSTEM TRANSFER (prepared; mass-wave handoff).',
+         'An exact object linking the family limit to the time–circle continuation beyond the shared parabolic member, stated before checking.', 'A scaling in which the stated limits fail (A8X5 already shows one where nothing contracts).', GC, ('pass', 'partial', 'partial', 'pass', 'n/a'), depth='STRUCTURAL TRANSFER')
+rate_a8s('T-GEOM-GEN-DYN', 2, 'PROJECT CLASSIFICATION OF KNOWN MATHEMATICS', PD, MULTI, 30, 15, 'Exact in the canonical examples: the supplied form fixes G_M and 𝔤_M; the generator decides the orbit type (det sign in 2D; integer relations on tori; three types on one 3D Lorentzian form). Not a universal theorem. Story contribution: the main GEOMETRY → DYNAMICS/CONTINUATION bridge.',
+         'A general classification of continuation types from (M, K) in a stated class, proved.', 'A supplied form whose generators all give the same continuation type although they differ in the deciding invariant (not found).', GC, ('pass', 'partial', 'n/a', 'pass', 'n/a'), depth='STRUCTURAL TRANSFER')
 
 update('T-CF11-A', TRIV, bs=60, slop=8, reason='Pass 3: the pattern holds in coordinate-free form (F*T = T) across constant-form, symplectic and homogeneous Fisher geometries, and its boundary is now exact (generic Fisher geometry is not characterized by a transformation group, CFT5f). Application Breadth corrected from 4 to 3: the rubric reserves 4 for a physical/empirical system')
 
