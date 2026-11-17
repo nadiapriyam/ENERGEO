@@ -1294,8 +1294,8 @@
   "failedOverreach": "geometry alone forces periodicity (STAR-A FAIL: A8X1, A8X3)",
   "lesson": "geometry alone does not determine periodicity: on one torus with the same invariants |z_j| = 1, the integer relations of the generator decide between periodic, subtorus and dense orbits (A8Ua); on one Lorentzian form diag(1, 1, −1), elliptic, hyperbolic and parabolic generators coexist (A8Ec)",
   "surviving": "action/generator/stabilizer determine the continuation type under the supplied geometry",
-  "starAvsBackbone": "STAR-A failing is not the Foundation/backbone failing. The backbone claims that preserved relations encode geometry; STAR-A claimed that geometry forces one dynamical outcome. Its failure names the missing condition — the generator/action — and the chain below supplies it.",
-  "nextQuestion": "Given a preserved geometric relation, what transformations preserve it, what generators produce those transformations, and what observable dynamics follow?",
+  "starAvsBackbone": "STAR-A failing is not the Foundation/backbone failing. The backbone claims that preserved relations encode geometry; STAR-A claimed that geometry forces one dynamical outcome. STAR-A failure → geometry alone does not force periodicity, followed by a CROSS-REFERENCE to the already-existing invariant-geometry questions about constraints (T-GEOM-RULES), symmetries (#4), preserved relations and transformations (#14, A†MA = M). STAR-A's failure did not historically cause the invariant-form / generator question (T-GEN-DYN-Q).",
+  "nextQuestion": "none created by STAR-A. CROSS-REFERENCE to the already-existing questions \"What observable rules arise because an object is constrained by a particular geometry?\" (T-GEOM-RULES), \"What remains unchanged when the pattern shifts?\" (#4) and \"What transformations leave that relation unchanged?\" (#14), stated together as \"Given a preserved geometric relation, what transformations preserve it, what generators produce those transformations, and what observable dynamics follow?\" (T-GEN-DYN-Q)",
   "percentages": "Backbone Support remains secondary metadata. It is kept, and contextualized by the story contribution of each item; no branch is downgraded because STAR-A failed.",
   "placement": "research/canonical_story.md, sections B–E (Act VIII answers #18 and #19, connects backward to #4 / #12 / #14, and is otherwise supporting or optional)"
  },
@@ -1466,7 +1466,7 @@
    "note": "answers"
   },
   {
-   "item": "torus: commensurability; dense irrational flow, never periodic; kernel vs orbit closure",
+   "item": "torus: commensurability — the same torus geometry also carries periodic flows; the irrational/rationally-independent torus flow used here has dense orbit and no exact period; kernel vs orbit closure",
    "objects": "A8T, A8KC",
    "category": "A",
    "group": "#18 answer",
@@ -1614,8 +1614,8 @@
    "objects": "A8G",
    "category": "E",
    "group": "refinement / failure",
-   "question": "created by STAR-A's failure",
-   "note": "the next question of the ★ chain — a refinement of the original question"
+   "question": "the already-existing invariant-geometry questions (T-GEOM-RULES, #4, #14), stated together; cross-referenced from STAR-A's failure, not created by it (pre-#17 patch, 2026-11-17)",
+   "note": "a refinement of the original question; STAR-A's failure did not historically cause it"
   }
  ],
  "geomGenDyn": {
@@ -2035,6 +2035,18 @@
     "Not begun (stop list): mass-wave/conjugacy, dispersion, quantum work, Energeo, the final Foundation freeze."
    ],
    "why": "Act VIII locked"
+  },
+  {
+   "where": "story: STAR-A vs backbone",
+   "old": "STAR-A failing is not the Foundation/backbone failing. The backbone claims that preserved relations encode geometry; STAR-A claimed that geometry forces one dynamical outcome. Its failure names the missing condition — the generator/action — and the chain below supplies it.",
+   "new": "STAR-A failing is not the Foundation/backbone failing. The backbone claims that preserved relations encode geometry; STAR-A claimed that geometry forces one dynamical outcome. STAR-A failure → geometry alone does not force periodicity, followed by a CROSS-REFERENCE to the already-existing invariant-geometry questions about constraints (T-GEOM-RULES), symmetries (#4), preserved relations and transformations (#14, A†MA = M). STAR-A's failure did not historically cause the invariant-form / generator question (T-GEN-DYN-Q).",
+   "why": "pre-#17 patch: STAR-A is not represented as causing the generator question"
+  },
+  {
+   "where": "story: next question after STAR-A",
+   "old": "Given a preserved geometric relation, what transformations preserve it, what generators produce those transformations, and what observable dynamics follow?",
+   "new": "none created by STAR-A. CROSS-REFERENCE to the already-existing questions \"What observable rules arise because an object is constrained by a particular geometry?\" (T-GEOM-RULES), \"What remains unchanged when the pattern shifts?\" (#4) and \"What transformations leave that relation unchanged?\" (#14), stated together as \"Given a preserved geometric relation, what transformations preserve it, what generators produce those transformations, and what observable dynamics follow?\" (T-GEN-DYN-Q)",
+   "why": "pre-#17 patch: cross-reference, not a causal next question"
   }
  ]
 }

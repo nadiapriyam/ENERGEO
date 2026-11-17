@@ -1724,7 +1724,8 @@
         "T-MM-DISTINGUISHED-Q",
         "T-RULES-GEOMETRY",
         "T-H3-C",
-        "T-H3-C-FAMILY"
+        "T-H3-C-FAMILY",
+        "T-P17-MASS-LEVEL"
       ],
       "history": [
         {
@@ -3872,11 +3873,16 @@
         {
           "ref": "card:S12",
           "note": "E² = p²c² + m²c⁴ is the Lorentz form of four-momentum (one constraint in two sets of variables)"
+        },
+        {
+          "ref": "card:P17Di",
+          "note": ""
         }
       ],
       "evidenceAgainst": [],
       "boundaries": [
-        "Not claimed: that classical mass distributions (stage 3) are waves; not a generic wave–particle duality lesson."
+        "Not claimed: that classical mass distributions (stage 3) are waves; not a generic wave–particle duality lesson.",
+        "#17 first construction (2026-11-17): \"a deeper common principle\" is not established. The exact common relation found is one Lorentzian form whose levels 0 and (mc/ħ)² hold massless and massive waves (MW-B); the representation statement is MW-D (OPEN)."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -3885,6 +3891,7 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "P17Di",
         "S12"
       ],
       "sourceDocs": [
@@ -3925,12 +3932,17 @@
         "lastResearchOutcome": null
       },
       "related": [
-        "T-MASS-WAVE-SEED"
+        "T-MASS-WAVE-SEED",
+        "T-MW-D"
       ],
       "history": [
         {
           "date": "2026-11-12",
           "change": "Act labels remapped to the new Act map (rev 3: VIII)"
+        },
+        {
+          "date": "2026-11-17",
+          "change": "#17 first construction: MW-B / MW-D"
         }
       ],
       "relatedActsRev3": [
@@ -3951,10 +3963,20 @@
         {
           "ref": "card:S12",
           "note": ""
+        },
+        {
+          "ref": "card:P17De",
+          "note": ""
+        },
+        {
+          "ref": "card:P17Ea",
+          "note": ""
         }
       ],
       "evidenceAgainst": [],
-      "boundaries": [],
+      "boundaries": [
+        "#17 first construction (2026-11-17): in the spectral variables (ω/c, k), one relation q(P) = (mc/ħ)² governs the massless (m = 0) and massive cases (MW-B, ESTABLISHED); that this relation governs \"mass-like phenomena\" beyond the wave description needs the physical identifications (MW-A, RESTRICTED)."
+      ],
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
@@ -3962,6 +3984,8 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "P17De",
+        "P17Ea",
         "S12"
       ],
       "sourceDocs": [
@@ -3985,6 +4009,10 @@
         {
           "date": "2026-11-12",
           "change": "Act labels remapped to the new Act map (rev 3: VIII)"
+        },
+        {
+          "date": "2026-11-17",
+          "change": "#17 first construction: one relation for both cases, in wave variables"
         }
       ],
       "relatedActsRev3": [
@@ -4016,9 +4044,15 @@
           "note": "QFT field description, particle excitations, wave packets: established physics, not yet carded here"
         }
       ],
-      "evidenceAgainst": [],
+      "evidenceAgainst": [
+        {
+          "ref": "card:P17Mx",
+          "note": "the dispersion relation alone does not decide it"
+        }
+      ],
       "boundaries": [
-        "The standard QFT account supports part of it; it does not replace the broader question of a common geometry."
+        "The standard QFT account supports part of it; it does not replace the broader question of a common geometry.",
+        "#17 first construction (2026-11-17): not decided; MW-D is OPEN and theory-specific. Particle/antiparticle and other QFT readings are future branches, not used."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -4027,6 +4061,7 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "P17Mx",
         "S12"
       ],
       "sourceDocs": [
@@ -4045,12 +4080,17 @@
       "construction": null,
       "proofTarget": null,
       "related": [
-        "T-MASS-WAVE-SEED"
+        "T-MASS-WAVE-SEED",
+        "T-MW-D"
       ],
       "history": [
         {
           "date": "2026-11-12",
           "change": "Act labels remapped to the new Act map (rev 3: VIII)"
+        },
+        {
+          "date": "2026-11-17",
+          "change": "#17 first construction: MW-D open"
         }
       ],
       "relatedActsRev3": [
@@ -5211,17 +5251,41 @@
         {
           "ref": "uncarded",
           "note": "f̂(−k) = conj f̂(k) for real f: used in #7, no card yet"
+        },
+        {
+          "ref": "card:P17Rc",
+          "note": "the real-field pairing"
+        },
+        {
+          "ref": "card:P17Cg",
+          "note": "conj χ = χ⁻¹"
         }
       ],
-      "evidenceAgainst": [],
-      "boundaries": [],
+      "evidenceAgainst": [
+        {
+          "ref": "card:P17Cb",
+          "note": "sign pairing is not conjugacy"
+        },
+        {
+          "ref": "card:P17Cd",
+          "note": "paired variables, one entity"
+        }
+      ],
+      "boundaries": [
+        "#17 first construction (2026-11-17): OPEN, not assumed. Source relation locked: x real ⟺ x̂(−ω) = conj x̂(ω) (P17Fa; DFT, DC and Nyquist: P17Fd, P17Ff). First physical candidate: a real classical field has φ̃(−ω, −k) = conj φ̃(ω, k) — the same theorem, a reality constraint whose partners are one real oscillation, not two entities (P17Rc, P17Cd). Sign symmetry, orbit symmetry, independent states and notation-dependent pairs are different kinds (T-P17-PAIRING-KINDS). Record: research/constructions/p17_conjugacy_physical_pairs.md."
+      ],
       "supersededBy": null,
       "supersedes": null,
       "relatedActs": [
         "Guide"
       ],
       "relatedObjects": [],
-      "relatedCards": [],
+      "relatedCards": [
+        "P17Cb",
+        "P17Cd",
+        "P17Cg",
+        "P17Rc"
+      ],
       "sourceDocs": [
         "docs/restructure_decisions.md",
         "docs/Interactive_Master_Map.extracted.md"
@@ -5238,19 +5302,53 @@
       "construction": null,
       "proofTarget": null,
       "related": [
-        "B-NONEXHAUSTIVE"
+        "B-NONEXHAUSTIVE",
+        "T-P17-GOV",
+        "T-P17-CRITERIA",
+        "T-P17-DEPTH",
+        "T-P17-REALFIELD",
+        "T-P17-PAIRING-KINDS"
       ],
       "history": [
         {
           "date": "2026-11-12",
           "change": "Act labels remapped to the new Act map (rev 3: V, VIII)"
+        },
+        {
+          "date": "2026-11-17",
+          "change": "#17 first construction: tested, stays OPEN"
         }
       ],
       "relatedActsRev3": [
         "V",
         "VIII"
       ],
-      "assessment": null
+      "assessment": {
+        "date": "2026-11-17",
+        "mathematicalStatus": "SPECULATIVE MAPPING",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 15,
+        "slopRisk": 30,
+        "why": "Exact source relation; one physical candidate reproduces it only as the same theorem (a reality constraint). No pairing of independent physical entities was found to be a conjugate pair. The question stays open.",
+        "increase": "A physical pairing of independent entities with an exact relation beyond conj χ = χ⁻¹, stated before checking.",
+        "falsify": "A proof that every exact physical pairing in a stated class reduces to the reality constraint or to a sign / orbit symmetry.",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "partial",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "NOT YET FORMALIZED",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 2,
+        "novelty": "OPEN USER QUESTION"
+      }
     },
     {
       "id": "T-SUBCONSCIOUS",
@@ -11568,11 +11666,25 @@
         {
           "ref": "card:S12",
           "note": "supporting: one invariant relation in two sets of variables"
+        },
+        {
+          "ref": "card:P17De",
+          "note": "the massive level set"
+        },
+        {
+          "ref": "card:P17Dg",
+          "note": "what m changes"
         }
       ],
-      "evidenceAgainst": [],
+      "evidenceAgainst": [
+        {
+          "ref": "card:P17Ch",
+          "note": "MW-C fails as conjugacy"
+        }
+      ],
       "boundaries": [
-        "Not rewritten into QFT language; QFT is a secondary reference, not a proof of this theory."
+        "Not rewritten into QFT language; QFT is a secondary reference, not a proof of this theory.",
+        "#17 first construction (2026-11-17): kept verbatim and not promoted; the historical seed for one candidate route inside #17. Exact readings: MW-A RESTRICTED (T-MW-A), MW-B ESTABLISHED (T-MW-B), MW-C FAIL (T-MW-C; a restricted Fourier-duality reading mc²/ħ ↔ τ survives, T-P17-REST-CLOCK), MW-D OPEN (T-MW-D). Not reinterpreted as QFT. Record: research/constructions/p17_conjugacy_physical_pairs.md."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -11581,6 +11693,9 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
+        "P17Ch",
+        "P17De",
+        "P17Dg",
         "S12"
       ],
       "sourceDocs": [
@@ -11602,9 +11717,19 @@
         "T-MASS-WAVE",
         "T-MASS-WAVE-Q",
         "T-MATTER-FIELD",
-        "T-GRAVITY-ATTRACTION"
+        "T-GRAVITY-ATTRACTION",
+        "T-P17-GOV",
+        "T-MW-A",
+        "T-MW-B",
+        "T-MW-C",
+        "T-MW-D"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-17",
+          "change": "#17 first construction: four readings tested separately"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": null
     },
@@ -14769,7 +14894,8 @@
         "T-TIME-CIRCLE",
         "T-TIME-CIRCLE-0",
         "T-H3",
-        "B-FINITE-INFINITE"
+        "B-FINITE-INFINITE",
+        "T-P17-REST-CLOCK"
       ],
       "history": [],
       "relatedActsRev3": [],
@@ -14782,6 +14908,14 @@
       "variants": [
         {
           "words": "Do not call an irrational torus flow periodic.",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "the irrational/rationally-independent torus flow used here has dense orbit and no exact period.",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "Preserve that the same torus geometry can also carry periodic flows.",
           "source": "docs/restructure_decisions.md"
         }
       ],
@@ -14805,10 +14939,20 @@
         {
           "ref": "card:A8Tc",
           "note": "near return without exact return"
+        },
+        {
+          "ref": "card:A8Ta",
+          "note": "rational torus: periodic"
+        },
+        {
+          "ref": "card:A8Ua",
+          "note": "one torus, periodic / subtorus / dense"
         }
       ],
       "evidenceAgainst": [],
-      "boundaries": [],
+      "boundaries": [
+        "Pre-#17 story patch (2026-11-17): scoped — the irrational/rationally-independent torus flow used here has dense orbit and no exact period; the same torus geometry also carries periodic flows when the frequencies are commensurable (A8Ta, A8Ua). \"Torus = dense / never periodic\" is not a statement about the torus."
+      ],
       "supersededBy": null,
       "supersedes": "T-STAR-A",
       "relatedActs": [
@@ -14817,7 +14961,9 @@
       "relatedObjects": [],
       "relatedCards": [
         "A8Ra",
+        "A8Ta",
         "A8Tc",
+        "A8Ua",
         "A8X1",
         "A8X3"
       ],
@@ -14841,7 +14987,12 @@
         "T-STAR-A",
         "T-CIRCLE-NOT-THESIS"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-17",
+          "change": "pre-#17 patch: torus wording scoped"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": null
     },
@@ -15911,6 +16062,10 @@
         {
           "words": "In particular, STAR-A failing must not be treated as equivalent to the Foundation/backbone failing.",
           "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "STAR-A failure → geometry alone does not force periodicity",
+          "source": "docs/restructure_decisions.md"
         }
       ],
       "normalizedStatement": "One compact torus with the same invariants carries periodic, subtorus and dense orbits, decided by the generator's integer relations (A8Ua); one Lorentzian form diag(1, 1, −1) carries elliptic, hyperbolic and parabolic generators (A8Ec).",
@@ -15929,11 +16084,16 @@
         {
           "ref": "card:A8X1",
           "note": ""
+        },
+        {
+          "ref": "card:A8Ta",
+          "note": "the same torus carries periodic flows"
         }
       ],
       "evidenceAgainst": [],
       "boundaries": [
-        "Story-integration pass (2026-11-16): the lesson of STAR-A's FAIL (kept). It names the missing condition — the generator/action — and is not a failure of the Foundation backbone."
+        "Story-integration pass (2026-11-16): the lesson of STAR-A's FAIL (kept). It names the missing condition — the generator/action — and is not a failure of the Foundation backbone.",
+        "Pre-#17 story patch (2026-11-17): the lesson is followed by a CROSS-REFERENCE to the already-existing invariant-geometry questions (T-GEOM-RULES, #4, #14, T-GEN-DYN-Q); it names the missing mathematical condition but did not historically create the generator question. Scoped torus wording: the irrational/rationally-independent torus flow used here has dense orbit and no exact period; the same torus geometry also carries periodic flows (A8Ta, A8Ua)."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -15943,6 +16103,7 @@
       "relatedObjects": [],
       "relatedCards": [
         "A8Ec",
+        "A8Ta",
         "A8Ua",
         "A8X1"
       ],
@@ -15966,7 +16127,12 @@
         "T-STAR-A",
         "T-GEOM-GEN-DYN"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-17",
+          "change": "pre-#17 patch: lesson → cross-reference; torus wording scoped"
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": null
     },
@@ -16004,7 +16170,8 @@
       ],
       "evidenceAgainst": [],
       "boundaries": [
-        "Canonical story (2026-11-16): the next question of the Pair B / ★ chain, created by STAR-A's failure (\"geometry alone does not force exact periodicity\") — a refinement of the original ★ question, not a replacement for the circle / periodicity / infinity question. Graph: research/canonical_story.md, Chain PB."
+        "SUPERSEDED (2026-11-17 pre-#17 patch: STAR-A's failure did not historically cause this question; see the note below): Canonical story (2026-11-16): the next question of the Pair B / ★ chain, created by STAR-A's failure (\"geometry alone does not force exact periodicity\") — a refinement of the original ★ question, not a replacement for the circle / periodicity / infinity question. Graph: research/canonical_story.md, Chain PB.",
+        "Pre-#17 story patch (2026-11-17): STAR-A failure → geometry alone does not force periodicity, followed by a CROSS-REFERENCE to this question. It states together the already-existing invariant-geometry questions about constraints (T-GEOM-RULES, revision 2), symmetries (#4) and preserved relations and transformations (#14, A†MA = M); STAR-A's failure did not historically cause it. Graph: research/canonical_story.md, Chain PB (X step)."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -16042,6 +16209,10 @@
         {
           "date": "2026-11-16",
           "change": "canonical story: placement"
+        },
+        {
+          "date": "2026-11-17",
+          "change": "pre-#17 patch: the 2026-11-16 causal placement marked SUPERSEDED (kept verbatim); recorded as a cross-reference"
         }
       ],
       "relatedActsRev3": [],
@@ -16103,6 +16274,925 @@
       "history": [],
       "relatedActsRev3": [],
       "assessment": null
+    },
+    {
+      "id": "T-P17-GOV",
+      "label": "#17 governance: the branch is not defined as mass-wave",
+      "words": "Do NOT define the branch as “mass-wave” before testing this question.",
+      "variants": [
+        {
+          "words": "Mass/wave is one candidate investigation within the branch.",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "Do not turn #17 into a generic QFT chapter.",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "Do not reorder the Master Map around the new mathematics.",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "Do not create a new canonical story node unless the user historically asked the question.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "The #17 question comes first, with its historical predecessor #12; candidate physical examples enter only after it; QFT objects (operators, particle/antiparticle, CPT, Dirac sea, virtual particles) are future branches unless a precise relation requires them.",
+      "origin": "user",
+      "kind": "method-rule",
+      "status": "governance",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "#17 first construction",
+      "audit": {
+        "before": "new",
+        "note": "first #17 construction (2026-11-17)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-CONJUGACY",
+        "T-MASS-WAVE-SEED"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-P17-CRITERIA",
+      "label": "#17: what \"same structure\" would have to mean",
+      "words": "Do not allow loose analogy.",
+      "variants": [
+        {
+          "words": "The question is whether there is a mathematically meaningful shared relation.",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "shared representation-theoretic structure.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "Transfer criteria TC1–TC7: a transformation relating the pair; an involution or symmetry operation; a preserved relation; a reconstruction or reality constraint; paired coordinates carrying non-independent information; a common quadratic/bilinear relation; a group/representation-theoretic origin. Levels: visual analogy < shared equation < shared transformation structure < shared representation-theoretic structure, awarded only on cards.",
+      "origin": "user",
+      "kind": "method-rule",
+      "status": "governance",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "#17 first construction, C",
+      "audit": {
+        "before": "new",
+        "note": "first #17 construction (2026-11-17)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-CONJUGACY",
+        "T-P17-DEPTH",
+        "T-P17-PAIRING-KINDS"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-P17-DEPTH",
+      "label": "#17: the discovery path and its question",
+      "words": "Fourier pair → exact mathematical conjugacy → what information does the pairing encode? → do physical pairings ever share an exact relation of comparable structural depth?",
+      "variants": [
+        {
+          "words": "Only after that question is explicit should candidate physical examples enter.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "Answered for the source relation: a conjugate pair of a real signal encodes one real oscillation (amplitude and phase); the conjugate half is redundant (P17Fe, P17Fh). For the first physical candidate (a real classical field) the exact relation found is the same theorem, φ̃(−ω, −k) = conj φ̃(ω, k), a reality constraint; no pairing of independent physical entities was found to be a conjugate pair. Open beyond these candidates.",
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [
+        {
+          "ref": "card:P17Fh",
+          "note": "what the pairing encodes"
+        },
+        {
+          "ref": "card:P17Rc",
+          "note": "the real-field pairing"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:P17Cd",
+          "note": "the partners are not two entities"
+        }
+      ],
+      "boundaries": [],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "P17Cd",
+        "P17Fh",
+        "P17Rc"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "#17 first construction, A–H",
+      "audit": {
+        "before": "new",
+        "note": "first #17 construction (2026-11-17)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-CONJUGACY",
+        "T-P17-REALFIELD",
+        "T-P17-PAIRING-KINDS",
+        "T-P17-CRITERIA"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
+    },
+    {
+      "id": "T-MW-A",
+      "label": "MW-A: the de Broglie reading of the mass/wave seed",
+      "words": "Massive particles admit wave variables through:",
+      "variants": [
+        {
+          "words": "MW-A — de Broglie relation",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "E = ħω, p = ħk (physical identifications, inputs). Derived under them: (E/c, p) = ħ(ω/c, k), so the level-set geometry is rescaled by ħ (P17Ea); v_g = dω/dk = pc²/E = v and ω₀ = mc²/ħ (P17Eb).",
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:P17Ea",
+          "note": "ħ-scaling"
+        },
+        {
+          "ref": "card:P17Eb",
+          "note": "group velocity = particle velocity"
+        },
+        {
+          "ref": "card:FB8a",
+          "note": "E² = p²c² + m²c⁴ ⟺ the ω–k relation"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "#17 first construction (2026-11-17): RESTRICTED — holds under the identifications E = ħω, p = ħk, which are not classical identities; no physical data carded here."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "FB8a",
+        "P17Ea",
+        "P17Eb"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "#17 first construction, I",
+      "audit": {
+        "before": "new",
+        "note": "first #17 construction (2026-11-17)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-MASS-WAVE-SEED",
+        "T-MW-B",
+        "T-MW-C",
+        "T-MW-D"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-17",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
+        "breadth": "one mathematical family",
+        "backboneSupport": 15,
+        "slopRisk": 15,
+        "why": "Exact under the identifications E = ħω, p = ħk: ħ-scaling of the same geometry, v_g = v and ω₀ = mc²/ħ. The identifications are inputs, not derived.",
+        "increase": "Physical data or theory, outside this pass.",
+        "falsify": "A massive system where v_g ≠ pc²/E under the stated identifications (impossible algebraically).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "n/a",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "TRIVIAL CONSEQUENCE",
+        "mathematicalCorrectness": "established under assumptions",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 1,
+        "novelty": "VALIDATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "T-MW-B",
+      "label": "MW-B: massless and massive cases as levels of one Lorentzian form",
+      "words": "Massless and massive cases occupy different level sets of the same Lorentzian quadratic form in energy-momentum / spectral variables.",
+      "variants": [
+        {
+          "words": "MW-B — common quadratic geometry",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "q(P) = (ω/c)² − k² with P = (ω/c, k): m = 0 ⟺ q(P) = 0 (ω = ±ck); m > 0 ⟺ q(P) = (mc/ħ)², a hyperbola whose branches are boost orbits; mass is the orbit invariant (P17Dc, P17De, P17Di). Spectral variables, not physical spacetime.",
+      "origin": "user",
+      "kind": "established",
+      "status": "established",
+      "evidenceFor": [
+        {
+          "ref": "card:P17Dc",
+          "note": "the null level"
+        },
+        {
+          "ref": "card:P17De",
+          "note": "the massive level"
+        },
+        {
+          "ref": "card:P17Di",
+          "note": "mass as orbit invariant"
+        },
+        {
+          "ref": "card:FB8b",
+          "note": "the η-form in (ω/c, k)"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "#17 first construction (2026-11-17): ESTABLISHED (exact). It does not say that mass is a wave."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "FB8b",
+        "P17Dc",
+        "P17De",
+        "P17Di"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "#17 first construction, I",
+      "audit": {
+        "before": "new",
+        "note": "first #17 construction (2026-11-17)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-MASS-WAVE-SEED",
+        "T-MW-A",
+        "T-P17-MASS-LEVEL"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-17",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
+        "breadth": "one mathematical family",
+        "backboneSupport": 30,
+        "slopRisk": 10,
+        "why": "One Lorentzian form q = (ω/c)² − k²: m = 0 is its null level and m > 0 a non-null level whose branches are boost orbits, with mc/ħ the orbit invariant. A second realization (the elastic-foundation string) has the same levels.",
+        "increase": "A third independent system on the same levels, or a prediction from the level structure recorded before its card.",
+        "falsify": "A massless and a massive wave of one PDE family that do not lie on levels of one form (none).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "STRUCTURAL TRANSFER",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 2,
+        "novelty": "VALIDATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "T-MW-C",
+      "label": "MW-C: mass and wave variables as a conjugate pair",
+      "words": "Mass and wave variables form a conjugate pair in the same mathematical sense as Fourier conjugates.",
+      "variants": [
+        {
+          "words": "Likely false unless a precise conjugacy is found.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "Tested as complex conjugacy: conjugation pairs P with −P, maps the mass-m shell to itself and never relates m to (ω, k) (P17Ch). A different, restricted pairing exists: mc²/ħ is Fourier-dual to proper time along the group worldline (T-P17-REST-CLOCK).",
+      "origin": "user",
+      "kind": "historical-conjecture",
+      "status": "hypothesis",
+      "evidenceFor": [],
+      "evidenceAgainst": [
+        {
+          "ref": "card:P17Ch",
+          "note": "conjugation fixes m"
+        }
+      ],
+      "boundaries": [
+        "#17 first construction (2026-11-17): FAIL as complex conjugacy. Kept verbatim as the tested reading."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "P17Ch"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "#17 first construction, I",
+      "audit": {
+        "before": "new",
+        "note": "first #17 construction (2026-11-17)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-MASS-WAVE-SEED",
+        "T-MW-A",
+        "T-P17-REST-CLOCK"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-17",
+        "mathematicalStatus": "SPECULATIVE MAPPING",
+        "breadth": "one mathematical family",
+        "backboneSupport": 0,
+        "slopRisk": 5,
+        "why": "Complex conjugation maps the mass-m shell to itself; m is a level label, not a coordinate paired with (ω, k).",
+        "increase": "None for this reading; the duality reading is T-P17-REST-CLOCK.",
+        "falsify": "Already falsified (P17Ch).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "fail",
+          "generalization": "fail",
+          "transfer": "fail",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "low-confidence-active",
+        "failures": [],
+        "transferDepth": "FAIL",
+        "mathematicalCorrectness": "not established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 1,
+        "novelty": "VALIDATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "T-MW-D",
+      "label": "MW-D: particle-like and wave-like descriptions as representations of one state",
+      "words": "Particle-like and wave-like descriptions may be different representations/aspects of the same physical state.",
+      "variants": [
+        {
+          "words": "This is a physics interpretation and requires exact theory-specific wording.",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "Do not treat it as established merely from the dispersion relation.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "Needs a specific physical theory and exact wording. The dispersion relation alone does not decide it: a string on an elastic foundation satisfies the same relation with a stiffness in place of mass (P17Mx).",
+      "origin": "user",
+      "kind": "hypothesis",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [
+        {
+          "ref": "card:P17Mx",
+          "note": "the same dispersion relation without a particle"
+        }
+      ],
+      "boundaries": [
+        "#17 first construction (2026-11-17): OPEN; future branch (theory-specific)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "P17Mx"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "#17 first construction, I",
+      "audit": {
+        "before": "new",
+        "note": "first #17 construction (2026-11-17)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-MASS-WAVE-SEED",
+        "T-MATTER-FIELD",
+        "T-MASS-WAVE",
+        "T-MW-A"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-17",
+        "mathematicalStatus": "SPECULATIVE MAPPING",
+        "breadth": "one mathematical family",
+        "backboneSupport": 10,
+        "slopRisk": 40,
+        "why": "A physics interpretation; the dispersion relation does not decide it, since a classical string satisfies the same relation.",
+        "increase": "A specific theory with exact wording in which the statement is a theorem.",
+        "falsify": "A theory-specific proof that the two descriptions are not representations of one state.",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "not-yet",
+          "generalization": "not-yet",
+          "transfer": "not-yet",
+          "failureCondition": "pass",
+          "outOfSample": "not-yet"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "NOT YET FORMALIZED",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 1,
+        "novelty": "OPEN USER QUESTION"
+      }
+    },
+    {
+      "id": "T-P17-REALFIELD",
+      "label": "A real field pairs the mode at P with the mode at −P",
+      "words": "For a real classical field the space-time spectrum satisfies φ̃(−ω, −k) = conj φ̃(ω, k): the reality condition pairs the mode at P = (ω/c, k) with the mode at −P, which lies on the same level set of q and on the other branch.",
+      "variants": [],
+      "normalizedStatement": "b(k) = conj a(−k): the partner of (ω, k) is (−ω, −k), not (−ω, k); it follows from realness, not from the equation; the same theorem as #12 in two variables (characters of ℝ²: conj χ_P = χ_{−P}).",
+      "origin": "assistant-proposed",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:P17Rb",
+          "note": "reality ⟺ amplitude pairing"
+        },
+        {
+          "ref": "card:P17Rc",
+          "note": "two-variable Hermitian symmetry"
+        },
+        {
+          "ref": "card:P17Rd",
+          "note": "which modes pair"
+        },
+        {
+          "ref": "card:P17Re",
+          "note": "a condition, not a consequence"
+        },
+        {
+          "ref": "card:P17Cg",
+          "note": "representation-theoretic origin"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:P17Cd",
+          "note": "the partners are one real oscillation, not two entities"
+        }
+      ],
+      "boundaries": [
+        "#17 first construction (2026-11-17): DERIVED; TRIVIAL CONSEQUENCE of the source relation. No particle/antiparticle reading."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "P17Cd",
+        "P17Cg",
+        "P17Rb",
+        "P17Rc",
+        "P17Rd",
+        "P17Re"
+      ],
+      "sourceDocs": [
+        "research/constructions/p17_conjugacy_physical_pairs.md"
+      ],
+      "auditRef": "#17 first construction, G",
+      "audit": {
+        "before": "new",
+        "note": "first #17 construction (2026-11-17)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-CONJUGACY",
+        "T-P17-DEPTH"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-17",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 20,
+        "slopRisk": 10,
+        "why": "The source theorem applied in two variables: φ̃(−ω, −k) = conj φ̃(ω, k) for a real field. Exact, but it adds no physical relation beyond realness.",
+        "increase": "An exact physical pairing beyond the reality constraint (T-P17-DEPTH).",
+        "falsify": "A real field whose spectrum is not Hermitian under P ↦ −P (impossible).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "pass",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "TRIVIAL CONSEQUENCE",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 2,
+        "novelty": "VALIDATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "T-P17-MASS-LEVEL",
+      "label": "Mass selects a level of the spectral Lorentzian form",
+      "words": "In the spectral variables P = (ω/c, k) the dispersion relation is the level set q(P) = (mc/ħ)² of the Lorentzian form q = (ω/c)² − k²: m = 0 selects the null level, m > 0 a non-null level whose branches are single boost orbits, with mc/ħ the orbit invariant.",
+      "variants": [],
+      "normalizedStatement": "m ↦ the level (mc/ħ)²; m = 0 the null level; m > 0: two branches (boost orbits), a frequency gap at mc²/ħ, a rest frame (tanh φ = ck/ω), and an invariant proper-time phase rate; mc/ħ plays the role of the circle radius r, not of c.",
+      "origin": "assistant-proposed",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:P17Db",
+          "note": "symbol"
+        },
+        {
+          "ref": "card:P17Dc",
+          "note": "null level"
+        },
+        {
+          "ref": "card:P17De",
+          "note": "branches and boosts"
+        },
+        {
+          "ref": "card:P17Dg",
+          "note": "what m changes"
+        },
+        {
+          "ref": "card:P17Di",
+          "note": "orbit invariant"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "#17 first construction (2026-11-17): DERIVED (exact; known mathematics). Its reading as a #14 ⇢ #17 connection is PROJECT SYNTHESIS (a cross-reference, not a causal edge)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "P17Db",
+        "P17Dc",
+        "P17De",
+        "P17Dg",
+        "P17Di"
+      ],
+      "sourceDocs": [
+        "research/constructions/p17_conjugacy_physical_pairs.md"
+      ],
+      "auditRef": "#17 first construction, F",
+      "audit": {
+        "before": "new",
+        "note": "first #17 construction (2026-11-17)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-MW-B",
+        "T-C-ROLES"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-17",
+        "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
+        "breadth": "one mathematical family",
+        "backboneSupport": 30,
+        "slopRisk": 15,
+        "why": "The #14 chart (preserved form, generator, orbit) applies unchanged in spectral variables. It gives the exact role of m: the label of a level and of its boost orbits, as r labels circles.",
+        "increase": "A consequence of the level structure not already in the dispersion relation, stated before checking.",
+        "falsify": "A massive branch that is not a single SO⁺(1,1) orbit (none).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "STRUCTURAL TRANSFER",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 2,
+        "novelty": "PROJECT CLASSIFICATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "T-P17-PAIRING-KINDS",
+      "label": "Kinds of pairing kept apart",
+      "words": "Seven kinds of pairing are kept apart: conjugacy, sign symmetry, orbit symmetry, reality constraint, independent physical states, notation-dependent pairing, and Fourier duality.",
+      "variants": [],
+      "normalizedStatement": "conjugacy (an antilinear involution); reality constraint (its fixed points); sign symmetry; orbit symmetry; independent physical states; notation-dependent pairing; Fourier duality (a different meaning of \"conjugate\"). Known examples, not an exhaustive classification for this project.",
+      "origin": "assistant-proposed",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:P17Ca",
+          "note": "reflections"
+        },
+        {
+          "ref": "card:P17Cb",
+          "note": "sign symmetry without conjugacy"
+        },
+        {
+          "ref": "card:P17Ce",
+          "note": "notation-dependent pair"
+        },
+        {
+          "ref": "card:P17Cf",
+          "note": "three meanings of conjugate"
+        },
+        {
+          "ref": "card:P17Rd",
+          "note": "independent states"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "#17 first construction (2026-11-17): PROJECT SYNTHESIS (classification of carded examples)."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "P17Ca",
+        "P17Cb",
+        "P17Ce",
+        "P17Cf",
+        "P17Rd"
+      ],
+      "sourceDocs": [
+        "research/constructions/p17_conjugacy_physical_pairs.md"
+      ],
+      "auditRef": "#17 first construction, H",
+      "audit": {
+        "before": "new",
+        "note": "first #17 construction (2026-11-17)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-CONJUGACY",
+        "T-P17-CRITERIA",
+        "T-P17-DEPTH"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-17",
+        "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
+        "breadth": "multiple independent mathematical families",
+        "backboneSupport": 30,
+        "slopRisk": 15,
+        "why": "Separates conjugacy, reality constraint, sign symmetry, orbit symmetry, independent states, notation-dependent pairing and Fourier duality on carded examples in signals and fields. Not exhaustive.",
+        "increase": "A pairing in an independent system that the kinds sort correctly before its card.",
+        "falsify": "A carded pairing that belongs to two kinds that the classification says are exclusive.",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "partial",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "NOT YET FORMALIZED",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 3,
+        "novelty": "PROJECT CLASSIFICATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "T-P17-REST-CLOCK",
+      "label": "Rest frequency and proper time are Fourier-dual",
+      "words": "Along the group worldline of any mode on the mass shell the phase advances at mc²/ħ per unit proper time, so the rest frequency mc²/ħ and proper time τ are a Fourier-dual pair; this is duality, not complex conjugacy.",
+      "variants": [],
+      "normalizedStatement": "Along x = v_g t the phase ωt − kx advances at mc²/ħ per unit proper time for every k (P17Dg): e^{−i(mc²/ħ)τ} is a character of proper time, as in #18. Known (de Broglie). Not complex conjugacy (MW-C FAIL).",
+      "origin": "assistant-proposed",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:P17Dg",
+          "note": "proper-time phase rate"
+        },
+        {
+          "ref": "card:P17Ch",
+          "note": "the duality reading"
+        },
+        {
+          "ref": "card:A8Fa",
+          "note": "the character of #18"
+        }
+      ],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "#17 first construction (2026-11-17): RESTRICTED (exact along the group worldline; a different meaning of \"conjugate\")."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "A8Fa",
+        "P17Ch",
+        "P17Dg"
+      ],
+      "sourceDocs": [
+        "research/constructions/p17_conjugacy_physical_pairs.md"
+      ],
+      "auditRef": "#17 first construction, F, I",
+      "audit": {
+        "before": "new",
+        "note": "first #17 construction (2026-11-17)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-MW-C",
+        "T-UNBOUNDED-EVOLUTION"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-17",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
+        "breadth": "one mathematical family",
+        "backboneSupport": 20,
+        "slopRisk": 25,
+        "why": "Exact along the group worldline for every mode on the shell; the phase is a character of proper time, the circle structure of #18. Known (de Broglie); a different meaning of \"conjugate\".",
+        "increase": "A use of the invariant rest frequency that predicts something new, recorded first.",
+        "falsify": "A mode on the shell whose proper-time phase rate differs from mc²/ħ (impossible).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "active",
+        "failures": [],
+        "transferDepth": "STRUCTURAL TRANSFER",
+        "mathematicalCorrectness": "established",
+        "prediction": null,
+        "ratingHistory": [],
+        "applicationBreadth": 2,
+        "novelty": "VALIDATION OF KNOWN MATHEMATICS"
+      }
     }
   ]
 }

@@ -319,13 +319,13 @@
    "n": 17,
    "title": "Conjugacy and physical pairs — Search for hidden relationships",
    "q": "\"Do observable physical pairings or complementarities reflect deeper symmetry analogous to mathematical conjugacy?\" (RD)",
-   "rel": "the established starting point: complex conjugate coefficient pairs give a real-valued signal, f̂(−k) = conj f̂(k) (P1). Physical pairs are not claimed to be mathematically conjugate (not proved)",
-   "nxt": "mass-like and wave-like descriptions (R4, R18; MW1) — the parked mass-wave branch; no direct causal successor at #18",
+   "rel": "the established starting point: complex conjugate coefficient pairs give a real-valued signal, f̂(−k) = conj f̂(k) (P1); exactly, x real ⟺ x̂(−ω) = conj x̂(ω), each pair one real oscillation (P17F, first #17 construction). Physical pairs are not claimed to be mathematically conjugate (not proved); the first physical candidate, a real classical field, carries the same relation only as its reality constraint (P17R)",
+   "nxt": "do physical pairings ever share an exact relation of comparable structural depth? (2026-11-17 decisions) — candidate investigations inside #17, mass/wave being one (MW-A–MW-D); no direct causal successor at #18",
    "trigger": "changing one coefficient moves its conjugate, and together they make a real signal",
    "spine": [
     "CROSS-SYSTEM TRANSFER"
    ],
-   "repo": "P1, P2, MW1–MW3, D20, D21"
+   "repo": "P1, P2, MW1–MW3, D20, D21; first construction D41 (P17F–P17X)"
   },
   {
    "n": 18,
@@ -624,6 +624,30 @@
    "dst": "M20",
    "type": "CROSS-REFERENCE",
    "why": "the power-demand signal reuses #2's \"what if the signal measured electrical power instead of sound?\""
+  },
+  {
+   "src": "M14",
+   "dst": "M17",
+   "type": "CROSS-REFERENCE",
+   "why": "later mathematical connection (#17 first construction, 2026-11-17): the mass shell is a level set of the Lorentzian form in spectral variables; mass is the orbit invariant, as r is for circles (P17Di)"
+  },
+  {
+   "src": "M19",
+   "dst": "M17",
+   "type": "CROSS-REFERENCE",
+   "why": "later mathematical connection (#17 first construction): boosts act on (ω/c, k) as on (ct, x); Doppler on the null cone; tanh φ = ck/ω brings a massive mode to rest (P17De, P17Dh)"
+  },
+  {
+   "src": "M18",
+   "dst": "M17",
+   "type": "CROSS-REFERENCE",
+   "why": "later mathematical connection (#17 first construction): the proper-time phase e^(−i(mc²/ħ)τ) is a character of an unbounded parameter in the bounded circle, as in #18 (P17Dg, A8Fa)"
+  },
+  {
+   "src": "M13",
+   "dst": "M17",
+   "type": "CROSS-REFERENCE",
+   "why": "later mathematical connection (#17 first construction): spectral null, spacetime null, Fourier zero coefficient and model-manifold null kept apart; the zero index P = 0 lies on the massless cone only (P17Dd, P17Cc)"
   }
  ],
  "chains": {
@@ -808,23 +832,23 @@
     },
     {
      "kind": "R",
-     "text": "circle: exactly periodic (ℝ/ker ≅ S¹); torus: compact, possibly never periodic; cylinder: periodic projection, unbounded state (Act VIII)"
+     "text": "circle: exactly periodic (ℝ/ker ≅ S¹); torus: the same compact torus geometry carries periodic flows (commensurable frequencies), and the irrational/rationally-independent torus flow used here has dense orbit and no exact period; cylinder: periodic projection, unbounded state (Act VIII)"
     },
     {
      "kind": "Q",
-     "text": "geometry alone does not force exact periodicity — so what else bears on the continuation? (2026-11-16 decisions)"
+     "text": "STAR-A, one tested reading of ★: \"A constrained geometry forces every admissible evolution to be periodic.\" (Act VIII)"
     },
     {
      "kind": "R",
-     "text": "the geometry, allowed transformations, generator/frequency relations, stabilizer and orbit closure all bear on the observed continuation (2026-11-16 decisions; A8Ua, A8Ec)"
+     "text": "STAR-A FAIL → geometry alone does not force periodicity (A8X1, A8X3; 2026-11-16 and 2026-11-17 decisions)"
     },
     {
-     "kind": "Q",
-     "text": "Given a preserved geometric relation, what transformations preserve it, what generators produce those transformations, and what observable dynamics follow? (RD; T-GEN-DYN-Q — a refinement of the original question, not a new story)"
+     "kind": "X",
+     "text": "CROSS-REFERENCE, not created by STAR-A: the already-existing invariant-geometry questions about constraints (\"What observable rules arise because an object is constrained by a particular geometry?\", RD revision 2), symmetries (\"What remains unchanged when the pattern shifts?\", MM #4), preserved relations and transformations (\"What transformations leave that relation unchanged?\" → A†MA = M, #14); stated together by Nadia as T-GEN-DYN-Q (RD, 2026-11-16)"
     },
     {
      "kind": "R",
-     "text": "answered in the canonical cases only (rotation, boost, Fourier character, torus); open in general"
+     "text": "the geometry, allowed transformations, generator/frequency relations, stabilizer and orbit closure all bear on the observed continuation (RD; A8Ua, A8Ec); answered in the canonical cases only (rotation, boost, Fourier character, torus), open in general"
     }
    ]
   },
@@ -957,6 +981,63 @@
     {
      "kind": "R",
      "text": "parked: ThermaLens / Energeo is downstream testing, never upstream evidence (A1, A2; G2 9)"
+    }
+   ]
+  },
+  "P17": {
+   "name": "Conjugacy and physical pairs (#12 → #17; first construction, 2026-11-17)",
+   "steps": [
+    {
+     "kind": "Q",
+     "text": "If mathematical energy is preserved, what other information distinguishes two representations? (MM #12)"
+    },
+    {
+     "kind": "R",
+     "text": "x(t) ↔ x̂(ω); for a real signal the coefficients come in conjugate pairs (P1)"
+    },
+    {
+     "kind": "Q",
+     "text": "Do observable physical pairings or complementarities reflect deeper symmetry analogous to mathematical conjugacy? (RD; MM #17 — not assumed)"
+    },
+    {
+     "kind": "R",
+     "text": "exact source relation: x̂(−ω) − conj x̂(ω) = 2i·v̂(−ω), so the pairing holds exactly for real x; DC and Nyquist self-paired; complex signals fail (P17Fa, P17Fd, P17Fg)"
+    },
+    {
+     "kind": "Q",
+     "text": "what information does the pairing encode? (2026-11-17 decisions)"
+    },
+    {
+     "kind": "R",
+     "text": "one real oscillation per pair (amplitude, phase); the imaginary parts cancel; the conjugate half is redundant (P17Fe, P17Fh)"
+    },
+    {
+     "kind": "Q",
+     "text": "do physical pairings ever share an exact relation of comparable structural depth? (2026-11-17 decisions)"
+    },
+    {
+     "kind": "R",
+     "text": "first candidate, a real classical field: φ̃(−ω, −k) = conj φ̃(ω, k) — the same theorem (conj χ = χ⁻¹), a reality constraint, not two entities; sign symmetry, orbit symmetry, independent states and notation-dependent pairs are other kinds (P17Rc, P17Cd, P17Cg, P17K)"
+    },
+    {
+     "kind": "X",
+     "text": "CROSS-REFERENCE (#14, #19): in P = (ω/c, k) the dispersion relation is a level set of the Lorentzian form, and boosts move points within a level (spectral variables, not spacetime)"
+    },
+    {
+     "kind": "R",
+     "text": "m = 0: the null level; m > 0: a non-null level, two boost orbits, a frequency gap, a rest frame; mass is the orbit invariant (P17Dc, P17De, P17Dg, P17Di)"
+    },
+    {
+     "kind": "X",
+     "text": "CROSS-REFERENCE to the seed (recorded 2026-11-12, kept verbatim, not promoted): \"mass is waves too, it's just a different form.\" — which precise questions can be extracted? (2026-11-17 decisions)"
+    },
+    {
+     "kind": "R",
+     "text": "MW-A RESTRICTED; MW-B ESTABLISHED; MW-C FAIL as conjugacy, with mc²/ħ Fourier-dual to proper time (#18 ⇢ #17); MW-D OPEN (P17Ea, P17Ch, P17Mx)"
+    },
+    {
+     "kind": "Q",
+     "text": "Q17-1: an exact physical pairing of independent entities beyond the reality constraint? Q17-2: which sense of \"conjugate\" is \"physical complementarity\"? Q17-3: MW-D in a specific theory? (OPEN, not begun)"
     }
    ]
   },
@@ -1336,10 +1417,22 @@
    "domain": "D20",
    "predecessor": "M12 → M17 (earlier predecessor)",
    "relation": "conjugate pairs; mass-wave ingredients",
-   "next": "mass-wave (parked)",
+   "next": "D41 (#17 first construction)",
    "verdict": "correct; physical pairs not claimed conjugate",
    "actions": [
     "KEEP"
+   ]
+  },
+  {
+   "domain": "D41",
+   "predecessor": "M12 → M17 (earlier predecessor); cross-references from M13, M14, M18, M19",
+   "relation": "Fourier conjugacy source lock; real-field reality pairing; spectral null and mass-shell levels; kinds of pairing; MW-A–MW-D",
+   "next": "Q17-1–Q17-3 (open); the #17 adversarial lock",
+   "verdict": "first #17 construction (2026-11-17); no new story node; the cross-references are not causal",
+   "actions": [
+    "KEEP",
+    "ADD DIAGRAM EDGE",
+    "ADD CONNECTIVE SENTENCE"
    ]
   },
   {
@@ -1421,7 +1514,7 @@
    "note": "answers"
   },
   {
-   "item": "torus: commensurability; dense irrational flow, never periodic; kernel vs orbit closure",
+   "item": "torus: commensurability — the same torus geometry also carries periodic flows; the irrational/rationally-independent torus flow used here has dense orbit and no exact period; kernel vs orbit closure",
    "objects": "A8T, A8KC",
    "category": "A",
    "group": "#18 answer",
@@ -1569,8 +1662,8 @@
    "objects": "A8G",
    "category": "E",
    "group": "refinement / failure",
-   "question": "created by STAR-A's failure",
-   "note": "the next question of the ★ chain — a refinement of the original question"
+   "question": "the already-existing invariant-geometry questions (T-GEOM-RULES, #4, #14), stated together; cross-referenced from STAR-A's failure, not created by it (pre-#17 patch, 2026-11-17)",
+   "note": "a refinement of the original question; STAR-A's failure did not historically cause it"
   }
  ],
  "failures": [
@@ -1583,8 +1676,8 @@
   {
    "failure": "STAR-A: \"A constrained geometry forces every admissible evolution to be periodic.\"",
    "question": "★ / Pair B (#3, #4, #18)",
-   "taught": "geometry alone does not determine periodicity: the compact torus carries a flow with no periodic orbit; the logistic flow on [0, 1] none either (A8X1, A8X3)",
-   "nextQuestion": "Given a preserved geometric relation, what transformations preserve it, what generators produce those transformations, and what observable dynamics follow? (T-GEN-DYN-Q)"
+   "taught": "geometry alone does not force periodicity: the irrational/rationally-independent torus flow has dense orbit and no exact period, although the same torus carries periodic flows; the logistic flow on [0, 1] has no non-constant periodic orbit (A8X1, A8X3, A8Ua)",
+   "nextQuestion": "none created (pre-#17 patch, 2026-11-17): CROSS-REFERENCE ⇢ the already-existing invariant-geometry questions — constraints (T-GEOM-RULES), symmetries (#4), preserved relations and transformations (#14, A†MA = M), stated together as T-GEN-DYN-Q"
   },
   {
    "failure": "literal t ↔ c (H3-c-direct)",
@@ -1645,7 +1738,7 @@
   {
    "statement": "irrational torus flow: compact orbit closure, Stab = {0} (aperiodic), dense, near-recurrent, image not closed",
    "cards": "A8Tb, A8Tc, A8X1, A8Kb",
-   "assumptions": "frequencies rationally independent; density is the Kronecker–Weyl theorem (source-locked)",
+   "assumptions": "frequencies rationally independent; density is the Kronecker–Weyl theorem (source-locked); the same torus geometry carries periodic flows when the frequencies are commensurable (A8Ta, A8Ua)",
    "status": "LOCKED"
   },
   {
@@ -1772,6 +1865,12 @@
    "between": "Pair B / ★ → T-GEN-DYN-Q",
    "what": "the Act VIII results read as a refinement of the original question, with the original question first",
    "repair": "connective sentence leading the Act VIII section (added 2026-11-16)"
+  },
+  {
+   "id": "F11",
+   "between": "STAR-A ⇢ invariant-geometry questions",
+   "what": "STAR-A failure → geometry alone does not force periodicity, followed by a CROSS-REFERENCE to the already-existing questions about constraints, symmetries, preserved relations and transformations (T-GEOM-RULES, #4, #14, T-GEN-DYN-Q); not a causal edge",
+   "repair": "chain PB, failures table, Act VIII placement row, registry T-GEN-DYN-Q, master map Part VII (pre-#17 patch, 2026-11-17)"
   }
  ],
  "superseded": [
@@ -1804,6 +1903,21 @@
    "where": "2026-11-16 diagnostic, lock choice",
    "old": "READY FOR ACT VIII ADVERSARIAL LOCK AFTER STORY ALIGNMENT",
    "why": "superseded by the final lock verdict of 2026-11-17"
+  },
+  {
+   "where": "2026-11-17 lock, node M17 (next question)",
+   "old": "mass-like and wave-like descriptions (R4, R18; MW1) — the parked mass-wave branch; no direct causal successor at #18",
+   "why": "#17 first construction: the branch is not defined as mass-wave; mass/wave is one candidate investigation inside it"
+  },
+  {
+   "where": "2026-11-17 lock, Act VIII placement and chain PB",
+   "old": "\"torus: commensurability; dense irrational flow, never periodic\" and \"torus: compact, possibly never periodic\"",
+   "why": "pre-#17 patch: scoped — the irrational/rationally-independent torus flow used here has dense orbit and no exact period; the same torus geometry also carries periodic flows"
+  },
+  {
+   "where": "2026-11-16 diagnostic and 2026-11-17 lock, chain PB, failures table, Act VIII placement",
+   "old": "T-GEN-DYN-Q \"created by STAR-A's failure\", \"the next question of the ★ chain\"; STAR-A's next question = T-GEN-DYN-Q; chain PB step \"geometry alone does not force exact periodicity — so what else bears on the continuation?\" as a question created by STAR-A",
+   "why": "pre-#17 patch: STAR-A's failure did not historically cause the invariant-form / generator question; it is recorded as a lesson followed by a CROSS-REFERENCE"
   }
  ],
  "lock": {
@@ -1811,5 +1925,10 @@
   "why": "Every live Act VIII statement answers or refines #18 or #19, connects backward to #4 / #12 / #14 as a labelled connector or cross-reference, or is supporting / optional and labelled so; the three story corrections are applied; the eight required mathematical statements are carded with their assumptions; the failed conjectures are kept with what they taught. The story table uses typed edges, and no adjacency is treated as causal without a relation in the record.",
   "limits": "The four named conversations could not be opened; the Chain A questions rest on Nadia's 2026-11-16 recollection. H3-original and H3-1 stay OPEN; they are open research questions, not misplacements.",
   "nextQuestion": "#17 — \"Do observable physical pairings or complementarities reflect deeper symmetry analogous to mathematical conjugacy?\" (T-CONJUGACY). It is the earliest canonical node with no answering construction yet; it arises from #12 (conjugate coefficient pairs give a real signal) and leads to the parked mass-wave branch (T-MASS-WAVE-SEED). #20 stays a parked downstream application. Not begun."
+ },
+ "p17": {
+  "record": "research/constructions/p17_conjugacy_physical_pairs.md",
+  "recommendation": "READY FOR #17 ADVERSARIAL LOCK",
+  "summary": "First construction of #17 (2026-11-17): no new story node; the historical edge stays #12 → #17; #13, #14, #18 and #19 ⇢ #17 are cross-references (later mathematical connections). Statuses are separate: Fourier conjugacy ESTABLISHED; real-field ± mode relation DERIVED; massless null relation ESTABLISHED; mass-shell level set DERIVED; E = ħω, p = ħk RESTRICTED; MW-A RESTRICTED; MW-B ESTABLISHED; MW-C FAIL; MW-D OPEN; the broader #17 hypothesis OPEN."
  }
 }

@@ -2006,3 +2006,149 @@ Nadia's decisions, verbatim. LaTeX and markdown emphasis were converted to plain
 > LOCK ACT VIII — STORY AND MATHEMATICS ALIGNED
 
 > DO NOT LOCK — SPECIFIC STORY OR MATHEMATICAL MISALIGNMENT REMAINS
+
+## Pre-#17 story patches and the first #17 construction (2026-11-17)
+
+Nadia's decisions, verbatim. LaTeX was converted to plain text (inline math written as plain symbols; in the source
+relation "f̂(−ω) = conj f̂(ω)" the left-hand side was lost in transmission and is restored from the stated meaning,
+real-signal Fourier conjugacy); nothing else was changed.
+
+> Act VIII is LOCKED.
+
+> the irrational/rationally-independent torus flow used here has dense orbit and no exact period.
+
+> Preserve that the same torus geometry can also carry periodic flows.
+
+> STAR-A's failure must NOT be represented as historically causing the invariant-form/generator question.
+
+> STAR-A failure → geometry alone does not force periodicity
+
+> followed by a CROSS-REFERENCE to the already-existing invariant-geometry questions about constraints, symmetries, preserved relations and transformations.
+
+> Do not reopen Act VIII.
+
+> Conjugacy and physical pairs — Search for hidden relationships.
+
+> Fourier pairs — Change the representation, not the underlying information.
+
+> The established starting mathematics is real-signal Fourier conjugacy: f̂(−ω) = conj f̂(ω) for an appropriate real signal and convention.
+
+> Do observable physical pairings or complementarities reflect deeper symmetry analogous to mathematical conjugacy?
+
+> Do NOT assume yes.
+
+> Do NOT define the branch as “mass-wave” before testing this question.
+
+> Mass/wave is one candidate investigation within the branch.
+
+> Fourier pair → exact mathematical conjugacy → what information does the pairing encode? → do physical pairings ever share an exact relation of comparable structural depth?
+
+> Only after that question is explicit should candidate physical examples enter.
+
+> Do not start with quantum mechanics, QFT, dispersion relations or particle-wave duality as an answer.
+
+> for a generic complex-valued signal, this conjugate symmetry need not hold.
+
+> This is the source relation for Pair #17.
+
+> Do not allow loose analogy.
+
+> a transformation relating the pair;
+
+> an involution or symmetry operation;
+
+> a preserved relation;
+
+> a reconstruction or reality constraint;
+
+> paired coordinates carrying non-independent information;
+
+> a common quadratic/bilinear relation;
+
+> a group/representation-theoretic origin.
+
+> visual analogy
+
+> shared equation
+
+> shared transformation structure
+
+> shared representation-theoretic structure.
+
+> mass is waves too, it's just a different form.
+
+> Do not promote it.
+
+> Record it as the historical seed for one candidate route.
+
+> Do not reinterpret it as a statement of QFT unless independently justified.
+
+> Do not call this physical spacetime.
+
+> It is a relation in frequency-wavevector / energy-momentum variables.
+
+> They are not one kind of zero.
+
+> Does mass appear as a parameter selecting a non-null level set of the same quadratic form whose m=0 case is null?
+
+> Do not jump from this to “mass is a wave.”
+
+> Do not call E=ħω and p=ħk universal classical identities outside their physical context.
+
+> Do not invoke particle/antiparticle as the explanation unless the specific field theory warrants it.
+
+> particles are excitations of quantum fields.
+
+> If they become relevant, mark them as future branches rather than expanding this pass.
+
+> MW-A — de Broglie relation
+
+> Massive particles admit wave variables through:
+
+> MW-B — common quadratic geometry
+
+> Massless and massive cases occupy different level sets of the same Lorentzian quadratic form in energy-momentum / spectral variables.
+
+> MW-C — conjugate pairing
+
+> Mass and wave variables form a conjugate pair in the same mathematical sense as Fourier conjugates.
+
+> Likely false unless a precise conjugacy is found.
+
+> MW-D — representation statement
+
+> Particle-like and wave-like descriptions may be different representations/aspects of the same physical state.
+
+> This is a physics interpretation and requires exact theory-specific wording.
+
+> Do not treat it as established merely from the dispersion relation.
+
+> These are cross-references unless the historical record says otherwise.
+
+> Do not reorder the Master Map around the new mathematics.
+
+> The question is whether there is a mathematically meaningful shared relation.
+
+> A complex signal without conjugate symmetry.
+
+> A sign-paired relation that is not complex conjugacy.
+
+> A massive dispersion relation that has no null state.
+
+> Two mathematically paired variables that do not correspond to two independent physical entities.
+
+> An apparent “physical pair” whose pairing disappears under a different representation.
+
+> Do not give a single umbrella status.
+
+> This is more important than Backbone Support %.
+
+> Do not create a new canonical story node unless the user historically asked the question.
+
+> READY FOR #17 ADVERSARIAL LOCK
+
+> NEEDS A NARROWER SECOND CONSTRUCTION PASS
+
+> Do not turn #17 into a generic QFT chapter.
+
+> Stop after the first #17 / mass-wave construction.

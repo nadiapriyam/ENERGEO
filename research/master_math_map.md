@@ -360,6 +360,42 @@ Novelty is kept separate:
 `research/constructions/cf11b_fisher_test.md`. Their column "P1" reads as R2, "passive coordinate change" as R1, and
 "P3" as R3.
 
+### #17: conjugacy and physical pairs (first construction, 2026-11-17)
+
+Record: `research/constructions/p17_conjugacy_physical_pairs.md` (cards P17Fa–P17Mx, `verify/verify_P17.py`).
+*The historical question leads:* Master Map #17 asks "Do observable physical pairings or complementarities reflect
+deeper symmetry analogous to mathematical conjugacy?" (T-CONJUGACY). Its historical predecessor is #12 (Fourier
+pairs); the answer is not assumed to be yes, and mass/wave is one candidate investigation inside the branch, not its
+definition. Order kept: Fourier pair → exact mathematical conjugacy → what information does the pairing encode? → do
+physical pairings ever share an exact relation of comparable structural depth?
+
+- **Source relation (P17F, ESTABLISHED):** with x̂(ω) = ∫x e^{−iωt}dt, x = u + iv gives x̂(−ω) − conj x̂(ω) =
+  2i·v̂(−ω); so the conjugate symmetry holds exactly when x is real (P17Fa). DFT: X_{N−k} = conj X_k; the
+  self-paired indices k = 0 and k = N/2 (N even) carry real coefficients (P17Fd, P17Ff). Each pair is one real
+  oscillation, one amplitude and one phase; the conjugate half carries no independent information (P17Fe, P17Fh).
+  A generic complex signal fails (P17Fg). Conjugate pair ⟺ equal magnitude and opposite phase; neither alone suffices
+  (P17Fc). Origin: conj χ = χ⁻¹ for unitary characters (P17Cg).
+- **First physical candidate, a real classical field (P17R, DERIVED):** for the Klein–Gordon-form PDE, a real
+  field has φ̃(−ω, −k) = conj φ̃(ω, k), i.e. b(k) = conj a(−k). The partner of (ω, k) is (−ω, −k), not (−ω, k)
+  (P17Rb–P17Rd). It is the same theorem in two variables (TRIVIAL CONSEQUENCE), a reality condition rather than a
+  consequence of the equation (P17Re); the partners are one real oscillation, not two physical entities (P17Cd).
+- **Spectral variables, not spacetime (P17N, P17M):** in P = (ω/c, k) the dispersion relation is the level set
+  q(P) = (mc/ħ)² of q = (ω/c)² − k² (P17Db). m = 0 is the null level, ω = ±ck (P17Dc); m > 0 a non-null level
+  whose two branches are single boost orbits, with a frequency gap, a rest frame and the invariant proper-time phase
+  rate mc²/ħ (P17De–P17Dg). Mass is the orbit invariant, the role r plays for circles, not the role of c (P17Di).
+  Four nulls stay apart: spacetime null vector, spectral null relation, Fourier zero coefficient, model-manifold null
+  direction (P17Dd).
+- **E = ħω, p = ħk (P17E, RESTRICTED):** physical identifications used as inputs; they rescale the same geometry by ħ
+  (P17Ea) and give v_g = v, ω₀ = mc²/ħ (P17Eb).
+- **Kinds of pairing (P17K, PROJECT SYNTHESIS):** conjugacy, sign symmetry, orbit symmetry, reality constraint,
+  independent physical states, notation-dependent pairing and Fourier duality are kept apart (P17Ca–P17Cf). These
+  are known examples, not an exhaustive classification for this project.
+- **Mass/wave seed (MW1, kept verbatim, not promoted):** MW-A RESTRICTED; MW-B ESTABLISHED; MW-C FAIL as complex
+  conjugacy (P17Ch), with the separate RESTRICTED reading that mc²/ħ is Fourier-dual to proper time (P17C, de
+  Broglie); MW-D OPEN (the same dispersion relation holds for a string on an elastic foundation, P17Mx).
+- **Story placement:** #12 → #17 stays the historical edge; #13, #14, #18 and #19 ⇢ #17 are cross-references (later
+  mathematical connections), not causal edges. No new story node.
+
 ## Part IV. Zero taxonomy
 
 Known/project-observed categories. Not logically exhaustive. Not reduced to kernels.
@@ -649,7 +685,9 @@ investigated separately (their hierarchy is not decided); t and c are kept apart
   infinity" FAILS (A8Cc). The corrected intuition is an ESTABLISHED INSTANCE and is not elevated to H3
   (T-UNBOUNDED-EVOLUTION).
 - **Torus (A8T):** periodic ⟺ ∃T > 0 with Tω_j ∈ 2πℤ for all j (commensurable frequencies); rationally independent
-  frequencies give a dense orbit (Kronecker–Weyl, source-locked). Compact/constrained image ⇏ exact periodic orbit
+  frequencies give a dense orbit (Kronecker–Weyl, source-locked). Scoped (pre-#17 patch, 2026-11-17): the
+  irrational/rationally-independent torus flow used here has dense orbit and no exact period; the same torus geometry
+  also carries periodic flows. Compact/constrained image ⇏ exact periodic orbit
   (T-COMPACT-NOT-PERIODIC). The orbit-closure dimension is n − rank of the integer relations of ω: the generator's
   arithmetic decides, not the torus or its invariants (A8Ua).
 - **Cylinder (A8X2, A8Yb):** periodic projection, non-periodic noncompact full state.
@@ -704,7 +742,11 @@ supplies; there is no single universal M (A8Gb: six supplied forms; A8Gc: the sa
 - **Geometry constrains, the generator decides (A8GD, PROJECT SYNTHESIS):** the supplied form fixes G_M and 𝔤_M;
   the generator fixes the orbit type. Exact in the canonical examples; not a universal theorem.
 - **STAR-A's lesson (T-STAR-A-LESSON):** geometry alone does not determine periodicity. STAR-A stays FAIL; its
-  failure names the missing condition (the generator) and is not a failure of the backbone.
+  failure names the missing condition (the generator) and is not a failure of the backbone. *Story (pre-#17 patch,
+  2026-11-17):* STAR-A failure → geometry alone does not force periodicity, followed by a CROSS-REFERENCE to the
+  already-existing invariant-geometry questions about constraints (T-GEOM-RULES), symmetries (#4), preserved
+  relations and transformations (#14, A†MA = M); STAR-A's failure did not historically cause the invariant-form /
+  generator question (T-GEN-DYN-Q).
 - **Rapidity and c (A8Wa–A8Wc, A8Q):** the Lorentz group parameter is the rapidity φ (tanh φ = v/c); the comparison
   with the circle is θ ↔ φ. c is a distinct object. *Parked as an optional later construction (canonical story
   diagnostic; not a story node):* the family M_κ = diag(1, κ), K_κ = [[0, κ], [−1, 0]] (κ = ω² for the oscillator,
@@ -1058,6 +1100,9 @@ Every user-origin record, with its original wording, normalized reading and stat
   - Normalized target: construct a representation in which mass-like and wave-like behavior satisfy a common exact
     relation.
   - Supporting mathematics, not proof: S12. QFT is a secondary reference.
+  - First #17 construction (2026-11-17), exact readings, each with its own status: MW-A (de Broglie relation)
+    RESTRICTED; MW-B (common quadratic geometry) ESTABLISHED; MW-C (conjugate pairing) FAIL; MW-D (representation
+    statement) OPEN. The seed itself stays a HYPOTHESIS and is not reinterpreted as QFT.
 - **Mass attraction:** *Keep the original intuition that mass attraction may not be far removed if the deeper
   structural principle is shared.* (T-GRAVITY-ATTRACTION, SPECULATIVE / OPEN). **ORIGINAL VERBATIM NOT RECOVERED:**
   these are Nadia's 2026-11-12 words describing the intuition; its historic wording is not in the repository
@@ -1145,6 +1190,7 @@ Only explicit candidates are listed. Ratings are per proposition.
 | ON8 | organized orthogonality may generate form | HYPOTHESIS | 20% / 35% | — | — |
 | I2 / I3 | ★; finite rule → infinite structure | HYPOTHESIS | 20–25% / 25–30% | — | — |
 | L4 | the two roles of c are linked | HYPOTHESIS | 25% / 30% | — | — |
+| P2 (T-CONJUGACY) | observable physical pairings reflect deeper symmetry analogous to mathematical conjugacy | OPEN (first #17 construction, 2026-11-17) | 15% / 30% | NOT YET FORMALIZED | 2 |
 
 **Established chains that work as laws inside known mathematics (not project candidates):**
 
@@ -1155,6 +1201,14 @@ Only explicit candidates are listed. Ratings are per proposition.
 
 ## Part XIII. Failed and negative results (what does not unify)
 
+- **#17 first construction (2026-11-17):**
+  - Mass and wave variables as a conjugate pair (MW-C) fail: complex conjugation maps the mass-m shell to itself and
+    never relates m to (ω, k) (P17Ch).
+  - A sign-paired relation is not a conjugacy: k ↦ −k on the dispersion relation imposes no relation on amplitudes
+    (P17-X2, P17Cb).
+  - Paired variables need not be two physical entities (P17-X4); a pair can disappear under another representation
+    with nothing lost (P17-X5).
+  - The dispersion relation alone does not establish MW-D: a string on an elastic foundation satisfies it (P17Mx).
 - **Act VIII story integration (2026-11-16):**
   - H3-c-direct (unbounded t compared literally with c → ∞) fails: c is not a group parameter; the rapidity is
     (A8Wa). The pass-1 "circle radius r ↔ c" is discarded: r is an orbit invariant, c a form parameter (A8Wb).
@@ -1264,14 +1318,20 @@ Only material gaps; the full ledger, with a status for each domain, is `research
    - Myers–Steenrod.
 
 5. **Act VIII: LOCKED (2026-11-17), story and mathematics aligned** (`research/canonical_story.md`). H3-original and
-   H3-1 stay OPEN as research questions; the κ-family is parked as optional. Next canonical unresolved question: #17
-   (conjugacy and physical pairs), not begun. Earlier notes (kept): story-integrated 2026-11-16, "Ready for the
+   H3-1 stay OPEN as research questions; the κ-family is parked as optional. Next canonical unresolved question at
+   the lock: #17 (conjugacy and physical pairs); its first construction followed (item 6). Earlier notes (kept): story-integrated 2026-11-16, "Ready for the
    adversarial lock … the H3-c split, the κ-family scope (2D, scaling-dependent) and the STAR-B category statement are
    lock targets". First construction notes (kept): To lock: the STAR-B dimension ≥ 2
    statement (carded only through its local model A8X4), the free-orbit class "noncompact closure, not escaping" (no
    carded example), and the finiteness-invariant answer to H3-1 (A8Mc, A8Lc). Source-only here: the Kronecker–Weyl
    theorem in continuous time, the Poincaré recurrence theorem, topological recurrence (minimal sets), the covering
    ℝ → S¹ (metadata verified, claims not quoted).
+6. **#17 first construction (2026-11-17): READY FOR #17 ADVERSARIAL LOCK**
+   (`research/constructions/p17_conjugacy_physical_pairs.md`). Separate statuses: Fourier conjugacy ESTABLISHED;
+   real-field ± mode relation DERIVED; massless null relation ESTABLISHED; mass-shell level set DERIVED; E = ħω,
+   p = ħk RESTRICTED; MW-A RESTRICTED; MW-B ESTABLISHED; MW-C FAIL; MW-D OPEN; the broader #17 hypothesis OPEN.
+   Source-only here: Fourier uniqueness (the converse of P17Fa) and the character theory of abelian groups
+   (SRC-FOLLAND-1995).
 
 Resolved:
 

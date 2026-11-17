@@ -4028,7 +4028,7 @@
    "transferDepth": "not a transfer",
    "applicationBreadth": null,
    "failureCondition": "complex x (FB4c)",
-   "foundationRole": "the established Fourier pair case",
+   "foundationRole": "the established Fourier pair case; #17 first construction (2026-11-17): locked as the source relation with its forcing property (realness), DC / Nyquist exceptions and failure case (P17F)",
    "guideLocation": "Guide: Fourier (Foundation ontology)",
    "gap": null,
    "provenance": "TEXTBOOK / STANDARD",
@@ -4060,12 +4060,12 @@
    ],
    "supports": [],
    "bearsOn": [],
-   "backboneSupport": null,
-   "slopRisk": null,
+   "backboneSupport": 15,
+   "slopRisk": 30,
    "transferDepth": "not a transfer",
    "applicationBreadth": null,
    "failureCondition": "—",
-   "foundationRole": "open user question",
+   "foundationRole": "open user question (#17). First construction (2026-11-17): the one exact conjugate pairing found in a physical candidate is the reality constraint of a real field — the same theorem (P17R, BR87); sign symmetry, orbit symmetry, independent states and notation-dependent pairs are different kinds (P17K). Stays OPEN",
    "guideLocation": "Guide / Act IV",
    "gap": null,
    "provenance": "USER-ORIGIN",
@@ -4102,7 +4102,7 @@
    "transferDepth": "not a transfer",
    "applicationBreadth": null,
    "failureCondition": "—",
-   "foundationRole": "original user theory (verbatim, recorded 2026-11-12)",
+   "foundationRole": "original user theory (verbatim, recorded 2026-11-12); #17 first construction (2026-11-17): kept verbatim, not promoted; readings MW-A RESTRICTED, MW-B ESTABLISHED, MW-C FAIL, MW-D OPEN (P17MW)",
    "guideLocation": "Guide: Lorentz / waves",
    "gap": null,
    "provenance": "USER-ORIGIN",
@@ -4141,7 +4141,7 @@
    "transferDepth": "not a transfer",
    "applicationBreadth": null,
    "failureCondition": "without E = ħω and p = ħk the ω–k form does not follow; non-relativistic ω = ħk²/2m gives v_p v_g ≠ c²",
-   "foundationRole": "ESTABLISHED INGREDIENT; not a proof that mass is waves (MW1)",
+   "foundationRole": "ESTABLISHED INGREDIENT; not a proof that mass is waves (MW1); #17 first construction: the relation is the level set q(P) = (mc/ħ)² of the spectral Lorentzian form (P17M, P17N); spectral variables, not spacetime",
    "guideLocation": "Guide: Lorentz (Foundation ontology)",
    "gap": null,
    "provenance": "TEXTBOOK / STANDARD",
@@ -6435,6 +6435,448 @@
    "transformationLevel": [],
    "novelty": "PROJECT CLASSIFICATION OF KNOWN MATHEMATICS",
    "reductionRole": null
+  },
+  {
+   "id": "P17F",
+   "name": "Fourier conjugacy, source-locked: realness ⟺ Hermitian symmetry",
+   "layer": "ESTABLISHED MATHEMATICS",
+   "stages": [
+    "REPRESENTATION",
+    "RELATION"
+   ],
+   "equation": "x = u + iv: x̂(−ω) − conj x̂(ω) = 2i·v̂(−ω), so x̂(−ω) = conj x̂(ω) ∀ω ⟺ x real; C̃: X(ω) ↦ conj X(−ω) antilinear involution, F∘C = C̃∘F; DFT X_{N−k} = conj X_k, self-paired k = 0 and N/2 (N even) real; a pair = one real oscillation (amplitude, phase), the conjugate half redundant; conj χ = χ⁻¹ for unitary characters",
+   "status": "ESTABLISHED",
+   "cards": [
+    "P17Fa",
+    "P17Fb",
+    "P17Fc",
+    "P17Fd",
+    "P17Fe",
+    "P17Ff",
+    "P17Fg",
+    "P17Fh",
+    "P17Cg",
+    "FB4a",
+    "FB4b",
+    "FB4c"
+   ],
+   "docs": [
+    "research/constructions/p17_conjugacy_physical_pairs.md"
+   ],
+   "registry": [
+    "T-CONJUGACY",
+    "T-P17-DEPTH"
+   ],
+   "dependsOn": [
+    "P1",
+    "R2"
+   ],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": 15,
+   "slopRisk": 5,
+   "transferDepth": "not a transfer",
+   "applicationBreadth": 2,
+   "failureCondition": "a complex-valued signal (P17Fg, FB4c)",
+   "foundationRole": "the source relation for Pair #17 (#12 → #17)",
+   "guideLocation": "Guide: #17 conjugacy and physical pairs",
+   "gap": null,
+   "provenance": "TEXTBOOK / STANDARD",
+   "sources": [
+    "SRC-STEIN-SHAKARCHI-2003",
+    "SRC-FOLLAND-1995"
+   ],
+   "sourceStatus": null,
+   "mathematicalStatus": "TEXTBOOK / KNOWN",
+   "transformationLevel": [],
+   "novelty": "KNOWN MATHEMATICS",
+   "reductionRole": null
+  },
+  {
+   "id": "P17R",
+   "name": "A real classical field: the reality pairing P ↦ −P",
+   "layer": "ESTABLISHED MATHEMATICS",
+   "stages": [
+    "RELATION",
+    "REPRESENTATION",
+    "CROSS-SYSTEM TRANSFER"
+   ],
+   "equation": "Klein–Gordon-form PDE (real coefficients): a real field has φ̃(−ω, −k) = conj φ̃(ω, k), b(k) = conj a(−k); the partner of (ω, k) is (−ω, −k), not (−ω, k); a condition (realness), not a consequence of the equation; no reality pairing for iψ_t + αψ_xx = 0",
+   "status": "ESTABLISHED",
+   "cards": [
+    "P17Ra",
+    "P17Rb",
+    "P17Rc",
+    "P17Rd",
+    "P17Re",
+    "P17Rf"
+   ],
+   "docs": [
+    "research/constructions/p17_conjugacy_physical_pairs.md"
+   ],
+   "registry": [
+    "T-P17-REALFIELD"
+   ],
+   "dependsOn": [
+    "P17F"
+   ],
+   "supports": [],
+   "bearsOn": [
+    "T-CONJUGACY",
+    "T-MATTER-FIELD"
+   ],
+   "backboneSupport": 20,
+   "slopRisk": 10,
+   "transferDepth": "TRIVIAL CONSEQUENCE",
+   "applicationBreadth": 2,
+   "failureCondition": "a complex field (P17Re); an operator that does not commute with conjugation (P17Rf)",
+   "foundationRole": "first physical candidate for #17: the same theorem in two variables; not two physical entities",
+   "guideLocation": "Guide: #17 conjugacy and physical pairs",
+   "gap": null,
+   "provenance": "TEXTBOOK / STANDARD",
+   "sources": [
+    "SRC-FOLLAND-1995"
+   ],
+   "sourceStatus": null,
+   "mathematicalStatus": "TEXTBOOK / KNOWN",
+   "transformationLevel": [],
+   "novelty": "KNOWN MATHEMATICS",
+   "reductionRole": null
+  },
+  {
+   "id": "P17N",
+   "name": "Massless spectral null relation (not spacetime)",
+   "layer": "ESTABLISHED MATHEMATICS",
+   "stages": [
+    "ZERO / BALANCE / NULL",
+    "GEOMETRY"
+   ],
+   "equation": "m = 0: (ω/c)² − k² = 0 ⟺ ω = ±ck; ηP ≠ 0 (not a kernel vector); constant phase along the event-plane null ray parallel to P; P = 0 (the zero index) on the cone; four nulls kept apart: spacetime null vector, spectral null relation, Fourier zero coefficient, model-manifold null direction",
+   "status": "ESTABLISHED",
+   "cards": [
+    "P17Dc",
+    "P17Dd",
+    "P17Dh",
+    "FB8b"
+   ],
+   "docs": [
+    "research/constructions/p17_conjugacy_physical_pairs.md"
+   ],
+   "registry": [
+    "T-MW-B"
+   ],
+   "dependsOn": [
+    "MW2",
+    "Z5"
+   ],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": 20,
+   "slopRisk": 10,
+   "transferDepth": "TRIVIAL CONSEQUENCE",
+   "applicationBreadth": 2,
+   "failureCondition": "m > 0 (no null point, P17Cc)",
+   "foundationRole": "the null level of the spectral Lorentzian form; a relation in frequency-wavevector variables, not physical spacetime",
+   "guideLocation": "Guide: #17 conjugacy and physical pairs",
+   "gap": null,
+   "provenance": "TEXTBOOK / STANDARD",
+   "sources": [
+    "SRC-KLEIN-GORDON-1926"
+   ],
+   "sourceStatus": null,
+   "mathematicalStatus": "TEXTBOOK / KNOWN",
+   "transformationLevel": [],
+   "novelty": "KNOWN MATHEMATICS",
+   "reductionRole": null
+  },
+  {
+   "id": "P17M",
+   "name": "Mass shell: a non-null level, boost orbits, mass as the orbit invariant",
+   "layer": "PROJECT-DERIVED CONNECTION",
+   "stages": [
+    "GEOMETRY",
+    "PRESERVED STRUCTURE",
+    "TRANSFORMATION"
+   ],
+   "equation": "q(P) = (mc/ħ)², P = (ω/c, k): two branches, each one SO⁺(1,1) orbit (boost with tanh φ = ck/ω to rest); asymptotic to the cone; frequency gap at mc²/ħ (evanescent below); proper-time phase rate mc²/ħ for every k; mc/ħ labels the orbit as r labels circles (Kᵀη + ηK = 0, JᵀI + IJ = 0), not the role of c",
+   "status": "DERIVED",
+   "cards": [
+    "P17Db",
+    "P17De",
+    "P17Df",
+    "P17Dg",
+    "P17Di"
+   ],
+   "docs": [
+    "research/constructions/p17_conjugacy_physical_pairs.md"
+   ],
+   "registry": [
+    "T-P17-MASS-LEVEL",
+    "T-MW-B"
+   ],
+   "dependsOn": [
+    "MW2",
+    "CF4",
+    "L1"
+   ],
+   "supports": [],
+   "bearsOn": [
+    "T-MASS-WAVE-SEED",
+    "T-MASS-WAVE-Q"
+   ],
+   "backboneSupport": 30,
+   "slopRisk": 15,
+   "transferDepth": "STRUCTURAL TRANSFER",
+   "applicationBreadth": 2,
+   "failureCondition": "q < 0 levels (not reached by real m)",
+   "foundationRole": "exact answer to \"Does mass appear as a parameter selecting a non-null level set of the same quadratic form whose m=0 case is null?\" — yes; #14 ⇢ #17 and #19 ⇢ #17 cross-references",
+   "guideLocation": "Guide: #17 conjugacy and physical pairs",
+   "gap": null,
+   "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
+   "sources": [
+    "SRC-EINSTEIN-1905",
+    "SRC-KLEIN-GORDON-1926"
+   ],
+   "sourceStatus": null,
+   "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
+   "transformationLevel": [],
+   "novelty": "PROJECT CLASSIFICATION OF KNOWN MATHEMATICS",
+   "reductionRole": null
+  },
+  {
+   "id": "P17E",
+   "name": "E = ħω, p = ħk: inputs and what they induce",
+   "layer": "ESTABLISHED MATHEMATICS",
+   "stages": [
+    "RELATION",
+    "CROSS-SYSTEM TRANSFER"
+   ],
+   "equation": "(E/c, p) = ħ(ω/c, k): q(ħP) = ħ²q(P), commuting with boosts; E² = p²c² + m²c⁴ ⟺ q(P) = (mc/ħ)²; v_g = pc²/E = v; ω₀ = mc²/ħ; the identifications (Planck–Einstein, de Broglie) and μ = mc/ħ are physical inputs, not classical identities",
+   "status": "ESTABLISHED",
+   "cards": [
+    "P17Ea",
+    "P17Eb",
+    "P17Da",
+    "FB8a"
+   ],
+   "docs": [
+    "research/constructions/p17_conjugacy_physical_pairs.md"
+   ],
+   "registry": [
+    "T-MW-A"
+   ],
+   "dependsOn": [
+    "MW2"
+   ],
+   "supports": [],
+   "bearsOn": [
+    "T-MASS-WAVE-SEED"
+   ],
+   "backboneSupport": 15,
+   "slopRisk": 10,
+   "transferDepth": "TRIVIAL CONSEQUENCE",
+   "applicationBreadth": 1,
+   "failureCondition": "outside the physical context of the identifications",
+   "foundationRole": "RESTRICTED: the algebra is exact; the identifications are inputs",
+   "guideLocation": "Guide: #17 conjugacy and physical pairs",
+   "gap": null,
+   "provenance": "TEXTBOOK / STANDARD",
+   "sources": [
+    "SRC-DEBROGLIE-1925"
+   ],
+   "sourceStatus": null,
+   "mathematicalStatus": "TEXTBOOK / KNOWN",
+   "transformationLevel": [],
+   "novelty": "KNOWN PHYSICS (identifications as inputs)",
+   "reductionRole": null
+  },
+  {
+   "id": "P17K",
+   "name": "Kinds of pairing kept apart",
+   "layer": "PROJECT-DERIVED CONNECTION",
+   "stages": [
+    "RELATION",
+    "CROSS-SYSTEM TRANSFER"
+   ],
+   "equation": "conjugacy (antilinear involution C̃); reality constraint (its fixed points); sign symmetry (S_t, S_x, −I preserve η); orbit symmetry (boosts); independent physical states (right/left movers); notation-dependent pairing (positive/negative labels; absent in one-sided and cos/sin representations); Fourier duality (bilinear η(P, X), a different meaning of \"conjugate\")",
+   "status": "DERIVED",
+   "cards": [
+    "P17Ca",
+    "P17Cb",
+    "P17Ce",
+    "P17Cf",
+    "P17Rd"
+   ],
+   "docs": [
+    "research/constructions/p17_conjugacy_physical_pairs.md"
+   ],
+   "registry": [
+    "T-P17-PAIRING-KINDS",
+    "T-P17-CRITERIA"
+   ],
+   "dependsOn": [
+    "P17F",
+    "P17R"
+   ],
+   "supports": [],
+   "bearsOn": [
+    "T-CONJUGACY"
+   ],
+   "backboneSupport": 30,
+   "slopRisk": 15,
+   "transferDepth": "not a transfer",
+   "applicationBreadth": 3,
+   "failureCondition": "—",
+   "foundationRole": "PROJECT SYNTHESIS: known examples, not an exhaustive classification for this project",
+   "guideLocation": "Guide: #17 conjugacy and physical pairs",
+   "gap": null,
+   "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": "PROJECT-DERIVED FROM KNOWN DEFINITIONS",
+   "transformationLevel": [],
+   "novelty": "PROJECT CLASSIFICATION OF KNOWN MATHEMATICS",
+   "reductionRole": null
+  },
+  {
+   "id": "P17C",
+   "name": "Rest frequency and proper time: a Fourier-dual pair (MW-C′)",
+   "layer": "PROJECT-DERIVED CONNECTION",
+   "stages": [
+    "DYNAMICS / CONTINUATION",
+    "REPRESENTATION"
+   ],
+   "equation": "along x = v_g t the phase ωt − kx advances at mc²/ħ per unit proper time for every k; e^{−i(mc²/ħ)τ} is a character of proper time (#18 structure); m = 0: constant phase along x = ct",
+   "status": "DERIVED",
+   "cards": [
+    "P17Dg",
+    "P17Ch"
+   ],
+   "docs": [
+    "research/constructions/p17_conjugacy_physical_pairs.md"
+   ],
+   "registry": [
+    "T-P17-REST-CLOCK"
+   ],
+   "dependsOn": [
+    "P17M",
+    "A8F"
+   ],
+   "supports": [],
+   "bearsOn": [
+    "T-MW-C",
+    "T-MASS-WAVE-SEED"
+   ],
+   "backboneSupport": 20,
+   "slopRisk": 25,
+   "transferDepth": "STRUCTURAL TRANSFER",
+   "applicationBreadth": 2,
+   "failureCondition": "off the group worldline the rate depends on the observer",
+   "foundationRole": "RESTRICTED; known (de Broglie); a different sense of \"conjugate\" from #12",
+   "guideLocation": "Guide: #17 conjugacy and physical pairs",
+   "gap": null,
+   "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
+   "sources": [
+    "SRC-DEBROGLIE-1925"
+   ],
+   "sourceStatus": null,
+   "mathematicalStatus": "TEXTBOOK / KNOWN",
+   "transformationLevel": [],
+   "novelty": "KNOWN MATHEMATICS (de Broglie)",
+   "reductionRole": null
+  },
+  {
+   "id": "P17MW",
+   "name": "The mass/wave seed: readings MW-A–MW-D",
+   "layer": "ORIGINAL USER THEORY",
+   "stages": [
+    "OBJECT",
+    "REPRESENTATION",
+    "CROSS-SYSTEM TRANSFER"
+   ],
+   "equation": "MW-A RESTRICTED (E = ħω, p = ħk as inputs); MW-B ESTABLISHED (one form, levels 0 and (mc/ħ)²); MW-C FAIL as complex conjugacy (P17Ch); MW-D OPEN (theory-specific; the elastic-foundation string has the same dispersion, P17Mx)",
+   "status": "HYPOTHESIS",
+   "cards": [
+    "P17Ch",
+    "P17Mx",
+    "P17Ea"
+   ],
+   "docs": [
+    "research/constructions/p17_conjugacy_physical_pairs.md"
+   ],
+   "registry": [
+    "T-MW-A",
+    "T-MW-B",
+    "T-MW-C",
+    "T-MW-D",
+    "T-MASS-WAVE-SEED"
+   ],
+   "dependsOn": [
+    "MW1"
+   ],
+   "supports": [],
+   "bearsOn": [],
+   "backboneSupport": 20,
+   "slopRisk": 30,
+   "transferDepth": "not a transfer",
+   "applicationBreadth": null,
+   "failureCondition": "—",
+   "foundationRole": "the seed kept verbatim and not promoted; separate statuses per reading",
+   "guideLocation": "Guide: #17 conjugacy and physical pairs",
+   "gap": null,
+   "provenance": "USER-ORIGIN",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": "SPECULATIVE MAPPING",
+   "transformationLevel": [],
+   "novelty": null,
+   "reductionRole": null
+  },
+  {
+   "id": "P17X",
+   "name": "#17 counterexamples P17-X1–X5",
+   "layer": "FAILED / NEGATIVE RESULT",
+   "stages": [
+    "CROSS-SYSTEM TRANSFER"
+   ],
+   "equation": "X1 complex signal without conjugate symmetry; X2 sign pairing (k ↦ −k) without conjugacy; X3 a massive shell with no null state; X4 paired variables that are one entity; X5 a pair that disappears under another representation; supporting: iψ_t + αψ_xx = 0 (no reality pairing), the elastic-foundation string (MW-D boundary)",
+   "status": "NEGATIVE",
+   "cards": [
+    "P17Fg",
+    "P17Cb",
+    "P17Cc",
+    "P17Cd",
+    "P17Ce",
+    "P17Rf",
+    "P17Mx"
+   ],
+   "docs": [
+    "research/constructions/p17_conjugacy_physical_pairs.md"
+   ],
+   "registry": [
+    "T-MW-C",
+    "T-MW-D"
+   ],
+   "dependsOn": [],
+   "supports": [],
+   "bearsOn": [
+    "T-CONJUGACY"
+   ],
+   "backboneSupport": null,
+   "slopRisk": null,
+   "transferDepth": "FAIL",
+   "applicationBreadth": null,
+   "failureCondition": "—",
+   "foundationRole": "prevent superficial transfer",
+   "guideLocation": "Guide: #17 conjugacy and physical pairs",
+   "gap": null,
+   "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
+   "sources": [],
+   "sourceStatus": null,
+   "mathematicalStatus": null,
+   "transformationLevel": [],
+   "novelty": null,
+   "reductionRole": null
   }
  ],
  "bridges": [
@@ -8464,6 +8906,144 @@
    "sources": [],
    "assumptions": "the stated generators",
    "failureCondition": "none: exact"
+  },
+  {
+   "id": "BR87",
+   "left": "Fourier conjugacy of a real signal (#12)",
+   "right": "reality pairing of a real field (#17)",
+   "connector": "conj χ = χ⁻¹ for unitary characters: ℝ (ω ↦ −ω), ℤ_N (k ↦ N − k), ℝ² with η (P ↦ −P); a real function has f̂(χ⁻¹) = conj f̂(χ)",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "P17Cg",
+    "P17Rc",
+    "P17Fa"
+   ],
+   "doesNotProve": "that physical pairs are conjugate in general; that the two partners are two physical entities (P17Cd)",
+   "objects": [
+    "P17F",
+    "P17R",
+    "P1"
+   ],
+   "strength": "THEOREM",
+   "sources": [
+    "SRC-FOLLAND-1995",
+    "SRC-STEIN-SHAKARCHI-2003"
+   ],
+   "assumptions": "a real function; the project convention",
+   "failureCondition": "a complex function (P17Fg, P17Re)"
+  },
+  {
+   "id": "BR88",
+   "left": "spectral null relation q(P) = 0",
+   "right": "spacetime null ray η(X, X) = 0",
+   "connector": "for P null the wave e^{−iη(P, X)} has constant phase along the null ray parallel to P; the planes are related only through η",
+   "status": "ESTABLISHED",
+   "scope": "established",
+   "cards": [
+    "P17Dd"
+   ],
+   "doesNotProve": "that the spectral cone is the light cone, or that they are one kind of zero",
+   "objects": [
+    "P17N",
+    "Z5"
+   ],
+   "strength": "EXACT IDENTITY",
+   "sources": [
+    "SRC-EINSTEIN-1905"
+   ],
+   "assumptions": "η = diag(1, −1); P = (ω/c, k), X = (ct, x)",
+   "failureCondition": "P not null"
+  },
+  {
+   "id": "BR89",
+   "left": "mass parameter m (#17)",
+   "right": "orbit invariant of a preserved form (#14)",
+   "connector": "q_η = (mc/ħ)² labels a boost orbit as q_I = r² labels a rotation orbit (Kᵀη + ηK = 0, JᵀI + IJ = 0); m is not a form parameter like c",
+   "status": "ESTABLISHED",
+   "scope": "project-specific",
+   "cards": [
+    "P17Di",
+    "P17De",
+    "A8Wb"
+   ],
+   "doesNotProve": "that mass is a radius in physical space; that rotations and boosts are the same physics",
+   "objects": [
+    "P17M",
+    "CF4",
+    "A8E"
+   ],
+   "strength": "STRUCTURAL ANALOGUE",
+   "sources": [
+    "SRC-FULTON-HARRIS-1991"
+   ],
+   "assumptions": "2×2 forms I and η; the timelike region q_η > 0",
+   "failureCondition": "the zero level (q_I = 0 is a point, q_η = 0 is not)"
+  },
+  {
+   "id": "BR90",
+   "left": "sign symmetry of the dispersion relation",
+   "right": "complex conjugacy",
+   "connector": "k ↦ −k (and ω ↦ −ω) preserve the relation but impose no relation on amplitudes",
+   "status": "NEGATIVE",
+   "scope": "project-specific",
+   "cards": [
+    "P17Cb",
+    "P17Rd"
+   ],
+   "doesNotProve": "that sign symmetry is irrelevant (it preserves every level set)",
+   "objects": [
+    "P17K",
+    "P17X"
+   ],
+   "strength": "FAILED CONNECTION",
+   "sources": [],
+   "assumptions": "the stated mode set",
+   "failureCondition": "none: exact"
+  },
+  {
+   "id": "BR91",
+   "left": "mass m",
+   "right": "wave variables (ω, k) under complex conjugation (MW-C)",
+   "connector": "conjugation maps the mass-m shell to itself (q(−P) = q(P)); m is the level label, not a paired coordinate",
+   "status": "NEGATIVE",
+   "scope": "project-specific",
+   "cards": [
+    "P17Ch"
+   ],
+   "doesNotProve": "that no pairing involving m exists (the Fourier-duality reading BR92 does)",
+   "objects": [
+    "P17MW",
+    "P17M"
+   ],
+   "strength": "FAILED CONNECTION",
+   "sources": [],
+   "assumptions": "complex conjugation of amplitudes",
+   "failureCondition": "none: exact"
+  },
+  {
+   "id": "BR92",
+   "left": "rest frequency mc²/ħ",
+   "right": "proper time τ",
+   "connector": "along the group worldline the phase is e^{−i(mc²/ħ)τ}: a character of proper time (#18 structure); Fourier duality, not complex conjugacy",
+   "status": "ESTABLISHED",
+   "scope": "project-specific",
+   "cards": [
+    "P17Dg",
+    "P17Ch",
+    "A8Fa"
+   ],
+   "doesNotProve": "that mass is a wave; that this is the conjugacy of #12",
+   "objects": [
+    "P17C",
+    "A8F"
+   ],
+   "strength": "EXACT IDENTITY",
+   "sources": [
+    "SRC-DEBROGLIE-1925"
+   ],
+   "assumptions": "a mode on the mass shell, m > 0; its group worldline",
+   "failureCondition": "off the group worldline; m = 0 (constant phase)"
   }
  ],
  "sources": [
@@ -8491,7 +9071,8 @@
     "TA3",
     "C7E",
     "A8T",
-    "A8F"
+    "A8F",
+    "P17F"
    ],
    "bearsOn": [
     "P2",
@@ -8712,7 +9293,8 @@
    "supports": [
     "L1",
     "L2",
-    "MW2"
+    "MW2",
+    "P17M"
    ],
    "bearsOn": [
     "L4"
@@ -8794,7 +9376,9 @@
    "claim": "a frequency and wavelength associated with a material particle (E = hν, p = h/λ), consistent with relativistic energy and momentum",
    "doesNotEstablish": "that mass is waves in Nadia's sense (MW1 stays a hypothesis)",
    "supports": [
-    "MW2"
+    "MW2",
+    "P17E",
+    "P17C"
    ],
    "bearsOn": [
     "MW1"
@@ -8813,7 +9397,9 @@
    "claim": "the relativistic scalar wave equation, whose plane waves satisfy ω² = c²k² + m²c⁴/ħ²",
    "doesNotEstablish": "MW1; any field-theory interpretation",
    "supports": [
-    "MW2"
+    "MW2",
+    "P17M",
+    "P17N"
    ],
    "bearsOn": [
     "MW1"
@@ -9540,6 +10126,62 @@
     "A8HCF"
    ],
    "checked": "bibliographic record checked by web search of publisher / library / index records, 2026-11-16; full text not opened in this environment; claim not quoted"
+  },
+  {
+   "id": "SRC-FOLLAND-1995",
+   "authors": "Gerald B. Folland",
+   "title": "A Course in Abstract Harmonic Analysis",
+   "year": "1995",
+   "sourceType": "book",
+   "identifier": "CRC Press, Boca Raton; ISBN 0-8493-8490-7 (2nd ed. 2015)",
+   "sourceClass": "textbook",
+   "status": "METADATA VERIFIED; CLAIM NOT QUOTED",
+   "claim": "characters of locally compact abelian groups (|χ| = 1, conj χ = χ⁻¹), the Fourier transform on such groups and its uniqueness; hence f̂(χ⁻¹) = conj f̂(χ) for real f",
+   "doesNotEstablish": "anything about physical pairs (P2) or the mass/wave seed (MW1)",
+   "supports": [
+    "P17F",
+    "P17R"
+   ],
+   "bearsOn": [
+    "P2"
+   ],
+   "checked": "bibliographic record checked by web search of publisher / library / index records, 2026-11-17; full text not opened in this environment; claim not quoted"
+  },
+  {
+   "id": "SRC-SCOTT-1969",
+   "authors": "A. C. Scott",
+   "title": "A nonlinear Klein-Gordon equation",
+   "year": "1969",
+   "sourceType": "journal article",
+   "identifier": "American Journal of Physics 37(1), 52–61; DOI 10.1119/1.1975404",
+   "sourceClass": "primary",
+   "status": "METADATA VERIFIED; CLAIM NOT QUOTED",
+   "claim": "physical (classical, mechanical / electrical) realizations of a Klein–Gordon-form equation; its linearization has the gapped dispersion carded here (P17Mx, derived, not quoted)",
+   "doesNotEstablish": "MW-D; any particle interpretation",
+   "supports": [],
+   "bearsOn": [
+    "P17MW",
+    "P17X"
+   ],
+   "checked": "bibliographic record checked by web search of publisher / library / index records, 2026-11-17; full text not opened in this environment; claim not quoted"
+  },
+  {
+   "id": "SRC-WIGNER-1939",
+   "authors": "E. Wigner",
+   "title": "On unitary representations of the inhomogeneous Lorentz group",
+   "year": "1939",
+   "sourceType": "journal article",
+   "identifier": "Annals of Mathematics 40(1), 149–204; DOI 10.2307/1968551",
+   "sourceClass": "primary",
+   "status": "METADATA VERIFIED; CLAIM NOT QUOTED",
+   "claim": "classification of the unitary representations of the Poincaré group, beginning from the Lorentz orbits in momentum space (labelled by mass and the sign of energy)",
+   "doesNotEstablish": "nothing in this pass uses its quantum content; recorded as a future branch for the orbit classification (P17M bears on it)",
+   "supports": [],
+   "bearsOn": [
+    "P17M",
+    "P17MW"
+   ],
+   "checked": "bibliographic record checked by web search of publisher / library / index records, 2026-11-17; full text not opened in this environment; claim not quoted"
   }
  ],
  "domains": [
@@ -10015,6 +10657,23 @@
    ],
    "status": "WORDING ONLY",
    "note": "name the kind of \"energy\" every time"
+  },
+  {
+   "id": "D41",
+   "name": "#17: conjugacy and physical pairs (first construction)",
+   "objects": [
+    "P17F",
+    "P17R",
+    "P17N",
+    "P17M",
+    "P17E",
+    "P17K",
+    "P17C",
+    "P17MW",
+    "P17X"
+   ],
+   "status": "SOURCE+CARD COMPLETE",
+   "note": "first construction 2026-11-17: separate statuses (Fourier conjugacy ESTABLISHED; real-field pairing DERIVED; massless null ESTABLISHED; mass shell DERIVED; E = ħω, p = ħk RESTRICTED; MW-A RESTRICTED, MW-B ESTABLISHED, MW-C FAIL, MW-D OPEN); the #17 hypothesis (P2) stays OPEN in D21"
   }
  ],
  "cf11b": {
@@ -10515,33 +11174,33 @@
  "ratings": [
   {
    "dimension": "Foundation architecture completeness",
-   "rating": 95,
-   "previous": 94,
-   "reason": "Act VIII story integration (2026-11-16): the common-form chart (CF1, CF4) is continued explicitly to orbit behaviour (A8G, D40), the circle is placed in the Fourier branch as the translation character (A8F), kernel and orbit closure are separated (A8KC), H3-c is split, and the missing report provenance (AMB register) is in the repository. Still short: DYADIC definition, effective representations, application mathematics, C7-F(inv), H3-original OPEN."
+   "rating": 96,
+   "previous": 95,
+   "reason": "First #17 construction (2026-11-17): Master Map #17 now has a carded source relation (realness ⟺ Hermitian symmetry, P17F), a first physical candidate (P17R), the spectral level-set geometry (P17N, P17M) and separate statuses for the mass/wave readings (P17MW, D41). Act VIII lock values kept as the previous column."
   },
   {
    "dimension": "Mathematical verification coverage",
    "rating": 98,
    "previous": 98,
-   "reason": "100 of 102 established or derived objects have PASS cards (computed). New: every story-pass object is carded (A8S cards). Not carded: OB1 (definitional), A3 (wording)."
+   "reason": "107 of 109 established or derived objects have PASS cards (computed). Every #17 object is carded (P17 cards). Not carded: OB1 (definitional), A3 (wording)."
   },
   {
    "dimension": "Cross-domain validation",
    "rating": 30,
    "previous": 30,
-   "reason": "Unchanged: rotations and boosts share the generator theorem (known mathematics); no new physical system."
+   "reason": "Unchanged: the #17 physical candidate reproduces the Fourier source relation only as the same theorem (TRIVIAL CONSEQUENCE); no independent physical system was validated and no data are carded."
   },
   {
    "dimension": "Project-specific construction maturity",
    "rating": 45,
    "previous": 45,
-   "reason": "Unchanged: the new bridges are known mathematics placed in the project story."
+   "reason": "Unchanged: the #17 objects are known mathematics and a project classification of pairing kinds placed in the story."
   },
   {
    "dimension": "Paper / source coverage",
-   "rating": 61,
-   "previous": 60,
-   "reason": "53 external sources registered (10 only partly verified); 66 of 67 external-claim objects have a source; R5 is SOURCE MISSING. Change: Lee 2012, Milnor 1965 and Yaglom 1979 registered (metadata only, claims not quoted)."
+   "rating": 62,
+   "previous": 61,
+   "reason": "56 external sources registered (10 only partly verified); 70 of 71 external-claim objects have a source; R5 is SOURCE MISSING. Change: Lee 2012, Milnor 1965 and Yaglom 1979 registered (metadata only, claims not quoted)."
   },
   {
    "dimension": "Application validation",
@@ -11206,6 +11865,60 @@
    "old": "H3-1 (user). Story-pass restricted answer (replaces the superseded \"invariant content is finiteness\"): the bare forms M_c for finite c are congruent by a spatial rescaling, so the congruence class of the isolated form does not distinguish the finite value of c (A8Wc) — this is not a claim that c means only finiteness; kept distinct: unit normalization, causal structure (x = ±ct), dimensionless ratios such as v/c, the family limit. Role 2 and Role 3 meet in det K_c = −1/c² (A8Q). Known mathematics; the connection to H3 stays open",
    "new": "H3-1 (user). Story-pass restricted answer (replaces the superseded \"invariant content is finiteness\"): the bare forms M_c for finite c are congruent by a spatial rescaling, so the congruence class of the isolated form does not distinguish the finite value of c (A8Wc) — this is not a claim that c means only finiteness; kept distinct: unit normalization, causal structure (x = ±ct), dimensionless ratios such as v/c, the family limit. Role 2 and Role 3 meet in the velocity-parametrized boost generator: det K_c = −1/c², and K_c contracts to the Galilean shear as c → ∞ at fixed v (C9c, A8Lc). Known mathematics; the connection to H3 stays open",
    "reason": "lock: cite the boost generator (C9c), not the parked κ-family",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "object",
+   "id": "P1",
+   "field": "foundationRole",
+   "old": "the established Fourier pair case",
+   "new": "the established Fourier pair case; #17 first construction (2026-11-17): locked as the source relation with its forcing property (realness), DC / Nyquist exceptions and failure case (P17F)",
+   "reason": "#17: source relation locked",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "object",
+   "id": "P2",
+   "field": "foundationRole",
+   "old": "open user question",
+   "new": "open user question (#17). First construction (2026-11-17): the one exact conjugate pairing found in a physical candidate is the reality constraint of a real field — the same theorem (P17R, BR87); sign symmetry, orbit symmetry, independent states and notation-dependent pairs are different kinds (P17K). Stays OPEN",
+   "reason": "#17: first construction recorded",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "object",
+   "id": "P2",
+   "field": "backboneSupport",
+   "old": null,
+   "new": 15,
+   "reason": "#17 first construction: rated for the first time (15%): exact source relation; one physical candidate reproduces it only as the same theorem",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "object",
+   "id": "P2",
+   "field": "slopRisk",
+   "old": null,
+   "new": 30,
+   "reason": "#17 first construction: the word \"conjugate\" carries several meanings (P17Cf)",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "object",
+   "id": "MW1",
+   "field": "foundationRole",
+   "old": "original user theory (verbatim, recorded 2026-11-12)",
+   "new": "original user theory (verbatim, recorded 2026-11-12); #17 first construction (2026-11-17): kept verbatim, not promoted; readings MW-A RESTRICTED, MW-B ESTABLISHED, MW-C FAIL, MW-D OPEN (P17MW)",
+   "reason": "#17: seed readings",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "object",
+   "id": "MW2",
+   "field": "foundationRole",
+   "old": "ESTABLISHED INGREDIENT; not a proof that mass is waves (MW1)",
+   "new": "ESTABLISHED INGREDIENT; not a proof that mass is waves (MW1); #17 first construction: the relation is the level set q(P) = (mc/ħ)² of the spectral Lorentzian form (P17M, P17N); spectral variables, not spacetime",
+   "reason": "#17: level-set reading",
    "date": "2026-11-17"
   }
  ]

@@ -71,6 +71,7 @@ Statuses: LOCKED; SOURCE-COMPLETE; MATH-CARDED; SOURCE+CARD COMPLETE; NEEDS DERI
 | D24. Failures and boundaries | F1 | LOCKED | every FAIL card kept |
 | D25. Application | A1, A2 | OPEN LONG-TERM | A2: APPLICATION PROVENANCE INCOMPLETE; not upstream evidence |
 | D26. Physical energy vs L² energy; meaning of squared magnitude | A3, ON9 | WORDING ONLY | name the kind of "energy" every time |
+| D41. #17: conjugacy and physical pairs (first construction) | P17F, P17R, P17N, P17M, P17E, P17K, P17C, P17MW, P17X | SOURCE+CARD COMPLETE | first construction 2026-11-17: separate statuses (Fourier conjugacy ESTABLISHED; real-field pairing DERIVED; massless null ESTABLISHED; mass shell DERIVED; E = ħω, p = ħk RESTRICTED; MW-A RESTRICTED, MW-B ESTABLISHED, MW-C FAIL, MW-D OPEN); the #17 hypothesis (P2) stays OPEN in D21 |
 
 ## Blocking items for Foundation V1
 
@@ -84,13 +85,13 @@ Statuses: LOCKED; SOURCE-COMPLETE; MATH-CARDED; SOURCE+CARD COMPLETE; NEEDS DERI
 
 ## Foundation ratings (separate dimensions, no overall score)
 
-| Dimension | Rating | Previous (Act VIII pass 1) | Reason for the change |
+| Dimension | Rating | Previous (Act VIII lock) | Reason for the change |
 |---|---|---|---|
-| Foundation architecture completeness | 95% | 94% | Act VIII story integration (2026-11-16): the common-form chart (CF1, CF4) is continued explicitly to orbit behaviour (A8G, D40), the circle is placed in the Fourier branch as the translation character (A8F), kernel and orbit closure are separated (A8KC), H3-c is split, and the missing report provenance (AMB register) is in the repository. Still short: DYADIC definition, effective representations, application mathematics, C7-F(inv), H3-original OPEN. |
-| Mathematical verification coverage | 98% | 98% | 100 of 102 established or derived objects have PASS cards (computed). New: every story-pass object is carded (A8S cards). Not carded: OB1 (definitional), A3 (wording). |
-| Cross-domain validation | 30% | 30% | Unchanged: rotations and boosts share the generator theorem (known mathematics); no new physical system. |
-| Project-specific construction maturity | 45% | 45% | Unchanged: the new bridges are known mathematics placed in the project story. |
-| Paper / source coverage | 61% | 60% | 53 external sources registered (10 only partly verified); 66 of 67 external-claim objects have a source; R5 is SOURCE MISSING. Change: Lee 2012, Milnor 1965 and Yaglom 1979 registered (metadata only, claims not quoted). |
+| Foundation architecture completeness | 96% | 95% | First #17 construction (2026-11-17): Master Map #17 now has a carded source relation (realness ⟺ Hermitian symmetry, P17F), a first physical candidate (P17R), the spectral level-set geometry (P17N, P17M) and separate statuses for the mass/wave readings (P17MW, D41). Act VIII lock values kept as the previous column. |
+| Mathematical verification coverage | 98% | 98% | 107 of 109 established or derived objects have PASS cards (computed). Every #17 object is carded (P17 cards). Not carded: OB1 (definitional), A3 (wording). |
+| Cross-domain validation | 30% | 30% | Unchanged: the #17 physical candidate reproduces the Fourier source relation only as the same theorem (TRIVIAL CONSEQUENCE); no independent physical system was validated and no data are carded. |
+| Project-specific construction maturity | 45% | 45% | Unchanged: the #17 objects are known mathematics and a project classification of pairing kinds placed in the story. |
+| Paper / source coverage | 62% | 61% | 56 external sources registered (10 only partly verified); 70 of 71 external-claim objects have a source; R5 is SOURCE MISSING. Change: Lee 2012, Milnor 1965 and Yaglom 1979 registered (metadata only, claims not quoted). |
 | Application validation | 0% | 0% | Unchanged. |
 
 ## CF11 and Transformation Architecture ratings (separate records)

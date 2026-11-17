@@ -1059,6 +1059,69 @@ T('T-PAIRA-Q', 'Pair A: the question that created it', 'A mass-balance zero iden
   bounds=['Canonical story diagnostic (2026-11-16): recorded so that Pair A keeps the question that created it; Pair A was not created because the systems were proven equivalent. Graph: research/canonical_story.md, Chain PA.'],
   acts=['I'], audit=('missing', 'stated in the canonical story diagnostic brief (2026-11-16)'), related=['T-PAIRA-SHARED', 'T-PAIRA-BRIDGE', 'T-BACKBONE-PRIMARY'], ref='canonical story, Chain PA')
 
+# ── Master Map #17, first construction (2026-11-17): conjugacy and physical pairs ──
+P17REC = 'research/constructions/p17_conjugacy_physical_pairs.md'
+P17_AUDIT = ('new', 'first #17 construction (2026-11-17)')
+ACTS_ALREADY_NEW |= {'T-P17-GOV', 'T-P17-CRITERIA', 'T-P17-DEPTH', 'T-MW-A', 'T-MW-B', 'T-MW-C', 'T-MW-D', 'T-P17-REALFIELD', 'T-P17-MASS-LEVEL', 'T-P17-PAIRING-KINDS', 'T-P17-REST-CLOCK'}
+T('T-P17-GOV', '#17 governance: the branch is not defined as mass-wave', 'Do NOT define the branch as “mass-wave” before testing this question.', RD, U, 'method-rule', 'governance',
+  variants=[('Mass/wave is one candidate investigation within the branch.', RD), ('Do not turn #17 into a generic QFT chapter.', RD), ('Do not reorder the Master Map around the new mathematics.', RD), ('Do not create a new canonical story node unless the user historically asked the question.', RD)],
+  norm='The #17 question comes first, with its historical predecessor #12; candidate physical examples enter only after it; QFT objects (operators, particle/antiparticle, CPT, Dirac sea, virtual particles) are future branches unless a precise relation requires them.',
+  acts=['Guide'], audit=P17_AUDIT, related=['T-CONJUGACY', 'T-MASS-WAVE-SEED'], ref='#17 first construction')
+T('T-P17-CRITERIA', '#17: what "same structure" would have to mean', 'Do not allow loose analogy.', RD, U, 'method-rule', 'governance',
+  variants=[('The question is whether there is a mathematically meaningful shared relation.', RD), ('shared representation-theoretic structure.', RD)],
+  norm='Transfer criteria TC1–TC7: a transformation relating the pair; an involution or symmetry operation; a preserved relation; a reconstruction or reality constraint; paired coordinates carrying non-independent information; a common quadratic/bilinear relation; a group/representation-theoretic origin. Levels: visual analogy < shared equation < shared transformation structure < shared representation-theoretic structure, awarded only on cards.',
+  acts=['Guide'], audit=P17_AUDIT, related=['T-CONJUGACY', 'T-P17-DEPTH'], ref='#17 first construction, C')
+T('T-P17-DEPTH', '#17: the discovery path and its question', 'Fourier pair → exact mathematical conjugacy → what information does the pairing encode? → do physical pairings ever share an exact relation of comparable structural depth?', RD, U, 'open-question', 'open',
+  variants=[('Only after that question is explicit should candidate physical examples enter.', RD)],
+  norm='Answered for the source relation: a conjugate pair of a real signal encodes one real oscillation (amplitude and phase); the conjugate half is redundant (P17Fe, P17Fh). For the first physical candidate (a real classical field) the exact relation found is the same theorem, φ̃(−ω, −k) = conj φ̃(ω, k), a reality constraint; no pairing of independent physical entities was found to be a conjugate pair. Open beyond these candidates.',
+  pro=[('card:P17Fh', 'what the pairing encodes'), ('card:P17Rc', 'the real-field pairing')], con=[('card:P17Cd', 'the partners are not two entities')],
+  acts=['Guide'], audit=P17_AUDIT, related=['T-CONJUGACY', 'T-P17-REALFIELD', 'T-P17-PAIRING-KINDS'], ref='#17 first construction, A–H')
+T('T-MW-A', 'MW-A: the de Broglie reading of the mass/wave seed', 'Massive particles admit wave variables through:', RD, U, 'derived-connection', 'derived',
+  variants=[('MW-A — de Broglie relation', RD)],
+  norm='E = ħω, p = ħk (physical identifications, inputs). Derived under them: (E/c, p) = ħ(ω/c, k), so the level-set geometry is rescaled by ħ (P17Ea); v_g = dω/dk = pc²/E = v and ω₀ = mc²/ħ (P17Eb).',
+  pro=[('card:P17Ea', 'ħ-scaling'), ('card:P17Eb', 'group velocity = particle velocity'), ('card:FB8a', 'E² = p²c² + m²c⁴ ⟺ the ω–k relation')],
+  bounds=['#17 first construction (2026-11-17): RESTRICTED — holds under the identifications E = ħω, p = ħk, which are not classical identities; no physical data carded here.'],
+  acts=['Guide'], audit=P17_AUDIT, related=['T-MASS-WAVE-SEED', 'T-MW-B', 'T-MW-C', 'T-MW-D'], ref='#17 first construction, I')
+T('T-MW-B', 'MW-B: massless and massive cases as levels of one Lorentzian form', 'Massless and massive cases occupy different level sets of the same Lorentzian quadratic form in energy-momentum / spectral variables.', RD, U, 'established', 'established',
+  variants=[('MW-B — common quadratic geometry', RD)],
+  norm='q(P) = (ω/c)² − k² with P = (ω/c, k): m = 0 ⟺ q(P) = 0 (ω = ±ck); m > 0 ⟺ q(P) = (mc/ħ)², a hyperbola whose branches are boost orbits; mass is the orbit invariant (P17Dc, P17De, P17Di). Spectral variables, not physical spacetime.',
+  pro=[('card:P17Dc', 'the null level'), ('card:P17De', 'the massive level'), ('card:P17Di', 'mass as orbit invariant'), ('card:FB8b', 'the η-form in (ω/c, k)')],
+  bounds=['#17 first construction (2026-11-17): ESTABLISHED (exact). It does not say that mass is a wave.'],
+  acts=['Guide'], audit=P17_AUDIT, related=['T-MASS-WAVE-SEED', 'T-MW-A', 'T-P17-MASS-LEVEL'], ref='#17 first construction, I')
+T('T-MW-C', 'MW-C: mass and wave variables as a conjugate pair', 'Mass and wave variables form a conjugate pair in the same mathematical sense as Fourier conjugates.', RD, U, 'historical-conjecture', 'hypothesis',
+  variants=[('Likely false unless a precise conjugacy is found.', RD)],
+  norm='Tested as complex conjugacy: conjugation pairs P with −P, maps the mass-m shell to itself and never relates m to (ω, k) (P17Ch). A different, restricted pairing exists: mc²/ħ is Fourier-dual to proper time along the group worldline (T-P17-REST-CLOCK).',
+  con=[('card:P17Ch', 'conjugation fixes m')],
+  bounds=['#17 first construction (2026-11-17): FAIL as complex conjugacy. Kept verbatim as the tested reading.'],
+  acts=['Guide'], audit=P17_AUDIT, related=['T-MASS-WAVE-SEED', 'T-MW-A', 'T-P17-REST-CLOCK'], ref='#17 first construction, I')
+T('T-MW-D', 'MW-D: particle-like and wave-like descriptions as representations of one state', 'Particle-like and wave-like descriptions may be different representations/aspects of the same physical state.', RD, U, 'hypothesis', 'open',
+  variants=[('This is a physics interpretation and requires exact theory-specific wording.', RD), ('Do not treat it as established merely from the dispersion relation.', RD)],
+  norm='Needs a specific physical theory and exact wording. The dispersion relation alone does not decide it: a string on an elastic foundation satisfies the same relation with a stiffness in place of mass (P17Mx).',
+  con=[('card:P17Mx', 'the same dispersion relation without a particle')],
+  bounds=['#17 first construction (2026-11-17): OPEN; future branch (theory-specific).'],
+  acts=['Guide'], audit=P17_AUDIT, related=['T-MASS-WAVE-SEED', 'T-MATTER-FIELD', 'T-MASS-WAVE'], ref='#17 first construction, I')
+T('T-P17-REALFIELD', 'A real field pairs the mode at P with the mode at −P', line_from(P17REC, 'For a real classical field the space-time spectrum satisfies'), P17REC, A, 'derived-connection', 'derived',
+  norm='b(k) = conj a(−k): the partner of (ω, k) is (−ω, −k), not (−ω, k); it follows from realness, not from the equation; the same theorem as #12 in two variables (characters of ℝ²: conj χ_P = χ_{−P}).',
+  pro=[('card:P17Rb', 'reality ⟺ amplitude pairing'), ('card:P17Rc', 'two-variable Hermitian symmetry'), ('card:P17Rd', 'which modes pair'), ('card:P17Re', 'a condition, not a consequence'), ('card:P17Cg', 'representation-theoretic origin')],
+  con=[('card:P17Cd', 'the partners are one real oscillation, not two entities')],
+  bounds=['#17 first construction (2026-11-17): DERIVED; TRIVIAL CONSEQUENCE of the source relation. No particle/antiparticle reading.'],
+  acts=['Guide'], audit=P17_AUDIT, related=['T-CONJUGACY', 'T-P17-DEPTH'], ref='#17 first construction, G')
+T('T-P17-MASS-LEVEL', 'Mass selects a level of the spectral Lorentzian form', line_from(P17REC, 'In the spectral variables P = (ω/c, k) the dispersion relation is the level set'), P17REC, A, 'derived-connection', 'derived',
+  norm='m ↦ the level (mc/ħ)²; m = 0 the null level; m > 0: two branches (boost orbits), a frequency gap at mc²/ħ, a rest frame (tanh φ = ck/ω), and an invariant proper-time phase rate; mc/ħ plays the role of the circle radius r, not of c.',
+  pro=[('card:P17Db', 'symbol'), ('card:P17Dc', 'null level'), ('card:P17De', 'branches and boosts'), ('card:P17Dg', 'what m changes'), ('card:P17Di', 'orbit invariant')],
+  bounds=['#17 first construction (2026-11-17): DERIVED (exact; known mathematics). Its reading as a #14 ⇢ #17 connection is PROJECT SYNTHESIS (a cross-reference, not a causal edge).'],
+  acts=['Guide'], audit=P17_AUDIT, related=['T-MW-B', 'T-C-ROLES'], ref='#17 first construction, F')
+T('T-P17-PAIRING-KINDS', 'Kinds of pairing kept apart', line_from(P17REC, 'Seven kinds of pairing are kept apart'), P17REC, A, 'derived-connection', 'derived',
+  norm='conjugacy (an antilinear involution); reality constraint (its fixed points); sign symmetry; orbit symmetry; independent physical states; notation-dependent pairing; Fourier duality (a different meaning of "conjugate"). Known examples, not an exhaustive classification for this project.',
+  pro=[('card:P17Ca', 'reflections'), ('card:P17Cb', 'sign symmetry without conjugacy'), ('card:P17Ce', 'notation-dependent pair'), ('card:P17Cf', 'three meanings of conjugate'), ('card:P17Rd', 'independent states')],
+  bounds=['#17 first construction (2026-11-17): PROJECT SYNTHESIS (classification of carded examples).'],
+  acts=['Guide'], audit=P17_AUDIT, related=['T-CONJUGACY', 'T-P17-CRITERIA'], ref='#17 first construction, H')
+T('T-P17-REST-CLOCK', 'Rest frequency and proper time are Fourier-dual', line_from(P17REC, 'Along the group worldline of any mode on the mass shell'), P17REC, A, 'derived-connection', 'derived',
+  norm='Along x = v_g t the phase ωt − kx advances at mc²/ħ per unit proper time for every k (P17Dg): e^{−i(mc²/ħ)τ} is a character of proper time, as in #18. Known (de Broglie). Not complex conjugacy (MW-C FAIL).',
+  pro=[('card:P17Dg', 'proper-time phase rate'), ('card:P17Ch', 'the duality reading'), ('card:A8Fa', 'the character of #18')],
+  bounds=['#17 first construction (2026-11-17): RESTRICTED (exact along the group worldline; a different meaning of "conjugate").'],
+  acts=['Guide'], audit=P17_AUDIT, related=['T-MW-C', 'T-UNBOUNDED-EVOLUTION'], ref='#17 first construction, F, I')
+
 PAIR_A = proof_target('Starting from the established common zero-sum form Σv_i = 0, identify all additional invariants/relations of the mass system that can be translated into mathematically meaningful tests on the directional cancellation system.',
                       requiredObjects=['the established shared form Σv_i = 0 (pair.A.sharedAlgebraicForm)'])
 next(r for r in R if r['id'] == 'T-Q.pairA-transfer')['proofTarget'] = PAIR_A
@@ -1521,6 +1584,61 @@ _r = byid['T-H3-C-FAMILY']
 _old = _r['normalizedStatement']
 _r['normalizedStatement'] = 'Established pieces: M_c → diag(1, 0) outside every congruence class (A8Mc); fixed-v Galilean boost limit (A8Lb); contraction Poincaré(1+1) → Galilei(1+1) (A8Lc); the restricted content of c (A8Wc). Restricted: every limit depends on the scaling held fixed (A8X5). The κ-family comparison with an oscillator (A8Qa, A8Qb) is parked as optional and is not part of this statement.'
 _r['history'].append(dict(date='2026-11-17', change=f'Act VIII lock: κ-family removed from the live statement (parked). Previous wording: {_old}'))
+
+# Pre-#17 story-fidelity patches (2026-11-17): wording only; Act VIII stays LOCKED (not reopened)
+def note17(rid, bound, change, pro=(), con=()):
+    note16(rid, bound, change, pro, con)
+    byid[rid]['history'][-1]['date'] = '2026-11-17'
+def add_variant(rid, words, src=RD):
+    r = byid[rid]
+    r['variants'].append(dict(words=words, source=src))
+    if src not in r['sourceDocs']: r['sourceDocs'].append(src)
+_r = byid['T-GEN-DYN-Q']
+for _i, _b in enumerate(_r['boundaries']):
+    if _b.startswith('Canonical story (2026-11-16): the next question of the Pair B / ★ chain, created by STAR-A'):
+        _r['boundaries'][_i] = 'SUPERSEDED (2026-11-17 pre-#17 patch: STAR-A\'s failure did not historically cause this question; see the note below): ' + _b
+note17('T-GEN-DYN-Q', f'Pre-#17 story patch (2026-11-17): STAR-A failure → geometry alone does not force periodicity, followed by a CROSS-REFERENCE to this question. It states together the already-existing invariant-geometry questions about constraints (T-GEOM-RULES, revision 2), symmetries (#4) and preserved relations and transformations (#14, A†MA = M); STAR-A\'s failure did not historically cause it. Graph: {CSG}, Chain PB (X step).',
+       'pre-#17 patch: the 2026-11-16 causal placement marked SUPERSEDED (kept verbatim); recorded as a cross-reference')
+add_variant('T-STAR-A-LESSON', 'STAR-A failure → geometry alone does not force periodicity')
+note17('T-STAR-A-LESSON', 'Pre-#17 story patch (2026-11-17): the lesson is followed by a CROSS-REFERENCE to the already-existing invariant-geometry questions (T-GEOM-RULES, #4, #14, T-GEN-DYN-Q); it names the missing mathematical condition but did not historically create the generator question. Scoped torus wording: the irrational/rationally-independent torus flow used here has dense orbit and no exact period; the same torus geometry also carries periodic flows (A8Ta, A8Ua).',
+       'pre-#17 patch: lesson → cross-reference; torus wording scoped', pro=[('card:A8Ta', 'the same torus carries periodic flows')])
+add_variant('T-COMPACT-NOT-PERIODIC', 'the irrational/rationally-independent torus flow used here has dense orbit and no exact period.')
+add_variant('T-COMPACT-NOT-PERIODIC', 'Preserve that the same torus geometry can also carry periodic flows.')
+note17('T-COMPACT-NOT-PERIODIC', 'Pre-#17 story patch (2026-11-17): scoped — the irrational/rationally-independent torus flow used here has dense orbit and no exact period; the same torus geometry also carries periodic flows when the frequencies are commensurable (A8Ta, A8Ua). "Torus = dense / never periodic" is not a statement about the torus.',
+       'pre-#17 patch: torus wording scoped', pro=[('card:A8Ta', 'rational torus: periodic'), ('card:A8Ua', 'one torus, periodic / subtorus / dense')])
+
+# Master Map #17, first construction (2026-11-17): notes on the existing records and ratings of the new ones
+note17('T-CONJUGACY', f'#17 first construction (2026-11-17): OPEN, not assumed. Source relation locked: x real ⟺ x̂(−ω) = conj x̂(ω) (P17Fa; DFT, DC and Nyquist: P17Fd, P17Ff). First physical candidate: a real classical field has φ̃(−ω, −k) = conj φ̃(ω, k) — the same theorem, a reality constraint whose partners are one real oscillation, not two entities (P17Rc, P17Cd). Sign symmetry, orbit symmetry, independent states and notation-dependent pairs are different kinds (T-P17-PAIRING-KINDS). Record: {P17REC}.',
+       '#17 first construction: tested, stays OPEN', pro=[('card:P17Rc', 'the real-field pairing'), ('card:P17Cg', 'conj χ = χ⁻¹')], con=[('card:P17Cb', 'sign pairing is not conjugacy'), ('card:P17Cd', 'paired variables, one entity')])
+note17('T-MASS-WAVE-SEED', f'#17 first construction (2026-11-17): kept verbatim and not promoted; the historical seed for one candidate route inside #17. Exact readings: MW-A RESTRICTED (T-MW-A), MW-B ESTABLISHED (T-MW-B), MW-C FAIL (T-MW-C; a restricted Fourier-duality reading mc²/ħ ↔ τ survives, T-P17-REST-CLOCK), MW-D OPEN (T-MW-D). Not reinterpreted as QFT. Record: {P17REC}.',
+       '#17 first construction: four readings tested separately', pro=[('card:P17De', 'the massive level set'), ('card:P17Dg', 'what m changes')], con=[('card:P17Ch', 'MW-C fails as conjugacy')])
+note17('T-MASS-WAVE', '#17 first construction (2026-11-17): "a deeper common principle" is not established. The exact common relation found is one Lorentzian form whose levels 0 and (mc/ħ)² hold massless and massive waves (MW-B); the representation statement is MW-D (OPEN).',
+       '#17 first construction: MW-B / MW-D', pro=[('card:P17Di', '')])
+note17('T-MASS-WAVE-Q', '#17 first construction (2026-11-17): in the spectral variables (ω/c, k), one relation q(P) = (mc/ħ)² governs the massless (m = 0) and massive cases (MW-B, ESTABLISHED); that this relation governs "mass-like phenomena" beyond the wave description needs the physical identifications (MW-A, RESTRICTED).',
+       '#17 first construction: one relation for both cases, in wave variables', pro=[('card:P17De', ''), ('card:P17Ea', '')])
+note17('T-MATTER-FIELD', '#17 first construction (2026-11-17): not decided; MW-D is OPEN and theory-specific. Particle/antiparticle and other QFT readings are future branches, not used.',
+       '#17 first construction: MW-D open', con=[('card:P17Mx', 'the dispersion relation alone does not decide it')])
+def rate_p17(rid, breadth_int, novelty, *a, **k):
+    rate(rid, *a, **k)
+    byid[rid]['assessment'].update(date='2026-11-17', applicationBreadth=breadth_int, novelty=novelty)
+rate_p17('T-CONJUGACY', 2, 'OPEN USER QUESTION', SM, MULTI, 15, 30, 'Exact source relation; one physical candidate reproduces it only as the same theorem (a reality constraint). No pairing of independent physical entities was found to be a conjugate pair. The question stays open.',
+         'A physical pairing of independent entities with an exact relation beyond conj χ = χ⁻¹, stated before checking.', 'A proof that every exact physical pairing in a stated class reduces to the reality constraint or to a sign / orbit symmetry.', GC, ('pass', 'partial', 'partial', 'pass', 'n/a'))
+rate_p17('T-MW-A', 1, VKM, KN, FAM, 15, 15, 'Exact under the identifications E = ħω, p = ħk: ħ-scaling of the same geometry, v_g = v and ω₀ = mc²/ħ. The identifications are inputs, not derived.',
+         'Physical data or theory, outside this pass.', 'A massive system where v_g ≠ pc²/E under the stated identifications (impossible algebraically).', GC, ('pass', 'pass', 'n/a', 'pass', 'n/a'), depth=TRIV, correct='established under assumptions')
+rate_p17('T-MW-B', 2, VKM, KN, FAM, 30, 10, 'One Lorentzian form q = (ω/c)² − k²: m = 0 is its null level and m > 0 a non-null level whose branches are boost orbits, with mc/ħ the orbit invariant. A second realization (the elastic-foundation string) has the same levels.',
+         'A third independent system on the same levels, or a prediction from the level structure recorded before its card.', 'A massless and a massive wave of one PDE family that do not lie on levels of one form (none).', GC, ('pass', 'pass', 'partial', 'pass', 'n/a'), depth=STRUCT)
+rate_p17('T-MW-C', 1, VKM, SM, FAM, 0, 5, 'Complex conjugation maps the mass-m shell to itself; m is a level label, not a coordinate paired with (ω, k).',
+         'None for this reading; the duality reading is T-P17-REST-CLOCK.', 'Already falsified (P17Ch).', GC, ('fail', 'fail', 'fail', 'pass', 'n/a'), state='low-confidence-active', depth='FAIL', correct='not established')
+rate_p17('T-MW-D', 1, 'OPEN USER QUESTION', SM, FAM, 10, 40, 'A physics interpretation; the dispersion relation does not decide it, since a classical string satisfies the same relation.',
+         'A specific theory with exact wording in which the statement is a theorem.', 'A theory-specific proof that the two descriptions are not representations of one state.', GC, ('not-yet', 'not-yet', 'not-yet', 'pass', 'not-yet'))
+rate_p17('T-P17-REALFIELD', 2, VKM, KN, MULTI, 20, 10, 'The source theorem applied in two variables: φ̃(−ω, −k) = conj φ̃(ω, k) for a real field. Exact, but it adds no physical relation beyond realness.',
+         'An exact physical pairing beyond the reality constraint (T-P17-DEPTH).', 'A real field whose spectrum is not Hermitian under P ↦ −P (impossible).', GC, ('pass', 'pass', 'pass', 'pass', 'n/a'), depth=TRIV)
+rate_p17('T-P17-MASS-LEVEL', 2, 'PROJECT CLASSIFICATION OF KNOWN MATHEMATICS', PD, FAM, 30, 15, 'The #14 chart (preserved form, generator, orbit) applies unchanged in spectral variables. It gives the exact role of m: the label of a level and of its boost orbits, as r labels circles.',
+         'A consequence of the level structure not already in the dispersion relation, stated before checking.', 'A massive branch that is not a single SO⁺(1,1) orbit (none).', GC, ('pass', 'pass', 'partial', 'pass', 'n/a'), depth=STRUCT)
+rate_p17('T-P17-PAIRING-KINDS', 3, 'PROJECT CLASSIFICATION OF KNOWN MATHEMATICS', PD, MULTI, 30, 15, 'Separates conjugacy, reality constraint, sign symmetry, orbit symmetry, independent states, notation-dependent pairing and Fourier duality on carded examples in signals and fields. Not exhaustive.',
+         'A pairing in an independent system that the kinds sort correctly before its card.', 'A carded pairing that belongs to two kinds that the classification says are exclusive.', GC, ('pass', 'partial', 'partial', 'pass', 'n/a'))
+rate_p17('T-P17-REST-CLOCK', 2, VKM, KN, FAM, 20, 25, 'Exact along the group worldline for every mode on the shell; the phase is a character of proper time, the circle structure of #18. Known (de Broglie); a different meaning of "conjugate".',
+         'A use of the invariant rest frequency that predicts something new, recorded first.', 'A mode on the shell whose proper-time phase rate differs from mc²/ħ (impossible).', GC, ('pass', 'pass', 'partial', 'pass', 'n/a'), depth=STRUCT)
 
 update('T-CF11-A', TRIV, bs=60, slop=8, reason='Pass 3: the pattern holds in coordinate-free form (F*T = T) across constant-form, symplectic and homogeneous Fisher geometries, and its boundary is now exact (generic Fisher geometry is not characterized by a transformation group, CFT5f). Application Breadth corrected from 4 to 3: the rubric reserves 4 for a physical/empirical system')
 

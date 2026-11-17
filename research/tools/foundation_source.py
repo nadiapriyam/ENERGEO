@@ -1222,6 +1222,95 @@ fixlk('object', 'A8HCF', 'equation', 'M_c → diag(1, 0) outside every congruenc
 _l4 = next(o for o in O if o['id'] == 'L4')
 fixlk('object', 'L4', 'foundationRole', _l4['foundationRole'].replace('Role 2 and Role 3 meet in det K_c = −1/c² (A8Q)', 'Role 2 and Role 3 meet in the velocity-parametrized boost generator: det K_c = −1/c², and K_c contracts to the Galilean shear as c → ∞ at fixed v (C9c, A8Lc)'), 'lock: cite the boost generator (C9c), not the parked κ-family')
 assert 'A8Q' not in next(o for o in O if o['id'] == 'L4')['foundationRole']
+# ══ Master Map #17, first construction (2026-11-17): conjugacy and physical pairs ══════════════════════════
+# Decisions: docs/restructure_decisions.md, "Pre-#17 story patches and the first #17 construction". Cards: verify/verify_P17.py.
+P17DOCS = ['research/constructions/p17_conjugacy_physical_pairs.md']
+G17 = 'Guide: #17 conjugacy and physical pairs'
+def fixp17(kind, id, field, new, why):
+    rec = next(x for x in (O if kind == 'object' else B) if x['id'] == id)
+    PRECISION.append(dict(kind=kind, id=id, field=field, old=rec[field], new=new, reason=why, date='2026-11-17'))
+    rec[field] = new
+obj('P17F', 'Fourier conjugacy, source-locked: realness ⟺ Hermitian symmetry', E, ['REPRESENTATION', 'RELATION'],
+    'x = u + iv: x̂(−ω) − conj x̂(ω) = 2i·v̂(−ω), so x̂(−ω) = conj x̂(ω) ∀ω ⟺ x real; C̃: X(ω) ↦ conj X(−ω) antilinear involution, F∘C = C̃∘F; DFT X_{N−k} = conj X_k, self-paired k = 0 and N/2 (N even) real; a pair = one real oscillation (amplitude, phase), the conjugate half redundant; conj χ = χ⁻¹ for unitary characters', 'ESTABLISHED',
+    cards=['P17Fa', 'P17Fb', 'P17Fc', 'P17Fd', 'P17Fe', 'P17Ff', 'P17Fg', 'P17Fh', 'P17Cg', 'FB4a', 'FB4b', 'FB4c'], docs=P17DOCS, depends=['P1', 'R2'], reg=['T-CONJUGACY', 'T-P17-DEPTH'], bs=15, slop=5, td='not a transfer', breadth=2,
+    fail='a complex-valued signal (P17Fg, FB4c)', role='the source relation for Pair #17 (#12 → #17)', guide=G17)
+obj('P17R', 'A real classical field: the reality pairing P ↦ −P', E, ['RELATION', 'REPRESENTATION', 'CROSS-SYSTEM TRANSFER'],
+    'Klein–Gordon-form PDE (real coefficients): a real field has φ̃(−ω, −k) = conj φ̃(ω, k), b(k) = conj a(−k); the partner of (ω, k) is (−ω, −k), not (−ω, k); a condition (realness), not a consequence of the equation; no reality pairing for iψ_t + αψ_xx = 0', 'ESTABLISHED',
+    cards=['P17Ra', 'P17Rb', 'P17Rc', 'P17Rd', 'P17Re', 'P17Rf'], docs=P17DOCS, depends=['P17F'], reg=['T-P17-REALFIELD'], bears=['T-CONJUGACY', 'T-MATTER-FIELD'], bs=20, slop=10, td='TRIVIAL CONSEQUENCE', breadth=2,
+    fail='a complex field (P17Re); an operator that does not commute with conjugation (P17Rf)', role='first physical candidate for #17: the same theorem in two variables; not two physical entities', guide=G17)
+obj('P17N', 'Massless spectral null relation (not spacetime)', E, ['ZERO / BALANCE / NULL', 'GEOMETRY'],
+    'm = 0: (ω/c)² − k² = 0 ⟺ ω = ±ck; ηP ≠ 0 (not a kernel vector); constant phase along the event-plane null ray parallel to P; P = 0 (the zero index) on the cone; four nulls kept apart: spacetime null vector, spectral null relation, Fourier zero coefficient, model-manifold null direction', 'ESTABLISHED',
+    cards=['P17Dc', 'P17Dd', 'P17Dh', 'FB8b'], docs=P17DOCS, depends=['MW2', 'Z5'], reg=['T-MW-B'], bs=20, slop=10, td='TRIVIAL CONSEQUENCE', breadth=2,
+    fail='m > 0 (no null point, P17Cc)', role='the null level of the spectral Lorentzian form; a relation in frequency-wavevector variables, not physical spacetime', guide=G17)
+obj('P17M', 'Mass shell: a non-null level, boost orbits, mass as the orbit invariant', PD, ['GEOMETRY', 'PRESERVED STRUCTURE', 'TRANSFORMATION'],
+    'q(P) = (mc/ħ)², P = (ω/c, k): two branches, each one SO⁺(1,1) orbit (boost with tanh φ = ck/ω to rest); asymptotic to the cone; frequency gap at mc²/ħ (evanescent below); proper-time phase rate mc²/ħ for every k; mc/ħ labels the orbit as r labels circles (Kᵀη + ηK = 0, JᵀI + IJ = 0), not the role of c', 'DERIVED',
+    cards=['P17Db', 'P17De', 'P17Df', 'P17Dg', 'P17Di'], docs=P17DOCS, depends=['MW2', 'CF4', 'L1'], reg=['T-P17-MASS-LEVEL', 'T-MW-B'], bears=['T-MASS-WAVE-SEED', 'T-MASS-WAVE-Q'], bs=30, slop=15, td='STRUCTURAL TRANSFER', breadth=2,
+    fail='q < 0 levels (not reached by real m)', role='exact answer to "Does mass appear as a parameter selecting a non-null level set of the same quadratic form whose m=0 case is null?" — yes; #14 ⇢ #17 and #19 ⇢ #17 cross-references', guide=G17)
+obj('P17E', 'E = ħω, p = ħk: inputs and what they induce', E, ['RELATION', 'CROSS-SYSTEM TRANSFER'],
+    '(E/c, p) = ħ(ω/c, k): q(ħP) = ħ²q(P), commuting with boosts; E² = p²c² + m²c⁴ ⟺ q(P) = (mc/ħ)²; v_g = pc²/E = v; ω₀ = mc²/ħ; the identifications (Planck–Einstein, de Broglie) and μ = mc/ħ are physical inputs, not classical identities', 'ESTABLISHED',
+    cards=['P17Ea', 'P17Eb', 'P17Da', 'FB8a'], docs=P17DOCS, depends=['MW2'], reg=['T-MW-A'], bears=['T-MASS-WAVE-SEED'], bs=15, slop=10, td='TRIVIAL CONSEQUENCE', breadth=1,
+    fail='outside the physical context of the identifications', role='RESTRICTED: the algebra is exact; the identifications are inputs', guide=G17)
+obj('P17K', 'Kinds of pairing kept apart', PD, ['RELATION', 'CROSS-SYSTEM TRANSFER'],
+    'conjugacy (antilinear involution C̃); reality constraint (its fixed points); sign symmetry (S_t, S_x, −I preserve η); orbit symmetry (boosts); independent physical states (right/left movers); notation-dependent pairing (positive/negative labels; absent in one-sided and cos/sin representations); Fourier duality (bilinear η(P, X), a different meaning of "conjugate")', 'DERIVED',
+    cards=['P17Ca', 'P17Cb', 'P17Ce', 'P17Cf', 'P17Rd'], docs=P17DOCS, depends=['P17F', 'P17R'], reg=['T-P17-PAIRING-KINDS', 'T-P17-CRITERIA'], bears=['T-CONJUGACY'], bs=30, slop=15, td='not a transfer', breadth=3,
+    fail='—', role='PROJECT SYNTHESIS: known examples, not an exhaustive classification for this project', guide=G17)
+obj('P17C', 'Rest frequency and proper time: a Fourier-dual pair (MW-C′)', PD, ['DYNAMICS / CONTINUATION', 'REPRESENTATION'],
+    'along x = v_g t the phase ωt − kx advances at mc²/ħ per unit proper time for every k; e^{−i(mc²/ħ)τ} is a character of proper time (#18 structure); m = 0: constant phase along x = ct', 'DERIVED',
+    cards=['P17Dg', 'P17Ch'], docs=P17DOCS, depends=['P17M', 'A8F'], reg=['T-P17-REST-CLOCK'], bears=['T-MW-C', 'T-MASS-WAVE-SEED'], bs=20, slop=25, td='STRUCTURAL TRANSFER', breadth=2,
+    fail='off the group worldline the rate depends on the observer', role='RESTRICTED; known (de Broglie); a different sense of "conjugate" from #12', guide=G17)
+obj('P17MW', 'The mass/wave seed: readings MW-A–MW-D', UT, ['OBJECT', 'REPRESENTATION', 'CROSS-SYSTEM TRANSFER'],
+    'MW-A RESTRICTED (E = ħω, p = ħk as inputs); MW-B ESTABLISHED (one form, levels 0 and (mc/ħ)²); MW-C FAIL as complex conjugacy (P17Ch); MW-D OPEN (theory-specific; the elastic-foundation string has the same dispersion, P17Mx)', 'HYPOTHESIS',
+    cards=['P17Ch', 'P17Mx', 'P17Ea'], docs=P17DOCS, depends=['MW1'], reg=['T-MW-A', 'T-MW-B', 'T-MW-C', 'T-MW-D', 'T-MASS-WAVE-SEED'], bs=20, slop=30, fail='—',
+    role='the seed kept verbatim and not promoted; separate statuses per reading', guide=G17)
+obj('P17X', '#17 counterexamples P17-X1–X5', NG, ['CROSS-SYSTEM TRANSFER'],
+    'X1 complex signal without conjugate symmetry; X2 sign pairing (k ↦ −k) without conjugacy; X3 a massive shell with no null state; X4 paired variables that are one entity; X5 a pair that disappears under another representation; supporting: iψ_t + αψ_xx = 0 (no reality pairing), the elastic-foundation string (MW-D boundary)', 'NEGATIVE',
+    cards=['P17Fg', 'P17Cb', 'P17Cc', 'P17Cd', 'P17Ce', 'P17Rf', 'P17Mx'], docs=P17DOCS, reg=['T-MW-C', 'T-MW-D'], bears=['T-CONJUGACY'], td='FAIL', fail='—', role='prevent superficial transfer', guide=G17)
+PROV.update({'P17F': TB, 'P17R': TB, 'P17N': TB, 'P17M': PDM, 'P17E': TB, 'P17K': PDM, 'P17C': PDM, 'P17MW': UO, 'P17X': PDM})
+NOVELTY.update({'P17F': 'KNOWN MATHEMATICS', 'P17R': 'KNOWN MATHEMATICS', 'P17N': 'KNOWN MATHEMATICS', 'P17M': 'PROJECT CLASSIFICATION OF KNOWN MATHEMATICS', 'P17E': 'KNOWN PHYSICS (identifications as inputs)',
+                'P17K': 'PROJECT CLASSIFICATION OF KNOWN MATHEMATICS', 'P17C': 'KNOWN MATHEMATICS (de Broglie)'})
+MATH_STATUS.update({'P17F': 'TEXTBOOK / KNOWN', 'P17R': 'TEXTBOOK / KNOWN', 'P17N': 'TEXTBOOK / KNOWN', 'P17M': 'PROJECT-DERIVED FROM KNOWN DEFINITIONS', 'P17E': 'TEXTBOOK / KNOWN', 'P17K': 'PROJECT-DERIVED FROM KNOWN DEFINITIONS', 'P17C': 'TEXTBOOK / KNOWN', 'P17MW': 'SPECULATIVE MAPPING'})
+CHK17 = 'bibliographic record checked by web search of publisher / library / index records, 2026-11-17; full text not opened in this environment; claim not quoted'
+src('SRC-FOLLAND-1995', 'Gerald B. Folland', 'A Course in Abstract Harmonic Analysis', '1995', 'book', 'CRC Press, Boca Raton; ISBN 0-8493-8490-7 (2nd ed. 2015)', 'textbook', SV,
+    'characters of locally compact abelian groups (|χ| = 1, conj χ = χ⁻¹), the Fourier transform on such groups and its uniqueness; hence f̂(χ⁻¹) = conj f̂(χ) for real f',
+    'anything about physical pairs (P2) or the mass/wave seed (MW1)', ['P17F', 'P17R'], ['P2'], checked=CHK17)
+src('SRC-SCOTT-1969', 'A. C. Scott', 'A nonlinear Klein-Gordon equation', '1969', 'journal article', 'American Journal of Physics 37(1), 52–61; DOI 10.1119/1.1975404', 'primary', SV,
+    'physical (classical, mechanical / electrical) realizations of a Klein–Gordon-form equation; its linearization has the gapped dispersion carded here (P17Mx, derived, not quoted)',
+    'MW-D; any particle interpretation', [], ['P17MW', 'P17X'], checked=CHK17)
+src('SRC-WIGNER-1939', 'E. Wigner', 'On unitary representations of the inhomogeneous Lorentz group', '1939', 'journal article', 'Annals of Mathematics 40(1), 149–204; DOI 10.2307/1968551', 'primary', SV,
+    'classification of the unitary representations of the Poincaré group, beginning from the Lorentz orbits in momentum space (labelled by mass and the sign of energy)',
+    'nothing in this pass uses its quantum content; recorded as a future branch for the orbit classification (P17M bears on it)', [], ['P17M', 'P17MW'], checked=CHK17)
+for x in S:
+    if x['id'] == 'SRC-STEIN-SHAKARCHI-2003': x['supports'] += ['P17F']
+    if x['id'] == 'SRC-DEBROGLIE-1925': x['supports'] += ['P17E', 'P17C']
+    if x['id'] == 'SRC-KLEIN-GORDON-1926': x['supports'] += ['P17M', 'P17N']
+    if x['id'] == 'SRC-EINSTEIN-1905': x['supports'] += ['P17M']
+bridge('BR87', 'Fourier conjugacy of a real signal (#12)', 'reality pairing of a real field (#17)', 'conj χ = χ⁻¹ for unitary characters: ℝ (ω ↦ −ω), ℤ_N (k ↦ N − k), ℝ² with η (P ↦ −P); a real function has f̂(χ⁻¹) = conj f̂(χ)', 'ESTABLISHED', EST, ['P17Cg', 'P17Rc', 'P17Fa'],
+       'that physical pairs are conjugate in general; that the two partners are two physical entities (P17Cd)', ['P17F', 'P17R', 'P1'])
+bridge('BR88', 'spectral null relation q(P) = 0', 'spacetime null ray η(X, X) = 0', 'for P null the wave e^{−iη(P, X)} has constant phase along the null ray parallel to P; the planes are related only through η', 'ESTABLISHED', EST, ['P17Dd'],
+       'that the spectral cone is the light cone, or that they are one kind of zero', ['P17N', 'Z5'])
+bridge('BR89', 'mass parameter m (#17)', 'orbit invariant of a preserved form (#14)', 'q_η = (mc/ħ)² labels a boost orbit as q_I = r² labels a rotation orbit (Kᵀη + ηK = 0, JᵀI + IJ = 0); m is not a form parameter like c', 'ESTABLISHED', PS, ['P17Di', 'P17De', 'A8Wb'],
+       'that mass is a radius in physical space; that rotations and boosts are the same physics', ['P17M', 'CF4', 'A8E'])
+bridge('BR90', 'sign symmetry of the dispersion relation', 'complex conjugacy', 'k ↦ −k (and ω ↦ −ω) preserve the relation but impose no relation on amplitudes', 'NEGATIVE', PS, ['P17Cb', 'P17Rd'],
+       'that sign symmetry is irrelevant (it preserves every level set)', ['P17K', 'P17X'])
+bridge('BR91', 'mass m', 'wave variables (ω, k) under complex conjugation (MW-C)', 'conjugation maps the mass-m shell to itself (q(−P) = q(P)); m is the level label, not a paired coordinate', 'NEGATIVE', PS, ['P17Ch'],
+       'that no pairing involving m exists (the Fourier-duality reading BR92 does)', ['P17MW', 'P17M'])
+bridge('BR92', 'rest frequency mc²/ħ', 'proper time τ', 'along the group worldline the phase is e^{−i(mc²/ħ)τ}: a character of proper time (#18 structure); Fourier duality, not complex conjugacy', 'ESTABLISHED', PS, ['P17Dg', 'P17Ch', 'A8Fa'],
+       'that mass is a wave; that this is the conjugacy of #12', ['P17C', 'A8F'])
+BMETA.update({
+ 'BR87': (THM, ['SRC-FOLLAND-1995', 'SRC-STEIN-SHAKARCHI-2003'], 'a real function; the project convention', 'a complex function (P17Fg, P17Re)'),
+ 'BR88': (EI, ['SRC-EINSTEIN-1905'], 'η = diag(1, −1); P = (ω/c, k), X = (ct, x)', 'P not null'),
+ 'BR89': (SAN, ['SRC-FULTON-HARRIS-1991'], '2×2 forms I and η; the timelike region q_η > 0', 'the zero level (q_I = 0 is a point, q_η = 0 is not)'),
+ 'BR90': (FC, [], 'the stated mode set', 'none: exact'),
+ 'BR91': (FC, [], 'complex conjugation of amplitudes', 'none: exact'),
+ 'BR92': (EI, ['SRC-DEBROGLIE-1925'], 'a mode on the mass shell, m > 0; its group worldline', 'off the group worldline; m = 0 (constant phase)'),
+})
+fixp17('object', 'P1', 'foundationRole', 'the established Fourier pair case; #17 first construction (2026-11-17): locked as the source relation with its forcing property (realness), DC / Nyquist exceptions and failure case (P17F)', '#17: source relation locked')
+fixp17('object', 'P2', 'foundationRole', 'open user question (#17). First construction (2026-11-17): the one exact conjugate pairing found in a physical candidate is the reality constraint of a real field — the same theorem (P17R, BR87); sign symmetry, orbit symmetry, independent states and notation-dependent pairs are different kinds (P17K). Stays OPEN', '#17: first construction recorded')
+fixp17('object', 'P2', 'backboneSupport', 15, '#17 first construction: rated for the first time (15%): exact source relation; one physical candidate reproduces it only as the same theorem')
+fixp17('object', 'P2', 'slopRisk', 30, '#17 first construction: the word "conjugate" carries several meanings (P17Cf)')
+fixp17('object', 'MW1', 'foundationRole', next(o for o in O if o['id'] == 'MW1')['foundationRole'] + '; #17 first construction (2026-11-17): kept verbatim, not promoted; readings MW-A RESTRICTED, MW-B ESTABLISHED, MW-C FAIL, MW-D OPEN (P17MW)', '#17: seed readings')
+fixp17('object', 'MW2', 'foundationRole', next(o for o in O if o['id'] == 'MW2')['foundationRole'] + '; #17 first construction: the relation is the level set q(P) = (mc/ħ)² of the spectral Lorentzian form (P17M, P17N); spectral variables, not spacetime', '#17: level-set reading')
+
 for b in B:
     st, srcs, asm, fl = BMETA[b['id']]
     b.update(strength=st, sources=srcs, assumptions=asm, failureCondition=fl)
@@ -1282,6 +1371,7 @@ dom('D23', 'Philosophical lenses', 'PL1', 'OPEN LONG-TERM', 'origin, not proof')
 dom('D24', 'Failures and boundaries', 'F1', 'LOCKED', 'every FAIL card kept')
 dom('D25', 'Application', 'A1 A2', 'OPEN LONG-TERM', 'A2: APPLICATION PROVENANCE INCOMPLETE; not upstream evidence')
 dom('D26', 'Physical energy vs L² energy; meaning of squared magnitude', 'A3 ON9', 'WORDING ONLY', 'name the kind of "energy" every time')
+dom('D41', '#17: conjugacy and physical pairs (first construction)', 'P17F P17R P17N P17M P17E P17K P17C P17MW P17X', 'SOURCE+CARD COMPLETE', 'first construction 2026-11-17: separate statuses (Fourier conjugacy ESTABLISHED; real-field pairing DERIVED; massless null ESTABLISHED; mass shell DERIVED; E = ħω, p = ħk RESTRICTED; MW-A RESTRICTED, MW-B ESTABLISHED, MW-C FAIL, MW-D OPEN); the #17 hypothesis (P2) stays OPEN in D21')
 for d in D:
     assert d['status'] in DOMAIN_STATUSES
     for i in d['objects']: assert any(o['id'] == i for o in O), i
@@ -1295,11 +1385,11 @@ CF11B = dict(outcome='CF11-F2', classification='REFINED', outcomes=['CF11-F1', '
              prereg='research/constructions/cf11b_fisher_prereg.md', preregCommit='e6f3db8', record='research/constructions/cf11b_fisher_test.md', pullbackCommonForm='YES',
              correction='architectural correction (2026-11-12): P1, P2, P3 are not three meanings of one word; they are R2 structural invariance, R1 representation covariance and R3 equivariance / intertwining of the Transformation Architecture (TA0). CF11-F2 is unchanged.')
 RATINGS = [
- ('Foundation architecture completeness', 95, 94, 'Act VIII story integration (2026-11-16): the common-form chart (CF1, CF4) is continued explicitly to orbit behaviour (A8G, D40), the circle is placed in the Fourier branch as the translation character (A8F), kernel and orbit closure are separated (A8KC), H3-c is split, and the missing report provenance (AMB register) is in the repository. Still short: DYADIC definition, effective representations, application mathematics, C7-F(inv), H3-original OPEN.'),
- ('Mathematical verification coverage', round(100 * len(carded) / len(est)), 98, f'{len(carded)} of {len(est)} established or derived objects have PASS cards (computed). New: every story-pass object is carded (A8S cards). Not carded: OB1 (definitional), A3 (wording).'),
- ('Cross-domain validation', 30, 30, 'Unchanged: rotations and boosts share the generator theorem (known mathematics); no new physical system.'),
- ('Project-specific construction maturity', 45, 45, 'Unchanged: the new bridges are known mathematics placed in the project story.'),
- ('Paper / source coverage', 61, 60, f'{sum(1 for x in S if x["sourceClass"] in ("primary", "textbook", "review"))} external sources registered ({sum(1 for x in S if x["status"] == SP)} only partly verified); {len(ext_src)} of {len(ext)} external-claim objects have a source; R5 is SOURCE MISSING. Change: Lee 2012, Milnor 1965 and Yaglom 1979 registered (metadata only, claims not quoted).'),
+ ('Foundation architecture completeness', 96, 95, 'First #17 construction (2026-11-17): Master Map #17 now has a carded source relation (realness ⟺ Hermitian symmetry, P17F), a first physical candidate (P17R), the spectral level-set geometry (P17N, P17M) and separate statuses for the mass/wave readings (P17MW, D41). Act VIII lock values kept as the previous column.'),
+ ('Mathematical verification coverage', round(100 * len(carded) / len(est)), 98, f'{len(carded)} of {len(est)} established or derived objects have PASS cards (computed). Every #17 object is carded (P17 cards). Not carded: OB1 (definitional), A3 (wording).'),
+ ('Cross-domain validation', 30, 30, 'Unchanged: the #17 physical candidate reproduces the Fourier source relation only as the same theorem (TRIVIAL CONSEQUENCE); no independent physical system was validated and no data are carded.'),
+ ('Project-specific construction maturity', 45, 45, 'Unchanged: the #17 objects are known mathematics and a project classification of pairing kinds placed in the story.'),
+ ('Paper / source coverage', 62, 61, f'{sum(1 for x in S if x["sourceClass"] in ("primary", "textbook", "review"))} external sources registered ({sum(1 for x in S if x["status"] == SP)} only partly verified); {len(ext_src)} of {len(ext)} external-claim objects have a source; R5 is SOURCE MISSING. Change: Lee 2012, Milnor 1965 and Yaglom 1979 registered (metadata only, claims not quoted).'),
  ('Application validation', 0, 0, 'Unchanged.'),
 ]
 data = dict(about='Foundation dependency architecture (V1, revised in Pass 2, 2026-11-12). Generated by research/tools/foundation_source.py.', layers=LAYERS, stages=STAGES, statuses=STATUS, transferDepths=TD,
@@ -1372,7 +1462,7 @@ cl += ['', '## Blocking items for Foundation V1', '', '| Kind | Item |', '|---|-
        '| undefined central object | none (DYADIC PACKETS is an open user term, not a central object of the spine) |',
        '| incorrect mathematical bridge | none found; every bridge has a strength class, assumptions, a failure condition and what it does not prove |',
        '| provenance loss | the quinn2023 passage is quoted (P-2 closed, 2026-11-15); ThermaLens mathematics (APPLICATION PROVENANCE INCOMPLETE); the original mass-attraction wording (ORIGINAL VERBATIM NOT RECOVERED); four sources opened at full text in arXiv versions (2026-11-15); published journal versions not read |',
-       '', '## Foundation ratings (separate dimensions, no overall score)', '', '| Dimension | Rating | Previous (Act VIII pass 1) | Reason for the change |', '|---|---|---|---|']
+       '', '## Foundation ratings (separate dimensions, no overall score)', '', '| Dimension | Rating | Previous (Act VIII lock) | Reason for the change |', '|---|---|---|---|']
 for a, b_, c, d in RATINGS:
     cl.append(f"| {a} | {b_}% | {c}% | {d} |")
 cl += ['', '## CF11 and Transformation Architecture ratings (separate records)', '', '| Record | Statement | Mathematical Status | Novelty | Transfer Depth | Backbone Support | AI Slop Risk | Application Breadth |', '|---|---|---|---|---|---|---|---|']

@@ -351,9 +351,9 @@ Act VIII answers and refines the Master Story's circle / time question (#18) and
 - **What the failure teaches:** geometry alone does not determine periodicity: on one torus with the same invariants |z_j| = 1, the integer relations of the generator decide between periodic, subtorus and dense orbits (A8Ua); on one Lorentzian form diag(1, 1, −1), elliptic, hyperbolic and parabolic generators coexist (A8Ec).
 - **Surviving structural result:** action/generator/stabilizer determine the continuation type under the supplied geometry.
 
-STAR-A failing is not the Foundation/backbone failing. The backbone claims that preserved relations encode geometry; STAR-A claimed that geometry forces one dynamical outcome. Its failure names the missing condition — the generator/action — and the chain below supplies it.
+STAR-A failing is not the Foundation/backbone failing. The backbone claims that preserved relations encode geometry; STAR-A claimed that geometry forces one dynamical outcome. STAR-A failure → geometry alone does not force periodicity, followed by a CROSS-REFERENCE to the already-existing invariant-geometry questions about constraints (T-GEOM-RULES), symmetries (#4), preserved relations and transformations (#14, A†MA = M). STAR-A's failure did not historically cause the invariant-form / generator question (T-GEN-DYN-Q).
 
-Next question: *Given a preserved geometric relation, what transformations preserve it, what generators produce those transformations, and what observable dynamics follow?*
+Next question: *none created by STAR-A. CROSS-REFERENCE to the already-existing questions "What observable rules arise because an object is constrained by a particular geometry?" (T-GEOM-RULES), "What remains unchanged when the pattern shifts?" (#4) and "What transformations leave that relation unchanged?" (#14), stated together as "Given a preserved geometric relation, what transformations preserve it, what generators produce those transformations, and what observable dynamics follow?" (T-GEN-DYN-Q)*
 
 Backbone Support remains secondary metadata. It is kept, and contextualized by the story contribution of each item; no branch is downgraded because STAR-A failed.
 
@@ -449,7 +449,7 @@ Category A answers an existing question; B connects two existing questions; C su
 |---|---|---|---|---|
 | circle: ‖e^(iωt)‖ bounded, period 2π/\|ω\|, no limit, ℝ/Tℤ ≅ S¹, covering | A8C | A | #18: G2 6 and 8 (unbounded t, bounded S¹) | answers the question as Nadia restated it |
 | distinction table (parameter, lift, cycles, bounded, convergence, recurrence, periodicity, density, drift) | A8D | A | #18: "compare what happens to elapsed time, number of revolutions, sine and cosine values, cumulative quantities, and mathematical limits" (MM); G2 6 "two very different kinds of infinity" | answers |
-| torus: commensurability; dense irrational flow, never periodic; kernel vs orbit closure | A8T, A8KC | A | #18 (G2 8: "deeper analogues"); #3 ("try a nonperiodic sound") | answers; refines ★ (STAR-A) |
+| torus: commensurability — the same torus geometry also carries periodic flows; the irrational/rationally-independent torus flow used here has dense orbit and no exact period; kernel vs orbit closure | A8T, A8KC | A | #18 (G2 8: "deeper analogues"); #3 ("try a nonperiodic sound") | answers; refines ★ (STAR-A) |
 | exact versus near recurrence | A8Tc, A8Pc | A | #18: "one revolution, ten revolutions, a thousand" (MM) — exact return vs near return | answers |
 | cylinder: periodic projection, unbounded state | A8X2, A8Yb | A | #18: "extend the picture into a cylindrical geometry" (MM) | answers |
 | rapidity: tanh φ = v/c; θ ↔ φ | A8Eb, A8Wa | A | #19: which transformations change the observer (MM) | answers; also refines the literal t ↔ c reading (E) |
@@ -467,7 +467,7 @@ Category A answers an existing question; B connects two existing questions; C su
 | old wording "sines and cosines converge to infinity" | A8Cc | E | #18 (MM) | FAIL, kept as the historical conjecture T-TIME-CIRCLE-0 |
 | literal t ↔ c (H3-c-direct) | A8HCD | E | H3 c-clause (CP §1a) at #19 | FAIL / superficial; the H3-c split keeps group (B) and family (A) apart |
 | counterexamples X1–X6 and rejected implications | A8X | E | #18, ★, G2 2 (X6), G2 3 (X5: scaling) | each refines a question |
-| T-GEN-DYN-Q | A8G | E | created by STAR-A's failure | the next question of the ★ chain — a refinement of the original question |
+| T-GEN-DYN-Q | A8G | E | the already-existing invariant-geometry questions (T-GEOM-RULES, #4, #14), stated together; cross-referenced from STAR-A's failure, not created by it (pre-#17 patch, 2026-11-17) | a refinement of the original question; STAR-A's failure did not historically cause it |
 
 ## Superseded wording (kept; replaced by this pass)
 
@@ -510,3 +510,5 @@ Category A answers an existing question; B connects two existing questions; C su
 | H3-c-family basis (lock) | established pieces: the c-family M_c and its degenerate limit (A8Mc), the fixed-v Galilean boost limit (A8Lb), group contraction (A8Lc), the restricted content of c (A8Wc), and the family M_κ in which κ = −1/c² and the oscillator κ = ω² reach the same parabolic member (A8Qa, A8Qb); restricted because every limit depends on what is held fixed (A8X5, A8Qb). Connection to H3: OPEN | κ-family parked |
 | rating why, H3-c-family (lock) | established pieces (degenerate limit, Galilean limit, contraction, the κ-family); every limit depends on the scaling held fixed | κ-family parked |
 | next pass (lock) | ["READY FOR ADVERSARIAL LOCK, with these targets: the STAR-B category statement (A8Ba, with the completeness and 1-manifold classification theorems source-only); the free-orbit class \"noncompact closure, not escaping\" (no carded example; kept as a class); the κ-family scope (2D; scaling-dependent); every superseded statement checked absent from live text.", "Not begun (stop list): mass-wave/conjugacy, dispersion, quantum work, Energeo, the final Foundation freeze. The mass-wave handoff note is preparation only."] | Act VIII locked |
+| story: STAR-A vs backbone | STAR-A failing is not the Foundation/backbone failing. The backbone claims that preserved relations encode geometry; STAR-A claimed that geometry forces one dynamical outcome. Its failure names the missing condition — the generator/action — and the chain below supplies it. | pre-#17 patch: STAR-A is not represented as causing the generator question |
+| story: next question after STAR-A | Given a preserved geometric relation, what transformations preserve it, what generators produce those transformations, and what observable dynamics follow? | pre-#17 patch: cross-reference, not a causal next question |

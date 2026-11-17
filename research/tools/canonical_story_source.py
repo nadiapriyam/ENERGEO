@@ -86,8 +86,8 @@ MASTER = [
       nxt='"What exists beyond the visible model?" (MM, #16)', trigger='some parameter changes move the prediction a lot, others almost not at all', spine=['GEOMETRY', 'INFORMATION'], repo='R7, CF10, M1, M2, Z9, D12, D33; later C7 (D13, D34–D36)'),
  dict(n=16, title='Higher-dimensional prediction space — What exists beyond the visible model?', q='"Could a mathematical description contain relationships that cannot be represented directly in our familiar three spatial dimensions?" (MM)', rel='"A mathematical space can contain more structure than a single visible projection reveals." (MM); possibility space → allowable manifold → manifestation (T-MM-STORY)',
       nxt='— (no direct causal successor at #17; the idea is later reused for time / spacetime at #18 / #19)', trigger='different projections of the same prediction geometry look different', spine=['INFORMATION', 'GEOMETRY'], repo='MM0–MM11, D32, D33, RI0, D16, D22'),
- dict(n=17, title='Conjugacy and physical pairs — Search for hidden relationships', q='"Do observable physical pairings or complementarities reflect deeper symmetry analogous to mathematical conjugacy?" (RD)', rel='the established starting point: complex conjugate coefficient pairs give a real-valued signal, f̂(−k) = conj f̂(k) (P1). Physical pairs are not claimed to be mathematically conjugate (not proved)',
-      nxt='mass-like and wave-like descriptions (R4, R18; MW1) — the parked mass-wave branch; no direct causal successor at #18', trigger='changing one coefficient moves its conjugate, and together they make a real signal', spine=['CROSS-SYSTEM TRANSFER'], repo='P1, P2, MW1–MW3, D20, D21'),
+ dict(n=17, title='Conjugacy and physical pairs — Search for hidden relationships', q='"Do observable physical pairings or complementarities reflect deeper symmetry analogous to mathematical conjugacy?" (RD)', rel='the established starting point: complex conjugate coefficient pairs give a real-valued signal, f̂(−k) = conj f̂(k) (P1); exactly, x real ⟺ x̂(−ω) = conj x̂(ω), each pair one real oscillation (P17F, first #17 construction). Physical pairs are not claimed to be mathematically conjugate (not proved); the first physical candidate, a real classical field, carries the same relation only as its reality constraint (P17R)',
+      nxt='do physical pairings ever share an exact relation of comparable structural depth? (2026-11-17 decisions) — candidate investigations inside #17, mass/wave being one (MW-A–MW-D); no direct causal successor at #18', trigger='changing one coefficient moves its conjugate, and together they make a real signal', spine=['CROSS-SYSTEM TRANSFER'], repo='P1, P2, MW1–MW3, D20, D21; first construction D41 (P17F–P17X)'),
  dict(n=18, title='Infinity, circular geometry, and time — Your central conjecture laboratory', q='the historical wording "Adding an infinite object like time to a finite circle geometry makes sines and cosines converge to infinity." (MM; FAIL, kept) and its restatement: "whether this type of relationship—an unbounded quantity expressed through a bounded geometry—has deeper mathematical analogues elsewhere" (G2 8)', rel='The corrected relation is that an unbounded parameter can produce indefinitely continuing evolution while an observable representation remains bounded. (lock decisions): t ↦ e^(iωt) bounded, periodic, no limit; ℝ/ker χ_ω ≅ S¹. Counterexamples (irrational torus, cylinder) refine what geometry alone can imply',
       nxt='"Do these relationships tell us something about nature, or only about our mathematical descriptions of it?" (MM, after #18)', trigger='elapsed time and the cycle counter grow without limit while the point stays on the circle', spine=['DYNAMICS/CONTINUATION'], repo='R6, I1–I3, D11, D37, D38; Act VIII record'),
  dict(n=19, title='Einstein, relativity, and mathematical reality — Change the observer', q='which measurements depend on the observer and which relationships remain invariant (MM); "If mathematics has boundaries imposed by the way it represents nature, can those boundaries be expanded?" (MM); what goes to infinity when "c converges to infinity" (G2 3)', rel='ΛᵀηΛ = η (L1); the observer-change parameter is the rapidity, tanh φ = v/c (L2, A8Wa); c\'s finite-geometry roles and its theory-family limit c → ∞ (degenerate form, Galilean boosts at fixed v, contraction: L3, A8M, A8L) stay distinct',
@@ -139,6 +139,10 @@ EDGES = [
  ('M14', 'M19', XR, 'later mathematical connection (Act VIII, supporting): the boost is a one-parameter group preserving η (CF4, L1)'),
  ('M11', 'M20', XR, 'the application compares "mathematical squared norm with physical energy consumption" (MM #20), reusing #11\'s distinction'),
  ('M2', 'M20', XR, 'the power-demand signal reuses #2\'s "what if the signal measured electrical power instead of sound?"'),
+ ('M14', 'M17', XR, 'later mathematical connection (#17 first construction, 2026-11-17): the mass shell is a level set of the Lorentzian form in spectral variables; mass is the orbit invariant, as r is for circles (P17Di)'),
+ ('M19', 'M17', XR, 'later mathematical connection (#17 first construction): boosts act on (ω/c, k) as on (ct, x); Doppler on the null cone; tanh φ = ck/ω brings a massive mode to rest (P17De, P17Dh)'),
+ ('M18', 'M17', XR, 'later mathematical connection (#17 first construction): the proper-time phase e^(−i(mc²/ħ)τ) is a character of an unbounded parameter in the bounded circle, as in #18 (P17Dg, A8Fa)'),
+ ('M13', 'M17', XR, 'later mathematical connection (#17 first construction): spectral null, spacetime null, Fourier zero coefficient and model-manifold null kept apart; the zero index P = 0 lies on the massless cone only (P17Dd, P17Cc)'),
 ]
 
 def out_edges(n):
@@ -170,9 +174,10 @@ CHAINS = {
    ('Q', 'Which questions can be transferred to the proton-cancellation zero? (RD, D5: TQ-1–TQ-6)'), ('R', 'shared algebraic form only; the equal-mass bridge; the common relation deliberately left empty (T-PAIRA-SHARED, T-PAIRA-BRIDGE)')]),
  'PB': dict(name='Pair B and ★: geometry, rules and repeated behaviour (#3, #4, #18)', steps=[
    ('Q', 'a physically observable periodic structure in space and a wave/phase structure in time may be manifestations of shared geometric rules. (RD, R5)'), ('R', 'the circle is one transparent case: geometric structure → constraints / symmetries → repeated behavior (RD, Pair B)'),
-   ('Q', 'What observable rules arise because an object is constrained by a particular geometry? and ★ Any geometrical object that is bound by rules can be periodic. (RD)'), ('R', 'circle: exactly periodic (ℝ/ker ≅ S¹); torus: compact, possibly never periodic; cylinder: periodic projection, unbounded state (Act VIII)'),
-   ('Q', 'geometry alone does not force exact periodicity — so what else bears on the continuation? (2026-11-16 decisions)'), ('R', 'the geometry, allowed transformations, generator/frequency relations, stabilizer and orbit closure all bear on the observed continuation (2026-11-16 decisions; A8Ua, A8Ec)'),
-   ('Q', 'Given a preserved geometric relation, what transformations preserve it, what generators produce those transformations, and what observable dynamics follow? (RD; T-GEN-DYN-Q — a refinement of the original question, not a new story)'), ('R', 'answered in the canonical cases only (rotation, boost, Fourier character, torus); open in general')]),
+   ('Q', 'What observable rules arise because an object is constrained by a particular geometry? and ★ Any geometrical object that is bound by rules can be periodic. (RD)'), ('R', 'circle: exactly periodic (ℝ/ker ≅ S¹); torus: the same compact torus geometry carries periodic flows (commensurable frequencies), and the irrational/rationally-independent torus flow used here has dense orbit and no exact period; cylinder: periodic projection, unbounded state (Act VIII)'),
+   ('Q', 'STAR-A, one tested reading of ★: "A constrained geometry forces every admissible evolution to be periodic." (Act VIII)'), ('R', 'STAR-A FAIL → geometry alone does not force periodicity (A8X1, A8X3; 2026-11-16 and 2026-11-17 decisions)'),
+   ('X', 'CROSS-REFERENCE, not created by STAR-A: the already-existing invariant-geometry questions about constraints ("What observable rules arise because an object is constrained by a particular geometry?", RD revision 2), symmetries ("What remains unchanged when the pattern shifts?", MM #4), preserved relations and transformations ("What transformations leave that relation unchanged?" → A†MA = M, #14); stated together by Nadia as T-GEN-DYN-Q (RD, 2026-11-16)'),
+   ('R', 'the geometry, allowed transformations, generator/frequency relations, stabilizer and orbit closure all bear on the observed continuation (RD; A8Ua, A8Ec); answered in the canonical cases only (rotation, boost, Fourier character, torus), open in general')]),
  'IG': dict(name='Why model manifolds entered (#14 → #15 → #16)', steps=[
    ('Q', 'What is ‖x − y‖? (distance as separation, Chain A)'), ('R', 'distance under a measuring rule q_M (CF1; #14)'),
    ('Q', 'If distance and magnitude depend on the geometry, how should distance be understood when the valid predictions form a model/prediction manifold? (lock decisions)'), ('R', 'Fisher metric g = JᵀJ/σ² (distance in units of noise), geodesics, identifiability, exact null directions (FB6a, Z9, M1, M2)'),
@@ -191,6 +196,14 @@ CHAINS = {
    ('Q', 'what if the signal measured electrical power instead of sound? (MM #2)'), ('R', 'the same function, different physical meaning (OB1)'),
    ('Q', 'What does mathematical energy actually measure? (MM, after #11)'), ('R', 'L² magnitude ≠ physical energy unless a physical model identifies them (A3, ON9)'),
    ('Q', 'Can energy behavior be represented so that hidden balances, invariants and structural relationships become geometrically explicit? (lock decisions)'), ('R', 'parked: ThermaLens / Energeo is downstream testing, never upstream evidence (A1, A2; G2 9)')]),
+ 'P17': dict(name='Conjugacy and physical pairs (#12 → #17; first construction, 2026-11-17)', steps=[
+   ('Q', 'If mathematical energy is preserved, what other information distinguishes two representations? (MM #12)'), ('R', 'x(t) ↔ x̂(ω); for a real signal the coefficients come in conjugate pairs (P1)'),
+   ('Q', 'Do observable physical pairings or complementarities reflect deeper symmetry analogous to mathematical conjugacy? (RD; MM #17 — not assumed)'), ('R', 'exact source relation: x̂(−ω) − conj x̂(ω) = 2i·v̂(−ω), so the pairing holds exactly for real x; DC and Nyquist self-paired; complex signals fail (P17Fa, P17Fd, P17Fg)'),
+   ('Q', 'what information does the pairing encode? (2026-11-17 decisions)'), ('R', 'one real oscillation per pair (amplitude, phase); the imaginary parts cancel; the conjugate half is redundant (P17Fe, P17Fh)'),
+   ('Q', 'do physical pairings ever share an exact relation of comparable structural depth? (2026-11-17 decisions)'), ('R', 'first candidate, a real classical field: φ̃(−ω, −k) = conj φ̃(ω, k) — the same theorem (conj χ = χ⁻¹), a reality constraint, not two entities; sign symmetry, orbit symmetry, independent states and notation-dependent pairs are other kinds (P17Rc, P17Cd, P17Cg, P17K)'),
+   ('X', 'CROSS-REFERENCE (#14, #19): in P = (ω/c, k) the dispersion relation is a level set of the Lorentzian form, and boosts move points within a level (spectral variables, not spacetime)'), ('R', 'm = 0: the null level; m > 0: a non-null level, two boost orbits, a frequency gap, a rest frame; mass is the orbit invariant (P17Dc, P17De, P17Dg, P17Di)'),
+   ('X', 'CROSS-REFERENCE to the seed (recorded 2026-11-12, kept verbatim, not promoted): "mass is waves too, it\'s just a different form." — which precise questions can be extracted? (2026-11-17 decisions)'), ('R', 'MW-A RESTRICTED; MW-B ESTABLISHED; MW-C FAIL as conjugacy, with mc²/ħ Fourier-dual to proper time (#18 ⇢ #17); MW-D OPEN (P17Ea, P17Ch, P17Mx)'),
+   ('Q', 'Q17-1: an exact physical pairing of independent entities beyond the reality constraint? Q17-2: which sense of "conjugate" is "physical complementarity"? Q17-3: MW-D in a specific theory? (OPEN, not begun)')]),
  'T': dict(name='Translation invariance (#3 / #4 → #12 → #18)', steps=[
    ('Q', 'What remains unchanged when the pattern shifts? (MM, after #3)'), ('R', 'T_τ; invariance T_τx = x; autocorrelation; the symmetry defect D_x(τ) (T1, T2, T3)'),
    ('Q', 'how much does a small shift change the signal, and where does it show in the spectrum? (D9)'), ('R', 'D_x(τ) from the power spectrum (Wiener–Khinchin, T3); spectral second moment and localization (T4, T5)'),
@@ -232,7 +245,8 @@ ALIGN = [
  ('D17', 'M9 → Act III', 'R4 tetrahedral / simplex constructions', 'Chain Z inverse question', 'correct', ['KEEP', 'ADD DIAGRAM EDGE']),
  ('D18', 'Chain Z (Act I stage 2: the proton zero)', 'quantum same-zero', 'Pair A', 'correct', ['KEEP']),
  ('D19', 'Pair A (T-PAIRA-Q)', 'cross-domain transfer', '—', 'correct', ['KEEP']),
- ('D20', 'M12 → M17 (earlier predecessor)', 'conjugate pairs; mass-wave ingredients', 'mass-wave (parked)', 'correct; physical pairs not claimed conjugate', ['KEEP']),
+ ('D20', 'M12 → M17 (earlier predecessor)', 'conjugate pairs; mass-wave ingredients', 'D41 (#17 first construction)', 'correct; physical pairs not claimed conjugate', ['KEEP']),
+ ('D41', 'M12 → M17 (earlier predecessor); cross-references from M13, M14, M18, M19', 'Fourier conjugacy source lock; real-field reality pairing; spectral null and mass-shell levels; kinds of pairing; MW-A–MW-D', 'Q17-1–Q17-3 (open); the #17 adversarial lock', 'first #17 construction (2026-11-17); no new story node; the cross-references are not causal', ['KEEP', 'ADD DIAGRAM EDGE', 'ADD CONNECTIVE SENTENCE']),
  ('D21', 'M17, M18, M19 (user hypotheses)', '—', '—', 'open, correctly placed', ['KEEP']),
  ('D22', 'M16', 'the effective-representation question', '—', 'open, correctly placed', ['KEEP']),
  ('D23', 'M17, M19 (philosophical lenses)', '—', '—', 'open, correctly placed', ['KEEP']),
@@ -246,7 +260,7 @@ ACT8 = [
  # answers #18
  ('circle: ‖e^(iωt)‖ bounded, period 2π/|ω|, no limit, ℝ/Tℤ ≅ S¹, covering', 'A8C', 'A', '#18 answer', '#18: G2 6 and 8 (unbounded t, bounded S¹)', 'answers the question as Nadia restated it'),
  ('distinction table (parameter, lift, cycles, bounded, convergence, recurrence, periodicity, density, drift)', 'A8D', 'A', '#18 answer', '#18: "compare what happens to elapsed time, number of revolutions, sine and cosine values, cumulative quantities, and mathematical limits" (MM); G2 6 "two very different kinds of infinity"', 'answers'),
- ('torus: commensurability; dense irrational flow, never periodic; kernel vs orbit closure', 'A8T, A8KC', 'A', '#18 answer', '#18 (G2 8: "deeper analogues"); #3 ("try a nonperiodic sound")', 'answers; refines ★ (STAR-A)'),
+ ('torus: commensurability — the same torus geometry also carries periodic flows; the irrational/rationally-independent torus flow used here has dense orbit and no exact period; kernel vs orbit closure', 'A8T, A8KC', 'A', '#18 answer', '#18 (G2 8: "deeper analogues"); #3 ("try a nonperiodic sound")', 'answers; refines ★ (STAR-A)'),
  ('exact versus near recurrence', 'A8Tc, A8Pc', 'A', '#18 answer', '#18: "one revolution, ten revolutions, a thousand" (MM) — exact return vs near return', 'answers'),
  ('cylinder: periodic projection, unbounded state', 'A8X2, A8Yb', 'A', '#18 answer', '#18: "extend the picture into a cylindrical geometry" (MM)', 'answers'),
  # answers #19
@@ -269,12 +283,12 @@ ACT8 = [
  ('old wording "sines and cosines converge to infinity"', 'A8Cc', 'E', 'refinement / failure', '#18 (MM)', 'FAIL, kept as the historical conjecture T-TIME-CIRCLE-0'),
  ('literal t ↔ c (H3-c-direct)', 'A8HCD', 'E', 'refinement / failure', 'H3 c-clause (CP §1a) at #19', 'FAIL / superficial; the H3-c split keeps group (B) and family (A) apart'),
  ('counterexamples X1–X6 and rejected implications', 'A8X', 'E', 'refinement / failure', '#18, ★, G2 2 (X6), G2 3 (X5: scaling)', 'each refines a question'),
- ('T-GEN-DYN-Q', 'A8G', 'E', 'refinement / failure', 'created by STAR-A\'s failure', 'the next question of the ★ chain — a refinement of the original question'),
+ ('T-GEN-DYN-Q', 'A8G', 'E', 'refinement / failure', 'the already-existing invariant-geometry questions (T-GEOM-RULES, #4, #14), stated together; cross-referenced from STAR-A\'s failure, not created by it (pre-#17 patch, 2026-11-17)', 'a refinement of the original question; STAR-A\'s failure did not historically cause it'),
 ]
 
 FAILURES = [
  ('"Adding an infinite object like time to a finite circle geometry makes sines and cosines converge to infinity." (T-TIME-CIRCLE-0)', '#18 (MM)', 'sin and cos stay in [−1, 1] and have no limit; what is unbounded is t, the lift ωt and the cycle count (A8Ca, A8Cc, A8Cd)', 'an unbounded quantity expressed through a bounded geometry: does it have deeper mathematical analogues elsewhere? (G2 8)'),
- ('STAR-A: "A constrained geometry forces every admissible evolution to be periodic."', '★ / Pair B (#3, #4, #18)', 'geometry alone does not determine periodicity: the compact torus carries a flow with no periodic orbit; the logistic flow on [0, 1] none either (A8X1, A8X3)', 'Given a preserved geometric relation, what transformations preserve it, what generators produce those transformations, and what observable dynamics follow? (T-GEN-DYN-Q)'),
+ ('STAR-A: "A constrained geometry forces every admissible evolution to be periodic."', '★ / Pair B (#3, #4, #18)', 'geometry alone does not force periodicity: the irrational/rationally-independent torus flow has dense orbit and no exact period, although the same torus carries periodic flows; the logistic flow on [0, 1] has no non-constant periodic orbit (A8X1, A8X3, A8Ua)', 'none created (pre-#17 patch, 2026-11-17): CROSS-REFERENCE ⇢ the already-existing invariant-geometry questions — constraints (T-GEOM-RULES), symmetries (#4), preserved relations and transformations (#14, A†MA = M), stated together as T-GEN-DYN-Q'),
  ('literal t ↔ c (H3-c-direct)', 'H3 c-clause at #19', 't is an action parameter (θ = ωt); the Lorentz group parameter is the rapidity φ; c is a form / unit constant (A8Sa, A8Wa)', 'the two roles of c (H3-1, open)'),
  ('"circle radius r ↔ c" (Claude\'s pass-1 analogy)', '#18 / #19 comparison', 'r is an orbit invariant, c a form parameter; the counterpart of r² is q_c on the orbit (A8Wb)', 'none: discarded'),
  ('"the invariant content of c is whether it is finite" (Claude\'s, superseded)', '#19, H3-1', 'the congruence class of the bare form M_c does not see finite values of c; c\'s physical roles (causal structure, v/c, family limit) are kept (A8Wc)', 'H3-1 stays open'),
@@ -287,7 +301,7 @@ FAILURES = [
 MATH_LOCK = [
  ('unbounded t with a bounded circle image', 'A8Ca, A8Cd, C8a', 'none', 'LOCKED'),
  ('exact periodicity of e^(iωt): minimal period 2π/|ω|; Stab = (2π/|ω|)ℤ; ℝ/Tℤ ≅ S¹', 'A8Cb, A8Ce, A8Cf, A8Fa', 'ω ≠ 0', 'LOCKED'),
- ('irrational torus flow: compact orbit closure, Stab = {0} (aperiodic), dense, near-recurrent, image not closed', 'A8Tb, A8Tc, A8X1, A8Kb', 'frequencies rationally independent; density is the Kronecker–Weyl theorem (source-locked)', 'LOCKED'),
+ ('irrational torus flow: compact orbit closure, Stab = {0} (aperiodic), dense, near-recurrent, image not closed', 'A8Tb, A8Tc, A8X1, A8Kb', 'frequencies rationally independent; density is the Kronecker–Weyl theorem (source-locked); the same torus geometry carries periodic flows when the frequencies are commensurable (A8Ta, A8Ua)', 'LOCKED'),
  ('cylinder: periodic projection, nonperiodic and noncompact full state', 'A8X2, A8Yb', 'v ≠ 0', 'LOCKED'),
  ('the rapidity, not c, is the Lorentz group parameter', 'A8Eb, A8Wa, S5a', 'tanh φ = v/c, |v| < c', 'LOCKED'),
  ('c has distinct roles: finite-c forms (congruent by rescaling; null cone x = ±ct) and the theory-family limit c → ∞', 'A8Ma, A8Md, A8Wc, A8Mc', 'the congruence statement concerns the bare form only; it does not remove c\'s physical role', 'LOCKED'),
@@ -321,6 +335,7 @@ MISSING = [
  ('F8', 'Pair A', 'the question that created Pair A', 'registry record T-PAIRA-Q (added 2026-11-16)'),
  ('F9', 'M2 / M11 ⇢ M20', 'the energy question\'s predecessors', 'connective sentence in Part XIV (added 2026-11-16)'),
  ('F10', 'Pair B / ★ → T-GEN-DYN-Q', 'the Act VIII results read as a refinement of the original question, with the original question first', 'connective sentence leading the Act VIII section (added 2026-11-16)'),
+ ('F11', 'STAR-A ⇢ invariant-geometry questions', 'STAR-A failure → geometry alone does not force periodicity, followed by a CROSS-REFERENCE to the already-existing questions about constraints, symmetries, preserved relations and transformations (T-GEOM-RULES, #4, #14, T-GEN-DYN-Q); not a causal edge', 'chain PB, failures table, Act VIII placement row, registry T-GEN-DYN-Q, master map Part VII (pre-#17 patch, 2026-11-17)'),
 ]
 SUPERSEDED = [
  dict(where='2026-11-16 diagnostic, edge list', old='M15 → M19 as an earlier-predecessor edge: "c → ∞ entered from the model-manifold discussion"', why='Correction B: a cross-reference, not a causal edge'),
@@ -329,11 +344,17 @@ SUPERSEDED = [
  dict(where='master map Part IV (2026-11-16)', old='"| Zero frequency (k = 0, ω = 0; Master Map #13) | e₀ = 1; χ₀(t) = 1 | signals | the index of a mode is zero …" as a row of the zero-value taxonomy table', why='Correction A: moved to the zero index / frequency category'),
  dict(where='2026-11-16 diagnostic, Chain A', old='|x|, |x|² for a general vector', why='notation: ‖x‖, ‖x‖² = x†x'),
  dict(where='2026-11-16 diagnostic, lock choice', old='READY FOR ACT VIII ADVERSARIAL LOCK AFTER STORY ALIGNMENT', why='superseded by the final lock verdict of 2026-11-17'),
+ dict(where='2026-11-17 lock, node M17 (next question)', old='mass-like and wave-like descriptions (R4, R18; MW1) — the parked mass-wave branch; no direct causal successor at #18', why='#17 first construction: the branch is not defined as mass-wave; mass/wave is one candidate investigation inside it'),
+ dict(where='2026-11-17 lock, Act VIII placement and chain PB', old='"torus: commensurability; dense irrational flow, never periodic" and "torus: compact, possibly never periodic"', why='pre-#17 patch: scoped — the irrational/rationally-independent torus flow used here has dense orbit and no exact period; the same torus geometry also carries periodic flows'),
+ dict(where='2026-11-16 diagnostic and 2026-11-17 lock, chain PB, failures table, Act VIII placement', old='T-GEN-DYN-Q "created by STAR-A\'s failure", "the next question of the ★ chain"; STAR-A\'s next question = T-GEN-DYN-Q; chain PB step "geometry alone does not force exact periodicity — so what else bears on the continuation?" as a question created by STAR-A', why='pre-#17 patch: STAR-A\'s failure did not historically cause the invariant-form / generator question; it is recorded as a lesson followed by a CROSS-REFERENCE'),
 ]
 LOCK = dict(choice='LOCK ACT VIII — STORY AND MATHEMATICS ALIGNED',
  why='Every live Act VIII statement answers or refines #18 or #19, connects backward to #4 / #12 / #14 as a labelled connector or cross-reference, or is supporting / optional and labelled so; the three story corrections are applied; the eight required mathematical statements are carded with their assumptions; the failed conjectures are kept with what they taught. The story table uses typed edges, and no adjacency is treated as causal without a relation in the record.',
  limits='The four named conversations could not be opened; the Chain A questions rest on Nadia\'s 2026-11-16 recollection. H3-original and H3-1 stay OPEN; they are open research questions, not misplacements.',
  nextQuestion='#17 — "Do observable physical pairings or complementarities reflect deeper symmetry analogous to mathematical conjugacy?" (T-CONJUGACY). It is the earliest canonical node with no answering construction yet; it arises from #12 (conjugate coefficient pairs give a real signal) and leads to the parked mass-wave branch (T-MASS-WAVE-SEED). #20 stays a parked downstream application. Not begun.')
+
+P17 = dict(record='research/constructions/p17_conjugacy_physical_pairs.md', recommendation='READY FOR #17 ADVERSARIAL LOCK',
+ summary='First construction of #17 (2026-11-17): no new story node; the historical edge stays #12 → #17; #13, #14, #18 and #19 ⇢ #17 are cross-references (later mathematical connections). Statuses are separate: Fourier conjugacy ESTABLISHED; real-field ± mode relation DERIVED; massless null relation ESTABLISHED; mass-shell level set DERIVED; E = ħω, p = ħk RESTRICTED; MW-A RESTRICTED; MW-B ESTABLISHED; MW-C FAIL; MW-D OPEN; the broader #17 hypothesis OPEN.')
 
 data = dict(about='Canonical story (Act VIII final lock, 2026-11-17; diagnostic of 2026-11-16). Generated by research/tools/canonical_story_source.py.',
             provenance=PROVENANCE, spine=SPINE, spineLabel=SPINE_LABEL, actions=ACTIONS, categories=CATEGORIES, edgeTypes=EDGE_TYPES, corrections=CORRECTIONS, zeroKinds=ZERO_KINDS,
@@ -342,7 +363,7 @@ data = dict(about='Canonical story (Act VIII final lock, 2026-11-17; diagnostic 
             alignment=[dict(domain=a, predecessor=b, relation=c, next=d, verdict=e, actions=f) for a, b, c, d, e, f in ALIGN],
             act8=[dict(item=a, objects=b, category=c, group=d, question=e, note=f) for a, b, c, d, e, f in ACT8], failures=[dict(failure=a, question=b, taught=c, nextQuestion=d) for a, b, c, d in FAILURES],
             mathLock=[dict(statement=a, cards=b, assumptions=c, status=d) for a, b, c, d in MATH_LOCK], liveAudit=[dict(check=a, where=b) for a, b in LIVE_AUDIT], kappa=KAPPA,
-            missing=[dict(id=a, between=b, what=c, repair=d) for a, b, c, d in MISSING], superseded=SUPERSEDED, lock=LOCK)
+            missing=[dict(id=a, between=b, what=c, repair=d) for a, b, c, d in MISSING], superseded=SUPERSEDED, lock=LOCK, p17=P17)
 (ROOT / 'research/canonical_story.json').write_text(json.dumps(data, ensure_ascii=False, indent=1) + '\n')
 
 # ── render ─────────────────────────────────────────────────────────────────────────────────────────
@@ -369,13 +390,13 @@ L += ['', '| Edge | Type | Why |', '|---|---|---|'] + [f'| {a} → {b} | {t} | {
 L += ['', '## C. Non-adjacent historical dependencies (EARLIER PREDECESSOR)', ''] + [f'- {a} → {b}: {w}' for a, b, t, w in EDGES if t == EP]
 L += ['', '## D. Cross-references that must NOT be treated as causal', ''] + [f'- {a} ⇢ {b}: {w}' for a, b, t, w in EDGES if t == XR]
 L += ['', 'In particular: prediction / model space (#15, #16) ⇢ time and spacetime (#18, #19) means an earlier mathematical-space question was later reused when thinking about time/spacetime. It does NOT mean model manifolds and spacetime are the same structure, and it does NOT mean model-manifold theory generated relativity historically. The historical route to relativity is #18 → #19.']
-L += ['', '## Relation chains', '', 'Q = a question node; R = the relation that answered or sharpened it. Each Q after the first is the next question created by the R before it.']
+L += ['', '## Relation chains', '', 'Q = a question node; R = the relation that answered or sharpened it. Each Q after the first is the next question created by the R before it. X = a CROSS-REFERENCE to an already-existing question (dotted "xref" arrow): it was not created by the R before it.']
 for k, ch in CHAINS.items():
     L += ['', f'### Chain {k}: {ch["name"]}', '', '```mermaid', 'flowchart TD']
     for i, (kind, text) in enumerate(ch['steps']):
         node = f'{k}{i}'
-        L.append(f'  {node}["{kind}: {mlab(text)}"]' if kind == 'Q' else f'  {node}("{kind}: {mlab(text)}")')
-        if i: L.append(f'  {k}{i - 1} --> {node}')
+        L.append(f'  {node}["{kind}: {mlab(text)}"]' if kind == 'Q' else f'  {node}{{{{"{kind}: {mlab(text)}"}}}}' if kind == 'X' else f'  {node}("{kind}: {mlab(text)}")')
+        if i: L.append(f'  {k}{i - 1} {"-. xref .->" if kind == "X" else "-->"} {node}')
     L += ['```']
 L += ['', '## E. Act VIII final placement', '', 'Categories: ' + '; '.join(f'{k} = {v}' for k, v in CATEGORIES.items()) + '. Supporting mathematics is not a canonical story node unless it answers a historical Nadia question.', '',
       '| Result | Objects | Category | Placement | Historical question it serves | Note |', '|---|---|---|---|---|---|'] + [f'| {cell(a)} | {b} | {c} | {d} | {cell(e)} | {cell(f)} |' for a, b, c, d, e, f in ACT8]
@@ -387,6 +408,7 @@ L += ['', '## Current-repository alignment (every Foundation domain)', '', f'Act
 L += [f'| {a} | {cell(b)} | {cell(c)} | {cell(d)} | {cell(e)} | {"; ".join(f)} |' for a, b, c, d, e, f in ALIGN]
 L += ['', '## Connectors added (2026-11-16, corrected 2026-11-17)', '', '| ID | Between | What | Repair |', '|---|---|---|---|'] + [f'| {a} | {b} | {cell(c)} | {cell(d)} |' for a, b, c, d in MISSING]
 L += ['', '## Superseded statements of the 2026-11-16 diagnostic (kept)', '', '| Where | Old | Why |', '|---|---|---|'] + [f'| {x["where"]} | {cell(x["old"])} | {cell(x["why"])} |' for x in SUPERSEDED]
-L += ['', '## H–I. Verdicts', '', f'**{LOCK["choice"]}**', '', LOCK['why'], '', f'Limits: {LOCK["limits"]}', '', f'Next canonical unresolved question (not begun): {LOCK["nextQuestion"]}']
+L += ['', '## H–I. Verdicts', '', f'**{LOCK["choice"]}**', '', LOCK['why'], '', f'Limits: {LOCK["limits"]}', '', f'Next canonical unresolved question at the lock (not begun then): {LOCK["nextQuestion"]}']
+L += ['', '## #17: first construction (2026-11-17)', '', P17['summary'], '', f'Record: `{P17["record"]}`. Recommendation: **{P17["recommendation"]}**.']
 (ROOT / 'research/canonical_story.md').write_text('\n'.join(L) + '\n')
 print(f'{len(MASTER)} nodes; {len(EDGES)} typed edges ({sum(1 for e in EDGES if e[2] == OP)} open, {sum(1 for e in EDGES if e[2] == XR)} cross-references); {len(ALIGN)} domains; lock: {LOCK["choice"]}')

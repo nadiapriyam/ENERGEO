@@ -1,6 +1,27 @@
 # Application matrix
 
-## Version 4 (four-spin and mass pass, 2026-11-12): current
+## Version 5 (#17 first construction, 2026-11-17): current
+
+This version tests the Master Map #17 question. The source relation is real-signal Fourier conjugacy, x real ⟺
+x̂(−ω) = conj x̂(ω) (P17Fa). Each candidate is tested unchanged against it with the transfer criteria TC1–TC7 and
+the levels L0–L3 of `research/constructions/p17_conjugacy_physical_pairs.md`. No template was altered to force
+agreement, and no candidate's deeper common relation is filled in.
+
+| Candidate pair | Source relation applied unchanged | Result | Level reached | Transfer Depth | Mathematical Status | Backbone Support % | AI Slop / Delusion Risk % | Application Breadth | Exact failure condition |
+|---|---|---|---|---|---|---|---|---|---|
+| Real classical field, modes at P and −P | conj χ = χ⁻¹ on ℝ² with η | same rule works: φ̃(−ω, −k) = conj φ̃(ω, k) (P17Rc) | L3, as the same theorem | TRIVIAL CONSEQUENCE | TEXTBOOK / KNOWN | 20 | 10 | 2 | a complex field (P17Re); an operator not commuting with conjugation (P17Rf) |
+| Right- and left-movers (ω, ±k) | conjugacy of amplitudes | fails: sign symmetry only, amplitudes independent (P17Cb) | L2 | FAIL (as conjugacy) | TEXTBOOK / KNOWN | 0 | 5 | 1 | none: exact |
+| Upper and lower mass-shell branches | conjugacy as points | partially works: −I preserves q and swaps branches; no reality constraint without amplitudes (P17Ca) | L2 | NOT YET FORMALIZED | TEXTBOOK / KNOWN | 10 | 20 | 1 | a physical reading needs a specific field theory (future branch) |
+| Massless and massive levels | one quadratic form | partially works: same form, different levels, no relating transformation (P17Dc, P17De) | L1 | STRUCTURAL TRANSFER (MW-B) | TEXTBOOK / KNOWN | 30 | 10 | 2 | q < 0 not reached by real m |
+| Mass and wave variables (MW-C) | complex conjugacy | fails: conjugation fixes m (P17Ch) | L1 | FAIL | TEXTBOOK / KNOWN | 0 | 5 | 1 | none: exact |
+| Rest frequency and proper time | Fourier duality (a different meaning of "conjugate") | same rule works along the group worldline (P17Dg) | L3 of another kind | STRUCTURAL TRANSFER | TEXTBOOK / KNOWN (de Broglie) | 20 | 25 | 2 | off the group worldline |
+| Elastic-foundation string vs massive dispersion | the same dispersion relation | same rule works as an equation, with no particle (P17Mx) | L1 | TRIVIAL CONSEQUENCE | TEXTBOOK / KNOWN | 10 | 10 | 2 | the physics differs (stiffness, not mass) |
+| "Positive / negative frequency" labels | a physical pair | fails: the pair disappears in the one-sided and cos/sin representations (P17Ce) | L0 | FAIL | TEXTBOOK / KNOWN | 0 | 5 | 1 | none: exact |
+
+**Novelty.** Every result above is VALIDATION OF KNOWN MATHEMATICS or a project classification of known mathematics.
+No nontrivial predictive transfer.
+
+## Version 4 (four-spin and mass pass, 2026-11-12): kept
 
 This version tests the analysis architecture: zero-producing contributions, plus an independently supplied symmetry,
 give a descriptor of a hidden label. It is tested blind in a quantum system and a non-quantum system. The
