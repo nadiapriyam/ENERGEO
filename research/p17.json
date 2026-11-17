@@ -75,10 +75,13 @@
  "source": [
   {
    "item": "continuous",
-   "statement": "x̂(ω) = ∫x(t)e^{−iωt}dt. For x = u + iv: x̂(−ω) − conj x̂(ω) = 2i·v̂(−ω). So x̂(−ω) = conj x̂(ω) for every ω ⟺ v = 0 (Fourier uniqueness). Realness is exactly the property that forces the conjugacy",
+   "statement": "x̂(ω) = ∫x(t)e^{−iωt}dt. For x = u + iv: x̂(−ω) − conj x̂(ω) = 2i·v̂(−ω). For x ∈ L¹(ℝ): x̂(−ω) = conj x̂(ω) for every ω ⟺ v = 0 almost everywhere — the converse by the uniqueness theorem on L¹ (Zhou–Siadat Theorem 1.15, read), and independently for finite signals and finite Hermite expansions. Realness is exactly the property that forces the conjugacy",
    "cards": [
     "P17Fa",
-    "FB4a"
+    "FB4a",
+    "P17Lc",
+    "P17Ld",
+    "P17Le"
    ]
   },
   {
@@ -141,7 +144,7 @@
    ]
   }
  ],
- "forcedBy": "x = conj x (realness), and nothing weaker: the defect of the symmetry, x̂(−ω) − conj x̂(ω), is exactly 2i·v̂(−ω), where v = Im x, and v̂ ≡ 0 only for v = 0 (P17Fa).",
+ "forcedBy": "x = conj x (realness), and nothing weaker: the defect of the symmetry, x̂(−ω) − conj x̂(ω), is exactly 2i·v̂(−ω), where v = Im x, and v̂ ≡ 0 only for v = 0 a.e. (P17Fa; uniqueness on L¹, Zhou–Siadat Theorem 1.15; exact without imported theorems for finite signals, P17Lc, and finite Hermite expansions, P17Ld).",
  "criteria": [
   {
    "id": "TC1",
@@ -337,7 +340,7 @@
    },
    "level": "L1 (MW-B)",
    "shared": "the quadratic form q",
-   "notShared": "no transformation or involution relating them; different orbit types (four half-line orbits vs two branches)",
+   "notShared": "no transformation or involution relating the levels; the null level and a timelike level of the same form carry different SO⁺(1,1) orbit structure (four null half-lines vs two branches); m selects the level, the form is unchanged",
    "cards": [
     "P17Dc",
     "P17De",
@@ -376,14 +379,14 @@
   },
   {
    "id": "PC-6",
-   "name": "rest frequency mc²/ħ and proper time τ",
+   "name": "rest frequency mc²/ħ and the proper-time phase",
    "object": "one mode on the mass shell, along its group worldline",
    "representation": "the phase e^{−i(mc²/ħ)τ}",
-   "relation": "phase advance mc²/ħ per unit proper time, for every k",
+   "relation": "phase accumulation at mc²/ħ per unit proper time along the worldline of the same on-shell momentum (up to sign convention)",
    "transformation": "proper-time translation τ ↦ τ + s (a character, as in #18)",
    "invariant": "mc²/ħ (Lorentz invariant)",
    "null": "m = 0: the phase is constant along the light ray",
-   "kind": "Fourier duality (a different meaning of \"conjugate\")",
+   "kind": "a proper-time phase rate — not a demonstrated pairing",
    "criteria": {
     "TC1": "yes",
     "TC2": "no",
@@ -391,14 +394,15 @@
     "TC4": "no",
     "TC5": "no",
     "TC6": "yes",
-    "TC7": "yes"
+    "TC7": "partial"
    },
-   "level": "L3 of a different kind: Fourier duality, not complex conjugacy; known (de Broglie)",
-   "shared": "the character structure of #18 (χ of an unbounded parameter in a bounded phase)",
-   "notShared": "no antilinear involution; restricted to the group worldline",
+   "level": "L1: a phase-rate equation; no Fourier-conjugate pairing of m and τ is established (P17Lf)",
+   "shared": "the character structure of #18 (an unbounded parameter in a bounded phase)",
+   "notShared": "no antilinear involution; no spectral family in which m is a variable; restricted to the worldline of the same on-shell momentum",
    "cards": [
     "P17Dg",
-    "P17Ch",
+    "P17Lb",
+    "P17Lf",
     "A8Fa"
    ],
    "candidateCommonRelation": null
@@ -564,9 +568,11 @@
    "status": "ESTABLISHED"
   },
   {
-   "statement": "each branch is one SO⁺(1,1) orbit: the boost with tanh φ = ck/ω (= v_g/c) carries any point to the rest point (μ, 0); boosts never change the branch",
+   "statement": "Proper orthochronous Lorentz boosts preserve each positive- or negative-energy mass-shell branch separately. Each branch is one SO⁺(1,1) orbit: the boost with tanh φ = ck/ω (= v_g/c) carries a positive-energy point to (μ, 0) and a negative-energy point to (−μ, 0). Not claimed for the full Lorentz group: time reversal S_t and −I preserve q and exchange the branches (P17La, P17Ca)",
    "cards": [
-    "P17De"
+    "P17De",
+    "P17La",
+    "P17Ca"
    ],
    "status": "DERIVED"
   },
@@ -586,22 +592,25 @@
    "status": "DERIVED"
   },
   {
-   "statement": "proper-time phase rate mc²/ħ along the group worldline, for every k; constant phase along the light ray when m = 0",
+   "statement": "Along the worldline associated with the same on-shell four-momentum, the free massive plane-wave phase accumulates at the invariant proper-time rate mc²/ħ, up to sign convention. — assumptions (P17Lb): a single free massive plane wave e^{−iη(P, X)}; P on the shell q(P) = (mc/ħ)²; the straight worldline X(τ) = X₀ + (cτ/μ)P of the same on-shell momentum, on which τ is proper time; the sign convention e^{−iη(P, X)} (the opposite convention reverses the sign). On another worldline the rate differs (lab frame: ω). m = 0: the phase is constant along the light ray. This establishes a proper-time phase rate. It does NOT by itself establish that mass and proper time are Fourier-conjugate variables.",
    "cards": [
-    "P17Dg"
+    "P17Dg",
+    "P17Lb",
+    "P17Lf"
    ],
-   "status": "DERIVED (known: de Broglie)"
+   "status": "DERIVED (under the stated assumptions)"
   },
   {
-   "statement": "mass as the orbit invariant: μ = mc/ħ labels the boost orbit as r labels the rotation orbit (#14 chart: Kᵀη + ηK = 0, JᵀI + IJ = 0); μ is not a form parameter like c",
+   "statement": "mass selects the level: Mass labels/selects the invariant level of the same Lorentzian quadratic form. m = 0 ⇒ q(P) = 0 (the null level); m > 0 ⇒ q(P) = (mc/ħ)² > 0 (a nonzero timelike mass-shell level). The form and the group SO⁺(1,1) are the same for every m; μ = mc/ħ labels the invariant level as r labels a rotation orbit (#14 chart: Kᵀη + ηK = 0, JᵀI + IJ = 0); μ is not a form parameter like c",
    "cards": [
     "P17Di",
+    "P17Lg",
     "A8Wb"
    ],
    "status": "DERIVED; its reading as a #14 ⇢ #17 connection is PROJECT SYNTHESIS"
   }
  ],
- "massAnswer": "Does mass appear as a parameter selecting a non-null level set of the same quadratic form whose m=0 case is null? Yes, exactly: m ↦ the level (mc/ħ)² of q = (ω/c)² − k²; m = 0 is the null level (P17Db, P17Dc, P17De). What m changes geometrically: the level and the orbit type (two branches instead of four null half-lines), a frequency gap, the existence of a rest frame, and a Lorentz-invariant proper-time frequency (P17Dg). This does not say that mass is a wave.",
+ "massAnswer": "Does mass appear as a parameter selecting a non-null level set of the same quadratic form whose m=0 case is null? Yes, exactly: Mass labels/selects the invariant level of the same Lorentzian quadratic form. m = 0 ⇒ q(P) = 0 (the null level); m > 0 ⇒ q(P) = (mc/ħ)² > 0 (a nonzero timelike mass-shell level). The form q = (ω/c)² − k² and the group acting on it are the same for every m; m does not change the geometry, it selects the level (P17Db, P17Dc, P17De, P17Lg). Consequences of the selected level (derived): a frequency gap at mc²/ħ, a rest frame, and the proper-time phase rate stated below. This does not say that mass is a wave.",
  "posNeg": {
   "math": "Mathematical Fourier redundancy: the same theorem in two variables. A real field has φ̃(−ω, −k) = conj φ̃(ω, k), i.e. b(k) = conj a(−k) (P17Rb, P17Rc). The partner of (ω, k) is (−ω, −k), not (−ω, k) (P17Rd).",
   "condition": "It follows from the field being real, and only then: the equation admits complex solutions (P17Re); the reality pairing is available because the operator commutes with conjugation (P17Ra); for iψ_t + αψ_xx = 0 it is not (P17Rf, a PDE contrast only).",
@@ -667,10 +676,10 @@
   {
    "kind": "Fourier duality",
    "meaning": "a bilinear pairing between a variable and its Fourier variable (a different meaning of \"conjugate\"); the uncertainty inequality belongs here (T5)",
-   "examples": "(t, ω), (x, k); mc²/ħ and proper time τ",
+   "examples": "(t, ω), (x, k). Not established for mass and proper time (P17Lf)",
    "cards": [
     "P17Cf",
-    "P17Dg"
+    "P17Lf"
    ]
   }
  ],
@@ -703,7 +712,7 @@
    "words": "Massive particles admit wave variables through:",
    "reading": "E = ħω, p = ħk",
    "status": "RESTRICTED",
-   "basis": "established physics as identifications (inputs). Derived under them: v_g = pc²/E = v (group velocity = particle velocity) and ω₀ = mc²/ħ (P17Eb); the level-set geometry is ħ-scaled (P17Ea). Not classical identities; no physical data carded here",
+   "basis": "RESTRICTED to the physical setting where E = ħω and p = ħk apply (identifications used as inputs). Derived under them, with assumptions explicit: v_g = dω/dk = c²k/ω = pc²/E; for a relativistic particle with p = γmv and E = γmc², pc²/E = v; ω₀ = mc²/ħ at k = 0 (P17Eb); the level-set geometry is rescaled by ħ (P17Ea). Not classical identities; no physical data carded here",
    "cards": [
     "P17Ea",
     "P17Eb",
@@ -716,11 +725,12 @@
    "words": "Massless and massive cases occupy different level sets of the same Lorentzian quadratic form in energy-momentum / spectral variables.",
    "reading": "q(P) = 0 vs q(P) = (mc/ħ)²",
    "status": "ESTABLISHED",
-   "basis": "exact (P17Dc, P17De, P17Di, FB8b); spectral variables, not spacetime; mass is the orbit invariant (r-role, not c-role)",
+   "basis": "exact: one Lorentzian quadratic form; m = 0 ⇒ q(P) = 0 (the null level); m > 0 ⇒ q(P) = (mc/ħ)² > 0 (a nonzero timelike mass-shell level). Spectral variables, not spacetime (P17Dc, P17De, P17Di, P17Lg, FB8b)",
    "cards": [
     "P17Dc",
     "P17De",
     "P17Di",
+    "P17Lg",
     "FB8b"
    ]
   },
@@ -730,10 +740,10 @@
    "words": "Mass and wave variables form a conjugate pair in the same mathematical sense as Fourier conjugates.",
    "reading": "complex conjugacy between m and (ω, k)",
    "status": "FAIL",
-   "basis": "complex conjugation maps the mass-m shell to itself and never relates m to (ω, k) (P17Ch). Restricted different reading: mc²/ħ and proper time τ are Fourier-dual along the group worldline (P17Dg) — RESTRICTED, known (de Broglie), and not the same sense as Fourier coefficient conjugacy",
+   "basis": "FAIL: complex conjugation maps the mass-m shell to itself and never relates m to (ω, k) (P17Ch). What survives: mass determines the invariant mass-shell level and the associated rest-frame/proper-time phase rate. (P17Lb, P17Lg). That is not a conjugate pairing, and no Fourier-duality claim replaces the failure (P17Lf). The further question is kept separately as OPEN and not investigated: Is there a physically meaningful formulation in which mass/rest energy acts as a genuine spectral variable conjugate to proper time?",
    "cards": [
     "P17Ch",
-    "P17Dg"
+    "P17Lf"
    ]
   },
   {
@@ -742,7 +752,7 @@
    "words": "Particle-like and wave-like descriptions may be different representations/aspects of the same physical state.",
    "reading": "a physics interpretation",
    "status": "OPEN",
-   "basis": "requires exact theory-specific wording; not established by the dispersion relation, which a string on an elastic foundation also satisfies (P17Mx)",
+   "basis": "OPEN, not promoted: a physics interpretation that requires exact theory-specific wording. The classical elastic-foundation counterexample stays in the record because the same dispersion equation alone cannot establish particle ontology (P17Mx)",
    "cards": [
     "P17Mx"
    ]
@@ -818,7 +828,7 @@
   {
    "item": "Fourier conjugacy (real signal; continuous and DFT)",
    "status": "ESTABLISHED",
-   "basis": "realness ⟺ Hermitian symmetry; DC/Nyquist self-paired; complex signals fail",
+   "basis": "for x ∈ L¹(ℝ): Hermitian symmetry ⟺ x real a.e. (forward P17Fa; converse by uniqueness on L¹, Zhou–Siadat Theorem 1.15, read; exact without imported theorems for finite signals and finite Hermite expansions, P17Lc, P17Ld); DC/Nyquist self-paired; complex signals fail",
    "cards": [
     "P17Fa",
     "P17Fb",
@@ -830,7 +840,10 @@
     "P17Fh",
     "FB4a",
     "FB4b",
-    "FB4c"
+    "FB4c",
+    "P17Lc",
+    "P17Ld",
+    "P17Le"
    ]
   },
   {
@@ -860,12 +873,15 @@
   {
    "item": "massive mass-shell level set",
    "status": "DERIVED",
-   "basis": "hyperbola branches = boost orbits; gap; rest frame; proper-time phase rate; mass = orbit invariant",
+   "basis": "m selects a nonzero timelike level of the same form; each branch is one SO⁺(1,1) orbit, preserved by proper orthochronous boosts (not by the full Lorentz group); gap; rest frame; proper-time phase rate along the worldline of the same on-shell momentum",
    "cards": [
     "P17De",
     "P17Df",
     "P17Dg",
-    "P17Di"
+    "P17Di",
+    "P17La",
+    "P17Lb",
+    "P17Lg"
    ]
   },
   {
@@ -901,19 +917,36 @@
   {
    "item": "MW-C (conjugate pairing)",
    "status": "FAIL",
-   "basis": "as complex conjugacy; the Fourier-duality reading mc²/ħ ↔ τ is a separate RESTRICTED result",
+   "basis": "as complex conjugacy (P17Ch); what survives: mass determines the invariant mass-shell level and the associated rest-frame/proper-time phase rate. No Fourier-duality claim (P17Lf)",
    "cards": [
     "P17Ch",
-    "P17Dg"
+    "P17Lf"
    ]
   },
   {
-   "item": "MW-C′ (rest frequency and proper time, Fourier duality)",
-   "status": "RESTRICTED",
-   "basis": "exact along the group worldline; known (de Broglie); a different meaning of \"conjugate\"",
+   "item": "proper-time phase rate ω_C = mc²/ħ (worldline of the same on-shell momentum)",
+   "status": "DERIVED",
+   "basis": "Along the worldline associated with the same on-shell four-momentum, the free massive plane-wave phase accumulates at the invariant proper-time rate mc²/ħ, up to sign convention. assumptions (P17Lb): a single free massive plane wave e^{−iη(P, X)}; P on the shell q(P) = (mc/ħ)²; the straight worldline X(τ) = X₀ + (cτ/μ)P of the same on-shell momentum, on which τ is proper time; the sign convention e^{−iη(P, X)} (the opposite convention reverses the sign). On another worldline the rate differs (lab frame: ω).",
    "cards": [
     "P17Dg",
-    "P17Ch"
+    "P17Lb"
+   ]
+  },
+  {
+   "item": "mass / rest energy as a genuine spectral variable conjugate to proper time",
+   "status": "OPEN",
+   "basis": "not established (P17Lf); kept as Q17-4 and not investigated",
+   "cards": [
+    "P17Lf"
+   ]
+  },
+  {
+   "item": "boost scope on the mass shell",
+   "status": "ESTABLISHED",
+   "basis": "Proper orthochronous Lorentz boosts preserve each positive- or negative-energy mass-shell branch separately. Not claimed for the full Lorentz group (S_t, −I exchange the branches)",
+   "cards": [
+    "P17La",
+    "P17Ca"
    ]
   },
   {
@@ -964,13 +997,13 @@
    "src": "M19",
    "dst": "M17",
    "type": "CROSS-REFERENCE",
-   "why": "later mathematical connection: boosts act on (ω/c, k) as on (ct, x); Doppler on the null cone; tanh φ = ck/ω brings a massive mode to rest (P17De, P17Dh)"
+   "why": "later mathematical connection: boosts act on (ω/c, k) as on (ct, x); proper orthochronous boosts preserve each mass-shell branch; Doppler on the null cone; tanh φ = ck/ω brings a positive-energy mode to rest (P17De, P17Dh, P17La)"
   },
   {
    "src": "M18",
    "dst": "M17",
    "type": "CROSS-REFERENCE",
-   "why": "later mathematical connection: the proper-time phase e^{−i(mc²/ħ)τ} is a character of an unbounded parameter in the bounded circle, as in #18 (P17Dg, A8Fa)"
+   "why": "later mathematical connection: along the worldline of the same on-shell momentum the phase e^{−imc²τ/ħ} is a character of an unbounded parameter in the bounded circle, as in #18 (P17Lb, A8Fa); a phase rate, not a Fourier-conjugate pairing"
   },
   {
    "src": "M13",
@@ -1013,20 +1046,21 @@
   {
    "result": "massive level set",
    "answers": "Does mass appear as a parameter selecting a non-null level set of the same quadratic form whose m=0 case is null? (2026-11-17 decisions)",
-   "relation": "yes: m labels the level and the orbit (r-role); gap; rest frame; invariant proper-time frequency (#14 ⇢ #17, #19 ⇢ #17)",
+   "relation": "yes: Mass labels/selects the invariant level of the same Lorentzian quadratic form. m = 0 ⇒ q(P) = 0 (the null level); m > 0 ⇒ q(P) = (mc/ħ)² > 0 (a nonzero timelike mass-shell level). Proper orthochronous boosts preserve each branch; gap; rest frame (#14 ⇢ #17, #19 ⇢ #17)",
    "next": "is mass paired with wave variables (MW-C)?"
   },
   {
    "result": "MW-C tested",
    "answers": "Mass and wave variables form a conjugate pair in the same mathematical sense as Fourier conjugates. (MW-C)",
-   "relation": "FAIL as complex conjugacy; mc²/ħ and proper time are Fourier-dual (a different sense; #18 ⇢ #17)",
-   "next": "MW-D needs a specific theory and exact wording (OPEN; future branch)"
+   "relation": "FAIL as complex conjugacy. What survives: mass determines the invariant mass-shell level and the associated rest-frame/proper-time phase rate. The phase e^{−imc²τ/ħ} along that worldline is a character of proper time, as in #18 (#18 ⇢ #17); it is a phase rate, not a Fourier-conjugate pairing",
+   "next": "Q17-4 (OPEN, not investigated): Is there a physically meaningful formulation in which mass/rest energy acts as a genuine spectral variable conjugate to proper time? MW-D stays OPEN"
   }
  ],
  "nextQuestions": [
   "Q17-1: Does any physical pairing of independent entities carry an exact relation beyond the reality constraint (not reducible to conj χ = χ⁻¹)?",
   "Q17-2: In which sense of \"conjugate\" is the Master Map's \"physical complementarity\" meant — complex conjugacy (i) or Fourier duality (ii)?",
-  "Q17-3: MW-D in a specific theory, with exact theory-specific wording (future branch)."
+  "Q17-3: MW-D in a specific theory, with exact theory-specific wording (future branch).",
+  "Q17-4: Is there a physically meaningful formulation in which mass/rest energy acts as a genuine spectral variable conjugate to proper time? (OPEN; recorded at the #17 lock, not investigated)"
  ],
  "futureBranches": [
   "a physical reading of the lower mass-shell branch / negative frequencies in a specific field theory (particle/antiparticle)",
@@ -1077,7 +1111,7 @@
    "slop": 15,
    "td": "STRUCTURAL TRANSFER",
    "breadth": 2,
-   "why": "the #14 chart (preserved form → generator → orbit) applies unchanged in spectral variables and gives the exact role of m (orbit invariant), not c"
+   "why": "the #14 chart (preserved form → generator → orbit) applies unchanged in spectral variables: m selects the invariant level (P17Lg), each branch is one SO⁺(1,1) orbit (P17La); m plays the orbit-invariant role, not the role of c"
   },
   {
    "item": "E = ħω, p = ħk scaling (P17E)",
@@ -1096,12 +1130,12 @@
    "why": "separates conjugacy from sign symmetry, orbit symmetry, independent states, notation and duality on carded examples; not exhaustive"
   },
   {
-   "item": "MW-C′: mc²/ħ ↔ proper time (P17C)",
-   "bs": 20,
-   "slop": 25,
-   "td": "STRUCTURAL TRANSFER",
+   "item": "proper-time phase rate (P17C)",
+   "bs": 15,
+   "slop": 10,
+   "td": "TRIVIAL CONSEQUENCE",
    "breadth": 2,
-   "why": "exact and known (de Broglie); shares the character structure of #18; restricted to the group worldline; not complex conjugacy"
+   "why": "exact under the stated assumptions (P17Lb); a phase rate, not a Fourier-conjugate pairing (P17Lf)"
   },
   {
    "item": "MW-C as conjugacy",
@@ -1123,7 +1157,7 @@
  "breadth": "Application Breadth: Fourier signals (continuous, DFT) and one classical field family (Klein–Gordon form; elastic-foundation string as a second realization of the same equation) — 2 independent mathematical families; no physical system or dataset.",
  "recommendation": {
   "choice": "READY FOR #17 ADVERSARIAL LOCK",
-  "why": "Every item of the construction brief is answered by PASS cards in the decided order: the source relation is locked with its forcing property and exceptions; the criteria and levels are defined before the physical candidates; the dispersion, null and level-set mathematics is carded in spectral variables; the positive/negative-frequency relation is derived and separated from its physical and quantum readings; MW-A–MW-D each have their own status; the five required counterexamples are carded; statuses are separate.",
+  "why": "Every item of the construction brief is answered by PASS cards in the decided order: the source relation is locked with its forcing property and exceptions; the criteria and levels are defined before the physical candidates; the dispersion, null and level-set mathematics is carded in spectral variables; the positive/negative-frequency relation is derived and separated from its physical and quantum readings; MW-A–MW-D each have their own status; the five required counterexamples are carded; statuses are separate. (Construction-pass recommendation, kept as history; the lock verdict is below.)",
   "lockTargets": [
    "re-derive the realness ⟺ Hermitian-symmetry converse (Fourier uniqueness, source-only) and the 2D pairing with an independent card",
    "audit every live statement for an implied \"physical pairs are conjugate\" or \"mass is a wave\"",
@@ -1136,6 +1170,251 @@
   "realField": "For a real classical field the space-time spectrum satisfies φ̃(−ω, −k) = conj φ̃(ω, k): the reality condition pairs the mode at P = (ω/c, k) with the mode at −P, which lies on the same level set of q and on the other branch.",
   "massLevel": "In the spectral variables P = (ω/c, k) the dispersion relation is the level set q(P) = (mc/ħ)² of the Lorentzian form q = (ω/c)² − k²: m = 0 selects the null level, m > 0 a non-null level whose branches are single boost orbits, with mc/ħ the orbit invariant.",
   "kinds": "Seven kinds of pairing are kept apart: conjugacy, sign symmetry, orbit symmetry, reality constraint, independent physical states, notation-dependent pairing, and Fourier duality.",
-  "restClock": "Along the group worldline of any mode on the mass shell the phase advances at mc²/ħ per unit proper time, so the rest frequency mc²/ħ and proper time τ are a Fourier-dual pair; this is duality, not complex conjugacy."
+  "restClock": "Along the group worldline of any mode on the mass shell the phase advances at mc²/ħ per unit proper time, so the rest frequency mc²/ħ and proper time τ are a Fourier-dual pair; this is duality, not complex conjugacy.",
+  "boost": "Proper orthochronous Lorentz boosts preserve each positive- or negative-energy mass-shell branch separately.",
+  "level": "Mass labels/selects the invariant level of the same Lorentzian quadratic form.",
+  "levels": "m = 0 ⇒ q(P) = 0 (the null level); m > 0 ⇒ q(P) = (mc/ħ)² > 0 (a nonzero timelike mass-shell level).",
+  "phaseRate": "Along the worldline associated with the same on-shell four-momentum, the free massive plane-wave phase accumulates at the invariant proper-time rate mc²/ħ, up to sign convention.",
+  "notDual": "This establishes a proper-time phase rate. It does NOT by itself establish that mass and proper time are Fourier-conjugate variables.",
+  "spectralQ": "Is there a physically meaningful formulation in which mass/rest energy acts as a genuine spectral variable conjugate to proper time?"
+ },
+ "lockCards": [
+  "P17La",
+  "P17Lb",
+  "P17Lc",
+  "P17Ld",
+  "P17Le",
+  "P17Lf",
+  "P17Lg"
+ ],
+ "converse": {
+  "statement": "for x ∈ L¹(ℝ): x̂(−ω) = conj x̂(ω) for every ω ⟺ x is real almost everywhere",
+  "forward": "x real ⇒ Hermitian symmetry: the identity x̂(−ω) − conj x̂(ω) = 2i·v̂(−ω), v = Im x (P17Fa)",
+  "converse": "Hermitian symmetry ⇒ x real a.e.: with y = conj x, ŷ(ω) = conj x̂(−ω) (P17Le), so ŷ = x̂ and the uniqueness theorem on L¹ gives y = x a.e. — Zhou and Siadat, Notes on Harmonic Analysis I (arXiv:1709.03377), Theorem 1.15: \"If f ∈ L1 (R) and fˆ = 0 everywhere (fˆ is always continuous), then f = 0 a.e.\" (full text read; research/sources/zhou_siadat_2017.md)",
+  "independent": "proved exactly without importing any theorem: finite signals, every N (P17Lc: F F* = N·I; a Hermitian-symmetric X has a real inverse); finite Hermite expansions (P17Ld: the defect has h_n-coefficient 2i√(2π)iⁿ·Im c_n); and, given the inversion theorem (x, x̂ ∈ L¹), the imaginary part of the inversion integral has an odd integrand (P17Le)"
+ },
+ "audit": [
+  {
+   "claim": "physical pairs are generally complex conjugates",
+   "result": "none live; T-CONJUGACY OPEN; the only exact conjugate pairing found is the reality constraint of a real field (P17R)"
+  },
+  {
+   "claim": "mass is a wave",
+   "result": "none live; stated only as what is not established (T-MASS-WAVE-SEED stays a HYPOTHESIS)"
+  },
+  {
+   "claim": "mass and wave are Fourier-conjugate",
+   "result": "withdrawn: the construction-pass wording \"mc²/ħ and proper time are a Fourier-dual pair\" is superseded (P17Lf); the further question is Q17-4 (OPEN)"
+  },
+  {
+   "claim": "positive and negative frequency automatically mean particle/antiparticle",
+   "result": "none live; the quantum reading is \"NOT USED\" (G)"
+  },
+  {
+   "claim": "the spectral mass shell is physical spacetime",
+   "result": "none live; \"spectral variables, not spacetime\" (D, E)"
+  },
+  {
+   "claim": "every Lorentz transformation preserves an energy branch",
+   "result": "corrected: only proper orthochronous boosts; S_t and −I exchange branches (P17La)"
+  },
+  {
+   "claim": "mass changes the shape of the geometry",
+   "result": "corrected: mass selects the level; the form and the group are the same for every m (P17Lg)"
+  }
+ ],
+ "mathLock": [
+  {
+   "statement": "Fourier conjugacy: x ∈ L¹, Hermitian symmetry ⟺ x real a.e.",
+   "cards": "P17Fa, P17Lc, P17Ld, P17Le, FB4a, FB4b, FB4c",
+   "assumptions": "converse by uniqueness on L¹ (Zhou–Siadat Th. 1.15, read); exact without imported theorems for finite signals and finite Hermite expansions"
+  },
+  {
+   "statement": "real-field reality pairing P ↦ −P",
+   "cards": "P17Rb, P17Rc, P17Rd, P17Re, P17Cg",
+   "assumptions": "a real field; the partner of (ω, k) is (−ω, −k)"
+  },
+  {
+   "statement": "massless null level (spectral)",
+   "cards": "P17Dc, P17Dd, P17Dh, FB8b",
+   "assumptions": "spectral variables; distinct from the spacetime null and every other zero / null"
+  },
+  {
+   "statement": "m selects the level: m = 0 ⇒ q(P) = 0; m > 0 ⇒ q(P) = (mc/ħ)² > 0",
+   "cards": "P17Db, P17De, P17Lg",
+   "assumptions": "the form and the group do not depend on m"
+  },
+  {
+   "statement": "proper orthochronous boosts preserve each branch",
+   "cards": "P17La, P17De",
+   "assumptions": "not the full Lorentz group"
+  },
+  {
+   "statement": "proper-time phase rate mc²/ħ",
+   "cards": "P17Dg, P17Lb",
+   "assumptions": "single free plane wave; worldline of the same on-shell momentum; sign convention"
+  },
+  {
+   "statement": "MW-C FAIL",
+   "cards": "P17Ch, P17Lf",
+   "assumptions": "no Fourier-duality claim replaces it"
+  },
+  {
+   "statement": "MW-D OPEN; the dispersion equation alone cannot establish particle ontology",
+   "cards": "P17Mx",
+   "assumptions": "the elastic-foundation string"
+  }
+ ],
+ "superseded": [
+  {
+   "where": "B. source relation, continuous",
+   "old": "x̂(ω) = ∫x(t)e^{−iωt}dt. For x = u + iv: x̂(−ω) − conj x̂(ω) = 2i·v̂(−ω). So x̂(−ω) = conj x̂(ω) for every ω ⟺ v = 0 (Fourier uniqueness). Realness is exactly the property that forces the conjugacy",
+   "new": "x̂(ω) = ∫x(t)e^{−iωt}dt. For x = u + iv: x̂(−ω) − conj x̂(ω) = 2i·v̂(−ω). For x ∈ L¹(ℝ): x̂(−ω) = conj x̂(ω) for every ω ⟺ v = 0 almost everywhere — the converse by the uniqueness theorem on L¹ (Zhou–Siadat Theorem 1.15, read), and independently for finite signals and finite Hermite expansions. Realness is exactly the property that forces the conjugacy",
+   "why": "lock 5: the converse source-locked and carded"
+  },
+  {
+   "where": "B. what forces the conjugacy",
+   "old": "x = conj x (realness), and nothing weaker: the defect of the symmetry, x̂(−ω) − conj x̂(ω), is exactly 2i·v̂(−ω), where v = Im x, and v̂ ≡ 0 only for v = 0 (P17Fa).",
+   "new": "x = conj x (realness), and nothing weaker: the defect of the symmetry, x̂(−ω) − conj x̂(ω), is exactly 2i·v̂(−ω), where v = Im x, and v̂ ≡ 0 only for v = 0 a.e. (P17Fa; uniqueness on L¹, Zhou–Siadat Theorem 1.15; exact without imported theorems for finite signals, P17Lc, and finite Hermite expansions, P17Ld).",
+   "why": "lock 5"
+  },
+  {
+   "where": "F. massive level set, row 2",
+   "old": "each branch is one SO⁺(1,1) orbit: the boost with tanh φ = ck/ω (= v_g/c) carries any point to the rest point (μ, 0); boosts never change the branch",
+   "new": "Proper orthochronous Lorentz boosts preserve each positive- or negative-energy mass-shell branch separately. Each branch is one SO⁺(1,1) orbit: the boost with tanh φ = ck/ω (= v_g/c) carries a positive-energy point to (μ, 0) and a negative-energy point to (−μ, 0). Not claimed for the full Lorentz group: time reversal S_t and −I preserve q and exchange the branches (P17La, P17Ca)",
+   "why": "lock 1: boost scope"
+  },
+  {
+   "where": "F. massive level set, row 5",
+   "old": "proper-time phase rate mc²/ħ along the group worldline, for every k; constant phase along the light ray when m = 0",
+   "new": "Along the worldline associated with the same on-shell four-momentum, the free massive plane-wave phase accumulates at the invariant proper-time rate mc²/ħ, up to sign convention. — assumptions (P17Lb): a single free massive plane wave e^{−iη(P, X)}; P on the shell q(P) = (mc/ħ)²; the straight worldline X(τ) = X₀ + (cτ/μ)P of the same on-shell momentum, on which τ is proper time; the sign convention e^{−iη(P, X)} (the opposite convention reverses the sign). On another worldline the rate differs (lab frame: ω). m = 0: the phase is constant along the light ray. This establishes a proper-time phase rate. It does NOT by itself establish that mass and proper time are Fourier-conjugate variables.",
+   "why": "lock 3 and lock 4: scoped; no Fourier-duality claim"
+  },
+  {
+   "where": "F. massive level set, row 6",
+   "old": "mass as the orbit invariant: μ = mc/ħ labels the boost orbit as r labels the rotation orbit (#14 chart: Kᵀη + ηK = 0, JᵀI + IJ = 0); μ is not a form parameter like c",
+   "new": "mass selects the level: Mass labels/selects the invariant level of the same Lorentzian quadratic form. m = 0 ⇒ q(P) = 0 (the null level); m > 0 ⇒ q(P) = (mc/ħ)² > 0 (a nonzero timelike mass-shell level). The form and the group SO⁺(1,1) are the same for every m; μ = mc/ħ labels the invariant level as r labels a rotation orbit (#14 chart: Kᵀη + ηK = 0, JᵀI + IJ = 0); μ is not a form parameter like c",
+   "why": "lock 2: mass selects the level; no change of geometry"
+  },
+  {
+   "where": "F. answer",
+   "old": "Does mass appear as a parameter selecting a non-null level set of the same quadratic form whose m=0 case is null? Yes, exactly: m ↦ the level (mc/ħ)² of q = (ω/c)² − k²; m = 0 is the null level (P17Db, P17Dc, P17De). What m changes geometrically: the level and the orbit type (two branches instead of four null half-lines), a frequency gap, the existence of a rest frame, and a Lorentz-invariant proper-time frequency (P17Dg). This does not say that mass is a wave.",
+   "new": "Does mass appear as a parameter selecting a non-null level set of the same quadratic form whose m=0 case is null? Yes, exactly: Mass labels/selects the invariant level of the same Lorentzian quadratic form. m = 0 ⇒ q(P) = 0 (the null level); m > 0 ⇒ q(P) = (mc/ħ)² > 0 (a nonzero timelike mass-shell level). The form q = (ω/c)² − k² and the group acting on it are the same for every m; m does not change the geometry, it selects the level (P17Db, P17Dc, P17De, P17Lg). Consequences of the selected level (derived): a frequency gap at mc²/ħ, a rest frame, and the proper-time phase rate stated below. This does not say that mass is a wave.",
+   "why": "lock 2"
+  },
+  {
+   "where": "C. PC-4 not shared",
+   "old": "no transformation or involution relating them; different orbit types (four half-line orbits vs two branches)",
+   "new": "no transformation or involution relating the levels; the null level and a timelike level of the same form carry different SO⁺(1,1) orbit structure (four null half-lines vs two branches); m selects the level, the form is unchanged",
+   "why": "lock 2"
+  },
+  {
+   "where": "C. PC-6",
+   "old": "rest frequency mc²/ħ and proper time τ; kind: Fourier duality (a different meaning of \"conjugate\"); level: L3 of a different kind: Fourier duality, not complex conjugacy; known (de Broglie)",
+   "new": "rest frequency mc²/ħ and the proper-time phase; kind: a proper-time phase rate — not a demonstrated pairing; level: L1: a phase-rate equation; no Fourier-conjugate pairing of m and τ is established (P17Lf)",
+   "why": "lock 4: the Fourier-duality claim is withdrawn"
+  },
+  {
+   "where": "H. kinds: Fourier duality examples",
+   "old": "(t, ω), (x, k); mc²/ħ and proper time τ",
+   "new": "(t, ω), (x, k). Not established for mass and proper time (P17Lf)",
+   "why": "lock 4"
+  },
+  {
+   "where": "I. MW-A basis",
+   "old": "established physics as identifications (inputs). Derived under them: v_g = pc²/E = v (group velocity = particle velocity) and ω₀ = mc²/ħ (P17Eb); the level-set geometry is ħ-scaled (P17Ea). Not classical identities; no physical data carded here",
+   "new": "RESTRICTED to the physical setting where E = ħω and p = ħk apply (identifications used as inputs). Derived under them, with assumptions explicit: v_g = dω/dk = c²k/ω = pc²/E; for a relativistic particle with p = γmv and E = γmc², pc²/E = v; ω₀ = mc²/ħ at k = 0 (P17Eb); the level-set geometry is rescaled by ħ (P17Ea). Not classical identities; no physical data carded here",
+   "why": "lock 6: assumptions explicit"
+  },
+  {
+   "where": "I. MW-B basis",
+   "old": "exact (P17Dc, P17De, P17Di, FB8b); spectral variables, not spacetime; mass is the orbit invariant (r-role, not c-role)",
+   "new": "exact: one Lorentzian quadratic form; m = 0 ⇒ q(P) = 0 (the null level); m > 0 ⇒ q(P) = (mc/ħ)² > 0 (a nonzero timelike mass-shell level). Spectral variables, not spacetime (P17Dc, P17De, P17Di, P17Lg, FB8b)",
+   "why": "lock 2"
+  },
+  {
+   "where": "I. MW-C basis",
+   "old": "complex conjugation maps the mass-m shell to itself and never relates m to (ω, k) (P17Ch). Restricted different reading: mc²/ħ and proper time τ are Fourier-dual along the group worldline (P17Dg) — RESTRICTED, known (de Broglie), and not the same sense as Fourier coefficient conjugacy",
+   "new": "FAIL: complex conjugation maps the mass-m shell to itself and never relates m to (ω, k) (P17Ch). What survives: mass determines the invariant mass-shell level and the associated rest-frame/proper-time phase rate. (P17Lb, P17Lg). That is not a conjugate pairing, and no Fourier-duality claim replaces the failure (P17Lf). The further question is kept separately as OPEN and not investigated: Is there a physically meaningful formulation in which mass/rest energy acts as a genuine spectral variable conjugate to proper time?",
+   "why": "lock 4 and lock 6: the failure is not softened"
+  },
+  {
+   "where": "I. MW-D basis",
+   "old": "requires exact theory-specific wording; not established by the dispersion relation, which a string on an elastic foundation also satisfies (P17Mx)",
+   "new": "OPEN, not promoted: a physics interpretation that requires exact theory-specific wording. The classical elastic-foundation counterexample stays in the record because the same dispersion equation alone cannot establish particle ontology (P17Mx)",
+   "why": "lock 6"
+  },
+  {
+   "where": "K. Fourier conjugacy basis",
+   "old": "realness ⟺ Hermitian symmetry; DC/Nyquist self-paired; complex signals fail",
+   "new": "for x ∈ L¹(ℝ): Hermitian symmetry ⟺ x real a.e. (forward P17Fa; converse by uniqueness on L¹, Zhou–Siadat Theorem 1.15, read; exact without imported theorems for finite signals and finite Hermite expansions, P17Lc, P17Ld); DC/Nyquist self-paired; complex signals fail",
+   "why": "lock 5"
+  },
+  {
+   "where": "K. massive level set basis",
+   "old": "hyperbola branches = boost orbits; gap; rest frame; proper-time phase rate; mass = orbit invariant",
+   "new": "m selects a nonzero timelike level of the same form; each branch is one SO⁺(1,1) orbit, preserved by proper orthochronous boosts (not by the full Lorentz group); gap; rest frame; proper-time phase rate along the worldline of the same on-shell momentum",
+   "why": "lock 1 and lock 2"
+  },
+  {
+   "where": "K. MW-C basis",
+   "old": "as complex conjugacy; the Fourier-duality reading mc²/ħ ↔ τ is a separate RESTRICTED result",
+   "new": "as complex conjugacy (P17Ch); what survives: mass determines the invariant mass-shell level and the associated rest-frame/proper-time phase rate. No Fourier-duality claim (P17Lf)",
+   "why": "lock 4"
+  },
+  {
+   "where": "K. status table",
+   "old": "MW-C′ (rest frequency and proper time, Fourier duality): RESTRICTED — exact along the group worldline; known (de Broglie); a different meaning of \"conjugate\"",
+   "new": "proper-time phase rate ω_C = mc²/ħ (worldline of the same on-shell momentum): DERIVED",
+   "why": "lock 3 and lock 4"
+  },
+  {
+   "where": "L. story: massive level set",
+   "old": "yes: m labels the level and the orbit (r-role); gap; rest frame; invariant proper-time frequency (#14 ⇢ #17, #19 ⇢ #17)",
+   "new": "yes: Mass labels/selects the invariant level of the same Lorentzian quadratic form. m = 0 ⇒ q(P) = 0 (the null level); m > 0 ⇒ q(P) = (mc/ħ)² > 0 (a nonzero timelike mass-shell level). Proper orthochronous boosts preserve each branch; gap; rest frame (#14 ⇢ #17, #19 ⇢ #17)",
+   "why": "lock 1 and 2"
+  },
+  {
+   "where": "L. story: MW-C",
+   "old": "FAIL as complex conjugacy; mc²/ħ and proper time are Fourier-dual (a different sense; #18 ⇢ #17)",
+   "new": "FAIL as complex conjugacy. What survives: mass determines the invariant mass-shell level and the associated rest-frame/proper-time phase rate. The phase e^{−imc²τ/ħ} along that worldline is a character of proper time, as in #18 (#18 ⇢ #17); it is a phase rate, not a Fourier-conjugate pairing",
+   "why": "lock 4"
+  },
+  {
+   "where": "L. story: MW-C next",
+   "old": "MW-D needs a specific theory and exact wording (OPEN; future branch)",
+   "new": "Q17-4 (OPEN, not investigated): Is there a physically meaningful formulation in which mass/rest energy acts as a genuine spectral variable conjugate to proper time? MW-D stays OPEN",
+   "why": "lock 4"
+  },
+  {
+   "where": "N. ratings: mass shell",
+   "old": "the #14 chart (preserved form → generator → orbit) applies unchanged in spectral variables and gives the exact role of m (orbit invariant), not c",
+   "new": "the #14 chart (preserved form → generator → orbit) applies unchanged in spectral variables: m selects the invariant level (P17Lg), each branch is one SO⁺(1,1) orbit (P17La); m plays the orbit-invariant role, not the role of c",
+   "why": "lock 1 and 2"
+  },
+  {
+   "where": "N. ratings",
+   "old": "MW-C′: mc²/ħ ↔ proper time (P17C): 20% / 25%, STRUCTURAL TRANSFER",
+   "new": "proper-time phase rate (P17C): 15% / 10%, TRIVIAL CONSEQUENCE",
+   "why": "lock 4"
+  },
+  {
+   "where": "L. edge M19 ⇢ M17",
+   "old": "later mathematical connection: boosts act on (ω/c, k) as on (ct, x); Doppler on the null cone; tanh φ = ck/ω brings a massive mode to rest (P17De, P17Dh)",
+   "new": "later mathematical connection: boosts act on (ω/c, k) as on (ct, x); proper orthochronous boosts preserve each mass-shell branch; Doppler on the null cone; tanh φ = ck/ω brings a positive-energy mode to rest (P17De, P17Dh, P17La)",
+   "why": "lock 1"
+  },
+  {
+   "where": "L. edge M18 ⇢ M17",
+   "old": "later mathematical connection: the proper-time phase e^{−i(mc²/ħ)τ} is a character of an unbounded parameter in the bounded circle, as in #18 (P17Dg, A8Fa)",
+   "new": "later mathematical connection: along the worldline of the same on-shell momentum the phase e^{−imc²τ/ħ} is a character of an unbounded parameter in the bounded circle, as in #18 (P17Lb, A8Fa); a phase rate, not a Fourier-conjugate pairing",
+   "why": "lock 3 and 4"
+  }
+ ],
+ "lock": {
+  "choice": "LOCK #17 — STORY AND MATHEMATICS ALIGNED",
+  "why": "The four flagged statements are corrected (boost scope, mass selects the level, the scoped proper-time phase rate, the withdrawn Fourier-duality claim); the Fourier converse is source-locked from a text actually read and proved exactly on finite signals and finite Hermite expansions; MW-A–MW-D keep separate statuses with the MW-C failure unsoftened; the live-text audit finds no remaining claim of the six flagged kinds; #12 → #17 stays the only historical edge into #17, and #13, #14, #18, #19 stay cross-references.",
+  "storyPath": "Fourier conjugacy → question about physical pairings → candidate mass/wave investigation → exact mass-shell relation → failed conjugacy interpretation → more precise open question.",
+  "stop": "Research is paused after the #17 lock. No subsequent branch has been started. The preview represents the current canonical state of the project."
  }
 }

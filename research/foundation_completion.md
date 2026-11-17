@@ -71,7 +71,7 @@ Statuses: LOCKED; SOURCE-COMPLETE; MATH-CARDED; SOURCE+CARD COMPLETE; NEEDS DERI
 | D24. Failures and boundaries | F1 | LOCKED | every FAIL card kept |
 | D25. Application | A1, A2 | OPEN LONG-TERM | A2: APPLICATION PROVENANCE INCOMPLETE; not upstream evidence |
 | D26. Physical energy vs L² energy; meaning of squared magnitude | A3, ON9 | WORDING ONLY | name the kind of "energy" every time |
-| D41. #17: conjugacy and physical pairs (first construction) | P17F, P17R, P17N, P17M, P17E, P17K, P17C, P17MW, P17X | SOURCE+CARD COMPLETE | first construction 2026-11-17: separate statuses (Fourier conjugacy ESTABLISHED; real-field pairing DERIVED; massless null ESTABLISHED; mass shell DERIVED; E = ħω, p = ħk RESTRICTED; MW-A RESTRICTED, MW-B ESTABLISHED, MW-C FAIL, MW-D OPEN); the #17 hypothesis (P2) stays OPEN in D21 |
+| D41. #17: conjugacy and physical pairs (first construction; locked 2026-11-17) | P17F, P17R, P17N, P17M, P17E, P17K, P17C, P17MW, P17X | LOCKED | first construction 2026-11-17; LOCKED by the #17 adversarial lock (2026-11-17): Fourier conjugacy ESTABLISHED (converse locked); real-field pairing DERIVED; massless null ESTABLISHED; m selects the level (DERIVED); boost scope SO⁺(1,1); proper-time phase rate DERIVED (scoped); E = ħω, p = ħk RESTRICTED; MW-A RESTRICTED, MW-B ESTABLISHED, MW-C FAIL, MW-D OPEN; mass as a spectral variable conjugate to τ OPEN (not investigated); the #17 hypothesis (P2) stays OPEN in D21 |
 
 ## Blocking items for Foundation V1
 
@@ -91,7 +91,7 @@ Statuses: LOCKED; SOURCE-COMPLETE; MATH-CARDED; SOURCE+CARD COMPLETE; NEEDS DERI
 | Mathematical verification coverage | 98% | 98% | 107 of 109 established or derived objects have PASS cards (computed). Every #17 object is carded (P17 cards). Not carded: OB1 (definitional), A3 (wording). |
 | Cross-domain validation | 30% | 30% | Unchanged: the #17 physical candidate reproduces the Fourier source relation only as the same theorem (TRIVIAL CONSEQUENCE); no independent physical system was validated and no data are carded. |
 | Project-specific construction maturity | 45% | 45% | Unchanged: the #17 objects are known mathematics and a project classification of pairing kinds placed in the story. |
-| Paper / source coverage | 62% | 61% | 56 external sources registered (10 only partly verified); 70 of 71 external-claim objects have a source; R5 is SOURCE MISSING. Change: Lee 2012, Milnor 1965 and Yaglom 1979 registered (metadata only, claims not quoted). |
+| Paper / source coverage | 62% | 61% | 57 external sources registered (10 only partly verified); 70 of 71 external-claim objects have a source; R5 is SOURCE MISSING. Change: Lee 2012, Milnor 1965 and Yaglom 1979 registered (metadata only, claims not quoted). |
 | Application validation | 0% | 0% | Unchanged. |
 
 ## CF11 and Transformation Architecture ratings (separate records)

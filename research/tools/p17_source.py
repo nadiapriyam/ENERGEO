@@ -234,19 +234,142 @@ RECOMMENDATION = dict(choice='READY FOR #17 ADVERSARIAL LOCK',
               'check the four new cross-reference edges against the historical record (they must stay cross-references)', 'decide whether Q17-2 (complementarity as Fourier duality) is in scope for the #17 lock or a separate question'],
  limits='The broader #17 hypothesis and MW-D stay OPEN; they are open research questions, not misplacements.')
 
+# ══ #17 final adversarial lock (2026-11-17): corrections of live statements; the old wording is kept ═════════════════
+# Decisions: docs/restructure_decisions.md, "#17 final adversarial lock". Cards: verify/verify_P17L.py (P17La–P17Lg).
+LOCK_CARDS = ['P17La', 'P17Lb', 'P17Lc', 'P17Ld', 'P17Le', 'P17Lf', 'P17Lg']
+SUPERSEDED = []
+def supersede(where, old, new, why):
+    SUPERSEDED.append(dict(where=where, old=old, new=new, why=why))
+    return new
+W_BOOST = 'Proper orthochronous Lorentz boosts preserve each positive- or negative-energy mass-shell branch separately.'
+W_LEVEL = 'Mass labels/selects the invariant level of the same Lorentzian quadratic form.'
+W_LEVELS = 'm = 0 ⇒ q(P) = 0 (the null level); m > 0 ⇒ q(P) = (mc/ħ)² > 0 (a nonzero timelike mass-shell level).'
+W_PHASERATE = 'Along the worldline associated with the same on-shell four-momentum, the free massive plane-wave phase accumulates at the invariant proper-time rate mc²/ħ, up to sign convention.'
+W_NOTDUAL = 'This establishes a proper-time phase rate. It does NOT by itself establish that mass and proper time are Fourier-conjugate variables.'
+Q_SPECTRAL = 'Is there a physically meaningful formulation in which mass/rest energy acts as a genuine spectral variable conjugate to proper time?'
+SURVIVES = 'mass determines the invariant mass-shell level and the associated rest-frame/proper-time phase rate.'
+PHASE_ASSUMPTIONS = 'assumptions (P17Lb): a single free massive plane wave e^{−iη(P, X)}; P on the shell q(P) = (mc/ħ)²; the straight worldline X(τ) = X₀ + (cτ/μ)P of the same on-shell momentum, on which τ is proper time; the sign convention e^{−iη(P, X)} (the opposite convention reverses the sign). On another worldline the rate differs (lab frame: ω).'
+CONVERSE = dict(
+ statement='for x ∈ L¹(ℝ): x̂(−ω) = conj x̂(ω) for every ω ⟺ x is real almost everywhere',
+ forward='x real ⇒ Hermitian symmetry: the identity x̂(−ω) − conj x̂(ω) = 2i·v̂(−ω), v = Im x (P17Fa)',
+ converse='Hermitian symmetry ⇒ x real a.e.: with y = conj x, ŷ(ω) = conj x̂(−ω) (P17Le), so ŷ = x̂ and the uniqueness theorem on L¹ gives y = x a.e. — Zhou and Siadat, Notes on Harmonic Analysis I (arXiv:1709.03377), Theorem 1.15: "If f ∈ L1 (R) and fˆ = 0 everywhere (fˆ is always continuous), then f = 0 a.e." (full text read; research/sources/zhou_siadat_2017.md)',
+ independent='proved exactly without importing any theorem: finite signals, every N (P17Lc: F F* = N·I; a Hermitian-symmetric X has a real inverse); finite Hermite expansions (P17Ld: the defect has h_n-coefficient 2i√(2π)iⁿ·Im c_n); and, given the inversion theorem (x, x̂ ∈ L¹), the imaginary part of the inversion integral has an odd integrand (P17Le)')
+
+_old = SOURCE[0]['statement']
+SOURCE[0]['statement'] = supersede('B. source relation, continuous', _old, 'x̂(ω) = ∫x(t)e^{−iωt}dt. For x = u + iv: x̂(−ω) − conj x̂(ω) = 2i·v̂(−ω). For x ∈ L¹(ℝ): x̂(−ω) = conj x̂(ω) for every ω ⟺ v = 0 almost everywhere — the converse by the uniqueness theorem on L¹ (Zhou–Siadat Theorem 1.15, read), and independently for finite signals and finite Hermite expansions. Realness is exactly the property that forces the conjugacy', 'lock 5: the converse source-locked and carded')
+SOURCE[0]['cards'] = ['P17Fa', 'FB4a', 'P17Lc', 'P17Ld', 'P17Le']
+FORCED_BY = supersede('B. what forces the conjugacy', FORCED_BY, FORCED_BY.replace('and v̂ ≡ 0 only for v = 0 (P17Fa).', 'and v̂ ≡ 0 only for v = 0 a.e. (P17Fa; uniqueness on L¹, Zhou–Siadat Theorem 1.15; exact without imported theorems for finite signals, P17Lc, and finite Hermite expansions, P17Ld).'), 'lock 5')
+
+MASSIVE[1] = dict(MASSIVE[1], statement=supersede('F. massive level set, row 2', MASSIVE[1]['statement'], W_BOOST + ' Each branch is one SO⁺(1,1) orbit: the boost with tanh φ = ck/ω (= v_g/c) carries a positive-energy point to (μ, 0) and a negative-energy point to (−μ, 0). Not claimed for the full Lorentz group: time reversal S_t and −I preserve q and exchange the branches (P17La, P17Ca)', 'lock 1: boost scope'), cards=['P17De', 'P17La', 'P17Ca'])
+MASSIVE[4] = dict(MASSIVE[4], statement=supersede('F. massive level set, row 5', MASSIVE[4]['statement'], W_PHASERATE + ' — ' + PHASE_ASSUMPTIONS + ' m = 0: the phase is constant along the light ray. ' + W_NOTDUAL, 'lock 3 and lock 4: scoped; no Fourier-duality claim'), cards=['P17Dg', 'P17Lb', 'P17Lf'], status='DERIVED (under the stated assumptions)')
+MASSIVE[5] = dict(MASSIVE[5], statement=supersede('F. massive level set, row 6', MASSIVE[5]['statement'], 'mass selects the level: ' + W_LEVEL + ' ' + W_LEVELS + ' The form and the group SO⁺(1,1) are the same for every m; μ = mc/ħ labels the invariant level as r labels a rotation orbit (#14 chart: Kᵀη + ηK = 0, JᵀI + IJ = 0); μ is not a form parameter like c', 'lock 2: mass selects the level; no change of geometry'), cards=['P17Di', 'P17Lg', 'A8Wb'])
+MASS_ANSWER = supersede('F. answer', MASS_ANSWER, 'Does mass appear as a parameter selecting a non-null level set of the same quadratic form whose m=0 case is null? Yes, exactly: ' + W_LEVEL + ' ' + W_LEVELS + ' The form q = (ω/c)² − k² and the group acting on it are the same for every m; m does not change the geometry, it selects the level (P17Db, P17Dc, P17De, P17Lg). Consequences of the selected level (derived): a frequency gap at mc²/ħ, a rest frame, and the proper-time phase rate stated below. This does not say that mass is a wave.', 'lock 2')
+
+for c_ in CANDIDATES:
+    if c_['id'] == 'PC-4':
+        c_['notShared'] = supersede('C. PC-4 not shared', c_['notShared'], 'no transformation or involution relating the levels; the null level and a timelike level of the same form carry different SO⁺(1,1) orbit structure (four null half-lines vs two branches); m selects the level, the form is unchanged', 'lock 2')
+    if c_['id'] == 'PC-6':
+        old = dict(c_)
+        c_.update(name='rest frequency mc²/ħ and the proper-time phase', relation='phase accumulation at mc²/ħ per unit proper time along the worldline of the same on-shell momentum (up to sign convention)',
+                  kind='a proper-time phase rate — not a demonstrated pairing', criteria=dict(TC1='yes', TC2='no', TC3='yes', TC4='no', TC5='no', TC6='yes', TC7='partial'),
+                  level='L1: a phase-rate equation; no Fourier-conjugate pairing of m and τ is established (P17Lf)', shared='the character structure of #18 (an unbounded parameter in a bounded phase)',
+                  notShared='no antilinear involution; no spectral family in which m is a variable; restricted to the worldline of the same on-shell momentum', cards=['P17Dg', 'P17Lb', 'P17Lf', 'A8Fa'])
+        SUPERSEDED.append(dict(where='C. PC-6', old=f'{old["name"]}; kind: {old["kind"]}; level: {old["level"]}', new=f'{c_["name"]}; kind: {c_["kind"]}; level: {c_["level"]}', why='lock 4: the Fourier-duality claim is withdrawn'))
+for k_ in KINDS:
+    if k_['kind'] == 'Fourier duality':
+        k_['examples'] = supersede('H. kinds: Fourier duality examples', k_['examples'], '(t, ω), (x, k). Not established for mass and proper time (P17Lf)', 'lock 4')
+        k_['cards'] = ['P17Cf', 'P17Lf']
+
+for m_ in MW:
+    if m_['id'] == 'MW-A':
+        m_['basis'] = supersede('I. MW-A basis', m_['basis'], 'RESTRICTED to the physical setting where E = ħω and p = ħk apply (identifications used as inputs). Derived under them, with assumptions explicit: v_g = dω/dk = c²k/ω = pc²/E; for a relativistic particle with p = γmv and E = γmc², pc²/E = v; ω₀ = mc²/ħ at k = 0 (P17Eb); the level-set geometry is rescaled by ħ (P17Ea). Not classical identities; no physical data carded here', 'lock 6: assumptions explicit')
+    if m_['id'] == 'MW-B':
+        m_['basis'] = supersede('I. MW-B basis', m_['basis'], 'exact: one Lorentzian quadratic form; ' + W_LEVELS + ' Spectral variables, not spacetime (P17Dc, P17De, P17Di, P17Lg, FB8b)', 'lock 2')
+        m_['cards'] = ['P17Dc', 'P17De', 'P17Di', 'P17Lg', 'FB8b']
+    if m_['id'] == 'MW-C':
+        m_['basis'] = supersede('I. MW-C basis', m_['basis'], 'FAIL: complex conjugation maps the mass-m shell to itself and never relates m to (ω, k) (P17Ch). What survives: ' + SURVIVES + ' (P17Lb, P17Lg). That is not a conjugate pairing, and no Fourier-duality claim replaces the failure (P17Lf). The further question is kept separately as OPEN and not investigated: ' + Q_SPECTRAL, 'lock 4 and lock 6: the failure is not softened')
+        m_['cards'] = ['P17Ch', 'P17Lf']
+    if m_['id'] == 'MW-D':
+        m_['basis'] = supersede('I. MW-D basis', m_['basis'], 'OPEN, not promoted: a physics interpretation that requires exact theory-specific wording. The classical elastic-foundation counterexample stays in the record because the same dispersion equation alone cannot establish particle ontology (P17Mx)', 'lock 6')
+
+def _row(item):
+    return next(r for r in STATUS_TABLE if r['item'] == item)
+r_ = _row('Fourier conjugacy (real signal; continuous and DFT)')
+r_['basis'] = supersede('K. Fourier conjugacy basis', r_['basis'], 'for x ∈ L¹(ℝ): Hermitian symmetry ⟺ x real a.e. (forward P17Fa; converse by uniqueness on L¹, Zhou–Siadat Theorem 1.15, read; exact without imported theorems for finite signals and finite Hermite expansions, P17Lc, P17Ld); DC/Nyquist self-paired; complex signals fail', 'lock 5')
+r_['cards'] = r_['cards'] + ['P17Lc', 'P17Ld', 'P17Le']
+r_ = _row('massive mass-shell level set')
+r_['basis'] = supersede('K. massive level set basis', r_['basis'], 'm selects a nonzero timelike level of the same form; each branch is one SO⁺(1,1) orbit, preserved by proper orthochronous boosts (not by the full Lorentz group); gap; rest frame; proper-time phase rate along the worldline of the same on-shell momentum', 'lock 1 and lock 2')
+r_['cards'] = ['P17De', 'P17Df', 'P17Dg', 'P17Di', 'P17La', 'P17Lb', 'P17Lg']
+r_ = _row('MW-C (conjugate pairing)')
+r_['basis'] = supersede('K. MW-C basis', r_['basis'], 'as complex conjugacy (P17Ch); what survives: ' + SURVIVES + ' No Fourier-duality claim (P17Lf)', 'lock 4')
+r_['cards'] = ['P17Ch', 'P17Lf']
+_i = STATUS_TABLE.index(_row('MW-C′ (rest frequency and proper time, Fourier duality)'))
+_old_row = STATUS_TABLE[_i]
+STATUS_TABLE[_i] = dict(item='proper-time phase rate ω_C = mc²/ħ (worldline of the same on-shell momentum)', status='DERIVED', basis=W_PHASERATE + ' ' + PHASE_ASSUMPTIONS, cards=['P17Dg', 'P17Lb'])
+SUPERSEDED.append(dict(where='K. status table', old=f'{_old_row["item"]}: {_old_row["status"]} — {_old_row["basis"]}', new=f'{STATUS_TABLE[_i]["item"]}: DERIVED', why='lock 3 and lock 4'))
+STATUS_TABLE.insert(_i + 1, dict(item='mass / rest energy as a genuine spectral variable conjugate to proper time', status='OPEN', basis='not established (P17Lf); kept as Q17-4 and not investigated', cards=['P17Lf']))
+STATUS_TABLE.insert(_i + 2, dict(item='boost scope on the mass shell', status='ESTABLISHED', basis=W_BOOST + ' Not claimed for the full Lorentz group (S_t, −I exchange the branches)', cards=['P17La', 'P17Ca']))
+
+for st in STORY:
+    if st['result'] == 'massive level set':
+        st['relation'] = supersede('L. story: massive level set', st['relation'], 'yes: ' + W_LEVEL + ' ' + W_LEVELS + ' Proper orthochronous boosts preserve each branch; gap; rest frame (#14 ⇢ #17, #19 ⇢ #17)', 'lock 1 and 2')
+    if st['result'] == 'MW-C tested':
+        st['relation'] = supersede('L. story: MW-C', st['relation'], 'FAIL as complex conjugacy. What survives: ' + SURVIVES + ' The phase e^{−imc²τ/ħ} along that worldline is a character of proper time, as in #18 (#18 ⇢ #17); it is a phase rate, not a Fourier-conjugate pairing', 'lock 4')
+        st['next'] = supersede('L. story: MW-C next', st['next'], 'Q17-4 (OPEN, not investigated): ' + Q_SPECTRAL + ' MW-D stays OPEN', 'lock 4')
+NEXT_QUESTIONS.append('Q17-4: ' + Q_SPECTRAL + ' (OPEN; recorded at the #17 lock, not investigated)')
+for rt in RATINGS:
+    if rt['item'].startswith('MW-C′'):
+        SUPERSEDED.append(dict(where='N. ratings', old=f'{rt["item"]}: {rt["bs"]}% / {rt["slop"]}%, {rt["td"]}', new='proper-time phase rate (P17C): 15% / 10%, TRIVIAL CONSEQUENCE', why='lock 4'))
+        rt.update(item='proper-time phase rate (P17C)', bs=15, slop=10, td='TRIVIAL CONSEQUENCE', breadth=2, why='exact under the stated assumptions (P17Lb); a phase rate, not a Fourier-conjugate pairing (P17Lf)')
+    if rt['item'].startswith('mass shell'):
+        rt['why'] = supersede('N. ratings: mass shell', rt['why'], 'the #14 chart (preserved form → generator → orbit) applies unchanged in spectral variables: m selects the invariant level (P17Lg), each branch is one SO⁺(1,1) orbit (P17La); m plays the orbit-invariant role, not the role of c', 'lock 1 and 2')
+for e_ in list(PLACEMENT_EDGES):
+    if e_[0] == 'M18':
+        i_ = PLACEMENT_EDGES.index(e_)
+        PLACEMENT_EDGES[i_] = (e_[0], e_[1], e_[2], supersede('L. edge M18 ⇢ M17', e_[3], 'later mathematical connection: along the worldline of the same on-shell momentum the phase e^{−imc²τ/ħ} is a character of an unbounded parameter in the bounded circle, as in #18 (P17Lb, A8Fa); a phase rate, not a Fourier-conjugate pairing', 'lock 3 and 4'))
+    if e_[0] == 'M19':
+        i_ = PLACEMENT_EDGES.index(e_)
+        PLACEMENT_EDGES[i_] = (e_[0], e_[1], e_[2], supersede('L. edge M19 ⇢ M17', e_[3], 'later mathematical connection: boosts act on (ω/c, k) as on (ct, x); proper orthochronous boosts preserve each mass-shell branch; Doppler on the null cone; tanh φ = ck/ω brings a positive-energy mode to rest (P17De, P17Dh, P17La)', 'lock 1'))
+
+STORY_PATH = 'Fourier conjugacy → question about physical pairings → candidate mass/wave investigation → exact mass-shell relation → failed conjugacy interpretation → more precise open question.'
+AUDIT = [
+ ('physical pairs are generally complex conjugates', 'none live; T-CONJUGACY OPEN; the only exact conjugate pairing found is the reality constraint of a real field (P17R)'),
+ ('mass is a wave', 'none live; stated only as what is not established (T-MASS-WAVE-SEED stays a HYPOTHESIS)'),
+ ('mass and wave are Fourier-conjugate', 'withdrawn: the construction-pass wording "mc²/ħ and proper time are a Fourier-dual pair" is superseded (P17Lf); the further question is Q17-4 (OPEN)'),
+ ('positive and negative frequency automatically mean particle/antiparticle', 'none live; the quantum reading is "NOT USED" (G)'),
+ ('the spectral mass shell is physical spacetime', 'none live; "spectral variables, not spacetime" (D, E)'),
+ ('every Lorentz transformation preserves an energy branch', 'corrected: only proper orthochronous boosts; S_t and −I exchange branches (P17La)'),
+ ('mass changes the shape of the geometry', 'corrected: mass selects the level; the form and the group are the same for every m (P17Lg)'),
+]
+MATH_LOCK = [
+ ('Fourier conjugacy: x ∈ L¹, Hermitian symmetry ⟺ x real a.e.', 'P17Fa, P17Lc, P17Ld, P17Le, FB4a, FB4b, FB4c', 'converse by uniqueness on L¹ (Zhou–Siadat Th. 1.15, read); exact without imported theorems for finite signals and finite Hermite expansions'),
+ ('real-field reality pairing P ↦ −P', 'P17Rb, P17Rc, P17Rd, P17Re, P17Cg', 'a real field; the partner of (ω, k) is (−ω, −k)'),
+ ('massless null level (spectral)', 'P17Dc, P17Dd, P17Dh, FB8b', 'spectral variables; distinct from the spacetime null and every other zero / null'),
+ ('m selects the level: m = 0 ⇒ q(P) = 0; m > 0 ⇒ q(P) = (mc/ħ)² > 0', 'P17Db, P17De, P17Lg', 'the form and the group do not depend on m'),
+ ('proper orthochronous boosts preserve each branch', 'P17La, P17De', 'not the full Lorentz group'),
+ ('proper-time phase rate mc²/ħ', 'P17Dg, P17Lb', 'single free plane wave; worldline of the same on-shell momentum; sign convention'),
+ ('MW-C FAIL', 'P17Ch, P17Lf', 'no Fourier-duality claim replaces it'),
+ ('MW-D OPEN; the dispersion equation alone cannot establish particle ontology', 'P17Mx', 'the elastic-foundation string'),
+]
+LOCK = dict(choice='LOCK #17 — STORY AND MATHEMATICS ALIGNED',
+ why='The four flagged statements are corrected (boost scope, mass selects the level, the scoped proper-time phase rate, the withdrawn Fourier-duality claim); the Fourier converse is source-locked from a text actually read and proved exactly on finite signals and finite Hermite expansions; MW-A–MW-D keep separate statuses with the MW-C failure unsoftened; the live-text audit finds no remaining claim of the six flagged kinds; #12 → #17 stays the only historical edge into #17, and #13, #14, #18, #19 stay cross-references.',
+ storyPath=STORY_PATH, stop='Research is paused after the #17 lock. No subsequent branch has been started. The preview represents the current canonical state of the project.')
+RECOMMENDATION = dict(RECOMMENDATION, why=RECOMMENDATION['why'] + ' (Construction-pass recommendation, kept as history; the lock verdict is below.)')
+
 data = dict(about='Master Map #17, first construction (2026-11-17). Generated by research/tools/p17_source.py.', cards=CARDS, earlierCards=EARLIER, statuses=STATUSES,
             history=HISTORY, source=SOURCE, forcedBy=FORCED_BY, criteria=[dict(id=a, text=b) for a, b in CRITERIA], levels=[dict(id=a, name=b, meaning=c) for a, b, c in LEVELS], levelRule=LEVEL_RULE,
             candidates=[dict(c, candidateCommonRelation=None) for c in CANDIDATES], dispersion=DISPERSION, nulls=NULLS, nullLink=NULL_LINK, massive=MASSIVE, massAnswer=MASS_ANSWER,
             posNeg=POSNEG, kinds=KINDS, comparison=[dict(pairing=a, verdict=b) for a, b in COMPARISON], mw=MW, seedNote=SEED_NOTE, counterexamples=COUNTER, supportingCounterexamples=SUPPORTING_COUNTER,
             statusTable=STATUS_TABLE, placementEdges=[dict(src=a, dst=b, type=c, why=d) for a, b, c, d in PLACEMENT_EDGES], story=STORY, nextQuestions=NEXT_QUESTIONS, futureBranches=FUTURE,
             notEstablished=NOT_ESTABLISHED, ratings=RATINGS, breadth=BREADTH, recommendation=RECOMMENDATION,
-            words=dict(realField=W_REALFIELD, massLevel=W_MASSLEVEL, kinds=W_KINDS, restClock=W_RESTCLOCK))
+            words=dict(realField=W_REALFIELD, massLevel=W_MASSLEVEL, kinds=W_KINDS, restClock=W_RESTCLOCK, boost=W_BOOST, level=W_LEVEL, levels=W_LEVELS, phaseRate=W_PHASERATE, notDual=W_NOTDUAL, spectralQ=Q_SPECTRAL),
+            lockCards=LOCK_CARDS, converse=CONVERSE, audit=[dict(claim=a, result=b) for a, b in AUDIT], mathLock=[dict(statement=a, cards=b, assumptions=c) for a, b, c in MATH_LOCK], superseded=SUPERSEDED, lock=LOCK)
 (ROOT / 'research/p17.json').write_text(json.dumps(data, ensure_ascii=False, indent=1) + '\n')
 
 # ── render ───────────────────────────────────────────────────────────────────────────────────────────
 cell = lambda x: '—' if x in (None, '', []) else str(x).replace('|', '\\|')
 cs = lambda l: ', '.join(l)
-L = ['# Master Map #17, first construction: conjugacy and physical pairs', '',
+L = ['# Master Map #17: conjugacy and physical pairs (first construction; locked 2026-11-17)', '', f'**{LOCK["choice"]}** (2026-11-17). Lock cards: `verify/verify_P17L.py` (P17La–P17Lg). The lock section and the superseded construction-pass wording are at the end.', '',
      'Generated from `research/tools/p17_source.py` (`research/p17.json`). Do not edit by hand. Cards: `verify/verify_P17.py` (34, one ledger run), with FB4a–FB4c and FB8a–FB8c. Decisions: `docs/restructure_decisions.md`, "Pre-#17 story patches and the first #17 construction".', '',
      f'Discovery order kept: {HISTORY["path"]} {HISTORY["notAssumed"]}', '',
      '## A. The historical #17 question', '', f'- Node: **{HISTORY["node"]}**; historical predecessor: **{HISTORY["predecessor"]}** (EARLIER PREDECESSOR edge #12 → #17).', f'- Question: {HISTORY["question"]}',
@@ -263,7 +386,7 @@ L += ['', '## D. Dispersion and mass-shell mathematics (spectral variables, not 
 L += ['', '## E. The massless null case', '', 'm = 0: ω² = c²k² ⟺ (ω/c)² − k² = 0 ⟺ ω = ±ck, a null relation of the Lorentzian form in the spectral plane (P17Dc). They are not one kind of zero:', '',
       '| Object | Where it lives | Relation | Kind of zero (#13) | Cards |', '|---|---|---|---|---|'] + [f'| {n["object"]} | {n["where"]} | {cell(n["relation"])} | {n["zeroKind"]} | {cs(n["cards"])} |' for n in NULLS]
 L += ['', NULL_LINK, '', '## F. The massive level-set case', '', '| Statement | Cards | Status |', '|---|---|---|'] + [f'| {cell(d["statement"])} | {cs(d["cards"])} | {d["status"]} |' for d in MASSIVE]
-L += ['', f'**{MASS_ANSWER}**', '', W_MASSLEVEL, '', W_RESTCLOCK, '',
+L += ['', f'**{MASS_ANSWER}**', '', W_LEVEL + ' ' + W_LEVELS, '', W_BOOST, '', W_PHASERATE + ' ' + W_NOTDUAL, '', f'Assumptions: {PHASE_ASSUMPTIONS}', '', f'Open, not investigated (Q17-4): {Q_SPECTRAL}', '',
       '## G. Positive and negative frequency', '', f'- **Mathematics.** {POSNEG["math"]}', f'- **When it holds.** {POSNEG["condition"]}', f'- **Classical physical reading.** {POSNEG["physical"]}', f'- **Quantum reading.** {POSNEG["quantum"]}', '', W_REALFIELD, '',
       '## H. Comparison with true Fourier conjugacy', '', W_KINDS, '', '| Kind | Meaning | Examples | Cards |', '|---|---|---|---|'] + [f'| {k["kind"]} | {cell(k["meaning"])} | {cell(k["examples"])} | {cs(k["cards"])} |' for k in KINDS]
 L += ['', '| Pairing asked about | Verdict |', '|---|---|'] + [f'| {cell(a)} | {cell(b)} |' for a, b in COMPARISON]
@@ -281,6 +404,13 @@ L += ['', BREADTH, '', '## O. Files', '', '- `verify/verify_P17.py` (34 cards, o
       '- Registry: T-P17-GOV, T-P17-CRITERIA, T-P17-DEPTH, T-MW-A, T-MW-B, T-MW-C, T-MW-D, T-P17-REALFIELD, T-P17-MASS-LEVEL, T-P17-PAIRING-KINDS, T-P17-REST-CLOCK; notes on T-CONJUGACY, T-MASS-WAVE-SEED, T-MASS-WAVE, T-MASS-WAVE-Q, T-MATTER-FIELD.',
       '- Foundation: objects P17F, P17R, P17N, P17M, P17E, P17K, P17C, P17MW, P17X; bridges BR87–BR92; domain D41; sources SRC-FOLLAND-1995, SRC-SCOTT-1969, SRC-WIGNER-1939 (bears on only).',
       '- Canonical story: cross-reference edges #13, #14, #18, #19 ⇢ #17; chain P17. Master map: Part III block "#17: conjugacy and physical pairs"; Parts X, XII, XIII, XV. Application matrix: version 5.', '',
-      '## P. Recommendation', '', f'**{RECOMMENDATION["choice"]}**', '', RECOMMENDATION['why'], '', 'Lock targets: ' + '; '.join(RECOMMENDATION['lockTargets']) + '.', '', f'Limits: {RECOMMENDATION["limits"]}']
+      '## P. Recommendation', '', f'**{RECOMMENDATION["choice"]}**', '', RECOMMENDATION['why'], '', 'Lock targets: ' + '; '.join(RECOMMENDATION['lockTargets']) + '.', '', f'Limits: {RECOMMENDATION["limits"]}',
+      '', '## Q. Final adversarial lock (2026-11-17)', '', f'**{LOCK["choice"]}**', '', LOCK['why'], '', f'Story order kept: {STORY_PATH}', '',
+      '### The Fourier converse', '', f'- Statement: {CONVERSE["statement"]}.', f'- Forward: {CONVERSE["forward"]}.', f'- Converse: {CONVERSE["converse"]}.', f'- Independent exact proofs: {CONVERSE["independent"]}.', '',
+      '### Mathematical lock', '', '| Live statement | Cards | Assumptions / scope |', '|---|---|---|'] + [f'| {cell(a)} | {b} | {cell(c)} |' for a, b, c in MATH_LOCK] + [
+      '', '### Live-text audit', '', '| Wording searched for | Result |', '|---|---|'] + [f'| {cell(a)} | {cell(b)} |' for a, b in AUDIT] + [
+      '', '### Superseded construction-pass wording (kept)', '', 'The two sentences below were the original wording of registry records T-P17-REST-CLOCK (superseded by T-P17-PHASE-RATE) and T-P17-MASS-LEVEL (normalized statement corrected). They are kept as provenance, not as live claims.', '',
+      '> ' + W_RESTCLOCK, '', '> ' + W_MASSLEVEL, '', '| Where | Old | New | Why |', '|---|---|---|---|'] + [f'| {x["where"]} | {cell(x["old"])} | {cell(x["new"])} | {x["why"]} |' for x in SUPERSEDED] + [
+      '', '### Stopping point', '', LOCK['stop']]
 (ROOT / 'research/constructions/p17_conjugacy_physical_pairs.md').write_text('\n'.join(L) + '\n')
-print(f'{len(CARDS)} cards; {len(CANDIDATES)} candidate pairs; {len(STATUS_TABLE)} status rows; recommendation: {RECOMMENDATION["choice"]}')
+print(f'{len(CARDS)} + {len(LOCK_CARDS)} cards; {len(CANDIDATES)} candidate pairs; {len(STATUS_TABLE)} status rows; {len(SUPERSEDED)} superseded; lock: {LOCK["choice"]}')

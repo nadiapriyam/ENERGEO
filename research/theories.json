@@ -5259,6 +5259,14 @@
         {
           "ref": "card:P17Cg",
           "note": "conj χ = χ⁻¹"
+        },
+        {
+          "ref": "card:P17Lc",
+          "note": "discrete converse"
+        },
+        {
+          "ref": "card:P17Ld",
+          "note": "Hermite converse"
         }
       ],
       "evidenceAgainst": [
@@ -5272,7 +5280,8 @@
         }
       ],
       "boundaries": [
-        "#17 first construction (2026-11-17): OPEN, not assumed. Source relation locked: x real ⟺ x̂(−ω) = conj x̂(ω) (P17Fa; DFT, DC and Nyquist: P17Fd, P17Ff). First physical candidate: a real classical field has φ̃(−ω, −k) = conj φ̃(ω, k) — the same theorem, a reality constraint whose partners are one real oscillation, not two entities (P17Rc, P17Cd). Sign symmetry, orbit symmetry, independent states and notation-dependent pairs are different kinds (T-P17-PAIRING-KINDS). Record: research/constructions/p17_conjugacy_physical_pairs.md."
+        "#17 first construction (2026-11-17): OPEN, not assumed. Source relation locked: x real ⟺ x̂(−ω) = conj x̂(ω) (P17Fa; DFT, DC and Nyquist: P17Fd, P17Ff). First physical candidate: a real classical field has φ̃(−ω, −k) = conj φ̃(ω, k) — the same theorem, a reality constraint whose partners are one real oscillation, not two entities (P17Rc, P17Cd). Sign symmetry, orbit symmetry, independent states and notation-dependent pairs are different kinds (T-P17-PAIRING-KINDS). Record: research/constructions/p17_conjugacy_physical_pairs.md.",
+        "#17 lock (2026-11-17): stays OPEN. The converse of the source relation is locked (uniqueness on L¹, Zhou–Siadat Theorem 1.15, read; exact proofs for finite signals and finite Hermite expansions, P17Lc, P17Ld)."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -5284,6 +5293,8 @@
         "P17Cb",
         "P17Cd",
         "P17Cg",
+        "P17Lc",
+        "P17Ld",
         "P17Rc"
       ],
       "sourceDocs": [
@@ -5317,6 +5328,10 @@
         {
           "date": "2026-11-17",
           "change": "#17 first construction: tested, stays OPEN"
+        },
+        {
+          "date": "2026-11-17",
+          "change": "#17 lock: source relation locked"
         }
       ],
       "relatedActsRev3": [
@@ -11680,11 +11695,16 @@
         {
           "ref": "card:P17Ch",
           "note": "MW-C fails as conjugacy"
+        },
+        {
+          "ref": "card:P17Lf",
+          "note": "no Fourier-duality claim"
         }
       ],
       "boundaries": [
         "Not rewritten into QFT language; QFT is a secondary reference, not a proof of this theory.",
-        "#17 first construction (2026-11-17): kept verbatim and not promoted; the historical seed for one candidate route inside #17. Exact readings: MW-A RESTRICTED (T-MW-A), MW-B ESTABLISHED (T-MW-B), MW-C FAIL (T-MW-C; a restricted Fourier-duality reading mc²/ħ ↔ τ survives, T-P17-REST-CLOCK), MW-D OPEN (T-MW-D). Not reinterpreted as QFT. Record: research/constructions/p17_conjugacy_physical_pairs.md."
+        "SUPERSEDED (#17 lock, 2026-11-17: the Fourier-duality reading is withdrawn; see the note below): #17 first construction (2026-11-17): kept verbatim and not promoted; the historical seed for one candidate route inside #17. Exact readings: MW-A RESTRICTED (T-MW-A), MW-B ESTABLISHED (T-MW-B), MW-C FAIL (T-MW-C; a restricted Fourier-duality reading mc²/ħ ↔ τ survives, T-P17-REST-CLOCK), MW-D OPEN (T-MW-D). Not reinterpreted as QFT. Record: research/constructions/p17_conjugacy_physical_pairs.md.",
+        "#17 lock (2026-11-17): kept verbatim and not promoted. MW-A RESTRICTED (T-MW-A); MW-B ESTABLISHED (T-MW-B: mass selects the level of one Lorentzian form); MW-C FAIL (T-MW-C) — what survives is that mass determines the invariant mass-shell level and the associated rest-frame / proper-time phase rate (T-P17-PHASE-RATE), not a conjugate or Fourier-dual pairing; MW-D OPEN (T-MW-D). Record: research/constructions/p17_conjugacy_physical_pairs.md."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -11696,6 +11716,7 @@
         "P17Ch",
         "P17De",
         "P17Dg",
+        "P17Lf",
         "S12"
       ],
       "sourceDocs": [
@@ -11728,6 +11749,10 @@
         {
           "date": "2026-11-17",
           "change": "#17 first construction: four readings tested separately"
+        },
+        {
+          "date": "2026-11-17",
+          "change": "#17 lock: readings restated without the withdrawn duality"
         }
       ],
       "relatedActsRev3": [],
@@ -14895,7 +14920,8 @@
         "T-TIME-CIRCLE-0",
         "T-H3",
         "B-FINITE-INFINITE",
-        "T-P17-REST-CLOCK"
+        "T-P17-REST-CLOCK",
+        "T-P17-PHASE-RATE"
       ],
       "history": [],
       "relatedActsRev3": [],
@@ -16560,7 +16586,7 @@
           "source": "docs/restructure_decisions.md"
         }
       ],
-      "normalizedStatement": "q(P) = (ω/c)² − k² with P = (ω/c, k): m = 0 ⟺ q(P) = 0 (ω = ±ck); m > 0 ⟺ q(P) = (mc/ħ)², a hyperbola whose branches are boost orbits; mass is the orbit invariant (P17Dc, P17De, P17Di). Spectral variables, not physical spacetime.",
+      "normalizedStatement": "q(P) = (ω/c)² − k² with P = (ω/c, k): m = 0 ⇒ q(P) = 0 (the null level, ω = ±ck); m > 0 ⇒ q(P) = (mc/ħ)² > 0 (a nonzero timelike mass-shell level). Mass labels/selects the invariant level of the same Lorentzian quadratic form; the form and the group are the same for every m (P17Lg). Each branch is one SO⁺(1,1) orbit, preserved by proper orthochronous boosts (P17La). Spectral variables, not physical spacetime.",
       "origin": "user",
       "kind": "established",
       "status": "established",
@@ -16618,7 +16644,12 @@
         "T-MW-A",
         "T-P17-MASS-LEVEL"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-17",
+          "change": "#17 lock: mass selects the level; boost scope. Previous wording: q(P) = (ω/c)² − k² with P = (ω/c, k): m = 0 ⟺ q(P) = 0 (ω = ±ck); m > 0 ⟺ q(P) = (mc/ħ)², a hyperbola whose branches are boost orbits; mass is the orbit invariant (P17Dc, P17De, P17Di). Spectral variables, not physical spacetime."
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-17",
@@ -16626,7 +16657,7 @@
         "breadth": "one mathematical family",
         "backboneSupport": 30,
         "slopRisk": 10,
-        "why": "One Lorentzian form q = (ω/c)² − k²: m = 0 is its null level and m > 0 a non-null level whose branches are boost orbits, with mc/ħ the orbit invariant. A second realization (the elastic-foundation string) has the same levels.",
+        "why": "One Lorentzian form q = (ω/c)² − k²: m = 0 selects its null level and m > 0 a nonzero timelike level; the form does not depend on m. A second realization (the elastic-foundation string) has the same levels.",
         "increase": "A third independent system on the same levels, or a prediction from the level structure recorded before its card.",
         "falsify": "A massless and a massive wave of one PDE family that do not lie on levels of one form (none).",
         "classification": "GENERAL CONSTRUCTION",
@@ -16657,7 +16688,7 @@
           "source": "docs/restructure_decisions.md"
         }
       ],
-      "normalizedStatement": "Tested as complex conjugacy: conjugation pairs P with −P, maps the mass-m shell to itself and never relates m to (ω, k) (P17Ch). A different, restricted pairing exists: mc²/ħ is Fourier-dual to proper time along the group worldline (T-P17-REST-CLOCK).",
+      "normalizedStatement": "Tested as complex conjugacy: FAIL — conjugation pairs P with −P, maps the mass-m shell to itself and never relates m to (ω, k) (P17Ch). What survives: mass determines the invariant mass-shell level and the associated rest-frame / proper-time phase rate (T-P17-PHASE-RATE). That is not a conjugate pairing, and no Fourier-duality claim replaces the failure (P17Lf). The further question is T-P17-MASS-SPECTRAL-Q (OPEN, not investigated).",
       "origin": "user",
       "kind": "historical-conjecture",
       "status": "hypothesis",
@@ -16666,6 +16697,10 @@
         {
           "ref": "card:P17Ch",
           "note": "conjugation fixes m"
+        },
+        {
+          "ref": "card:P17Lf",
+          "note": "no Fourier-duality claim replaces the failure"
         }
       ],
       "boundaries": [
@@ -16678,7 +16713,8 @@
       ],
       "relatedObjects": [],
       "relatedCards": [
-        "P17Ch"
+        "P17Ch",
+        "P17Lf"
       ],
       "sourceDocs": [
         "docs/restructure_decisions.md",
@@ -16698,9 +16734,16 @@
       "related": [
         "T-MASS-WAVE-SEED",
         "T-MW-A",
-        "T-P17-REST-CLOCK"
+        "T-P17-REST-CLOCK",
+        "T-P17-PHASE-RATE",
+        "T-P17-MASS-SPECTRAL-Q"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-17",
+          "change": "#17 lock: the restricted Fourier-duality reading is withdrawn; the failure is not softened. Previous wording: Tested as complex conjugacy: conjugation pairs P with −P, maps the mass-m shell to itself and never relates m to (ω, k) (P17Ch). A different, restricted pairing exists: mc²/ħ is Fourier-dual to proper time along the group worldline (T-P17-REST-CLOCK)."
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-17",
@@ -16709,7 +16752,7 @@
         "backboneSupport": 0,
         "slopRisk": 5,
         "why": "Complex conjugation maps the mass-m shell to itself; m is a level label, not a coordinate paired with (ω, k).",
-        "increase": "None for this reading; the duality reading is T-P17-REST-CLOCK.",
+        "increase": "None for this reading. The further question is T-P17-MASS-SPECTRAL-Q (open, not investigated).",
         "falsify": "Already falsified (P17Ch).",
         "classification": "GENERAL CONSTRUCTION",
         "validity": {
@@ -16923,7 +16966,7 @@
       "label": "Mass selects a level of the spectral Lorentzian form",
       "words": "In the spectral variables P = (ω/c, k) the dispersion relation is the level set q(P) = (mc/ħ)² of the Lorentzian form q = (ω/c)² − k²: m = 0 selects the null level, m > 0 a non-null level whose branches are single boost orbits, with mc/ħ the orbit invariant.",
       "variants": [],
-      "normalizedStatement": "m ↦ the level (mc/ħ)²; m = 0 the null level; m > 0: two branches (boost orbits), a frequency gap at mc²/ħ, a rest frame (tanh φ = ck/ω), and an invariant proper-time phase rate; mc/ħ plays the role of the circle radius r, not of c.",
+      "normalizedStatement": "Mass labels/selects the invariant level of the same Lorentzian quadratic form: m = 0 ⇒ q(P) = 0; m > 0 ⇒ q(P) = (mc/ħ)² > 0. Each positive- or negative-energy branch is one SO⁺(1,1) orbit and is preserved by proper orthochronous boosts (not by the full Lorentz group). Consequences of the level: a frequency gap at mc²/ħ, a rest frame (tanh φ = ck/ω), and the proper-time phase rate along the worldline of the same on-shell momentum (T-P17-PHASE-RATE). mc/ħ plays the role of the circle radius r, not of c.",
       "origin": "assistant-proposed",
       "kind": "derived-connection",
       "status": "derived",
@@ -16947,6 +16990,14 @@
         {
           "ref": "card:P17Di",
           "note": "orbit invariant"
+        },
+        {
+          "ref": "card:P17La",
+          "note": "boost scope"
+        },
+        {
+          "ref": "card:P17Lg",
+          "note": "the form does not depend on m"
         }
       ],
       "evidenceAgainst": [],
@@ -16964,7 +17015,9 @@
         "P17Dc",
         "P17De",
         "P17Dg",
-        "P17Di"
+        "P17Di",
+        "P17La",
+        "P17Lg"
       ],
       "sourceDocs": [
         "research/constructions/p17_conjugacy_physical_pairs.md"
@@ -16984,7 +17037,12 @@
         "T-MW-B",
         "T-C-ROLES"
       ],
-      "history": [],
+      "history": [
+        {
+          "date": "2026-11-17",
+          "change": "#17 lock: mass selects the level (no change of geometry); boost scope; phase rate scoped. Previous wording: m ↦ the level (mc/ħ)²; m = 0 the null level; m > 0: two branches (boost orbits), a frequency gap at mc²/ħ, a rest frame (tanh φ = ck/ω), and an invariant proper-time phase rate; mc/ħ plays the role of the circle radius r, not of c."
+        }
+      ],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-17",
@@ -16992,7 +17050,7 @@
         "breadth": "one mathematical family",
         "backboneSupport": 30,
         "slopRisk": 15,
-        "why": "The #14 chart (preserved form, generator, orbit) applies unchanged in spectral variables. It gives the exact role of m: the label of a level and of its boost orbits, as r labels circles.",
+        "why": "The #14 chart (preserved form, generator, orbit) applies unchanged in spectral variables. It gives the exact role of m: it selects the invariant level, whose branches are SO⁺(1,1) orbits, as r labels circles.",
         "increase": "A consequence of the level structure not already in the dispersion relation, stated before checking.",
         "falsify": "A massive branch that is not a single SO⁺(1,1) orbit (none).",
         "classification": "GENERAL CONSTRUCTION",
@@ -17111,13 +17169,13 @@
     },
     {
       "id": "T-P17-REST-CLOCK",
-      "label": "Rest frequency and proper time are Fourier-dual",
+      "label": "Rest frequency and proper time as a Fourier-dual pair (superseded at the #17 lock)",
       "words": "Along the group worldline of any mode on the mass shell the phase advances at mc²/ħ per unit proper time, so the rest frequency mc²/ħ and proper time τ are a Fourier-dual pair; this is duality, not complex conjugacy.",
       "variants": [],
       "normalizedStatement": "Along x = v_g t the phase ωt − kx advances at mc²/ħ per unit proper time for every k (P17Dg): e^{−i(mc²/ħ)τ} is a character of proper time, as in #18. Known (de Broglie). Not complex conjugacy (MW-C FAIL).",
       "origin": "assistant-proposed",
-      "kind": "derived-connection",
-      "status": "derived",
+      "kind": "historical-conjecture",
+      "status": "hypothesis",
       "evidenceFor": [
         {
           "ref": "card:P17Dg",
@@ -17132,11 +17190,17 @@
           "note": "the character of #18"
         }
       ],
-      "evidenceAgainst": [],
-      "boundaries": [
-        "#17 first construction (2026-11-17): RESTRICTED (exact along the group worldline; a different meaning of \"conjugate\")."
+      "evidenceAgainst": [
+        {
+          "ref": "card:P17Lf",
+          "note": "a phase rate set by a parameter does not make the parameter Fourier-conjugate to time"
+        }
       ],
-      "supersededBy": null,
+      "boundaries": [
+        "#17 first construction (2026-11-17): RESTRICTED (exact along the group worldline; a different meaning of \"conjugate\").",
+        "SUPERSEDED (#17 lock, 2026-11-17): the Fourier-duality wording is withdrawn; what survives is the scoped proper-time phase rate (T-P17-PHASE-RATE). The further question is T-P17-MASS-SPECTRAL-Q (OPEN, not investigated)."
+      ],
+      "supersededBy": "T-P17-PHASE-RATE",
       "supersedes": null,
       "relatedActs": [
         "Guide"
@@ -17145,7 +17209,8 @@
       "relatedCards": [
         "A8Fa",
         "P17Ch",
-        "P17Dg"
+        "P17Dg",
+        "P17Lf"
       ],
       "sourceDocs": [
         "research/constructions/p17_conjugacy_physical_pairs.md"
@@ -17165,17 +17230,129 @@
         "T-MW-C",
         "T-UNBOUNDED-EVOLUTION"
       ],
+      "history": [
+        {
+          "date": "2026-11-17",
+          "change": "#17 lock: superseded by T-P17-PHASE-RATE; kind derived-connection → historical-conjecture, status derived → hypothesis (wording kept)"
+        }
+      ],
+      "relatedActsRev3": [],
+      "assessment": {
+        "date": "2026-11-17",
+        "mathematicalStatus": "TEXTBOOK / KNOWN",
+        "breadth": "one mathematical family",
+        "backboneSupport": 0,
+        "slopRisk": 30,
+        "why": "The phase rate is exact under stated assumptions, but a phase rate set by a parameter does not make the parameter Fourier-conjugate to proper time (P17Lf). The duality wording is withdrawn.",
+        "increase": "See T-P17-MASS-SPECTRAL-Q (open, not investigated).",
+        "falsify": "A mode on the shell whose proper-time phase rate differs from mc²/ħ (impossible).",
+        "classification": "GENERAL CONSTRUCTION",
+        "validity": {
+          "construction": "pass",
+          "generalization": "pass",
+          "transfer": "partial",
+          "failureCondition": "pass",
+          "outOfSample": "n/a"
+        },
+        "branchState": "low-confidence-active",
+        "failures": [],
+        "transferDepth": "NOT YET FORMALIZED",
+        "mathematicalCorrectness": "not established",
+        "prediction": null,
+        "ratingHistory": [
+          {
+            "date": "2026-11-17",
+            "fromBackbone": 20,
+            "fromSlop": 25,
+            "toBackbone": 0,
+            "toSlop": 30,
+            "reason": "#17 lock: the Fourier-duality claim is not established (P17Lf); the phase rate survives as T-P17-PHASE-RATE"
+          }
+        ],
+        "applicationBreadth": 2,
+        "novelty": "VALIDATION OF KNOWN MATHEMATICS"
+      }
+    },
+    {
+      "id": "T-P17-PHASE-RATE",
+      "label": "The proper-time phase rate mc²/ħ, scoped",
+      "words": "Along the worldline associated with the same on-shell four-momentum, the free massive plane-wave phase accumulates at the invariant proper-time rate mc²/ħ, up to sign convention.",
+      "variants": [
+        {
+          "words": "This establishes a proper-time phase rate.",
+          "source": "docs/restructure_decisions.md"
+        },
+        {
+          "words": "It does NOT by itself establish that mass and proper time are Fourier-conjugate variables.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "Assumptions (P17Lb): a single free massive plane wave e^{−iη(P, X)}; P on the shell q(P) = (mc/ħ)²; the worldline X(τ) = X₀ + (cτ/μ)P of the same on-shell momentum, on which τ is proper time; the sign convention. Then the phase accumulates at μc = mc²/ħ; on another worldline the rate differs. Not a Fourier-conjugate pairing of m and τ (P17Lf).",
+      "origin": "user",
+      "kind": "derived-connection",
+      "status": "derived",
+      "evidenceFor": [
+        {
+          "ref": "card:P17Lb",
+          "note": "assumptions explicit"
+        },
+        {
+          "ref": "card:P17Dg",
+          "note": "the rate along the group worldline"
+        }
+      ],
+      "evidenceAgainst": [
+        {
+          "ref": "card:P17Lf",
+          "note": "a parameter-set phase rate is not a Fourier conjugacy"
+        }
+      ],
+      "boundaries": [
+        "#17 lock (2026-11-17): DERIVED under the stated assumptions; supersedes T-P17-REST-CLOCK, whose Fourier-duality wording is withdrawn."
+      ],
+      "supersededBy": null,
+      "supersedes": "T-P17-REST-CLOCK",
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [
+        "P17Dg",
+        "P17Lb",
+        "P17Lf"
+      ],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "#17 lock, 3–4",
+      "audit": {
+        "before": "new",
+        "note": "#17 final adversarial lock (2026-11-17)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-MW-C",
+        "T-P17-MASS-SPECTRAL-Q",
+        "T-UNBOUNDED-EVOLUTION"
+      ],
       "history": [],
       "relatedActsRev3": [],
       "assessment": {
         "date": "2026-11-17",
         "mathematicalStatus": "TEXTBOOK / KNOWN",
         "breadth": "one mathematical family",
-        "backboneSupport": 20,
-        "slopRisk": 25,
-        "why": "Exact along the group worldline for every mode on the shell; the phase is a character of proper time, the circle structure of #18. Known (de Broglie); a different meaning of \"conjugate\".",
-        "increase": "A use of the invariant rest frequency that predicts something new, recorded first.",
-        "falsify": "A mode on the shell whose proper-time phase rate differs from mc²/ħ (impossible).",
+        "backboneSupport": 15,
+        "slopRisk": 10,
+        "why": "Exact under the stated assumptions: one free plane wave, the worldline of the same on-shell momentum, the sign convention. On another worldline the rate differs. It is a phase rate, not a Fourier-conjugate pairing.",
+        "increase": "A use of the invariant rate that predicts something new, recorded first.",
+        "falsify": "A mode on the shell whose phase rate along the worldline of its own momentum differs from mc²/ħ (impossible).",
         "classification": "GENERAL CONSTRUCTION",
         "validity": {
           "construction": "pass",
@@ -17186,13 +17363,62 @@
         },
         "branchState": "active",
         "failures": [],
-        "transferDepth": "STRUCTURAL TRANSFER",
+        "transferDepth": "TRIVIAL CONSEQUENCE",
         "mathematicalCorrectness": "established",
         "prediction": null,
         "ratingHistory": [],
         "applicationBreadth": 2,
         "novelty": "VALIDATION OF KNOWN MATHEMATICS"
       }
+    },
+    {
+      "id": "T-P17-MASS-SPECTRAL-Q",
+      "label": "Mass / rest energy as a spectral variable conjugate to proper time?",
+      "words": "Is there a physically meaningful formulation in which mass/rest energy acts as a genuine spectral variable conjugate to proper time?",
+      "variants": [
+        {
+          "words": "Do not investigate it in this pass.",
+          "source": "docs/restructure_decisions.md"
+        }
+      ],
+      "normalizedStatement": "Recorded at the #17 lock (Q17-4) and not investigated. The proper-time phase rate (T-P17-PHASE-RATE) does not answer it (P17Lf).",
+      "origin": "user",
+      "kind": "open-question",
+      "status": "open",
+      "evidenceFor": [],
+      "evidenceAgainst": [],
+      "boundaries": [
+        "#17 lock (2026-11-17): OPEN; not investigated."
+      ],
+      "supersededBy": null,
+      "supersedes": null,
+      "relatedActs": [
+        "Guide"
+      ],
+      "relatedObjects": [],
+      "relatedCards": [],
+      "sourceDocs": [
+        "docs/restructure_decisions.md",
+        "docs/restructure_decisions.md"
+      ],
+      "auditRef": "#17 lock, 4",
+      "audit": {
+        "before": "new",
+        "note": "#17 final adversarial lock (2026-11-17)"
+      },
+      "interactive": "none",
+      "graphRecord": null,
+      "researchMode": "theorem-target",
+      "researchDirection": "outside-in",
+      "construction": null,
+      "proofTarget": null,
+      "related": [
+        "T-MW-C",
+        "T-P17-PHASE-RATE"
+      ],
+      "history": [],
+      "relatedActsRev3": [],
+      "assessment": null
     }
   ]
 }

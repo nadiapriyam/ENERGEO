@@ -360,9 +360,10 @@ Novelty is kept separate:
 `research/constructions/cf11b_fisher_test.md`. Their column "P1" reads as R2, "passive coordinate change" as R1, and
 "P3" as R3.
 
-### #17: conjugacy and physical pairs (first construction, 2026-11-17)
+### #17: conjugacy and physical pairs (first construction and lock, 2026-11-17)
 
-Record: `research/constructions/p17_conjugacy_physical_pairs.md` (cards P17Fa–P17Mx, `verify/verify_P17.py`).
+**LOCK #17 — STORY AND MATHEMATICS ALIGNED** (2026-11-17). Record: `research/constructions/p17_conjugacy_physical_pairs.md`
+(cards P17Fa–P17Mx, `verify/verify_P17.py`; lock cards P17La–P17Lg, `verify/verify_P17L.py`).
 *The historical question leads:* Master Map #17 asks "Do observable physical pairings or complementarities reflect
 deeper symmetry analogous to mathematical conjugacy?" (T-CONJUGACY). Its historical predecessor is #12 (Fourier
 pairs); the answer is not assumed to be yes, and mass/wave is one candidate investigation inside the branch, not its
@@ -370,7 +371,9 @@ definition. Order kept: Fourier pair → exact mathematical conjugacy → what i
 physical pairings ever share an exact relation of comparable structural depth?
 
 - **Source relation (P17F, ESTABLISHED):** with x̂(ω) = ∫x e^{−iωt}dt, x = u + iv gives x̂(−ω) − conj x̂(ω) =
-  2i·v̂(−ω); so the conjugate symmetry holds exactly when x is real (P17Fa). DFT: X_{N−k} = conj X_k; the
+  2i·v̂(−ω); for x ∈ L¹(ℝ) the conjugate symmetry holds exactly when x is real a.e. (P17Fa; the converse by the
+  uniqueness theorem on L¹, Zhou–Siadat Theorem 1.15, read; exact without imported theorems for finite signals and
+  finite Hermite expansions, P17Lc, P17Ld). DFT: X_{N−k} = conj X_k; the
   self-paired indices k = 0 and k = N/2 (N even) carry real coefficients (P17Fd, P17Ff). Each pair is one real
   oscillation, one amplitude and one phase; the conjugate half carries no independent information (P17Fe, P17Fh).
   A generic complex signal fails (P17Fg). Conjugate pair ⟺ equal magnitude and opposite phase; neither alone suffices
@@ -380,19 +383,28 @@ physical pairings ever share an exact relation of comparable structural depth?
   (P17Rb–P17Rd). It is the same theorem in two variables (TRIVIAL CONSEQUENCE), a reality condition rather than a
   consequence of the equation (P17Re); the partners are one real oscillation, not two physical entities (P17Cd).
 - **Spectral variables, not spacetime (P17N, P17M):** in P = (ω/c, k) the dispersion relation is the level set
-  q(P) = (mc/ħ)² of q = (ω/c)² − k² (P17Db). m = 0 is the null level, ω = ±ck (P17Dc); m > 0 a non-null level
-  whose two branches are single boost orbits, with a frequency gap, a rest frame and the invariant proper-time phase
-  rate mc²/ħ (P17De–P17Dg). Mass is the orbit invariant, the role r plays for circles, not the role of c (P17Di).
-  Four nulls stay apart: spacetime null vector, spectral null relation, Fourier zero coefficient, model-manifold null
-  direction (P17Dd).
+  q(P) = (mc/ħ)² of q = (ω/c)² − k² (P17Db). Mass labels/selects the invariant level of the same Lorentzian
+  quadratic form: m = 0 ⇒ q(P) = 0 (the null level, ω = ±ck); m > 0 ⇒ q(P) = (mc/ħ)² > 0 (a nonzero timelike
+  mass-shell level). The form and the group do not depend on m (P17Lg). Proper orthochronous Lorentz boosts preserve
+  each positive- or negative-energy mass-shell branch separately; this is not claimed for the full Lorentz group
+  (P17La). Consequences of the level: a frequency gap and a rest frame (P17De–P17Dg). mc/ħ labels the level as r
+  labels circles, not the role of c (P17Di). Four nulls stay apart: spacetime null vector, spectral null relation,
+  Fourier zero coefficient, model-manifold null direction (P17Dd).
+- **Proper-time phase rate (P17C, scoped):** along the worldline associated with the same on-shell four-momentum,
+  the free massive plane-wave phase accumulates at the invariant proper-time rate mc²/ħ, up to sign convention
+  (P17Lb, assumptions carded). This establishes a proper-time phase rate; it does not by itself establish that mass
+  and proper time are Fourier-conjugate variables (P17Lf). That further question is OPEN and not investigated
+  (T-P17-MASS-SPECTRAL-Q).
 - **E = ħω, p = ħk (P17E, RESTRICTED):** physical identifications used as inputs; they rescale the same geometry by ħ
   (P17Ea) and give v_g = v, ω₀ = mc²/ħ (P17Eb).
 - **Kinds of pairing (P17K, PROJECT SYNTHESIS):** conjugacy, sign symmetry, orbit symmetry, reality constraint,
   independent physical states, notation-dependent pairing and Fourier duality are kept apart (P17Ca–P17Cf). These
   are known examples, not an exhaustive classification for this project.
 - **Mass/wave seed (MW1, kept verbatim, not promoted):** MW-A RESTRICTED; MW-B ESTABLISHED; MW-C FAIL as complex
-  conjugacy (P17Ch), with the separate RESTRICTED reading that mc²/ħ is Fourier-dual to proper time (P17C, de
-  Broglie); MW-D OPEN (the same dispersion relation holds for a string on an elastic foundation, P17Mx).
+  conjugacy (P17Ch) — what survives is that mass determines the invariant mass-shell level and the associated
+  rest-frame / proper-time phase rate, not a pairing; MW-D OPEN (the same dispersion relation holds for a string on
+  an elastic foundation, P17Mx, so the equation alone cannot establish particle ontology). *Superseded at the lock:*
+  "with the separate RESTRICTED reading that mc²/ħ is Fourier-dual to proper time" (withdrawn, P17Lf).
 - **Story placement:** #12 → #17 stays the historical edge; #13, #14, #18 and #19 ⇢ #17 are cross-references (later
   mathematical connections), not causal edges. No new story node.
 
@@ -1201,6 +1213,11 @@ Only explicit candidates are listed. Ratings are per proposition.
 
 ## Part XIII. Failed and negative results (what does not unify)
 
+- **#17 lock (2026-11-17):**
+  - The construction-pass wording "mc²/ħ and proper time are a Fourier-dual pair" is withdrawn: a phase rate set by a
+    parameter does not make the parameter Fourier-conjugate to time (P17Lf).
+  - "Boosts never change the branch" holds only for proper orthochronous boosts; time reversal and −I exchange the
+    branches (P17La).
 - **#17 first construction (2026-11-17):**
   - Mass and wave variables as a conjugate pair (MW-C) fail: complex conjugation maps the mass-m shell to itself and
     never relates m to (ω, k) (P17Ch).
@@ -1326,12 +1343,14 @@ Only material gaps; the full ledger, with a status for each domain, is `research
    carded example), and the finiteness-invariant answer to H3-1 (A8Mc, A8Lc). Source-only here: the Kronecker–Weyl
    theorem in continuous time, the Poincaré recurrence theorem, topological recurrence (minimal sets), the covering
    ℝ → S¹ (metadata verified, claims not quoted).
-6. **#17 first construction (2026-11-17): READY FOR #17 ADVERSARIAL LOCK**
+6. **#17: LOCKED (2026-11-17), story and mathematics aligned.** Construction-pass recommendation (kept): READY FOR #17 ADVERSARIAL LOCK
    (`research/constructions/p17_conjugacy_physical_pairs.md`). Separate statuses: Fourier conjugacy ESTABLISHED;
    real-field ± mode relation DERIVED; massless null relation ESTABLISHED; mass-shell level set DERIVED; E = ħω,
    p = ħk RESTRICTED; MW-A RESTRICTED; MW-B ESTABLISHED; MW-C FAIL; MW-D OPEN; the broader #17 hypothesis OPEN.
-   Source-only here: Fourier uniqueness (the converse of P17Fa) and the character theory of abelian groups
-   (SRC-FOLLAND-1995).
+   The lock (P17La–P17Lg) scoped the boost and phase-rate statements, made mass select the level, withdrew the
+   Fourier-duality claim (Q17-4 OPEN, not investigated) and locked the Fourier converse (Zhou–Siadat Theorem 1.15,
+   read; exact cards for finite signals and finite Hermite expansions). Source-only here: the character theory of
+   abelian groups (SRC-FOLLAND-1995). Research is paused after the #17 lock; no subsequent branch has been started.
 
 Resolved:
 

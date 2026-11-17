@@ -2152,3 +2152,58 @@ real-signal Fourier conjugacy); nothing else was changed.
 > Do not turn #17 into a generic QFT chapter.
 
 > Stop after the first #17 / mass-wave construction.
+
+## #17 final adversarial lock (2026-11-17)
+
+Nadia's decisions, verbatim. LaTeX was converted to plain text (inline math written as plain symbols); nothing else was
+changed.
+
+> Proper orthochronous Lorentz boosts preserve each positive- or negative-energy mass-shell branch separately.
+
+> Do not make this claim for the full Lorentz group.
+
+> Mass labels/selects the invariant level of the same Lorentzian quadratic form.
+
+> Do not say mass fundamentally changes the “shape” of the geometry.
+
+> m=0 ⇒ q(P)=0,
+
+> m>0 ⇒ q(P)=(mc/ħ)²>0.
+
+> Keep spectral/frequency-momentum null distinct from spacetime null and every other zero/null in the project.
+
+> Along the worldline associated with the same on-shell four-momentum, the free massive plane-wave phase accumulates at the invariant proper-time rate mc²/ħ, up to sign convention.
+
+> Card/check the assumptions explicitly.
+
+> This establishes a proper-time phase rate.
+
+> It does NOT by itself establish that mass and proper time are Fourier-conjugate variables.
+
+> Is there a physically meaningful formulation in which mass/rest energy acts as a genuine spectral variable conjugate to proper time?
+
+> Do not investigate it in this pass.
+
+> Do not rely only on a catalogue record.
+
+> Do not soften that failure by replacing it with an unproved Fourier-duality claim.
+
+> mass determines the invariant mass-shell level and the associated rest-frame/proper-time phase rate.
+
+> The classical elastic-foundation counterexample remains important because the same dispersion equation alone cannot establish particle ontology.
+
+> Do not convert them into causal predecessors.
+
+> Fourier conjugacy → question about physical pairings → candidate mass/wave investigation → exact mass-shell relation → failed conjugacy interpretation → more precise open question.
+
+> LOCK #17 — STORY AND MATHEMATICS ALIGNED
+
+> DO NOT LOCK #17 — SPECIFIC MISALIGNMENT REMAINS
+
+> Let Nadia look at the project as a whole and understand what has been discovered, proved, falsified, and left open so far.
+
+> Verification counts report executable checks in this repository. They are not peer review, independent replication, probabilities of truth, or measures of originality.
+
+> POSSIBLE NOVELTY — PRIORITY NOT ESTABLISHED
+
+> Research is paused after the #17 lock. No subsequent branch has been started. The preview represents the current canonical state of the project.

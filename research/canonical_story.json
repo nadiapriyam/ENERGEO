@@ -629,19 +629,19 @@
    "src": "M14",
    "dst": "M17",
    "type": "CROSS-REFERENCE",
-   "why": "later mathematical connection (#17 first construction, 2026-11-17): the mass shell is a level set of the Lorentzian form in spectral variables; mass is the orbit invariant, as r is for circles (P17Di)"
+   "why": "later mathematical connection (#17 first construction, 2026-11-17): mass selects a level of the Lorentzian form in spectral variables; it labels the orbit as r labels circles (P17Di, P17Lg)"
   },
   {
    "src": "M19",
    "dst": "M17",
    "type": "CROSS-REFERENCE",
-   "why": "later mathematical connection (#17 first construction): boosts act on (ω/c, k) as on (ct, x); Doppler on the null cone; tanh φ = ck/ω brings a massive mode to rest (P17De, P17Dh)"
+   "why": "later mathematical connection (#17, scoped at the lock): boosts act on (ω/c, k) as on (ct, x); proper orthochronous boosts preserve each mass-shell branch; Doppler on the null cone; tanh φ = ck/ω brings a positive-energy mode to rest (P17De, P17Dh, P17La)"
   },
   {
    "src": "M18",
    "dst": "M17",
    "type": "CROSS-REFERENCE",
-   "why": "later mathematical connection (#17 first construction): the proper-time phase e^(−i(mc²/ħ)τ) is a character of an unbounded parameter in the bounded circle, as in #18 (P17Dg, A8Fa)"
+   "why": "later mathematical connection (#17, scoped at the lock): along the worldline of the same on-shell momentum the phase e^(−i(mc²/ħ)τ) is a character of an unbounded parameter in the bounded circle, as in #18 (P17Lb, A8Fa) — a phase rate, not a Fourier-conjugate pairing"
   },
   {
    "src": "M13",
@@ -985,7 +985,7 @@
    ]
   },
   "P17": {
-   "name": "Conjugacy and physical pairs (#12 → #17; first construction, 2026-11-17)",
+   "name": "Conjugacy and physical pairs (#12 → #17; first construction and lock, 2026-11-17)",
    "steps": [
     {
      "kind": "Q",
@@ -993,7 +993,7 @@
     },
     {
      "kind": "R",
-     "text": "x(t) ↔ x̂(ω); for a real signal the coefficients come in conjugate pairs (P1)"
+     "text": "Fourier conjugacy: for a real signal the coefficients come in conjugate pairs; exactly, x ∈ L¹: x̂(−ω) = conj x̂(ω) ⟺ x real a.e.; each pair is one real oscillation (P1, P17Fa, P17Fh, P17Lc–P17Le)"
     },
     {
      "kind": "Q",
@@ -1001,43 +1001,27 @@
     },
     {
      "kind": "R",
-     "text": "exact source relation: x̂(−ω) − conj x̂(ω) = 2i·v̂(−ω), so the pairing holds exactly for real x; DC and Nyquist self-paired; complex signals fail (P17Fa, P17Fd, P17Fg)"
-    },
-    {
-     "kind": "Q",
-     "text": "what information does the pairing encode? (2026-11-17 decisions)"
-    },
-    {
-     "kind": "R",
-     "text": "one real oscillation per pair (amplitude, phase); the imaginary parts cancel; the conjugate half is redundant (P17Fe, P17Fh)"
-    },
-    {
-     "kind": "Q",
-     "text": "do physical pairings ever share an exact relation of comparable structural depth? (2026-11-17 decisions)"
-    },
-    {
-     "kind": "R",
-     "text": "first candidate, a real classical field: φ̃(−ω, −k) = conj φ̃(ω, k) — the same theorem (conj χ = χ⁻¹), a reality constraint, not two entities; sign symmetry, orbit symmetry, independent states and notation-dependent pairs are other kinds (P17Rc, P17Cd, P17Cg, P17K)"
+     "text": "first physical candidate, a real classical field: φ̃(−ω, −k) = conj φ̃(ω, k) — the same theorem, a reality constraint, not two entities; sign symmetry, orbit symmetry, independent states and notation-dependent pairs are other kinds (P17Rc, P17Cd, P17K)"
     },
     {
      "kind": "X",
-     "text": "CROSS-REFERENCE (#14, #19): in P = (ω/c, k) the dispersion relation is a level set of the Lorentzian form, and boosts move points within a level (spectral variables, not spacetime)"
+     "text": "CROSS-REFERENCE to the seed (recorded 2026-11-12, kept verbatim, not promoted): \"mass is waves too, it's just a different form.\" — the candidate mass/wave investigation inside #17; the dispersion relation, read in spectral variables, reuses the Lorentzian form of #14 / #19 (cross-references)"
     },
     {
      "kind": "R",
-     "text": "m = 0: the null level; m > 0: a non-null level, two boost orbits, a frequency gap, a rest frame; mass is the orbit invariant (P17Dc, P17De, P17Dg, P17Di)"
-    },
-    {
-     "kind": "X",
-     "text": "CROSS-REFERENCE to the seed (recorded 2026-11-12, kept verbatim, not promoted): \"mass is waves too, it's just a different form.\" — which precise questions can be extracted? (2026-11-17 decisions)"
-    },
-    {
-     "kind": "R",
-     "text": "MW-A RESTRICTED; MW-B ESTABLISHED; MW-C FAIL as conjugacy, with mc²/ħ Fourier-dual to proper time (#18 ⇢ #17); MW-D OPEN (P17Ea, P17Ch, P17Mx)"
+     "text": "exact mass-shell relation: mass selects the invariant level of one Lorentzian form — m = 0 ⇒ q(P) = 0 (null level); m > 0 ⇒ q(P) = (mc/ħ)² > 0 (a nonzero timelike level); proper orthochronous boosts preserve each branch (P17Lg, P17La, P17De)"
     },
     {
      "kind": "Q",
-     "text": "Q17-1: an exact physical pairing of independent entities beyond the reality constraint? Q17-2: which sense of \"conjugate\" is \"physical complementarity\"? Q17-3: MW-D in a specific theory? (OPEN, not begun)"
+     "text": "MW-C: \"Mass and wave variables form a conjugate pair in the same mathematical sense as Fourier conjugates.\" (2026-11-17 decisions)"
+    },
+    {
+     "kind": "R",
+     "text": "FAIL: conjugation maps each mass shell to itself; what survives is that mass determines the level and the proper-time phase rate mc²/ħ along the worldline of the same on-shell momentum — a phase rate, not a Fourier-conjugate pairing (P17Ch, P17Lb, P17Lf)"
+    },
+    {
+     "kind": "Q",
+     "text": "Is there a physically meaningful formulation in which mass/rest energy acts as a genuine spectral variable conjugate to proper time? (Q17-4); and MW-D, Q17-1, Q17-2 (OPEN, not begun)"
     }
    ]
   },
@@ -1427,8 +1411,8 @@
    "domain": "D41",
    "predecessor": "M12 → M17 (earlier predecessor); cross-references from M13, M14, M18, M19",
    "relation": "Fourier conjugacy source lock; real-field reality pairing; spectral null and mass-shell levels; kinds of pairing; MW-A–MW-D",
-   "next": "Q17-1–Q17-3 (open); the #17 adversarial lock",
-   "verdict": "first #17 construction (2026-11-17); no new story node; the cross-references are not causal",
+   "next": "Q17-1–Q17-4 (open, not begun)",
+   "verdict": "LOCKED (2026-11-17); no new story node; the cross-references are not causal",
    "actions": [
     "KEEP",
     "ADD DIAGRAM EDGE",
@@ -1720,6 +1704,24 @@
    "question": "#13",
    "taught": "k = 0 is a zero in the index / coordinate domain (Correction A)",
    "nextQuestion": "none: corrected"
+  },
+  {
+   "failure": "MW-C: \"Mass and wave variables form a conjugate pair in the same mathematical sense as Fourier conjugates.\"",
+   "question": "#17 (mass/wave seed)",
+   "taught": "complex conjugation maps each mass shell to itself; mass determines the invariant mass-shell level and the associated rest-frame / proper-time phase rate, which is not a pairing (P17Ch, P17Lf)",
+   "nextQuestion": "Is there a physically meaningful formulation in which mass/rest energy acts as a genuine spectral variable conjugate to proper time? (OPEN, not investigated)"
+  },
+  {
+   "failure": "\"mc²/ħ and proper time are a Fourier-dual pair\" (Claude's #17 construction pass)",
+   "question": "#17",
+   "taught": "a phase rate set by a parameter does not make the parameter Fourier-conjugate to time: the elastic-foundation string has the same structure (P17Lf)",
+   "nextQuestion": "none: withdrawn at the #17 lock"
+  },
+  {
+   "failure": "\"boosts move points along a branch but never between branches\" and \"m changes the shape\" (Claude's #17 report wording)",
+   "question": "#17",
+   "taught": "proper orthochronous boosts preserve each branch, the full Lorentz group does not (P17La); m selects the level of one unchanged form (P17Lg)",
+   "nextQuestion": "none: corrected"
   }
  ],
  "mathLock": [
@@ -1905,6 +1907,11 @@
    "why": "superseded by the final lock verdict of 2026-11-17"
   },
   {
+   "where": "#17 first construction, chain P17",
+   "old": "order: … real field → X (#14, #19) → mass-shell levels → X seed → MW readings → open questions; R \"MW-C FAIL as conjugacy, with mc²/ħ Fourier-dual to proper time\"",
+   "why": "#17 lock: the decided order (Fourier conjugacy → physical pairings → candidate mass/wave investigation → exact mass-shell relation → failed conjugacy interpretation → more precise open question); the Fourier-duality claim withdrawn"
+  },
+  {
    "where": "2026-11-17 lock, node M17 (next question)",
    "old": "mass-like and wave-like descriptions (R4, R18; MW1) — the parked mass-wave branch; no direct causal successor at #18",
    "why": "#17 first construction: the branch is not defined as mass-wave; mass/wave is one candidate investigation inside it"
@@ -1929,6 +1936,9 @@
  "p17": {
   "record": "research/constructions/p17_conjugacy_physical_pairs.md",
   "recommendation": "READY FOR #17 ADVERSARIAL LOCK",
+  "lock": "LOCK #17 — STORY AND MATHEMATICS ALIGNED",
+  "lockSummary": "#17 final adversarial lock (2026-11-17): boost scope (proper orthochronous boosts preserve each branch; not the full Lorentz group); mass selects the invariant level (m = 0 ⇒ q(P) = 0; m > 0 ⇒ q(P) = (mc/ħ)² > 0); the proper-time phase rate scoped to the worldline of the same on-shell momentum; the Fourier-duality claim withdrawn (Q17-4 OPEN, not investigated); the Fourier converse source-locked (Zhou–Siadat Th. 1.15, read) and carded exactly for finite signals and finite Hermite expansions. Story order: Fourier conjugacy → question about physical pairings → candidate mass/wave investigation → exact mass-shell relation → failed conjugacy interpretation → more precise open question.",
+  "stop": "Research is paused after the #17 lock. No subsequent branch has been started. The preview represents the current canonical state of the project.",
   "summary": "First construction of #17 (2026-11-17): no new story node; the historical edge stays #12 → #17; #13, #14, #18 and #19 ⇢ #17 are cross-references (later mathematical connections). Statuses are separate: Fourier conjugacy ESTABLISHED; real-field ± mode relation DERIVED; massless null relation ESTABLISHED; mass-shell level set DERIVED; E = ħω, p = ħk RESTRICTED; MW-A RESTRICTED; MW-B ESTABLISHED; MW-C FAIL; MW-D OPEN; the broader #17 hypothesis OPEN."
  }
 }

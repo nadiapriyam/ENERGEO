@@ -6444,7 +6444,7 @@
     "REPRESENTATION",
     "RELATION"
    ],
-   "equation": "x = u + iv: x̂(−ω) − conj x̂(ω) = 2i·v̂(−ω), so x̂(−ω) = conj x̂(ω) ∀ω ⟺ x real; C̃: X(ω) ↦ conj X(−ω) antilinear involution, F∘C = C̃∘F; DFT X_{N−k} = conj X_k, self-paired k = 0 and N/2 (N even) real; a pair = one real oscillation (amplitude, phase), the conjugate half redundant; conj χ = χ⁻¹ for unitary characters",
+   "equation": "x = u + iv: x̂(−ω) − conj x̂(ω) = 2i·v̂(−ω); for x ∈ L¹(ℝ): x̂(−ω) = conj x̂(ω) ∀ω ⟺ x real a.e. (converse: uniqueness on L¹, Zhou–Siadat Th. 1.15, read; exact for finite signals and finite Hermite expansions); C̃: X(ω) ↦ conj X(−ω) antilinear involution, F∘C = C̃∘F; DFT X_{N−k} = conj X_k, self-paired k = 0 and N/2 (N even) real; a pair = one real oscillation (amplitude, phase), the conjugate half redundant; conj χ = χ⁻¹ for unitary characters",
    "status": "ESTABLISHED",
    "cards": [
     "P17Fa",
@@ -6458,7 +6458,10 @@
     "P17Cg",
     "FB4a",
     "FB4b",
-    "FB4c"
+    "FB4c",
+    "P17Lc",
+    "P17Ld",
+    "P17Le"
    ],
    "docs": [
     "research/constructions/p17_conjugacy_physical_pairs.md"
@@ -6484,7 +6487,8 @@
    "provenance": "TEXTBOOK / STANDARD",
    "sources": [
     "SRC-STEIN-SHAKARCHI-2003",
-    "SRC-FOLLAND-1995"
+    "SRC-FOLLAND-1995",
+    "SRC-ZHOU-SIADAT-2017"
    ],
    "sourceStatus": null,
    "mathematicalStatus": "TEXTBOOK / KNOWN",
@@ -6591,21 +6595,23 @@
   },
   {
    "id": "P17M",
-   "name": "Mass shell: a non-null level, boost orbits, mass as the orbit invariant",
+   "name": "Mass shell: m selects a nonzero timelike level; SO⁺(1,1) orbits; mass as the orbit invariant",
    "layer": "PROJECT-DERIVED CONNECTION",
    "stages": [
     "GEOMETRY",
     "PRESERVED STRUCTURE",
     "TRANSFORMATION"
    ],
-   "equation": "q(P) = (mc/ħ)², P = (ω/c, k): two branches, each one SO⁺(1,1) orbit (boost with tanh φ = ck/ω to rest); asymptotic to the cone; frequency gap at mc²/ħ (evanescent below); proper-time phase rate mc²/ħ for every k; mc/ħ labels the orbit as r labels circles (Kᵀη + ηK = 0, JᵀI + IJ = 0), not the role of c",
+   "equation": "one form q(P) = (ω/c)² − k², P = (ω/c, k), the same for every m: m = 0 ⇒ q(P) = 0 (null level); m > 0 ⇒ q(P) = (mc/ħ)² > 0 (nonzero timelike mass-shell level). Each positive- or negative-energy branch is one SO⁺(1,1) orbit, preserved by proper orthochronous boosts (not by the full Lorentz group: S_t, −I exchange them); asymptotic to the cone; frequency gap at mc²/ħ; proper-time phase rate mc²/ħ along the worldline of the same on-shell momentum; mc/ħ labels the level as r labels circles, not the role of c",
    "status": "DERIVED",
    "cards": [
     "P17Db",
     "P17De",
     "P17Df",
     "P17Dg",
-    "P17Di"
+    "P17Di",
+    "P17La",
+    "P17Lg"
    ],
    "docs": [
     "research/constructions/p17_conjugacy_physical_pairs.md"
@@ -6740,23 +6746,24 @@
   },
   {
    "id": "P17C",
-   "name": "Rest frequency and proper time: a Fourier-dual pair (MW-C′)",
+   "name": "Proper-time phase rate mc²/ħ (scoped; not a Fourier-dual pair)",
    "layer": "PROJECT-DERIVED CONNECTION",
    "stages": [
     "DYNAMICS / CONTINUATION",
     "REPRESENTATION"
    ],
-   "equation": "along x = v_g t the phase ωt − kx advances at mc²/ħ per unit proper time for every k; e^{−i(mc²/ħ)τ} is a character of proper time (#18 structure); m = 0: constant phase along x = ct",
+   "equation": "along the worldline X(τ) = X₀ + (cτ/μ)P of the same on-shell momentum, a single free massive plane wave e^{−iη(P, X)} has phase η(P, X₀) + (mc²/ħ)τ (up to sign convention); on another worldline the rate differs; m = 0: constant phase along x = ct. A phase rate set by a parameter does not make the parameter Fourier-conjugate to proper time (P17Lf)",
    "status": "DERIVED",
    "cards": [
     "P17Dg",
-    "P17Ch"
+    "P17Lb",
+    "P17Lf"
    ],
    "docs": [
     "research/constructions/p17_conjugacy_physical_pairs.md"
    ],
    "registry": [
-    "T-P17-REST-CLOCK"
+    "T-P17-PHASE-RATE"
    ],
    "dependsOn": [
     "P17M",
@@ -6765,14 +6772,15 @@
    "supports": [],
    "bearsOn": [
     "T-MW-C",
-    "T-MASS-WAVE-SEED"
+    "T-MASS-WAVE-SEED",
+    "T-P17-MASS-SPECTRAL-Q"
    ],
-   "backboneSupport": 20,
-   "slopRisk": 25,
-   "transferDepth": "STRUCTURAL TRANSFER",
+   "backboneSupport": 15,
+   "slopRisk": 10,
+   "transferDepth": "TRIVIAL CONSEQUENCE",
    "applicationBreadth": 2,
    "failureCondition": "off the group worldline the rate depends on the observer",
-   "foundationRole": "RESTRICTED; known (de Broglie); a different sense of \"conjugate\" from #12",
+   "foundationRole": "DERIVED under stated assumptions; it does NOT establish that mass and proper time are Fourier-conjugate variables (that question is OPEN and not investigated: T-P17-MASS-SPECTRAL-Q)",
    "guideLocation": "Guide: #17 conjugacy and physical pairs",
    "gap": null,
    "provenance": "PROJECT-DERIVED FROM ESTABLISHED MATH",
@@ -9011,7 +9019,7 @@
    "cards": [
     "P17Ch"
    ],
-   "doesNotProve": "that no pairing involving m exists (the Fourier-duality reading BR92 does)",
+   "doesNotProve": "that m plays no role: it selects the invariant level and fixes the proper-time phase rate (BR92) — neither is a pairing",
    "objects": [
     "P17MW",
     "P17M"
@@ -9024,16 +9032,17 @@
   {
    "id": "BR92",
    "left": "rest frequency mc²/ħ",
-   "right": "proper time τ",
-   "connector": "along the group worldline the phase is e^{−i(mc²/ħ)τ}: a character of proper time (#18 structure); Fourier duality, not complex conjugacy",
+   "right": "the plane-wave phase along the worldline of the same on-shell momentum",
+   "connector": "along X(τ) = X₀ + (cτ/μ)P the phase is e^{−i(mc²/ħ)τ} (up to sign convention): a proper-time phase rate, a character of proper-time translation as in #18 — not a Fourier-conjugate pairing of m and τ",
    "status": "ESTABLISHED",
    "scope": "project-specific",
    "cards": [
     "P17Dg",
-    "P17Ch",
+    "P17Lb",
+    "P17Lf",
     "A8Fa"
    ],
-   "doesNotProve": "that mass is a wave; that this is the conjugacy of #12",
+   "doesNotProve": "that mass is a wave; that mass and proper time are Fourier-conjugate variables (open, not investigated: T-P17-MASS-SPECTRAL-Q); that this is the conjugacy of #12",
    "objects": [
     "P17C",
     "A8F"
@@ -9042,8 +9051,8 @@
    "sources": [
     "SRC-DEBROGLIE-1925"
    ],
-   "assumptions": "a mode on the mass shell, m > 0; its group worldline",
-   "failureCondition": "off the group worldline; m = 0 (constant phase)"
+   "assumptions": "a single free plane wave with m > 0; the worldline of the same on-shell momentum; the sign convention e^{−iη(P, X)}",
+   "failureCondition": "another worldline (the rate differs); a superposition"
   }
  ],
  "sources": [
@@ -10182,6 +10191,23 @@
     "P17MW"
    ],
    "checked": "bibliographic record checked by web search of publisher / library / index records, 2026-11-17; full text not opened in this environment; claim not quoted"
+  },
+  {
+   "id": "SRC-ZHOU-SIADAT-2017",
+   "authors": "Kecheng Zhou; M. Vali Siadat",
+   "title": "Notes on Harmonic Analysis, Part I: The Fourier Transform (lecture notes)",
+   "year": "2017",
+   "sourceType": "lecture notes (arXiv preprint)",
+   "identifier": "arXiv:1709.03377v1 [math.CA]",
+   "sourceClass": "textbook",
+   "status": "FULL TEXT READ (arXiv version); CLAIM QUOTED",
+   "claim": "Definition 1.1: f̂(y) = ∫f(x)e^{−ixy}dx (the project convention); Theorem 1.13: f, f̂ ∈ L¹ ⇒ inversion a.e.; Theorem 1.15: f ∈ L¹ and f̂ = 0 everywhere ⇒ f = 0 a.e. Quoted in research/sources/zhou_siadat_2017.md",
+   "doesNotEstablish": "anything about physical pairs, the mass/wave seed or dispersion",
+   "supports": [
+    "P17F"
+   ],
+   "bearsOn": [],
+   "checked": "full text of arXiv v1 read 2026-11-17 (§1, Definition 1.1, Theorems 1.13 and 1.15 with proofs); lecture notes, not a peer-reviewed article"
   }
  ],
  "domains": [
@@ -10660,7 +10686,7 @@
   },
   {
    "id": "D41",
-   "name": "#17: conjugacy and physical pairs (first construction)",
+   "name": "#17: conjugacy and physical pairs (first construction; locked 2026-11-17)",
    "objects": [
     "P17F",
     "P17R",
@@ -10672,8 +10698,8 @@
     "P17MW",
     "P17X"
    ],
-   "status": "SOURCE+CARD COMPLETE",
-   "note": "first construction 2026-11-17: separate statuses (Fourier conjugacy ESTABLISHED; real-field pairing DERIVED; massless null ESTABLISHED; mass shell DERIVED; E = ħω, p = ħk RESTRICTED; MW-A RESTRICTED, MW-B ESTABLISHED, MW-C FAIL, MW-D OPEN); the #17 hypothesis (P2) stays OPEN in D21"
+   "status": "LOCKED",
+   "note": "first construction 2026-11-17; LOCKED by the #17 adversarial lock (2026-11-17): Fourier conjugacy ESTABLISHED (converse locked); real-field pairing DERIVED; massless null ESTABLISHED; m selects the level (DERIVED); boost scope SO⁺(1,1); proper-time phase rate DERIVED (scoped); E = ħω, p = ħk RESTRICTED; MW-A RESTRICTED, MW-B ESTABLISHED, MW-C FAIL, MW-D OPEN; mass as a spectral variable conjugate to τ OPEN (not investigated); the #17 hypothesis (P2) stays OPEN in D21"
   }
  ],
  "cf11b": {
@@ -11200,7 +11226,7 @@
    "dimension": "Paper / source coverage",
    "rating": 62,
    "previous": 61,
-   "reason": "56 external sources registered (10 only partly verified); 70 of 71 external-claim objects have a source; R5 is SOURCE MISSING. Change: Lee 2012, Milnor 1965 and Yaglom 1979 registered (metadata only, claims not quoted)."
+   "reason": "57 external sources registered (10 only partly verified); 70 of 71 external-claim objects have a source; R5 is SOURCE MISSING. Change: Lee 2012, Milnor 1965 and Yaglom 1979 registered (metadata only, claims not quoted)."
   },
   {
    "dimension": "Application validation",
@@ -11919,6 +11945,247 @@
    "old": "ESTABLISHED INGREDIENT; not a proof that mass is waves (MW1)",
    "new": "ESTABLISHED INGREDIENT; not a proof that mass is waves (MW1); #17 first construction: the relation is the level set q(P) = (mc/ħ)² of the spectral Lorentzian form (P17M, P17N); spectral variables, not spacetime",
    "reason": "#17: level-set reading",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "object",
+   "id": "P17C",
+   "field": "name",
+   "old": "Rest frequency and proper time: a Fourier-dual pair (MW-C′)",
+   "new": "Proper-time phase rate mc²/ħ (scoped; not a Fourier-dual pair)",
+   "reason": "#17 lock 4: the Fourier-duality name is withdrawn",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "object",
+   "id": "P17C",
+   "field": "equation",
+   "old": "along x = v_g t the phase ωt − kx advances at mc²/ħ per unit proper time for every k; e^{−i(mc²/ħ)τ} is a character of proper time (#18 structure); m = 0: constant phase along x = ct",
+   "new": "along the worldline X(τ) = X₀ + (cτ/μ)P of the same on-shell momentum, a single free massive plane wave e^{−iη(P, X)} has phase η(P, X₀) + (mc²/ħ)τ (up to sign convention); on another worldline the rate differs; m = 0: constant phase along x = ct. A phase rate set by a parameter does not make the parameter Fourier-conjugate to proper time (P17Lf)",
+   "reason": "#17 lock 3–4: assumptions explicit",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "object",
+   "id": "P17C",
+   "field": "foundationRole",
+   "old": "RESTRICTED; known (de Broglie); a different sense of \"conjugate\" from #12",
+   "new": "DERIVED under stated assumptions; it does NOT establish that mass and proper time are Fourier-conjugate variables (that question is OPEN and not investigated: T-P17-MASS-SPECTRAL-Q)",
+   "reason": "#17 lock 4",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "object",
+   "id": "P17C",
+   "field": "registry",
+   "old": [
+    "T-P17-REST-CLOCK"
+   ],
+   "new": [
+    "T-P17-PHASE-RATE"
+   ],
+   "reason": "#17 lock: T-P17-REST-CLOCK superseded",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "object",
+   "id": "P17C",
+   "field": "bearsOn",
+   "old": [
+    "T-MW-C",
+    "T-MASS-WAVE-SEED"
+   ],
+   "new": [
+    "T-MW-C",
+    "T-MASS-WAVE-SEED",
+    "T-P17-MASS-SPECTRAL-Q"
+   ],
+   "reason": "#17 lock",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "object",
+   "id": "P17C",
+   "field": "cards",
+   "old": [
+    "P17Dg",
+    "P17Ch"
+   ],
+   "new": [
+    "P17Dg",
+    "P17Lb",
+    "P17Lf"
+   ],
+   "reason": "#17 lock: the assumptions card and the correction card",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "object",
+   "id": "P17C",
+   "field": "slopRisk",
+   "old": 25,
+   "new": 10,
+   "reason": "#17 lock: the over-reaching duality reading is removed (25% → 10%)",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "object",
+   "id": "P17C",
+   "field": "backboneSupport",
+   "old": 20,
+   "new": 15,
+   "reason": "#17 lock: a phase rate, not a pairing (20% → 15%)",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "object",
+   "id": "P17C",
+   "field": "transferDepth",
+   "old": "STRUCTURAL TRANSFER",
+   "new": "TRIVIAL CONSEQUENCE",
+   "reason": "#17 lock: elementary plane-wave algebra under stated assumptions",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "object",
+   "id": "P17M",
+   "field": "name",
+   "old": "Mass shell: a non-null level, boost orbits, mass as the orbit invariant",
+   "new": "Mass shell: m selects a nonzero timelike level; SO⁺(1,1) orbits; mass as the orbit invariant",
+   "reason": "#17 lock 2: mass selects the level",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "object",
+   "id": "P17M",
+   "field": "equation",
+   "old": "q(P) = (mc/ħ)², P = (ω/c, k): two branches, each one SO⁺(1,1) orbit (boost with tanh φ = ck/ω to rest); asymptotic to the cone; frequency gap at mc²/ħ (evanescent below); proper-time phase rate mc²/ħ for every k; mc/ħ labels the orbit as r labels circles (Kᵀη + ηK = 0, JᵀI + IJ = 0), not the role of c",
+   "new": "one form q(P) = (ω/c)² − k², P = (ω/c, k), the same for every m: m = 0 ⇒ q(P) = 0 (null level); m > 0 ⇒ q(P) = (mc/ħ)² > 0 (nonzero timelike mass-shell level). Each positive- or negative-energy branch is one SO⁺(1,1) orbit, preserved by proper orthochronous boosts (not by the full Lorentz group: S_t, −I exchange them); asymptotic to the cone; frequency gap at mc²/ħ; proper-time phase rate mc²/ħ along the worldline of the same on-shell momentum; mc/ħ labels the level as r labels circles, not the role of c",
+   "reason": "#17 lock 1–3",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "object",
+   "id": "P17M",
+   "field": "cards",
+   "old": [
+    "P17Db",
+    "P17De",
+    "P17Df",
+    "P17Dg",
+    "P17Di"
+   ],
+   "new": [
+    "P17Db",
+    "P17De",
+    "P17Df",
+    "P17Dg",
+    "P17Di",
+    "P17La",
+    "P17Lg"
+   ],
+   "reason": "#17 lock: boost scope and level cards",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "object",
+   "id": "P17F",
+   "field": "equation",
+   "old": "x = u + iv: x̂(−ω) − conj x̂(ω) = 2i·v̂(−ω), so x̂(−ω) = conj x̂(ω) ∀ω ⟺ x real; C̃: X(ω) ↦ conj X(−ω) antilinear involution, F∘C = C̃∘F; DFT X_{N−k} = conj X_k, self-paired k = 0 and N/2 (N even) real; a pair = one real oscillation (amplitude, phase), the conjugate half redundant; conj χ = χ⁻¹ for unitary characters",
+   "new": "x = u + iv: x̂(−ω) − conj x̂(ω) = 2i·v̂(−ω); for x ∈ L¹(ℝ): x̂(−ω) = conj x̂(ω) ∀ω ⟺ x real a.e. (converse: uniqueness on L¹, Zhou–Siadat Th. 1.15, read; exact for finite signals and finite Hermite expansions); C̃: X(ω) ↦ conj X(−ω) antilinear involution, F∘C = C̃∘F; DFT X_{N−k} = conj X_k, self-paired k = 0 and N/2 (N even) real; a pair = one real oscillation (amplitude, phase), the conjugate half redundant; conj χ = χ⁻¹ for unitary characters",
+   "reason": "#17 lock 5: the converse locked",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "object",
+   "id": "P17F",
+   "field": "cards",
+   "old": [
+    "P17Fa",
+    "P17Fb",
+    "P17Fc",
+    "P17Fd",
+    "P17Fe",
+    "P17Ff",
+    "P17Fg",
+    "P17Fh",
+    "P17Cg",
+    "FB4a",
+    "FB4b",
+    "FB4c"
+   ],
+   "new": [
+    "P17Fa",
+    "P17Fb",
+    "P17Fc",
+    "P17Fd",
+    "P17Fe",
+    "P17Ff",
+    "P17Fg",
+    "P17Fh",
+    "P17Cg",
+    "FB4a",
+    "FB4b",
+    "FB4c",
+    "P17Lc",
+    "P17Ld",
+    "P17Le"
+   ],
+   "reason": "#17 lock 5",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "bridge",
+   "id": "BR92",
+   "field": "right",
+   "old": "proper time τ",
+   "new": "the plane-wave phase along the worldline of the same on-shell momentum",
+   "reason": "#17 lock 4: \"proper time τ\" as a conjugate variable withdrawn",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "bridge",
+   "id": "BR92",
+   "field": "connector",
+   "old": "along the group worldline the phase is e^{−i(mc²/ħ)τ}: a character of proper time (#18 structure); Fourier duality, not complex conjugacy",
+   "new": "along X(τ) = X₀ + (cτ/μ)P the phase is e^{−i(mc²/ħ)τ} (up to sign convention): a proper-time phase rate, a character of proper-time translation as in #18 — not a Fourier-conjugate pairing of m and τ",
+   "reason": "#17 lock 3–4",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "bridge",
+   "id": "BR92",
+   "field": "doesNotProve",
+   "old": "that mass is a wave; that this is the conjugacy of #12",
+   "new": "that mass is a wave; that mass and proper time are Fourier-conjugate variables (open, not investigated: T-P17-MASS-SPECTRAL-Q); that this is the conjugacy of #12",
+   "reason": "#17 lock 4",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "bridge",
+   "id": "BR92",
+   "field": "cards",
+   "old": [
+    "P17Dg",
+    "P17Ch",
+    "A8Fa"
+   ],
+   "new": [
+    "P17Dg",
+    "P17Lb",
+    "P17Lf",
+    "A8Fa"
+   ],
+   "reason": "#17 lock",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "bridge",
+   "id": "BR91",
+   "field": "doesNotProve",
+   "old": "that no pairing involving m exists (the Fourier-duality reading BR92 does)",
+   "new": "that m plays no role: it selects the invariant level and fixes the proper-time phase rate (BR92) — neither is a pairing",
+   "reason": "#17 lock 4: the \"Fourier-duality reading\" pointer withdrawn",
    "date": "2026-11-17"
   }
  ]

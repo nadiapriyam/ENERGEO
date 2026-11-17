@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-17T15:52:40+00:00",
- "commit": "6ce8979",
+ "generated": "2026-11-17T17:20:19+00:00",
+ "commit": "38646dc",
  "cards": {
   "A8Ca": {
    "script": "verify_A8.py",
@@ -1963,6 +1963,48 @@
    "verdict": "PASS",
    "everFailed": false,
    "claim": "[MW-D boundary] a string on an elastic foundation, ρφ_tt = Tφ_xx − κφ (a classical continuum; Scott 1969 lists physical realizations of the Klein–Gordon form), has plane waves exactly when ω² = c²k² + μ²c² with c² = T/ρ and μ²c² = κ/ρ (μ = √(κ/T)): the same relation, the same level-set geometry and the same frequency gap, with a stiffness in place of mass and no particle. The dispersion relation alone therefore cannot establish MW-D"
+  },
+  "P17La": {
+   "script": "verify_P17L.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[lock 1: boost scope] proper orthochronous boosts Λ(φ) ∈ SO⁺(1,1) preserve each mass-shell branch separately: P₀′ = cosh φ·P₀ − sinh φ·P₁ with |P₁| < |P₀| keeps the sign of P₀ for every φ (P₀′² = μ² + P₁′² > 0 and P₀′ is continuous in φ, P₀′(0) = P₀); Λ(φ) has det 1 and Λ₀₀ = cosh φ ≥ 1. The claim is NOT made for the full Lorentz group O(1,1): time reversal S_t = diag(−1, 1) and −I preserve η and q but exchange the branches; parity S_x keeps them"
+  },
+  "P17Lb": {
+   "script": "verify_P17L.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[lock 3: proper-time phase, scoped] assumptions: (A1) a single free massive plane wave e^{−iη(P, X)} (no superposition); (A2) P on the shell q(P) = μ², μ = mc/ħ > 0, positive-energy branch; (A3) the straight worldline X(τ) = X₀ + (cτ/μ)P associated with the same on-shell P, for which η(dX/dτ, dX/dτ) = c², so τ is proper time; (A4) the sign convention e^{−iη(P, X)} (the opposite convention reverses the sign). Then the phase is η(P, X₀) + μcτ: it accumulates at the invariant rate μc = mc²/ħ. On another worldline the rate differs: in the lab frame it is ω = c√(k² + μ²), equal to mc²/ħ only at k = 0"
+  },
+  "P17Lc": {
+   "script": "verify_P17L.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[lock 5: Fourier converse, discrete — exact, no theorem imported] the DFT matrix satisfies F F* = N·I for every N (the off-diagonal entries are Σ_{n<N} r^n with r = e^{−2πij/N} ≠ 1 and r^N = 1, so they vanish), hence F is invertible; for every Hermitian-symmetric X (X_{−k} = conj X_k, X₀ and X_{N/2} real) the inverse x = F⁻¹X is real, checked identically in free real parameters for N = 1, …, 10. So for finite signals: X_{N−k} = conj X_k for all k ⟺ x real"
+  },
+  "P17Ld": {
+   "script": "verify_P17L.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[lock 5: Fourier converse on finite Hermite expansions — exact, no uniqueness theorem imported] the Hermite functions h_n = H_n(t)e^{−t²/2} satisfy ĥ_n = √(2π)(−i)ⁿh_n (n ≤ 5, project convention); for x = Σ_{n≤5} c_n h_n with complex c_n, the defect x̂(−ω) − conj x̂(ω) has h_n-coefficient 2i·√(2π)·iⁿ·Im c_n (projection with the orthogonal h_n); so Hermitian symmetry ⟺ every c_n real ⟺ x real"
+  },
+  "P17Le": {
+   "script": "verify_P17L.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[lock 5: Fourier converse, continuous, under stated hypotheses] hypotheses (H): x ∈ L¹(ℝ) continuous and x̂ ∈ L¹(ℝ), so that the inversion theorem gives x(t) = (1/2π)∫x̂(ω)e^{iωt}dω for every t (source theorem, read and quoted in the record). Hermitian symmetry means Re x̂ = A even and Im x̂ = B odd; then Im[(A + iB)e^{iωt}] = A sin ωt + B cos ωt is odd in ω (checked for generic even A, odd B), so its integral over ℝ is 0 and x(t) is real. Equivalent form: with y = conj x, ŷ(ω) = conj x̂(−ω), so Hermitian symmetry is ŷ = x̂, and uniqueness gives y = x"
+  },
+  "P17Lf": {
+   "script": "verify_P17L.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[lock 4: correction of P17Ch's last clause] what P17Dg / P17Lb establish is a proper-time phase rate, ω_C = mc²/ħ, with phase e^{−imc²τ/ħ} along the worldline of the same on-shell momentum. That alone does NOT establish that mass and proper time are Fourier-conjugate variables: the same structure — a parameter setting the phase rate of a single mode — occurs in the elastic-foundation string, whose k = 0 mode e^{−i√(κ/ρ)t} solves ρφ_tt = Tφ_xx − κφ; the same inference would make the stiffness κ a variable conjugate to time, which nothing in the string supports. P17Ch's checks (conjugation invariance, the phase form) stand; its wording 'mc²/ħ is dual to proper time' is withdrawn"
+  },
+  "P17Lg": {
+   "script": "verify_P17L.py",
+   "verdict": "PASS",
+   "everFailed": false,
+   "claim": "[lock 2: mass selects the level] the quadratic form q(P) = (ω/c)² − k² does not depend on m (∂q/∂m = 0); the dispersion relation is q(P) = (mc/ħ)². m = 0 ⇒ q(P) = 0 (the null level); m > 0 ⇒ q(P) = (mc/ħ)² > 0 (a nonzero timelike mass-shell level). The same SO⁺(1,1) acts on every level; m labels which invariant level, it does not change the geometry. The spectral null q(P) = 0 lives in the (ω/c, k) plane and is kept distinct from the spacetime null η(X, X) = 0 and from every other zero / null of the project"
   },
   "Q1a": {
    "script": "verify_Q1_Z4.py",

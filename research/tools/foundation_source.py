@@ -1311,6 +1311,32 @@ fixp17('object', 'P2', 'slopRisk', 30, '#17 first construction: the word "conjug
 fixp17('object', 'MW1', 'foundationRole', next(o for o in O if o['id'] == 'MW1')['foundationRole'] + '; #17 first construction (2026-11-17): kept verbatim, not promoted; readings MW-A RESTRICTED, MW-B ESTABLISHED, MW-C FAIL, MW-D OPEN (P17MW)', '#17: seed readings')
 fixp17('object', 'MW2', 'foundationRole', next(o for o in O if o['id'] == 'MW2')['foundationRole'] + '; #17 first construction: the relation is the level set q(P) = (mc/ħ)² of the spectral Lorentzian form (P17M, P17N); spectral variables, not spacetime', '#17: level-set reading')
 
+# ══ #17 final adversarial lock (2026-11-17): corrections of live statements (old values kept in PRECISION) ══════════════
+fixp17('object', 'P17C', 'name', 'Proper-time phase rate mc²/ħ (scoped; not a Fourier-dual pair)', '#17 lock 4: the Fourier-duality name is withdrawn')
+fixp17('object', 'P17C', 'equation', 'along the worldline X(τ) = X₀ + (cτ/μ)P of the same on-shell momentum, a single free massive plane wave e^{−iη(P, X)} has phase η(P, X₀) + (mc²/ħ)τ (up to sign convention); on another worldline the rate differs; m = 0: constant phase along x = ct. A phase rate set by a parameter does not make the parameter Fourier-conjugate to proper time (P17Lf)', '#17 lock 3–4: assumptions explicit')
+fixp17('object', 'P17C', 'foundationRole', 'DERIVED under stated assumptions; it does NOT establish that mass and proper time are Fourier-conjugate variables (that question is OPEN and not investigated: T-P17-MASS-SPECTRAL-Q)', '#17 lock 4')
+fixp17('object', 'P17C', 'registry', ['T-P17-PHASE-RATE'], '#17 lock: T-P17-REST-CLOCK superseded')
+fixp17('object', 'P17C', 'bearsOn', ['T-MW-C', 'T-MASS-WAVE-SEED', 'T-P17-MASS-SPECTRAL-Q'], '#17 lock')
+fixp17('object', 'P17C', 'cards', ['P17Dg', 'P17Lb', 'P17Lf'], '#17 lock: the assumptions card and the correction card')
+fixp17('object', 'P17C', 'slopRisk', 10, '#17 lock: the over-reaching duality reading is removed (25% → 10%)')
+fixp17('object', 'P17C', 'backboneSupport', 15, '#17 lock: a phase rate, not a pairing (20% → 15%)')
+fixp17('object', 'P17C', 'transferDepth', 'TRIVIAL CONSEQUENCE', '#17 lock: elementary plane-wave algebra under stated assumptions')
+fixp17('object', 'P17M', 'name', 'Mass shell: m selects a nonzero timelike level; SO⁺(1,1) orbits; mass as the orbit invariant', '#17 lock 2: mass selects the level')
+fixp17('object', 'P17M', 'equation', 'one form q(P) = (ω/c)² − k², P = (ω/c, k), the same for every m: m = 0 ⇒ q(P) = 0 (null level); m > 0 ⇒ q(P) = (mc/ħ)² > 0 (nonzero timelike mass-shell level). Each positive- or negative-energy branch is one SO⁺(1,1) orbit, preserved by proper orthochronous boosts (not by the full Lorentz group: S_t, −I exchange them); asymptotic to the cone; frequency gap at mc²/ħ; proper-time phase rate mc²/ħ along the worldline of the same on-shell momentum; mc/ħ labels the level as r labels circles, not the role of c', '#17 lock 1–3')
+fixp17('object', 'P17M', 'cards', ['P17Db', 'P17De', 'P17Df', 'P17Dg', 'P17Di', 'P17La', 'P17Lg'], '#17 lock: boost scope and level cards')
+fixp17('object', 'P17F', 'equation', 'x = u + iv: x̂(−ω) − conj x̂(ω) = 2i·v̂(−ω); for x ∈ L¹(ℝ): x̂(−ω) = conj x̂(ω) ∀ω ⟺ x real a.e. (converse: uniqueness on L¹, Zhou–Siadat Th. 1.15, read; exact for finite signals and finite Hermite expansions); C̃: X(ω) ↦ conj X(−ω) antilinear involution, F∘C = C̃∘F; DFT X_{N−k} = conj X_k, self-paired k = 0 and N/2 (N even) real; a pair = one real oscillation (amplitude, phase), the conjugate half redundant; conj χ = χ⁻¹ for unitary characters', '#17 lock 5: the converse locked')
+fixp17('object', 'P17F', 'cards', next(o for o in O if o['id'] == 'P17F')['cards'] + ['P17Lc', 'P17Ld', 'P17Le'], '#17 lock 5')
+fixp17('bridge', 'BR92', 'right', 'the plane-wave phase along the worldline of the same on-shell momentum', '#17 lock 4: "proper time τ" as a conjugate variable withdrawn')
+fixp17('bridge', 'BR92', 'connector', 'along X(τ) = X₀ + (cτ/μ)P the phase is e^{−i(mc²/ħ)τ} (up to sign convention): a proper-time phase rate, a character of proper-time translation as in #18 — not a Fourier-conjugate pairing of m and τ', '#17 lock 3–4')
+fixp17('bridge', 'BR92', 'doesNotProve', 'that mass is a wave; that mass and proper time are Fourier-conjugate variables (open, not investigated: T-P17-MASS-SPECTRAL-Q); that this is the conjugacy of #12', '#17 lock 4')
+fixp17('bridge', 'BR92', 'cards', ['P17Dg', 'P17Lb', 'P17Lf', 'A8Fa'], '#17 lock')
+fixp17('bridge', 'BR91', 'doesNotProve', 'that m plays no role: it selects the invariant level and fixes the proper-time phase rate (BR92) — neither is a pairing', '#17 lock 4: the "Fourier-duality reading" pointer withdrawn')
+BMETA['BR92'] = (EI, ['SRC-DEBROGLIE-1925'], 'a single free plane wave with m > 0; the worldline of the same on-shell momentum; the sign convention e^{−iη(P, X)}', 'another worldline (the rate differs); a superposition')
+src('SRC-ZHOU-SIADAT-2017', 'Kecheng Zhou; M. Vali Siadat', 'Notes on Harmonic Analysis, Part I: The Fourier Transform (lecture notes)', '2017', 'lecture notes (arXiv preprint)', 'arXiv:1709.03377v1 [math.CA]', 'textbook', 'FULL TEXT READ (arXiv version); CLAIM QUOTED',
+    'Definition 1.1: f̂(y) = ∫f(x)e^{−ixy}dx (the project convention); Theorem 1.13: f, f̂ ∈ L¹ ⇒ inversion a.e.; Theorem 1.15: f ∈ L¹ and f̂ = 0 everywhere ⇒ f = 0 a.e. Quoted in research/sources/zhou_siadat_2017.md',
+    'anything about physical pairs, the mass/wave seed or dispersion', ['P17F'], [], checked='full text of arXiv v1 read 2026-11-17 (§1, Definition 1.1, Theorems 1.13 and 1.15 with proofs); lecture notes, not a peer-reviewed article')
+
+
 for b in B:
     st, srcs, asm, fl = BMETA[b['id']]
     b.update(strength=st, sources=srcs, assumptions=asm, failureCondition=fl)
@@ -1371,7 +1397,7 @@ dom('D23', 'Philosophical lenses', 'PL1', 'OPEN LONG-TERM', 'origin, not proof')
 dom('D24', 'Failures and boundaries', 'F1', 'LOCKED', 'every FAIL card kept')
 dom('D25', 'Application', 'A1 A2', 'OPEN LONG-TERM', 'A2: APPLICATION PROVENANCE INCOMPLETE; not upstream evidence')
 dom('D26', 'Physical energy vs L² energy; meaning of squared magnitude', 'A3 ON9', 'WORDING ONLY', 'name the kind of "energy" every time')
-dom('D41', '#17: conjugacy and physical pairs (first construction)', 'P17F P17R P17N P17M P17E P17K P17C P17MW P17X', 'SOURCE+CARD COMPLETE', 'first construction 2026-11-17: separate statuses (Fourier conjugacy ESTABLISHED; real-field pairing DERIVED; massless null ESTABLISHED; mass shell DERIVED; E = ħω, p = ħk RESTRICTED; MW-A RESTRICTED, MW-B ESTABLISHED, MW-C FAIL, MW-D OPEN); the #17 hypothesis (P2) stays OPEN in D21')
+dom('D41', '#17: conjugacy and physical pairs (first construction; locked 2026-11-17)', 'P17F P17R P17N P17M P17E P17K P17C P17MW P17X', 'LOCKED', 'first construction 2026-11-17; LOCKED by the #17 adversarial lock (2026-11-17): Fourier conjugacy ESTABLISHED (converse locked); real-field pairing DERIVED; massless null ESTABLISHED; m selects the level (DERIVED); boost scope SO⁺(1,1); proper-time phase rate DERIVED (scoped); E = ħω, p = ħk RESTRICTED; MW-A RESTRICTED, MW-B ESTABLISHED, MW-C FAIL, MW-D OPEN; mass as a spectral variable conjugate to τ OPEN (not investigated); the #17 hypothesis (P2) stays OPEN in D21')
 for d in D:
     assert d['status'] in DOMAIN_STATUSES
     for i in d['objects']: assert any(o['id'] == i for o in O), i

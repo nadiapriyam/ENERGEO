@@ -14,12 +14,16 @@ agreement, and no candidate's deeper common relation is filled in.
 | Upper and lower mass-shell branches | conjugacy as points | partially works: −I preserves q and swaps branches; no reality constraint without amplitudes (P17Ca) | L2 | NOT YET FORMALIZED | TEXTBOOK / KNOWN | 10 | 20 | 1 | a physical reading needs a specific field theory (future branch) |
 | Massless and massive levels | one quadratic form | partially works: same form, different levels, no relating transformation (P17Dc, P17De) | L1 | STRUCTURAL TRANSFER (MW-B) | TEXTBOOK / KNOWN | 30 | 10 | 2 | q < 0 not reached by real m |
 | Mass and wave variables (MW-C) | complex conjugacy | fails: conjugation fixes m (P17Ch) | L1 | FAIL | TEXTBOOK / KNOWN | 0 | 5 | 1 | none: exact |
-| Rest frequency and proper time | Fourier duality (a different meaning of "conjugate") | same rule works along the group worldline (P17Dg) | L3 of another kind | STRUCTURAL TRANSFER | TEXTBOOK / KNOWN (de Broglie) | 20 | 25 | 2 | off the group worldline |
+| Rest frequency and proper time | Fourier duality (a different meaning of "conjugate") | not established: only a proper-time phase rate mc²/ħ along the worldline of the same on-shell momentum (P17Dg, P17Lb); a phase rate set by a parameter does not make it Fourier-conjugate to time (P17Lf) | L1 (a phase-rate equation) | NOT YET FORMALIZED | TEXTBOOK / KNOWN (de Broglie) | 0 | 20 | 1 | the elastic-foundation string has the same structure (P17Lf) |
 | Elastic-foundation string vs massive dispersion | the same dispersion relation | same rule works as an equation, with no particle (P17Mx) | L1 | TRIVIAL CONSEQUENCE | TEXTBOOK / KNOWN | 10 | 10 | 2 | the physics differs (stiffness, not mass) |
 | "Positive / negative frequency" labels | a physical pair | fails: the pair disappears in the one-sided and cos/sin representations (P17Ce) | L0 | FAIL | TEXTBOOK / KNOWN | 0 | 5 | 1 | none: exact |
 
 **Novelty.** Every result above is VALIDATION OF KNOWN MATHEMATICS or a project classification of known mathematics.
 No nontrivial predictive transfer.
+
+*#17 lock correction (2026-11-17): the "Rest frequency and proper time" row previously read "same rule works along the
+group worldline (P17Dg) | L3 of another kind | STRUCTURAL TRANSFER | … | 20 | 25 | 2 | off the group worldline"; that
+result is withdrawn.*
 
 ## Version 4 (four-spin and mass pass, 2026-11-12): kept
 

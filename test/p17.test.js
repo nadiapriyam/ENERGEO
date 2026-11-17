@@ -26,7 +26,7 @@ const live = (t) => t.split('\n').filter((l) => !/[Ss]uperseded|SUPERSEDED|kept 
 
 test('1. the #17 cards are on the ledger and pass; the kept FAILs are unchanged', () => {
   assert.equal(P.cards.length, 34);
-  assert.deepEqual([...P.cards].sort(), Object.keys(latest).filter((k) => k.startsWith('P17')).sort());
+  assert.deepEqual([...P.cards, ...P.lockCards].sort(), Object.keys(latest).filter((k) => k.startsWith('P17')).sort());
   assert.ok(pass(...P.cards, ...P.earlierCards));
   assert.deepEqual(Object.keys(latest).filter((k) => latest[k].verdict !== 'PASS').sort(), ['B5a', 'C8c', 'CFT6b', 'S14a', 'Z1a', 'Z2b']);
 });
@@ -112,7 +112,8 @@ test('7. dispersion in spectral variables; four nulls kept apart; mass selects a
   assert.match(P.nullLink, /not one kind of zero/);
   assert.ok(P.massAnswer.startsWith('Does mass appear as a parameter selecting a non-null level set of the same quadratic form whose m=0 case is null? Yes, exactly'));
   assert.match(P.massAnswer, /This does not say that mass is a wave\./);
-  assert.ok(!/\bmass is a wave\b/i.test(live(rec).replace(/does not say that mass is a wave|that mass is a wave \(|that mass is a wave;|“mass is a wave\.”|"mass is a wave"/g, '')), 'no live claim that mass is a wave');
+  const recLive = rec.slice(0, rec.indexOf('### Live-text audit'));
+  assert.ok(!/\bmass is a wave\b/i.test(live(recLive).replace(/does not say that mass is a wave|that mass is a wave \(|that mass is a wave;|“mass is a wave\.”|"mass is a wave"/g, '')), 'no live claim that mass is a wave');
   assert.equal(reg.get('T-P17-MASS-LEVEL').status, 'derived');
 });
 

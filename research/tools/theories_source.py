@@ -1122,6 +1122,20 @@ T('T-P17-REST-CLOCK', 'Rest frequency and proper time are Fourier-dual', line_fr
   bounds=['#17 first construction (2026-11-17): RESTRICTED (exact along the group worldline; a different meaning of "conjugate").'],
   acts=['Guide'], audit=P17_AUDIT, related=['T-MW-C', 'T-UNBOUNDED-EVOLUTION'], ref='#17 first construction, F, I')
 
+# ── #17 final adversarial lock (2026-11-17) ──
+P17L_AUDIT = ('new', '#17 final adversarial lock (2026-11-17)')
+ACTS_ALREADY_NEW |= {'T-P17-PHASE-RATE', 'T-P17-MASS-SPECTRAL-Q'}
+T('T-P17-PHASE-RATE', 'The proper-time phase rate mc²/ħ, scoped', 'Along the worldline associated with the same on-shell four-momentum, the free massive plane-wave phase accumulates at the invariant proper-time rate mc²/ħ, up to sign convention.', RD, U, 'derived-connection', 'derived',
+  variants=[('This establishes a proper-time phase rate.', RD), ('It does NOT by itself establish that mass and proper time are Fourier-conjugate variables.', RD)],
+  norm='Assumptions (P17Lb): a single free massive plane wave e^{−iη(P, X)}; P on the shell q(P) = (mc/ħ)²; the worldline X(τ) = X₀ + (cτ/μ)P of the same on-shell momentum, on which τ is proper time; the sign convention. Then the phase accumulates at μc = mc²/ħ; on another worldline the rate differs. Not a Fourier-conjugate pairing of m and τ (P17Lf).',
+  pro=[('card:P17Lb', 'assumptions explicit'), ('card:P17Dg', 'the rate along the group worldline')], con=[('card:P17Lf', 'a parameter-set phase rate is not a Fourier conjugacy')],
+  bounds=['#17 lock (2026-11-17): DERIVED under the stated assumptions; supersedes T-P17-REST-CLOCK, whose Fourier-duality wording is withdrawn.'],
+  supers='T-P17-REST-CLOCK', acts=['Guide'], audit=P17L_AUDIT, related=['T-MW-C', 'T-P17-MASS-SPECTRAL-Q', 'T-UNBOUNDED-EVOLUTION'], ref='#17 lock, 3–4')
+T('T-P17-MASS-SPECTRAL-Q', 'Mass / rest energy as a spectral variable conjugate to proper time?', 'Is there a physically meaningful formulation in which mass/rest energy acts as a genuine spectral variable conjugate to proper time?', RD, U, 'open-question', 'open',
+  variants=[('Do not investigate it in this pass.', RD)],
+  norm='Recorded at the #17 lock (Q17-4) and not investigated. The proper-time phase rate (T-P17-PHASE-RATE) does not answer it (P17Lf).',
+  bounds=['#17 lock (2026-11-17): OPEN; not investigated.'], acts=['Guide'], audit=P17L_AUDIT, related=['T-MW-C', 'T-P17-PHASE-RATE'], ref='#17 lock, 4')
+
 PAIR_A = proof_target('Starting from the established common zero-sum form Σv_i = 0, identify all additional invariants/relations of the mass system that can be translated into mathematically meaningful tests on the directional cancellation system.',
                       requiredObjects=['the established shared form Σv_i = 0 (pair.A.sharedAlgebraicForm)'])
 next(r for r in R if r['id'] == 'T-Q.pairA-transfer')['proofTarget'] = PAIR_A
@@ -1639,6 +1653,46 @@ rate_p17('T-P17-PAIRING-KINDS', 3, 'PROJECT CLASSIFICATION OF KNOWN MATHEMATICS'
          'A pairing in an independent system that the kinds sort correctly before its card.', 'A carded pairing that belongs to two kinds that the classification says are exclusive.', GC, ('pass', 'partial', 'partial', 'pass', 'n/a'))
 rate_p17('T-P17-REST-CLOCK', 2, VKM, KN, FAM, 20, 25, 'Exact along the group worldline for every mode on the shell; the phase is a character of proper time, the circle structure of #18. Known (de Broglie); a different meaning of "conjugate".',
          'A use of the invariant rest frequency that predicts something new, recorded first.', 'A mode on the shell whose proper-time phase rate differs from mc²/ħ (impossible).', GC, ('pass', 'pass', 'partial', 'pass', 'n/a'), depth=STRUCT)
+
+# #17 final adversarial lock (2026-11-17): corrections; old wording kept in history
+def norm17(rid, new, why):
+    r = byid[rid]
+    old = r['normalizedStatement']
+    r['normalizedStatement'] = new
+    r['history'].append(dict(date='2026-11-17', change=f'#17 lock: {why}. Previous wording: {old}'))
+_r = byid['T-P17-REST-CLOCK']
+_r.update(kind='historical-conjecture', status='hypothesis', supersededBy='T-P17-PHASE-RATE', label='Rest frequency and proper time as a Fourier-dual pair (superseded at the #17 lock)')
+_r['evidenceAgainst'].append(dict(ref='card:P17Lf', note='a phase rate set by a parameter does not make the parameter Fourier-conjugate to time'))
+_r['relatedCards'] = sorted(set(_r['relatedCards']) | {'P17Lf'})
+_r['boundaries'].append('SUPERSEDED (#17 lock, 2026-11-17): the Fourier-duality wording is withdrawn; what survives is the scoped proper-time phase rate (T-P17-PHASE-RATE). The further question is T-P17-MASS-SPECTRAL-Q (OPEN, not investigated).')
+_r['history'].append(dict(date='2026-11-17', change='#17 lock: superseded by T-P17-PHASE-RATE; kind derived-connection → historical-conjecture, status derived → hypothesis (wording kept)'))
+_a = _r['assessment']
+_a['ratingHistory'].append(dict(date='2026-11-17', fromBackbone=_a['backboneSupport'], fromSlop=_a['slopRisk'], toBackbone=0, toSlop=30, reason='#17 lock: the Fourier-duality claim is not established (P17Lf); the phase rate survives as T-P17-PHASE-RATE'))
+_a.update(backboneSupport=0, slopRisk=30, transferDepth='NOT YET FORMALIZED', mathematicalCorrectness='not established', branchState='low-confidence-active',
+          why='The phase rate is exact under stated assumptions, but a phase rate set by a parameter does not make the parameter Fourier-conjugate to proper time (P17Lf). The duality wording is withdrawn.', increase='See T-P17-MASS-SPECTRAL-Q (open, not investigated).')
+norm17('T-MW-C', 'Tested as complex conjugacy: FAIL — conjugation pairs P with −P, maps the mass-m shell to itself and never relates m to (ω, k) (P17Ch). What survives: mass determines the invariant mass-shell level and the associated rest-frame / proper-time phase rate (T-P17-PHASE-RATE). That is not a conjugate pairing, and no Fourier-duality claim replaces the failure (P17Lf). The further question is T-P17-MASS-SPECTRAL-Q (OPEN, not investigated).',
+       'the restricted Fourier-duality reading is withdrawn; the failure is not softened')
+byid['T-MW-C']['evidenceAgainst'].append(dict(ref='card:P17Lf', note='no Fourier-duality claim replaces the failure'))
+byid['T-MW-C']['relatedCards'] = sorted(set(byid['T-MW-C']['relatedCards']) | {'P17Lf'})
+byid['T-MW-C']['assessment']['increase'] = 'None for this reading. The further question is T-P17-MASS-SPECTRAL-Q (open, not investigated).'
+norm17('T-MW-B', 'q(P) = (ω/c)² − k² with P = (ω/c, k): m = 0 ⇒ q(P) = 0 (the null level, ω = ±ck); m > 0 ⇒ q(P) = (mc/ħ)² > 0 (a nonzero timelike mass-shell level). Mass labels/selects the invariant level of the same Lorentzian quadratic form; the form and the group are the same for every m (P17Lg). Each branch is one SO⁺(1,1) orbit, preserved by proper orthochronous boosts (P17La). Spectral variables, not physical spacetime.',
+       'mass selects the level; boost scope')
+byid['T-MW-B']['assessment']['why'] = 'One Lorentzian form q = (ω/c)² − k²: m = 0 selects its null level and m > 0 a nonzero timelike level; the form does not depend on m. A second realization (the elastic-foundation string) has the same levels.'
+norm17('T-P17-MASS-LEVEL', 'Mass labels/selects the invariant level of the same Lorentzian quadratic form: m = 0 ⇒ q(P) = 0; m > 0 ⇒ q(P) = (mc/ħ)² > 0. Each positive- or negative-energy branch is one SO⁺(1,1) orbit and is preserved by proper orthochronous boosts (not by the full Lorentz group). Consequences of the level: a frequency gap at mc²/ħ, a rest frame (tanh φ = ck/ω), and the proper-time phase rate along the worldline of the same on-shell momentum (T-P17-PHASE-RATE). mc/ħ plays the role of the circle radius r, not of c.',
+       'mass selects the level (no change of geometry); boost scope; phase rate scoped')
+byid['T-P17-MASS-LEVEL']['evidenceFor'] += [dict(ref='card:P17La', note='boost scope'), dict(ref='card:P17Lg', note='the form does not depend on m')]
+byid['T-P17-MASS-LEVEL']['relatedCards'] = sorted(set(byid['T-P17-MASS-LEVEL']['relatedCards']) | {'P17La', 'P17Lg'})
+byid['T-P17-MASS-LEVEL']['assessment']['why'] = 'The #14 chart (preserved form, generator, orbit) applies unchanged in spectral variables. It gives the exact role of m: it selects the invariant level, whose branches are SO⁺(1,1) orbits, as r labels circles.'
+_r = byid['T-MASS-WAVE-SEED']
+for _i, _b in enumerate(_r['boundaries']):
+    if _b.startswith('#17 first construction (2026-11-17): kept verbatim and not promoted') and 'Fourier-duality' in _b:
+        _r['boundaries'][_i] = 'SUPERSEDED (#17 lock, 2026-11-17: the Fourier-duality reading is withdrawn; see the note below): ' + _b
+note17('T-MASS-WAVE-SEED', f'#17 lock (2026-11-17): kept verbatim and not promoted. MW-A RESTRICTED (T-MW-A); MW-B ESTABLISHED (T-MW-B: mass selects the level of one Lorentzian form); MW-C FAIL (T-MW-C) — what survives is that mass determines the invariant mass-shell level and the associated rest-frame / proper-time phase rate (T-P17-PHASE-RATE), not a conjugate or Fourier-dual pairing; MW-D OPEN (T-MW-D). Record: {P17REC}.',
+       '#17 lock: readings restated without the withdrawn duality', con=[('card:P17Lf', 'no Fourier-duality claim')])
+note17('T-CONJUGACY', '#17 lock (2026-11-17): stays OPEN. The converse of the source relation is locked (uniqueness on L¹, Zhou–Siadat Theorem 1.15, read; exact proofs for finite signals and finite Hermite expansions, P17Lc, P17Ld).',
+       '#17 lock: source relation locked', pro=[('card:P17Lc', 'discrete converse'), ('card:P17Ld', 'Hermite converse')])
+rate_p17('T-P17-PHASE-RATE', 2, VKM, KN, FAM, 15, 10, 'Exact under the stated assumptions: one free plane wave, the worldline of the same on-shell momentum, the sign convention. On another worldline the rate differs. It is a phase rate, not a Fourier-conjugate pairing.',
+         'A use of the invariant rate that predicts something new, recorded first.', 'A mode on the shell whose phase rate along the worldline of its own momentum differs from mc²/ħ (impossible).', GC, ('pass', 'pass', 'partial', 'pass', 'n/a'), depth=TRIV)
 
 update('T-CF11-A', TRIV, bs=60, slop=8, reason='Pass 3: the pattern holds in coordinate-free form (F*T = T) across constant-form, symplectic and homogeneous Fisher geometries, and its boundary is now exact (generic Fisher geometry is not characterized by a transformation group, CFT5f). Application Breadth corrected from 4 to 3: the rubric reserves 4 for a physical/empirical system')
 
