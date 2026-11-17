@@ -1673,6 +1673,10 @@
         {
           "ref": "card:A8Qa",
           "note": ""
+        },
+        {
+          "ref": "card:C9c",
+          "note": "det K_c = −1/c²; K_∞ a shear"
         }
       ],
       "evidenceAgainst": [],
@@ -1680,7 +1684,8 @@
         "C9 is not inferred from the paper; the two manifolds are linked only through c (Gate 3).",
         "Precision pass (2026-11-15): three roles are kept apart. The two roles named here are Role 2 (within a theory, c helps define the invariant Lorentzian structure) and Role 3 (across theories, c → ∞ is a singular limit giving the degenerate form diag(1, 0), not by itself the Newtonian metric). Role 1 is a representation-level fact added to avoid conflation: for the matrix η_c = diag(1, −1/c²), a finite c can be normalized by rescaling x; this does not remove Role 2. The transition between Roles 2 and 3 stays the question.",
         "SUPERSEDED (2026-11-16, story-integration pass; too broad): Act VIII (2026-11-16), restricted answer to H3-1: Role 2 (c fixes the invariant form) and Role 3 (c → ∞) are roles of the same form constant. At finite c the value of c is not an isomorphism invariant (finite-c forms congruent, finite-c algebras isomorphic); the invariant content is finiteness — M_c nondegenerate and the algebra Poincaré exactly when c < ∞ (A8Ma, A8Mc, A8Lc). Known mathematics; it does not make c an instance of the circle mechanism (T-H3-C).",
-        "Story-integration pass (2026-11-16), restricted answer to H3-1 (replaces the superseded finiteness statement): for the bare family M_c = diag(1, −1/c²), all finite c > 0 forms are congruent under a spatial rescaling, so the congruence class of this isolated form does not distinguish the finite value of c (A8Wc). This does NOT mean that physical c has no significance beyond finiteness: kept distinct are finite-c unit normalization, the causal structure (x = ±ct), dimensionless ratios such as v/c (tanh φ = v/c), and the external family limit c → ∞. In the velocity parametrization det K_c = −1/c² links Role 2 (the hyperbolic generator) and Role 3 (κ → 0⁻) (A8Qa)."
+        "SUPERSEDED (2026-11-17 lock: the κ-family is parked; its citation is replaced below): Story-integration pass (2026-11-16), restricted answer to H3-1 (replaces the superseded finiteness statement): for the bare family M_c = diag(1, −1/c²), all finite c > 0 forms are congruent under a spatial rescaling, so the congruence class of this isolated form does not distinguish the finite value of c (A8Wc). This does NOT mean that physical c has no significance beyond finiteness: kept distinct are finite-c unit normalization, the causal structure (x = ±ct), dimensionless ratios such as v/c (tanh φ = v/c), and the external family limit c → ∞. In the velocity parametrization det K_c = −1/c² links Role 2 (the hyperbolic generator) and Role 3 (κ → 0⁻) (A8Qa).",
+        "Act VIII lock (2026-11-17), restricted answer to H3-1: for the bare family M_c = diag(1, −1/c²), all finite c > 0 forms are congruent under a spatial rescaling, so the congruence class of this isolated form does not distinguish the finite value of c (A8Wc); this does NOT mean that physical c has no significance beyond finiteness (causal structure x = ±ct, ratios such as v/c and the family limit c → ∞ stay distinct). Role 2 and Role 3 meet in the velocity-parametrized boost generator: det K_c = −1/c², and K_c contracts to the Galilean shear as c → ∞ at fixed v (C9c, A8Lc). Known mathematics; H3-1 stays OPEN."
       ],
       "supersededBy": null,
       "supersedes": null,
@@ -1741,6 +1746,14 @@
         {
           "date": "2026-11-16",
           "change": "story pass: restricted content of c"
+        },
+        {
+          "date": "2026-11-17",
+          "change": "Act VIII lock: the 2026-11-16 boundary citing the κ-family (A8Qa) marked SUPERSEDED (kept verbatim) and restated through the boost generator (C9c)"
+        },
+        {
+          "date": "2026-11-17",
+          "change": "Act VIII lock: H3-1 answer restated without κ"
         }
       ],
       "relatedActsRev3": [
@@ -15674,7 +15687,7 @@
       "label": "H3-c-family: c-indexed Lorentzian forms and their Galilean limit",
       "words": "H3-c-family: varying c indexes a family of Lorentzian structures/forms whose c→∞ limit is singular and whose Lorentz transformations have a Galilean limit under fixed-v scaling. Status: restricted/established pieces; project connection to H3 remains open.",
       "variants": [],
-      "normalizedStatement": "Established pieces: M_c → diag(1, 0) outside every congruence class (A8Mc); fixed-v Galilean boost limit (A8Lb); contraction Poincaré(1+1) → Galilei(1+1) (A8Lc); the family M_κ = diag(1, κ), K_κ = [[0, κ], [−1, 0]] with κ = −1/c² for boosts and κ = ω² for the oscillator, both reaching the parabolic member κ = 0 when the physical variables are held fixed (A8Qa). Restricted: every limit depends on the scaling held fixed (A8X5, A8Qb).",
+      "normalizedStatement": "Established pieces: M_c → diag(1, 0) outside every congruence class (A8Mc); fixed-v Galilean boost limit (A8Lb); contraction Poincaré(1+1) → Galilei(1+1) (A8Lc); the restricted content of c (A8Wc). Restricted: every limit depends on the scaling held fixed (A8X5). The κ-family comparison with an oscillator (A8Qa, A8Qb) is parked as optional and is not part of this statement.",
       "origin": "user",
       "kind": "derived-connection",
       "status": "derived",
@@ -15756,6 +15769,10 @@
         {
           "date": "2026-11-16",
           "change": "canonical story: κ-family parked"
+        },
+        {
+          "date": "2026-11-17",
+          "change": "Act VIII lock: κ-family removed from the live statement (parked). Previous wording: Established pieces: M_c → diag(1, 0) outside every congruence class (A8Mc); fixed-v Galilean boost limit (A8Lb); contraction Poincaré(1+1) → Galilei(1+1) (A8Lc); the family M_κ = diag(1, κ), K_κ = [[0, κ], [−1, 0]] with κ = −1/c² for boosts and κ = ω² for the oscillator, both reaching the parabolic member κ = 0 when the physical variables are held fixed (A8Qa). Restricted: every limit depends on the scaling held fixed (A8X5, A8Qb)."
         }
       ],
       "relatedActsRev3": [],

@@ -1508,6 +1508,20 @@ note16('T-H3-GROUP', f'Canonical story (2026-11-16): connects #14 (preserved for
 note16('T-H3-C-FAMILY', f'Canonical story (2026-11-16): the c-indexed family and its Galilean limit answer Gate 2 answer 3 (what goes to infinity) at #19; the κ-family part (A8Qa, A8Qb) is PARKED AS OPTIONAL — it answers no historical question. Graph: {CSG}, section E.', 'canonical story: κ-family parked')
 note16('T-STAR', f'Canonical story (2026-11-16): the Act VIII readings refine the original question ("What observable rules arise because an object is constrained by a particular geometry?") and keep it; the original question is not replaced by "generators". Graph: {CSG}, Chain PB.', 'canonical story: refinement, not replacement')
 
+# Act VIII final lock: story fidelity (2026-11-17): live statements no longer cite the parked κ-family
+_r = byid['T-C-ROLES']
+for _i, _b in enumerate(_r['boundaries']):
+    if _b.startswith('Story-integration pass (2026-11-16), restricted answer to H3-1') and 'A8Qa' in _b:
+        _r['boundaries'][_i] = 'SUPERSEDED (2026-11-17 lock: the κ-family is parked; its citation is replaced below): ' + _b
+_r['history'].append(dict(date='2026-11-17', change='Act VIII lock: the 2026-11-16 boundary citing the κ-family (A8Qa) marked SUPERSEDED (kept verbatim) and restated through the boost generator (C9c)'))
+note16('T-C-ROLES', 'Act VIII lock (2026-11-17), restricted answer to H3-1: for the bare family M_c = diag(1, −1/c²), all finite c > 0 forms are congruent under a spatial rescaling, so the congruence class of this isolated form does not distinguish the finite value of c (A8Wc); this does NOT mean that physical c has no significance beyond finiteness (causal structure x = ±ct, ratios such as v/c and the family limit c → ∞ stay distinct). Role 2 and Role 3 meet in the velocity-parametrized boost generator: det K_c = −1/c², and K_c contracts to the Galilean shear as c → ∞ at fixed v (C9c, A8Lc). Known mathematics; H3-1 stays OPEN.',
+       'Act VIII lock: H3-1 answer restated without κ', pro=[('card:C9c', 'det K_c = −1/c²; K_∞ a shear')])
+byid['T-C-ROLES']['history'][-1]['date'] = '2026-11-17'
+_r = byid['T-H3-C-FAMILY']
+_old = _r['normalizedStatement']
+_r['normalizedStatement'] = 'Established pieces: M_c → diag(1, 0) outside every congruence class (A8Mc); fixed-v Galilean boost limit (A8Lb); contraction Poincaré(1+1) → Galilei(1+1) (A8Lc); the restricted content of c (A8Wc). Restricted: every limit depends on the scaling held fixed (A8X5). The κ-family comparison with an oscillator (A8Qa, A8Qb) is parked as optional and is not part of this statement.'
+_r['history'].append(dict(date='2026-11-17', change=f'Act VIII lock: κ-family removed from the live statement (parked). Previous wording: {_old}'))
+
 update('T-CF11-A', TRIV, bs=60, slop=8, reason='Pass 3: the pattern holds in coordinate-free form (F*T = T) across constant-form, symplectic and homogeneous Fisher geometries, and its boundary is now exact (generic Fisher geometry is not characterized by a transformation group, CFT5f). Application Breadth corrected from 4 to 3: the rubric reserves 4 for a physical/empirical system')
 
 for r in R:

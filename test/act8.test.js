@@ -170,7 +170,9 @@ test('14. Foundation records the Act VIII objects, bridges, sources and domains'
 });
 
 test('15. the pass stops where it was told to', () => {
-  assert.ok(A.next.some((n) => /^READY FOR ADVERSARIAL LOCK/.test(n)));
+  // Act VIII final lock (2026-11-17): the recommendation is superseded by the lock verdict; the earlier ones are kept
+  assert.match(A.next[0], /^LOCKED \(2026-11-17\): LOCK ACT VIII — STORY AND MATHEMATICS ALIGNED/);
+  assert.ok(A.superseded.some((x) => x.where === 'next pass (lock)' && x.old.some((o) => /^READY FOR ADVERSARIAL LOCK/.test(o))));
   assert.ok(A.superseded.some((x) => x.where === 'next pass' && x.old.some((o) => /^One adversarial lock pass for Act VIII/.test(o))), 'pass-1 recommendation kept as superseded');
   assert.ok(A.next.some((n) => /Not begun \(stop list\): mass-wave\/conjugacy, dispersion, quantum work, Energeo, the final Foundation freeze/.test(n)));
   assert.equal(reg.get('T-C7').status, 'open');

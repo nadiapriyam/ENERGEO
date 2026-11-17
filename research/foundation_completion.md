@@ -42,7 +42,7 @@ Statuses: LOCKED; SOURCE-COMPLETE; MATH-CARDED; SOURCE+CARD COMPLETE; NEEDS DERI
 | D30. Reduction / Information-Changing Architecture | RI0, RI1, RI2 | SOURCE+CARD COMPLETE | every existing lossy map answers the seven questions where carded; model reduction and coarse-graining are placeholders for later passes |
 | D31. Transform vs reduce; DYADIC packet hierarchy questions | RI3, W5 | OPEN LONG-TERM | OPEN PROJECT QUESTION; DYADIC STRUCTURE — CANDIDATE, NOT UNIVERSAL |
 | D27. Coordinate-free common form and covariance | CF12, CF13, Z13 | SOURCE+CARD COMPLETE | F*T = T across constant-form, symplectic and Fisher isometries; naturality of the Fisher metric; symmetry-forced null (sufficient, not necessary) |
-| D7. Zero taxonomy | Z1, Z2, Z3, Z5, Z6, Z8, Z9, Z12 | SOURCE+CARD COMPLETE | Z9 now separates exact structural null, sloppy direction, Lorentz null (FB7) |
+| D7. Zero taxonomy | Z1, Z2, Z3, Z5, Z6, Z8, Z9, Z12 | SOURCE+CARD COMPLETE | Z9 now separates exact structural null, sloppy direction, Lorentz null (FB7). Act VIII lock (2026-11-17): four kinds of zero kept apart (Master Map #13): zero object / value, zero relation, zero index / frequency (k = 0, the DC mode — not a zero value), null / balance / cancellation |
 | D8. Zero as connector; the inverse problem | Z11, H3 | OPEN LONG-TERM | special cases proved; general statement open |
 | D9. Translation, correlation, spectrum, localization | T1, T2, T3, T4, T5 | SOURCE+CARD COMPLETE | T3/T4 project-derived and carded; the uncertainty inequality itself is source-only (FB3 cards its instances) |
 | D10. Lorentz and c | L1, L2, L3 | SOURCE+CARD COMPLETE | İnönü–Wigner sourced for the c → ∞ contraction; it is not evidence for L4 |

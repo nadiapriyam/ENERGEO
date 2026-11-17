@@ -1,7 +1,8 @@
-// Canonical story diagnostic (2026-11-16). Guards docs/restructure_decisions.md, "Canonical story diagnostic": the
-// Master Story (the historical question-by-question journey) is kept beside the Foundation Spine; every relation is
-// placed between the question that demanded it and the question it created; every Foundation domain is aligned;
-// Act VIII is placed inside the existing story; the κ-family is parked; missing connectives are added.
+// Canonical story (diagnostic 2026-11-16; Act VIII final lock, story fidelity, 2026-11-17). Guards the decisions in
+// docs/restructure_decisions.md, "Canonical story diagnostic" and "Act VIII final lock: story fidelity": the 20-node
+// Master Map is the canonical story, read as a directed relation graph with typed edges; the Foundation spine is only its
+// abstract structural summary; zero frequency is a zero index, not a zero value; #15/#16 ⇢ #18/#19 is a cross-reference,
+// not a causal edge; Act VIII is placed inside the story; the κ-family is parked.
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -13,104 +14,123 @@ const F = JSON.parse(read('research/foundation.json'));
 const A8 = JSON.parse(read('research/act8.json'));
 const obj = new Map(F.objects.map((o) => [o.id, o]));
 const reg = new Map(JSON.parse(read('research/theories.json')).theories.map((r) => [r.id, r]));
+const latest = JSON.parse(read('verify/ledger/latest.json')).cards;
 const mm = read('docs/Interactive_Master_Map.extracted.md');
 const decisions = read('docs/restructure_decisions.md');
 const map = read('research/master_math_map.md');
 const md = read('research/canonical_story.md');
+const decided = (t) => decisions.includes(t);
+const edge = (a, b) => C.edges.find((e) => e.src === a && e.dst === b);
+const live = (t) => t.split('\n').filter((l) => !/[Ss]uperseded|SUPERSEDED|kept as history|Moved 2026-11-17|parked|PARKED/.test(l)).join('\n');
 
-test('1. the Master Story keeps the 20 historical nodes in their order, titles verbatim', () => {
+test('1. the canonical story is the 20-node Master Map, in its order, titles verbatim, each with a discovery trigger', () => {
   assert.equal(C.master.length, 20);
   C.master.forEach((m, i) => {
     assert.equal(m.n, i + 1);
     assert.ok(mm.includes(`${m.n}. ${m.title}`), `M${m.n} title verbatim`);
-    assert.ok(m.q && m.rel && m.nxt && m.spine.every((s) => C.spine.includes(s)), `M${m.n}`);
+    assert.ok(m.q && m.rel && m.nxt && m.trigger, `M${m.n}: question, relation, next question, discovery trigger`);
   });
   for (const t of C.mmTransitions) assert.ok(mm.includes(t.text), t.text);
-  assert.ok(decisions.includes('> 18. Finite circle / unbounded time / infinity question.'));
+  assert.ok(md.includes('| Node | Historical question | Relation learned | What question it created | Edge type (outgoing) | Discovery trigger |'));
 });
 
-test('2. both levels are kept: the spine summarizes the Master Story and does not replace it', () => {
-  assert.match(md, /\*\*This is a diagnostic artifact, not a replacement architecture\.\*\*/);
-  assert.ok(map.includes('**Two levels: the Master Story and the Foundation Spine (canonical story diagnostic, 2026-11-16).**'));
-  assert.ok(decided('is a higher-level summary of the same story, not a replacement for the historical sequence.'));
-  assert.match(C.provenance.notAvailable, /not in this repository/);
+test('2. the spine is labelled as the abstract structural summary and does not govern order', () => {
+  assert.ok(decided('ABSTRACT STRUCTURAL SUMMARY OF THE CANONICAL STORY.'));
+  assert.ok(map.includes('## Part I. Foundation spine\n\n**ABSTRACT STRUCTURAL SUMMARY OF THE CANONICAL STORY.**'));
+  assert.match(map, /It does not govern chronological order\./);
+  assert.equal(C.spineLabel.label, 'ABSTRACT STRUCTURAL SUMMARY OF THE CANONICAL STORY.');
 });
-function decided(t) { return decisions.includes(t); }
 
-test('3. every chain runs question → relation → next question, in discovery order', () => {
-  for (const [k, ch] of Object.entries(C.chains)) {
-    assert.equal(ch.steps[0].kind, 'Q', k);
-    ch.steps.forEach((s, i) => { if (i) assert.notEqual(s.kind, ch.steps[i - 1].kind, `${k}: alternates`); });
-  }
-  const A = C.chains.A.steps.map((s) => s.text);
-  const iM = A.findIndex((t) => /What happens when M ≠ I\?/.test(t)), iA = A.findIndex((t) => /A†MA = M \(CF1\)/.test(t)), iX = A.findIndex((t) => /relative to zero/.test(t));
-  assert.ok(iX === 0 && iX < iM && iM < iA, 'Chain A: zero and norm before M, M before A†MA = M');
+test('3. the story is a graph: typed edges, and adjacency is not automatically causal (Correction C)', () => {
+  assert.deepEqual(Object.keys(C.edgeTypes), ['NEXT QUESTION', 'EARLIER PREDECESSOR', 'CROSS-REFERENCE', 'APPLICATION HANDOFF', 'OPEN / NO DIRECT CAUSAL EDGE']);
+  assert.ok(decided('NEXT QUESTION; EARLIER PREDECESSOR; CROSS-REFERENCE; APPLICATION HANDOFF; OPEN / NO DIRECT CAUSAL EDGE'));
+  for (const e of C.edges) assert.ok(C.edgeTypes[e.type] && /^M\d+$/.test(e.src) && /^M\d+$/.test(e.dst) && e.why, `${e.src} → ${e.dst}`);
+  for (let i = 1; i < 20; i++) assert.ok(edge(`M${i}`, `M${i + 1}`), `every consecutive pair is typed: M${i} → M${i + 1}`);
+  for (const [a, b] of [['M9', 'M10'], ['M12', 'M13'], ['M16', 'M17'], ['M17', 'M18']]) assert.equal(edge(a, b).type, 'OPEN / NO DIRECT CAUSAL EDGE', `${a} → ${b}`);
+  assert.equal(edge('M12', 'M17').type, 'EARLIER PREDECESSOR');
+  assert.equal(edge('M18', 'M19').type, 'NEXT QUESTION');
+  assert.equal(edge('M19', 'M20').type, 'APPLICATION HANDOFF');
+});
+
+test('4. #15/#16 ⇢ #18/#19 is a cross-reference, never a causal edge (Correction B)', () => {
+  for (const [a, b] of [['M15', 'M18'], ['M16', 'M18'], ['M15', 'M19']]) assert.equal(edge(a, b).type, 'CROSS-REFERENCE', `${a} ⇢ ${b}`);
+  assert.ok(!C.edges.some((e) => ['M15', 'M16'].includes(e.src) && ['M18', 'M19'].includes(e.dst) && e.type !== 'CROSS-REFERENCE'));
+  for (const t of ['It does NOT mean model manifolds and spacetime are the same structure.', 'It does NOT mean model-manifold theory generated relativity historically.']) assert.ok(decided(t), t);
+  assert.match(md, /The historical route to relativity is #18 → #19\./);
+  assert.ok(map.includes('*Cross-reference, not a causal edge (Act VIII lock, Correction B):*'));
+  assert.ok(!/c → ∞ also entered here, as a model-family limit \(Gate 2 answer 3\), before it reached relativity/.test(live(map)));
+  assert.match(C.act8.find((x) => x.item.startsWith('c → ∞')).question, /cross-reference from #15 \/ #16 \(Correction B\), not its cause/);
+});
+
+test('5. zero frequency is a zero index, kept at #13 in its own kind (Correction A)', () => {
+  assert.deepEqual(C.zeroKinds.map((z) => z.kind), ['zero object / value', 'zero relation', 'zero index / frequency', 'null / balance / cancellation']);
+  assert.match(C.zeroKinds[2].meaning, /a zero in the index \/ coordinate domain, not a zero value/);
+  assert.ok(decided('It is a zero in the index/coordinate domain.'));
+  assert.ok(map.includes('**Kinds of zero (Master Map #13; Act VIII lock, Correction A, 2026-11-17).**'));
+  assert.ok(!map.includes('| Zero frequency (k = 0, ω = 0; Master Map #13) | e₀ = 1'), 'the zero-frequency row left the zero-value table');
+  assert.match(C.master[12].rel, /zero index\/frequency/);
+  assert.ok(/zero-frequency/.test(C.master[12].q), 'zero frequency stays in #13');
+});
+
+test('6. the historical relations are visible, in discovery order and with the decided notation', () => {
+  assert.equal(C.master[0].nxt, 'What properties belong to the physical thing and what belong to its representation? (lock decisions)');
+  assert.ok(C.master[2].nxt.startsWith('What remains unchanged under transformation?'));
+  assert.equal(C.master[7].q, 'What relation vanished? (lock decisions)');
+  assert.ok(C.master[14].q.startsWith('If distance and magnitude depend on the geometry, how should distance be understood when the valid predictions form a model/prediction manifold?'));
+  assert.match(C.master[16].rel, /not claimed to be mathematically conjugate/);
+  assert.ok(C.master[17].rel.startsWith('The corrected relation is that an unbounded parameter can produce indefinitely continuing evolution while an observable representation remains bounded.'));
   const Fo = C.chains.F.steps.map((s) => s.text);
-  const iZero = Fo.findIndex((t) => /f̂\(k\) = 0 while f ≠ 0/.test(t)), iOrth = Fo.findIndex((t) => /⟨e_j, e_k⟩ = δ_jk/.test(t));
-  assert.ok(iZero >= 0 && iZero < iOrth, 'Fourier: the zero coefficient before orthogonality');
-  assert.ok(C.chains.PB.steps.some((s) => /a refinement of the original question, not a new story/.test(s.text)));
-  assert.ok(C.chains.IG.steps.some((s) => /C7 is not why model manifolds are in the story/.test(s.text)));
+  assert.ok(Fo.findIndex((t) => /What relation vanished\?/.test(t)) < Fo.findIndex((t) => /δ_jk/.test(t)), 'the vanished relation before orthogonality');
+  const A = C.chains.A.steps.map((s) => s.text);
+  assert.ok(A.findIndex((t) => /M ≠ I/.test(t)) < A.findIndex((t) => /A†MA = M \(CF1\)/.test(t)), 'q_M before A†MA = M');
+  for (const t of [...A, map.slice(map.indexOf('*How the question arrived'), map.indexOf('**The architecture**'))]) assert.ok(!/\|x\|/.test(t), 'vectors use ‖x‖');
+  assert.ok(C.chains.IG.steps.some((s) => /C7 does not create this branch/.test(s.text)));
   assert.ok(C.chains.E.steps.some((s) => /never upstream evidence/.test(s.text)));
-  assert.ok((md.match(/```mermaid/g) || []).length === 1 + Object.keys(C.chains).length);
 });
 
-test('4. every Foundation domain is aligned once, with actions from the allowed list', () => {
-  const doms = F.domains.map((d) => d.id).sort();
-  assert.deepEqual(C.alignment.map((a) => a.domain).sort(), doms);
-  for (const a of C.alignment) {
-    assert.ok(a.actions.length && a.actions.every((x) => C.actions.includes(x)), a.domain);
-    assert.ok(a.predecessor && a.verdict, a.domain);
-  }
-  const d40 = C.alignment.find((a) => a.domain === 'D40');
-  for (const x of ['RECLASSIFY', 'SUPERSEDE WORDING', 'PARK AS OPTIONAL']) assert.ok(d40.actions.includes(x), x);
-  assert.equal(F.domains.find((d) => d.id === 'D40').name, 'Supporting mathematics for #14 → #18 / #19 (Act VIII)');
+test('7. Act VIII final placement: answers #18 / #19, connectors backward, supporting only, optional, failures', () => {
+  const groups = new Set(C.act8.map((x) => x.group));
+  for (const g of ['#18 answer', '#19 answer', 'connector backward', 'supporting only', 'optional (parked)', 'refinement / failure']) assert.ok(groups.has(g), g);
+  const by = (start) => C.act8.find((x) => x.item.startsWith(start));
+  for (const [s, g] of [['circle', '#18 answer'], ['torus', '#18 answer'], ['cylinder', '#18 answer'], ['exact versus near recurrence', '#18 answer'], ['rapidity', '#19 answer'], ['roles of c', '#19 answer'], ['c → ∞', '#19 answer'],
+    ['Fourier character', 'connector backward'], ['SO(2) / SO(1,1)', 'connector backward'], ['generator theorem', 'supporting only'], ['stabilizer', 'supporting only'], ['elliptic', 'supporting only'], ['κ-family', 'optional (parked)'],
+    ['old wording', 'refinement / failure'], ['literal t ↔ c', 'refinement / failure']]) assert.equal(by(s)?.group, g, s);
+  for (const x of C.act8.filter((y) => y.group === 'supporting only')) assert.equal(x.category, 'C', x.item);
+  assert.deepEqual(A8.placement, C.act8);
 });
 
-test('5. Act VIII is placed inside the existing story, not as a replacement', () => {
-  const cat = new Map(C.act8.map((x) => [x.objects, x.category]));
-  for (const x of C.act8) assert.ok(Object.keys(C.categories).includes(x.category), x.item);
-  assert.equal(cat.get('A8C'), 'A');
-  assert.equal(C.act8.find((x) => x.item.startsWith('generator theorem')).category, 'C');
-  assert.equal(cat.get('A8F'), 'B');
-  assert.equal(cat.get('A8E'), 'B');
-  assert.equal(cat.get('A8Q'), 'D');
-  assert.match(C.act8.find((x) => x.item.startsWith('generator theorem')).note, /the existing CF4 \(BR11\), re-carded/);
-  assert.match(obj.get('A8G').foundationRole, /existing CF4 \/ BR11, re-carded/);
-  assert.match(A8.story.contribution, /does not replace the circle \/ periodicity \/ infinity question/);
-  assert.ok(A8.superseded.some((x) => /Act VIII supplies the exact link/.test(x.old)));
-  assert.ok(map.includes('*The historical question leads (F10, canonical story):*'));
-});
-
-test('6. the κ-family is parked: kept, not a story node, not expanded', () => {
+test('8. the κ-family is parked and no live statement uses it', () => {
   assert.equal(C.kappa.verdict, 'PARK AS OPTIONAL (supporting note)');
-  assert.match(C.kappa.question, /None directly/);
   assert.match(obj.get('A8Q').foundationRole, /^PARKED AS OPTIONAL/);
-  assert.match(A8.kappa.status, /^PARKED AS OPTIONAL/);
-  assert.ok(map.includes('*Parked as an optional later construction (canonical story\n  diagnostic; not a story node):*'));
-  assert.ok(reg.get('T-H3-C-FAMILY').boundaries.some((b) => /κ-family part \(A8Qa, A8Qb\) is PARKED AS OPTIONAL/.test(b)));
+  for (const id of ['A8K', 'A8HCF']) assert.ok(!/κ = /.test(obj.get(id).equation), id);
+  assert.ok(!/A8Q\)/.test(obj.get('L4').foundationRole), 'L4 cites C9c, not the κ-family');
+  assert.ok(!/κ/.test(reg.get('T-H3-C-FAMILY').normalizedStatement.replace(/The κ-family comparison[^.]*\./, '')));
+  for (const b of reg.get('T-C-ROLES').boundaries.filter((x) => /A8Qa/.test(x))) assert.match(b, /^SUPERSEDED/);
+  assert.ok(!/κ/.test(A8.tVsCVerdict.analogy) && !/κ/.test(A8.rolesLink));
 });
 
-test('7. the missing connectives are in the master map, each before the material it explains', () => {
-  const before = (a, b) => map.indexOf(a) >= 0 && map.indexOf(a) < map.indexOf(b);
-  assert.ok(before('*How the question arrived (Chain A, canonical story):*', '**The architecture** (CF1, CF2):'));
-  assert.ok(before('*Story order for Fourier (F2, canonical story):*', '| signals / functions |'));
-  assert.ok(before('*Why model manifolds are in the story (F3, canonical story):*', '### Model manifolds: invariance and the research story'));
-  assert.ok(before('*Where the energy question comes from (F9, canonical story):*', '- **A1, Energeo:**'));
-  assert.ok(map.includes('| Zero frequency (k = 0, ω = 0; Master Map #13) |'));
-  assert.equal(C.missing.length, 10);
+test('9. the mathematical lock rests on PASS cards with their assumptions; failures say what they taught', () => {
+  assert.equal(C.mathLock.length, 8);
+  for (const r of C.mathLock) {
+    const cards = r.cards.split(/,\s*/);
+    assert.ok(cards.every((c) => latest[c]?.verdict === 'PASS'), r.statement);
+    assert.ok(r.assumptions, r.statement);
+  }
+  assert.match(C.mathLock.find((r) => r.statement.startsWith('c → ∞')).assumptions, /v and x held fixed; with β = v\/c fixed nothing contracts/);
+  assert.equal(C.mathLock.find((r) => r.statement === 'STAR-A FAIL').status, 'LOCKED as FAIL');
+  assert.equal(reg.get('T-STAR').status, 'hypothesis');
+  assert.equal(obj.get('I2').backboneSupport, 20);
+  for (const f of C.failures) assert.ok(f.question && f.taught && f.nextQuestion, f.failure);
 });
 
-test('8. continuity: every numbered transition is checked, and every "no" names its repair', () => {
-  for (let i = 1; i < 20; i++) assert.ok(C.continuity.some((c) => c.transition === `M${i} → M${i + 1}`), `M${i} → M${i + 1}`);
-  for (const c of C.continuity) if (/^no|^partly/.test(c.verdict)) assert.match(c.verdict, /repaired by/, c.transition);
-  for (const e of C.extraEdges) assert.ok(/^M\d+$/.test(e.src) && /^M\d+$/.test(e.dst) && e.why, `${e.src} → ${e.dst}`);
-});
-
-test('9. Pair A keeps the question that created it; the lock choice is one of the two decided', () => {
+test('10. every Foundation domain is aligned once; the lock verdict is one of the two decided, with the next question', () => {
+  assert.deepEqual(C.alignment.map((a) => a.domain).sort(), F.domains.map((d) => d.id).sort());
+  for (const a of C.alignment) assert.ok(a.actions.every((x) => C.actions.includes(x)), a.domain);
+  assert.ok(['LOCK ACT VIII — STORY AND MATHEMATICS ALIGNED', 'DO NOT LOCK — SPECIFIC STORY OR MATHEMATICAL MISALIGNMENT REMAINS'].includes(C.lock.choice));
+  assert.ok(decided(C.lock.choice));
+  assert.match(C.lock.nextQuestion, /^#17 — "Do observable physical pairings or complementarities reflect deeper symmetry analogous to mathematical conjugacy\?"/);
+  assert.ok(C.superseded.some((x) => /M15 → M19/.test(x.old)), 'the 2026-11-16 causal edge is kept as superseded');
   const pa = reg.get('T-PAIRA-Q');
   assert.equal(pa.words, 'A mass-balance zero identifies a distinguished structural location.');
-  assert.equal(pa.status, 'open');
   assert.ok(decided(pa.words));
-  assert.ok(['READY FOR ACT VIII ADVERSARIAL LOCK AFTER STORY ALIGNMENT', 'STORY ALIGNMENT STILL HAS A SPECIFIC GAP'].includes(C.lock.choice));
-  assert.ok(decided(C.lock.choice));
 });

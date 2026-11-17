@@ -1948,3 +1948,61 @@ Outline"); those conversations are not in this repository.
 > READY FOR ACT VIII ADVERSARIAL LOCK AFTER STORY ALIGNMENT
 
 > STORY ALIGNMENT STILL HAS A SPECIFIC GAP
+
+## Act VIII final lock: story fidelity (2026-11-17)
+
+Nadia's decisions, verbatim. LaTeX and markdown emphasis were converted to plain text; nothing else was changed.
+
+> Do not construct a new story.
+
+> Do not reorganize the project around the strongest theorem.
+
+> The story is allowed to be a directed relation graph, not a strictly linear chain.
+
+> A later question may arise from an earlier node that is not immediately adjacent in numbering.
+
+> Act VIII locks only if its mathematics is correctly placed in the already-existing story.
+
+> Tests alone are not sufficient.
+
+> It is a zero in the index/coordinate domain.
+
+> Do not remove zero frequency from Stage 13; its role there is precisely to show that not every use of “zero” means the same mathematical thing.
+
+> an earlier mathematical-space question was later reused when thinking about time/spacetime.
+
+> It does NOT mean model manifolds and spacetime are the same structure.
+
+> It does NOT mean model-manifold theory generated relativity historically.
+
+> Do not try to invent a strong #16 → #17 transition simply because the numbering is consecutive.
+
+> What properties belong to the physical thing and what belong to its representation?
+
+> What remains unchanged under transformation?
+
+> What relation vanished?
+
+> If distance and magnitude depend on the geometry, how should distance be understood when the valid predictions form a model/prediction manifold?
+
+> Do not claim the physical pairs are mathematically conjugate unless proved.
+
+> The corrected relation is that an unbounded parameter can produce indefinitely continuing evolution while an observable representation remains bounded.
+
+> Can energy behavior be represented so that hidden balances, invariants and structural relationships become geometrically explicit?
+
+> Supporting mathematics must not become a new canonical story node unless it answers a historical Nadia question.
+
+> A numbered adjacency is not automatically a NEXT QUESTION edge.
+
+> NEXT QUESTION; EARLIER PREDECESSOR; CROSS-REFERENCE; APPLICATION HANDOFF; OPEN / NO DIRECT CAUSAL EDGE
+
+> ABSTRACT STRUCTURAL SUMMARY OF THE CANONICAL STORY.
+
+> How did Nadia's questions lead from one mathematical relation to the next?
+
+> What general structural categories became visible after that investigation?
+
+> LOCK ACT VIII — STORY AND MATHEMATICS ALIGNED
+
+> DO NOT LOCK — SPECIFIC STORY OR MATHEMATICAL MISALIGNMENT REMAINS

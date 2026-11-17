@@ -1212,6 +1212,16 @@ fixcs('object', 'A8E', 'foundationRole', 'connects existing questions (category 
 fixcs('object', 'A8F', 'foundationRole', 'connects existing questions (category B): #4 ("What remains unchanged when the pattern shifts?") and #12 (translation ↔ phase, R4) with #18 (the circle) — the circle is the phase by which translation acts; no new theorem beyond R4, R6 and A8Ce', 'canonical story: connector between R4 and R6')
 fixcs('object', 'A8Q', 'foundationRole', 'PARKED AS OPTIONAL (canonical story diagnostic): a later synthesis that answers no historical question; its circle is the oscillator in (p, q), not the Fourier circle of #6 / #18, and its shared limit depends on the scaling held fixed. Kept (cards A8Qa, A8Qb); not a story node, not a bridge the story uses; no further κ-research', 'canonical story: κ-family parked')
 fixcs('bridge', 'BR85', 'doesNotProve', 'that oscillator time evolution and boosts are the same physics; that c corresponds to t. PARKED: an optional later construction the canonical story does not use', 'canonical story: κ-family parked')
+# ══ Act VIII final lock: story fidelity (2026-11-17) — wording / placement only ═════════════════════════════
+def fixlk(kind, id, field, new, why):
+    rec = next(x for x in (O if kind == 'object' else B) if x['id'] == id)
+    PRECISION.append(dict(kind=kind, id=id, field=field, old=rec[field], new=new, reason=why, date='2026-11-17'))
+    rec[field] = new
+fixlk('object', 'A8K', 'equation', 't is an internal action parameter on S¹; c is an external family index (not an action on spacetime; an action on forms through log c). Shared exact object: a one-parameter group preserving a quadratic form (CF4, re-carded A8G); the correct comparison is θ ↔ φ (rapidity, tanh φ = v/c), not t ↔ c; c is a distinct object (a form / unit constant, A8Wc); no member or limit of the c-family is elliptic', 'lock: the parked κ-family is no longer cited')
+fixlk('object', 'A8HCF', 'equation', 'M_c → diag(1, 0) outside every congruence class; fixed-v boosts → Galilean; Poincaré(1+1) → Galilei(1+1); every limit scaling-dependent (A8X5); the κ-family (A8Q) is parked as optional', 'lock: the parked κ-family is no longer used as a link')
+_l4 = next(o for o in O if o['id'] == 'L4')
+fixlk('object', 'L4', 'foundationRole', _l4['foundationRole'].replace('Role 2 and Role 3 meet in det K_c = −1/c² (A8Q)', 'Role 2 and Role 3 meet in the velocity-parametrized boost generator: det K_c = −1/c², and K_c contracts to the Galilean shear as c → ∞ at fixed v (C9c, A8Lc)'), 'lock: cite the boost generator (C9c), not the parked κ-family')
+assert 'A8Q' not in next(o for o in O if o['id'] == 'L4')['foundationRole']
 for b in B:
     st, srcs, asm, fl = BMETA[b['id']]
     b.update(strength=st, sources=srcs, assumptions=asm, failureCondition=fl)
@@ -1243,7 +1253,7 @@ dom('D29', 'Deeper transformation–zero question; Čencov check', 'TAH TAC', 'O
 dom('D30', 'Reduction / Information-Changing Architecture', 'RI0 RI1 RI2', 'SOURCE+CARD COMPLETE', 'every existing lossy map answers the seven questions where carded; model reduction and coarse-graining are placeholders for later passes')
 dom('D31', 'Transform vs reduce; DYADIC packet hierarchy questions', 'RI3 W5', 'OPEN LONG-TERM', 'OPEN PROJECT QUESTION; DYADIC STRUCTURE — CANDIDATE, NOT UNIVERSAL')
 dom('D27', 'Coordinate-free common form and covariance', 'CF12 CF13 Z13', 'SOURCE+CARD COMPLETE', 'F*T = T across constant-form, symplectic and Fisher isometries; naturality of the Fisher metric; symmetry-forced null (sufficient, not necessary)')
-dom('D7', 'Zero taxonomy', 'Z1 Z2 Z3 Z5 Z6 Z8 Z9 Z12', 'SOURCE+CARD COMPLETE', 'Z9 now separates exact structural null, sloppy direction, Lorentz null (FB7)')
+dom('D7', 'Zero taxonomy', 'Z1 Z2 Z3 Z5 Z6 Z8 Z9 Z12', 'SOURCE+CARD COMPLETE', 'Z9 now separates exact structural null, sloppy direction, Lorentz null (FB7). Act VIII lock (2026-11-17): four kinds of zero kept apart (Master Map #13): zero object / value, zero relation, zero index / frequency (k = 0, the DC mode — not a zero value), null / balance / cancellation')
 dom('D8', 'Zero as connector; the inverse problem', 'Z11 H3', 'OPEN LONG-TERM', 'special cases proved; general statement open')
 dom('D9', 'Translation, correlation, spectrum, localization', 'T1 T2 T3 T4 T5', 'SOURCE+CARD COMPLETE', 'T3/T4 project-derived and carded; the uncertainty inequality itself is source-only (FB3 cards its instances)')
 dom('D10', 'Lorentz and c', 'L1 L2 L3', 'SOURCE+CARD COMPLETE', 'İnönü–Wigner sourced for the c → ∞ contraction; it is not evidence for L4')

@@ -3024,7 +3024,7 @@
    "transferDepth": "not a transfer",
    "applicationBreadth": null,
    "failureCondition": "—",
-   "foundationRole": "H3-1 (user). Story-pass restricted answer (replaces the superseded \"invariant content is finiteness\"): the bare forms M_c for finite c are congruent by a spatial rescaling, so the congruence class of the isolated form does not distinguish the finite value of c (A8Wc) — this is not a claim that c means only finiteness; kept distinct: unit normalization, causal structure (x = ±ct), dimensionless ratios such as v/c, the family limit. Role 2 and Role 3 meet in det K_c = −1/c² (A8Q). Known mathematics; the connection to H3 stays open",
+   "foundationRole": "H3-1 (user). Story-pass restricted answer (replaces the superseded \"invariant content is finiteness\"): the bare forms M_c for finite c are congruent by a spatial rescaling, so the congruence class of the isolated form does not distinguish the finite value of c (A8Wc) — this is not a claim that c means only finiteness; kept distinct: unit normalization, causal structure (x = ±ct), dimensionless ratios such as v/c, the family limit. Role 2 and Role 3 meet in the velocity-parametrized boost generator: det K_c = −1/c², and K_c contracts to the Galilean shear as c → ∞ at fixed v (C9c, A8Lc). Known mathematics; the connection to H3 stays open",
    "guideLocation": "Act IV / Guide",
    "gap": null,
    "provenance": "USER-ORIGIN",
@@ -5905,7 +5905,7 @@
     "CROSS-SYSTEM TRANSFER",
     "GEOMETRY"
    ],
-   "equation": "t is an internal action parameter on S¹; c is an external family index (not an action on spacetime; an action on forms through log c). Shared exact object: a one-parameter group preserving a quadratic form (A8G); the correct comparison is θ ↔ φ (rapidity, tanh φ = v/c), not t ↔ c; c is a distinct object (κ = det K_c = −1/c², A8Q); no member or limit of the c-family is elliptic",
+   "equation": "t is an internal action parameter on S¹; c is an external family index (not an action on spacetime; an action on forms through log c). Shared exact object: a one-parameter group preserving a quadratic form (CF4, re-carded A8G); the correct comparison is θ ↔ φ (rapidity, tanh φ = v/c), not t ↔ c; c is a distinct object (a form / unit constant, A8Wc); no member or limit of the c-family is elliptic",
    "status": "DERIVED",
    "cards": [
     "A8Sa",
@@ -6395,7 +6395,7 @@
     "TRANSFORMATION",
     "CROSS-SYSTEM TRANSFER"
    ],
-   "equation": "M_c → diag(1, 0) outside every congruence class; fixed-v boosts → Galilean; Poincaré(1+1) → Galilei(1+1); κ = −1/c² beside κ = ω² (A8Q); every limit scaling-dependent",
+   "equation": "M_c → diag(1, 0) outside every congruence class; fixed-v boosts → Galilean; Poincaré(1+1) → Galilei(1+1); every limit scaling-dependent (A8X5); the κ-family (A8Q) is parked as optional",
    "status": "DERIVED",
    "cards": [
     "A8Mc",
@@ -9691,7 +9691,7 @@
     "Z12"
    ],
    "status": "SOURCE+CARD COMPLETE",
-   "note": "Z9 now separates exact structural null, sloppy direction, Lorentz null (FB7)"
+   "note": "Z9 now separates exact structural null, sloppy direction, Lorentz null (FB7). Act VIII lock (2026-11-17): four kinds of zero kept apart (Master Map #13): zero object / value, zero relation, zero index / frequency (k = 0, the DC mode — not a zero value), null / balance / cancellation"
   },
   {
    "id": "D8",
@@ -11180,6 +11180,33 @@
    "new": "that oscillator time evolution and boosts are the same physics; that c corresponds to t. PARKED: an optional later construction the canonical story does not use",
    "reason": "canonical story: κ-family parked",
    "date": "2026-11-16"
+  },
+  {
+   "kind": "object",
+   "id": "A8K",
+   "field": "equation",
+   "old": "t is an internal action parameter on S¹; c is an external family index (not an action on spacetime; an action on forms through log c). Shared exact object: a one-parameter group preserving a quadratic form (A8G); the correct comparison is θ ↔ φ (rapidity, tanh φ = v/c), not t ↔ c; c is a distinct object (κ = det K_c = −1/c², A8Q); no member or limit of the c-family is elliptic",
+   "new": "t is an internal action parameter on S¹; c is an external family index (not an action on spacetime; an action on forms through log c). Shared exact object: a one-parameter group preserving a quadratic form (CF4, re-carded A8G); the correct comparison is θ ↔ φ (rapidity, tanh φ = v/c), not t ↔ c; c is a distinct object (a form / unit constant, A8Wc); no member or limit of the c-family is elliptic",
+   "reason": "lock: the parked κ-family is no longer cited",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "object",
+   "id": "A8HCF",
+   "field": "equation",
+   "old": "M_c → diag(1, 0) outside every congruence class; fixed-v boosts → Galilean; Poincaré(1+1) → Galilei(1+1); κ = −1/c² beside κ = ω² (A8Q); every limit scaling-dependent",
+   "new": "M_c → diag(1, 0) outside every congruence class; fixed-v boosts → Galilean; Poincaré(1+1) → Galilei(1+1); every limit scaling-dependent (A8X5); the κ-family (A8Q) is parked as optional",
+   "reason": "lock: the parked κ-family is no longer used as a link",
+   "date": "2026-11-17"
+  },
+  {
+   "kind": "object",
+   "id": "L4",
+   "field": "foundationRole",
+   "old": "H3-1 (user). Story-pass restricted answer (replaces the superseded \"invariant content is finiteness\"): the bare forms M_c for finite c are congruent by a spatial rescaling, so the congruence class of the isolated form does not distinguish the finite value of c (A8Wc) — this is not a claim that c means only finiteness; kept distinct: unit normalization, causal structure (x = ±ct), dimensionless ratios such as v/c, the family limit. Role 2 and Role 3 meet in det K_c = −1/c² (A8Q). Known mathematics; the connection to H3 stays open",
+   "new": "H3-1 (user). Story-pass restricted answer (replaces the superseded \"invariant content is finiteness\"): the bare forms M_c for finite c are congruent by a spatial rescaling, so the congruence class of the isolated form does not distinguish the finite value of c (A8Wc) — this is not a claim that c means only finiteness; kept distinct: unit normalization, causal structure (x = ±ct), dimensionless ratios such as v/c, the family limit. Role 2 and Role 3 meet in the velocity-parametrized boost generator: det K_c = −1/c², and K_c contracts to the Galilean shear as c → ∞ at fixed v (C9c, A8Lc). Known mathematics; the connection to H3 stays open",
+   "reason": "lock: cite the boost generator (C9c), not the parked κ-family",
+   "date": "2026-11-17"
   }
  ]
 }

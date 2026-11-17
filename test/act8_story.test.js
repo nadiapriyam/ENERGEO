@@ -149,5 +149,5 @@ test('12. Foundation records the story-pass objects, bridges, sources and domain
   for (const id of ['BR81', 'BR82', 'BR83', 'BR84', 'BR85', 'BR86']) assert.ok(br.has(id), id);
   for (const id of ['SRC-LEE-2012', 'SRC-MILNOR-1965', 'SRC-YAGLOM-1979']) assert.ok(srcs.has(id) && /CLAIM NOT QUOTED/.test(srcs.get(id).status), id);
   assert.ok(F.domains.some((d) => d.id === 'D40' && d.objects.join(' ') === 'A8G A8E A8F A8KC A8Q A8GD'));
-  assert.match(A.next[0], /^READY FOR ADVERSARIAL LOCK/);
+  assert.match(A.next[0], /^LOCKED \(2026-11-17\)/);
 });

@@ -408,6 +408,42 @@ PLACEMENT = CANON['act8']
 STORY['contribution'] = supersede('story contribution (canonical story diagnostic)', STORY['contribution'], 'Act VIII answers and refines the Master Story\'s circle / time question (#18) and the relativity / c question (#19). It applies the existing common-form chart (CF1, CF4: preserved form → preserving group → generator) to orbit behaviour (stabilizer and orbit closure decide the continuation type), which explains part of the #18 question; it connects #14 (A†MA = M), #4 / #12 (translation → phase) and #18 / #19. It does not replace the circle / periodicity / infinity question, and its theorems re-card existing Foundation results (CF4; the S4 rotation / boost cases; R4, R6).', '"Act VIII supplies the exact link" overstated novelty: the link CF1 → CF4 already existed')
 STORY['placement'] = 'research/canonical_story.md, section D (categories A–E)'
 KAPPA['status'] = 'PARKED AS OPTIONAL (canonical story diagnostic, 2026-11-16): a later synthesis answering no historical question; kept with its cards, not a story node, no further κ-research'
+# ══ Act VIII final lock: story fidelity (2026-11-17) ═════════════════════════════════════════════════════
+# Decisions: docs/restructure_decisions.md, "Act VIII final lock: story fidelity". The κ-family is parked, so no live statement
+# outside its parked notes cites it; the H3-1 link is restated through the boost generator itself (C9c). Old wording kept.
+_c = [list(x) for x in H3_ORIGINAL['components']]
+_c[2][1] = supersede('H3-original, phrase 3 (lock)', _c[2][1], 'c does not converge inside a theory; it is fixed. Only the family index tends to infinity (Role 3). The literal analogy t ↔ c → ∞ FAILS (H3-c-direct, A8Wa); the group parameter on the Lorentz side is the rapidity φ (θ ↔ φ), and c is a distinct object — a form / unit constant (A8Wa, A8Wc)', 'the parked κ-family is no longer cited in live statements')
+H3_ORIGINAL['components'] = [tuple(x) for x in _c]
+TC_TABLE[-1] = supersede('t vs c table, last row (lock)', TC_TABLE[-1], ('role under the shared exact object (one-parameter group preserving a quadratic form)', 'θ = ωt, exactly linear in t, is the group parameter of e^(θJ); orbit invariant r² = |z₀|²', 'the rapidity φ (tanh φ = v/c) is the group parameter of e^(φK); c is not a group parameter; orbit invariant q_c on the orbit (t₀² − x₀²/c²); no member or limit of the c-family is elliptic (A8Wa, A8Wb, A8Sb)'), 'κ items removed (κ-family parked)')
+TC_VERDICT['analogy'] = supersede('t vs c: analogy (lock)', TC_VERDICT['analogy'], 'STRUCTURAL ANALOGY through one exact object shared by both examples (H3-group): a one-parameter group e^(sK) preserving a quadratic form, KᵀM + MK = 0 (CF4, re-carded A8Ga). The correct comparison is θ ↔ φ — the angle θ = ωt of e^(θJ) and the rapidity φ (tanh φ = v/c) of e^(φK) — not t ↔ c (A8Wa). c is a distinct object: a constant of the form, not a group parameter. The earlier "circle radius r ↔ c" has no exact map and is discarded (A8Wb)', 'κ sentence removed (κ-family parked)')
+_six = [list(x) for x in SIX]
+_six[4][1] = supersede('six questions, Q5 (lock)', _six[4][1], 'YES, restricted (H3-group, ESTABLISHED INSTANCE): both are one-parameter groups preserving a quadratic form; the correspondence is θ ↔ φ (A8Wa), with c a form / unit constant (A8Wc); the c-family and the circle orbit are orbits of one-parameter groups on different spaces (Sym(2) vs S¹) with different behaviour classes', 'κ citation removed')
+SIX = [tuple(x) for x in _six]
+ROLES_LINK = supersede('H3-1 restricted answer (lock)', ROLES_LINK, 'H3-1 (the two roles of c), restricted answer: in the velocity parametrization the boost generator is K_c = [[0, −1/c²], [−1, 0]] with det K_c = −1/c² < 0 (C9c). Role 2 (c fixes the invariant form M_c and this hyperbolic generator) and Role 3 (c → ∞ at fixed v: det K_c → 0 and K_c → the Galilean shear K_∞, K_∞² = 0; C9c, A8Lb, A8Lc) are two aspects of this one constant. The bare congruence class of M_c does not distinguish finite values of c (A8Wc); this is not a claim that c means only finiteness. Known mathematics; the connection to H3 stays OPEN.', 'the parked κ-family replaced by the boost generator itself (C9c)')
+_rr = [list(x) for x in REAL_RESULT['found']]
+_rr[3] = supersede('real-result table, singular-limit row (lock)', _rr[3], ['singular limit of a family of forms + group contraction', 'the c-family (#19)', 'not shared with the time–circle example in the canonical story; the oscillator comparison (κ-family, A8Qa) is parked as optional'], 'κ-family parked')
+REAL_RESULT['found'] = [tuple(x) for x in _rr]
+REAL_RESULT['verdict'] = supersede('real-result verdict (lock)', REAL_RESULT['verdict'], 'Structural-transfer credit goes to the preserved-form / one-parameter-group object (H3-group; Foundation CF1/CF4, re-carded A8Ga) and to the kernel/stabilizer object within the action examples. The singular-limit object belongs to the c-family (#19); the κ-family comparison with an oscillator is parked as optional. No object makes t correspond to c.', 'κ-family parked')
+for r in STATUS_TABLE:
+    if r['id'] == 'H3-c-family':
+        r['basis'] = supersede('status table, H3-c-family basis (lock)', r['basis'], 'established pieces: the c-family M_c and its degenerate limit (A8Mc), the fixed-v Galilean boost limit (A8Lb), group contraction (A8Lc), the restricted content of c (A8Wc); restricted because every limit depends on what is held fixed (A8X5); the κ-family (A8Qa, A8Qb) is parked as optional; connection to H3: OPEN', 'κ-family parked')
+        r['cards'] = ['A8Mc', 'A8Lb', 'A8Lc', 'A8Wc', 'A8X5']
+for h in H3_SPLIT:
+    if h['id'] == 'H3-c-family':
+        h['basis'] = supersede('H3-c-family basis (lock)', h['basis'], 'established pieces: the c-family M_c and its degenerate limit (A8Mc), the fixed-v Galilean boost limit (A8Lb), group contraction (A8Lc), the restricted content of c (A8Wc); restricted because every limit depends on the scaling held fixed (A8X5). The κ-family (A8Qa, A8Qb) is parked as optional. Connection to H3: OPEN', 'κ-family parked')
+        h['cards'] = ['A8Mc', 'A8Lb', 'A8Lc', 'A8Wc', 'A8X5']
+for r in RATINGS:
+    if r['item'] == 'H3-c-family':
+        r['why'] = supersede('rating why, H3-c-family (lock)', r['why'], 'established pieces (degenerate limit, Galilean limit at fixed v, contraction); every limit depends on the scaling held fixed; the κ-family is parked as optional', 'κ-family parked')
+for _rc in RATING_CHANGES:
+    if _rc['object'].startswith('L4') and 'κ = det K_c' in _rc['reason']:
+        _rc['reason'] = '[reason restated on 2026-11-17 without the parked κ-family; kept as history] ' + _rc['reason']
+RATING_CHANGES.append(dict(object='L4 (two roles of c)', fromBs=30, toBs=30, reason='Act VIII lock (2026-11-17): percentage kept; reason restated through the boost generator itself: det K_c = −1/c² for the velocity-parametrized generator (Role 2) and its contraction to the Galilean shear as c → ∞ at fixed v (Role 3) (C9c, A8Lc); the κ-family is parked'))
+NEXT = supersede('next pass (lock)', NEXT, ['LOCKED (2026-11-17): LOCK ACT VIII — STORY AND MATHEMATICS ALIGNED. Placement and verdicts: research/canonical_story.md.',
+ 'Next canonical unresolved question (not begun): #17 — "Do observable physical pairings or complementarities reflect deeper symmetry analogous to mathematical conjugacy?" (T-CONJUGACY), reached from #12; it leads to the parked mass-wave branch. #20 stays a parked downstream application.',
+ 'Not begun (stop list): mass-wave/conjugacy, dispersion, quantum work, Energeo, the final Foundation freeze.'], 'Act VIII locked')
+STORY['placement'] = 'research/canonical_story.md, sections B–E (Act VIII answers #18 and #19, connects backward to #4 / #12 / #14, and is otherwise supporting or optional)'
+
 data = dict(about='Act VIII first construction pass (2026-11-16). Generated by research/tools/act8_source.py.', statuses=STATUSES, outcomes=OUTCOMES, cards=CARDS,
             originals=ORIGINALS, missing=MISSING, read=READ, taxonomy=TAXONOMY, circle=CIRCLE, circleNote=CIRCLE_NOTE, torus=TORUS, cylinder=CYLINDER, cylinderNote=CYLINDER_NOTE,
             framework=FRAMEWORK, star=STAR, starNote=STAR_NOTE, h3Candidates=[dict(c, clauses=[dict(clause=a, verdict=b) for a, b in c['clauses']]) for c in H3_CANDIDATES],
@@ -473,7 +509,7 @@ L += ['', '### S3. SO(2) versus SO(1,1): an exact canonical comparison', '', f'-
 L += ['', '### S5. Kernel versus orbit closure (torus)', '', f'- {KERNEL_CLOSURE["periodic"]}.', f'- {KERNEL_CLOSURE["dense"]}.', '', KERNEL_CLOSURE['chain'],
       '', '### S6. H3-c split into three records', '', H3_SPLIT_NOTE, '', '| ID | Record | Wording (verbatim) | Status | Basis | Cards |', '|---|---|---|---|---|---|']
 L += [f'| {h["id"]} | {h["record"]} | {cell(h["words"])} | {h["status"]} | {cell(h["basis"])} | {", ".join(h["cards"])} |' for h in H3_SPLIT]
-L += ['', '### S7. Rapidity, c and the family M_κ', '', f'**{KAPPA["status"]}.**', '', f'- Family: {KAPPA["family"]}.', f'- Members: {KAPPA["members"]}', f'- Limit: {KAPPA["limit"]}.', f'- Scaling: {KAPPA["scaling"]}.', f'- Roles: {KAPPA["roles"]}.', f'- Does NOT prove: {KAPPA["notProved"]}.',
+L += ['', '### S7. The family M_κ (parked: optional later construction)', '', '*Heading superseded on 2026-11-17 (kept): "S7. Rapidity, c and the family M_κ". Rapidity answers #19 (A8Wa, A8Eb); the family below is parked.*', '', f'**{KAPPA["status"]}.**', '', f'- Family: {KAPPA["family"]}.', f'- Members: {KAPPA["members"]}', f'- Limit: {KAPPA["limit"]}.', f'- Scaling: {KAPPA["scaling"]}.', f'- Roles: {KAPPA["roles"]}.', f'- Does NOT prove: {KAPPA["notProved"]}.',
       '', '### S8. Geometry constrains; the generator decides', '', f'> {GEOM_GEN_DYN["words"]}', '', f'Status: {GEOM_GEN_DYN["status"]} ({GEOM_GEN_DYN["record"]}). Formal content: {GEOM_GEN_DYN["definition"]}.', '',
       f'Scope: {GEOM_GEN_DYN["scope"]}. Role: {GEOM_GEN_DYN["role"]}. Cards: {", ".join(GEOM_GEN_DYN["cards"])}.',
       '', '### S9. Mass-wave handoff (preparation only)', '', MASS_WAVE_HANDOFF['note'], '', MASS_WAVE_HANDOFF['notBegun'],
