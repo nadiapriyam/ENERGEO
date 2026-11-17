@@ -76,3 +76,11 @@ The shared measurement grammar (`views/zeroIndicator.js`) reports "measurement â
 - `npm run build`: static site in `dist/`. `.github/workflows/pages.yml` publishes it on every push to `main`.
 - `npm test`: math tests.
 - `npm run verify`: SymPy and NumPy cards; appends to the ledger.
+
+## Research progress preview (read-only)
+
+`research-preview/index.html` (served at `research-preview/`) is a second, separate page: a read-only view of what the
+research has proved, falsified and left open. `src/preview/main.js` only lays out `research/preview.json`, which
+`node research/tools/preview_data.mjs` generates from the canonical story, the Foundation, the registry, the #17 and C7
+records, the application matrix, the ledger and the test files. `test/preview.test.js` checks that it is current. It
+does not touch the journey store or any interactive.
