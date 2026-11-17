@@ -113,7 +113,8 @@ function numbers() {
   return h('section', { id: 'numbers', class: 'band band-narrow' },
     h('h2', null, 'Numbers'),
     h('p', { class: 'note' }, data.note),
-    h('dl', { class: 'numbers' }, ...data.numbers.flatMap((n) => [h('dt', null, n.label), h('dd', null, h('span', { class: 'num' }, n.value), n.detail ? h('span', { class: 'num-detail' }, n.detail) : null)])));
+    h('p', { class: 'note note-counts' }, data.countsNote),
+    h('dl', { class: 'numbers' }, ...data.numbers.flatMap((n) => [h('dt', null, n.label, n.detail ? h('span', { class: 'num-detail' }, n.detail) : null), h('dd', null, h('span', { class: 'num' }, n.value))])));
 }
 
 function footer() {

@@ -70,6 +70,15 @@ test('6. numbers are auditable counts with the decided note; no percentages for 
   assert.equal(V.note, 'Verification counts report executable checks in this repository. They are not peer review, independent replication, probabilities of truth, or measures of originality.');
   assert.ok(decisions.includes(V.note));
   for (const n of V.numbers) assert.ok(!/%/.test(n.value) && !/confidence|originality|probability/i.test(n.label), n.label);
+  assert.equal(V.countsNote, 'Repository counts describe records and executable checks in this project. They are not counts of independent discoveries, peer-reviewed results, probabilities of truth, or measures of originality.');
+  const lab = (re) => V.numbers.find((n) => re.test(n.label));
+  assert.match(lab(/^User provenance/).label, /registry records tagged USER-ORIGIN/);
+  assert.match(lab(/^User provenance/).detail, /Not a count of independent theories or original ideas\./);
+  assert.match(lab(/^Project-derived \/ project-built/).label, /Foundation objects classified PROJECT-DERIVED or PROJECT-BUILT/);
+  assert.match(lab(/^Project-derived \/ project-built/).detail, /Not a count of novel theorems or independent discoveries\./);
+  assert.match(lab(/^Open questions/).label, /including subquestions/);
+  assert.match(lab(/^Open questions/).detail, /Not a count of independent research programmes\./);
+  assert.ok(!V.numbers.some((n) => /original ideas|discoveries$|theories$/i.test(n.label)), 'labels do not present records as discoveries');
   const cards = Object.values(ledger);
   assert.equal(V.numbers[0].value, `${cards.filter((c) => c.verdict === 'PASS').length} / ${cards.length}`);
 });

@@ -2070,16 +2070,19 @@
    "detail": "92 bridges, 59 sources"
   },
   {
-   "label": "Project-derived or project-constructed results (established or derived)",
-   "value": "38"
+   "label": "User provenance: registry records tagged USER-ORIGIN",
+   "value": "198",
+   "detail": "records traced to Nadia's prompts and decision records — 73 open questions, 40 hypotheses, 27 established, 23 derived connections, 13 philosophical explorations, 12 method / decision rules, 9 historical conjectures, 1 construction-backed direction. Not a count of independent theories or original ideas."
   },
   {
-   "label": "User-origin records (Nadia's questions, hypotheses and decisions)",
-   "value": "198"
+   "label": "Project-derived / project-built: Foundation objects classified PROJECT-DERIVED or PROJECT-BUILT (status established or derived)",
+   "value": "38",
+   "detail": "31 project-derived from established mathematics, 7 project constructions; includes derivations, constructions, classifications, reformulations and architecture records. Not a count of novel theorems or independent discoveries."
   },
   {
-   "label": "Open research questions (registry, status open)",
-   "value": "92"
+   "label": "Open questions: registry records with status OPEN, including subquestions",
+   "value": "92",
+   "detail": "75 open questions, 11 philosophical explorations, 6 hypotheses; many are subquestions or refinements of the six open groups above. Not a count of independent research programmes."
   },
   {
    "label": "Open long-term Foundation domains",
@@ -2098,6 +2101,7 @@
   }
  ],
  "note": "Verification counts report executable checks in this repository. They are not peer review, independent replication, probabilities of truth, or measures of originality.",
+ "countsNote": "Repository counts describe records and executable checks in this project. They are not counts of independent discoveries, peer-reviewed results, probabilities of truth, or measures of originality.",
  "provenance": [
   {
    "label": "USER-ORIGIN",

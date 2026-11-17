@@ -122,12 +122,13 @@ details.more li { margin: 0 0 6px; }
 .legend dd { margin: 0; color: var(--ink-2); }
 .legend-badges { display: flex; flex-wrap: wrap; gap: 8px; }
 .note { border-left: 2px solid var(--ink); padding-left: 12px; color: var(--ink); max-width: 64ch; margin: 0 0 24px; }
+.note-counts { color: var(--ink-2); font-size: 0.92rem; margin-top: -12px; }
 .numbers { display: grid; grid-template-columns: minmax(0, 1fr) max-content; gap: 0; margin: 0; }
 .numbers dt, .numbers dd { padding: 10px 0; border-top: 1px solid var(--rule); margin: 0; }
 .numbers dt { color: var(--ink-2); padding-right: 16px; }
 .numbers dd { text-align: right; }
 .num { font-family: var(--font-display); font-size: 1.35rem; display: block; }
-.num-detail { display: block; font-size: 0.8rem; color: var(--ink-3); }
+.num-detail { display: block; font-size: 0.8rem; color: var(--ink-3); margin-top: 2px; max-width: 70ch; overflow-wrap: anywhere; }
 
 .bottom { padding: 40px 0 72px; }
 .stop { font-family: var(--font-display); font-size: 1.2rem; max-width: 60ch; margin: 0 0 16px; }
