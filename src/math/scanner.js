@@ -38,12 +38,12 @@ export const PATIENT = {
 export const SLIDE = -200;                                   // the table slides this far into the bore
 export const ZOOM = { x: 232, y: 235, scale: 4 };            // the chest, once inside
 
-// ── scene 2: three water molecules, then their six hydrogen atoms ────────────────────────────────
-export const ATOM = { o: 30, h: 18, bond: 52, halfAngle: (104.5 / 2) * (Math.PI / 180) };
+// ── scene 2: three water molecules, then their six hydrogen atoms, each with a proton at its heart ──
+export const ATOM = { o: 34, h: 24, bond: 60, proton: 16, halfAngle: (104.5 / 2) * (Math.PI / 180) };
 const MOLECULES = [
-  { o: { x: 150, y: 210 }, tilt: 0.35, ids: ['R0', 'L1'] },
-  { o: { x: 330, y: 250 }, tilt: Math.PI, ids: ['L0', 'R1'] },
-  { o: { x: 500, y: 205 }, tilt: -0.4, ids: ['R2', 'L2'] },
+  { o: { x: 150, y: 205 }, tilt: 0.35, ids: ['U0', 'D1'] },
+  { o: { x: 330, y: 250 }, tilt: Math.PI, ids: ['D0', 'U1'] },
+  { o: { x: 506, y: 205 }, tilt: -0.4, ids: ['U2', 'D2'] },
 ];
 /** Each molecule: its oxygen centre and its two hydrogen atoms, each carrying the id of the arrow it becomes. */
 export function molecules() {

@@ -1,4 +1,4 @@
-// Every learner-facing line of Interactive 01, verbatim from docs/prototype_try_spec.md, Revision 3 (checked by
+// Every learner-facing line of Interactive 01, verbatim from docs/prototype_try_spec.md, Revision 4 (checked by
 // test/try.test.js). Lines kept from Revision 2 are Nadia's wording; the rest was drafted at her request and is listed in
 // the spec for her review. Nothing else on the page is learner-facing text, apart from accessibility labels.
 
@@ -8,14 +8,18 @@ export const COPY = {
   slideIn: 'Slide in',
   inside: 'Inside, a giant magnet surrounds you.',
   zoomIn: 'Zoom in',
+  atoms: { o: 'O', h: 'H' },
   water: ['Your body is full of water.', 'One drop holds billions of trillions of hydrogen atoms.'],
   closer: 'Closer',
-  proton: ['At the heart of each hydrogen atom is a proton: a tiny magnet.', 'Picture each one as an arrow.'],
+  poles: { n: 'N', s: 'S' },
+  proton: ['At the heart of each hydrogen atom is a proton: a tiny magnet.', 'Picture each one as an arrow, pointing from S to N.'],
   hook: "So many tiny magnets. Why don't they add up to one giant magnet?",
   totalLabel: 'TOTAL',
+  totalMeans: 'The TOTAL adds up every arrow in the drop.',
+  sum: { plus: '+', equals: '=', more: '…' },
   task: 'Can you make the total 0?',
-  hint: 'Drag a ← next to a →.',
-  pairZero: '0',
+  hint: 'Drag a ↓ next to an ↑.',
+  groupZero: '0',
   check1: { question: 'Can every piece still be here while the total is 0?', choices: ['Yes', 'No', 'Not sure'], after: "Let's see." },
   zero: '0',
   reached: ['You got 0.', 'But did everything disappear?'],
@@ -28,8 +32,16 @@ export const COPY = {
     wrong: "Look again — they're still there.",
   },
   answer: "That's the answer: inside you, opposite tiny magnets cancel each other out.",
-  shuffle: 'And inside you, they never sit still.',
   arrangements: ['Same result.', 'Different arrangement.', 'Still 0.'],
+  cover: {
+    intro: "Here's another drop. Its total is 0 too.",
+    mark: '?',
+    question: "What's behind this 0?",
+    choices: ['Nothing', 'Something'],
+    after: "Let's see.",
+    again: 'And another.',
+    look: 'Look inside',
+  },
   reveal: 'One result. Many possible arrangements behind it.',
   magnetQuestion: 'Your total is 0. So how can a scanner see anything?',
   switchOn: 'Switch on the magnet',

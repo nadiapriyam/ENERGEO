@@ -1,15 +1,15 @@
-// Interactive 01 (docs/prototype_try_spec.md, Revision 3). A short story inside an MRI scanner: slide in, zoom down to
-// the water in the body and its hydrogen atoms, picture each proton as an arrow, pair opposite arrows until the TOTAL is
-// an exact 0, watch the same 0 hold over different arrangements, then switch on the scanner's magnet, which tips the
-// balance by one flipped arrow, and listen as it paints a picture.
-// Every learner-facing line comes from copy.js; every position and every total comes from src/math (pieces.js,
+// Interactive 01 (docs/prototype_try_spec.md, Revision 4). A short story inside an MRI scanner: slide in, zoom down to
+// the water in the body and its hydrogen atoms, whose protons are tiny magnets (N and S), picture each as an arrow, and
+// add the arrows up in the TOTAL. Pair opposite arrows until the TOTAL is an exact 0; look behind more 0s and find them
+// full; then switch on the scanner's magnet, which tips the balance by one flipped arrow, and listen as it paints a
+// picture. Every learner-facing line comes from copy.js; every position and every total comes from src/math (pieces.js,
 // scanner.js).
 import './try.css';   // system sans: its 0 is a plain 0
 
 import { COPY } from './copy.js';
 import {
-  start, pair, dropTarget, tapTarget, totalOf, pairedCount, restingSpot, total, layout, segmentSpots, crowd, crowdDirections,
-  ARRANGEMENTS, PAIRS, VIEW, PANEL, DROP, SEGMENT, CROWD, FIELD_LINES, FLIP, dirOf,
+  start, pair, dropTarget, tapTarget, totalOf, pairedCount, restingSpot, total, layout, puzzleGroups, frame, sumLayout, crowd, crowdDirections,
+  ARRANGEMENTS, PAIRS, VIEW, PANEL, DROP, CROWD, CROWD_SHOWN, FIELD_LINES, FIELD_SPAN, FLIP, dirOf,
 } from '../../math/pieces.js';
 import { HOUSING, BORE, TUNNEL, COILS, TABLE, PEDESTAL, PATIENT, FLOOR, SLIDE, ZOOM, ATOM, molecules, hydrogenSpot, SCREEN, picture } from '../../math/scanner.js';
 
@@ -24,14 +24,15 @@ const el = (tag, attrs = {}, ...kids) => {
 };
 const svg = (tag, attrs = {}, ...kids) => {
   const e = document.createElementNS(NS, tag);
-  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  for (const [k, v] of Object.entries(attrs)) if (v != null) k === 'text' ? (e.textContent = v) : e.setAttribute(k, v);
   e.append(...kids);
   return e;
 };
+const label = (attrs, text) => svg('text', { 'text-anchor': 'middle', 'dominant-baseline': 'central', ...attrs, text });
 const wait = (ms) => new Promise((r) => setTimeout(r, REDUCED ? Math.min(ms, 1200) : ms));
 const pause = (ms) => new Promise((r) => setTimeout(r, ms));          // reading time: the same with reduced motion
 const reading = (text) => Math.min(4500, 900 + 40 * text.length);
-const frame = () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+const frameTick = () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
 const on = (node, v = true) => node.classList.toggle('on', v);
 
 // ── state ────────────────────────────────────────────────────────────────────────────────────────
@@ -48,6 +49,22 @@ root.append(figure, prompt);
 const board = svg('svg', { viewBox: `0 0 ${VIEW.w} ${VIEW.h}`, class: 'board', role: 'group' });
 figure.append(board);
 const describe = (text) => board.setAttribute('aria-label', text);
+
+// the magnet shapes: an arrow is an upright bar magnet with a pointed N end; a proton is a ball with an N half on top
+// and an S half underneath. A down-pointing one is the up-pointing one mirrored (never rotated); its letters are
+// placed, never mirrored.
+const S_PART = 'M -10 9 H 10 V 20 A 10 10 0 0 1 -10 20 Z';
+const N_PART = 'M -10 9 V -12 H -15 L 0 -31 L 15 -12 H 10 V 9 Z';
+const LETTER = { s: 19, n: -1 };
+const mirror = (d) => `scale(1, ${d > 0 ? 1 : -1})`;
+const glyph = (cls = 'glyph') => svg('g', { class: cls }, svg('path', { class: 's-part', d: S_PART }), svg('path', { class: 'n-part', d: N_PART }));
+const R = ATOM.proton;
+const ball = (d) => svg('g', { class: 'ball' },
+  svg('g', { style: `transform: ${mirror(d)}` },
+    svg('path', { class: 's-part', d: `M ${-R} 0 A ${R} ${R} 0 0 0 ${R} 0 Z` }),
+    svg('path', { class: 'n-part', d: `M ${-R} 0 A ${R} ${R} 0 0 1 ${R} 0 Z` })),
+  label({ class: 'pole s', x: 0, y: d * R * 0.5 + 0.5 }, COPY.poles.s),
+  label({ class: 'pole n', x: 0, y: -d * R * 0.5 + 0.5 }, COPY.poles.n));
 
 // scene 1: the scanner, side view
 const scanner = svg('g', { class: 'layer on' });
@@ -73,66 +90,76 @@ const lens = svg('g', { class: 'lens layer' }, svg('circle', { r: 1 }));
 const lensAt = (s) => { lens.style.transform = `translate(${ZOOM.x}px, ${ZOOM.y}px) scale(${s})`; };
 lensAt(0.01);
 
-// scene 2: water molecules
+// scene 2: water molecules; each hydrogen atom has a proton at its heart, a tiny magnet
 const water = svg('g', { class: 'water layer' });
 molecules().forEach((m, k) => {
   const g = svg('g', { class: 'molecule', style: `animation-delay: ${-k * 1.7}s` });
   for (const h of m.h) g.append(svg('line', { class: 'bond', x1: m.o.x, y1: m.o.y, x2: h.x, y2: h.y }));
-  g.append(svg('circle', { class: 'oxygen', cx: m.o.x, cy: m.o.y, r: ATOM.o }));
-  for (const h of m.h) g.append(svg('circle', { class: 'hydrogen', cx: h.x, cy: h.y, r: ATOM.h }), svg('circle', { class: 'proton', cx: h.x, cy: h.y, r: 5 }));
+  g.append(svg('circle', { class: 'oxygen', cx: m.o.x, cy: m.o.y, r: ATOM.o }), label({ class: 'atom-letter o', x: m.o.x, y: m.o.y + 1 }, COPY.atoms.o));
+  for (const h of m.h) {
+    const b = ball(dirOf(h.id));
+    b.style.transform = `translate(${h.x}px, ${h.y}px)`;
+    g.append(svg('circle', { class: 'hydrogen', cx: h.x, cy: h.y, r: ATOM.h }), label({ class: 'atom-letter h', x: h.x, y: h.y + 1 }, COPY.atoms.h), b);
+  }
   water.append(g);
 });
 
-// scene 3: the drop, the TOTAL, the pieces
+// scene 3: the drop, its groups, the TOTAL
 const puzzle = svg('g', { class: 'puzzle layer' });
 const drop = svg('rect', { class: 'drop', x: DROP.x, y: DROP.y, width: DROP.w, height: DROP.h, rx: DROP.r });
 const field = svg('g', { class: 'field' });
-for (const y of FIELD_LINES) {
-  field.append(svg('path', { class: 'field-line', d: `M ${DROP.x + 18} ${y} H ${DROP.x + DROP.w - 26}` }),
-    svg('path', { class: 'field-head', d: `M ${DROP.x + DROP.w - 30} ${y - 5} L ${DROP.x + DROP.w - 22} ${y} L ${DROP.x + DROP.w - 30} ${y + 5}` }));
+for (const x of FIELD_LINES) {                               // the magnet's field, pointing up
+  field.append(svg('path', { class: 'field-line', d: `M ${x} ${FIELD_SPAN.bottom} V ${FIELD_SPAN.top + 4}` }),
+    svg('path', { class: 'field-head', d: `M ${x - 5} ${FIELD_SPAN.top + 8} L ${x} ${FIELD_SPAN.top} L ${x + 5} ${FIELD_SPAN.top + 8}` }));
 }
-const SHAPE = 'M -24 -6 H 4 V -12.5 L 29 0 L 4 12.5 V 6 H -24 A 6 6 0 0 1 -24 -6 Z';   // a rounded bar with a clear head
-const slots = PAIRS.map(({ left }) => svg('g', { class: 'slot', style: `transform: translate(${left.x}px, ${left.y}px)` },
-  svg('path', { d: SHAPE, transform: 'scale(-1 1)' })));
-const pairZeros = PAIRS.map(({ zero }) => svg('text', { class: 'pair-zero', x: zero.x, y: zero.y, 'text-anchor': 'middle', 'dominant-baseline': 'central' }));
-pairZeros.forEach((t) => { t.textContent = COPY.pairZero; });
-const crowdZeros = svg('g', { class: 'crowd-zeros' });
-const ring = svg('rect', { class: 'ring' });
-puzzle.append(drop, field, ...slots, ...pairZeros, crowdZeros, ring);
+const slots = PAIRS.map(({ down }) => { const g = glyph('slot'); g.style.transform = `translate(${down.x}px, ${down.y}px) ${mirror(-1)}`; return g; });
+const frames = svg('g', { class: 'frames' });
+puzzle.append(drop, field, frames, ...slots);
 
+// the TOTAL: the arrows in the drop, added up, and what they add up to
 const panel = svg('g', { class: 'panel layer' });
-const label = svg('text', { class: 'total-label', x: PANEL.cx, y: PANEL.labelY, 'text-anchor': 'middle' });
-label.textContent = COPY.totalLabel;
-const segments = Array.from({ length: 3 }, () => svg('g', { class: 'segment' }, svg('path', { d: SHAPE })));
-const number = svg('text', { class: 'total-number', x: PANEL.cx, y: PANEL.numberY, 'text-anchor': 'middle' });
-const bigZero = svg('text', { class: 'total-zero', x: PANEL.cx, y: PANEL.cy + 4, 'text-anchor': 'middle', 'dominant-baseline': 'central' });
-bigZero.textContent = COPY.zero;
-panel.append(svg('rect', { class: 'panel-box', x: PANEL.x, y: PANEL.y, width: PANEL.w, height: PANEL.h, rx: 18 }), label, ...segments, number, bigZero);
+const sumRow = svg('g', { class: 'sum' });
+const sumMarks = svg('g', { class: 'sum-marks' });
+const result = label({ class: 'result', x: PANEL.cx, y: PANEL.resultY }, '');
+panel.append(svg('rect', { class: 'panel-box', x: PANEL.x, y: PANEL.y, width: PANEL.w, height: PANEL.h, rx: 18 }),
+  label({ class: 'total-label', x: PANEL.cx, y: PANEL.labelY }, COPY.totalLabel), sumMarks, sumRow, result);
 
+const cover = svg('g', { class: 'cover' },
+  svg('rect', { x: DROP.x, y: DROP.y, width: DROP.w, height: DROP.h, rx: DROP.r }),
+  label({ class: 'cover-mark', x: DROP.x + DROP.w / 2, y: DROP.y + DROP.h / 2 }, COPY.cover.mark));
 const screen = svg('g', { class: 'screen layer' }, svg('rect', { class: 'screen-box', x: SCREEN.x - 6, y: SCREEN.y - 6, width: SCREEN.size + 12, height: SCREEN.size + 12, rx: 14 }));
 const piecesLayer = svg('g', { class: 'pieces' });
-board.append(scanner, lens, water, puzzle, screen, panel, piecesLayer);
+board.append(scanner, lens, water, puzzle, screen, panel, piecesLayer, cover);
 
 // ── pieces ───────────────────────────────────────────────────────────────────────────────────────
 const pieces = new Map();
-const mirror = (d) => `scale(${d > 0 ? 1 : -1}, 1)`;      // a left piece is the right piece mirrored, never rotated
 
 function makePiece(id, at, { entering = false } = {}) {
   dirs[id] = dirOf(id);
   const outer = svg('g', { class: 'piece', 'data-id': id });
   const enter = svg('g', { class: `piece-enter${entering ? ' entering' : ''}` });
   const mid = svg('g', { class: 'piece-mid' });
-  const inner = svg('g', { class: 'piece-inner', style: `transform: ${mirror(dirs[id])}` },
-    svg('rect', { class: 'piece-hit', x: -42, y: -32, width: 84, height: 64 }), svg('path', { class: 'piece-shape', d: SHAPE }));
-  mid.append(inner);
+  const inner = svg('g', { class: 'piece-inner', style: `transform: ${mirror(dirs[id])}` }, svg('rect', { class: 'piece-hit', x: -30, y: -42, width: 60, height: 84 }), glyph('piece-shape'));
+  const s = label({ class: 'pole s' }, COPY.poles.s);
+  const n = label({ class: 'pole n' }, COPY.poles.n);
+  const letters = svg('g', { class: 'poles' }, s, n);
+  mid.append(inner, letters);
   enter.append(mid);
   outer.append(enter);
   piecesLayer.append(outer);
-  const p = { id, outer, enter, mid, inner, x: at.x, y: at.y };
+  const p = { id, outer, enter, mid, inner, letters, s, n, x: at.x, y: at.y };
+  setLetters(p);
   pieces.set(id, p);
   place(p, at.x, at.y, false);
-  if (entering) frame().then(() => enter.classList.remove('entering'));
+  if (entering) frameTick().then(() => enter.classList.remove('entering'));
   return p;
+}
+function setLetters(p) {
+  const d = dirs[p.id];
+  p.s.setAttribute('x', 0);
+  p.n.setAttribute('x', 0);
+  p.s.setAttribute('y', d * LETTER.s + 0.5);
+  p.n.setAttribute('y', d * LETTER.n + 0.5);
 }
 
 function place(p, x, y, motion = 'moving') {
@@ -143,20 +170,52 @@ function place(p, x, y, motion = 'moving') {
   p.outer.style.transform = `translate(${x}px, ${y}px)`;
 }
 
-// the TOTAL: |value| small arrows joined tip to tail, the count under them; a large 0 when they are all gone
-function drawTotal(value) {
-  const spots = segmentSpots(value);
-  segments.forEach((g, i) => {
-    const show = i < spots.length;
-    g.classList.toggle('show', show);
-    if (show) g.style.transform = `translate(${spots[i].x}px, ${spots[i].y}px) scale(${Math.sign(value) * SEGMENT.scale}, ${SEGMENT.scale})`;
-  });
-  number.textContent = value === 0 ? '' : String(Math.abs(value));
+// ── the TOTAL: a sum row, brackets under balanced groups, and the result ─────────────────────────────
+const termEls = new Map();
+const asTerms = (groups) => groups.map((g) => g.map((id) => ({ id, dir: dirs[id] ?? dirOf(id) })));
+
+function drawSum(groups, opts = {}) {
+  const { scale, items, brackets } = sumLayout(asTerms(groups), opts);
+  const keep = new Set();
+  sumMarks.replaceChildren();
+  for (const it of items) {
+    if (it.kind === 'term') {
+      keep.add(it.id);
+      let g = termEls.get(it.id);
+      if (!g) { g = glyph('term'); termEls.set(it.id, g); sumRow.append(g); g.classList.add('fresh'); frameTick().then(() => g.classList.remove('fresh')); }
+      g.style.transform = `translate(${it.x}px, ${it.y}px) scale(${scale}, ${it.dir * scale})`;
+    } else {
+      sumMarks.append(label({ class: it.kind === 'plus' ? 'plus' : 'more', x: it.x, y: it.y }, it.kind === 'plus' ? COPY.sum.plus : COPY.sum.more));
+    }
+  }
+  for (const [id, g] of termEls) if (!keep.has(id)) { g.remove(); termEls.delete(id); }
+  for (const b of brackets) {
+    sumMarks.append(svg('path', { class: `bracket${b.value ? ' tipped' : ''}`, d: `M ${b.x1} ${b.y - 4} V ${b.y} H ${b.x2} V ${b.y - 4}` }),
+      label({ class: `bracket-label${b.value ? ' tipped' : ''}`, x: (b.x1 + b.x2) / 2, y: b.y + 10 }, String(b.value)));
+  }
+}
+function drawSumUnknown() {
+  for (const g of termEls.values()) g.remove();
+  termEls.clear();
+  sumMarks.replaceChildren(label({ class: 'more', x: PANEL.cx, y: PANEL.sumY }, COPY.cover.mark));
+}
+function drawResult(value) {
+  result.textContent = value === null ? '' : `${COPY.sum.equals} ${Math.abs(value)}`;
   panel.classList.toggle('is-zero', value === 0);
-  panel.setAttribute('aria-label', value === 0 ? `${COPY.totalLabel}: ${COPY.zero}` : `${COPY.totalLabel}: ${Math.abs(value)} arrows pointing ${value > 0 ? 'right' : 'left'}`);
+  panel.setAttribute('aria-label', value === null ? COPY.totalLabel : `${COPY.totalLabel}: ${value === 0 ? COPY.zero : `${Math.abs(value)} ${value > 0 ? 'up' : 'down'}`}`);
 }
 
-// ── pairing: drag or tap a waiting ← ──────────────────────────────────────────────────────────────
+// outlines around balanced groups in the drop, each with its own total under it
+function drawFrames(list) {
+  frames.replaceChildren(...list.flatMap(({ spots, scale = 1, gap, value = 0 }) => {
+    const f = frame(spots, scale, gap);
+    return [svg('rect', { class: `group${value ? ' tipped' : ''}`, x: f.x, y: f.y, width: f.w, height: f.h, rx: Math.min(f.h / 2, 22) }),
+      label({ class: `group-label${value ? ' tipped' : ''}${scale < 1 ? ' small' : ''}`, x: f.label.x, y: f.label.y }, String(value))];
+  }));
+}
+const puzzleFrames = () => PAIRS.flatMap((p, k) => (state.pairedWith[k] ? [{ spots: [p.down, p.up] }] : []));
+
+// ── pairing: drag or tap a waiting ↓ ──────────────────────────────────────────────────────────────
 let hintsOff = false;
 let hintTimer = null;
 let afterPair = () => {};
@@ -174,17 +233,16 @@ function settle(id, p) {
   hintsOff = true;
   clearTimeout(hintTimer);
   state = pair(state, id, p);
-  const spot = PAIRS[p].left;
+  const spot = PAIRS[p].down;
   place(piece, spot.x, spot.y);
   slots[p].classList.add('filled');
-  piece.outer.classList.remove('waiting');
+  piece.outer.classList.remove('waiting', 'nudge');
   piece.outer.removeAttribute('tabindex');
   piece.outer.removeAttribute('role');
   setTimeout(() => {
-    drawTotal(totalOf(state));
-    const z = pairZeros[p];
-    z.classList.add('show');
-    setTimeout(() => z.classList.remove('show'), 1500);
+    drawFrames(puzzleFrames());
+    drawSum(puzzleGroups(state));
+    drawResult(totalOf(state));
     afterPair();
   }, REDUCED ? 0 : 240);
 }
@@ -254,6 +312,11 @@ function choices(options, onPick) {
   followFocus(buttons[0]);
   return buttons;
 }
+const ask = (options) => new Promise((resolve) => choices(options, (o, b, all) => {
+  all.forEach((x) => { x.disabled = true; });
+  b.classList.add('picked');
+  resolve(o);
+}));
 
 function button(text, onClick) {
   const b = el('button', { type: 'button', class: 'action', text });
@@ -263,6 +326,7 @@ function button(text, onClick) {
   followFocus(b);
   return b;
 }
+const press = (text) => new Promise((resolve) => button(text, resolve));
 
 // ── the story ────────────────────────────────────────────────────────────────────────────────────
 async function scene1() {                                   // the scanner
@@ -293,12 +357,12 @@ async function scene3() {                                   // zoom into the wat
   clear();
   zoomable.style.transform = `translate(${ZOOM.x}px, ${ZOOM.y}px) scale(${ZOOM.scale}) translate(${-ZOOM.x}px, ${-ZOOM.y}px)`;
   on(lens);
-  await frame();
+  await frameTick();
   lensAt(520);
   await wait(1000);
   on(scanner, false);
   on(water);
-  describe('Three water molecules, each one large atom joined to two small hydrogen atoms.');
+  describe('Three water molecules. Each is one large oxygen atom, O, joined to two small hydrogen atoms, H.');
   say(COPY.water[0], 'lead');
   await pause(reading(COPY.water[0]));
   say(COPY.water[1]);
@@ -306,24 +370,26 @@ async function scene3() {                                   // zoom into the wat
   button(COPY.closer, scene4);
 }
 
-async function scene4() {                                   // protons become arrows
+async function scene4() {                                   // protons: tiny magnets, then arrows
   phase = 'protons';
   clear();
-  water.classList.add('protons');
+  water.classList.add('protons', 'still');
+  describe('At the centre of each hydrogen atom is a proton: a small ball, half marked N and half marked S.');
   say(COPY.proton[0]);
-  await pause(reading(COPY.proton[0]));
-  water.classList.add('still');
+  await pause(reading(COPY.proton[0]) + 400);
   say(COPY.proton[1]);
-  for (const id of ['R0', 'L1', 'L0', 'R1', 'R2', 'L2']) {
+  await wait(600);
+  water.classList.add('arrows');
+  for (const id of ['U0', 'D1', 'D0', 'U1', 'U2', 'D2']) {
     makePiece(id, hydrogenSpot(id), { entering: true });
     await wait(160);
   }
-  describe('Each hydrogen atom now carries an arrow: some point right, some point left.');
-  await pause(reading(COPY.proton[1]) + 600);
+  describe('Each proton is now an arrow pointing from its S end to its N end: some point up, some point down.');
+  await pause(reading(COPY.proton[1]) + 400);
   scene5();
 }
 
-async function scene5() {                                   // the drop and its TOTAL
+async function scene5() {                                   // the drop, and its TOTAL, built by adding its arrows
   phase = 'setup';
   clear();
   on(water, false);
@@ -331,23 +397,29 @@ async function scene5() {                                   // the drop and its 
   on(puzzle);
   for (const id of [...state.row, ...state.waiting]) { const s = restingSpot(id); place(pieces.get(id), s.x, s.y, 'gliding'); }
   await wait(1000);
-  on(panel);
-  await wait(400);
-  for (let k = 0; k < state.row.length; k++) {               // the TOTAL is built from the arrows in the drop
-    const from = restingSpot(state.row[k]);
-    const to = segmentSpots(k + 1)[k];
-    const ghost = svg('g', { class: 'ghost', style: `transform: translate(${from.x}px, ${from.y}px)` }, svg('path', { d: SHAPE }));
-    piecesLayer.append(ghost);
-    await frame();
-    ghost.style.transform = `translate(${to.x}px, ${to.y}px) scale(${SEGMENT.scale})`;
-    await wait(480);
-    ghost.remove();
-    drawTotal(k + 1);
-    await wait(220);
-  }
-  describe('A drop holding three right arrows; three left arrows wait below it. The TOTAL above the drop shows three right arrows joined: 3.');
   say(COPY.hook);
   await pause(reading(COPY.hook));
+  on(panel);
+  say(COPY.totalMeans);
+  await wait(500);
+  for (let k = 1; k <= state.row.length; k++) {               // each arrow in the drop is added in turn
+    const id = state.row[k - 1];
+    const groups = state.row.slice(0, k).map((r) => [r]);
+    const to = sumLayout(asTerms(groups)).items.find((it) => it.id === id);
+    const from = pieces.get(id);
+    const ghost = glyph('ghost');
+    ghost.style.transform = `translate(${from.x}px, ${from.y}px)`;
+    piecesLayer.append(ghost);
+    await frameTick();
+    ghost.style.transform = `translate(${to.x}px, ${to.y}px) scale(${sumLayout(asTerms(groups)).scale})`;
+    await wait(520);
+    ghost.remove();
+    drawSum(groups);
+    await wait(260);
+  }
+  drawResult(totalOf(state));
+  describe('A drop holding three up arrows; three down arrows wait below it. The TOTAL adds the arrows in the drop: up plus up plus up equals 3.');
+  await pause(reading(COPY.totalMeans));
   play();
 }
 
@@ -358,31 +430,33 @@ function play() {
     p.outer.classList.add('waiting', 'nudge');
     p.outer.setAttribute('tabindex', '0');
     p.outer.setAttribute('role', 'button');
-    p.outer.setAttribute('aria-label', 'Left arrow');
+    p.outer.setAttribute('aria-label', 'Down arrow');
     p.outer.addEventListener('pointerdown', (e) => startDrag(e, id));
     p.outer.addEventListener('keydown', (e) => {
       if ((e.key === 'Enter' || e.key === ' ') && !locked && state.waiting.includes(id)) { e.preventDefault(); settle(id, tapTarget(state, id)); }
     });
   }
   slots.forEach((s) => on(s));
+  clear();
   say(COPY.task);
   setLocked(false);
   followFocus(pieces.get(state.waiting[0]).outer);
   armHint(0);
 }
 
-function armHint(count) {                                   // if nothing has moved for a while, show the move once
+function armHint(count) {                                   // if nothing has moved for a while, show the move
   clearTimeout(hintTimer);
   hintTimer = setTimeout(async () => {
     if (hintsOff || locked || !state.waiting.length) return;
     if (count === 0) say(COPY.hint, 'hint');
     const id = state.waiting[0];
     const from = restingSpot(id);
-    const to = PAIRS[tapTarget(state, id)].left;
-    const ghost = svg('g', { class: 'ghost hint-ghost', style: `transform: translate(${from.x}px, ${from.y}px) scale(-1, 1)` }, svg('path', { d: SHAPE }));
+    const to = PAIRS[tapTarget(state, id)].down;
+    const ghost = glyph('ghost hint-ghost');
+    ghost.style.transform = `translate(${from.x}px, ${from.y}px) ${mirror(-1)}`;
     piecesLayer.append(ghost);
-    await frame();
-    ghost.style.transform = `translate(${to.x}px, ${to.y}px) scale(-1, 1)`;
+    await frameTick();
+    ghost.style.transform = `translate(${to.x}px, ${to.y}px) ${mirror(-1)}`;
     await wait(900);
     ghost.classList.add('gone');
     await wait(400);
@@ -459,35 +533,67 @@ function checkpoint2() {                                    // second checkpoint
   });
 }
 
-function showArrangement(k) {
-  const spots = layout(k);
-  for (const { id, x, y } of spots) {
+function showArrangement(k) {                               // pieces move into the groups of arrangement k
+  const groups = layout(k);
+  for (const { id, x, y } of groups.flat()) {
     if (pieces.has(id)) place(pieces.get(id), x, y);
-    else makePiece(id, { x, y }, { entering: !REDUCED }).outer.classList.add('prominent');
+    else makePiece(id, { x, y }, { entering: !REDUCED });
   }
-  drawTotal(total(ARRANGEMENTS[k].rows.flat()));   // the same 0, computed from the pieces behind it
+  drawFrames(groups.map((spots) => ({ spots })));
 }
+function revealArrangement(k) {                             // the TOTAL shows what is now behind its 0
+  drawSum(ARRANGEMENTS[k].groups);
+  drawResult(total(ARRANGEMENTS[k].groups.flat()));       // the same 0, computed from the pieces behind it
+}
+const covered = (v) => { cover.classList.toggle('on', v); if (v) drawSumUnknown(); };
 
-async function arrangements() {                             // the same 0, different arrangements behind it
+async function arrangements() {                             // look behind more 0s
   phase = 'arrangements';
+  for (const p of pieces.values()) p.outer.classList.remove('prominent');
   clear();
-  say(COPY.shuffle);
-  await pause(reading(COPY.shuffle));
-  clear();
-  const caption = say(COPY.arrangements[0], 'caption');
   showArrangement(0);
-  await pause(2200);
-  for (let k = 1; k < ARRANGEMENTS.length; k++) {
-    caption.classList.remove('in');
-    await wait(250);
-    showArrangement(k);
-    await wait(650);
-    if (k < COPY.arrangements.length) {
-      caption.textContent = COPY.arrangements[k];
-      caption.classList.add('in');
-    }
-    await pause(2200);
-  }
+  revealArrangement(0);
+  const caption = say(COPY.arrangements[0], 'caption');
+  await pause(2400);
+  clear();
+  covered(true);
+  await wait(500);
+  showArrangement(1);                                       // rearranged out of sight; the TOTAL still reads 0
+  say(COPY.cover.intro);
+  await pause(reading(COPY.cover.intro));
+  say(COPY.cover.question);
+  await ask(COPY.cover.choices);
+  say(COPY.cover.after);
+  await wait(700);
+  covered(false);
+  revealArrangement(1);
+  await wait(500);
+  clear();
+  caption.textContent = COPY.arrangements[1];
+  prompt.append(caption);
+  await pause(2400);
+  clear();
+  covered(true);
+  await wait(500);
+  showArrangement(2);
+  say(COPY.cover.again);
+  await press(COPY.cover.look);
+  covered(false);
+  revealArrangement(2);
+  await wait(500);
+  clear();
+  caption.textContent = COPY.arrangements[2];
+  prompt.append(caption);
+  await pause(2400);
+  clear();
+  covered(true);
+  await wait(500);
+  showArrangement(3);
+  say(COPY.cover.again);
+  await press(COPY.cover.look);
+  covered(false);
+  revealArrangement(3);
+  await wait(900);
   phase = 'reveal';
   clear();
   say(COPY.reveal);
@@ -495,24 +601,22 @@ async function arrangements() {                             // the same 0, diffe
   magnet();
 }
 
+const crowdTerms = () => CROWD_SHOWN.map((k) => [`D${k}`, `U${k}`]);
 async function magnet() {                                   // many more pairs, all cancelled: the total is still 0
   phase = 'magnet';
   clear();
   board.style.setProperty('--s', String(CROWD.scale));
-  for (const p of crowd()) {
-    for (const end of [p.left, p.right]) {
-      if (pieces.has(end.id)) place(pieces.get(end.id), end.x, end.y);
-      else makePiece(end.id, end, { entering: !REDUCED });
-    }
-    const z = svg('text', { class: 'crowd-zero', x: p.zero.x, y: p.zero.y, 'text-anchor': 'middle', 'dominant-baseline': 'central', 'data-k': p.k });
-    z.textContent = COPY.pairZero;
-    crowdZeros.append(z);
+  const c = crowd();
+  for (const p of c) for (const end of [p.down, p.up]) {
+    if (pieces.has(end.id)) place(pieces.get(end.id), end.x, end.y);
+    else makePiece(end.id, end, { entering: !REDUCED });
   }
-  for (const p of pieces.values()) p.outer.classList.remove('prominent');
-  drawTotal(total(Object.values(crowdDirections(false))));
-  await wait(700);
-  crowdZeros.classList.add('show');
-  describe('Fifteen pairs of opposite arrows in the drop, each pair cancelled. The TOTAL is 0.');
+  drawFrames(c.map((p) => ({ spots: [p.down, p.up], scale: CROWD.scale, gap: CROWD.labelGap })));
+  const before = crowdDirections(false);
+  drawSum(crowdTerms(), { lead: true, trail: true });
+  drawResult(total(Object.values(before)));
+  describe('Twelve pairs of opposite arrows in the drop, one up and one down, each pair a group with a total of 0. The TOTAL is 0.');
+  await wait(800);
   say(COPY.magnetQuestion);
   await wait(600);
   button(COPY.switchOn, magnetOn);
@@ -526,18 +630,17 @@ async function magnetOn() {                                 // the magnet tips t
   await pause(reading(COPY.magnet[0]));
   const now = crowdDirections(true);
   const flipped = pieces.get(FLIP);
+  flipped.letters.classList.add('swap');
   dirs[FLIP] = now[FLIP];
   flipped.inner.style.transform = mirror(dirs[FLIP]);
-  const pairOf = crowd().find((p) => p.left.id === FLIP);
-  crowdZeros.querySelector(`[data-k="${pairOf.k}"]`).classList.add('off');
-  ring.setAttribute('x', pairOf.cx - 58);
-  ring.setAttribute('y', pairOf.y - 21);
-  ring.setAttribute('width', 116);
-  ring.setAttribute('height', 42);
-  ring.setAttribute('rx', 21);
-  on(ring);
-  drawTotal(total(Object.values(now)));
-  describe('With the magnet on, one left arrow has turned to point right. Its pair no longer cancels. The TOTAL is 2.');
+  await wait(300);
+  setLetters(flipped);
+  flipped.letters.classList.remove('swap');
+  const c = crowd();
+  drawFrames(c.map((p) => ({ spots: [p.down, p.up], scale: CROWD.scale, gap: CROWD.labelGap, value: total([dirs[p.down.id], dirs[p.up.id]]) })));
+  drawSum(crowdTerms(), { lead: true, trail: true, labels: CROWD_SHOWN.map((k) => total([dirs[`D${k}`], dirs[`U${k}`]])) });
+  drawResult(total(Object.values(now)));
+  describe('With the magnet on, one down arrow has turned to point up, with the magnet. Its group no longer cancels: it adds up to 2. The TOTAL is 2.');
   say(COPY.magnet[1]);
   await pause(reading(COPY.magnet[1]) + 600);
   clear();
@@ -552,8 +655,6 @@ async function paint() {                                    // the scanner paint
   phase = 'picture';
   clear();
   piecesLayer.classList.add('away');
-  crowdZeros.classList.remove('show');
-  on(ring, false);
   on(field, false);
   on(puzzle, false);
   on(screen);
@@ -565,7 +666,7 @@ async function paint() {                                    // the scanner paint
       const v = Math.round(c.g * 255);
       screen.append(svg('rect', { x: c.x.toFixed(2), y: c.y.toFixed(2), width: (c.size + 0.4).toFixed(2), height: (c.size + 0.4).toFixed(2), fill: `rgb(${v},${v},${v})` }));
     }
-    if (!REDUCED) await pause(45);
+    if (!REDUCED) await pause(40);
   }
   say(COPY.picture);
   await pause(reading(COPY.picture) + 600);

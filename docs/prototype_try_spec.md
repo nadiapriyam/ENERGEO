@@ -1,11 +1,105 @@
 # Prototype spec: Interactive 01 at `try/`
 
-Nadia's specification. **Revision 3 (2026-11-18) governs**: her two requests are quoted verbatim, followed by the
-learner copy drafted at her request (for her review) and the physics behind it. Revisions 2 and 1 are kept below,
-superseded where Revision 3 changes them. Every learner-facing line of the prototype is copied from the Revision 3 copy
-list, and `test/try.test.js` checks that.
+Nadia's specification. **Revision 4 (2026-11-18) governs**: her requests are quoted verbatim, followed by the learner
+copy drafted at her request (for her review) and the physics behind it. Revisions 3, 2 and 1 are kept below, superseded
+where a later revision changes them. Every learner-facing line of the prototype is copied from the Revision 4 copy list,
+and `test/try.test.js` checks that.
 
-## Revision 3 (2026-11-18): the MRI story — governs
+## Revision 4 (2026-11-18): magnets, adding up, groups, up and down — governs
+
+Nadia, verbatim:
+
+> good work so far, i like that its becoming like a game. I think the story in the begining is good. but the protons should maybe have N and S or somehting resembelling that its a magnet. then the arrows need to be the same color of the protons also having north and south, and then when you increase the amount of arrows make sure to group them because when the user sees them all grouped and even then they will only realize its equal to , also the meaning of total is still unknown. its assumed that total is something you add up to get so, i want the unknowledgable user to know that  zero is a value you can get even with adding up things. go throuhg this interactive as someone who doesn:t know anything about it and make sure the main goal is for that unknowledgable user to think to themself that oh wait  zero isnt nothing.
+
+> maybe switch the arrows up and down instead of side ways
+
+### What changes (by these requests)
+
+- **Magnets.** Every proton and every arrow is a magnet with an N end and an S end, in the same two colours: S light,
+  N in the accent. A proton first appears as a ball with an N half and an S half inside its hydrogen atom. Then it becomes
+  an arrow from S to N. The atoms are lettered O and H.
+- **Up and down.** The arrows point up (↑) and down (↓) instead of sideways. A ↓ is a mirrored ↑, never rotated. The
+  magnet's field, when it is switched on, points up, the way MRI pictures usually draw it.
+- **The TOTAL is visibly adding.** One line defines it ("The TOTAL adds up every arrow in the drop."). Inside the TOTAL,
+  the arrows in the drop are written out with + between them, followed by = and the result (↑ + ↑ + ↑ = 3). At the
+  start each arrow flies up into that sum one at a time. When a ↓ joins, the learner sees that adding an arrow made the
+  total smaller. At the end, six arrows added up give = 0.
+- **Groups.** Every balanced group is drawn as a group: an outline in the drop and a bracket in the sum, each with its
+  own 0. In the larger arrangements, each group's ↑ arrows sit in a row with its ↓ arrows directly underneath, one under
+  each, so the evenness can be seen.
+- **Behind a 0.** After the learner's own drop ("Same result."), the next drops arrive covered. Each shows only its
+  TOTAL, = 0. The learner is asked what is behind it (Nothing / Something), then looks inside and finds arrows every time.
+  This replaces the automatic animation of Revision 2. The 0 stays in exactly the same place throughout, and Revision 2's
+  captions are kept.
+- The line "And inside you, they never sit still." is removed.
+
+### Learner copy, in order (drafted by Claude at Nadia's request, for her review)
+
+Lines marked (R2) are Nadia's Revision 2 wording, unchanged.
+
+1. This is an MRI scanner.
+2. It can see inside your body: no X-rays, no cuts.
+3. You know more about an MRI than you think. (R2)
+4. [Slide in]
+5. Inside, a giant magnet surrounds you.
+6. [Zoom in]
+7. O, H (the letters on the atoms)
+8. Your body is full of water.
+9. One drop holds billions of trillions of hydrogen atoms.
+10. [Closer]
+11. N, S (the letters on every magnet)
+12. At the heart of each hydrogen atom is a proton: a tiny magnet.
+13. Picture each one as an arrow, pointing from S to N.
+14. So many tiny magnets. Why don't they add up to one giant magnet?
+15. TOTAL (R2, the label on the TOTAL)
+16. The TOTAL adds up every arrow in the drop.
+17. + = … (the adding, written inside the TOTAL)
+18. Can you make the total 0? (R2)
+19. Drag a ↓ next to an ↑. (only after 6 seconds without a move)
+20. 0 (under every balanced group)
+21. Can every piece still be here while the total is 0? [Yes] [No] [Not sure] (R2)
+22. Let's see. (R2)
+23. You got 0. (R2)
+24. But did everything disappear? [Look closer] (R2)
+25. If the total is 0, are the pieces gone? [Yes] [No] (R2)
+26. Exactly. They cancelled. (R2; after No)
+27. Look again — they're still there. (R2; after Yes)
+28. That's the answer: inside you, opposite tiny magnets cancel each other out.
+29. Same result. (R2)
+30. Here's another drop. Its total is 0 too.
+31. ? (on the covered drop, and in its TOTAL)
+32. What's behind this 0? [Nothing] [Something]
+33. Let's see. (R2)
+34. Different arrangement. (R2)
+35. And another. [Look inside]
+36. Still 0. (R2)
+37. And another. [Look inside]
+38. One result. Many possible arrangements behind it. (R2)
+39. Your total is 0. So how can a scanner see anything?
+40. [Switch on the magnet]
+41. Its magnet is tens of thousands of times stronger than Earth's.
+42. It tips the balance, just barely: a few more arrows point with it than against it.
+43. In a real body, only about five to ten in every million are left over.
+44. The scanner nudges them with radio waves and listens for their faint reply.
+45. [Listen]
+46. From that whisper, it paints a picture of your insides.
+47. You just figured out one of the core principles of MRI.
+48. Inside a 0, countless tiny magnets cancel, and a scanner can coax a picture out of them.
+49. A 0 isn't always nothing. Sometimes it's you: countless tiny magnets, perfectly balanced.
+
+Nothing comes after line 49.
+
+### The physics behind the copy
+
+Everything in Revision 3's physics notes still holds. The numbers are recomputed by `src/math/scanner.js` and checked by
+`test/try.test.js`. In addition:
+
+- **The magnet pictures.** A proton's magnetic moment is drawn as a little bar magnet, and its arrow points from S to N.
+  These are pictures of the moment, not drawings of a real particle.
+- **Up and down.** In the scanner the main field runs along the tunnel. The zoomed-in board draws the field pointing up,
+  as MRI diagrams usually do: "with the magnet" is ↑ and "against it" is ↓, the two-way picture used in lines 42 and 43.
+
+## Revision 3 (2026-11-18): the MRI story — superseded by Revision 4 where it changes it
 
 Nadia, verbatim (first request):
 

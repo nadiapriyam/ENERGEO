@@ -1,13 +1,14 @@
-/* Interactive 01. White page, simple high-contrast type, one strong accent for the arrows (the active mathematical
-   objects) and for the TOTAL, which is made of them. The scanner and the water are drawn in quiet greys and blues so the
-   arrows stay the brightest thing on the board. No curves for the pieces to travel on, no error colours. */
+/* Interactive 01. White page, simple high-contrast type. Every magnet (a proton, an arrow, an arrow in the TOTAL) has
+   the same two halves: S light, N in the one strong accent. The scanner and the water are drawn in quiet greys and blues
+   so the magnets stay the brightest thing on the board. No curves for the pieces to travel on, no error colours. */
 
 :root {
   --bg: #ffffff;
   --ink: #1b1f24;
   --ink-2: #5d646e;
   --ink-3: #9aa1aa;
-  --accent: #1a66e0;          /* the arrows, and the TOTAL built from them */
+  --accent: #1a66e0;          /* the N half of every magnet */
+  --s-pole: #b9d0f5;          /* the S half */
   --accent-soft: #e8f0fd;     /* a chosen answer */
   --water: #eaf3ff;           /* the drop and the zoom */
   --water-edge: #c4d9f5;
@@ -92,29 +93,57 @@ body {
 .lens { transition: transform 1000ms cubic-bezier(0.55, 0, 0.35, 1), opacity 600ms ease-out, visibility 0s linear 600ms; }
 .lens.on { transition: transform 1000ms cubic-bezier(0.55, 0, 0.35, 1), opacity 200ms ease-out, visibility 0s; }
 
+/* the magnets: an S half and an N half, the same colours on a proton, an arrow, and an arrow in the TOTAL */
+.s-part { fill: var(--s-pole); }
+.n-part { fill: var(--accent); }
+.pole { font-family: var(--font); font-size: 12px; font-weight: 700; pointer-events: none; }
+.pole.n { fill: #fff; }
+.pole.s { fill: var(--ink); }
+.poles { transition: opacity 200ms ease-out; }
+.poles.swap { opacity: 0; }
+
 /* scene 2: water */
 .bond { stroke: #9dbbe6; stroke-width: 7; stroke-linecap: round; }
-.oxygen { fill: #9dbbe6; }
-.hydrogen { fill: #dbe8f8; stroke: #9dbbe6; stroke-width: 2; transition: fill-opacity 500ms ease-out; }
-.proton { fill: var(--accent); opacity: 0; transition: opacity 500ms ease-out; }
-.water.protons .proton { opacity: 1; }
-.water.still .hydrogen { fill-opacity: 0.4; }
+.oxygen { fill: #b3cbee; }
+.hydrogen { fill: #e3edfa; stroke: #9dbbe6; stroke-width: 2; }
+.atom-letter { font-family: var(--font); font-size: 18px; font-weight: 600; fill: #4a6a99; transition: opacity 400ms ease-out; }
+.atom-letter.o { font-size: 22px; }
+.ball { opacity: 0; transition: opacity 500ms ease-out; }
+.water.protons .ball { opacity: 1; }
+.water.protons .atom-letter.h { opacity: 0; }
+.water.arrows .ball { opacity: 0; }
+.water.arrows .hydrogen { fill-opacity: 0.35; }
 .molecule { animation: drift 5s ease-in-out infinite alternate; }
 .water.still .molecule { animation-play-state: paused; }
 @keyframes drift { from { transform: translate(-3px, 2px); } to { transform: translate(3px, -3px); } }
 
-/* scene 3: the drop, its TOTAL, the arrows */
+/* scene 3: the drop, its groups, the TOTAL */
 .drop { fill: var(--water); stroke: var(--water-edge); stroke-width: 2; }
 .panel-box { fill: #fff; stroke: var(--water-edge); stroke-width: 2; }
 .total-label { font-family: var(--font); font-size: 15px; letter-spacing: 0.14em; fill: var(--ink-2); }
-.segment { opacity: 0; transition: transform 320ms ease-out, opacity 320ms ease-out; }
-.segment.show { opacity: 1; }
-.segment path, .ghost path { fill: var(--accent); stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
-.total-number { font-family: var(--font); font-size: 20px; font-weight: 600; fill: var(--ink); }
-.total-zero { font-family: var(--font); font-size: 92px; font-weight: 600; fill: var(--ink); opacity: 0; transition: opacity 300ms ease-out; }
-.panel.is-zero .total-zero { opacity: 1; }
+.term { transition: transform 360ms ease-out, opacity 360ms ease-out; }
+.term.fresh { opacity: 0; }
+.plus, .more { font-family: var(--font); font-size: 20px; font-weight: 600; fill: var(--ink-2); }
+.bracket { fill: none; stroke: var(--ink-3); stroke-width: 1.5; }
+.bracket-label { font-family: var(--font); font-size: 13px; fill: var(--ink-2); }
+.bracket.tipped { stroke: var(--accent); }
+.bracket-label.tipped { fill: var(--accent); font-weight: 700; }
+.result { font-family: var(--font); font-size: 52px; font-weight: 600; fill: var(--ink); }
+.panel.is-zero .result { font-size: 64px; }
 
-.ghost { transition: transform 480ms cubic-bezier(0.3, 0.7, 0.3, 1), opacity 400ms ease-out; pointer-events: none; }
+.group { fill: #ffffff; fill-opacity: 0.7; stroke: var(--water-edge); stroke-width: 2; }
+.group.tipped { stroke: var(--accent); stroke-dasharray: 6 5; }
+.group-label { font-family: var(--font); font-size: 18px; font-weight: 600; fill: var(--ink-2); }
+.group-label.small { font-size: 13px; }
+.group-label.tipped { fill: var(--accent); }
+.frames { transition: opacity 300ms ease-out; }
+
+.cover { opacity: 0; visibility: hidden; transition: opacity 500ms ease-out, visibility 0s linear 500ms; }
+.cover.on { opacity: 1; visibility: visible; transition: opacity 500ms ease-out, visibility 0s; }
+.cover rect { fill: #dfeafa; stroke: var(--water-edge); stroke-width: 2; }
+.cover-mark { font-family: var(--font); font-size: 72px; font-weight: 600; fill: #7f9cc6; }
+
+.ghost { transition: transform 520ms cubic-bezier(0.3, 0.7, 0.3, 1), opacity 400ms ease-out; pointer-events: none; }
 .hint-ghost { opacity: 0.45; transition-duration: 900ms, 400ms; }
 .ghost.gone { opacity: 0; }
 
@@ -123,15 +152,6 @@ body {
 .slot.filled { opacity: 0; }
 .slot path { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 5 4; opacity: 0.6; }
 
-.pair-zero { font-family: var(--font); font-size: 20px; fill: var(--ink-2); opacity: 0; transition: opacity 260ms ease-out; pointer-events: none; }
-.pair-zero.show { opacity: 1; }
-.crowd-zero { font-family: var(--font); font-size: 15px; fill: var(--ink-3); transition: opacity 300ms ease-out; }
-.crowd-zeros { opacity: 0; transition: opacity 500ms ease-out; }
-.crowd-zeros.show { opacity: 1; }
-.crowd-zero.off { opacity: 0; }
-.ring { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 6 5; opacity: 0; transition: opacity 400ms ease-out; }
-.ring.on { opacity: 1; }
-
 .field { opacity: 0; transition: opacity 700ms ease-out; }
 .field.on { opacity: 1; }
 .field-line { stroke: #9dbbe6; stroke-width: 2; stroke-dasharray: 10 12; fill: none; animation: flow 1.2s linear infinite; }
@@ -139,16 +159,15 @@ body {
 @keyframes flow { to { stroke-dashoffset: -22; } }
 
 .piece { touch-action: none; }
-.piece.moving { transition: transform 280ms cubic-bezier(0.2, 0.8, 0.3, 1); }
+.piece.moving { transition: transform 420ms cubic-bezier(0.2, 0.8, 0.3, 1); }
 .piece.gliding { transition: transform 900ms cubic-bezier(0.45, 0, 0.25, 1); }
-.piece-shape { fill: var(--accent); stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
 .piece-hit { fill: transparent; }
 .piece-inner { transition: transform 450ms ease-in-out; }
 .piece.waiting { cursor: grab; }
 .piece.waiting.dragging { cursor: grabbing; }
 .is-locked .piece.waiting { cursor: default; }
 .piece:focus { outline: none; }
-.piece:focus-visible .piece-shape { stroke: var(--ink); stroke-width: 3; }
+.piece:focus-visible .n-part, .piece:focus-visible .s-part { stroke: var(--ink); stroke-width: 2.5; }
 .piece-mid { transform-box: fill-box; transform-origin: center; transform: scale(var(--s)); transition: transform 300ms ease-out; }
 .piece.prominent .piece-mid { transform: scale(calc(var(--s) * 1.14)); }
 .piece-enter { transition: opacity 420ms ease-out, transform 420ms ease-out; }
@@ -162,16 +181,18 @@ body {
 
 @media (max-width: 520px) {
   body { font-size: 1.125rem; }
-  .total-label { font-size: 24px; }     /* SVG units: about 13px on a phone */
-  .total-number { font-size: 30px; }
-  .pair-zero { font-size: 30px; }
-  .crowd-zero { font-size: 22px; }
+  .total-label { font-size: 22px; }     /* SVG units: about 12px on a phone */
+  .plus, .more { font-size: 26px; }
+  .bracket-label { font-size: 19px; }
+  .group-label { font-size: 26px; }
+  .group-label.small { font-size: 20px; }
+  .pole { font-size: 15px; }
   .line.lead, .line.final { font-size: 1.3rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .line, .action, .choices, .figure, .layer, .layer.on, .lens, .lens.on, .wall, .tunnel, .coils rect, .patient, .zoomable,
-  .hydrogen, .proton, .segment, .ghost, .slot, .pair-zero, .crowd-zero, .crowd-zeros, .ring, .field, .total-zero,
+  .atom-letter, .ball, .term, .ghost, .slot, .cover, .cover.on, .field, .poles, .frames,
   .piece.moving, .piece.gliding, .piece-inner, .piece-mid, .piece-enter, .pieces { transition: none; }
   .molecule, .field-line, .piece.nudge .piece-enter { animation: none; }
   .line { transform: none; }

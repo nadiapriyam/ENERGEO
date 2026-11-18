@@ -88,14 +88,19 @@ does not touch the journey store or any interactive.
 ## One-step prototype (`try/`)
 
 `try/index.html` (served at `try/`) is a single Mathigon-style interactive built to `docs/prototype_try_spec.md`,
-Nadia's specification. Revision 3, the MRI story, governs. It runs: slide into the scanner, zoom into the body's water,
-picture each proton as an arrow, pair opposite arrows until the TOTAL is an exact 0, watch the same 0 hold over four
-arrangements, switch on the magnet (one arrow flips, the TOTAL tips to 2), and watch the scanner paint a picture.
+Nadia's specification. Revision 4 governs. It runs as a story inside an MRI scanner:
 
-- `src/prototypes/try/copy.js` holds every learner-facing line, verbatim from the Revision 3 copy list.
-- `src/math/pieces.js` holds the arrows and the TOTAL. Arrows are worth −1 and +1. The TOTAL is the exact integer sum of
-  the arrows inside the drop, and it is drawn as those arrows joined tip to tail. It also holds the four arrangements and
-  the magnet's crowd.
+1. Slide into the scanner and zoom into the body's water.
+2. Each proton, a tiny magnet with N and S, becomes an ↑ or ↓ arrow.
+3. Pair opposite arrows until the TOTAL is an exact 0. The TOTAL writes out the sum, for example ↑ + ↓ + ↑ = 1.
+4. Look behind covered drops whose TOTAL is 0 and find arrows each time.
+5. Switch on the magnet: one arrow flips and the TOTAL tips to 2.
+6. Watch the scanner paint a picture.
+
+- `src/prototypes/try/copy.js` holds every learner-facing line, verbatim from the Revision 4 copy list.
+- `src/math/pieces.js` holds the arrows, the groups and the TOTAL. Arrows are worth +1 and −1. The TOTAL is the exact
+  integer sum of the arrows inside the drop, and its sum row is laid out there too. It also holds the four arrangements
+  and the magnet's crowd.
 - `src/math/scanner.js` holds the story scenes (scanner, molecules, the painted picture) and the MRI numbers that the
   copy states.
 - `src/prototypes/try/main.js` only wires them together.

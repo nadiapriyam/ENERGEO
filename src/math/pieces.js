@@ -1,44 +1,49 @@
-// Interactive 01 at try/ (docs/prototype_try_spec.md, Revision 3). Pure functions, no DOM.
+// Interactive 01 at try/ (docs/prototype_try_spec.md, Revision 4). Pure functions, no DOM.
 //
-// A piece is one proton pictured as an arrow: it points right (→, +1, with the scanner's magnet) or left (←, −1). The
-// TOTAL is the sum of the arrows inside the drop: an integer, so every value shown, the 0 included, is exact. Sliding
-// arrows around inside the drop never changes a sum; what changes the TOTAL is an arrow entering the drop. So the three
-// → start inside the drop (TOTAL 3) and the three ← wait outside it; each ← paired with a → enters the drop, and the
-// TOTAL goes 3 → 2 → 1 → 0. Every arrow stays visible throughout. The TOTAL is drawn as that many arrows joined tip to
-// tail, so it is visibly made of the pieces.
+// A piece is one proton: a tiny magnet, drawn as an arrow from its S end to its N end. It points up (↑, +1, with the
+// scanner's magnet, drawn pointing up as MRI pictures usually draw it) or down (↓, −1). The TOTAL adds up every arrow
+// inside the drop, and the page shows that adding as a row of arrows with + between them and = and the result after
+// them, so the learner sees that the 0 is the result of adding things up. The result is an integer, so every value
+// shown, the 0 included, is exact.
+//
+// Sliding arrows around inside the drop never changes a sum; what changes the TOTAL is an arrow entering the drop. So
+// the three ↑ start inside the drop (TOTAL 3) and the three ↓ wait outside it; each ↓ paired with an ↑ enters the drop,
+// and the TOTAL goes 3 → 2 → 1 → 0. Every arrow stays visible throughout, and every balanced group is shown as a group,
+// with its own 0.
 
-export const RIGHT = 1;
-export const LEFT = -1;
+export const UP = 1;
+export const DOWN = -1;
 
-/** Direction of a piece id: 'R…' points right, 'L…' points left (a flipped piece is tracked by the caller). */
-export const dirOf = (id) => (id[0] === 'R' ? RIGHT : LEFT);
+/** Direction of a piece id: 'U…' points up, 'D…' points down (a flipped piece is tracked by the caller). */
+export const dirOf = (id) => (id[0] === 'U' ? UP : DOWN);
 /** The TOTAL of a set of pieces (ids or directions). */
 export const total = (pieces) => pieces.reduce((s, p) => s + (typeof p === 'string' ? dirOf(p) : p), 0);
 
 // ── geometry (SVG user units) ──────────────────────────────────────────────────────────────────────
-export const VIEW = { w: 640, h: 400 };
-export const PIECE = { length: 60, height: 26 };
-export const PANEL = { x: 200, y: 8, w: 240, h: 120, cx: 320, cy: 72, labelY: 30, numberY: 114 };
-export const DROP = { x: 24, y: 110, w: 592, h: 200, r: 36 };
-export const ROWS = { mat: 226, pairZero: 262, supply: 356, upper: 176, lower: 270 };
+export const VIEW = { w: 640, h: 440 };
+export const PIECE = { length: 61, width: 30 };              // an upright bar magnet with a pointed N end
+export const PANEL = { x: 120, y: 6, w: 400, h: 150, cx: 320, labelY: 22, sumY: 56, bracketY: 84, resultY: 126, sumWidth: 360 };
+export const DROP = { x: 24, y: 146, w: 592, h: 208, r: 36 };
+export const ROWS = { mat: 248, supply: 400 };
+export const GROUP = { pad: 10, label: 20 };                 // the outline around a balanced group, and its 0 below it
 const C = VIEW.w / 2;
 
-/** Three pairs inside the drop; each pair is a ← spot then a → spot, nearly touching. */
+/** Three pairs inside the drop; each pair is a ↓ spot then an ↑ spot, side by side. */
 export const PAIRS = [0, 1, 2].map((p) => {
   const cx = C + (p - 1) * 172;
-  return { left: { x: cx - 33, y: ROWS.mat }, right: { x: cx + 33, y: ROWS.mat }, zero: { x: cx, y: ROWS.pairZero } };
+  return { cx, down: { x: cx - 19, y: ROWS.mat }, up: { x: cx + 19, y: ROWS.mat } };
 });
 
-/** The start: three → in the drop (one per pair), three ← waiting outside it. */
+/** The start: three ↑ in the drop (one per pair), three ↓ waiting outside it. */
 export function start() {
   return {
-    row: ['R0', 'R1', 'R2'],
-    waiting: ['L0', 'L1', 'L2'],
-    pairedWith: [null, null, null],          // pair p holds the id of the ← paired with R p
+    row: ['U0', 'U1', 'U2'],
+    waiting: ['D0', 'D1', 'D2'],
+    pairedWith: [null, null, null],          // pair p holds the id of the ↓ paired with U p
   };
 }
-export const supplySpot = (k) => ({ x: C + (k - 1) * 96, y: ROWS.supply });
-export const restingSpot = (id) => (id[0] === 'R' ? PAIRS[+id.slice(1)].right : supplySpot(+id.slice(1)));
+export const supplySpot = (k) => ({ x: C + (k - 1) * 100, y: ROWS.supply });
+export const restingSpot = (id) => (id[0] === 'U' ? PAIRS[+id.slice(1)].up : supplySpot(+id.slice(1)));
 
 /** The pieces counted by the TOTAL: the ones inside the drop. */
 export const inPlay = (s) => [...s.row, ...s.pairedWith.filter(Boolean)];
@@ -47,20 +52,20 @@ export const pairedCount = (s) => s.pairedWith.filter(Boolean).length;
 export const freePairs = (s) => s.pairedWith.map((v, p) => (v ? -1 : p)).filter((p) => p >= 0);
 
 /**
- * Where a ← dropped at (x, y) goes. Generous: anywhere above the line between the drop's row and the waiting row
- * counts as an attempt to pair, and the piece joins the free pair whose ← spot is nearest in x. Returns the pair index,
- * or null (back to its waiting spot).
+ * Where a ↓ dropped at (x, y) goes. Generous: anywhere above the bottom edge of the drop (and a little below it) counts
+ * as an attempt to pair, and the piece joins the free pair whose ↓ spot is nearest in x. Returns the pair index, or null
+ * (back to its waiting spot).
  */
-export const DROP_LINE = (ROWS.mat + ROWS.supply) / 2 + 8;
+export const DROP_LINE = DROP.y + DROP.h + 8;
 export function dropTarget(s, x, y) {
   const free = freePairs(s);
   if (!free.length || y > DROP_LINE) return null;
-  return free.reduce((best, p) => (Math.abs(PAIRS[p].left.x - x) < Math.abs(PAIRS[best].left.x - x) ? p : best), free[0]);
+  return free.reduce((best, p) => (Math.abs(PAIRS[p].down.x - x) < Math.abs(PAIRS[best].down.x - x) ? p : best), free[0]);
 }
-/** A tap on a waiting ←: it pairs with the free → nearest to it. */
+/** A tap on a waiting ↓: it pairs with the free ↑ nearest to it. */
 export const tapTarget = (s, id) => dropTarget(s, supplySpot(+id.slice(1)).x, ROWS.mat);
 
-/** Pair ← `id` with pair p. Returns a new state. */
+/** Pair ↓ `id` with pair p. Returns a new state. */
 export function pair(s, id, p) {
   if (s.pairedWith[p] || !s.waiting.includes(id)) return s;
   const pairedWith = [...s.pairedWith];
@@ -68,61 +73,113 @@ export function pair(s, id, p) {
   return { row: s.row, waiting: s.waiting.filter((w) => w !== id), pairedWith };
 }
 
-// ── the TOTAL, drawn as arrows joined tip to tail ────────────────────────────────────────────────
-export const SEGMENT = { scale: 0.7, pitch: 38 };
-/** Where each of the |value| small arrows of the TOTAL sits, centred in the panel. */
-export const segmentSpots = (value) => {
-  const n = Math.abs(value);
-  return Array.from({ length: n }, (_, i) => ({ x: PANEL.cx + (i - (n - 1) / 2) * SEGMENT.pitch, y: PANEL.cy }));
-};
+// ── groups: what the drop shows, and what the TOTAL adds up ──────────────────────────────────────
+/** The groups of the puzzle: for each pair, its ↑ alone, or ↓ then ↑ once a ↓ has joined it. */
+export const puzzleGroups = (s) => PAIRS.map((_, p) => (s.pairedWith[p] ? [s.pairedWith[p], `U${p}`] : [`U${p}`]));
 
-// ── the four arrangements behind the same 0 ────────────────────────────────────────────────────────
-// Ids keep their direction, so the same pieces move between arrangements and new pieces join. Each is balanced.
-export const ARRANGEMENTS = [
-  { name: 'learner', rows: [['L0', 'R0', 'L1', 'R1', 'L2', 'R2']] },                                   // ← → ← → ← →
-  { name: 'rearranged', rows: [['L0', 'L1', 'R0', 'R1', 'L2', 'R2']] },                                // ← ← → → ← →
-  { name: 'more', rows: [['L0', 'L1', 'L2', 'R0', 'R1', 'R2', 'L3', 'R3']] },                          // ← ← ← → → → ← →
-  { name: 'denser', rows: [['R0', 'R1', 'R2', 'L0', 'L1', 'L2'], ['L3', 'R3', 'R4', 'L4', 'L5', 'R5']] }, // two rows
-];
-
-/** Positions of every piece in arrangement k. Arrangement 1 is exactly the learner's finished drop. */
-export function layout(k) {
-  const a = ARRANGEMENTS[k];
-  if (k === 0) return a.rows[0].map((id, i) => ({ id, ...(i % 2 ? PAIRS[(i - 1) / 2].right : PAIRS[i / 2].left) }));
-  if (k === 3) {
-    const ys = [ROWS.upper, ROWS.lower];
-    return a.rows.flatMap((row, r) => row.map((id, i) => ({ id, x: C + (i - (row.length - 1) / 2) * 78, y: ys[r] })));
-  }
-  const row = a.rows[0];
-  const step = row.length > 6 ? 72 : 78;
-  return row.map((id, i) => ({ id, x: C + (i - (row.length - 1) / 2) * step, y: ROWS.mat }));
+/** The outline around a group of spots (pieces drawn at `scale`), and where its label sits. */
+export function frame(spots, scale = 1, labelGap = GROUP.label) {
+  const hx = ((PIECE.width / 2) + GROUP.pad) * scale;
+  const hy = ((PIECE.length / 2) + GROUP.pad / 2) * scale;
+  const x0 = Math.min(...spots.map((s) => s.x)) - hx;
+  const x1 = Math.max(...spots.map((s) => s.x)) + hx;
+  const y0 = Math.min(...spots.map((s) => s.y)) - hy;
+  const y1 = Math.max(...spots.map((s) => s.y)) + hy;
+  return { x: x0, y: y0, w: x1 - x0, h: y1 - y0, label: { x: (x0 + x1) / 2, y: y1 + labelGap } };
 }
 
-/** The direction pattern of an arrangement, row by row (e.g. '←→←→←→'). */
-export const pattern = (k) => ARRANGEMENTS[k].rows.map((r) => r.map((id) => (dirOf(id) > 0 ? '→' : '←')).join('')).join(' / ');
+// ── the four arrangements behind the same 0 ────────────────────────────────────────────────────────
+// Ids keep their direction, so the same pieces move between arrangements and new pieces join. Every group is balanced.
+// Arrangement 1 is the learner's own drop (three ↓↑ pairs). The others stack each group: its ↑ arrows in a row on top,
+// its ↓ arrows in a row underneath, one under each, so the evenness is visible.
+export const ARRANGEMENTS = [
+  { name: 'learner', groups: [['D0', 'U0'], ['D1', 'U1'], ['D2', 'U2']] },
+  { name: 'rearranged', groups: [['U0', 'U1', 'D0', 'D1'], ['U2', 'D2']] },
+  { name: 'more', groups: [['U0', 'U1', 'U2', 'D0', 'D1', 'D2'], ['U3', 'D3']] },
+  { name: 'denser', groups: [['U0', 'U1', 'U2', 'U3', 'U4', 'U5', 'D0', 'D1', 'D2', 'D3', 'D4', 'D5']] },
+];
+export const STACK = { top: 214, bottom: 280, pitch: 46, gap: 44 };
+
+/** Positions of every piece in arrangement k, as a list of groups of { id, x, y }. */
+export function layout(k) {
+  const a = ARRANGEMENTS[k];
+  if (k === 0) return a.groups.map((g, p) => [{ id: g[0], ...PAIRS[p].down }, { id: g[1], ...PAIRS[p].up }]);
+  const widths = a.groups.map((g) => (g.length / 2) * STACK.pitch);
+  const full = widths.reduce((s, w) => s + w, 0) + STACK.gap * (a.groups.length - 1);
+  let x = C - full / 2;
+  return a.groups.map((g, i) => {
+    const ups = g.filter((id) => dirOf(id) > 0);
+    const downs = g.filter((id) => dirOf(id) < 0);
+    const col = (j) => x + (j + 0.5) * STACK.pitch;
+    const spots = [...ups.map((id, j) => ({ id, x: col(j), y: STACK.top })), ...downs.map((id, j) => ({ id, x: col(j), y: STACK.bottom }))];
+    x += widths[i] + STACK.gap;
+    return spots;
+  });
+}
+
+/** The direction pattern of an arrangement, group by group (e.g. '↑↑↓↓ | ↑↓'). */
+export const pattern = (k) => ARRANGEMENTS[k].groups.map((g) => g.map((id) => (dirOf(id) > 0 ? '↑' : '↓')).join('')).join(' | ');
+
+// ── the sum row in the TOTAL: the arrows in the drop, added up ──────────────────────────────────────
+/**
+ * Lays out `groups` (lists of { id, dir }) as terms with + between them, centred in the panel and scaled to fit.
+ * `lead`/`trail` add '…' for a sum that goes on beyond what is shown. Each balanced group (or, with `labels`, each group
+ * given a label) gets a bracket under its terms showing the group's own total. Returns { scale, unit, items, brackets }.
+ */
+export function sumLayout(groups, { lead = false, trail = false, labels = null } = {}) {
+  const T = 0.75, P = 0.6, D = 0.8, S = 0.2;                  // widths in units: term, plus, dots; spacing
+  const tokens = [];
+  if (lead) tokens.push({ kind: 'dots' }, { kind: 'plus' });
+  groups.forEach((g, gi) => {
+    g.forEach((t, ti) => {
+      if (gi + ti > 0) tokens.push({ kind: 'plus' });
+      tokens.push({ kind: 'term', id: t.id, dir: t.dir, group: gi });
+    });
+  });
+  if (trail) tokens.push({ kind: 'plus' }, { kind: 'dots' });
+  const w = (t) => (t.kind === 'term' ? T : t.kind === 'plus' ? P : D);
+  const units = tokens.reduce((s, t) => s + w(t), 0) + S * Math.max(0, tokens.length - 1);
+  const unit = Math.min(34, PANEL.sumWidth / units);
+  let x = PANEL.cx - (units * unit) / 2;
+  const items = tokens.map((t) => {
+    const it = { ...t, x: x + (w(t) * unit) / 2, y: PANEL.sumY, width: w(t) * unit };
+    x += (w(t) + S) * unit;
+    return it;
+  });
+  const brackets = groups.map((g, gi) => {
+    const terms = items.filter((it) => it.kind === 'term' && it.group === gi);
+    const value = labels ? labels[gi] : total(g.map((t) => t.dir));
+    if (labels ? value === null : value !== 0) return null;
+    return { x1: terms[0].x - (T * unit) / 2, x2: terms[terms.length - 1].x + (T * unit) / 2, y: PANEL.bracketY, value };
+  }).filter(Boolean);
+  return { scale: (unit * 1.05) / PIECE.length, unit, items, brackets };
+}
 
 // ── the scanner's magnet: a bigger crowd of cancelled pairs, then one flips ───────────────────────────
-export const CROWD = { rows: [170, 222, 274], cols: 5, pitch: 112, half: 24, scale: 0.72, zeroDrop: 20 };
-/** The magnet's field lines run between the rows of the crowd, never through an arrow or a 0. */
-export const FIELD_LINES = [149, 205, 257, 305];
-/** Fifteen ← → pairs in the drop, all cancelled: pair k holds L k and R k. */
+export const CROWD = { rows: [214, 294], cols: 6, pitch: 88, half: 14, scale: 0.72, labelGap: 10 };
+/** Twelve ↓↑ pairs in the drop, all cancelled: pair k holds D k and U k. */
 export function crowd() {
   const out = [];
   CROWD.rows.forEach((y, r) => {
     for (let c = 0; c < CROWD.cols; c++) {
       const k = r * CROWD.cols + c;
       const cx = C + (c - (CROWD.cols - 1) / 2) * CROWD.pitch;
-      out.push({ k, cx, y, zero: { x: cx, y: y + CROWD.zeroDrop }, left: { id: `L${k}`, x: cx - CROWD.half, y }, right: { id: `R${k}`, x: cx + CROWD.half, y } });
+      out.push({ k, cx, y, down: { id: `D${k}`, x: cx - CROWD.half, y }, up: { id: `U${k}`, x: cx + CROWD.half, y } });
     }
   });
   return out;
 }
-/** With the magnet on, one ← in the middle of the crowd turns to point with it: the balance tips by exactly 2. */
-export const FLIP = 'L7';
+/** The magnet's field lines run upward between the columns of the crowd, never through a group. */
+export const FIELD_LINES = Array.from({ length: CROWD.cols + 1 }, (_, c) => C + (c - CROWD.cols / 2) * CROWD.pitch);
+export const FIELD_SPAN = { top: 170, bottom: 340 };
+/** With the magnet on, one ↓ turns to point with it: the balance tips by exactly 2. */
+export const FLIP = 'D2';
 export function crowdDirections(magnetOn) {
   const dirs = {};
-  for (const p of crowd()) { dirs[p.left.id] = LEFT; dirs[p.right.id] = RIGHT; }
-  if (magnetOn) dirs[FLIP] = RIGHT;
+  for (const p of crowd()) { dirs[p.down.id] = DOWN; dirs[p.up.id] = UP; }
+  if (magnetOn) dirs[FLIP] = UP;
   return dirs;
 }
 export const crowdTotal = (magnetOn) => total(Object.values(crowdDirections(magnetOn)));
+/** The part of the crowd the sum row shows: the flipped pair and its neighbours, with '…' on both sides. */
+export const CROWD_SHOWN = [1, 2, 3];
