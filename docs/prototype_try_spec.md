@@ -1,9 +1,110 @@
 # Prototype spec: Interactive 01 at `try/`
 
-Nadia's specification, verbatim. **Revision 2 (2026-11-18) governs.** Revision 1 is kept below, superseded. Every
-learner-facing line of the prototype is copied from Revision 2, and `test/try.test.js` checks that.
+Nadia's specification. **Revision 3 (2026-11-18) governs**: her two requests are quoted verbatim, followed by the
+learner copy drafted at her request (for her review) and the physics behind it. Revisions 2 and 1 are kept below,
+superseded where Revision 3 changes them. Every learner-facing line of the prototype is copied from the Revision 3 copy
+list, and `test/try.test.js` checks that.
 
-## Revision 2 (2026-11-18): focused correction pass — governs
+## Revision 3 (2026-11-18): the MRI story — governs
+
+Nadia, verbatim (first request):
+
+> i want the arrows to make sense, the user would not know how to make the total zero also it is not clear that the total is the black arrow. what do you think we should change
+
+Nadia, verbatim (second request):
+
+> maybe we make it look like the inside of an mri first, make it interesting because when the user figures out how a complex mri machine works by canceling the protons spins/arrows, say remarks liike you understand one of the core preinciples of mri be way more creative. paint a story add some features that aid the story
+
+### What changes (by these requests)
+
+- MRI is now the story, not only a short example at the end. This replaces Revision 2's sections 5 (opening) and 12
+  (MRI connection) and its fixed final line. The purpose stays Revision 2's: *to show that a result of 0 can come from
+  nonzero parts cancelling each other, so 0 may contain hidden structure rather than mean “nothing.”* The last line now
+  says it to the learner instead of stating it as a design goal.
+- The arrows have a meaning: each one is a proton, a tiny magnet, pictured as an arrow.
+- The TOTAL is clearly made of the arrows. It is drawn in their colour as small arrows joined tip to tail, with the count
+  under them, and it is built in front of the learner from the arrows in the drop.
+- Which arrows count is visible: the TOTAL sits on a drop, and only the arrows inside the drop count. The ← arrows wait
+  outside it.
+- How to play is visible: dashed empty slots beside each →, the waiting ← arrows nudge, and after 6 seconds without a
+  move a faint ← glides into a slot (twice at most), with one short hint line the first time.
+- New scenes: the scanner (slide in; the magnet coils), the zoom into water and its hydrogen atoms, and the magnet
+  switched on (one ← turns to point with the magnet, the balance tips to 2). Then the scanner paints a picture: an
+  illustration in the style of an MRI image, not a real scan.
+
+### What stays (from Revision 2)
+
+Only ← and → (no curve, no compass, no rotation; a flip is a mirror). Six pieces to pair. Pairing by drag or tap with
+generous snapping. A tiny temporary 0 on each pair, both pieces staying visible. A TOTAL that reduces 3 → 2 → 1 → 0 and
+becomes a large 0. Checkpoint 1 after two pairs and checkpoint 2 after Look closer, with the same questions, choices and
+feedback (no red). The four arrangements behind a fixed 0, with the same captions. Progressive text, at most two short
+sentences at a time. White page. Reduced motion shows the same story as still steps.
+
+### Learner copy, in order (drafted by Claude at Nadia's request, for her review)
+
+Lines marked (R2) are Nadia's Revision 2 wording, unchanged.
+
+1. This is an MRI scanner.
+2. It can see inside your body: no X-rays, no cuts.
+3. You know more about an MRI than you think. (R2)
+4. [Slide in]
+5. Inside, a giant magnet surrounds you.
+6. [Zoom in]
+7. Your body is full of water.
+8. One drop holds billions of trillions of hydrogen atoms.
+9. [Closer]
+10. At the heart of each hydrogen atom is a proton: a tiny magnet.
+11. Picture each one as an arrow.
+12. So many tiny magnets. Why don't they add up to one giant magnet?
+13. TOTAL (R2, the label on the TOTAL)
+14. Can you make the total 0? (R2)
+15. Drag a ← next to a →. (only after 6 seconds without a move)
+16. Can every piece still be here while the total is 0? [Yes] [No] [Not sure] (R2)
+17. Let's see. (R2)
+18. You got 0. (R2)
+19. But did everything disappear? [Look closer] (R2)
+20. If the total is 0, are the pieces gone? [Yes] [No] (R2)
+21. Exactly. They cancelled. (R2; after No)
+22. Look again — they're still there. (R2; after Yes)
+23. That's the answer: inside you, opposite tiny magnets cancel each other out.
+24. And inside you, they never sit still.
+25. Same result. (R2)
+26. Different arrangement. (R2)
+27. Still 0. (R2)
+28. One result. Many possible arrangements behind it. (R2)
+29. Your total is 0. So how can a scanner see anything?
+30. [Switch on the magnet]
+31. Its magnet is tens of thousands of times stronger than Earth's.
+32. It tips the balance, just barely: a few more arrows point with it than against it.
+33. In a real body, only about five to ten in every million are left over.
+34. The scanner nudges them with radio waves and listens for their faint reply.
+35. [Listen]
+36. From that whisper, it paints a picture of your insides.
+37. You just figured out one of the core principles of MRI.
+38. Inside a 0, countless tiny magnets cancel, and a scanner can coax a picture out of them.
+39. A 0 isn't always nothing. Sometimes it's you: countless tiny magnets, perfectly balanced.
+
+Nothing comes after line 39.
+
+### The physics behind the copy
+
+The numbers are recomputed by `src/math/scanner.js` and checked by `test/try.test.js`.
+
+- **Lines 10 and 11.** A proton has a magnetic moment, so it is a tiny magnet. The arrow is a picture of it ("Picture
+  each one as an arrow").
+- **Line 8.** One drop of 0.05 mL holds 2 × (0.05 g ÷ 18.015 g/mol) × 6.022 × 10²³ ≈ 3.3 × 10²¹ hydrogen atoms:
+  billions of trillions.
+- **Lines 12 and 23.** Outside a magnetic field, the proton magnets point every which way and their total is 0.
+- **Line 31.** Clinical scanners run at 1.5 T to 3 T. Earth's field is about 50 µT, so the scanner is 30 000 to 60 000
+  times stronger.
+- **Lines 32 and 33.** In the field, the simple two-way picture (with the field or against it) has a slight excess
+  pointing with it. That excess is (N↑ − N↓) / N ≈ γħB / 2kT, about 5 per million at 1.5 T and about 10 per million at
+  3 T, at 310 K. The board exaggerates it on purpose: one flip in thirty arrows.
+- **Lines 34 and 36.** The scanner's radio pulse tips the net magnetization, which comes from that excess, and the
+  magnetization sends back a radio signal that the scanner receives and turns into an image. Spatial encoding is not
+  shown. The painted picture is an illustration.
+
+## Revision 2 (2026-11-18): focused correction pass — superseded by Revision 3 where it changes it
 
 Revise ONLY the existing `/try/` Interactive 01.
 This is a focused correction pass.

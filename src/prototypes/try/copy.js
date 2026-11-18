@@ -1,11 +1,20 @@
-// Every learner-facing line of Interactive 01, verbatim from docs/prototype_try_spec.md, Revision 2 (checked by
-// test/try.test.js). Nothing else on the page is learner-facing text, apart from accessibility labels.
+// Every learner-facing line of Interactive 01, verbatim from docs/prototype_try_spec.md, Revision 3 (checked by
+// test/try.test.js). Lines kept from Revision 2 are Nadia's wording; the rest was drafted at her request and is listed in
+// the spec for her review. Nothing else on the page is learner-facing text, apart from accessibility labels.
 
 export const COPY = {
-  opening: ['You know more about an MRI than you think.', 'Try this.'],
-  start: 'Start',
-  task: 'Can you make the total 0?',
+  scanner: ['This is an MRI scanner.', 'It can see inside your body: no X-rays, no cuts.'],
+  opening: 'You know more about an MRI than you think.',
+  slideIn: 'Slide in',
+  inside: 'Inside, a giant magnet surrounds you.',
+  zoomIn: 'Zoom in',
+  water: ['Your body is full of water.', 'One drop holds billions of trillions of hydrogen atoms.'],
+  closer: 'Closer',
+  proton: ['At the heart of each hydrogen atom is a proton: a tiny magnet.', 'Picture each one as an arrow.'],
+  hook: "So many tiny magnets. Why don't they add up to one giant magnet?",
   totalLabel: 'TOTAL',
+  task: 'Can you make the total 0?',
+  hint: 'Drag a ← next to a →.',
   pairZero: '0',
   check1: { question: 'Can every piece still be here while the total is 0?', choices: ['Yes', 'No', 'Not sure'], after: "Let's see." },
   zero: '0',
@@ -18,8 +27,20 @@ export const COPY = {
     right: 'Exactly. They cancelled.',
     wrong: "Look again — they're still there.",
   },
+  answer: "That's the answer: inside you, opposite tiny magnets cancel each other out.",
+  shuffle: 'And inside you, they never sit still.',
   arrangements: ['Same result.', 'Different arrangement.', 'Still 0.'],
   reveal: 'One result. Many possible arrangements behind it.',
-  mri: ['This same basic idea appears in MRI: tiny magnetic contributions can cancel each other.', "You just understood one idea inside one of medicine's most complex machines."],
-  final: 'To show that a result of 0 can come from nonzero parts cancelling each other, so 0 may contain hidden structure rather than mean “nothing.”',
+  magnetQuestion: 'Your total is 0. So how can a scanner see anything?',
+  switchOn: 'Switch on the magnet',
+  magnet: [
+    "Its magnet is tens of thousands of times stronger than Earth's.",
+    'It tips the balance, just barely: a few more arrows point with it than against it.',
+    'In a real body, only about five to ten in every million are left over.',
+    'The scanner nudges them with radio waves and listens for their faint reply.',
+  ],
+  listen: 'Listen',
+  picture: 'From that whisper, it paints a picture of your insides.',
+  closing: ['You just figured out one of the core principles of MRI.', 'Inside a 0, countless tiny magnets cancel, and a scanner can coax a picture out of them.'],
+  final: "A 0 isn't always nothing. Sometimes it's you: countless tiny magnets, perfectly balanced.",
 };

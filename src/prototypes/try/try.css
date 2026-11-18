@@ -1,13 +1,19 @@
-/* Interactive 01. White page, simple high-contrast type, one strong accent for the pieces (the active mathematical
-   objects); the TOTAL is ink. No curves, no secondary colours, no decorative motion. */
+/* Interactive 01. White page, simple high-contrast type, one strong accent for the arrows (the active mathematical
+   objects) and for the TOTAL, which is made of them. The scanner and the water are drawn in quiet greys and blues so the
+   arrows stay the brightest thing on the board. No curves for the pieces to travel on, no error colours. */
 
 :root {
   --bg: #ffffff;
   --ink: #1b1f24;
   --ink-2: #5d646e;
   --ink-3: #9aa1aa;
-  --accent: #1a66e0;          /* the pieces */
+  --accent: #1a66e0;          /* the arrows, and the TOTAL built from them */
   --accent-soft: #e8f0fd;     /* a chosen answer */
+  --water: #eaf3ff;           /* the drop and the zoom */
+  --water-edge: #c4d9f5;
+  --steel: #eef2f6;           /* the scanner */
+  --steel-edge: #c9d1db;
+  --steel-dark: #b7c1cd;
   --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;   /* plain, unslashed 0 */
   color-scheme: light;
 }
@@ -25,15 +31,15 @@ body {
 }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-#lesson { max-width: 680px; margin: 0 auto; padding: 8vh 0 6vh; }
+#lesson { max-width: 680px; margin: 0 auto; padding: 5vh 0 6vh; }
 
-.opening { padding-top: 14vh; }
 .line { margin: 0 0 0.7em; opacity: 0; transform: translateY(6px); transition: opacity 320ms ease-out, transform 320ms ease-out; }
 .line.in { opacity: 1; transform: none; }
 .line.lead { font-size: 1.5rem; line-height: 1.4; }
 .line.feedback { font-weight: 600; }
 .line.caption { color: var(--ink-2); font-size: 1.05rem; }
-.line.final { font-weight: 600; }
+.line.hint { color: var(--ink-2); }
+.line.final { font-weight: 600; font-size: 1.4rem; line-height: 1.4; }
 
 .action {
   font: inherit; font-size: 1.05rem;
@@ -58,42 +64,115 @@ body {
 
 .figure { margin: 0 0 0.6em; opacity: 0; transition: opacity 400ms ease-out; }
 .figure.in { opacity: 1; }
-.board { display: block; width: 100%; height: auto; overflow: visible; touch-action: manipulation; }
-.figure.is-playing .board { touch-action: none; }   /* while pieces can be dragged, a swipe on the board moves a piece, not the page */
+.board { display: block; width: 100%; height: auto; overflow: hidden; border-radius: 20px; touch-action: manipulation; --s: 1; }
+.figure.is-playing .board { touch-action: none; }   /* while arrows can be dragged, a swipe on the board moves an arrow, not the page */
 .prompt { min-height: 8.5em; }
 
+/* layers fade in and out as the story moves on */
+.layer { opacity: 0; visibility: hidden; transition: opacity 600ms ease-out, visibility 0s linear 600ms; }
+.layer.on { opacity: 1; visibility: visible; transition: opacity 600ms ease-out, visibility 0s; }
+
+/* scene 1: the scanner */
+.floor { stroke: var(--steel-edge); stroke-width: 2; }
+.pedestal { fill: #e3e8ee; }
+.table { fill: #d3dae3; }
+.gown { fill: #a9c1e0; }
+.skin { fill: #e9cdb8; }
+.wall { fill: var(--steel); stroke: var(--steel-edge); stroke-width: 2; transition: fill-opacity 700ms ease-out; }
+.bore-face { fill: #e2e8ef; stroke: var(--steel-edge); stroke-width: 2; }
+.bore-hole { fill: var(--steel-dark); }
+.tunnel { fill: #f8fafc; opacity: 0; transition: opacity 700ms ease-out; }
+.coils rect { fill: none; stroke: var(--accent); stroke-width: 3; opacity: 0; transition: opacity 700ms ease-out; }
+.cutaway .wall { fill-opacity: 0.35; }
+.cutaway .tunnel { opacity: 1; }
+.cutaway .coils rect { opacity: 0.55; }
+.patient { transition: transform 1400ms cubic-bezier(0.45, 0, 0.25, 1); }
+.zoomable { transition: transform 1000ms cubic-bezier(0.55, 0, 0.35, 1); }
+.lens circle { fill: var(--water); }
+.lens { transition: transform 1000ms cubic-bezier(0.55, 0, 0.35, 1), opacity 600ms ease-out, visibility 0s linear 600ms; }
+.lens.on { transition: transform 1000ms cubic-bezier(0.55, 0, 0.35, 1), opacity 200ms ease-out, visibility 0s; }
+
+/* scene 2: water */
+.bond { stroke: #9dbbe6; stroke-width: 7; stroke-linecap: round; }
+.oxygen { fill: #9dbbe6; }
+.hydrogen { fill: #dbe8f8; stroke: #9dbbe6; stroke-width: 2; transition: fill-opacity 500ms ease-out; }
+.proton { fill: var(--accent); opacity: 0; transition: opacity 500ms ease-out; }
+.water.protons .proton { opacity: 1; }
+.water.still .hydrogen { fill-opacity: 0.4; }
+.molecule { animation: drift 5s ease-in-out infinite alternate; }
+.water.still .molecule { animation-play-state: paused; }
+@keyframes drift { from { transform: translate(-3px, 2px); } to { transform: translate(3px, -3px); } }
+
+/* scene 3: the drop, its TOTAL, the arrows */
+.drop { fill: var(--water); stroke: var(--water-edge); stroke-width: 2; }
+.panel-box { fill: #fff; stroke: var(--water-edge); stroke-width: 2; }
 .total-label { font-family: var(--font); font-size: 15px; letter-spacing: 0.14em; fill: var(--ink-2); }
-.total-arrow { fill: var(--ink); }
+.segment { opacity: 0; transition: transform 320ms ease-out, opacity 320ms ease-out; }
+.segment.show { opacity: 1; }
+.segment path, .ghost path { fill: var(--accent); stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
+.total-number { font-family: var(--font); font-size: 20px; font-weight: 600; fill: var(--ink); }
 .total-zero { font-family: var(--font); font-size: 92px; font-weight: 600; fill: var(--ink); opacity: 0; transition: opacity 300ms ease-out; }
-.total.is-zero .total-arrow { opacity: 0; }
-.total.is-zero .total-zero { opacity: 1; }
+.panel.is-zero .total-zero { opacity: 1; }
+
+.ghost { transition: transform 480ms cubic-bezier(0.3, 0.7, 0.3, 1), opacity 400ms ease-out; pointer-events: none; }
+.hint-ghost { opacity: 0.45; transition-duration: 900ms, 400ms; }
+.ghost.gone { opacity: 0; }
+
+.slot { opacity: 0; transition: opacity 300ms ease-out; pointer-events: none; }
+.slot.on { opacity: 1; }
+.slot.filled { opacity: 0; }
+.slot path { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 5 4; opacity: 0.6; }
 
 .pair-zero { font-family: var(--font); font-size: 20px; fill: var(--ink-2); opacity: 0; transition: opacity 260ms ease-out; pointer-events: none; }
 .pair-zero.show { opacity: 1; }
+.crowd-zero { font-family: var(--font); font-size: 15px; fill: var(--ink-3); transition: opacity 300ms ease-out; }
+.crowd-zeros { opacity: 0; transition: opacity 500ms ease-out; }
+.crowd-zeros.show { opacity: 1; }
+.crowd-zero.off { opacity: 0; }
+.ring { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 6 5; opacity: 0; transition: opacity 400ms ease-out; }
+.ring.on { opacity: 1; }
+
+.field { opacity: 0; transition: opacity 700ms ease-out; }
+.field.on { opacity: 1; }
+.field-line { stroke: #9dbbe6; stroke-width: 2; stroke-dasharray: 10 12; fill: none; animation: flow 1.2s linear infinite; }
+.field-head { stroke: #9dbbe6; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+@keyframes flow { to { stroke-dashoffset: -22; } }
 
 .piece { touch-action: none; }
 .piece.moving { transition: transform 280ms cubic-bezier(0.2, 0.8, 0.3, 1); }
+.piece.gliding { transition: transform 900ms cubic-bezier(0.45, 0, 0.25, 1); }
 .piece-shape { fill: var(--accent); stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
 .piece-hit { fill: transparent; }
+.piece-inner { transition: transform 450ms ease-in-out; }
 .piece.waiting { cursor: grab; }
 .piece.waiting.dragging { cursor: grabbing; }
 .is-locked .piece.waiting { cursor: default; }
 .piece:focus { outline: none; }
 .piece:focus-visible .piece-shape { stroke: var(--ink); stroke-width: 3; }
-.piece-mid { transform-box: fill-box; transform-origin: center; transition: transform 300ms ease-out; }
-.piece.prominent .piece-mid { transform: scale(1.14); }
+.piece-mid { transform-box: fill-box; transform-origin: center; transform: scale(var(--s)); transition: transform 300ms ease-out; }
+.piece.prominent .piece-mid { transform: scale(calc(var(--s) * 1.14)); }
 .piece-enter { transition: opacity 420ms ease-out, transform 420ms ease-out; }
 .piece-enter.entering { opacity: 0; transform: translateY(16px); }
+.piece.nudge .piece-enter { animation: nudge 700ms ease-in-out 2 alternate; }
+@keyframes nudge { to { transform: translateY(-10px); } }
+.pieces { transition: opacity 600ms ease-out; }
+.pieces.away { opacity: 0; pointer-events: none; }
+
+.screen-box { fill: #000; }
 
 @media (max-width: 520px) {
   body { font-size: 1.125rem; }
   .total-label { font-size: 24px; }     /* SVG units: about 13px on a phone */
+  .total-number { font-size: 30px; }
   .pair-zero { font-size: 30px; }
-  .line.lead { font-size: 1.3rem; }
-  .opening { padding-top: 10vh; }
+  .crowd-zero { font-size: 22px; }
+  .line.lead, .line.final { font-size: 1.3rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .line, .action, .choices, .figure, .total-zero, .pair-zero, .piece.moving, .piece-mid, .piece-enter { transition: none; }
+  .line, .action, .choices, .figure, .layer, .layer.on, .lens, .lens.on, .wall, .tunnel, .coils rect, .patient, .zoomable,
+  .hydrogen, .proton, .segment, .ghost, .slot, .pair-zero, .crowd-zero, .crowd-zeros, .ring, .field, .total-zero,
+  .piece.moving, .piece.gliding, .piece-inner, .piece-mid, .piece-enter, .pieces { transition: none; }
+  .molecule, .field-line, .piece.nudge .piece-enter { animation: none; }
   .line { transform: none; }
 }

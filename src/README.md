@@ -87,10 +87,17 @@ does not touch the journey store or any interactive.
 
 ## One-step prototype (`try/`)
 
-`try/index.html` (served at `try/`) is a single Mathigon-style step built to `docs/prototype_try_spec.md`, Nadia's
-specification, which fixes the story, the questions, their order and the visual baseline. `src/prototypes/try/copy.js`
-holds every learner-facing line, verbatim from the spec (Revision 2 governs); `src/math/pieces.js` holds the mathematics
-(← and → pieces worth −1 and +1; the TOTAL is the exact integer sum of the pieces in the row under it, 3 → 2 → 1 → 0 as
-each ← is paired, and the four balanced arrangements shown behind the same 0);
-`src/prototypes/try/main.js` only wires them together. `test/try.test.js` checks all three. The page uses a system sans
-font because the project font draws a slashed zero.
+`try/index.html` (served at `try/`) is a single Mathigon-style interactive built to `docs/prototype_try_spec.md`,
+Nadia's specification. Revision 3, the MRI story, governs. It runs: slide into the scanner, zoom into the body's water,
+picture each proton as an arrow, pair opposite arrows until the TOTAL is an exact 0, watch the same 0 hold over four
+arrangements, switch on the magnet (one arrow flips, the TOTAL tips to 2), and watch the scanner paint a picture.
+
+- `src/prototypes/try/copy.js` holds every learner-facing line, verbatim from the Revision 3 copy list.
+- `src/math/pieces.js` holds the arrows and the TOTAL. Arrows are worth −1 and +1. The TOTAL is the exact integer sum of
+  the arrows inside the drop, and it is drawn as those arrows joined tip to tail. It also holds the four arrangements and
+  the magnet's crowd.
+- `src/math/scanner.js` holds the story scenes (scanner, molecules, the painted picture) and the MRI numbers that the
+  copy states.
+- `src/prototypes/try/main.js` only wires them together.
+
+`test/try.test.js` checks all four. The page uses a system sans font because the project font draws a slashed zero.
