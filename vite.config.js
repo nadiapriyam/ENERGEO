@@ -5,14 +5,14 @@ import { fileURLToPath } from 'node:url';
 const here = dirname(fileURLToPath(import.meta.url));
 
 // Relative base so the same build works on GitHub Pages (/ENERGEO/) and as a standalone preview.
-// Four pages: the app (index.html), the read-only research progress preview (research-preview/index.html), Nadia's
-// Inventions Notebook (notebook/index.html, docs/notebook_spec.md) and try/index.html, which now opens the notebook.
+// The app (index.html), the read-only research progress preview (research-preview/index.html), and the levels: Level 1
+// at try/ (docs/prototype_try_spec.md) and Level 2 at try/level-2/ (docs/level2_spec.md). notebook/ forwards to try/.
 export default defineConfig({
   base: './',
   server: { fs: { allow: ['.'] } },
   build: {
     target: 'es2022',
     chunkSizeWarningLimit: 900,
-    rollupOptions: { input: { main: resolve(here, 'index.html'), preview: resolve(here, 'research-preview/index.html'), try: resolve(here, 'try/index.html'), notebook: resolve(here, 'notebook/index.html') } },
+    rollupOptions: { input: { main: resolve(here, 'index.html'), preview: resolve(here, 'research-preview/index.html'), try: resolve(here, 'try/index.html'), level2: resolve(here, 'try/level-2/index.html'), notebook: resolve(here, 'notebook/index.html') } },
   },
 });

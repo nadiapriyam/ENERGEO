@@ -2,11 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Try this</title>
-    <meta http-equiv="refresh" content="0; url=../notebook/#level-1" />
+    <meta name="description" content="A short interactive." />
   </head>
   <body>
-    <p><a href="../notebook/#level-1">Open the notebook</a></p>
+    <p class="level-tag" id="level-tag"></p>
+    <main class="lesson" id="level-1-lesson"></main>
+    <p class="lesson"><a class="action next-level" id="next-level" href="level-2/" hidden></a></p>
+    <script type="module" src="/src/levels/page1.js"></script>
   </body>
 </html>

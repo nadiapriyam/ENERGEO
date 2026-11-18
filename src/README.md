@@ -85,23 +85,25 @@ research has proved, falsified and left open. `src/preview/main.js` only lays ou
 records, the application matrix, the ledger and the test files. `test/preview.test.js` checks that it is current. It
 does not touch the journey store or any interactive.
 
-## Nadia's Inventions Notebook (`notebook/`)
+## The levels (`try/`, `try/level-2/`)
 
-`notebook/index.html` is a notebook of interactive stories: a cover, a tab per level, and a paper page per level
-(`docs/notebook_spec.md`). `try/` opens it at Level 1. `src/notebook/main.js` is the shell. It mounts a level's module
-the first time its page opens, and turns pages.
+Two short Mathigon-style interactives in the same plain style: a white page, the system sans (its 0 is a plain 0) and
+one accent. `notebook/` forwards to `try/`.
 
-- **Level 1, "Inside the scanner"** (`docs/prototype_try_spec.md`, Revision 4): slide into an MRI scanner. Protons
-  become ↑ and ↓ magnets, and pairing them drives the TOTAL (the arrows added up) to an exact 0. Covered drops whose
-  TOTAL is 0 turn out to be full. Then the magnet flips one arrow and the scanner paints a picture.
-  - `src/notebook/level1.js` wires the page; `copy1.js` holds its copy.
-  - `src/math/pieces.js` and `src/math/scanner.js` hold the mathematics.
-- **Level 2, "Inside a note"** (`docs/notebook_spec.md`): the lights go down and a violin plays one note. Six simple
-  tones with dials rebuild it. Agreeing at one moment proves nothing, and the whole-wave DIFFERENCE is driven to an
-  exact 0. Other notes have other recipes, and unmixing the scanner's chord paints Level 1's picture.
-  - `src/notebook/level2.js` wires the page; `copy2.js` holds its copy.
-  - `src/math/tones.js` holds the tones, DIFFERENCE (Parseval), the shared zero moment and the unmixing.
+- **Level 1, "Inside the scanner"**, at `try/` (`docs/prototype_try_spec.md`, Revision 4): slide into an MRI scanner,
+  where protons become ↑ and ↓ magnets. Pairing them drives the TOTAL (the arrows added up) to an exact 0. Covered drops
+  whose TOTAL is 0 turn out to be full. The magnet flips one arrow, and the scanner paints a picture. When its last line
+  is shown, a link to Level 2 appears.
+  - `src/levels/level1.js` (with `copy1.js`), started by `page1.js`.
+  - `src/math/pieces.js` and `src/math/scanner.js`.
+- **Level 2, "Inside a note"**, at `try/level-2/` (`docs/level2_spec.md`, Revision 2): a tuning fork and a violin play
+  the same note but sound different.
+  - One fork, struck as hard as you like, can't match the violin.
+  - Smaller forks from the box can, down to an exact DIFFERENCE of 0.
+  - Then the violin's note comes apart into its four tones.
+  - Take-home: a violin note isn't one pure tone; it's a mix of many, just as Level 1's 0 hid many parts.
+  - `src/levels/level2.js` (with `copy2.js`), started by `page2.js`.
+  - `src/math/tones.js`.
 
-Every learner-facing line is in a `copy*.js` file, verbatim from the specs. `test/notebook_level1.test.js` and
-`test/notebook_level2.test.js` check the mathematics, the layout and the copy. The levels use the system sans, so 0 is a
-plain 0; the headings are handwritten (Caveat, self-hosted).
+`base.css` holds the shared page, prompt, buttons and choices. Every learner-facing line is in a `copy*.js` file,
+verbatim from the specs. `test/level1.test.js` and `test/level2.test.js` check the mathematics, the layout and the copy.

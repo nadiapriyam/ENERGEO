@@ -1,0 +1,84 @@
+/* Level 2, "Inside a note", in Level 1's style: a white page, the system sans, one accent. The tuning fork's tone and
+   your mix are the accent blue (your forks make them); the violin is amber; the gap between them is a light violet.
+   The forks are drawn plainly, shorter for higher tones, with up to three ripples for how hard each is struck. */
+
+.wave-board { display: block; width: 100%; height: auto; overflow: hidden; border-radius: 20px; }
+.stage { fill: #f7f9fc; stroke: #e2e7f0; stroke-width: 2; }
+
+.wave { fill: none; stroke-width: 3.4; stroke-linecap: round; stroke-linejoin: round; opacity: 0; transition: opacity 500ms ease-out; }
+.wave.on { opacity: 1; }
+.fork-wave, .mine-wave, .part-wave { stroke: var(--accent); }
+.violin-wave { stroke: #c7891a; }
+.violin-wave.faint.on { opacity: 0.45; }
+.gap { fill: #8f6fe0; fill-opacity: 0.16; opacity: 0; transition: opacity 400ms ease-out; }
+.gap.on { opacity: 1; }
+.lane-label { font-family: var(--font); font-size: 16px; fill: var(--ink-2); opacity: 0; transition: opacity 400ms ease-out; }
+.lane-label.on { opacity: 1; }
+.violin-label { fill: #a5700f; }
+.fork-label, .mine-label { fill: var(--accent); }
+
+.parts { opacity: 0; transition: opacity 400ms ease-out; }
+.parts.on { opacity: 1; }
+.part-wave { opacity: 1; transition: transform 900ms cubic-bezier(0.3, 0.7, 0.3, 1); }
+
+.diff-panel { opacity: 0; visibility: hidden; transition: opacity 500ms ease-out, visibility 0s linear 500ms; }
+.diff-panel.on { opacity: 1; visibility: visible; transition: opacity 500ms ease-out, visibility 0s; }
+.panel-box { fill: #ffffff; stroke: var(--water-edge); stroke-width: 2; }
+.diff-label { font-family: var(--font); font-size: 14px; letter-spacing: 0.16em; fill: var(--ink-2); }
+.diff-value { font-family: var(--font); font-size: 36px; font-weight: 600; fill: var(--ink); }
+.diff-box { fill: none; stroke: var(--ink); stroke-width: 2.5; opacity: 0; transition: opacity 400ms ease-out; }
+.diff-panel.is-zero .diff-value { font-size: 44px; }
+.diff-panel.is-zero .diff-box { opacity: 1; }
+.diff-panel.glow .diff-box { stroke: var(--accent); }
+
+/* the tuning forks */
+.forks { display: none; justify-content: center; gap: 4px; margin: 6px 0 2px; }
+.forks.in { display: flex; }
+.fork {
+  flex: 0 1 112px; background: none; border: 0; padding: 0; cursor: pointer; border-radius: 14px;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+}
+.fork[hidden] { display: none; }
+.fork:hover .tines { fill: #dfe7f5; }
+.fork:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.fork-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.tines { fill: #e9edf3; stroke: #8c96a6; stroke-width: 2; stroke-linejoin: round; transition: fill 200ms ease-out; }
+.fork:not([data-level='0']) .tines { fill: #dbe7fb; stroke: var(--accent); }
+.ripple { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; opacity: 0; transition: opacity 200ms ease-out; }
+.fork[data-level='1'] .ripple[data-i='1'],
+.fork[data-level='2'] .ripple:is([data-i='1'], [data-i='2']),
+.fork[data-level='3'] .ripple { opacity: 1; }
+.fork-body { transform-box: fill-box; transform-origin: 50% 100%; }
+.fork.ringing .fork-body { animation: hum 1.2s ease-out; }
+@keyframes hum {
+  0%, 100% { transform: none; }
+  10% { transform: translateX(1.6px); } 20% { transform: translateX(-1.4px); } 30% { transform: translateX(1.1px); }
+  40% { transform: translateX(-0.9px); } 55% { transform: translateX(0.6px); } 70% { transform: translateX(-0.3px); }
+}
+.fork.nudge { animation: nudge-fork 900ms ease-in-out 3; }
+@keyframes nudge-fork { 50% { transform: translateY(-6px); } }
+.fork.new { animation: from-box 600ms cubic-bezier(0.3, 0.7, 0.3, 1) backwards; }
+.fork.new:nth-child(3) { animation-delay: 120ms; }
+.fork.new:nth-child(4) { animation-delay: 240ms; }
+@keyframes from-box { from { opacity: 0; transform: translateY(24px); } }
+.forks.is-locked .fork { cursor: default; }
+
+.transport { display: none; gap: 10px; justify-content: center; margin: 8px 0 14px; }
+.transport.in { display: flex; }
+.transport-button {
+  font: inherit; font-size: 1rem; padding: 0.4em 1.1em; border-radius: 999px; cursor: pointer;
+  background: var(--bg); color: var(--ink); border: 1.5px solid #c7891a;
+}
+.transport-button + .transport-button { border-color: var(--accent); }
+.transport-button:disabled { opacity: 0.5; cursor: default; }
+.transport.busy .transport-button { pointer-events: none; }
+
+@media (max-width: 520px) {
+  .lane-label { font-size: 24px; }
+  .diff-label { font-size: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave, .gap, .lane-label, .parts, .part-wave, .diff-panel, .diff-box, .tines, .ripple { transition: none; }
+  .fork.ringing .fork-body, .fork.nudge, .fork.new { animation: none; }
+}
