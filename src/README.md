@@ -89,7 +89,8 @@ does not touch the journey store or any interactive.
 
 `try/index.html` (served at `try/`) is a single Mathigon-style step built to `docs/prototype_try_spec.md`, Nadia's
 specification, which fixes the story, the questions, their order and the visual baseline. `src/prototypes/try/copy.js`
-holds every learner-facing line, verbatim from the spec; `src/math/needles.js` holds the mathematics (the total is exactly
-0 only when every needle is snapped to the exact opposite of another, so 0 is never shown by rounding);
+holds every learner-facing line, verbatim from the spec (Revision 2 governs); `src/math/pieces.js` holds the mathematics
+(← and → pieces worth −1 and +1; the TOTAL is the exact integer sum of the pieces in the row under it, 3 → 2 → 1 → 0 as
+each ← is paired, and the four balanced arrangements shown behind the same 0);
 `src/prototypes/try/main.js` only wires them together. `test/try.test.js` checks all three. The page uses a system sans
 font because the project font draws a slashed zero.
