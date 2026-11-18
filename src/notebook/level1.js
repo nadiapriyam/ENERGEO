@@ -1,17 +1,17 @@
-// Interactive 01 (docs/prototype_try_spec.md, Revision 4). A short story inside an MRI scanner: slide in, zoom down to
+// Level 1 of the notebook, "Inside the scanner" (docs/prototype_try_spec.md, Revision 4; docs/notebook_spec.md). A short story inside an MRI scanner: slide in, zoom down to
 // the water in the body and its hydrogen atoms, whose protons are tiny magnets (N and S), picture each as an arrow, and
 // add the arrows up in the TOTAL. Pair opposite arrows until the TOTAL is an exact 0; look behind more 0s and find them
 // full; then switch on the scanner's magnet, which tips the balance by one flipped arrow, and listen as it paints a
 // picture. Every learner-facing line comes from copy.js; every position and every total comes from src/math (pieces.js,
 // scanner.js).
-import './try.css';   // system sans: its 0 is a plain 0
+import './level1.css';   // system sans: its 0 is a plain 0
 
-import { COPY } from './copy.js';
+import { COPY } from './copy1.js';
 import {
   start, pair, dropTarget, tapTarget, totalOf, pairedCount, restingSpot, total, layout, puzzleGroups, frame, sumLayout, crowd, crowdDirections,
   ARRANGEMENTS, PAIRS, VIEW, PANEL, DROP, CROWD, CROWD_SHOWN, FIELD_LINES, FIELD_SPAN, FLIP, dirOf,
-} from '../../math/pieces.js';
-import { HOUSING, BORE, TUNNEL, COILS, TABLE, PEDESTAL, PATIENT, FLOOR, SLIDE, ZOOM, ATOM, molecules, hydrogenSpot, SCREEN, picture } from '../../math/scanner.js';
+} from '../math/pieces.js';
+import { HOUSING, BORE, TUNNEL, COILS, TABLE, PEDESTAL, PATIENT, FLOOR, SLIDE, ZOOM, ATOM, molecules, hydrogenSpot, SCREEN, picture } from '../math/scanner.js';
 
 const NS = 'http://www.w3.org/2000/svg';
 const REDUCED = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -42,7 +42,7 @@ let locked = true;
 const dirs = {};                                   // current direction of every piece on the board
 
 // ── page ─────────────────────────────────────────────────────────────────────────────────────────
-const root = document.getElementById('lesson');
+const root = document.getElementById('level-1-lesson');
 const figure = el('figure', { class: 'figure' });
 const prompt = el('div', { class: 'prompt', 'aria-live': 'polite' });
 root.append(figure, prompt);
@@ -679,6 +679,7 @@ async function paint() {                                    // the scanner paint
   phase = 'final';
   clear();
   say(COPY.final, 'final');
+  root.dispatchEvent(new CustomEvent('level-finished', { bubbles: true }));   // the notebook offers the next page
 }
 
 // read-only view for automated checks (no learner-facing effect)

@@ -1,4 +1,4 @@
-/* Interactive 01. White page, simple high-contrast type. Every magnet (a proton, an arrow, an arrow in the TOTAL) has
+/* Level 1 (Interactive 01), and the shared prompt, buttons and choices of every level. White page, simple high-contrast type. Every magnet (a proton, an arrow, an arrow in the TOTAL) has
    the same two halves: S light, N in the one strong accent. The scanner and the water are drawn in quiet greys and blues
    so the magnets stay the brightest thing on the board. No curves for the pieces to travel on, no error colours. */
 
@@ -19,20 +19,7 @@
   color-scheme: light;
 }
 
-*, *::before, *::after { box-sizing: border-box; }
-html { background: var(--bg); -webkit-text-size-adjust: 100%; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font);
-  font-size: 1.25rem;
-  line-height: 1.5;
-  padding: 0 max(16px, env(safe-area-inset-left, 0px)) 0 max(16px, env(safe-area-inset-right, 0px));
-}
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-#lesson { max-width: 680px; margin: 0 auto; padding: 5vh 0 6vh; }
 
 .line { margin: 0 0 0.7em; opacity: 0; transform: translateY(6px); transition: opacity 320ms ease-out, transform 320ms ease-out; }
 .line.in { opacity: 1; transform: none; }

@@ -1,4 +1,4 @@
-// Every learner-facing line of Interactive 01, verbatim from docs/prototype_try_spec.md, Revision 4 (checked by
+// Every learner-facing line of Level 1 (Interactive 01), verbatim from docs/prototype_try_spec.md, Revision 4 (checked by
 // test/try.test.js). Lines kept from Revision 2 are Nadia's wording; the rest was drafted at her request and is listed in
 // the spec for her review. Nothing else on the page is learner-facing text, apart from accessibility labels.
 
