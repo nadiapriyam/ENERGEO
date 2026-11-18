@@ -1,0 +1,106 @@
+/* One Mathigon-style step. White page, simple high-contrast type, one strong accent for the needles (the active
+   mathematical objects). The only secondary colour marks a cancelling pair, which is mathematical meaning. */
+
+:root {
+  --bg: #ffffff;
+  --ink: #1b1f24;
+  --ink-2: #5d646e;
+  --ink-3: #9aa1aa;
+  --accent: #1a66e0;          /* the needles */
+  --accent-soft: #e8f0fd;     /* chosen answers */
+  --pair: #8fb2ec;            /* a cancelling pair */
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;   /* plain, unslashed 0 */
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--bg); -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 1.25rem;
+  line-height: 1.5;
+  padding: 0 max(16px, env(safe-area-inset-left, 0px)) 0 max(16px, env(safe-area-inset-right, 0px));
+}
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+#lesson { max-width: 620px; margin: 0 auto; padding: 18vh 0 40vh; }
+
+.intro { min-height: 30vh; }
+.line { margin: 0 0 0.9em; opacity: 0; transform: translateY(6px); transition: opacity 320ms ease-out, transform 320ms ease-out, color 400ms; }
+.line.in { opacity: 1; transform: none; }
+.line.lead { font-size: 1.5rem; line-height: 1.4; }
+.line.past { color: var(--ink-2); }
+.line.receded { color: var(--ink-3); }
+.line.feedback { font-weight: 600; }
+.line.final { font-weight: 600; }
+
+.action {
+  font: inherit; font-size: 1.05rem;
+  color: #fff; background: var(--accent);
+  border: 0; border-radius: 999px;
+  padding: 0.45em 1.2em; cursor: pointer;
+  opacity: 0; transition: opacity 320ms ease-out;
+}
+.action.in { opacity: 1; }
+.action { margin: 0 0 1em; }
+.action:disabled { opacity: 0.35; cursor: default; }
+
+.choices { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 1em; opacity: 0; transition: opacity 320ms ease-out; }
+.choices.in { opacity: 1; }
+.choice {
+  font: inherit; font-size: 1.05rem; color: var(--ink);
+  background: var(--bg); border: 1.5px solid var(--accent); border-radius: 999px;
+  padding: 0.35em 1em; cursor: pointer;
+}
+.choice:hover:not(:disabled) { background: var(--accent-soft); }
+.choice:disabled { cursor: default; color: var(--ink-2); border-color: var(--ink-3); }
+.choice.picked { background: var(--accent-soft); color: var(--ink); border-color: var(--accent); }
+.choice.missed { text-decoration: line-through; border-style: dashed; }
+
+/* the figure stays in view while the text below it scrolls, so the words stay next to the object */
+.figure { position: sticky; top: 0; z-index: 1; background: var(--bg); margin: 0 0 1.2em; padding: 8px 0 12px; width: 100%; opacity: 0; transition: opacity 400ms ease-out; }
+.figure.in { opacity: 1; }
+.figure::after { content: ""; position: absolute; left: 0; right: 0; bottom: -40px; height: 40px; background: linear-gradient(var(--bg) 35%, rgba(255, 255, 255, 0)); pointer-events: none; }
+.board { display: block; width: min(100%, 440px, 52vh); height: auto; margin: 0 auto; overflow: visible; }
+
+.needle { cursor: grab; touch-action: none; }
+.needle.is-dragging { cursor: grabbing; }
+.is-locked .needle { cursor: default; }
+.needle:focus { outline: none; }
+.needle:focus-visible .needle-ring { opacity: 1; stroke: var(--accent); }
+.needle-hit { fill: transparent; }
+.needle-north { fill: var(--accent); stroke: var(--accent); stroke-width: 1.2; stroke-linejoin: round; }
+.needle-south { fill: var(--bg); stroke: var(--accent); stroke-width: 1.6; stroke-linejoin: round; }
+.needle-pivot { fill: var(--bg); stroke: var(--accent); stroke-width: 1.6; }
+.needle-ring { fill: none; stroke: var(--ink-3); stroke-width: 1.5; opacity: 0; transition: opacity 260ms ease-out; }
+.needle.emphasis .needle-ring { opacity: 1; stroke: var(--accent); animation: look 700ms ease-out; }
+@keyframes look { from { r: 32; } }
+
+.arc { fill: none; stroke: var(--pair); stroke-width: 2.5; stroke-linecap: round; }
+
+.total-line { stroke: var(--ink); stroke-width: 3; stroke-linecap: round; transition: opacity 200ms; }
+.total-head { fill: var(--ink); transition: opacity 200ms; }
+.total-origin { fill: var(--ink); transition: opacity 200ms; }
+.total-zero { font-family: var(--font); font-size: 76px; font-weight: 600; fill: var(--ink); opacity: 0; transition: opacity 300ms ease-out; pointer-events: none; }
+.total.is-zero .total-line, .total.is-zero .total-head, .total.is-zero .total-origin { opacity: 0; }
+.total.is-zero .total-zero { opacity: 1; }
+
+@media (max-height: 560px) {
+  .figure { position: static; }
+  .board { width: min(100%, 440px); }
+}
+
+@media (max-width: 520px) {
+  body { font-size: 1.125rem; }
+  .line.lead { font-size: 1.3rem; }
+  #lesson { padding-top: 12vh; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line, .action, .choices, .figure, .needle-ring, .total-zero, .total-line, .total-head, .total-origin { transition: none; }
+  .line { transform: none; }
+  .needle.emphasis .needle-ring { animation: none; }
+}

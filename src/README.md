@@ -84,3 +84,12 @@ research has proved, falsified and left open. `src/preview/main.js` only lays ou
 `node research/tools/preview_data.mjs` generates from the canonical story, the Foundation, the registry, the #17 and C7
 records, the application matrix, the ledger and the test files. `test/preview.test.js` checks that it is current. It
 does not touch the journey store or any interactive.
+
+## One-step prototype (`try/`)
+
+`try/index.html` (served at `try/`) is a single Mathigon-style step built to `docs/prototype_try_spec.md`, Nadia's
+specification, which fixes the story, the questions, their order and the visual baseline. `src/prototypes/try/copy.js`
+holds every learner-facing line, verbatim from the spec; `src/math/needles.js` holds the mathematics (the total is exactly
+0 only when every needle is snapped to the exact opposite of another, so 0 is never shown by rounding);
+`src/prototypes/try/main.js` only wires them together. `test/try.test.js` checks all three. The page uses a system sans
+font because the project font draws a slashed zero.
