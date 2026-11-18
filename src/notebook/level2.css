@@ -61,11 +61,9 @@
 .pic-frame { fill: #000000; stroke: var(--stage-edge); stroke-width: 2; }
 
 /* the six tones */
-.mixer {
-  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin: 14px 0 6px;
-  opacity: 0; transform: translateY(10px); transition: opacity 600ms ease-out, transform 600ms ease-out; pointer-events: none;
-}
-.mixer.in { opacity: 1; transform: none; pointer-events: auto; }
+.mixer { display: none; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin: 14px 0 6px; }
+.mixer.in { display: grid; animation: rise 600ms ease-out; }
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } }
 .tone {
   background: var(--stage); border: 1.5px solid var(--stage-edge); border-radius: 16px;
   padding: 6px 6px 8px; display: flex; flex-direction: column; align-items: center; gap: 2px;
@@ -99,8 +97,8 @@
 .mixer.is-locked .tone { opacity: 0.85; }
 .mixer.is-locked .dial, .mixer.is-locked .step, .mixer.is-locked .hear { cursor: default; }
 
-.transport { display: flex; gap: 10px; margin: 6px 0 14px; opacity: 0; transition: opacity 500ms ease-out; pointer-events: none; }
-.transport.in { opacity: 1; pointer-events: auto; }
+.transport { display: none; gap: 10px; margin: 6px 0 14px; }
+.transport.in { display: flex; animation: rise 500ms ease-out; }
 .transport-button {
   font: inherit; font-size: 1rem; padding: 0.4em 1.1em; border-radius: 999px; cursor: pointer;
   background: transparent; color: var(--ink); border: 1.5px solid var(--gold);
@@ -117,6 +115,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wave, .legend, .marker, .diff-panel, .bridge, .mixer, .tone, .pointer, .diff-box, .transport, .gap { transition: none; }
-  .tone.nudge, .diff-panel.glow .diff-box { animation: none; }
+  .wave, .legend, .marker, .diff-panel, .bridge, .tone, .pointer, .diff-box, .gap { transition: none; }
+  .tone.nudge, .diff-panel.glow .diff-box, .mixer.in, .transport.in { animation: none; }
 }

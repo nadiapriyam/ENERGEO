@@ -85,24 +85,23 @@ research has proved, falsified and left open. `src/preview/main.js` only lays ou
 records, the application matrix, the ledger and the test files. `test/preview.test.js` checks that it is current. It
 does not touch the journey store or any interactive.
 
-## One-step prototype (`try/`)
+## Nadia's Inventions Notebook (`notebook/`)
 
-`try/index.html` (served at `try/`) is a single Mathigon-style interactive built to `docs/prototype_try_spec.md`,
-Nadia's specification. Revision 4 governs. It runs as a story inside an MRI scanner:
+`notebook/index.html` is a notebook of interactive stories: a cover, a tab per level, and a paper page per level
+(`docs/notebook_spec.md`). `try/` opens it at Level 1. `src/notebook/main.js` is the shell. It mounts a level's module
+the first time its page opens, and turns pages.
 
-1. Slide into the scanner and zoom into the body's water.
-2. Each proton, a tiny magnet with N and S, becomes an ↑ or ↓ arrow.
-3. Pair opposite arrows until the TOTAL is an exact 0. The TOTAL writes out the sum, for example ↑ + ↓ + ↑ = 1.
-4. Look behind covered drops whose TOTAL is 0 and find arrows each time.
-5. Switch on the magnet: one arrow flips and the TOTAL tips to 2.
-6. Watch the scanner paint a picture.
+- **Level 1, "Inside the scanner"** (`docs/prototype_try_spec.md`, Revision 4): slide into an MRI scanner. Protons
+  become ↑ and ↓ magnets, and pairing them drives the TOTAL (the arrows added up) to an exact 0. Covered drops whose
+  TOTAL is 0 turn out to be full. Then the magnet flips one arrow and the scanner paints a picture.
+  - `src/notebook/level1.js` wires the page; `copy1.js` holds its copy.
+  - `src/math/pieces.js` and `src/math/scanner.js` hold the mathematics.
+- **Level 2, "Inside a note"** (`docs/notebook_spec.md`): the lights go down and a violin plays one note. Six simple
+  tones with dials rebuild it. Agreeing at one moment proves nothing, and the whole-wave DIFFERENCE is driven to an
+  exact 0. Other notes have other recipes, and unmixing the scanner's chord paints Level 1's picture.
+  - `src/notebook/level2.js` wires the page; `copy2.js` holds its copy.
+  - `src/math/tones.js` holds the tones, DIFFERENCE (Parseval), the shared zero moment and the unmixing.
 
-- `src/prototypes/try/copy.js` holds every learner-facing line, verbatim from the Revision 4 copy list.
-- `src/math/pieces.js` holds the arrows, the groups and the TOTAL. Arrows are worth +1 and −1. The TOTAL is the exact
-  integer sum of the arrows inside the drop, and its sum row is laid out there too. It also holds the four arrangements
-  and the magnet's crowd.
-- `src/math/scanner.js` holds the story scenes (scanner, molecules, the painted picture) and the MRI numbers that the
-  copy states.
-- `src/prototypes/try/main.js` only wires them together.
-
-`test/try.test.js` checks all four. The page uses a system sans font because the project font draws a slashed zero.
+Every learner-facing line is in a `copy*.js` file, verbatim from the specs. `test/notebook_level1.test.js` and
+`test/notebook_level2.test.js` check the mathematics, the layout and the copy. The levels use the system sans, so 0 is a
+plain 0; the headings are handwritten (Caveat, self-hosted).

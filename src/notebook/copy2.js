@@ -61,5 +61,5 @@ export const COPY = {
     'Level 1 showed that a single result like 0 can hide many nonzero parts behind it.',
     'Level 2 takes the next step: even when two systems agree at one point, that single agreement can still hide differences across the whole system.',
   ],
-  final: 'One note. Six simple tones inside it. And a 0 that proves it.',
+  final: 'One note, six simple tones inside it. And a 0 that proves it.',
 };

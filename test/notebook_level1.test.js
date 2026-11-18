@@ -1,4 +1,5 @@
-// Interactive 01 at try/ (docs/prototype_try_spec.md, Revision 4: magnets, adding up, groups, up and down). Guards: ↑
+// Level 1 of the notebook, "Inside the scanner" (docs/prototype_try_spec.md, Revision 4: magnets, adding up, groups,
+// up and down; docs/notebook_spec.md). Guards: ↑
 // and ↓ pieces only (no curve, no compass, no rotation); the TOTAL adds up the arrows in the drop, shown as a sum with
 // + and =, reaching an exact 0 only when every piece is paired; every balanced group drawn as a group with its own 0;
 // four different arrangements behind the same 0; the magnet tips the balance by exactly one flip; the MRI numbers in
@@ -16,16 +17,18 @@ import {
   excessPerMillion, timesEarth, hydrogenInDrop, molecules, hydrogenSpot, picture, scanPixel, PHYS,
   HOUSING, BORE, PATIENT, SLIDE, ZOOM, SCREEN,
 } from '../src/math/scanner.js';
-import { COPY } from '../src/prototypes/try/copy.js';
+import { COPY } from '../src/notebook/copy1.js';
 
 const read = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
 const specAll = read('docs/prototype_try_spec.md');
 const rev4 = specAll.slice(0, specAll.indexOf('## Revision 3 ('));
 const rev2 = specAll.slice(specAll.indexOf('## Revision 2 ('), specAll.indexOf('## Revision 1'));
 const copyList = rev4.slice(rev4.indexOf('### Learner copy'), rev4.indexOf('### The physics'));
-const main = read('src/prototypes/try/main.js');
-const css = read('src/prototypes/try/try.css');
-const html = read('try/index.html');
+const main = read('src/notebook/level1.js');
+const css = read('src/notebook/level1.css') + read('src/notebook/notebook.css');   // Level 1's styles and the shared palette
+const level1Css = read('src/notebook/level1.css');
+const html = read('notebook/index.html');
+const tryHtml = read('try/index.html');
 const inside = (r, { x, y }) => x >= r.x && x <= r.x + r.w && y >= r.y && y <= r.y + r.h;
 const terms = (groups) => groups.map((g) => g.map((id) => ({ id, dir: dirOf(id) })));
 /** No two pieces (drawn at `scale`) overlap. */
@@ -201,21 +204,24 @@ test('7. the learner-facing copy is verbatim from the Revision 4 list, in its or
 });
 
 test('8. the frame: ↑ and ↓ magnets mirrored, never rotated; no curve or compass; no concept in the title; light page; reduced motion', () => {
-  for (const [name, src] of [['main.js', main], ['try.css', css]]) {
+  for (const [name, src] of [['level1.js', main], ['level1.css', level1Css]]) {
     assert.ok(!/needle|compass|north|south|rotate\(|atan2|offset-path|animateMotion/i.test(src), `${name}: no curve, compass or rotation`);
   }
   assert.match(main, /const mirror = \(d\) => `scale\(1, \$\{d > 0 \? 1 : -1\}\)`/, 'a ↓ is a mirrored ↑');
   assert.match(main, /class: 's-part'/);
   assert.match(main, /class: 'n-part'/);
   assert.ok(!existsSync(new URL('../src/math/needles.js', import.meta.url)), 'the needle model is gone');
-  assert.equal(html.match(/<title>([^<]*)<\/title>/)[1], 'Try this');
+  assert.equal(html.match(/<title>([^<]*)<\/title>/)[1], "Nadia's Inventions Notebook");
   assert.ok(!/zero|cancel|\b0\b|nothing|<h1/i.test(html), 'the page shell names no concept');
+  assert.match(tryHtml, /url=\.\.\/notebook\/#level-1/, 'try/ opens the notebook at Level 1');
   assert.match(css, /--bg: #ffffff;/);
-  assert.ok(!/prefers-color-scheme: dark|linear-gradient|\bred\b|crimson/i.test(css), 'no dark theme, no gradients, no red');
+  assert.ok(!/prefers-color-scheme: dark|linear-gradient|\bred\b|crimson/i.test(level1Css), 'Level 1: no dark theme, no gradients, no red (the notebook paper around it is ruled)');
+  assert.ok(!/prefers-color-scheme: dark|\bred\b|crimson/i.test(css), 'no dark theme, no red');
   for (const hex of css.match(/#[0-9a-f]{6}\b/gi) ?? []) {
     const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
     assert.ok(!(r - g > 80 && r - b > 80), `no error red: ${hex}`);
   }
   assert.match(css, /prefers-reduced-motion: reduce/);
+  assert.match(read('vite.config.js'), /notebook\/index\.html/);
   assert.match(read('vite.config.js'), /try\/index\.html/);
 });

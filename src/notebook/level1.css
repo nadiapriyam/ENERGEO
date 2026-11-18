@@ -1,57 +1,8 @@
-/* Level 1 (Interactive 01), and the shared prompt, buttons and choices of every level. White page, simple high-contrast type. Every magnet (a proton, an arrow, an arrow in the TOTAL) has
+/* Level 1 (Interactive 01), "Inside the scanner". Its palette (--bg: #ffffff; white page, one accent) and the prompt,
+   buttons and choices it shares with every level are in notebook.css. White page, simple high-contrast type. Every magnet (a proton, an arrow, an arrow in the TOTAL) has
    the same two halves: S light, N in the one strong accent. The scanner and the water are drawn in quiet greys and blues
    so the magnets stay the brightest thing on the board. No curves for the pieces to travel on, no error colours. */
 
-:root {
-  --bg: #ffffff;
-  --ink: #1b1f24;
-  --ink-2: #5d646e;
-  --ink-3: #9aa1aa;
-  --accent: #1a66e0;          /* the N half of every magnet */
-  --s-pole: #b9d0f5;          /* the S half */
-  --accent-soft: #e8f0fd;     /* a chosen answer */
-  --water: #eaf3ff;           /* the drop and the zoom */
-  --water-edge: #c4d9f5;
-  --steel: #eef2f6;           /* the scanner */
-  --steel-edge: #c9d1db;
-  --steel-dark: #b7c1cd;
-  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;   /* plain, unslashed 0 */
-  color-scheme: light;
-}
-
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-.line { margin: 0 0 0.7em; opacity: 0; transform: translateY(6px); transition: opacity 320ms ease-out, transform 320ms ease-out; }
-.line.in { opacity: 1; transform: none; }
-.line.lead { font-size: 1.5rem; line-height: 1.4; }
-.line.feedback { font-weight: 600; }
-.line.caption { color: var(--ink-2); font-size: 1.05rem; }
-.line.hint { color: var(--ink-2); }
-.line.final { font-weight: 600; font-size: 1.4rem; line-height: 1.4; }
-
-.action {
-  font: inherit; font-size: 1.05rem;
-  color: #fff; background: var(--accent);
-  border: 0; border-radius: 999px;
-  padding: 0.45em 1.2em; margin: 0 0 1em; cursor: pointer;
-  opacity: 0; transition: opacity 320ms ease-out;
-}
-.action.in { opacity: 1; }
-
-.choices { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 0.8em; opacity: 0; transition: opacity 320ms ease-out; }
-.choices.in { opacity: 1; }
-.choice {
-  font: inherit; font-size: 1.05rem; color: var(--ink);
-  background: var(--bg); border: 1.5px solid var(--accent); border-radius: 999px;
-  padding: 0.35em 1.1em; cursor: pointer;
-}
-.choice:hover:not(:disabled) { background: var(--accent-soft); }
-.choice:disabled { cursor: default; color: var(--ink-2); border-color: var(--ink-3); }
-.choice.picked { background: var(--accent-soft); color: var(--ink); border-color: var(--accent); }
-.choice.missed { border-style: dashed; }            /* not an error colour: just set aside */
-
-.figure { margin: 0 0 0.6em; opacity: 0; transition: opacity 400ms ease-out; }
-.figure.in { opacity: 1; }
 .board { display: block; width: 100%; height: auto; overflow: hidden; border-radius: 20px; touch-action: manipulation; --s: 1; }
 .figure.is-playing .board { touch-action: none; }   /* while arrows can be dragged, a swipe on the board moves an arrow, not the page */
 .prompt { min-height: 8.5em; }
@@ -167,20 +118,17 @@
 .screen-box { fill: #000; }
 
 @media (max-width: 520px) {
-  body { font-size: 1.125rem; }
   .total-label { font-size: 22px; }     /* SVG units: about 12px on a phone */
   .plus, .more { font-size: 26px; }
   .bracket-label { font-size: 19px; }
   .group-label { font-size: 26px; }
   .group-label.small { font-size: 20px; }
   .pole { font-size: 15px; }
-  .line.lead, .line.final { font-size: 1.3rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .line, .action, .choices, .figure, .layer, .layer.on, .lens, .lens.on, .wall, .tunnel, .coils rect, .patient, .zoomable,
+  .layer, .layer.on, .lens, .lens.on, .wall, .tunnel, .coils rect, .patient, .zoomable,
   .atom-letter, .ball, .term, .ghost, .slot, .cover, .cover.on, .field, .poles, .frames,
   .piece.moving, .piece.gliding, .piece-inner, .piece-mid, .piece-enter, .pieces { transition: none; }
   .molecule, .field-line, .piece.nudge .piece-enter { animation: none; }
-  .line { transform: none; }
 }

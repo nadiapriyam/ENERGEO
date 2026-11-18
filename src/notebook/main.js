@@ -30,7 +30,7 @@ const tab3 = el('span', { class: 'tab tab-level-3 locked', 'aria-disabled': 'tru
 tabs.append(tab3);
 
 // the cover
-const cover = el('section', { class: 'page cover', id: 'cover', 'aria-label': NOTEBOOK.title },
+const cover = el('section', { class: 'page cover', id: 'cover', 'aria-label': NOTEBOOK.title, hidden: '' },
   el('div', { class: 'cover-inner' },
     el('h1', { class: 'cover-title', text: NOTEBOOK.title }),
     el('ol', { class: 'cover-list' },
