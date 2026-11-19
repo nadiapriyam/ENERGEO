@@ -1,84 +1,109 @@
-/* Level 2, "Inside a note", in Level 1's style: a white page, the system sans, one accent. The tuning fork's tone and
-   your mix are the accent blue (your forks make them); the violin is amber; the gap between them is a light violet.
-   The forks are drawn plainly, shorter for higher tones, with up to three ripples for how hard each is struck. */
+/* Level 2, "Inside a note", in Level 1's style: a white page, the system sans, one accent, simple flat drawings like
+   Level 1's scanner. The violin is warm wood; your A is amber; the four hidden notes each have their own calm colour;
+   Level 1's magnets keep their S and N halves. */
 
-.wave-board { display: block; width: 100%; height: auto; overflow: hidden; border-radius: 20px; }
+.scene-board { display: block; width: 100%; height: auto; overflow: hidden; border-radius: 20px; touch-action: manipulation; }
+.scene-board.dragging-on { touch-action: none; cursor: grab; }
+.scene-board.dragging-on:active { cursor: grabbing; }
+.scene-board:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.cam, .lens-cam { will-change: transform; }
+.cam { transition: opacity 260ms ease-out; }
+.cam.gone { opacity: 0; }
+.scene-board.cut .cam { opacity: 0; }
+
+/* the drawing */
+.wall { fill: #f4f6fa; }
+.floor { fill: #e8ecf2; }
+.chair { fill: #cfd6e0; }
+.body-0 { fill: #9fb3cf; } .body-1 { fill: #b7c3d6; } .body-2 { fill: #8ea3c2; }
+.skin { fill: #e9cdb8; }
+.wood { fill: #c98b48; stroke: #9b6532; stroke-width: 1.2; }
+.wood-flat { stroke: none; }
+.wood-dark { fill: #8a5a2c; }
+.neck-line { stroke: #8a5a2c; stroke-width: 1.6; }
+.flute { stroke: #9aa3ad; stroke-width: 2.4; stroke-linecap: round; }
+.brass { fill: none; stroke: #c9a24a; stroke-width: 3; }
+.fingerboard, .tailpiece { fill: #2f3540; }
+.bridge { fill: #ead6ad; }
+.f-hole { fill: none; stroke: #5a3a1c; stroke-width: 1.4; stroke-linecap: round; }
+.string { fill: none; stroke: #e9edf3; stroke-width: 0.9; }
+.a-string { stroke: #ffffff; stroke-width: 1.1; }
+.a-string.live { stroke: #f2b84b; }
+.string-label { font-family: var(--font); font-size: 4.2px; font-weight: 700; fill: #ffffff; }
+.bow-stick { stroke: #5b4030; stroke-width: 3; stroke-linecap: round; }
+.bow-hair { stroke: #f3efe6; stroke-width: 2.4; }
+.bow-frog { fill: #2f3540; }
+.bow.ready .bow-stick { stroke: var(--accent); }
+.bow { transition: transform 60ms linear; }
+
+.tuned-mark { opacity: 0; transform: translateY(6px); transition: opacity 400ms ease-out, transform 400ms ease-out; }
+.tuned-mark circle { fill: var(--accent); }
+.tuned-mark path { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; }
+.player.tuned .tuned-mark { opacity: 1; transform: none; }
+
+/* the magnifying glass */
+.lens-view, .lens-frame, .target-ring { opacity: 0; visibility: hidden; transition: opacity 300ms ease-out, visibility 0s linear 300ms; }
+.lens-view.on, .lens-frame.on, .target-ring.on { opacity: 1; visibility: visible; transition: opacity 300ms ease-out, visibility 0s; }
+.lens-frame { pointer-events: none; }
+.lens-frame.fading { opacity: 0; }
+.lens-rim { fill: none; stroke: #2b3a55; stroke-width: 5; }
+.lens-glare { fill: none; stroke: #ffffff; stroke-width: 4; stroke-linecap: round; opacity: 0.8; }
+.lens-handle { stroke: #2b3a55; stroke-width: 12; stroke-linecap: round; }
+.target-ring { fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-dasharray: 5 5; pointer-events: none; }
+.target-ring.on { animation: beckon 1.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes beckon { 50% { transform: scale(1.3); } }
+
+/* inside the sound */
+.inside, .compare { opacity: 0; visibility: hidden; transition: opacity 400ms ease-out, visibility 0s linear 400ms; }
+.inside.on, .compare.on { opacity: 1; visibility: visible; transition: opacity 400ms ease-out, visibility 0s; }
 .stage { fill: #f7f9fc; stroke: #e2e7f0; stroke-width: 2; }
-
-.wave { fill: none; stroke-width: 3.4; stroke-linecap: round; stroke-linejoin: round; opacity: 0; transition: opacity 500ms ease-out; }
-.wave.on { opacity: 1; }
-.fork-wave, .mine-wave, .part-wave { stroke: var(--accent); }
-.violin-wave { stroke: #c7891a; }
-.violin-wave.faint.on { opacity: 0.45; }
-.gap { fill: #8f6fe0; fill-opacity: 0.16; opacity: 0; transition: opacity 400ms ease-out; }
-.gap.on { opacity: 1; }
-.lane-label { font-family: var(--font); font-size: 16px; fill: var(--ink-2); opacity: 0; transition: opacity 400ms ease-out; }
-.lane-label.on { opacity: 1; }
-.violin-label { fill: #a5700f; }
-.fork-label, .mine-label { fill: var(--accent); }
-
-.parts { opacity: 0; transition: opacity 400ms ease-out; }
+.sum-wave { fill: none; stroke: #c7891a; stroke-width: 3.4; stroke-linejoin: round; }
+.veil { fill: #f7f9fc; opacity: 0; }
+.veil.on { opacity: 1; }
+.veil-all { fill: #f7f9fc; opacity: 0; transition: opacity 300ms ease-out; }
+.veil-all.on { opacity: 1; }
+.parts { opacity: 0; transition: opacity 300ms ease-out; }
 .parts.on { opacity: 1; }
-.part-wave { opacity: 1; transition: transform 900ms cubic-bezier(0.3, 0.7, 0.3, 1); }
+.parts .part-wave { fill: none; stroke-width: 3; stroke-linejoin: round; transition: transform 900ms cubic-bezier(0.3, 0.7, 0.3, 1), stroke-width 200ms; }
+.part-0 { stroke: #1a66e0; fill: #1a66e0; } .part-1 { stroke: #12907e; fill: #12907e; }
+.part-2 { stroke: #7a55d6; fill: #7a55d6; } .part-3 { stroke: #b07a12; fill: #b07a12; }
+.part-wave.sounding { animation: glow 1.1s ease-out; }
+@keyframes glow { 30% { stroke-width: 6; } }
+.lane-label { font-family: var(--font); font-size: 17px; font-weight: 700; stroke: none; opacity: 0; transition: opacity 400ms ease-out; }
+.lane-label.on { opacity: 1; }
 
-.diff-panel { opacity: 0; visibility: hidden; transition: opacity 500ms ease-out, visibility 0s linear 500ms; }
-.diff-panel.on { opacity: 1; visibility: visible; transition: opacity 500ms ease-out, visibility 0s; }
-.panel-box { fill: #ffffff; stroke: var(--water-edge); stroke-width: 2; }
-.diff-label { font-family: var(--font); font-size: 14px; letter-spacing: 0.16em; fill: var(--ink-2); }
-.diff-value { font-family: var(--font); font-size: 36px; font-weight: 600; fill: var(--ink); }
-.diff-box { fill: none; stroke: var(--ink); stroke-width: 2.5; opacity: 0; transition: opacity 400ms ease-out; }
-.diff-panel.is-zero .diff-value { font-size: 44px; }
-.diff-panel.is-zero .diff-box { opacity: 1; }
-.diff-panel.glow .diff-box { stroke: var(--accent); }
+/* the hidden notes, to tap */
+.notes { display: none; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; }
+.notes.in { display: flex; animation: rise 500ms ease-out; }
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+.note {
+  font: inherit; font-size: 1rem; font-weight: 600; padding: 0.4em 1.1em; border-radius: 999px; cursor: pointer;
+  background: var(--bg); border: 2px solid currentColor; fill: none; stroke: none;
+}
+.note.part-0 { color: #1a66e0; } .note.part-1 { color: #12907e; } .note.part-2 { color: #7a55d6; } .note.part-3 { color: #b07a12; }
+.note.heard { background: #f3f6fb; }
+.transport { display: flex; justify-content: center; margin: 4px 0 0; }
 
-/* the tuning forks */
-.forks { display: none; justify-content: center; gap: 4px; margin: 6px 0 2px; }
-.forks.in { display: flex; }
-.fork {
-  flex: 0 1 112px; background: none; border: 0; padding: 0; cursor: pointer; border-radius: 14px;
-  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
-}
-.fork[hidden] { display: none; }
-.fork:hover .tines { fill: #dfe7f5; }
-.fork:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.fork-svg { display: block; width: 100%; height: auto; overflow: visible; }
-.tines { fill: #e9edf3; stroke: #8c96a6; stroke-width: 2; stroke-linejoin: round; transition: fill 200ms ease-out; }
-.fork:not([data-level='0']) .tines { fill: #dbe7fb; stroke: var(--accent); }
-.ripple { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; opacity: 0; transition: opacity 200ms ease-out; }
-.fork[data-level='1'] .ripple[data-i='1'],
-.fork[data-level='2'] .ripple:is([data-i='1'], [data-i='2']),
-.fork[data-level='3'] .ripple { opacity: 1; }
-.fork-body { transform-box: fill-box; transform-origin: 50% 100%; }
-.fork.ringing .fork-body { animation: hum 1.2s ease-out; }
-@keyframes hum {
-  0%, 100% { transform: none; }
-  10% { transform: translateX(1.6px); } 20% { transform: translateX(-1.4px); } 30% { transform: translateX(1.1px); }
-  40% { transform: translateX(-0.9px); } 55% { transform: translateX(0.6px); } 70% { transform: translateX(-0.3px); }
-}
-.fork.nudge { animation: nudge-fork 900ms ease-in-out 3; }
-@keyframes nudge-fork { 50% { transform: translateY(-6px); } }
-.fork.new { animation: from-box 600ms cubic-bezier(0.3, 0.7, 0.3, 1) backwards; }
-.fork.new:nth-child(3) { animation-delay: 120ms; }
-.fork.new:nth-child(4) { animation-delay: 240ms; }
-@keyframes from-box { from { opacity: 0; transform: translateY(24px); } }
-.forks.is-locked .fork { cursor: default; }
-
-.transport { display: none; gap: 10px; justify-content: center; margin: 8px 0 14px; }
-.transport.in { display: flex; }
-.transport-button {
-  font: inherit; font-size: 1rem; padding: 0.4em 1.1em; border-radius: 999px; cursor: pointer;
-  background: var(--bg); color: var(--ink); border: 1.5px solid #c7891a;
-}
-.transport-button + .transport-button { border-color: var(--accent); }
-.transport-button:disabled { opacity: 0.5; cursor: default; }
-.transport.busy .transport-button { pointer-events: none; }
+/* Level 1, remembered */
+.side-box { fill: #f7f9fc; stroke: #e2e7f0; stroke-width: 2; }
+.side-label { font-family: var(--font); font-size: 15px; letter-spacing: 0.14em; fill: var(--ink-2); }
+.s-part { fill: var(--s-pole); }
+.n-part { fill: var(--accent); }
+.plus, .equals { font-family: var(--font); font-size: 22px; font-weight: 600; fill: var(--ink-2); }
+.bracket { fill: none; stroke: var(--ink-3); stroke-width: 1.5; }
+.bracket-label { font-family: var(--font); font-size: 16px; fill: var(--ink-2); }
+.result { font-family: var(--font); font-size: 46px; font-weight: 600; fill: var(--ink); }
+.mini { fill: none; stroke-width: 2.4; }
+.mini-sum { stroke: #c7891a; stroke-width: 3; }
+.pop { animation: pop 380ms ease-out; }
+@keyframes pop { from { opacity: 0; } }
 
 @media (max-width: 520px) {
-  .lane-label { font-size: 24px; }
-  .diff-label { font-size: 20px; }
+  .lane-label { font-size: 22px; }
+  .side-label { font-size: 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wave, .gap, .lane-label, .parts, .part-wave, .diff-panel, .diff-box, .tines, .ripple { transition: none; }
-  .fork.ringing .fork-body, .fork.nudge, .fork.new { animation: none; }
+  .cam, .bow, .tuned-mark, .lens-view, .lens-frame, .target-ring, .inside, .compare, .veil-all, .parts, .part-wave, .lane-label { transition: none; }
+  .target-ring.on, .part-wave.sounding, .notes.in, .pop { animation: none; }
 }

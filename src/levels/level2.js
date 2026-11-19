@@ -1,14 +1,16 @@
-// Level 2, "Inside a note" (docs/level2_spec.md). The orchestra tunes to one note. A tuning fork and a violin play
-// it: same note, different sound. The learner predicts why, then tries to match the violin with one tuning fork and
-// cannot, however hard they strike it. Opening the box gives smaller forks (higher tones); striking them, the learner
-// brings the DIFFERENCE to an exact 0, then says what was inside the violin's note before the note is taken apart into
-// its tones. Every learner-facing line comes from copy2.js; every position, amount and difference from src/math/tones.js.
+// Level 2, "Inside a note" (docs/level2_spec.md, Revision 3). You are the first violin: you bow an A and the whole
+// orchestra tunes to it. A magnifying glass takes you into your violin, then into its A string, shaking. Then the story
+// cuts inside the sound itself. The whole orchestra trusts this A, but is it one note? Slide the glass across the sound
+// and it shows what is hidden: four notes, which you tap to hear, and which play together as one A. Then a callback
+// to Level 1: one 0 hid many arrows; one A hides many notes. Every learner-facing line comes from copy2.js; every
+// position from src/math/violin.js and every sound shape from src/math/tones.js.
 import './level2.css';
 
 import { COPY } from './copy2.js';
 import {
-  FORKS, STEPS, PITCH, TUNING_FORK, VIOLIN, part, differencePercent, BOARD, PANEL, STAGE, lane, wavePath, gapPath, forkHeight,
-} from '../math/tones.js';
+  VIEW, HOME, transform, toView, lensCamera, lerpCamera, coverRadius, LENS, VIOLIN, STRINGS, A_STRING, BOW, musicians, ZOOMS, closeUp, stringPath,
+} from '../math/violin.js';
+import { PITCH, A_NOTE, STEPS, HIDDEN, part, STAGE, lane, trace } from '../math/tones.js';
 
 const NS = 'http://www.w3.org/2000/svg';
 const REDUCED = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -28,15 +30,23 @@ const wait = (ms) => new Promise((r) => setTimeout(r, REDUCED ? Math.min(ms, 120
 const pause = (ms) => new Promise((r) => setTimeout(r, ms));
 const reading = (text) => Math.min(4500, 900 + 40 * text.length);
 const on = (node, v = true) => node.classList.toggle('on', v);
+const tween = (ms, step) => new Promise((resolve) => {            // step(t) for t from 0 to 1, eased
+  if (REDUCED) { step(1); resolve(); return; }
+  const t0 = performance.now();
+  const frame = (now) => {
+    const t = Math.min(1, (now - t0) / ms);
+    step(t < 0.5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 2);
+    if (t < 1) requestAnimationFrame(frame); else resolve();
+  };
+  requestAnimationFrame(frame);
+});
 
 // ── state ────────────────────────────────────────────────────────────────────────────────────────
 let phase = 'opening';
-let mine = Array(FORKS).fill(0);
-let open = 1;                                     // how many forks are out of the box
-let locked = true;
-let strikes = 0;
+let cam = { ...HOME };
+let bowLevel = 0;                                   // how hard the A string is shaking, 0…1
 
-// ── sound: made only after a tap ─────────────────────────────────────────────────────────────────
+// ── sound: made only after the learner touches the bow ──────────────────────────────────────────────
 let ctx = null;
 function audio() {
   const AC = window.AudioContext || window.webkitAudioContext;
@@ -44,147 +54,182 @@ function audio() {
   try { ctx ??= new AC(); if (ctx.state === 'suspended') ctx.resume(); } catch { return null; }
   return ctx;
 }
-/** A struck fork: one pure tone that rings and fades. */
-function ring(k, level, seconds = 1.8) {
+/** A held A with the violin's hidden notes; returns a handle whose loudness follows the bow. */
+function violinA(amounts = A_NOTE, hz = PITCH, peak = 0.16) {
   const c = audio();
-  if (c && level > 0) {
+  if (!c) return { level() {}, stop() {} };
+  const real = new Float32Array(amounts.length + 1);
+  const imag = new Float32Array(amounts.length + 1);
+  amounts.forEach((a, k) => { imag[k + 1] = a / STEPS; });
+  const osc = c.createOscillator();
+  osc.setPeriodicWave(c.createPeriodicWave(real, imag, { disableNormalization: true }));
+  osc.frequency.value = hz;
+  const lfo = c.createOscillator();
+  const depth = c.createGain();
+  lfo.frequency.value = 5.5;
+  depth.gain.value = hz * 0.004;
+  lfo.connect(depth).connect(osc.frequency);
+  const g = c.createGain();
+  g.gain.value = 0;
+  osc.connect(g).connect(c.destination);
+  osc.start(); lfo.start();
+  return {
+    level(v) { g.gain.setTargetAtTime(peak * v, c.currentTime, 0.05); },
+    stop() { g.gain.setTargetAtTime(0, c.currentTime, 0.12); osc.stop(c.currentTime + 0.6); lfo.stop(c.currentTime + 0.6); },
+  };
+}
+async function playA(seconds = 2) {
+  const h = violinA();
+  h.level(1);
+  await pause(seconds * 1000);
+  h.stop();
+}
+/** One hidden note on its own: a pure tone. */
+function pureTone(k, seconds = 1.2) {
+  const c = audio();
+  if (!c) return;
+  const osc = c.createOscillator();
+  osc.frequency.value = HIDDEN[k].hz;
+  const g = c.createGain();
+  const t = c.currentTime;
+  g.gain.setValueAtTime(0, t);
+  g.gain.linearRampToValueAtTime(0.06 + 0.06 * (HIDDEN[k].amount / STEPS), t + 0.04);
+  g.gain.setValueAtTime(0.06 + 0.06 * (HIDDEN[k].amount / STEPS), t + seconds - 0.3);
+  g.gain.linearRampToValueAtTime(0, t + seconds);
+  osc.connect(g).connect(c.destination);
+  osc.start(t);
+  osc.stop(t + seconds + 0.05);
+}
+/** The orchestra tunes: a few A's, low to high, start a little out of tune and slide onto yours. */
+function orchestraTunes() {
+  const c = audio();
+  if (!c) return;
+  const t = c.currentTime;
+  [[110, -24], [220, 19], [440, -14], [880, 22]].forEach(([hz, cents], i) => {
     const osc = c.createOscillator();
-    osc.frequency.value = PITCH * (k + 1);
+    osc.setPeriodicWave(c.createPeriodicWave(new Float32Array([0, 0, 0, 0]), new Float32Array([0, 1, 0.5, 0.25]), { disableNormalization: true }));
+    osc.frequency.setValueAtTime(hz * 2 ** (cents / 1200), t + i * 0.15);
+    osc.frequency.exponentialRampToValueAtTime(hz, t + 1.5);
     const g = c.createGain();
-    const t = c.currentTime;
     g.gain.setValueAtTime(0, t);
-    g.gain.linearRampToValueAtTime(0.2 * (level / STEPS), t + 0.006);
-    g.gain.exponentialRampToValueAtTime(0.001, t + seconds);
+    g.gain.linearRampToValueAtTime(0.045, t + 0.3 + i * 0.15);
+    g.gain.setValueAtTime(0.045, t + 2.2);
+    g.gain.linearRampToValueAtTime(0, t + 3);
     osc.connect(g).connect(c.destination);
     osc.start(t);
-    osc.stop(t + seconds + 0.05);
-  }
-  return pause(seconds * 1000);
-}
-/** A held note made of the given tones: the violin, or your mix. The same bow and vibrato for both, so the comparison is fair. */
-function bow(amounts, seconds = 1.9) {
-  const c = audio();
-  if (c && amounts.some((a) => a > 0)) {
-    const real = new Float32Array(FORKS + 1);
-    const imag = new Float32Array(FORKS + 1);
-    amounts.forEach((a, k) => { imag[k + 1] = a / STEPS; });
-    const osc = c.createOscillator();
-    osc.setPeriodicWave(c.createPeriodicWave(real, imag, { disableNormalization: true }));
-    osc.frequency.value = PITCH;
-    const lfo = c.createOscillator();
-    const depth = c.createGain();
-    lfo.frequency.value = 5.5;
-    depth.gain.value = PITCH * 0.004;
-    lfo.connect(depth).connect(osc.frequency);
-    const g = c.createGain();
-    const t = c.currentTime;
-    g.gain.setValueAtTime(0, t);
-    g.gain.linearRampToValueAtTime(0.15, t + 0.09);
-    g.gain.linearRampToValueAtTime(0.12, t + 0.4);
-    g.gain.setValueAtTime(0.12, t + seconds - 0.3);
-    g.gain.linearRampToValueAtTime(0, t + seconds);
-    osc.connect(g).connect(c.destination);
-    osc.start(t); lfo.start(t);
-    osc.stop(t + seconds + 0.05); lfo.stop(t + seconds + 0.05);
-  }
-  return pause(seconds * 1000);
+    osc.stop(t + 3.1);
+  });
 }
 
 // ── page ─────────────────────────────────────────────────────────────────────────────────────────
 const root = document.getElementById('level-2-lesson');
 const figure = el('figure', { class: 'figure' });
-const forksRow = el('div', { class: 'forks', role: 'group', 'aria-label': 'Tuning forks' });
+const notesRow = el('div', { class: 'notes', role: 'group', 'aria-label': 'Hidden notes' });
 const transport = el('div', { class: 'transport' });
 const prompt = el('div', { class: 'prompt', 'aria-live': 'polite' });
-root.append(figure, forksRow, transport, prompt);
+root.append(figure, notesRow, transport, prompt);
 
-const board = svg('svg', { viewBox: `0 0 ${BOARD.w} ${BOARD.h}`, class: 'wave-board', role: 'img' });
+const board = svg('svg', { viewBox: `0 0 ${VIEW.w} ${VIEW.h}`, class: 'scene-board', role: 'img' });
 const describe = (text) => board.setAttribute('aria-label', text);
-const stage = svg('rect', { class: 'stage', x: STAGE.x, y: STAGE.y, width: STAGE.w, height: STAGE.h, rx: 18 });
-const forkWave = svg('path', { class: 'wave fork-wave' });
-const violinWave = svg('path', { class: 'wave violin-wave' });
-const mineWave = svg('path', { class: 'wave mine-wave' });
-const gap = svg('path', { class: 'gap' });
-const label = (cls, text) => svg('text', { class: `lane-label ${cls}`, text });
-const forkLabel = label('fork-label', COPY.labels.fork);
-const violinLabel = label('violin-label', COPY.labels.violin);
-const mineLabel = label('mine-label', COPY.labels.mine);
-const parts = svg('g', { class: 'parts' });
-const diffValue = svg('text', { class: 'diff-value', x: PANEL.cx, y: PANEL.valueY, 'text-anchor': 'middle', 'dominant-baseline': 'central' });
-const diffPanel = svg('g', { class: 'diff-panel' },
-  svg('rect', { class: 'panel-box', x: PANEL.x, y: PANEL.y, width: PANEL.w, height: PANEL.h, rx: 18 }),
-  svg('text', { class: 'diff-label', x: PANEL.cx, y: PANEL.labelY, 'text-anchor': 'middle', text: COPY.differenceLabel }),
-  svg('rect', { class: 'diff-box', x: PANEL.cx - 32, y: PANEL.valueY - 27, width: 64, height: 54, rx: 12 }),
-  diffValue);
-board.append(stage, gap, forkWave, violinWave, mineWave, forkLabel, violinLabel, mineLabel, parts, diffPanel);
 figure.append(board);
-const placeLabel = (node, ln) => { node.setAttribute('x', STAGE.x + 16); node.setAttribute('y', ln.top + 22); };
+const lensClip = svg('circle', { r: LENS.r });
+const xrayClip = svg('circle', { r: LENS.r });
+board.append(svg('defs', {},
+  svg('clipPath', { id: 'l2-lens-clip' }, lensClip),
+  svg('clipPath', { id: 'l2-xray-clip' }, xrayClip)));
 
-// the forks: shorter forks sing higher; tapping one strikes it harder (1, 2, 3), and once more lets it fall silent
-const forkGlyph = (k) => {
-  const h = forkHeight(k);
-  const top = 150 - 34 - h;
-  return `M 30 ${150 - 34} V ${top + 7} A 7 7 0 0 1 44 ${top + 7} V ${150 - 44} Q 44 ${150 - 34} 52 ${150 - 34} Q 60 ${150 - 34} 60 ${150 - 44} V ${top + 7}`
-    + ` A 7 7 0 0 1 74 ${top + 7} V ${150 - 34} Q 74 ${150 - 22} 52 ${150 - 22} Q 30 ${150 - 22} 30 ${150 - 34} Z M 48 ${150 - 22} H 56 V 148 H 48 Z`;
-};
-const forks = Array.from({ length: FORKS }, (_, k) => {
-  const tines = svg('path', { class: 'tines', d: forkGlyph(k) });
-  const ripples = svg('g', { class: 'ripples' }, ...[0, 1, 2].map((i) => svg('path', { class: 'ripple', 'data-i': String(i + 1), d: `M ${80 + i * 9} ${150 - 34 - forkHeight(k) * 0.75} q 6 ${forkHeight(k) * 0.2} 0 ${forkHeight(k) * 0.4}` })));
-  const b = el('button', { type: 'button', class: 'fork', 'data-k': String(k + 1) },
-    svg('svg', { viewBox: '0 0 112 150', class: 'fork-svg', 'aria-hidden': 'true' }, svg('g', { class: 'fork-body' }, tines), ripples));
-  b.addEventListener('click', () => strike(k));
-  forksRow.append(b);
-  return b;
+// the drawing: the orchestra behind, your violin in front
+const world = svg('g', { id: 'l2-world' });
+const camGroup = svg('g', { class: 'cam' }, world);
+world.append(
+  svg('rect', { class: 'wall', x: -400, y: -400, width: 1440, height: 1200 }),
+  svg('path', { class: 'floor', d: 'M -400 250 Q 320 205 1040 250 L 1040 800 L -400 800 Z' }));
+const players = musicians().map((m, i) => {
+  const inst = {
+    violin: () => svg('ellipse', { class: 'wood', cx: 10, cy: -6, rx: 7, ry: 3.6 }),
+    cello: () => svg('g', {}, svg('ellipse', { class: 'wood', cx: 13, cy: 3, rx: 7, ry: 11 }), svg('line', { class: 'neck-line', x1: 13, y1: -8, x2: 13, y2: -24 })),
+    flute: () => svg('line', { class: 'flute', x1: -4, y1: -19, x2: 18, y2: -25 }),
+    horn: () => svg('circle', { class: 'brass', cx: 11, cy: -4, r: 6.5 }),
+  }[m.kind]();
+  const note = svg('g', { class: 'tuned-mark', style: `transition-delay: ${i * 90}ms` },
+    svg('circle', { cx: -2, cy: -38, r: 3.2 }), svg('path', { d: 'M 1 -38 V -50 Q 7 -48 6 -43' }));
+  const g = svg('g', { class: 'player', transform: `translate(${m.x} ${m.y}) scale(${m.s})` },
+    svg('rect', { class: 'chair', x: -12, y: 6, width: 24, height: 14, rx: 3 }),
+    svg('rect', { class: `body body-${i % 3}`, x: -10, y: -14, width: 20, height: 24, rx: 8 }),
+    svg('circle', { class: 'skin', cx: 0, cy: -22, r: 8 }), inst, note);
+  world.append(g);
+  return g;
 });
-function drawFork(k) {
-  const b = forks[k];
-  b.dataset.level = String(mine[k]);
-  b.setAttribute('aria-label', `Tuning fork ${k + 1}: ${mine[k] ? `struck ${mine[k]} of ${STEPS}` : 'silent'}`);
-  b.hidden = k >= open;
-}
+const V = VIOLIN;
+const fHole = (x, y, flip) => svg('path', { class: 'f-hole', d: `M ${x} ${y - 9} q ${flip * 3} 4 0 9 q ${-flip * 3} 5 0 9` });
+const strings = STRINGS.map((s) => svg('path', { class: `string${s === A_STRING ? ' a-string' : ''}`, d: stringPath(s) }));
+const bow = svg('g', { class: 'bow' },
+  svg('line', { class: 'bow-stick', x1: BOW.x, y1: BOW.top, x2: BOW.x, y2: BOW.bottom }),
+  svg('line', { class: 'bow-hair', x1: BOW.x + 3.5, y1: BOW.top + 6, x2: BOW.x + 3.5, y2: BOW.bottom - 14 }),
+  svg('rect', { class: 'bow-frog', x: BOW.x - 3, y: BOW.bottom - 18, width: 11, height: 16, rx: 2 }));
+world.append(svg('g', { class: 'violin' },
+  svg('circle', { class: 'wood-dark', cx: V.scroll.x, cy: V.scroll.y, r: V.scroll.r }),
+  svg('rect', { class: 'wood-dark', x: V.neck.x, y: V.neck.y, width: V.neck.w, height: V.neck.h, rx: 4 }),
+  svg('ellipse', { class: 'wood', cx: V.upper.cx, cy: V.upper.cy, rx: V.upper.rx, ry: V.upper.ry }),
+  svg('ellipse', { class: 'wood', cx: V.lower.cx, cy: V.lower.cy, rx: V.lower.rx, ry: V.lower.ry }),
+  svg('rect', { class: 'wood wood-flat', x: V.waist.x, y: V.waist.y, width: V.waist.w, height: V.waist.h }),
+  fHole(204, 318, 1), fHole(266, 318, -1),
+  svg('rect', { class: 'fingerboard', x: V.fingerboard.x, y: V.fingerboard.y, width: V.fingerboard.w, height: V.fingerboard.h, rx: 6 }),
+  svg('rect', { class: 'tailpiece', x: V.tailpiece.x, y: V.tailpiece.y, width: V.tailpiece.w, height: V.tailpiece.h, rx: 6 }),
+  svg('rect', { class: 'bridge', x: V.bridge.x, y: V.bridge.y, width: V.bridge.w, height: V.bridge.h, rx: 1 }),
+  ...strings,
+  svg('text', { class: 'string-label', x: ZOOMS[1].target.x - 18, y: A_STRING.y - 1.6, text: COPY.stringLabel })), bow);
 
-// ── the stage ────────────────────────────────────────────────────────────────────────────────────
-function drawBuild(shift = 0) {
-  const ln = lane(0, 1);
-  violinWave.setAttribute('d', wavePath(VIOLIN, ln, shift));
-  mineWave.setAttribute('d', wavePath(mine, ln, shift));
-  gap.setAttribute('d', gapPath(VIOLIN, mine, ln));
-  const v = differencePercent(VIOLIN, mine);
-  diffValue.textContent = v === 0 ? COPY.zero : `${v}${COPY.percent}`;
-  diffPanel.classList.toggle('is-zero', v === 0);
-}
-function run(path, amounts, ln, ms) {                       // a sounding note runs across the stage
-  if (REDUCED) return pause(ms);
-  const t0 = performance.now();
-  return new Promise((resolve) => {
-    const step = (t) => {
-      path.setAttribute('d', wavePath(amounts, ln, ((t - t0) / 1000) * 0.8));
-      if (t - t0 < ms) requestAnimationFrame(step); else { path.setAttribute('d', wavePath(amounts, ln)); resolve(); }
-    };
-    requestAnimationFrame(step);
-  });
-}
-async function playViolin() { await Promise.all([bow(VIOLIN), run(violinWave, VIOLIN, lane(0, 1), 1900)]); drawBuild(); }
-async function playMine() { await Promise.all([bow(mine), run(mineWave, mine, lane(0, 1), 1900)]); drawBuild(); }
+// the magnifying glass: the same drawing again, magnified, inside a circle that follows the glass
+const lensCam = svg('g', { class: 'lens-cam' }, svg('use', { href: '#l2-world' }));
+const lensView = svg('g', { class: 'lens-view', 'clip-path': 'url(#l2-lens-clip)' }, lensCam);
+const lensFrame = svg('g', { class: 'lens-frame' },
+  svg('line', { class: 'lens-handle', x1: LENS.r * 0.72, y1: LENS.r * 0.72, x2: LENS.r * 1.45, y2: LENS.r * 1.45 }),
+  svg('circle', { class: 'lens-rim', r: LENS.r }),
+  svg('path', { class: 'lens-glare', d: `M ${-LENS.r * 0.62} ${-LENS.r * 0.2} Q ${-LENS.r * 0.55} ${-LENS.r * 0.6} ${-LENS.r * 0.18} ${-LENS.r * 0.66}` }));
+const targetRing = svg('circle', { class: 'target-ring', r: 18 });
 
-let afterStrike = () => {};
-function strike(k) {
-  if (locked || k >= open) return;
-  mine = mine.map((a, i) => (i === k ? (a + 1) % (STEPS + 1) : a));
-  strikes++;
-  drawFork(k);
-  drawBuild();
-  const b = forks[k];
-  b.classList.remove('ringing');
-  void b.offsetWidth;
-  if (mine[k] > 0 && !REDUCED) b.classList.add('ringing');
-  ring(k, mine[k]);
-  afterStrike();
+// inside the sound: its shape, and under the glass, the notes hidden in it
+const inside = svg('g', { class: 'inside' });
+const one = lane(0, 1);
+const sumPath = svg('path', { class: 'sum-wave' });
+const veil = svg('circle', { class: 'veil', r: LENS.r, 'clip-path': 'url(#l2-xray-clip)' });
+const partPaths = HIDDEN.map((_, k) => svg('path', { class: `part-wave part-${k}` }));
+const partsGroup = svg('g', { class: 'parts', 'clip-path': 'url(#l2-xray-clip)' }, ...partPaths);
+const veilRect = svg('rect', { class: 'veil-all', x: STAGE.x, y: STAGE.y, width: STAGE.w, height: STAGE.h, rx: 18 });
+const laneLabels = HIDDEN.map((_, k) => svg('text', { class: `lane-label part-${k}`, x: STAGE.x + 14, y: lane(k, 4).cy + 6, text: COPY.notes[k] }));
+inside.append(svg('rect', { class: 'stage', x: STAGE.x, y: STAGE.y, width: STAGE.w, height: STAGE.h, rx: 18 }), sumPath, veilRect, veil, partsGroup, ...laneLabels);
+
+// Level 1, remembered: arrows that add up to 0, next to notes that add up to one A
+const compare = svg('g', { class: 'compare' });
+board.append(camGroup, lensView, targetRing, inside, compare, lensFrame);
+
+function drawCamera() { camGroup.style.transform = transform(cam); }
+drawCamera();
+let lensAt = { ...LENS.rest };
+let lensMag = ZOOMS[0].mag;
+function drawLens() {
+  lensFrame.style.transform = `translate(${lensAt.x}px, ${lensAt.y}px)`;
+  for (const c of [lensClip, xrayClip]) { c.setAttribute('cx', lensAt.x); c.setAttribute('cy', lensAt.y); }
+  veil.setAttribute('cx', lensAt.x); veil.setAttribute('cy', lensAt.y);
+  lensCam.style.transform = transform(lensCamera(cam, lensAt, lensMag));
 }
-function setLocked(v) {
-  locked = v;
-  forksRow.classList.toggle('is-locked', v);
-  transport.querySelectorAll('button').forEach((b) => { b.disabled = v; });
+drawLens();
+
+// the A string shakes as long as it is bowed (and a little after)
+let shaking = false;
+function shake() {
+  if (shaking) return;
+  shaking = true;
+  let t0 = performance.now();
+  const frame = (now) => {
+    const swing = REDUCED ? 1 : Math.cos(((now - t0) / 1000) * 2 * Math.PI * 9);
+    strings[1].setAttribute('d', stringPath(A_STRING, 2.4 * bowLevel, swing));
+    if (bowLevel > 0.01) requestAnimationFrame(frame);
+    else { strings[1].setAttribute('d', stringPath(A_STRING)); shaking = false; }
+  };
+  t0 = performance.now();
+  requestAnimationFrame(frame);
 }
 
 // ── the prompt: one small piece of text at a time ──────────────────────────────────────────────────
@@ -211,145 +256,334 @@ const ask = (options) => new Promise((resolve) => {
   requestAnimationFrame(() => row.classList.add('in'));
   followFocus(buttons[0]);
 });
-const press = (text) => new Promise((resolve) => {
-  const b = el('button', { type: 'button', class: 'action', text });
-  b.addEventListener('click', () => { b.remove(); resolve(); }, { once: true });
-  prompt.append(b);
-  requestAnimationFrame(() => b.classList.add('in'));
-  followFocus(b);
-});
-function transportButton(text, onClick) {
-  const b = el('button', { type: 'button', class: 'transport-button', text });
-  b.addEventListener('click', async () => { if (locked) return; transport.classList.add('busy'); await onClick(); transport.classList.remove('busy'); });
-  transport.append(b);
-}
 
-// ── the story ────────────────────────────────────────────────────────────────────────────────────
-async function opening() {                                  // same note, two sounds
-  describe('An empty stage, waiting for a sound.');
-  requestAnimationFrame(() => figure.classList.add('in'));
-  const top = lane(0, 2);
-  const bottom = lane(1, 2);
-  placeLabel(forkLabel, top);
-  placeLabel(violinLabel, bottom);
-  say(COPY.opening, 'lead');
-  await pause(reading(COPY.opening));
-  await press(COPY.hearFork);
-  on(forkWave); on(forkLabel);
-  describe('Top: the tuning fork\'s wave, a smooth, even curve.');
-  await Promise.all([ring(0, STEPS, 2.2), run(forkWave, TUNING_FORK, top, 2200)]);
-  await press(COPY.hearViolin);
-  on(violinWave); on(violinLabel);
-  describe('Top: the tuning fork\'s smooth curve. Bottom: the violin\'s wave at the same pitch, a jagged, bumpy shape.');
-  await Promise.all([bow(VIOLIN, 2.2), run(violinWave, VIOLIN, bottom, 2200)]);
-  say(COPY.why.question);
-  await ask(COPY.why.choices);
-  say(COPY.why.after);
-  await wait(900);
-  oneFork();
-}
-
-async function oneFork() {                                  // try with a single fork
-  phase = 'one';
-  clear();
-  on(forkWave, false); on(forkLabel, false);
-  violinWave.classList.add('faint');
-  placeLabel(violinLabel, lane(0, 1));
-  placeLabel(mineLabel, { top: lane(0, 1).top + 26 });
-  on(mineWave); on(mineLabel); on(diffPanel); on(gap);
-  drawBuild();
-  for (let k = 0; k < FORKS; k++) drawFork(k);           // one fork out; the rest stay in the box
-  forksRow.classList.add('in');
-  transportButton(COPY.playViolin, playViolin);
-  transportButton(COPY.playMine, playMine);
-  transport.classList.add('in');
-  describe('The violin\'s wave, faint, with your wave over it, still flat. Above: the DIFFERENCE between them, 100%. Below: one tuning fork.');
-  say(COPY.task1);
-  setLocked(false);
-  followFocus(forks[0]);
-  const hint = setTimeout(() => { if (strikes === 0) { say(COPY.strikeHint, 'hint'); forks[0].classList.add('nudge'); } }, 6000);
-  let idle = null;
-  afterStrike = () => {
-    clearTimeout(hint);
-    forks[0].classList.remove('nudge');
-    clearTimeout(idle);
-    if (strikes >= 5) whyNot();
-    else if (mine[0] === STEPS) idle = setTimeout(whyNot, 3500);
+/** Drag anywhere on the board; `move(dx, dy, e)` for each step. Keyboard: Enter or Space calls `key()`. Resolves when `done()` says so. */
+function dragOnBoard(move, key) {
+  board.classList.add('dragging-on');
+  board.setAttribute('tabindex', '0');
+  followFocus(board);
+  let last = null;
+  const down = (e) => { e.preventDefault(); board.setPointerCapture(e.pointerId); last = e; move(0, 0, e, 'down'); };
+  const mv = (e) => { if (!last) return; const r = board.getBoundingClientRect(); const k = VIEW.w / r.width; move((e.clientX - last.clientX) * k, (e.clientY - last.clientY) * k, e, 'move'); last = e; };
+  const up = (e) => { if (!last) return; last = null; move(0, 0, e, 'up'); };
+  const kd = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); key(); } };
+  board.addEventListener('pointerdown', down);
+  board.addEventListener('pointermove', mv);
+  board.addEventListener('pointerup', up);
+  board.addEventListener('pointercancel', up);
+  board.addEventListener('keydown', kd);
+  return () => {
+    board.classList.remove('dragging-on');
+    board.removeAttribute('tabindex');
+    for (const [t, f] of [['pointerdown', down], ['pointermove', mv], ['pointerup', up], ['pointercancel', up], ['keydown', kd]]) board.removeEventListener(t, f);
   };
 }
 
-async function whyNot() {                                   // it never gets there: why?
-  if (phase !== 'one') return;
-  phase = 'stuck';
-  afterStrike = () => {};
-  await wait(900);
-  setLocked(true);
-  clear();
-  say(COPY.oneFork.question);
-  await ask(COPY.oneFork.choices);
-  say(COPY.oneFork.after);
-  await wait(700);
-  manyForks();
+// ── the story ────────────────────────────────────────────────────────────────────────────────────
+async function opening() {                                  // you are the first violin
+  describe('An orchestra on a stage, two curved rows of players. In front: your violin, lying across the bottom, with its bow across the strings.');
+  requestAnimationFrame(() => figure.classList.add('in'));
+  say(COPY.opening[0], 'lead');
+  await pause(reading(COPY.opening[0]));
+  say(COPY.opening[1]);
+  await pause(reading(COPY.opening[1]));
+  say(COPY.bow, 'hint');
+  await bowTheA();
+  phase = 'tuned';
+  orchestraTunes();
+  for (const p of players) p.classList.add('tuned');
+  describe('Every player in the orchestra shows a little note: they are all tuned to your A.');
+  say(COPY.tuned);
+  await pause(reading(COPY.tuned) + 900);
+  zoomIntoViolin();
 }
 
-function manyForks() {                                      // the box opens: smaller forks, higher tones
-  phase = 'many';
-  open = FORKS;
-  for (let k = 0; k < FORKS; k++) drawFork(k);
-  forks.slice(1).forEach((b) => b.classList.add('new'));
-  clear();
-  say(COPY.task2);
-  describe('Three more tuning forks, each smaller than the last.');
-  setLocked(false);
-  afterStrike = () => { if (differencePercent(VIOLIN, mine) === 0) matched(); };
+function bowTheA() {                                        // drag the bow up and down: the A sounds, the string shakes
+  phase = 'bow';
+  bow.classList.add('ready');
+  return new Promise((resolve) => {
+    let sound = null;
+    let offset = 0;
+    let travelled = 0;
+    let lastT = 0;
+    const finish = () => { stop(); bow.classList.remove('ready'); bowLevel = 0; sound?.stop(); resolve(); };
+    const stop = dragOnBoard((dx, dy, e, kind) => {
+      if (kind === 'down') { sound ??= violinA(); lastT = e.timeStamp; return; }
+      if (kind === 'up') { sound?.level(0); bowLevel = 0; return; }
+      offset = Math.max(-BOW.travel, Math.min(BOW.travel, offset + dy));
+      bow.style.transform = `translateY(${offset}px)`;
+      const dt = Math.max(8, e.timeStamp - lastT);
+      lastT = e.timeStamp;
+      bowLevel = Math.min(1, Math.abs(dy) / dt / 0.35 + 0.25);
+      sound?.level(bowLevel);
+      shake();
+      travelled += Math.abs(dy);
+      if (travelled > 420) finish();
+    }, async () => {                                        // keyboard: a long stroke on its own
+      sound ??= violinA();
+      bowLevel = 0.8; sound.level(0.8); shake();
+      await tween(1400, (t) => { bow.style.transform = `translateY(${BOW.travel * Math.sin(t * Math.PI * 2)}px)`; });
+      finish();
+    });
+  });
 }
 
-async function matched() {                                  // DIFFERENCE 0
-  phase = 'zero';
-  setLocked(true);
-  diffPanel.classList.add('glow');
-  describe('Your wave lies exactly on the violin\'s. The DIFFERENCE is 0.');
-  await wait(600);
-  clear();
-  say(COPY.reached, 'lead');
-  await playMine();
-  await wait(250);
-  await playViolin();
-  inside();
+/** The glass: drag it onto the target; it grows to fill the view and the camera glides into the close-up. */
+function lookCloser(k) {
+  const z = ZOOMS[k];
+  lensMag = z.mag;
+  lensAt = { ...LENS.rest };
+  drawLens();
+  on(lensFrame); on(lensView); on(targetRing);
+  const placeRing = () => { const t = toView(cam, z.target); targetRing.setAttribute('cx', t.x); targetRing.setAttribute('cy', t.y); return t; };
+  const target = placeRing();
+  return new Promise((resolve) => {
+    let grabbed = false;
+    const snap = async () => {
+      stop();
+      on(targetRing, false);
+      const from = { ...lensAt };
+      await tween(260, (t) => { lensAt = { x: from.x + (target.x - from.x) * t, y: from.y + (target.y - from.y) * t }; drawLens(); });
+      const r0 = LENS.r;
+      const r1 = coverRadius(lensAt);
+      lensFrame.classList.add('fading');
+      await tween(520, (t) => { lensClip.setAttribute('r', r0 + (r1 - r0) * t); });
+      cam = lensCamera(cam, lensAt, lensMag);               // the camera takes over what the glass shows
+      drawCamera();
+      on(lensView, false); on(lensFrame, false);
+      lensFrame.classList.remove('fading');
+      lensClip.setAttribute('r', LENS.r);
+      const a = { ...cam };
+      const b = closeUp(k);
+      await tween(1000, (t) => { cam = lerpCamera(a, b, t); drawCamera(); });
+      cam = b; drawCamera();
+      resolve();
+    };
+    const stop = dragOnBoard((dx, dy, e, kind) => {
+      if (kind === 'down') {                                // grab the glass, or bring it to where you touch
+        const r = board.getBoundingClientRect();
+        const p = { x: ((e.clientX - r.left) / r.width) * VIEW.w, y: ((e.clientY - r.top) / r.height) * VIEW.h };
+        if (Math.hypot(p.x - lensAt.x, p.y - lensAt.y) > LENS.r * 1.5) lensAt = p;
+        grabbed = true;
+      } else if (kind === 'up') grabbed = false;
+      else if (grabbed) lensAt = { x: Math.max(0, Math.min(VIEW.w, lensAt.x + dx)), y: Math.max(0, Math.min(VIEW.h, lensAt.y + dy)) };
+      drawLens();
+      if (Math.hypot(lensAt.x - target.x, lensAt.y - target.y) < z.snap) snap();
+    }, snap);
+  });
 }
 
-async function inside() {                                   // what was in the note? say it, then see it
+async function zoomIntoViolin() {
+  phase = 'lens1';
+  clear();
+  say(COPY.lens1);
+  describe('A magnifying glass appears. Under it, everything looks bigger.');
+  await lookCloser(0);
+  phase = 'lens2';
+  clear();
+  describe('Your violin, close up: its body, the bridge, and four strings, one marked A.');
+  say(COPY.lens2);
+  await lookCloser(1);
+  phase = 'string';
+  clear();
+  strings[1].classList.add('live');
+  describe('The A string, huge, shaking back and forth.');
+  bowLevel = 1;
+  shake();
+  say(COPY.shaking);
+  await playA(2.4);
+  bowLevel = 0;
+  await pause(reading(COPY.shaking) - 1600);
+  insideTheSound();
+}
+
+let scrolling = false;
+function scroll() {                                         // the sound's shape runs across the stage
+  if (scrolling) return;
+  scrolling = true;
+  const t0 = performance.now();
+  const frame = (now) => {
+    if (!scrolling) return;                                 // stopped: leave the notes where the story put them
+    const shift = REDUCED ? 0 : ((now - t0) / 1000) * 0.35;
+    sumPath.setAttribute('d', trace(A_NOTE, one.cy, shift));
+    partPaths.forEach((p, k) => p.setAttribute('d', trace(part(A_NOTE, k), one.cy, shift)));
+    if (scrolling && !REDUCED) requestAnimationFrame(frame);
+  };
+  requestAnimationFrame(frame);
+}
+
+async function insideTheSound() {                           // cut: inside the vibration
   phase = 'inside';
-  say(COPY.inside.question);
-  await ask(COPY.inside.choices);
-  say(COPY.inside.after);
-  transport.classList.remove('in');
-  for (const n of [mineWave, mineLabel, violinLabel, gap, diffPanel]) on(n, false);
-  violinWave.classList.remove('faint');
-  const whole = lane(0, 1);
-  const shown = VIOLIN.map((_, k) => k).filter((k) => VIOLIN[k] > 0);
-  parts.replaceChildren(...shown.map((k) => {
-    const ln = lane(k, FORKS);
-    const p = svg('path', { class: 'wave part-wave', d: wavePath(part(VIOLIN, k), ln) });
-    p.style.transform = `translateY(${whole.cy - ln.cy}px)`;
-    return p;
-  }));
-  on(parts);
-  await wait(500);
-  on(violinWave, false);
-  parts.querySelectorAll('.part-wave').forEach((p, i) => { setTimeout(() => { p.style.transform = 'none'; }, REDUCED ? 0 : i * 160); });
-  describe('The violin\'s wave comes apart into four smooth waves, one under another: one for each tuning fork, the biggest first.');
-  for (let k = 0; k < FORKS; k++) { if (!REDUCED) forks[k].classList.add('ringing'); ring(k, VIOLIN[k], 1.2); await wait(380); }
-  await pause(1600);
   clear();
-  say(COPY.takeaway);
-  await pause(reading(COPY.takeaway) + 600);
+  board.classList.add('cut');
+  await wait(260);
+  on(inside);
+  camGroup.classList.add('gone');
+  board.classList.remove('cut');
+  scroll();
+  describe('Inside the sound: the shape of your A, a repeating wave with bumps, running across.');
+  say(COPY.shape);
+  await pause(reading(COPY.shape));
+  phase = 'question';
+  say(COPY.oneNote.question);
+  await ask(COPY.oneNote.choices);
+  say(COPY.oneNote.after);
+  await wait(600);
+  xray();
+}
+
+async function xray() {                                     // the glass shows what the A is made of
+  phase = 'xray';
+  clear();
+  say(COPY.xray);
+  lensAt = { x: STAGE.x + 150, y: one.cy };
+  drawLens();
+  on(lensFrame); on(veil); on(partsGroup);
+  describe('Under the glass the single wave comes apart into several smoother waves, one on top of another.');
+  let explored = 0;
+  await new Promise((resolve) => {
+    let grabbed = false;
+    const done = () => { stop(); resolve(); };
+    const timer = setTimeout(done, 9000);
+    const stop = dragOnBoard((dx, dy, e, kind) => {
+      if (kind === 'down') grabbed = true;
+      else if (kind === 'up') grabbed = false;
+      else if (grabbed) {
+        lensAt = { x: Math.max(STAGE.x, Math.min(STAGE.x + STAGE.w, lensAt.x + dx)), y: Math.max(STAGE.y, Math.min(STAGE.y + STAGE.h, lensAt.y + dy)) };
+        explored += Math.hypot(dx, dy);
+        drawLens();
+        if (explored > 260) { clearTimeout(timer); done(); }
+      }
+    }, () => { clearTimeout(timer); done(); });
+  });
+  const r0 = LENS.r;
+  const r1 = coverRadius(lensAt);
+  lensFrame.classList.add('fading');
+  await tween(600, (t) => { const r = r0 + (r1 - r0) * t; xrayClip.setAttribute('r', r); veil.setAttribute('r', r); });
+  on(lensFrame, false);
+  on(veilRect);
+  scrolling = false;
+  splitNotes();
+}
+
+async function splitNotes() {                               // four notes, one under another; tap to hear each
+  phase = 'notes';
+  partsGroup.removeAttribute('clip-path');
+  partPaths.forEach((p, k) => {
+    p.setAttribute('d', trace(part(A_NOTE, k), lane(k, 4).cy));
+    p.style.transform = `translateY(${one.cy - lane(k, 4).cy}px)`;
+  });
+  await wait(80);
+  partPaths.forEach((p, k) => { setTimeout(() => { p.style.transform = 'none'; }, REDUCED ? 0 : k * 140); });
+  await wait(900);
+  laneLabels.forEach((l) => on(l));
+  describe('Four smooth waves, one under another, each faster and smaller than the one above: A, high A, E and higher A.');
+  clear();
+  say(COPY.hidden, 'lead');
+  let heard = false;
+  const heardAll = () => { if (!heard) { heard = true; together(); } };
+  const buttons = HIDDEN.map((h, k) => {
+    const b = el('button', { type: 'button', class: `note part-${k}`, text: COPY.notes[k] });
+    b.addEventListener('click', () => {
+      pureTone(k);
+      partPaths[k].classList.remove('sounding'); void partPaths[k].getBBox(); partPaths[k].classList.add('sounding');
+      b.classList.add('heard');
+      if (notesRow.querySelectorAll('.heard').length === HIDDEN.length) heardAll();
+    });
+    notesRow.append(b);
+    return b;
+  });
+  notesRow.classList.add('in');
+  await pause(reading(COPY.hidden));
+  say(COPY.tapNotes);
+  followFocus(buttons[0]);
+  setTimeout(() => { if (!heard && phase === 'notes') heardAll(); }, 14000);
+}
+
+async function together() {                                 // all four at once: one A again
+  phase = 'together';
+  const b = el('button', { type: 'button', class: 'action', text: COPY.together });
+  transport.replaceChildren(b);
+  requestAnimationFrame(() => b.classList.add('in'));
+  followFocus(b);
+  await new Promise((r) => b.addEventListener('click', r, { once: true }));
+  b.remove();
+  partPaths.forEach((p, k) => { p.style.transform = `translateY(${one.cy - lane(k, 4).cy}px)`; });
+  laneLabels.forEach((l) => on(l, false));
+  await wait(700);
+  on(veilRect, false);
+  on(partsGroup, false);
+  describe('The four waves slide back together and become the one wave of your A.');
+  await playA(2.2);
+  notesRow.classList.remove('in');
+  clear();
+  phase = 'oneA';
+  say(COPY.oneA);
+  await pause(reading(COPY.oneA) + 400);
+  remember();
+}
+
+// Level 1's magnets, drawn as there: an S half and a pointed N half; a down arrow is an up arrow mirrored
+const S_PART = 'M -10 9 H 10 V 20 A 10 10 0 0 1 -10 20 Z';
+const N_PART = 'M -10 9 V -12 H -15 L 0 -31 L 15 -12 H 10 V 9 Z';
+const magnet = (x, y, d) => svg('g', { class: 'magnet', style: `transform: translate(${x}px, ${y}px) scale(0.8, ${0.8 * d})` },
+  svg('path', { class: 's-part', d: S_PART }), svg('path', { class: 'n-part', d: N_PART }));
+
+async function remember() {                                 // the same idea as Level 1
+  phase = 'mri';
+  say(COPY.mri.question);
+  await ask(COPY.mri.choices);
+  say(COPY.mri.after);
+  on(inside, false);
+  const L = { x: 24, w: 288 };
+  const R = { x: 328, w: 288 };
+  const left = svg('g', { class: 'side' },
+    svg('rect', { class: 'side-box', x: L.x, y: 24, width: L.w, height: 352, rx: 18 }),
+    svg('text', { class: 'side-label', x: L.x + L.w / 2, y: 56, 'text-anchor': 'middle', text: COPY.labels.total }));
+  const right = svg('g', { class: 'side' },
+    svg('rect', { class: 'side-box', x: R.x, y: 24, width: R.w, height: 352, rx: 18 }),
+    svg('text', { class: 'side-label', x: R.x + R.w / 2, y: 56, 'text-anchor': 'middle', text: COPY.labels.yourA }));
+  compare.replaceChildren(left, right);
+  on(compare);
+  const steps = [];
+  [1, -1, 1, -1].forEach((d, i) => {                        // ↑ + ↓ + ↑ + ↓ = 0
+    const x = L.x + 40 + i * 70;
+    steps.push(magnet(x, 170, d));
+    if (i) steps.push(svg('text', { class: 'plus', x: x - 35, y: 176, 'text-anchor': 'middle', text: COPY.plus }));
+  });
+  steps.push(svg('path', { class: 'bracket', d: `M ${L.x + 26} 212 V 218 H ${L.x + 124} V 212 M ${L.x + 166} 212 V 218 H ${L.x + 264} V 212` }),
+    svg('text', { class: 'bracket-label', x: L.x + 75, y: 238, 'text-anchor': 'middle', text: COPY.zero }),
+    svg('text', { class: 'bracket-label', x: L.x + 215, y: 238, 'text-anchor': 'middle', text: COPY.zero }),
+    svg('text', { class: 'result', x: L.x + L.w / 2, y: 320, 'text-anchor': 'middle', text: `${COPY.equals} ${COPY.zero}` }));
+  const mini = (k) => { const cy = 98 + k * 42; return svg('path', { class: `mini part-${k}`, d: miniTrace(part(A_NOTE, k), R.x + 44, R.w - 64, cy) }); };
+  const rightSteps = [];
+  HIDDEN.forEach((_, k) => {
+    rightSteps.push(mini(k));
+    if (k) rightSteps.push(svg('text', { class: 'plus', x: R.x + 24, y: 98 + k * 42 - 15, 'text-anchor': 'middle', text: COPY.plus }));
+  });
+  rightSteps.push(svg('text', { class: 'equals', x: R.x + 24, y: 286, 'text-anchor': 'middle', text: COPY.equals }),
+    svg('path', { class: 'mini mini-sum', d: miniTrace(A_NOTE, R.x + 44, R.w - 96, 280) }),
+    svg('text', { class: 'result', x: R.x + R.w - 30, y: 296, 'text-anchor': 'middle', text: COPY.oneAName }));
+  describe('Left, Level 1: up, down, up, down arrows add up to 0. Right: four notes add up to one A.');
+  for (const n of steps) { left.append(n); n.classList.add('pop'); await wait(220); }
+  for (const n of rightSteps) { right.append(n); n.classList.add('pop'); await wait(200); }
+  clear();
+  say(COPY.compare);
+  await pause(reading(COPY.compare) + 900);
   phase = 'final';
   say(COPY.final, 'final');
 }
+function miniTrace(amounts, x0, w, cy, n = 160) {           // a small two-period trace for the side-by-side
+  let d = '';
+  for (let i = 0; i <= n; i++) {
+    const u = i / n;
+    const y = cy - amounts.reduce((s, a, k) => s + (a / STEPS) * Math.sin(2 * Math.PI * (k + 1) * u * 2), 0) * 14;
+    d += `${i ? 'L' : 'M'}${(x0 + u * w).toFixed(1)} ${y.toFixed(1)}`;
+  }
+  return d;
+}
 
 // read-only view for automated checks (no learner-facing effect)
-window.__level2 = { get phase() { return phase; }, get mine() { return [...mine]; }, get difference() { return differencePercent(VIOLIN, mine); }, get open() { return open; } };
+window.__level2 = { get phase() { return phase; }, get camera() { return { ...cam }; }, get lens() { return { ...lensAt }; } };
 
-setLocked(true);
 opening();

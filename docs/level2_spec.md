@@ -1,11 +1,103 @@
 # Level 2: "Inside a note"
 
-Nadia's specification for Level 2, which follows Level 1 (the MRI story, `docs/prototype_try_spec.md`). **Revision 2
-(2026-11-18) governs.** Revision 1, the notebook version, is kept below as history. Level 1 is at `try/` and Level 2 at
-`try/level-2/`. Every learner-facing line of Level 2 is copied from the Revision 2 list, and `test/level2.test.js`
+Nadia's specification for Level 2, which follows Level 1 (the MRI story, `docs/prototype_try_spec.md`). **Revision 3
+(2026-11-19) governs.** Revisions 2 and 1 are kept below as history. Level 1 is at `try/` and Level 2 at
+`try/level-2/`. Every learner-facing line of Level 2 is copied from the Revision 3 list, and `test/level2.test.js`
 checks that.
 
-## Revision 2 (2026-11-18): back to Level 1's style, one take-home message — governs
+## Revision 3 (2026-11-19): a story in pictures, a bow, a magnifying glass — governs
+
+Nadia, verbatim:
+
+> its a bit hard to understand conceptually that there are different notes inside the one violin sound. I need you to creatively make it more understanable even if it means changing some of the content. I know one way is to make it more like a story using pictures like the dude in the mri. so for this level id use a simple drawing of a orchestra. everyone tunes to one note the violin. zoom into the violin. zoom into the string vibrating producing an A sound vibrating. cut into a scene into the a vibration. is this a true A, do the musicians trust this A on the vioulin or else everyone will be out of tune. this A note is actually a mystery itself, it hides a bunch of other notes, but to our ears we hear an A. incorperate questions into that, that aren:t too wordy make it slightly more interactive than what we had before, make it so the user can move the violin bow to play that A to tune the entire orchestra, make it so when the zoom ins are happening the user can uncover each zoom in with a magnifying glass thats seemless. be creative like that but the main message is the same learner has to know that wow i didnt know that an A tone can have so many hidden examples just like in the mri, you can relate it back to the mri by asking the users a question like notice a similarity with the mri example and show the total and the arrows canceling out
+
+> also the tunning thing is too hard
+
+### The take-home message (unchanged)
+
+An A that sounds like one note hides many notes inside it. Just like Level 1's 0, one thing on the outside can have
+many hidden parts inside.
+
+### The story, scene by scene
+
+1. **The orchestra.** A simple drawing in Level 1's style: two curved rows of players and, in front, your violin with
+   its bow. "Tonight, you're the first violin." The orchestra tunes to your A.
+2. **Bow the A.** The learner drags the bow up and down (anywhere on the picture). The A sounds as long as the bow
+   moves, and the A string shakes. After a few strokes, the orchestra slides into tune with you: four A's, low to high,
+   start a little off and settle onto yours, and a small note appears over every player.
+3. **The magnifying glass, twice.** A glass appears. Under it, the same drawing is shown bigger. Dragged onto your
+   violin (a dashed ring marks the spot), it locks on, grows to fill the view, and the view glides into a close-up of
+   the violin, with no cut. Then the glass again, onto the A string: it fills the view with the string, glowing and
+   shaking. "Your A string shakes back and forth 440 times a second." The A plays.
+4. **Cut: inside the sound.** The shape of that shaking runs across the stage. The question: "The whole orchestra
+   trusts this A. Is it just one note?" (Yes / No / Not sure) gets "Let's see."
+5. **The glass as an X-ray.** The learner slides the glass across the sound. Under it, the one wave shows as several
+   smoother waves laid on top of each other. After a little exploring, the glass grows to fill the view, and the waves
+   slide apart into four rows: A, high A, E, higher A. "Hidden inside: four notes."
+6. **Hear them.** One tap on each note plays it alone. "Play them together" slides the four back into one wave and
+   plays the A. "To your ears it's one A. Inside, it's many notes at once."
+7. **Back to Level 1.** "Notice a similarity with the MRI scanner?" (Yes / Not yet) gets "Look." Side by side, step by
+   step: on the left, the TOTAL with Level 1's magnets, ↑ + ↓ + ↑ + ↓, each pair bracketed with its 0, = 0. On the right,
+   YOUR A, its four notes added up, = A. "In Level 1, one 0 hid many arrows. Here, one A hides many notes."
+8. **The last line.** "One thing on the outside. Many hidden parts inside."
+
+There is no matching task and no DIFFERENCE: the tuning game of Revision 2 is gone ("the tunning thing is too hard").
+Every interaction is easy to get right: bow anywhere, drag the glass to a marked ring, slide it anywhere, tap a note.
+
+### Level 2 learner copy, in order (drafted by Claude at Nadia's request, for her review)
+
+1. Tonight, you're the first violin.
+2. Before the concert, the whole orchestra tunes to your A.
+3. Drag the bow to play it.
+4. Everyone's in tune with you.
+5. Drag the magnifying glass onto your violin.
+6. Now find the A string.
+7. A (the label on the A string)
+8. Your A string shakes back and forth 440 times a second.
+9. This is the shape of that shaking.
+10. The whole orchestra trusts this A. Is it just one note? [Yes] [No] [Not sure]
+11. Let's see. (Nadia's Level 1 wording)
+12. Slide the glass across the sound.
+13. Hidden inside: four notes.
+14. A, high A, E, higher A (the four notes, to tap)
+15. Tap each one to hear it.
+16. [Play them together]
+17. To your ears it's one A. Inside, it's many notes at once.
+18. Notice a similarity with the MRI scanner? [Yes] [Not yet]
+19. Look.
+20. TOTAL, YOUR A, +, =, 0, A (the side by side)
+21. In Level 1, one 0 hid many arrows. Here, one A hides many notes.
+22. One thing on the outside. Many hidden parts inside.
+
+Nothing comes after line 22.
+
+Around the levels: "Level 1", "Level 2", "Turn your sound on." and "Next: Level 2".
+
+### The physics behind it
+
+The numbers are computed in `src/math/tones.js` (the sound) and `src/math/violin.js` (the picture and the camera), and
+checked by `test/level2.test.js`.
+
+- **Who gives the A.** In many orchestras the oboe gives the tuning A. In string orchestras the first violin often
+  does. The story says "Tonight", so it describes this concert, not every concert.
+- **The A string.** A violin's A string is tuned to the A above middle C, 440 Hz (some orchestras use 442), and line 8
+  is true of it. The drawn string is slowed down to a visible swing.
+- **The hidden notes.** A bowed string does not move as one pure wave. It shakes at 440 Hz and, at the same time, at
+  2, 3, 4… times 440 Hz. Those frequencies are the notes A (440), the A an octave up (880), E (1320, within 2 cents of
+  the piano's E), and the A two octaves up (1760). The ear fuses them into the single pitch A.
+
+  The page's A carries the first four, in amounts 3, 2, 1, 1, the way a bowed string's tones fall off (roughly 1/k). A
+  real violin's A carries many more, dozens, which is why line 17 says "many notes at once".
+- **The sounds.** Everything is synthesized, not recorded. Your A and "Play them together" are exactly the four notes
+  played as one, with a gentle vibrato. Each tapped note is its pure tone alone.
+- **The magnifying glass.** It shows the same drawing magnified. When it locks on, it grows until it covers the view;
+  the view then takes over what the glass showed and glides into the close-up, so there is no cut. The X-ray glass is
+  the one invented step: under it the A's wave is drawn as its four notes, which add up exactly to the wave drawn
+  outside it.
+- **Level 1.** ↑ is +1 and ↓ is −1, as there. Each ↑↓ pair adds to 0, so ↑ + ↓ + ↑ + ↓ = 0. On the right, the four
+  notes' waves add up exactly to the A's wave.
+
+## Revision 2 (2026-11-18): back to Level 1's style, one take-home message — superseded by Revision 3, kept as history
 
 Nadia, verbatim:
 
@@ -43,7 +135,7 @@ The page never says what is inside the note until the learner has found it and s
    does the violin's wave come apart into its four tones.
 7. **The take-home**, said once, tied to Level 1.
 
-### Level 2 learner copy, in order (drafted by Claude at Nadia's request, for her review)
+### Level 2 learner copy (Revision 2), in order
 
 1. Before a concert, the whole orchestra tunes to one note.
 2. [Hear a tuning fork]

@@ -96,14 +96,14 @@ one accent. `notebook/` forwards to `try/`.
   is shown, a link to Level 2 appears.
   - `src/levels/level1.js` (with `copy1.js`), started by `page1.js`.
   - `src/math/pieces.js` and `src/math/scanner.js`.
-- **Level 2, "Inside a note"**, at `try/level-2/` (`docs/level2_spec.md`, Revision 2): a tuning fork and a violin play
-  the same note but sound different.
-  - One fork, struck as hard as you like, can't match the violin.
-  - Smaller forks from the box can, down to an exact DIFFERENCE of 0.
-  - Then the violin's note comes apart into its four tones.
-  - Take-home: a violin note isn't one pure tone; it's a mix of many, just as Level 1's 0 hid many parts.
+- **Level 2, "Inside a note"**, at `try/level-2/` (`docs/level2_spec.md`, Revision 3), a story in pictures:
+  - You are the first violin. You drag the bow to play an A, and the orchestra tunes to it.
+  - A magnifying glass zooms seamlessly into the violin, then into the A string, shaking.
+  - Cut inside the sound: "Is it just one note?" The glass, slid across the sound, X-rays it into four hidden notes
+    (A, high A, E, higher A), and you tap each one to hear it.
+  - Then back to Level 1: ↑ + ↓ + ↑ + ↓ = 0 beside A + A + E + A = one A.
   - `src/levels/level2.js` (with `copy2.js`), started by `page2.js`.
-  - `src/math/tones.js`.
+  - `src/math/violin.js` (the drawing and the camera) and `src/math/tones.js` (the sound).
 
 `base.css` holds the shared page, prompt, buttons and choices. Every learner-facing line is in a `copy*.js` file,
 verbatim from the specs. `test/level1.test.js` and `test/level2.test.js` check the mathematics, the layout and the copy.
