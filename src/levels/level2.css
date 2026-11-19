@@ -107,3 +107,25 @@
   .cam, .bow, .tuned-mark, .lens-view, .lens-frame, .target-ring, .inside, .compare, .veil-all, .parts, .part-wave, .lane-label { transition: none; }
   .target-ring.on, .part-wave.sounding, .notes.in, .pop { animation: none; }
 }
+
+/* the ear: four notes flow in, one A note comes out */
+.parts.squeezed .part-wave { transform-box: fill-box; transform-origin: left center; }   /* squeezed by SQUEEZE, set on each */
+.hearing { opacity: 0; visibility: hidden; transition: opacity 500ms ease-out, visibility 0s linear 500ms; }
+.hearing.on { opacity: 1; visibility: visible; transition: opacity 500ms ease-out 300ms, visibility 0s; }
+.funnel { fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-dasharray: 7 7; opacity: 0.85; }
+.hearing.flowing .funnel { animation: into-ear 0.7s linear infinite; }
+@keyframes into-ear { to { stroke-dashoffset: -14; } }
+.ear-outer { fill: none; stroke: #d6ad8f; stroke-width: 10; stroke-linecap: round; }
+.ear-inner { fill: none; stroke: #c9997a; stroke-width: 6; stroke-linecap: round; }
+.ear-canal { fill: #9c6f55; }
+.heard { opacity: 0; transition: opacity 500ms ease-out 900ms; }
+.hearing.on .heard { opacity: 1; }
+.heard-arrow { fill: none; stroke: var(--ink-3); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.heard-wave { fill: none; stroke: #c7891a; stroke-width: 3.4; stroke-linejoin: round; }
+.hearing.flowing .heard-wave { animation: heard-pulse 0.9s ease-in-out infinite; }
+@keyframes heard-pulse { 50% { stroke-width: 5; } }
+.heard-label { font-family: var(--font); font-size: 22px; font-weight: 700; fill: #a5700f; }
+@media (prefers-reduced-motion: reduce) {
+  .hearing, .hearing.on, .heard, .parts.squeezed .part-wave { transition: none; }
+  .hearing.flowing .funnel, .hearing.flowing .heard-wave { animation: none; }
+}

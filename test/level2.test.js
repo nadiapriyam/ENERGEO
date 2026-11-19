@@ -1,4 +1,4 @@
-// Level 2, "Inside a note", at try/level-2/ (docs/level2_spec.md, Revision 3). Guards:
+// Level 2, "Inside a note", at try/level-2/ (docs/level2_spec.md, Revision 4). Guards:
 // - the hidden notes are what a bowed A really carries: 1, 2, 3, 4 × 440 Hz, the notes A, A, E, A;
 // - they add up exactly to the A's shape, on screen too;
 // - the magnifying glass hands over to the camera without a seam;
@@ -10,7 +10,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { PITCH, A_NOTE, STEPS, HIDDEN, nearestNote, wave, part, peak, STAGE, lane, trace, PX, LABEL_W } from '../src/math/tones.js';
+import { PITCH, A_NOTE, STEPS, HIDDEN, nearestNote, wave, part, peak, STAGE, lane, trace, PX, LABEL_W, EAR, HEARD, SQUEEZE, squeezedEnd, funnel, heardPath } from '../src/math/tones.js';
 import {
   VIEW, HOME, toView, toWorld, lensCamera, lerpCamera, coverRadius, LENS, VIOLIN, STRINGS, A_STRING, BOW, musicians, ZOOMS, closeUp, stringPath,
 } from '../src/math/violin.js';
@@ -19,7 +19,7 @@ import { LEVELS } from '../src/levels/copyLevels.js';
 
 const read = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
 const spec = read('docs/level2_spec.md');
-const rev3 = spec.slice(0, spec.indexOf('## Revision 2'));
+const rev3 = spec.slice(0, spec.indexOf('## Revision 3'));   // the governing revision (4)
 const copyList = rev3.slice(rev3.indexOf('### Level 2 learner copy'), rev3.indexOf('### The physics'));
 const main = read('src/levels/level2.js');
 const css = read('src/levels/level2.css') + read('src/levels/base.css');
@@ -111,7 +111,7 @@ test('5. the drawing: twelve players clear of your violin and of each other; the
   }
 });
 
-test('6. inside the sound: four rows inside the stage, each note inside its own row, the names left of the waves', () => {
+test('6. inside the sound: four rows inside the stage, each note in its own row; then into the ear, and out comes one A note', () => {
   for (let k = 0; k < 4; k++) {
     const ln = lane(k, 4);
     assert.ok(ln.top >= STAGE.y - 1e-9 && ln.top + ln.h <= STAGE.y + STAGE.h + 1e-9);
@@ -121,12 +121,27 @@ test('6. inside the sound: four rows inside the stage, each note inside its own 
   assert.ok(LABEL_W >= 100, 'room for the names');
   const firstX = +trace(A_NOTE, 100).slice(1).split(' ')[0];
   assert.ok(firstX >= STAGE.x + LABEL_W);
+  // the ear: each row's squeezed end feeds a line into the ear; what comes out is the A note, right of the ear
+  const end = squeezedEnd();
+  assert.ok(near(end, STAGE.x + LABEL_W + (STAGE.w - LABEL_W - 16) * SQUEEZE));
+  for (let k = 0; k < 4; k++) {
+    const nums = funnel(k).match(/-?[\d.]+/g).map(Number);
+    assert.ok(near(nums[0], end, 0.06) && near(nums[1], lane(k, 4).cy, 0.06), `note ${k + 1} leaves its row`);
+    assert.ok(near(nums.at(-2), EAR.x - 4, 0.06) && near(nums.at(-1), EAR.y + 6, 0.06), `note ${k + 1} enters the ear`);
+  }
+  assert.ok(end < EAR.x - 40 && EAR.x + 50 < HEARD.x0 && HEARD.x1 <= STAGE.x + STAGE.w - 8, 'rows, then the ear, then what you hear');
+  const heardYs = heardPath().slice(1).split('L').map((pt) => +pt.split(' ')[1]);
+  heardYs.forEach((y, i) => {
+    const u = i / (heardYs.length - 1);
+    assert.ok(Math.abs(y - (HEARD.cy - wave(A_NOTE, u * HEARD.periods) * PX * 0.7)) < 0.1, 'what you hear is the four notes added up');
+  });
+  assert.ok(HEARD.cy - peak(A_NOTE) * PX * 0.7 > STAGE.y && HEARD.cy + peak(A_NOTE) * PX * 0.7 < STAGE.y + STAGE.h);
 });
 
 test('7. the copy is verbatim from the Revision 3 list and in order; the take-home is last; the page shows it in that order', () => {
   const ordered = [...COPY.opening, COPY.bow, COPY.tuned, COPY.lens1, COPY.lens2, `${COPY.stringLabel} (the label`, COPY.shaking, COPY.shape,
     COPY.oneNote.question, ...COPY.oneNote.choices, COPY.oneNote.after, COPY.xray, COPY.hidden, COPY.notes.join(', '), COPY.tapNotes, COPY.together,
-    COPY.oneA, COPY.mri.question, ...COPY.mri.choices, COPY.mri.after,
+    `${COPY.heard} (the label`, COPY.oneA, COPY.mri.question, ...COPY.mri.choices, COPY.mri.after,
     `${COPY.labels.total}, ${COPY.labels.yourA}, ${COPY.plus}, ${COPY.equals}, ${COPY.zero}, ${COPY.oneAName}`, COPY.compare, COPY.final];
   let at = 0;
   for (const line of ordered) {
@@ -134,11 +149,12 @@ test('7. the copy is verbatim from the Revision 3 list and in order; the take-ho
     assert.ok(i >= 0, `not in the Revision 3 list, in order: ${line}`);
     at = i;
   }
-  assert.ok(copyList.includes(`22. ${COPY.final}\n\nNothing comes after line 22.`) && !/^23\. /m.test(copyList), 'the final line is last');
+  assert.ok(copyList.includes(`24. ${COPY.final}\n\nNothing comes after line 24.`) && !/^25\. /m.test(copyList), 'the final line is last');
+  assert.ok([COPY.opening[2], COPY.bow, COPY.tuned, COPY.oneNote.question, COPY.oneA, COPY.compare].every((l) => l.includes('A note')), 'the A is called an A note');
   for (const s of Object.values(LEVELS)) assert.ok(rev3.includes(s), `around the levels: ${s}`);
   for (const line of ordered) assert.ok(line.split(/(?<=[.?!])\s+(?=[A-Z])/).length <= 2, `at most two sentences: ${line}`);
   assert.ok(!/fourier|frequenc|harmonic|spectrum|DIFFERENCE/i.test(JSON.stringify(COPY)), 'nothing named yet, and no tuning game');
-  const calls = ['COPY.opening[0]', 'COPY.opening[1]', 'COPY.bow', 'COPY.tuned', 'COPY.lens1', 'COPY.lens2', 'COPY.shaking', 'COPY.shape', 'COPY.oneNote.question',
+  const calls = ['COPY.opening[0]', 'COPY.opening[1]', 'COPY.opening[2]', 'COPY.bow', 'COPY.tuned', 'COPY.lens1', 'COPY.lens2', 'COPY.shaking', 'COPY.shape', 'COPY.oneNote.question',
     'COPY.oneNote.after', 'COPY.xray', 'COPY.hidden', 'COPY.notes[k]', 'COPY.tapNotes', 'COPY.together', 'COPY.oneA', 'COPY.mri.question', 'COPY.mri.after',
     'COPY.labels.total', 'COPY.compare', 'COPY.final'];
   const pos = calls.map((c) => main.indexOf(c, main.indexOf('// ── the story')));

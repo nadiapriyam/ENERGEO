@@ -70,3 +70,29 @@ export function trace(amounts, cy, shift = 0, n = 260) {
   }
   return d;
 }
+
+// ── the ear: four notes go in, one A note comes out ──────────────────────────────────────────────────
+/** The four rows squeeze to the left; their notes flow into an ear; what you hear comes out on the right. */
+export const SQUEEZE = 0.38;
+export const EAR = { x: 402, y: 196 };
+export const HEARD = { x0: 470, x1: 604, cy: 214, label: { x: 537, y: 160 }, periods: 1.5 };
+/** Where a row's wave ends once squeezed. */
+export const squeezedEnd = () => STAGE.x + LABEL_W + (STAGE.w - LABEL_W - 16) * SQUEEZE;
+/** The path a note takes from the end of its row into the ear's opening. */
+export function funnel(k) {
+  const x0 = squeezedEnd();
+  const y0 = lane(k, 4).cy;
+  const x1 = EAR.x - 4;
+  const y1 = EAR.y + 6;
+  return `M ${x0.toFixed(1)} ${y0.toFixed(1)} C ${(x0 + 44).toFixed(1)} ${y0.toFixed(1)} ${(x1 - 30).toFixed(1)} ${y1.toFixed(1)} ${x1.toFixed(1)} ${y1.toFixed(1)}`;
+}
+/** What the ear hears: the one A note, drawn small on the right. */
+export function heardPath(n = 120) {
+  let d = '';
+  const w = HEARD.x1 - HEARD.x0;
+  for (let i = 0; i <= n; i++) {
+    const u = i / n;
+    d += `${i ? 'L' : 'M'}${(HEARD.x0 + u * w).toFixed(1)} ${(HEARD.cy - wave(A_NOTE, u * HEARD.periods) * PX * 0.7).toFixed(1)}`;
+  }
+  return d;
+}

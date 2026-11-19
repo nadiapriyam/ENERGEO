@@ -10,7 +10,7 @@ import { COPY } from './copy2.js';
 import {
   VIEW, HOME, transform, toView, lensCamera, lerpCamera, coverRadius, LENS, VIOLIN, STRINGS, A_STRING, BOW, musicians, ZOOMS, closeUp, stringPath,
 } from '../math/violin.js';
-import { PITCH, A_NOTE, STEPS, HIDDEN, part, STAGE, lane, trace } from '../math/tones.js';
+import { PITCH, A_NOTE, STEPS, HIDDEN, part, STAGE, lane, trace, EAR, HEARD, SQUEEZE, funnel, heardPath } from '../math/tones.js';
 
 const NS = 'http://www.w3.org/2000/svg';
 const REDUCED = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -198,7 +198,18 @@ const partPaths = HIDDEN.map((_, k) => svg('path', { class: `part-wave part-${k}
 const partsGroup = svg('g', { class: 'parts', 'clip-path': 'url(#l2-xray-clip)' }, ...partPaths);
 const veilRect = svg('rect', { class: 'veil-all', x: STAGE.x, y: STAGE.y, width: STAGE.w, height: STAGE.h, rx: 18 });
 const laneLabels = HIDDEN.map((_, k) => svg('text', { class: `lane-label part-${k}`, x: STAGE.x + 14, y: lane(k, 4).cy + 6, text: COPY.notes[k] }));
-inside.append(svg('rect', { class: 'stage', x: STAGE.x, y: STAGE.y, width: STAGE.w, height: STAGE.h, rx: 18 }), sumPath, veilRect, veil, partsGroup, ...laneLabels);
+// the ear: all four notes go in; one A note is what you hear
+const funnels = HIDDEN.map((_, k) => svg('path', { class: `funnel part-${k}`, d: funnel(k) }));
+const ear = svg('g', { class: 'ear', style: `transform: translate(${EAR.x}px, ${EAR.y}px)` },
+  svg('path', { class: 'ear-outer', d: 'M -2 -44 C 30 -50 46 -24 40 2 C 36 22 20 26 16 42 C 13 54 0 60 -8 52' }),
+  svg('path', { class: 'ear-inner', d: 'M 4 -26 C 22 -26 26 -6 18 8 C 13 16 6 16 4 24' }),
+  svg('circle', { class: 'ear-canal', cx: -2, cy: 6, r: 5 }));
+const heard = svg('g', { class: 'heard' },
+  svg('path', { class: 'heard-arrow', d: `M ${EAR.x + 50} ${EAR.y + 6} H ${HEARD.x0 - 8} M ${HEARD.x0 - 16} ${EAR.y} L ${HEARD.x0 - 8} ${EAR.y + 6} L ${HEARD.x0 - 16} ${EAR.y + 12}` }),
+  svg('path', { class: 'heard-wave', d: heardPath() }),
+  svg('text', { class: 'heard-label', x: HEARD.label.x, y: HEARD.label.y, 'text-anchor': 'middle', text: COPY.heard }));
+const hearing = svg('g', { class: 'hearing' }, ...funnels, ear, heard);
+inside.append(svg('rect', { class: 'stage', x: STAGE.x, y: STAGE.y, width: STAGE.w, height: STAGE.h, rx: 18 }), sumPath, veilRect, veil, partsGroup, ...laneLabels, hearing);
 
 // Level 1, remembered: arrows that add up to 0, next to notes that add up to one A
 const compare = svg('g', { class: 'compare' });
@@ -287,12 +298,14 @@ async function opening() {                                  // you are the first
   await pause(reading(COPY.opening[0]));
   say(COPY.opening[1]);
   await pause(reading(COPY.opening[1]));
+  say(COPY.opening[2]);
+  await pause(reading(COPY.opening[2]));
   say(COPY.bow, 'hint');
   await bowTheA();
   phase = 'tuned';
   orchestraTunes();
   for (const p of players) p.classList.add('tuned');
-  describe('Every player in the orchestra shows a little note: they are all tuned to your A.');
+  describe('Every player in the orchestra shows a little note: they are all tuned to your A note.');
   say(COPY.tuned);
   await pause(reading(COPY.tuned) + 900);
   zoomIntoViolin();
@@ -500,7 +513,7 @@ async function splitNotes() {                               // four notes, one u
   setTimeout(() => { if (!heard && phase === 'notes') heardAll(); }, 14000);
 }
 
-async function together() {                                 // all four at once: one A again
+async function together() {                                 // all four at once, into your ear: one A note
   phase = 'together';
   const b = el('button', { type: 'button', class: 'action', text: COPY.together });
   transport.replaceChildren(b);
@@ -508,14 +521,16 @@ async function together() {                                 // all four at once:
   followFocus(b);
   await new Promise((r) => b.addEventListener('click', r, { once: true }));
   b.remove();
-  partPaths.forEach((p, k) => { p.style.transform = `translateY(${one.cy - lane(k, 4).cy}px)`; });
-  laneLabels.forEach((l) => on(l, false));
-  await wait(700);
-  on(veilRect, false);
-  on(partsGroup, false);
-  describe('The four waves slide back together and become the one wave of your A.');
-  await playA(2.2);
+  clear();
   notesRow.classList.remove('in');
+  partsGroup.classList.add('squeezed');                     // the four rows make room for the ear
+  partPaths.forEach((p) => { p.style.transform = `scaleX(${SQUEEZE})`; });
+  on(hearing);
+  describe('The four notes flow from their rows into an ear. Out of the ear comes one wave, labelled A note: what you hear.');
+  await wait(500);
+  hearing.classList.add('flowing');
+  await playA(2.6);
+  hearing.classList.remove('flowing');
   clear();
   phase = 'oneA';
   say(COPY.oneA);
@@ -564,7 +579,7 @@ async function remember() {                                 // the same idea as 
   rightSteps.push(svg('text', { class: 'equals', x: R.x + 24, y: 286, 'text-anchor': 'middle', text: COPY.equals }),
     svg('path', { class: 'mini mini-sum', d: miniTrace(A_NOTE, R.x + 44, R.w - 96, 280) }),
     svg('text', { class: 'result', x: R.x + R.w - 30, y: 296, 'text-anchor': 'middle', text: COPY.oneAName }));
-  describe('Left, Level 1: up, down, up, down arrows add up to 0. Right: four notes add up to one A.');
+  describe('Left, Level 1: up, down, up, down arrows add up to 0. Right: four notes add up to one A note.');
   for (const n of steps) { left.append(n); n.classList.add('pop'); await wait(220); }
   for (const n of rightSteps) { right.append(n); n.classList.add('pop'); await wait(200); }
   clear();

@@ -1,11 +1,69 @@
 # Level 2: "Inside a note"
 
-Nadia's specification for Level 2, which follows Level 1 (the MRI story, `docs/prototype_try_spec.md`). **Revision 3
-(2026-11-19) governs.** Revisions 2 and 1 are kept below as history. Level 1 is at `try/` and Level 2 at
-`try/level-2/`. Every learner-facing line of Level 2 is copied from the Revision 3 list, and `test/level2.test.js`
+Nadia's specification for Level 2, which follows Level 1 (the MRI story, `docs/prototype_try_spec.md`). **Revision 4
+(2026-11-19) governs.** Revisions 3, 2 and 1 are kept below as history. Level 1 is at `try/` and Level 2 at
+`try/level-2/`. Every learner-facing line of Level 2 is copied from the Revision 4 list, and `test/level2.test.js`
 checks that.
 
-## Revision 3 (2026-11-19): a story in pictures, a bow, a magnifying glass — governs
+## Revision 4 (2026-11-19): "A note", why the orchestra tunes, and the ear — governs
+
+Nadia, verbatim:
+
+> yeah this is good, just make sure to put A note. and make sure to inform the user that the whole orchestra trusts you to play an A to play their concert in tune. you can fix up the wording, im just basically saying people who don:t know orchestras do this should also understand. also put and all the sub notes high a, a e into an ear and the output is this A violin note as a visual guide for our ear only understand one.
+
+### What changes (the story of Revision 3 otherwise stands)
+
+- **"A note".** The learner's A is called an A note wherever it is named, so that someone who does not read music
+  knows that A is the name of a note.
+- **Why the orchestra tunes**, for someone who has never seen it: "Before a concert, every player tunes to the same
+  note, so the whole orchestra plays in tune." Then: "Tonight, that note is yours: an A note. The whole orchestra
+  trusts you to get it right."
+- **The ear.** "Play them together" no longer slides the four notes back into one wave. The four rows shrink to the
+  left, and each note flows along its own dashed line into a drawn ear while the A plays. Out of the ear comes one
+  wave, labelled "A note": what you hear. Then: "Your ear takes in all four and hears just one A note. Inside, it is
+  many notes at once."
+
+### Level 2 learner copy, in order (drafted by Claude at Nadia's request, for her review)
+
+1. Tonight, you're the first violin.
+2. Before a concert, every player tunes to the same note, so the whole orchestra plays in tune.
+3. Tonight, that note is yours: an A note. The whole orchestra trusts you to get it right.
+4. Drag the bow to play your A note.
+5. Everyone's in tune with your A note.
+6. Drag the magnifying glass onto your violin.
+7. Now find the A string.
+8. A (the label on the A string)
+9. Your A string shakes back and forth 440 times a second.
+10. This is the shape of that shaking.
+11. The whole orchestra trusts this A note. Is it just one note? [Yes] [No] [Not sure]
+12. Let's see. (Nadia's Level 1 wording)
+13. Slide the glass across the sound.
+14. Hidden inside: four notes.
+15. A, high A, E, higher A (the four notes, to tap)
+16. Tap each one to hear it.
+17. [Play them together]
+18. A note (the label on what comes out of the ear)
+19. Your ear takes in all four and hears just one A note. Inside, it is many notes at once.
+20. Notice a similarity with the MRI scanner? [Yes] [Not yet]
+21. Look.
+22. TOTAL, YOUR A NOTE, +, =, 0, A (the side by side)
+23. In Level 1, one 0 hid many arrows. Here, one A note hides many notes.
+24. One thing on the outside. Many hidden parts inside.
+
+Nothing comes after line 24.
+
+Around the levels: "Level 1", "Level 2", "Turn your sound on." and "Next: Level 2".
+
+### The physics behind the changes
+
+- **Line 2.** Tuning means each player adjusts their instrument until it sounds the same pitch as one shared note, so
+  that every instrument agrees.
+- **The ear (lines 18 and 19).** The ear receives all four notes at once. Hearing groups notes whose frequencies are
+  whole-number multiples of one pitch into a single sound, heard at that pitch: one A. The drawing shows what is heard,
+  not the inner workings of the ear. The wave labelled "A note" is exactly the four notes added up. Everything else in
+  Revision 3's physics notes still holds.
+
+## Revision 3 (2026-11-19): a story in pictures, a bow, a magnifying glass — superseded by Revision 4 where it changes it
 
 Nadia, verbatim:
 
@@ -44,7 +102,7 @@ many hidden parts inside.
 There is no matching task and no DIFFERENCE: the tuning game of Revision 2 is gone ("the tunning thing is too hard").
 Every interaction is easy to get right: bow anywhere, drag the glass to a marked ring, slide it anywhere, tap a note.
 
-### Level 2 learner copy, in order (drafted by Claude at Nadia's request, for her review)
+### Level 2 learner copy (Revision 3), in order
 
 1. Tonight, you're the first violin.
 2. Before the concert, the whole orchestra tunes to your A.
