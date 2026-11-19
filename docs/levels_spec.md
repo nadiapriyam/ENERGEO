@@ -179,7 +179,7 @@ hidden note. Fourier's name comes only at the very end, once the learner has use
 7. **Its name, last.** "Fine, the glasses aren't really magic. They're math, and they're called the Fourier
    transform." One line of history and use, and the goal sentence.
 
-### Level 3, "The magic glasses": learner copy, in order (drafted by Claude at Nadia's request, for her review)
+### Level 3 learner copy (Revision 1, superseded by Revision 2 below), in order
 
 1. Level 1: one A note hid four notes. Level 2: one 0 hid countless tiny magnets.
 2. It would be nice to actually see what's hiding.
@@ -217,7 +217,7 @@ hidden note. Fourier's name comes only at the very end, once the learner has use
 34. Joseph Fourier came up with the idea about 200 years ago. Today it is at work in MRI scanners, phones and music apps.
 35. Here it is: the mathematical tool that lets us start seeing what hides inside.
 
-Nothing comes after line 35.
+Nothing came after line 35.
 
 ### What Level 3 claims, and what it leaves out
 
@@ -240,3 +240,81 @@ The numbers are computed in `src/math/glasses.js` and checked by `test/glasses.t
   transforms. Phones use them in 4G, 5G and Wi-Fi (OFDM). Music apps use them in audio coding and equalizers.
 - **Left out on purpose.** Equations, sines and cosines, "frequency", "spectrum" and "coefficient" are left out. So are
   energy, and anything about Level 4. "Fourier transform" is the one technical term, given once, at the end.
+
+### Revision 2 (2026-11-19), which governs Level 3. Nadia, verbatim:
+
+> i dont like the word squiggle thats too sarcastic, dial down on the sarcasam, maybe instead of introducing the glasses first, lets introduce a prism first then make the rainbow more cyber city palleted rainbow so darker but vibrant colored rainbow almost like led lights. also to clear up the squiggle, use signal and show signal on the tuner so theres more of a transition. you need to work on transitions its a bit choppy, and more of a story please including the transition from level 2. this is later going to be directly aftert level 2
+
+#### What changes
+
+- **"Signal", not "squiggle".** The sarcasm is gone: no "Thank you, tuner. Very helpful.", no "Squiggles are terrible
+  at sharing secrets.", no "nobody's watching" and no "this could take a while". What warmth remains is gentle ("But
+  you know better.").
+- **A story straight after Level 2.** "After your scan, you head back to the concert hall. The concert starts soon.
+  You clip a tuner onto your violin to check your A note." The tuner is drawn clipped to the violin's scroll.
+- **The signal on the tuner, and the first transition.** When the learner plays the A note, the tuner's screen draws
+  it as a glowing signal and then shows "A". The little signal then grows out of the screen into the big signal while
+  the tuner slides away. It is one drawing, moved, not two.
+- **A prism before the glasses.** "A stage light shines through a glass prism." A white beam draws itself into a prism
+  and fans out as coloured rays, below the signal, where the bars will later stand. Then: "If only there were a prism
+  for sound…" "There is. Picture it as a pair of glasses."
+- **Cyber-city colours.** When the glasses go on, the board dims to a night-city dark. The signal, the bars, the frame,
+  the machine's window and its crank glow in saturated LED colours (magenta, violet, blue, cyan, green, yellow,
+  orange). The four notes keep their Level 1 colours as LEDs. Taking the glasses off brings the daylight back.
+- **Smoother transitions everywhere.** Pieces move into place instead of scenes swapping:
+  - The prism's rays give way to the bars as the notes land.
+  - The violin's signal fades into the scanner's.
+  - The signal box and the bars shrink into the machine's input and window while the machine forms around them.
+  - Text fades out before new text fades in, and the button row keeps its height, so nothing jumps.
+
+#### Level 3 learner copy (Revision 2), in order (drafted by Claude at Nadia's request, for her review)
+
+1. After your scan, you head back to the concert hall. The concert starts soon.
+2. You clip a tuner onto your violin to check your A note.
+3. [Play your A note]
+4. A (the letter on the tuner)
+5. The tuner draws your note as a signal: the shape of the sound over time.
+6. Then it names one note: A.
+7. But you know better. Four notes are hiding in this signal.
+8. Can you see them? [Yes] [Not really]
+9. Neither can anyone, just by looking.
+10. A stage light shines through a glass prism.
+11. The prism splits white light into all the colors hiding inside it.
+12. If only there were a prism for sound…
+13. There is. Picture it as a pair of glasses.
+14. [Put on the glasses]
+15. Your A note, split into the four notes inside it.
+16. A, high A, E, higher A (the labels under the bars)
+17. Each bar shows how much of that note there is.
+18. Take them off, then put them back on.
+19. [Take them off] / [Put them on]
+20. Same sound, seen two ways: as a signal, and as its notes.
+21. With the glasses on, you can change the notes. Can you turn it into a pure tone, like a tuning fork?
+22. Drag the bars down to 0, all but one. (only after 9 seconds)
+23. One bar, one smooth wave: a tuning fork.
+24. Now bring the other notes back.
+25. Every bump in the signal comes from a bar.
+26. Now think back to the scanner. Its faint reply was a signal too, a much busier one.
+27. [Look through the glasses]
+28. Lots of bars this time. Each one comes from a different spot in your body: the taller the bar, the more of you is there.
+29. The scanner has these glasses built into a machine. Turn its crank.
+30. [Turn the crank]
+31. Each turn changes one signal into one row of your picture.
+32. The machine takes it from here.
+33. Signal in, picture out.
+34. The glasses are made up. What they do is real math, called the Fourier transform.
+35. Joseph Fourier came up with the idea about 200 years ago. Today it is at work in MRI scanners, phones and music apps.
+36. Here it is: the mathematical tool that lets us start seeing what hides inside.
+
+Nothing comes after line 36.
+
+#### What the new lines claim
+
+- **Line 5.** A signal is a sound's shape over time. Many digital tuners draw it as well as the note's name. The drawn
+  signal is the same four-tone A note as in Level 1.
+- **Lines 10–13.** A prism really does separate white light into the colours it is made of. "A prism for sound"
+  exists: it is what the Fourier transform does, and it is how spectrum analyzers show sound. The glasses are only a
+  picture of it, and line 34 says so plainly.
+- **Everything else** is as in Revision 1's notes above: the bars are exact, the machine's unmixing is a real discrete
+  Fourier transform, the MRI story is simplified to one direction, and line 35's history and uses are checked. Fourier's
+  name comes only once, at the end, and the jargon is left out.

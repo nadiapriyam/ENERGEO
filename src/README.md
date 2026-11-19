@@ -107,10 +107,13 @@ and one accent. `docs/levels_spec.md` governs. `try/level-2/` and `notebook/` fo
   - Files: `src/levels/mri.js` (with `copyMri.js`), `src/math/pieces.js` and `src/math/scanner.js`.
 
 - **Level 3, "The magic glasses"**, which opens underneath when Level 2 ends:
-  - A violin tuner names one note; the squiggle hides four.
-  - Magic rainbow glasses split the squiggle into bars, one per hidden note. The learner takes them off and on, then
-    drags the bars to make a tuning fork and bring the notes back.
-  - A Fourier machine with the glasses built in turns the scanner's squiggles into the picture, one crank at a time.
+  - The story picks up after the scan. A tuner on the violin draws the A note as a small signal and names one note;
+    the signal grows to fill the page, and four notes hide in it.
+  - A prism splits a stage light into LED colours. Then glasses, a prism for sound, dim the page to a night-city dark
+    and split the signal into glowing bars, one per hidden note, standing where the prism's rays stood. The learner
+    takes them off and on, then drags the bars to make a tuning fork and bring the notes back.
+  - The scanner's busier signal turns into many bars. Then the signal and the bars shrink into a Fourier machine,
+    which turns each signal into one row of the picture, one crank at a time.
   - Only then is the tool named: the Fourier transform.
   - Files: `src/levels/glasses.js` (with `copyGlasses.js`) and `src/math/glasses.js`. The app's own Fourier blocks
     stay in `src/math/fourier.js`.

@@ -1,84 +1,110 @@
-/* Level 3, "The magic glasses", in the levels' plain style: a white page, the system sans, one accent. The one burst of
-   colour is the glasses: rainbow rims, a rainbow frame round the board while you wear them, and rainbow bars when they
-   split something with many tones. The four notes keep their Level 1 colours. */
+/* Level 3, "The magic glasses". It starts in the levels' plain style: a white page, the system sans, one accent. When
+   the glasses go on, the board dims to a night-city dark and everything the glasses show glows like LED lights:
+   saturated magenta, violet, blue, cyan, green, yellow and orange. The four notes keep their Level 1 colours, as LEDs.
+   Scenes move into one another (transforms and fades), never just swap. */
 
-.glasses-board { display: block; width: 100%; height: auto; overflow: hidden; border-radius: 20px; touch-action: manipulation; background: #ffffff; }
+.glasses-board {
+  display: block; width: 100%; height: auto; overflow: hidden; border-radius: 20px; touch-action: manipulation;
+  --night: #0a0d1c; --night-2: #121833; --night-edge: #27305a;
+}
 .glasses-board.dragging-on { touch-action: none; cursor: ns-resize; }
-.scene { opacity: 0; visibility: hidden; transition: opacity 500ms ease-out, visibility 0s linear 500ms; }
-.scene.on { opacity: 1; visibility: visible; transition: opacity 500ms ease-out, visibility 0s; }
+.bg { fill: #ffffff; transition: fill 900ms ease-in-out; }
+.night .bg { fill: var(--night); }
+.scene { opacity: 0; visibility: hidden; transition: opacity 600ms ease-out, visibility 0s linear 600ms; }
+.scene.on { opacity: 1; visibility: visible; transition: opacity 600ms ease-out, visibility 0s; }
 
-/* the tuner */
+/* the tuner, on the violin's scroll */
+.pegbox, .scroll { fill: #8a5a2c; }
+.scroll-curl { fill: none; stroke: #5e3b1b; stroke-width: 2.4; stroke-linecap: round; }
 .tuner-body { fill: #2f3540; }
 .tuner-clip { fill: #4a5260; }
-.tuner-screen { fill: #e9f2e4; stroke: #c9d6c2; stroke-width: 2; }
-.tick { stroke: #7d8a76; stroke-width: 2; stroke-linecap: round; }
-.tick.centre { stroke: #2e9e5b; stroke-width: 3; }
-.tuner-letter { font-family: var(--font); font-size: 46px; font-weight: 700; fill: #1b1f24; opacity: 0; transition: opacity 400ms ease-out 1200ms; }
-.tuner.in-tune .tuner-letter, .tuner.listening .tuner-letter { opacity: 1; }
-.needle { transition: transform 1600ms cubic-bezier(0.25, 1.6, 0.4, 1); }
-.needle line { stroke: #1b1f24; stroke-width: 3; stroke-linecap: round; }
-.needle circle { fill: #1b1f24; }
+.tuner-screen { fill: #0f1a2b; stroke: #3a4a63; stroke-width: 2; }
+.tuner-letter { font-family: var(--font); font-size: 30px; font-weight: 700; fill: #7dffb0; opacity: 0; transition: opacity 400ms ease-out; }
+.tuner.in-tune .tuner-letter { opacity: 1; }
 .tuner-light { fill: #59606b; transition: fill 300ms ease-out; }
 .tuner.in-tune .tuner-light { fill: #3cc46e; filter: drop-shadow(0 0 6px #3cc46e); }
+.tuner { transition: opacity 900ms ease-out, transform 1100ms cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 900ms; }
+.tuner.leaving { opacity: 0; transform: translateY(70px); }
 
-/* the squiggle, and its four tones lifting out of it */
-.strip-box { fill: #f7f9fc; stroke: #e2e7f0; stroke-width: 2; }
-.squiggle { fill: none; stroke: #c7891a; stroke-width: 3.2; stroke-linejoin: round; }
-.strip.radio .squiggle { stroke: #6f86c9; stroke-width: 1.6; }
-.part { fill: none; stroke-width: 2.6; opacity: 0; transform-box: view-box; transform-origin: 320px 111px; transition: opacity 500ms ease-out, transform 700ms cubic-bezier(0.5, 0, 0.6, 1); }
+/* the signal: small on the tuner's screen, then big; later small again, in the machine */
+.strip { transform-box: view-box; transform-origin: 0 0; transition: transform 1100ms cubic-bezier(0.45, 0, 0.2, 1); }
+.strip-box { fill: #f7f9fc; stroke: #e2e7f0; stroke-width: 2; transition: opacity 700ms ease-out 400ms, fill 900ms ease-in-out, stroke 900ms ease-in-out; }
+.strip.small .strip-box { opacity: 0; transition-delay: 0s; }
+.signal { fill: none; stroke: #c7891a; stroke-width: 3.2; stroke-linejoin: round; vector-effect: non-scaling-stroke; transition: stroke 900ms ease-in-out; }
+.strip.small .signal { stroke: #7dffb0; }
+.strip.radio .signal { stroke-width: 1.6; }
+.night .strip-box { fill: var(--night-2); stroke: var(--night-edge); }
+.night .signal { stroke: #ffc35a; filter: url(#f3-glow); }
+.night .strip.radio .signal { stroke: #8fb4ff; }
+.signal-inner { transition: opacity 350ms ease-out, transform 450ms ease-in; }
+.signal-inner.swapping { opacity: 0; }
+.signal-inner.feeding { transform: translateX(120px); opacity: 0; }
+.part { fill: none; stroke-width: 2.6; opacity: 0; transform-box: view-box; transform-origin: 320px 111px; transition: opacity 500ms ease-out, transform 650ms cubic-bezier(0.5, 0, 0.6, 1); }
 .strip.splitting .part { opacity: 1; }
 .strip.dropping .part { opacity: 0; }
 
-/* through the glasses: bars */
-.baseline { stroke: #c9d1db; stroke-width: 2; }
-.bar { transform-box: fill-box; transform-origin: bottom; transition: transform 500ms cubic-bezier(0.3, 0.7, 0.3, 1), y 120ms ease-out, height 120ms ease-out; }
+/* the prism: white light in, LED colours out */
+.beam { stroke: #9aa3ad; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 260; stroke-dashoffset: 260; transition: stroke-dashoffset 700ms ease-out; }
+.ray { stroke-width: 4; stroke-linecap: round; stroke-dasharray: 320; stroke-dashoffset: 320; transition: stroke-dashoffset 700ms ease-out; }
+.prism.shining .beam, .prism.shining .ray { stroke-dashoffset: 0; }
+.glass { fill: rgba(205, 225, 255, 0.55); stroke: #8fa3c4; stroke-width: 2.4; stroke-linejoin: round; }
+.prism.fading .ray { stroke-width: 10; opacity: 0.25; transition: stroke-width 600ms ease-out, opacity 600ms ease-out; }
+
+/* through the glasses: glowing bars */
+.spectrum { transform-box: view-box; transform-origin: 0 0; transition: transform 1100ms cubic-bezier(0.45, 0, 0.2, 1), opacity 500ms ease-out; opacity: 0; }
+.spectrum.on { opacity: 1; }
+.spectrum.hidden { opacity: 0; }
+.baseline { stroke: #c9d1db; stroke-width: 2; transition: stroke 900ms ease-in-out; }
+.night .baseline { stroke: var(--night-edge); }
+.bar { transform-box: fill-box; transform-origin: bottom; transition: transform 500ms cubic-bezier(0.3, 0.7, 0.3, 1); filter: url(#f3-glow); }
 .bar.growing { transform: scaleY(0); }
 .bar-label { font-family: var(--font); font-size: 17px; font-weight: 700; }
 .four-bars, .many-bars { opacity: 0; transition: opacity 400ms ease-out; }
 .four-bars.on, .many-bars.on { opacity: 1; }
-.four-bars .bar { opacity: 1; }
-.glasses-board.dragging-on .four-bars .bar { cursor: ns-resize; }
+.thin-bar { transform-box: fill-box; transform-origin: bottom; transition: transform 380ms ease-out; }
+.thin-bar.growing { transform: scaleY(0); }
+.spectrum.in-machine .bar-label, .spectrum.in-machine .baseline { opacity: 0; }
 
 /* wearing the glasses */
-.rainbow-frame { fill: none; stroke: url(#f3-rainbow); stroke-width: 8; opacity: 0; transition: opacity 500ms ease-out; pointer-events: none; }
-.glasses-figure.glasses .rainbow-frame { opacity: 1; }
+.led-frame { fill: none; stroke: url(#f3-led); stroke-width: 6; opacity: 0; transition: opacity 600ms ease-out; pointer-events: none; filter: url(#f3-glow); }
+.glasses-figure.glasses .led-frame { opacity: 1; }
 .glasses-overlay { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; pointer-events: none; }
-.glasses-art { width: min(70vw, 520px); animation: onto-your-face 1.3s cubic-bezier(0.55, 0, 0.75, 0.6) forwards; }
+.glasses-art { width: min(70vw, 520px); animation: onto-your-face 1.3s cubic-bezier(0.55, 0, 0.75, 0.6) forwards; filter: drop-shadow(0 0 10px rgba(255, 60, 220, 0.45)); }
 @keyframes onto-your-face {
   0% { transform: translateY(30vh) scale(0.3); opacity: 0; }
   30% { transform: translateY(0) scale(0.9); opacity: 1; }
   100% { transform: translateY(-4vh) scale(7); opacity: 0; }
 }
-.lens { fill: rgba(200, 225, 255, 0.18); }
+.lens { fill: rgba(20, 24, 60, 0.28); }
 .rim { fill: none; stroke: url(#f3-rim); stroke-width: 12; stroke-linecap: round; }
-.temple { fill: none; stroke: #2f3540; stroke-width: 8; stroke-linecap: round; }
+.temple { fill: none; stroke: #1b1f2e; stroke-width: 8; stroke-linecap: round; }
 
 /* the Fourier machine */
-.input-box { fill: #f7f9fc; stroke: #e2e7f0; stroke-width: 2; }
-.input-squiggle { fill: none; stroke: #6f86c9; stroke-width: 1.6; transition: transform 450ms ease-in, opacity 450ms ease-in; }
-.input-squiggle.feeding { transform: translateX(70px); opacity: 0; }
-.chute { fill: none; stroke: #c9d1db; stroke-width: 3; stroke-dasharray: 6 6; }
-.machine-box { fill: #e9edf3; stroke: #b7c1cd; stroke-width: 2.4; }
-.machine-window { fill: #ffffff; stroke: url(#f3-rainbow); stroke-width: 5; }
+.chute { fill: none; stroke: var(--night-edge); stroke-width: 3; stroke-dasharray: 6 6; }
+.machine-box { fill: #1a2140; stroke: #3a4577; stroke-width: 2.4; }
+.machine-window { fill: none; stroke: url(#f3-led); stroke-width: 4; filter: url(#f3-glow); }
 .crank { cursor: pointer; transition: transform 450ms ease-in-out; }
-.machine.fast .crank { transition-duration: 40ms; }
-.crank:focus-visible .crank-knob { stroke: var(--accent); stroke-width: 3; }
+.machine-front.fast .crank { transition-duration: 40ms; }
+.crank:focus-visible .crank-knob { stroke: #ffffff; stroke-width: 3; }
 .crank-hit { fill: transparent; }
-.crank-arm { stroke: #59606b; stroke-width: 6; stroke-linecap: round; }
-.crank-knob { fill: var(--accent); }
-.crank-hub { fill: #59606b; }
-.canvas-box { fill: #000000; stroke: #b7c1cd; stroke-width: 2; }
+.crank-arm { stroke: #8b93b8; stroke-width: 6; stroke-linecap: round; }
+.crank-knob { fill: #ff3fd0; filter: url(#f3-glow); }
+.crank-hub { fill: #8b93b8; }
+.canvas-box { fill: #000000; stroke: var(--night-edge); stroke-width: 2; }
 .pixel.fresh { animation: print 400ms ease-out; }
 @keyframes print { from { opacity: 0; } }
 
-.controls { display: flex; justify-content: center; gap: 10px; min-height: 0.5em; margin: 6px 0 4px; }
+/* the words and the buttons: no jumps */
+.controls { display: flex; justify-content: center; gap: 10px; min-height: 3em; align-items: center; margin: 6px 0 2px; }
 .controls .action { margin: 0; }
+#glasses-lesson .line.leaving { opacity: 0; transform: translateY(-4px); transition: opacity 260ms ease-in, transform 260ms ease-in; }
 
 @media (max-width: 520px) {
   .bar-label { font-size: 22px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .scene, .scene.on, .tuner-letter, .needle, .tuner-light, .part, .bar, .four-bars, .many-bars, .rainbow-frame, .input-squiggle, .crank { transition: none; }
+  .scene, .scene.on, .bg, .tuner, .tuner-letter, .tuner-light, .strip, .strip-box, .signal, .signal-inner, .part, .beam, .ray,
+  .spectrum, .baseline, .bar, .thin-bar, .four-bars, .many-bars, .led-frame, .crank, #glasses-lesson .line.leaving { transition: none; }
   .pixel.fresh, .glasses-art { animation: none; }
 }
