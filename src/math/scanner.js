@@ -90,3 +90,35 @@ export function picture() {
   }
   return cells;
 }
+
+// ── the eye: the picture's parts go in, one picture is what you see ─────────────────────────────────
+/** The painted picture slides left to make room; an eye looks at it; what the eye sees is drawn on the right. */
+export const PICTURE_SHIFT = -150;
+export const EYE = { x: 372, y: 264, rx: 38, ry: 22, iris: 12, look: -9 };
+export const SEEN = { x: 452, y: 194, size: 150, label: { x: 527, y: 180 } };
+/** A few of the picture's cells (after the shift), each sending a line into the eye: the parts it takes in. */
+export function eyeFeeds(n = 6) {
+  const { x, y, size } = SCREEN;
+  return Array.from({ length: n }, (_, i) => {
+    const u = 0.22 + 0.56 * ((i * 0.618) % 1);            // spread over the head, not the dark corners
+    const v = 0.18 + (0.64 * i) / (n - 1);
+    return { from: { x: x + PICTURE_SHIFT + u * size, y: y + v * size }, to: { x: EYE.x + EYE.look - 2, y: EYE.y } };
+  });
+}
+/** The transform that draws the whole picture (screen box included) small, as what you see. */
+export const seenTransform = () => {
+  const s = SEEN.size / (SCREEN.size + 12);
+  return { s, tx: SEEN.x - (SCREEN.x - 6) * s, ty: SEEN.y - (SCREEN.y - 6) * s };
+};
+
+// ── side by side with Level 1: one A note hides many notes; one 0 signal hides many tiny magnets ───────────────
+export const COMPARE = {
+  left: { x: 24, y: 24, w: 288, h: 392 },
+  right: { x: 328, y: 24, w: 288, h: 392 },
+  labelY: 58,
+  notesY: [112, 160, 208, 256],                           // the four notes, one under another
+  sumY: 340,
+  magnetsY: 196,
+  bracketY: 244,
+  resultY: 352,
+};

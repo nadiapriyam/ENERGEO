@@ -1,5 +1,7 @@
 # Level 2: "Inside a note"
 
+> **For the combined page (2026-11-19), `docs/levels_spec.md` governs.** This story is now Level 1. This document is its history (Revisions 1–4, written when it was Level 2).
+
 Nadia's specification for Level 2, which follows Level 1 (the MRI story, `docs/prototype_try_spec.md`). **Revision 4
 (2026-11-19) governs.** Revisions 3, 2 and 1 are kept below as history. Level 1 is at `try/` and Level 2 at
 `try/level-2/`. Every learner-facing line of Level 2 is copied from the Revision 4 list, and `test/level2.test.js`

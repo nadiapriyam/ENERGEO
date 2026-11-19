@@ -85,25 +85,26 @@ research has proved, falsified and left open. `src/preview/main.js` only lays ou
 records, the application matrix, the ledger and the test files. `test/preview.test.js` checks that it is current. It
 does not touch the journey store or any interactive.
 
-## The levels (`try/`, `try/level-2/`)
+## The levels (`try/`)
 
-Two short Mathigon-style interactives in the same plain style: a white page, the system sans (its 0 is a plain 0) and
-one accent. `notebook/` forwards to `try/`.
+Two short Mathigon-style stories on one page, in one plain style: a white page, the system sans (its 0 is a plain 0)
+and one accent. `docs/levels_spec.md` governs. `try/level-2/` and `notebook/` forward here.
 
-- **Level 1, "Inside the scanner"**, at `try/` (`docs/prototype_try_spec.md`, Revision 4): slide into an MRI scanner,
-  where protons become ↑ and ↓ magnets. Pairing them drives the TOTAL (the arrows added up) to an exact 0. Covered drops
-  whose TOTAL is 0 turn out to be full. The magnet flips one arrow, and the scanner paints a picture. When its last line
-  is shown, a link to Level 2 appears.
-  - `src/levels/level1.js` (with `copy1.js`), started by `page1.js`.
-  - `src/math/pieces.js` and `src/math/scanner.js`.
-- **Level 2, "Inside a note"**, at `try/level-2/` (`docs/level2_spec.md`, Revision 3), a story in pictures:
-  - You are the first violin. You drag the bow to play an A, and the orchestra tunes to it.
-  - A magnifying glass zooms seamlessly into the violin, then into the A string, shaking.
-  - Cut inside the sound: "Is it just one note?" The glass, slid across the sound, X-rays it into four hidden notes
-    (A, high A, E, higher A), and you tap each one to hear it.
-  - Then back to Level 1: ↑ + ↓ + ↑ + ↓ = 0 beside A + A + E + A = one A.
-  - `src/levels/level2.js` (with `copy2.js`), started by `page2.js`.
-  - `src/math/violin.js` (the drawing and the camera) and `src/math/tones.js` (the sound).
+- **Level 1, "Inside a note"** (the violin):
+  - You are the first violin; before a concert every player tunes to one note, and tonight it is your A note. You bow
+    it and the orchestra tunes.
+  - A magnifying glass zooms into the violin, then into its A string.
+  - Inside the sound, the glass X-rays the A note into four hidden notes, which you tap to hear.
+  - Together they flow into an ear, and you hear one A note.
+  - Files: `src/levels/note.js` (with `copyNote.js`), `src/math/violin.js` and `src/math/tones.js`.
+- **Level 2, "Inside the scanner"** (the MRI), which opens underneath when Level 1 ends:
+  - Protons become ↑ and ↓ magnets, and pairing them drives the TOTAL SIGNAL to an exact 0 signal.
+  - Covered drops whose signal is 0 turn out to be full.
+  - The magnet turns the 0 into a small signal it can read (though the 0 held far more), and the scanner paints a
+    picture.
+  - An eye sees one picture.
+  - "Do you see a similarity to the violin level?" Side by side: one A note = four notes; 0 signal = ↑ + ↓ + ↑ + ↓.
+  - Files: `src/levels/mri.js` (with `copyMri.js`), `src/math/pieces.js` and `src/math/scanner.js`.
 
-`base.css` holds the shared page, prompt, buttons and choices. Every learner-facing line is in a `copy*.js` file,
-verbatim from the specs. `test/level1.test.js` and `test/level2.test.js` check the mathematics, the layout and the copy.
+`src/levels/page.js` starts Level 1 and opens Level 2. `base.css` holds the shared page, prompt, buttons and choices.
+`test/note.test.js` and `test/mri.test.js` check the mathematics, the layout and the copy.

@@ -1,6 +1,6 @@
-// Every learner-facing line of Level 1 (Interactive 01), verbatim from docs/prototype_try_spec.md, Revision 4 (checked by
-// test/try.test.js). Lines kept from Revision 2 are Nadia's wording; the rest was drafted at her request and is listed in
-// the spec for her review. Nothing else on the page is learner-facing text, apart from accessibility labels.
+// Every learner-facing line of Level 2, "Inside the scanner", verbatim from docs/levels_spec.md (checked by
+// test/mri.test.js). Lines kept from docs/prototype_try_spec.md Revision 2 are Nadia's wording; the rest was drafted at
+// her request and is listed in the spec for her review. Nothing else on the page is learner-facing text, apart from accessibility labels.
 
 export const COPY = {
   scanner: ['This is an MRI scanner.', 'It can see inside your body: no X-rays, no cuts.'],
@@ -14,15 +14,15 @@ export const COPY = {
   poles: { n: 'N', s: 'S' },
   proton: ['At the heart of each hydrogen atom is a proton: a tiny magnet.', 'Picture each one as an arrow, pointing from S to N.'],
   hook: "So many tiny magnets. Why don't they add up to one giant magnet?",
-  totalLabel: 'TOTAL',
-  totalMeans: 'The TOTAL adds up every arrow in the drop.',
+  totalLabel: 'TOTAL SIGNAL',
+  totalMeans: 'The TOTAL SIGNAL adds up every arrow in the drop. A scanner can only pick up this total.',
   sum: { plus: '+', equals: '=', more: '…' },
   task: 'Can you make the total 0?',
   hint: 'Drag a ↓ next to an ↑.',
   groupZero: '0',
   check1: { question: 'Can every piece still be here while the total is 0?', choices: ['Yes', 'No', 'Not sure'], after: "Let's see." },
   zero: '0',
-  reached: ['You got 0.', 'But did everything disappear?'],
+  reached: ['You got 0 signal.', 'But did everything disappear?'],
   lookCloser: 'Look closer',
   check2: {
     question: 'If the total is 0, are the pieces gone?',
@@ -43,16 +43,23 @@ export const COPY = {
     look: 'Look inside',
   },
   reveal: 'One result. Many possible arrangements behind it.',
-  magnetQuestion: 'Your total is 0. So how can a scanner see anything?',
+  magnetQuestion: 'Your total signal is 0. So how can a scanner see anything?',
   switchOn: 'Switch on the magnet',
   magnet: [
     "Its magnet is tens of thousands of times stronger than Earth's.",
     'It tips the balance, just barely: a few more arrows point with it than against it.',
+    "That's what an MRI does: it turns your 0 signal into a small signal it can read.",
     'In a real body, only about five to ten in every million are left over.',
+    'But the 0 was holding far more: every single tiny magnet, not just the few left over.',
     'The scanner nudges them with radio waves and listens for their faint reply.',
   ],
   listen: 'Listen',
   picture: 'From that whisper, it paints a picture of your insides.',
-  closing: ['You just figured out one of the core principles of MRI.', 'Inside a 0, countless tiny magnets cancel, and a scanner can coax a picture out of them.'],
+  eye: { line: "Your eye sees just one picture. It's hiding far more than it seems.", label: 'one picture' },
+  closing: 'You just figured out one of the core principles of MRI.',
+  similar: { question: 'Do you see a similarity to the violin level?', choices: ['Yes', 'Not yet'], after: 'Look.' },
+  compareLabels: { note: 'YOUR A NOTE', signal: 'TOTAL SIGNAL' },
+  aName: 'A',
+  compare: 'In Level 1, one A note hid many notes. Here, one 0 signal hides countless tiny magnets.',
   final: "A 0 isn't always nothing. Sometimes it's you: countless tiny magnets, perfectly balanced.",
 };

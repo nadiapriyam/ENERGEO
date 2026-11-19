@@ -1,4 +1,4 @@
-/* Level 1 (Interactive 01), "Inside the scanner". Its palette (--bg: #ffffff; white page, one accent) and the prompt,
+/* Level 2, "Inside the scanner". Its palette (--bg: #ffffff; white page, one accent) and the prompt,
    buttons and choices it shares with every level are in notebook.css. White page, simple high-contrast type. Every magnet (a proton, an arrow, an arrow in the TOTAL) has
    the same two halves: S light, N in the one strong accent. The scanner and the water are drawn in quiet greys and blues
    so the magnets stay the brightest thing on the board. No curves for the pieces to travel on, no error colours. */
@@ -117,8 +117,35 @@
 
 .screen-box { fill: #000; }
 
+/* the eye: the picture's parts flow in; one picture is what you see */
+.screen-shift { transition: transform 700ms cubic-bezier(0.3, 0.7, 0.3, 1); }
+.eye-feed { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 6 6; stroke-linecap: round; opacity: 0.7; }
+.eye-scene.flowing .eye-feed { animation: into-eye 0.7s linear infinite; }
+@keyframes into-eye { to { stroke-dashoffset: -12; } }
+.eye-white { fill: #ffffff; stroke: #8c96a6; stroke-width: 2.4; }
+.iris { fill: #6b8fc7; }
+.pupil { fill: var(--ink); }
+.glint { fill: #ffffff; }
+.seen-arrow { fill: none; stroke: var(--ink-3); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.seen-label { font-family: var(--font); font-size: 20px; font-weight: 700; fill: var(--ink); }
+
+/* side by side with Level 1 */
+.cmp-box { fill: #f7f9fc; stroke: #e2e7f0; stroke-width: 2; }
+.cmp-label { font-family: var(--font); font-size: 15px; letter-spacing: 0.14em; fill: var(--ink-2); }
+.cmp-plus { font-family: var(--font); font-size: 22px; font-weight: 600; fill: var(--ink-2); }
+.cmp-wave { fill: none; stroke-width: 2.6; stroke-linejoin: round; }
+.cmp-0 { stroke: #1a66e0; } .cmp-1 { stroke: #12907e; } .cmp-2 { stroke: #7a55d6; } .cmp-3 { stroke: #b07a12; }
+.cmp-sum { stroke: #c7891a; stroke-width: 3.2; }
+.cmp-bracket { fill: none; stroke: var(--ink-3); stroke-width: 1.5; }
+.cmp-zero { font-family: var(--font); font-size: 17px; fill: var(--ink-2); }
+.cmp-result { font-family: var(--font); font-size: 46px; font-weight: 600; fill: var(--ink); }
+.pop { animation: pop 380ms ease-out; }
+@keyframes pop { from { opacity: 0; } }
+
 @media (max-width: 520px) {
-  .total-label { font-size: 22px; }     /* SVG units: about 12px on a phone */
+  .total-label { font-size: 22px; }
+  .cmp-label { font-size: 20px; }
+  .seen-label { font-size: 26px; }     /* SVG units: about 12px on a phone */
   .plus, .more { font-size: 26px; }
   .bracket-label { font-size: 19px; }
   .group-label { font-size: 26px; }
@@ -127,6 +154,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .screen-shift { transition: none; }
+  .eye-scene.flowing .eye-feed, .pop { animation: none; }
   .layer, .layer.on, .lens, .lens.on, .wall, .tunnel, .coils rect, .patient, .zoomable,
   .atom-letter, .ball, .term, .ghost, .slot, .cover, .cover.on, .field, .poles, .frames,
   .piece.moving, .piece.gliding, .piece-inner, .piece-mid, .piece-enter, .pieces { transition: none; }

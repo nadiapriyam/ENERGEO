@@ -1,5 +1,7 @@
 # Prototype spec: Interactive 01 at `try/`
 
+> **For the combined page (2026-11-19), `docs/levels_spec.md` governs.** This story is now Level 2. This document is its history, and its Revision 2 holds Nadia's original wording.
+
 Nadia's specification. **Revision 4 (2026-11-18) governs**: her requests are quoted verbatim, followed by the learner
 copy drafted at her request (for her review) and the physics behind it. Revisions 3, 2 and 1 are kept below, superseded
 where a later revision changes them. Every learner-facing line of the prototype is copied from the Revision 4 copy list,

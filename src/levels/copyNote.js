@@ -1,5 +1,5 @@
-// Every learner-facing line of Level 2, "Inside a note", verbatim from docs/level2_spec.md (checked by
-// test/level2.test.js). Drafted at Nadia's request for her review. Nothing else on the page is learner-facing text,
+// Every learner-facing line of Level 1, "Inside a note", verbatim from docs/levels_spec.md (checked by
+// test/note.test.js). Drafted at Nadia's request for her review. Nothing else on the page is learner-facing text,
 // apart from accessibility labels.
 
 export const COPY = {
@@ -23,12 +23,5 @@ export const COPY = {
   together: 'Play them together',
   heard: 'A note',
   oneA: 'Your ear takes in all four and hears just one A note. Inside, it is many notes at once.',
-  mri: { question: 'Notice a similarity with the MRI scanner?', choices: ['Yes', 'Not yet'], after: 'Look.' },
-  labels: { total: 'TOTAL', yourA: 'YOUR A NOTE' },
-  plus: '+',
-  equals: '=',
-  zero: '0',
-  oneAName: 'A',
-  compare: 'In Level 1, one 0 hid many arrows. Here, one A note hides many notes.',
   final: 'One thing on the outside. Many hidden parts inside.',
 };

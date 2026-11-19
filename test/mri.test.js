@@ -1,10 +1,14 @@
-// Level 1, "Inside the scanner", at try/ (docs/prototype_try_spec.md, Revision 4: magnets, adding up, groups, up and
-// down). Guards: ↑
-// and ↓ pieces only (no curve, no compass, no rotation); the TOTAL adds up the arrows in the drop, shown as a sum with
-// + and =, reaching an exact 0 only when every piece is paired; every balanced group drawn as a group with its own 0;
-// four different arrangements behind the same 0; the magnet tips the balance by exactly one flip; the MRI numbers in
-// the copy; the learner-facing copy verbatim from the Revision 4 list, in its order, ending with the final line; and the
-// page frame.
+// Level 2, "Inside the scanner", the MRI, at try/ (docs/levels_spec.md; history in docs/prototype_try_spec.md). Guards:
+// - only ↑ and ↓ pieces (no curve, no compass, no rotation);
+// - the TOTAL SIGNAL adds up the arrows in the drop, shown as a sum with + and =, and is an exact 0 only when every
+//   piece is paired;
+// - every balanced group is drawn as a group with its own 0;
+// - four different arrangements sit behind the same 0;
+// - the magnet tips the balance by exactly one flip;
+// - the MRI numbers in the copy;
+// - the eye and the side by side with Level 1 fit;
+// - the learner-facing copy is verbatim from the Level 2 list, in its order, ending with the final line;
+// - the page frame.
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -15,18 +19,18 @@ import {
 } from '../src/math/pieces.js';
 import {
   excessPerMillion, timesEarth, hydrogenInDrop, molecules, hydrogenSpot, picture, scanPixel, PHYS,
-  HOUSING, BORE, PATIENT, SLIDE, ZOOM, SCREEN,
+  HOUSING, BORE, PATIENT, SLIDE, ZOOM, SCREEN, PICTURE_SHIFT, EYE, SEEN, eyeFeeds, seenTransform, COMPARE,
 } from '../src/math/scanner.js';
-import { COPY } from '../src/levels/copy1.js';
+import { COPY } from '../src/levels/copyMri.js';
 
 const read = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
 const specAll = read('docs/prototype_try_spec.md');
-const rev4 = specAll.slice(0, specAll.indexOf('## Revision 3 ('));
 const rev2 = specAll.slice(specAll.indexOf('## Revision 2 ('), specAll.indexOf('## Revision 1'));
-const copyList = rev4.slice(rev4.indexOf('### Learner copy'), rev4.indexOf('### The physics'));
-const main = read('src/levels/level1.js');
-const css = read('src/levels/level1.css') + read('src/levels/base.css');   // Level 1's styles and the shared page
-const level1Css = read('src/levels/level1.css');
+const levels = read('docs/levels_spec.md');
+const copyList = levels.slice(levels.indexOf('## Level 2, "Inside the scanner": learner copy'), levels.indexOf('## What the new lines claim'));
+const main = read('src/levels/mri.js');
+const css = read('src/levels/mri.css') + read('src/levels/base.css');   // the MRI level's styles and the shared page
+const level1Css = read('src/levels/mri.css');
 const html = read('try/index.html');
 const notebookHtml = read('notebook/index.html');
 const inside = (r, { x, y }) => x >= r.x && x <= r.x + r.w && y >= r.y && y <= r.y + r.h;
@@ -161,31 +165,45 @@ test('6. the scanner scenes, the picture, and the MRI numbers the copy states', 
   assert.equal(scanPixel(0.3, 0.1), scanPixel(-0.3, 0.1), 'the illustration is left-right symmetric');
   const [lo, hi] = PHYS.fields.map(excessPerMillion);
   assert.ok(lo > 4.5 && lo < 5.5 && hi > 9.5 && hi < 10.5, `about five to ten per million (${lo.toFixed(1)}, ${hi.toFixed(1)})`);
-  assert.match(COPY.magnet[2], /about five to ten in every million/);
+  assert.ok(COPY.magnet.some((l) => /about five to ten in every million/.test(l)));
   const t = PHYS.fields.map(timesEarth);
   assert.ok(t.every((x) => x >= 10_000 && x < 100_000), 'tens of thousands of times Earth\'s field');
   assert.match(COPY.magnet[0], /tens of thousands of times stronger than Earth's/);
   const h = hydrogenInDrop();
   assert.ok(h >= 1e21 && h < 1e24, 'billions of trillions');
   assert.match(COPY.water[1], /billions of trillions of hydrogen atoms/);
+  // the eye: lines from all over the moved picture into the eye; what it sees, small, to its right; all on the board
+  for (const f of eyeFeeds()) {
+    assert.ok(f.from.x > SCREEN.x + PICTURE_SHIFT && f.from.x < SCREEN.x + PICTURE_SHIFT + SCREEN.size && f.from.y > SCREEN.y && f.from.y < SCREEN.y + SCREEN.size, 'a line starts on the picture');
+    assert.ok(Math.abs(f.to.x - (EYE.x + EYE.look - 2)) < 1e-9 && f.to.y === EYE.y, 'and ends in the eye');
+  }
+  assert.ok(SCREEN.x + PICTURE_SHIFT + SCREEN.size < EYE.x - EYE.rx && EYE.x + EYE.rx < SEEN.x, 'picture, eye, what it sees: left to right');
+  const seen = seenTransform();
+  assert.ok(Math.abs((SCREEN.size + 12) * seen.s - SEEN.size) < 1e-9 && SEEN.x + SEEN.size <= VIEW.w && SEEN.y + SEEN.size <= VIEW.h, 'one picture, small, on the board');
+  for (const side of [COMPARE.left, COMPARE.right]) assert.ok(side.x >= 0 && side.x + side.w <= VIEW.w && side.y >= 0 && side.y + side.h <= VIEW.h);
+  assert.ok(COMPARE.left.x + COMPARE.left.w < COMPARE.right.x, 'the violin level on the left, the MRI level on the right');
 });
 
-test('7. the learner-facing copy is verbatim from the Revision 4 list, in its order; Revision 2 lines unchanged; the page shows it in that order and nothing after the final line', () => {
+test('7. the learner-facing copy is verbatim from the Level 2 list, in its order; Nadia\'s Revision 2 lines unchanged; the page shows it in that order and nothing after the final line', () => {
   const ordered = [COPY.scanner[0], COPY.scanner[1], COPY.opening, COPY.slideIn, COPY.inside, COPY.zoomIn, `${COPY.atoms.o}, ${COPY.atoms.h}`, COPY.water[0], COPY.water[1], COPY.closer,
     `${COPY.poles.n}, ${COPY.poles.s}`, COPY.proton[0], COPY.proton[1], COPY.hook, COPY.totalLabel, COPY.totalMeans, `${COPY.sum.plus} ${COPY.sum.equals} ${COPY.sum.more}`,
     COPY.task, COPY.hint, `${COPY.groupZero} (under`, COPY.check1.question, ...COPY.check1.choices, COPY.check1.after,
     COPY.reached[0], COPY.reached[1], COPY.lookCloser, COPY.check2.question, ...COPY.check2.choices, COPY.check2.right, COPY.check2.wrong,
     COPY.answer, COPY.arrangements[0], COPY.cover.intro, `${COPY.cover.mark} (on the covered`, COPY.cover.question, ...COPY.cover.choices, COPY.cover.after,
     COPY.arrangements[1], COPY.cover.again, COPY.cover.look, COPY.arrangements[2], COPY.cover.again, COPY.cover.look, COPY.reveal,
-    COPY.magnetQuestion, COPY.switchOn, ...COPY.magnet, COPY.listen, COPY.picture, ...COPY.closing, COPY.final];
+    COPY.magnetQuestion, COPY.switchOn, ...COPY.magnet, COPY.listen, COPY.picture, `${COPY.eye.label} (the label`, COPY.eye.line, COPY.closing,
+    COPY.similar.question, ...COPY.similar.choices, COPY.similar.after,
+    `${COPY.compareLabels.note}, ${COPY.compareLabels.signal}, ${COPY.sum.plus}, ${COPY.sum.equals}, ${COPY.zero}, ${COPY.aName}`, COPY.compare, COPY.final];
   let at = 0;
   for (const line of ordered) {
     const i = copyList.indexOf(line, at);
-    assert.ok(i >= 0, `not in the Revision 4 list, in order: ${line}`);
+    assert.ok(i >= 0, `not in the Level 2 list, in order: ${line}`);
     at = i;
   }
-  assert.ok(copyList.trimEnd().endsWith('Nothing comes after line 49.') && copyList.includes(`49. ${COPY.final}`), 'the final line is last');
-  for (const line of [COPY.opening, COPY.task, COPY.check1.question, COPY.check1.after, ...COPY.reached, COPY.lookCloser, COPY.check2.question, COPY.check2.right, COPY.check2.wrong, ...COPY.arrangements, COPY.reveal, COPY.totalLabel])
+  assert.ok(copyList.includes(`56. ${COPY.final}\n\nNothing comes after line 56.`) && !/^57\. /m.test(copyList), 'the final line is last');
+  assert.ok([COPY.totalLabel, COPY.totalMeans, COPY.reached[0], COPY.magnetQuestion, COPY.magnet[2], COPY.compare].every((l) => /signal/i.test(l)), 'the total is a signal, and 0 is 0 signal');
+  assert.match(COPY.similar.question, /violin level/);
+  for (const line of [COPY.opening, COPY.task, COPY.check1.question, COPY.check1.after, COPY.reached[1], COPY.lookCloser, COPY.check2.question, COPY.check2.right, COPY.check2.wrong, ...COPY.arrangements, COPY.reveal])
     assert.ok(rev2.includes(line), `a Revision 2 line, unchanged: ${line}`);
   assert.equal(COPY.check2.intended, 'No');
   for (const line of ordered) assert.ok(line.split(/(?<=[.?!])\s+/).length <= 2, `at most two sentences: ${line}`);
@@ -193,14 +211,14 @@ test('7. the learner-facing copy is verbatim from the Revision 4 list, in its or
     'COPY.proton[0]', 'COPY.proton[1]', 'COPY.hook', 'COPY.totalMeans', 'COPY.task', 'COPY.hint', 'COPY.check1.question', 'COPY.check1.after', 'COPY.reached[0]', 'COPY.reached[1]',
     'COPY.lookCloser', 'COPY.check2.question', 'COPY.check2.right', 'COPY.answer', 'COPY.check2.wrong', 'COPY.arrangements[0]', 'COPY.cover.intro', 'COPY.cover.question',
     'COPY.cover.after', 'COPY.arrangements[1]', 'COPY.cover.again', 'COPY.cover.look', 'COPY.arrangements[2]', 'COPY.reveal',
-    'COPY.magnetQuestion', 'COPY.switchOn', 'COPY.magnet[0]', 'COPY.magnet[1]', 'COPY.magnet[2]', 'COPY.magnet[3]', 'COPY.listen', 'COPY.picture',
-    'COPY.closing[0]', 'COPY.closing[1]', 'COPY.final'];
+    'COPY.magnetQuestion', 'COPY.switchOn', 'COPY.magnet[0]', 'COPY.magnet[1]', 'COPY.magnet[2]', 'COPY.magnet[3]', 'COPY.magnet[4]', 'COPY.magnet[5]', 'COPY.listen',
+    'COPY.picture', 'COPY.eye.line', 'COPY.closing', 'COPY.similar.question', 'COPY.similar.after', 'COPY.compareLabels.note', 'COPY.compare', 'COPY.final'];
   const pos = calls.map((c) => main.indexOf(c, main.indexOf('// ── the story')));
   assert.ok(pos.every((i) => i >= 0), JSON.stringify(calls.filter((c, k) => pos[k] < 0)));
   assert.deepEqual([...pos].sort((a, b) => a - b), pos, 'the story shows the copy in order');
   const tail = main.slice(main.indexOf("say(COPY.final, 'final');"));
   assert.ok(!/say\(|button\(|choices\(|press\(|ask\(/.test(tail.replace("say(COPY.final, 'final');", '')), 'nothing is shown after the final line');
-  for (const line of [COPY.task, COPY.hook, COPY.totalMeans, COPY.reveal, COPY.final, ...COPY.magnet, ...COPY.closing]) assert.ok(!main.includes(line), `copy belongs in copy.js: ${line}`);
+  for (const line of [COPY.task, COPY.hook, COPY.totalMeans, COPY.reveal, COPY.final, ...COPY.magnet, COPY.closing, COPY.eye.line, COPY.compare]) assert.ok(!main.includes(line), `copy belongs in copyMri.js: ${line}`);
 });
 
 test('8. the frame: ↑ and ↓ magnets mirrored, never rotated; no curve or compass; no concept in the title; light page; reduced motion', () => {
@@ -213,8 +231,11 @@ test('8. the frame: ↑ and ↓ magnets mirrored, never rotated; no curve or com
   assert.ok(!existsSync(new URL('../src/math/needles.js', import.meta.url)), 'the needle model is gone');
   assert.equal(html.match(/<title>([^<]*)<\/title>/)[1], 'Try this');
   assert.ok(!/zero|cancel|\b0\b|nothing|<h1/i.test(html), 'the page shell names no concept');
-  assert.match(html, /id="next-level" href="level-2\/" hidden/, 'Level 2 is offered only after Level 1 ends');
-  assert.match(notebookHtml, /url=\.\.\/try\//, 'the old notebook link opens Level 1');
+  assert.match(html, /id="next-level" hidden/, 'Level 2 is offered only after Level 1 ends');
+  assert.ok(html.indexOf('id="note-lesson"') < html.indexOf('id="mri-lesson"'), 'one page: the violin, then the MRI');
+  assert.match(read('src/levels/page.js'), /await import\('\.\/mri\.js'\)/, 'the MRI level starts when Level 1 is done');
+  assert.match(notebookHtml, /url=\.\.\/try\//, 'the old notebook link opens the levels');
+  assert.match(read('try/level-2/index.html'), /url=\.\.\//, 'the old Level 2 link opens the levels');
   assert.match(css, /--bg: #ffffff;/);
   assert.ok(!/prefers-color-scheme: dark|linear-gradient|\bred\b|crimson/i.test(css), 'no dark theme, no gradients, no red');
   for (const hex of css.match(/#[0-9a-f]{6}\b/gi) ?? []) {

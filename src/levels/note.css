@@ -1,4 +1,4 @@
-/* Level 2, "Inside a note", in Level 1's style: a white page, the system sans, one accent, simple flat drawings like
+/* Level 1, "Inside a note", in the MRI level's style: a white page, the system sans, one accent, simple flat drawings like
    Level 1's scanner. The violin is warm wood; your A is amber; the four hidden notes each have their own calm colour;
    Level 1's magnets keep their S and N halves. */
 
@@ -12,8 +12,8 @@
 .scene-board.cut .cam { opacity: 0; }
 
 /* the drawing */
-.wall { fill: #f4f6fa; }
-.floor { fill: #e8ecf2; }
+.backdrop { fill: #f4f6fa; }
+.stage-floor { fill: #e8ecf2; }
 .chair { fill: #cfd6e0; }
 .body-0 { fill: #9fb3cf; } .body-1 { fill: #b7c3d6; } .body-2 { fill: #8ea3c2; }
 .skin { fill: #e9cdb8; }
@@ -54,8 +54,8 @@
 @keyframes beckon { 50% { transform: scale(1.3); } }
 
 /* inside the sound */
-.inside, .compare { opacity: 0; visibility: hidden; transition: opacity 400ms ease-out, visibility 0s linear 400ms; }
-.inside.on, .compare.on { opacity: 1; visibility: visible; transition: opacity 400ms ease-out, visibility 0s; }
+.inside { opacity: 0; visibility: hidden; transition: opacity 400ms ease-out, visibility 0s linear 400ms; }
+.inside.on { opacity: 1; visibility: visible; transition: opacity 400ms ease-out, visibility 0s; }
 .stage { fill: #f7f9fc; stroke: #e2e7f0; stroke-width: 2; }
 .sum-wave { fill: none; stroke: #c7891a; stroke-width: 3.4; stroke-linejoin: round; }
 .veil { fill: #f7f9fc; opacity: 0; }
@@ -84,28 +84,13 @@
 .note.heard { background: #f3f6fb; }
 .transport { display: flex; justify-content: center; margin: 4px 0 0; }
 
-/* Level 1, remembered */
-.side-box { fill: #f7f9fc; stroke: #e2e7f0; stroke-width: 2; }
-.side-label { font-family: var(--font); font-size: 15px; letter-spacing: 0.14em; fill: var(--ink-2); }
-.s-part { fill: var(--s-pole); }
-.n-part { fill: var(--accent); }
-.plus, .equals { font-family: var(--font); font-size: 22px; font-weight: 600; fill: var(--ink-2); }
-.bracket { fill: none; stroke: var(--ink-3); stroke-width: 1.5; }
-.bracket-label { font-family: var(--font); font-size: 16px; fill: var(--ink-2); }
-.result { font-family: var(--font); font-size: 46px; font-weight: 600; fill: var(--ink); }
-.mini { fill: none; stroke-width: 2.4; }
-.mini-sum { stroke: #c7891a; stroke-width: 3; }
-.pop { animation: pop 380ms ease-out; }
-@keyframes pop { from { opacity: 0; } }
-
 @media (max-width: 520px) {
   .lane-label { font-size: 22px; }
-  .side-label { font-size: 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cam, .bow, .tuned-mark, .lens-view, .lens-frame, .target-ring, .inside, .compare, .veil-all, .parts, .part-wave, .lane-label { transition: none; }
-  .target-ring.on, .part-wave.sounding, .notes.in, .pop { animation: none; }
+  .cam, .bow, .tuned-mark, .lens-view, .lens-frame, .target-ring, .inside, .veil-all, .parts, .part-wave, .lane-label { transition: none; }
+  .target-ring.on, .part-wave.sounding, .notes.in { animation: none; }
 }
 
 /* the ear: four notes flow in, one A note comes out */

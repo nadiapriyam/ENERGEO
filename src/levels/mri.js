@@ -1,17 +1,23 @@
-// Level 1 of the notebook, "Inside the scanner" (docs/prototype_try_spec.md, Revision 4; docs/notebook_spec.md). A short story inside an MRI scanner: slide in, zoom down to
-// the water in the body and its hydrogen atoms, whose protons are tiny magnets (N and S), picture each as an arrow, and
-// add the arrows up in the TOTAL. Pair opposite arrows until the TOTAL is an exact 0; look behind more 0s and find them
-// full; then switch on the scanner's magnet, which tips the balance by one flipped arrow, and listen as it paints a
-// picture. Every learner-facing line comes from copy.js; every position and every total comes from src/math (pieces.js,
-// scanner.js).
-import './level1.css';   // system sans: its 0 is a plain 0
+// Level 2, "Inside the scanner" (docs/levels_spec.md; history in docs/prototype_try_spec.md). A short story inside an
+// MRI scanner: slide in, zoom down to the water in the body and its hydrogen atoms, whose protons are tiny magnets (N and
+// S), picture each as an arrow, and add the arrows up in the TOTAL SIGNAL, all a scanner can pick up. Pair opposite
+// arrows until the signal is an exact 0; look behind more 0s and find them full. Then the scanner's magnet tips the
+// balance, turning the 0 into a small signal it can read, though the 0 held far more. It paints a picture; an eye sees
+// one picture that hides far more than it seems; and the violin of Level 1 turns out to work the same way. Every
+// learner-facing line comes from copyMri.js; every position and every total from src/math (pieces.js, scanner.js,
+// tones.js).
+import './mri.css';   // system sans: its 0 is a plain 0
 
-import { COPY } from './copy1.js';
+import { COPY } from './copyMri.js';
 import {
   start, pair, dropTarget, tapTarget, totalOf, pairedCount, restingSpot, total, layout, puzzleGroups, frame, sumLayout, crowd, crowdDirections,
   ARRANGEMENTS, PAIRS, VIEW, PANEL, DROP, CROWD, CROWD_SHOWN, FIELD_LINES, FIELD_SPAN, FLIP, dirOf,
 } from '../math/pieces.js';
-import { HOUSING, BORE, TUNNEL, COILS, TABLE, PEDESTAL, PATIENT, FLOOR, SLIDE, ZOOM, ATOM, molecules, hydrogenSpot, SCREEN, picture } from '../math/scanner.js';
+import {
+  HOUSING, BORE, TUNNEL, COILS, TABLE, PEDESTAL, PATIENT, FLOOR, SLIDE, ZOOM, ATOM, molecules, hydrogenSpot, SCREEN, picture,
+  PICTURE_SHIFT, EYE, SEEN, eyeFeeds, seenTransform, COMPARE,
+} from '../math/scanner.js';
+import { A_NOTE, STEPS as NOTE_STEPS, part, wave } from '../math/tones.js';
 
 const NS = 'http://www.w3.org/2000/svg';
 const REDUCED = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -42,7 +48,7 @@ let locked = true;
 const dirs = {};                                   // current direction of every piece on the board
 
 // ── page ─────────────────────────────────────────────────────────────────────────────────────────
-const root = document.getElementById('level-1-lesson');
+const root = document.getElementById('mri-lesson');
 const figure = el('figure', { class: 'figure' });
 const prompt = el('div', { class: 'prompt', 'aria-live': 'polite' });
 root.append(figure, prompt);
@@ -127,9 +133,27 @@ panel.append(svg('rect', { class: 'panel-box', x: PANEL.x, y: PANEL.y, width: PA
 const cover = svg('g', { class: 'cover' },
   svg('rect', { x: DROP.x, y: DROP.y, width: DROP.w, height: DROP.h, rx: DROP.r }),
   label({ class: 'cover-mark', x: DROP.x + DROP.w / 2, y: DROP.y + DROP.h / 2 }, COPY.cover.mark));
-const screen = svg('g', { class: 'screen layer' }, svg('rect', { class: 'screen-box', x: SCREEN.x - 6, y: SCREEN.y - 6, width: SCREEN.size + 12, height: SCREEN.size + 12, rx: 14 }));
+const screen = svg('g', { class: 'screen layer', id: 'mri-screen' }, svg('rect', { class: 'screen-box', x: SCREEN.x - 6, y: SCREEN.y - 6, width: SCREEN.size + 12, height: SCREEN.size + 12, rx: 14 }));
+const screenShift = svg('g', { class: 'screen-shift' }, screen);
+
+// the eye: lines from the picture into an eye; what it sees is one picture
+const seen = seenTransform();
+const eyeScene = svg('g', { class: 'eye-scene layer' },
+  ...eyeFeeds().map((f) => svg('path', { class: 'eye-feed', d: `M ${f.from.x.toFixed(1)} ${f.from.y.toFixed(1)} Q ${((f.from.x + f.to.x) / 2 + 24).toFixed(1)} ${f.from.y.toFixed(1)} ${f.to.x.toFixed(1)} ${f.to.y.toFixed(1)}` })),
+  svg('g', { class: 'eyeball', style: `transform: translate(${EYE.x}px, ${EYE.y}px)` },
+    svg('path', { class: 'eye-white', d: `M ${-EYE.rx} 0 Q 0 ${-EYE.ry * 2} ${EYE.rx} 0 Q 0 ${EYE.ry * 2} ${-EYE.rx} 0 Z` }),
+    svg('circle', { class: 'iris', cx: EYE.look, cy: 0, r: EYE.iris }),
+    svg('circle', { class: 'pupil', cx: EYE.look, cy: 0, r: EYE.iris * 0.45 }),
+    svg('circle', { class: 'glint', cx: EYE.look + 3, cy: -4, r: 2.4 })),
+  svg('path', { class: 'seen-arrow', d: `M ${EYE.x + EYE.rx + 8} ${EYE.y} H ${SEEN.x - 10} M ${SEEN.x - 18} ${EYE.y - 6} L ${SEEN.x - 10} ${EYE.y} L ${SEEN.x - 18} ${EYE.y + 6}` }),
+  svg('g', { class: 'seen', transform: `translate(${seen.tx.toFixed(2)} ${seen.ty.toFixed(2)}) scale(${seen.s.toFixed(4)})` }, svg('use', { href: '#mri-screen' })),
+  svg('text', { class: 'seen-label', x: SEEN.label.x, y: SEEN.label.y, 'text-anchor': 'middle' }));
+eyeScene.querySelector('.seen-label').textContent = COPY.eye.label;
+
+// side by side with Level 1
+const compareLayer = svg('g', { class: 'compare layer' });
 const piecesLayer = svg('g', { class: 'pieces' });
-board.append(scanner, lens, water, puzzle, screen, panel, piecesLayer, cover);
+board.append(scanner, lens, water, puzzle, screenShift, eyeScene, panel, piecesLayer, cover, compareLayer);
 
 // ── pieces ───────────────────────────────────────────────────────────────────────────────────────
 const pieces = new Map();
@@ -644,9 +668,14 @@ async function magnetOn() {                                 // the magnet tips t
   say(COPY.magnet[1]);
   await pause(reading(COPY.magnet[1]) + 600);
   clear();
-  say(COPY.magnet[2]);
+  say(COPY.magnet[2]);                                       // what an MRI does: turn the 0 into a small signal
   await pause(reading(COPY.magnet[2]));
   say(COPY.magnet[3]);
+  await pause(reading(COPY.magnet[3]) + 400);
+  clear();
+  say(COPY.magnet[4]);                                       // the 0 held every magnet; the signal shows the few left over
+  await pause(reading(COPY.magnet[4]) + 600);
+  say(COPY.magnet[5]);
   await wait(500);
   button(COPY.listen, paint);
 }
@@ -670,20 +699,83 @@ async function paint() {                                    // the scanner paint
   }
   say(COPY.picture);
   await pause(reading(COPY.picture) + 600);
+  seeIt();
+}
+
+async function seeIt() {                                    // your eye sees one picture; it hides far more than it seems
+  phase = 'eye';
+  clear();
+  on(panel, false);
+  screenShift.style.transform = `translateX(${PICTURE_SHIFT}px)`;
+  await wait(700);
+  on(eyeScene);
+  await wait(400);
+  eyeScene.classList.add('flowing');
+  describe('The picture moves left. Lines run from all over it into an eye. Out of the eye comes the same picture, small: one picture.');
+  say(COPY.eye.line);
+  await pause(reading(COPY.eye.line) + 1200);
+  eyeScene.classList.remove('flowing');
   phase = 'closing';
   clear();
-  say(COPY.closing[0], 'lead');
-  await pause(reading(COPY.closing[0]));
-  say(COPY.closing[1]);
-  await pause(reading(COPY.closing[1]) + 900);
+  say(COPY.closing, 'lead');
+  await pause(reading(COPY.closing));
+  similar();
+}
+
+async function similar() {                                  // Level 1's violin works the same way
+  phase = 'similar';
+  say(COPY.similar.question);
+  await ask(COPY.similar.choices);
+  say(COPY.similar.after);
+  on(eyeScene, false);
+  on(screen, false);
+  const C = COMPARE;
+  const box = (side, text) => svg('g', {},
+    svg('rect', { class: 'cmp-box', x: side.x, y: side.y, width: side.w, height: side.h, rx: 18 }),
+    svg('text', { class: 'cmp-label', x: side.x + side.w / 2, y: C.labelY, 'text-anchor': 'middle', text }));
+  const left = box(C.left, COPY.compareLabels.note);
+  const right = box(C.right, COPY.compareLabels.signal);
+  compareLayer.replaceChildren(left, right);
+  on(compareLayer);
+  const mini = (amounts, x0, w, cy, cls, amp = 15) => {
+    let d = '';
+    for (let i = 0; i <= 160; i++) { const u = i / 160; d += `${i ? 'L' : 'M'}${(x0 + u * w).toFixed(1)} ${(cy - wave(amounts, u * 2) * amp).toFixed(1)}`; }
+    return svg('path', { class: cls, d });
+  };
+  const leftSteps = [];                                     // A + high A + E + higher A = one A note
+  C.notesY.forEach((y, k) => {
+    leftSteps.push(mini(part(A_NOTE, k), C.left.x + 46, C.left.w - 66, y, `cmp-wave cmp-${k}`));
+    if (k) leftSteps.push(svg('text', { class: 'cmp-plus', x: C.left.x + 24, y: y - 17, 'text-anchor': 'middle', text: COPY.sum.plus }));
+  });
+  leftSteps.push(svg('text', { class: 'cmp-plus', x: C.left.x + 24, y: C.sumY + 7, 'text-anchor': 'middle', text: COPY.sum.equals }),
+    mini(A_NOTE, C.left.x + 46, C.left.w - 100, C.sumY, 'cmp-wave cmp-sum', 15 / (A_NOTE[0] / NOTE_STEPS)),
+    svg('text', { class: 'cmp-result', x: C.left.x + C.left.w - 30, y: C.sumY + 16, 'text-anchor': 'middle', text: COPY.aName }));
+  const rightSteps = [];                                    // ↑ + ↓ + ↑ + ↓ = 0 signal
+  [1, -1, 1, -1].forEach((d, i) => {
+    const x = C.right.x + 44 + i * 68;
+    const g = glyph('cmp-magnet');
+    g.style.transform = `translate(${x}px, ${C.magnetsY}px) scale(0.8, ${0.8 * d})`;
+    rightSteps.push(g);
+    if (i) rightSteps.push(svg('text', { class: 'cmp-plus', x: x - 34, y: C.magnetsY + 7, 'text-anchor': 'middle', text: COPY.sum.plus }));
+  });
+  rightSteps.push(svg('path', { class: 'cmp-bracket', d: `M ${C.right.x + 30} ${C.bracketY - 6} V ${C.bracketY} H ${C.right.x + 126} V ${C.bracketY - 6} M ${C.right.x + 166} ${C.bracketY - 6} V ${C.bracketY} H ${C.right.x + 262} V ${C.bracketY - 6}` }),
+    svg('text', { class: 'cmp-zero', x: C.right.x + 78, y: C.bracketY + 22, 'text-anchor': 'middle', text: COPY.zero }),
+    svg('text', { class: 'cmp-zero', x: C.right.x + 214, y: C.bracketY + 22, 'text-anchor': 'middle', text: COPY.zero }),
+    svg('text', { class: 'cmp-result', x: C.right.x + C.right.w / 2, y: C.resultY, 'text-anchor': 'middle', text: `${COPY.sum.equals} ${COPY.zero}` }));
+  describe('Left, Level 1: four notes add up to one A note. Right: up, down, up, down arrows add up to a total signal of 0.');
+  for (const n of leftSteps) { left.append(n); n.classList.add('pop'); await wait(200); }
+  for (const n of rightSteps) { right.append(n); n.classList.add('pop'); await wait(200); }
+  clear();
+  say(COPY.compare);
+  await pause(reading(COPY.compare) + 900);
   phase = 'final';
   clear();
   say(COPY.final, 'final');
-  root.dispatchEvent(new CustomEvent('level-finished', { bubbles: true }));   // the notebook offers the next page
+  root.dispatchEvent(new CustomEvent('level-finished', { bubbles: true }));
 }
 
 // read-only view for automated checks (no learner-facing effect)
-window.__try = { get state() { return state; }, get phase() { return phase; }, get shown() { return [...pieces.keys()]; }, get dirs() { return { ...dirs }; } };
+window.__mri = { get state() { return state; }, get phase() { return phase; }, get shown() { return [...pieces.keys()]; }, get dirs() { return { ...dirs }; } };
 
 setLocked(true);
 scene1();

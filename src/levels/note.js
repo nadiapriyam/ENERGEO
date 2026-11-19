@@ -1,12 +1,12 @@
-// Level 2, "Inside a note" (docs/level2_spec.md, Revision 3). You are the first violin: you bow an A and the whole
-// orchestra tunes to it. A magnifying glass takes you into your violin, then into its A string, shaking. Then the story
-// cuts inside the sound itself. The whole orchestra trusts this A, but is it one note? Slide the glass across the sound
-// and it shows what is hidden: four notes, which you tap to hear, and which play together as one A. Then a callback
-// to Level 1: one 0 hid many arrows; one A hides many notes. Every learner-facing line comes from copy2.js; every
-// position from src/math/violin.js and every sound shape from src/math/tones.js.
-import './level2.css';
+// Level 1, "Inside a note" (docs/levels_spec.md; history in docs/violin_level_spec.md). You are the first violin:
+// before a concert every player tunes to one note, and tonight it is your A note. You bow it and the orchestra tunes.
+// A magnifying glass takes you into your violin, then into its A string, shaking. Then the story cuts inside the sound.
+// Is it just one note? Slide the glass across the sound and it shows what is hidden: four notes, which you tap to hear.
+// Played together they flow into an ear, and what you hear is one A note. Every learner-facing line comes from
+// copyNote.js; every position from src/math/violin.js and every sound shape from src/math/tones.js.
+import './note.css';
 
-import { COPY } from './copy2.js';
+import { COPY } from './copyNote.js';
 import {
   VIEW, HOME, transform, toView, lensCamera, lerpCamera, coverRadius, LENS, VIOLIN, STRINGS, A_STRING, BOW, musicians, ZOOMS, closeUp, stringPath,
 } from '../math/violin.js';
@@ -122,7 +122,7 @@ function orchestraTunes() {
 }
 
 // ── page ─────────────────────────────────────────────────────────────────────────────────────────
-const root = document.getElementById('level-2-lesson');
+const root = document.getElementById('note-lesson');
 const figure = el('figure', { class: 'figure' });
 const notesRow = el('div', { class: 'notes', role: 'group', 'aria-label': 'Hidden notes' });
 const transport = el('div', { class: 'transport' });
@@ -142,8 +142,8 @@ board.append(svg('defs', {},
 const world = svg('g', { id: 'l2-world' });
 const camGroup = svg('g', { class: 'cam' }, world);
 world.append(
-  svg('rect', { class: 'wall', x: -400, y: -400, width: 1440, height: 1200 }),
-  svg('path', { class: 'floor', d: 'M -400 250 Q 320 205 1040 250 L 1040 800 L -400 800 Z' }));
+  svg('rect', { class: 'backdrop', x: -400, y: -400, width: 1440, height: 1200 }),
+  svg('path', { class: 'stage-floor', d: 'M -400 250 Q 320 205 1040 250 L 1040 800 L -400 800 Z' }));
 const players = musicians().map((m, i) => {
   const inst = {
     violin: () => svg('ellipse', { class: 'wood', cx: 10, cy: -6, rx: 7, ry: 3.6 }),
@@ -211,9 +211,7 @@ const heard = svg('g', { class: 'heard' },
 const hearing = svg('g', { class: 'hearing' }, ...funnels, ear, heard);
 inside.append(svg('rect', { class: 'stage', x: STAGE.x, y: STAGE.y, width: STAGE.w, height: STAGE.h, rx: 18 }), sumPath, veilRect, veil, partsGroup, ...laneLabels, hearing);
 
-// Level 1, remembered: arrows that add up to 0, next to notes that add up to one A
-const compare = svg('g', { class: 'compare' });
-board.append(camGroup, lensView, targetRing, inside, compare, lensFrame);
+board.append(camGroup, lensView, targetRing, inside, lensFrame);
 
 function drawCamera() { camGroup.style.transform = transform(cam); }
 drawCamera();
@@ -534,71 +532,13 @@ async function together() {                                 // all four at once,
   clear();
   phase = 'oneA';
   say(COPY.oneA);
-  await pause(reading(COPY.oneA) + 400);
-  remember();
-}
-
-// Level 1's magnets, drawn as there: an S half and a pointed N half; a down arrow is an up arrow mirrored
-const S_PART = 'M -10 9 H 10 V 20 A 10 10 0 0 1 -10 20 Z';
-const N_PART = 'M -10 9 V -12 H -15 L 0 -31 L 15 -12 H 10 V 9 Z';
-const magnet = (x, y, d) => svg('g', { class: 'magnet', style: `transform: translate(${x}px, ${y}px) scale(0.8, ${0.8 * d})` },
-  svg('path', { class: 's-part', d: S_PART }), svg('path', { class: 'n-part', d: N_PART }));
-
-async function remember() {                                 // the same idea as Level 1
-  phase = 'mri';
-  say(COPY.mri.question);
-  await ask(COPY.mri.choices);
-  say(COPY.mri.after);
-  on(inside, false);
-  const L = { x: 24, w: 288 };
-  const R = { x: 328, w: 288 };
-  const left = svg('g', { class: 'side' },
-    svg('rect', { class: 'side-box', x: L.x, y: 24, width: L.w, height: 352, rx: 18 }),
-    svg('text', { class: 'side-label', x: L.x + L.w / 2, y: 56, 'text-anchor': 'middle', text: COPY.labels.total }));
-  const right = svg('g', { class: 'side' },
-    svg('rect', { class: 'side-box', x: R.x, y: 24, width: R.w, height: 352, rx: 18 }),
-    svg('text', { class: 'side-label', x: R.x + R.w / 2, y: 56, 'text-anchor': 'middle', text: COPY.labels.yourA }));
-  compare.replaceChildren(left, right);
-  on(compare);
-  const steps = [];
-  [1, -1, 1, -1].forEach((d, i) => {                        // ↑ + ↓ + ↑ + ↓ = 0
-    const x = L.x + 40 + i * 70;
-    steps.push(magnet(x, 170, d));
-    if (i) steps.push(svg('text', { class: 'plus', x: x - 35, y: 176, 'text-anchor': 'middle', text: COPY.plus }));
-  });
-  steps.push(svg('path', { class: 'bracket', d: `M ${L.x + 26} 212 V 218 H ${L.x + 124} V 212 M ${L.x + 166} 212 V 218 H ${L.x + 264} V 212` }),
-    svg('text', { class: 'bracket-label', x: L.x + 75, y: 238, 'text-anchor': 'middle', text: COPY.zero }),
-    svg('text', { class: 'bracket-label', x: L.x + 215, y: 238, 'text-anchor': 'middle', text: COPY.zero }),
-    svg('text', { class: 'result', x: L.x + L.w / 2, y: 320, 'text-anchor': 'middle', text: `${COPY.equals} ${COPY.zero}` }));
-  const mini = (k) => { const cy = 98 + k * 42; return svg('path', { class: `mini part-${k}`, d: miniTrace(part(A_NOTE, k), R.x + 44, R.w - 64, cy) }); };
-  const rightSteps = [];
-  HIDDEN.forEach((_, k) => {
-    rightSteps.push(mini(k));
-    if (k) rightSteps.push(svg('text', { class: 'plus', x: R.x + 24, y: 98 + k * 42 - 15, 'text-anchor': 'middle', text: COPY.plus }));
-  });
-  rightSteps.push(svg('text', { class: 'equals', x: R.x + 24, y: 286, 'text-anchor': 'middle', text: COPY.equals }),
-    svg('path', { class: 'mini mini-sum', d: miniTrace(A_NOTE, R.x + 44, R.w - 96, 280) }),
-    svg('text', { class: 'result', x: R.x + R.w - 30, y: 296, 'text-anchor': 'middle', text: COPY.oneAName }));
-  describe('Left, Level 1: up, down, up, down arrows add up to 0. Right: four notes add up to one A note.');
-  for (const n of steps) { left.append(n); n.classList.add('pop'); await wait(220); }
-  for (const n of rightSteps) { right.append(n); n.classList.add('pop'); await wait(200); }
-  clear();
-  say(COPY.compare);
-  await pause(reading(COPY.compare) + 900);
+  await pause(reading(COPY.oneA) + 900);
   phase = 'final';
   say(COPY.final, 'final');
-}
-function miniTrace(amounts, x0, w, cy, n = 160) {           // a small two-period trace for the side-by-side
-  let d = '';
-  for (let i = 0; i <= n; i++) {
-    const u = i / n;
-    const y = cy - amounts.reduce((s, a, k) => s + (a / STEPS) * Math.sin(2 * Math.PI * (k + 1) * u * 2), 0) * 14;
-    d += `${i ? 'L' : 'M'}${(x0 + u * w).toFixed(1)} ${y.toFixed(1)}`;
-  }
-  return d;
+  root.dispatchEvent(new CustomEvent('level-finished', { bubbles: true }));   // the page offers Level 2
 }
 
 // read-only view for automated checks (no learner-facing effect)
-window.__level2 = { get phase() { return phase; }, get camera() { return { ...cam }; }, get lens() { return { ...lensAt }; } };
+window.__note = { get phase() { return phase; }, get camera() { return { ...cam }; }, get lens() { return { ...lensAt }; } };
 
 opening();

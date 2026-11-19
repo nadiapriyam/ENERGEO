@@ -4,12 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Try this</title>
-    <meta name="description" content="A short interactive." />
+    <meta name="description" content="Two short interactives." />
   </head>
   <body>
-    <p class="level-tag" id="level-tag"></p>
-    <main class="lesson" id="level-1-lesson"></main>
-    <p class="lesson"><a class="action next-level" id="next-level" href="level-2/" hidden></a></p>
-    <script type="module" src="/src/levels/page1.js"></script>
+    <p class="level-tag" id="level-1-tag"></p>
+    <main class="lesson" id="note-lesson"></main>
+    <p class="lesson"><button type="button" class="action next-level" id="next-level" hidden></button></p>
+    <section class="level" id="level-2" hidden>
+      <p class="level-tag" id="level-2-tag"></p>
+      <div class="lesson" id="mri-lesson"></div>
+    </section>
+    <script type="module" src="/src/levels/page.js"></script>
   </body>
 </html>
