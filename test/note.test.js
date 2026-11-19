@@ -177,7 +177,7 @@ test("8. the frame: sound only after the learner touches the bow, Level 1's whit
   assert.match(read('src/levels/base.css'), /--bg: #ffffff;/, "Level 1's white page");
   assert.ok(!/prefers-color-scheme: dark|linear-gradient|caveat|night/i.test(css), 'no dark stage, no notebook');
   assert.match(read('try/index.html'), /src\/levels\/page\.js/);
-  assert.match(read('src/levels/page.js'), /import '\.\/note\.js';/, 'the violin is Level 1: it starts the page');
+  assert.match(read('src/levels/page.js'), /import\('\.\/note\.js'\);\s+\/\/ Level 1 starts the page/, 'the violin is Level 1: it starts the page');
   assert.match(main, /<use|svg\('use'/, 'the glass shows the same drawing, magnified');
   assert.match(css, /prefers-reduced-motion: reduce/);
 });

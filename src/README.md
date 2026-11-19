@@ -106,5 +106,15 @@ and one accent. `docs/levels_spec.md` governs. `try/level-2/` and `notebook/` fo
   - "Do you see a similarity to the violin level?" Side by side: one A note = four notes; 0 signal = ↑ + ↓ + ↑ + ↓.
   - Files: `src/levels/mri.js` (with `copyMri.js`), `src/math/pieces.js` and `src/math/scanner.js`.
 
-`src/levels/page.js` starts Level 1 and opens Level 2. `base.css` holds the shared page, prompt, buttons and choices.
-`test/note.test.js` and `test/mri.test.js` check the mathematics, the layout and the copy.
+- **Level 3, "The magic glasses"**, which opens underneath when Level 2 ends:
+  - A violin tuner names one note; the squiggle hides four.
+  - Magic rainbow glasses split the squiggle into bars, one per hidden note. The learner takes them off and on, then
+    drags the bars to make a tuning fork and bring the notes back.
+  - A Fourier machine with the glasses built in turns the scanner's squiggles into the picture, one crank at a time.
+  - Only then is the tool named: the Fourier transform.
+  - Files: `src/levels/glasses.js` (with `copyGlasses.js`) and `src/math/glasses.js`. The app's own Fourier blocks
+    stay in `src/math/fourier.js`.
+
+`src/levels/page.js` starts Level 1 and opens each next level; `try/#level-2` and `try/#level-3` open one level on its
+own, for review. `base.css` holds the shared page, prompt, buttons and choices. `test/note.test.js`,
+`test/mri.test.js` and `test/glasses.test.js` check the mathematics, the layout and the copy.

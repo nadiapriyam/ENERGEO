@@ -1,0 +1,84 @@
+/* Level 3, "The magic glasses", in the levels' plain style: a white page, the system sans, one accent. The one burst of
+   colour is the glasses: rainbow rims, a rainbow frame round the board while you wear them, and rainbow bars when they
+   split something with many tones. The four notes keep their Level 1 colours. */
+
+.glasses-board { display: block; width: 100%; height: auto; overflow: hidden; border-radius: 20px; touch-action: manipulation; background: #ffffff; }
+.glasses-board.dragging-on { touch-action: none; cursor: ns-resize; }
+.scene { opacity: 0; visibility: hidden; transition: opacity 500ms ease-out, visibility 0s linear 500ms; }
+.scene.on { opacity: 1; visibility: visible; transition: opacity 500ms ease-out, visibility 0s; }
+
+/* the tuner */
+.tuner-body { fill: #2f3540; }
+.tuner-clip { fill: #4a5260; }
+.tuner-screen { fill: #e9f2e4; stroke: #c9d6c2; stroke-width: 2; }
+.tick { stroke: #7d8a76; stroke-width: 2; stroke-linecap: round; }
+.tick.centre { stroke: #2e9e5b; stroke-width: 3; }
+.tuner-letter { font-family: var(--font); font-size: 46px; font-weight: 700; fill: #1b1f24; opacity: 0; transition: opacity 400ms ease-out 1200ms; }
+.tuner.in-tune .tuner-letter, .tuner.listening .tuner-letter { opacity: 1; }
+.needle { transition: transform 1600ms cubic-bezier(0.25, 1.6, 0.4, 1); }
+.needle line { stroke: #1b1f24; stroke-width: 3; stroke-linecap: round; }
+.needle circle { fill: #1b1f24; }
+.tuner-light { fill: #59606b; transition: fill 300ms ease-out; }
+.tuner.in-tune .tuner-light { fill: #3cc46e; filter: drop-shadow(0 0 6px #3cc46e); }
+
+/* the squiggle, and its four tones lifting out of it */
+.strip-box { fill: #f7f9fc; stroke: #e2e7f0; stroke-width: 2; }
+.squiggle { fill: none; stroke: #c7891a; stroke-width: 3.2; stroke-linejoin: round; }
+.strip.radio .squiggle { stroke: #6f86c9; stroke-width: 1.6; }
+.part { fill: none; stroke-width: 2.6; opacity: 0; transform-box: view-box; transform-origin: 320px 111px; transition: opacity 500ms ease-out, transform 700ms cubic-bezier(0.5, 0, 0.6, 1); }
+.strip.splitting .part { opacity: 1; }
+.strip.dropping .part { opacity: 0; }
+
+/* through the glasses: bars */
+.baseline { stroke: #c9d1db; stroke-width: 2; }
+.bar { transform-box: fill-box; transform-origin: bottom; transition: transform 500ms cubic-bezier(0.3, 0.7, 0.3, 1), y 120ms ease-out, height 120ms ease-out; }
+.bar.growing { transform: scaleY(0); }
+.bar-label { font-family: var(--font); font-size: 17px; font-weight: 700; }
+.four-bars, .many-bars { opacity: 0; transition: opacity 400ms ease-out; }
+.four-bars.on, .many-bars.on { opacity: 1; }
+.four-bars .bar { opacity: 1; }
+.glasses-board.dragging-on .four-bars .bar { cursor: ns-resize; }
+
+/* wearing the glasses */
+.rainbow-frame { fill: none; stroke: url(#f3-rainbow); stroke-width: 8; opacity: 0; transition: opacity 500ms ease-out; pointer-events: none; }
+.glasses-figure.glasses .rainbow-frame { opacity: 1; }
+.glasses-overlay { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; pointer-events: none; }
+.glasses-art { width: min(70vw, 520px); animation: onto-your-face 1.3s cubic-bezier(0.55, 0, 0.75, 0.6) forwards; }
+@keyframes onto-your-face {
+  0% { transform: translateY(30vh) scale(0.3); opacity: 0; }
+  30% { transform: translateY(0) scale(0.9); opacity: 1; }
+  100% { transform: translateY(-4vh) scale(7); opacity: 0; }
+}
+.lens { fill: rgba(200, 225, 255, 0.18); }
+.rim { fill: none; stroke: url(#f3-rim); stroke-width: 12; stroke-linecap: round; }
+.temple { fill: none; stroke: #2f3540; stroke-width: 8; stroke-linecap: round; }
+
+/* the Fourier machine */
+.input-box { fill: #f7f9fc; stroke: #e2e7f0; stroke-width: 2; }
+.input-squiggle { fill: none; stroke: #6f86c9; stroke-width: 1.6; transition: transform 450ms ease-in, opacity 450ms ease-in; }
+.input-squiggle.feeding { transform: translateX(70px); opacity: 0; }
+.chute { fill: none; stroke: #c9d1db; stroke-width: 3; stroke-dasharray: 6 6; }
+.machine-box { fill: #e9edf3; stroke: #b7c1cd; stroke-width: 2.4; }
+.machine-window { fill: #ffffff; stroke: url(#f3-rainbow); stroke-width: 5; }
+.crank { cursor: pointer; transition: transform 450ms ease-in-out; }
+.machine.fast .crank { transition-duration: 40ms; }
+.crank:focus-visible .crank-knob { stroke: var(--accent); stroke-width: 3; }
+.crank-hit { fill: transparent; }
+.crank-arm { stroke: #59606b; stroke-width: 6; stroke-linecap: round; }
+.crank-knob { fill: var(--accent); }
+.crank-hub { fill: #59606b; }
+.canvas-box { fill: #000000; stroke: #b7c1cd; stroke-width: 2; }
+.pixel.fresh { animation: print 400ms ease-out; }
+@keyframes print { from { opacity: 0; } }
+
+.controls { display: flex; justify-content: center; gap: 10px; min-height: 0.5em; margin: 6px 0 4px; }
+.controls .action { margin: 0; }
+
+@media (max-width: 520px) {
+  .bar-label { font-size: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene, .scene.on, .tuner-letter, .needle, .tuner-light, .part, .bar, .four-bars, .many-bars, .rainbow-frame, .input-squiggle, .crank { transition: none; }
+  .pixel.fresh, .glasses-art { animation: none; }
+}

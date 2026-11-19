@@ -1,0 +1,37 @@
+// Every learner-facing line of Level 3, "The magic glasses", verbatim from docs/levels_spec.md (checked by
+// test/glasses.test.js). Drafted at Nadia's request for her review: playful, a little sarcastic, and light on facts.
+// Nothing else on the page is learner-facing text, apart from accessibility labels.
+
+export const COPY = {
+  recap: ['Level 1: one A note hid four notes. Level 2: one 0 hid countless tiny magnets.', "It would be nice to actually see what's hiding."],
+  tunerIntro: 'Musicians already own a gadget that listens to notes.',
+  play: 'Play your A note',
+  tunerSays: 'Your tuner listens very carefully and announces: A.',
+  thanks: ['Thank you, tuner. Very helpful.', 'It hears one note, just like your ear.'],
+  tunerLetter: 'A',
+  squiggle: "Here's the sound itself. Four notes are hiding in this squiggle.",
+  see: { question: 'Can you see them?', choices: ['Obviously', 'Not really'], after: 'Nobody can. Squiggles are terrible at sharing secrets.' },
+  ifOnly: 'If only there were a magical pair of glasses that showed every note hiding in a sound…',
+  putOn: 'Put on the magic glasses',
+  bars: 'Oh look. Four notes, and how much of each.',
+  prism: 'Like a prism splits light into a rainbow, the glasses split a sound into its notes.',
+  notes: ['A', 'high A', 'E', 'higher A'],
+  toggle: "Take them off and put them back on. Go on, nobody's watching.",
+  takeOff: 'Take them off',
+  putBack: 'Put them on',
+  twoWays: 'Same sound. Two ways to see it.',
+  pure: 'With the glasses on, you can change the notes. Can you make a pure tone, like a tuning fork?',
+  pureHint: 'Drag the bars down to 0, all but one.',
+  pureDone: 'One bar, one smooth wave. Your very own tuning fork.',
+  back: 'Now bring the other notes back.',
+  backDone: 'Every bump in the squiggle comes from a bar.',
+  scanner: ['Now the big one. Remember the scanner\'s faint reply in Level 2?', "It's a squiggle too. A much messier one."],
+  glassesOn: 'Glasses on',
+  manyBars: 'Lots of bars this time. Each one comes from a different spot in your body: the taller the bar, the more of you is there.',
+  crankIntro: 'The scanner has these glasses built in. Turn the crank.',
+  crank: 'Turn the crank',
+  speedUp: "Okay, this could take a while. Let's speed it up.",
+  pictureOut: 'Squiggles in. A picture of you out.',
+  name: ["Fine, the glasses aren't really magic. They're math, and they're called the Fourier transform.", 'Joseph Fourier came up with the idea about 200 years ago. Today it is at work in MRI scanners, phones and music apps.'],
+  final: 'Here it is: the mathematical tool that lets us start seeing what hides inside.',
+};

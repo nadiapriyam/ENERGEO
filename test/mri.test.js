@@ -233,7 +233,7 @@ test('8. the frame: ↑ and ↓ magnets mirrored, never rotated; no curve or com
   assert.ok(!/zero|cancel|\b0\b|nothing|<h1/i.test(html), 'the page shell names no concept');
   assert.match(html, /id="next-level" hidden/, 'Level 2 is offered only after Level 1 ends');
   assert.ok(html.indexOf('id="note-lesson"') < html.indexOf('id="mri-lesson"'), 'one page: the violin, then the MRI');
-  assert.match(read('src/levels/page.js'), /await import\('\.\/mri\.js'\)/, 'the MRI level starts when Level 1 is done');
+  assert.match(read('src/levels/page.js'), /chain\('note-lesson', 'next-level', LEVELS\.next, 'level-2', \(\) => import\('\.\/mri\.js'\)\)/, 'the MRI level starts when Level 1 is done');
   assert.match(notebookHtml, /url=\.\.\/try\//, 'the old notebook link opens the levels');
   assert.match(read('try/level-2/index.html'), /url=\.\.\//, 'the old Level 2 link opens the levels');
   assert.match(css, /--bg: #ffffff;/);
