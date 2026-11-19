@@ -106,18 +106,21 @@ and one accent. `docs/levels_spec.md` governs. `try/level-2/` and `notebook/` fo
   - "Do you see a similarity to the violin level?" Side by side: one A note = four notes; 0 signal = ↑ + ↓ + ↑ + ↓.
   - Files: `src/levels/mri.js` (with `copyMri.js`), `src/math/pieces.js` and `src/math/scanner.js`.
 
-- **Level 3, "The magic glasses"**, which opens underneath when Level 2 ends:
-  - The story picks up after the scan. A tuner on the violin draws the A note as a small signal and names one note;
-    the signal grows to fill the page, and four notes hide in it.
-  - A prism splits a stage light into LED colours. Then glasses, a prism for sound, dim the page to a night-city dark
-    and split the signal into glowing bars, one per hidden note, standing where the prism's rays stood. The learner
-    takes them off and on, then drags the bars to make a tuning fork and bring the notes back.
-  - The scanner's busier signal turns into many bars. Then the signal and the bars shrink into a Fourier machine,
-    which turns each signal into one row of the picture, one crank at a time.
+- **Level 3, "A prism for sound"**, which opens underneath when Level 2 ends:
+  - The story picks up after the scan. In the dimmed concert hall the learner aims a stage light at a glass prism:
+    white light in, LED colours out, red bent least and violet most. "If there's a prism for light, shouldn't there be
+    a prism for sound?" Surprise: the tuner has one inside.
+  - The tuner draws the A note as a small signal and names one note; the signal grows to fill the board, and the
+    prism splits it into four glowing bars. The learner drags the bars into a tuning fork and back.
+  - The technician who scanned you (a character with round glasses and a yellow shirt, speaking in bubbles) shows the
+    scanner's prism on one row of spots across your head. The row lifts out of the picture. A stronger right side
+    gives each spot its own note; the learner taps spots to hear them, then all at once: one signal. The prism splits
+    it into bars, each under its spot; tall bar, bright dot; the row slides back into the picture. Two more rows by
+    hand, then the rest, then Level 2's sharp picture.
   - Only then is the tool named: the Fourier transform.
-  - Files: `src/levels/glasses.js` (with `copyGlasses.js`) and `src/math/glasses.js`. The app's own Fourier blocks
+  - Files: `src/levels/prism.js` (with `copyPrism.js`) and `src/math/prism.js`. The app's own Fourier blocks
     stay in `src/math/fourier.js`.
 
 `src/levels/page.js` starts Level 1 and opens each next level; `try/#level-2` and `try/#level-3` open one level on its
 own, for review. `base.css` holds the shared page, prompt, buttons and choices. `test/note.test.js`,
-`test/mri.test.js` and `test/glasses.test.js` check the mathematics, the layout and the copy.
+`test/mri.test.js` and `test/prism.test.js` check the mathematics, the layout and the copy.

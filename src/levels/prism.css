@@ -1,0 +1,161 @@
+/* Level 3, "A prism for sound". It starts in the levels' plain style, a white page; then the hall's lights dim to a
+   night-city dark, and everything lit glows like LED lights: the prism's rainbow, the signal, the bars. The four notes
+   keep their Level 1 colours, as LEDs. The technician speaks in bubbles beside his face. Scenes move into one another
+   (transforms and fades), never just swap. */
+
+.prism-board {
+  display: block; width: 100%; height: auto; overflow: hidden; border-radius: 20px; touch-action: manipulation;
+  --night: #0b0f22; --night-2: #141b3a; --night-edge: #2a3463;
+}
+.prism-board.aiming, .prism-board.dragging-on, .prism-board.tapping { touch-action: none; }
+.prism-board.aiming { cursor: crosshair; }
+.prism-board.dragging-on { cursor: ns-resize; }
+.prism-board.tapping { cursor: pointer; }
+.bg { fill: #ffffff; transition: fill 1200ms ease-in-out; }
+.night .bg { fill: var(--night); }
+.scene { opacity: 0; visibility: hidden; transition: opacity 600ms ease-out, visibility 0s linear 600ms; }
+.scene.on { opacity: 1; visibility: visible; transition: opacity 600ms ease-out, visibility 0s; }
+
+/* the hall */
+.hall { transition: transform 1100ms cubic-bezier(0.45, 0, 0.2, 1), opacity 900ms ease-out; }
+.hall.leaving { transform: translateY(-160px); opacity: 0; }
+.floor { stroke: #c9d1db; stroke-width: 3; transition: stroke 1200ms; }
+.night .floor { stroke: var(--night-edge); }
+.stand { fill: none; stroke: #6b7380; stroke-width: 4; stroke-linecap: round; }
+.lamp-can { fill: #4a5260; }
+.lamp-lens { fill: #dfe5ee; transition: fill 600ms; }
+.hall.lit .lamp-lens { fill: #ffffff; filter: url(#p3-glow); }
+.lamp { cursor: grab; }
+.lamp:focus-visible .lamp-can { stroke: #ffffff; stroke-width: 2.5; }
+.chain, .arm { fill: none; stroke: #b08a3e; stroke-width: 3; stroke-linecap: round; }
+.string { stroke: #c9b27a; stroke-width: 1.4; }
+.bulb { fill: #ffd76a; filter: url(#p3-glow); transition: fill 1200ms; }
+.night .bulb { fill: #4a3f22; filter: none; }
+.glass { fill: rgba(205, 225, 255, 0.55); stroke: #8fa3c4; stroke-width: 2.4; stroke-linejoin: round; transition: fill 1200ms, stroke 1200ms; }
+.night .glass { fill: rgba(170, 195, 255, 0.2); stroke: #b4c8ff; }
+.facet { stroke: rgba(255, 255, 255, 0.75); stroke-width: 1.5; stroke-linecap: round; }
+.beam { stroke: #ffffff; stroke-width: 7; stroke-linecap: round; opacity: 0; filter: url(#p3-glow); transition: opacity 700ms ease-out; }
+.hall.lit .beam { opacity: 0.92; }
+.ray { stroke-width: 4; stroke-linecap: round; opacity: 0; filter: url(#p3-glow); transition: opacity 260ms ease-out; }
+.hall.hit .ray { opacity: 1; }
+.wall-glow { fill: #ffffff; opacity: 0; filter: url(#p3-glow); transition: opacity 260ms ease-out; }
+.hall.lit:not(.hit) .wall-glow { opacity: 0.85; }
+
+/* the tuner, on the violin's scroll; it rises into view */
+.arrive { transform: translateY(480px); transition: transform 1100ms cubic-bezier(0.45, 0, 0.2, 1); }
+.arrive.up { transform: none; }
+.pegbox, .scroll { fill: #8a5a2c; }
+.scroll-curl { fill: none; stroke: #5e3b1b; stroke-width: 2.4; stroke-linecap: round; }
+.tuner-body { fill: #2f3540; stroke: #444d5c; stroke-width: 2; }
+.tuner-clip { fill: #4a5260; }
+.tuner-screen { fill: #0f1a2b; stroke: #3a4a63; stroke-width: 2; }
+.tuner-letter { font-family: var(--font); font-size: 30px; font-weight: 700; fill: #7dffb0; opacity: 0; transition: opacity 400ms ease-out; }
+.tuner.in-tune .tuner-letter { opacity: 1; }
+.tuner-light { fill: #59606b; transition: fill 300ms ease-out; }
+.tuner.in-tune .tuner-light { fill: #3cc46e; filter: drop-shadow(0 0 6px #3cc46e); }
+.tuner { transition: opacity 900ms ease-out, transform 1100ms cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 900ms; }
+.tuner.leaving { opacity: 0; transform: translateY(70px); }
+
+/* the signal: small on the tuner's screen, then big; later at the top, as the scanner's signal */
+.strip { transform-box: view-box; transform-origin: 0 0; transition: transform 1100ms cubic-bezier(0.45, 0, 0.2, 1); }
+.strip-box { fill: var(--night-2); stroke: var(--night-edge); stroke-width: 2; transition: opacity 700ms ease-out 400ms; }
+.strip.small .strip-box { opacity: 0; transition-delay: 0s; }
+.signal { fill: none; stroke: #ffc35a; stroke-width: 3.2; stroke-linejoin: round; vector-effect: non-scaling-stroke; filter: url(#p3-glow); transition: stroke 900ms ease-in-out; }
+.strip.small .signal { stroke: #7dffb0; }
+.strip.radio .signal { stroke: #8fb4ff; stroke-width: 1.8; }
+.signal-inner { transition: opacity 350ms ease-out; }
+.signal-inner.swapping { opacity: 0; }
+.part { fill: none; stroke-width: 2.6; opacity: 0; transform-box: view-box; transform-origin: 320px 111px; transition: opacity 500ms ease-out, transform 650ms cubic-bezier(0.5, 0, 0.6, 1); }
+.strip.splitting .part { opacity: 1; }
+.strip.dropping .part { opacity: 0; }
+
+/* the prism for sound, and its glowing bars */
+.glyph-glass { fill: rgba(170, 195, 255, 0.16); stroke: url(#p3-led); stroke-width: 2.4; stroke-linejoin: round; filter: url(#p3-glow); }
+.spectrum { opacity: 0; transition: opacity 500ms ease-out; }
+.spectrum.on { opacity: 1; }
+.baseline { stroke: var(--night-edge); stroke-width: 2; }
+.bar { transform-box: fill-box; transform-origin: bottom; transition: transform 500ms cubic-bezier(0.3, 0.7, 0.3, 1); filter: url(#p3-glow); }
+.bar.growing { transform: scaleY(0); }
+.bar-label { font-family: var(--font); font-size: 17px; font-weight: 700; }
+.four-bars { opacity: 0; transition: opacity 400ms ease-out; }
+.four-bars.on { opacity: 1; }
+
+/* the scanner: your picture, one row of it close up, the spots' bars */
+.pic-bg { fill: #05070f; stroke: var(--night-edge); stroke-width: 2; }
+.cell { opacity: 0; transition: opacity 320ms ease-out; }
+.cell.lit { opacity: 1; }
+.sharp-pic { opacity: 0; transition: opacity 1400ms ease-in-out; }
+.sharp-pic.on { opacity: 1; }
+.head-outline { fill: none; stroke: #5566b0; stroke-width: 1.6; stroke-dasharray: 5 5; transition: opacity 900ms; }
+.head-view { transition: opacity 700ms ease-out; }
+.head-view.dim { opacity: 0.1; }
+.head-view.sharp .head-outline, .head-view.sharp .cell { opacity: 0; transition: opacity 1400ms ease-in-out; }
+.scene.band { fill: none; stroke: url(#p3-led); stroke-width: 2.5; filter: url(#p3-glow); transform-box: view-box;
+  transition: transform 500ms ease-in-out, opacity 400ms ease-out, visibility 0s linear 400ms; }
+.scene.band.on { transition: transform 500ms ease-in-out, opacity 400ms ease-out, visibility 0s; }
+.scene.bench { transform-box: view-box; transform-origin: 0 0;
+  transition: transform 1000ms cubic-bezier(0.45, 0, 0.2, 1), opacity 500ms ease-out, visibility 0s linear 500ms; }
+.scene.bench.on { transition: transform 1000ms cubic-bezier(0.45, 0, 0.2, 1), opacity 500ms ease-out, visibility 0s; }
+.spot { outline: none; }
+.spot:focus-visible .spot-disc { stroke: #ffffff; stroke-width: 3; }
+.spot-disc { fill: var(--night-2); stroke: #3d4f96; stroke-width: 1.6; transition: opacity 500ms ease-out; }
+.spot-disc.empty { fill: none; stroke-dasharray: 3 4; }
+.spin line { stroke: #8fb4ff; stroke-width: 2.6; stroke-linecap: round; }
+.spin polygon { fill: #8fb4ff; }
+.spin { filter: url(#p3-glow); transition: opacity 500ms ease-out; }
+.bench.painted .spin, .bench.painted .spot-disc { opacity: 0; }
+.dot { opacity: 0; transition: opacity 700ms ease-out; }
+.bench.painted .dot { opacity: 1; }
+.ring { fill: none; stroke: #8fb4ff; stroke-width: 2; transform-box: fill-box; transform-origin: center; animation: ring 750ms ease-out forwards; }
+@keyframes ring { from { opacity: 0.95; transform: scale(0.6); } to { opacity: 0; transform: scale(1.35); } }
+.wedge { fill: url(#p3-ramp); filter: url(#p3-glow); }
+.spot-bar { transform-box: fill-box; transform-origin: bottom; transition: transform 500ms cubic-bezier(0.3, 0.7, 0.3, 1), opacity 200ms ease-out; filter: url(#p3-glow); }
+.spot-bar.growing { transform: scaleY(0); opacity: 0; }
+.spot-bar.tallest { stroke: #ffffff; stroke-width: 2.5; }
+.spot-bar.picked { stroke: #ffffff; stroke-width: 2.5; stroke-dasharray: 4 3; }
+.bar-ray { stroke-width: 2; stroke-linecap: round; opacity: 0; transition: opacity 300ms ease-out; filter: url(#p3-glow); }
+.bar-rays.on .bar-ray { opacity: 0.9; }
+.riser { fill: none; stroke-width: 2.4; stroke-linecap: round; filter: url(#p3-glow); animation: rise 1000ms ease-in forwards; }
+@keyframes rise { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(var(--rise)); } }
+
+/* the technician: his face beside his bubbles */
+.speaker { display: flex; gap: 12px; align-items: flex-start; margin: 0 0 0.7em; opacity: 0; transition: opacity 320ms ease-out; }
+.speaker.in { opacity: 1; }
+.who { flex: 0 0 76px; }
+.face { display: block; width: 76px; height: auto; }
+.bubbles { display: flex; flex-direction: column; gap: 8px; min-width: 0; padding-top: 4px; }
+.bubble { position: relative; margin: 0; padding: 0.45em 0.85em; background: #f1f4fa; border-radius: 16px; opacity: 0; transform: translateY(4px); transition: opacity 320ms ease-out, transform 320ms ease-out; }
+.bubble.in { opacity: 1; transform: none; }
+.bubble:first-child::before { content: ''; position: absolute; left: -7px; top: 14px; border: 7px solid transparent; border-left: 0; border-right-color: #f1f4fa; }
+.face .skin { fill: #e8b58c; }
+.face .hair { fill: #2a2a2a; }
+.face .eye { fill: #ffffff; }
+.face .pupil { fill: #111111; }
+.face .rim { fill: none; stroke: #3a3a3a; stroke-width: 3; stroke-linecap: round; }
+.face .brow { stroke: #2a2a2a; stroke-width: 4.5; stroke-linecap: round; }
+.face .mouth { fill: #7a3e2c; transform-box: fill-box; transform-origin: center; }
+.face.talking .mouth { animation: talk 220ms ease-in-out 6 alternate; }
+@keyframes talk { from { transform: scaleY(1); } to { transform: scaleY(3.4); } }
+.face .eyes { transform-box: fill-box; transform-origin: center; animation: blink 5s infinite; }
+@keyframes blink { 0%, 93%, 100% { transform: scaleY(1); } 96% { transform: scaleY(0.12); } }
+.line.thought { font-style: italic; color: var(--ink-2); }
+
+/* the words and the buttons: no jumps */
+.controls { display: flex; justify-content: center; gap: 10px; min-height: 3em; align-items: center; margin: 6px 0 2px; }
+.controls .action { margin: 0; }
+#prism-lesson .line.leaving, #prism-lesson .speaker.leaving, #prism-lesson .choices.leaving { opacity: 0; transform: translateY(-4px); transition: opacity 260ms ease-in, transform 260ms ease-in; }
+
+@media (max-width: 520px) {
+  .bar-label { font-size: 22px; }
+  .who { flex-basis: 56px; }
+  .face { width: 56px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene, .scene.on, .bg, .hall, .arrive, .tuner, .tuner-letter, .tuner-light, .strip, .strip-box, .signal, .signal-inner, .part,
+  .beam, .ray, .wall-glow, .glass, .bulb, .floor, .spectrum, .bar, .four-bars, .cell, .sharp-pic, .head-outline, .head-view,
+  .scene.band, .scene.band.on, .scene.bench, .scene.bench.on, .spot-disc, .spin, .dot, .spot-bar, .bar-ray, .speaker, .bubble,
+  #prism-lesson .line.leaving, #prism-lesson .speaker.leaving { transition: none; }
+  .ring, .riser, .face .eyes, .face.talking .mouth { animation: none; }
+  .riser { opacity: 0; }
+}

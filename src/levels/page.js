@@ -1,6 +1,6 @@
 // try/: the levels on one page (docs/levels_spec.md). Level 1, the violin, starts at once. When a level's last line is
-// shown, a button offers the next one, which then starts underneath: Level 2, the MRI scanner; Level 3, the magic
-// glasses.
+// shown, a button offers the next one, which then starts underneath: Level 2, the MRI scanner; Level 3, a prism
+// for sound.
 import './base.css';
 import { LEVELS } from './copyLevels.js';
 
@@ -31,10 +31,10 @@ function chain(from, buttonId, text, section, load) {
   }, { once: true });
 }
 chain('note-lesson', 'next-level', LEVELS.next, 'level-2', () => import('./mri.js'));
-chain('mri-lesson', 'next-level-3', LEVELS.next3, 'level-3', () => import('./glasses.js'));
+chain('mri-lesson', 'next-level-3', LEVELS.next3, 'level-3', () => import('./prism.js'));
 
 // Opening one level on its own, for review: try/#level-2 or try/#level-3 skips straight to it.
-const direct = { '#level-2': ['level-2', () => import('./mri.js')], '#level-3': ['level-3', () => import('./glasses.js')] }[location.hash];
+const direct = { '#level-2': ['level-2', () => import('./mri.js')], '#level-3': ['level-3', () => import('./prism.js')] }[location.hash];
 if (direct) {
   for (const id of ['level-1-tag', 'note-lesson', 'next-level']) document.getElementById(id)?.remove();
   for (const id of ['level-2', 'level-3']) if (id !== direct[0]) document.getElementById(id).hidden = true;

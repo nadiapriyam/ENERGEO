@@ -1,10 +1,10 @@
-# The levels: Level 1, "Inside a note" (the violin); Level 2, "Inside the scanner" (the MRI); Level 3, "The magic glasses"
+# The levels: Level 1, "Inside a note" (the violin); Level 2, "Inside the scanner" (the MRI); Level 3, "A prism for sound"
 
 Nadia's specification for the levels as one experience at `try/`. **This document governs (2026-11-19).** The
 earlier histories are kept in `docs/violin_level_spec.md` (the violin, Revisions 1–4, then called Level 2) and
 `docs/prototype_try_spec.md` (the MRI, Revisions 1–4, then called Level 1; its Revision 2 holds Nadia's original
 wording). Every learner-facing line of every level is copied from the lists below. `test/note.test.js`,
-`test/mri.test.js` and `test/glasses.test.js` check that. One level can be opened on its own for review: `try/#level-2`
+`test/mri.test.js` and `test/prism.test.js` check that. One level can be opened on its own for review: `try/#level-2`
 or `try/#level-3`.
 
 ## Nadia's request (2026-11-19), verbatim
@@ -142,7 +142,7 @@ and "Next: Level 3".
   exactly to the A note's wave. The right side is the MRI level's: ↑ = +1 and ↓ = −1, so each pair is 0 and the total
   signal is 0.
 
-## Level 3, "The magic glasses" (2026-11-19)
+## Level 3, "A prism for sound" (2026-11-19; first called "The magic glasses")
 
 ### Nadia's request, verbatim
 
@@ -152,7 +152,7 @@ and "Next: Level 3".
 
 Here is the mathematical tool that lets us start seeing it.
 
-### How it is learned by doing, not by reading
+### How it is learned by doing, not by reading (Revision 1, superseded by Revision 3 below)
 
 The learner is given one idea only: the same sound can be seen two ways, as a squiggle in time or as bars, one per
 hidden note. Fourier's name comes only at the very end, once the learner has used the tool.
@@ -219,9 +219,9 @@ hidden note. Fourier's name comes only at the very end, once the learner has use
 
 Nothing came after line 35.
 
-### What Level 3 claims, and what it leaves out
+### What Level 3 claims, and what it leaves out (Revision 1)
 
-The numbers are computed in `src/math/glasses.js` and checked by `test/glasses.test.js`.
+The numbers are computed in `src/math/prism.js` (then `glasses.js`) and checked by `test/prism.test.js`.
 
 - **The tuner.** A tuner measures a note's pitch and shows the nearest note's name. It does not show the other notes
   inside, and line 8 says only that.
@@ -241,7 +241,7 @@ The numbers are computed in `src/math/glasses.js` and checked by `test/glasses.t
 - **Left out on purpose.** Equations, sines and cosines, "frequency", "spectrum" and "coefficient" are left out. So are
   energy, and anything about Level 4. "Fourier transform" is the one technical term, given once, at the end.
 
-### Revision 2 (2026-11-19), which governs Level 3. Nadia, verbatim:
+### Revision 2 (2026-11-19), superseded by Revision 3 below. Nadia, verbatim:
 
 > i dont like the word squiggle thats too sarcastic, dial down on the sarcasam, maybe instead of introducing the glasses first, lets introduce a prism first then make the rainbow more cyber city palleted rainbow so darker but vibrant colored rainbow almost like led lights. also to clear up the squiggle, use signal and show signal on the tuner so theres more of a transition. you need to work on transitions its a bit choppy, and more of a story please including the transition from level 2. this is later going to be directly aftert level 2
 
@@ -306,7 +306,7 @@ The numbers are computed in `src/math/glasses.js` and checked by `test/glasses.t
 35. Joseph Fourier came up with the idea about 200 years ago. Today it is at work in MRI scanners, phones and music apps.
 36. Here it is: the mathematical tool that lets us start seeing what hides inside.
 
-Nothing comes after line 36.
+Nothing came after line 36.
 
 #### What the new lines claim
 
@@ -318,3 +318,140 @@ Nothing comes after line 36.
 - **Everything else** is as in Revision 1's notes above: the bars are exact, the machine's unmixing is a real discrete
   Fourier transform, the MRI story is simplified to one direction, and line 35's history and uses are checked. Fourier's
   name comes only once, at the end, and the jargon is left out.
+
+### Revision 3 (2026-11-19), which governs Level 3. Nadia, verbatim:
+
+> the transitions are nice, hovewer the prisim can definately be expained a little more visually and verbally, like saying you go back to the concert hall, you notice a light shining then you see a prisim splitting the light into a bunch of its components you think to your self, hmm if theres a prisim for a light wave shouldn:t there be a prisim for a sound wave. suprise its a tuner. the second thing thats still confusing is the relationship between the tuner and the mri machine crank, its not obvious how the crank is similar at converting something that hides a lot to an image, it just seems like you are generateing an image from nothing. bring out the relation for understanding how these two relate try to make it easier to understand you can make a character like this
+
+With it she shared a picture for the character: a cartoon man with short dark hair, big round glasses, a flat
+expression and a yellow shirt. The picture itself is not kept in the repository; the technician is drawn in its style.
+
+#### What changes
+
+- **The prism, as a story the learner takes part in.**
+  - Back at the hall, the lights dim and only a stage light stays on. A glass prism hangs from the chandelier.
+  - The learner drags to aim the light. Where the beam misses, white light reaches the wall. Where it catches the
+    prism, a fan of LED colours leaves it, red bent least and violet most.
+  - Then: "Where did the colors come from?" and "They were in the white light all along. The prism only spreads them
+    apart."
+- **The tuner is the prism for sound.**
+  - "Hmm. If there's a prism for light, shouldn't there be a prism for sound?" "Surprise: your tuner has one inside."
+  - The tuner slides up into view. The rest of the tuner scene is kept from Revision 2: the signal on its screen, the
+    signal growing, the four bars and the tuning fork.
+  - [Turn on the prism] replaces [Put on the glasses]: the four notes pass through a small prism into their bars.
+- **The glasses are retired, and the level is renamed "A prism for sound".**
+  - The flying glasses, the LED frame and the take-them-off-and-on step are gone.
+  - The night-city colours now come from the dimmed hall.
+- **A character: the technician who scanned you.** He speaks in bubbles beside his face, drawn in the style of Nadia's
+  picture. His part is the relation between the tuner and the scanner, shown on one row of spots across your head:
+  1. The row lifts out of the picture and spreads across the board. In every spot, tiny magnets spin, all at the same
+     speed. Every spot sends the same note, so he can't tell them apart.
+  2. The learner makes the right side of the magnet stronger. The spins fan out: slow on the left, fast on the right.
+     Each spot now has its own note.
+  3. The learner taps spots and hears them. The notes are low on the left and high on the right; loud where there is a
+     lot of you, and silent outside your head.
+  4. "Hear them all at once": all the notes together become one busy signal at the top. This is the scanner's faint
+     reply from Level 2.
+  5. "Turn on the prism": the signal splits into bars, and each bar stands under its own spot.
+  6. "Which spot holds the most of you? Tap its bar." Then: tall bar, bright dot. The bars become a row of grey dots,
+     and the row slides back into its place in your picture.
+  7. Two more rows by hand, then the rest, row after row. Then the sharp picture of Level 2: "A real scanner uses far
+     more spots."
+  8. "Your tuner splits a sound into its notes. My scanner splits its signal into the spots inside you."
+- **The machine and its crank are gone.** Every step the crank hid now happens on the board.
+
+#### Level 3 learner copy (Revision 3), in order (drafted by Claude at Nadia's request, for her review)
+
+1. After your scan, you head back to the concert hall. The concert starts soon.
+2. The lights dim. Only a stage light is still on.
+3. A glass prism hangs from the chandelier.
+4. Drag to aim the light at the prism.
+5. Drag across the picture to swing the light. (only after 8 seconds)
+6. Where did the colors come from? [The prism made them] [They were in the white light]
+7. They were in the white light all along. The prism only spreads them apart.
+8. Hmm. If there's a prism for light, shouldn't there be a prism for sound?
+9. Surprise: your tuner has one inside.
+10. You clip your tuner onto your violin.
+11. [Play your A note]
+12. A (the letter on the tuner)
+13. The tuner draws your note as a signal: the shape of the sound over time.
+14. Then it names one note: A.
+15. But you know better. Four notes are hiding in this signal.
+16. Can you see them? [Yes] [Not really]
+17. Neither can anyone, just by looking.
+18. [Turn on the prism]
+19. Your A note, split into the four notes inside it.
+20. A, high A, E, higher A (the labels under the bars)
+21. Each bar shows how much of that note there is.
+22. Same sound, seen two ways: as a signal, and as its notes.
+23. Now you can change the notes. Can you turn it into a pure tone, like a tuning fork?
+24. Drag the bars down to 0, all but one. (only after 9 seconds)
+25. One bar, one smooth wave: a tuning fork.
+26. Now bring the other notes back.
+27. Every bump in the signal comes from a bar.
+28. At the break, the technician who scanned you comes over to say hi.
+29. Technician: Your tuner has a prism for sound. So does my scanner!
+30. Technician: Here is one row of spots across your head. In each spot, tiny magnets are spinning.
+31. Technician: Right now they all spin at the same speed, so every spot sends the same note. I can't tell them apart!
+32. [Make the right side stronger]
+33. Technician: Now the further right a spot is, the faster its tiny magnets spin, and the higher its note.
+34. Tap the spots to hear them.
+35. The real notes are radio waves. Here you hear them as sound. (on the first tap, or after 6 seconds)
+36. [Hear them all at once]
+37. Technician: That's what my scanner hears: every spot at once, as one signal.
+38. [Turn on the prism]
+39. Technician: Each spot has its own note, so each bar stands under its spot.
+40. Which spot holds the most of you? Tap its bar.
+41. Technician: The tallest bars: the most of you. More of you means more tiny magnets, and a louder note.
+42. Technician: So I paint each spot as bright as its bar is tall.
+43. [Paint the row]
+44. Technician: One signal, one row of your picture. On to the next row!
+45. [Next row] (twice)
+46. Technician: My scanner does the rest, row after row.
+47. Technician: A real scanner uses far more spots, so its picture comes out sharp.
+48. Signal in, picture out.
+49. Technician: Your tuner splits a sound into its notes. My scanner splits its signal into the spots inside you.
+50. This prism for sound is real math, called the Fourier transform.
+51. Joseph Fourier came up with the idea about 200 years ago. Today it is at work in MRI scanners, phones and music apps.
+52. Here it is: the mathematical tool that lets us start seeing what hides inside.
+
+Nothing comes after line 52.
+
+#### What the new lines claim
+
+The numbers are computed in `src/math/prism.js` and checked by `test/prism.test.js`.
+
+- **Lines 2–7, the prism.**
+  - A glass prism separates white light into the colours it is made of. Newton showed this in his prism experiments
+    from 1666, and that the colours can be put back together into white. So the colours were in the light before; the
+    prism spreads them by bending each colour a different amount, red least and violet most.
+  - The board bends the rays in that order. The angles drawn are illustrative.
+  - Chandelier crystals are commonly cut as prisms, which is why they throw small rainbows.
+- **Line 9, the tuner.** Many digital tuners and tuning apps find a note this way: they split the sound into its tones
+  (a Fourier transform, or a close relative) and name the main one. Some tuners use other methods. The story's tuner is
+  one that splits the sound, and the level shows what it finds.
+- **Lines 30–33, spinning and the stronger side.**
+  - The tiny magnets (protons) turn about the scanner's field: they precess. How fast depends on the field's strength:
+    the stronger the field, the faster. At 1.5 T it is about 64 million turns a second (the Larmor frequency).
+  - The scanner adds a field that grows steadily across the body (a gradient). So the rate, and the radio note each
+    spot sends, grows steadily from one side to the other.
+  - On the board, spot k turns at (k + 1) × 0.22 turns a second, in step with its note. Before the right side is made
+    stronger, every spot turns at the leftmost spot's rate. Real rates are millions of times faster, and the
+    differences between spots are tiny next to the rate itself.
+- **Lines 34–35, the notes as sound.** The notes are radio waves. The page plays spot k as (k + 1) × 110 Hz, as loud as
+  how much of you is in it. Spots outside the head have nothing to send and stay silent.
+- **Lines 36–41, one signal and its bars.**
+  - The signal is all the spots' notes added together, which is what a real scanner's coil receives.
+  - The prism for sound is an exact discrete Fourier transform. For each of the 16 rows it gives back each spot's
+    amount to within 10⁻¹².
+  - "More of you" stands for more hydrogen: more water, more tiny magnets. A real image's brightness also depends on
+    how fast the tiny magnets settle back (relaxation), which is left out.
+- **Lines 42–47, row by row.**
+  - Here, one signal makes one row. Real scanners encode position by note along one direction only. They use a second
+    trick (phase encoding) for the other direction, then a two-dimensional Fourier transform. Some early methods did
+    build the picture one line at a time.
+  - The 16 × 16 picture is Level 2's head illustration, sampled at 16 spots a side. Line 47's sharp picture is Level
+    2's own 48 × 48 picture. Real images are typically 256 × 256 or more. Neither is a real scan.
+- **Line 51** is as in Revision 1's notes.
+- **Left out on purpose.** As before: no equations, and no "frequency", "spectrum" or "coefficient". "Radio waves" is
+  the only technical term added, and Level 2 already uses it. "Fourier transform" is still given once, at the end.
