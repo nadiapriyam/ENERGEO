@@ -87,8 +87,14 @@ does not touch the journey store or any interactive.
 
 ## The levels (`try/`)
 
-Two short Mathigon-style stories on one page, in one plain style: a white page, the system sans (its 0 is a plain 0)
-and one accent. `docs/levels_spec.md` governs. `try/level-2/` and `notebook/` forward here.
+Three short stories on one page, in one plain style: a white page, the system sans (its 0 is a plain 0) and one
+accent. `docs/levels_spec.md` governs. `try/level-2/` and `notebook/` forward here.
+
+- **Scrolling, as in a Mathigon course.** When a part of a story ends, its picture (a still copy) and its lines stay
+  on the page, and the story goes on underneath; the page scrolls down to it. Scroll up to see every earlier part.
+  `src/levels/scroll.js` keeps the parts; each level's `clear()` calls it.
+- **Full screen** (the switch at the top right, `page.js`): only the level being played, one part at a time, its
+  picture as large as fits, as the levels were first built.
 
 - **Level 1, "Inside a note"** (the violin):
   - You are the first violin; before a concert every player tunes to one note, and tonight it is your A note. Here the

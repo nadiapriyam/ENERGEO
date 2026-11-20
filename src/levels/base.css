@@ -125,3 +125,28 @@ body {
   .speaker, .bubble, .speaker.leaving { transition: none; }
   :is(.face, .person) .eyes, .face.talking .mouth { animation: none; }
 }
+
+/* Scrolling, as in a Mathigon course (scroll.js): each part of a story stays on the page, a still copy of its picture
+   above its lines, and the story goes on underneath. A kept part pushes the live picture down (no scroll anchoring);
+   the page then scrolls to it. */
+html { overflow-anchor: none; }
+#level-1 { border-top: 0; margin-top: 0; }
+.lesson > .figure { scroll-margin-top: 12px; }
+.level.live .lesson > .prompt { min-height: 60vh; min-height: 60svh; }   /* room under the story, so the live picture can scroll to the top */
+.kept-part { margin: 0 0 2.4em; content-visibility: auto; contain-intrinsic-size: auto 620px; }
+.kept-part * { transition: none !important; animation-iteration-count: 1 !important; }
+.kept-part .action { display: none; }
+.kept-part .choice:disabled:not(.picked) { opacity: 0.6; }
+
+/* Full screen: only the level being played, one part at a time, its picture as large as fits */
+.screen-mode {
+  position: fixed; top: 10px; right: max(12px, env(safe-area-inset-right, 0px)); z-index: 20;
+  font: inherit; font-size: 0.9rem; color: var(--ink-2); background: rgba(255, 255, 255, 0.94);
+  border: 1.5px solid #d5dae2; border-radius: 999px; padding: 0.3em 0.95em; cursor: pointer;
+}
+.screen-mode:hover { color: var(--ink); border-color: var(--ink-3); }
+html.full-screen .kept-part, html.full-screen .level:not(.live) { display: none; }
+html.full-screen .level.live { border-top: 0; margin-top: 0; }
+html.full-screen .level.live :is(.lesson, .level-tag) { max-width: min(1100px, calc((100vh - 280px) * 1.5)); max-width: min(1100px, calc((100svh - 280px) * 1.5)); }
+html.full-screen .level.live .lesson { padding-top: 2vh; }
+@media (max-width: 860px) { .lesson > .figure { scroll-margin-top: 54px; } }   /* the live picture stops under the switch */

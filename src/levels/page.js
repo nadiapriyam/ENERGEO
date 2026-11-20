@@ -1,8 +1,10 @@
 // try/: the levels on one page (docs/levels_spec.md). Level 1, the violin, starts at once. When a level's last line is
 // shown, a button offers the next one, which then starts underneath: Level 2, the MRI scanner; Level 3, a prism
-// for sound.
+// for sound. The page scrolls like a Mathigon course: every part of a story stays on the page (scroll.js). The
+// "Full screen" switch shows only the level being played, one part at a time.
 import './base.css';
 import { LEVELS } from './copyLevels.js';
+import { fullScreen } from './scroll.js';
 
 const tag = (id, text, note) => {
   const t = document.getElementById(id);
@@ -31,6 +33,8 @@ function chain(from, buttonId, text, section, load) {
     next.remove();
     const s = document.getElementById(section);
     s.hidden = false;
+    document.querySelector('.level.live')?.classList.remove('live');   // the level being played
+    s.classList.add('live');
     await load();                                            // the level builds itself, then the page brings it into view
     requestAnimationFrame(() => s.scrollIntoView({ behavior, block: 'start' }));
   }, { once: true });
@@ -42,10 +46,7 @@ chain('mri-lesson', 'next-level-3', LEVELS.next3, 'level-3', () => import('./pri
 // step of Level 3 side by side.
 const review = query.has('step') || query.has('from');     // a Level 3 step (no #anchor, so a frame never scrolls the page around it)
 const direct = { '#level-2': ['level-2', () => import('./mri.js')], '#level-3': ['level-3', () => import('./prism.js')] }[review ? '#level-3' : location.hash];
-const dropLevel1 = () => {
-  document.getElementById('next-level')?.parentElement.remove();
-  for (const id of ['level-1-tag', 'note-lesson']) document.getElementById(id)?.remove();
-};
+const dropLevel1 = () => document.getElementById('level-1')?.remove();
 if (query.has('step')) document.documentElement.classList.add('framed');   // one frame of the review strip
 if (query.has('steps')) {
   dropLevel1();
@@ -55,7 +56,38 @@ if (query.has('steps')) {
   dropLevel1();
   for (const id of ['level-2', 'level-3']) if (id !== direct[0]) document.getElementById(id).hidden = true;
   document.getElementById(direct[0]).hidden = false;
+  document.getElementById(direct[0]).classList.add('live');
   direct[1]();
 } else {
   import('./note.js');                                        // Level 1 starts the page
+}
+
+// Full screen: only the level being played, one part at a time, its picture as large as fits (base.css). The browser's
+// own full screen is asked for too, where it is offered; leaving it (Esc) leaves this mode as well.
+if (!query.has('step') && !query.has('steps')) {
+  const html = document.documentElement;
+  const toggle = Object.assign(document.createElement('button'), { type: 'button', className: 'screen-mode' });
+  let native = false;
+  const set = (on) => {
+    html.classList.toggle('full-screen', on);
+    toggle.textContent = on ? LEVELS.exitFullScreen : LEVELS.fullScreen;
+    toggle.setAttribute('aria-pressed', String(on));
+    const live = document.querySelector('.level.live');
+    const target = on ? live : live?.querySelector('.lesson > .figure');   // back in the scroll: the live picture
+    requestAnimationFrame(() => target?.scrollIntoView({ block: 'start' }));
+  };
+  toggle.textContent = LEVELS.fullScreen;
+  toggle.setAttribute('aria-pressed', 'false');
+  toggle.addEventListener('click', () => {
+    const on = !fullScreen();
+    set(on);
+    if (on && html.requestFullscreen) html.requestFullscreen().then(() => { native = true; }, () => {});
+    else if (!on && document.fullscreenElement) document.exitFullscreen().catch(() => {});
+  });
+  document.addEventListener('fullscreenchange', () => {
+    if (document.fullscreenElement) return;
+    if (native && fullScreen()) set(false);
+    native = false;
+  });
+  document.body.append(toggle);
 }

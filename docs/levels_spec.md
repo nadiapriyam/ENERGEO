@@ -123,7 +123,8 @@ Lines marked (R2) are Nadia's own wording, from `docs/prototype_try_spec.md` Rev
 Nothing comes after line 58.
 
 Around the levels: "Level 1", "Level 2", "Level 3", "Turn your sound on." (Levels 1 and 3 need sound), "Next: Level 2"
-and "Next: Level 3".
+and "Next: Level 3". The switch at the top right: "Full screen", and in full screen "Exit full screen" (see "All three
+levels: scrolling, and full screen" below).
 
 ## What the new lines claim, and what they do not
 
@@ -198,6 +199,31 @@ and "Next: Level 3".
 - **What line 31 claims.** The covered drop is still drawn as a drop of water, and its protons are tiny magnets like the
   first drop's. Water is everywhere in the body, so another drop is another part of the patient's body. Its total is
   0 as well; behind that 0 is a different arrangement (lines 35 and 37), as before.
+
+## All three levels: scrolling, and full screen (2026-11-20). Nadia, verbatim:
+
+> also i want it to be like mathigon.org how you just scroll to go through the levels. this right now can be a full screen mode
+
+### What changes
+
+- **Scrolling, as in a Mathigon course.** This is now how the page works by default.
+  - When a part of a story ends, its picture and its lines stay on the page. The next part starts underneath, and the
+    page scrolls down to it.
+  - Scroll up at any time to see every earlier part. A kept part is a still copy: nothing in it can be pressed, and
+    its finished buttons are gone.
+  - If the picture has not changed since the last kept part, the new lines join that part, so no picture repeats.
+  - If you have scrolled up to look back, the page does not pull you down. Scroll down to carry on.
+  - The levels still follow one another on one page ("Next: Level 2", "Next: Level 3").
+- **Full screen: the way it was.**
+  - The "Full screen" switch, at the top right, shows only the level being played, one part at a time. Its picture is
+    as large as fits, and the lines clear between parts.
+  - "Exit full screen" goes back to the scroll, with every part kept, even the ones played in full screen.
+  - Where the browser allows it, the switch also asks for the browser's own full screen. Leaving that (Esc) leaves
+    full screen too.
+- **Unchanged.** The words, their order and every interaction. The review strip (`try/?steps`) still shows one step
+  per frame, and a level fast-forwarding to a step ("Play from here") keeps no parts until it hands over.
+- **No new claims.** Only the layout changes.
+- Files: `src/levels/scroll.js` (keeping a part), `src/levels/page.js` (the switch), `src/levels/base.css`.
 
 ## Level 3, "A prism for sound" (2026-11-19; first called "The magic glasses")
 
