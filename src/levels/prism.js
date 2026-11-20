@@ -1,11 +1,12 @@
-// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 3). It comes straight after Level 2: after your scan,
-// you head back to the concert hall. The lights dim; the learner aims a stage light at a glass prism and white light
-// fans out into colours. A prism for light, so a prism for sound? Surprise: your tuner has one. Its screen draws your A
-// note as a signal, the signal grows to fill the board, and the prism splits it into four glowing bars, which the
-// learner drags into a tuning fork and back. At the break, the technician who scanned you shows the scanner's prism on
-// one row of spots across your head: the row lifts out, a stronger right side gives each spot its own note, all the
-// notes together are one signal, the prism splits it into bars under their spots, tall bar, bright dot, and the row
-// slides back into your picture. Row after row, the picture appears. Only then the name.
+// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 4). It comes straight after Level 2: after your scan,
+// you head back to the concert hall. The lights dim; the learner aims a stage light at the chandelier, and its glass
+// prism takes the white light apart into colours. You wonder: is there a tool that can take apart a sound? Surprise:
+// your tuner. Its screen draws your A note's signal, the signal grows to fill the board, and taking it apart gives four
+// glowing bars, which the learner drags into a tuning fork and back. At the break, the technician from your scan shows
+// that the scanner works the same way, on one row of spots across your head: a stronger right side gives each spot its
+// own frequency, all of them together are one signal, taking it apart gives a bar under each spot, more tiny magnets
+// make a brighter spot, and the row slides back into your picture. Row after row, the picture appears. Then the
+// pattern (violin note → pure tones, stage light → its colours, proton frequencies → image), and only then the name.
 // Scenes move into one another rather than swap. Every learner-facing line comes from copyPrism.js; every position,
 // bar and row from src/math (prism.js, tones.js, scanner.js).
 import './prism.css';
@@ -15,9 +16,10 @@ import { A_NOTE, STEPS, PITCH, part } from '../math/tones.js';
 import {
   BOARD, css, triangle, HALL, crystalCorners, aimAngle, toCrystal, startAngle, lightPath,
   STRIP, STRIP_BOX, signal, samplesPath, TUNER, onTuner, SPECTRUM, GLYPH, barX, barHeight, barAt, stepsAt, pureTone, allBack,
-  NOTE_LED, neon, ROWS, spotHz, spinRate, coarseRows, sharpRows, chordSamples, unmix, tallest, rowOrder, HAND_ROW,
-  REPLY_BOX, toReply, GLYPH2, PIC, cell, headOutline, rowBand, BENCH, spotX, benchToRow, spotAt, wedge, SPOT_BARS,
-  spotBarHeight, FACE, hairPath, shirtPath, lookAt,
+  NOTE_LED, neon, ROWS, spinRate, coarseRows, sharpRows, chordSamples, unmix, rowOrder, HAND_ROW,
+  REPLY_BOX, toReply, GLYPH2, PIC, cell, headOutline, rowBand, BENCH, spotX, benchToRow, wedge, SPOT_BARS,
+  spotBarHeight, FACE, hairPath, shirtPath, lookAt, PLAYER, bucketHat,
+  PATTERN, patternBox, stripToPattern, picToPattern, patternBars, patternLight,
 } from '../math/prism.js';
 
 const NS = 'http://www.w3.org/2000/svg';
@@ -42,6 +44,7 @@ const pts = (ps) => ps.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' 
 const grey = (a) => { const v = Math.round(255 * Math.min(1, Math.max(0, a))); return `rgb(${v},${v},${v})`; };
 /** Put a node somewhere at once (no transition), so its next move animates from there. */
 const jump = (node, transform) => { node.style.transition = 'none'; node.style.transform = transform; node.getBoundingClientRect(); node.style.transition = ''; };
+const line = (p, q, attrs) => svg('line', { x1: p.x.toFixed(1), y1: p.y.toFixed(1), x2: q.x.toFixed(1), y2: q.y.toFixed(1), ...attrs });
 
 // ── state ────────────────────────────────────────────────────────────────────────────────────────
 let phase = 'opening';
@@ -88,43 +91,6 @@ function play(amounts, seconds = 1.6) {
   }
   return pause(seconds * 1000);
 }
-/** One spot's note: tone k + 1, as loud as how much of you is in the spot. */
-function spotNote(k, amount, seconds = 0.9) {
-  const c = audio();
-  if (!c || amount <= 0) return;
-  const osc = c.createOscillator();
-  osc.frequency.value = spotHz(k);
-  const g = c.createGain();
-  const t = c.currentTime;
-  g.gain.setValueAtTime(0, t);
-  g.gain.linearRampToValueAtTime(0.04 + 0.18 * amount, t + 0.03);
-  g.gain.exponentialRampToValueAtTime(0.001, t + seconds);
-  osc.connect(g).connect(c.destination);
-  osc.start(t);
-  osc.stop(t + seconds + 0.05);
-}
-/** Every spot's note at once: what the scanner hears. */
-function allNotes(amounts, seconds = 2) {
-  const c = audio();
-  if (c) {
-    const real = new Float32Array(amounts.length + 1);
-    const imag = new Float32Array(amounts.length + 1);
-    amounts.forEach((a, k) => { imag[k + 1] = Math.max(0, a); });
-    const osc = c.createOscillator();
-    osc.setPeriodicWave(c.createPeriodicWave(real, imag));
-    osc.frequency.value = spotHz(0);
-    const g = c.createGain();
-    const t = c.currentTime;
-    g.gain.setValueAtTime(0, t);
-    g.gain.linearRampToValueAtTime(0.16, t + 0.06);
-    g.gain.setValueAtTime(0.16, t + seconds - 0.4);
-    g.gain.linearRampToValueAtTime(0, t + seconds);
-    osc.connect(g).connect(c.destination);
-    osc.start(t);
-    osc.stop(t + seconds + 0.05);
-  }
-  return pause(seconds * 1000);
-}
 
 // ── page ─────────────────────────────────────────────────────────────────────────────────────────
 const root = document.getElementById('prism-lesson');
@@ -144,7 +110,7 @@ board.append(svg('defs', {}, led('p3-led', 7, '1', '1'),
     svg('feGaussianBlur', { stdDeviation: '3', result: 'b' }), svg('feMerge', {}, svg('feMergeNode', { in: 'b' }), svg('feMergeNode', { in: 'SourceGraphic' })))));
 const bg = svg('rect', { class: 'bg', x: 0, y: 0, width: BOARD.w, height: BOARD.h });
 
-// the hall: a stage light on the floor, a chandelier, a glass prism on a string
+// the hall: a stage light on the floor, a chandelier, a glass prism hanging from it
 const L = HALL.light;
 const CH = HALL.chandelier;
 const [cTop, cRight, cLeft] = crystalCorners();
@@ -185,7 +151,7 @@ const signalInner = svg('g', { class: 'signal-inner' }, signalPath);
 const strip = svg('g', { class: 'strip small', style: `transform: ${css(onTuner())}` }, stripBox, signalInner, ...parts);
 const arrive = svg('g', { class: 'arrive' }, tuner, strip);
 
-// the prism for sound, and the four bars it finds
+// taking the A note apart: four glowing bars
 const glyph = svg('g', { class: 'scene glyph' }, svg('polygon', { class: 'glyph-glass', points: pts(triangle(GLYPH)) }));
 const bars = A_NOTE.map((_, k) => svg('rect', { class: 'bar', fill: NOTE_LED[k], x: barX(k) - SPECTRUM.barW / 2, width: SPECTRUM.barW, rx: 6 }));
 const barLabels = A_NOTE.map((_, k) => svg('text', { class: 'bar-label', x: barX(k), y: SPECTRUM.base + 26, 'text-anchor': 'middle', fill: NOTE_LED[k], text: COPY.notes[k] }));
@@ -207,11 +173,10 @@ const headView = svg('g', { class: 'head-view' },
 const arrows = ROW.map((a, k) => (a > 0 ? svg('g', { class: 'spin' },
   svg('line', { x1: spotX(k), y1: BENCH.y + BENCH.r - 4, x2: spotX(k), y2: BENCH.y - BENCH.r + 7 }),
   svg('polygon', { points: pts([{ x: spotX(k), y: BENCH.y - BENCH.r + 2 }, { x: spotX(k) + 4.5, y: BENCH.y - BENCH.r + 9 }, { x: spotX(k) - 4.5, y: BENCH.y - BENCH.r + 9 }]) })) : null));
-const spots = ROW.map((a, k) => svg('g', { class: 'spot', tabindex: '-1', role: 'button', 'aria-label': `Spot ${k + 1}` },
+const spots = ROW.map((a, k) => svg('g', { class: 'spot' },
   svg('circle', { class: `spot-disc${a > 0 ? '' : ' empty'}`, cx: spotX(k), cy: BENCH.y, r: BENCH.r }), ...(arrows[k] ? [arrows[k]] : [])));
 const dots = ROW.map((_, k) => svg('rect', { class: 'dot', x: spotX(k) - 14, y: BENCH.y - 14, width: 28, height: 28, rx: 3 }));
-const rings = svg('g', { class: 'rings' });
-const bench = svg('g', { class: 'scene bench' }, ...spots, ...dots, rings);
+const bench = svg('g', { class: 'scene bench' }, ...spots, ...dots);
 const wedgeEl = svg('polygon', { class: 'scene wedge', points: pts(wedge()) });
 const spotBars = ROW.map((_, k) => svg('rect', { class: 'spot-bar growing', fill: neon(k, ROWS), x: spotX(k) - SPOT_BARS.w / 2, width: SPOT_BARS.w, rx: 4 }));
 const spotBarGroup = svg('g', { class: 'scene spot-bars' }, ...spotBars);
@@ -221,27 +186,53 @@ const glyph2 = svg('g', { class: 'scene glyph' }, svg('polygon', { class: 'glyph
 const risers = svg('g', { class: 'risers' });
 const scan = svg('g', { class: 'scene scan' }, headView, wedgeEl, spotBarGroup, barRays, bench, risers, glyph2);
 
-board.append(bg, hall, scan, arrive, glyph, spectrum);
+// the pattern: the scanner's row is the signal and the picture, moved down; the violin and the light join them above
+const arrowOf = (i) => {
+  const y = PATTERN.y[i] + PATTERN.h / 2;
+  const { x1, x2 } = PATTERN.arrow;
+  return svg('g', { class: 'p-arrow' }, line({ x: x1, y }, { x: x2 - 6, y }, {}), svg('polygon', { points: pts([{ x: x2, y }, { x: x2 - 12, y: y - 7 }, { x: x2 - 12, y: y + 7 }]) }));
+};
+const violinBox = patternBox(0, 'left');
+const lightRow = patternLight();
+const patternRows = [
+  svg('g', { class: 'p-row' },
+    svg('rect', { class: 'p-box', x: violinBox.x, y: violinBox.y, width: violinBox.w, height: violinBox.h, rx: 12 }),
+    svg('path', { class: 'p-signal', d: signal(A_NOTE), transform: (() => { const b = { x: violinBox.x + 10, y: violinBox.y + 8, w: violinBox.w - 20, h: violinBox.h - 16 }; const sx = b.w / STRIP.w; const sy = b.h / STRIP.h; return `translate(${(b.x - STRIP.x * sx).toFixed(2)} ${(b.y - STRIP.y * sy).toFixed(2)}) scale(${sx.toFixed(4)} ${sy.toFixed(4)})`; })() }),
+    ...patternBars().map((b, k) => svg('rect', { class: 'p-bar', fill: NOTE_LED[k], x: b.x.toFixed(1), y: b.y.toFixed(1), width: b.w.toFixed(1), height: b.h.toFixed(1), rx: 3 })),
+    arrowOf(0)),
+  svg('g', { class: 'p-row' },
+    line(lightRow.beam.from, lightRow.beam.to, { class: 'p-beam' }),
+    svg('polygon', { class: 'glass', points: pts(lightRow.corners) }),
+    ...lightRow.rays.map((r) => line(r.from, r.to, { class: 'p-ray', stroke: r.color })),
+    arrowOf(1)),
+  svg('g', { class: 'p-row' }, arrowOf(2)),
+];
+const pattern = svg('g', { class: 'scene pattern' }, ...patternRows);
 
-// ── the technician: his face, drawn from FACE ─────────────────────────────────────────────────────────
-function face() {
+board.append(bg, hall, scan, arrive, glyph, spectrum, pattern);
+
+// ── the characters: the technician, and you (the player) ───────────────────────────────────────────────
+function face(who) {
   const F = FACE;
-  const s = svg('svg', { viewBox: `0 0 ${F.view.w} ${F.view.h}`, class: 'face', 'aria-hidden': 'true' });
-  const up = { x: F.head.cx + 30, y: -200 };                 // he looks up, at the board
+  const you = who === 'you';
+  const s = svg('svg', { viewBox: `0 0 ${F.view.w} ${F.view.h}`, class: `face ${who}`, 'aria-hidden': 'true' });
+  const up = { x: F.head.cx + (you ? -30 : 30), y: -200 };   // both look up, at the board
   const [e0, e1] = F.eyes;
+  const hat = bucketHat();
   s.append(
-    svg('path', { class: 'shirt', d: shirtPath(), fill: F.shirt }),
+    svg('path', { class: 'shirt', d: shirtPath(), fill: you ? PLAYER.shirt : F.shirt }),
     svg('rect', { class: 'skin', x: F.neck.x, y: F.neck.y, width: F.neck.w, height: F.neck.h }),
     ...F.ears.map((e) => svg('ellipse', { class: 'skin', cx: e.cx, cy: e.cy, rx: e.rx, ry: e.ry })),
     svg('ellipse', { class: 'skin', cx: F.head.cx, cy: F.head.cy, rx: F.head.rx, ry: F.head.ry }),
-    svg('path', { class: 'hair', d: hairPath() }),
+    svg('path', { class: 'hair', d: hairPath(), fill: you ? PLAYER.hair : '#2a2a2a' }),
+    ...(you ? [svg('path', { class: 'hat', d: hat.crown, fill: PLAYER.hat }), svg('path', { class: 'hat-band', d: hat.band, fill: PLAYER.band }), svg('path', { class: 'hat', d: hat.brim, fill: PLAYER.hat })] : []),
     svg('g', { class: 'eyes' },
       ...F.eyes.map((e) => svg('circle', { class: 'eye', cx: e.cx, cy: e.cy, r: F.eyeR })),
       ...F.eyes.map((e) => { const p = lookAt(e, up); return svg('circle', { class: 'pupil', cx: p.x.toFixed(2), cy: p.y.toFixed(2), r: F.pupilR }); })),
     ...F.eyes.map((e) => svg('circle', { class: 'rim', cx: e.cx, cy: e.cy, r: F.rimR })),
     svg('path', { class: 'rim', d: `M ${e0.cx + F.rimR} ${e0.cy - 2} Q ${(e0.cx + e1.cx) / 2} ${e0.cy - 6} ${e1.cx - F.rimR} ${e1.cy - 2}` }),
     svg('path', { class: 'rim', d: `M ${e0.cx - F.rimR} ${e0.cy - 2} L ${F.ears[0].cx + 2} ${F.ears[0].cy - 6} M ${e1.cx + F.rimR} ${e1.cy - 2} L ${F.ears[1].cx - 2} ${F.ears[1].cy - 6}` }),
-    ...F.brows.map((b) => svg('line', { class: 'brow', x1: b.x1, y1: b.y1, x2: b.x2, y2: b.y2 })),
+    ...F.brows.map((b) => svg('line', { class: 'brow', x1: b.x1, y1: b.y1, x2: b.x2, y2: b.y2, stroke: you ? PLAYER.hair : '#2a2a2a' })),
     svg('rect', { class: 'mouth', x: F.mouth.x1, y: F.mouth.y - 1.3, width: F.mouth.x2 - F.mouth.x1, height: 2.6, rx: 1.3 }));
   return s;
 }
@@ -293,12 +284,6 @@ function spinning(v) {                                      // the tiny magnets 
   };
   requestAnimationFrame(frame);
 }
-function pulse(k, amount) {                                 // a ring as big as the note is loud
-  if (amount <= 0) return;
-  const r = svg('circle', { class: 'ring', cx: spotX(k), cy: BENCH.y, r: (BENCH.r + 4 + 14 * amount).toFixed(1) });
-  rings.append(r);
-  setTimeout(() => r.remove(), 800);
-}
 function paintRow(j, amounts, sweep) {
   cells[j].forEach((c, i) => {
     c.setAttribute('fill', grey(amounts[i]));
@@ -315,21 +300,22 @@ const say = (text, cls = '') => {
   requestAnimationFrame(() => p.classList.add('in'));
   return p;
 };
-/** The technician's lines: a bubble beside his face (one face for lines in a row). */
-function speak(text) {
+/** A character's line: a bubble beside their face (one face for lines in a row). `who` is 'tech' or 'you'; a thought gets a thought bubble. */
+function speak(text, who = 'tech', thought = false) {
   let block = prompt.lastElementChild;
-  if (!block || !block.classList.contains('speaker')) {
-    block = el('div', { class: 'speaker', role: 'group', 'aria-label': 'The technician' }, el('div', { class: 'who' }, face()), el('div', { class: 'bubbles' }));
+  if (!block || !block.classList.contains('speaker') || block.dataset.who !== who) {
+    block = el('div', { class: `speaker ${who}`, 'data-who': who, role: 'group', 'aria-label': who === 'you' ? 'You' : 'The technician' },
+      el('div', { class: 'who' }, face(who)), el('div', { class: 'bubbles' }));
     prompt.append(block);
     requestAnimationFrame(() => block.classList.add('in'));
   }
-  const b = el('p', { class: 'bubble', text });
+  const b = el('p', { class: `bubble${thought ? ' thought' : ''}`, text });
   block.querySelector('.bubbles').append(b);
   requestAnimationFrame(() => b.classList.add('in'));
   const f = block.querySelector('.face');
   f.classList.remove('talking');
   f.getBoundingClientRect();
-  f.classList.add('talking');
+  if (!thought) f.classList.add('talking');
   return b;
 }
 async function clear() {
@@ -363,22 +349,10 @@ const press = (text) => new Promise((resolve) => {
   followFocus(b);
 });
 const boardPoint = (e) => { const p = board.createSVGPoint(); p.x = e.clientX; p.y = e.clientY; return p.matrixTransform(board.getScreenCTM().inverse()); };
-/** Taps on the row of spots (or on their bars) call onTap(k); so does Enter on a spot. Returns a function that stops listening. */
-function tapSpots(onTap) {
-  board.classList.add('tapping');
-  const pd = (e) => { const q = boardPoint(e); if (q.y > BENCH.y - BENCH.step && q.y < SPOT_BARS.base + 8) onTap(spotAt(q.x)); };
-  const keys = spots.map((s, k) => { const f = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onTap(k); } }; s.setAttribute('tabindex', '0'); s.addEventListener('keydown', f); return f; });
-  board.addEventListener('pointerdown', pd);
-  return () => {
-    board.classList.remove('tapping');
-    board.removeEventListener('pointerdown', pd);
-    spots.forEach((s, k) => { s.setAttribute('tabindex', '-1'); s.removeEventListener('keydown', keys[k]); });
-  };
-}
 
 // ── the story ────────────────────────────────────────────────────────────────────────────────────
 async function theHall() {                                  // back at the concert hall: the lights dim
-  describe('A concert hall: a chandelier with a glass prism hanging from it, and a stage light on the floor.');
+  describe('A concert hall: a chandelier with a piece of glass hanging from it, and a stage light on the floor.');
   requestAnimationFrame(() => figure.classList.add('in'));
   say(COPY.opening, 'lead');
   await pause(reading(COPY.opening));
@@ -388,15 +362,13 @@ async function theHall() {                                  // back at the conce
   await wait(900);
   aim(startAngle());
   hall.classList.add('lit');
-  describe('The hall is dark. The stage light shines a white beam across to the wall, below the prism.');
+  describe('The hall is dark. The stage light shines a white beam across to the wall, below the chandelier.');
   await pause(reading(COPY.dim));
-  say(COPY.crystal);
-  await pause(reading(COPY.crystal));
   await aimTheLight();
   theColors();
 }
 
-function aimTheLight() {                                    // the learner swings the light into the prism
+function aimTheLight() {                                    // the learner swings the light onto the chandelier
   phase = 'aim';
   say(COPY.aim);
   const hint = setTimeout(() => { if (phase === 'aim') say(COPY.aimHint, 'hint'); }, 8000);
@@ -426,45 +398,43 @@ function aimTheLight() {                                    // the learner swing
       lamp.removeEventListener('keydown', kd);
       lamp.setAttribute('tabindex', '-1');
       board.classList.remove('aiming');
-      describe('The white beam goes into the prism and comes out as a fan of colours on the wall: red, orange, yellow, green, cyan, blue, violet.');
+      describe('The white beam goes into the glass on the chandelier and comes out as a fan of colours on the wall: red, orange, yellow, green, cyan, blue, violet.');
       await pause(1300);
       resolve();
     }
   });
 }
 
-async function theColors() {                                // where did the colours come from?
+async function theColors() {                                // where did the colours come from? and a sound?
   phase = 'colors';
   await clear();
   say(COPY.where.question);
   await ask(COPY.where.choices);
   say(COPY.where.after);
   await pause(reading(COPY.where.after) + 300);
-  say(COPY.think, 'thought');
-  await pause(reading(COPY.think) + 300);
+  await clear();
+  speak(COPY.you.think, 'you', true);
+  await pause(reading(COPY.you.think) + 300);
   say(COPY.surprise, 'lead');
-  await pause(reading(COPY.surprise) + 300);
+  await pause(reading(COPY.surprise));
   theTuner();
 }
 
 async function theTuner() {                                 // the hall rises away; your violin and its tuner rise in
   phase = 'tuner';
-  await clear();
   hall.classList.add('leaving');
   arrive.classList.add('up');
   await wait(1100);
   hall.style.visibility = 'hidden';
   describe('A tuner clipped to the scroll of your violin. Its screen is blank.');
-  say(COPY.clipOn);
   await press(COPY.play);
+  await clear();
   runSignal(A_NOTE);                                         // the signal appears on the tuner's screen as you play
   await play(A_NOTE, 1.8);
   tuner.classList.add('in-tune');
   describe("On the tuner's screen, your note drawn as a bumpy line, with the letter A under it and a green light.");
   say(COPY.drawsSignal);
-  await pause(reading(COPY.drawsSignal));
-  say(COPY.namesOne);
-  await pause(reading(COPY.namesOne) + 300);
+  await pause(reading(COPY.drawsSignal) + 300);
   growTheSignal();
 }
 
@@ -477,8 +447,6 @@ async function growTheSignal() {                            // the little signal
   await wait(1100);
   on(tuner, false);
   describe("Your note's signal, big now: a bumpy line drifting across.");
-  say(COPY.knowBetter);
-  await pause(reading(COPY.knowBetter));
   say(COPY.see.question);
   await ask(COPY.see.choices);
   say(COPY.see.after);
@@ -486,9 +454,9 @@ async function growTheSignal() {                            // the little signal
   theSplit();
 }
 
-async function theSplit() {                                 // the prism for sound: four notes, four bars
+async function theSplit() {                                 // taking it apart: four notes, four bars
   phase = 'split';
-  await press(COPY.prismOn);
+  await press(COPY.apart);
   await clear();
   still(A_NOTE);
   on(glyph);
@@ -511,11 +479,7 @@ async function theSplit() {                                 // the prism for sou
   parts.forEach((p) => { p.style.transform = ''; });
   describe('Under the signal, four glowing bars, labelled A, high A, E and higher A, tallest first.');
   say(COPY.split, 'lead');
-  await pause(reading(COPY.split));
-  say(COPY.howMuch);
-  await pause(reading(COPY.howMuch));
-  say(COPY.twoWays);
-  await pause(reading(COPY.twoWays) + 300);
+  await pause(reading(COPY.split) + 300);
   tuningFork();
 }
 
@@ -564,7 +528,7 @@ async function tuningFork() {                               // one bar, then all
   theTechnician();
 }
 
-async function theTechnician() {                            // at the break: the technician, and one row of you
+async function theTechnician() {                            // at the break: the technician, and one row of your head
   phase = 'tech';
   await clear();
   fourBars.classList.remove('on');
@@ -582,66 +546,48 @@ async function theTechnician() {                            // at the break: the
   describe('An empty picture with the dashed outline of your head, and one row across it marked. An empty signal box at the top.');
   say(COPY.arrives);
   await pause(reading(COPY.arrives));
-  speak(COPY.tech.hi);
-  await pause(reading(COPY.tech.hi));
+  speak(COPY.you.tookApart, 'you');
+  await pause(reading(COPY.you.tookApart));
+  speak(COPY.tech.same);
   jump(bench, css(benchToRow(HAND_ROW)));                   // the row lifts out of the picture and spreads across the board
   on(bench);
   headView.classList.add('dim');
   requestAnimationFrame(() => { bench.style.transform = 'none'; });
   spinning(true);
-  speak(COPY.tech.row);
   await wait(1100);
   describe('The row, close up: sixteen spots in a line. In most, a little arrow spins; the ones at the ends are empty. All spin at the same speed.');
-  await pause(reading(COPY.tech.row));
-  speak(COPY.tech.same);
-  await pause(reading(COPY.tech.same) - 600);
+  await pause(reading(COPY.tech.same));
+  speak(COPY.tech.spin);
+  await pause(reading(COPY.tech.spin) - 900);
   await press(COPY.stronger);
   stronger = true;                                           // the magnet, a little stronger to the right
   on(wedgeEl);
   describe('A wedge under the row, thin on the left and thick on the right. The arrows on the right now spin much faster than those on the left.');
-  speak(COPY.tech.faster);
-  await pause(reading(COPY.tech.faster) + 400);
   await clear();
-  await listen();
-  await allAtOnce();
+  speak(COPY.tech.own);
+  await pause(reading(COPY.tech.own) - 600);
+  theSignal();
 }
 
-function listen() {                                         // tap the spots: each its own note, as loud as there is of you
+async function theSignal() {                                // every spot at once: one signal; taken apart: a bar under each spot
   phase = 'listen';
-  say(COPY.tapSpots);
-  return new Promise((resolve) => {
-    let told = false;
-    let stop = () => {};
-    const tell = () => {
-      if (told) return;
-      told = true;
-      clearTimeout(timer);
-      say(COPY.radio, 'caption');
-      press(COPY.allAtOnce).then(() => { stop(); resolve(); });
-    };
-    const timer = setTimeout(tell, 6000);
-    stop = tapSpots((k) => { spotNote(k, ROW[k]); pulse(k, ROW[k]); tell(); });
-  });
-}
-
-async function allAtOnce() {                                // every spot at once: one signal
-  phase = 'chord';
+  await press(COPY.listen);
   risers.replaceChildren(...ROW.map((a, k) => (a > 0 ? svg('path', {
     class: 'riser', stroke: neon(k, ROWS), style: `--rise: ${(REPLY_BOX.y + REPLY_BOX.h / 2 - BENCH.y).toFixed(1)}px; animation-delay: ${k * 30}ms`,
     d: `M ${spotX(k) - 9} ${BENCH.y} q 4.5 -8 9 0 t 9 0`,
   }) : null)).filter(Boolean));
-  const heard = allNotes(ROW, 2.2);
   await wait(800);
   const samples = chordSamples(ROW);
   signalPath.setAttribute('d', samplesPath(samples, STRIP));
-  describe('All the notes together: one busy signal at the top.');
-  await heard;
+  describe('All the spots together: one busy signal at the top.');
+  await wait(700);
   risers.replaceChildren();
   await clear();
-  speak(COPY.tech.hears);
-  await pause(reading(COPY.tech.hears) - 400);
-  await press(COPY.prismOn);
-  const found = unmix(samples, ROWS);                        // the prism for sound
+  speak(COPY.tech.picks);
+  await pause(reading(COPY.tech.picks) - 600);
+  phase = 'apart';
+  await press(COPY.apart);
+  const found = unmix(samples, ROWS);                        // taking the signal apart
   on(glyph2);
   const tip = { x: GLYPH2.cx, y: glyph2Tip[1].y };
   barRays.replaceChildren(...found.map((a, k) => (a > 0.01 ? svg('line', { class: 'bar-ray', stroke: neon(k, ROWS), x1: tip.x, y1: tip.y, x2: spotX(k), y2: (SPOT_BARS.base - spotBarHeight(a)).toFixed(1) }) : null)).filter(Boolean));
@@ -655,23 +601,15 @@ async function allAtOnce() {                                // every spot at onc
   barRays.classList.remove('on');
   on(glyph2, false);
   describe('Under every spot, a glowing bar: none under the empty spots, short ones near the edges of the head, tall ones in between, two short ones in the middle.');
-  speak(COPY.tech.underSpot);
-  await pause(reading(COPY.tech.underSpot));
-  await theMost(found);
+  await clear();
+  speak(COPY.tech.bars);
+  await pause(reading(COPY.tech.bars) - 900);
+  thePicture(found);
 }
 
-async function theMost(found) {                             // which spot holds the most of you?
-  phase = 'most';
-  await clear();
-  say(COPY.most);
-  const k = await new Promise((resolve) => { const stop = tapSpots((i) => { stop(); resolve(i); }); });
-  spotBars[k].classList.add('picked');
-  tallest(found).forEach((i) => spotBars[i].classList.add('tallest'));
-  speak(COPY.tech.tallest);
-  await pause(reading(COPY.tech.tallest) + 300);
-  speak(COPY.tech.paint);
-  await press(COPY.paintRow);
-  phase = 'paint';                                           // tall bar, bright dot
+async function thePicture(found) {                          // more tiny magnets, brighter spot; the row goes home
+  phase = 'picture';
+  await press(COPY.makePicture);
   dots.forEach((d, i) => d.setAttribute('fill', grey(found[i])));
   bench.classList.add('painted');
   spotBars.forEach((b) => { b.style.transitionDelay = '0ms'; b.classList.add('growing'); });
@@ -685,14 +623,15 @@ async function theMost(found) {                             // which spot holds 
   paintRow(HAND_ROW, found, false);
   on(bench, false);
   painted = 1;
-  describe('The row of grey dots is back in the picture, at its place across your head.');
+  describe('The row of grey spots is back in the picture, at its place across your head.');
+  await clear();
+  speak(COPY.tech.brighter);
+  await pause(reading(COPY.tech.brighter) - 900);
   rowByRow();
 }
 
-async function rowByRow() {                                 // one signal, one row; then row after row
+async function rowByRow() {                                 // the next row by hand, then the rest; then sharp
   phase = 'rows';
-  await clear();
-  speak(COPY.tech.oneRow);
   const order = rowOrder(ROWS);
   const next = async (j, quick) => {
     showRow(j);
@@ -703,27 +642,38 @@ async function rowByRow() {                                 // one signal, one r
     painted++;
     await (quick ? pause(REDUCED ? 0 : 90) : wait(800));
   };
-  for (let r = 1; r <= 2; r++) {
-    await press(COPY.nextRow);
-    await next(order[r], false);
-  }
-  speak(COPY.tech.rest);
+  await press(COPY.nextRow);
+  await next(order[1], false);
   phase = 'auto';
-  for (let r = 3; r < ROWS; r++) await next(order[r], true);
+  await clear();
+  speak(COPY.tech.rows);
+  for (let r = 2; r < ROWS; r++) await next(order[r], true);
   on(band, false);
-  describe('Row by row, a blocky grey picture of a head has appeared.');
-  await pause(900);
   phase = 'sharp';
-  speak(COPY.tech.sharp);
   headView.classList.add('sharp');
   sharp.classList.add('on');
-  describe('The blocky picture sharpens into a detailed picture of a head: the picture from your scan.');
-  await pause(reading(COPY.tech.sharp) + 800);
+  describe('Row by row, a picture of a head has appeared, and it sharpens into the picture from your scan.');
+  await pause(reading(COPY.tech.rows) + 600);
+  thePattern();
+}
+
+async function thePattern() {                               // do you notice a pattern?
+  phase = 'pattern';
   await clear();
-  say(COPY.pictureOut, 'lead');
-  await pause(reading(COPY.pictureOut));
-  speak(COPY.tech.bothWays);
-  await pause(reading(COPY.tech.bothWays) + 600);
+  speak(COPY.tech.pattern.question);
+  await ask(COPY.tech.pattern.choices);
+  speak(COPY.tech.pattern.after);
+  strip.style.transform = css(stripToPattern());             // the scanner's signal and your picture move down into the third row
+  scan.style.transform = css(picToPattern());
+  on(pattern);
+  await wait(1200);
+  describe('Three rows. A violin note’s wave, then its four bars. A white beam into a prism, then a fan of colours. The scanner’s signal, then the picture of your head.');
+  for (let i = 0; i < 3; i++) {
+    patternRows[i].classList.add('on');
+    say(COPY.pattern[i], 'pattern-line');
+    await wait(1400);
+  }
+  await pause(800);
   naming();
 }
 

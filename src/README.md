@@ -107,17 +107,21 @@ and one accent. `docs/levels_spec.md` governs. `try/level-2/` and `notebook/` fo
   - Files: `src/levels/mri.js` (with `copyMri.js`), `src/math/pieces.js` and `src/math/scanner.js`.
 
 - **Level 3, "A prism for sound"**, which opens underneath when Level 2 ends:
-  - The story picks up after the scan. In the dimmed concert hall the learner aims a stage light at a glass prism:
-    white light in, LED colours out, red bent least and violet most. "If there's a prism for light, shouldn't there be
-    a prism for sound?" Surprise: the tuner has one inside.
-  - The tuner draws the A note as a small signal and names one note; the signal grows to fill the board, and the
-    prism splits it into four glowing bars. The learner drags the bars into a tuning fork and back.
-  - The technician who scanned you (a character with round glasses and a yellow shirt, speaking in bubbles) shows the
-    scanner's prism on one row of spots across your head. The row lifts out of the picture. A stronger right side
-    gives each spot its own note; the learner taps spots to hear them, then all at once: one signal. The prism splits
-    it into bars, each under its spot; tall bar, bright dot; the row slides back into the picture. Two more rows by
-    hand, then the rest, then Level 2's sharp picture.
-  - Only then is the tool named: the Fourier transform.
+  - The story picks up after the scan. In the dimmed concert hall the learner aims a stage light at the chandelier,
+    and the glass hanging from it takes the white light apart into LED colours (red bent least, violet most). Only
+    then is it called a prism. You (the player: a deadpan face with round glasses, copper hair and a bucket hat)
+    wonder: "If a prism is a tool that can take apart light, is there a tool that can take apart a sound?" Surprise:
+    your tuner.
+  - The tuner draws the A note's signal and names it; the signal grows to fill the board, and taking it apart gives
+    four glowing bars, four pure tones. The learner drags the bars into a tuning fork and back.
+  - The technician from your scan (same style, short dark hair, yellow shirt) shows that the scanner works the same
+    way, on one row of spots across your head: a stronger right side gives each spot its own frequency, Listen merges
+    every spot into one signal, taking it apart puts a bar under each spot (how many tiny magnets are there), and more
+    tiny magnets make a brighter spot as the row slides back into the picture. Then the rest of the rows, and Level 2's
+    sharp picture.
+  - "Do you notice a pattern?" The scanner's signal and picture slide into a third row: violin note → pure tones;
+    stage light → its full color spectrum; proton frequencies → image.
+  - Only then is the tool named: "All three come down to the same geometric math: the Fourier transform."
   - Files: `src/levels/prism.js` (with `copyPrism.js`) and `src/math/prism.js`. The app's own Fourier blocks
     stay in `src/math/fourier.js`.
 

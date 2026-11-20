@@ -319,7 +319,7 @@ Nothing came after line 36.
   Fourier transform, the MRI story is simplified to one direction, and line 35's history and uses are checked. Fourier's
   name comes only once, at the end, and the jargon is left out.
 
-### Revision 3 (2026-11-19), which governs Level 3. Nadia, verbatim:
+### Revision 3 (2026-11-19), superseded by Revision 4 below. Nadia, verbatim:
 
 > the transitions are nice, hovewer the prisim can definately be expained a little more visually and verbally, like saying you go back to the concert hall, you notice a light shining then you see a prisim splitting the light into a bunch of its components you think to your self, hmm if theres a prisim for a light wave shouldn:t there be a prisim for a sound wave. suprise its a tuner. the second thing thats still confusing is the relationship between the tuner and the mri machine crank, its not obvious how the crank is similar at converting something that hides a lot to an image, it just seems like you are generateing an image from nothing. bring out the relation for understanding how these two relate try to make it easier to understand you can make a character like this
 
@@ -415,7 +415,7 @@ expression and a yellow shirt. The picture itself is not kept in the repository;
 51. Joseph Fourier came up with the idea about 200 years ago. Today it is at work in MRI scanners, phones and music apps.
 52. Here it is: the mathematical tool that lets us start seeing what hides inside.
 
-Nothing comes after line 52.
+Nothing came after line 52.
 
 #### What the new lines claim
 
@@ -455,3 +455,123 @@ The numbers are computed in `src/math/prism.js` and checked by `test/prism.test.
 - **Line 51** is as in Revision 1's notes.
 - **Left out on purpose.** As before: no equations, and no "frequency", "spectrum" or "coefficient". "Radio waves" is
   the only technical term added, and Level 2 already uses it. "Fourier transform" is still given once, at the end.
+
+### Revision 4 (2026-11-20), which governs Level 3. Nadia, verbatim:
+
+> here are some suggestions for level 3: theres a lot of words so i am goin got try and cut down some, drag to aim at the chandilier instead of prisim. if there is a prisim is too abrupt assumption, if a prisim is a tool that can take a part light then is there a tool that can take apart a sound. I remember writing this exact sentence in a previous prompt can you look back at my promopt to help you out with the story. also make a player character for level 3 thats the user with a bucket hat same no smile person with different hair color. for the mri part, there is a lot of words -the most of you- doesn:t m,ake sense,  this - So I paint each spot as bright as its bar is tall. - is too confusing. you dont have to relate it back to music just say it works in the same way. basically mri takes frequnecy from your magnets flipping from the mri signal and translates that into a physical image. do you notice a pattern. let me help you out. in music its, violin note to pure tones, for stage lights its light to its full color spectrum, and in mri its proton frequency to image, all using a geometric math/formula to get there
+
+The earlier prompt she means is Revision 3's: "you go back to the concert hall, you notice a light shining then you see
+a prisim splitting the light into a bunch of its components you think to your self, hmm if theres a prisim for a light
+wave shouldn:t there be a prisim for a sound wave. suprise its a tuner." Revision 4 follows that sequence, with her new
+sentence for the thought.
+
+#### What changes
+
+- **Fewer words.** 43 lines instead of 52, and most lines are shorter: about 385 words of learner copy, buttons
+  included, down from about 525.
+- **The hall, as Nadia told it.**
+  - You notice a stage light shining. The learner drags to aim it at the chandelier: anywhere from just above its arm
+    down to just below the glass hanging from it catches the beam.
+  - The glass is not called a prism until the colours have appeared: "Where did the colors come from?" "From the
+    white light. The glass on the chandelier is a prism: it takes light apart into its colors."
+  - Your thought, in Nadia's sentence: "If a prism is a tool that can take apart light, is there a tool that can take
+    apart a sound?" Then: "Surprise: it's your tuner."
+  - [Take it apart] replaces [Turn on the prism], in the tuner and in the scanner.
+- **A player character: you.** The same deadpan face as the technician (round glasses, no smile) with copper hair, a
+  bucket hat and a blue shirt. Your thought appears in a thought bubble beside your face. At the break you speak
+  first: "My tuner just took my A note apart!"
+- **The scanner, with fewer words and no music.**
+  - The technician: "My scanner works the same way." No notes, no tapping spots to hear them, no "the most of you", no
+    "paint each spot as bright as its bar is tall".
+  - The steps stay on the board: the row lifts out; [Make the right side stronger] gives each spot its own spinning
+    speed, "its own frequency"; [Listen] merges every spot into one signal; [Take it apart] puts a bar under each
+    spot, "how many tiny magnets are there"; [Make the picture] turns the bars into grey spots ("More tiny magnets,
+    brighter spot") and slides the row home; [Next row], then the rest, then the sharp picture.
+- **The pattern, in Nadia's words.** "Do you notice a pattern?" "Let me help you out." The signal and the picture
+  slide down into a third row, and three rows build up beside three lines:
+  - Violin note → pure tones (the A note's wave → its four bars)
+  - Stage light → its full color spectrum (a white beam into a prism → a fan of colours)
+  - Proton frequencies → image (the scanner's signal → your picture)
+  - Then: "All three come down to the same geometric math: the Fourier transform."
+
+#### Level 3 learner copy (Revision 4), in order (drafted by Claude at Nadia's request, for her review)
+
+1. After your scan, you head back to the concert hall.
+2. The lights dim. You notice a stage light shining.
+3. Drag to aim it at the chandelier.
+4. Drag across the picture to swing the light. (only after 8 seconds)
+5. Where did the colors come from? [The glass] [The white light]
+6. From the white light. The glass on the chandelier is a prism: it takes light apart into its colors.
+7. You (thinking): If a prism is a tool that can take apart light, is there a tool that can take apart a sound?
+8. Surprise: it's your tuner.
+9. [Play your A note]
+10. A (the letter on the tuner)
+11. The tuner draws your note's signal, its shape over time, and names it: A.
+12. Four notes hide in this signal. Can you see them? [Yes] [Not really]
+13. Neither can anyone, just by looking.
+14. [Take it apart]
+15. Your A note, taken apart into four pure tones.
+16. A, high A, E, higher A (the labels under the bars)
+17. Drag the bars. Can you make a single pure tone, like a tuning fork?
+18. Drag all the bars but one down to 0. (only after 9 seconds)
+19. One bar, one smooth wave: a tuning fork.
+20. Now bring the others back.
+21. Every bump in the signal comes from a bar.
+22. At the break, the technician from your scan comes over.
+23. You: My tuner just took my A note apart!
+24. Technician: My scanner works the same way. Look: one row of your head.
+25. Technician: The tiny magnets in each spot spin. Right now they all spin at the same speed, so I can't tell the spots apart.
+26. [Make the right side stronger]
+27. Technician: Now each spot spins at its own speed: its own frequency.
+28. [Listen]
+29. Technician: My scanner picks up every spot at once, as one signal.
+30. [Take it apart]
+31. Technician: Each frequency comes from one spot. Its bar shows how many tiny magnets are there.
+32. [Make the picture]
+33. Technician: More tiny magnets, brighter spot. That's one row of your picture.
+34. [Next row]
+35. Technician: Every row works the same way. Real scanners use many more spots, so the picture comes out sharp.
+36. Technician: Do you notice a pattern? [Yes] [Not yet]
+37. Technician: Let me help you out.
+38. Violin note → pure tones
+39. Stage light → its full color spectrum
+40. Proton frequencies → image
+41. All three come down to the same geometric math: the Fourier transform.
+42. Joseph Fourier came up with it about 200 years ago.
+43. Here it is: the mathematical tool that lets us start seeing what hides inside.
+
+Nothing comes after line 43.
+
+#### What the new lines claim
+
+The numbers are computed in `src/math/prism.js` and checked by `test/prism.test.js`. Everything Revision 3's notes say
+about the prism, the tuner, the exact unmixing, the row-by-row simplification and Fourier's dates still holds. New or
+changed:
+
+- **Line 3.** Aiming anywhere at the chandelier counts: the beam is caught if it crosses the chandelier's line between
+  just above its arm and just below the glass, and it then goes into the glass's near face.
+- **Line 15, "pure tones".** Each bar is one pure tone (a single smooth wave), and the four add up exactly to the
+  signal.
+- **Lines 25–27, spinning and frequency.**
+  - After the scanner's radio nudge (Level 2), the tiny magnets are tipped over, "flipped" in Nadia's word. They then
+    turn about the magnet's direction (they precess), and that turning is what sends the signal.
+  - How many turns a second is their frequency. It is set by the magnet's strength, so a magnet that grows stronger
+    across the body gives each spot its own frequency.
+- **Line 29.** The scanner's coil picks up the sum of every spot's signal at once.
+- **Lines 31 and 33.** A bar's height is how many tiny magnets (hydrogen nuclei) are in its spot, and the spot is
+  painted that bright. Real images also depend on how fast the tiny magnets settle back (relaxation), which is left
+  out.
+- **Lines 38–40** are Nadia's pattern, from her message: violin note to pure tones; light to its full color spectrum;
+  proton frequency to image. "Frequency" is introduced at line 27, as a spot's spinning speed, before it is used here.
+  "Spectrum" appears only here, after the stage light has shown one.
+- **Line 41, "the same geometric math".**
+  - Violin note: a steady sound is a sum of pure tones, and Fourier's formula gives how much of each. Here it is exact.
+  - Stage light: the glass does the separating, not a computer. It bends each frequency of light by a different
+    amount. Which colours come out, and how much of each, is the light's spectrum, which is what the Fourier transform
+    of the light wave gives. So the prism's result comes down to the same math.
+  - Scanner: MRI images are built with Fourier transforms. Here, one-dimensional and exact, one row at a time.
+  - Geometric: each amount is a projection, how much the signal lines up with one pure wave (an inner product). This
+    is established mathematics: Master Map #7, and `basisInner` and `basisGram` in `src/math/fourier.js`. It is not a
+    project hypothesis.
+- **Left out on purpose.** Equations and "coefficient". The music is not brought back into the scanner part: its
+  spots no longer play notes.

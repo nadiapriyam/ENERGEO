@@ -1,7 +1,7 @@
 /* Level 3, "A prism for sound". It starts in the levels' plain style, a white page; then the hall's lights dim to a
    night-city dark, and everything lit glows like LED lights: the prism's rainbow, the signal, the bars. The four notes
-   keep their Level 1 colours, as LEDs. The technician speaks in bubbles beside his face. Scenes move into one another
-   (transforms and fades), never just swap. */
+   keep their Level 1 colours, as LEDs. The technician and you (the player) speak in bubbles beside your faces; your
+   thoughts are thought bubbles. Scenes move into one another (transforms and fades), never just swap. */
 
 .prism-board {
   display: block; width: 100%; height: auto; overflow: hidden; border-radius: 20px; touch-action: manipulation;
@@ -93,11 +93,12 @@
 .scene.band { fill: none; stroke: url(#p3-led); stroke-width: 2.5; filter: url(#p3-glow); transform-box: view-box;
   transition: transform 500ms ease-in-out, opacity 400ms ease-out, visibility 0s linear 400ms; }
 .scene.band.on { transition: transform 500ms ease-in-out, opacity 400ms ease-out, visibility 0s; }
+.scene.scan { transform-box: view-box; transform-origin: 0 0;
+  transition: transform 1100ms cubic-bezier(0.45, 0, 0.2, 1), opacity 600ms ease-out, visibility 0s linear 600ms; }
+.scene.scan.on { transition: transform 1100ms cubic-bezier(0.45, 0, 0.2, 1), opacity 600ms ease-out, visibility 0s; }
 .scene.bench { transform-box: view-box; transform-origin: 0 0;
   transition: transform 1000ms cubic-bezier(0.45, 0, 0.2, 1), opacity 500ms ease-out, visibility 0s linear 500ms; }
 .scene.bench.on { transition: transform 1000ms cubic-bezier(0.45, 0, 0.2, 1), opacity 500ms ease-out, visibility 0s; }
-.spot { outline: none; }
-.spot:focus-visible .spot-disc { stroke: #ffffff; stroke-width: 3; }
 .spot-disc { fill: var(--night-2); stroke: #3d4f96; stroke-width: 1.6; transition: opacity 500ms ease-out; }
 .spot-disc.empty { fill: none; stroke-dasharray: 3 4; }
 .spin line { stroke: #8fb4ff; stroke-width: 2.6; stroke-linecap: round; }
@@ -106,8 +107,6 @@
 .bench.painted .spin, .bench.painted .spot-disc { opacity: 0; }
 .dot { opacity: 0; transition: opacity 700ms ease-out; }
 .bench.painted .dot { opacity: 1; }
-.ring { fill: none; stroke: #8fb4ff; stroke-width: 2; transform-box: fill-box; transform-origin: center; animation: ring 750ms ease-out forwards; }
-@keyframes ring { from { opacity: 0.95; transform: scale(0.6); } to { opacity: 0; transform: scale(1.35); } }
 .wedge { fill: url(#p3-ramp); filter: url(#p3-glow); }
 .spot-bar { transform-box: fill-box; transform-origin: bottom; transition: transform 500ms cubic-bezier(0.3, 0.7, 0.3, 1), opacity 200ms ease-out; filter: url(#p3-glow); }
 .spot-bar.growing { transform: scaleY(0); opacity: 0; }
@@ -115,6 +114,17 @@
 .spot-bar.picked { stroke: #ffffff; stroke-width: 2.5; stroke-dasharray: 4 3; }
 .bar-ray { stroke-width: 2; stroke-linecap: round; opacity: 0; transition: opacity 300ms ease-out; filter: url(#p3-glow); }
 .bar-rays.on .bar-ray { opacity: 0.9; }
+/* the pattern: three rows */
+.p-row { opacity: 0; transition: opacity 700ms ease-out; }
+.p-row.on { opacity: 1; }
+.p-box { fill: var(--night-2); stroke: var(--night-edge); stroke-width: 2; }
+.p-signal { fill: none; stroke: #ffc35a; stroke-width: 2.4; stroke-linejoin: round; vector-effect: non-scaling-stroke; filter: url(#p3-glow); }
+.p-bar { filter: url(#p3-glow); }
+.p-beam { stroke: #ffffff; stroke-width: 5; stroke-linecap: round; filter: url(#p3-glow); }
+.p-ray { stroke-width: 3.2; stroke-linecap: round; filter: url(#p3-glow); }
+.p-arrow line { stroke: #8b93b8; stroke-width: 3; stroke-linecap: round; }
+.p-arrow polygon { fill: #8b93b8; }
+.line.pattern-line { font-weight: 600; }
 .riser { fill: none; stroke-width: 2.4; stroke-linecap: round; filter: url(#p3-glow); animation: rise 1000ms ease-in forwards; }
 @keyframes rise { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(var(--rise)); } }
 
@@ -128,17 +138,19 @@
 .bubble.in { opacity: 1; transform: none; }
 .bubble:first-child::before { content: ''; position: absolute; left: -7px; top: 14px; border: 7px solid transparent; border-left: 0; border-right-color: #f1f4fa; }
 .face .skin { fill: #e8b58c; }
-.face .hair { fill: #2a2a2a; }
 .face .eye { fill: #ffffff; }
 .face .pupil { fill: #111111; }
 .face .rim { fill: none; stroke: #3a3a3a; stroke-width: 3; stroke-linecap: round; }
-.face .brow { stroke: #2a2a2a; stroke-width: 4.5; stroke-linecap: round; }
+.face .brow { stroke-width: 4.5; stroke-linecap: round; }
 .face .mouth { fill: #7a3e2c; transform-box: fill-box; transform-origin: center; }
 .face.talking .mouth { animation: talk 220ms ease-in-out 6 alternate; }
 @keyframes talk { from { transform: scaleY(1); } to { transform: scaleY(3.4); } }
 .face .eyes { transform-box: fill-box; transform-origin: center; animation: blink 5s infinite; }
 @keyframes blink { 0%, 93%, 100% { transform: scaleY(1); } 96% { transform: scaleY(0.12); } }
-.line.thought { font-style: italic; color: var(--ink-2); }
+.speaker.you .bubble { background: #eaf2ff; }
+.speaker.you .bubble:first-child::before { border-right-color: #eaf2ff; }
+.bubble.thought { font-style: italic; background: #ffffff; border: 2px dashed #b9c8e6; }
+.speaker.you .bubble.thought:first-child::before { content: ''; left: -15px; top: 16px; width: 9px; height: 9px; border: 2px dashed #b9c8e6; border-radius: 50%; background: #ffffff; }
 
 /* the words and the buttons: no jumps */
 .controls { display: flex; justify-content: center; gap: 10px; min-height: 3em; align-items: center; margin: 6px 0 2px; }
@@ -154,8 +166,8 @@
 @media (prefers-reduced-motion: reduce) {
   .scene, .scene.on, .bg, .hall, .arrive, .tuner, .tuner-letter, .tuner-light, .strip, .strip-box, .signal, .signal-inner, .part,
   .beam, .ray, .wall-glow, .glass, .bulb, .floor, .spectrum, .bar, .four-bars, .cell, .sharp-pic, .head-outline, .head-view,
-  .scene.band, .scene.band.on, .scene.bench, .scene.bench.on, .spot-disc, .spin, .dot, .spot-bar, .bar-ray, .speaker, .bubble,
+  .scene.band, .scene.band.on, .scene.bench, .scene.bench.on, .scene.scan, .scene.scan.on, .p-row, .spot-disc, .spin, .dot, .spot-bar, .bar-ray, .speaker, .bubble,
   #prism-lesson .line.leaving, #prism-lesson .speaker.leaving { transition: none; }
-  .ring, .riser, .face .eyes, .face.talking .mouth { animation: none; }
+  .riser, .face .eyes, .face.talking .mouth { animation: none; }
   .riser { opacity: 0; }
 }

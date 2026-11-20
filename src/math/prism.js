@@ -2,14 +2,15 @@
 // Fourier blocks are in fourier.js; this file is only the level's.)
 //
 // Three scenes, one idea: something that looks like one thing hides many.
-//  • The hall. The learner aims a stage light at a glass prism hanging from the chandelier. White light goes in and
-//    colours come out, red bent least and violet most, as in a real prism.
+//  • The hall. The learner aims a stage light at the chandelier; a glass prism hanging from it catches the beam. White
+//    light goes in and colours come out, red bent least and violet most, as in a real prism.
 //  • The tuner. Your A note's signal (its shape over time) and, through the prism for sound, its four notes as bars.
 //    The bars are exact: the signal is their sum (tones.js).
 //  • The scanner. One row of spots across your head. A magnet a little stronger to the right makes the tiny magnets in
 //    each spot spin at their own rate, so spot k sends its own note, tone k + 1. The scanner hears every spot at once,
 //    as one signal. The prism for sound, a discrete Fourier transform a_k = (2/N) Σ s_i sin(2π (k+1) i / N), gives back
-//    how much of you is in each spot, exactly: tall bar, bright dot. One signal, one row.
+//    how many tiny magnets are in each spot, exactly: more magnets, brighter spot. One signal, one row.
+//  • The pattern. Violin note → pure tones; stage light → its colours; proton frequencies → image.
 //
 // Scenes move into one another: each move is a fit of one box onto another.
 
@@ -39,7 +40,9 @@ export const HALL = {
   chandelier: { cx: 410, armY: 58, arm: 86 },
   crystal: { cx: 410, cy: 150, size: 48 },
   startAt: { x: 640, y: 304 },                              // where the light first points: the wall, well below the prism
-  hitR: 26,                                                 // the beam catches the prism if it passes this close to its centre
+  hitR: 26,                                                 // the beam catches the prism if it passes this close to its centre,
+  catchTop: 30,                                             // or crosses the chandelier's line anywhere from just above its arm …
+  catchBelow: 14,                                           // … to just below the prism
   aim: { min: -75 * DEG, max: -1 * DEG },
 };
 /** Real prisms bend red least and violet most. The rays, from least bent to most, in LED colours. */
@@ -60,6 +63,8 @@ export function aimAngle(p) {
 export const toCrystal = () => aimAngle(nearFace());
 export const startAngle = () => aimAngle(HALL.startAt);
 
+/** How high the stage light's beam is (y) where it crosses the vertical line x: aiming at the chandelier means crossing its line between its arm and its prism. */
+export const beamHeightAt = (a, x) => HALL.light.y + Math.tan(a) * (x - HALL.light.x);
 /** Where a ray from `p` at angle `a` leaves the board (the wall on the right or the ceiling). */
 export function edge(p, a) {
   const dx = Math.cos(a);
@@ -83,7 +88,7 @@ function cross(p, d, a, b) {
   return t > 0 && s >= 0 && s <= 1 ? { t, x: p.x + t * d.x, y: p.y + t * d.y } : null;
 }
 /**
- * The light, aimed at angle `a`. If the beam passes close enough to the prism, it is caught: the beam snaps onto the
+ * The light, aimed at angle `a`. If the beam is aimed at the chandelier (or passes close to its prism), it is caught: the beam snaps onto the
  * middle of the prism's near face, goes in there, and seven coloured rays leave its far face, each bent a little more than the last.
  */
 export function lightPath(a) {
@@ -92,7 +97,8 @@ export function lightPath(a) {
   let d = { x: Math.cos(a), y: Math.sin(a) };
   const off = Math.abs((C.cx - L.x) * d.y - (C.cy - L.y) * d.x);
   const ahead = (C.cx - L.x) * d.x + (C.cy - L.y) * d.y > 0;
-  const hit = ahead && off <= HALL.hitR;
+  const across = beamHeightAt(a, C.cx);
+  const hit = ahead && (off <= HALL.hitR || (across >= HALL.catchTop && across <= crystalCorners()[1].y + HALL.catchBelow));
   const angle = hit ? toCrystal() : a;
   d = { x: Math.cos(angle), y: Math.sin(angle) };
   const from = { x: L.x + d.x * L.lens, y: L.y + d.y * L.lens };
@@ -173,7 +179,7 @@ export const spotHz = (k) => BASE_HZ * (k + 1);
 export const RATE = 0.22;                                   // turns per second of the slowest spin, as drawn
 /** How fast spot k's tiny magnets spin, as drawn: all alike in an even magnet; with the right side stronger, in step with its note. */
 export const spinRate = (k, stronger) => RATE * (stronger ? k + 1 : 1);
-/** The head slice from Level 2 (scanner.js), sampled at n × n spots: how much of you is in each (0…1). */
+/** The head slice from Level 2 (scanner.js), sampled at n × n spots: how many tiny magnets are in each (0…1). */
 export function coarseRows(n = ROWS) {
   return Array.from({ length: n }, (_, j) => Array.from({ length: n }, (_, i) => scanPixel(((i + 0.5) / n) * 2 - 1, ((j + 0.5) / n) * 2 - 1)));
 }
@@ -183,7 +189,7 @@ export function sharpRows() {
   const n = Math.round(Math.sqrt(cells.length));
   return Array.from({ length: n }, (_, j) => cells.slice(j * n, (j + 1) * n).map((c) => c.g));
 }
-/** What the scanner hears from one row: spot k sends tone k + 1, as loud as how much of you is there. Sampled N > 2n times over one period, so it can be split exactly. */
+/** What the scanner picks up from one row: spot k sends tone k + 1, as strong as how many tiny magnets are there. Sampled N > 2n times over one period, so it can be split exactly. */
 export const chordSamples = (amounts, N = 4 * amounts.length + 8) =>
   Array.from({ length: N }, (_, i) => amounts.reduce((s, a, k) => s + a * Math.sin((2 * Math.PI * (k + 1) * i) / N), 0));
 /** The prism for sound: how much of each tone is in a sampled signal (a discrete Fourier transform). */
@@ -223,11 +229,12 @@ export function wedge() {
   const { y, thin, thick } = WEDGE;
   return [{ x: x0, y: y - thin / 2 }, { x: x1, y: y - thick / 2 }, { x: x1, y: y + thick / 2 }, { x: x0, y: y + thin / 2 }];
 }
-/** Each spot's bar stands right under the spot: as tall as how much of you is there. */
+/** Each spot's bar stands right under the spot: as tall as how many tiny magnets are there. */
 export const SPOT_BARS = { base: 404, full: 180, w: 20 };
 export const spotBarHeight = (a) => Math.max(0, a) * SPOT_BARS.full;
 
-// ── the technician who scanned you (a face in the style Nadia shared: short dark hair, big round glasses, a yellow shirt) ──
+// ── the characters: the technician who scanned you (in the style Nadia shared: short dark hair, big round glasses, a
+//    yellow shirt), and you, the player (the same deadpan face, other hair, a bucket hat) ──
 export const FACE = {
   view: { w: 120, h: 132 },
   head: { cx: 60, cy: 58, rx: 34, ry: 40 },
@@ -258,4 +265,51 @@ export function lookAt(eye, target) {
   const reach = FACE.eyeR - FACE.pupilR - 1;
   const k = d < 1e-9 ? 0 : Math.min(reach, d) / d;
   return { x: eye.cx + dx * k, y: eye.cy + dy * k };
+}
+
+/** You, the player: the same face, with copper hair, a blue shirt and a bucket hat. */
+export const PLAYER = { hair: '#b5602c', shirt: '#4f8fe8', hat: '#c4a46a', band: '#8a7140' };
+/** The bucket hat: a crown over the top of the head (covering the hair), a band, and a brim that slopes down and out all round. */
+export function bucketHat() {
+  const { cx, cy, rx, ry } = FACE.head;
+  const top = cy - ry - 24;                                  // the crown's curve rises above the hair
+  const base = cy - ry + 13;                                 // where the crown meets the brim, just above the brows
+  const wide = rx + 16;                                      // the brim reaches past the head on both sides
+  return {
+    crown: `M ${cx - rx - 1} ${base} C ${cx - rx + 2} ${top} ${cx + rx - 2} ${top} ${cx + rx + 1} ${base} Z`,
+    band: `M ${cx - rx} ${base - 6} Q ${cx} ${base - 9} ${cx + rx} ${base - 6} L ${cx + rx + 1} ${base} L ${cx - rx - 1} ${base} Z`,
+    brim: `M ${cx - rx - 2} ${base - 2} Q ${cx} ${base - 6} ${cx + rx + 2} ${base - 2} L ${cx + wide} ${base + 6} Q ${cx} ${base + 10} ${cx - wide} ${base + 6} Z`,
+    top, base, wide,
+  };
+}
+
+// ── the pattern: three rows, one thing on the left, what it is made of on the right ─────────────────────────
+export const PATTERN = { y: [14, 150, 286], h: 104, left: { x: 40, w: 230 }, right: { x: 370, w: 230 }, arrow: { x1: 290, x2: 350 } };
+/** The box for row i ('left' or 'right'). Row 2's picture is square, in the middle of its box. */
+export function patternBox(i, side) {
+  const { y, h } = PATTERN;
+  const b = PATTERN[side];
+  if (i === 2 && side === 'right') return { x: b.x + (b.w - h) / 2, y: y[i], w: h, h };
+  return { x: b.x, y: y[i], w: b.w, h };
+}
+/** The scanner's signal box and your picture move into the third row. */
+export const PIC_FRAME = { x: PIC.x - 4, y: PIC.y - 4, w: PIC.size + 8, h: PIC.size + 8 };
+export const stripToPattern = () => fit(STRIP_BOX, patternBox(2, 'left'));
+export const picToPattern = () => fit(PIC_FRAME, patternBox(2, 'right'));
+/** Row 1, right: the A note's four bars, as tall as their amounts. */
+export function patternBars() {
+  const b = patternBox(0, 'right');
+  const w = b.w / A_NOTE.length;
+  return A_NOTE.map((a, k) => ({ x: b.x + k * w + w * 0.2, w: w * 0.6, y: b.y + b.h - (a / STEPS) * (b.h - 8), h: (a / STEPS) * (b.h - 8) }));
+}
+/** Row 2: a white beam into a small prism on the left; the colours fanning out on the right. */
+export function patternLight() {
+  const l = patternBox(1, 'left');
+  const r = patternBox(1, 'right');
+  const glass = { cx: l.x + l.w - 34, cy: l.y + l.h / 2 + 8, size: 52 };
+  const [top, right, left] = triangle(glass);
+  const into = { x: (top.x + left.x) / 2, y: (top.y + left.y) / 2 };
+  const out = { x: (top.x + right.x) / 2, y: (top.y + right.y) / 2 };
+  const rays = RAINBOW.map((color, i) => ({ from: { x: r.x, y: r.y + r.h / 2 }, to: { x: r.x + r.w, y: r.y + 8 + ((r.h - 16) * i) / (RAINBOW.length - 1) }, color }));
+  return { glass, corners: [top, right, left], beam: { from: { x: l.x, y: into.y + 18 }, to: into }, out, rays };
 }
