@@ -1,13 +1,13 @@
-// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 5). It comes straight after Level 2: after your scan,
+// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 6). It comes straight after Level 2: after your scan,
 // you head back to the concert hall. The lights dim; the learner aims a stage light at the chandelier, and its glass
 // prism takes the white light apart into colours. You wonder: is there a tool that can take apart a sound? Surprise:
 // your tuner. Its screen draws your A note's signal, the signal grows to fill the board, and taking it apart gives four
 // glowing bars, which the learner drags into a tuning fork and back. At the break, the technician from your scan says
-// the scanner works the same way, and Nadia's sentence appears, faded: "MRI takes the frequencies of your flipping
-// magnets from the MRI signal, and translates them into a physical image." Three buttons light it up part by part on
-// the board: flip the magnets (they spin, faster to the right) and their signal appears; take it apart into its
-// frequencies; make the image, row after row. Then the pattern (violin note → pure tones, stage light → its colours,
-// proton frequencies → image), and only then the name.
+// the scanner works the same way, and Nadia's description appears, faded: "Each tiny magnet behaves differently
+// depending on which body part it's in. Collecting that data and converting it into pixel data helps us see an MRI
+// picture, with the Fourier transform." The learner taps your head's body parts and sees each one's signal; collects
+// the data; converts it into pixels, row after row; each part of the description lights up as it happens. Then the
+// pattern (violin note → pure tones, stage light → its colours, proton frequencies → image), and the name again.
 // Scenes move into one another rather than swap. Every learner-facing line comes from copyPrism.js; every position,
 // bar and row from src/math (prism.js, tones.js, scanner.js).
 import './prism.css';
@@ -17,8 +17,8 @@ import { A_NOTE, STEPS, PITCH, part } from '../math/tones.js';
 import {
   BOARD, css, triangle, HALL, crystalCorners, aimAngle, toCrystal, startAngle, lightPath,
   STRIP, STRIP_BOX, signal, samplesPath, TUNER, onTuner, SPECTRUM, GLYPH, barX, barHeight, barAt, stepsAt, pureTone, allBack,
-  NOTE_LED, neon, ROWS, MRI, spinRate, coarseRows, magnetSpots, colourAt, chordSamples, unmix, mriBar, rowOrder, FIRST_ROW,
-  rowIn, outlineIn, toSignal, FACE, hairPath, shirtPath, lookAt, PLAYER, TECH, bucketHat,
+  NOTE_LED, neon, ROWS, MRI, BODY_PARTS, partOf, partAt, partWave, coarseRows, chordSamples, unmix, rowOrder, FIRST_ROW,
+  rowIn, toSignal, FACE, hairPath, shirtPath, lookAt, PLAYER, TECH, bucketHat,
   PATTERN, patternBox, stripToPattern, picToPattern, patternBars, patternLight,
 } from '../math/prism.js';
 
@@ -51,9 +51,9 @@ let phase = 'opening';
 let mine = [...A_NOTE];
 let hitNow = false;
 let angleNow = 0;                                           // where the stage light points
-let flipped = false;
+let tapped = 0;
 let painted = 0;
-const ROWS_OF_YOU = coarseRows();                           // how many tiny magnets at each place of your head, row by row
+const ROWS_OF_YOU = coarseRows();                           // how bright each pixel of your head is, row by row
 
 // ── sound (only after a tap) ─────────────────────────────────────────────────────────────────────
 let ctx = null;
@@ -147,7 +147,8 @@ const signalPath = svg('path', { class: 'signal' });
 const parts = A_NOTE.map((_, k) => svg('path', { class: 'part', stroke: NOTE_LED[k], d: signal(part(A_NOTE, k)) }));
 const stripBox = svg('rect', { class: 'strip-box', x: STRIP_BOX.x, y: STRIP_BOX.y, width: STRIP_BOX.w, height: STRIP_BOX.h, rx: 16 });
 const signalInner = svg('g', { class: 'signal-inner' }, signalPath);
-const strip = svg('g', { class: 'strip small', style: `transform: ${css(onTuner())}` }, stripBox, signalInner, ...parts);
+const partWaves = svg('g', { class: 'part-waves' });       // later: each body part's own signal, in the data box
+const strip = svg('g', { class: 'strip small', style: `transform: ${css(onTuner())}` }, stripBox, signalInner, partWaves, ...parts);
 const arrive = svg('g', { class: 'arrive' }, tuner, strip);
 
 // taking the A note apart: four glowing bars
@@ -157,27 +158,26 @@ const barLabels = A_NOTE.map((_, k) => svg('text', { class: 'bar-label', x: barX
 const fourBars = svg('g', { class: 'four-bars' }, ...bars, ...barLabels);
 const spectrum = svg('g', { class: 'spectrum' }, svg('line', { class: 'baseline', x1: SPECTRUM.x - 20, x2: SPECTRUM.x + SPECTRUM.w + 20, y1: SPECTRUM.base, y2: SPECTRUM.base }), fourBars);
 
-// the scanner: your head and its tiny magnets → the MRI signal (the strip, moved) → its frequencies → a physical image
-const MAGNETS = magnetSpots();
-const ho = outlineIn(MRI.head);
-const headBand = svg('rect', { class: 'scene band', x: MRI.head.x - 2, y: MRI.head.y, width: MRI.head.size + 4, height: (MRI.head.size / ROWS + 1).toFixed(2), rx: 1.5 });
-const magnets = MAGNETS.map((m) => svg('g', { class: 'magnet', style: `opacity: ${(0.4 + 0.6 * m.amount).toFixed(2)}` },
-  svg('line', { x1: m.x, y1: m.y + 7, x2: m.x, y2: m.y - 4, stroke: colourAt(m.xf) }),
-  svg('polygon', { points: pts([{ x: m.x, y: m.y - 9 }, { x: m.x + 4, y: m.y - 3 }, { x: m.x - 4, y: m.y - 3 }]), fill: colourAt(m.xf) })));
-const headPanel = svg('g', { class: 'mri-part' },
-  svg('rect', { class: 'p-box', x: MRI.head.x - 4, y: MRI.head.y - 4, width: MRI.head.size + 8, height: MRI.head.size + 8, rx: 10 }),
-  svg('ellipse', { class: 'head-outline', cx: ho.cx, cy: ho.cy, rx: ho.rx, ry: ho.ry }), ...magnets, headBand);
-const mBars = Array.from({ length: ROWS }, (_, k) => svg('rect', { class: 'm-bar', fill: neon(k, ROWS) }));
-const barsPanel = svg('g', { class: 'mri-part m-bars' },
-  svg('rect', { class: 'p-box', x: MRI.bars.x, y: MRI.bars.y, width: MRI.bars.w, height: MRI.bars.h, rx: 10 }), ...mBars);
+// the scanner: your head as its body parts → their data (the strip, moved) → pixel data → an MRI picture
+const H = MRI.head;
+const P = MRI.picture;
+const cellSize = H.size / ROWS;
+const partGroups = BODY_PARTS.map((b, k) => svg('g', { class: 'part-map', fill: b.color, tabindex: '-1', role: 'button', 'aria-label': COPY.bodyParts[k] }));
+ROWS_OF_YOU.forEach((row, j) => row.forEach((v, i) => {
+  const k = partOf(v);
+  if (k >= 0) partGroups[k].append(svg('rect', { x: (H.x + i * cellSize).toFixed(2), y: (H.y + j * cellSize).toFixed(2), width: (cellSize + 0.3).toFixed(2), height: (cellSize + 0.3).toFixed(2) }));
+}));
+const partLabel = svg('text', { class: 'part-label', x: MRI.label.x, y: MRI.label.y, 'text-anchor': 'middle' });
+const headBand = svg('rect', { class: 'scene band', x: H.x - 2, y: H.y, width: H.size + 4, height: (H.size / ROWS + 1).toFixed(2), rx: 1.5 });
+const map = svg('g', { class: 'mri-part body-map' },
+  svg('rect', { class: 'p-box', x: H.x - 4, y: H.y - 4, width: H.size + 8, height: H.size + 8, rx: 10 }), ...partGroups, headBand, partLabel);
 const mGlyph = svg('g', { class: 'scene glyph' }, svg('polygon', { class: 'glyph-glass', points: pts(triangle(MRI.glyph)) }));
 const mArrows = MRI.arrows.map((a) => svg('g', { class: 'mri-part p-arrow m-arrow' },
   line({ x: a.x1, y: a.y }, { x: a.x2 - 6, y: a.y }, {}), svg('polygon', { points: pts([{ x: a.x2, y: a.y }, { x: a.x2 - 12, y: a.y - 7 }, { x: a.x2 - 12, y: a.y + 7 }]) })));
-const P = MRI.picture;
-const cellSize = P.size / ROWS;
-const cells = ROWS_OF_YOU.map((r, j) => r.map((_, i) => svg('rect', { class: 'cell', x: (P.x + i * cellSize).toFixed(2), y: (P.y + j * cellSize).toFixed(2), width: (cellSize + 0.3).toFixed(2), height: (cellSize + 0.3).toFixed(2) })));
+const pixelSize = P.size / ROWS;
+const cells = ROWS_OF_YOU.map((r, j) => r.map((_, i) => svg('rect', { class: 'cell', x: (P.x + i * pixelSize).toFixed(2), y: (P.y + j * pixelSize).toFixed(2), width: (pixelSize + 0.3).toFixed(2), height: (pixelSize + 0.3).toFixed(2) })));
 const image = svg('g', { class: 'mri-image' }, svg('rect', { class: 'pic-bg', x: P.x - 4, y: P.y - 4, width: P.size + 8, height: P.size + 8, rx: 8 }), ...cells.flat());
-const scan = svg('g', { class: 'scene scan' }, headPanel, mArrows[0], barsPanel, mGlyph, mArrows[1], image);
+const scan = svg('g', { class: 'scene scan' }, map, mArrows[0], mGlyph, mArrows[1], image);
 
 // the pattern: the scanner's row is the signal and the picture, moved down; the violin and the light join them above
 const arrowOf = (i) => {
@@ -258,23 +258,14 @@ function runSignal(amounts) {                               // the signal drifts
   requestAnimationFrame(frame);
 }
 const still = (amounts) => { running = null; signalPath.setAttribute('d', signal(amounts)); };
-let spinOn = false;
-function spinning() {                                       // the tiny magnets flip over, then spin: faster to the right
-  spinOn = true;
-  const turn = (m, g, deg) => g.setAttribute('transform', `rotate(${deg.toFixed(1)} ${m.x} ${m.y})`);
-  if (REDUCED) { MAGNETS.forEach((m, k) => turn(m, magnets[k], 90)); return; }
-  const t0 = performance.now();
-  const FLIP = 0.7;
-  const frame = (now) => {
-    if (!spinOn) return;
-    const t = (now - t0) / 1000;
-    MAGNETS.forEach((m, k) => turn(m, magnets[k], t < FLIP ? 90 * (t / FLIP) : 90 + 360 * spinRate(m.xf) * (t - FLIP)));
-    requestAnimationFrame(frame);
-  };
-  requestAnimationFrame(frame);
-}
-function drawMBars(amounts) {
-  mBars.forEach((b, k) => { const r = mriBar(k, amounts[k]); for (const [a, v] of Object.entries({ x: r.x, y: r.y, width: r.w, height: Math.max(0.001, r.h) })) b.setAttribute(a, v.toFixed(2)); });
+function pickPart(k) {                                     // one body part: lit on the head, named, and its own signal in the data box
+  partGroups.forEach((g, i) => g.classList.toggle('picked', i === k));
+  map.classList.add('choosing');
+  partLabel.textContent = COPY.bodyParts[k];
+  partLabel.setAttribute('fill', BODY_PARTS[k].color);
+  let wave = partWaves.querySelector(`[data-k="${k}"]`);
+  if (!wave) { wave = svg('path', { class: 'part-wave', 'data-k': k, stroke: BODY_PARTS[k].color, d: partWave(k) }); partWaves.append(wave); }
+  partWaves.querySelectorAll('.part-wave').forEach((w) => w.classList.toggle('picked', w === wave));
 }
 function paintRow(j, amounts, sweep) {
   cells[j].forEach((c, i) => {
@@ -283,14 +274,27 @@ function paintRow(j, amounts, sweep) {
     c.classList.add('lit');
   });
 }
-const showRow = (j) => { headBand.style.transform = `translateY(${(rowIn(MRI.head, j).y - MRI.head.y).toFixed(2)}px)`; };
-/** Nadia's sentence, faded; light(step) lights the parts that step makes happen. */
+const showRow = (j) => { headBand.style.transform = `translateY(${(rowIn(H, j).y - H.y).toFixed(2)}px)`; };
+/** Nadia's description, faded; light(step) lights the parts that moment makes happen. */
 function sentence() {
-  const parts = COPY.mri.map((f) => el('span', { class: 'frag', text: f.text }));
-  const p = el('p', { class: 'line mri-sentence' }, ...parts);
+  const spans = COPY.mri.map((f) => el('span', { class: 'frag', text: f.text }));
+  const p = el('p', { class: 'line mri-sentence' }, ...spans);
   prompt.append(p);
   requestAnimationFrame(() => p.classList.add('in'));
-  return (step) => COPY.mri.forEach((f, i) => { if (f.step === step) parts[i].classList.add('lit'); });
+  return (step) => COPY.mri.forEach((f, i) => { if (f.step === step) spans[i].classList.add('lit'); });
+}
+/** Taps on your head's body parts call onTap(k); so does Enter on a part. Returns a function that stops listening. */
+function tapParts(onTap) {
+  board.classList.add('tapping');
+  const pd = (e) => { const k = partAt(boardPoint(e), ROWS_OF_YOU); if (k >= 0) onTap(k); };
+  const keys = partGroups.map((g, k) => { const f = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onTap(k); } }; g.setAttribute('tabindex', '0'); g.addEventListener('keydown', f); return f; });
+  board.addEventListener('pointerdown', pd);
+  followFocus(partGroups[0]);
+  return () => {
+    board.classList.remove('tapping');
+    board.removeEventListener('pointerdown', pd);
+    partGroups.forEach((g, k) => { g.setAttribute('tabindex', '-1'); g.removeEventListener('keydown', keys[k]); });
+  };
 }
 
 // ── the prompt: lines fade in, and fade out together before the next part ─────────────────────────────
@@ -528,12 +532,12 @@ async function tuningFork() {                               // one bar, then all
   theTechnician();
 }
 
-async function theTechnician() {                            // at the break: the technician; the scanner, in one sentence
+async function theTechnician() {                            // at the break: the technician; the scanner, in Nadia's words
   phase = 'tech';
   await clear();
   fourBars.classList.remove('on');
   on(spectrum, false);
-  signalInner.classList.add('swapping');                    // the violin's signal fades; its box moves to become the MRI signal's
+  signalInner.classList.add('swapping');                    // the violin's signal fades; its box moves to become the data box
   strip.classList.add('radio');
   strip.style.transform = css(toSignal());
   await wait(700);
@@ -541,7 +545,7 @@ async function theTechnician() {                            // at the break: the
   signalPath.setAttribute('d', '');
   signalInner.classList.remove('swapping');
   on(scan);
-  describe('Your head, seen from above, with tiny magnets in it, all pointing up. Then an empty signal box, an empty box for bars, and an empty image.');
+  describe('Your head, seen from above, as its body parts in different colours. Then an empty data box, and an empty picture.');
   say(COPY.arrives);
   await pause(reading(COPY.arrives));
   speak(COPY.you.tookApart, 'you');
@@ -549,53 +553,64 @@ async function theTechnician() {                            // at the break: the
   speak(COPY.tech.same);
   await pause(reading(COPY.tech.same));
   const light = sentence();
-  await press(COPY.flip);
-  phase = 'flip';                                            // your magnets flip, and spin: faster to the right
-  flipped = true;
-  spinning();
-  light(0);
-  await wait(1100);
-  mArrows[0].classList.add('lit');                           // their signal
-  jump(headBand, `translateY(${(rowIn(MRI.head, FIRST_ROW).y - MRI.head.y).toFixed(2)}px)`);
+  await pause(600);
+  phase = 'parts';                                           // each body part behaves differently
+  say(COPY.tapParts);
+  await new Promise((resolve) => {
+    let shown = false;
+    let stop = () => {};
+    const ready = () => {
+      if (shown) return;
+      shown = true;
+      clearTimeout(timer);
+      light(0);
+      press(COPY.collect).then(() => { stop(); resolve(); });
+    };
+    const timer = setTimeout(ready, 7000);
+    const seen = new Set();
+    stop = tapParts((k) => {
+      pickPart(k);
+      seen.add(k);
+      tapped = seen.size;
+      describe(`Your ${COPY.bodyParts[k]} is lit. Its own signal shows in the data box.`);
+      if (seen.size >= 2) ready();
+    });
+  });
+  phase = 'collect';                                         // collecting that data
+  map.classList.remove('choosing');
+  partLabel.textContent = '';
+  partWaves.classList.add('gone');
+  mArrows[0].classList.add('lit');
+  jump(headBand, `translateY(${(rowIn(H, FIRST_ROW).y - H.y).toFixed(2)}px)`);
   on(headBand);
-  signalInner.classList.add('swapping');
   signalPath.setAttribute('d', samplesPath(chordSamples(ROWS_OF_YOU[FIRST_ROW]), STRIP));
-  await wait(60);
-  signalInner.classList.remove('swapping');
   light(1);
-  describe('The tiny magnets have flipped over and spin, faster on the right. Their signal appears in the box: a busy wave.');
-  await wait(900);
-  phase = 'apart';
-  await press(COPY.apart);                                   // its frequencies
-  on(mGlyph);
-  barsPanel.classList.add('on');
-  drawMBars(unmix(chordSamples(ROWS_OF_YOU[FIRST_ROW]), ROWS));
+  describe('All the body parts at once: one busy signal in the data box, from the marked row of your head.');
+  await wait(1000);
+  partWaves.replaceChildren();
+  partWaves.classList.remove('gone');
+  phase = 'convert';
+  await press(COPY.convert);                                 // converting it into pixel data, with the Fourier transform
   light(2);
-  describe('Under the signal, a row of thin glowing bars, one for each frequency, in the colours of the places they come from.');
-  await wait(1100);
-  on(mGlyph, false);
-  phase = 'image';
-  await press(COPY.makeImage);                               // the physical image, row after row
+  on(mGlyph);
   mArrows[1].classList.add('lit');
-  light(3);
   headBand.style.transitionDuration = REDUCED ? '0ms' : '40ms';
   for (const j of rowOrder(ROWS)) {
     showRow(j);
     const samples = chordSamples(ROWS_OF_YOU[j]);
     signalPath.setAttribute('d', samplesPath(samples, STRIP));
-    const found = unmix(samples, ROWS);
-    drawMBars(found);
-    paintRow(j, found, j === FIRST_ROW);
+    paintRow(j, unmix(samples, ROWS), j === FIRST_ROW);
     painted++;
     await pause(REDUCED ? 0 : j === FIRST_ROW ? 500 : 45);
   }
-  headBand.style.transitionDuration = '';                     // back to the middle row: its signal and its frequencies stay on show
+  headBand.style.transitionDuration = '';                     // back to the middle row: its data stays on show
   showRow(FIRST_ROW);
   signalPath.setAttribute('d', samplesPath(chordSamples(ROWS_OF_YOU[FIRST_ROW]), STRIP));
-  drawMBars(unmix(chordSamples(ROWS_OF_YOU[FIRST_ROW]), ROWS));
+  on(mGlyph, false);
   mArrows.forEach((a) => a.classList.remove('lit'));
-  describe('Row by row, the image has appeared: a picture of your head.');
-  await pause(1800);
+  light(3);
+  describe('Row by row, the pixels have made an MRI picture of your head.');
+  await pause(2200);
   thePattern();
 }
 
@@ -607,8 +622,7 @@ async function thePattern() {                               // do you notice a p
   speak(COPY.tech.pattern.after);
   strip.style.transform = css(stripToPattern());             // the MRI signal and the image move down into the third row
   image.style.transform = css(picToPattern());
-  scan.classList.add('to-pattern');                          // the head, the bars and the arrows give way
-  setTimeout(() => { spinOn = false; }, 700);
+  scan.classList.add('to-pattern');                          // the body parts and the arrows give way
   on(pattern);
   await wait(1200);
   describe('Three rows. A violin note’s wave, then its four bars. A white beam into a prism, then a fan of colours. The scanner’s signal, then the picture of your head.');
@@ -636,7 +650,8 @@ async function naming() {                                   // only now: its nam
 
 // read-only view for automated checks (no learner-facing effect)
 window.__prism = {
-  get phase() { return phase; }, get mine() { return [...mine]; }, get hit() { return hitNow; }, get flipped() { return flipped; }, get painted() { return painted; },
+  get phase() { return phase; }, get mine() { return [...mine]; }, get hit() { return hitNow; }, get tapped() { return tapped; },
+  partPoint: (k) => { const j = ROWS_OF_YOU.findIndex((r) => r.some((v) => partOf(v) === k)); const i = ROWS_OF_YOU[j].findIndex((v) => partOf(v) === k); return { x: H.x + (i + 0.5) * cellSize, y: H.y + (j + 0.5) * cellSize }; }, get painted() { return painted; },
   point: (x, y) => { const m = board.getScreenCTM(); return { x: m.a * x + m.c * y + m.e, y: m.b * x + m.d * y + m.f }; },
 };
 

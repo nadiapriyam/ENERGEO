@@ -80,22 +80,24 @@
 .four-bars { opacity: 0; transition: opacity 400ms ease-out; }
 .four-bars.on { opacity: 1; }
 
-/* the scanner: your head and its tiny magnets → the MRI signal → its frequencies → a physical image */
+/* the scanner: your head as its body parts → their data → pixel data → an MRI picture */
 .pic-bg { fill: #05070f; stroke: var(--night-edge); stroke-width: 2; }
 .cell { opacity: 0; transition: opacity 320ms ease-out; }
 .cell.lit { opacity: 1; }
-.head-outline { fill: none; stroke: #5566b0; stroke-width: 1.6; stroke-dasharray: 5 5; }
-.magnet line { stroke-width: 2.6; stroke-linecap: round; }
-.magnet { filter: url(#p3-glow); }
+.part-map { opacity: 0.6; transition: opacity 300ms ease-out; outline: none; }
+.body-map.choosing .part-map { opacity: 0.22; }
+.body-map.choosing .part-map.picked { opacity: 1; }
+.part-map:focus-visible { opacity: 1; }
+.part-label { font-family: var(--font); font-size: 20px; font-weight: 700; }
+.part-wave { fill: none; stroke-width: 2.4; stroke-linejoin: round; vector-effect: non-scaling-stroke; opacity: 0.35; transition: opacity 300ms ease-out; }
+.part-wave.picked { opacity: 1; filter: url(#p3-glow); }
+.part-waves.gone { opacity: 0; transition: opacity 600ms ease-out; }
 .scene.band { fill: none; stroke: url(#p3-led); stroke-width: 2; filter: url(#p3-glow); transform-box: view-box;
   transition: transform 500ms ease-in-out, opacity 400ms ease-out, visibility 0s linear 400ms; }
 .scene.band.on { transition: transform 500ms ease-in-out, opacity 400ms ease-out, visibility 0s; }
 .scene.scan { transition: opacity 600ms ease-out, visibility 0s linear 600ms; }
 .scene.scan.on { transition: opacity 600ms ease-out, visibility 0s; }
 .mri-part { transition: opacity 600ms ease-out; }
-.m-bars { opacity: 0; }
-.m-bars.on { opacity: 1; }
-.m-bar { filter: url(#p3-glow); }
 .m-arrow line, .m-arrow polygon { transition: stroke 300ms, fill 300ms; }
 .m-arrow.lit line { stroke: #ffffff; }
 .m-arrow.lit polygon { fill: #ffffff; }

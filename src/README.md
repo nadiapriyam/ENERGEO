@@ -115,12 +115,12 @@ and one accent. `docs/levels_spec.md` governs. `try/level-2/` and `notebook/` fo
   - The tuner draws the A note's signal and names it; the signal grows to fill the board, and taking it apart gives
     four glowing bars, four pure tones. The learner drags the bars into a tuning fork and back.
   - The technician from your scan (same style, copper hair, blue shirt) says the scanner works the same way, and
-    Nadia's sentence appears faded: "MRI takes the frequencies of your flipping magnets from the MRI signal, and
-    translates them into a physical image." Three buttons light it up part by part on a board of four parts (your
-    head's tiny magnets → the MRI signal → its frequencies → the image): Flip the magnets (they spin, faster to the
-    right, and their signal appears), Take it apart (a bar per frequency, coloured like its place), Make the image
-    (row after row, 48 × 48, exact).
-  - "Do you notice a pattern?" The MRI signal and the image slide into a third row: violin note → pure tones;
+    Nadia's words appear faded: "Each tiny magnet behaves differently depending on which body part it's in.
+    Collecting that data and converting it into pixel data helps us see an MRI picture, with the Fourier transform."
+    They light up part by part on a board of three parts (your head as its body parts → the data → the picture): tap
+    the body parts (each lights, is named, and shows its own signal, strong or weak, quick or slow to fade); Collect
+    the data (one busy signal); Convert it to pixels (row after row, 48 × 48, exact).
+  - "Do you notice a pattern?" The data and the picture slide into a third row: violin note → pure tones;
     stage light → its full color spectrum; proton frequencies → image.
   - Only then is the tool named: "All three come down to the same geometric math: the Fourier transform."
   - Files: `src/levels/prism.js` (with `copyPrism.js`) and `src/math/prism.js`. The app's own Fourier blocks

@@ -576,7 +576,7 @@ changed:
 - **Left out on purpose.** Equations and "coefficient". The music is not brought back into the scanner part: its
   spots no longer play notes.
 
-### Revision 5 (2026-11-20), which governs Level 3. Nadia, verbatim:
+### Revision 5 (2026-11-20), superseded by Revision 6 below. Nadia, verbatim:
 
 > swap the characters hair color and shirt color, and instead of the tiny magnets above your head part change the interactive whole by replacing it with basically mri takes frequnecy from your magnets flipping from the mri signal and translates that into a physical image. do you notice a pattern. the interactive has to show this sentence, and not be too long like the current magnet interactive
 
@@ -641,7 +641,7 @@ changed:
 35. Joseph Fourier came up with it about 200 years ago.
 36. Here it is: the mathematical tool that lets us start seeing what hides inside.
 
-Nothing comes after line 36.
+Nothing came after line 36.
 
 #### What the new lines claim
 
@@ -667,3 +667,107 @@ Revision 4 and keep its notes. New:
   - The image is Level 2's head illustration, without its grain. It is not a real scan.
 - **The edits to Nadia's sentence** are for grammar only: "frequency" became "the frequencies", "your magnets
   flipping" became "your flipping magnets", and "that" became "them".
+
+### Revision 6 (2026-11-20), which governs Level 3. Nadia, verbatim (two messages):
+
+> no flipping the magents inside your body. and each magnet behaves differently based on what body part its in. collecting that data and converting it to pizel data helps us see a mri picture with fourier transform
+
+> i want you to scrap that whole part with the magnets built in the interactive and i want you build a new interactive based on this wording i sent you before
+
+Claude asked whether "no flipping" meant to drop the flipping or to reword it. Nadia's second message answered: scrap
+the magnet interactive, and build a new one on her wording.
+
+#### What changes
+
+- **The magnet interactive is gone.** No tiny magnets are drawn, nothing flips or spins, and there are no frequency
+  bars.
+- **A new interactive, on Nadia's wording.** It is lightly edited into two sentences: "Each tiny magnet behaves
+  differently depending on which body part it's in. Collecting that data and converting it into pixel data helps us
+  see an MRI picture, with the Fourier transform."
+  - The board shows three parts, left to right: your head as its body parts (skin, bone, fluid, gray matter, white
+    matter, each in its own colour) → the data box (the violin's signal box, moved) → the MRI picture.
+  - The words appear faded under the board, and each part lights up as it happens:
+    1. "Tap the body parts." Tapping one lights it, names it under the head, and draws its own signal in the data box:
+       strong or weak, quick or slow to fade. Bone sends almost nothing. Fluid is weak but fades slowest. After two
+       parts, "Each tiny magnet behaves differently depending on which body part it's in." lights, and [Collect the
+       data] appears (it also appears after 7 seconds).
+    2. [Collect the data]: the separate signals give way to one busy signal, from a marked row of your head
+       ("Collecting that data").
+    3. [Convert it to pixels]: row after row, each row's data is converted and painted as grey pixels ("and
+       converting it into pixel data"). When the picture is done: "helps us see an MRI picture, with the Fourier
+       transform."
+  - The Fourier transform is now named here, in Nadia's words, before the pattern. The pattern's closing line names
+    it again.
+- **Unchanged:** the hall, the tuner, the characters, and the pattern ("Do you notice a pattern?").
+
+#### Level 3 learner copy (Revision 6), in order (drafted by Claude at Nadia's request, for her review)
+
+1. After your scan, you head back to the concert hall.
+2. The lights dim. You notice a stage light shining.
+3. Drag to aim it at the chandelier.
+4. Drag across the picture to swing the light. (only after 8 seconds)
+5. Where did the colors come from? [The glass] [The white light]
+6. From the white light. The glass on the chandelier is a prism: it takes light apart into its colors.
+7. You (thinking): If a prism is a tool that can take apart light, is there a tool that can take apart a sound?
+8. Surprise: it's your tuner.
+9. [Play your A note]
+10. A (the letter on the tuner)
+11. The tuner draws your note's signal, its shape over time, and names it: A.
+12. Four notes hide in this signal. Can you see them? [Yes] [Not really]
+13. Neither can anyone, just by looking.
+14. [Take it apart]
+15. Your A note, taken apart into four pure tones.
+16. A, high A, E, higher A (the labels under the bars)
+17. Drag the bars. Can you make a single pure tone, like a tuning fork?
+18. Drag all the bars but one down to 0. (only after 9 seconds)
+19. One bar, one smooth wave: a tuning fork.
+20. Now bring the others back.
+21. Every bump in the signal comes from a bar.
+22. At the break, the technician from your scan comes over.
+23. You: My tuner just took my A note apart!
+24. Technician: My scanner works the same way.
+25. Each tiny magnet behaves differently depending on which body part it's in. Collecting that data and converting it into pixel data helps us see an MRI picture, with the Fourier transform. (shown faded; each part lights up as it happens on the board: "Each tiny magnet behaves differently depending on which body part it's in." once you have tapped two body parts, "Collecting that data" with [Collect the data], "and converting it into pixel data" with [Convert it to pixels], "helps us see an MRI picture, with the Fourier transform." when the picture is done)
+26. Tap the body parts.
+27. skin, bone, fluid, gray matter, white matter (the name of the part you tap, on the board)
+28. [Collect the data] (after two body parts, or after 7 seconds)
+29. [Convert it to pixels]
+30. Technician: Do you notice a pattern? [Yes] [Not yet]
+31. Technician: Let me help you out.
+32. Violin note → pure tones
+33. Stage light → its full color spectrum
+34. Proton frequencies → image
+35. All three come down to the same geometric math: the Fourier transform.
+36. Joseph Fourier came up with it about 200 years ago.
+37. Here it is: the mathematical tool that lets us start seeing what hides inside.
+
+Nothing comes after line 37.
+
+#### What the new lines claim
+
+The numbers are computed in `src/math/prism.js` and checked by `test/prism.test.js`. Lines 1–24 and 30–37 are as in
+Revision 5 and keep its notes. New:
+
+- **Line 25, "Each tiny magnet behaves differently depending on which body part it's in."**
+  - True, and it is why body parts look different in an MRI picture. How many tiny magnets (hydrogen nuclei) a
+    tissue has differs from tissue to tissue. So does how fast they settle back after the scanner's radio nudge
+    (relaxation, T1 and T2).
+  - On the board, each part's signal is as strong as that part is bright in Level 2's picture. How fast it fades is
+    an illustration, chosen to agree with real tissue: bone sends almost nothing, and fluid fades slowest.
+  - The picture is the kind where fluid looks dark, so fluid's signal is weak but lasting.
+- **Line 27, the body parts.** They are the regions of Level 2's head illustration:
+  - the bright outer ring is skin;
+  - the dark ring, with its thin inner layer, is bone;
+  - the dark spaces in the middle and in the grooves are fluid;
+  - the grey rim is gray matter;
+  - the bright inside is white matter.
+
+  Every pixel of the head belongs to exactly one of them. The illustration is not a real scan.
+- **Line 25, "Collecting that data".** The scanner's coil collects every body part's signal at once. The data box
+  shows one row's, and the glowing band shows which row.
+- **Line 25, "converting it into pixel data … with the Fourier transform".**
+  - Each row's data is converted with a discrete Fourier transform into that row's 48 pixel brightnesses, exactly
+    (to within 10⁻¹³).
+  - It works because the scanner gives each place across a row its own frequency. That is not shown or said here.
+    One signal per row is the simplification noted in Revision 3.
+- **Line 34, "Proton frequencies → image"** is still Nadia's own pattern line, from Revision 4. "Frequency" is no
+  longer introduced before it, since the scanner part now uses Nadia's newer wording.

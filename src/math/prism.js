@@ -1,4 +1,4 @@
-// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 5). Pure functions, no DOM, no audio. (The app's own
+// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 6). Pure functions, no DOM, no audio. (The app's own
 // Fourier blocks are in fourier.js; this file is only the level's.)
 //
 // Three scenes, one idea: something that looks like one thing hides many.
@@ -6,11 +6,11 @@
 //    light goes in and colours come out, red bent least and violet most, as in a real prism.
 //  • The tuner. Your A note's signal (its shape over time) and, through the prism for sound, its four notes as bars.
 //    The bars are exact: the signal is their sum (tones.js).
-//  • The scanner. Your head's tiny magnets flip and spin, faster towards the right (the scanner's magnet is a little
-//    stronger there), so each place across a row has its own frequency, tone k + 1 for column k. The scanner picks up
-//    a row's places all at once, as one signal. Taking it apart, a discrete Fourier transform
-//    a_k = (2/N) Σ s_i sin(2π (k+1) i / N), gives back how many tiny magnets are at each place, exactly, and that is
-//    the row's brightness. Row after row, the image.
+//  • The scanner. Your head, as its body parts (skin, bone, fluid, gray matter, white matter). The tiny magnets in each
+//    body part behave differently: each part sends its own signal, as strong as that part is bright in Level 2's
+//    picture, and fading at its own pace. The scanner collects all of it at once, one signal per row (place k sends
+//    tone k + 1), and converts it into pixel data with a discrete Fourier transform,
+//    a_k = (2/N) Σ s_i sin(2π (k+1) i / N), exactly. Row after row, the MRI picture.
 //  • The pattern. Violin note → pure tones; stage light → its colours; proton frequencies → image.
 //
 // Scenes move into one another: each move is a fit of one box onto another.
@@ -173,50 +173,61 @@ export function neon(i, n) {
   return `hsl(${Math.round(h)}, 100%, 60%)`;
 }
 
-// ── the scanner: magnets flipping → the MRI signal → its frequencies → a physical image ──────────────────────
-export const ROWS = 48;                                     // the image: 48 rows of 48 places, as in Level 2
+// ── the scanner: body parts → their data → pixel data → an MRI picture ────────────────────────────────────
+export const ROWS = 48;                                     // the picture: 48 rows of 48 pixels, as in Level 2
 export const MRI = {
-  head: { x: 14, y: 120, size: 172 },                       // your head, with its tiny magnets
-  signal: { x: 226, y: 110, w: 188, h: 74 },                // the MRI signal (the violin's signal box moves here)
-  glyph: { cx: 320, cy: 199, size: 20 },                    // taking it apart
-  bars: { x: 226, y: 212, w: 188, h: 88 },                  // its frequencies
-  picture: { x: 454, y: 120, size: 172 },                   // the physical image
-  arrows: [{ x1: 192, x2: 220, y: 147 }, { x1: 420, x2: 448, y: 256 }],
-  magnets: 8,                                               // tiny magnets drawn per side of the head (a few of countless)
+  head: { x: 14, y: 110, size: 176 },                       // your head, as its body parts
+  data: { x: 230, y: 140, w: 176, h: 116 },                 // the data (the violin's signal box moves here)
+  glyph: { cx: 429, cy: 168, size: 24 },                    // the Fourier transform: taking the data apart
+  picture: { x: 452, y: 110, size: 176 },                   // the pixels: the MRI picture
+  arrows: [{ x1: 196, x2: 224, y: 198 }, { x1: 412, x2: 446, y: 198 }],
+  label: { x: 102, y: 316 },                                // the name of the body part you tapped
 };
-export const RATE = 0.25;                                   // turns per second of the slowest spin, as drawn
-/** How fast the tiny magnets at fraction xf (0 left … 1 right) across the head spin once flipped: faster to the right. */
-export const spinRate = (xf) => RATE * (1 + 4 * xf);
-/** The head slice from Level 2 (scanner.js), sampled at n × n places: how many tiny magnets are at each (0…1). */
+/**
+ * The body parts of Level 2's head slice, in the order of their names in the copy (skin, bone, fluid, gray matter,
+ * white matter). `values` are the brightnesses scanner.js gives that part; `fade` is how long its signal lasts, as
+ * drawn (an illustration: bone hardly sends anything, fluid fades slowest).
+ */
+export const BODY_PARTS = [
+  { values: [0.85], fade: 0.3, color: 'hsl(28, 100%, 60%)' },
+  { values: [0.1, 0.22], fade: 0.06, color: 'hsl(275, 85%, 72%)' },
+  { values: [0.16, 0.26, 0.3], fade: 1.2, color: 'hsl(200, 100%, 60%)' },
+  { values: [0.52], fade: 0.45, color: 'hsl(165, 100%, 48%)' },
+  { values: [0.78], fade: 0.35, color: 'hsl(320, 100%, 66%)' },
+];
+/** Which body part a brightness belongs to (−1 outside the head). */
+export const partOf = (v) => BODY_PARTS.findIndex((b) => b.values.some((w) => Math.abs(w - v) < 1e-9));
+/** How strong a body part's signal is: its brightness in the picture (the mean, where it has more than one). */
+export const strength = (k) => BODY_PARTS[k].values.reduce((s, v) => s + v, 0) / BODY_PARTS[k].values.length;
+/** The head slice from Level 2 (scanner.js), sampled at n × n pixels: how bright each is (0…1). */
 export function coarseRows(n = ROWS) {
   return Array.from({ length: n }, (_, j) => Array.from({ length: n }, (_, i) => scanPixel(((i + 0.5) / n) * 2 - 1, ((j + 0.5) / n) * 2 - 1)));
 }
-/** The tiny magnets drawn in your head: a grid, kept only where there is some of you; each knows how far across it is. */
-export function magnetSpots(n = MRI.magnets) {
+/** The body part under a point of the board (−1 if it is not on your head). */
+export function partAt(p, rows = coarseRows()) {
   const { x, y, size } = MRI.head;
-  const out = [];
-  for (let j = 0; j < n; j++) for (let i = 0; i < n; i++) {
-    const amount = scanPixel(((i + 0.5) / n) * 2 - 1, ((j + 0.5) / n) * 2 - 1);
-    if (amount > 0) out.push({ x: x + ((i + 0.5) * size) / n, y: y + ((j + 0.5) * size) / n, xf: (i + 0.5) / n, amount });
-  }
-  return out;
+  const i = Math.floor(((p.x - x) / size) * ROWS);
+  const j = Math.floor(((p.y - y) / size) * ROWS);
+  if (i < 0 || j < 0 || i >= ROWS || j >= ROWS) return -1;
+  return partOf(rows[j][i]);
 }
-/** The colour of the place at fraction xf across: the same colour as its frequency's bar. */
-export const colourAt = (xf) => neon(Math.min(ROWS - 1, Math.floor(xf * ROWS)), ROWS);
-/** What the scanner picks up from one row: place k sends tone k + 1, as strong as how many tiny magnets are there. Sampled N > 2n times over one period, so it can be taken apart exactly. */
+/** One body part's signal, drawn across the data box (in the strip's own units, which move with it): strong or weak, fading at its own pace. */
+export function partWave(k, n = 200) {
+  const amp = (STRIP.h / 2 - 8) * strength(k);
+  let d = '';
+  for (let i = 0; i <= n; i++) {
+    const t = i / n;
+    d += `${i ? 'L' : 'M'}${(STRIP.x + t * STRIP.w).toFixed(1)} ${(STRIP.y + STRIP.h / 2 - amp * Math.exp(-t / BODY_PARTS[k].fade) * Math.sin(2 * Math.PI * 6 * t)).toFixed(1)}`;
+  }
+  return d;
+}
+/** What the scanner collects from one row: place k sends tone k + 1, as strong as that pixel is bright. Sampled N > 2n times over one period, so it can be converted exactly. */
 export const chordSamples = (amounts, N = 4 * amounts.length + 8) =>
   Array.from({ length: N }, (_, i) => amounts.reduce((s, a, k) => s + a * Math.sin((2 * Math.PI * (k + 1) * i) / N), 0));
-/** Taking a signal apart: how much of each tone is in it (a discrete Fourier transform). */
+/** Converting the data into pixel data: how much of each tone is in it (a discrete Fourier transform). */
 export const unmix = (samples, n) =>
   Array.from({ length: n }, (_, k) => (2 / samples.length) * samples.reduce((s, v, i) => s + v * Math.sin((2 * Math.PI * (k + 1) * i) / samples.length), 0));
-/** Frequency k's bar in the bars box: as tall as its amount, in its place's colour. */
-export function mriBar(k, a) {
-  const { x, y, w, h } = MRI.bars;
-  const step = w / ROWS;
-  const height = Math.max(0, Math.min(1, a)) * (h - 8);
-  return { x: x + k * step + step * 0.15, w: step * 0.7, y: y + h - 4 - height, h: height };
-}
-/** The order rows are read in: from the middle outwards, so the first rows already cross the head. */
+/** The order rows are converted in: from the middle outwards, so the first rows already cross the head. */
 export function rowOrder(n) {
   const mid = Math.floor(n / 2);
   const out = [mid];
@@ -224,11 +235,9 @@ export function rowOrder(n) {
   return out;
 }
 export const FIRST_ROW = rowOrder(ROWS)[0];
-/** Row j's band across a square box (the head being read, or the image being made). */
+/** Row j's band across a square box (the head being read, or the picture being made). */
 export const rowIn = (box, j) => ({ x: box.x, y: box.y + (j * box.size) / ROWS, w: box.size, h: box.size / ROWS });
-/** The outline of your head in a square box: where Level 2's head slice ends. */
-export const outlineIn = (box) => ({ cx: box.x + box.size / 2, cy: box.y + box.size / 2, rx: 0.8 * (box.size / 2), ry: 0.95 * (box.size / 2) });
-export const toSignal = () => fit(STRIP_BOX, MRI.signal);    // the violin's signal box becomes the MRI signal's
+export const toSignal = () => fit(STRIP_BOX, MRI.data);      // the violin's signal box becomes the data box
 
 // ── the characters: you, the player (the style Nadia shared: short dark hair, big round glasses, a yellow shirt, plus a
 //    bucket hat), and the technician who scanned you (the same deadpan face, copper hair, a blue shirt) ──

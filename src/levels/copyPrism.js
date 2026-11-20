@@ -1,8 +1,9 @@
-// Every learner-facing line of Level 3, "A prism for sound", verbatim from docs/levels_spec.md (Revision 5, checked by
+// Every learner-facing line of Level 3, "A prism for sound", verbatim from docs/levels_spec.md (Revision 6, checked by
 // test/prism.test.js). Drafted at Nadia's request for her review: a story that picks up right after Level 2, in as few
 // words as it can. `you` holds the player's own lines (shown beside their face, a thought in a thought bubble) and
-// `tech` the technician's. `mri` is Nadia's sentence about the scanner, in four parts: it is shown faded, and each part
-// lights up as it happens on the board (`step` is the button that lights it). Nothing else on the page is learner-facing
+// `tech` the technician's. `mri` is Nadia's description of the scanner, in four parts: it is shown faded, and each part
+// lights up as it happens on the board (`step` is the moment that lights it). `bodyParts` name the head's parts on the
+// board. Nothing else on the page is learner-facing
 // text, apart from accessibility labels.
 
 export const COPY = {
@@ -38,13 +39,15 @@ export const COPY = {
     pattern: { question: 'Do you notice a pattern?', choices: ['Yes', 'Not yet'], after: 'Let me help you out.' },
   },
   mri: [
-    { text: 'MRI takes the frequencies', step: 2 },
-    { text: ' of your flipping magnets', step: 0 },
-    { text: ' from the MRI signal,', step: 1 },
-    { text: ' and translates them into a physical image.', step: 3 },
+    { text: "Each tiny magnet behaves differently depending on which body part it's in.", step: 0 },
+    { text: ' Collecting that data', step: 1 },
+    { text: ' and converting it into pixel data', step: 2 },
+    { text: ' helps us see an MRI picture, with the Fourier transform.', step: 3 },
   ],
-  flip: 'Flip the magnets',
-  makeImage: 'Make the image',
+  tapParts: 'Tap the body parts.',
+  bodyParts: ['skin', 'bone', 'fluid', 'gray matter', 'white matter'],
+  collect: 'Collect the data',
+  convert: 'Convert it to pixels',
   pattern: ['Violin note → pure tones', 'Stage light → its full color spectrum', 'Proton frequencies → image'],
   name: ['All three come down to the same geometric math: the Fourier transform.', 'Joseph Fourier came up with it about 200 years ago.'],
   final: 'Here it is: the mathematical tool that lets us start seeing what hides inside.',
