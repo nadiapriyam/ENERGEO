@@ -1,4 +1,4 @@
-// Every learner-facing line of Level 3, "A prism for sound", verbatim from docs/levels_spec.md (Revision 7, checked by
+// Every learner-facing line of Level 3, "A prism for sound", verbatim from docs/levels_spec.md (Revision 8, checked by
 // test/prism.test.js). Drafted at Nadia's request for her review: a story that picks up right after Level 2, in as few
 // words as it can. `you` holds the player's own lines (shown beside their face, a thought in a thought bubble) and
 // `radiologist` the radiologist's. `mri` is Nadia's description of the scanner, in four parts, shown one at a time as
@@ -27,7 +27,7 @@ export const COPY = {
   pureHint: 'Drag all the bars but one down to 0.',
   pureDone: 'One bar, one smooth wave: a tuning fork.',
   back: 'Now bring the others back.',
-  backDone: 'Every bump in the signal comes from a bar.',
+  backDone: 'Every bump in the signal comes from a different pure tone.',
   arrives: 'At the break, the radiologist who read your scan comes over.',
   you: {
     think: 'If a prism is a tool that can take apart light, is there a tool that can take apart a sound?',
@@ -49,6 +49,9 @@ export const COPY = {
   collect: 'Collect the data',
   convert: 'Convert it to pixels',
   pattern: ['Violin note → pure tones', 'Stage light → its full color spectrum', 'Proton frequencies → image'],
-  name: ['All three come down to the same geometric math: the Fourier transform.', 'Joseph Fourier came up with it about 200 years ago.'],
-  final: 'Here it is: the mathematical tool that lets us start seeing what hides inside.',
+  next: 'Next',
+  revealTitle: 'the Fourier transform',
+  reveal: 'The mathematical tool that lets us start seeing what hides inside: the Fourier transform.',
+  name: ['All three come down to the same geometric math.', 'Joseph Fourier came up with it about 200 years ago.'],
+  final: 'The applications are endless! From a simple tuner to looking inside your brain.',
 };

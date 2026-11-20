@@ -1,0 +1,15 @@
+/* The review strip: frames side by side, one scroll left to right. */
+.storyboard { padding: 3vh 0 4vh; }
+.storyboard-head { max-width: 680px; margin: 0 auto 1.2em; }
+.storyboard-head h1 { font-size: 1.5rem; margin: 0 0 0.3em; }
+.storyboard-hint { color: var(--ink-2); margin: 0 0 0.8em; }
+.storyboard-nav { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.storyboard-nav .count { min-width: 4.5em; text-align: center; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.storyboard-back { margin-left: auto; color: var(--accent); }
+.frames { display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 0 16px; outline: none; }
+.frame { flex: 0 0 auto; width: min(440px, 86vw); margin: 0; scroll-snap-align: start; display: flex; flex-direction: column; gap: 8px; }
+.frame figcaption { display: flex; gap: 10px; align-items: baseline; font-size: 1rem; }
+.frame-number { color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.frame-title { font-weight: 600; }
+.frame iframe { width: 100%; height: min(860px, 78vh); border: 1px solid #e3e7ee; border-radius: 14px; background: #ffffff; }
+.play-from { align-self: flex-start; text-decoration: none; }

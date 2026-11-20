@@ -1,4 +1,4 @@
-// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 7). Pure functions, no DOM, no audio. (The app's own
+// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 8). Pure functions, no DOM, no audio. (The app's own
 // Fourier blocks are in fourier.js; this file is only the level's.)
 //
 // Three scenes, one idea: something that looks like one thing hides many.
@@ -13,7 +13,8 @@
 //    picture, and fading at its own pace. The scanner collects all of it at once, one signal per row (place k sends
 //    tone k + 1), and converts it into pixel data with a discrete Fourier transform,
 //    a_k = (2/N) Σ s_i sin(2π (k+1) i / N), exactly. Row after row, the MRI picture.
-//  • The pattern. Violin note → pure tones; stage light → its colours; proton frequencies → image.
+//  • The pattern, one slide at a time, each caption under its own pictures: violin note → pure tones; stage light →
+//    its colours; proton frequencies → image. Then all three, and the grand reveal: the Fourier transform.
 //
 // Scenes move into one another: each move is a fit of one box onto another.
 
@@ -322,18 +323,24 @@ export function bucketHat() {
 }
 
 // ── the pattern: three rows, one thing on the left, what it is made of on the right ─────────────────────────
-export const PATTERN = { y: [14, 150, 286], h: 104, left: { x: 40, w: 230 }, right: { x: 370, w: 230 }, arrow: { x1: 290, x2: 350 } };
-/** The box for row i ('left' or 'right'). Row 2's picture is square, in the middle of its box. */
-export function patternBox(i, side) {
+export const PATTERN = { y: [10, 146, 282], h: 92, left: { x: 40, w: 230 }, right: { x: 370, w: 230 }, arrow: { x1: 290, x2: 350 }, caption: 30, slideY: 168, slideCaption: 26 };
+/** How far row i moves to stand alone in the middle of the board, as its own slide. */
+export const slideShift = (i) => PATTERN.slideY - (PATTERN.y[i] + PATTERN.h / 2);
+/** Where row i's caption sits, under its pictures (it moves with the row; on a slide it drops a further slideCaption, being bigger). */
+export const captionAt = (i) => ({ x: BOARD.w / 2, y: PATTERN.y[i] + PATTERN.h + PATTERN.caption });
+/** The grand reveal: the name, big, in the middle of the board. */
+export const REVEAL = { x: BOARD.w / 2, y: 228 };
+/** The box for row i ('left' or 'right'), moved down by dy (0: where it sits among all three). Row 2's picture is square, in the middle of its box. */
+export function patternBox(i, side, dy = 0) {
   const { y, h } = PATTERN;
   const b = PATTERN[side];
-  if (i === 2 && side === 'right') return { x: b.x + (b.w - h) / 2, y: y[i], w: h, h };
-  return { x: b.x, y: y[i], w: b.w, h };
+  if (i === 2 && side === 'right') return { x: b.x + (b.w - h) / 2, y: y[i] + dy, w: h, h };
+  return { x: b.x, y: y[i] + dy, w: b.w, h };
 }
 /** The scanner's signal box and your picture move into the third row. */
 export const PIC_FRAME = { x: MRI.picture.x - 4, y: MRI.picture.y - 4, w: MRI.picture.size + 8, h: MRI.picture.size + 8 };
-export const stripToPattern = () => fit(STRIP_BOX, patternBox(2, 'left'));
-export const picToPattern = () => fit(PIC_FRAME, patternBox(2, 'right'));
+export const stripToPattern = (dy = 0) => fit(STRIP_BOX, patternBox(2, 'left', dy));
+export const picToPattern = (dy = 0) => fit(PIC_FRAME, patternBox(2, 'right', dy));
 /** Row 1, right: the A note's four bars, as tall as their amounts. */
 export function patternBars() {
   const b = patternBox(0, 'right');

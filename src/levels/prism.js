@@ -1,4 +1,4 @@
-// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 7). It comes straight after Level 2: after your scan,
+// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 8). It comes straight after Level 2: after your scan,
 // you head back to the concert hall. The lights dim; the learner aims a stage light at the chandelier, and its glass
 // prism takes the white light apart into colours. You wonder: is there a tool that can take apart a sound? Surprise:
 // your tuner. Its screen draws your A note's signal, the signal grows to fill the board, and taking it apart gives four
@@ -7,12 +7,17 @@
 // labelled: tap the brain, then the skull, and see each one's own signal. Nadia's description is shown one part at a
 // time, the earlier parts turning grey: each body part behaves differently; collecting that data (the head moves aside
 // and one busy signal appears); converting it into pixel data, row after row; an MRI picture, with the Fourier
-// transform. Then the pattern (violin note → pure tones, stage light → its colours, proton frequencies → image).
+// transform. Then the pattern, one slide at a time, each caption under its own pictures (violin note → pure tones,
+// stage light → its colours, proton frequencies → image), all three together, the grand reveal of the Fourier
+// transform, and: the applications are endless.
+// For review, ?step=<id> stops the level at a named step (the review strip at try/?steps shows every one), and
+// ?from=<id> fast-forwards to it and plays on from there (stepsPrism.js lists the steps).
 // Scenes move into one another rather than swap. Every learner-facing line comes from copyPrism.js; every position,
 // bar and row from src/math (prism.js, tones.js, scanner.js).
 import './prism.css';
 
 import { COPY } from './copyPrism.js';
+import { STEPS as STORY_STEPS } from './stepsPrism.js';
 import { A_NOTE, STEPS, PITCH, part } from '../math/tones.js';
 import {
   BOARD, css, triangle, HALL, crystalCorners, aimAngle, toCrystal, startAngle, lightPath,
@@ -20,7 +25,7 @@ import {
   NOTE_LED, neon, ROWS, MRI, BODY_PARTS, partOf, partAt, partWave, coarseRows, chordSamples, unmix, rowOrder, FIRST_ROW,
   rowIn, toSignal, BRAIN, SKULL, EXPLORE, exploreHead, exploreData, labels, FACE, hairPath, shirtPath, lookAt, PLAYER, RADIOLOGIST,
   bucketHat, coatLapels, FIGURE, BREAK, figureBox,
-  PATTERN, patternBox, stripToPattern, picToPattern, patternBars, patternLight,
+  PATTERN, patternBox, stripToPattern, picToPattern, patternBars, patternLight, slideShift, captionAt, REVEAL,
 } from '../math/prism.js';
 
 const NS = 'http://www.w3.org/2000/svg';
@@ -37,8 +42,27 @@ const svg = (tag, attrs = {}, ...kids) => {
   e.append(...kids);
   return e;
 };
-const wait = (ms) => new Promise((r) => setTimeout(r, REDUCED ? Math.min(ms, 1200) : ms));
-const pause = (ms) => new Promise((r) => setTimeout(r, ms));
+// review: ?step=<id> stops at that step; ?from=<id> fast-forwards to it (no waiting, every interaction done for you), then plays on
+const QUERY = new URLSearchParams(location.search);
+const STOP = QUERY.get('step');
+const FROM = QUERY.get('from');
+let FAST = [STOP, FROM].some((id) => id && STORY_STEPS.some((s) => s.id === id));
+if (FAST) document.documentElement.classList.add('instant');
+const reached = [];
+/** A named step (stepsPrism.js). Fast-forwarding, it stops here for good if this is ?step, or hands over to you if this is ?from. */
+async function step(id) {
+  if (id) reached.push(id);
+  if (!FAST) return;
+  if (id === STOP) {
+    await new Promise((r) => setTimeout(r, 80));
+    document.documentElement.dataset.stopped = id;
+    await new Promise(() => {});
+  }
+  if (id === FROM) { FAST = false; document.documentElement.classList.remove('instant'); }
+}
+const wait = (ms) => (FAST ? Promise.resolve() : new Promise((r) => setTimeout(r, REDUCED ? Math.min(ms, 1200) : ms)));
+const pause = (ms) => (FAST ? Promise.resolve() : new Promise((r) => setTimeout(r, ms)));
+const later = (fn) => (FAST ? fn() : requestAnimationFrame(fn));
 const reading = (text) => Math.min(4500, 900 + 40 * text.length);
 const on = (node, v = true) => node.classList.toggle('on', v);
 const pts = (ps) => ps.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
@@ -59,6 +83,7 @@ const ROWS_OF_YOU = coarseRows();                           // how bright each p
 // ── sound (only after a tap) ─────────────────────────────────────────────────────────────────────
 let ctx = null;
 function audio() {
+  if (FAST) return null;
   const AC = window.AudioContext || window.webkitAudioContext;
   if (!AC) return null;
   try { ctx ??= new AC(); if (ctx.state === 'suspended') ctx.resume(); } catch { return null; }
@@ -223,17 +248,18 @@ const patternRows = [
     svg('rect', { class: 'p-box', x: violinBox.x, y: violinBox.y, width: violinBox.w, height: violinBox.h, rx: 12 }),
     svg('path', { class: 'p-signal', d: signal(A_NOTE), transform: (() => { const b = { x: violinBox.x + 10, y: violinBox.y + 8, w: violinBox.w - 20, h: violinBox.h - 16 }; const sx = b.w / STRIP.w; const sy = b.h / STRIP.h; return `translate(${(b.x - STRIP.x * sx).toFixed(2)} ${(b.y - STRIP.y * sy).toFixed(2)}) scale(${sx.toFixed(4)} ${sy.toFixed(4)})`; })() }),
     ...patternBars().map((b, k) => svg('rect', { class: 'p-bar', fill: NOTE_LED[k], x: b.x.toFixed(1), y: b.y.toFixed(1), width: b.w.toFixed(1), height: b.h.toFixed(1), rx: 3 })),
-    arrowOf(0)),
+    arrowOf(0), svg('text', { class: 'p-caption', x: captionAt(0).x, y: captionAt(0).y, 'text-anchor': 'middle', text: COPY.pattern[0] })),
   svg('g', { class: 'p-row' },
     line(lightRow.beam.from, lightRow.beam.to, { class: 'p-beam' }),
     svg('polygon', { class: 'glass', points: pts(lightRow.corners) }),
     ...lightRow.rays.map((r) => line(r.from, r.to, { class: 'p-ray', stroke: r.color })),
-    arrowOf(1)),
-  svg('g', { class: 'p-row' }, arrowOf(2)),
+    arrowOf(1), svg('text', { class: 'p-caption', x: captionAt(1).x, y: captionAt(1).y, 'text-anchor': 'middle', text: COPY.pattern[1] })),
+  svg('g', { class: 'p-row' }, arrowOf(2), svg('text', { class: 'p-caption', x: captionAt(2).x, y: captionAt(2).y, 'text-anchor': 'middle', text: COPY.pattern[2] })),
 ];
-const pattern = svg('g', { class: 'scene pattern' }, ...patternRows);
+const pattern = svg('g', { class: 'scene pattern', style: `--slide-caption: ${PATTERN.slideCaption}px` }, ...patternRows);
+const revealTitle = svg('text', { class: 'scene reveal-title', x: REVEAL.x, y: REVEAL.y, 'text-anchor': 'middle', fill: 'url(#p3-led)', text: COPY.revealTitle });
 
-board.append(bg, hall, breakScene, scan, arrive, glyph, spectrum, pattern);
+board.append(bg, hall, breakScene, scan, arrive, glyph, spectrum, pattern, revealTitle);
 
 // ── the characters: the radiologist, and you (the player) ───────────────────────────────────────────────
 /** A character's face and shoulders, in FACE's units, looking toward `look`: you in a bucket hat; the radiologist in a white coat. */
@@ -286,6 +312,7 @@ function drawBars() {
 }
 let running = null;
 function runSignal(amounts) {                               // the signal drifts by, as sound does
+  if (FAST) { running = null; signalPath.setAttribute('d', signal(amounts)); return; }
   const t0 = performance.now();
   running = amounts;
   const frame = (now) => {
@@ -317,7 +344,7 @@ function sentence() {
   const spans = COPY.mri.map((f) => el('span', { class: 'frag', text: f.text }));
   const p = el('p', { class: 'line mri-sentence' }, ...spans);
   prompt.append(p);
-  requestAnimationFrame(() => p.classList.add('in'));
+  later(() => p.classList.add('in'));
   return (step) => COPY.mri.forEach((f, i) => {
     if (f.step === step) spans[i].classList.add('shown');
     else if (f.step < step) spans[i].classList.add('past');
@@ -347,7 +374,7 @@ function tapParts(onTap) {
 const say = (text, cls = '') => {
   const p = el('p', { class: `line ${cls}`.trim(), text });
   prompt.append(p);
-  requestAnimationFrame(() => p.classList.add('in'));
+  later(() => p.classList.add('in'));
   return p;
 };
 /** A character's line: a bubble beside their face (one face for lines in a row). `who` is 'radiologist' or 'you'; a thought gets a thought bubble. */
@@ -357,11 +384,11 @@ function speak(text, who = 'radiologist', thought = false) {
     block = el('div', { class: `speaker ${who}`, 'data-who': who, role: 'group', 'aria-label': who === 'you' ? 'You' : 'The radiologist' },
       el('div', { class: 'who' }, face(who)), el('div', { class: 'bubbles' }));
     prompt.append(block);
-    requestAnimationFrame(() => block.classList.add('in'));
+    later(() => block.classList.add('in'));
   }
   const b = el('p', { class: `bubble${thought ? ' thought' : ''}`, text });
   block.querySelector('.bubbles').append(b);
-  requestAnimationFrame(() => b.classList.add('in'));
+  later(() => b.classList.add('in'));
   const f = block.querySelector('.face');
   f.classList.remove('talking');
   f.getBoundingClientRect();
@@ -379,7 +406,7 @@ let keyboardUser = false;
 addEventListener('keydown', (e) => { if (e.key === 'Tab' || e.key === 'Enter' || e.key === ' ') keyboardUser = true; }, true);
 addEventListener('pointerdown', () => { keyboardUser = false; }, true);
 const followFocus = (t) => { if (keyboardUser) t.focus({ preventScroll: true }); };
-const ask = (options) => new Promise((resolve) => {
+const ask = (options, id) => new Promise((resolve) => {
   const row = el('div', { class: 'choices' });
   const buttons = options.map((o) => {
     const b = el('button', { type: 'button', class: 'choice', text: o });
@@ -388,22 +415,24 @@ const ask = (options) => new Promise((resolve) => {
   });
   row.append(...buttons);
   prompt.append(row);
-  requestAnimationFrame(() => row.classList.add('in'));
+  later(() => row.classList.add('in'));
   followFocus(buttons[0]);
+  if (FAST) step(id).then(() => { if (FAST) buttons[0].click(); });
 });
-const press = (text) => new Promise((resolve) => {
+const press = (text, id) => new Promise((resolve) => {
   const b = el('button', { type: 'button', class: 'action', text });
   b.addEventListener('click', () => { b.remove(); resolve(); }, { once: true });
   controls.replaceChildren(b);
-  requestAnimationFrame(() => b.classList.add('in'));
+  later(() => b.classList.add('in'));
   followFocus(b);
+  if (FAST) step(id).then(() => { if (FAST) b.click(); });
 });
 const boardPoint = (e) => { const p = board.createSVGPoint(); p.x = e.clientX; p.y = e.clientY; return p.matrixTransform(board.getScreenCTM().inverse()); };
 
 // ── the story ────────────────────────────────────────────────────────────────────────────────────
 async function theHall() {                                  // back at the concert hall: the lights dim
   describe('A concert hall: a chandelier with a piece of glass hanging from it, and a stage light on the floor.');
-  requestAnimationFrame(() => figure.classList.add('in'));
+  later(() => figure.classList.add('in'));
   say(COPY.opening, 'lead');
   await pause(reading(COPY.opening));
   phase = 'hall';
@@ -414,20 +443,27 @@ async function theHall() {                                  // back at the conce
   hall.classList.add('lit');
   describe('The hall is dark. The stage light shines a white beam across to the wall, below the chandelier.');
   await pause(reading(COPY.dim));
-  await aimTheLight();
+  await step('hall');
+  phase = 'aim';
+  say(COPY.aim);
+  const aiming = aimTheLight();
+  await step('aim');
+  if (FAST) aiming.auto();                                   // fast-forwarding: straight at the chandelier
+  await aiming.done;
+  await step('rainbow');
   theColors();
 }
 
-function aimTheLight() {                                    // the learner swings the light onto the chandelier
-  phase = 'aim';
-  say(COPY.aim);
+/** The learner swings the light onto the chandelier. Returns { done, auto }: auto() aims it there at once. */
+function aimTheLight() {
   const hint = setTimeout(() => { if (phase === 'aim') say(COPY.aimHint, 'hint'); }, 8000);
   board.classList.add('aiming');
   lamp.setAttribute('tabindex', '0');
   followFocus(lamp);
-  return new Promise((resolve) => {
+  let auto = () => {};
+  const done = new Promise((resolve) => {
     let down = false;
-    let done = false;
+    let finished = false;
     const set = (e) => aim(aimAngle(boardPoint(e)));
     const pd = (e) => { down = true; try { board.setPointerCapture(e.pointerId); } catch { /* not capturable */ } set(e); };
     const pm = (e) => { if (down) set(e); };
@@ -440,9 +476,10 @@ function aimTheLight() {                                    // the learner swing
     const events = [['pointerdown', pd], ['pointermove', pm], ['pointerup', pu], ['pointercancel', pu]];
     events.forEach(([t, f]) => board.addEventListener(t, f));
     lamp.addEventListener('keydown', kd);
+    auto = () => { aim(toCrystal()); finish(); };
     async function finish() {
-      if (done) return;
-      done = true;
+      if (finished) return;
+      finished = true;
       clearTimeout(hint);
       events.forEach(([t, f]) => board.removeEventListener(t, f));
       lamp.removeEventListener('keydown', kd);
@@ -453,13 +490,14 @@ function aimTheLight() {                                    // the learner swing
       resolve();
     }
   });
+  return { done, auto };
 }
 
 async function theColors() {                                // where did the colours come from? and a sound?
   phase = 'colors';
   await clear();
   say(COPY.where.question);
-  await ask(COPY.where.choices);
+  await ask(COPY.where.choices, 'colors');
   say(COPY.where.after);
   await pause(reading(COPY.where.after) + 300);
   await clear();
@@ -467,6 +505,7 @@ async function theColors() {                                // where did the col
   await pause(reading(COPY.you.think) + 300);
   say(COPY.surprise, 'lead');
   await pause(reading(COPY.surprise));
+  await step('thought');
   theTuner();
 }
 
@@ -477,7 +516,7 @@ async function theTuner() {                                 // the hall rises aw
   await wait(1100);
   hall.style.visibility = 'hidden';
   describe('A tuner clipped to the scroll of your violin. Its screen is blank.');
-  await press(COPY.play);
+  await press(COPY.play, 'tuner');
   await clear();
   runSignal(A_NOTE);                                         // the signal appears on the tuner's screen as you play
   await play(A_NOTE, 1.8);
@@ -485,6 +524,7 @@ async function theTuner() {                                 // the hall rises aw
   describe("On the tuner's screen, your note drawn as a bumpy line, with the letter A under it and a green light.");
   say(COPY.drawsSignal);
   await pause(reading(COPY.drawsSignal) + 300);
+  await step('signal');
   growTheSignal();
 }
 
@@ -498,7 +538,7 @@ async function growTheSignal() {                            // the little signal
   on(tuner, false);
   describe("Your note's signal, big now: a bumpy line drifting across.");
   say(COPY.see.question);
-  await ask(COPY.see.choices);
+  await ask(COPY.see.choices, 'hidden');
   say(COPY.see.after);
   await pause(reading(COPY.see.after) + 200);
   theSplit();
@@ -506,7 +546,7 @@ async function growTheSignal() {                            // the little signal
 
 async function theSplit() {                                 // taking it apart: four notes, four bars
   phase = 'split';
-  await press(COPY.apart);
+  await press(COPY.apart, 'apart');
   await clear();
   still(A_NOTE);
   on(glyph);
@@ -530,6 +570,7 @@ async function theSplit() {                                 // taking it apart: 
   describe('Under the signal, four glowing bars, labelled A, high A, E and higher A, tallest first.');
   say(COPY.split, 'lead');
   await pause(reading(COPY.split) + 300);
+  await step('bars');
   tuningFork();
 }
 
@@ -558,23 +599,32 @@ async function tuningFork() {                               // one bar, then all
   describe('Drag the bars up and down. The signal above changes with them.');
   const hint = setTimeout(() => { if (phase === 'pure') say(COPY.pureHint, 'hint'); }, 9000);
   await new Promise((resolve) => {
-    const stop = dragBars(async () => {
+    const changed = async () => {
       if (phase === 'pure' && pureTone(mine)) {
         clearTimeout(hint);
         phase = 'back';
         await clear();
         say(COPY.pureDone, 'lead');
-        setTimeout(() => say(COPY.back), REDUCED ? 0 : 1600);
+        if (FAST) say(COPY.back);
+        else setTimeout(() => say(COPY.back), REDUCED ? 0 : 1600);
       } else if (phase === 'back' && allBack(mine)) {
         stop();
         resolve();
       }
-    });
+    };
+    const stop = dragBars(changed);
+    if (FAST) (async () => {                                 // fast-forward: a tuning fork, then the others back
+      const set = async (v) => { mine = v; drawBars(); still(mine); await changed(); };
+      await set([3, 0, 0, 0]);
+      await step('fork');
+      if (FAST) await set([3, 1, 1, 1]);
+    })();
   });
   await clear();
   say(COPY.backDone, 'lead');
   await play(mine, 1.4);
   await pause(reading(COPY.backDone));
+  await step('back');
   theRadiologist();
 }
 
@@ -595,10 +645,12 @@ async function theRadiologist() {                           // at the break: the
   await wait(60);
   radiologistFigure.style.transform = 'none';
   await pause(Math.max(1600, reading(COPY.arrives)));
+  await step('break');
   speak(COPY.you.tookApart, 'you');
   await pause(reading(COPY.you.tookApart));
   speak(COPY.radiologist.same);
   await pause(reading(COPY.radiologist.same) + 600);
+  await step('talk');
   theBrain();
 }
 
@@ -612,32 +664,35 @@ async function theBrain() {                                 // the people step a
   describe('Your head, big, as its body parts in different colours, each labelled: skin, skull, fluid, outer brain, inner brain. To the right, an empty data box.');
   await wait(700);
   const hint = (ks) => partGroups.forEach((g, i) => { g.classList.toggle('hint', ks.includes(i)); labelTexts[i].classList.toggle('hint', ks.includes(i)); });
-  let want = BRAIN;
-  let wanted = null;
   const seen = new Set();
-  const stop = tapParts((k) => {
+  let wanted = null;
+  const waitFor = (ks) => new Promise((r) => { if (ks.some((k) => seen.has(k))) r(); else wanted = { ks, r }; });
+  const onTap = (k) => {
     pickPart(k);
     seen.add(k);
     tapped = seen.size;
     describe(`Your ${COPY.bodyParts[k]} is lit. Its own signal shows in the data box.`);
-    if (want.includes(k) && wanted) wanted();
-  });
+    if (wanted && wanted.ks.includes(k)) { const r = wanted.r; wanted = null; r(); }
+  };
+  const stop = tapParts(onTap);
   say(COPY.tapBrain);                                       // the brain first …
   hint(BRAIN);
-  await new Promise((r) => { wanted = r; });
+  await step('brain');
+  if (FAST) onTap(BRAIN[1]);
+  await waitFor(BRAIN);
   await pause(900);
-  want = [SKULL];                                           // … then the skull
-  say(COPY.tapSkull);
+  say(COPY.tapSkull);                                       // … then the skull
   hint([SKULL]);
-  await new Promise((r) => { wanted = r; });
-  wanted = null;
+  await step('skull');
+  if (FAST) onTap(SKULL);
+  await waitFor([SKULL]);
   hint([]);
   await pause(1100);
   await clear();
   const show = sentence();                                   // Nadia's description, one part at a time
   show(0);
   await pause(reading(COPY.mri[0].text));
-  await press(COPY.collect);
+  await press(COPY.collect, 'behaves');
   stop();
   phase = 'collect';                                         // collecting that data: the head moves aside, the picture's place appears
   map.classList.remove('choosing');
@@ -656,7 +711,7 @@ async function theBrain() {                                 // the people step a
   partWaves.replaceChildren();
   partWaves.classList.remove('gone');
   phase = 'convert';
-  await press(COPY.convert);                                 // converting it into pixel data, with the Fourier transform
+  await press(COPY.convert, 'collect');                      // converting it into pixel data, with the Fourier transform
   show(2);
   on(mGlyph);
   mArrows[1].classList.add('lit');
@@ -677,46 +732,73 @@ async function theBrain() {                                 // the people step a
   show(3);
   describe('Row by row, the pixels have made an MRI picture of your head.');
   await pause(reading(COPY.mri[3].text) + 1200);
+  await step('picture');
   thePattern();
 }
 
-async function thePattern() {                               // do you notice a pattern?
+async function thePattern() {                               // do you notice a pattern? one slide at a time
   phase = 'pattern';
   await clear();
   speak(COPY.radiologist.pattern.question);
-  await ask(COPY.radiologist.pattern.choices);
+  await ask(COPY.radiologist.pattern.choices, 'pattern');
   speak(COPY.radiologist.pattern.after);
-  strip.style.transform = css(stripToPattern());             // the MRI signal and the image move down into the third row
-  image.style.transform = css(picToPattern());
   scan.classList.add('to-pattern');                          // the head and the arrows give way
+  strip.classList.add('hidden');
+  image.classList.add('hidden');
+  await wait(700);
+  pattern.classList.add('sliding');
   on(pattern);
-  await wait(1200);
-  describe('Three rows. A violin note’s wave, then its four bars. A white beam into a prism, then a fan of colours. The scanner’s signal, then the picture of your head.');
+  const SLIDES = ['slide1', 'slide2', 'slide3'];              // named steps, one per slide
+  const shown = ['A violin note’s wave, then its four bars of pure tones.', 'A white beam into a prism, then a fan of colours.', 'The scanner’s signal, then the picture of your head.'];
   for (let i = 0; i < 3; i++) {
-    patternRows[i].classList.add('on');
-    say(COPY.pattern[i], 'pattern-line');
-    await wait(1400);
+    phase = SLIDES[i];
+    if (i) { patternRows[i - 1].classList.remove('on'); await wait(500); }   // the last slide fades out before the next comes in
+    jump(patternRows[i], `translateY(${slideShift(i)}px)`);
+    if (i === 2) {                                           // the scanner's own signal and picture, as the third slide
+      jump(strip, css(stripToPattern(slideShift(2))));
+      jump(image, css(picToPattern(slideShift(2))));
+      strip.classList.remove('hidden');
+      image.classList.remove('hidden');
+    }
+    patternRows.forEach((r, n) => r.classList.toggle('on', n === i));
+    describe(`${shown[i]} Under them: ${COPY.pattern[i]}.`);
+    await wait(700);
+    await press(COPY.next, SLIDES[i]);
   }
-  await pause(800);
-  naming();
+  phase = 'together';                                        // all three, each caption under its own pictures
+  pattern.classList.remove('sliding');
+  patternRows.forEach((r) => { r.classList.add('on'); r.style.transform = 'none'; });
+  strip.style.transform = css(stripToPattern());
+  image.style.transform = css(picToPattern());
+  describe(`Three rows, each with its caption: ${COPY.pattern.join('; ')}.`);
+  await wait(1200);
+  await step('together');
+  await pause(3600);
+  theReveal();
 }
 
-async function naming() {                                   // only now: its name
-  phase = 'name';
+async function theReveal() {                                // the grand reveal: the tool, by name
+  phase = 'reveal';
   await clear();
-  say(COPY.name[0], 'lead');
+  [pattern, strip, image].forEach((n) => n.classList.add('dim'));
+  on(revealTitle);
+  say(COPY.reveal, 'final');
+  describe('The three rows dim. In the middle, glowing: the Fourier transform.');
+  await pause(reading(COPY.reveal) + 800);
+  await step('reveal');
+  say(COPY.name[0]);
   await pause(reading(COPY.name[0]));
   say(COPY.name[1]);
-  await pause(reading(COPY.name[1]) + 900);
+  await pause(reading(COPY.name[1]) + 600);
   phase = 'final';
-  await clear();
   say(COPY.final, 'final');
   root.dispatchEvent(new CustomEvent('level-finished', { bubbles: true }));
+  await step('end');
 }
 
 // read-only view for automated checks (no learner-facing effect)
 window.__prism = {
-  get phase() { return phase; }, get mine() { return [...mine]; }, get hit() { return hitNow; }, get tapped() { return tapped; },
+  get phase() { return phase; }, get mine() { return [...mine]; }, get hit() { return hitNow; }, get tapped() { return tapped; }, get reached() { return [...reached]; },
   partPoint: (k) => { const j = ROWS_OF_YOU.findIndex((r) => r.some((v) => partOf(v) === k)); const i = ROWS_OF_YOU[j].findIndex((v) => partOf(v) === k); const f = exploreHead(); return { x: f.tx + f.sx * (H.x + (i + 0.5) * cellSize), y: f.ty + f.sy * (H.y + (j + 0.5) * cellSize) }; }, get painted() { return painted; },
   point: (x, y) => { const m = board.getScreenCTM(); return { x: m.a * x + m.c * y + m.e, y: m.b * x + m.d * y + m.f }; },
 };

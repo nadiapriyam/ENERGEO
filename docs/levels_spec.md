@@ -772,7 +772,7 @@ Revision 5 and keep its notes. New:
 - **Line 34, "Proton frequencies → image"** is still Nadia's own pattern line, from Revision 4. "Frequency" is no
   longer introduced before it, since the scanner part now uses Nadia's newer wording.
 
-### Revision 7 (2026-11-20), which governs Level 3. Nadia, verbatim:
+### Revision 7 (2026-11-20), superseded by Revision 8 below. Nadia, verbatim:
 
 > make that last part more user friendly, body parts is vague the user doesn:t know to point at the brain part specifically, also at break make sure to paint that scene before putting the brain back up. also put the technician as radiologist. and put him at the start of the scene when you say the radiologist comes over during the break. also for the each tuny magnet behaves paragraph should be more user friendly, right now they bold each sentence but maybe introduce one sentnece at a time and then the preceding sentence becomes gray and make sure to take the people and their textboxes away when going over that paragraph
 
@@ -846,7 +846,7 @@ Revision 5 and keep its notes. New:
 40. Joseph Fourier came up with it about 200 years ago.
 41. Here it is: the mathematical tool that lets us start seeing what hides inside.
 
-Nothing comes after line 41.
+Nothing came after line 41.
 
 #### What the new lines claim
 
@@ -865,3 +865,117 @@ Revision 6's, and the rest is as in Revision 5. New:
   - Each label points at a pixel of its own part. The illustration is not a real scan.
 - **Why the brain, then the skull.** They make the difference easy to see. On the board, the skull's signal is less than
   a third of the brain's, as in a real MRI, where bone gives very little signal.
+
+### Revision 8 (2026-11-20), which governs Level 3. Nadia, verbatim:
+
+> 1. Violin note → pure tones
+> 2. Stage light → its full color spectrum
+> 3. Proton frequencies → image needs to be on the screen for longer. and needs to be attached to each of its pictures slide by slide. and say the applications are endless! from a simple tuner to looking inside your brain. here it is isn:t nessecasary. the grand reveal before line 39. the mathematical tool needs to be specified. 21. every bump in the bar doesn:t make sense, every bump in the signal comes from a different pure tone. also introduce a skip feature for all of this so i can go back and forth without playing the interactive. also make it so i can go back and forth seeing everything on one scroll left to right
+
+#### What changes
+
+- **The pattern, slide by slide.**
+  - Each of the three lines is now a caption on the board, under its own pictures. Each is a slide of its own that
+    stays until [Next]:
+    1. the A note's wave → its four bars;
+    2. a white beam into a prism → a fan of colours;
+    3. the scanner's signal → the picture of your head.
+  - Then all three stand together, each caption under its pictures.
+- **The grand reveal, before line 39's "All three come down to the same geometric math".**
+  - The rows dim, and "the Fourier transform" appears big and glowing in the middle of the board.
+  - The line that names it: "The mathematical tool that lets us start seeing what hides inside: the Fourier
+    transform." "Here it is" is gone, and the tool is named.
+  - "All three come down to the same geometric math." follows, without repeating the name.
+- **A new last line:** "The applications are endless! From a simple tuner to looking inside your brain."
+- **Line 21** is now "Every bump in the signal comes from a different pure tone."
+- **Skipping, and everything on one scroll.**
+  - `try/?steps` shows every step of Level 3 left to right: 26 frames, one scroll. The ← → buttons and the arrow
+    keys move one step at a time.
+  - Each frame is the level itself, fast-forwarded and stopped at that step, so nothing has to be played.
+  - "Play from here" under each frame fast-forwards the level to that step, then lets you play on.
+  - An "All steps" link on the Level 3 tag opens the strip.
+  - The steps are listed in `src/levels/stepsPrism.js`.
+
+#### Level 3 learner copy (Revision 8), in order (drafted by Claude at Nadia's request, for her review)
+
+1. After your scan, you head back to the concert hall.
+2. The lights dim. You notice a stage light shining.
+3. Drag to aim it at the chandelier.
+4. Drag across the picture to swing the light. (only after 8 seconds)
+5. Where did the colors come from? [The glass] [The white light]
+6. From the white light. The glass on the chandelier is a prism: it takes light apart into its colors.
+7. You (thinking): If a prism is a tool that can take apart light, is there a tool that can take apart a sound?
+8. Surprise: it's your tuner.
+9. [Play your A note]
+10. A (the letter on the tuner)
+11. The tuner draws your note's signal, its shape over time, and names it: A.
+12. Four notes hide in this signal. Can you see them? [Yes] [Not really]
+13. Neither can anyone, just by looking.
+14. [Take it apart]
+15. Your A note, taken apart into four pure tones.
+16. A, high A, E, higher A (the labels under the bars)
+17. Drag the bars. Can you make a single pure tone, like a tuning fork?
+18. Drag all the bars but one down to 0. (only after 9 seconds)
+19. One bar, one smooth wave: a tuning fork.
+20. Now bring the others back.
+21. Every bump in the signal comes from a different pure tone.
+22. At the break, the radiologist who read your scan comes over. (the radiologist walks over to you on the board as this appears)
+23. You: My tuner just took my A note apart!
+24. Radiologist: The MRI scanner works the same way.
+25. Tap the brain.
+26. skin, skull, fluid, outer brain, inner brain (the labels beside the head)
+27. Now tap the skull.
+28. Each tiny magnet behaves differently depending on which body part it's in.
+29. [Collect the data]
+30. Collecting that data
+31. [Convert it to pixels]
+32. and converting it into pixel data
+33. helps us see an MRI picture, with the Fourier transform. (lines 28, 30, 32 and 33 are one paragraph, shown one part at a time, the earlier parts turning grey; the people and their bubbles are gone while it is shown)
+34. Radiologist: Do you notice a pattern? [Yes] [Not yet]
+35. Radiologist: Let me help you out.
+36. Violin note → pure tones (the caption under its pictures, the A note's wave → its four bars, on a slide of its own)
+37. [Next]
+38. Stage light → its full color spectrum (on a slide of its own: a white beam into a prism → a fan of colours)
+39. [Next]
+40. Proton frequencies → image (on a slide of its own: the scanner's signal → the picture of your head)
+41. [Next] (then all three together, each caption under its pictures)
+42. the Fourier transform (the grand reveal: big and glowing in the middle of the board)
+43. The mathematical tool that lets us start seeing what hides inside: the Fourier transform.
+44. All three come down to the same geometric math.
+45. Joseph Fourier came up with it about 200 years ago.
+46. The applications are endless! From a simple tuner to looking inside your brain.
+
+Nothing comes after line 46.
+
+#### The review strip's labels (for review, not learner copy)
+
+- All steps (the link on the Level 3 tag)
+- Level 3, step by step (the strip's title)
+- Scroll left and right, or use the arrows. Each frame is the level itself, stopped at that step.
+- Play from here
+- Back to the levels
+
+The 26 step titles are in `src/levels/stepsPrism.js`.
+
+#### What the new lines claim
+
+The numbers are computed in `src/math/prism.js` and checked by `test/prism.test.js`. Lines 1–20 and 22–35 are as in
+Revision 7 and keep its notes. New:
+
+- **Line 21.** Each bump in the signal is one of the pure tones added in. The signal is exactly the sum of its four
+  pure tones (Revision 1's notes).
+- **Lines 36–41.** The captions are Nadia's pattern from Revision 4, unchanged. Only where they appear has changed:
+  under their own pictures, one slide at a time.
+- **Line 43** is Nadia's goal sentence ("Here is the mathematical tool that lets us start seeing it"), with the tool
+  named.
+- **Line 46.** "Endless" is a figure of speech. The two ends it names are both real: tuning apps, and MRI scanners.
+  The Fourier transform is used across science and engineering, for example in sound and image compression, phones
+  and Wi-Fi, and astronomy.
+- **The review strip.** Each frame runs the real level with no waiting, and each interaction is done for it:
+  - the light is aimed at the chandelier;
+  - the first choice is picked;
+  - a tuning fork is made, then the bars are brought back;
+  - the brain and then the skull are tapped;
+  - each button is pressed.
+
+  It stops at the frame's step. Nothing in a frame is drawn separately from the level.

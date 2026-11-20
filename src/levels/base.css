@@ -82,3 +82,8 @@ body {
   .line, .action, .choices, .figure, .next-level { transition: none; }
   .line { transform: none; }
 }
+
+/* the link to the review strip, on the Level 3 tag */
+.level-steps { display: inline-block; margin-top: 4px; text-transform: none; letter-spacing: 0; font-size: 0.95rem; color: var(--accent); }
+.framed .level { margin-top: 0; border-top: 0; min-height: 0; }
+.framed .lesson { padding-bottom: 2vh; }

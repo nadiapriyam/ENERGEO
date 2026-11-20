@@ -120,9 +120,13 @@ and one accent. `docs/levels_spec.md` governs. `try/level-2/` and `notebook/` fo
     showing its own signal. Nadia's paragraph comes in one part at a time, the earlier parts turning grey: each tiny
     magnet behaves differently depending on its body part; Collect the data (the head moves aside, one busy signal);
     Convert it to pixels (row after row, 48 × 48, exact); an MRI picture, with the Fourier transform.
-  - "Do you notice a pattern?" The data and the picture slide into a third row: violin note → pure tones;
-    stage light → its full color spectrum; proton frequencies → image.
-  - Only then is the tool named: "All three come down to the same geometric math: the Fourier transform."
+  - "Do you notice a pattern?" One slide at a time, each caption under its own pictures and staying until Next:
+    violin note → pure tones; stage light → its full color spectrum; proton frequencies → image. Then all three
+    together, and the grand reveal: "the Fourier transform", the mathematical tool that lets us start seeing what
+    hides inside. All three come down to the same geometric math; the applications are endless.
+  - Review: `try/?steps` shows every named step of Level 3 left to right, each frame the level itself stopped there
+    (`try/?step=<id>`), with "Play from here" (`try/?from=<id>`: fast-forward, then play on). The steps are listed
+    in `src/levels/stepsPrism.js`; the strip is `src/levels/storyboard.js`.
   - Files: `src/levels/prism.js` (with `copyPrism.js`) and `src/math/prism.js`. The app's own Fourier blocks
     stay in `src/math/fourier.js`.
 
