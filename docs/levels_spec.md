@@ -456,7 +456,7 @@ The numbers are computed in `src/math/prism.js` and checked by `test/prism.test.
 - **Left out on purpose.** As before: no equations, and no "frequency", "spectrum" or "coefficient". "Radio waves" is
   the only technical term added, and Level 2 already uses it. "Fourier transform" is still given once, at the end.
 
-### Revision 4 (2026-11-20), which governs Level 3. Nadia, verbatim:
+### Revision 4 (2026-11-20), superseded by Revision 5 below. Nadia, verbatim:
 
 > here are some suggestions for level 3: theres a lot of words so i am goin got try and cut down some, drag to aim at the chandilier instead of prisim. if there is a prisim is too abrupt assumption, if a prisim is a tool that can take a part light then is there a tool that can take apart a sound. I remember writing this exact sentence in a previous prompt can you look back at my promopt to help you out with the story. also make a player character for level 3 thats the user with a bucket hat same no smile person with different hair color. for the mri part, there is a lot of words -the most of you- doesn:t m,ake sense,  this - So I paint each spot as bright as its bar is tall. - is too confusing. you dont have to relate it back to music just say it works in the same way. basically mri takes frequnecy from your magnets flipping from the mri signal and translates that into a physical image. do you notice a pattern. let me help you out. in music its, violin note to pure tones, for stage lights its light to its full color spectrum, and in mri its proton frequency to image, all using a geometric math/formula to get there
 
@@ -540,7 +540,7 @@ sentence for the thought.
 42. Joseph Fourier came up with it about 200 years ago.
 43. Here it is: the mathematical tool that lets us start seeing what hides inside.
 
-Nothing comes after line 43.
+Nothing came after line 43.
 
 #### What the new lines claim
 
@@ -575,3 +575,95 @@ changed:
     project hypothesis.
 - **Left out on purpose.** Equations and "coefficient". The music is not brought back into the scanner part: its
   spots no longer play notes.
+
+### Revision 5 (2026-11-20), which governs Level 3. Nadia, verbatim:
+
+> swap the characters hair color and shirt color, and instead of the tiny magnets above your head part change the interactive whole by replacing it with basically mri takes frequnecy from your magnets flipping from the mri signal and translates that into a physical image. do you notice a pattern. the interactive has to show this sentence, and not be too long like the current magnet interactive
+
+#### What changes
+
+- **The characters swap hair and shirt colours.** You (the player) now have dark hair and a yellow shirt, with the
+  bucket hat, as in Nadia's picture. The technician now has copper hair and a blue shirt.
+- **The scanner part is one short interactive built around Nadia's sentence.** It is edited only to read as one
+  sentence: "MRI takes the frequencies of your flipping magnets from the MRI signal, and translates them into a
+  physical image." Her words were "mri takes frequnecy from your magnets flipping from the mri signal and translates
+  that into a physical image."
+  - The board shows four parts left to right: your head with its tiny magnets → the MRI signal (the violin's signal
+    box, moved), with its frequencies under it → the physical image.
+  - The sentence appears faded under the board. Three buttons, and each part of the sentence lights up as it happens:
+    1. [Flip the magnets]: the tiny magnets flip over and spin, faster towards the right ("of your flipping
+       magnets"). Their signal appears in the signal box ("from the MRI signal,").
+    2. [Take it apart]: the signal splits into thin bars, one per frequency, each coloured like the place it comes
+       from ("MRI takes the frequencies").
+    3. [Make the image]: row after row, each row's signal is taken apart and painted, and the image of your head
+       appears ("and translates them into a physical image.").
+  - Gone: the row lifted out of the picture, making the right side stronger as a step, Listen, Make the picture,
+    Next row, and the technician's six explaining lines.
+  - The image is now computed at 48 × 48 places, Level 2's own size, so the sharpening step is gone too.
+- **Then, as in Revision 4:** "Do you notice a pattern?" The signal box and the image slide into the third row.
+
+#### Level 3 learner copy (Revision 5), in order (drafted by Claude at Nadia's request, for her review)
+
+1. After your scan, you head back to the concert hall.
+2. The lights dim. You notice a stage light shining.
+3. Drag to aim it at the chandelier.
+4. Drag across the picture to swing the light. (only after 8 seconds)
+5. Where did the colors come from? [The glass] [The white light]
+6. From the white light. The glass on the chandelier is a prism: it takes light apart into its colors.
+7. You (thinking): If a prism is a tool that can take apart light, is there a tool that can take apart a sound?
+8. Surprise: it's your tuner.
+9. [Play your A note]
+10. A (the letter on the tuner)
+11. The tuner draws your note's signal, its shape over time, and names it: A.
+12. Four notes hide in this signal. Can you see them? [Yes] [Not really]
+13. Neither can anyone, just by looking.
+14. [Take it apart]
+15. Your A note, taken apart into four pure tones.
+16. A, high A, E, higher A (the labels under the bars)
+17. Drag the bars. Can you make a single pure tone, like a tuning fork?
+18. Drag all the bars but one down to 0. (only after 9 seconds)
+19. One bar, one smooth wave: a tuning fork.
+20. Now bring the others back.
+21. Every bump in the signal comes from a bar.
+22. At the break, the technician from your scan comes over.
+23. You: My tuner just took my A note apart!
+24. Technician: My scanner works the same way.
+25. MRI takes the frequencies of your flipping magnets from the MRI signal, and translates them into a physical image. (shown faded; each part lights up as it happens on the board: "of your flipping magnets" with [Flip the magnets], "from the MRI signal," when the signal appears, "MRI takes the frequencies" with [Take it apart], "and translates them into a physical image." with [Make the image])
+26. [Flip the magnets]
+27. [Take it apart]
+28. [Make the image]
+29. Technician: Do you notice a pattern? [Yes] [Not yet]
+30. Technician: Let me help you out.
+31. Violin note → pure tones
+32. Stage light → its full color spectrum
+33. Proton frequencies → image
+34. All three come down to the same geometric math: the Fourier transform.
+35. Joseph Fourier came up with it about 200 years ago.
+36. Here it is: the mathematical tool that lets us start seeing what hides inside.
+
+Nothing comes after line 36.
+
+#### What the new lines claim
+
+The numbers are computed in `src/math/prism.js` and checked by `test/prism.test.js`. Lines 1–21 and 29–36 are as in
+Revision 4 and keep its notes. New:
+
+- **Line 25, "your flipping magnets".** The scanner's radio pulse tips the tiny magnets over: Level 2's nudge, and
+  Nadia's "flipping". They then turn about the magnet's direction (they precess), and that turning sends the signal.
+  The board shows the flip as a quarter turn, then the spin.
+- **Line 25, "the frequencies".**
+  - A frequency is how many turns a second. The scanner makes its magnet a little stronger across the body, so the
+    spin, and the frequency each place sends, grows from left to right.
+  - The board shows this without words: the spin speed, and a colour that matches each place to its bar.
+  - On the board, a place at fraction x across turns at 0.25 × (1 + 4x) turns a second. Real rates are millions of
+    times faster.
+- **Line 25, "from the MRI signal".** The scanner's coil picks up every place's signal at once. The box shows one
+  row's signal, and the glowing band on the head shows which row.
+- **Line 25, "translates them into a physical image".**
+  - The amount at each frequency is how many tiny magnets are at that place, and it is painted as that place's
+    brightness.
+  - It is exact: a discrete Fourier transform gives back each of the 48 rows to within 10⁻¹³.
+  - One signal per row is the simplification noted in Revision 3, and relaxation is left out.
+  - The image is Level 2's head illustration, without its grain. It is not a real scan.
+- **The edits to Nadia's sentence** are for grammar only: "frequency" became "the frequencies", "your magnets
+  flipping" became "your flipping magnets", and "that" became "them".

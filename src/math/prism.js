@@ -1,4 +1,4 @@
-// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 3). Pure functions, no DOM, no audio. (The app's own
+// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 5). Pure functions, no DOM, no audio. (The app's own
 // Fourier blocks are in fourier.js; this file is only the level's.)
 //
 // Three scenes, one idea: something that looks like one thing hides many.
@@ -6,16 +6,17 @@
 //    light goes in and colours come out, red bent least and violet most, as in a real prism.
 //  • The tuner. Your A note's signal (its shape over time) and, through the prism for sound, its four notes as bars.
 //    The bars are exact: the signal is their sum (tones.js).
-//  • The scanner. One row of spots across your head. A magnet a little stronger to the right makes the tiny magnets in
-//    each spot spin at their own rate, so spot k sends its own note, tone k + 1. The scanner hears every spot at once,
-//    as one signal. The prism for sound, a discrete Fourier transform a_k = (2/N) Σ s_i sin(2π (k+1) i / N), gives back
-//    how many tiny magnets are in each spot, exactly: more magnets, brighter spot. One signal, one row.
+//  • The scanner. Your head's tiny magnets flip and spin, faster towards the right (the scanner's magnet is a little
+//    stronger there), so each place across a row has its own frequency, tone k + 1 for column k. The scanner picks up
+//    a row's places all at once, as one signal. Taking it apart, a discrete Fourier transform
+//    a_k = (2/N) Σ s_i sin(2π (k+1) i / N), gives back how many tiny magnets are at each place, exactly, and that is
+//    the row's brightness. Row after row, the image.
 //  • The pattern. Violin note → pure tones; stage light → its colours; proton frequencies → image.
 //
 // Scenes move into one another: each move is a fit of one box onto another.
 
 import { A_NOTE, STEPS, wave } from './tones.js';
-import { picture, scanPixel } from './scanner.js';
+import { scanPixel } from './scanner.js';
 
 export const BOARD = { w: 640, h: 420 };
 
@@ -172,69 +173,65 @@ export function neon(i, n) {
   return `hsl(${Math.round(h)}, 100%, 60%)`;
 }
 
-// ── the scanner: one row of spots, each with its own note ─────────────────────────────────────────────
-export const ROWS = 16;                                     // the learner's picture: 16 rows of 16 spots
-export const BASE_HZ = 110;                                 // spot k's note, slowed into sound: (k + 1) × 110 Hz
-export const spotHz = (k) => BASE_HZ * (k + 1);
-export const RATE = 0.22;                                   // turns per second of the slowest spin, as drawn
-/** How fast spot k's tiny magnets spin, as drawn: all alike in an even magnet; with the right side stronger, in step with its note. */
-export const spinRate = (k, stronger) => RATE * (stronger ? k + 1 : 1);
-/** The head slice from Level 2 (scanner.js), sampled at n × n spots: how many tiny magnets are in each (0…1). */
+// ── the scanner: magnets flipping → the MRI signal → its frequencies → a physical image ──────────────────────
+export const ROWS = 48;                                     // the image: 48 rows of 48 places, as in Level 2
+export const MRI = {
+  head: { x: 14, y: 120, size: 172 },                       // your head, with its tiny magnets
+  signal: { x: 226, y: 110, w: 188, h: 74 },                // the MRI signal (the violin's signal box moves here)
+  glyph: { cx: 320, cy: 199, size: 20 },                    // taking it apart
+  bars: { x: 226, y: 212, w: 188, h: 88 },                  // its frequencies
+  picture: { x: 454, y: 120, size: 172 },                   // the physical image
+  arrows: [{ x1: 192, x2: 220, y: 147 }, { x1: 420, x2: 448, y: 256 }],
+  magnets: 8,                                               // tiny magnets drawn per side of the head (a few of countless)
+};
+export const RATE = 0.25;                                   // turns per second of the slowest spin, as drawn
+/** How fast the tiny magnets at fraction xf (0 left … 1 right) across the head spin once flipped: faster to the right. */
+export const spinRate = (xf) => RATE * (1 + 4 * xf);
+/** The head slice from Level 2 (scanner.js), sampled at n × n places: how many tiny magnets are at each (0…1). */
 export function coarseRows(n = ROWS) {
   return Array.from({ length: n }, (_, j) => Array.from({ length: n }, (_, i) => scanPixel(((i + 0.5) / n) * 2 - 1, ((j + 0.5) / n) * 2 - 1)));
 }
-/** Level 2's own picture, 48 × 48, row by row: what a scanner with many more spots paints. */
-export function sharpRows() {
-  const cells = picture();
-  const n = Math.round(Math.sqrt(cells.length));
-  return Array.from({ length: n }, (_, j) => cells.slice(j * n, (j + 1) * n).map((c) => c.g));
+/** The tiny magnets drawn in your head: a grid, kept only where there is some of you; each knows how far across it is. */
+export function magnetSpots(n = MRI.magnets) {
+  const { x, y, size } = MRI.head;
+  const out = [];
+  for (let j = 0; j < n; j++) for (let i = 0; i < n; i++) {
+    const amount = scanPixel(((i + 0.5) / n) * 2 - 1, ((j + 0.5) / n) * 2 - 1);
+    if (amount > 0) out.push({ x: x + ((i + 0.5) * size) / n, y: y + ((j + 0.5) * size) / n, xf: (i + 0.5) / n, amount });
+  }
+  return out;
 }
-/** What the scanner picks up from one row: spot k sends tone k + 1, as strong as how many tiny magnets are there. Sampled N > 2n times over one period, so it can be split exactly. */
+/** The colour of the place at fraction xf across: the same colour as its frequency's bar. */
+export const colourAt = (xf) => neon(Math.min(ROWS - 1, Math.floor(xf * ROWS)), ROWS);
+/** What the scanner picks up from one row: place k sends tone k + 1, as strong as how many tiny magnets are there. Sampled N > 2n times over one period, so it can be taken apart exactly. */
 export const chordSamples = (amounts, N = 4 * amounts.length + 8) =>
   Array.from({ length: N }, (_, i) => amounts.reduce((s, a, k) => s + a * Math.sin((2 * Math.PI * (k + 1) * i) / N), 0));
-/** The prism for sound: how much of each tone is in a sampled signal (a discrete Fourier transform). */
+/** Taking a signal apart: how much of each tone is in it (a discrete Fourier transform). */
 export const unmix = (samples, n) =>
   Array.from({ length: n }, (_, k) => (2 / samples.length) * samples.reduce((s, v, i) => s + v * Math.sin((2 * Math.PI * (k + 1) * i) / samples.length), 0));
-/** The spots with the tallest bars (within `tol`). */
-export const tallest = (amounts, tol = 0.02) => { const m = Math.max(...amounts); return amounts.map((a, k) => (a >= m - tol ? k : -1)).filter((k) => k >= 0); };
-/** The order rows are painted in: from the middle outwards, so the first rows already cross the head. */
+/** Frequency k's bar in the bars box: as tall as its amount, in its place's colour. */
+export function mriBar(k, a) {
+  const { x, y, w, h } = MRI.bars;
+  const step = w / ROWS;
+  const height = Math.max(0, Math.min(1, a)) * (h - 8);
+  return { x: x + k * step + step * 0.15, w: step * 0.7, y: y + h - 4 - height, h: height };
+}
+/** The order rows are read in: from the middle outwards, so the first rows already cross the head. */
 export function rowOrder(n) {
   const mid = Math.floor(n / 2);
   const out = [mid];
   for (let d = 1; out.length < n; d++) { if (mid - d >= 0) out.push(mid - d); if (mid + d < n) out.push(mid + d); }
   return out;
 }
-export const HAND_ROW = rowOrder(ROWS)[0];
+export const FIRST_ROW = rowOrder(ROWS)[0];
+/** Row j's band across a square box (the head being read, or the image being made). */
+export const rowIn = (box, j) => ({ x: box.x, y: box.y + (j * box.size) / ROWS, w: box.size, h: box.size / ROWS });
+/** The outline of your head in a square box: where Level 2's head slice ends. */
+export const outlineIn = (box) => ({ cx: box.x + box.size / 2, cy: box.y + box.size / 2, rx: 0.8 * (box.size / 2), ry: 0.95 * (box.size / 2) });
+export const toSignal = () => fit(STRIP_BOX, MRI.signal);    // the violin's signal box becomes the MRI signal's
 
-// where everything stands in the scanner scene
-export const REPLY_BOX = { x: 40, y: 8, w: 560, h: 78 };    // the scanner's signal, at the top
-export const toReply = () => fit(STRIP_BOX, REPLY_BOX);       // the violin's signal box moves up to become it
-export const GLYPH2 = { cx: 320, cy: 108, size: 26 };          // the prism for sound, under the signal
-export const PIC = { x: 184, y: 100, size: 272 };              // your picture, 16 × 16
-export const cell = () => PIC.size / ROWS;
-/** The outline of your head on the picture: where Level 2's head slice ends. */
-export const headOutline = () => ({ cx: PIC.x + PIC.size / 2, cy: PIC.y + PIC.size / 2, rx: 0.8 * (PIC.size / 2), ry: 0.95 * (PIC.size / 2) });
-export const rowBand = (j) => ({ x: PIC.x, y: PIC.y + j * cell(), w: PIC.size, h: cell() });
-/** One row, lifted out of the picture and spread across the board. */
-export const BENCH = { x: 48, y: 150, step: 34, r: 13 };
-export const spotX = (k) => BENCH.x + (k + 0.5) * BENCH.step;
-export const ROW_BOX = { x: BENCH.x, y: BENCH.y - BENCH.step / 2, w: BENCH.step * ROWS, h: BENCH.step };
-export const benchToRow = (j) => fit(ROW_BOX, rowBand(j));
-export const spotAt = (x) => Math.max(0, Math.min(ROWS - 1, Math.floor((x - BENCH.x) / BENCH.step)));
-/** The magnet, a little stronger to the right: a wedge under the row, thin on the left, thick on the right. */
-export const WEDGE = { y: 184, thin: 2, thick: 18 };
-export function wedge() {
-  const x0 = ROW_BOX.x;
-  const x1 = ROW_BOX.x + ROW_BOX.w;
-  const { y, thin, thick } = WEDGE;
-  return [{ x: x0, y: y - thin / 2 }, { x: x1, y: y - thick / 2 }, { x: x1, y: y + thick / 2 }, { x: x0, y: y + thin / 2 }];
-}
-/** Each spot's bar stands right under the spot: as tall as how many tiny magnets are there. */
-export const SPOT_BARS = { base: 404, full: 180, w: 20 };
-export const spotBarHeight = (a) => Math.max(0, a) * SPOT_BARS.full;
-
-// ── the characters: the technician who scanned you (in the style Nadia shared: short dark hair, big round glasses, a
-//    yellow shirt), and you, the player (the same deadpan face, other hair, a bucket hat) ──
+// ── the characters: you, the player (the style Nadia shared: short dark hair, big round glasses, a yellow shirt, plus a
+//    bucket hat), and the technician who scanned you (the same deadpan face, copper hair, a blue shirt) ──
 export const FACE = {
   view: { w: 120, h: 132 },
   head: { cx: 60, cy: 58, rx: 34, ry: 40 },
@@ -246,9 +243,8 @@ export const FACE = {
   brows: [{ x1: 34, y1: 41, x2: 55, y2: 43 }, { x1: 65, y1: 43, x2: 86, y2: 41 }],
   mouth: { x1: 52, x2: 68, y: 84 },
   neck: { x: 51, y: 92, w: 18, h: 16 },
-  shirt: '#ffd21f',
 };
-/** His hair: a short dark cap over the top of the head. */
+/** The hair: a short cap over the top of the head. */
 export function hairPath() {
   const { cx, cy, rx, ry } = FACE.head;
   return `M ${cx - rx - 1} ${cy - 4} C ${cx - rx - 1} ${cy - ry - 20} ${cx + rx + 1} ${cy - ry - 20} ${cx + rx + 1} ${cy - 4} C ${cx + rx - 6} ${cy - ry + 2} ${cx - rx + 6} ${cy - ry + 2} ${cx - rx - 1} ${cy - 4} Z`;
@@ -267,8 +263,9 @@ export function lookAt(eye, target) {
   return { x: eye.cx + dx * k, y: eye.cy + dy * k };
 }
 
-/** You, the player: the same face, with copper hair, a blue shirt and a bucket hat. */
-export const PLAYER = { hair: '#b5602c', shirt: '#4f8fe8', hat: '#c4a46a', band: '#8a7140' };
+/** You, the player: dark hair, a yellow shirt and a bucket hat. The technician: the same face, copper hair, a blue shirt. */
+export const PLAYER = { hair: '#2a2a2a', shirt: '#ffd21f', hat: '#c4a46a', band: '#8a7140' };
+export const TECH = { hair: '#b5602c', shirt: '#4f8fe8' };
 /** The bucket hat: a crown over the top of the head (covering the hair), a band, and a brim that slopes down and out all round. */
 export function bucketHat() {
   const { cx, cy, rx, ry } = FACE.head;
@@ -293,7 +290,7 @@ export function patternBox(i, side) {
   return { x: b.x, y: y[i], w: b.w, h };
 }
 /** The scanner's signal box and your picture move into the third row. */
-export const PIC_FRAME = { x: PIC.x - 4, y: PIC.y - 4, w: PIC.size + 8, h: PIC.size + 8 };
+export const PIC_FRAME = { x: MRI.picture.x - 4, y: MRI.picture.y - 4, w: MRI.picture.size + 8, h: MRI.picture.size + 8 };
 export const stripToPattern = () => fit(STRIP_BOX, patternBox(2, 'left'));
 export const picToPattern = () => fit(PIC_FRAME, patternBox(2, 'right'));
 /** Row 1, right: the A note's four bars, as tall as their amounts. */

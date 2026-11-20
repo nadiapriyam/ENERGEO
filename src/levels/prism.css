@@ -80,40 +80,31 @@
 .four-bars { opacity: 0; transition: opacity 400ms ease-out; }
 .four-bars.on { opacity: 1; }
 
-/* the scanner: your picture, one row of it close up, the spots' bars */
+/* the scanner: your head and its tiny magnets → the MRI signal → its frequencies → a physical image */
 .pic-bg { fill: #05070f; stroke: var(--night-edge); stroke-width: 2; }
 .cell { opacity: 0; transition: opacity 320ms ease-out; }
 .cell.lit { opacity: 1; }
-.sharp-pic { opacity: 0; transition: opacity 1400ms ease-in-out; }
-.sharp-pic.on { opacity: 1; }
-.head-outline { fill: none; stroke: #5566b0; stroke-width: 1.6; stroke-dasharray: 5 5; transition: opacity 900ms; }
-.head-view { transition: opacity 700ms ease-out; }
-.head-view.dim { opacity: 0.1; }
-.head-view.sharp .head-outline, .head-view.sharp .cell { opacity: 0; transition: opacity 1400ms ease-in-out; }
-.scene.band { fill: none; stroke: url(#p3-led); stroke-width: 2.5; filter: url(#p3-glow); transform-box: view-box;
+.head-outline { fill: none; stroke: #5566b0; stroke-width: 1.6; stroke-dasharray: 5 5; }
+.magnet line { stroke-width: 2.6; stroke-linecap: round; }
+.magnet { filter: url(#p3-glow); }
+.scene.band { fill: none; stroke: url(#p3-led); stroke-width: 2; filter: url(#p3-glow); transform-box: view-box;
   transition: transform 500ms ease-in-out, opacity 400ms ease-out, visibility 0s linear 400ms; }
 .scene.band.on { transition: transform 500ms ease-in-out, opacity 400ms ease-out, visibility 0s; }
-.scene.scan { transform-box: view-box; transform-origin: 0 0;
-  transition: transform 1100ms cubic-bezier(0.45, 0, 0.2, 1), opacity 600ms ease-out, visibility 0s linear 600ms; }
-.scene.scan.on { transition: transform 1100ms cubic-bezier(0.45, 0, 0.2, 1), opacity 600ms ease-out, visibility 0s; }
-.scene.bench { transform-box: view-box; transform-origin: 0 0;
-  transition: transform 1000ms cubic-bezier(0.45, 0, 0.2, 1), opacity 500ms ease-out, visibility 0s linear 500ms; }
-.scene.bench.on { transition: transform 1000ms cubic-bezier(0.45, 0, 0.2, 1), opacity 500ms ease-out, visibility 0s; }
-.spot-disc { fill: var(--night-2); stroke: #3d4f96; stroke-width: 1.6; transition: opacity 500ms ease-out; }
-.spot-disc.empty { fill: none; stroke-dasharray: 3 4; }
-.spin line { stroke: #8fb4ff; stroke-width: 2.6; stroke-linecap: round; }
-.spin polygon { fill: #8fb4ff; }
-.spin { filter: url(#p3-glow); transition: opacity 500ms ease-out; }
-.bench.painted .spin, .bench.painted .spot-disc { opacity: 0; }
-.dot { opacity: 0; transition: opacity 700ms ease-out; }
-.bench.painted .dot { opacity: 1; }
-.wedge { fill: url(#p3-ramp); filter: url(#p3-glow); }
-.spot-bar { transform-box: fill-box; transform-origin: bottom; transition: transform 500ms cubic-bezier(0.3, 0.7, 0.3, 1), opacity 200ms ease-out; filter: url(#p3-glow); }
-.spot-bar.growing { transform: scaleY(0); opacity: 0; }
-.spot-bar.tallest { stroke: #ffffff; stroke-width: 2.5; }
-.spot-bar.picked { stroke: #ffffff; stroke-width: 2.5; stroke-dasharray: 4 3; }
-.bar-ray { stroke-width: 2; stroke-linecap: round; opacity: 0; transition: opacity 300ms ease-out; filter: url(#p3-glow); }
-.bar-rays.on .bar-ray { opacity: 0.9; }
+.scene.scan { transition: opacity 600ms ease-out, visibility 0s linear 600ms; }
+.scene.scan.on { transition: opacity 600ms ease-out, visibility 0s; }
+.mri-part { transition: opacity 600ms ease-out; }
+.m-bars { opacity: 0; }
+.m-bars.on { opacity: 1; }
+.m-bar { filter: url(#p3-glow); }
+.m-arrow line, .m-arrow polygon { transition: stroke 300ms, fill 300ms; }
+.m-arrow.lit line { stroke: #ffffff; }
+.m-arrow.lit polygon { fill: #ffffff; }
+.m-arrow.lit { filter: url(#p3-glow); }
+.scan.to-pattern .mri-part, .scan.to-pattern .glyph { opacity: 0; }
+.mri-image { transform-box: view-box; transform-origin: 0 0; transition: transform 1100ms cubic-bezier(0.45, 0, 0.2, 1); }
+.mri-sentence { font-size: 1.35rem; line-height: 1.45; }
+.mri-sentence .frag { color: var(--ink-3); transition: color 500ms ease-out; }
+.mri-sentence .frag.lit { color: var(--ink); font-weight: 600; background: linear-gradient(transparent 64%, #e2dbff 64%); }
 /* the pattern: three rows */
 .p-row { opacity: 0; transition: opacity 700ms ease-out; }
 .p-row.on { opacity: 1; }
@@ -125,10 +116,8 @@
 .p-arrow line { stroke: #8b93b8; stroke-width: 3; stroke-linecap: round; }
 .p-arrow polygon { fill: #8b93b8; }
 .line.pattern-line { font-weight: 600; }
-.riser { fill: none; stroke-width: 2.4; stroke-linecap: round; filter: url(#p3-glow); animation: rise 1000ms ease-in forwards; }
-@keyframes rise { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(var(--rise)); } }
 
-/* the technician: his face beside his bubbles */
+/* the characters: a face beside the bubbles */
 .speaker { display: flex; gap: 12px; align-items: flex-start; margin: 0 0 0.7em; opacity: 0; transition: opacity 320ms ease-out; }
 .speaker.in { opacity: 1; }
 .who { flex: 0 0 76px; }
@@ -165,9 +154,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .scene, .scene.on, .bg, .hall, .arrive, .tuner, .tuner-letter, .tuner-light, .strip, .strip-box, .signal, .signal-inner, .part,
-  .beam, .ray, .wall-glow, .glass, .bulb, .floor, .spectrum, .bar, .four-bars, .cell, .sharp-pic, .head-outline, .head-view,
-  .scene.band, .scene.band.on, .scene.bench, .scene.bench.on, .scene.scan, .scene.scan.on, .p-row, .spot-disc, .spin, .dot, .spot-bar, .bar-ray, .speaker, .bubble,
+  .beam, .ray, .wall-glow, .glass, .bulb, .floor, .spectrum, .bar, .four-bars, .cell, .mri-part, .mri-image, .mri-sentence .frag,
+  .scene.band, .scene.band.on, .scene.scan, .scene.scan.on, .p-row, .speaker, .bubble,
   #prism-lesson .line.leaving, #prism-lesson .speaker.leaving { transition: none; }
-  .riser, .face .eyes, .face.talking .mouth { animation: none; }
-  .riser { opacity: 0; }
+  .face .eyes, .face.talking .mouth { animation: none; }
 }
