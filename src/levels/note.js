@@ -7,6 +7,7 @@
 import './note.css';
 
 import { COPY } from './copyNote.js';
+import { speaker } from './characters.js';
 import {
   VIEW, HOME, transform, toView, lensCamera, lerpCamera, coverRadius, LENS, VIOLIN, STRINGS, A_STRING, BOW, musicians, ZOOMS, closeUp, stringPath,
 } from '../math/violin.js';
@@ -128,6 +129,7 @@ const notesRow = el('div', { class: 'notes', role: 'group', 'aria-label': 'Hidde
 const transport = el('div', { class: 'transport' });
 const prompt = el('div', { class: 'prompt', 'aria-live': 'polite' });
 root.append(figure, notesRow, transport, prompt);
+const speak = speaker(prompt);                               // you, the player, beside your own lines (characters.js)
 
 const board = svg('svg', { viewBox: `0 0 ${VIEW.w} ${VIEW.h}`, class: 'scene-board', role: 'img' });
 const describe = (text) => board.setAttribute('aria-label', text);
@@ -298,6 +300,8 @@ async function opening() {                                  // you are the first
   await pause(reading(COPY.opening[1]));
   say(COPY.opening[2]);
   await pause(reading(COPY.opening[2]));
+  speak(COPY.you, 'you');                                    // meet the player: that's you, in the bucket hat
+  await pause(reading(COPY.you) + 300);
   say(COPY.bow, 'hint');
   await bowTheA();
   phase = 'tuned';

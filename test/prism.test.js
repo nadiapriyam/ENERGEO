@@ -245,7 +245,8 @@ test("6. the break and the faces: you and the radiologist stand apart on the flo
   assert.ok(hat.wide > H.rx, 'the brim reaches past the head');
   assert.ok(hat.base + 10 <= Math.min(...F.brows.map((b) => Math.min(b.y1, b.y2))), 'the brim stays above the brows');
   assert.ok(PLAYER.hair !== RADIOLOGIST.hair && PLAYER.shirt !== RADIOLOGIST.shirt, 'two people, told apart');
-  assert.match(main, /faceParts\(who, look\)/, 'one face for both');
+  assert.match(read('src/levels/characters.js'), /\.\.\.faceParts\(who, look\)\);/, 'one face for both, shared by every level');
+  assert.match(main, /from '\.\/characters\.js'/);
   for (const d of coatLapels()) assert.match(d, /^M [\d.]+ [\d.]+ C .* Z$/, 'the radiologist\'s coat lapels');
   const you = figureBox(BREAK.you);
   const rad = figureBox(BREAK.radiologist);

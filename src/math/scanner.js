@@ -36,6 +36,8 @@ export const PATIENT = {
   body: { x: 378, y: 222, w: 200, h: 26, r: 13 },
 };
 export const SLIDE = -200;                                   // the table slides this far into the bore
+/** You, taking the scan: standing on the floor beside the scanner, looking at your patient. */
+export const OPERATOR = { cx: 56, height: 200, look: { x: 600, y: 120 } };
 export const ZOOM = { x: 232, y: 235, scale: 4 };            // the chest, once inside
 
 // ── scene 2: three water molecules, then their six hydrogen atoms, each with a proton at its heart ──

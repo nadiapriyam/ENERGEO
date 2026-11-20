@@ -1,6 +1,7 @@
 // Every learner-facing line of Level 1, "Inside a note", verbatim from docs/levels_spec.md (checked by
-// test/note.test.js). Drafted at Nadia's request for her review. Nothing else on the page is learner-facing text,
-// apart from accessibility labels.
+// test/note.test.js). Drafted at Nadia's request for her review. `you` is the player's own line, beside their face (the
+// character the levels share: characters.js). Nothing else on the page is learner-facing text, apart from
+// accessibility labels.
 
 export const COPY = {
   opening: [
@@ -8,6 +9,7 @@ export const COPY = {
     'Before a concert, every player tunes to the same note, so the whole orchestra plays in tune.',
     'Tonight, that note is yours: an A note. The whole orchestra trusts you to get it right.',
   ],
+  you: "That's me! No pressure.",
   bow: 'Drag the bow to play your A note.',
   tuned: "Everyone's in tune with your A note.",
   lens1: 'Drag the magnifying glass onto your violin.',

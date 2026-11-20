@@ -91,20 +91,25 @@ Two short Mathigon-style stories on one page, in one plain style: a white page, 
 and one accent. `docs/levels_spec.md` governs. `try/level-2/` and `notebook/` forward here.
 
 - **Level 1, "Inside a note"** (the violin):
-  - You are the first violin; before a concert every player tunes to one note, and tonight it is your A note. You bow
-    it and the orchestra tunes.
+  - You are the first violin; before a concert every player tunes to one note, and tonight it is your A note. Here the
+    player is introduced: your face (bucket hat, round glasses, yellow shirt) beside "That's me! No pressure." You bow
+    the A and the orchestra tunes.
   - A magnifying glass zooms into the violin, then into its A string.
   - Inside the sound, the glass X-rays the A note into four hidden notes, which you tap to hear.
   - Together they flow into an ear, and you hear one A note.
   - Files: `src/levels/note.js` (with `copyNote.js`), `src/math/violin.js` and `src/math/tones.js`.
 - **Level 2, "Inside the scanner"** (the MRI), which opens underneath when Level 1 ends:
-  - Protons become ↑ and ↓ magnets, and pairing them drives the TOTAL SIGNAL to an exact 0 signal.
+  - You take an MRI scan of a patient: you stand beside the scanner; let's see if you can do it correctly.
+  - Protons become ↑ and ↓ magnets, and pairing them drives the TOTAL SIGNAL to an exact 0 signal: "Oh no! I got 0
+    signal for my MRI!"
   - Covered drops whose signal is 0 turn out to be full.
   - The magnet turns the 0 into a small signal it can read (though the 0 held far more), and the scanner paints a
-    picture.
+    picture: "I did it! My first MRI scan!"
   - An eye sees one picture.
   - "Do you see a similarity to the violin level?" Side by side: one A note = four notes; 0 signal = ↑ + ↓ + ↑ + ↓.
   - Files: `src/levels/mri.js` (with `copyMri.js`), `src/math/pieces.js` and `src/math/scanner.js`.
+- **The characters** (you, and in Level 3 the radiologist) are drawn the same in every level: `src/levels/characters.js`
+  draws them from `src/math/characters.js`.
 
 - **Level 3, "A prism for sound"**, which opens underneath when Level 2 ends:
   - The story picks up after the scan. In the dimmed concert hall the learner aims a stage light at the chandelier,

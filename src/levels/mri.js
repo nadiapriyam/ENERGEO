@@ -1,5 +1,7 @@
 // Level 2, "Inside the scanner" (docs/levels_spec.md; history in docs/prototype_try_spec.md). A short story inside an
-// MRI scanner: slide in, zoom down to the water in the body and its hydrogen atoms, whose protons are tiny magnets (N and
+// MRI scanner, where you (the player, in the bucket hat: characters.js) take a patient's scan. Your first patient is
+// here: let's see if you can do it correctly. Slide your patient in, zoom down to the water in their body and its
+// hydrogen atoms, whose protons are tiny magnets (N and
 // S), picture each as an arrow, and add the arrows up in the TOTAL SIGNAL, all a scanner can pick up. Pair opposite
 // arrows until the signal is an exact 0; look behind more 0s and find them full. Then the scanner's magnet tips the
 // balance, turning the 0 into a small signal it can read, though the 0 held far more. It paints a picture; an eye sees
@@ -9,12 +11,14 @@
 import './mri.css';   // system sans: its 0 is a plain 0
 
 import { COPY } from './copyMri.js';
+import { person, speaker } from './characters.js';
+import { figureAt } from '../math/characters.js';
 import {
   start, pair, dropTarget, tapTarget, totalOf, pairedCount, restingSpot, total, layout, puzzleGroups, frame, sumLayout, crowd, crowdDirections,
   ARRANGEMENTS, PAIRS, VIEW, PANEL, DROP, CROWD, CROWD_SHOWN, FIELD_LINES, FIELD_SPAN, FLIP, dirOf,
 } from '../math/pieces.js';
 import {
-  HOUSING, BORE, TUNNEL, COILS, TABLE, PEDESTAL, PATIENT, FLOOR, SLIDE, ZOOM, ATOM, molecules, hydrogenSpot, SCREEN, picture,
+  HOUSING, BORE, TUNNEL, COILS, TABLE, PEDESTAL, PATIENT, FLOOR, SLIDE, OPERATOR, ZOOM, ATOM, molecules, hydrogenSpot, SCREEN, picture,
   PICTURE_SHIFT, EYE, SEEN, eyeFeeds, seenTransform, COMPARE,
 } from '../math/scanner.js';
 import { A_NOTE, STEPS as NOTE_STEPS, part, wave } from '../math/tones.js';
@@ -52,6 +56,7 @@ const root = document.getElementById('mri-lesson');
 const figure = el('figure', { class: 'figure' });
 const prompt = el('div', { class: 'prompt', 'aria-live': 'polite' });
 root.append(figure, prompt);
+const speak = speaker(prompt);                               // you, beside your own lines (characters.js)
 const board = svg('svg', { viewBox: `0 0 ${VIEW.w} ${VIEW.h}`, class: 'board', role: 'group' });
 figure.append(board);
 const describe = (text) => board.setAttribute('aria-label', text);
@@ -88,7 +93,8 @@ zoomable.append(
   svg('line', { class: 'floor', x1: 20, x2: VIEW.w - 20, y1: FLOOR, y2: FLOOR }),
   svg('rect', { class: 'pedestal', x: PEDESTAL.x, y: PEDESTAL.y, width: PEDESTAL.w, height: PEDESTAL.h, rx: 8 }),
   svg('rect', { class: 'tunnel', x: TUNNEL.x, y: TUNNEL.y, width: TUNNEL.w, height: TUNNEL.h, rx: 20 }),
-  patient, housing);
+  patient, housing,
+  person('you', figureAt(OPERATOR.cx, FLOOR, OPERATOR.height), OPERATOR.look));   // you, beside the scanner
 scanner.append(zoomable);
 
 // the zoom: a disc of water that grows from the chest
@@ -354,23 +360,25 @@ const press = (text) => new Promise((resolve) => button(text, resolve));
 
 // ── the story ────────────────────────────────────────────────────────────────────────────────────
 async function scene1() {                                   // the scanner
-  describe('An MRI scanner, seen from the side, with a person lying on its table.');
+  describe('An MRI scanner, seen from the side, with your patient lying on its table. You stand beside it, in your bucket hat.');
   requestAnimationFrame(() => figure.classList.add('in'));
   say(COPY.scanner[0], 'lead');
   await pause(reading(COPY.scanner[0]));
   say(COPY.scanner[1]);
   await pause(reading(COPY.scanner[1]));
+  say(COPY.patient);                                          // you are taking the scan: your first patient
+  await pause(reading(COPY.patient));
   say(COPY.opening);
   button(COPY.slideIn, scene2);
 }
 
-async function scene2() {                                   // slide in; the magnet around you
+async function scene2() {                                   // slide your patient in; the magnet around them
   phase = 'inside';
   clear();
   patient.style.transform = `translateX(${SLIDE}px)`;
   await wait(1500);
   scanner.classList.add('cutaway');
-  describe('The person is inside the scanner. The wall is see-through: rings of magnet coils surround them.');
+  describe('Your patient is inside the scanner. The wall is see-through: rings of magnet coils surround them.');
   say(COPY.inside);
   await wait(900);
   button(COPY.zoomIn, scene3);
@@ -517,7 +525,7 @@ async function reachZero() {                                // reaching 0
   setLocked(true);
   await wait(1400);
   clear();
-  say(COPY.reached[0]);
+  speak(COPY.reached[0], 'you');                             // oh no: no signal for your MRI
   await pause(reading(COPY.reached[0]));
   say(COPY.reached[1]);
   button(COPY.lookCloser, checkpoint2);
@@ -641,7 +649,7 @@ async function magnet() {                                   // many more pairs, 
   drawResult(total(Object.values(before)));
   describe('Twelve pairs of opposite arrows in the drop, one up and one down, each pair a group with a total of 0. The TOTAL is 0.');
   await wait(800);
-  say(COPY.magnetQuestion);
+  speak(COPY.magnetQuestion, 'you', true);
   await wait(600);
   button(COPY.switchOn, magnetOn);
 }
@@ -687,7 +695,7 @@ async function paint() {                                    // the scanner paint
   on(field, false);
   on(puzzle, false);
   on(screen);
-  describe('A picture of a head, painted row by row in shades of grey, like an MRI image.');
+  describe("A picture of your patient's head, painted row by row in shades of grey, like an MRI image.");
   const cells = picture();
   const rows = SCREEN.n;
   for (let j = 0; j < rows; j++) {
@@ -698,7 +706,9 @@ async function paint() {                                    // the scanner paint
     if (!REDUCED) await pause(40);
   }
   say(COPY.picture);
-  await pause(reading(COPY.picture) + 600);
+  await pause(reading(COPY.picture));
+  speak(COPY.you.didIt, 'you');                              // you did it correctly
+  await pause(reading(COPY.you.didIt) + 600);
   seeIt();
 }
 

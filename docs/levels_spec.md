@@ -36,111 +36,149 @@ or `try/#level-3`.
 1. Tonight, you're the first violin.
 2. Before a concert, every player tunes to the same note, so the whole orchestra plays in tune.
 3. Tonight, that note is yours: an A note. The whole orchestra trusts you to get it right.
-4. Drag the bow to play your A note.
-5. Everyone's in tune with your A note.
-6. Drag the magnifying glass onto your violin.
-7. Now find the A string.
-8. A (the label on the A string)
-9. Your A string shakes back and forth 440 times a second.
-10. This is the shape of that shaking.
-11. The whole orchestra trusts this A note. Is it just one note? [Yes] [No] [Not sure]
-12. Let's see. (Nadia's wording)
-13. Slide the glass across the sound.
-14. Hidden inside: four notes.
-15. A, high A, E, higher A (the four notes, to tap)
-16. Tap each one to hear it.
-17. [Play them together]
-18. A note (the label on what comes out of the ear)
-19. Your ear takes in all four and hears just one A note. Inside, it is many notes at once.
-20. One thing on the outside. Many hidden parts inside.
+4. You: That's me! No pressure. (beside your face: the player, in the bucket hat, who carries on into Levels 2 and 3)
+5. Drag the bow to play your A note.
+6. Everyone's in tune with your A note.
+7. Drag the magnifying glass onto your violin.
+8. Now find the A string.
+9. A (the label on the A string)
+10. Your A string shakes back and forth 440 times a second.
+11. This is the shape of that shaking.
+12. The whole orchestra trusts this A note. Is it just one note? [Yes] [No] [Not sure]
+13. Let's see. (Nadia's wording)
+14. Slide the glass across the sound.
+15. Hidden inside: four notes.
+16. A, high A, E, higher A (the four notes, to tap)
+17. Tap each one to hear it.
+18. [Play them together]
+19. A note (the label on what comes out of the ear)
+20. Your ear takes in all four and hears just one A note. Inside, it is many notes at once.
+21. One thing on the outside. Many hidden parts inside.
 
-Nothing comes after line 20 in Level 1.
+Nothing comes after line 21 in Level 1.
 
 ## Level 2, "Inside the scanner": learner copy, in order (drafted by Claude at Nadia's request, for her review)
 
 Lines marked (R2) are Nadia's own wording, from `docs/prototype_try_spec.md` Revision 2.
 
 1. This is an MRI scanner.
-2. It can see inside your body: no X-rays, no cuts.
-3. You know more about an MRI than you think. (R2)
-4. [Slide in]
-5. Inside, a giant magnet surrounds you.
-6. [Zoom in]
-7. O, H (the letters on the atoms)
-8. Your body is full of water.
-9. One drop holds billions of trillions of hydrogen atoms.
-10. [Closer]
-11. N, S (the letters on every magnet)
-12. At the heart of each hydrogen atom is a proton: a tiny magnet.
-13. Picture each one as an arrow, pointing from S to N.
-14. So many tiny magnets. Why don't they add up to one giant magnet?
-15. TOTAL SIGNAL (the label on the total; Nadia's "TOTAL", now naming the signal)
-16. The TOTAL SIGNAL adds up every arrow in the drop. A scanner can only pick up this total.
-17. + = … (the adding, written inside the TOTAL SIGNAL)
-18. Can you make the total 0? (R2)
-19. Drag a ↓ next to an ↑. (only after 6 seconds without a move)
-20. 0 (under every balanced group)
-21. Can every piece still be here while the total is 0? [Yes] [No] [Not sure] (R2)
-22. Let's see. (R2)
-23. You got 0 signal.
-24. But did everything disappear? [Look closer] (R2)
-25. If the total is 0, are the pieces gone? [Yes] [No] (R2)
-26. Exactly. They cancelled. (R2; after No)
-27. Look again — they're still there. (R2; after Yes)
-28. That's the answer: inside you, opposite tiny magnets cancel each other out.
-29. Same result. (R2)
-30. Here's another drop. Its total is 0 too.
-31. ? (on the covered drop, and in its TOTAL SIGNAL)
-32. What's behind this 0? [Nothing] [Something]
-33. Let's see. (R2)
-34. Different arrangement. (R2)
-35. And another. [Look inside]
-36. Still 0. (R2)
-37. And another. [Look inside]
-38. One result. Many possible arrangements behind it. (R2)
-39. Your total signal is 0. So how can a scanner see anything?
-40. [Switch on the magnet]
-41. Its magnet is tens of thousands of times stronger than Earth's.
-42. It tips the balance, just barely: a few more arrows point with it than against it.
-43. That's what an MRI does: it turns your 0 signal into a small signal it can read.
-44. In a real body, only about five to ten in every million are left over.
-45. But the 0 was holding far more: every single tiny magnet, not just the few left over.
-46. The scanner nudges them with radio waves and listens for their faint reply.
-47. [Listen]
-48. From that whisper, it paints a picture of your insides.
-49. one picture (the label on what the eye sees)
-50. Your eye sees just one picture. It's hiding far more than it seems.
-51. You just figured out one of the core principles of MRI.
-52. Do you see a similarity to the violin level? [Yes] [Not yet]
-53. Look.
-54. YOUR A NOTE, TOTAL SIGNAL, +, =, 0, A (the side by side)
-55. In Level 1, one A note hid many notes. Here, one 0 signal hides countless tiny magnets.
-56. A 0 isn't always nothing. Sometimes it's you: countless tiny magnets, perfectly balanced.
+2. It can see inside a body: no X-rays, no cuts.
+3. Your first patient is here. You're about to take their MRI scan!
+4. You know more about an MRI than you think. Let's see if you can do it correctly! (the first sentence is R2; the second is Nadia's, 2026-11-20)
+5. [Slide your patient in]
+6. Inside, a giant magnet surrounds your patient.
+7. [Zoom in]
+8. O, H (the letters on the atoms)
+9. Your patient's body is full of water.
+10. One drop holds billions of trillions of hydrogen atoms.
+11. [Closer]
+12. N, S (the letters on every magnet)
+13. At the heart of each hydrogen atom is a proton: a tiny magnet.
+14. Picture each one as an arrow, pointing from S to N.
+15. So many tiny magnets. Why don't they add up to one giant magnet?
+16. TOTAL SIGNAL (the label on the total; Nadia's "TOTAL", now naming the signal)
+17. The TOTAL SIGNAL adds up every arrow in the drop. Your scanner can only pick up this total.
+18. + = … (the adding, written inside the TOTAL SIGNAL)
+19. Can you make the total 0? (R2)
+20. Drag a ↓ next to an ↑. (only after 6 seconds without a move)
+21. 0 (under every balanced group)
+22. Can every piece still be here while the total is 0? [Yes] [No] [Not sure] (R2)
+23. Let's see. (R2)
+24. You: Oh no! I got 0 signal for my MRI! (Nadia: "oh no you got no signal for your mri")
+25. But did everything disappear? [Look closer] (R2)
+26. If the total is 0, are the pieces gone? [Yes] [No] (R2)
+27. Exactly. They cancelled. (R2; after No)
+28. Look again — they're still there. (R2; after Yes)
+29. That's the answer: inside your patient, opposite tiny magnets cancel each other out.
+30. Same result. (R2)
+31. Here's another drop. Its total is 0 too.
+32. ? (on the covered drop, and in its TOTAL SIGNAL)
+33. What's behind this 0? [Nothing] [Something]
+34. Let's see. (R2)
+35. Different arrangement. (R2)
+36. And another. [Look inside]
+37. Still 0. (R2)
+38. And another. [Look inside]
+39. One result. Many possible arrangements behind it. (R2)
+40. You (thinking): My patient's total signal is 0. So how will my scanner see anything?
+41. [Switch on the magnet]
+42. Its magnet is tens of thousands of times stronger than Earth's.
+43. It tips the balance, just barely: a few more arrows point with it than against it.
+44. That's what an MRI does: it turns your patient's 0 signal into a small signal it can read.
+45. In a real body, only about five to ten in every million are left over.
+46. But the 0 was holding far more: every single tiny magnet, not just the few left over.
+47. Your scanner nudges them with radio waves and listens for their faint reply.
+48. [Listen]
+49. From that whisper, it paints a picture of your patient's insides.
+50. You: I did it! My first MRI scan!
+51. one picture (the label on what the eye sees)
+52. Your eye sees just one picture. It's hiding far more than it seems.
+53. You just figured out one of the core principles of MRI.
+54. Do you see a similarity to the violin level? [Yes] [Not yet]
+55. Look.
+56. YOUR A NOTE, TOTAL SIGNAL, +, =, 0, A (the side by side)
+57. In Level 1, one A note hid many notes. Here, one 0 signal hides countless tiny magnets.
+58. A 0 isn't always nothing. Sometimes it's a whole person: countless tiny magnets, perfectly balanced.
 
-Nothing comes after line 56.
+Nothing comes after line 58.
 
 Around the levels: "Level 1", "Level 2", "Level 3", "Turn your sound on." (Levels 1 and 3 need sound), "Next: Level 2"
 and "Next: Level 3".
 
 ## What the new lines claim, and what they do not
 
-- **"0 signal" (lines 15, 16 and 23).** An MRI scanner's coil picks up the net magnetization: the total of all the
+- **"0 signal" (lines 16, 17 and 24).** An MRI scanner's coil picks up the net magnetization: the total of all the
   tiny magnets, not each one. When they cancel, that total is 0 and there is nothing to pick up.
-- **"That's what an MRI does" (line 43).** The scanner's magnet tips the balance, so the total is no longer 0 but a
-  small number it can read. In the drawing it is 2. In a real body it is about five to ten in every million (line 44).
-- **"But the 0 was holding far more" (line 45).** This states only what is certain. The 0 is one number, the total.
+- **"That's what an MRI does" (line 44).** The scanner's magnet tips the balance, so the total is no longer 0 but a
+  small number it can read. In the drawing it is 2. In a real body it is about five to ten in every million (line 45).
+- **"But the 0 was holding far more" (line 46).** This states only what is certain. The 0 is one number, the total.
   Behind it were all the tiny magnets, while the scanner's small signal reflects only the few left over. Nadia's
   stronger wording, "that 0 signal is way more knowledegable than the mri signal of manipulation of magnet", belongs to
   her hypothesis **B-ZERO-LOSS**: "leaving a natural zero/cancellation state may destroy information encoded in the
   relations that generated that zero" (`research/foundation_user_theories.md`, status: hypothesis). Until that
   hypothesis is established, the learner is not told that leaving the 0 destroys information, or that the 0 "knows"
   more.
-- **The eye (lines 49 and 50).** The eye takes in light from every part of the picture and we see one picture. The
+- **The eye (lines 51 and 52).** The eye takes in light from every part of the picture and we see one picture. The
   drawing shows what is seen, not how the eye works. "It's hiding far more than it seems" refers to what the story has
   shown: behind every grey dot of the picture are countless tiny magnets.
-- **The side by side (lines 54 and 55).** The left side is the violin level's arithmetic: the four notes' waves add up
+- **The side by side (lines 56 and 57).** The left side is the violin level's arithmetic: the four notes' waves add up
   exactly to the A note's wave. The right side is the MRI level's: ↑ = +1 and ↓ = −1, so each pair is 0 and the total
   signal is 0.
+
+## Levels 1 and 2 revision (2026-11-20): you take the scan. Nadia, verbatim:
+
+> have more fun with this, like oh no you got no signal for your mri, for this: You know more about an MRI than you think make sure you make it fun like your about to take an mri scan, lets see if you can do it correctly. then change the preceeding wording to match the user taking an mri scan of a patient so change wordings, also introduce the use character from level 1.
+
+### What changes
+
+- **You take the scan.** In Level 2 the learner is no longer the patient: you are taking an MRI scan of a patient.
+  - "Your first patient is here. You're about to take their MRI scan!" Then: "You know more about an MRI than you
+    think. Let's see if you can do it correctly!"
+  - Every line that spoke of "you" as the one in the scanner now speaks of your patient: "Slide your patient in";
+    "Inside, a giant magnet surrounds your patient."; "Your patient's body is full of water."; "inside your patient,
+    opposite tiny magnets cancel each other out"; "your patient's 0 signal"; "a picture of your patient's insides".
+  - The scanner is "your scanner".
+  - The last line is now "Sometimes it's a whole person", since the person in the scanner is no longer you.
+- **More fun.**
+  - When you reach 0 you say it yourself: "Oh no! I got 0 signal for my MRI!"
+  - Before the magnet, you wonder: "My patient's total signal is 0. So how will my scanner see anything?"
+  - When the picture is painted: "I did it! My first MRI scan!"
+- **The player, from Level 1 on.**
+  - The character from Level 3 (the bucket hat, dark hair, yellow shirt) is introduced in Level 1. After "The whole
+    orchestra trusts you to get it right.", your face appears beside your first line: "That's me! No pressure."
+  - In Level 2 you stand beside the scanner in the first scene, and your lines appear beside your face.
+  - The faces and figures are drawn by one shared module (`src/levels/characters.js`, `src/math/characters.js`), the
+    same in every level.
+- **Level 3 still fits.** "After your scan" and "the radiologist who read your scan" now mean the scan you took. Its
+  descriptions for screen readers say "your patient's head".
+
+### What the new lines claim
+
+- **"Oh no! I got 0 signal for my MRI!" (Level 2, line 24).** As before (the note on lines 16, 17 and 24): when the tiny magnets
+  cancel, the total the scanner can pick up is 0.
+- **"I did it! My first MRI scan!" (Level 2, line 50).** The story's scan: the drawing's tipped balance, then the
+  picture. It is the same simplification as before, not a real scan.
+- **Everything else** is unchanged in substance: only whose body it is has changed.
 
 ## Level 3, "A prism for sound" (2026-11-19; first called "The magic glasses")
 

@@ -139,7 +139,7 @@ test('6. inside the sound: four rows inside the stage, each note in its own row;
 });
 
 test('7. the copy is verbatim from the Level 1 list and in order; the take-home is last; the page shows it in that order', () => {
-  const ordered = [...COPY.opening, COPY.bow, COPY.tuned, COPY.lens1, COPY.lens2, `${COPY.stringLabel} (the label`, COPY.shaking, COPY.shape,
+  const ordered = [...COPY.opening, `You: ${COPY.you}`, COPY.bow, COPY.tuned, COPY.lens1, COPY.lens2, `${COPY.stringLabel} (the label`, COPY.shaking, COPY.shape,
     COPY.oneNote.question, ...COPY.oneNote.choices, COPY.oneNote.after, COPY.xray, COPY.hidden, COPY.notes.join(', '), COPY.tapNotes, COPY.together,
     `${COPY.heard} (the label`, COPY.oneA, COPY.final];
   let at = 0;
@@ -148,13 +148,15 @@ test('7. the copy is verbatim from the Level 1 list and in order; the take-home 
     assert.ok(i >= 0, `not in the Level 1 list, in order: ${line}`);
     at = i;
   }
-  assert.ok(copyList.includes(`20. ${COPY.final}\n\nNothing comes after line 20 in Level 1.`) && !/^21\. /m.test(copyList), 'the final line is last');
+  assert.ok(copyList.includes(`21. ${COPY.final}\n\nNothing comes after line 21 in Level 1.`) && !/^22\. /m.test(copyList), 'the final line is last');
+  assert.match(main, /speak\(COPY\.you, 'you'\)/, 'the player, introduced: your face beside your first line');
+  assert.match(main, /from '\.\/characters\.js'/, 'drawn like every character');
   assert.ok([COPY.opening[2], COPY.bow, COPY.tuned, COPY.oneNote.question, COPY.oneA].every((l) => l.includes('A note')), 'the A is called an A note');
   assert.ok(!/MRI|scanner|Level 2/.test(JSON.stringify(COPY)), 'Level 1 comes first: it does not refer to the MRI level');
   for (const s of Object.values(LEVELS)) assert.ok(rev3.includes(s), `around the levels: ${s}`);
   for (const line of ordered) assert.ok(line.split(/(?<=[.?!])\s+(?=[A-Z])/).length <= 2, `at most two sentences: ${line}`);
   assert.ok(!/fourier|frequenc|harmonic|spectrum|DIFFERENCE/i.test(JSON.stringify(COPY)), 'nothing named yet, and no tuning game');
-  const calls = ['COPY.opening[0]', 'COPY.opening[1]', 'COPY.opening[2]', 'COPY.bow', 'COPY.tuned', 'COPY.lens1', 'COPY.lens2', 'COPY.shaking', 'COPY.shape', 'COPY.oneNote.question',
+  const calls = ['COPY.opening[0]', 'COPY.opening[1]', 'COPY.opening[2]', 'COPY.you', 'COPY.bow', 'COPY.tuned', 'COPY.lens1', 'COPY.lens2', 'COPY.shaking', 'COPY.shape', 'COPY.oneNote.question',
     'COPY.oneNote.after', 'COPY.xray', 'COPY.hidden', 'COPY.notes[k]', 'COPY.tapNotes', 'COPY.together', 'COPY.oneA', 'COPY.final'];
   const pos = calls.map((c) => main.indexOf(c, main.indexOf('// ── the story')));
   assert.ok(pos.every((i) => i >= 0), JSON.stringify(calls.filter((c, k) => pos[k] < 0)));

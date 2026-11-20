@@ -19,8 +19,9 @@ import {
 } from '../src/math/pieces.js';
 import {
   excessPerMillion, timesEarth, hydrogenInDrop, molecules, hydrogenSpot, picture, scanPixel, PHYS,
-  HOUSING, BORE, PATIENT, SLIDE, ZOOM, SCREEN, PICTURE_SHIFT, EYE, SEEN, eyeFeeds, seenTransform, COMPARE,
+  HOUSING, BORE, PATIENT, SLIDE, ZOOM, SCREEN, PICTURE_SHIFT, EYE, SEEN, eyeFeeds, seenTransform, COMPARE, OPERATOR, FLOOR,
 } from '../src/math/scanner.js';
+import { figureAt, FACE, FIGURE } from '../src/math/characters.js';
 import { COPY } from '../src/levels/copyMri.js';
 
 const read = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
@@ -182,16 +183,21 @@ test('6. the scanner scenes, the picture, and the MRI numbers the copy states', 
   assert.ok(Math.abs((SCREEN.size + 12) * seen.s - SEEN.size) < 1e-9 && SEEN.x + SEEN.size <= VIEW.w && SEEN.y + SEEN.size <= VIEW.h, 'one picture, small, on the board');
   for (const side of [COMPARE.left, COMPARE.right]) assert.ok(side.x >= 0 && side.x + side.w <= VIEW.w && side.y >= 0 && side.y + side.h <= VIEW.h);
   assert.ok(COMPARE.left.x + COMPARE.left.w < COMPARE.right.x, 'the violin level on the left, the MRI level on the right');
+  // you, taking the scan: standing on the floor beside the scanner, on the board, clear of it
+  const you = figureAt(OPERATOR.cx, FLOOR, OPERATOR.height);
+  assert.ok(Math.abs(you.y + you.h - FLOOR) < 1e-9 && you.x > 0 && you.x + you.w < HOUSING.x && you.y > 0, 'you stand on the floor, left of the scanner');
+  assert.ok(OPERATOR.look.x > HOUSING.x, 'looking toward your patient');
+  assert.ok(Math.abs(you.w / you.h - FIGURE.view.w / FIGURE.view.h) < 1e-9 && FACE.view.w === FIGURE.view.w, 'drawn like every character');
 });
 
 test('7. the learner-facing copy is verbatim from the Level 2 list, in its order; Nadia\'s Revision 2 lines unchanged; the page shows it in that order and nothing after the final line', () => {
-  const ordered = [COPY.scanner[0], COPY.scanner[1], COPY.opening, COPY.slideIn, COPY.inside, COPY.zoomIn, `${COPY.atoms.o}, ${COPY.atoms.h}`, COPY.water[0], COPY.water[1], COPY.closer,
+  const ordered = [COPY.scanner[0], COPY.scanner[1], COPY.patient, COPY.opening, COPY.slideIn, COPY.inside, COPY.zoomIn, `${COPY.atoms.o}, ${COPY.atoms.h}`, COPY.water[0], COPY.water[1], COPY.closer,
     `${COPY.poles.n}, ${COPY.poles.s}`, COPY.proton[0], COPY.proton[1], COPY.hook, COPY.totalLabel, COPY.totalMeans, `${COPY.sum.plus} ${COPY.sum.equals} ${COPY.sum.more}`,
     COPY.task, COPY.hint, `${COPY.groupZero} (under`, COPY.check1.question, ...COPY.check1.choices, COPY.check1.after,
     COPY.reached[0], COPY.reached[1], COPY.lookCloser, COPY.check2.question, ...COPY.check2.choices, COPY.check2.right, COPY.check2.wrong,
     COPY.answer, COPY.arrangements[0], COPY.cover.intro, `${COPY.cover.mark} (on the covered`, COPY.cover.question, ...COPY.cover.choices, COPY.cover.after,
     COPY.arrangements[1], COPY.cover.again, COPY.cover.look, COPY.arrangements[2], COPY.cover.again, COPY.cover.look, COPY.reveal,
-    COPY.magnetQuestion, COPY.switchOn, ...COPY.magnet, COPY.listen, COPY.picture, `${COPY.eye.label} (the label`, COPY.eye.line, COPY.closing,
+    COPY.magnetQuestion, COPY.switchOn, ...COPY.magnet, COPY.listen, COPY.picture, `You: ${COPY.you.didIt}`, `${COPY.eye.label} (the label`, COPY.eye.line, COPY.closing,
     COPY.similar.question, ...COPY.similar.choices, COPY.similar.after,
     `${COPY.compareLabels.note}, ${COPY.compareLabels.signal}, ${COPY.sum.plus}, ${COPY.sum.equals}, ${COPY.zero}, ${COPY.aName}`, COPY.compare, COPY.final];
   let at = 0;
@@ -200,19 +206,30 @@ test('7. the learner-facing copy is verbatim from the Level 2 list, in its order
     assert.ok(i >= 0, `not in the Level 2 list, in order: ${line}`);
     at = i;
   }
-  assert.ok(copyList.includes(`56. ${COPY.final}\n\nNothing comes after line 56.`) && !/^57\. /m.test(copyList), 'the final line is last');
+  assert.ok(copyList.includes(`58. ${COPY.final}\n\nNothing comes after line 58.`) && !/^59\. /m.test(copyList), 'the final line is last');
+  // you take the scan, of a patient (Nadia, 2026-11-20); the fun lines are yours
+  assert.ok(levels.includes('change the preceeding wording to match the user taking an mri scan of a patient'), "Nadia's message, verbatim");
+  assert.ok(COPY.opening.startsWith('You know more about an MRI than you think.') && rev2.includes('You know more about an MRI than you think.') && /Let's see if you can do it correctly!$/.test(COPY.opening), "Nadia's Revision 2 line, then her new one");
+  assert.match(COPY.patient, /patient.*MRI scan/);
+  for (const line of [COPY.slideIn, COPY.inside, COPY.water[0], COPY.answer, COPY.magnet[2], COPY.picture]) assert.match(line, /patient/, `the patient's, not yours: ${line}`);
+  assert.ok(!/inside you,|surrounds you\.|Your body|your insides|Sometimes it's you/.test(JSON.stringify(COPY)), 'you are not the one in the scanner');
+  assert.match(COPY.reached[0], /^Oh no! I got 0 signal for my MRI!$/, 'oh no: no signal');
+  assert.match(main, /speak\(COPY\.reached\[0\], 'you'\)/);
+  assert.match(main, /speak\(COPY\.magnetQuestion, 'you', true\)/);
+  assert.match(main, /speak\(COPY\.you\.didIt, 'you'\)/);
+  assert.match(main, /person\('you', figureAt\(OPERATOR\.cx, FLOOR, OPERATOR\.height\), OPERATOR\.look\)/, 'you, beside the scanner');
   assert.ok([COPY.totalLabel, COPY.totalMeans, COPY.reached[0], COPY.magnetQuestion, COPY.magnet[2], COPY.compare].every((l) => /signal/i.test(l)), 'the total is a signal, and 0 is 0 signal');
   assert.match(COPY.similar.question, /violin level/);
-  for (const line of [COPY.opening, COPY.task, COPY.check1.question, COPY.check1.after, COPY.reached[1], COPY.lookCloser, COPY.check2.question, COPY.check2.right, COPY.check2.wrong, ...COPY.arrangements, COPY.reveal])
+  for (const line of [COPY.task, COPY.check1.question, COPY.check1.after, COPY.reached[1], COPY.lookCloser, COPY.check2.question, COPY.check2.right, COPY.check2.wrong, ...COPY.arrangements, COPY.reveal])
     assert.ok(rev2.includes(line), `a Revision 2 line, unchanged: ${line}`);
   assert.equal(COPY.check2.intended, 'No');
   for (const line of ordered) assert.ok(line.split(/(?<=[.?!])\s+/).length <= 2, `at most two sentences: ${line}`);
-  const calls = ['COPY.scanner[0]', 'COPY.scanner[1]', 'COPY.opening', 'COPY.slideIn', 'COPY.inside', 'COPY.zoomIn', 'COPY.water[0]', 'COPY.water[1]', 'COPY.closer',
+  const calls = ['COPY.scanner[0]', 'COPY.scanner[1]', 'COPY.patient', 'COPY.opening', 'COPY.slideIn', 'COPY.inside', 'COPY.zoomIn', 'COPY.water[0]', 'COPY.water[1]', 'COPY.closer',
     'COPY.proton[0]', 'COPY.proton[1]', 'COPY.hook', 'COPY.totalMeans', 'COPY.task', 'COPY.hint', 'COPY.check1.question', 'COPY.check1.after', 'COPY.reached[0]', 'COPY.reached[1]',
     'COPY.lookCloser', 'COPY.check2.question', 'COPY.check2.right', 'COPY.answer', 'COPY.check2.wrong', 'COPY.arrangements[0]', 'COPY.cover.intro', 'COPY.cover.question',
     'COPY.cover.after', 'COPY.arrangements[1]', 'COPY.cover.again', 'COPY.cover.look', 'COPY.arrangements[2]', 'COPY.reveal',
     'COPY.magnetQuestion', 'COPY.switchOn', 'COPY.magnet[0]', 'COPY.magnet[1]', 'COPY.magnet[2]', 'COPY.magnet[3]', 'COPY.magnet[4]', 'COPY.magnet[5]', 'COPY.listen',
-    'COPY.picture', 'COPY.eye.line', 'COPY.closing', 'COPY.similar.question', 'COPY.similar.after', 'COPY.compareLabels.note', 'COPY.compare', 'COPY.final'];
+    'COPY.picture', 'COPY.you.didIt', 'COPY.eye.line', 'COPY.closing', 'COPY.similar.question', 'COPY.similar.after', 'COPY.compareLabels.note', 'COPY.compare', 'COPY.final'];
   const pos = calls.map((c) => main.indexOf(c, main.indexOf('// ── the story')));
   assert.ok(pos.every((i) => i >= 0), JSON.stringify(calls.filter((c, k) => pos[k] < 0)));
   assert.deepEqual([...pos].sort((a, b) => a - b), pos, 'the story shows the copy in order');
