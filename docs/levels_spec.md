@@ -1063,7 +1063,7 @@ Revision 7 and keep its notes. New:
 
   It stops at the frame's step. Nothing in a frame is drawn separately from the level.
 
-### Revision 9 (2026-11-20), which governs Level 3. Nadia, verbatim (two messages):
+### Revision 9 (2026-11-20), superseded by Revision 10 below. Nadia, verbatim (two messages):
 
 > this should be - proton magnet frequencies make up image something like this make it make sense not my wording but follow the theme of something being inside and decoding it like violin -> pure tones inside
 > Proton frequencies → image
@@ -1171,3 +1171,95 @@ as in Revision 8 and keep its notes. New:
     at once, mixed. The "Collect the data" step shows that mix.
   - The wave's strength and fade are as in Revision 6's notes. It is as strong as the part is bright in the picture;
     how long it lasts is an illustration.
+
+### Revision 10 (2026-11-20), which governs Level 3. Nadia, verbatim:
+
+> Violin note → pure tones
+> Stage light → its full color spectrum
+> MRI image → proton frequencies
+
+#### What changes
+
+- **The scanner's line of the pattern (line 40)** is now Nadia's "MRI image → proton frequencies". All three lines now
+  read the same way: a thing, then what is inside it.
+- **Its slide matches it.**
+  - On the left: the MRI picture of your patient's head, with its middle row marked.
+  - On the right: that row's proton frequencies, one thin glowing bar for each of the row's 48 frequencies, like the
+    violin's four bars.
+  - The scanner's signal no longer stands in this row, and the small bars over the arrow (Revision 9) are gone.
+
+#### Level 3 learner copy (Revision 10), in order (drafted by Claude at Nadia's request, for her review)
+
+1. After your scan, you head back to the concert hall.
+2. The lights dim. You notice a stage light shining.
+3. Drag to aim it at the chandelier.
+4. Drag across the picture to swing the light. (only after 8 seconds)
+5. Where did the colors come from? [The glass] [The white light]
+6. From the white light. The glass on the chandelier is a prism: it takes light apart into its colors.
+7. You (thinking): If a prism is a tool that can take apart light, is there a tool that can take apart a sound?
+8. Surprise: it's your tuner.
+9. [Play your A note]
+10. A (the letter on the tuner)
+11. The tuner draws your note's signal, its shape over time, and names it: A.
+12. Four notes hide in this signal. Can you see them? [Yes] [Not really]
+13. Neither can anyone, just by looking.
+14. [Take it apart]
+15. Your A note, taken apart into four pure tones.
+16. A, high A, E, higher A (the labels under the bars)
+17. Drag the bars. Can you make a single pure tone, like a tuning fork?
+18. Drag all the bars but one down to 0. (only after 9 seconds)
+19. One bar, one smooth wave: a tuning fork.
+20. Now bring the others back.
+21. Every bump in the signal comes from a different pure tone.
+22. At the break, the radiologist who read your scan comes over. (the radiologist walks over to you on the board as this appears)
+23. You: My tuner just took my A note apart!
+24. Radiologist: The MRI scanner works the same way.
+25. Tap a part of the brain. (the outer or the inner brain; its signal comes out of the spot you tap, runs to the data box and is drawn there, under its name)
+26. skin, skull, fluid, outer brain, inner brain (the labels beside the head)
+27. Now tap the skull.
+28. Each tiny magnet behaves differently depending on which body part it's in.
+29. [Collect the data]
+30. Collecting that data
+31. [Convert it to pixels]
+32. and converting it into pixel data
+33. helps us see an MRI picture, with the Fourier transform. (lines 28, 30, 32 and 33 are one paragraph, shown one part at a time, the earlier parts turning grey; the people and their bubbles are gone while it is shown)
+34. Radiologist: Do you notice a pattern? [Yes] [Not yet]
+35. Radiologist: Let me help you out.
+36. Violin note → pure tones (the caption under its pictures, the A note's wave → its four bars, on a slide of its own)
+37. [Next]
+38. Stage light → its full color spectrum (on a slide of its own: a white beam into a prism → a fan of colours)
+39. [Next]
+40. MRI image → proton frequencies (on a slide of its own: the MRI picture of your patient's head, its middle row marked → that row's proton frequencies, one thin bar each)
+41. [Next] (then all three together, each caption under its pictures)
+42. the Fourier transform (the grand reveal: big and glowing in the middle of the board)
+43. The mathematical tool that lets us start seeing what hides inside: the Fourier transform.
+44. All three come down to the same geometric math.
+45. Joseph Fourier came up with it about 200 years ago.
+46. The applications are endless! From a simple tuner to looking inside your brain.
+
+Nothing comes after line 46.
+
+#### The review strip's labels (for review, not learner copy)
+
+- All steps (the link on the Level 3 tag)
+- Level 3, step by step (the strip's title)
+- Scroll left and right, or use the arrows. Each frame is the level itself, stopped at that step.
+- Play from here
+- Back to the levels
+
+The 26 step titles are in `src/levels/stepsPrism.js`.
+
+#### What the new lines claim
+
+The numbers are computed in `src/math/prism.js` and checked by `test/prism.test.js`. Lines 1–39 and 41–46 are as in
+Revision 9 and keep its notes. New:
+
+- **Line 40, "MRI image → proton frequencies".** In a real scanner, while it listens, the protons at each place along
+  one direction turn at their own slightly different frequency (Revision 9's notes). So how bright a pixel is says how
+  much signal came at that place's frequency. A row of the image, taken apart, is the protons' frequencies.
+- **The bars.** They are the 48 amounts the Fourier transform finds in the marked row's signal, one for each
+  frequency. Each equals the brightness of that row's pixel exactly: the bars are the row of the picture, taken apart.
+  Where the row is outside the head, the amount is 0 and there is no bar. They are coloured as each frequency is
+  coloured elsewhere on the board.
+- On the board, as since Revision 6, each place in a row has its own frequency. Real scanners also use the waves'
+  timing (phase) for the other direction.

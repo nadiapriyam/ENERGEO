@@ -1,4 +1,4 @@
-// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 9). It comes straight after Level 2: after your scan,
+// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 10). It comes straight after Level 2: after your scan,
 // you head back to the concert hall. The lights dim; the learner aims a stage light at the chandelier, and its glass
 // prism takes the white light apart into colours. You wonder: is there a tool that can take apart a sound? Surprise:
 // your tuner. Its screen draws your A note's signal, the signal grows to fill the board, and taking it apart gives four
@@ -8,7 +8,7 @@
 // time, the earlier parts turning grey: each body part behaves differently; collecting that data (the head moves aside
 // and one busy signal appears); converting it into pixel data, row after row; an MRI picture, with the Fourier
 // transform. Then the pattern, one slide at a time, each caption under its own pictures (violin note → pure tones,
-// stage light → its colours, MRI signal → proton frequencies → image), all three together, the grand reveal of the Fourier
+// stage light → its colours, MRI image → proton frequencies), all three together, the grand reveal of the Fourier
 // transform, and: the applications are endless.
 // For review, ?step=<id> stops the level at a named step (the review strip at try/?steps shows every one), and
 // ?from=<id> fast-forwards to it and plays on from there (stepsPrism.js lists the steps).
@@ -26,7 +26,7 @@ import {
   STRIP, STRIP_BOX, signal, samplesPath, TUNER, onTuner, SPECTRUM, GLYPH, barX, barHeight, barAt, stepsAt, pureTone, allBack,
   NOTE_LED, neon, ROWS, MRI, BODY_PARTS, partOf, partAt, partWave, partLink, dataTitle, RIPPLES, coarseRows, chordSamples, unmix, rowOrder, FIRST_ROW,
   rowIn, toSignal, BRAIN, SKULL, EXPLORE, exploreHead, exploreData, labels, BREAK, figureBox,
-  PATTERN, patternBox, stripToPattern, picToPattern, patternBars, patternLight, patternFrequencies, slideShift, captionAt, REVEAL,
+  PATTERN, patternBox, picToPattern, patternRowBand, patternBars, patternLight, patternSpectrum, slideShift, captionAt, REVEAL,
 } from '../math/prism.js';
 
 const NS = 'http://www.w3.org/2000/svg';
@@ -229,7 +229,8 @@ const breakScene = svg('g', { class: 'scene break-scene' },
   svg('polygon', { class: 'glass', points: pts([cTop, cRight, cLeft]) }),
   youFigure, radiologistFigure);
 
-// the pattern: the scanner's row is the signal and the picture, moved down; the violin and the light join them above
+// the pattern: the scanner's row is your patient's picture, moved down, and its marked row's proton frequencies; the
+// violin and the light join them above
 const arrowOf = (i) => {
   const y = PATTERN.y[i] + PATTERN.h / 2;
   const { x1, x2 } = PATTERN.arrow;
@@ -248,8 +249,10 @@ const patternRows = [
     svg('polygon', { class: 'glass', points: pts(lightRow.corners) }),
     ...lightRow.rays.map((r) => line(r.from, r.to, { class: 'p-ray', stroke: r.color })),
     arrowOf(1), svg('text', { class: 'p-caption', x: captionAt(1).x, y: captionAt(1).y, 'text-anchor': 'middle', text: COPY.pattern[1] })),
-  svg('g', { class: 'p-row' }, arrowOf(2),
-    ...patternFrequencies(ROWS_OF_YOU).map((b) => svg('rect', { class: 'p-freq', x: b.x.toFixed(1), y: b.y.toFixed(1), width: b.w, height: Math.max(0.5, b.h).toFixed(1), rx: 1.5, fill: b.color })),
+  svg('g', { class: 'p-row' },
+    (() => { const r = patternRowBand(); return svg('rect', { class: 'p-row-band', x: r.x.toFixed(2), y: r.y.toFixed(2), width: r.w.toFixed(2), height: Math.max(1.5, r.h).toFixed(2), rx: 0.8 }); })(),
+    ...patternSpectrum(ROWS_OF_YOU).filter((b) => b.h > 0).map((b) => svg('rect', { class: 'p-freq', x: b.x.toFixed(2), y: b.y.toFixed(2), width: b.w.toFixed(2), height: b.h.toFixed(2), rx: 1, fill: b.color })),
+    arrowOf(2),
     svg('text', { class: 'p-caption', x: captionAt(2).x, y: captionAt(2).y, 'text-anchor': 'middle', text: COPY.pattern[2] })),
 ];
 const pattern = svg('g', { class: 'scene pattern', style: `--slide-caption: ${PATTERN.slideCaption}px` }, ...patternRows);
@@ -740,15 +743,13 @@ async function thePattern() {                               // do you notice a p
   on(pattern);
   fitCaptions();
   const SLIDES = ['slide1', 'slide2', 'slide3'];              // named steps, one per slide
-  const shown = ['A violin note’s wave, then its four bars of pure tones.', 'A white beam into a prism, then a fan of colours.', 'The scanner’s signal, then small bars of its proton frequencies over the arrow, then the picture of your patient’s head.'];
+  const shown = ['A violin note’s wave, then its four bars of pure tones.', 'A white beam into a prism, then a fan of colours.', 'The MRI picture of your patient’s head, its middle row marked, then that row’s proton frequencies as a row of thin coloured bars.'];
   for (let i = 0; i < 3; i++) {
     phase = SLIDES[i];
     if (i) { patternRows[i - 1].classList.remove('on'); await wait(500); }   // the last slide fades out before the next comes in
     jump(patternRows[i], `translateY(${slideShift(i)}px)`);
-    if (i === 2) {                                           // the scanner's own signal and picture, as the third slide
-      jump(strip, css(stripToPattern(slideShift(2))));
+    if (i === 2) {                                           // your patient's picture, as the third slide
       jump(image, css(picToPattern(slideShift(2))));
-      strip.classList.remove('hidden');
       image.classList.remove('hidden');
     }
     patternRows.forEach((r, n) => r.classList.toggle('on', n === i));
@@ -760,7 +761,6 @@ async function thePattern() {                               // do you notice a p
   pattern.classList.remove('sliding');
   fitCaptions();
   patternRows.forEach((r) => { r.classList.add('on'); r.style.transform = 'none'; });
-  strip.style.transform = css(stripToPattern());
   image.style.transform = css(picToPattern());
   describe(`Three rows, each with its caption: ${COPY.pattern.join('; ')}.`);
   await wait(1200);

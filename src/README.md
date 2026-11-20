@@ -133,8 +133,8 @@ accent. `docs/levels_spec.md` governs. `try/level-2/` and `notebook/` forward he
     magnet behaves differently depending on its body part; Collect the data (the head moves aside, one busy signal);
     Convert it to pixels (row after row, 48 × 48, exact); an MRI picture, with the Fourier transform.
   - "Do you notice a pattern?" One slide at a time, each caption under its own pictures and staying until Next:
-    violin note → pure tones; stage light → its full color spectrum; MRI signal → proton frequencies → image (with
-    small bars of the frequencies the transform finds, on the arrow). Then all three
+    violin note → pure tones; stage light → its full color spectrum; MRI image → proton frequencies (the picture with
+    its middle row marked, then that row's 48 frequencies as bars, exactly as the transform finds them). Then all three
     together, and the grand reveal: "the Fourier transform", the mathematical tool that lets us start seeing what
     hides inside. All three come down to the same geometric math; the applications are endless.
   - Review: `try/?steps` shows every named step of Level 3 left to right, each frame the level itself stopped there

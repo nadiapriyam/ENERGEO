@@ -1,4 +1,4 @@
-// Every learner-facing line of Level 3, "A prism for sound", verbatim from docs/levels_spec.md (Revision 9, checked by
+// Every learner-facing line of Level 3, "A prism for sound", verbatim from docs/levels_spec.md (Revision 10, checked by
 // test/prism.test.js). Drafted at Nadia's request for her review: a story that picks up right after Level 2, in as few
 // words as it can. `you` holds the player's own lines (shown beside their face, a thought in a thought bubble) and
 // `radiologist` the radiologist's. `mri` is Nadia's description of the scanner, in four parts, shown one at a time as
@@ -48,7 +48,7 @@ export const COPY = {
   bodyParts: ['skin', 'skull', 'fluid', 'outer brain', 'inner brain'],
   collect: 'Collect the data',
   convert: 'Convert it to pixels',
-  pattern: ['Violin note → pure tones', 'Stage light → its full color spectrum', 'MRI signal → proton frequencies → image'],
+  pattern: ['Violin note → pure tones', 'Stage light → its full color spectrum', 'MRI image → proton frequencies'],
   next: 'Next',
   revealTitle: 'the Fourier transform',
   reveal: 'The mathematical tool that lets us start seeing what hides inside: the Fourier transform.',

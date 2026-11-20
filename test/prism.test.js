@@ -1,4 +1,4 @@
-// Level 3, "A prism for sound", at try/ (docs/levels_spec.md, Level 3 Revision 9). Guards:
+// Level 3, "A prism for sound", at try/ (docs/levels_spec.md, Level 3 Revision 10). Guards:
 // - the hall: the stage light misses at first, is caught when aimed anywhere at the chandelier, goes into the prism's
 //   near face, and the colours leave in a real prism's order (red bent least, violet most);
 // - the tuner's little signal is the big signal, laid exactly on its screen;
@@ -12,8 +12,9 @@
 //   spot you tap and runs to where its wave starts in the data box, and the wave is drawn from the left as it arrives;
 // - the copy is verbatim and in order, with Nadia's sentences, each part of her scanner wording lit by its step, no
 //   magnets drawn and no music in the scanner part;
-// - the pattern, slide by slide, each caption under its own pictures; on the scanner's slide, the proton frequencies
-//   over its arrow are the amounts the transform finds, the very brightnesses of that row; the grand reveal;
+// - the pattern, slide by slide, each caption under its own pictures; on the scanner's slide, your patient's picture
+//   with its middle row marked, and that row's proton frequencies: the amounts the transform finds, the very
+//   brightnesses of the row; the grand reveal;
 // - the frame: sound after a tap, reduced motion, Level 3 after Level 2, the app's own Fourier math untouched, and the
 //   review strip: every named step reached in order, each frame the level itself stopped there.
 
@@ -24,8 +25,8 @@ import {
   BOARD, fit, triangle, HALL, RAINBOW, BEND, crystalCorners, nearFace, aimAngle, toCrystal, startAngle, edge, lightPath,
   STRIP, STRIP_BOX, signal, samplesPath, TUNER, onTuner, SPECTRUM, GLYPH, barX, barHeight, barAt, stepsAt, pureTone, allBack,
   NOTE_LED, neon, ROWS, MRI, BODY_PARTS, partOf, strength, partAt, partWave, coarseRows, chordSamples, unmix, rowOrder, FIRST_ROW,
-  rowIn, toSignal, BRAIN, SKULL, EXPLORE, exploreHead, exploreData, labels, partLoudness, partLink, dataInlet, dataTitle, RIPPLES, patternFrequencies, coatLapels, FIGURE, BREAK, figureBox, FACE, hairPath, shirtPath, lookAt, PLAYER, RADIOLOGIST, bucketHat, beamHeightAt,
-  PATTERN, patternBox, PIC_FRAME, stripToPattern, picToPattern, patternBars, patternLight, slideShift, captionAt, REVEAL,
+  rowIn, toSignal, BRAIN, SKULL, EXPLORE, exploreHead, exploreData, labels, partLoudness, partLink, dataInlet, dataTitle, RIPPLES, patternSpectrum, patternRowBand, coatLapels, FIGURE, BREAK, figureBox, FACE, hairPath, shirtPath, lookAt, PLAYER, RADIOLOGIST, bucketHat, beamHeightAt,
+  PATTERN, patternBox, PIC_FRAME, picToPattern, patternBars, patternLight, slideShift, captionAt, REVEAL,
 } from '../src/math/prism.js';
 import { A_NOTE, STEPS, part, wave } from '../src/math/tones.js';
 import { scanPixel } from '../src/math/scanner.js';
@@ -38,8 +39,9 @@ const read = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
 const spec = read('docs/levels_spec.md');
 const level3 = spec.slice(spec.indexOf('## Level 3, "A prism for sound"'));
 const rev8 = level3.slice(level3.indexOf('### Revision 8'), level3.indexOf('### Revision 9'));
-const rev9 = level3.slice(level3.indexOf('### Revision 9'));
-const copyList = rev9.slice(rev9.indexOf('#### Level 3 learner copy (Revision 9)'), rev9.indexOf('#### The review strip'));
+const rev9 = level3.slice(level3.indexOf('### Revision 9'), level3.indexOf('### Revision 10'));
+const rev10 = level3.slice(level3.indexOf('### Revision 10'));
+const copyList = rev10.slice(rev10.indexOf('#### Level 3 learner copy (Revision 10)'), rev10.indexOf('#### The review strip'));
 const main = read('src/levels/prism.js');
 const css = read('src/levels/prism.css');
 const inside = (r, x, y, e = 1e-6) => x >= r.x - e && x <= r.x + r.w + e && y >= r.y - e && y <= r.y + r.h + e;
@@ -213,7 +215,7 @@ test('5. converting each row\'s data gives back every row of the picture exactly
     const v = ((j + 0.5) / ROWS) * 2 - 1;
     if ((u / 0.8) ** 2 + (v / 0.95) ** 2 > 1) assert.equal(a, 0, 'nothing of you outside your head');
   }));
-  assert.ok(fits(stripToPattern(), STRIP_BOX, patternBox(2, 'left')) && fits(picToPattern(), PIC_FRAME, patternBox(2, 'right')), 'the signal and the image move exactly into the third row');
+  assert.ok(fits(picToPattern(), PIC_FRAME, patternBox(2, 'left')), "your patient's picture moves exactly into the third row, on the left");
   assert.ok(same(picToPattern().sx, picToPattern().sy) && same(PIC_FRAME.x, MRI.picture.x - 4), 'the image keeps its shape');
   const B = { x: 0, y: 0, w: BOARD.w, h: BOARD.h };
   for (let i = 0; i < 3; i++) for (const side of ['left', 'right']) {
@@ -237,17 +239,25 @@ test('5. converting each row\'s data gives back every row of the picture exactly
     const slideCaption = c.y + slideShift(i) + PATTERN.slideCaption;
     assert.ok(slideCaption - 30 > PATTERN.slideY + PATTERN.h / 2 && slideCaption < BOARD.h - 20, 'and its big caption under it, on the board');
   }
-  assert.ok(fits(stripToPattern(slideShift(2)), STRIP_BOX, patternBox(2, 'left', slideShift(2))) && fits(picToPattern(slideShift(2)), PIC_FRAME, patternBox(2, 'right', slideShift(2))), "the scanner's slide: its signal and its picture");
-  const fq = patternFrequencies(rows);
+  assert.ok(fits(picToPattern(slideShift(2)), PIC_FRAME, patternBox(2, 'left', slideShift(2))), "the scanner's slide: your patient's picture on the left");
+  // its middle row, marked on the picture, and that row's proton frequencies on the right
+  const pic = patternBox(2, 'left');
+  const band = patternRowBand();
+  const f = picToPattern();
+  assert.ok(same(band.y, f.ty + f.sy * (MRI.picture.y + (FIRST_ROW * MRI.picture.size) / ROWS)) && same(band.h, (f.sy * MRI.picture.size) / ROWS), 'the band marks the middle row of the picture, the row the frequencies come from');
+  assert.ok(band.x >= pic.x && band.x + band.w <= pic.x + pic.w && band.y > pic.y && band.y + band.h < pic.y + pic.h, 'on the picture');
+  const fq = patternSpectrum(rows);
   const found = unmix(chordSamples(rows[FIRST_ROW]), ROWS);
-  const ay = PATTERN.y[2] + PATTERN.h / 2;
-  assert.ok(fq.length >= 6 && fq.some((b) => b.h > 10), 'the proton frequencies, over the arrow');
+  const right = patternBox(2, 'right');
+  assert.equal(fq.length, ROWS, 'one bar for each of the row\'s 48 frequencies');
+  assert.ok(fq.filter((b) => b.h > 0).length > ROWS / 2 && Math.max(...fq.map((b) => b.h)) > right.h / 2, 'most of the row is your patient: tall bars');
   fq.forEach((b, n) => {
-    assert.ok(same(b.h, Math.max(0, found[b.k]) * PATTERN.freqScale) && same(found[b.k], rows[FIRST_ROW][b.k]), 'each bar: the amount the transform finds, the very brightness of that pixel of the row');
-    assert.ok(b.x > PATTERN.arrow.x1 && b.x + b.w <= PATTERN.arrow.x2 && b.y + b.h < ay - 7 && b.y > PATTERN.y[2], 'standing over the arrow (clear of its head), inside its row');
+    assert.ok(same(b.h, Math.max(0, found[b.k]) * (right.h - 8)) && Math.abs(found[b.k] - rows[FIRST_ROW][b.k]) < 1e-12, 'each bar: the amount the transform finds, the very brightness of that pixel of the row');
+    assert.ok(inside(right, b.x, b.y) && inside(right, b.x + b.w, b.y + b.h) && same(b.y + b.h, right.y + right.h), 'standing in the right box, on its floor');
     assert.equal(b.color, neon(b.k, ROWS));
-    if (n) assert.ok(b.x > fq[n - 1].x + fq[n - 1].w && b.k > fq[n - 1].k, 'side by side, in order across the head');
+    if (n) assert.ok(b.x > fq[n - 1].x + fq[n - 1].w && b.k === fq[n - 1].k + 1, 'side by side, in order across the row');
   });
+  assert.ok(pic.x + pic.w < PATTERN.arrow.x1 && PATTERN.arrow.x2 < right.x, 'picture → arrow → frequencies, left to right');
   assert.ok(REVEAL.x === BOARD.w / 2 && REVEAL.y > 150 && REVEAL.y < BOARD.h - 120, 'the grand reveal, in the middle');
 });
 
@@ -295,7 +305,7 @@ test("6. the break and the faces: you and the radiologist stand apart on the flo
   assert.ok(FIGURE.torso.y < FACE.view.h && FIGURE.coat.every((c) => c.y + c.h > FIGURE.torso.y + FIGURE.torso.h), 'the body under the face; the coat longer than the shirt');
 });
 
-test('7. the copy is verbatim from the Revision 9 list and in order: line 21, a part of the brain, the pattern slide by slide (the scanner\'s as decoding), the grand reveal before "the same geometric math", the applications last', () => {
+test('7. the copy is verbatim from the Revision 10 list and in order: line 21, a part of the brain, the pattern slide by slide in Nadia\'s words, the grand reveal before "the same geometric math", the applications last', () => {
   const R = (s) => `Radiologist: ${s}`;
   const ordered = [COPY.opening, COPY.dim, COPY.aim, COPY.aimHint, COPY.where.question, ...COPY.where.choices, COPY.where.after,
     `You (thinking): ${COPY.you.think}`, COPY.surprise, `[${COPY.play}]`, `${COPY.tunerLetter} (the letter`, COPY.drawsSignal, COPY.see.question,
@@ -308,19 +318,20 @@ test('7. the copy is verbatim from the Revision 9 list and in order: line 21, a 
   let at = 0;
   for (const l of ordered) {
     const i = copyList.indexOf(l, at);
-    assert.ok(i >= 0, `not in the Revision 9 list, in order: ${l}`);
+    assert.ok(i >= 0, `not in the Revision 10 list, in order: ${l}`);
     at = i + 1;
   }
   assert.ok(copyList.includes(`46. ${COPY.final}\n\nNothing comes after line 46.`) && !/^47\. /m.test(copyList), 'the final line is last');
   assert.ok(rev8.includes('needs to be attached to each of its pictures slide by slide') && rev8.includes('introduce a skip feature for all of this'), "Nadia's Revision 8 message, verbatim");
   assert.ok(rev9.includes('follow the theme of something being inside and decoding it like violin -> pure tones inside') && rev9.includes('also change tap the brain to tap a part of the brain.'), "Nadia's Revision 9 messages, verbatim");
   assert.equal(COPY.tapBrain, 'Tap a part of the brain.', "line 25, in Nadia's words");
+  assert.ok(rev10.includes('> MRI image → proton frequencies'), "Nadia's Revision 10 message, verbatim");
   assert.equal(COPY.backDone, 'Every bump in the signal comes from a different pure tone.', "line 21, in Nadia's words");
   assert.equal(COPY.final, 'The applications are endless! From a simple tuner to looking inside your brain.', 'the last line');
   assert.ok(!/here it is/i.test(JSON.stringify(COPY)), '"Here it is" is gone');
   assert.ok(COPY.reveal.endsWith('the Fourier transform.') && COPY.reveal.includes('the mathematical tool that lets us start seeing what hides inside'.replace(/^t/, 'T')), 'the tool, named');
   assert.ok(!/Fourier/.test(COPY.name[0]) && /geometric math/.test(COPY.name[0]), 'after the reveal, the geometric math line without repeating the name');
-  assert.ok(/pure tones/.test(COPY.pattern[0]) && /full color spectrum/.test(COPY.pattern[1]) && /^MRI signal → proton frequencies → image$/.test(COPY.pattern[2]), "Nadia's pattern: the scanner's line decodes what is inside, like the violin's");
+  assert.ok(/pure tones/.test(COPY.pattern[0]) && /full color spectrum/.test(COPY.pattern[1]) && COPY.pattern[2] === 'MRI image → proton frequencies', "Nadia's pattern: each thing, then what is inside it");
   assert.equal(COPY.mri.map((f) => f.text).join(''), "Each tiny magnet behaves differently depending on which body part it's in. Collecting that data and converting it into pixel data helps us see an MRI picture, with the Fourier transform.", "Nadia's wording");
   assert.equal(COPY.you.think, 'If a prism is a tool that can take apart light, is there a tool that can take apart a sound?', "the thought is Nadia's sentence");
   assert.ok(!/technician/i.test(JSON.stringify(COPY)) && /radiologist/.test(COPY.arrives), 'the radiologist');

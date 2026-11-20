@@ -1,4 +1,4 @@
-// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 9). Pure functions, no DOM, no audio. (The app's own
+// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 10). Pure functions, no DOM, no audio. (The app's own
 // Fourier blocks are in fourier.js; this file is only the level's.)
 //
 // Three scenes, one idea: something that looks like one thing hides many.
@@ -295,49 +295,50 @@ export function labels(rows = coarseRows()) {
 export { FACE, hairPath, shirtPath, lookAt, PLAYER, RADIOLOGIST, bucketHat, coatLapels, FIGURE, figureAt } from './characters.js';
 
 // ── the pattern: three rows, one thing on the left, what it is made of on the right ─────────────────────────
-export const PATTERN = { y: [10, 146, 282], h: 92, left: { x: 40, w: 230 }, right: { x: 370, w: 230 }, arrow: { x1: 290, x2: 350 }, caption: 30, slideY: 168, slideCaption: 26, captionMax: 600, freqScale: 40 };
+export const PATTERN = { y: [10, 146, 282], h: 92, left: { x: 40, w: 230 }, right: { x: 370, w: 230 }, arrow: { x1: 290, x2: 350 }, caption: 30, slideY: 168, slideCaption: 26, captionMax: 600 };
 /** How far row i moves to stand alone in the middle of the board, as its own slide. */
 export const slideShift = (i) => PATTERN.slideY - (PATTERN.y[i] + PATTERN.h / 2);
 /** Where row i's caption sits, under its pictures (it moves with the row; on a slide it drops a further slideCaption, being bigger). */
 export const captionAt = (i) => ({ x: BOARD.w / 2, y: PATTERN.y[i] + PATTERN.h + PATTERN.caption });
 /** The grand reveal: the name, big, in the middle of the board. */
 export const REVEAL = { x: BOARD.w / 2, y: 228 };
-/** The box for row i ('left' or 'right'), moved down by dy (0: where it sits among all three). Row 2's picture is square, in the middle of its box. */
+/** The box for row i ('left' or 'right'), moved down by dy (0: where it sits among all three). Row 3's picture, on the left, is square, in the middle of its box. */
 export function patternBox(i, side, dy = 0) {
   const { y, h } = PATTERN;
   const b = PATTERN[side];
-  if (i === 2 && side === 'right') return { x: b.x + (b.w - h) / 2, y: y[i] + dy, w: h, h };
+  if (i === 2 && side === 'left') return { x: b.x + (b.w - h) / 2, y: y[i] + dy, w: h, h };
   return { x: b.x, y: y[i] + dy, w: b.w, h };
 }
-/** The scanner's signal box and your picture move into the third row. */
+/** Your patient's MRI picture moves into the third row, on the left. */
 export const PIC_FRAME = { x: MRI.picture.x - 4, y: MRI.picture.y - 4, w: MRI.picture.size + 8, h: MRI.picture.size + 8 };
-export const stripToPattern = (dy = 0) => fit(STRIP_BOX, patternBox(2, 'left', dy));
-export const picToPattern = (dy = 0) => fit(PIC_FRAME, patternBox(2, 'right', dy));
+export const picToPattern = (dy = 0) => fit(PIC_FRAME, patternBox(2, 'left', dy));
+/** The picture's middle row, marked on the third row's picture (in the row's own place; the row and the picture move together). */
+export function patternRowBand() {
+  const f = picToPattern();
+  const r = rowIn(MRI.picture, FIRST_ROW);
+  return { x: f.tx + f.sx * (r.x - 2), y: f.ty + f.sy * r.y, w: f.sx * (r.w + 4), h: f.sy * r.h };
+}
 /** Row 1, right: the A note's four bars, as tall as their amounts. */
 export function patternBars() {
   const b = patternBox(0, 'right');
   const w = b.w / A_NOTE.length;
   return A_NOTE.map((a, k) => ({ x: b.x + k * w + w * 0.2, w: w * 0.6, y: b.y + b.h - (a / STEPS) * (b.h - 8), h: (a / STEPS) * (b.h - 8) }));
 }
-/** Row 2: a white beam into a small prism on the left; the colours fanning out on the right. */
 /**
- * Row 3, the middle step: the proton frequencies hiding in the MRI signal, as a few small bars over the arrow. They
- * are the amounts the Fourier transform finds in the middle row's signal (every fifth one, across the head): the very
- * amounts that make up that row of the image.
+ * Row 3, right: the proton frequencies inside the picture's marked row, one bar for each of its 48 frequencies. Each is
+ * as tall as the amount the Fourier transform finds in that row's signal, which is exactly the brightness of that
+ * row's pixel: the row of the image, taken apart into its proton frequencies.
  */
-export function patternFrequencies(rows = coarseRows()) {
+export function patternSpectrum(rows = coarseRows()) {
+  const b = patternBox(2, 'right');
   const found = unmix(chordSamples(rows[FIRST_ROW]), ROWS);
-  const { x1, x2 } = PATTERN.arrow;
-  const n = 8;
-  const w = 4;
-  const step = (x2 - x1 - 12 - w) / (n - 1);
-  const base = PATTERN.y[2] + PATTERN.h / 2 - 8;
-  return Array.from({ length: n }, (_, i) => {
-    const k = 4 + 5 * i;
-    const h = Math.max(0, found[k]) * PATTERN.freqScale;
-    return { k, x: x1 + 6 + i * step, w, y: base - h, h, color: neon(k, ROWS) };
+  const slot = b.w / ROWS;
+  return found.map((a, k) => {
+    const h = Math.max(0, a) * (b.h - 8);
+    return { k, x: b.x + k * slot + slot * 0.15, w: slot * 0.7, y: b.y + b.h - h, h, color: neon(k, ROWS) };
   });
 }
+/** Row 2: a white beam into a small prism on the left; the colours fanning out on the right. */
 export function patternLight() {
   const l = patternBox(1, 'left');
   const r = patternBox(1, 'right');
