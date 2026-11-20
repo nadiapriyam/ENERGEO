@@ -1,13 +1,13 @@
-// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 6). It comes straight after Level 2: after your scan,
+// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 7). It comes straight after Level 2: after your scan,
 // you head back to the concert hall. The lights dim; the learner aims a stage light at the chandelier, and its glass
 // prism takes the white light apart into colours. You wonder: is there a tool that can take apart a sound? Surprise:
 // your tuner. Its screen draws your A note's signal, the signal grows to fill the board, and taking it apart gives four
-// glowing bars, which the learner drags into a tuning fork and back. At the break, the technician from your scan says
-// the scanner works the same way, and Nadia's description appears, faded: "Each tiny magnet behaves differently
-// depending on which body part it's in. Collecting that data and converting it into pixel data helps us see an MRI
-// picture, with the Fourier transform." The learner taps your head's body parts and sees each one's signal; collects
-// the data; converts it into pixels, row after row; each part of the description lights up as it happens. Then the
-// pattern (violin note → pure tones, stage light → its colours, proton frequencies → image), and the name again.
+// glowing bars, which the learner drags into a tuning fork and back. At the break, the hall's lights come up and the
+// radiologist who read your scan walks over to you. Then the people step away and your head comes back up, big and
+// labelled: tap the brain, then the skull, and see each one's own signal. Nadia's description is shown one part at a
+// time, the earlier parts turning grey: each body part behaves differently; collecting that data (the head moves aside
+// and one busy signal appears); converting it into pixel data, row after row; an MRI picture, with the Fourier
+// transform. Then the pattern (violin note → pure tones, stage light → its colours, proton frequencies → image).
 // Scenes move into one another rather than swap. Every learner-facing line comes from copyPrism.js; every position,
 // bar and row from src/math (prism.js, tones.js, scanner.js).
 import './prism.css';
@@ -18,7 +18,8 @@ import {
   BOARD, css, triangle, HALL, crystalCorners, aimAngle, toCrystal, startAngle, lightPath,
   STRIP, STRIP_BOX, signal, samplesPath, TUNER, onTuner, SPECTRUM, GLYPH, barX, barHeight, barAt, stepsAt, pureTone, allBack,
   NOTE_LED, neon, ROWS, MRI, BODY_PARTS, partOf, partAt, partWave, coarseRows, chordSamples, unmix, rowOrder, FIRST_ROW,
-  rowIn, toSignal, FACE, hairPath, shirtPath, lookAt, PLAYER, TECH, bucketHat,
+  rowIn, toSignal, BRAIN, SKULL, EXPLORE, exploreHead, exploreData, labels, FACE, hairPath, shirtPath, lookAt, PLAYER, RADIOLOGIST,
+  bucketHat, coatLapels, FIGURE, BREAK, figureBox,
   PATTERN, patternBox, stripToPattern, picToPattern, patternBars, patternLight,
 } from '../math/prism.js';
 
@@ -167,17 +168,47 @@ ROWS_OF_YOU.forEach((row, j) => row.forEach((v, i) => {
   const k = partOf(v);
   if (k >= 0) partGroups[k].append(svg('rect', { x: (H.x + i * cellSize).toFixed(2), y: (H.y + j * cellSize).toFixed(2), width: (cellSize + 0.3).toFixed(2), height: (cellSize + 0.3).toFixed(2) }));
 }));
-const partLabel = svg('text', { class: 'part-label', x: MRI.label.x, y: MRI.label.y, 'text-anchor': 'middle' });
 const headBand = svg('rect', { class: 'scene band', x: H.x - 2, y: H.y, width: H.size + 4, height: (H.size / ROWS + 1).toFixed(2), rx: 1.5 });
 const map = svg('g', { class: 'mri-part body-map' },
-  svg('rect', { class: 'p-box', x: H.x - 4, y: H.y - 4, width: H.size + 8, height: H.size + 8, rx: 10 }), ...partGroups, headBand, partLabel);
+  svg('rect', { class: 'p-box', x: H.x - 4, y: H.y - 4, width: H.size + 8, height: H.size + 8, rx: 10 }), ...partGroups, headBand);
+map.style.transform = css(exploreHead());                  // big while you tap its parts; it moves aside when the data is collected
+const LABELS = labels(ROWS_OF_YOU);
+const labelTexts = [];
+const labelGroup = svg('g', { class: 'mri-part part-labels' }, ...LABELS.map((l) => {
+  const t = svg('text', { class: 'part-name', x: l.label.x, y: (l.label.y + 6).toFixed(1), 'text-anchor': 'end', fill: BODY_PARTS[l.k].color, text: COPY.bodyParts[l.k] });
+  labelTexts[l.k] = t;
+  return svg('g', {}, line({ x: l.label.x + 6, y: l.label.y }, l.anchor, { class: 'leader', stroke: BODY_PARTS[l.k].color }), svg('circle', { class: 'anchor', cx: l.anchor.x.toFixed(1), cy: l.anchor.y.toFixed(1), r: 3.5, fill: BODY_PARTS[l.k].color }), t);
+}));
 const mGlyph = svg('g', { class: 'scene glyph' }, svg('polygon', { class: 'glyph-glass', points: pts(triangle(MRI.glyph)) }));
 const mArrows = MRI.arrows.map((a) => svg('g', { class: 'mri-part p-arrow m-arrow' },
   line({ x: a.x1, y: a.y }, { x: a.x2 - 6, y: a.y }, {}), svg('polygon', { points: pts([{ x: a.x2, y: a.y }, { x: a.x2 - 12, y: a.y - 7 }, { x: a.x2 - 12, y: a.y + 7 }]) })));
 const pixelSize = P.size / ROWS;
 const cells = ROWS_OF_YOU.map((r, j) => r.map((_, i) => svg('rect', { class: 'cell', x: (P.x + i * pixelSize).toFixed(2), y: (P.y + j * pixelSize).toFixed(2), width: (pixelSize + 0.3).toFixed(2), height: (pixelSize + 0.3).toFixed(2) })));
 const image = svg('g', { class: 'mri-image' }, svg('rect', { class: 'pic-bg', x: P.x - 4, y: P.y - 4, width: P.size + 8, height: P.size + 8, rx: 8 }), ...cells.flat());
-const scan = svg('g', { class: 'scene scan' }, map, mArrows[0], mGlyph, mArrows[1], image);
+const scan = svg('g', { class: 'scene scan exploring' }, map, labelGroup, mArrows[0], mGlyph, mArrows[1], image);
+
+// the break: the hall's lights back on; you by the stage, the radiologist walking over
+function person(who, cx, look) {
+  const b = figureBox(cx);
+  const you = who === 'you';
+  const s = svg('svg', { x: b.x.toFixed(1), y: b.y.toFixed(1), width: b.w.toFixed(1), height: b.h.toFixed(1), viewBox: `0 0 ${FIGURE.view.w} ${FIGURE.view.h}`, class: `person figure-${who}` },
+    ...FIGURE.legs.map((l) => svg('rect', { class: 'legs', x: l.x, y: l.y, width: l.w, height: l.h, rx: l.r })),
+    svg('rect', { x: FIGURE.torso.x, y: FIGURE.torso.y, width: FIGURE.torso.w, height: FIGURE.torso.h, rx: FIGURE.torso.r, fill: (you ? PLAYER : RADIOLOGIST).shirt }),
+    ...(you ? [] : FIGURE.coat.map((c) => svg('rect', { class: 'coat', x: c.x, y: c.y, width: c.w, height: c.h, rx: c.r }))),
+    ...faceParts(who, look));
+  return s;
+}
+const youFigure = person('you', BREAK.you, { x: 400, y: 40 });
+const radiologistFigure = svg('g', { class: 'walker', style: `transform: translateX(${BREAK.walkFrom}px)` }, person('radiologist', BREAK.radiologist, { x: -300, y: 40 }));
+const CHB = HALL.chandelier;
+const breakScene = svg('g', { class: 'scene break-scene' },
+  svg('line', { class: 'floor', x1: 0, x2: BOARD.w, y1: HALL.floor, y2: HALL.floor }),
+  svg('line', { class: 'chain', x1: CHB.cx, y1: 0, x2: CHB.cx, y2: CHB.armY }),
+  svg('path', { class: 'arm', d: `M ${CHB.cx - CHB.arm} ${CHB.armY} Q ${CHB.cx} ${CHB.armY + 18} ${CHB.cx + CHB.arm} ${CHB.armY}` }),
+  ...[-1, -0.5, 0.5, 1].map((f) => svg('circle', { class: 'bulb lit-bulb', cx: CHB.cx + f * CHB.arm, cy: CHB.armY - 9 + (1 - Math.abs(f)) * 9, r: 6 })),
+  svg('line', { class: 'string', x1: CHB.cx, y1: CHB.armY + 9, x2: cTop.x, y2: cTop.y }),
+  svg('polygon', { class: 'glass', points: pts([cTop, cRight, cLeft]) }),
+  youFigure, radiologistFigure);
 
 // the pattern: the scanner's row is the signal and the picture, moved down; the violin and the light join them above
 const arrowOf = (i) => {
@@ -202,31 +233,38 @@ const patternRows = [
 ];
 const pattern = svg('g', { class: 'scene pattern' }, ...patternRows);
 
-board.append(bg, hall, scan, arrive, glyph, spectrum, pattern);
+board.append(bg, hall, breakScene, scan, arrive, glyph, spectrum, pattern);
 
-// ── the characters: the technician, and you (the player) ───────────────────────────────────────────────
-function face(who) {
+// ── the characters: the radiologist, and you (the player) ───────────────────────────────────────────────
+/** A character's face and shoulders, in FACE's units, looking toward `look`: you in a bucket hat; the radiologist in a white coat. */
+function faceParts(who, look) {
   const F = FACE;
   const you = who === 'you';
-  const s = svg('svg', { viewBox: `0 0 ${F.view.w} ${F.view.h}`, class: `face ${who}`, 'aria-hidden': 'true' });
-  const up = { x: F.head.cx + (you ? -30 : 30), y: -200 };   // both look up, at the board
+  const C = you ? PLAYER : RADIOLOGIST;
   const [e0, e1] = F.eyes;
   const hat = bucketHat();
-  s.append(
-    svg('path', { class: 'shirt', d: shirtPath(), fill: (you ? PLAYER : TECH).shirt }),
+  return [
+    svg('path', { class: 'shirt', d: shirtPath(), fill: C.shirt }),
+    ...(you ? [] : coatLapels().map((d) => svg('path', { class: 'coat', d }))),
     svg('rect', { class: 'skin', x: F.neck.x, y: F.neck.y, width: F.neck.w, height: F.neck.h }),
     ...F.ears.map((e) => svg('ellipse', { class: 'skin', cx: e.cx, cy: e.cy, rx: e.rx, ry: e.ry })),
     svg('ellipse', { class: 'skin', cx: F.head.cx, cy: F.head.cy, rx: F.head.rx, ry: F.head.ry }),
-    svg('path', { class: 'hair', d: hairPath(), fill: (you ? PLAYER : TECH).hair }),
+    svg('path', { class: 'hair', d: hairPath(), fill: C.hair }),
     ...(you ? [svg('path', { class: 'hat', d: hat.crown, fill: PLAYER.hat }), svg('path', { class: 'hat-band', d: hat.band, fill: PLAYER.band }), svg('path', { class: 'hat', d: hat.brim, fill: PLAYER.hat })] : []),
     svg('g', { class: 'eyes' },
       ...F.eyes.map((e) => svg('circle', { class: 'eye', cx: e.cx, cy: e.cy, r: F.eyeR })),
-      ...F.eyes.map((e) => { const p = lookAt(e, up); return svg('circle', { class: 'pupil', cx: p.x.toFixed(2), cy: p.y.toFixed(2), r: F.pupilR }); })),
+      ...F.eyes.map((e) => { const p = lookAt(e, look); return svg('circle', { class: 'pupil', cx: p.x.toFixed(2), cy: p.y.toFixed(2), r: F.pupilR }); })),
     ...F.eyes.map((e) => svg('circle', { class: 'rim', cx: e.cx, cy: e.cy, r: F.rimR })),
     svg('path', { class: 'rim', d: `M ${e0.cx + F.rimR} ${e0.cy - 2} Q ${(e0.cx + e1.cx) / 2} ${e0.cy - 6} ${e1.cx - F.rimR} ${e1.cy - 2}` }),
     svg('path', { class: 'rim', d: `M ${e0.cx - F.rimR} ${e0.cy - 2} L ${F.ears[0].cx + 2} ${F.ears[0].cy - 6} M ${e1.cx + F.rimR} ${e1.cy - 2} L ${F.ears[1].cx - 2} ${F.ears[1].cy - 6}` }),
-    ...F.brows.map((b) => svg('line', { class: 'brow', x1: b.x1, y1: b.y1, x2: b.x2, y2: b.y2, stroke: (you ? PLAYER : TECH).hair })),
-    svg('rect', { class: 'mouth', x: F.mouth.x1, y: F.mouth.y - 1.3, width: F.mouth.x2 - F.mouth.x1, height: 2.6, rx: 1.3 }));
+    ...F.brows.map((b) => svg('line', { class: 'brow', x1: b.x1, y1: b.y1, x2: b.x2, y2: b.y2, stroke: C.hair })),
+    svg('rect', { class: 'mouth', x: F.mouth.x1, y: F.mouth.y - 1.3, width: F.mouth.x2 - F.mouth.x1, height: 2.6, rx: 1.3 }),
+  ];
+}
+/** The face beside a character's bubbles: looking up, at the board. */
+function face(who) {
+  const s = svg('svg', { viewBox: `0 0 ${FACE.view.w} ${FACE.view.h}`, class: `face ${who}`, 'aria-hidden': 'true' });
+  s.append(...faceParts(who, { x: FACE.head.cx + (who === 'you' ? -30 : 30), y: -200 }));
   return s;
 }
 
@@ -261,8 +299,7 @@ const still = (amounts) => { running = null; signalPath.setAttribute('d', signal
 function pickPart(k) {                                     // one body part: lit on the head, named, and its own signal in the data box
   partGroups.forEach((g, i) => g.classList.toggle('picked', i === k));
   map.classList.add('choosing');
-  partLabel.textContent = COPY.bodyParts[k];
-  partLabel.setAttribute('fill', BODY_PARTS[k].color);
+  labelTexts.forEach((t, i) => t.classList.toggle('picked', i === k));
   let wave = partWaves.querySelector(`[data-k="${k}"]`);
   if (!wave) { wave = svg('path', { class: 'part-wave', 'data-k': k, stroke: BODY_PARTS[k].color, d: partWave(k) }); partWaves.append(wave); }
   partWaves.querySelectorAll('.part-wave').forEach((w) => w.classList.toggle('picked', w === wave));
@@ -275,18 +312,27 @@ function paintRow(j, amounts, sweep) {
   });
 }
 const showRow = (j) => { headBand.style.transform = `translateY(${(rowIn(H, j).y - H.y).toFixed(2)}px)`; };
-/** Nadia's description, faded; light(step) lights the parts that moment makes happen. */
+/** Nadia's description, one part at a time: show(step) adds the part that moment makes happen, and greys the parts before it. */
 function sentence() {
   const spans = COPY.mri.map((f) => el('span', { class: 'frag', text: f.text }));
   const p = el('p', { class: 'line mri-sentence' }, ...spans);
   prompt.append(p);
   requestAnimationFrame(() => p.classList.add('in'));
-  return (step) => COPY.mri.forEach((f, i) => { if (f.step === step) spans[i].classList.add('lit'); });
+  return (step) => COPY.mri.forEach((f, i) => {
+    if (f.step === step) spans[i].classList.add('shown');
+    else if (f.step < step) spans[i].classList.add('past');
+  });
 }
-/** Taps on your head's body parts call onTap(k); so does Enter on a part. Returns a function that stops listening. */
+/** Taps on your (big) head's body parts call onTap(k); so do taps on their names, and Enter on a part. Returns a function that stops listening. */
 function tapParts(onTap) {
   board.classList.add('tapping');
-  const pd = (e) => { const k = partAt(boardPoint(e), ROWS_OF_YOU); if (k >= 0) onTap(k); };
+  const f = exploreHead();
+  const pd = (e) => {
+    const q = boardPoint(e);
+    let k = partAt({ x: (q.x - f.tx) / f.sx, y: (q.y - f.ty) / f.sy }, ROWS_OF_YOU);
+    if (k < 0) k = LABELS.find((l) => q.x < l.label.x + 8 && q.x > l.label.x - 110 && Math.abs(q.y - l.label.y) < 16)?.k ?? -1;
+    if (k >= 0) onTap(k);
+  };
   const keys = partGroups.map((g, k) => { const f = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onTap(k); } }; g.setAttribute('tabindex', '0'); g.addEventListener('keydown', f); return f; });
   board.addEventListener('pointerdown', pd);
   followFocus(partGroups[0]);
@@ -304,11 +350,11 @@ const say = (text, cls = '') => {
   requestAnimationFrame(() => p.classList.add('in'));
   return p;
 };
-/** A character's line: a bubble beside their face (one face for lines in a row). `who` is 'tech' or 'you'; a thought gets a thought bubble. */
-function speak(text, who = 'tech', thought = false) {
+/** A character's line: a bubble beside their face (one face for lines in a row). `who` is 'radiologist' or 'you'; a thought gets a thought bubble. */
+function speak(text, who = 'radiologist', thought = false) {
   let block = prompt.lastElementChild;
   if (!block || !block.classList.contains('speaker') || block.dataset.who !== who) {
-    block = el('div', { class: `speaker ${who}`, 'data-who': who, role: 'group', 'aria-label': who === 'you' ? 'You' : 'The technician' },
+    block = el('div', { class: `speaker ${who}`, 'data-who': who, role: 'group', 'aria-label': who === 'you' ? 'You' : 'The radiologist' },
       el('div', { class: 'who' }, face(who)), el('div', { class: 'bubbles' }));
     prompt.append(block);
     requestAnimationFrame(() => block.classList.add('in'));
@@ -529,69 +575,89 @@ async function tuningFork() {                               // one bar, then all
   say(COPY.backDone, 'lead');
   await play(mine, 1.4);
   await pause(reading(COPY.backDone));
-  theTechnician();
+  theRadiologist();
 }
 
-async function theTechnician() {                            // at the break: the technician; the scanner, in Nadia's words
-  phase = 'tech';
+async function theRadiologist() {                           // at the break: the radiologist walks over
+  phase = 'break';
   await clear();
   fourBars.classList.remove('on');
   on(spectrum, false);
-  signalInner.classList.add('swapping');                    // the violin's signal fades; its box moves to become the data box
-  strip.classList.add('radio');
-  strip.style.transform = css(toSignal());
-  await wait(700);
+  strip.classList.add('hidden');                             // the violin's signal steps away; its box will come back as the data box
+  await wait(500);
   running = null;
   signalPath.setAttribute('d', '');
-  signalInner.classList.remove('swapping');
-  on(scan);
-  describe('Your head, seen from above, as its body parts in different colours. Then an empty data box, and an empty picture.');
+  jump(strip, css(exploreData()));
+  strip.classList.add('radio');
+  on(breakScene);
+  describe('The break: the hall lights are on. You stand by the stage. The radiologist who read your scan, in a white coat, walks over to you.');
   say(COPY.arrives);
-  await pause(reading(COPY.arrives));
+  await wait(60);
+  radiologistFigure.style.transform = 'none';
+  await pause(Math.max(1600, reading(COPY.arrives)));
   speak(COPY.you.tookApart, 'you');
   await pause(reading(COPY.you.tookApart));
-  speak(COPY.tech.same);
-  await pause(reading(COPY.tech.same));
-  const light = sentence();
-  await pause(600);
-  phase = 'parts';                                           // each body part behaves differently
-  say(COPY.tapParts);
-  await new Promise((resolve) => {
-    let shown = false;
-    let stop = () => {};
-    const ready = () => {
-      if (shown) return;
-      shown = true;
-      clearTimeout(timer);
-      light(0);
-      press(COPY.collect).then(() => { stop(); resolve(); });
-    };
-    const timer = setTimeout(ready, 7000);
-    const seen = new Set();
-    stop = tapParts((k) => {
-      pickPart(k);
-      seen.add(k);
-      tapped = seen.size;
-      describe(`Your ${COPY.bodyParts[k]} is lit. Its own signal shows in the data box.`);
-      if (seen.size >= 2) ready();
-    });
+  speak(COPY.radiologist.same);
+  await pause(reading(COPY.radiologist.same) + 600);
+  theBrain();
+}
+
+async function theBrain() {                                 // the people step away; your head comes back up, big and labelled
+  phase = 'parts';
+  await clear();
+  on(breakScene, false);
+  await wait(600);
+  on(scan);
+  strip.classList.remove('hidden');
+  describe('Your head, big, as its body parts in different colours, each labelled: skin, skull, fluid, outer brain, inner brain. To the right, an empty data box.');
+  await wait(700);
+  const hint = (ks) => partGroups.forEach((g, i) => { g.classList.toggle('hint', ks.includes(i)); labelTexts[i].classList.toggle('hint', ks.includes(i)); });
+  let want = BRAIN;
+  let wanted = null;
+  const seen = new Set();
+  const stop = tapParts((k) => {
+    pickPart(k);
+    seen.add(k);
+    tapped = seen.size;
+    describe(`Your ${COPY.bodyParts[k]} is lit. Its own signal shows in the data box.`);
+    if (want.includes(k) && wanted) wanted();
   });
-  phase = 'collect';                                         // collecting that data
+  say(COPY.tapBrain);                                       // the brain first …
+  hint(BRAIN);
+  await new Promise((r) => { wanted = r; });
+  await pause(900);
+  want = [SKULL];                                           // … then the skull
+  say(COPY.tapSkull);
+  hint([SKULL]);
+  await new Promise((r) => { wanted = r; });
+  wanted = null;
+  hint([]);
+  await pause(1100);
+  await clear();
+  const show = sentence();                                   // Nadia's description, one part at a time
+  show(0);
+  await pause(reading(COPY.mri[0].text));
+  await press(COPY.collect);
+  stop();
+  phase = 'collect';                                         // collecting that data: the head moves aside, the picture's place appears
   map.classList.remove('choosing');
-  partLabel.textContent = '';
+  scan.classList.remove('exploring');
+  map.style.transform = 'none';
+  strip.style.transform = css(toSignal());
   partWaves.classList.add('gone');
+  await wait(900);
   mArrows[0].classList.add('lit');
   jump(headBand, `translateY(${(rowIn(H, FIRST_ROW).y - H.y).toFixed(2)}px)`);
   on(headBand);
   signalPath.setAttribute('d', samplesPath(chordSamples(ROWS_OF_YOU[FIRST_ROW]), STRIP));
-  light(1);
-  describe('All the body parts at once: one busy signal in the data box, from the marked row of your head.');
-  await wait(1000);
+  show(1);
+  describe('All the body parts at once: one busy signal in the data box, from the marked row of your head. To the right, an empty picture.');
+  await wait(900);
   partWaves.replaceChildren();
   partWaves.classList.remove('gone');
   phase = 'convert';
   await press(COPY.convert);                                 // converting it into pixel data, with the Fourier transform
-  light(2);
+  show(2);
   on(mGlyph);
   mArrows[1].classList.add('lit');
   headBand.style.transitionDuration = REDUCED ? '0ms' : '40ms';
@@ -608,21 +674,21 @@ async function theTechnician() {                            // at the break: the
   signalPath.setAttribute('d', samplesPath(chordSamples(ROWS_OF_YOU[FIRST_ROW]), STRIP));
   on(mGlyph, false);
   mArrows.forEach((a) => a.classList.remove('lit'));
-  light(3);
+  show(3);
   describe('Row by row, the pixels have made an MRI picture of your head.');
-  await pause(2200);
+  await pause(reading(COPY.mri[3].text) + 1200);
   thePattern();
 }
 
 async function thePattern() {                               // do you notice a pattern?
   phase = 'pattern';
   await clear();
-  speak(COPY.tech.pattern.question);
-  await ask(COPY.tech.pattern.choices);
-  speak(COPY.tech.pattern.after);
+  speak(COPY.radiologist.pattern.question);
+  await ask(COPY.radiologist.pattern.choices);
+  speak(COPY.radiologist.pattern.after);
   strip.style.transform = css(stripToPattern());             // the MRI signal and the image move down into the third row
   image.style.transform = css(picToPattern());
-  scan.classList.add('to-pattern');                          // the body parts and the arrows give way
+  scan.classList.add('to-pattern');                          // the head and the arrows give way
   on(pattern);
   await wait(1200);
   describe('Three rows. A violin note’s wave, then its four bars. A white beam into a prism, then a fan of colours. The scanner’s signal, then the picture of your head.');
@@ -651,7 +717,7 @@ async function naming() {                                   // only now: its nam
 // read-only view for automated checks (no learner-facing effect)
 window.__prism = {
   get phase() { return phase; }, get mine() { return [...mine]; }, get hit() { return hitNow; }, get tapped() { return tapped; },
-  partPoint: (k) => { const j = ROWS_OF_YOU.findIndex((r) => r.some((v) => partOf(v) === k)); const i = ROWS_OF_YOU[j].findIndex((v) => partOf(v) === k); return { x: H.x + (i + 0.5) * cellSize, y: H.y + (j + 0.5) * cellSize }; }, get painted() { return painted; },
+  partPoint: (k) => { const j = ROWS_OF_YOU.findIndex((r) => r.some((v) => partOf(v) === k)); const i = ROWS_OF_YOU[j].findIndex((v) => partOf(v) === k); const f = exploreHead(); return { x: f.tx + f.sx * (H.x + (i + 0.5) * cellSize), y: f.ty + f.sy * (H.y + (j + 0.5) * cellSize) }; }, get painted() { return painted; },
   point: (x, y) => { const m = board.getScreenCTM(); return { x: m.a * x + m.c * y + m.e, y: m.b * x + m.d * y + m.f }; },
 };
 

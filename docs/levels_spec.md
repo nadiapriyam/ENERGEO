@@ -668,7 +668,7 @@ Revision 4 and keep its notes. New:
 - **The edits to Nadia's sentence** are for grammar only: "frequency" became "the frequencies", "your magnets
   flipping" became "your flipping magnets", and "that" became "them".
 
-### Revision 6 (2026-11-20), which governs Level 3. Nadia, verbatim (two messages):
+### Revision 6 (2026-11-20), superseded by Revision 7 below. Nadia, verbatim (two messages):
 
 > no flipping the magents inside your body. and each magnet behaves differently based on what body part its in. collecting that data and converting it to pizel data helps us see a mri picture with fourier transform
 
@@ -740,7 +740,7 @@ the magnet interactive, and build a new one on her wording.
 36. Joseph Fourier came up with it about 200 years ago.
 37. Here it is: the mathematical tool that lets us start seeing what hides inside.
 
-Nothing comes after line 37.
+Nothing came after line 37.
 
 #### What the new lines claim
 
@@ -771,3 +771,97 @@ Revision 5 and keep its notes. New:
     One signal per row is the simplification noted in Revision 3.
 - **Line 34, "Proton frequencies → image"** is still Nadia's own pattern line, from Revision 4. "Frequency" is no
   longer introduced before it, since the scanner part now uses Nadia's newer wording.
+
+### Revision 7 (2026-11-20), which governs Level 3. Nadia, verbatim:
+
+> make that last part more user friendly, body parts is vague the user doesn:t know to point at the brain part specifically, also at break make sure to paint that scene before putting the brain back up. also put the technician as radiologist. and put him at the start of the scene when you say the radiologist comes over during the break. also for the each tuny magnet behaves paragraph should be more user friendly, right now they bold each sentence but maybe introduce one sentnece at a time and then the preceding sentence becomes gray and make sure to take the people and their textboxes away when going over that paragraph
+
+#### What changes
+
+- **The technician is now the radiologist who read your scan.** Same face, copper hair, blue shirt, now with a white
+  coat. He says: "The MRI scanner works the same way."
+- **The break is a scene of its own.**
+  - The hall's lights come back on, and you stand by the stage.
+  - As the line "At the break, the radiologist who read your scan comes over." appears, the radiologist walks in from
+    the right and stops beside you.
+  - You say "My tuner just took my A note apart!" and he answers.
+  - Then the people and their speech bubbles go, and only then does your head come back up.
+- **Your head, big and labelled, with clear instructions.**
+  - The head fills the board, with each part named beside it on a dotted line: skin, skull, fluid, outer brain,
+    inner brain.
+  - "Tap the brain." The brain pulses until you tap it. Then "Now tap the skull.", which pulses in turn.
+  - Each tap lights that part and draws its own signal in the data box. The brain's is strong; the skull's is much
+    weaker.
+  - You can keep tapping other parts until you collect the data. Tapping a name works too.
+- **Nadia's paragraph, one part at a time.**
+  - With the people gone, the paragraph comes in piece by piece, each piece as it happens. When the next piece
+    appears, the earlier ones turn grey.
+  - "Each tiny magnet behaves differently depending on which body part it's in." comes after the two taps.
+  - [Collect the data] → "Collecting that data": the head moves aside and one busy signal fills the data box.
+  - [Convert it to pixels] → "and converting it into pixel data": row after row, the pixels fill in.
+  - When the picture is done: "helps us see an MRI picture, with the Fourier transform."
+- **Then, as before,** the radiologist asks "Do you notice a pattern?"
+
+#### Level 3 learner copy (Revision 7), in order (drafted by Claude at Nadia's request, for her review)
+
+1. After your scan, you head back to the concert hall.
+2. The lights dim. You notice a stage light shining.
+3. Drag to aim it at the chandelier.
+4. Drag across the picture to swing the light. (only after 8 seconds)
+5. Where did the colors come from? [The glass] [The white light]
+6. From the white light. The glass on the chandelier is a prism: it takes light apart into its colors.
+7. You (thinking): If a prism is a tool that can take apart light, is there a tool that can take apart a sound?
+8. Surprise: it's your tuner.
+9. [Play your A note]
+10. A (the letter on the tuner)
+11. The tuner draws your note's signal, its shape over time, and names it: A.
+12. Four notes hide in this signal. Can you see them? [Yes] [Not really]
+13. Neither can anyone, just by looking.
+14. [Take it apart]
+15. Your A note, taken apart into four pure tones.
+16. A, high A, E, higher A (the labels under the bars)
+17. Drag the bars. Can you make a single pure tone, like a tuning fork?
+18. Drag all the bars but one down to 0. (only after 9 seconds)
+19. One bar, one smooth wave: a tuning fork.
+20. Now bring the others back.
+21. Every bump in the signal comes from a bar.
+22. At the break, the radiologist who read your scan comes over. (the radiologist walks over to you on the board as this appears)
+23. You: My tuner just took my A note apart!
+24. Radiologist: The MRI scanner works the same way.
+25. Tap the brain.
+26. skin, skull, fluid, outer brain, inner brain (the labels beside the head)
+27. Now tap the skull.
+28. Each tiny magnet behaves differently depending on which body part it's in.
+29. [Collect the data]
+30. Collecting that data
+31. [Convert it to pixels]
+32. and converting it into pixel data
+33. helps us see an MRI picture, with the Fourier transform. (lines 28, 30, 32 and 33 are one paragraph, shown one part at a time, the earlier parts turning grey; the people and their bubbles are gone while it is shown)
+34. Radiologist: Do you notice a pattern? [Yes] [Not yet]
+35. Radiologist: Let me help you out.
+36. Violin note → pure tones
+37. Stage light → its full color spectrum
+38. Proton frequencies → image
+39. All three come down to the same geometric math: the Fourier transform.
+40. Joseph Fourier came up with it about 200 years ago.
+41. Here it is: the mathematical tool that lets us start seeing what hides inside.
+
+Nothing comes after line 41.
+
+#### What the new lines claim
+
+The numbers are computed in `src/math/prism.js` and checked by `test/prism.test.js`. The paragraph's notes are
+Revision 6's, and the rest is as in Revision 5. New:
+
+- **Line 22, the radiologist.** A radiologist is the doctor who reads MRI pictures, so "the radiologist who read your
+  scan" is accurate. The scanner is usually run by a radiographer (an MRI technologist).
+- **Lines 25–27, the labels.**
+  - The labels name the regions of Level 2's head illustration:
+    - the bright outer ring is the skin;
+    - the dark ring, with its thin inner layer, is the skull;
+    - the dark spaces are fluid;
+    - the grey rim is the outer brain (gray matter, the brain's outer layer);
+    - the bright inside is the inner brain (white matter).
+  - Each label points at a pixel of its own part. The illustration is not a real scan.
+- **Why the brain, then the skull.** They make the difference easy to see. On the board, the skull's signal is less than
+  a third of the brain's, as in a real MRI, where bone gives very little signal.

@@ -114,12 +114,12 @@ and one accent. `docs/levels_spec.md` governs. `try/level-2/` and `notebook/` fo
     sound?" Surprise: your tuner.
   - The tuner draws the A note's signal and names it; the signal grows to fill the board, and taking it apart gives
     four glowing bars, four pure tones. The learner drags the bars into a tuning fork and back.
-  - The technician from your scan (same style, copper hair, blue shirt) says the scanner works the same way, and
-    Nadia's words appear faded: "Each tiny magnet behaves differently depending on which body part it's in.
-    Collecting that data and converting it into pixel data helps us see an MRI picture, with the Fourier transform."
-    They light up part by part on a board of three parts (your head as its body parts → the data → the picture): tap
-    the body parts (each lights, is named, and shows its own signal, strong or weak, quick or slow to fade); Collect
-    the data (one busy signal); Convert it to pixels (row after row, 48 × 48, exact).
+  - At the break the hall's lights come up and the radiologist who read your scan (same style, copper hair, blue shirt,
+    white coat) walks over: the MRI scanner works the same way. Then the people step away and your head comes back up,
+    big and labelled (skin, skull, fluid, outer brain, inner brain): "Tap the brain", "Now tap the skull", each
+    showing its own signal. Nadia's paragraph comes in one part at a time, the earlier parts turning grey: each tiny
+    magnet behaves differently depending on its body part; Collect the data (the head moves aside, one busy signal);
+    Convert it to pixels (row after row, 48 × 48, exact); an MRI picture, with the Fourier transform.
   - "Do you notice a pattern?" The data and the picture slide into a third row: violin note → pure tones;
     stage light → its full color spectrum; proton frequencies → image.
   - Only then is the tool named: "All three come down to the same geometric math: the Fourier transform."

@@ -1,4 +1,4 @@
-// Level 3, "A prism for sound", at try/ (docs/levels_spec.md, Level 3 Revision 6). Guards:
+// Level 3, "A prism for sound", at try/ (docs/levels_spec.md, Level 3 Revision 7). Guards:
 // - the hall: the stage light misses at first, is caught when aimed anywhere at the chandelier, goes into the prism's
 //   near face, and the colours leave in a real prism's order (red bent least, violet most);
 // - the tuner's little signal is the big signal, laid exactly on its screen;
@@ -6,8 +6,9 @@
 // - the scanner: every pixel of the head is exactly one body part; each part's signal is as strong as the part is
 //   bright, and fades at its own pace; converting each row's data (an exact Fourier transform) gives back every row
 //   of the 48 × 48 picture; the three parts stand left to right; the data and the picture move into the pattern;
-// - the faces are well formed (yours with its bucket hat, dark hair and yellow shirt; the technician's copper and
-//   blue), and the eyes never leave their sockets;
+// - the break: you and the radiologist stand on the floor, apart and clear of the prism, and the radiologist walks in;
+//   the faces are well formed (yours with its bucket hat; the radiologist's with a white coat), eyes in their sockets;
+// - the big labelled head: each label points at its own part, level with it;
 // - the copy is verbatim and in order, with Nadia's sentences, each part of her scanner wording lit by its step, no
 //   magnets drawn and no music in the scanner part;
 // - the frame: sound after a tap, reduced motion, Level 3 after Level 2, and the app's own Fourier math untouched.
@@ -19,7 +20,7 @@ import {
   BOARD, fit, triangle, HALL, RAINBOW, BEND, crystalCorners, nearFace, aimAngle, toCrystal, startAngle, edge, lightPath,
   STRIP, STRIP_BOX, signal, samplesPath, TUNER, onTuner, SPECTRUM, GLYPH, barX, barHeight, barAt, stepsAt, pureTone, allBack,
   NOTE_LED, neon, ROWS, MRI, BODY_PARTS, partOf, strength, partAt, partWave, coarseRows, chordSamples, unmix, rowOrder, FIRST_ROW,
-  rowIn, toSignal, FACE, hairPath, shirtPath, lookAt, PLAYER, TECH, bucketHat, beamHeightAt,
+  rowIn, toSignal, BRAIN, SKULL, EXPLORE, exploreHead, exploreData, labels, coatLapels, FIGURE, BREAK, figureBox, FACE, hairPath, shirtPath, lookAt, PLAYER, RADIOLOGIST, bucketHat, beamHeightAt,
   PATTERN, patternBox, PIC_FRAME, stripToPattern, picToPattern, patternBars, patternLight,
 } from '../src/math/prism.js';
 import { A_NOTE, STEPS, part, wave } from '../src/math/tones.js';
@@ -31,8 +32,8 @@ import { LEVELS } from '../src/levels/copyLevels.js';
 const read = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
 const spec = read('docs/levels_spec.md');
 const level3 = spec.slice(spec.indexOf('## Level 3, "A prism for sound"'));
-const rev6 = level3.slice(level3.indexOf('### Revision 6'));
-const copyList = rev6.slice(rev6.indexOf('#### Level 3 learner copy (Revision 6)'), rev6.indexOf('#### What the new lines claim'));
+const rev7 = level3.slice(level3.indexOf('### Revision 7'));
+const copyList = rev7.slice(rev7.indexOf('#### Level 3 learner copy (Revision 7)'), rev7.indexOf('#### What the new lines claim'));
 const main = read('src/levels/prism.js');
 const css = read('src/levels/prism.css');
 const inside = (r, x, y, e = 1e-6) => x >= r.x - e && x <= r.x + r.w + e && y >= r.y - e && y <= r.y + r.h + e;
@@ -144,6 +145,23 @@ test('4. the scanner: every pixel of your head is exactly one body part, and eac
   assert.ok(label.y > head.y + head.size + 10 && label.y < BOARD.h && same(label.x, head.x + head.size / 2), 'the part\'s name, under the head');
   for (const b of [{ x: head.x, y: head.y, w: head.size, h: head.size }, data, { x: picture.x, y: picture.y, w: picture.size, h: picture.size }]) assert.ok(inside({ x: 0, y: 0, w: BOARD.w, h: BOARD.h }, b.x, b.y) && inside({ x: 0, y: 0, w: BOARD.w, h: BOARD.h }, b.x + b.w, b.y + b.h));
   assert.ok(fits(toSignal(), STRIP_BOX, data), "the violin's signal box becomes the data box");
+  const E = EXPLORE;
+  const sq = (b) => ({ x: b.x, y: b.y, w: b.size, h: b.size });
+  assert.ok(fits(exploreHead(), sq(MRI.head), sq(E.head)) && same(exploreHead().sx, exploreHead().sy) && exploreHead().sx > 1.4, 'while you tap, the same head, bigger');
+  assert.ok(fits(exploreData(), STRIP_BOX, E.data) && E.head.x + E.head.size < E.data.x && E.data.x + E.data.w < BOARD.w && E.head.y + E.head.size < BOARD.h, 'the data box to its right, all on the board');
+  const L = labels(rows);
+  assert.equal(L.length, BODY_PARTS.length);
+  const ec = E.head.size / ROWS;
+  L.forEach((l) => {
+    assert.equal(partOf(rows[l.j][l.i]), l.k, `the ${COPY.bodyParts[l.k]} label points at the ${COPY.bodyParts[l.k]}`);
+    assert.ok(same(l.anchor.x, E.head.x + (l.i + 0.5) * ec) && same(l.anchor.y, E.head.y + (l.j + 0.5) * ec), 'at that pixel, on the big head');
+    assert.ok(same(l.label.y, l.anchor.y) && l.label.x < E.head.x && l.label.x - 110 > 0, 'its name to the left, level with it: no lines cross');
+  });
+  const ysorted = L.map((l) => l.label.y).sort((a, b) => a - b);
+  for (let n = 1; n < ysorted.length; n++) assert.ok(ysorted[n] - ysorted[n - 1] >= 30, 'names apart');
+  assert.deepEqual(BRAIN.map((k) => COPY.bodyParts[k]), ['outer brain', 'inner brain']);
+  assert.equal(COPY.bodyParts[SKULL], 'skull');
+  assert.ok(strength(SKULL) < 0.35 * Math.min(...BRAIN.map(strength)), 'brain then skull: the skull\'s signal is less than a third of the brain\'s');
 });
 
 test('5. converting each row\'s data gives back every row of the picture exactly; rows are converted from the middle out; the data and the picture move into the pattern', () => {
@@ -183,7 +201,7 @@ test('5. converting each row\'s data gives back every row of the picture exactly
   pl.rays.forEach((r, i) => { assert.equal(r.color, RAINBOW[i]); assert.ok(inside(patternBox(1, 'right'), r.to.x, r.to.y)); });
 });
 
-test("6. the faces: yours (bucket hat, dark hair, yellow shirt) and the technician's (copper hair, blue shirt) are well formed, and the pupils stay inside the eyes", () => {
+test("6. the break and the faces: you and the radiologist stand apart on the floor, clear of the prism; yours (bucket hat, dark hair, yellow shirt) and the radiologist's (copper hair, blue shirt, white coat) are well formed", () => {
   const F = FACE;
   const H = F.head;
   const inHead = (x, y) => ((x - H.cx) / H.rx) ** 2 + ((y - H.cy) / H.ry) ** 2 <= 1;
@@ -202,7 +220,7 @@ test("6. the faces: yours (bucket hat, dark hair, yellow shirt) and the technici
   assert.ok(F.mouth.y > F.eyes[0].cy + F.rimR && inHead(F.mouth.x1, F.mouth.y) && inHead(F.mouth.x2, F.mouth.y), 'mouth below them');
   assert.ok(F.ears.every((e, i) => (i ? e.cx > H.cx + H.rx - e.rx : e.cx < H.cx - H.rx + e.rx)), 'an ear on each side');
   assert.ok(/^#ff[cd]/i.test(PLAYER.shirt) && PLAYER.hair === '#2a2a2a', "you: dark hair and a yellow shirt, as in Nadia's picture");
-  assert.ok(TECH.hair === '#b5602c' && TECH.shirt === '#4f8fe8', 'the technician: copper hair and a blue shirt (swapped in Revision 5)');
+  assert.ok(RADIOLOGIST.hair === '#b5602c' && RADIOLOGIST.shirt === '#4f8fe8', 'the radiologist: copper hair and a blue shirt (swapped in Revision 5)');
   assert.match(hairPath(), /^M [\d.]+ [\d.]+ C .* Z$/);
   assert.match(shirtPath(), / Z$/);
   assert.ok(F.neck.y < H.cy + H.ry && F.neck.y + F.neck.h > F.view.h - 28, 'a neck from head to shirt');
@@ -211,62 +229,75 @@ test("6. the faces: yours (bucket hat, dark hair, yellow shirt) and the technici
   assert.ok(curveTop(hat.base, hat.top) < curveTop(H.cy - 4, H.cy - H.ry - 20), 'the crown covers the hair');
   assert.ok(hat.wide > H.rx, 'the brim reaches past the head');
   assert.ok(hat.base + 10 <= Math.min(...F.brows.map((b) => Math.min(b.y1, b.y2))), 'the brim stays above the brows');
-  assert.ok(PLAYER.hair !== TECH.hair && PLAYER.shirt !== TECH.shirt, 'two people, told apart');
-  assert.match(main, /face\(who\)/, 'one face for both');
+  assert.ok(PLAYER.hair !== RADIOLOGIST.hair && PLAYER.shirt !== RADIOLOGIST.shirt, 'two people, told apart');
+  assert.match(main, /faceParts\(who, look\)/, 'one face for both');
+  for (const d of coatLapels()) assert.match(d, /^M [\d.]+ [\d.]+ C .* Z$/, 'the radiologist\'s coat lapels');
+  const you = figureBox(BREAK.you);
+  const rad = figureBox(BREAK.radiologist);
+  for (const b of [you, rad]) assert.ok(same(b.y + b.h, HALL.floor) && b.x > 0 && b.x + b.w < BOARD.w && same(b.w / b.h, FIGURE.view.w / FIGURE.view.h), 'standing on the floor, on the board');
+  assert.ok(you.x + you.w < rad.x, 'you on the left, the radiologist on the right');
+  const [, cr] = crystalCorners();
+  const headLeft = rad.x + (rad.w * (FACE.head.cx - FACE.head.rx - 8)) / FIGURE.view.w;
+  assert.ok(headLeft > cr.x, "the radiologist's head is clear of the hanging prism");
+  assert.ok(BREAK.walkFrom > 0 && rad.x + BREAK.walkFrom > BOARD.w - 40, 'the radiologist walks in from the right');
+  for (const l of FIGURE.legs) assert.ok(same(l.y + l.h, FIGURE.view.h) && l.y < FIGURE.torso.y + FIGURE.torso.h, 'legs from the body to the floor');
+  assert.ok(FIGURE.torso.y < FACE.view.h && FIGURE.coat.every((c) => c.y + c.h > FIGURE.torso.y + FIGURE.torso.h), 'the body under the face; the coat longer than the shirt');
 });
 
-test('7. the copy is verbatim from the Revision 6 list and in order: the hall as Nadia told it, you and the technician, her scanner wording lit part by part, her pattern', () => {
-  const T = (s) => `Technician: ${s}`;
-  const words = COPY.mri.map((f) => f.text).join('');
+test('7. the copy is verbatim from the Revision 7 list and in order: the radiologist at the break, the people gone before the paragraph, the brain then the skull, the paragraph one part at a time', () => {
+  const R = (s) => `Radiologist: ${s}`;
   const ordered = [COPY.opening, COPY.dim, COPY.aim, COPY.aimHint, COPY.where.question, ...COPY.where.choices, COPY.where.after,
     `You (thinking): ${COPY.you.think}`, COPY.surprise, `[${COPY.play}]`, `${COPY.tunerLetter} (the letter`, COPY.drawsSignal, COPY.see.question,
     ...COPY.see.choices, COPY.see.after, `[${COPY.apart}]`, COPY.split, COPY.notes.join(', '), COPY.pure, COPY.pureHint, COPY.pureDone, COPY.back,
-    COPY.backDone, COPY.arrives, `You: ${COPY.you.tookApart}`, T(COPY.tech.same), `25. ${words}`, COPY.tapParts, COPY.bodyParts.join(', '),
-    `[${COPY.collect}]`, `[${COPY.convert}]`, T(COPY.tech.pattern.question), ...COPY.tech.pattern.choices, T(COPY.tech.pattern.after), ...COPY.pattern,
-    ...COPY.name, COPY.final];
+    COPY.backDone, COPY.arrives, `You: ${COPY.you.tookApart}`, R(COPY.radiologist.same), COPY.tapBrain, COPY.bodyParts.join(', '), COPY.tapSkull,
+    `28. ${COPY.mri[0].text.trim()}`, `[${COPY.collect}]`, `30. ${COPY.mri[1].text.trim()}`, `[${COPY.convert}]`, `32. ${COPY.mri[2].text.trim()}`,
+    `33. ${COPY.mri[3].text.trim()}`, R(COPY.radiologist.pattern.question), ...COPY.radiologist.pattern.choices, R(COPY.radiologist.pattern.after),
+    ...COPY.pattern, ...COPY.name, COPY.final];
   let at = 0;
   for (const l of ordered) {
     const i = copyList.indexOf(l, at);
-    assert.ok(i >= 0, `not in the Revision 6 list, in order: ${l}`);
+    assert.ok(i >= 0, `not in the Revision 7 list, in order: ${l}`);
     at = i + 1;
   }
-  assert.ok(copyList.includes(`37. ${COPY.final}\n\nNothing comes after line 37.`) && !/^38\. /m.test(copyList), 'the final line is last');
-  assert.ok(rev6.includes('each magnet behaves differently based on what body part its in. collecting that data and converting it to pizel data helps us see a mri picture with fourier transform') && rev6.includes('i want you to scrap that whole part with the magnets'), "Nadia's Revision 6 messages, verbatim");
-  assert.equal(words, "Each tiny magnet behaves differently depending on which body part it's in. Collecting that data and converting it into pixel data helps us see an MRI picture, with the Fourier transform.", "Nadia's wording");
-  assert.deepEqual(COPY.mri.map((f) => f.step), [0, 1, 2, 3], 'lit in reading order, one step each');
-  for (const [step, said] of [[1, COPY.collect], [2, COPY.convert]]) assert.match(copyList, new RegExp(`"${COPY.mri[step].text.trim()}" with \\[${said}\\]`), 'the spec says which button lights which part');
+  assert.ok(copyList.includes(`41. ${COPY.final}\n\nNothing comes after line 41.`) && !/^42\. /m.test(copyList), 'the final line is last');
+  assert.ok(rev7.includes('put the technician as radiologist') && rev7.includes('introduce one sentnece at a time and then the preceding sentence becomes gray'), "Nadia's Revision 7 message, verbatim");
+  assert.equal(COPY.mri.map((f) => f.text).join(''), "Each tiny magnet behaves differently depending on which body part it's in. Collecting that data and converting it into pixel data helps us see an MRI picture, with the Fourier transform.", "Nadia's wording");
+  assert.deepEqual(COPY.mri.map((f) => f.step), [0, 1, 2, 3], 'shown in reading order, one part at a time');
+  assert.match(COPY.arrives, /radiologist/);
+  assert.ok(!/technician/i.test(JSON.stringify(COPY)), 'a radiologist now, not a technician');
+  assert.ok(/brain/.test(COPY.tapBrain) && /skull/.test(COPY.tapSkull), 'it says exactly where to tap');
   assert.equal(COPY.you.think, 'If a prism is a tool that can take apart light, is there a tool that can take apart a sound?', "the thought is Nadia's sentence");
-  assert.match(COPY.aim, /chandelier/, 'aim at the chandelier');
-  assert.ok(!/prism/i.test(COPY.dim + COPY.aim + COPY.aimHint + COPY.where.question + COPY.where.choices.join(' ')), 'the prism is not named before the colours appear');
   assert.ok(/pure tones/.test(COPY.pattern[0]) && /full color spectrum/.test(COPY.pattern[1]) && /^Proton frequencies → image$/.test(COPY.pattern[2]), "Nadia's pattern");
-  assert.match(COPY.name[0], /geometric math/);
-  const scannerPart = JSON.stringify(COPY.tech) + words + COPY.tapParts + COPY.collect + COPY.convert;
+  const scannerPart = JSON.stringify(COPY.radiologist) + COPY.mri.map((f) => f.text).join('') + COPY.tapBrain + COPY.tapSkull + COPY.collect + COPY.convert;
   assert.ok(!/note|tone|music|sound|hear|flip|spin|most of you|paint/i.test(scannerPart), 'the scanner part: no flipping or spinning, no music');
-  assert.ok(!/magnet|spin|flip|MAGNETS/.test(main.slice(main.indexOf('// the scanner:'), main.indexOf('// the pattern:'))), 'no magnets drawn');
+  assert.ok(!/MAGNETS|spinning\(/.test(main), 'no magnets drawn');
   const all = JSON.stringify(COPY);
   assert.ok(!/squiggle|glasses|very helpful|terrible|nobody's watching|could take a while/i.test(all), 'no glasses, no squiggle, no sarcasm');
-  assert.match(COPY.opening, /After your scan/, 'the story picks up from Level 2');
-  const texts = ordered.map((l) => l.replace(/^(Technician|You|You \(thinking\)): /, '').replace(/^25\. /, '').replace(/^\[|\]$/g, ''));
+  const texts = ordered.map((l) => l.replace(/^(Radiologist|You|You \(thinking\)): /, '').replace(/^\d+\. /, '').replace(/^\[|\]$/g, ''));
   for (const l of texts) assert.ok(l.split(/(?<=[.?!…])\s+(?=[A-Z])/).length <= 2, `at most two sentences: ${l}`);
-  const lines = ordered.filter((l) => !/^\[/.test(l));
-  assert.ok(lines.findIndex((l) => /Fourier/.test(l)) === lines.indexOf(`25. ${words}`) && lines.at(-3) === COPY.name[0], "Fourier's name in Nadia's scanner wording, and again at the end");
   assert.ok(!/coefficient|sine|cosine|energy|equation|integral|gradient|larmor/i.test(all), "no jargon beyond Nadia's own words");
   assert.ok(level3.includes('Here is the mathematical tool that lets us start seeing it.'), "Nadia's goal sentence");
   for (const s of [LEVELS.level3, LEVELS.next3]) assert.ok(spec.includes(s));
   const calls = ['COPY.opening', 'COPY.dim', 'COPY.aim', 'COPY.aimHint', 'COPY.where.question', 'COPY.where.after', 'COPY.you.think', 'COPY.surprise',
     'COPY.play', 'COPY.drawsSignal', 'COPY.see.question', 'COPY.see.after', 'COPY.apart', 'COPY.split', 'COPY.pure', 'COPY.pureHint', 'COPY.pureDone',
-    'COPY.back', 'COPY.backDone', 'COPY.arrives', 'COPY.you.tookApart', 'COPY.tech.same', 'COPY.mri', 'COPY.tapParts', 'COPY.collect', 'COPY.convert',
-    'COPY.tech.pattern.question', 'COPY.tech.pattern.after', 'COPY.pattern', 'COPY.name[0]', 'COPY.name[1]', 'COPY.final'];
+    'COPY.back', 'COPY.backDone', 'COPY.arrives', 'COPY.you.tookApart', 'COPY.radiologist.same', 'COPY.tapBrain', 'COPY.tapSkull', 'COPY.collect',
+    'COPY.convert', 'COPY.radiologist.pattern.question', 'COPY.radiologist.pattern.after', 'COPY.pattern', 'COPY.name[0]', 'COPY.name[1]', 'COPY.final'];
   const story = main.indexOf('// ── the story');
   const at1 = (c) => { const i = main.slice(story).search(new RegExp(`${c.replace(/[.[\]]/g, '\\$&')}(?![\\w.])`)); return i < 0 ? -1 : story + i; };
-  const pos = calls.map((c) => (c === 'COPY.mri' ? story + main.slice(story).indexOf('sentence()') : at1(c)));
+  const pos = calls.map(at1);
   assert.ok(pos.every((i) => i >= story), JSON.stringify(calls.filter((c, k) => pos[k] < story)));
   assert.deepEqual([...pos].sort((a, b) => a - b), pos, 'the story shows the copy in order');
-  for (const step of [0, 1, 2, 3]) assert.match(main, new RegExp(`light\\(${step}\\)`), `step ${step} lights its part`);
-  assert.ok(main.indexOf('light(0)') < main.indexOf('press(COPY.collect)') && main.indexOf('light(1)') > main.indexOf('press(COPY.collect)') && main.indexOf('light(2)') > main.indexOf('press(COPY.convert)') && main.indexOf('light(3)') > main.indexOf('for (const j of rowOrder(ROWS))'), 'each part lights as it happens');
-  for (const c of ['same', 'pattern.question', 'pattern.after']) assert.match(main, new RegExp(`speak\\(COPY\\.tech\\.${c.replace('.', '\\.')}\\)`), `the technician says ${c}`);
+  const brain = main.slice(main.indexOf('async function theBrain()'), main.indexOf('async function thePattern()'));
+  const idx = (t) => brain.indexOf(t);
+  assert.ok(idx('await clear();') < idx('on(scan);'), 'the people and their bubbles go before your head comes back up');
+  assert.ok(idx('say(COPY.tapBrain)') < idx('say(COPY.tapSkull)') && idx('say(COPY.tapSkull)') < brain.lastIndexOf('await clear();', idx('sentence()')) && brain.lastIndexOf('await clear();', idx('sentence()')) < idx('sentence()'), 'brain, then skull, then the words clear for the paragraph');
+  assert.ok(idx('show(0)') < idx('press(COPY.collect)') && idx('press(COPY.collect)') < idx('show(1)') && idx('show(1)') < idx('press(COPY.convert)') && idx('press(COPY.convert)') < idx('show(2)') && idx('show(2)') < idx('for (const j of rowOrder(ROWS))') && idx('for (const j of rowOrder(ROWS))') < idx('show(3)'), 'one part at a time, as each happens');
+  assert.match(main, /else if \(f\.step < step\) spans\[i\]\.classList\.add\('past'\)/, 'the earlier parts turn grey');
+  assert.match(css, /\.mri-sentence \.frag\.past \{ color: var\(--ink-3\); \}/);
+  const brk = main.slice(main.indexOf('async function theRadiologist()'), main.indexOf('async function theBrain()'));
+  assert.ok(brk.indexOf('on(breakScene)') < brk.indexOf('say(COPY.arrives)') && brk.indexOf('say(COPY.arrives)') < brk.indexOf("radiologistFigure.style.transform = 'none'"), 'the break is painted, and the radiologist walks over as the line says so');
+  for (const c of ['same', 'pattern.question', 'pattern.after']) assert.match(main, new RegExp(`speak\\(COPY\\.radiologist\\.${c.replace('.', '\\.')}\\)`), `the radiologist says ${c}`);
   assert.match(main, /speak\(COPY\.you\.think, 'you', true\)/, 'your thought, in a thought bubble');
-  assert.match(main, /speak\(COPY\.you\.tookApart, 'you'\)/, 'and your words');
   const tail = main.slice(main.indexOf("say(COPY.final, 'final');"));
   assert.ok(!/say\(|speak\(|ask\(|press\(/.test(tail.replace("say(COPY.final, 'final');", '')), 'nothing is shown after the final line');
 });

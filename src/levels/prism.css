@@ -57,7 +57,8 @@
 .tuner.leaving { opacity: 0; transform: translateY(70px); }
 
 /* the signal: small on the tuner's screen, then big; later at the top, as the scanner's signal */
-.strip { transform-box: view-box; transform-origin: 0 0; transition: transform 1100ms cubic-bezier(0.45, 0, 0.2, 1); }
+.strip { transform-box: view-box; transform-origin: 0 0; transition: transform 1100ms cubic-bezier(0.45, 0, 0.2, 1), opacity 500ms ease-out; }
+.strip.hidden { opacity: 0; }
 .strip-box { fill: var(--night-2); stroke: var(--night-edge); stroke-width: 2; transition: opacity 700ms ease-out 400ms; }
 .strip.small .strip-box { opacity: 0; transition-delay: 0s; }
 .signal { fill: none; stroke: #ffc35a; stroke-width: 3.2; stroke-linejoin: round; vector-effect: non-scaling-stroke; filter: url(#p3-glow); transition: stroke 900ms ease-in-out; }
@@ -88,7 +89,22 @@
 .body-map.choosing .part-map { opacity: 0.22; }
 .body-map.choosing .part-map.picked { opacity: 1; }
 .part-map:focus-visible { opacity: 1; }
-.part-label { font-family: var(--font); font-size: 20px; font-weight: 700; }
+.part-map.hint { animation: hint-pulse 1.1s ease-in-out infinite; }
+@keyframes hint-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.body-map { transform-box: view-box; transform-origin: 0 0; transition: transform 1000ms cubic-bezier(0.45, 0, 0.2, 1), opacity 600ms ease-out; }
+.part-name { font-family: var(--font); font-size: 20px; font-weight: 600; }
+.part-name.picked { font-weight: 800; filter: url(#p3-glow); }
+.part-name.hint { animation: hint-pulse 1.1s ease-in-out infinite; }
+.leader { stroke-width: 1.5; stroke-dasharray: 3 3; opacity: 0.85; }
+.scan.exploring .m-arrow, .scan.exploring .mri-image, .scan.exploring .glyph { opacity: 0; }
+.scan:not(.exploring) .part-labels { opacity: 0; }
+.mri-image { transition: transform 1100ms cubic-bezier(0.45, 0, 0.2, 1), opacity 600ms ease-out; }
+
+/* the break: the hall's lights on, you and the radiologist */
+.night .bulb.lit-bulb { fill: #ffd76a; filter: url(#p3-glow); }
+.walker { transition: transform 1600ms cubic-bezier(0.3, 0.6, 0.3, 1); }
+.person .legs { fill: #2b3140; }
+.coat { fill: #f4f6fb; }
 .part-wave { fill: none; stroke-width: 2.4; stroke-linejoin: round; vector-effect: non-scaling-stroke; opacity: 0.35; transition: opacity 300ms ease-out; }
 .part-wave.picked { opacity: 1; filter: url(#p3-glow); }
 .part-waves.gone { opacity: 0; transition: opacity 600ms ease-out; }
@@ -103,10 +119,12 @@
 .m-arrow.lit polygon { fill: #ffffff; }
 .m-arrow.lit { filter: url(#p3-glow); }
 .scan.to-pattern .mri-part, .scan.to-pattern .glyph { opacity: 0; }
-.mri-image { transform-box: view-box; transform-origin: 0 0; transition: transform 1100ms cubic-bezier(0.45, 0, 0.2, 1); }
+.mri-image { transform-box: view-box; transform-origin: 0 0; }
 .mri-sentence { font-size: 1.35rem; line-height: 1.45; }
-.mri-sentence .frag { color: var(--ink-3); transition: color 500ms ease-out; }
-.mri-sentence .frag.lit { color: var(--ink); font-weight: 600; background: linear-gradient(transparent 64%, #e2dbff 64%); }
+.mri-sentence .frag { display: none; color: var(--ink); transition: color 600ms ease-out; }
+.mri-sentence .frag.shown { display: inline; animation: frag-in 600ms ease-out; }
+.mri-sentence .frag.past { color: var(--ink-3); }
+@keyframes frag-in { from { opacity: 0; } to { opacity: 1; } }
 /* the pattern: three rows */
 .p-row { opacity: 0; transition: opacity 700ms ease-out; }
 .p-row.on { opacity: 1; }
@@ -128,15 +146,15 @@
 .bubble { position: relative; margin: 0; padding: 0.45em 0.85em; background: #f1f4fa; border-radius: 16px; opacity: 0; transform: translateY(4px); transition: opacity 320ms ease-out, transform 320ms ease-out; }
 .bubble.in { opacity: 1; transform: none; }
 .bubble:first-child::before { content: ''; position: absolute; left: -7px; top: 14px; border: 7px solid transparent; border-left: 0; border-right-color: #f1f4fa; }
-.face .skin { fill: #e8b58c; }
-.face .eye { fill: #ffffff; }
-.face .pupil { fill: #111111; }
-.face .rim { fill: none; stroke: #3a3a3a; stroke-width: 3; stroke-linecap: round; }
-.face .brow { stroke-width: 4.5; stroke-linecap: round; }
-.face .mouth { fill: #7a3e2c; transform-box: fill-box; transform-origin: center; }
+:is(.face, .person) .skin { fill: #e8b58c; }
+:is(.face, .person) .eye { fill: #ffffff; }
+:is(.face, .person) .pupil { fill: #111111; }
+:is(.face, .person) .rim { fill: none; stroke: #3a3a3a; stroke-width: 3; stroke-linecap: round; }
+:is(.face, .person) .brow { stroke-width: 4.5; stroke-linecap: round; }
+:is(.face, .person) .mouth { fill: #7a3e2c; transform-box: fill-box; transform-origin: center; }
 .face.talking .mouth { animation: talk 220ms ease-in-out 6 alternate; }
 @keyframes talk { from { transform: scaleY(1); } to { transform: scaleY(3.4); } }
-.face .eyes { transform-box: fill-box; transform-origin: center; animation: blink 5s infinite; }
+:is(.face, .person) .eyes { transform-box: fill-box; transform-origin: center; animation: blink 5s infinite; }
 @keyframes blink { 0%, 93%, 100% { transform: scaleY(1); } 96% { transform: scaleY(0.12); } }
 .speaker.you .bubble { background: #eaf2ff; }
 .speaker.you .bubble:first-child::before { border-right-color: #eaf2ff; }
@@ -150,6 +168,7 @@
 
 @media (max-width: 520px) {
   .bar-label { font-size: 22px; }
+  .part-name { font-size: 23px; }
   .who { flex-basis: 56px; }
   .face { width: 56px; }
 }
@@ -159,5 +178,6 @@
   .beam, .ray, .wall-glow, .glass, .bulb, .floor, .spectrum, .bar, .four-bars, .cell, .mri-part, .mri-image, .mri-sentence .frag,
   .scene.band, .scene.band.on, .scene.scan, .scene.scan.on, .p-row, .speaker, .bubble,
   #prism-lesson .line.leaving, #prism-lesson .speaker.leaving { transition: none; }
-  .face .eyes, .face.talking .mouth { animation: none; }
+  .walker, .body-map, .strip { transition: none; }
+  :is(.face, .person) .eyes, .face.talking .mouth, .part-map.hint, .part-name.hint, .mri-sentence .frag.shown { animation: none; }
 }

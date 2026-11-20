@@ -1,4 +1,4 @@
-// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 6). Pure functions, no DOM, no audio. (The app's own
+// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 7). Pure functions, no DOM, no audio. (The app's own
 // Fourier blocks are in fourier.js; this file is only the level's.)
 //
 // Three scenes, one idea: something that looks like one thing hides many.
@@ -6,7 +6,9 @@
 //    light goes in and colours come out, red bent least and violet most, as in a real prism.
 //  • The tuner. Your A note's signal (its shape over time) and, through the prism for sound, its four notes as bars.
 //    The bars are exact: the signal is their sum (tones.js).
-//  • The scanner. Your head, as its body parts (skin, bone, fluid, gray matter, white matter). The tiny magnets in each
+//  • The break. The hall's lights come back on; you stand by the stage and the radiologist who read your scan walks
+//    over.
+//  • The scanner. Your head, big and labelled, as its body parts (skin, skull, fluid, outer brain, inner brain). The tiny magnets in each
 //    body part behave differently: each part sends its own signal, as strong as that part is bright in Level 2's
 //    picture, and fading at its own pace. The scanner collects all of it at once, one signal per row (place k sends
 //    tone k + 1), and converts it into pixel data with a discrete Fourier transform,
@@ -184,8 +186,8 @@ export const MRI = {
   label: { x: 102, y: 316 },                                // the name of the body part you tapped
 };
 /**
- * The body parts of Level 2's head slice, in the order of their names in the copy (skin, bone, fluid, gray matter,
- * white matter). `values` are the brightnesses scanner.js gives that part; `fade` is how long its signal lasts, as
+ * The body parts of Level 2's head slice, in the order of their names in the copy (skin, skull, fluid, outer brain,
+ * inner brain: the grey rim of gray matter and the bright white matter inside it). `values` are the brightnesses scanner.js gives that part; `fade` is how long its signal lasts, as
  * drawn (an illustration: bone hardly sends anything, fluid fades slowest).
  */
 export const BODY_PARTS = [
@@ -238,9 +240,39 @@ export const FIRST_ROW = rowOrder(ROWS)[0];
 /** Row j's band across a square box (the head being read, or the picture being made). */
 export const rowIn = (box, j) => ({ x: box.x, y: box.y + (j * box.size) / ROWS, w: box.size, h: box.size / ROWS });
 export const toSignal = () => fit(STRIP_BOX, MRI.data);      // the violin's signal box becomes the data box
+export const BRAIN = [3, 4];                                  // the outer and inner brain
+export const SKULL = 1;
+
+// first, while you tap the body parts, the head is big and labelled, and the data box sits to its right
+export const EXPLORE = { head: { x: 136, y: 40, size: 264 }, data: { x: 414, y: 120, w: 216, h: 128 }, labelX: 128 };
+const square = (b) => ({ x: b.x, y: b.y, w: b.size, h: b.size });
+/** The head, from where it sits later (MRI.head) to where it sits while you explore it: the same picture, bigger. */
+export const exploreHead = () => fit(square(MRI.head), square(EXPLORE.head));
+export const exploreData = () => fit(STRIP_BOX, EXPLORE.data);
+/** Where on the head each body part's label points (u, v as in scanner.js), spread from top to bottom: skin, inner brain, fluid, skull, outer brain. */
+const AIM = [[-0.6, -0.65], [-0.72, 0.3], [0, 0.05], [-0.4, 0.62], [-0.25, -0.3]];
+/** Each body part's label: its anchor (a pixel of that part, on the big head) and its name to the left, level with it, so every leader line is level and none can cross. */
+export function labels(rows = coarseRows()) {
+  const { head, labelX } = EXPLORE;
+  const c = head.size / ROWS;
+  const anchors = AIM.map(([u, v], k) => {
+    let best = null;
+    rows.forEach((row, j) => row.forEach((val, i) => {
+      if (partOf(val) !== k) return;
+      const du = ((i + 0.5) / ROWS) * 2 - 1 - u;
+      const dv = ((j + 0.5) / ROWS) * 2 - 1 - v;
+      const d = du * du + dv * dv;
+      if (!best || d < best.d) best = { d, i, j };
+    }));
+    return { k, i: best.i, j: best.j, anchor: { x: head.x + (best.i + 0.5) * c, y: head.y + (best.j + 0.5) * c } };
+  });
+  anchors.forEach((a) => { a.label = { x: labelX, y: a.anchor.y }; });
+  return anchors;
+}
 
 // ── the characters: you, the player (the style Nadia shared: short dark hair, big round glasses, a yellow shirt, plus a
-//    bucket hat), and the technician who scanned you (the same deadpan face, copper hair, a blue shirt) ──
+//    bucket hat), and the radiologist who read your scan (the same deadpan face, copper hair, a blue shirt, a white
+//    coat) ──
 export const FACE = {
   view: { w: 120, h: 132 },
   head: { cx: 60, cy: 58, rx: 34, ry: 40 },
@@ -272,9 +304,9 @@ export function lookAt(eye, target) {
   return { x: eye.cx + dx * k, y: eye.cy + dy * k };
 }
 
-/** You, the player: dark hair, a yellow shirt and a bucket hat. The technician: the same face, copper hair, a blue shirt. */
+/** You, the player: dark hair, a yellow shirt and a bucket hat. The radiologist: the same face, copper hair, a blue shirt, a white coat. */
 export const PLAYER = { hair: '#2a2a2a', shirt: '#ffd21f', hat: '#c4a46a', band: '#8a7140' };
-export const TECH = { hair: '#b5602c', shirt: '#4f8fe8' };
+export const RADIOLOGIST = { hair: '#b5602c', shirt: '#4f8fe8' };
 /** The bucket hat: a crown over the top of the head (covering the hair), a band, and a brim that slopes down and out all round. */
 export function bucketHat() {
   const { cx, cy, rx, ry } = FACE.head;
@@ -318,4 +350,29 @@ export function patternLight() {
   const out = { x: (top.x + right.x) / 2, y: (top.y + right.y) / 2 };
   const rays = RAINBOW.map((color, i) => ({ from: { x: r.x, y: r.y + r.h / 2 }, to: { x: r.x + r.w, y: r.y + 8 + ((r.h - 16) * i) / (RAINBOW.length - 1) }, color }));
   return { glass, corners: [top, right, left], beam: { from: { x: l.x, y: into.y + 18 }, to: into }, out, rays };
+}
+
+/** The radiologist's white coat over the shirt, as seen in the face: two lapels, the blue shirt showing between them. */
+export function coatLapels() {
+  const { w, h } = FACE.view;
+  return [
+    `M 12 ${h} C 14 ${h - 16} 26 ${h - 24} 46 ${h - 27} L 57 ${h} Z`,
+    `M ${w - 12} ${h} C ${w - 14} ${h - 16} ${w - 26} ${h - 24} ${w - 46} ${h - 27} L ${w - 57} ${h} Z`,
+  ];
+}
+
+// ── the break: you and the radiologist, standing in the hall ─────────────────────────────────────────────
+/** A whole figure, in its own units: the face's 120 × 132 on top, then a body and legs below (a white coat for the radiologist). */
+export const FIGURE = {
+  view: { w: 120, h: 250 },
+  torso: { x: 18, y: 112, w: 84, h: 92, r: 18 },
+  legs: [{ x: 34, y: 196, w: 22, h: 54, r: 6 }, { x: 64, y: 196, w: 22, h: 54, r: 6 }],
+  coat: [{ x: 16, y: 108, w: 32, h: 112, r: 10 }, { x: 72, y: 108, w: 32, h: 112, r: 10 }],
+};
+export const BREAK = { height: 270, you: 180, radiologist: 510, walkFrom: 300 };
+/** Where a figure stands, centred at x, its feet on the hall's floor. */
+export function figureBox(cx) {
+  const h = BREAK.height;
+  const w = (h * FIGURE.view.w) / FIGURE.view.h;
+  return { x: cx - w / 2, y: HALL.floor - h, w, h };
 }

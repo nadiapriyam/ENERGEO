@@ -1,9 +1,8 @@
-// Every learner-facing line of Level 3, "A prism for sound", verbatim from docs/levels_spec.md (Revision 6, checked by
+// Every learner-facing line of Level 3, "A prism for sound", verbatim from docs/levels_spec.md (Revision 7, checked by
 // test/prism.test.js). Drafted at Nadia's request for her review: a story that picks up right after Level 2, in as few
 // words as it can. `you` holds the player's own lines (shown beside their face, a thought in a thought bubble) and
-// `tech` the technician's. `mri` is Nadia's description of the scanner, in four parts: it is shown faded, and each part
-// lights up as it happens on the board (`step` is the moment that lights it). `bodyParts` name the head's parts on the
-// board. Nothing else on the page is learner-facing
+// `radiologist` the radiologist's. `mri` is Nadia's description of the scanner, in four parts, shown one at a time as
+// each happens on the board, the earlier parts turning grey. `bodyParts` label the head's parts on the board. Nothing else on the page is learner-facing
 // text, apart from accessibility labels.
 
 export const COPY = {
@@ -29,13 +28,13 @@ export const COPY = {
   pureDone: 'One bar, one smooth wave: a tuning fork.',
   back: 'Now bring the others back.',
   backDone: 'Every bump in the signal comes from a bar.',
-  arrives: 'At the break, the technician from your scan comes over.',
+  arrives: 'At the break, the radiologist who read your scan comes over.',
   you: {
     think: 'If a prism is a tool that can take apart light, is there a tool that can take apart a sound?',
     tookApart: 'My tuner just took my A note apart!',
   },
-  tech: {
-    same: 'My scanner works the same way.',
+  radiologist: {
+    same: 'The MRI scanner works the same way.',
     pattern: { question: 'Do you notice a pattern?', choices: ['Yes', 'Not yet'], after: 'Let me help you out.' },
   },
   mri: [
@@ -44,8 +43,9 @@ export const COPY = {
     { text: ' and converting it into pixel data', step: 2 },
     { text: ' helps us see an MRI picture, with the Fourier transform.', step: 3 },
   ],
-  tapParts: 'Tap the body parts.',
-  bodyParts: ['skin', 'bone', 'fluid', 'gray matter', 'white matter'],
+  tapBrain: 'Tap the brain.',
+  tapSkull: 'Now tap the skull.',
+  bodyParts: ['skin', 'skull', 'fluid', 'outer brain', 'inner brain'],
   collect: 'Collect the data',
   convert: 'Convert it to pixels',
   pattern: ['Violin note → pure tones', 'Stage light → its full color spectrum', 'Proton frequencies → image'],
