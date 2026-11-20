@@ -395,5 +395,5 @@ test("8. the frame: sound after a tap, the dark comes with the dimmed lights, re
   assert.ok(!/#level-3/.test(board), 'no #anchor: a frame never scrolls the strip');
   const pageJs = read('src/levels/page.js');
   assert.match(pageJs, /query\.has\('steps'\)/);
-  assert.match(pageJs, /href: '\.\/\?steps', textContent: LEVELS\.allSteps/, 'the All steps link');
+  assert.ok(!/allSteps|level-steps/.test(pageJs) && !('allSteps' in LEVELS), 'no "All steps" link on the Level 3 tag (Nadia: "take out the all steps in level 3")');
 });

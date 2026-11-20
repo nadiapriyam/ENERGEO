@@ -1,7 +1,7 @@
 // try/: the levels on one page (docs/levels_spec.md). Level 1, the violin, starts at once. When a level's last line is
 // shown, a button offers the next one, which then starts underneath: Level 2, the MRI scanner; Level 3, a prism
-// for sound. Each level plays on one board, its lines clearing between parts; every part you finish goes into the
-// side panel ("Scroll through"), where you can scroll through them all (scroll.js).
+// for sound. Each level plays on one board, its lines clearing between parts. "Scroll through", on the side, shows the
+// whole story as a comic, to see it quickly without playing it.
 import './base.css';
 import { LEVELS } from './copyLevels.js';
 
@@ -14,10 +14,6 @@ tag('level-1-tag', LEVELS.level1, LEVELS.soundOn);
 tag('level-2-tag', LEVELS.level2);
 tag('level-3-tag', LEVELS.level3, LEVELS.soundOn);
 const query = new URLSearchParams(location.search);
-if (!query.has('step')) {                                    // the review strip: every step of Level 3, without playing it
-  const a = Object.assign(document.createElement('a'), { className: 'level-steps', href: './?steps', textContent: LEVELS.allSteps });
-  document.getElementById('level-3-tag').append(a);
-}
 
 const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
 /** When the level in `from` ends, the button `buttonId` appears; pressing it opens `section` and starts its module. */
@@ -58,26 +54,44 @@ if (query.has('steps')) {
   import('./note.js');                                        // Level 1 starts the page
 }
 
-// Scroll through, on the side: a tab at the right edge opens a panel holding every part finished so far, in order, under
-// each level's name (scroll.js fills it). Not in a frame of the review strip, nor on the strip itself.
+// Scroll through, on the side: a tab at the right edge opens the whole story as a comic, from the first part of Level 1
+// to the end of Level 3, so it can be seen quickly without playing it. Each part is a picture of the board and its
+// lines, as recorded from the levels themselves (tools/record_comic.mjs → src/levels/comic/). Not in a frame of the
+// review strip, nor on the strip itself.
 if (!query.has('step') && !query.has('steps')) {
   const html = document.documentElement;
   const make = (tag, attrs, ...kids) => { const e = Object.assign(document.createElement(tag), attrs); e.append(...kids); return e; };
   const close = make('button', { type: 'button', className: 'side-close', textContent: LEVELS.close });
-  const panel = make('aside', { className: 'side', id: 'side-panel', inert: true },
-    make('div', { className: 'side-head' }, make('h2', { textContent: LEVELS.soFar }), close),
-    make('p', { className: 'side-empty', textContent: LEVELS.soFarEmpty }),
-    make('div', { className: 'side-parts' }));
-  panel.setAttribute('aria-label', LEVELS.soFar);
+  const parts = make('div', { className: 'side-parts' });
+  const panel = make('aside', { className: 'side', id: 'side-panel', inert: true }, make('div', { className: 'side-head' }, make('h2', { textContent: LEVELS.wholeStory }), close), parts);
+  panel.setAttribute('aria-label', LEVELS.wholeStory);
   const tab = make('button', { type: 'button', className: 'side-toggle', textContent: LEVELS.scrollThrough });
   tab.setAttribute('aria-controls', 'side-panel');
   tab.setAttribute('aria-expanded', 'false');
+  let filled = false;
+  const fill = async () => {                                   // the comic is drawn the first time the panel opens
+    filled = true;
+    const [{ COMIC, pictures }, { face }] = await Promise.all([import('./comic.js'), import('./characters.js')]);
+    const names = { 'level-1': LEVELS.level1, 'level-2': LEVELS.level2, 'level-3': LEVELS.level3 };
+    for (const level of COMIC.levels) {
+      const group = make('section', { className: 'side-level' }, make('h3', { className: 'side-level-name', textContent: names[level.id] }));
+      for (const part of level.parts) {
+        const words = make('div', { className: 'comic-words' }, ...part.words.map((w) => (w.kind === 'speaker'
+          ? make('div', { className: `speaker ${w.who} in` }, make('div', { className: 'who' }, face(w.who)),
+            make('div', { className: 'bubbles' }, ...w.bubbles.map((b) => make('p', { className: `bubble in${b.thought ? ' thought' : ''}`, textContent: b.text }))))
+          : make('p', { className: ['line', 'in', ...w.cls].join(' '), textContent: w.text }))));
+        group.append(make('figure', { className: 'comic-part' },
+          make('img', { src: pictures[part.img], width: part.w, height: part.h, alt: part.alt, loading: 'lazy', decoding: 'async' }), words));
+      }
+      parts.append(group);
+    }
+  };
   const open = (on) => {
     html.classList.toggle('side-open', on);
     panel.inert = !on;
     tab.setAttribute('aria-expanded', String(on));
-    tab.classList.remove('new');
-    if (on) { panel.scrollTop = panel.scrollHeight; close.focus({ preventScroll: true }); }   // the latest part first in view
+    if (on && !filled) fill();
+    if (on) close.focus({ preventScroll: true });
   };
   tab.addEventListener('click', () => open(!html.classList.contains('side-open')));
   close.addEventListener('click', () => { open(false); tab.focus({ preventScroll: true }); });

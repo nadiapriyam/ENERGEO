@@ -123,9 +123,8 @@ Lines marked (R2) are Nadia's own wording, from `docs/prototype_try_spec.md` Rev
 Nothing comes after line 58.
 
 Around the levels: "Level 1", "Level 2", "Level 3", "Turn your sound on." (Levels 1 and 3 need sound), "Next: Level 2"
-and "Next: Level 3". The side panel (see "All three levels: the regular layout, and scrolling through on the side"
-below): the tab "Scroll through", the panel's title "The story so far", "Each part you finish appears here." (until
-the first part is finished) and "Close".
+and "Next: Level 3". The side panel (see "All three levels: the whole story as a comic, on the side" below): the tab
+"Scroll through", the panel's title "The whole story", and "Close".
 
 ## What the new lines claim, and what they do not
 
@@ -226,7 +225,7 @@ the first part is finished) and "Close".
 - **No new claims.** Only the layout changes.
 - Files: `src/levels/scroll.js` (keeping a part), `src/levels/page.js` (the switch), `src/levels/base.css`.
 
-## All three levels: the regular layout, and scrolling through on the side (2026-11-20). Nadia, verbatim:
+## All three levels: the regular layout, and scrolling through on the side (2026-11-20), its panel superseded by the next section. Nadia, verbatim:
 
 > no make he regular without scroll aka how we had it before the scroll, the defult and make a scroll through feature on the side.
 
@@ -245,6 +244,35 @@ the first part is finished) and "Close".
   panel, and a level fast-forwarding to a step ("Play from here") adds no parts until it hands over.
 - **No new claims.** Only the layout changes.
 - Files: `src/levels/scroll.js` (keeping a part), `src/levels/page.js` (the tab and the panel), `src/levels/base.css`.
+
+## All three levels: the whole story as a comic, on the side (2026-11-20). Nadia, verbatim (two messages):
+
+> like just like a comic book scroll through the user doesnt need to finish it to see the whole story, its like a shortcut to see the whole thing quickly
+
+> take out the all steps in level 3
+
+### What changes
+
+- **"Scroll through" shows the whole story, from the start.** The levels still play the regular way. The tab at the
+  right edge opens "The whole story": every part of all three levels, in order, as a comic. Nothing has to be played
+  or finished to see it.
+  - Each part is a picture of the board as that part ends, with that part's lines under it: what is said, and who
+    says it, beside their face.
+  - It is a shortcut: about 40 pictures, from "Tonight, you're the first violin." to "The applications are endless!".
+  - The questions are in it, and the lines that answer them; the answer buttons and the other buttons are not.
+- **How the comic is made.** It is recorded from the levels themselves, not drawn separately.
+  - `npm run comic` plays every level once in a browser, on `try/?record`, where each part that ends is kept
+    (`src/levels/record.js`). Then it photographs each part's picture and writes down its lines, word for word, in
+    `src/levels/comic/`.
+  - Levels 1 and 2 are played the way a learner plays them. Level 3 fast-forwards to its end, which does each
+    interaction for it (in the first question, that picks "The glass"; the line that follows is the same either way).
+  - `test/comic.test.js` checks that every line in the comic is still the levels' own wording, and that each level's
+    comic runs from its first line to its last. After a change to the words, it fails until the comic is recorded
+    again.
+- **"All steps" is gone** from the Level 3 tag. The review strip itself still opens at `try/?steps` for review.
+- **No new claims.** The comic shows the levels' own pictures and words.
+- Files: `src/levels/record.js`, `tools/record_comic.mjs`, `src/levels/comic/` (the recording),
+  `src/levels/comic.js`, `src/levels/page.js` (the tab and the panel), `src/levels/base.css`.
 
 ## Level 3, "A prism for sound" (2026-11-19; first called "The magic glasses")
 
@@ -1262,7 +1290,6 @@ Nothing comes after line 46.
 
 #### The review strip's labels (for review, not learner copy)
 
-- All steps (the link on the Level 3 tag)
 - Level 3, step by step (the strip's title)
 - Scroll left and right, or use the arrows. Each frame is the level itself, stopped at that step.
 - Play from here

@@ -12,7 +12,7 @@ import {
   VIEW, HOME, transform, toView, lensCamera, lerpCamera, coverRadius, LENS, VIOLIN, STRINGS, A_STRING, BOW, musicians, ZOOMS, closeUp, stringPath,
 } from '../math/violin.js';
 import { PITCH, A_NOTE, STEPS, HIDDEN, part, STAGE, lane, trace, EAR, HEARD, SQUEEZE, funnel, heardPath } from '../math/tones.js';
-import { keepPart } from './scroll.js';
+import { keepPart } from './record.js';
 
 const NS = 'http://www.w3.org/2000/svg';
 const REDUCED = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -251,7 +251,7 @@ const say = (text, cls = '') => {
   requestAnimationFrame(() => p.classList.add('in'));
   return p;
 };
-const clear = () => keepPart([figure, notesRow], prompt);   // the lines clear; the part goes into the side panel (scroll.js)
+const clear = () => keepPart([figure, notesRow], prompt);   // the lines clear (the comic's recorder keeps the part: record.js)
 let keyboardUser = false;
 addEventListener('keydown', (e) => { if (e.key === 'Tab' || e.key === 'Enter' || e.key === ' ') keyboardUser = true; }, true);
 addEventListener('pointerdown', () => { keyboardUser = false; }, true);

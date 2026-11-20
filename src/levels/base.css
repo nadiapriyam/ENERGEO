@@ -83,8 +83,6 @@ body {
   .line { transform: none; }
 }
 
-/* the link to the review strip, on the Level 3 tag */
-.level-steps { display: inline-block; margin-top: 4px; text-transform: none; letter-spacing: 0; font-size: 0.95rem; color: var(--accent); }
 .framed .level { margin-top: 0; border-top: 0; min-height: 0; }
 .framed .lesson { padding-bottom: 2vh; }
 
@@ -126,8 +124,8 @@ body {
   :is(.face, .person) .eyes, .face.talking .mouth { animation: none; }
 }
 
-/* Scroll through, on the side (scroll.js, page.js): a tab at the right edge opens a panel with every part finished so
-   far, in order: a still copy of its picture above its lines, under each level's name. */
+/* Scroll through, on the side (page.js): a tab at the right edge opens the whole story as a comic, in order under each
+   level's name: a picture of the board above its lines, recorded from the levels (src/levels/comic/). */
 #level-1 { border-top: 0; margin-top: 0; }
 .side-toggle {
   position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 30;
@@ -136,7 +134,6 @@ body {
   padding: 0.9em 0.35em; cursor: pointer; transition: right 260ms ease-out, color 200ms, border-color 200ms;
 }
 .side-toggle:hover { color: var(--ink); border-color: var(--ink-3); }
-.side-toggle.new { color: var(--accent); border-color: var(--accent); }
 .side {
   position: fixed; top: 0; right: 0; bottom: 0; z-index: 29; width: min(360px, 86vw);
   background: #ffffff; border-left: 1px solid #e3e7ee; box-shadow: -10px 0 28px rgba(20, 30, 50, 0.08);
@@ -148,22 +145,15 @@ html.side-open .side-toggle { right: min(360px, 86vw); }
 .side-head { position: sticky; top: 0; z-index: 1; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; background: #ffffff; padding: 14px 0 8px; border-bottom: 1px solid #eef1f5; }
 .side-head h2 { margin: 0; font-size: 1.05rem; }
 .side-close { font: inherit; font-size: 0.95rem; color: var(--accent); background: none; border: 0; padding: 0.2em 0; cursor: pointer; }
-.side-empty { color: var(--ink-2); font-size: 0.95rem; margin: 1em 0; }
 .side-level-name { margin: 1.3em 0 0.7em; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); }
-.kept-part { margin: 0 0 1.5em; font-size: 0.88rem; line-height: 1.4; content-visibility: auto; contain-intrinsic-size: auto 320px; }
-.kept-part * { transition: none !important; animation-iteration-count: 1 !important; }
-.kept-part .figure { margin: 0 0 0.5em; }
-.kept-part .line { margin-bottom: 0.45em; }
-.kept-part .line { font-size: 0.88rem; }
-.kept-part .line.lead, .kept-part .line.final, .kept-part .line.mri-sentence { font-size: 0.98rem; }
-.kept-part .action { display: none; }
-.kept-part .choices { gap: 6px; margin-bottom: 0.5em; }
-.kept-part .choice { font-size: 0.82rem; padding: 0.2em 0.8em; }
-.kept-part .choice:disabled:not(.picked) { opacity: 0.6; }
-.kept-part .speaker { gap: 8px; margin-bottom: 0.45em; }
-.kept-part .who { flex-basis: 34px; }
-.kept-part .face { width: 34px; }
-.kept-part .bubble { padding: 0.3em 0.65em; border-radius: 12px; }
-.kept-part .notes, .kept-part .transport { font-size: 0.8rem; }
+.comic-part { margin: 0 0 1.6em; font-size: 0.88rem; line-height: 1.4; }
+.comic-part img { display: block; width: 100%; height: auto; margin: 0 0 0.55em; }
+.comic-part .line { margin-bottom: 0.45em; font-size: 0.88rem; }
+.comic-part .line.lead, .comic-part .line.final, .comic-part .line.mri-sentence { font-size: 0.98rem; }
+.comic-part .speaker { gap: 8px; margin-bottom: 0.45em; }
+.comic-part .who { flex-basis: 34px; }
+.comic-part .face { width: 34px; }
+.comic-part .bubble { padding: 0.3em 0.65em; border-radius: 12px; }
+.comic-part .face.talking .mouth, .comic-part .face .eyes { animation: none; }
 @media (max-width: 520px) { .side-toggle { font-size: 0.78rem; padding: 0.75em 0.22em; } }
 @media (prefers-reduced-motion: reduce) { .side, html.side-open .side, .side-toggle { transition: none; } }

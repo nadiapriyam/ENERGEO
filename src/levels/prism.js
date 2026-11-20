@@ -19,7 +19,7 @@ import './prism.css';
 import { COPY } from './copyPrism.js';
 import { STEPS as STORY_STEPS } from './stepsPrism.js';
 import { person as standing, speaker } from './characters.js';
-import { keepPart } from './scroll.js';
+import { keepPart } from './record.js';
 import { A_NOTE, STEPS, PITCH, part } from '../math/tones.js';
 import {
   BOARD, css, triangle, HALL, crystalCorners, aimAngle, toCrystal, startAngle, lightPath,
@@ -373,8 +373,8 @@ function tapParts(onTap) {
   };
 }
 
-// ── the prompt: lines fade in, and fade out together before the next part; the part (its picture and its lines) goes
-// into the side panel, to scroll through (scroll.js) ───────────────────────────────────────────────────────────────
+// ── the prompt: lines fade in, and fade out together before the next part (the comic's recorder keeps the part:
+// record.js) ───────────────────────────────────────────────────────────────────────────────────────────────────
 const say = (text, cls = '') => {
   const p = el('p', { class: `line ${cls}`.trim(), text });
   prompt.append(p);

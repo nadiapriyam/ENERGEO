@@ -91,9 +91,10 @@ Three short stories on one page, in one plain style: a white page, the system sa
 accent. `docs/levels_spec.md` governs. `try/level-2/` and `notebook/` forward here.
 
 - Each level plays on one board, its lines clearing between parts.
-- **Scroll through, on the side.** A tab at the right edge opens "The story so far": every part finished so far, a
-  still copy of its picture above its lines, under each level's name. `src/levels/scroll.js` keeps the parts (each
-  level's `clear()` calls it); `page.js` makes the tab and the panel.
+- **Scroll through, on the side.** A tab at the right edge opens "The whole story": every part of all three levels as
+  a comic, a picture of the board above its lines, without playing anything. The comic is recorded from the levels:
+  `npm run comic` (`tools/record_comic.mjs`) plays each level on `try/?record`, where `src/levels/record.js` keeps each
+  part, and writes `src/levels/comic/`. `test/comic.test.js` checks the comic's words are still the levels' own.
 
 - **Level 1, "Inside a note"** (the violin):
   - You are the first violin; before a concert every player tunes to one note, and tonight it is your A note. Here the
@@ -136,9 +137,9 @@ accent. `docs/levels_spec.md` governs. `try/level-2/` and `notebook/` forward he
     its middle row marked, then that row's 48 frequencies as bars, exactly as the transform finds them). Then all three
     together, and the grand reveal: "the Fourier transform", the mathematical tool that lets us start seeing what
     hides inside. All three come down to the same geometric math; the applications are endless.
-  - Review: `try/?steps` shows every named step of Level 3 left to right, each frame the level itself stopped there
-    (`try/?step=<id>`), with "Play from here" (`try/?from=<id>`: fast-forward, then play on). The steps are listed
-    in `src/levels/stepsPrism.js`; the strip is `src/levels/storyboard.js`.
+  - Review (not linked from the page): `try/?steps` shows every named step of Level 3 left to right, each frame the
+    level itself stopped there (`try/?step=<id>`), with "Play from here" (`try/?from=<id>`: fast-forward, then play
+    on). The steps are listed in `src/levels/stepsPrism.js`; the strip is `src/levels/storyboard.js`.
   - Files: `src/levels/prism.js` (with `copyPrism.js`) and `src/math/prism.js`. The app's own Fourier blocks
     stay in `src/math/fourier.js`.
 

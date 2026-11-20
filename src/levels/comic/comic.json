@@ -1,0 +1,837 @@
+{
+ "levels": [
+  {
+   "id": "level-1",
+   "parts": [
+    {
+     "img": "l1-01.webp",
+     "w": 680,
+     "h": 437,
+     "alt": "Every player in the orchestra shows a little note: they are all tuned to your A note.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "Tonight, you're the first violin.",
+       "cls": [
+        "lead"
+       ]
+      },
+      {
+       "kind": "line",
+       "text": "Before a concert, every player tunes to the same note, so the whole orchestra plays in tune.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "Tonight, that note is yours: an A note. The whole orchestra trusts you to get it right.",
+       "cls": []
+      },
+      {
+       "kind": "speaker",
+       "who": "you",
+       "bubbles": [
+        {
+         "text": "That's me! No pressure.",
+         "thought": false
+        }
+       ]
+      },
+      {
+       "kind": "line",
+       "text": "Everyone's in tune with your A note.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l1-02.webp",
+     "w": 680,
+     "h": 437,
+     "alt": "A magnifying glass appears. Under it, everything looks bigger.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "Drag the magnifying glass onto your violin.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l1-03.webp",
+     "w": 680,
+     "h": 437,
+     "alt": "Your violin, close up: its body, the bridge, and four strings, one marked A.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "Now find the A string.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l1-04.webp",
+     "w": 680,
+     "h": 437,
+     "alt": "The A string, huge, shaking back and forth.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "Your A string shakes back and forth 440 times a second.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l1-05.webp",
+     "w": 680,
+     "h": 437,
+     "alt": "Inside the sound: the shape of your A, a repeating wave with bumps, running across.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "This is the shape of that shaking.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "The whole orchestra trusts this A note. Is it just one note?",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "Let's see.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l1-06.webp",
+     "w": 680,
+     "h": 437,
+     "alt": "Four smooth waves, one under another, each faster and smaller than the one above: A, high A, E and higher A.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "Slide the glass across the sound.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l1-07.webp",
+     "w": 680,
+     "h": 482,
+     "alt": "Four smooth waves, one under another, each faster and smaller than the one above: A, high A, E and higher A.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "Hidden inside: four notes.",
+       "cls": [
+        "lead"
+       ]
+      }
+     ]
+    },
+    {
+     "img": "l1-08.webp",
+     "w": 680,
+     "h": 437,
+     "alt": "The four notes flow from their rows into an ear. Out of the ear comes one wave, labelled A note: what you hear.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "Tap each one to hear it.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l1-09.webp",
+     "w": 680,
+     "h": 437,
+     "alt": "The four notes flow from their rows into an ear. Out of the ear comes one wave, labelled A note: what you hear.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "Your ear takes in all four and hears just one A note. Inside, it is many notes at once.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "One thing on the outside. Many hidden parts inside.",
+       "cls": [
+        "final"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "level-2",
+   "parts": [
+    {
+     "img": "l2-01.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "An MRI scanner, seen from the side, with your patient lying on its table. You stand beside it, in your bucket hat.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "This is an MRI scanner.",
+       "cls": [
+        "lead"
+       ]
+      },
+      {
+       "kind": "line",
+       "text": "It can see inside a body: no X-rays, no cuts.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "Your first patient is here. You're about to take their MRI scan!",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "You know more about an MRI than you think. Let's see if you can do it correctly!",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l2-02.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "Your patient is inside the scanner. The wall is see-through: rings of magnet coils surround them.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "Inside, a giant magnet surrounds your patient.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l2-03.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "Three water molecules. Each is one large oxygen atom, O, joined to two small hydrogen atoms, H.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "Your patient's body is full of water.",
+       "cls": [
+        "lead"
+       ]
+      },
+      {
+       "kind": "line",
+       "text": "One drop holds billions of trillions of hydrogen atoms.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l2-04.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "Each proton is now an arrow pointing from its S end to its N end: some point up, some point down.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "At the heart of each hydrogen atom is a proton: a tiny magnet.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "Picture each one as an arrow, pointing from S to N.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l2-05.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "A drop holding three up arrows; three down arrows wait below it. The TOTAL adds the arrows in the drop: up plus up plus up equals 3.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "So many tiny magnets. Why don't they add up to one giant magnet?",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "The TOTAL SIGNAL adds up every arrow in the drop. Your scanner can only pick up this total.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l2-06.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "A drop holding three up arrows; three down arrows wait below it. The TOTAL adds the arrows in the drop: up plus up plus up equals 3.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "Can you make the total 0?",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l2-07.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "A drop holding three up arrows; three down arrows wait below it. The TOTAL adds the arrows in the drop: up plus up plus up equals 3.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "Can every piece still be here while the total is 0?",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "Let's see.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l2-08.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "A drop holding three up arrows; three down arrows wait below it. The TOTAL adds the arrows in the drop: up plus up plus up equals 3.",
+     "words": [
+      {
+       "kind": "speaker",
+       "who": "you",
+       "bubbles": [
+        {
+         "text": "Oh no! I got 0 signal for my MRI!",
+         "thought": false
+        }
+       ]
+      },
+      {
+       "kind": "line",
+       "text": "But did everything disappear?",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "If the total is 0, are the pieces gone?",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "Exactly. They cancelled.",
+       "cls": [
+        "feedback"
+       ]
+      }
+     ]
+    },
+    {
+     "img": "l2-09.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "A drop holding three up arrows; three down arrows wait below it. The TOTAL adds the arrows in the drop: up plus up plus up equals 3.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "That's the answer: inside your patient, opposite tiny magnets cancel each other out.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l2-10.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "A drop holding three up arrows; three down arrows wait below it. The TOTAL adds the arrows in the drop: up plus up plus up equals 3.",
+     "words": []
+    },
+    {
+     "img": "l2-11.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "A drop holding three up arrows; three down arrows wait below it. The TOTAL adds the arrows in the drop: up plus up plus up equals 3.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "Here's a look at some more protons in another part of your patient's body. Its total is 0 too.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "What's behind this 0?",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "Let's see.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l2-12.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "A drop holding three up arrows; three down arrows wait below it. The TOTAL adds the arrows in the drop: up plus up plus up equals 3.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "And another.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "Still 0.",
+       "cls": [
+        "caption"
+       ]
+      }
+     ]
+    },
+    {
+     "img": "l2-13.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "A drop holding three up arrows; three down arrows wait below it. The TOTAL adds the arrows in the drop: up plus up plus up equals 3.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "And another.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "One result. Many possible arrangements behind it.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l2-14.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "Twelve pairs of opposite arrows in the drop, one up and one down, each pair a group with a total of 0. The TOTAL is 0.",
+     "words": [
+      {
+       "kind": "speaker",
+       "who": "you",
+       "bubbles": [
+        {
+         "text": "My patient's total signal is 0. So how will my scanner see anything?",
+         "thought": true
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "img": "l2-15.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "With the magnet on, one down arrow has turned to point up, with the magnet. Its group no longer cancels: it adds up to 2. The TOTAL is 2.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "Its magnet is tens of thousands of times stronger than Earth's.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "It tips the balance, just barely: a few more arrows point with it than against it.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "That's what an MRI does: it turns your patient's 0 signal into a small signal it can read.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "In a real body, only about five to ten in every million are left over.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "But the 0 was holding far more: every single tiny magnet, not just the few left over.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "Your scanner nudges them with radio waves and picks up their faint reply.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l2-16.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "A picture of your patient's head, painted row by row in shades of grey, like an MRI image.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "From that faint reply, it paints a picture of your patient's insides.",
+       "cls": []
+      },
+      {
+       "kind": "speaker",
+       "who": "you",
+       "bubbles": [
+        {
+         "text": "I did it! My first MRI scan!",
+         "thought": false
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "img": "l2-17.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "The picture moves left. Lines run from all over it into an eye. Out of the eye comes the same picture, small: one picture.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "Your eye sees just one picture. It's hiding far more than it seems.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l2-18.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "Left, Level 1: four notes add up to one A note. Right: up, down, up, down arrows add up to a total signal of 0.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "You just figured out one of the core principles of MRI.",
+       "cls": [
+        "lead"
+       ]
+      },
+      {
+       "kind": "line",
+       "text": "Do you see a similarity to the violin level?",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "Look.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "In Level 1, one A note hid many notes. Here, one 0 signal hides countless tiny magnets.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l2-19.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "Left, Level 1: four notes add up to one A note. Right: up, down, up, down arrows add up to a total signal of 0.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "A 0 isn't always nothing. Sometimes it's a whole person: countless tiny magnets, perfectly balanced.",
+       "cls": [
+        "final"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "level-3",
+   "parts": [
+    {
+     "img": "l3-01.webp",
+     "w": 680,
+     "h": 458,
+     "alt": "The white beam goes into the glass on the chandelier and comes out as a fan of colours on the wall: red, orange, yellow, green, cyan, blue, violet.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "After your scan, you head back to the concert hall.",
+       "cls": [
+        "lead"
+       ]
+      },
+      {
+       "kind": "line",
+       "text": "The lights dim. You notice a stage light shining.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "Drag to aim it at the chandelier.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "Where did the colors come from?",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "From the white light. The glass on the chandelier is a prism: it takes light apart into its colors.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l3-02.webp",
+     "w": 680,
+     "h": 458,
+     "alt": "A tuner clipped to the scroll of your violin. Its screen is blank.",
+     "words": [
+      {
+       "kind": "speaker",
+       "who": "you",
+       "bubbles": [
+        {
+         "text": "If a prism is a tool that can take apart light, is there a tool that can take apart a sound?",
+         "thought": true
+        }
+       ]
+      },
+      {
+       "kind": "line",
+       "text": "Surprise: it's your tuner.",
+       "cls": [
+        "lead"
+       ]
+      }
+     ]
+    },
+    {
+     "img": "l3-03.webp",
+     "w": 680,
+     "h": 458,
+     "alt": "On the tuner's screen, your note drawn as a bumpy line, with the letter A under it and a green light.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "The tuner draws your note's signal, its shape over time, and names it: A.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l3-04.webp",
+     "w": 680,
+     "h": 458,
+     "alt": "Your note's signal, big now: a bumpy line drifting across.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "Four notes hide in this signal. Can you see them?",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "Neither can anyone, just by looking.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l3-05.webp",
+     "w": 680,
+     "h": 458,
+     "alt": "Under the signal, four glowing bars, labelled A, high A, E and higher A, tallest first.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "Your A note, taken apart into four pure tones.",
+       "cls": [
+        "lead"
+       ]
+      }
+     ]
+    },
+    {
+     "img": "l3-06.webp",
+     "w": 680,
+     "h": 458,
+     "alt": "Drag the bars up and down. The signal above changes with them.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "Drag the bars. Can you make a single pure tone, like a tuning fork?",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l3-07.webp",
+     "w": 680,
+     "h": 458,
+     "alt": "Drag the bars up and down. The signal above changes with them.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "One bar, one smooth wave: a tuning fork.",
+       "cls": [
+        "lead"
+       ]
+      },
+      {
+       "kind": "line",
+       "text": "Now bring the others back.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "Every bump in the signal comes from a different pure tone.",
+       "cls": [
+        "lead"
+       ]
+      }
+     ]
+    },
+    {
+     "img": "l3-08.webp",
+     "w": 680,
+     "h": 458,
+     "alt": "The break: the hall lights are on. You stand by the stage. The radiologist who read your scan, in a white coat, walks over to you.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "At the break, the radiologist who read your scan comes over.",
+       "cls": []
+      },
+      {
+       "kind": "speaker",
+       "who": "you",
+       "bubbles": [
+        {
+         "text": "My tuner just took my A note apart!",
+         "thought": false
+        }
+       ]
+      },
+      {
+       "kind": "speaker",
+       "who": "radiologist",
+       "bubbles": [
+        {
+         "text": "The MRI scanner works the same way.",
+         "thought": false
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "img": "l3-09.webp",
+     "w": 680,
+     "h": 458,
+     "alt": "Your patient’s skull is lit. Its signal comes out of the spot you tapped and travels to the data box, where its wave is drawn, named skull.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "Tap a part of the brain.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "Now tap the skull.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l3-10.webp",
+     "w": 680,
+     "h": 458,
+     "alt": "Row by row, the pixels have made an MRI picture of your patient’s head.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "Each tiny magnet behaves differently depending on which body part it's in. Collecting that data and converting it into pixel data helps us see an MRI picture, with the Fourier transform.",
+       "cls": [
+        "mri-sentence"
+       ]
+      }
+     ]
+    },
+    {
+     "img": "l3-11.webp",
+     "w": 680,
+     "h": 458,
+     "alt": "Three rows, each with its caption: Violin note → pure tones; Stage light → its full color spectrum; MRI image → proton frequencies.",
+     "words": [
+      {
+       "kind": "speaker",
+       "who": "radiologist",
+       "bubbles": [
+        {
+         "text": "Do you notice a pattern?",
+         "thought": false
+        }
+       ]
+      },
+      {
+       "kind": "speaker",
+       "who": "radiologist",
+       "bubbles": [
+        {
+         "text": "Let me help you out.",
+         "thought": false
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "img": "l3-12.webp",
+     "w": 680,
+     "h": 458,
+     "alt": "The three rows dim. In the middle, glowing: the Fourier transform.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "The mathematical tool that lets us start seeing what hides inside: the Fourier transform.",
+       "cls": [
+        "final"
+       ]
+      },
+      {
+       "kind": "line",
+       "text": "All three come down to the same geometric math.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "Joseph Fourier came up with it about 200 years ago.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "The applications are endless! From a simple tuner to looking inside your brain.",
+       "cls": [
+        "final"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

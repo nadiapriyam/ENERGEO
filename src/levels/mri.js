@@ -22,7 +22,7 @@ import {
   PICTURE_SHIFT, EYE, SEEN, eyeFeeds, seenTransform, COMPARE,
 } from '../math/scanner.js';
 import { A_NOTE, STEPS as NOTE_STEPS, part, wave } from '../math/tones.js';
-import { keepPart } from './scroll.js';
+import { keepPart } from './record.js';
 
 const NS = 'http://www.w3.org/2000/svg';
 const REDUCED = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -321,7 +321,7 @@ const say = (text, cls = '') => {
   requestAnimationFrame(() => p.classList.add('in'));
   return p;
 };
-const clear = () => keepPart([figure], prompt);             // the lines clear; the part goes into the side panel (scroll.js)
+const clear = () => keepPart([figure], prompt);             // the lines clear (the comic's recorder keeps the part: record.js)
 // focus follows the story only for keyboard users (a mouse or touch user never sees a focus ring appear on its own)
 let keyboardUser = false;
 addEventListener('keydown', (e) => { if (e.key === 'Tab' || e.key === 'Enter' || e.key === ' ') keyboardUser = true; }, true);
