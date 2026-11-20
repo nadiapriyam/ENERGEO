@@ -1,4 +1,4 @@
-// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 8). Pure functions, no DOM, no audio. (The app's own
+// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 9). Pure functions, no DOM, no audio. (The app's own
 // Fourier blocks are in fourier.js; this file is only the level's.)
 //
 // Three scenes, one idea: something that looks like one thing hides many.
@@ -14,7 +14,8 @@
 //    tone k + 1), and converts it into pixel data with a discrete Fourier transform,
 //    a_k = (2/N) Σ s_i sin(2π (k+1) i / N), exactly. Row after row, the MRI picture.
 //  • The pattern, one slide at a time, each caption under its own pictures: violin note → pure tones; stage light →
-//    its colours; proton frequencies → image. Then all three, and the grand reveal: the Fourier transform.
+//    its colours; MRI signal → proton frequencies → image. Then all three, and the grand reveal: the Fourier
+//    transform.
 //
 // Scenes move into one another: each move is a fit of one box onto another.
 
@@ -215,13 +216,16 @@ export function partAt(p, rows = coarseRows()) {
   if (i < 0 || j < 0 || i >= ROWS || j >= ROWS) return -1;
   return partOf(rows[j][i]);
 }
-/** One body part's signal, drawn across the data box (in the strip's own units, which move with it): strong or weak, fading at its own pace. */
-export function partWave(k, n = 200) {
-  const amp = (STRIP.h / 2 - 8) * strength(k);
+/** How strong body part k's signal is at time t (0…1 across the data box): its strength, fading at its own pace. */
+export const partLoudness = (k, t) => strength(k) * Math.exp(-t / BODY_PARTS[k].fade);
+/** One body part's signal, drawn across the data box (in the strip's own units, which move with it), up to `upTo` of the way: the drawing grows from the left as the signal arrives. */
+export function partWave(k, n = 200, upTo = 1) {
+  const amp = STRIP.h / 2 - 8;
+  const m = Math.max(1, Math.round(n * Math.min(1, Math.max(0, upTo))));
   let d = '';
-  for (let i = 0; i <= n; i++) {
+  for (let i = 0; i <= m; i++) {
     const t = i / n;
-    d += `${i ? 'L' : 'M'}${(STRIP.x + t * STRIP.w).toFixed(1)} ${(STRIP.y + STRIP.h / 2 - amp * Math.exp(-t / BODY_PARTS[k].fade) * Math.sin(2 * Math.PI * 6 * t)).toFixed(1)}`;
+    d += `${i ? 'L' : 'M'}${(STRIP.x + t * STRIP.w).toFixed(1)} ${(STRIP.y + STRIP.h / 2 - amp * partLoudness(k, t) * Math.sin(2 * Math.PI * 6 * t)).toFixed(1)}`;
   }
   return d;
 }
@@ -251,6 +255,21 @@ const square = (b) => ({ x: b.x, y: b.y, w: b.size, h: b.size });
 /** The head, from where it sits later (MRI.head) to where it sits while you explore it: the same picture, bigger. */
 export const exploreHead = () => fit(square(MRI.head), square(EXPLORE.head));
 export const exploreData = () => fit(STRIP_BOX, EXPLORE.data);
+/** Where a tapped part's signal enters the data box: the middle of its left edge, where the wave starts. */
+export const dataInlet = () => ({ x: EXPLORE.data.x + (EXPLORE.data.w * (STRIP.x - STRIP_BOX.x)) / STRIP_BOX.w, y: EXPLORE.data.y + EXPLORE.data.h / 2 });
+/** The name of the part whose signal is on show, centred above the data box. */
+export const dataTitle = () => ({ x: EXPLORE.data.x + EXPLORE.data.w / 2, y: EXPLORE.data.y - 16 });
+/**
+ * The path a tapped part's signal takes on the board: out of the spot you tapped (p, on the big head), across to the
+ * data box, where its wave is drawn. A smooth curve that leaves level and arrives level.
+ */
+export function partLink(p) {
+  const q = dataInlet();
+  const dx = Math.max(30, (q.x - p.x) / 2);
+  return { from: p, to: q, d: `M ${p.x.toFixed(1)} ${p.y.toFixed(1)} C ${(p.x + dx).toFixed(1)} ${p.y.toFixed(1)} ${(q.x - dx).toFixed(1)} ${q.y.toFixed(1)} ${q.x.toFixed(1)} ${q.y.toFixed(1)}` };
+}
+/** The ripples where you tap: rings that grow out of the spot, one after another (radius in board units, delay in ms). */
+export const RIPPLES = [{ r: 34, delay: 0 }, { r: 34, delay: 180 }, { r: 34, delay: 360 }];
 /** Where on the head each body part's label points (u, v as in scanner.js), spread from top to bottom: skin, inner brain, fluid, skull, outer brain. */
 const AIM = [[-0.6, -0.65], [-0.72, 0.3], [0, 0.05], [-0.4, 0.62], [-0.25, -0.3]];
 /** Each body part's label: its anchor (a pixel of that part, on the big head) and its name to the left, level with it, so every leader line is level and none can cross. */
@@ -276,7 +295,7 @@ export function labels(rows = coarseRows()) {
 export { FACE, hairPath, shirtPath, lookAt, PLAYER, RADIOLOGIST, bucketHat, coatLapels, FIGURE, figureAt } from './characters.js';
 
 // ── the pattern: three rows, one thing on the left, what it is made of on the right ─────────────────────────
-export const PATTERN = { y: [10, 146, 282], h: 92, left: { x: 40, w: 230 }, right: { x: 370, w: 230 }, arrow: { x1: 290, x2: 350 }, caption: 30, slideY: 168, slideCaption: 26 };
+export const PATTERN = { y: [10, 146, 282], h: 92, left: { x: 40, w: 230 }, right: { x: 370, w: 230 }, arrow: { x1: 290, x2: 350 }, caption: 30, slideY: 168, slideCaption: 26, captionMax: 600, freqScale: 40 };
 /** How far row i moves to stand alone in the middle of the board, as its own slide. */
 export const slideShift = (i) => PATTERN.slideY - (PATTERN.y[i] + PATTERN.h / 2);
 /** Where row i's caption sits, under its pictures (it moves with the row; on a slide it drops a further slideCaption, being bigger). */
@@ -301,6 +320,24 @@ export function patternBars() {
   return A_NOTE.map((a, k) => ({ x: b.x + k * w + w * 0.2, w: w * 0.6, y: b.y + b.h - (a / STEPS) * (b.h - 8), h: (a / STEPS) * (b.h - 8) }));
 }
 /** Row 2: a white beam into a small prism on the left; the colours fanning out on the right. */
+/**
+ * Row 3, the middle step: the proton frequencies hiding in the MRI signal, as a few small bars over the arrow. They
+ * are the amounts the Fourier transform finds in the middle row's signal (every fifth one, across the head): the very
+ * amounts that make up that row of the image.
+ */
+export function patternFrequencies(rows = coarseRows()) {
+  const found = unmix(chordSamples(rows[FIRST_ROW]), ROWS);
+  const { x1, x2 } = PATTERN.arrow;
+  const n = 8;
+  const w = 4;
+  const step = (x2 - x1 - 12 - w) / (n - 1);
+  const base = PATTERN.y[2] + PATTERN.h / 2 - 8;
+  return Array.from({ length: n }, (_, i) => {
+    const k = 4 + 5 * i;
+    const h = Math.max(0, found[k]) * PATTERN.freqScale;
+    return { k, x: x1 + 6 + i * step, w, y: base - h, h, color: neon(k, ROWS) };
+  });
+}
 export function patternLight() {
   const l = patternBox(1, 'left');
   const r = patternBox(1, 'right');

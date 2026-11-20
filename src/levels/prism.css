@@ -61,7 +61,7 @@
 .strip.hidden { opacity: 0; }
 /* review: fast-forwarding to a step, or stopped at one, nothing animates */
 html.instant *, html.instant *::before, html.instant *::after { transition: none !important; animation: none !important; }
-.strip-box { fill: var(--night-2); stroke: var(--night-edge); stroke-width: 2; transition: opacity 700ms ease-out 400ms; }
+.strip-box { fill: var(--night-2); stroke: var(--night-edge); stroke-width: 2; transition: opacity 700ms ease-out 400ms, stroke 300ms ease-out; }
 .strip.small .strip-box { opacity: 0; transition-delay: 0s; }
 .signal { fill: none; stroke: #ffc35a; stroke-width: 3.2; stroke-linejoin: round; vector-effect: non-scaling-stroke; filter: url(#p3-glow); transition: stroke 900ms ease-in-out; }
 .strip.small .signal { stroke: #7dffb0; }
@@ -108,6 +108,15 @@ html.instant *, html.instant *::before, html.instant *::after { transition: none
 .part-wave { fill: none; stroke-width: 2.4; stroke-linejoin: round; vector-effect: non-scaling-stroke; opacity: 0.35; transition: opacity 300ms ease-out; }
 .part-wave.picked { opacity: 1; filter: url(#p3-glow); }
 .part-waves.gone { opacity: 0; transition: opacity 600ms ease-out; }
+/* a tap: the signal comes out of the spot (rings), travels to the data box (the line), and its wave is drawn there */
+.tap-fx .link { fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; filter: url(#p3-glow); animation: link-draw 450ms ease-in both; }
+.tap-fx .ripple { fill: none; stroke-width: 3; opacity: 0; transform-box: fill-box; transform-origin: center; animation: ripple 900ms ease-out both; }
+.tap-fx .spot { filter: url(#p3-glow); stroke: #fff; stroke-width: 1.5; }
+@keyframes link-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes ripple { from { opacity: 0.95; transform: scale(0.12); } to { opacity: 0; transform: scale(1); } }
+.data-name { font-family: var(--font); font-size: 22px; font-weight: 800; opacity: 0; filter: url(#p3-glow); transition: opacity 300ms ease-out; }
+.data-name.on { opacity: 1; }
+.scan:not(.exploring) .tap-fx, .scan:not(.exploring) .data-name { opacity: 0; }
 .scene.band { fill: none; stroke: url(#p3-led); stroke-width: 2; filter: url(#p3-glow); transform-box: view-box;
   transition: transform 500ms ease-in-out, opacity 400ms ease-out, visibility 0s linear 400ms; }
 .scene.band.on { transition: transform 500ms ease-in-out, opacity 400ms ease-out, visibility 0s; }
@@ -143,6 +152,7 @@ html.instant *, html.instant *::before, html.instant *::after { transition: none
 .p-bar { filter: url(#p3-glow); }
 .p-beam { stroke: #ffffff; stroke-width: 5; stroke-linecap: round; filter: url(#p3-glow); }
 .p-ray { stroke-width: 3.2; stroke-linecap: round; filter: url(#p3-glow); }
+.p-freq { filter: url(#p3-glow); }
 .p-arrow line { stroke: #8b93b8; stroke-width: 3; stroke-linecap: round; }
 .p-arrow polygon { fill: #8b93b8; }
 .line.pattern-line { font-weight: 600; }
@@ -165,5 +175,5 @@ html.instant *, html.instant *::before, html.instant *::after { transition: none
   .scene.band, .scene.band.on, .scene.scan, .scene.scan.on, .p-row,
   #prism-lesson .line.leaving, #prism-lesson .speaker.leaving { transition: none; }
   .walker, .body-map, .strip, .p-row, .pattern, .mri-image { transition: none; }
-  .part-map.hint, .part-name.hint, .mri-sentence .frag.shown, .reveal-title.on { animation: none; }
+  .part-map.hint, .part-name.hint, .mri-sentence .frag.shown, .reveal-title.on, .tap-fx .link, .tap-fx .ripple { animation: none; }
 }

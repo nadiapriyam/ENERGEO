@@ -102,9 +102,10 @@ and one accent. `docs/levels_spec.md` governs. `try/level-2/` and `notebook/` fo
   - You take an MRI scan of a patient: you stand beside the scanner; let's see if you can do it correctly.
   - Protons become ↑ and ↓ magnets, and pairing them drives the TOTAL SIGNAL to an exact 0 signal: "Oh no! I got 0
     signal for my MRI!"
-  - Covered drops whose signal is 0 turn out to be full.
-  - The magnet turns the 0 into a small signal it can read (though the 0 held far more), and the scanner paints a
-    picture: "I did it! My first MRI scan!"
+  - "Here's a look at some more protons in another part of your patient's body": covered drops whose signal is 0
+    turn out to be full.
+  - The magnet turns the 0 into a small signal it can read (though the 0 held far more). [Take the scan], and the
+    scanner paints a picture: "I did it! My first MRI scan!"
   - An eye sees one picture.
   - "Do you see a similarity to the violin level?" Side by side: one A note = four notes; 0 signal = ↑ + ↓ + ↑ + ↓.
   - Files: `src/levels/mri.js` (with `copyMri.js`), `src/math/pieces.js` and `src/math/scanner.js`.
@@ -121,12 +122,13 @@ and one accent. `docs/levels_spec.md` governs. `try/level-2/` and `notebook/` fo
     four glowing bars, four pure tones. The learner drags the bars into a tuning fork and back.
   - At the break the hall's lights come up and the radiologist who read your scan (same style, copper hair, blue shirt,
     white coat) walks over: the MRI scanner works the same way. Then the people step away and your head comes back up,
-    big and labelled (skin, skull, fluid, outer brain, inner brain): "Tap the brain", "Now tap the skull", each
-    showing its own signal. Nadia's paragraph comes in one part at a time, the earlier parts turning grey: each tiny
+    big and labelled (skin, skull, fluid, outer brain, inner brain): "Tap a part of the brain", "Now tap the skull".
+    Each part's signal comes out of the spot you tap and runs to the data box, where its wave is drawn under its name. Nadia's paragraph comes in one part at a time, the earlier parts turning grey: each tiny
     magnet behaves differently depending on its body part; Collect the data (the head moves aside, one busy signal);
     Convert it to pixels (row after row, 48 × 48, exact); an MRI picture, with the Fourier transform.
   - "Do you notice a pattern?" One slide at a time, each caption under its own pictures and staying until Next:
-    violin note → pure tones; stage light → its full color spectrum; proton frequencies → image. Then all three
+    violin note → pure tones; stage light → its full color spectrum; MRI signal → proton frequencies → image (with
+    small bars of the frequencies the transform finds, on the arrow). Then all three
     together, and the grand reveal: "the Fourier transform", the mathematical tool that lets us start seeing what
     hides inside. All three come down to the same geometric math; the applications are endless.
   - Review: `try/?steps` shows every named step of Level 3 left to right, each frame the level itself stopped there

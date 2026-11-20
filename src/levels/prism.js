@@ -1,14 +1,14 @@
-// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 8). It comes straight after Level 2: after your scan,
+// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 9). It comes straight after Level 2: after your scan,
 // you head back to the concert hall. The lights dim; the learner aims a stage light at the chandelier, and its glass
 // prism takes the white light apart into colours. You wonder: is there a tool that can take apart a sound? Surprise:
 // your tuner. Its screen draws your A note's signal, the signal grows to fill the board, and taking it apart gives four
 // glowing bars, which the learner drags into a tuning fork and back. At the break, the hall's lights come up and the
 // radiologist who read your scan walks over to you. Then the people step away and your patient's head comes back up, big and
-// labelled: tap the brain, then the skull, and see each one's own signal. Nadia's description is shown one part at a
+// labelled: tap a part of the brain, then the skull, and see each one's own signal come out of the spot you tapped. Nadia's description is shown one part at a
 // time, the earlier parts turning grey: each body part behaves differently; collecting that data (the head moves aside
 // and one busy signal appears); converting it into pixel data, row after row; an MRI picture, with the Fourier
 // transform. Then the pattern, one slide at a time, each caption under its own pictures (violin note → pure tones,
-// stage light → its colours, proton frequencies → image), all three together, the grand reveal of the Fourier
+// stage light → its colours, MRI signal → proton frequencies → image), all three together, the grand reveal of the Fourier
 // transform, and: the applications are endless.
 // For review, ?step=<id> stops the level at a named step (the review strip at try/?steps shows every one), and
 // ?from=<id> fast-forwards to it and plays on from there (stepsPrism.js lists the steps).
@@ -23,9 +23,9 @@ import { A_NOTE, STEPS, PITCH, part } from '../math/tones.js';
 import {
   BOARD, css, triangle, HALL, crystalCorners, aimAngle, toCrystal, startAngle, lightPath,
   STRIP, STRIP_BOX, signal, samplesPath, TUNER, onTuner, SPECTRUM, GLYPH, barX, barHeight, barAt, stepsAt, pureTone, allBack,
-  NOTE_LED, neon, ROWS, MRI, BODY_PARTS, partOf, partAt, partWave, coarseRows, chordSamples, unmix, rowOrder, FIRST_ROW,
+  NOTE_LED, neon, ROWS, MRI, BODY_PARTS, partOf, partAt, partWave, partLink, dataTitle, RIPPLES, coarseRows, chordSamples, unmix, rowOrder, FIRST_ROW,
   rowIn, toSignal, BRAIN, SKULL, EXPLORE, exploreHead, exploreData, labels, BREAK, figureBox,
-  PATTERN, patternBox, stripToPattern, picToPattern, patternBars, patternLight, slideShift, captionAt, REVEAL,
+  PATTERN, patternBox, stripToPattern, picToPattern, patternBars, patternLight, patternFrequencies, slideShift, captionAt, REVEAL,
 } from '../math/prism.js';
 
 const NS = 'http://www.w3.org/2000/svg';
@@ -210,7 +210,9 @@ const mArrows = MRI.arrows.map((a) => svg('g', { class: 'mri-part p-arrow m-arro
 const pixelSize = P.size / ROWS;
 const cells = ROWS_OF_YOU.map((r, j) => r.map((_, i) => svg('rect', { class: 'cell', x: (P.x + i * pixelSize).toFixed(2), y: (P.y + j * pixelSize).toFixed(2), width: (pixelSize + 0.3).toFixed(2), height: (pixelSize + 0.3).toFixed(2) })));
 const image = svg('g', { class: 'mri-image' }, svg('rect', { class: 'pic-bg', x: P.x - 4, y: P.y - 4, width: P.size + 8, height: P.size + 8, rx: 8 }), ...cells.flat());
-const scan = svg('g', { class: 'scene scan exploring' }, map, labelGroup, mArrows[0], mGlyph, mArrows[1], image);
+const tapFx = svg('g', { class: 'tap-fx' });                // where you tap: the signal coming out of that spot and on to the data box
+const dataName = svg('text', { class: 'data-name', x: dataTitle().x, y: dataTitle().y, 'text-anchor': 'middle' });
+const scan = svg('g', { class: 'scene scan exploring' }, map, labelGroup, tapFx, dataName, mArrows[0], mGlyph, mArrows[1], image);
 
 // the break: the hall's lights back on; you by the stage, the radiologist walking over
 const person = (who, cx, look) => standing(who, figureBox(cx), look);
@@ -245,9 +247,20 @@ const patternRows = [
     svg('polygon', { class: 'glass', points: pts(lightRow.corners) }),
     ...lightRow.rays.map((r) => line(r.from, r.to, { class: 'p-ray', stroke: r.color })),
     arrowOf(1), svg('text', { class: 'p-caption', x: captionAt(1).x, y: captionAt(1).y, 'text-anchor': 'middle', text: COPY.pattern[1] })),
-  svg('g', { class: 'p-row' }, arrowOf(2), svg('text', { class: 'p-caption', x: captionAt(2).x, y: captionAt(2).y, 'text-anchor': 'middle', text: COPY.pattern[2] })),
+  svg('g', { class: 'p-row' }, arrowOf(2),
+    ...patternFrequencies(ROWS_OF_YOU).map((b) => svg('rect', { class: 'p-freq', x: b.x.toFixed(1), y: b.y.toFixed(1), width: b.w, height: Math.max(0.5, b.h).toFixed(1), rx: 1.5, fill: b.color })),
+    svg('text', { class: 'p-caption', x: captionAt(2).x, y: captionAt(2).y, 'text-anchor': 'middle', text: COPY.pattern[2] })),
 ];
 const pattern = svg('g', { class: 'scene pattern', style: `--slide-caption: ${PATTERN.slideCaption}px` }, ...patternRows);
+const captions = patternRows.map((r) => r.querySelector('.p-caption'));
+/** A caption never runs off the board: if it is wider than PATTERN.captionMax at its size, it is set a little smaller. */
+function fitCaptions() {
+  for (const t of captions) {
+    t.style.fontSize = '';
+    const w = t.getComputedTextLength();
+    if (w > PATTERN.captionMax) t.style.fontSize = `${((parseFloat(getComputedStyle(t).fontSize) * PATTERN.captionMax) / w).toFixed(1)}px`;
+  }
+}
 const revealTitle = svg('text', { class: 'scene reveal-title', x: REVEAL.x, y: REVEAL.y, 'text-anchor': 'middle', fill: 'url(#p3-led)', text: COPY.revealTitle });
 
 board.append(bg, hall, breakScene, scan, arrive, glyph, spectrum, pattern, revealTitle);
@@ -281,13 +294,40 @@ function runSignal(amounts) {                               // the signal drifts
   requestAnimationFrame(frame);
 }
 const still = (amounts) => { running = null; signalPath.setAttribute('d', signal(amounts)); };
-function pickPart(k) {                                     // one body part: lit on the head, named, and its own signal in the data box
+const LINK_MS = 450;                                        // the signal's trip from the spot you tapped to the data box
+const DRAW_MS = 1200;                                       // … and the time its wave takes to arrive, drawn from the left
+let drawing = null;
+/** One body part: lit on the head and named; its signal comes out of the spot you tapped (`at`, on the board), travels to the data box and is drawn there as it arrives. */
+function pickPart(k, at = LABELS.find((l) => l.k === k).anchor) {
+  const color = BODY_PARTS[k].color;
   partGroups.forEach((g, i) => g.classList.toggle('picked', i === k));
   map.classList.add('choosing');
   labelTexts.forEach((t, i) => t.classList.toggle('picked', i === k));
+  const link = partLink(at);
+  tapFx.replaceChildren(
+    svg('path', { class: 'link', d: link.d, stroke: color, pathLength: 1 }),
+    ...RIPPLES.map((r) => svg('circle', { class: 'ripple', cx: at.x.toFixed(1), cy: at.y.toFixed(1), r: r.r, stroke: color, style: `animation-delay: ${r.delay}ms` })),
+    svg('circle', { class: 'spot', cx: at.x.toFixed(1), cy: at.y.toFixed(1), r: 5, fill: color }));
+  dataName.textContent = COPY.bodyParts[k];
+  dataName.setAttribute('fill', color);
+  dataName.classList.add('on');
+  stripBox.style.stroke = color;
   let wave = partWaves.querySelector(`[data-k="${k}"]`);
-  if (!wave) { wave = svg('path', { class: 'part-wave', 'data-k': k, stroke: BODY_PARTS[k].color, d: partWave(k) }); partWaves.append(wave); }
+  if (!wave) { wave = svg('path', { class: 'part-wave', 'data-k': k, stroke: color }); partWaves.append(wave); }
   partWaves.querySelectorAll('.part-wave').forEach((w) => w.classList.toggle('picked', w === wave));
+  partWaves.append(wave);                                   // the newest signal on top
+  const me = (drawing = {});
+  if (REDUCED || FAST) wave.setAttribute('d', partWave(k));
+  else {
+    wave.setAttribute('d', partWave(k, 200, 0));
+    const t0 = performance.now();
+    const frame = (now) => {
+      const u = drawing === me ? (now - t0 - LINK_MS) / DRAW_MS : 1;
+      wave.setAttribute('d', partWave(k, 200, u));
+      if (u < 1) requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+  }
 }
 function paintRow(j, amounts, sweep) {
   cells[j].forEach((c, i) => {
@@ -314,9 +354,10 @@ function tapParts(onTap) {
   const f = exploreHead();
   const pd = (e) => {
     const q = boardPoint(e);
-    let k = partAt({ x: (q.x - f.tx) / f.sx, y: (q.y - f.ty) / f.sy }, ROWS_OF_YOU);
-    if (k < 0) k = LABELS.find((l) => q.x < l.label.x + 8 && q.x > l.label.x - 110 && Math.abs(q.y - l.label.y) < 16)?.k ?? -1;
-    if (k >= 0) onTap(k);
+    const k = partAt({ x: (q.x - f.tx) / f.sx, y: (q.y - f.ty) / f.sy }, ROWS_OF_YOU);
+    if (k >= 0) { onTap(k, { x: q.x, y: q.y }); return; }  // the signal comes out of the very spot you tapped
+    const byName = LABELS.find((l) => q.x < l.label.x + 8 && q.x > l.label.x - 110 && Math.abs(q.y - l.label.y) < 16)?.k ?? -1;
+    if (byName >= 0) onTap(byName);
   };
   const keys = partGroups.map((g, k) => { const f = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onTap(k); } }; g.setAttribute('tabindex', '0'); g.addEventListener('keydown', f); return f; });
   board.addEventListener('pointerdown', pd);
@@ -609,11 +650,11 @@ async function theBrain() {                                 // the people step a
   const seen = new Set();
   let wanted = null;
   const waitFor = (ks) => new Promise((r) => { if (ks.some((k) => seen.has(k))) r(); else wanted = { ks, r }; });
-  const onTap = (k) => {
-    pickPart(k);
+  const onTap = (k, at) => {
+    pickPart(k, at);
     seen.add(k);
     tapped = seen.size;
-    describe(`Your ${COPY.bodyParts[k]} is lit. Its own signal shows in the data box.`);
+    describe(`Your patient’s ${COPY.bodyParts[k]} is lit. Its signal comes out of the spot you tapped and travels to the data box, where its wave is drawn, named ${COPY.bodyParts[k]}.`);
     if (wanted && wanted.ks.includes(k)) { const r = wanted.r; wanted = null; r(); }
   };
   const stop = tapParts(onTap);
@@ -642,6 +683,9 @@ async function theBrain() {                                 // the people step a
   map.style.transform = 'none';
   strip.style.transform = css(toSignal());
   partWaves.classList.add('gone');
+  tapFx.replaceChildren();
+  dataName.classList.remove('on');
+  stripBox.style.stroke = '';
   await wait(900);
   mArrows[0].classList.add('lit');
   jump(headBand, `translateY(${(rowIn(H, FIRST_ROW).y - H.y).toFixed(2)}px)`);
@@ -690,8 +734,9 @@ async function thePattern() {                               // do you notice a p
   await wait(700);
   pattern.classList.add('sliding');
   on(pattern);
+  fitCaptions();
   const SLIDES = ['slide1', 'slide2', 'slide3'];              // named steps, one per slide
-  const shown = ['A violin note’s wave, then its four bars of pure tones.', 'A white beam into a prism, then a fan of colours.', 'The scanner’s signal, then the picture of your patient’s head.'];
+  const shown = ['A violin note’s wave, then its four bars of pure tones.', 'A white beam into a prism, then a fan of colours.', 'The scanner’s signal, then small bars of its proton frequencies over the arrow, then the picture of your patient’s head.'];
   for (let i = 0; i < 3; i++) {
     phase = SLIDES[i];
     if (i) { patternRows[i - 1].classList.remove('on'); await wait(500); }   // the last slide fades out before the next comes in
@@ -709,6 +754,7 @@ async function thePattern() {                               // do you notice a p
   }
   phase = 'together';                                        // all three, each caption under its own pictures
   pattern.classList.remove('sliding');
+  fitCaptions();
   patternRows.forEach((r) => { r.classList.add('on'); r.style.transform = 'none'; });
   strip.style.transform = css(stripToPattern());
   image.style.transform = css(picToPattern());

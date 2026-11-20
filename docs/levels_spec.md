@@ -91,7 +91,7 @@ Lines marked (R2) are Nadia's own wording, from `docs/prototype_try_spec.md` Rev
 28. Look again — they're still there. (R2; after Yes)
 29. That's the answer: inside your patient, opposite tiny magnets cancel each other out.
 30. Same result. (R2)
-31. Here's another drop. Its total is 0 too.
+31. Here's a look at some more protons in another part of your patient's body. Its total is 0 too. (Nadia, 2026-11-20: "heres a look at some more protons in another part of your patients body")
 32. ? (on the covered drop, and in its TOTAL SIGNAL)
 33. What's behind this 0? [Nothing] [Something]
 34. Let's see. (R2)
@@ -107,9 +107,9 @@ Lines marked (R2) are Nadia's own wording, from `docs/prototype_try_spec.md` Rev
 44. That's what an MRI does: it turns your patient's 0 signal into a small signal it can read.
 45. In a real body, only about five to ten in every million are left over.
 46. But the 0 was holding far more: every single tiny magnet, not just the few left over.
-47. Your scanner nudges them with radio waves and listens for their faint reply.
-48. [Listen]
-49. From that whisper, it paints a picture of your patient's insides.
+47. Your scanner nudges them with radio waves and picks up their faint reply.
+48. [Take the scan]
+49. From that faint reply, it paints a picture of your patient's insides.
 50. You: I did it! My first MRI scan!
 51. one picture (the label on what the eye sees)
 52. Your eye sees just one picture. It's hiding far more than it seems.
@@ -179,6 +179,25 @@ and "Next: Level 3".
 - **"I did it! My first MRI scan!" (Level 2, line 50).** The story's scan: the drawing's tipped balance, then the
   picture. It is the same simplification as before, not a real scan.
 - **Everything else** is unchanged in substance: only whose body it is has changed.
+
+### Level 2, lines 31 and 47–49 (2026-11-20, later). Nadia, verbatim (two messages):
+
+> change heres another drop to heres a look at some more protons in another part of your patients body
+
+> also in that same section listen to the scan doesn:t make any sense
+
+- Line 31 is now "Here's a look at some more protons in another part of your patient's body. Its total is 0 too."
+- The button that starts the picture was [Listen]. Nothing on the page is heard, and you are the one taking the scan,
+  so it is now [Take the scan] (line 48).
+- Lines 47 and 49 drop the listening picture too:
+  - line 47: "Your scanner nudges them with radio waves and picks up their faint reply.", as line 17's "Your scanner
+    can only pick up this total";
+  - line 49: "From that faint reply, it paints a picture of your patient's insides." ("whisper" is gone).
+- **What line 47 claims.** The radio waves tip the tiny magnets, and as they turn they send out a faint radio signal
+  that the scanner's coil picks up: the same total as line 17, now no longer 0.
+- **What line 31 claims.** The covered drop is still drawn as a drop of water, and its protons are tiny magnets like the
+  first drop's. Water is everywhere in the body, so another drop is another part of the patient's body. Its total is
+  0 as well; behind that 0 is a different arrangement (lines 35 and 37), as before.
 
 ## Level 3, "A prism for sound" (2026-11-19; first called "The magic glasses")
 
@@ -904,7 +923,7 @@ Revision 6's, and the rest is as in Revision 5. New:
 - **Why the brain, then the skull.** They make the difference easy to see. On the board, the skull's signal is less than
   a third of the brain's, as in a real MRI, where bone gives very little signal.
 
-### Revision 8 (2026-11-20), which governs Level 3. Nadia, verbatim:
+### Revision 8 (2026-11-20), superseded by Revision 9 below. Nadia, verbatim:
 
 > 1. Violin note → pure tones
 > 2. Stage light → its full color spectrum
@@ -1017,3 +1036,112 @@ Revision 7 and keep its notes. New:
   - each button is pressed.
 
   It stops at the frame's step. Nothing in a frame is drawn separately from the level.
+
+### Revision 9 (2026-11-20), which governs Level 3. Nadia, verbatim (two messages):
+
+> this should be - proton magnet frequencies make up image something like this make it make sense not my wording but follow the theme of something being inside and decoding it like violin -> pure tones inside
+> Proton frequencies → image
+
+> make the signal coming out from tapping a part of the brain more associative or more apparent, also change tap the brain to tap a part of the brain.
+
+#### What changes
+
+- **The scanner's line of the pattern (line 40)** is now "MRI signal → proton frequencies → image".
+  - Like "Violin note → pure tones", it starts from what you get, the signal, and decodes what is inside it: the
+    protons' frequencies. Those make up the image.
+  - On its slide, small glowing bars stand on the arrow between the signal and the picture: the proton frequencies
+    found in the signal.
+  - A caption that would run off the board is set a little smaller.
+- **Tapping a part of the head (lines 25–27).**
+  - Line 25 is now "Tap a part of the brain." The outer or the inner brain counts, as before.
+  - The signal now comes out of the spot you tap. Rings grow out of the spot, and a glowing line in the part's colour
+    runs from it to the data box. The wave is drawn from the left as it arrives.
+  - The data box's edge takes the part's colour, and the part's name (one of line 26's labels) stands above the box.
+  - The parts tapped before stay faint behind the new wave, so they can be compared.
+  - No sound is added: the scanner part stays free of music (Revision 4).
+
+#### Level 3 learner copy (Revision 9), in order (drafted by Claude at Nadia's request, for her review)
+
+1. After your scan, you head back to the concert hall.
+2. The lights dim. You notice a stage light shining.
+3. Drag to aim it at the chandelier.
+4. Drag across the picture to swing the light. (only after 8 seconds)
+5. Where did the colors come from? [The glass] [The white light]
+6. From the white light. The glass on the chandelier is a prism: it takes light apart into its colors.
+7. You (thinking): If a prism is a tool that can take apart light, is there a tool that can take apart a sound?
+8. Surprise: it's your tuner.
+9. [Play your A note]
+10. A (the letter on the tuner)
+11. The tuner draws your note's signal, its shape over time, and names it: A.
+12. Four notes hide in this signal. Can you see them? [Yes] [Not really]
+13. Neither can anyone, just by looking.
+14. [Take it apart]
+15. Your A note, taken apart into four pure tones.
+16. A, high A, E, higher A (the labels under the bars)
+17. Drag the bars. Can you make a single pure tone, like a tuning fork?
+18. Drag all the bars but one down to 0. (only after 9 seconds)
+19. One bar, one smooth wave: a tuning fork.
+20. Now bring the others back.
+21. Every bump in the signal comes from a different pure tone.
+22. At the break, the radiologist who read your scan comes over. (the radiologist walks over to you on the board as this appears)
+23. You: My tuner just took my A note apart!
+24. Radiologist: The MRI scanner works the same way.
+25. Tap a part of the brain. (the outer or the inner brain; its signal comes out of the spot you tap, runs to the data box and is drawn there, under its name)
+26. skin, skull, fluid, outer brain, inner brain (the labels beside the head)
+27. Now tap the skull.
+28. Each tiny magnet behaves differently depending on which body part it's in.
+29. [Collect the data]
+30. Collecting that data
+31. [Convert it to pixels]
+32. and converting it into pixel data
+33. helps us see an MRI picture, with the Fourier transform. (lines 28, 30, 32 and 33 are one paragraph, shown one part at a time, the earlier parts turning grey; the people and their bubbles are gone while it is shown)
+34. Radiologist: Do you notice a pattern? [Yes] [Not yet]
+35. Radiologist: Let me help you out.
+36. Violin note → pure tones (the caption under its pictures, the A note's wave → its four bars, on a slide of its own)
+37. [Next]
+38. Stage light → its full color spectrum (on a slide of its own: a white beam into a prism → a fan of colours)
+39. [Next]
+40. MRI signal → proton frequencies → image (on a slide of its own: the scanner's signal → small bars of its proton frequencies, on the arrow → the picture of your patient's head)
+41. [Next] (then all three together, each caption under its pictures)
+42. the Fourier transform (the grand reveal: big and glowing in the middle of the board)
+43. The mathematical tool that lets us start seeing what hides inside: the Fourier transform.
+44. All three come down to the same geometric math.
+45. Joseph Fourier came up with it about 200 years ago.
+46. The applications are endless! From a simple tuner to looking inside your brain.
+
+Nothing comes after line 46.
+
+#### The review strip's labels (for review, not learner copy)
+
+- All steps (the link on the Level 3 tag)
+- Level 3, step by step (the strip's title)
+- Scroll left and right, or use the arrows. Each frame is the level itself, stopped at that step.
+- Play from here
+- Back to the levels
+
+The 26 step titles are in `src/levels/stepsPrism.js`.
+
+#### What the new lines claim
+
+The numbers are computed in `src/math/prism.js` and checked by `test/prism.test.js`. Lines 1–24, 26–39 and 41–46 are
+as in Revision 8 and keep its notes. New:
+
+- **Line 40, "MRI signal → proton frequencies → image".** This is how a real scanner tells places apart.
+  - While it listens, an extra magnet (a gradient) makes the protons at each place along one direction turn at a
+    slightly different frequency. So the signal is a mix of frequencies.
+  - The Fourier transform finds how much of each frequency is in the mix. That says how much signal came from each
+    place: one line of the image.
+  - Real scanners also use the waves' timing (phase) for the other direction. The board, as since Revision 6, gives
+    each place in a row its own frequency.
+- **The bars on the arrow.** They are 8 of the 48 amounts the Fourier transform finds in the middle row's signal (every
+  fifth one, across the head).
+  - Each equals the brightness of that pixel of the row, exactly: they are the numbers that become that row of the
+    picture.
+  - They are coloured as each frequency is coloured elsewhere on the board.
+- **The tapped part's signal.** On the board, each part's signal is shown on its own, coming out of the spot you
+  tapped.
+  - The line from the spot to the data box only shows which part the wave belongs to.
+  - In a real scanner, the signal is a radio wave picked up by coils around the head, and every part's signal arrives
+    at once, mixed. The "Collect the data" step shows that mix.
+  - The wave's strength and fade are as in Revision 6's notes. It is as strong as the part is bright in the picture;
+    how long it lasts is an illustration.

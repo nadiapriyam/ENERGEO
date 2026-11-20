@@ -1,5 +1,5 @@
 // The named steps of Level 3, in order: the review strip (try/?steps) shows each one, frozen, and "Play from here"
-// starts the level at it (docs/levels_spec.md, Revision 8). The level calls step(id) at each of these moments, and
+// starts the level at it (docs/levels_spec.md, Revision 9). The level calls step(id) at each of these moments, and
 // test/prism.test.js checks that every id here is reached in this order. The titles are for review, not learner copy.
 
 export const STEPS = [
@@ -17,7 +17,7 @@ export const STEPS = [
   { id: 'back', title: 'Every bump, a different pure tone' },
   { id: 'break', title: 'The break: the radiologist comes over' },
   { id: 'talk', title: 'The MRI scanner works the same way' },
-  { id: 'brain', title: 'Tap the brain' },
+  { id: 'brain', title: 'Tap a part of the brain' },
   { id: 'skull', title: 'Now tap the skull' },
   { id: 'behaves', title: 'Each body part behaves differently' },
   { id: 'collect', title: 'Collecting that data' },
@@ -25,7 +25,7 @@ export const STEPS = [
   { id: 'pattern', title: 'Do you notice a pattern?' },
   { id: 'slide1', title: 'Violin note → pure tones' },
   { id: 'slide2', title: 'Stage light → its full color spectrum' },
-  { id: 'slide3', title: 'Proton frequencies → image' },
+  { id: 'slide3', title: 'MRI signal → proton frequencies → image' },
   { id: 'together', title: 'All three' },
   { id: 'reveal', title: 'The grand reveal' },
   { id: 'end', title: 'The applications are endless' },
