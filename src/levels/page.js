@@ -1,10 +1,9 @@
 // try/: the levels on one page (docs/levels_spec.md). Level 1, the violin, starts at once. When a level's last line is
 // shown, a button offers the next one, which then starts underneath: Level 2, the MRI scanner; Level 3, a prism
-// for sound. The page scrolls like a Mathigon course: every part of a story stays on the page (scroll.js). The
-// "Full screen" switch shows only the level being played, one part at a time.
+// for sound. Each level plays on one board, its lines clearing between parts; every part you finish goes into the
+// side panel ("Scroll through"), where you can scroll through them all (scroll.js).
 import './base.css';
 import { LEVELS } from './copyLevels.js';
-import { fullScreen } from './scroll.js';
 
 const tag = (id, text, note) => {
   const t = document.getElementById(id);
@@ -33,8 +32,6 @@ function chain(from, buttonId, text, section, load) {
     next.remove();
     const s = document.getElementById(section);
     s.hidden = false;
-    document.querySelector('.level.live')?.classList.remove('live');   // the level being played
-    s.classList.add('live');
     await load();                                            // the level builds itself, then the page brings it into view
     requestAnimationFrame(() => s.scrollIntoView({ behavior, block: 'start' }));
   }, { once: true });
@@ -56,38 +53,34 @@ if (query.has('steps')) {
   dropLevel1();
   for (const id of ['level-2', 'level-3']) if (id !== direct[0]) document.getElementById(id).hidden = true;
   document.getElementById(direct[0]).hidden = false;
-  document.getElementById(direct[0]).classList.add('live');
   direct[1]();
 } else {
   import('./note.js');                                        // Level 1 starts the page
 }
 
-// Full screen: only the level being played, one part at a time, its picture as large as fits (base.css). The browser's
-// own full screen is asked for too, where it is offered; leaving it (Esc) leaves this mode as well.
+// Scroll through, on the side: a tab at the right edge opens a panel holding every part finished so far, in order, under
+// each level's name (scroll.js fills it). Not in a frame of the review strip, nor on the strip itself.
 if (!query.has('step') && !query.has('steps')) {
   const html = document.documentElement;
-  const toggle = Object.assign(document.createElement('button'), { type: 'button', className: 'screen-mode' });
-  let native = false;
-  const set = (on) => {
-    html.classList.toggle('full-screen', on);
-    toggle.textContent = on ? LEVELS.exitFullScreen : LEVELS.fullScreen;
-    toggle.setAttribute('aria-pressed', String(on));
-    const live = document.querySelector('.level.live');
-    const target = on ? live : live?.querySelector('.lesson > .figure');   // back in the scroll: the live picture
-    requestAnimationFrame(() => target?.scrollIntoView({ block: 'start' }));
+  const make = (tag, attrs, ...kids) => { const e = Object.assign(document.createElement(tag), attrs); e.append(...kids); return e; };
+  const close = make('button', { type: 'button', className: 'side-close', textContent: LEVELS.close });
+  const panel = make('aside', { className: 'side', id: 'side-panel', inert: true },
+    make('div', { className: 'side-head' }, make('h2', { textContent: LEVELS.soFar }), close),
+    make('p', { className: 'side-empty', textContent: LEVELS.soFarEmpty }),
+    make('div', { className: 'side-parts' }));
+  panel.setAttribute('aria-label', LEVELS.soFar);
+  const tab = make('button', { type: 'button', className: 'side-toggle', textContent: LEVELS.scrollThrough });
+  tab.setAttribute('aria-controls', 'side-panel');
+  tab.setAttribute('aria-expanded', 'false');
+  const open = (on) => {
+    html.classList.toggle('side-open', on);
+    panel.inert = !on;
+    tab.setAttribute('aria-expanded', String(on));
+    tab.classList.remove('new');
+    if (on) { panel.scrollTop = panel.scrollHeight; close.focus({ preventScroll: true }); }   // the latest part first in view
   };
-  toggle.textContent = LEVELS.fullScreen;
-  toggle.setAttribute('aria-pressed', 'false');
-  toggle.addEventListener('click', () => {
-    const on = !fullScreen();
-    set(on);
-    if (on && html.requestFullscreen) html.requestFullscreen().then(() => { native = true; }, () => {});
-    else if (!on && document.fullscreenElement) document.exitFullscreen().catch(() => {});
-  });
-  document.addEventListener('fullscreenchange', () => {
-    if (document.fullscreenElement) return;
-    if (native && fullScreen()) set(false);
-    native = false;
-  });
-  document.body.append(toggle);
+  tab.addEventListener('click', () => open(!html.classList.contains('side-open')));
+  close.addEventListener('click', () => { open(false); tab.focus({ preventScroll: true }); });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape' && html.classList.contains('side-open')) { open(false); tab.focus({ preventScroll: true }); } });
+  document.body.append(tab, panel);
 }

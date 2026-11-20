@@ -123,8 +123,9 @@ Lines marked (R2) are Nadia's own wording, from `docs/prototype_try_spec.md` Rev
 Nothing comes after line 58.
 
 Around the levels: "Level 1", "Level 2", "Level 3", "Turn your sound on." (Levels 1 and 3 need sound), "Next: Level 2"
-and "Next: Level 3". The switch at the top right: "Full screen", and in full screen "Exit full screen" (see "All three
-levels: scrolling, and full screen" below).
+and "Next: Level 3". The side panel (see "All three levels: the regular layout, and scrolling through on the side"
+below): the tab "Scroll through", the panel's title "The story so far", "Each part you finish appears here." (until
+the first part is finished) and "Close".
 
 ## What the new lines claim, and what they do not
 
@@ -200,7 +201,7 @@ levels: scrolling, and full screen" below).
   first drop's. Water is everywhere in the body, so another drop is another part of the patient's body. Its total is
   0 as well; behind that 0 is a different arrangement (lines 35 and 37), as before.
 
-## All three levels: scrolling, and full screen (2026-11-20). Nadia, verbatim:
+## All three levels: scrolling, and full screen (2026-11-20), superseded by the next section. Nadia, verbatim:
 
 > also i want it to be like mathigon.org how you just scroll to go through the levels. this right now can be a full screen mode
 
@@ -224,6 +225,26 @@ levels: scrolling, and full screen" below).
   per frame, and a level fast-forwarding to a step ("Play from here") keeps no parts until it hands over.
 - **No new claims.** Only the layout changes.
 - Files: `src/levels/scroll.js` (keeping a part), `src/levels/page.js` (the switch), `src/levels/base.css`.
+
+## All three levels: the regular layout, and scrolling through on the side (2026-11-20). Nadia, verbatim:
+
+> no make he regular without scroll aka how we had it before the scroll, the defult and make a scroll through feature on the side.
+
+### What changes
+
+- **The regular layout is the default again**, as before the scroll: each level plays on one board, and its lines
+  clear between parts. The page no longer moves down by itself, and the "Full screen" switch is gone.
+- **Scroll through, on the side.**
+  - A "Scroll through" tab sits at the right edge of the screen. It opens a side panel, "The story so far".
+  - The panel holds every part finished so far, in order, under each level's name: a still copy of its picture,
+    then its lines. Scroll through it at any time; "Close" (or Esc) puts it away.
+  - Nothing in the panel can be pressed, and its finished buttons are gone.
+  - If a picture has not changed since the last part, the new lines join that part, so no picture repeats.
+  - When a part is added, the tab lights up. If the panel is open at its end, it follows the new part.
+- **Unchanged.** The words, their order and every interaction. The review strip (`try/?steps`) and its frames have no
+  panel, and a level fast-forwarding to a step ("Play from here") adds no parts until it hands over.
+- **No new claims.** Only the layout changes.
+- Files: `src/levels/scroll.js` (keeping a part), `src/levels/page.js` (the tab and the panel), `src/levels/base.css`.
 
 ## Level 3, "A prism for sound" (2026-11-19; first called "The magic glasses")
 

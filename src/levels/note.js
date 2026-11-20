@@ -251,7 +251,7 @@ const say = (text, cls = '') => {
   requestAnimationFrame(() => p.classList.add('in'));
   return p;
 };
-const clear = () => keepPart([figure, notesRow], prompt);   // the part stays on the page, and the story goes on underneath (scroll.js)
+const clear = () => keepPart([figure, notesRow], prompt);   // the lines clear; the part goes into the side panel (scroll.js)
 let keyboardUser = false;
 addEventListener('keydown', (e) => { if (e.key === 'Tab' || e.key === 'Enter' || e.key === ' ') keyboardUser = true; }, true);
 addEventListener('pointerdown', () => { keyboardUser = false; }, true);

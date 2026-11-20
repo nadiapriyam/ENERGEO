@@ -19,7 +19,7 @@ import './prism.css';
 import { COPY } from './copyPrism.js';
 import { STEPS as STORY_STEPS } from './stepsPrism.js';
 import { person as standing, speaker } from './characters.js';
-import { keepPart, fullScreen } from './scroll.js';
+import { keepPart } from './scroll.js';
 import { A_NOTE, STEPS, PITCH, part } from '../math/tones.js';
 import {
   BOARD, css, triangle, HALL, crystalCorners, aimAngle, toCrystal, startAngle, lightPath,
@@ -373,8 +373,8 @@ function tapParts(onTap) {
   };
 }
 
-// ── the prompt: lines fade in; at the end of a part they stay on the page with its picture, and the story goes on
-// underneath (scroll.js). In full screen they fade out together before the next part. ──────────────────────────
+// ── the prompt: lines fade in, and fade out together before the next part; the part (its picture and its lines) goes
+// into the side panel, to scroll through (scroll.js) ───────────────────────────────────────────────────────────────
 const say = (text, cls = '') => {
   const p = el('p', { class: `line ${cls}`.trim(), text });
   prompt.append(p);
@@ -386,10 +386,8 @@ const speak = speaker(prompt, later);
 async function clear() {
   const old = [...prompt.children];
   if (!old.length) return;
-  if (fullScreen()) {
-    old.forEach((n) => n.classList.add('leaving'));
-    await pause(REDUCED ? 0 : 280);
-  }
+  old.forEach((n) => n.classList.add('leaving'));
+  await pause(REDUCED ? 0 : 280);
   keepPart([figure], prompt);
 }
 let keyboardUser = false;

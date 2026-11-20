@@ -1,15 +1,11 @@
-// Scrolling through the levels, as in a Mathigon course (docs/levels_spec.md, "Scrolling, and full screen"). When a
-// part of a story ends, its picture and its lines stay on the page as a kept part, and the story goes on underneath:
-// the page scrolls down to the live picture, where the next part begins. Scroll up at any time to see every earlier
-// part. Full screen shows only the level being played, one part at a time, the lines clearing between parts (the
-// kept parts are still made, hidden, so leaving full screen shows them all).
+// Scrolling through on the side (docs/levels_spec.md, "All three levels: the regular layout, and scrolling through on
+// the side"). The levels play as they were built: one board, the lines clearing between parts. When a part ends, a
+// still copy of its picture and its lines goes into the side panel, under its level's name, so every part you have
+// finished can be scrolled through there. page.js makes the panel and its "Scroll through" tab.
 
 const root = () => document.documentElement;
-/** Full screen: only the level being played, one part at a time. */
-export const fullScreen = () => root().classList.contains('full-screen');
-/** The parts are kept everywhere but in a frame of the review strip, and while Level 3 fast-forwards to a step. */
+/** Parts are kept everywhere but in a frame of the review strip, and while Level 3 fast-forwards to a step. */
 const keeping = () => !root().classList.contains('framed') && !root().classList.contains('instant');
-const motion = () => (matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth');
 
 /**
  * One attribute value with its references to renamed ids rewritten: url(#id), as in fill, clip-path and filter,
@@ -41,37 +37,57 @@ export function still(node) {
 
 const shownNow = (n) => n.childElementCount > 0 && n.offsetHeight > 0 && getComputedStyle(n).opacity !== '0';
 const last = new WeakMap();                                  // the live picture → the kept part it last made, and its markup
+const make = (tag, className, text) => Object.assign(document.createElement(tag), { className, ...(text ? { textContent: text } : {}) });
+
+/** The side panel's list for the level that `live` is in, made the first time, under the level's name (null: no panel). */
+function listFor(live) {
+  const parts = document.querySelector('.side-parts');
+  if (!parts) return null;
+  const level = live.closest('.level');
+  const id = level?.id ?? 'level';
+  let group = [...parts.children].find((g) => g.dataset.level === id);
+  if (!group) {
+    group = make('section', 'side-level');
+    group.dataset.level = id;
+    group.append(make('h3', 'side-level-name', level?.querySelector('.level-tag')?.firstChild?.textContent ?? ''));
+    parts.append(group);
+  }
+  return group;
+}
 
 /**
- * The part that just ended stays on the page. `shown` lists what makes the picture (the live figure first, then
- * anything shown under it, such as Level 1's notes); `prompt` holds the part's lines.
- * - The lines, and a still copy of the picture, move into a kept part just above the live figure. If the picture has
- *   not changed since the last kept part, the lines join that part instead of repeating the picture.
- * - Then, if you are following the story (not reading further up), the page scrolls down to the live figure.
+ * The part that just ended goes into the side panel. `shown` lists what makes the picture (the live figure first, then
+ * anything shown under it, such as Level 1's notes); `prompt` holds the part's lines, which leave the page.
+ * - A still copy of the picture, and the lines, become a kept part at the end of the level's list in the panel. If the
+ *   picture has not changed since the last kept part, the lines join that part instead of repeating the picture.
+ * - If the panel is open and scrolled to its end, it follows the new part; the tab shows that something was added.
  * - In a frame of the review strip, or while fast-forwarding, the lines simply clear.
  */
 export function keepPart(shown, prompt) {
   const lines = [...prompt.children];
   if (!lines.length) return;
-  if (!keeping()) { prompt.replaceChildren(); return; }
   const live = shown[0];
-  const following = live.getBoundingClientRect().top < innerHeight;   // measured before the kept part pushes it down
+  const list = keeping() ? listFor(live) : null;
+  if (!list) { prompt.replaceChildren(); return; }
+  const panel = list.closest('.side');
+  const atEnd = panel.scrollHeight - panel.scrollTop - panel.clientHeight < 60;
   lines.forEach((l) => l.classList.remove('leaving'));
   for (const b of prompt.querySelectorAll('button')) b.disabled = true;
   const pictures = shown.filter(shownNow);
   const markup = pictures.map((n) => n.outerHTML).join('');
   const before = last.get(live);
-  if (before && before.markup === markup && before.part.nextElementSibling === live) before.part.querySelector('.kept-words').append(...lines);
+  if (before && before.markup === markup && before.part === list.lastElementChild) before.part.querySelector('.kept-words').append(...lines);
   else {
-    const words = Object.assign(document.createElement('div'), { className: 'prompt kept-words' });
+    const words = make('div', 'prompt kept-words');
     words.append(...lines);
-    const part = Object.assign(document.createElement('div'), { className: 'kept-part' });
+    const part = make('div', 'kept-part');
     part.inert = true;
     part.append(...pictures.map(still), words);
-    live.before(part);
+    list.append(part);
     last.set(live, { markup, part });
   }
-  if (following && !fullScreen()) {                         // once the kept part has its size, scroll on to the live picture
-    requestAnimationFrame(() => requestAnimationFrame(() => live.scrollIntoView({ behavior: motion(), block: 'start' })));
-  }
+  panel.querySelector('.side-empty')?.remove();
+  if (atEnd && root().classList.contains('side-open')) requestAnimationFrame(() => panel.scrollTo({ top: panel.scrollHeight, behavior: 'smooth' }));
+  const tab = document.querySelector('.side-toggle');
+  if (tab) { tab.classList.remove('new'); void tab.offsetWidth; tab.classList.add('new'); }
 }

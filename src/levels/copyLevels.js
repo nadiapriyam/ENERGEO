@@ -1,5 +1,5 @@
 // The text around the levels (docs/levels_spec.md): the small tag above each level, the buttons from one level to
-// the next, the full-screen switch, and the review strip's labels (try/?steps: every step of Level 3, left to right).
+// the next, the side panel that holds every finished part, and the review strip's labels (try/?steps: every step of Level 3, left to right).
 
 export const LEVELS = {
   level1: 'Level 1',
@@ -8,8 +8,10 @@ export const LEVELS = {
   soundOn: 'Turn your sound on.',
   next: 'Next: Level 2',
   next3: 'Next: Level 3',
-  fullScreen: 'Full screen',
-  exitFullScreen: 'Exit full screen',
+  scrollThrough: 'Scroll through',
+  soFar: 'The story so far',
+  soFarEmpty: 'Each part you finish appears here.',
+  close: 'Close',
   allSteps: 'All steps',
   steps: 'Level 3, step by step',
   stepsHint: 'Scroll left and right, or use the arrows. Each frame is the level itself, stopped at that step.',

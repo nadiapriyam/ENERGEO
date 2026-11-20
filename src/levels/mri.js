@@ -321,7 +321,7 @@ const say = (text, cls = '') => {
   requestAnimationFrame(() => p.classList.add('in'));
   return p;
 };
-const clear = () => keepPart([figure], prompt);             // the part stays on the page, and the story goes on underneath (scroll.js)
+const clear = () => keepPart([figure], prompt);             // the lines clear; the part goes into the side panel (scroll.js)
 // focus follows the story only for keyboard users (a mouse or touch user never sees a focus ring appear on its own)
 let keyboardUser = false;
 addEventListener('keydown', (e) => { if (e.key === 'Tab' || e.key === 'Enter' || e.key === ' ') keyboardUser = true; }, true);
