@@ -27,7 +27,7 @@ test('1. no words wait on a timer, and one way forward at a time: Next only wher
     assert.ok(!/await pause\(\d+\);\s*clear\(\);/.test(main), `${f}.js: no words cleared on a timer`);
     assert.ok(read('try/index.html').includes(`id="${lesson}"`));
   }
-  assert.deepEqual(nexts, { note: 2, mri: 6, prism: 5 }, 'few Next presses: 2, 6, and 4 plus the three slides');
+  assert.deepEqual(nexts, { note: 2, mri: 6, prism: 7 }, 'few Next presses: 2, 6, and 6 plus the three slides (in one loop)');
   assert.match(read('src/levels/prism.js'), /reader\(root, \{ fast: \(\) => FAST \}\)/, 'fast-forwarding never waits');
   const comic = JSON.parse(read('src/levels/comic/comic.json'));
   for (const l of comic.levels) assert.ok(Number.isInteger(l.steps) && l.steps >= 2, `${l.id}: its count of Next presses (${l.steps})`);

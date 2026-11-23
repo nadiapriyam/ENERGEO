@@ -196,7 +196,7 @@ test('7. the learner-facing copy is verbatim from the Level 2 list, in its order
     COPY.reached, COPY.check2.question, ...COPY.check2.choices, COPY.check2.right, COPY.check2.wrong,
     COPY.answer, COPY.arrangements[0], COPY.cover.intro, `${COPY.cover.mark} (on the covered`, COPY.cover.question, ...COPY.cover.choices,
     COPY.arrangements[1], COPY.cover.again, COPY.cover.look, COPY.arrangements[2], COPY.cover.again, COPY.cover.look, COPY.reveal,
-    COPY.magnetQuestion, COPY.switchOn, ...COPY.magnet, COPY.listen, COPY.picture, `You: ${COPY.you.didIt}`, `${COPY.eye.label} (the label`, COPY.eye.line, COPY.closing,
+    COPY.magnetQuestion, COPY.switchOn, ...COPY.magnet, COPY.listen, COPY.picture, `You: ${COPY.you.didIt}`, `${COPY.eye.label} (the label`, COPY.eye.line, COPY.bigIdea, COPY.whole, COPY.unknown,
     COPY.similar.question, ...COPY.similar.choices, COPY.similar.after,
     `${COPY.compareLabels.note}, ${COPY.compareLabels.signal}, ${COPY.sum.plus}, ${COPY.sum.equals}, ${COPY.zero}, ${COPY.aName}`, COPY.compare, COPY.final];
   let at = 0;
@@ -205,7 +205,8 @@ test('7. the learner-facing copy is verbatim from the Level 2 list, in its order
     assert.ok(i >= 0, `not in the Level 2 list, in order: ${line}`);
     at = i;
   }
-  assert.ok(copyList.includes(`53. ${COPY.final}\n\nNothing comes after line 53.`) && !/^54\. /m.test(copyList), 'the final line is last');
+  assert.ok(copyList.includes(`54. ${COPY.final}`) && copyList.includes('Nothing comes after line 54.') && !/^55\. /m.test(copyList), 'the final line is last');
+  assert.match(main, /put\(bigIdea\(COPY\.bigIdea\)\);[\s\S]{0,240}say\(COPY\.whole\);[\s\S]{0,240}say\(COPY\.unknown\);/, 'the big idea, then what hides behind the 0');
   assert.ok(levels.includes('task 2: the second level is a bit confusing try to make the word count lower and simple.'), "Nadia's 2026-11-23 message, verbatim");
   const words = ordered.join(' ').split(/\s+/).length;
   assert.ok(words < 560, `fewer words: ${words}`);
@@ -230,20 +231,20 @@ test('7. the learner-facing copy is verbatim from the Level 2 list, in its order
     'COPY.proton[0]', 'COPY.proton[1]', 'COPY.hook', 'COPY.totalMeans', 'COPY.task', 'COPY.hint', 'COPY.check1.question', 'COPY.check1.after', 'COPY.reached',
     'COPY.check2.question', 'COPY.check2.right', 'COPY.answer', 'COPY.check2.wrong', 'COPY.arrangements[0]', 'COPY.cover.intro', 'COPY.cover.question',
     'COPY.arrangements[1]', 'COPY.cover.again', 'COPY.cover.look', 'COPY.arrangements[2]', 'COPY.reveal',
-    'COPY.magnetQuestion', 'COPY.switchOn', 'COPY.magnet[0]', 'COPY.magnet[1]', 'COPY.magnet[2]', 'COPY.magnet[3]', 'COPY.magnet[4]', 'COPY.listen',
-    'COPY.picture', 'COPY.you.didIt', 'COPY.eye.line', 'COPY.closing', 'COPY.similar.question', 'COPY.similar.after', 'COPY.compareLabels.note', 'COPY.compare', 'COPY.final'];
+    'COPY.magnetQuestion', 'COPY.switchOn', 'COPY.magnet[0]', 'COPY.magnet[1]', 'COPY.magnet[2]', 'COPY.magnet[3]', 'COPY.listen',
+    'COPY.picture', 'COPY.you.didIt', 'COPY.eye.line', 'COPY.bigIdea', 'COPY.whole', 'COPY.unknown', 'COPY.similar.question', 'COPY.similar.after', 'COPY.compareLabels.note', 'COPY.compare', 'COPY.final'];
   const pos = calls.map((c) => main.indexOf(c, main.indexOf('// ── the story')));
   assert.ok(pos.every((i) => i >= 0), JSON.stringify(calls.filter((c, k) => pos[k] < 0)));
   assert.deepEqual([...pos].sort((a, b) => a - b), pos, 'the story shows the copy in order');
   const tail = main.slice(main.indexOf("say(COPY.final, 'final');"));
   assert.ok(!/say\(|button\(|choices\(|press\(|ask\(/.test(tail.replace("say(COPY.final, 'final');", '')), 'nothing is shown after the final line');
-  for (const line of [COPY.task, COPY.hook, COPY.totalMeans, COPY.reveal, COPY.final, ...COPY.magnet, COPY.closing, COPY.eye.line, COPY.compare]) assert.ok(!main.includes(line), `copy belongs in copyMri.js: ${line}`);
+  for (const line of [COPY.task, COPY.hook, COPY.totalMeans, COPY.reveal, COPY.final, ...COPY.magnet, COPY.bigIdea, COPY.whole, COPY.unknown, COPY.eye.line, COPY.compare]) assert.ok(!main.includes(line), `copy belongs in copyMri.js: ${line}`);
   // gaps filled with pictures, not words: +1 and −1 as arrows join the TOTAL (its result counting with them), and radio
   // waves in, a faint reply out, while that line is on screen
   assert.ok(COPY.sum.up === '+1' && COPY.sum.down === '−1');
   assert.match(main, /drawResult\(total\(groups\.flat\(\)\.map\(\(r\) => dirs\[r\] \?\? dirOf\(r\)\)\)\);\s*\/\/[^\n]*\n\s*popValue\(/, 'the result counts up as each arrow joins, with +1');
   assert.match(main, /drawResult\(totalOf\(state\)\);\s*popValue\(/, 'each ↓ dragged in: −1');
-  assert.match(main, /say\(COPY\.magnet\[4\]\);\s*on\(radio\);/, 'radio waves while the radio line is on screen');
+  assert.match(main, /say\(COPY\.magnet\[3\]\);[^\n]*\n\s*on\(radio\);/, 'radio waves while the radio line is on screen');
   assert.match(main, /on\(radio, false\)/);
   assert.ok(POP.x > PANEL.cx + 20 && POP.x + 40 < PANEL.x + PANEL.w && Math.abs(POP.y - PANEL.resultY) < 10, '+1 beside the result, in the panel');
   assert.ok(RADIO.from[0] >= DROP.x && RADIO.from[1] <= DROP.x + DROP.w && RADIO.y > DROP.y && RADIO.y < DROP.y + DROP.h && RADIO.from[0] + RADIO.travel < RADIO.reply.x, 'radio waves come in across the drop, toward its middle');

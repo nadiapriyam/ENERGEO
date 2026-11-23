@@ -359,3 +359,43 @@ export function patternLight() {
 export const BREAK = { height: 270, you: 180, radiologist: 510, walkFrom: 300 };
 /** Where a figure stands at the break, centred at x, its feet on the hall's floor. */
 export const figureBox = (cx) => figureAt(cx, HALL.floor, BREAK.height);
+
+// ── the finale: a map of transformations ────────────────────────────────────────────────────────────────────────
+// The Fourier transform is the hub, and the three things it already takes apart (sound, light, an MRI scan) are lit
+// around it. Everywhere else, transformations not yet found: "?" nodes on a sunflower spiral, spreading out past the
+// edges of the board, smaller and fainter the further they are. The name ENERGEO sits at the top.
+export const MAP = { hub: { x: 196, y: 246, r: 30 }, leaf: 84, leafR: 12, spacing: 19, count: 820, title: { x: BOARD.w / 2, y: 58 }, sub: { y: 90 }, clearTop: 112, label: { dy: 54, halfW: 104 } };
+/** The three things the Fourier transform already takes apart, on the hub's upper left, top to bottom: sound, light, MRI (clear of the hub's label below it). */
+export function mapKnown() {
+  const { hub, leaf } = MAP;
+  return [230, 200, 170].map((deg, k) => {
+    const a = (deg * Math.PI) / 180;
+    return { k, x: hub.x + leaf * Math.cos(a), y: hub.y + leaf * Math.sin(a) };
+  });
+}
+/**
+ * The transformations not yet found: points of a sunflower spiral around the hub (golden angle), kept on the far side
+ * of the hub from the known ones and clear of the name at the top, out to a little past the board's edges. Each has
+ * its distance d from the hub, a radius that shrinks and an opacity that fades with d; the bigger ones carry a "?".
+ */
+export function mapUnknown() {
+  const { hub, spacing, count, clearTop } = MAP;
+  const golden = Math.PI * (3 - Math.sqrt(5));
+  const out = [];
+  for (let k = 6; k < count; k++) {
+    const d = spacing * Math.sqrt(k);
+    const x = hub.x + d * Math.cos(k * golden);
+    const y = hub.y + d * Math.sin(k * golden);
+    if (x < hub.x + 46 || x > BOARD.w + 30 || y < -20 || y > BOARD.h + 20) continue;
+    if (y < clearTop && Math.abs(x - MAP.title.x) < 200) continue;
+    if (Math.abs(x - hub.x) < MAP.label.halfW + 12 && Math.abs(y - (hub.y + MAP.label.dy)) < 22) continue;   // the hub's label
+    const r = Math.max(2.5, 13 - d / 38);
+    out.push({ x, y, d, r, opacity: Math.max(0.14, 1 - d / 560), mark: r >= 7.5 });
+  }
+  return out.sort((a, b) => a.d - b.d);
+}
+/** The grand reveal's title, moved and shrunk to become the hub's label, under the hub (its baseline MAP.label.dy below the hub's centre). */
+export function revealToHub() {
+  const s = 0.36;
+  return { dx: MAP.hub.x - REVEAL.x, dy: MAP.hub.y + MAP.label.dy - REVEAL.y, s };
+}

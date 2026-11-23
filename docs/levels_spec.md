@@ -53,9 +53,10 @@ or `try/#level-3`.
 18. [Play them together]
 19. A note (the label on what comes out of the ear)
 20. Your ear takes in all four and hears just one A note. Inside, it is many notes at once.
-21. One thing on the outside. Many hidden parts inside.
+21. Did you know? Your ears only hear sounds that shake about 20 to 20,000 times a second. Bats hear far higher, and elephants rumble too low for us to hear. (a "Did you know?" box; since 2026-11-23)
+22. The big idea: One thing on the outside. Many hidden parts inside. (pulled out as the level's big idea; since 2026-11-23)
 
-Nothing comes after line 21 in Level 1.
+Nothing comes after line 22 in Level 1.
 
 ## Level 2, "Inside the scanner": learner copy, in order (drafted by Claude at Nadia's request, for her review)
 
@@ -102,24 +103,28 @@ Lines marked (R2) are Nadia's own wording, from `docs/prototype_try_spec.md` Rev
 38. It tips the balance: a few more arrows point with the magnet.
 39. That's what an MRI does: it turns your patient's 0 signal into a small signal it can read.
 40. In a real body, it's only about five to ten in every million.
-41. But the 0 held far more: every tiny magnet, not just the few left over.
-42. Your scanner nudges them with radio waves and picks up their faint reply. (radio waves come in from both sides; a faint reply spreads back out, in rings)
-43. [Take the scan]
-44. From that reply, it paints a picture of your patient's insides.
-45. You: I did it! My first MRI scan!
-46. one picture (the label on what the eye sees)
-47. Your eye sees just one picture. It's hiding far more than it seems.
-48. You just figured out one of the core principles of MRI.
-49. Do you see a similarity to the violin level? [Yes] [Not yet]
-50. Look.
-51. YOUR A NOTE, TOTAL SIGNAL, +, =, 0, A (the side by side)
-52. In Level 1, one A note hid many notes. Here, one 0 signal hides countless tiny magnets.
-53. A 0 isn't always nothing. Sometimes it's a whole person: countless tiny magnets, perfectly balanced.
+41. Your scanner nudges them with radio waves and picks up their faint reply. (radio waves come in from both sides; a faint reply spreads back out, in rings)
+42. [Take the scan]
+43. From that faint reply, it paints a picture of your patient's insides.
+44. You: I did it! My first MRI scan!
+45. one picture (the label on what the eye sees)
+46. Your eye sees one picture, painted from a faint reply: a few tiny magnets in every million.
+47. The big idea: There's far more hiding in a 0 than the signal shows us. (pulled out as the level's big idea; Nadia, 2026-11-23: "the bold statement")
+48. A 0 isn't always nothing. Sometimes it's a whole person: countless tiny magnets, perfectly balanced.
+49. And there are still so many things we don't know about, hiding behind the 0. (Nadia, 2026-11-23: "there are still so many things that we don't know about hiding behind the 0")
+50. Do you see a similarity to the violin level? [Yes] [Not yet]
+51. Look.
+52. YOUR A NOTE, TOTAL SIGNAL, +, =, 0, A (the side by side)
+53. In Level 1, one A note hid many notes. Here, one 0 signal hides countless tiny magnets.
+54. Hidden things are everywhere. There are even frequencies our ears can't hear. (Nadia, 2026-11-23: "there are frequencies our ear cna't even percieve")
 
-Nothing comes after line 53.
+Nothing comes after line 54.
 
 Around the levels: "Level 1", "Level 2", "Final level" (Level 3), "Turn your sound on." (Levels 1 and 3 need sound),
-"Next: Level 2" and "Next: Final level". The reader under each level (see "All three levels: reading at your own pace,
+"Next: Level 2" and "Next: Final level". Each level's cover (since 2026-11-23): Level 1, "Inside a note", "Can one sound
+hide more than you hear?"; Level 2, "Inside the scanner", "If one note can hide many, what could a 0 hide?"; the final
+level, "A prism for sound", "Is there any way to perceive these hidden things?". The card between levels: "Up next"
+(with the next level's name, headline and question, and its button). The boxes: "Did you know?" and "The big idea". The reader under each level (see "All three levels: reading at your own pace,
 and a simpler Level 2" below): "Back", "Next", the bar ("Progress", for screen readers), "+1", "Earlier" (with the
 part's number) and "Level up!". The side panel (see "All three levels: the whole story as a comic, on the side"
 below): the tab "Scroll through", the panel's title "The whole story", and "Close".
@@ -130,17 +135,17 @@ below): the tab "Scroll through", the panel's title "The whole story", and "Clos
   tiny magnets, not each one. When they cancel, that total is 0 and there is nothing to pick up.
 - **"That's what an MRI does" (line 39).** The scanner's magnet tips the balance, so the total is no longer 0 but a
   small number it can read. In the drawing it is 2. In a real body it is about five to ten in every million (line 40).
-- **"But the 0 held far more" (line 41).** This states only what is certain. The 0 is one number, the total.
+- **"There's far more hiding in a 0 than the signal shows us" (line 47, the big idea), and line 48.** This states only what is certain. The 0 is one number, the total.
   Behind it were all the tiny magnets, while the scanner's small signal reflects only the few left over. Nadia's
   stronger wording, "that 0 signal is way more knowledegable than the mri signal of manipulation of magnet", belongs to
   her hypothesis **B-ZERO-LOSS**: "leaving a natural zero/cancellation state may destroy information encoded in the
   relations that generated that zero" (`research/foundation_user_theories.md`, status: hypothesis). Until that
   hypothesis is established, the learner is not told that leaving the 0 destroys information, or that the 0 "knows"
   more.
-- **The eye (lines 46 and 47).** The eye takes in light from every part of the picture and we see one picture. The
+- **The eye (lines 45 and 46).** The eye takes in light from every part of the picture and we see one picture. The
   drawing shows what is seen, not how the eye works. "It's hiding far more than it seems" refers to what the story has
   shown: behind every grey dot of the picture are countless tiny magnets.
-- **The side by side (lines 51 and 52).** The left side is the violin level's arithmetic: the four notes' waves add up
+- **The side by side (lines 52 and 53).** The left side is the violin level's arithmetic: the four notes' waves add up
   exactly to the A note's wave. The right side is the MRI level's: ↑ = +1 and ↓ = −1, so each pair is 0 and the total
   signal is 0.
 
@@ -351,6 +356,71 @@ This changes the reader of the section above; the rest of that section stands.
   - When a level is done, its section fills and its marker turns gold, with confetti: "Level up!".
   - How far each press fills a section comes from that level's count of presses (`steps` in the comic recording).
 - Files: `src/levels/reader.js`, `src/levels/base.css`, and the levels' `story.next()` and `story.beat()`.
+
+## All three levels: the magazine, and the thought it builds (2026-11-23). Nadia, verbatim:
+
+> i think we should add, the bold statement around from the reply, we get an image portion in level 2. that theres a lot hiding in 0, more than what we see when the magnet from the mri shows us a visible signal. and then change words in this level to lead up to this, like faint reply, there are still so many things that we don't know about hiding behind the 0. and then say when relatin gthat to the violin, there are frequnecies our ear cna't even percieve, is there any possible way to percieve these hidden things. Well supreise we've already figured out a few, but there are endless possibilities to this, what weve discovered is just the surfect. Ok this is a very important assimgnemtn that i want you to take your time with. I need you to read carefully through this prompt and go over the 3 levels and change wordings, chagne themes, to achieve this thought of "there are still so many things that we don't know about hiding behind the 0. and then say when relatin gthat to the violin, there are frequnecies our ear cna't even percieve, is there any possible way to percieve these hidden things. Well supreise we've already figured out a few, but there are endless possibilities to this, what weve discovered is just the surfect. " in order to do this I want you to think of this as one of those nat geo kids magezine but tech, that ultimately introduces ENERGEO a platform but also a new discipline of study/ a sector of a new science: energy geometry so this would be the eductation introduction of how all the information the user learns is building their knowledge of what this field is. this is the Design Assignment to finnally get these levels in their rightful place. 1. change the transitions, make it so the user thinks that thought i mentioned in this prompt at the end of these three levels, a builded up thought. the end product isn't just them understanding what fourier transform is but its a crucial piece that is needed to know that going from a whole thing to its parts that we can't see is possible. Energeo maps all the transfomations that can occur such as the fourier transfomation and develops a geometry science to deveop tools that help us see thing that we couldn't but have always existed.
+
+### The thought the three levels build
+
+Each level adds one step, and each "Up next" card carries the thought into the next level:
+
+1. **Level 1, Inside a note.** *Can one sound hide more than you hear?* One A note hides four notes, and your ear hears
+   one. A "Did you know?" box adds that our ears only hear part of what there is: bats hear far higher, elephants
+   rumble too low. The big idea: *One thing on the outside. Many hidden parts inside.*
+2. **Up next: Inside the scanner.** *If one note can hide many, what could a 0 hide?*
+3. **Level 2, Inside the scanner.** A 0 signal hides countless tiny magnets. The scanner's magnet turns it into a faint
+   reply, a few in every million, and paints a picture from it. The big idea: *There's far more hiding in a 0 than the
+   signal shows us.* A 0 can be a whole person, and there are still so many things we don't know about, hiding behind
+   the 0. Then, side by side with the violin: hidden things are everywhere, even frequencies our ears can't hear.
+4. **Up next: A prism for sound.** *Is there any way to perceive these hidden things?*
+5. **The final level, A prism for sound.** The answer: a prism takes light apart, the tuner takes sound apart, the
+   scanner takes the MRI image apart, and all three are the same math, the Fourier transform. The big idea: *Going
+   from a whole to the hidden parts inside it is possible.* Surprise: we've already figured out a few ways. But the
+   possibilities are endless, and what we've discovered is just the surface: on the board, a map with the Fourier
+   transform and the three things it already takes apart lit, and question marks everywhere else, spreading past the
+   edges.
+6. **ENERGEO.** Its name appears over the map: the start of a new science, energy geometry. It sets out to map
+   transformations like the Fourier transform, and to build tools that help us see what we couldn't before, but that
+   was always there. *You just took your first steps into it.*
+
+So the end product is not only knowing what the Fourier transform is. It is knowing that going from a whole to the
+parts we can't see is possible, that we know a few ways, and that ENERGEO sets out to find and map the rest.
+
+### The magazine (a kids' science magazine, about technology)
+
+- **Covers.** Each level opens like a magazine cover: its name, a big headline, and the question it asks, in italics.
+- **"Up next".** Between levels, a card in a heavy outline with a gold shadow: "Up next", the next level's name,
+  headline and question, and its button. It replaces the bare button.
+- **"Did you know?"** A pale gold box for a fact beside the story: in Level 1, what our ears can and can't hear; in the
+  final level, where Fourier's idea came from.
+- **"The big idea".** One bold statement per level, pulled out with a thick blue rule, at the moment it is earned.
+- **The finale.** The board becomes a map of transformations, and then carries the name ENERGEO, energy geometry.
+- All in the levels' plain style: white, one accent, and the gold of "Level up!". The boxes are lines of the story:
+  they stay, Back reaches them, and the comic shows them.
+
+### What the new lines claim, and what they do not
+
+- **Hearing (Level 1, line 21; Level 2, line 54).** People hear roughly 20 to 20,000 vibrations a second. Bats
+  hear and call far above that, and elephants use rumbles below it. "Frequencies our ears can't hear" are real
+  sounds outside that range.
+- **"There's far more hiding in a 0 than the signal shows us" (Level 2, line 47).** Behind the 0 are all the tiny
+  magnets; the signal reflects only the few left over, about five to ten in every million (Level 2, lines 39 and 40).
+  This says what is behind the 0 and what the signal shows, nothing more. It does not say that leaving the 0 destroys
+  information, or that the 0 "knows" more: that is Nadia's hypothesis **B-ZERO-LOSS**, which stays a hypothesis
+  (the note on Level 2 line 47, above).
+- **"Still so many things we don't know about, hiding behind the 0" (Level 2, line 49).** One 0 can stand for many
+  arrangements (Level 2, lines 27–35): the 0 alone does not tell which one is there.
+- **"Going from a whole to the hidden parts inside it is possible" (final level).** For a signal made of waves, the
+  Fourier transform finds its parts exactly: on the board, the A note's four tones and every row of the picture are
+  recovered exactly (`test/prism.test.js`).
+- **The map.** The three lit nodes are real uses of the Fourier transform: sound (the tuner), light (a prism's
+  spectrum), MRI. The question marks are not claims about particular transformations; they are a picture of how much
+  is still to find.
+- **ENERGEO.** The lines say what ENERGEO sets out to do, the platform's and the new field's aim, in Nadia's words.
+  They do not say that energy geometry has already found new transformations or built new tools.
+- Files: `src/levels/magazine.js` (the boxes), `src/levels/page.js` (covers, "Up next"), the levels' copy files,
+  `src/math/prism.js` (`MAP`, `mapKnown`, `mapUnknown`, `revealToHub`), `src/levels/base.css`, `src/levels/prism.css`.
 
 ## Level 3, "A prism for sound" (2026-11-19; first called "The magic glasses")
 
@@ -1390,7 +1460,7 @@ Revision 9 and keep its notes. New:
 - On the board, as since Revision 6, each place in a row has its own frequency. Real scanners also use the waves'
   timing (phase) for the other direction.
 
-### Revision 11 (2026-11-23), which governs Level 3. Nadia, verbatim (the first part of her message; all of it is in
+### Revision 11 (2026-11-23), superseded by Revision 12 below. Nadia, verbatim (the first part of her message; all of it is in
 "All three levels: reading at your own pace, and a simpler Level 2"):
 
 > change level 3 to the final level. Four notes hide in this signal. "Can you see them?
@@ -1479,3 +1549,105 @@ Revision 10 and keep its notes. New:
   four pure tones (Revision 1's notes). So a bump is a place where they add up a certain way, not one of the notes.
 - **The repeats.** The A note's signal repeats exactly: on the board it shows two and a half repeats, and the copy of
   the first is the same curve, moved by one repeat (`repeats()`). The real A repeats 440 times a second.
+
+### Revision 12 (2026-11-23), which governs Level 3
+
+Nadia's message, verbatim, is in "All three levels: the magazine, and the thought it builds", above.
+
+#### What changes
+
+- **Line 1** ties back to Level 2's question: "After your scan, you head back to the concert hall, still wondering."
+- **The ending, after the grand reveal (lines 45–57):**
+  - Fourier's date becomes a "Did you know?" box, with where the idea came from: how heat spreads.
+  - The big idea: "Going from a whole to the hidden parts inside it is possible."
+  - The board becomes a map: the title shrinks into a glowing hub, the Fourier transform; sound, light and MRI light up
+    around it; then question marks spread out everywhere else, past the edges.
+  - "Surprise: we've already figured out a few, from a simple tuner to looking inside your brain." and "But the
+    possibilities are endless. What we've discovered is just the surface." These replace "Joseph Fourier came up with
+    it about 200 years ago." as a line and "The applications are endless! From a simple tuner to looking inside your
+    brain.", in Nadia's new words.
+  - ENERGEO's name appears over the map, then three lines introduce it, and the level ends: "You just took your first
+    steps into it."
+- **Two new review steps** (`src/levels/stepsPrism.js`): "Just the surface" and "ENERGEO", in place of "The
+  applications are endless".
+- **Two more Next stops**, both page turns: after the "Did you know?" box (to the map) and after "just the surface" (to
+  ENERGEO). The final level now takes 9 presses: 6 page turns and its three slides.
+
+#### Level 3 learner copy (Revision 12), in order (drafted by Claude at Nadia's request, for her review)
+
+1. After your scan, you head back to the concert hall, still wondering.
+2. The lights dim. You notice a stage light shining.
+3. Drag to aim it at the chandelier.
+4. Drag across the picture to swing the light. (only after 8 seconds)
+5. Where did the colors come from? [The glass] [The white light]
+6. From the white light. The glass on the chandelier is a prism: it takes light apart into its colors.
+7. You (thinking): If a prism is a tool that can take apart light, is there a tool that can take apart a sound?
+8. Surprise: it's your tuner.
+9. [Play your A note]
+10. A (the letter on the tuner)
+11. The tuner draws your note's signal, its shape over time, and names it: A.
+12. Four notes hide in this signal. Can you see them? [Yes] [Not really] (then the signal holds still: faint bands mark each repeat of its shape, and a glowing copy of the first repeat slides onto the second and fits it exactly)
+13. After Yes: Careful: the bumps aren't the notes. Each bump is all four notes, added together. After Not really: Neither can anyone, just by looking. Each bump is all four notes, added together.
+14. [Take it apart]
+15. Your A note, taken apart into four pure tones.
+16. A, high A, E, higher A (the labels under the bars)
+17. Drag the bars. Can you make a single pure tone, like a tuning fork?
+18. Drag all the bars but one down to 0. (only after 9 seconds)
+19. One bar, one smooth wave: a tuning fork.
+20. Now bring the others back.
+21. Every bump in the signal comes from a different pure tone.
+22. At the break, the radiologist who read your scan comes over. (the radiologist walks over to you on the board as this appears)
+23. You: My tuner just took my A note apart!
+24. Radiologist: The MRI scanner works the same way.
+25. Tap a part of the brain. (the outer or the inner brain; its signal comes out of the spot you tap, runs to the data box and is drawn there, under its name)
+26. skin, skull, fluid, outer brain, inner brain (the labels beside the head)
+27. Now tap the skull.
+28. Each tiny magnet behaves differently depending on which body part it's in.
+29. [Collect the data]
+30. Collecting that data
+31. [Convert it to pixels]
+32. and converting it into pixel data
+33. helps us see an MRI picture, with the Fourier transform. (lines 28, 30, 32 and 33 are one paragraph, shown one part at a time, the earlier parts turning grey; the people and their bubbles are gone while it is shown)
+34. Radiologist: Do you notice a pattern? [Yes] [Not yet]
+35. Radiologist: Let me help you out.
+36. Violin note → pure tones (the caption under its pictures, the A note's wave → its four bars, on a slide of its own)
+37. [Next]
+38. Stage light → its full color spectrum (on a slide of its own: a white beam into a prism → a fan of colours)
+39. [Next]
+40. MRI image → proton frequencies (on a slide of its own: the MRI picture of your patient's head, its middle row marked → that row's proton frequencies, one thin bar each)
+41. [Next] (then all three together, each caption under its pictures)
+42. the Fourier transform (the grand reveal: big and glowing in the middle of the board)
+43. The mathematical tool that lets us start seeing what hides inside: the Fourier transform.
+44. All three come down to the same geometric math.
+45. Did you know? Joseph Fourier came up with it about 200 years ago, while working out how heat spreads. (a "Did you know?" box)
+46. [Next]
+47. The big idea: Going from a whole to the hidden parts inside it is possible. (the rows fade, and the glowing title shrinks into the hub of a map, labelled the Fourier transform)
+48. sound, light, MRI (the three things it already takes apart, lit around the hub)
+49. Surprise: we've already figured out a few, from a simple tuner to looking inside your brain.
+50. ? (on every node of the map not yet found, smaller and fainter the further out, spreading past the board's edges)
+51. But the possibilities are endless. What we've discovered is just the surface.
+52. [Next]
+53. ENERGEO, energy geometry (the name and the field, at the top of the map)
+54. Meet ENERGEO: the start of a new science, energy geometry.
+55. It sets out to map transformations like the Fourier transform.
+56. And to build tools that help us see what we couldn't before, but that was always there.
+57. You just took your first steps into it.
+
+Nothing comes after line 57.
+
+#### The review strip's labels (for review, not learner copy)
+
+- Level 3, step by step (the strip's title)
+- Scroll left and right, or use the arrows. Each frame is the level itself, stopped at that step.
+- Play from here
+- Back to the levels
+
+The 27 step titles are in `src/levels/stepsPrism.js`.
+
+#### What the new lines claim
+
+Lines 2–44 are as in Revision 11 and keep its notes. The new lines are covered in "All three levels: the magazine, and
+the thought it builds" (above). Also:
+
+- **Line 45.** Fourier set out his series in his work on how heat flows (presented in 1807, published in 1822).
+- **Line 49.** The tuner, a prism's spectrum and the MRI scanner are the three uses the level has just shown.

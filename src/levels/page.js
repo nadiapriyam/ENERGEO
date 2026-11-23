@@ -1,31 +1,45 @@
-// try/: the levels on one page (docs/levels_spec.md). Level 1, the violin, starts at once. When a level's last line is
-// shown, a button offers the next one, which then starts underneath: Level 2, the MRI scanner; Level 3, a prism
-// for sound. Each level plays on one board, its lines clearing between parts. "Scroll through", on the side, shows the
+// try/: the levels on one page (docs/levels_spec.md), laid out like a magazine. Each level opens with a cover: its
+// name, its headline and the question it asks. Level 1, the violin, starts at once. When a level's last line is shown,
+// an "Up next" card offers the next one, its headline and question carrying the thought on, and the level then starts
+// underneath: Level 2, the MRI scanner; the final level, a prism for sound. Each level plays on one board, its lines clearing between parts. "Scroll through", on the side, shows the
 // whole story as a comic, to see it quickly without playing it.
 import './base.css';
 import { LEVELS } from './copyLevels.js';
 
-const tag = (id, text, note) => {
-  const t = document.getElementById(id);
-  t.textContent = text;
-  if (note) t.append(Object.assign(document.createElement('span'), { className: 'level-note', textContent: note }));
+const span = (className, textContent) => Object.assign(document.createElement('span'), { className, textContent });
+/** Each level's cover: its name, then its headline and the question it asks (and, where it needs sound, a note). */
+const COVERS = {
+  'level-1': [LEVELS.level1, LEVELS.title1, LEVELS.dek1, LEVELS.soundOn],
+  'level-2': [LEVELS.level2, LEVELS.title2, LEVELS.dek2],
+  'level-3': [LEVELS.level3, LEVELS.title3, LEVELS.dek3, LEVELS.soundOn],
 };
-tag('level-1-tag', LEVELS.level1, LEVELS.soundOn);
-tag('level-2-tag', LEVELS.level2);
-tag('level-3-tag', LEVELS.level3, LEVELS.soundOn);
+for (const [id, [name, title, dek, note]] of Object.entries(COVERS)) {
+  const t = document.getElementById(`${id}-tag`);
+  t.textContent = name;
+  t.append(span('level-title', title), span('level-dek', dek));
+  if (note) t.append(span('level-note', note));
+}
 const query = new URLSearchParams(location.search);
 
 const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
-/** When the level in `from` ends, the button `buttonId` appears; pressing it opens `section` and starts its module. */
+/**
+ * When the level in `from` ends, the "Up next" card appears, with the next level's name, headline and question, and
+ * the button `buttonId`; pressing it opens `section` and starts its module.
+ */
 function chain(from, buttonId, text, section, load) {
   const next = document.getElementById(buttonId);
   next.textContent = text;
+  const [name, title, dek] = COVERS[section];
+  const card = Object.assign(document.createElement('div'), { className: 'up-next', hidden: true });
+  next.before(card);
+  card.append(span('up-next-kicker', `${LEVELS.upNext} · ${name}`), span('up-next-title', title), span('up-next-dek', dek), next);
   document.getElementById(from).addEventListener('level-finished', () => {
+    card.hidden = false;
     next.hidden = false;
-    requestAnimationFrame(() => next.classList.add('in'));
+    requestAnimationFrame(() => { card.classList.add('in'); next.classList.add('in'); });
   }, { once: true });
   next.addEventListener('click', async () => {
-    next.remove();
+    card.remove();
     const s = document.getElementById(section);
     s.hidden = false;
     await load();                                            // the level builds itself, then the page brings it into view
@@ -71,15 +85,18 @@ if (!query.has('step') && !query.has('steps')) {
   let filled = false;
   const fill = async () => {                                   // the comic is drawn the first time the panel opens
     filled = true;
-    const [{ COMIC, pictures }, { face }] = await Promise.all([import('./comic.js'), import('./characters.js')]);
+    const [{ COMIC, pictures }, { face }, { fact, bigIdea }] = await Promise.all([import('./comic.js'), import('./characters.js'), import('./magazine.js')]);
     const names = { 'level-1': LEVELS.level1, 'level-2': LEVELS.level2, 'level-3': LEVELS.level3 };
     for (const level of COMIC.levels) {
       const group = make('section', { className: 'side-level' }, make('h3', { className: 'side-level-name', textContent: names[level.id] }));
       for (const part of level.parts) {
+        const box = (n) => { n.classList.add('in'); return n; };
         const words = make('div', { className: 'comic-words' }, ...part.words.map((w) => (w.kind === 'speaker'
           ? make('div', { className: `speaker ${w.who} in` }, make('div', { className: 'who' }, face(w.who)),
             make('div', { className: 'bubbles' }, ...w.bubbles.map((b) => make('p', { className: `bubble in${b.thought ? ' thought' : ''}`, textContent: b.text }))))
-          : make('p', { className: ['line', 'in', ...w.cls].join(' '), textContent: w.text }))));
+          : w.kind === 'fact' ? box(fact(w.text))
+            : w.cls.includes('big-idea') ? box(bigIdea(w.text))
+              : make('p', { className: ['line', 'in', ...w.cls].join(' '), textContent: w.text }))));
         group.append(make('figure', { className: 'comic-part' },
           make('img', { src: pictures[part.img], width: part.w, height: part.h, alt: part.alt, loading: 'lazy', decoding: 'async' }), words));
       }

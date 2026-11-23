@@ -4,7 +4,9 @@
 // of a patient; `you` holds your own lines, beside your face (characters.js), and reached and magnetQuestion are yours
 // too. The 2026-11-23 revision cut the words (Nadia: "try to make the word count lower and simple"), and fills the gaps
 // with pictures instead: +1 and −1 pop up as arrows join the TOTAL, and radio waves go in and a faint reply comes out.
-// Nothing else on the page is learner-facing text, apart from accessibility labels.
+// Since the magazine revision (2026-11-23), the picture leads to the level's big idea, that there is far more hiding
+// in a 0 than the signal shows, and the level ends on what hides from our senses, the question the final level opens
+// with. Nothing else on the page is learner-facing text, apart from accessibility labels.
 
 export const COPY = {
   scanner: 'This is an MRI scanner. It can see inside a body: no X-rays, no cuts.',
@@ -51,17 +53,18 @@ export const COPY = {
     'It tips the balance: a few more arrows point with the magnet.',
     "That's what an MRI does: it turns your patient's 0 signal into a small signal it can read.",
     "In a real body, it's only about five to ten in every million.",
-    'But the 0 held far more: every tiny magnet, not just the few left over.',
     'Your scanner nudges them with radio waves and picks up their faint reply.',
   ],
   listen: 'Take the scan',
-  picture: "From that reply, it paints a picture of your patient's insides.",
+  picture: "From that faint reply, it paints a picture of your patient's insides.",
   you: { didIt: 'I did it! My first MRI scan!' },
-  eye: { line: "Your eye sees just one picture. It's hiding far more than it seems.", label: 'one picture' },
-  closing: 'You just figured out one of the core principles of MRI.',
+  eye: { line: 'Your eye sees one picture, painted from a faint reply: a few tiny magnets in every million.', label: 'one picture' },
+  bigIdea: "There's far more hiding in a 0 than the signal shows us.",
+  whole: "A 0 isn't always nothing. Sometimes it's a whole person: countless tiny magnets, perfectly balanced.",
+  unknown: "And there are still so many things we don't know about, hiding behind the 0.",
   similar: { question: 'Do you see a similarity to the violin level?', choices: ['Yes', 'Not yet'], after: 'Look.' },
   compareLabels: { note: 'YOUR A NOTE', signal: 'TOTAL SIGNAL' },
   aName: 'A',
   compare: 'In Level 1, one A note hid many notes. Here, one 0 signal hides countless tiny magnets.',
-  final: "A 0 isn't always nothing. Sometimes it's a whole person: countless tiny magnets, perfectly balanced.",
+  final: "Hidden things are everywhere. There are even frequencies our ears can't hear.",
 };

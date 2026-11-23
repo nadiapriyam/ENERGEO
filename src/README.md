@@ -90,6 +90,18 @@ does not touch the journey store or any interactive.
 Three short stories on one page, in one plain style: a white page, the system sans (its 0 is a plain 0) and one
 accent. `docs/levels_spec.md` governs. `try/level-2/` and `notebook/` forward here.
 
+They read like a kids' science magazine about technology, and build one thought to its end (the spec's "All three
+levels: the magazine, and the thought it builds"): one note hides many; there is far more hiding in a 0 than the
+signal shows, and still so much we don't know, even frequencies our ears can't hear; is there any way to perceive
+these hidden things? The Fourier transform shows that going from a whole to its hidden parts is possible; we have found
+a few ways; what we have found is just the surface. Then ENERGEO: the start of a new science, energy geometry, which
+sets out to map transformations like the Fourier transform and build tools to see what was always there.
+
+- **The magazine** (`page.js`, `magazine.js`): each level opens with a cover (name, headline, question); an "Up next"
+  card carries the thought into the next level; "Did you know?" boxes and "The big idea" pull quotes stand out from
+  the story. The final level ends on a map of transformations (`MAP`, `mapKnown`, `mapUnknown` in `src/math/prism.js`)
+  and the name ENERGEO.
+
 - Each level plays on one board, its lines clearing between parts. **You set the pace** (`src/levels/reader.js`),
   one way forward at a time: where you act (a button, a choice, a drag), that is the way on; lines of one part follow
   a beat apart and stay; only where the story would turn the page itself does Next appear, under the level. One bar for

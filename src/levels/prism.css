@@ -155,6 +155,23 @@ html.instant *, html.instant *::before, html.instant *::after { transition: none
 .pattern.dim, .strip.dim, .mri-image.dim { opacity: 0.16; }
 .reveal-title { font-family: var(--font); font-size: 50px; font-weight: 800; filter: url(#p3-glow); transform-box: fill-box; transform-origin: center; }
 .reveal-title.on { animation: reveal-in 1100ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.reveal-title.to-hub { transition: transform 1200ms cubic-bezier(0.45, 0, 0.2, 1); }
+.pattern.gone, .strip.gone, .mri-image.gone { opacity: 0; transition: opacity 700ms ease-out; }
+/* the finale: a map of transformations; just the surface; then the name */
+.map-link { stroke: #9fb4ff; stroke-width: 2; opacity: 0; transition: opacity 600ms ease-out; }
+.map.known .map-link { opacity: 0.75; }
+.map-hub { fill: url(#p3-led); filter: url(#p3-glow); }
+.map-leaf { opacity: 0; transition: opacity 500ms ease-out; }
+.map.known .map-leaf { opacity: 1; }
+.map-leaf circle { fill: #ffffff; filter: url(#p3-glow); }
+.map-label { fill: #dde5ff; font-family: var(--font); font-size: 17px; font-weight: 650; }
+.map-q { opacity: 0; transition: opacity 600ms ease-out; }
+.map.endless .map-q { opacity: var(--o); }
+.map-q circle { fill: none; stroke: #8fa3ff; stroke-width: 1.5; stroke-dasharray: 3 3; }
+.map-q text { fill: #b9c6ff; font-family: var(--font); font-weight: 800; }
+.map-title { fill: #ffffff; font-family: var(--font); font-size: 46px; font-weight: 900; letter-spacing: 0.18em; opacity: 0; filter: url(#p3-glow); transition: opacity 900ms ease-out; }
+.map-sub { fill: #c9d3ff; font-family: var(--font); font-size: 15px; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase; opacity: 0; transition: opacity 900ms ease-out 400ms; }
+.map.named .map-title, .map.named .map-sub { opacity: 1; }
 @keyframes reveal-in { from { opacity: 0; transform: scale(0.6); } 60% { opacity: 1; transform: scale(1.06); } to { transform: none; } }
 .p-box { fill: var(--night-2); stroke: var(--night-edge); stroke-width: 2; }
 .p-signal { fill: none; stroke: #ffc35a; stroke-width: 2.4; stroke-linejoin: round; vector-effect: non-scaling-stroke; filter: url(#p3-glow); }
@@ -182,7 +199,7 @@ html.instant *, html.instant *::before, html.instant *::after { transition: none
 @media (prefers-reduced-motion: reduce) {
   .scene, .scene.on, .bg, .hall, .arrive, .tuner, .tuner-letter, .tuner-light, .strip, .strip-box, .signal, .signal-inner, .part,
   .beam, .ray, .wall-glow, .glass, .bulb, .floor, .spectrum, .bar, .four-bars, .cell, .mri-part, .mri-image, .mri-sentence .frag,
-  .scene.band, .scene.band.on, .scene.scan, .scene.scan.on, .p-row, .repeat, .repeat-edge, .ghost-move,
+  .scene.band, .scene.band.on, .scene.scan, .scene.scan.on, .p-row, .repeat, .repeat-edge, .ghost-move, .reveal-title.to-hub, .map-link, .map-leaf, .map-q, .map-title, .map-sub,
   #prism-lesson .line.leaving, #prism-lesson .speaker.leaving { transition: none; }
   .walker, .body-map, .strip, .p-row, .pattern, .mri-image { transition: none; }
   .part-map.hint, .part-name.hint, .mri-sentence .frag.shown, .reveal-title.on, .tap-fx .link, .tap-fx .ripple { animation: none; }

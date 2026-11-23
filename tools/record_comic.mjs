@@ -4,7 +4,7 @@
 //   src/levels/comic/l<level>-<nn>.webp   one picture per part
 //   src/levels/comic/comic.json           the parts in order, with their lines
 // Levels 1 and 2 are played the way a learner plays them (on try/?record, Next presses itself); Level 3 fast-forwards
-// to its end (try/?from=end), which does each interaction for it. It also counts each level's Next presses, which set
+// to its end (try/?from=energeo), which does each interaction for it. It also counts each level's Next presses, which set
 // how far each press fills the level's bar (reader.js). Run after any change to the levels: npm run comic (it builds first).
 // Needs Playwright with Chromium, and Python with Pillow (to write WebP).
 import { createRequire } from 'node:module';
@@ -64,6 +64,8 @@ async function collect(page, level, lesson, prefix) {
       const words = [...part.querySelector('.recorded-words').children].flatMap((n) => {
         if (n.classList.contains('speaker')) return [{ kind: 'speaker', who: n.dataset.who, bubbles: [...n.querySelectorAll('.bubble')].map((b) => ({ text: b.textContent.trim(), thought: b.classList.contains('thought') })) }];
         if (n.tagName === 'BUTTON' || n.classList.contains('choices') || n.classList.contains('hint')) return [];
+        if (n.classList.contains('fact')) return [{ kind: 'fact', text: n.querySelector('.fact-text').textContent.trim() }];
+        if (n.classList.contains('big-idea')) return [{ kind: 'line', text: n.querySelector('.idea-text').textContent.trim(), cls: ['big-idea'] }];
         const text = n.textContent.replace(/\s+/g, ' ').trim();
         return text ? [{ kind: 'line', text, cls: [...n.classList].filter((c) => ['lead', 'final', 'feedback', 'caption', 'mri-sentence'].includes(c)) }] : [];
       });
@@ -137,8 +139,8 @@ const level1 = await collect(p, 'level-1', 'note-lesson', 'l1');
 const level2 = await collect(p, 'level-2', 'mri-lesson', 'l2');
 
 // ── Level 3, fast-forwarded to its end
-const q = await open(`${BASE}?from=end&record`);
-await q.waitForFunction(() => window.__prism?.reached.includes('end'), null, { timeout: 60000 });
+const q = await open(`${BASE}?from=energeo&record`);
+await q.waitForFunction(() => window.__prism?.reached.includes('energeo'), null, { timeout: 60000 });
 await q.waitForTimeout(2500);
 steps['level-3'] = await q.evaluate(() => window.__reader['level-3'].count);
 const level3 = await collect(q, 'level-3', 'prism-lesson', 'l3');

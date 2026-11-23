@@ -14,6 +14,7 @@ import {
 import { PITCH, A_NOTE, STEPS, HIDDEN, part, STAGE, lane, trace, EAR, HEARD, SQUEEZE, funnel, heardPath } from '../math/tones.js';
 import { keepPart } from './record.js';
 import { reader } from './reader.js';
+import { fact, bigIdea } from './magazine.js';
 
 const NS = 'http://www.w3.org/2000/svg';
 const REDUCED = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -253,6 +254,7 @@ const say = (text, cls = '') => {
   requestAnimationFrame(() => p.classList.add('in'));
   return p;
 };
+const put = (n) => { prompt.append(n); requestAnimationFrame(() => n.classList.add('in')); return n; };   // a magazine box (magazine.js)
 const clear = () => keepPart([figure, notesRow], prompt);   // the lines clear (the comic's recorder keeps the part: record.js)
 let keyboardUser = false;
 addEventListener('keydown', (e) => { if (e.key === 'Tab' || e.key === 'Enter' || e.key === ' ') keyboardUser = true; }, true);
@@ -540,8 +542,10 @@ async function together() {                                 // all four at once,
   phase = 'oneA';
   say(COPY.oneA);
   await story.beat();
+  put(fact(COPY.ears));                                      // did you know? our ears hear only part of what is there
+  await story.beat(1600);
   phase = 'final';
-  say(COPY.final, 'final');
+  put(bigIdea(COPY.final));                                  // the big idea: the first step of the thought
   root.dispatchEvent(new CustomEvent('level-finished', { bubbles: true }));   // the page offers Level 2
 }
 

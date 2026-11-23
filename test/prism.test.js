@@ -1,4 +1,4 @@
-// Level 3, "A prism for sound", at try/ (docs/levels_spec.md, Level 3 Revision 11). Guards:
+// Level 3, "A prism for sound", at try/ (docs/levels_spec.md, Level 3 Revision 12). Guards:
 // - the hall: the stage light misses at first, is caught when aimed anywhere at the chandelier, goes into the prism's
 //   near face, and the colours leave in a real prism's order (red bent least, violet most);
 // - the tuner's little signal is the big signal, laid exactly on its screen;
@@ -41,8 +41,9 @@ const level3 = spec.slice(spec.indexOf('## Level 3, "A prism for sound"'));
 const rev8 = level3.slice(level3.indexOf('### Revision 8'), level3.indexOf('### Revision 9'));
 const rev9 = level3.slice(level3.indexOf('### Revision 9'), level3.indexOf('### Revision 10'));
 const rev10 = level3.slice(level3.indexOf('### Revision 10'), level3.indexOf('### Revision 11'));
-const rev11 = level3.slice(level3.indexOf('### Revision 11'));
-const copyList = rev11.slice(rev11.indexOf('#### Level 3 learner copy (Revision 11)'), rev11.indexOf('#### The review strip'));
+const rev11 = level3.slice(level3.indexOf('### Revision 11'), level3.indexOf('### Revision 12'));
+const rev12 = level3.slice(level3.indexOf('### Revision 12'));
+const copyList = rev12.slice(rev12.indexOf('#### Level 3 learner copy (Revision 12)'), rev12.indexOf('#### The review strip'));
 const main = read('src/levels/prism.js');
 const css = read('src/levels/prism.css');
 const inside = (r, x, y, e = 1e-6) => x >= r.x - e && x <= r.x + r.w + e && y >= r.y - e && y <= r.y + r.h + e;
@@ -313,7 +314,7 @@ test("6. the break and the faces: you and the radiologist stand apart on the flo
   assert.ok(FIGURE.torso.y < FACE.view.h && FIGURE.coat.every((c) => c.y + c.h > FIGURE.torso.y + FIGURE.torso.h), 'the body under the face; the coat longer than the shirt');
 });
 
-test('7. the copy is verbatim from the Revision 11 list and in order: the answer to "Can you see them?" depends on yours; line 21, a part of the brain, the pattern slide by slide in Nadia\'s words, the grand reveal before "the same geometric math", the applications last', () => {
+test('7. the copy is verbatim from the Revision 12 list and in order: the ending builds to ENERGEO; the answer to "Can you see them?" depends on yours; line 21, a part of the brain, the pattern slide by slide in Nadia\'s words, the grand reveal before "the same geometric math", the applications last', () => {
   const R = (s) => `Radiologist: ${s}`;
   const ordered = [COPY.opening, COPY.dim, COPY.aim, COPY.aimHint, COPY.where.question, ...COPY.where.choices, COPY.where.after,
     `You (thinking): ${COPY.you.think}`, COPY.surprise, `[${COPY.play}]`, `${COPY.tunerLetter} (the letter`, COPY.drawsSignal, COPY.see.question,
@@ -322,14 +323,16 @@ test('7. the copy is verbatim from the Revision 11 list and in order: the answer
     `28. ${COPY.mri[0].text.trim()}`, `[${COPY.collect}]`, `30. ${COPY.mri[1].text.trim()}`, `[${COPY.convert}]`, `32. ${COPY.mri[2].text.trim()}`,
     `33. ${COPY.mri[3].text.trim()}`, R(COPY.radiologist.pattern.question), ...COPY.radiologist.pattern.choices, R(COPY.radiologist.pattern.after),
     `36. ${COPY.pattern[0]}`, `[${LEVELS.forward}]`, `38. ${COPY.pattern[1]}`, `[${LEVELS.forward}]`, `40. ${COPY.pattern[2]}`, `[${LEVELS.forward}]`,
-    `42. ${COPY.revealTitle}`, `43. ${COPY.reveal}`, `44. ${COPY.name[0]}`, `45. ${COPY.name[1]}`, `46. ${COPY.final}`];
+    `42. ${COPY.revealTitle}`, `43. ${COPY.reveal}`, `44. ${COPY.name}`, `45. Did you know? ${COPY.fourier}`, `46. [${LEVELS.forward}]`,
+    `47. The big idea: ${COPY.bigIdea}`, `48. ${COPY.mapKnown.join(', ')}`, `49. ${COPY.few}`, `50. ${COPY.mapUnknown} (on every node`, `51. ${COPY.surface}`,
+    `52. [${LEVELS.forward}]`, `53. ${COPY.energeo.name}, ${COPY.energeo.field}`, ...COPY.energeo.lines.map((l, k) => `${54 + k}. ${l}`), `57. ${COPY.final}`];
   let at = 0;
   for (const l of ordered) {
     const i = copyList.indexOf(l, at);
-    assert.ok(i >= 0, `not in the Revision 11 list, in order: ${l}`);
+    assert.ok(i >= 0, `not in the Revision 12 list, in order: ${l}`);
     at = i + 1;
   }
-  assert.ok(copyList.includes(`46. ${COPY.final}\n\nNothing comes after line 46.`) && !/^47\. /m.test(copyList), 'the final line is last');
+  assert.ok(copyList.includes(`57. ${COPY.final}\n\nNothing comes after line 57.`) && !/^58\. /m.test(copyList), 'the final line is last');
   assert.ok(rev8.includes('needs to be attached to each of its pictures slide by slide') && rev8.includes('introduce a skip feature for all of this'), "Nadia's Revision 8 message, verbatim");
   assert.ok(rev9.includes('follow the theme of something being inside and decoding it like violin -> pure tones inside') && rev9.includes('also change tap the brain to tap a part of the brain.'), "Nadia's Revision 9 messages, verbatim");
   assert.equal(COPY.tapBrain, 'Tap a part of the brain.', "line 25, in Nadia's words");
@@ -341,10 +344,12 @@ test('7. the copy is verbatim from the Revision 11 list and in order: the answer
   assert.ok(!('next' in COPY) && /await step\(SLIDES\[i\]\);\s*await story\.next\(\);/.test(main), 'each slide waits for the one Next, under the level: no second Next button');
   assert.equal(LEVELS.next3, 'Next: Final level');
   assert.equal(COPY.backDone, 'Every bump in the signal comes from a different pure tone.', "line 21, in Nadia's words");
-  assert.equal(COPY.final, 'The applications are endless! From a simple tuner to looking inside your brain.', 'the last line');
+  assert.equal(COPY.final, 'You just took your first steps into it.', 'the last line');
+  assert.ok(COPY.few.endsWith('from a simple tuner to looking inside your brain.') && /possibilities are endless/.test(COPY.surface) && /just the surface\.$/.test(COPY.surface), "Nadia's words: a few figured out, endless possibilities, just the surface");
+  assert.ok(/sets out to/.test(COPY.energeo.lines[1]) && !/has (built|found|mapped)|proves?|discovered (new|every)/i.test(COPY.energeo.lines.join(' ')), 'ENERGEO: what it sets out to do, not results it has');
   assert.ok(!/here it is/i.test(JSON.stringify(COPY)), '"Here it is" is gone');
   assert.ok(COPY.reveal.endsWith('the Fourier transform.') && COPY.reveal.includes('the mathematical tool that lets us start seeing what hides inside'.replace(/^t/, 'T')), 'the tool, named');
-  assert.ok(!/Fourier/.test(COPY.name[0]) && /geometric math/.test(COPY.name[0]), 'after the reveal, the geometric math line without repeating the name');
+  assert.ok(!/Fourier/.test(COPY.name) && /geometric math/.test(COPY.name), 'after the reveal, the geometric math line without repeating the name');
   assert.ok(/pure tones/.test(COPY.pattern[0]) && /full color spectrum/.test(COPY.pattern[1]) && COPY.pattern[2] === 'MRI image → proton frequencies', "Nadia's pattern: each thing, then what is inside it");
   assert.equal(COPY.mri.map((f) => f.text).join(''), "Each tiny magnet behaves differently depending on which body part it's in. Collecting that data and converting it into pixel data helps us see an MRI picture, with the Fourier transform.", "Nadia's wording");
   assert.equal(COPY.you.think, 'If a prism is a tool that can take apart light, is there a tool that can take apart a sound?', "the thought is Nadia's sentence");
@@ -355,13 +360,16 @@ test('7. the copy is verbatim from the Revision 11 list and in order: the answer
   assert.ok(!/squiggle|glasses|very helpful|terrible|nobody's watching|could take a while/i.test(all), 'no glasses, no squiggle, no sarcasm');
   const texts = ordered.map((l) => l.replace(/^\d+\. /, '').replace(/^(Radiologist|You|You \(thinking\)): /, '').replace(/^\[|\]$/g, ''));
   for (const l of texts) assert.ok(l.split(/(?<=[.?!…])\s+(?=[A-Z])/).length <= 2, `at most two sentences: ${l}`);
-  assert.ok(!/coefficient|sine|cosine|energy|equation|integral|gradient|larmor/i.test(all), "no jargon beyond Nadia's own words");
+  const story3 = JSON.stringify({ ...COPY, energeo: undefined });
+  assert.ok(!/coefficient|sine|cosine|energy|equation|integral|gradient|larmor/i.test(story3), "no jargon beyond Nadia's own words");
+  assert.ok(COPY.energeo.field === 'energy geometry' && COPY.energeo.lines[0].includes('energy geometry'), '"energy" only as the name of the new field, in Nadia\'s words');
   assert.ok(level3.includes('Here is the mathematical tool that lets us start seeing it.'), "Nadia's goal sentence");
   for (const s of Object.values(LEVELS)) assert.ok(spec.includes(s), `in the spec: ${s}`);
   const calls = ['COPY.opening', 'COPY.dim', 'COPY.aim', 'COPY.aimHint', 'COPY.where.question', 'COPY.where.after', 'COPY.you.think', 'COPY.surprise',
     'COPY.play', 'COPY.drawsSignal', 'COPY.see.question', 'COPY.see.yes', 'COPY.see.notReally', 'COPY.apart', 'COPY.split', 'COPY.pure', 'COPY.pureHint', 'COPY.pureDone',
     'COPY.back', 'COPY.backDone', 'COPY.arrives', 'COPY.you.tookApart', 'COPY.radiologist.same', 'COPY.tapBrain', 'COPY.tapSkull', 'COPY.collect',
-    'COPY.convert', 'COPY.radiologist.pattern.question', 'COPY.radiologist.pattern.after', 'COPY.reveal', 'COPY.name[0]', 'COPY.name[1]', 'COPY.final'];
+    'COPY.convert', 'COPY.radiologist.pattern.question', 'COPY.radiologist.pattern.after', 'COPY.reveal', 'COPY.name', 'COPY.fourier', 'COPY.bigIdea', 'COPY.few', 'COPY.surface',
+    'COPY.energeo.lines[0]', 'COPY.energeo.lines[1]', 'COPY.energeo.lines[2]', 'COPY.final'];
   const story = main.indexOf('// ── the story');
   const at1 = (c) => { const i = main.slice(story).search(new RegExp(`${c.replace(/[.[\]]/g, '\\$&')}(?![\\w.])`)); return i < 0 ? -1 : story + i; };
   const pos = calls.map(at1);
@@ -372,7 +380,7 @@ test('7. the copy is verbatim from the Revision 11 list and in order: the answer
   const pat = main.slice(main.indexOf('async function thePattern()'), main.indexOf('async function theReveal()'));
   assert.ok(pat.indexOf("patternRows.forEach((r, n) => r.classList.toggle('on', n === i))") < pat.indexOf('await story.next()'), 'one slide at a time, each staying until Next');
   const rev = main.slice(main.indexOf('async function theReveal()'));
-  assert.ok(rev.indexOf('on(revealTitle)') < rev.indexOf('say(COPY.reveal') && rev.indexOf('say(COPY.reveal') < rev.indexOf('say(COPY.name[0])'), 'the grand reveal comes before "the same geometric math"');
+  assert.ok(rev.indexOf('on(revealTitle)') < rev.indexOf('say(COPY.reveal') && rev.indexOf('say(COPY.reveal') < rev.indexOf('say(COPY.name)'), 'the grand reveal comes before "the same geometric math"');
   const tail = main.slice(main.indexOf("say(COPY.final, 'final');"));
   assert.ok(!/say\(|speak\(|ask\(|press\(/.test(tail.replace("say(COPY.final, 'final');", '')), 'nothing is shown after the final line');
 });

@@ -1,4 +1,4 @@
-// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 11). It comes straight after Level 2: after your scan,
+// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 12). It comes straight after Level 2: after your scan,
 // you head back to the concert hall. The lights dim; the learner aims a stage light at the chandelier, and its glass
 // prism takes the white light apart into colours. You wonder: is there a tool that can take apart a sound? Surprise:
 // your tuner. Its screen draws your A note's signal, the signal grows to fill the board, and taking it apart gives four
@@ -21,13 +21,14 @@ import { STEPS as STORY_STEPS } from './stepsPrism.js';
 import { person as standing, speaker } from './characters.js';
 import { keepPart } from './record.js';
 import { reader } from './reader.js';
+import { fact, bigIdea } from './magazine.js';
 import { A_NOTE, STEPS, PITCH, part } from '../math/tones.js';
 import {
   BOARD, css, triangle, HALL, crystalCorners, aimAngle, toCrystal, startAngle, lightPath,
   STRIP, STRIP_BOX, repeats, signal, samplesPath, TUNER, onTuner, SPECTRUM, GLYPH, barX, barHeight, barAt, stepsAt, pureTone, allBack,
   NOTE_LED, neon, ROWS, MRI, BODY_PARTS, partOf, partAt, partWave, partLink, dataTitle, RIPPLES, coarseRows, chordSamples, unmix, rowOrder, FIRST_ROW,
   rowIn, toSignal, BRAIN, SKULL, EXPLORE, exploreHead, exploreData, labels, BREAK, figureBox,
-  PATTERN, patternBox, picToPattern, patternRowBand, patternBars, patternLight, patternSpectrum, slideShift, captionAt, REVEAL,
+  PATTERN, patternBox, picToPattern, patternRowBand, patternBars, patternLight, patternSpectrum, slideShift, captionAt, REVEAL, MAP, mapKnown, mapUnknown, revealToHub,
 } from '../math/prism.js';
 
 const NS = 'http://www.w3.org/2000/svg';
@@ -275,7 +276,21 @@ function fitCaptions() {
 }
 const revealTitle = svg('text', { class: 'scene reveal-title', x: REVEAL.x, y: REVEAL.y, 'text-anchor': 'middle', fill: 'url(#p3-led)', text: COPY.revealTitle });
 
-board.append(bg, hall, breakScene, scan, arrive, glyph, spectrum, pattern, revealTitle);
+// the finale: a map of transformations (math: MAP). The Fourier transform at the hub, the three things it already
+// takes apart lit around it, and "?" everywhere else, spreading out past the edges: just the surface. Then the name.
+const mapLayer = svg('g', { class: 'scene map' },
+  ...mapKnown().map((p) => line(MAP.hub, p, { class: 'map-link' })),
+  svg('circle', { class: 'map-hub', cx: MAP.hub.x, cy: MAP.hub.y, r: MAP.hub.r }),
+  ...mapKnown().map((p, k) => svg('g', { class: 'map-leaf', style: `transition-delay: ${200 + k * 260}ms` },
+    svg('circle', { cx: p.x.toFixed(1), cy: p.y.toFixed(1), r: MAP.leafR }),
+    svg('text', { class: 'map-label', x: (p.x - MAP.leafR - 8).toFixed(1), y: (p.y + 5).toFixed(1), 'text-anchor': 'end', text: COPY.mapKnown[k] }))),
+  ...mapUnknown().map((n) => svg('g', { class: 'map-q', style: `--o: ${n.opacity.toFixed(2)}; transition-delay: ${Math.round(n.d * 3)}ms` },
+    svg('circle', { cx: n.x.toFixed(1), cy: n.y.toFixed(1), r: n.r.toFixed(1) }),
+    ...(n.mark ? [svg('text', { x: n.x.toFixed(1), y: (n.y + n.r * 0.42).toFixed(1), 'text-anchor': 'middle', 'font-size': (n.r * 1.2).toFixed(1), text: COPY.mapUnknown })] : []))),
+  svg('text', { class: 'map-title', x: MAP.title.x, y: MAP.title.y, 'text-anchor': 'middle', text: COPY.energeo.name }),
+  svg('text', { class: 'map-sub', x: MAP.title.x, y: MAP.sub.y, 'text-anchor': 'middle', text: COPY.energeo.field }));
+
+board.append(bg, hall, breakScene, scan, arrive, glyph, spectrum, pattern, mapLayer, revealTitle);
 
 // ── drawing ──────────────────────────────────────────────────────────────────────────────────────
 function aim(a) {                                           // the stage light, pointing at angle a
@@ -391,6 +406,7 @@ const say = (text, cls = '') => {
 };
 /** A character's line: a bubble beside their face (characters.js). */
 const speak = speaker(prompt, later);
+const put = (n) => { prompt.append(n); later(() => n.classList.add('in')); return n; };   // a magazine box (magazine.js)
 async function clear() {
   const old = [...prompt.children];
   if (!old.length) return;
@@ -791,14 +807,51 @@ async function theReveal() {                                // the grand reveal:
   describe('The three rows dim. In the middle, glowing: the Fourier transform.');
   await story.beat(1400);
   await step('reveal');
-  say(COPY.name[0]);
+  say(COPY.name);
   await story.beat();
-  say(COPY.name[1]);
-  await story.beat();
+  put(fact(COPY.fourier));                                   // did you know? about 200 years ago, from how heat spreads
+  await story.next();
+  theSurface();
+}
+
+async function theSurface() {                               // a whole into its hidden parts is possible; a few ways found; the rest endless
+  phase = 'surface';
+  await clear();
+  [pattern, strip, image].forEach((n) => n.classList.add('gone'));
+  const h = revealToHub();                                   // the title shrinks into the hub of a map
+  revealTitle.classList.add('to-hub');
+  revealTitle.style.transform = `translate(${h.dx}px, ${h.dy}px) scale(${h.s})`;
+  on(mapLayer);
+  describe('The rows fade. The glowing title shrinks into the hub of a map, labelled the Fourier transform.');
+  put(bigIdea(COPY.bigIdea));                                // the big idea
+  await story.beat(1400);
+  mapLayer.classList.add('known');                           // what it already takes apart: sound, light, an MRI scan
+  describe('Around the hub, three lit nodes: sound, light and MRI.');
+  say(COPY.few);
+  await story.beat(1800);
+  mapLayer.classList.add('endless');                         // everywhere else, "?": spreading out past the edges
+  describe('Beyond them, the board fills with question marks, smaller and fainter the further out they go, past its edges.');
+  say(COPY.surface, 'lead');
+  await step('surface');
+  await story.next();
+  theEnergeo();
+}
+
+async function theEnergeo() {                               // the name over the map: ENERGEO, a new science
+  phase = 'energeo';
+  await clear();
+  mapLayer.classList.add('named');
+  describe('At the top of the map: ENERGEO, and under it, energy geometry.');
+  say(COPY.energeo.lines[0], 'lead');
+  await story.beat(1400);
+  say(COPY.energeo.lines[1]);
+  await story.beat(1200);
+  say(COPY.energeo.lines[2]);
+  await story.beat(1600);
   phase = 'final';
   say(COPY.final, 'final');
   root.dispatchEvent(new CustomEvent('level-finished', { bubbles: true }));
-  await step('end');
+  await step('energeo');
 }
 
 // read-only view for automated checks (no learner-facing effect)

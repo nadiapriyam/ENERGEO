@@ -151,10 +151,14 @@
        "cls": []
       },
       {
+       "kind": "fact",
+       "text": "Your ears only hear sounds that shake about 20 to 20,000 times a second. Bats hear far higher, and elephants rumble too low for us to hear."
+      },
+      {
        "kind": "line",
        "text": "One thing on the outside. Many hidden parts inside.",
        "cls": [
-        "final"
+        "big-idea"
        ]
       }
      ]
@@ -423,11 +427,6 @@
      "words": [
       {
        "kind": "line",
-       "text": "But the 0 held far more: every tiny magnet, not just the few left over.",
-       "cls": []
-      },
-      {
-       "kind": "line",
        "text": "Your scanner nudges them with radio waves and picks up their faint reply.",
        "cls": []
       }
@@ -441,7 +440,7 @@
      "words": [
       {
        "kind": "line",
-       "text": "From that reply, it paints a picture of your patient's insides.",
+       "text": "From that faint reply, it paints a picture of your patient's insides.",
        "cls": []
       },
       {
@@ -464,15 +463,25 @@
      "words": [
       {
        "kind": "line",
-       "text": "Your eye sees just one picture. It's hiding far more than it seems.",
+       "text": "Your eye sees one picture, painted from a faint reply: a few tiny magnets in every million.",
        "cls": []
       },
       {
        "kind": "line",
-       "text": "You just figured out one of the core principles of MRI.",
+       "text": "There's far more hiding in a 0 than the signal shows us.",
        "cls": [
-        "lead"
+        "big-idea"
        ]
+      },
+      {
+       "kind": "line",
+       "text": "A 0 isn't always nothing. Sometimes it's a whole person: countless tiny magnets, perfectly balanced.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "And there are still so many things we don't know about, hiding behind the 0.",
+       "cls": []
       },
       {
        "kind": "line",
@@ -499,7 +508,7 @@
       },
       {
        "kind": "line",
-       "text": "A 0 isn't always nothing. Sometimes it's a whole person: countless tiny magnets, perfectly balanced.",
+       "text": "Hidden things are everywhere. There are even frequencies our ears can't hear.",
        "cls": [
         "final"
        ]
@@ -510,7 +519,7 @@
   },
   {
    "id": "level-3",
-   "steps": 7,
+   "steps": 9,
    "parts": [
     {
      "img": "l3-01.webp",
@@ -520,7 +529,7 @@
      "words": [
       {
        "kind": "line",
-       "text": "After your scan, you head back to the concert hall.",
+       "text": "After your scan, you head back to the concert hall, still wondering.",
        "cls": [
         "lead"
        ]
@@ -763,13 +772,64 @@
        "cls": []
       },
       {
+       "kind": "fact",
+       "text": "Joseph Fourier came up with it about 200 years ago, while working out how heat spreads."
+      }
+     ]
+    },
+    {
+     "img": "l3-12.webp",
+     "w": 680,
+     "h": 458,
+     "alt": "Beyond them, the board fills with question marks, smaller and fainter the further out they go, past its edges.",
+     "words": [
+      {
        "kind": "line",
-       "text": "Joseph Fourier came up with it about 200 years ago.",
+       "text": "Going from a whole to the hidden parts inside it is possible.",
+       "cls": [
+        "big-idea"
+       ]
+      },
+      {
+       "kind": "line",
+       "text": "Surprise: we've already figured out a few, from a simple tuner to looking inside your brain.",
        "cls": []
       },
       {
        "kind": "line",
-       "text": "The applications are endless! From a simple tuner to looking inside your brain.",
+       "text": "But the possibilities are endless. What we've discovered is just the surface.",
+       "cls": [
+        "lead"
+       ]
+      }
+     ]
+    },
+    {
+     "img": "l3-13.webp",
+     "w": 680,
+     "h": 458,
+     "alt": "At the top of the map: ENERGEO, and under it, energy geometry.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "Meet ENERGEO: the start of a new science, energy geometry.",
+       "cls": [
+        "lead"
+       ]
+      },
+      {
+       "kind": "line",
+       "text": "It sets out to map transformations like the Fourier transform.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "And to build tools that help us see what we couldn't before, but that was always there.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "You just took your first steps into it.",
        "cls": [
         "final"
        ]

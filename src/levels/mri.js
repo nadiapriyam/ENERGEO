@@ -24,6 +24,7 @@ import {
 import { A_NOTE, STEPS as NOTE_STEPS, part, wave } from '../math/tones.js';
 import { keepPart } from './record.js';
 import { reader } from './reader.js';
+import { bigIdea } from './magazine.js';
 
 const NS = 'http://www.w3.org/2000/svg';
 const REDUCED = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -336,6 +337,7 @@ const say = (text, cls = '') => {
   requestAnimationFrame(() => p.classList.add('in'));
   return p;
 };
+const put = (n) => { prompt.append(n); requestAnimationFrame(() => n.classList.add('in')); return n; };   // a magazine box (magazine.js)
 const clear = () => keepPart([figure], prompt);             // the lines clear (the comic's recorder keeps the part: record.js)
 // focus follows the story only for keyboard users (a mouse or touch user never sees a focus ring appear on its own)
 let keyboardUser = false;
@@ -683,9 +685,7 @@ async function magnetOn() {                                 // the magnet tips t
   say(COPY.magnet[2]);
   await story.next();
   clear();
-  say(COPY.magnet[3]);                                       // the 0 held every magnet; the signal shows the few left over
-  await story.beat();
-  say(COPY.magnet[4]);
+  say(COPY.magnet[3]);                                       // the faint reply
   on(radio);                                                 // radio waves go in; a faint reply comes out
   describe('Radio waves come in from both sides toward the tiny magnets; faint rings spread back out from among them.');
   await wait(500);
@@ -727,12 +727,16 @@ async function seeIt() {                                    // your eye sees one
   await wait(400);
   eyeScene.classList.add('flowing');
   describe('The picture moves left. Lines run from all over it into an eye. Out of the eye comes the same picture, small: one picture.');
-  say(COPY.eye.line);
-  await story.beat();
+  say(COPY.eye.line);                                        // one picture, from a few in every million
+  await story.beat(1400);
   eyeScene.classList.remove('flowing');
   phase = 'closing';
-  say(COPY.closing, 'lead');
-  await story.beat();
+  put(bigIdea(COPY.bigIdea));                                // the big idea: far more hides in the 0 than the signal shows
+  await story.beat(1600);
+  say(COPY.whole);
+  await story.beat(1400);
+  say(COPY.unknown);                                         // still so much we don't know about, behind the 0
+  await story.beat(1400);
   similar();
 }
 
@@ -781,9 +785,9 @@ async function similar() {                                  // Level 1's violin 
   for (const n of leftSteps) { left.append(n); n.classList.add('pop'); await wait(200); }
   for (const n of rightSteps) { right.append(n); n.classList.add('pop'); await wait(200); }
   say(COPY.compare);
-  await story.beat();
+  await story.beat(1400);
   phase = 'final';
-  say(COPY.final, 'final');
+  say(COPY.final, 'final');                                  // hidden from our senses: the question the final level opens with
   root.dispatchEvent(new CustomEvent('level-finished', { bubbles: true }));
 }
 
