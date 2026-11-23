@@ -323,6 +323,35 @@ The first part (Level 3 as the final level, and its four-notes question) is Leve
   the scanner sends radio waves, and the tiny magnets send back a faint radio signal that its coils pick up. They are
   not drawn to scale or in their real shape.
 
+## All three levels: one way forward at a time, and one bar for the whole story (2026-11-23). Nadia, verbatim (two messages):
+
+> theres too many next buttons also put the progress bar at the top
+
+> make sure the progress bar is for the whole 3 levels and make sure theres intervals at each levels
+
+This changes the reader of the section above; the rest of that section stands.
+
+### What changes
+
+- **One way forward at a time: far fewer Nexts.**
+  - Where you act next (a button, a choice, a drag, a tap), that is the way on: there is no Next before it.
+  - Lines of the same part follow each other by themselves, a beat apart (under a second), and stay on the page. The
+    page turns only when you press something.
+  - Next appears only where the story would otherwise turn the page by itself: 2 times in Level 1, 6 in Level 2, and
+    4 in the final level plus its three pattern slides. When it is not the way on, it is not shown; at the bottom,
+    only "‹ Back" stays.
+  - The final level's pattern slides no longer have a Next of their own: the one Next, under the level, moves them on.
+  - At the end of a level, the only Next is the button to the next level.
+  - Captions that used to leave after a few seconds ("Same result.", "Different arrangement.", "Still 0.") now stay;
+    nothing leaves on a timer.
+- **One bar for the whole story, at the top of the page.**
+  - It stays at the top of the screen. It has three sections, Level 1, Level 2 and the final level, each ending in its
+    marker (the last one a star), with the level's name under it; the level being played is named in blue.
+  - Each Next sends stars from the button up into the bar, a "+1" appears, and the level's section fills a notch.
+  - When a level is done, its section fills and its marker turns gold, with confetti: "Level up!".
+  - How far each press fills a section comes from that level's count of presses (`steps` in the comic recording).
+- Files: `src/levels/reader.js`, `src/levels/base.css`, and the levels' `story.next()` and `story.beat()`.
+
 ## Level 3, "A prism for sound" (2026-11-19; first called "The magic glasses")
 
 ### Nadia's request, verbatim

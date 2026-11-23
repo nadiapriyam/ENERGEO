@@ -54,7 +54,6 @@ export const COPY = {
   collect: 'Collect the data',
   convert: 'Convert it to pixels',
   pattern: ['Violin note → pure tones', 'Stage light → its full color spectrum', 'MRI image → proton frequencies'],
-  next: 'Next',
   revealTitle: 'the Fourier transform',
   reveal: 'The mathematical tool that lets us start seeing what hides inside: the Fourier transform.',
   name: ['All three come down to the same geometric math.', 'Joseph Fourier came up with it about 200 years ago.'],

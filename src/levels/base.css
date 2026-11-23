@@ -158,12 +158,13 @@ html.side-open .side-toggle { right: min(360px, 86vw); }
 @media (max-width: 520px) { .side-toggle { font-size: 0.78rem; padding: 0.75em 0.22em; } }
 @media (prefers-reduced-motion: reduce) { .side, html.side-open .side, .side-toggle { transition: none; } }
 
-/* The reader (reader.js): ‹ Back, the level's bar, Next ›. It stays at the bottom of the screen while its level is on
-   screen. Next glows when the story waits for you; pressing it sends stars into the bar (+1). A full bar: Level up! */
+/* The reader (reader.js). Under each level: ‹ Back, and Next › only when the story waits for it (one way forward at a
+   time: where you act, there is no Next). At the top of the page: one bar for the whole story, a section per level,
+   each ending in its marker; Next sends stars up into it (+1); a finished level's marker turns gold: Level up! */
 .lesson { position: relative; }
 .reader {
-  position: sticky; bottom: 0; z-index: 6; display: flex; align-items: center; gap: 12px; margin-top: 0.8em;
-  padding: 12px 0 calc(12px + env(safe-area-inset-bottom, 0px));
+  position: sticky; bottom: 0; z-index: 6; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  margin-top: 0.8em; padding: 12px 0 calc(12px + env(safe-area-inset-bottom, 0px));
   background: #ffffff; box-shadow: 0 -12px 14px -14px rgba(20, 30, 50, 0.35);
 }
 .reader-back {
@@ -174,38 +175,51 @@ html.side-open .side-toggle { right: min(360px, 86vw); }
 .reader-back:disabled { opacity: 0.35; cursor: default; }
 .reader-next {
   font: inherit; font-size: 1.02rem; font-weight: 650; color: #ffffff; cursor: pointer; white-space: nowrap;
-  background: var(--accent); border: 0; border-radius: 999px; padding: 0.45em 1.3em;
-  box-shadow: 0 3px 0 #1847a6; transition: opacity 200ms, filter 200ms, box-shadow 200ms;
+  background: var(--accent); border: 0; border-radius: 999px; padding: 0.45em 1.3em; box-shadow: 0 3px 0 #1847a6;
 }
-.reader-next:disabled { opacity: 0.28; cursor: default; filter: grayscale(0.7); box-shadow: none; }
+.reader-next:not(.ready):not(.paging) { visibility: hidden; }
 .reader-next.ready { animation: next-glow 1.6s ease-in-out infinite; }
-.reader-next:active:not(:disabled) { box-shadow: 0 1px 0 #1847a6; }
+.reader-next:active { box-shadow: 0 1px 0 #1847a6; }
 @keyframes next-glow {
   0%, 100% { box-shadow: 0 3px 0 #1847a6, 0 0 0 0 rgba(26, 102, 224, 0.45); }
   50% { box-shadow: 0 3px 0 #1847a6, 0 0 0 9px rgba(26, 102, 224, 0); }
 }
-.looking-back .reader-next { background: #5d646e; box-shadow: 0 3px 0 #474d55; }
-.xp { position: relative; flex: 1; min-width: 60px; height: 12px; border-radius: 999px; background: #eef1f6; box-shadow: inset 0 1px 2px rgba(20, 30, 50, 0.14); }
-.xp-fill {
-  position: absolute; left: 0; top: 0; bottom: 0; width: 0; border-radius: inherit;
-  background: var(--accent); transition: width 600ms cubic-bezier(0.3, 0.8, 0.3, 1), background-color 400ms;
+.reader-next.paging { background: #5d646e; box-shadow: 0 3px 0 #474d55; }
+
+html.has-story-bar body { padding-top: 62px; }
+.story-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 25; background: #ffffff; box-shadow: 0 1px 0 #e6e9ef, 0 6px 14px -12px rgba(20, 30, 50, 0.3);
+  padding: 10px max(16px, env(safe-area-inset-right, 0px)) 7px max(16px, env(safe-area-inset-left, 0px));
 }
-.xp.gain .xp-fill { animation: xp-gain 650ms ease-out; }
-@keyframes xp-gain { 0%, 100% { box-shadow: none; } 30% { box-shadow: 0 0 10px 2px rgba(26, 102, 224, 0.55); } }
-.xp-star { position: absolute; right: 0; top: 50%; transform: translate(45%, -52%); font-size: 18px; line-height: 1; color: #c9cfda; }
-.levelled .xp-star { color: #ffc531; text-shadow: 0 0 8px rgba(255, 197, 49, 0.8); }
-.levelled .xp-fill { background: #ffc531; animation: xp-shine 1.8s ease-in-out infinite; }
-@keyframes xp-shine { 0%, 100% { box-shadow: 0 0 4px 1px rgba(255, 197, 49, 0.5); } 50% { box-shadow: 0 0 14px 4px rgba(255, 197, 49, 0.75); } }
-.xp-levelup {
-  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); white-space: nowrap; pointer-events: none;
-  font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #3b2a00;
-  background: #ffc531; border-radius: 999px; padding: 0.18em 0.75em; box-shadow: 0 2px 10px rgba(255, 197, 49, 0.6);
+.story-sections { max-width: 680px; margin: 0 auto; display: flex; gap: 10px; }
+.story-section { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.story-row { position: relative; display: flex; align-items: center; gap: 5px; }
+.story-track { flex: 1; height: 10px; border-radius: 999px; background: #eef1f6; box-shadow: inset 0 1px 2px rgba(20, 30, 50, 0.14); overflow: hidden; }
+.story-fill { display: block; height: 100%; width: 0; border-radius: inherit; background: var(--accent); transition: width 600ms cubic-bezier(0.3, 0.8, 0.3, 1), background-color 400ms; }
+.story-section.gain .story-track { animation: story-gain 650ms ease-out; }
+@keyframes story-gain { 30% { box-shadow: 0 0 10px 2px rgba(26, 102, 224, 0.5); } }
+.story-mark {
+  flex: none; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid #d5dae2; background: #ffffff; color: #c9cfda; font-size: 11px; line-height: 1;
+}
+.story-name { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.story-section.now .story-name { color: var(--accent); font-weight: 650; }
+.story-section.done .story-fill { background: #ffc531; }
+.story-section.done .story-mark { background: #ffc531; border-color: #ffc531; color: #3b2a00; box-shadow: 0 0 10px rgba(255, 197, 49, 0.75); animation: mark-pop 650ms cubic-bezier(0.2, 1.5, 0.4, 1); }
+.story-section.done .story-name { color: #9a7400; }
+@keyframes mark-pop { from { transform: scale(0.4); } to { transform: scale(1); } }
+.story-levelup {
+  position: absolute; right: -4px; top: calc(100% + 20px); white-space: nowrap; pointer-events: none;
+  font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #3b2a00;
+  background: #ffc531; border-radius: 999px; padding: 0.2em 0.75em; box-shadow: 0 2px 10px rgba(255, 197, 49, 0.6);
   animation: levelup-pop 700ms cubic-bezier(0.2, 1.5, 0.4, 1) both;
 }
-@keyframes levelup-pop { from { transform: translate(-50%, -50%) scale(0.2); opacity: 0; } to { transform: translate(-50%, -50%) scale(1); opacity: 1; } }
-.xp-confetti { position: absolute; left: 50%; top: 50%; width: 7px; height: 4px; border-radius: 1px; pointer-events: none; }
-.xp-spark { position: absolute; left: 0; top: 0; margin: -9px 0 0 -7px; font-size: 15px; line-height: 1; color: #ffc531; text-shadow: 0 0 6px rgba(255, 197, 49, 0.85); pointer-events: none; }
-.xp-plus { position: absolute; font-size: 0.85rem; font-weight: 800; color: var(--accent); pointer-events: none; }
+@keyframes levelup-pop { from { transform: translateY(-8px) scale(0.3); opacity: 0; } to { transform: none; opacity: 1; } }
+.story-spark, .story-plus, .story-confetti { position: fixed; left: 0; top: 0; z-index: 40; pointer-events: none; }
+.story-spark { margin: -9px 0 0 -7px; font-size: 15px; line-height: 1; color: #ffc531; text-shadow: 0 0 6px rgba(255, 197, 49, 0.85); }
+.story-plus { font-size: 0.85rem; font-weight: 800; color: var(--accent); }
+.story-confetti { width: 7px; height: 4px; border-radius: 1px; }
+.framed .story-bar { display: none; }
 /* Back: a part read earlier, shown over the level (Next pages forward again, to now) */
 .reader-earlier { position: absolute; inset: 0; z-index: 5; overflow: auto; background: #ffffff; padding: 4vh 0 0; }
 .reader-earlier[hidden] { display: none; }
@@ -213,11 +227,12 @@ html.side-open .side-toggle { right: min(360px, 86vw); }
 .reader-part .figure { margin-bottom: 0.6em; }
 .reader-part * { transition: none !important; }
 @media (max-width: 520px) {
-  .reader { gap: 8px; }
   .reader-back { padding: 0.35em 0.7em; font-size: 0.88rem; }
-  .reader-next { padding: 0.45em 1em; }
+  .reader-next { padding: 0.45em 1.1em; }
+  .story-sections { gap: 6px; }
+  .story-name { font-size: 0.62rem; letter-spacing: 0.06em; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .reader-next.ready, .xp.gain .xp-fill, .levelled .xp-fill, .xp-levelup { animation: none; }
-  .xp-fill { transition: none; }
+  .reader-next.ready, .story-section.gain .story-track, .story-section.done .story-mark, .story-levelup { animation: none; }
+  .story-fill { transition: none; }
 }

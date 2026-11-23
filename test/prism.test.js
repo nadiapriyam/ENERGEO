@@ -321,7 +321,7 @@ test('7. the copy is verbatim from the Revision 11 list and in order: the answer
     `21. ${COPY.backDone}`, COPY.arrives, `You: ${COPY.you.tookApart}`, R(COPY.radiologist.same), COPY.tapBrain, COPY.bodyParts.join(', '), COPY.tapSkull,
     `28. ${COPY.mri[0].text.trim()}`, `[${COPY.collect}]`, `30. ${COPY.mri[1].text.trim()}`, `[${COPY.convert}]`, `32. ${COPY.mri[2].text.trim()}`,
     `33. ${COPY.mri[3].text.trim()}`, R(COPY.radiologist.pattern.question), ...COPY.radiologist.pattern.choices, R(COPY.radiologist.pattern.after),
-    `36. ${COPY.pattern[0]}`, `[${COPY.next}]`, `38. ${COPY.pattern[1]}`, `[${COPY.next}]`, `40. ${COPY.pattern[2]}`, `[${COPY.next}]`,
+    `36. ${COPY.pattern[0]}`, `[${LEVELS.forward}]`, `38. ${COPY.pattern[1]}`, `[${LEVELS.forward}]`, `40. ${COPY.pattern[2]}`, `[${LEVELS.forward}]`,
     `42. ${COPY.revealTitle}`, `43. ${COPY.reveal}`, `44. ${COPY.name[0]}`, `45. ${COPY.name[1]}`, `46. ${COPY.final}`];
   let at = 0;
   for (const l of ordered) {
@@ -338,6 +338,7 @@ test('7. the copy is verbatim from the Revision 11 list and in order: the answer
   assert.ok(/^Careful: the bumps aren't the notes\./.test(COPY.see.yes) && /^Neither can anyone, just by looking\./.test(COPY.see.notReally) && COPY.see.yes.endsWith('Each bump is all four notes, added together.') && COPY.see.notReally.endsWith('Each bump is all four notes, added together.'), 'Yes and Not really each get their own answer, and the same point');
   assert.match(main, /const seen = await ask\(COPY\.see\.choices, 'hidden'\);[\s\S]{0,700}say\(seen === COPY\.see\.choices\[0\] \? COPY\.see\.yes : COPY\.see\.notReally\);/, 'the answer follows the choice');
   assert.equal(LEVELS.level3, 'Final level');
+  assert.ok(!('next' in COPY) && /await step\(SLIDES\[i\]\);\s*await story\.next\(\);/.test(main), 'each slide waits for the one Next, under the level: no second Next button');
   assert.equal(LEVELS.next3, 'Next: Final level');
   assert.equal(COPY.backDone, 'Every bump in the signal comes from a different pure tone.', "line 21, in Nadia's words");
   assert.equal(COPY.final, 'The applications are endless! From a simple tuner to looking inside your brain.', 'the last line');
@@ -360,7 +361,7 @@ test('7. the copy is verbatim from the Revision 11 list and in order: the answer
   const calls = ['COPY.opening', 'COPY.dim', 'COPY.aim', 'COPY.aimHint', 'COPY.where.question', 'COPY.where.after', 'COPY.you.think', 'COPY.surprise',
     'COPY.play', 'COPY.drawsSignal', 'COPY.see.question', 'COPY.see.yes', 'COPY.see.notReally', 'COPY.apart', 'COPY.split', 'COPY.pure', 'COPY.pureHint', 'COPY.pureDone',
     'COPY.back', 'COPY.backDone', 'COPY.arrives', 'COPY.you.tookApart', 'COPY.radiologist.same', 'COPY.tapBrain', 'COPY.tapSkull', 'COPY.collect',
-    'COPY.convert', 'COPY.radiologist.pattern.question', 'COPY.radiologist.pattern.after', 'COPY.next', 'COPY.reveal', 'COPY.name[0]', 'COPY.name[1]', 'COPY.final'];
+    'COPY.convert', 'COPY.radiologist.pattern.question', 'COPY.radiologist.pattern.after', 'COPY.reveal', 'COPY.name[0]', 'COPY.name[1]', 'COPY.final'];
   const story = main.indexOf('// ── the story');
   const at1 = (c) => { const i = main.slice(story).search(new RegExp(`${c.replace(/[.[\]]/g, '\\$&')}(?![\\w.])`)); return i < 0 ? -1 : story + i; };
   const pos = calls.map(at1);
@@ -369,7 +370,7 @@ test('7. the copy is verbatim from the Revision 11 list and in order: the answer
   for (let i = 0; i < 3; i++) assert.match(main, new RegExp(`text: COPY\\.pattern\\[${i}\\] \\}`), `caption ${i + 1} is drawn under its own pictures`);
   assert.match(main, /text: COPY\.revealTitle/);
   const pat = main.slice(main.indexOf('async function thePattern()'), main.indexOf('async function theReveal()'));
-  assert.ok(pat.indexOf("patternRows.forEach((r, n) => r.classList.toggle('on', n === i))") < pat.indexOf('await press(COPY.next'), 'one slide at a time, each staying until Next');
+  assert.ok(pat.indexOf("patternRows.forEach((r, n) => r.classList.toggle('on', n === i))") < pat.indexOf('await story.next()'), 'one slide at a time, each staying until Next');
   const rev = main.slice(main.indexOf('async function theReveal()'));
   assert.ok(rev.indexOf('on(revealTitle)') < rev.indexOf('say(COPY.reveal') && rev.indexOf('say(COPY.reveal') < rev.indexOf('say(COPY.name[0])'), 'the grand reveal comes before "the same geometric math"');
   const tail = main.slice(main.indexOf("say(COPY.final, 'final');"));

@@ -2,7 +2,7 @@
  "levels": [
   {
    "id": "level-1",
-   "steps": 9,
+   "steps": 2,
    "parts": [
     {
      "img": "l1-01.webp",
@@ -163,7 +163,7 @@
   },
   {
    "id": "level-2",
-   "steps": 20,
+   "steps": 6,
    "parts": [
     {
      "img": "l2-01.webp",
@@ -282,15 +282,7 @@
        "kind": "line",
        "text": "Let's see.",
        "cls": []
-      }
-     ]
-    },
-    {
-     "img": "l2-08.webp",
-     "w": 680,
-     "h": 480,
-     "alt": "A drop holding three up arrows; three down arrows wait below it. The TOTAL adds the arrows in the drop: up plus up plus up equals 3.",
-     "words": [
+      },
       {
        "kind": "speaker",
        "who": "you",
@@ -312,6 +304,48 @@
        "cls": [
         "feedback"
        ]
+      },
+      {
+       "kind": "line",
+       "text": "Inside your patient, opposite tiny magnets cancel out.",
+       "cls": []
+      }
+     ]
+    },
+    {
+     "img": "l2-08.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "A drop holding three up arrows; three down arrows wait below it. The TOTAL adds the arrows in the drop: up plus up plus up equals 3.",
+     "words": [
+      {
+       "kind": "line",
+       "text": "Same result.",
+       "cls": [
+        "caption"
+       ]
+      },
+      {
+       "kind": "line",
+       "text": "Here's a look at some more protons in another part of your patient's body. Its total is 0 too.",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "What's behind this 0?",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "Different arrangement.",
+       "cls": [
+        "caption"
+       ]
+      },
+      {
+       "kind": "line",
+       "text": "And another.",
+       "cls": []
       }
      ]
     },
@@ -323,62 +357,11 @@
      "words": [
       {
        "kind": "line",
-       "text": "Inside your patient, opposite tiny magnets cancel out.",
-       "cls": []
-      }
-     ]
-    },
-    {
-     "img": "l2-10.webp",
-     "w": 680,
-     "h": 480,
-     "alt": "A drop holding three up arrows; three down arrows wait below it. The TOTAL adds the arrows in the drop: up plus up plus up equals 3.",
-     "words": []
-    },
-    {
-     "img": "l2-11.webp",
-     "w": 680,
-     "h": 480,
-     "alt": "A drop holding three up arrows; three down arrows wait below it. The TOTAL adds the arrows in the drop: up plus up plus up equals 3.",
-     "words": [
-      {
-       "kind": "line",
-       "text": "Here's a look at some more protons in another part of your patient's body. Its total is 0 too.",
-       "cls": []
-      },
-      {
-       "kind": "line",
-       "text": "What's behind this 0?",
-       "cls": []
-      }
-     ]
-    },
-    {
-     "img": "l2-12.webp",
-     "w": 680,
-     "h": 480,
-     "alt": "A drop holding three up arrows; three down arrows wait below it. The TOTAL adds the arrows in the drop: up plus up plus up equals 3.",
-     "words": [
-      {
-       "kind": "line",
-       "text": "And another.",
-       "cls": []
-      },
-      {
-       "kind": "line",
        "text": "Still 0.",
        "cls": [
         "caption"
        ]
-      }
-     ]
-    },
-    {
-     "img": "l2-13.webp",
-     "w": 680,
-     "h": 480,
-     "alt": "A drop holding three up arrows; three down arrows wait below it. The TOTAL adds the arrows in the drop: up plus up plus up equals 3.",
-     "words": [
+      },
       {
        "kind": "line",
        "text": "And another.",
@@ -392,7 +375,7 @@
      ]
     },
     {
-     "img": "l2-14.webp",
+     "img": "l2-10.webp",
      "w": 680,
      "h": 480,
      "alt": "Twelve pairs of opposite arrows in the drop, one up and one down, each pair a group with a total of 0. The TOTAL is 0.",
@@ -410,7 +393,7 @@
      ]
     },
     {
-     "img": "l2-15.webp",
+     "img": "l2-11.webp",
      "w": 680,
      "h": 480,
      "alt": "With the magnet on, one down arrow has turned to point up, with the magnet. Its group no longer cancels: it adds up to 2. The TOTAL is 2.",
@@ -433,7 +416,7 @@
      ]
     },
     {
-     "img": "l2-16.webp",
+     "img": "l2-12.webp",
      "w": 680,
      "h": 480,
      "alt": "Radio waves come in from both sides toward the tiny magnets; faint rings spread back out from among them.",
@@ -451,7 +434,7 @@
      ]
     },
     {
-     "img": "l2-17.webp",
+     "img": "l2-13.webp",
      "w": 680,
      "h": 480,
      "alt": "A picture of your patient's head, painted row by row in shades of grey, like an MRI image.",
@@ -474,7 +457,7 @@
      ]
     },
     {
-     "img": "l2-18.webp",
+     "img": "l2-14.webp",
      "w": 680,
      "h": 480,
      "alt": "The picture moves left. Lines run from all over it into an eye. Out of the eye comes the same picture, small: one picture.",
@@ -483,15 +466,7 @@
        "kind": "line",
        "text": "Your eye sees just one picture. It's hiding far more than it seems.",
        "cls": []
-      }
-     ]
-    },
-    {
-     "img": "l2-19.webp",
-     "w": 680,
-     "h": 480,
-     "alt": "Left, Level 1: four notes add up to one A note. Right: up, down, up, down arrows add up to a total signal of 0.",
-     "words": [
+      },
       {
        "kind": "line",
        "text": "You just figured out one of the core principles of MRI.",
@@ -503,7 +478,15 @@
        "kind": "line",
        "text": "Do you see a similarity to the violin level?",
        "cls": []
-      },
+      }
+     ]
+    },
+    {
+     "img": "l2-15.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "Left, Level 1: four notes add up to one A note. Right: up, down, up, down arrows add up to a total signal of 0.",
+     "words": [
       {
        "kind": "line",
        "text": "Look.",
@@ -513,15 +496,7 @@
        "kind": "line",
        "text": "In Level 1, one A note hid many notes. Here, one 0 signal hides countless tiny magnets.",
        "cls": []
-      }
-     ]
-    },
-    {
-     "img": "l2-20.webp",
-     "w": 680,
-     "h": 480,
-     "alt": "Left, Level 1: four notes add up to one A note. Right: up, down, up, down arrows add up to a total signal of 0.",
-     "words": [
+      },
       {
        "kind": "line",
        "text": "A 0 isn't always nothing. Sometimes it's a whole person: countless tiny magnets, perfectly balanced.",
@@ -535,7 +510,7 @@
   },
   {
    "id": "level-3",
-   "steps": 17,
+   "steps": 7,
    "parts": [
     {
      "img": "l3-01.webp",
@@ -559,16 +534,6 @@
        "kind": "line",
        "text": "Drag to aim it at the chandelier.",
        "cls": []
-      },
-      {
-       "kind": "line",
-       "text": "Where did the colors come from?",
-       "cls": []
-      },
-      {
-       "kind": "line",
-       "text": "From the white light. The glass on the chandelier is a prism: it takes light apart into its colors.",
-       "cls": []
       }
      ]
     },
@@ -578,6 +543,16 @@
      "h": 458,
      "alt": "A tuner clipped to the scroll of your violin. Its screen is blank.",
      "words": [
+      {
+       "kind": "line",
+       "text": "Where did the colors come from?",
+       "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "From the white light. The glass on the chandelier is a prism: it takes light apart into its colors.",
+       "cls": []
+      },
       {
        "kind": "speaker",
        "who": "you",
@@ -632,7 +607,7 @@
      "img": "l3-05.webp",
      "w": 680,
      "h": 458,
-     "alt": "Under the signal, four glowing bars, labelled A, high A, E and higher A, tallest first.",
+     "alt": "Drag the bars up and down. The signal above changes with them.",
      "words": [
       {
        "kind": "line",
@@ -640,15 +615,7 @@
        "cls": [
         "lead"
        ]
-      }
-     ]
-    },
-    {
-     "img": "l3-06.webp",
-     "w": 680,
-     "h": 458,
-     "alt": "Drag the bars up and down. The signal above changes with them.",
-     "words": [
+      },
       {
        "kind": "line",
        "text": "Drag the bars. Can you make a single pure tone, like a tuning fork?",
@@ -657,7 +624,7 @@
      ]
     },
     {
-     "img": "l3-07.webp",
+     "img": "l3-06.webp",
      "w": 680,
      "h": 458,
      "alt": "Drag the bars up and down. The signal above changes with them.",
@@ -684,7 +651,7 @@
      ]
     },
     {
-     "img": "l3-08.webp",
+     "img": "l3-07.webp",
      "w": 680,
      "h": 458,
      "alt": "The break: the hall lights are on. You stand by the stage. The radiologist who read your scan, in a white coat, walks over to you.",
@@ -717,7 +684,7 @@
      ]
     },
     {
-     "img": "l3-09.webp",
+     "img": "l3-08.webp",
      "w": 680,
      "h": 458,
      "alt": "Your patient’s skull is lit. Its signal comes out of the spot you tapped and travels to the data box, where its wave is drawn, named skull.",
@@ -735,7 +702,7 @@
      ]
     },
     {
-     "img": "l3-10.webp",
+     "img": "l3-09.webp",
      "w": 680,
      "h": 458,
      "alt": "Row by row, the pixels have made an MRI picture of your patient’s head.",
@@ -750,7 +717,7 @@
      ]
     },
     {
-     "img": "l3-11.webp",
+     "img": "l3-10.webp",
      "w": 680,
      "h": 458,
      "alt": "Three rows, each with its caption: Violin note → pure tones; Stage light → its full color spectrum; MRI image → proton frequencies.",
@@ -778,7 +745,7 @@
      ]
     },
     {
-     "img": "l3-12.webp",
+     "img": "l3-11.webp",
      "w": 680,
      "h": 458,
      "alt": "The three rows dim. In the middle, glowing: the Fourier transform.",

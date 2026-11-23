@@ -379,7 +379,7 @@ async function scene1() {                                   // the scanner
   describe('An MRI scanner, seen from the side, with your patient lying on its table. You stand beside it, in your bucket hat.');
   requestAnimationFrame(() => figure.classList.add('in'));
   say(COPY.scanner, 'lead');
-  await story.next();
+  await story.beat();
   say(COPY.patient);                                          // you are taking the scan: your first patient
   button(COPY.slideIn, scene2);
 }
@@ -408,7 +408,7 @@ async function scene3() {                                   // zoom into the wat
   on(water);
   describe('Three water molecules. Each is one large oxygen atom, O, joined to two small hydrogen atoms, H.');
   say(COPY.water[0], 'lead');
-  await story.next();
+  await story.beat();
   say(COPY.water[1]);
   await wait(700);
   button(COPY.closer, scene4);
@@ -420,7 +420,7 @@ async function scene4() {                                   // protons: tiny mag
   water.classList.add('protons', 'still');
   describe('At the centre of each hydrogen atom is a proton: a small ball, half marked N and half marked S.');
   say(COPY.proton[0]);
-  await story.next();
+  await story.beat();
   say(COPY.proton[1]);
   await wait(600);
   water.classList.add('arrows');
@@ -442,7 +442,7 @@ async function scene5() {                                   // the drop, and its
   for (const id of [...state.row, ...state.waiting]) { const s = restingSpot(id); place(pieces.get(id), s.x, s.y, 'gliding'); }
   await wait(1000);
   say(COPY.hook);
-  await story.next();
+  await story.beat();
   on(panel);
   say(COPY.totalMeans);
   await wait(500);
@@ -540,7 +540,7 @@ async function reachZero() {                                // reaching 0
   await wait(1400);
   clear();
   speak(COPY.reached, 'you');                                // oh no: no signal for your MRI
-  await story.next();
+  await story.beat();
   checkpoint2();
 }
 
@@ -555,7 +555,6 @@ function emphasize() {
 function checkpoint2() {                                    // second checkpoint
   phase = 'check2';
   emphasize();
-  clear();
   say(COPY.check2.question);
   let feedback = null;
   choices(COPY.check2.choices, async (o, b, all) => {
@@ -564,8 +563,7 @@ function checkpoint2() {                                    // second checkpoint
       all.forEach((x) => { x.disabled = true; });
       b.classList.add('picked');
       feedback = say(COPY.check2.right, 'feedback');
-      await story.next();
-      clear();
+      await story.beat();
       say(COPY.answer);
       await story.next();
       arrangements();
@@ -598,38 +596,32 @@ async function arrangements() {                             // look behind more 
   clear();
   showArrangement(0);
   revealArrangement(0);
-  const caption = say(COPY.arrangements[0], 'caption');
-  await pause(2400);
-  clear();
+  say(COPY.arrangements[0], 'caption');                     // the words stay; the page turns only when you press
+  await story.beat(1400);
   covered(true);
   await wait(500);
   showArrangement(1);                                       // rearranged out of sight; the TOTAL still reads 0
   say(COPY.cover.intro);
-  await story.next();
+  await story.beat();
   say(COPY.cover.question);
   await ask(COPY.cover.choices);
   await wait(500);
   covered(false);
   revealArrangement(1);
   await wait(500);
-  clear();
-  caption.textContent = COPY.arrangements[1];
-  prompt.append(caption);
-  await pause(2400);
-  clear();
+  say(COPY.arrangements[1], 'caption');
+  await story.beat(1400);
   covered(true);
   await wait(500);
   showArrangement(2);
   say(COPY.cover.again);
   await press(COPY.cover.look);
+  clear();                                                  // you pressed: a new page
   covered(false);
   revealArrangement(2);
   await wait(500);
-  clear();
-  caption.textContent = COPY.arrangements[2];
-  prompt.append(caption);
-  await pause(2400);
-  clear();
+  say(COPY.arrangements[2], 'caption');
+  await story.beat(1400);
   covered(true);
   await wait(500);
   showArrangement(3);
@@ -685,15 +677,14 @@ async function magnetOn() {                                 // the magnet tips t
   drawResult(total(Object.values(now)));
   describe('With the magnet on, one down arrow has turned to point up, with the magnet. Its group no longer cancels: it adds up to 2. The TOTAL is 2.');
   say(COPY.magnet[0]);
-  await story.next();
-  clear();
+  await story.beat();
   say(COPY.magnet[1]);                                       // what an MRI does: turn the 0 into a small signal
-  await story.next();
+  await story.beat();
   say(COPY.magnet[2]);
   await story.next();
   clear();
   say(COPY.magnet[3]);                                       // the 0 held every magnet; the signal shows the few left over
-  await story.next();
+  await story.beat();
   say(COPY.magnet[4]);
   on(radio);                                                 // radio waves go in; a faint reply comes out
   describe('Radio waves come in from both sides toward the tiny magnets; faint rings spread back out from among them.');
@@ -720,7 +711,7 @@ async function paint() {                                    // the scanner paint
     if (!REDUCED) await pause(40);
   }
   say(COPY.picture);
-  await story.next();
+  await story.beat();
   speak(COPY.you.didIt, 'you');                              // you did it correctly
   await story.next();
   seeIt();
@@ -737,12 +728,11 @@ async function seeIt() {                                    // your eye sees one
   eyeScene.classList.add('flowing');
   describe('The picture moves left. Lines run from all over it into an eye. Out of the eye comes the same picture, small: one picture.');
   say(COPY.eye.line);
-  await story.next();
+  await story.beat();
   eyeScene.classList.remove('flowing');
   phase = 'closing';
-  clear();
   say(COPY.closing, 'lead');
-  await story.next();
+  await story.beat();
   similar();
 }
 
@@ -750,6 +740,7 @@ async function similar() {                                  // Level 1's violin 
   phase = 'similar';
   say(COPY.similar.question);
   await ask(COPY.similar.choices);
+  clear();                                                  // you answered: a new page
   say(COPY.similar.after);
   on(eyeScene, false);
   on(screen, false);
@@ -789,11 +780,9 @@ async function similar() {                                  // Level 1's violin 
   describe('Left, Level 1: four notes add up to one A note. Right: up, down, up, down arrows add up to a total signal of 0.');
   for (const n of leftSteps) { left.append(n); n.classList.add('pop'); await wait(200); }
   for (const n of rightSteps) { right.append(n); n.classList.add('pop'); await wait(200); }
-  clear();
   say(COPY.compare);
-  await story.next();
+  await story.beat();
   phase = 'final';
-  clear();
   say(COPY.final, 'final');
   root.dispatchEvent(new CustomEvent('level-finished', { bubbles: true }));
 }

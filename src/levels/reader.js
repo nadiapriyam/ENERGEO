@@ -1,13 +1,19 @@
-// The reader (docs/levels_spec.md, "All three levels: reading at your own pace"). A level's words no longer come and go
-// on a timer. Where the story waits for you, the Next button lights up; pressing it sends a few stars into the level's
-// bar, which fills a notch (+1), and the next words come. At the end of the level the bar is full: Level up! The Back
-// button pages back through the parts already read (a still picture of the board, with its words, kept by record.js),
-// and Next pages forward again, to now. Keys: → or Enter for Next, ← for Back.
+// The reader (docs/levels_spec.md, "All three levels: reading at your own pace", and "One way forward at a time, and
+// one bar for the whole story"). A level's words no longer come and go on a timer.
+// - One way forward at a time. Where you act (a button, a choice, a drag), that is the way on, and there is no Next.
+//   Lines of the same part follow each other by themselves, a beat apart, and stay. Only where the story would turn the
+//   page on its own does it wait: then Next appears under the level, glowing.
+// - One bar for the whole story, at the top of the page: Level 1, Level 2, the final level, each ending in a marker.
+//   Each Next sends stars up into it (+1) and fills a notch; when a level is done, its marker turns gold: Level up!
+// - Back pages back through the parts already read (a still picture of the board, with its words, kept by record.js);
+//   Next pages forward again, to now. Keys: → or Enter for Next, ← for Back.
 import { LEVELS } from './copyLevels.js';
 import { COMIC } from './comic.js';
 
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const RECORDING = new URLSearchParams(location.search).has('record');   // the comic's recorder: the story moves on by itself
+const BEAT = 900;                                            // ms between lines of the same part
+const ORDER = ['level-1', 'level-2', 'level-3'];
 const make = (tag, className, attrs = {}) => Object.assign(document.createElement(tag), { className, ...attrs });
 let current = null;                                          // the reader of the level being played: the keys go to it
 export const readers = {};                                   // by level, for automated checks (window.__reader)
@@ -21,25 +27,82 @@ addEventListener('keydown', (e) => {                       // only when nothing 
   else if (e.key === 'ArrowLeft') { if (current.backward()) e.preventDefault(); }
 });
 
+// ── the bar for the whole story, at the top: one section per level, each ending in its marker ─────────────────────
+let top = null;
+function storyBar() {
+  if (top) return top;
+  const el = make('div', 'story-bar', { role: 'progressbar' });
+  el.setAttribute('aria-label', LEVELS.progress);
+  el.setAttribute('aria-valuemin', '0');
+  el.setAttribute('aria-valuemax', '100');
+  const names = { 'level-1': LEVELS.level1, 'level-2': LEVELS.level2, 'level-3': LEVELS.level3 };
+  const sections = ORDER.map((id) => {
+    const fill = make('span', 'story-fill');
+    const track = make('span', 'story-track');
+    track.append(fill);
+    const mark = make('span', 'story-mark', { textContent: id === 'level-3' ? '★' : '' });
+    const row = make('span', 'story-row');
+    row.append(track, mark);
+    const s = make('span', 'story-section');
+    s.dataset.level = id;
+    s.append(row, make('span', 'story-name', { textContent: names[id] }));
+    return { id, s, row, fill, mark, f: 0 };
+  });
+  const row = make('div', 'story-sections');
+  row.append(...sections.map((x) => x.s));
+  el.append(row);
+  document.body.append(el);
+  document.documentElement.classList.add('has-story-bar');
+  const find = (id) => sections.find((y) => y.id === id);
+  const set = (id, f) => {
+    const x = find(id);
+    if (!x) return;
+    x.f = f;
+    x.fill.style.width = `${(100 * f).toFixed(1)}%`;
+    sections.forEach((y) => y.s.classList.toggle('now', y.id === id));
+    el.setAttribute('aria-valuenow', String(Math.round((100 * sections.reduce((t, y) => t + y.f, 0)) / sections.length)));
+  };
+  const gain = (id) => { const x = find(id); x.s.classList.remove('gain'); void x.s.offsetWidth; x.s.classList.add('gain'); };
+  const end = (id) => find(id)?.fill.getBoundingClientRect();
+  const done = (id) => {                                     // the level's marker turns gold: Level up!
+    const x = find(id);
+    if (!x) return;
+    set(id, 1);
+    x.s.classList.add('done');
+    const badge = make('span', 'story-levelup', { textContent: LEVELS.levelUp });
+    x.row.append(badge);
+    setTimeout(() => badge.remove(), 2800);
+    if (REDUCED) return;
+    const m = x.mark.getBoundingClientRect();
+    for (let k = 0; k < 18; k++) {
+      const c = make('span', 'story-confetti');
+      c.style.background = `hsl(${(k * 47) % 360}, 90%, 60%)`;
+      c.style.left = `${m.left + m.width / 2}px`;
+      c.style.top = `${m.top + m.height / 2}px`;
+      document.body.append(c);
+      const a = (Math.PI * 2 * k) / 18;
+      c.animate([{ transform: 'translate(0, 0) rotate(0deg)', opacity: 1 }, { transform: `translate(${Math.cos(a) * (50 + (k % 4) * 16)}px, ${Math.abs(Math.sin(a)) * 60 + 10}px) rotate(${k * 70}deg)`, opacity: 0 }],
+        { duration: 1100 + (k % 5) * 80, easing: 'cubic-bezier(0.2, 0.7, 0.3, 1)' }).onfinish = () => c.remove();
+    }
+  };
+  top = { el, set, gain, end, done };
+  return top;
+}
+
 /**
  * The reader for the level whose lesson is `root`. `fast()` says the level is fast-forwarding (Level 3's review
- * frames): then the story never waits. Returns { el, next }: `el` is the bar to put under the level; `await next()`
- * waits for you to press Next.
+ * frames): then nothing waits. Returns { el, next, beat }: `el` goes under the level (Back, and Next when it is
+ * needed); `await next()` waits for Next; `await beat()` is the short pause between lines of the same part.
  */
 export function reader(root, { fast = () => false } = {}) {
   const level = root.closest('.level')?.id ?? '';
-  const total = Math.max(1, COMIC.levels.find((l) => l.id === level)?.steps ?? 20);
+  const total = Math.max(1, COMIC.levels.find((l) => l.id === level)?.steps ?? 6);
+  const bar = document.documentElement.classList.contains('framed') ? null : storyBar();
   const back = make('button', 'reader-back', { type: 'button', textContent: `‹ ${LEVELS.goBack}` });
   const go = make('button', 'reader-next', { type: 'button', textContent: `${LEVELS.forward} ›` });
-  const fill = make('span', 'xp-fill');
-  const track = make('span', 'xp', { role: 'progressbar' });
-  track.setAttribute('aria-label', LEVELS.progress);
-  track.setAttribute('aria-valuemin', '0');
-  track.setAttribute('aria-valuemax', '100');
-  track.append(fill, make('span', 'xp-star', { textContent: '★' }));
   const el = make('div', 'reader');
   el.setAttribute('role', 'group');
-  el.append(back, track, go);
+  el.append(back, go);
   const layer = make('div', 'reader-earlier');               // a part read earlier, shown over the level
   layer.hidden = true;
   root.prepend(layer);
@@ -49,22 +112,18 @@ export function reader(root, { fast = () => false } = {}) {
   let page = -1;                                             // -1: now; otherwise the index of the earlier part on show
   let done = false;
   const parts = () => [...document.querySelectorAll('#story-record .recorded-part')].filter((p) => p.dataset.level === level);
-  const setFill = (f) => {
-    fill.style.width = `${(100 * f).toFixed(1)}%`;
-    track.setAttribute('aria-valuenow', String(Math.round(100 * f)));
-  };
+  const fill = () => { if (bar && !done) bar.set(level, Math.min(0.96, count / total)); };
   const refresh = () => {
-    const n = parts().length;
-    back.disabled = page === 0 || n === 0;
-    go.disabled = page < 0 && !waiting;
+    back.disabled = page === 0 || parts().length === 0;
     go.classList.toggle('ready', page < 0 && !!waiting);
+    go.classList.toggle('paging', page >= 0);
+    go.disabled = !(page >= 0 || waiting);
     el.classList.toggle('looking-back', page >= 0);
   };
   const show = (i) => {                                      // page through the parts read earlier; -1 is now
     page = i;
     if (i < 0) { layer.hidden = true; layer.replaceChildren(); root.classList.remove('reading-back'); refresh(); return; }
-    const part = parts()[i];
-    const view = part.cloneNode(true);
+    const view = parts()[i].cloneNode(true);
     view.className = 'reader-part';
     layer.replaceChildren(make('p', 'reader-earlier-tag', { textContent: `${LEVELS.earlier} · ${i + 1} / ${parts().length}` }), view);
     layer.style.bottom = `${el.offsetHeight + 8}px`;            // above the bar, which stays in reach
@@ -73,32 +132,31 @@ export function reader(root, { fast = () => false } = {}) {
     root.classList.add('reading-back');
     refresh();
   };
-  const burst = () => {                                      // stars from the button into the bar, +1, and a notch more
-    if (REDUCED) return;
+  const burst = () => {                                      // stars from Next up into the bar at the top, and +1
+    if (REDUCED || !bar) return;
     const b = go.getBoundingClientRect();
-    const t = track.getBoundingClientRect();
-    const r = el.getBoundingClientRect();
-    const from = { x: b.left + b.width / 2 - r.left, y: b.top + b.height / 2 - r.top };
-    const to = { x: t.left + (t.width * count) / total - r.left, y: t.top + t.height / 2 - r.top };
+    const t = bar.end(level);
+    const from = { x: b.left + b.width / 2, y: b.top + b.height / 2 };
+    const to = { x: t.right, y: t.top + t.height / 2 };
     for (let k = 0; k < 7; k++) {
-      const s = make('span', 'xp-spark', { textContent: k % 2 ? '✦' : '★' });
-      el.append(s);
+      const s = make('span', 'story-spark', { textContent: k % 2 ? '✦' : '★' });
+      document.body.append(s);
       const a = (Math.PI * 2 * k) / 7;
-      const mid = { x: from.x + Math.cos(a) * 26, y: from.y + Math.sin(a) * 22 - 12 };
+      const mid = { x: from.x + Math.cos(a) * 30, y: from.y + Math.sin(a) * 24 - 30 };
       s.animate([
         { transform: `translate(${from.x}px, ${from.y}px) scale(0.4)`, opacity: 1 },
-        { transform: `translate(${mid.x}px, ${mid.y}px) scale(1.1)`, opacity: 1, offset: 0.35 },
-        { transform: `translate(${to.x}px, ${to.y}px) scale(0.5)`, opacity: 0.2 },
-      ], { duration: 620 + k * 30, easing: 'cubic-bezier(0.3, 0.7, 0.4, 1)' }).onfinish = () => s.remove();
+        { transform: `translate(${mid.x}px, ${mid.y}px) scale(1.15)`, opacity: 1, offset: 0.3 },
+        { transform: `translate(${to.x}px, ${to.y}px) scale(0.5)`, opacity: 0.3 },
+      ], { duration: 760 + k * 35, easing: 'cubic-bezier(0.3, 0.7, 0.4, 1)' }).onfinish = () => s.remove();
     }
-    const plus = make('span', 'xp-plus', { textContent: '+1' });
+    const plus = make('span', 'story-plus', { textContent: '+1' });
     plus.style.left = `${to.x}px`;
-    plus.style.top = `${to.y}px`;
-    el.append(plus);
-    plus.animate([{ transform: 'translate(-50%, -40%)', opacity: 0 }, { transform: 'translate(-50%, -140%)', opacity: 1, offset: 0.3 }, { transform: 'translate(-50%, -220%)', opacity: 0 }],
-      { duration: 900, easing: 'ease-out' }).onfinish = () => plus.remove();
+    plus.style.top = `${to.y + 10}px`;
+    document.body.append(plus);
+    plus.animate([{ transform: 'translate(-50%, 0)', opacity: 0 }, { transform: 'translate(-50%, 6px)', opacity: 1, offset: 0.3 }, { transform: 'translate(-50%, 14px)', opacity: 0 }],
+      { duration: 1000, delay: 600, easing: 'ease-out', fill: 'both' }).onfinish = () => plus.remove();
     go.animate([{ transform: 'scale(1)' }, { transform: 'scale(0.9)' }, { transform: 'scale(1.08)' }, { transform: 'scale(1)' }], { duration: 320 });
-    setTimeout(() => { track.classList.remove('gain'); void track.offsetWidth; track.classList.add('gain'); }, 520);
+    setTimeout(() => bar.gain(level), 700);
   };
   const forward = () => {
     if (page >= 0) { show(page + 1 < parts().length ? page + 1 : -1); return true; }
@@ -106,8 +164,8 @@ export function reader(root, { fast = () => false } = {}) {
     const r = waiting;
     waiting = null;
     count++;
-    if (!done) setFill(Math.min(0.96, count / total));
     burst();
+    fill();
     refresh();
     r();
     return true;
@@ -121,21 +179,7 @@ export function reader(root, { fast = () => false } = {}) {
   document.addEventListener('part-kept', refresh);
   go.addEventListener('click', forward);
   back.addEventListener('click', backward);
-  root.addEventListener('level-finished', () => {            // the bar fills: Level up!
-    done = true;
-    setFill(1);
-    el.classList.add('levelled');
-    const badge = make('span', 'xp-levelup', { textContent: LEVELS.levelUp });
-    track.append(badge);
-    if (!REDUCED) for (let k = 0; k < 18; k++) {
-      const c = make('span', 'xp-confetti');
-      c.style.background = `hsl(${(k * 47) % 360}, 90%, 60%)`;
-      track.append(c);
-      const a = (Math.PI * 2 * k) / 18;
-      c.animate([{ transform: 'translate(0, 0) rotate(0deg)', opacity: 1 }, { transform: `translate(${Math.cos(a) * (60 + (k % 4) * 18)}px, ${Math.sin(a) * 40 - 30}px) rotate(${k * 70}deg)`, opacity: 0 }],
-        { duration: 1100 + (k % 5) * 80, easing: 'cubic-bezier(0.2, 0.7, 0.3, 1)' }).onfinish = () => c.remove();
-    }
-  });
+  root.addEventListener('level-finished', () => { done = true; bar?.done(level); refresh(); });
 
   const self = {
     el, forward, backward,
@@ -143,17 +187,19 @@ export function reader(root, { fast = () => false } = {}) {
     /** The story waits here for you to press Next (or moves on at once while fast-forwarding). */
     next() {
       current = self;
-      if (fast()) { count++; setFill(Math.min(0.96, count / total)); return Promise.resolve(); }
+      if (fast()) { count++; fill(); return Promise.resolve(); }
       return new Promise((resolve) => {
         waiting = resolve;
         refresh();
         if (RECORDING) setTimeout(forward, 250);
       });
     },
+    /** A beat between lines of the same part: the next line follows by itself, and the earlier ones stay. */
+    beat(ms = BEAT) { return fast() ? Promise.resolve() : new Promise((r) => setTimeout(r, ms)); },
   };
   current = self;
   readers[level] = self;
-  setFill(0);
+  fill();
   refresh();
   return self;
 }

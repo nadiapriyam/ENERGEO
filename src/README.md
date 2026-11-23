@@ -90,10 +90,12 @@ does not touch the journey store or any interactive.
 Three short stories on one page, in one plain style: a white page, the system sans (its 0 is a plain 0) and one
 accent. `docs/levels_spec.md` governs. `try/level-2/` and `notebook/` forward here.
 
-- Each level plays on one board, its lines clearing between parts. **You set the pace** (`src/levels/reader.js`):
-  where a level used to wait a set time for reading, it waits for Next. The bar under each level holds ‹ Back, the
-  level's bar and Next ›: Next glows when the story waits, and pressing it sends stars into the bar (+1); a full bar
-  is gold: Level up! Back (or ←) pages through the parts already read (kept by `record.js`); Next pages forward to now.
+- Each level plays on one board, its lines clearing between parts. **You set the pace** (`src/levels/reader.js`),
+  one way forward at a time: where you act (a button, a choice, a drag), that is the way on; lines of one part follow
+  a beat apart and stay; only where the story would turn the page itself does Next appear, under the level. One bar for
+  the whole story sits at the top: a section per level, each ending in its marker; each Next sends stars up into it
+  (+1), and a finished level's marker turns gold: Level up! Back (or ←) pages through the parts already read (kept by
+  `record.js`); Next pages forward to now.
 - **Scroll through, on the side.** A tab at the right edge opens "The whole story": every part of all three levels as
   a comic, a picture of the board above its lines, without playing anything. The comic is recorded from the levels:
   `npm run comic` (`tools/record_comic.mjs`) plays each level on `try/?record`, where `src/levels/record.js` keeps each

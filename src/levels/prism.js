@@ -429,8 +429,8 @@ const boardPoint = (e) => { const p = board.createSVGPoint(); p.x = e.clientX; p
 async function theHall() {                                  // back at the concert hall: the lights dim
   describe('A concert hall: a chandelier with a piece of glass hanging from it, and a stage light on the floor.');
   later(() => figure.classList.add('in'));
-  say(COPY.opening, 'lead');
-  await story.next();
+  say(COPY.opening, 'lead');                                 // the lines of one part follow each other, and stay
+  await story.beat();
   phase = 'hall';
   board.classList.add('night');
   say(COPY.dim);
@@ -438,7 +438,7 @@ async function theHall() {                                  // back at the conce
   aim(startAngle());
   hall.classList.add('lit');
   describe('The hall is dark. The stage light shines a white beam across to the wall, below the chandelier.');
-  await story.next();
+  await story.beat();
   await step('hall');
   phase = 'aim';
   say(COPY.aim);
@@ -495,12 +495,11 @@ async function theColors() {                                // where did the col
   say(COPY.where.question);
   await ask(COPY.where.choices, 'colors');
   say(COPY.where.after);
-  await story.next();
-  await clear();
+  await story.beat();
   speak(COPY.you.think, 'you', true);
-  await story.next();
+  await story.beat();
   say(COPY.surprise, 'lead');
-  await story.next();
+  await story.beat();
   await step('thought');
   theTuner();
 }
@@ -543,7 +542,7 @@ async function growTheSignal() {                            // the little signal
   ghost.style.transform = `translateX(${REPEAT_W.toFixed(1)}px)`;
   await wait(1000);
   say(seen === COPY.see.choices[0] ? COPY.see.yes : COPY.see.notReally);
-  await story.next();
+  await story.beat();
   theSplit();
 }
 
@@ -573,7 +572,7 @@ async function theSplit() {                                 // taking it apart: 
   parts.forEach((p) => { p.style.transform = ''; });
   describe('Under the signal, four glowing bars, labelled A, high A, E and higher A, tallest first.');
   say(COPY.split, 'lead');
-  await story.next();
+  await story.beat();
   await step('bars');
   tuningFork();
 }
@@ -598,7 +597,6 @@ function dragBars(onChange) {                               // drag on the bars:
 
 async function tuningFork() {                               // one bar, then all of them back
   phase = 'pure';
-  await clear();
   say(COPY.pure);
   describe('Drag the bars up and down. The signal above changes with them.');
   const hint = setTimeout(() => { if (phase === 'pure') say(COPY.pureHint, 'hint'); }, 9000);
@@ -648,10 +646,10 @@ async function theRadiologist() {                           // at the break: the
   say(COPY.arrives);
   await wait(60);
   radiologistFigure.style.transform = 'none';
-  await story.next();
+  await story.beat(1600);                                    // he walks over
   await step('break');
   speak(COPY.you.tookApart, 'you');
-  await story.next();
+  await story.beat();
   speak(COPY.radiologist.same);
   await story.next();
   await step('talk');
@@ -695,7 +693,7 @@ async function theBrain() {                                 // the people step a
   await clear();
   const show = sentence();                                   // Nadia's description, one part at a time
   show(0);
-  await story.next();
+  await story.beat();
   await press(COPY.collect, 'behaves');
   stop();
   phase = 'collect';                                         // collecting that data: the head moves aside, the picture's place appears
@@ -769,7 +767,8 @@ async function thePattern() {                               // do you notice a p
     patternRows.forEach((r, n) => r.classList.toggle('on', n === i));
     describe(`${shown[i]} Under them: ${COPY.pattern[i]}.`);
     await wait(700);
-    await press(COPY.next, SLIDES[i]);
+    await step(SLIDES[i]);
+    await story.next();                                      // the one Next: under the level
   }
   phase = 'together';                                        // all three, each caption under its own pictures
   pattern.classList.remove('sliding');
@@ -790,12 +789,12 @@ async function theReveal() {                                // the grand reveal:
   on(revealTitle);
   say(COPY.reveal, 'final');
   describe('The three rows dim. In the middle, glowing: the Fourier transform.');
-  await story.next();
+  await story.beat(1400);
   await step('reveal');
   say(COPY.name[0]);
-  await story.next();
+  await story.beat();
   say(COPY.name[1]);
-  await story.next();
+  await story.beat();
   phase = 'final';
   say(COPY.final, 'final');
   root.dispatchEvent(new CustomEvent('level-finished', { bubbles: true }));

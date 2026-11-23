@@ -297,14 +297,14 @@ function dragOnBoard(move, key) {
 async function opening() {                                  // you are the first violin
   describe('An orchestra on a stage, two curved rows of players. In front: your violin, lying across the bottom, with its bow across the strings.');
   requestAnimationFrame(() => figure.classList.add('in'));
-  say(COPY.opening[0], 'lead');
-  await story.next();
+  say(COPY.opening[0], 'lead');                              // the lines of one part follow each other, and stay
+  await story.beat();
   say(COPY.opening[1]);
-  await story.next();
+  await story.beat();
   say(COPY.opening[2]);
-  await story.next();
+  await story.beat();
   speak(COPY.you, 'you');                                    // meet the player: that's you, in the bucket hat
-  await story.next();
+  await story.beat();
   say(COPY.bow, 'hint');
   await bowTheA();
   phase = 'tuned';
@@ -441,7 +441,7 @@ async function insideTheSound() {                           // cut: inside the v
   scroll();
   describe('Inside the sound: the shape of your A, a repeating wave with bumps, running across.');
   say(COPY.shape);
-  await story.next();
+  await story.beat();
   phase = 'question';
   say(COPY.oneNote.question);
   await ask(COPY.oneNote.choices);
@@ -512,7 +512,7 @@ async function splitNotes() {                               // four notes, one u
     return b;
   });
   notesRow.classList.add('in');
-  await story.next();
+  await story.beat();
   say(COPY.tapNotes);
   followFocus(buttons[0]);
   setTimeout(() => { if (!heard && phase === 'notes') heardAll(); }, 14000);
@@ -539,7 +539,7 @@ async function together() {                                 // all four at once,
   clear();
   phase = 'oneA';
   say(COPY.oneA);
-  await story.next();
+  await story.beat();
   phase = 'final';
   say(COPY.final, 'final');
   root.dispatchEvent(new CustomEvent('level-finished', { bubbles: true }));   // the page offers Level 2
