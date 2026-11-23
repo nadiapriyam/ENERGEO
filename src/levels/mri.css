@@ -161,3 +161,25 @@
   .piece.moving, .piece.gliding, .piece-inner, .piece-mid, .piece-enter, .pieces { transition: none; }
   .molecule, .field-line, .piece.nudge .piece-enter { animation: none; }
 }
+
+/* +1 and −1, beside the TOTAL's result, as each arrow joins it (the result counts with it) */
+.value-pop { font-family: var(--font); font-size: 21px; font-weight: 800; transform-box: fill-box; animation: value-pop 1200ms ease-out forwards; }
+.value-pop.up { fill: var(--accent); }
+.value-pop.down { fill: var(--ink-2); }
+@keyframes value-pop { 0% { opacity: 0; transform: translateY(6px) scale(0.7); } 20% { opacity: 1; transform: none; } 70% { opacity: 1; } 100% { opacity: 0; transform: translateY(-10px); } }
+
+/* the scanner's radio waves: arcs in from both sides; a faint reply out, in rings */
+.radio { opacity: 0; transition: opacity 400ms ease-out; pointer-events: none; }
+.radio.on { opacity: 1; }
+.radio-in { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; opacity: 0; }
+.radio.on .radio-in.from-left { animation: radio-left 2.6s ease-in infinite; }
+.radio.on .radio-in.from-right { animation: radio-right 2.6s ease-in infinite; }
+@keyframes radio-left { 0% { opacity: 0; transform: translateX(0); } 8% { opacity: 0.75; } 42%, 100% { opacity: 0; transform: translateX(190px); } }
+@keyframes radio-right { 0% { opacity: 0; transform: translateX(0); } 8% { opacity: 0.75; } 42%, 100% { opacity: 0; transform: translateX(-190px); } }
+.radio-out { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 5 6; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.radio.on .radio-out { animation: radio-reply 2.6s ease-out infinite; }
+@keyframes radio-reply { 0%, 42% { opacity: 0; transform: scale(0.4); } 52% { opacity: 0.5; } 100% { opacity: 0; transform: scale(2.4); } }
+@media (prefers-reduced-motion: reduce) {
+  .value-pop { animation: none; }
+  .radio.on .radio-in, .radio.on .radio-out { animation: none; opacity: 0.5; }
+}

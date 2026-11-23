@@ -2,6 +2,7 @@
  "levels": [
   {
    "id": "level-1",
+   "steps": 9,
    "parts": [
     {
      "img": "l1-01.webp",
@@ -130,15 +131,7 @@
        "cls": [
         "lead"
        ]
-      }
-     ]
-    },
-    {
-     "img": "l1-08.webp",
-     "w": 680,
-     "h": 437,
-     "alt": "The four notes flow from their rows into an ear. Out of the ear comes one wave, labelled A note: what you hear.",
-     "words": [
+      },
       {
        "kind": "line",
        "text": "Tap each one to hear it.",
@@ -147,7 +140,7 @@
      ]
     },
     {
-     "img": "l1-09.webp",
+     "img": "l1-08.webp",
      "w": 680,
      "h": 437,
      "alt": "The four notes flow from their rows into an ear. Out of the ear comes one wave, labelled A note: what you hear.",
@@ -170,6 +163,7 @@
   },
   {
    "id": "level-2",
+   "steps": 20,
    "parts": [
     {
      "img": "l2-01.webp",
@@ -179,24 +173,14 @@
      "words": [
       {
        "kind": "line",
-       "text": "This is an MRI scanner.",
+       "text": "This is an MRI scanner. It can see inside a body: no X-rays, no cuts.",
        "cls": [
         "lead"
        ]
       },
       {
        "kind": "line",
-       "text": "It can see inside a body: no X-rays, no cuts.",
-       "cls": []
-      },
-      {
-       "kind": "line",
-       "text": "Your first patient is here. You're about to take their MRI scan!",
-       "cls": []
-      },
-      {
-       "kind": "line",
-       "text": "You know more about an MRI than you think. Let's see if you can do it correctly!",
+       "text": "Your first patient is here. Let's see if you can take their MRI scan correctly!",
        "cls": []
       }
      ]
@@ -242,12 +226,12 @@
      "words": [
       {
        "kind": "line",
-       "text": "At the heart of each hydrogen atom is a proton: a tiny magnet.",
+       "text": "Inside each hydrogen atom is a proton: a tiny magnet.",
        "cls": []
       },
       {
        "kind": "line",
-       "text": "Picture each one as an arrow, pointing from S to N.",
+       "text": "Think of each one as an arrow.",
        "cls": []
       }
      ]
@@ -265,7 +249,7 @@
       },
       {
        "kind": "line",
-       "text": "The TOTAL SIGNAL adds up every arrow in the drop. Your scanner can only pick up this total.",
+       "text": "Your scanner only picks up the TOTAL SIGNAL: every arrow in the drop, added up.",
        "cls": []
       }
      ]
@@ -319,11 +303,6 @@
       },
       {
        "kind": "line",
-       "text": "But did everything disappear?",
-       "cls": []
-      },
-      {
-       "kind": "line",
        "text": "If the total is 0, are the pieces gone?",
        "cls": []
       },
@@ -344,7 +323,7 @@
      "words": [
       {
        "kind": "line",
-       "text": "That's the answer: inside your patient, opposite tiny magnets cancel each other out.",
+       "text": "Inside your patient, opposite tiny magnets cancel out.",
        "cls": []
       }
      ]
@@ -370,11 +349,6 @@
       {
        "kind": "line",
        "text": "What's behind this 0?",
-       "cls": []
-      },
-      {
-       "kind": "line",
-       "text": "Let's see.",
        "cls": []
       }
      ]
@@ -428,7 +402,7 @@
        "who": "you",
        "bubbles": [
         {
-         "text": "My patient's total signal is 0. So how will my scanner see anything?",
+         "text": "My patient's signal is 0. How will my scanner see anything?",
          "thought": true
         }
        ]
@@ -443,12 +417,7 @@
      "words": [
       {
        "kind": "line",
-       "text": "Its magnet is tens of thousands of times stronger than Earth's.",
-       "cls": []
-      },
-      {
-       "kind": "line",
-       "text": "It tips the balance, just barely: a few more arrows point with it than against it.",
+       "text": "It tips the balance: a few more arrows point with the magnet.",
        "cls": []
       },
       {
@@ -458,12 +427,20 @@
       },
       {
        "kind": "line",
-       "text": "In a real body, only about five to ten in every million are left over.",
+       "text": "In a real body, it's only about five to ten in every million.",
        "cls": []
-      },
+      }
+     ]
+    },
+    {
+     "img": "l2-16.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "Radio waves come in from both sides toward the tiny magnets; faint rings spread back out from among them.",
+     "words": [
       {
        "kind": "line",
-       "text": "But the 0 was holding far more: every single tiny magnet, not just the few left over.",
+       "text": "But the 0 held far more: every tiny magnet, not just the few left over.",
        "cls": []
       },
       {
@@ -474,14 +451,14 @@
      ]
     },
     {
-     "img": "l2-16.webp",
+     "img": "l2-17.webp",
      "w": 680,
      "h": 480,
      "alt": "A picture of your patient's head, painted row by row in shades of grey, like an MRI image.",
      "words": [
       {
        "kind": "line",
-       "text": "From that faint reply, it paints a picture of your patient's insides.",
+       "text": "From that reply, it paints a picture of your patient's insides.",
        "cls": []
       },
       {
@@ -497,7 +474,7 @@
      ]
     },
     {
-     "img": "l2-17.webp",
+     "img": "l2-18.webp",
      "w": 680,
      "h": 480,
      "alt": "The picture moves left. Lines run from all over it into an eye. Out of the eye comes the same picture, small: one picture.",
@@ -510,7 +487,7 @@
      ]
     },
     {
-     "img": "l2-18.webp",
+     "img": "l2-19.webp",
      "w": 680,
      "h": 480,
      "alt": "Left, Level 1: four notes add up to one A note. Right: up, down, up, down arrows add up to a total signal of 0.",
@@ -540,7 +517,7 @@
      ]
     },
     {
-     "img": "l2-19.webp",
+     "img": "l2-20.webp",
      "w": 680,
      "h": 480,
      "alt": "Left, Level 1: four notes add up to one A note. Right: up, down, up, down arrows add up to a total signal of 0.",
@@ -558,6 +535,7 @@
   },
   {
    "id": "level-3",
+   "steps": 17,
    "parts": [
     {
      "img": "l3-01.webp",
@@ -636,7 +614,7 @@
      "img": "l3-04.webp",
      "w": 680,
      "h": 458,
-     "alt": "Your note's signal, big now: a bumpy line drifting across.",
+     "alt": "The signal holds still. Faint bands mark each repeat of its shape; a glowing copy of the first repeat slides onto the second and fits it exactly.",
      "words": [
       {
        "kind": "line",
@@ -645,7 +623,7 @@
       },
       {
        "kind": "line",
-       "text": "Neither can anyone, just by looking.",
+       "text": "Careful: the bumps aren't the notes. Each bump is all four notes, added together.",
        "cls": []
       }
      ]

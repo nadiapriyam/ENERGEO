@@ -1,5 +1,5 @@
 // The named steps of Level 3, in order: the review strip (try/?steps) shows each one, frozen, and "Play from here"
-// starts the level at it (docs/levels_spec.md, Revision 10). The level calls step(id) at each of these moments, and
+// starts the level at it (docs/levels_spec.md, Revision 11). The level calls step(id) at each of these moments, and
 // test/prism.test.js checks that every id here is reached in this order. The titles are for review, not learner copy.
 
 export const STEPS = [

@@ -1,4 +1,4 @@
-// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 10). It comes straight after Level 2: after your scan,
+// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 11). It comes straight after Level 2: after your scan,
 // you head back to the concert hall. The lights dim; the learner aims a stage light at the chandelier, and its glass
 // prism takes the white light apart into colours. You wonder: is there a tool that can take apart a sound? Surprise:
 // your tuner. Its screen draws your A note's signal, the signal grows to fill the board, and taking it apart gives four
@@ -20,10 +20,11 @@ import { COPY } from './copyPrism.js';
 import { STEPS as STORY_STEPS } from './stepsPrism.js';
 import { person as standing, speaker } from './characters.js';
 import { keepPart } from './record.js';
+import { reader } from './reader.js';
 import { A_NOTE, STEPS, PITCH, part } from '../math/tones.js';
 import {
   BOARD, css, triangle, HALL, crystalCorners, aimAngle, toCrystal, startAngle, lightPath,
-  STRIP, STRIP_BOX, signal, samplesPath, TUNER, onTuner, SPECTRUM, GLYPH, barX, barHeight, barAt, stepsAt, pureTone, allBack,
+  STRIP, STRIP_BOX, repeats, signal, samplesPath, TUNER, onTuner, SPECTRUM, GLYPH, barX, barHeight, barAt, stepsAt, pureTone, allBack,
   NOTE_LED, neon, ROWS, MRI, BODY_PARTS, partOf, partAt, partWave, partLink, dataTitle, RIPPLES, coarseRows, chordSamples, unmix, rowOrder, FIRST_ROW,
   rowIn, toSignal, BRAIN, SKULL, EXPLORE, exploreHead, exploreData, labels, BREAK, figureBox,
   PATTERN, patternBox, picToPattern, patternRowBand, patternBars, patternLight, patternSpectrum, slideShift, captionAt, REVEAL,
@@ -64,7 +65,6 @@ async function step(id) {
 const wait = (ms) => (FAST ? Promise.resolve() : new Promise((r) => setTimeout(r, REDUCED ? Math.min(ms, 1200) : ms)));
 const pause = (ms) => (FAST ? Promise.resolve() : new Promise((r) => setTimeout(r, ms)));
 const later = (fn) => (FAST ? fn() : requestAnimationFrame(fn));
-const reading = (text) => Math.min(4500, 900 + 40 * text.length);
 const on = (node, v = true) => node.classList.toggle('on', v);
 const pts = (ps) => ps.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
 const grey = (a) => { const v = Math.round(255 * Math.min(1, Math.max(0, a))); return `rgb(${v},${v},${v})`; };
@@ -124,12 +124,15 @@ const figure = el('figure', { class: 'figure prism-figure' });
 const controls = el('div', { class: 'controls' });
 const prompt = el('div', { class: 'prompt', 'aria-live': 'polite' });
 root.append(figure, controls, prompt);
+const story = reader(root, { fast: () => FAST });            // Next and Back, under the level (reader.js)
+root.append(story.el);
 const board = svg('svg', { viewBox: `0 0 ${BOARD.w} ${BOARD.h}`, class: 'prism-board', role: 'img' });
 const describe = (text) => board.setAttribute('aria-label', text);
 figure.append(board);
 const led = (id, n, x2, y2) => svg('linearGradient', { id, x1: '0', y1: '0', x2, y2 },
   ...Array.from({ length: n }, (_, i) => svg('stop', { offset: `${(100 * i) / (n - 1)}%`, 'stop-color': neon(i, n) })));
 board.append(svg('defs', {}, led('p3-led', 7, '1', '1'),
+  svg('clipPath', { id: 'p3-repeat' }, svg('rect', { x: STRIP.x, y: STRIP.y - 12, width: repeats()[0].w, height: STRIP.h + 24 })),
   svg('linearGradient', { id: 'p3-ramp', x1: '0', y1: '0', x2: '1', y2: '0' },
     svg('stop', { offset: '0%', 'stop-color': '#3b2a8a' }), svg('stop', { offset: '100%', 'stop-color': '#ff3fd0' })),
   svg('filter', { id: 'p3-glow', x: '-30%', y: '-30%', width: '160%', height: '160%' },
@@ -173,9 +176,14 @@ const tuner = svg('g', { class: 'scene tuner on' },
 const signalPath = svg('path', { class: 'signal' });
 const parts = A_NOTE.map((_, k) => svg('path', { class: 'part', stroke: NOTE_LED[k], d: signal(part(A_NOTE, k)) }));
 const stripBox = svg('rect', { class: 'strip-box', x: STRIP_BOX.x, y: STRIP_BOX.y, width: STRIP_BOX.w, height: STRIP_BOX.h, rx: 16 });
+const REPEAT_W = repeats()[0].w;
+const repeatBands = svg('g', { class: 'repeats' },          // the signal's repeats: one shape, again and again (shown after "Can you see them?")
+  ...repeats().map((r, k) => svg('rect', { class: `repeat${k % 2 ? ' odd' : ''}`, x: r.x.toFixed(1), y: STRIP.y - 6, width: r.w.toFixed(1), height: STRIP.h + 12, rx: 6 })),
+  ...repeats().slice(1).map((r) => svg('line', { class: 'repeat-edge', x1: r.x.toFixed(1), x2: r.x.toFixed(1), y1: STRIP.y - 4, y2: STRIP.y + STRIP.h + 4 })));
+const ghost = svg('g', { class: 'ghost-move' }, svg('g', { 'clip-path': 'url(#p3-repeat)' }, svg('path', { class: 'ghost', d: signal(A_NOTE) })));
 const signalInner = svg('g', { class: 'signal-inner' }, signalPath);
 const partWaves = svg('g', { class: 'part-waves' });       // later: each body part's own signal, in the data box
-const strip = svg('g', { class: 'strip small', style: `transform: ${css(onTuner())}` }, stripBox, signalInner, partWaves, ...parts);
+const strip = svg('g', { class: 'strip small', style: `transform: ${css(onTuner())}` }, stripBox, repeatBands, signalInner, ghost, partWaves, ...parts);
 const arrive = svg('g', { class: 'arrive' }, tuner, strip);
 
 // taking the A note apart: four glowing bars
@@ -422,7 +430,7 @@ async function theHall() {                                  // back at the conce
   describe('A concert hall: a chandelier with a piece of glass hanging from it, and a stage light on the floor.');
   later(() => figure.classList.add('in'));
   say(COPY.opening, 'lead');
-  await pause(reading(COPY.opening));
+  await story.next();
   phase = 'hall';
   board.classList.add('night');
   say(COPY.dim);
@@ -430,7 +438,7 @@ async function theHall() {                                  // back at the conce
   aim(startAngle());
   hall.classList.add('lit');
   describe('The hall is dark. The stage light shines a white beam across to the wall, below the chandelier.');
-  await pause(reading(COPY.dim));
+  await story.next();
   await step('hall');
   phase = 'aim';
   say(COPY.aim);
@@ -487,12 +495,12 @@ async function theColors() {                                // where did the col
   say(COPY.where.question);
   await ask(COPY.where.choices, 'colors');
   say(COPY.where.after);
-  await pause(reading(COPY.where.after) + 300);
+  await story.next();
   await clear();
   speak(COPY.you.think, 'you', true);
-  await pause(reading(COPY.you.think) + 300);
+  await story.next();
   say(COPY.surprise, 'lead');
-  await pause(reading(COPY.surprise));
+  await story.next();
   await step('thought');
   theTuner();
 }
@@ -511,7 +519,7 @@ async function theTuner() {                                 // the hall rises aw
   tuner.classList.add('in-tune');
   describe("On the tuner's screen, your note drawn as a bumpy line, with the letter A under it and a green light.");
   say(COPY.drawsSignal);
-  await pause(reading(COPY.drawsSignal) + 300);
+  await story.next();
   await step('signal');
   growTheSignal();
 }
@@ -526,15 +534,23 @@ async function growTheSignal() {                            // the little signal
   on(tuner, false);
   describe("Your note's signal, big now: a bumpy line drifting across.");
   say(COPY.see.question);
-  await ask(COPY.see.choices, 'hidden');
-  say(COPY.see.after);
-  await pause(reading(COPY.see.after) + 200);
+  const seen = await ask(COPY.see.choices, 'hidden');
+  still(A_NOTE);                                             // the bumps are one shape, again and again: a copy of one repeat
+  jump(ghost, 'translateX(0px)');                            // lights up, then slides onto the next one, and fits exactly
+  strip.classList.add('repeating');
+  describe('The signal holds still. Faint bands mark each repeat of its shape; a glowing copy of the first repeat slides onto the second and fits it exactly.');
+  await wait(700);
+  ghost.style.transform = `translateX(${REPEAT_W.toFixed(1)}px)`;
+  await wait(1000);
+  say(seen === COPY.see.choices[0] ? COPY.see.yes : COPY.see.notReally);
+  await story.next();
   theSplit();
 }
 
 async function theSplit() {                                 // taking it apart: four notes, four bars
   phase = 'split';
   await press(COPY.apart, 'apart');
+  strip.classList.remove('repeating');
   await clear();
   still(A_NOTE);
   on(glyph);
@@ -557,7 +573,7 @@ async function theSplit() {                                 // taking it apart: 
   parts.forEach((p) => { p.style.transform = ''; });
   describe('Under the signal, four glowing bars, labelled A, high A, E and higher A, tallest first.');
   say(COPY.split, 'lead');
-  await pause(reading(COPY.split) + 300);
+  await story.next();
   await step('bars');
   tuningFork();
 }
@@ -611,7 +627,7 @@ async function tuningFork() {                               // one bar, then all
   await clear();
   say(COPY.backDone, 'lead');
   await play(mine, 1.4);
-  await pause(reading(COPY.backDone));
+  await story.next();
   await step('back');
   theRadiologist();
 }
@@ -632,12 +648,12 @@ async function theRadiologist() {                           // at the break: the
   say(COPY.arrives);
   await wait(60);
   radiologistFigure.style.transform = 'none';
-  await pause(Math.max(1600, reading(COPY.arrives)));
+  await story.next();
   await step('break');
   speak(COPY.you.tookApart, 'you');
-  await pause(reading(COPY.you.tookApart));
+  await story.next();
   speak(COPY.radiologist.same);
-  await pause(reading(COPY.radiologist.same) + 600);
+  await story.next();
   await step('talk');
   theBrain();
 }
@@ -679,7 +695,7 @@ async function theBrain() {                                 // the people step a
   await clear();
   const show = sentence();                                   // Nadia's description, one part at a time
   show(0);
-  await pause(reading(COPY.mri[0].text));
+  await story.next();
   await press(COPY.collect, 'behaves');
   stop();
   phase = 'collect';                                         // collecting that data: the head moves aside, the picture's place appears
@@ -722,7 +738,7 @@ async function theBrain() {                                 // the people step a
   mArrows.forEach((a) => a.classList.remove('lit'));
   show(3);
   describe('Row by row, the pixels have made an MRI picture of your patient’s head.');
-  await pause(reading(COPY.mri[3].text) + 1200);
+  await story.next();
   await step('picture');
   thePattern();
 }
@@ -774,12 +790,12 @@ async function theReveal() {                                // the grand reveal:
   on(revealTitle);
   say(COPY.reveal, 'final');
   describe('The three rows dim. In the middle, glowing: the Fourier transform.');
-  await pause(reading(COPY.reveal) + 800);
+  await story.next();
   await step('reveal');
   say(COPY.name[0]);
-  await pause(reading(COPY.name[0]));
+  await story.next();
   say(COPY.name[1]);
-  await pause(reading(COPY.name[1]) + 600);
+  await story.next();
   phase = 'final';
   say(COPY.final, 'final');
   root.dispatchEvent(new CustomEvent('level-finished', { bubbles: true }));

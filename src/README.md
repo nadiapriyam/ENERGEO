@@ -90,7 +90,10 @@ does not touch the journey store or any interactive.
 Three short stories on one page, in one plain style: a white page, the system sans (its 0 is a plain 0) and one
 accent. `docs/levels_spec.md` governs. `try/level-2/` and `notebook/` forward here.
 
-- Each level plays on one board, its lines clearing between parts.
+- Each level plays on one board, its lines clearing between parts. **You set the pace** (`src/levels/reader.js`):
+  where a level used to wait a set time for reading, it waits for Next. The bar under each level holds ‹ Back, the
+  level's bar and Next ›: Next glows when the story waits, and pressing it sends stars into the bar (+1); a full bar
+  is gold: Level up! Back (or ←) pages through the parts already read (kept by `record.js`); Next pages forward to now.
 - **Scroll through, on the side.** A tab at the right edge opens "The whole story": every part of all three levels as
   a comic, a picture of the board above its lines, without playing anything. The comic is recorded from the levels:
   `npm run comic` (`tools/record_comic.mjs`) plays each level on `try/?record`, where `src/levels/record.js` keeps each
@@ -106,26 +109,28 @@ accent. `docs/levels_spec.md` governs. `try/level-2/` and `notebook/` forward he
   - Files: `src/levels/note.js` (with `copyNote.js`), `src/math/violin.js` and `src/math/tones.js`.
 - **Level 2, "Inside the scanner"** (the MRI), which opens underneath when Level 1 ends:
   - You take an MRI scan of a patient: you stand beside the scanner; let's see if you can do it correctly.
-  - Protons become ↑ and ↓ magnets, and pairing them drives the TOTAL SIGNAL to an exact 0 signal: "Oh no! I got 0
-    signal for my MRI!"
+  - Protons become ↑ and ↓ magnets. As each joins the TOTAL SIGNAL, +1 or −1 pops up beside its result, which counts
+    with it; pairing them drives it to an exact 0 signal: "Oh no! I got 0 signal for my MRI!"
   - "Here's a look at some more protons in another part of your patient's body": covered drops whose signal is 0
     turn out to be full.
-  - The magnet turns the 0 into a small signal it can read (though the 0 held far more). [Take the scan], and the
-    scanner paints a picture: "I did it! My first MRI scan!"
+  - The magnet turns the 0 into a small signal it can read (though the 0 held far more). Radio waves come in and a
+    faint reply goes out; [Take the scan], and the scanner paints a picture: "I did it! My first MRI scan!"
   - An eye sees one picture.
   - "Do you see a similarity to the violin level?" Side by side: one A note = four notes; 0 signal = ↑ + ↓ + ↑ + ↓.
   - Files: `src/levels/mri.js` (with `copyMri.js`), `src/math/pieces.js` and `src/math/scanner.js`.
 - **The characters** (you, and in Level 3 the radiologist) are drawn the same in every level: `src/levels/characters.js`
   draws them from `src/math/characters.js`.
 
-- **Level 3, "A prism for sound"**, which opens underneath when Level 2 ends:
+- **Level 3, "A prism for sound"** (its tag: "Final level"), which opens underneath when Level 2 ends:
   - The story picks up after the scan. In the dimmed concert hall the learner aims a stage light at the chandelier,
     and the glass hanging from it takes the white light apart into LED colours (red bent least, violet most). Only
     then is it called a prism. You (the player: a deadpan face with round glasses, dark hair, a yellow shirt and a
     bucket hat) wonder: "If a prism is a tool that can take apart light, is there a tool that can take apart a
     sound?" Surprise: your tuner.
-  - The tuner draws the A note's signal and names it; the signal grows to fill the board, and taking it apart gives
-    four glowing bars, four pure tones. The learner drags the bars into a tuning fork and back.
+  - The tuner draws the A note's signal and names it; the signal grows to fill the board. "Can you see them?" gets
+    its own answer for Yes and for Not really, while bands mark the signal's repeats and a glowing copy of one repeat
+    slides onto the next: the bumps are one shape, again and again, not the notes. Taking it apart gives four glowing
+    bars, four pure tones. The learner drags the bars into a tuning fork and back.
   - At the break the hall's lights come up and the radiologist who read your scan (same style, copper hair, blue shirt,
     white coat) walks over: the MRI scanner works the same way. Then the people step away and your head comes back up,
     big and labelled (skin, skull, fluid, outer brain, inner brain): "Tap a part of the brain", "Now tap the skull".

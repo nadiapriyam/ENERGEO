@@ -15,7 +15,7 @@ import { person, speaker } from './characters.js';
 import { figureAt } from '../math/characters.js';
 import {
   start, pair, dropTarget, tapTarget, totalOf, pairedCount, restingSpot, total, layout, puzzleGroups, frame, sumLayout, crowd, crowdDirections,
-  ARRANGEMENTS, PAIRS, VIEW, PANEL, DROP, CROWD, CROWD_SHOWN, FIELD_LINES, FIELD_SPAN, FLIP, dirOf,
+  ARRANGEMENTS, PAIRS, VIEW, PANEL, DROP, CROWD, RADIO, POP, CROWD_SHOWN, FIELD_LINES, FIELD_SPAN, FLIP, dirOf,
 } from '../math/pieces.js';
 import {
   HOUSING, BORE, TUNNEL, COILS, TABLE, PEDESTAL, PATIENT, FLOOR, SLIDE, OPERATOR, ZOOM, ATOM, molecules, hydrogenSpot, SCREEN, picture,
@@ -23,6 +23,7 @@ import {
 } from '../math/scanner.js';
 import { A_NOTE, STEPS as NOTE_STEPS, part, wave } from '../math/tones.js';
 import { keepPart } from './record.js';
+import { reader } from './reader.js';
 
 const NS = 'http://www.w3.org/2000/svg';
 const REDUCED = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -42,7 +43,6 @@ const svg = (tag, attrs = {}, ...kids) => {
 const label = (attrs, text) => svg('text', { 'text-anchor': 'middle', 'dominant-baseline': 'central', ...attrs, text });
 const wait = (ms) => new Promise((r) => setTimeout(r, REDUCED ? Math.min(ms, 1200) : ms));
 const pause = (ms) => new Promise((r) => setTimeout(r, ms));          // reading time: the same with reduced motion
-const reading = (text) => Math.min(4500, 900 + 40 * text.length);
 const frameTick = () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
 const on = (node, v = true) => node.classList.toggle('on', v);
 
@@ -57,6 +57,8 @@ const root = document.getElementById('mri-lesson');
 const figure = el('figure', { class: 'figure' });
 const prompt = el('div', { class: 'prompt', 'aria-live': 'polite' });
 root.append(figure, prompt);
+const story = reader(root);                                 // Next and Back, under the level (reader.js)
+root.append(story.el);
 const speak = speaker(prompt);                               // you, beside your own lines (characters.js)
 const board = svg('svg', { viewBox: `0 0 ${VIEW.w} ${VIEW.h}`, class: 'board', role: 'group' });
 figure.append(board);
@@ -127,15 +129,21 @@ for (const x of FIELD_LINES) {                               // the magnet's fie
 }
 const slots = PAIRS.map(({ down }) => { const g = glyph('slot'); g.style.transform = `translate(${down.x}px, ${down.y}px) ${mirror(-1)}`; return g; });
 const frames = svg('g', { class: 'frames' });
-puzzle.append(drop, field, frames, ...slots);
+// the scanner's radio waves: arcs in from both sides, and a faint reply out, in rings (pieces.js: RADIO)
+const radio = svg('g', { class: 'radio' },
+  ...RADIO.from.flatMap((x, side) => [0, 1, 2].map((k) => svg('path', { class: `radio-in ${side ? 'from-right' : 'from-left'}`, style: `animation-delay: ${k * 0.22}s`,
+    d: `M ${x} ${RADIO.y - RADIO.arc} Q ${x + (side ? -1 : 1) * RADIO.arc * 0.55} ${RADIO.y} ${x} ${RADIO.y + RADIO.arc}` }))),
+  ...[0, 1, 2].map((k) => svg('circle', { class: 'radio-out', cx: RADIO.reply.x, cy: RADIO.y, r: RADIO.reply.r, style: `animation-delay: ${k * 0.3}s` })));
+puzzle.append(drop, field, radio, frames, ...slots);
 
 // the TOTAL: the arrows in the drop, added up, and what they add up to
 const panel = svg('g', { class: 'panel layer' });
 const sumRow = svg('g', { class: 'sum' });
 const sumMarks = svg('g', { class: 'sum-marks' });
 const result = label({ class: 'result', x: PANEL.cx, y: PANEL.resultY }, '');
+const pops = svg('g', { class: 'pops' });
 panel.append(svg('rect', { class: 'panel-box', x: PANEL.x, y: PANEL.y, width: PANEL.w, height: PANEL.h, rx: 18 }),
-  label({ class: 'total-label', x: PANEL.cx, y: PANEL.labelY }, COPY.totalLabel), sumMarks, sumRow, result);
+  label({ class: 'total-label', x: PANEL.cx, y: PANEL.labelY }, COPY.totalLabel), sumMarks, sumRow, result, pops);
 
 const cover = svg('g', { class: 'cover' },
   svg('rect', { x: DROP.x, y: DROP.y, width: DROP.w, height: DROP.h, rx: DROP.r }),
@@ -225,6 +233,12 @@ function drawSum(groups, opts = {}) {
       label({ class: `bracket-label${b.value ? ' tipped' : ''}`, x: (b.x1 + b.x2) / 2, y: b.y + 10 }, String(b.value)));
   }
 }
+/** +1 or −1 pops up beside the result as an arrow joins the TOTAL (pieces.js: POP). */
+function popValue(dir) {
+  const t = label({ class: `value-pop ${dir > 0 ? 'up' : 'down'}`, x: POP.x, y: POP.y, 'text-anchor': 'start' }, dir > 0 ? COPY.sum.up : COPY.sum.down);
+  pops.append(t);
+  setTimeout(() => t.remove(), 1300);
+}
 function drawSumUnknown() {
   for (const g of termEls.values()) g.remove();
   termEls.clear();
@@ -274,6 +288,7 @@ function settle(id, p) {
     drawFrames(puzzleFrames());
     drawSum(puzzleGroups(state));
     drawResult(totalOf(state));
+    popValue(dirs[id] ?? dirOf(id));                         // a ↓ joins: −1
     afterPair();
   }, REDUCED ? 0 : 240);
 }
@@ -363,13 +378,9 @@ const press = (text) => new Promise((resolve) => button(text, resolve));
 async function scene1() {                                   // the scanner
   describe('An MRI scanner, seen from the side, with your patient lying on its table. You stand beside it, in your bucket hat.');
   requestAnimationFrame(() => figure.classList.add('in'));
-  say(COPY.scanner[0], 'lead');
-  await pause(reading(COPY.scanner[0]));
-  say(COPY.scanner[1]);
-  await pause(reading(COPY.scanner[1]));
+  say(COPY.scanner, 'lead');
+  await story.next();
   say(COPY.patient);                                          // you are taking the scan: your first patient
-  await pause(reading(COPY.patient));
-  say(COPY.opening);
   button(COPY.slideIn, scene2);
 }
 
@@ -397,7 +408,7 @@ async function scene3() {                                   // zoom into the wat
   on(water);
   describe('Three water molecules. Each is one large oxygen atom, O, joined to two small hydrogen atoms, H.');
   say(COPY.water[0], 'lead');
-  await pause(reading(COPY.water[0]));
+  await story.next();
   say(COPY.water[1]);
   await wait(700);
   button(COPY.closer, scene4);
@@ -409,7 +420,7 @@ async function scene4() {                                   // protons: tiny mag
   water.classList.add('protons', 'still');
   describe('At the centre of each hydrogen atom is a proton: a small ball, half marked N and half marked S.');
   say(COPY.proton[0]);
-  await pause(reading(COPY.proton[0]) + 400);
+  await story.next();
   say(COPY.proton[1]);
   await wait(600);
   water.classList.add('arrows');
@@ -418,7 +429,7 @@ async function scene4() {                                   // protons: tiny mag
     await wait(160);
   }
   describe('Each proton is now an arrow pointing from its S end to its N end: some point up, some point down.');
-  await pause(reading(COPY.proton[1]) + 400);
+  await story.next();
   scene5();
 }
 
@@ -431,7 +442,7 @@ async function scene5() {                                   // the drop, and its
   for (const id of [...state.row, ...state.waiting]) { const s = restingSpot(id); place(pieces.get(id), s.x, s.y, 'gliding'); }
   await wait(1000);
   say(COPY.hook);
-  await pause(reading(COPY.hook));
+  await story.next();
   on(panel);
   say(COPY.totalMeans);
   await wait(500);
@@ -448,11 +459,13 @@ async function scene5() {                                   // the drop, and its
     await wait(520);
     ghost.remove();
     drawSum(groups);
-    await wait(260);
+    drawResult(total(groups.flat().map((r) => dirs[r] ?? dirOf(r))));   // the result counts up as each arrow joins: +1
+    popValue(dirs[id] ?? dirOf(id));
+    await wait(420);
   }
   drawResult(totalOf(state));
   describe('A drop holding three up arrows; three down arrows wait below it. The TOTAL adds the arrows in the drop: up plus up plus up equals 3.');
-  await pause(reading(COPY.totalMeans));
+  await story.next();
   play();
 }
 
@@ -526,10 +539,9 @@ async function reachZero() {                                // reaching 0
   setLocked(true);
   await wait(1400);
   clear();
-  speak(COPY.reached[0], 'you');                             // oh no: no signal for your MRI
-  await pause(reading(COPY.reached[0]));
-  say(COPY.reached[1]);
-  button(COPY.lookCloser, checkpoint2);
+  speak(COPY.reached, 'you');                                // oh no: no signal for your MRI
+  await story.next();
+  checkpoint2();
 }
 
 function emphasize() {
@@ -552,10 +564,10 @@ function checkpoint2() {                                    // second checkpoint
       all.forEach((x) => { x.disabled = true; });
       b.classList.add('picked');
       feedback = say(COPY.check2.right, 'feedback');
-      await pause(reading(COPY.check2.right) + 500);
+      await story.next();
       clear();
       say(COPY.answer);
-      await pause(reading(COPY.answer) + 400);
+      await story.next();
       arrangements();
     } else {
       b.disabled = true;
@@ -593,11 +605,10 @@ async function arrangements() {                             // look behind more 
   await wait(500);
   showArrangement(1);                                       // rearranged out of sight; the TOTAL still reads 0
   say(COPY.cover.intro);
-  await pause(reading(COPY.cover.intro));
+  await story.next();
   say(COPY.cover.question);
   await ask(COPY.cover.choices);
-  say(COPY.cover.after);
-  await wait(700);
+  await wait(500);
   covered(false);
   revealArrangement(1);
   await wait(500);
@@ -630,7 +641,7 @@ async function arrangements() {                             // look behind more 
   phase = 'reveal';
   clear();
   say(COPY.reveal);
-  await pause(reading(COPY.reveal) + 1800);
+  await story.next();
   magnet();
 }
 
@@ -659,8 +670,7 @@ async function magnetOn() {                                 // the magnet tips t
   phase = 'magnet-on';
   clear();
   on(field);
-  say(COPY.magnet[0]);
-  await pause(reading(COPY.magnet[0]));
+  await wait(700);
   const now = crowdDirections(true);
   const flipped = pieces.get(FLIP);
   flipped.letters.classList.add('swap');
@@ -674,17 +684,19 @@ async function magnetOn() {                                 // the magnet tips t
   drawSum(crowdTerms(), { lead: true, trail: true, labels: CROWD_SHOWN.map((k) => total([dirs[`D${k}`], dirs[`U${k}`]])) });
   drawResult(total(Object.values(now)));
   describe('With the magnet on, one down arrow has turned to point up, with the magnet. Its group no longer cancels: it adds up to 2. The TOTAL is 2.');
-  say(COPY.magnet[1]);
-  await pause(reading(COPY.magnet[1]) + 600);
+  say(COPY.magnet[0]);
+  await story.next();
   clear();
-  say(COPY.magnet[2]);                                       // what an MRI does: turn the 0 into a small signal
-  await pause(reading(COPY.magnet[2]));
-  say(COPY.magnet[3]);
-  await pause(reading(COPY.magnet[3]) + 400);
+  say(COPY.magnet[1]);                                       // what an MRI does: turn the 0 into a small signal
+  await story.next();
+  say(COPY.magnet[2]);
+  await story.next();
   clear();
-  say(COPY.magnet[4]);                                       // the 0 held every magnet; the signal shows the few left over
-  await pause(reading(COPY.magnet[4]) + 600);
-  say(COPY.magnet[5]);
+  say(COPY.magnet[3]);                                       // the 0 held every magnet; the signal shows the few left over
+  await story.next();
+  say(COPY.magnet[4]);
+  on(radio);                                                 // radio waves go in; a faint reply comes out
+  describe('Radio waves come in from both sides toward the tiny magnets; faint rings spread back out from among them.');
   await wait(500);
   button(COPY.listen, paint);
 }
@@ -692,6 +704,7 @@ async function magnetOn() {                                 // the magnet tips t
 async function paint() {                                    // the scanner paints its picture
   phase = 'picture';
   clear();
+  on(radio, false);
   piecesLayer.classList.add('away');
   on(field, false);
   on(puzzle, false);
@@ -707,9 +720,9 @@ async function paint() {                                    // the scanner paint
     if (!REDUCED) await pause(40);
   }
   say(COPY.picture);
-  await pause(reading(COPY.picture));
+  await story.next();
   speak(COPY.you.didIt, 'you');                              // you did it correctly
-  await pause(reading(COPY.you.didIt) + 600);
+  await story.next();
   seeIt();
 }
 
@@ -724,12 +737,12 @@ async function seeIt() {                                    // your eye sees one
   eyeScene.classList.add('flowing');
   describe('The picture moves left. Lines run from all over it into an eye. Out of the eye comes the same picture, small: one picture.');
   say(COPY.eye.line);
-  await pause(reading(COPY.eye.line) + 1200);
+  await story.next();
   eyeScene.classList.remove('flowing');
   phase = 'closing';
   clear();
   say(COPY.closing, 'lead');
-  await pause(reading(COPY.closing));
+  await story.next();
   similar();
 }
 
@@ -778,7 +791,7 @@ async function similar() {                                  // Level 1's violin 
   for (const n of rightSteps) { right.append(n); n.classList.add('pop'); await wait(200); }
   clear();
   say(COPY.compare);
-  await pause(reading(COPY.compare) + 900);
+  await story.next();
   phase = 'final';
   clear();
   say(COPY.final, 'final');

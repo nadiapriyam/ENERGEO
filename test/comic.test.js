@@ -3,7 +3,7 @@
 // - a recorded part's still copy points at its own ids, so the live picture keeps its own clip paths and filters;
 // - the comic holds every level, start to end, each part a picture that exists, and every word still the levels' own
 //   wording (re-record with npm run comic after changing the words);
-// - the levels play as before (parts are kept only on try/?record); the tab, the panel and their words; no "All steps".
+// - each part is kept (for Back, and for the recorder on try/?record); the tab, the panel and their words; no "All steps".
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -47,16 +47,17 @@ test('2. the comic is the whole story, start to end, in the levels\' own words; 
   }
   const [l1, l2, l3] = comic.levels.map(texts);
   assert.equal(l1[0], NOTE.opening[0]); assert.equal(l1.at(-1), NOTE.final);
-  assert.equal(l2[0], MRI.scanner[0]); assert.equal(l2.at(-1), MRI.final);
+  assert.equal(l2[0], MRI.scanner); assert.equal(l2.at(-1), MRI.final);
   assert.equal(l3[0], PRISM.opening); assert.equal(l3.at(-1), PRISM.final);
-  for (const t of [MRI.opening, PRISM.reveal, PRISM.tapBrain, PRISM.mri.map((f) => f.text).join('').trim()]) assert.ok([...l2, ...l3].includes(t), `the comic includes: ${t}`);
+  for (const t of [MRI.patient, PRISM.reveal, PRISM.tapBrain, PRISM.mri.map((f) => f.text).join('').trim()]) assert.ok([...l2, ...l3].includes(t), `the comic includes: ${t}`);
 
   for (const f of ['note', 'mri']) assert.match(read(`src/levels/${f}.js`), /const clear = \(\) => keepPart\(\[figure[\],]/, `${f}.js: its lines clear through keepPart`);
   const prism = read('src/levels/prism.js');
   assert.match(prism, /old\.forEach\(\(n\) => n\.classList\.add\('leaving'\)\);\s*await pause\(REDUCED \? 0 : 280\);\s*keepPart\(\[figure\], prompt\);/, 'Level 3 fades its lines out as before');
   const record = read('src/levels/record.js');
   assert.match(record, /has\('record'\)/);
-  assert.match(record, /if \(!recording\(\)\) \{ prompt\.replaceChildren\(\); return; \}/, 'off try/?record, the lines simply clear: nothing is kept');
+  assert.match(record, /const keeping = \(\) => recording\(\) \|\| \(!html\(\)\.classList\.contains\('framed'\) && !html\(\)\.classList\.contains\('instant'\)\);/, 'parts are kept for Back and for the recorder, but not in review frames or while fast-forwarding');
+  assert.match(record, /if \(!keeping\(\)\) \{ prompt\.replaceChildren\(\); return; \}/);
   const page = read('src/levels/page.js');
   for (const k of ['scrollThrough', 'wholeStory', 'close', 'level1', 'level2', 'level3']) assert.ok(page.includes(`LEVELS.${k}`), `the panel uses ${k}`);
   assert.ok(/import\('\.\/comic\.js'\)/.test(page) && /loading: 'lazy'/.test(page) && /alt: part\.alt/.test(page), 'the comic is drawn from the recording, its pictures loaded as they come into view');

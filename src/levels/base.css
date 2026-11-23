@@ -157,3 +157,67 @@ html.side-open .side-toggle { right: min(360px, 86vw); }
 .comic-part .face.talking .mouth, .comic-part .face .eyes { animation: none; }
 @media (max-width: 520px) { .side-toggle { font-size: 0.78rem; padding: 0.75em 0.22em; } }
 @media (prefers-reduced-motion: reduce) { .side, html.side-open .side, .side-toggle { transition: none; } }
+
+/* The reader (reader.js): ‹ Back, the level's bar, Next ›. It stays at the bottom of the screen while its level is on
+   screen. Next glows when the story waits for you; pressing it sends stars into the bar (+1). A full bar: Level up! */
+.lesson { position: relative; }
+.reader {
+  position: sticky; bottom: 0; z-index: 6; display: flex; align-items: center; gap: 12px; margin-top: 0.8em;
+  padding: 12px 0 calc(12px + env(safe-area-inset-bottom, 0px));
+  background: #ffffff; box-shadow: 0 -12px 14px -14px rgba(20, 30, 50, 0.35);
+}
+.reader-back {
+  font: inherit; font-size: 0.95rem; color: var(--ink-2); background: #ffffff; cursor: pointer;
+  border: 1.5px solid #d5dae2; border-radius: 999px; padding: 0.35em 0.95em; white-space: nowrap;
+}
+.reader-back:hover:not(:disabled) { color: var(--ink); border-color: var(--ink-3); }
+.reader-back:disabled { opacity: 0.35; cursor: default; }
+.reader-next {
+  font: inherit; font-size: 1.02rem; font-weight: 650; color: #ffffff; cursor: pointer; white-space: nowrap;
+  background: var(--accent); border: 0; border-radius: 999px; padding: 0.45em 1.3em;
+  box-shadow: 0 3px 0 #1847a6; transition: opacity 200ms, filter 200ms, box-shadow 200ms;
+}
+.reader-next:disabled { opacity: 0.28; cursor: default; filter: grayscale(0.7); box-shadow: none; }
+.reader-next.ready { animation: next-glow 1.6s ease-in-out infinite; }
+.reader-next:active:not(:disabled) { box-shadow: 0 1px 0 #1847a6; }
+@keyframes next-glow {
+  0%, 100% { box-shadow: 0 3px 0 #1847a6, 0 0 0 0 rgba(26, 102, 224, 0.45); }
+  50% { box-shadow: 0 3px 0 #1847a6, 0 0 0 9px rgba(26, 102, 224, 0); }
+}
+.looking-back .reader-next { background: #5d646e; box-shadow: 0 3px 0 #474d55; }
+.xp { position: relative; flex: 1; min-width: 60px; height: 12px; border-radius: 999px; background: #eef1f6; box-shadow: inset 0 1px 2px rgba(20, 30, 50, 0.14); }
+.xp-fill {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 0; border-radius: inherit;
+  background: var(--accent); transition: width 600ms cubic-bezier(0.3, 0.8, 0.3, 1), background-color 400ms;
+}
+.xp.gain .xp-fill { animation: xp-gain 650ms ease-out; }
+@keyframes xp-gain { 0%, 100% { box-shadow: none; } 30% { box-shadow: 0 0 10px 2px rgba(26, 102, 224, 0.55); } }
+.xp-star { position: absolute; right: 0; top: 50%; transform: translate(45%, -52%); font-size: 18px; line-height: 1; color: #c9cfda; }
+.levelled .xp-star { color: #ffc531; text-shadow: 0 0 8px rgba(255, 197, 49, 0.8); }
+.levelled .xp-fill { background: #ffc531; animation: xp-shine 1.8s ease-in-out infinite; }
+@keyframes xp-shine { 0%, 100% { box-shadow: 0 0 4px 1px rgba(255, 197, 49, 0.5); } 50% { box-shadow: 0 0 14px 4px rgba(255, 197, 49, 0.75); } }
+.xp-levelup {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); white-space: nowrap; pointer-events: none;
+  font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #3b2a00;
+  background: #ffc531; border-radius: 999px; padding: 0.18em 0.75em; box-shadow: 0 2px 10px rgba(255, 197, 49, 0.6);
+  animation: levelup-pop 700ms cubic-bezier(0.2, 1.5, 0.4, 1) both;
+}
+@keyframes levelup-pop { from { transform: translate(-50%, -50%) scale(0.2); opacity: 0; } to { transform: translate(-50%, -50%) scale(1); opacity: 1; } }
+.xp-confetti { position: absolute; left: 50%; top: 50%; width: 7px; height: 4px; border-radius: 1px; pointer-events: none; }
+.xp-spark { position: absolute; left: 0; top: 0; margin: -9px 0 0 -7px; font-size: 15px; line-height: 1; color: #ffc531; text-shadow: 0 0 6px rgba(255, 197, 49, 0.85); pointer-events: none; }
+.xp-plus { position: absolute; font-size: 0.85rem; font-weight: 800; color: var(--accent); pointer-events: none; }
+/* Back: a part read earlier, shown over the level (Next pages forward again, to now) */
+.reader-earlier { position: absolute; inset: 0; z-index: 5; overflow: auto; background: #ffffff; padding: 4vh 0 0; }
+.reader-earlier[hidden] { display: none; }
+.reader-earlier-tag { display: inline-block; margin: 0 0 0.6em; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 0.15em 0.75em; }
+.reader-part .figure { margin-bottom: 0.6em; }
+.reader-part * { transition: none !important; }
+@media (max-width: 520px) {
+  .reader { gap: 8px; }
+  .reader-back { padding: 0.35em 0.7em; font-size: 0.88rem; }
+  .reader-next { padding: 0.45em 1em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reader-next.ready, .xp.gain .xp-fill, .levelled .xp-fill, .xp-levelup { animation: none; }
+  .xp-fill { transition: none; }
+}

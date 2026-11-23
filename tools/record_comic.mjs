@@ -3,8 +3,9 @@
 // (src/levels/record.js); then it photographs each part's picture and writes down its lines, verbatim:
 //   src/levels/comic/l<level>-<nn>.webp   one picture per part
 //   src/levels/comic/comic.json           the parts in order, with their lines
-// Levels 1 and 2 are played the way a learner plays them; Level 3 fast-forwards to its end (try/?from=end), which
-// does each interaction for it. Run after any change to the levels: npm run comic (it builds first).
+// Levels 1 and 2 are played the way a learner plays them (on try/?record, Next presses itself); Level 3 fast-forwards
+// to its end (try/?from=end), which does each interaction for it. It also counts each level's Next presses, which set
+// how far each press fills the level's bar (reader.js). Run after any change to the levels: npm run comic (it builds first).
 // Needs Playwright with Chromium, and Python with Pillow (to write WebP).
 import { createRequire } from 'node:module';
 import { spawn, spawnSync } from 'node:child_process';
@@ -39,7 +40,7 @@ const open = async (url) => {
 /** Every recorded part of one level, then the level's last part (still on screen), photographed and written down. */
 async function collect(page, level, lesson, prefix) {
   const count = await page.evaluate(([level, lesson]) => {
-    const recorded = [...document.querySelectorAll('#comic-record .recorded-part')].filter((p) => p.dataset.level === level);
+    const recorded = [...document.querySelectorAll('#story-record .recorded-part')].filter((p) => p.dataset.level === level);
     const root = document.getElementById(lesson);
     const live = [root.querySelector(':scope > .figure'), root.querySelector(':scope > .notes')].filter((n) => n && n.childElementCount && n.offsetHeight);
     const last = document.createElement('div');
@@ -114,8 +115,10 @@ for (let k = 0; k < 4; k++) { await p.click(`#note-lesson .note.part-${k}`); awa
 await p.click('#note-lesson button:text-is("Play them together")');
 await until1('final', 30000); await p.waitForTimeout(2500);
 await p.click('#next-level');
+await p.waitForSelector('#mri-lesson .reader');
 const until2 = (ph, ms = 30000) => p.waitForFunction((x) => [].concat(x).includes(window.__mri?.phase), ph, { timeout: ms });
-const press = async (t) => { const s = `#mri-lesson > .prompt button:text-is("${t}")`; await p.waitForSelector(s, { timeout: 60000 }); await p.waitForTimeout(300); await p.click(s); };
+const live = (t) => p.waitForFunction((t) => [...document.querySelectorAll('#mri-lesson > .prompt button')].some((b) => b.textContent === t && !b.disabled), t, { timeout: 60000 });
+const press = async (t) => { await live(t); await p.waitForTimeout(300); await p.click(`#mri-lesson > .prompt button:text-is("${t}"):not([disabled])`); };
 await p.waitForTimeout(1200);
 await press('Slide your patient in'); await press('Zoom in'); await press('Closer');
 await until2('play', 30000); await p.waitForTimeout(400);
@@ -123,14 +126,13 @@ const piece = async (id) => { const bb = await p.locator(`#mri-lesson > .figure 
 for (const id of ['D0', 'D2']) { await piece(id); await p.waitForTimeout(700); }
 await press('Not sure'); await until2('play2');
 await piece('D1'); await p.waitForTimeout(1800);
-await press('Look closer'); await p.waitForTimeout(400);
-await p.click('#mri-lesson > .prompt .choice:text-is("No")');
+await press('No');
 await press('Nothing'); await press('Look inside'); await press('Look inside');
 await press('Switch on the magnet');
 await press('Take the scan');
-await until2('similar', 60000); await p.waitForTimeout(500);
-await p.click('#mri-lesson > .prompt .choice:text-is("Yes")');
+await press('Yes');
 await until2('final', 30000); await p.waitForTimeout(2500);
+const steps = await p.evaluate(() => ({ 'level-1': window.__reader['level-1'].count, 'level-2': window.__reader['level-2'].count }));
 const level1 = await collect(p, 'level-1', 'note-lesson', 'l1');
 const level2 = await collect(p, 'level-2', 'mri-lesson', 'l2');
 
@@ -138,12 +140,13 @@ const level2 = await collect(p, 'level-2', 'mri-lesson', 'l2');
 const q = await open(`${BASE}?from=end&record`);
 await q.waitForFunction(() => window.__prism?.reached.includes('end'), null, { timeout: 60000 });
 await q.waitForTimeout(2500);
+steps['level-3'] = await q.evaluate(() => window.__reader['level-3'].count);
 const level3 = await collect(q, 'level-3', 'prism-lesson', 'l3');
 
 await browser.close();
 stop();
 if (errors.length) throw new Error(`errors on the page: ${errors.join('; ')}`);
-const comic = { levels: [{ id: 'level-1', parts: level1 }, { id: 'level-2', parts: level2 }, { id: 'level-3', parts: level3 }] };
+const comic = { levels: [{ id: 'level-1', steps: steps['level-1'], parts: level1 }, { id: 'level-2', steps: steps['level-2'], parts: level2 }, { id: 'level-3', steps: steps['level-3'], parts: level3 }] };
 writeFileSync(path.join(OUT, 'comic.json'), `${JSON.stringify(comic, null, 1)}\n`);
-console.log(`comic: ${level1.length} + ${level2.length} + ${level3.length} parts`);
+console.log(`comic: ${level1.length} + ${level2.length} + ${level3.length} parts; Next presses ${Object.values(steps).join(' + ')}`);
 process.exit(0);

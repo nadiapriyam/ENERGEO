@@ -1,13 +1,19 @@
 // The text around the levels (docs/levels_spec.md): the small tag above each level, the buttons from one level to
-// the next, the side panel with the whole story as a comic, and the review strip's labels (try/?steps: every step of Level 3, left to right).
+// the next, the reader under each level (Back, Next, the bar, Level up!), the side panel with the whole story as a
+// comic, and the review strip's labels (try/?steps: every step of Level 3, left to right).
 
 export const LEVELS = {
   level1: 'Level 1',
   level2: 'Level 2',
-  level3: 'Level 3',
+  level3: 'Final level',
   soundOn: 'Turn your sound on.',
   next: 'Next: Level 2',
-  next3: 'Next: Level 3',
+  next3: 'Next: Final level',
+  goBack: 'Back',
+  forward: 'Next',
+  progress: 'Progress',
+  earlier: 'Earlier',
+  levelUp: 'Level up!',
   scrollThrough: 'Scroll through',
   wholeStory: 'The whole story',
   close: 'Close',

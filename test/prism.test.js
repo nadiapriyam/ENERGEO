@@ -1,4 +1,4 @@
-// Level 3, "A prism for sound", at try/ (docs/levels_spec.md, Level 3 Revision 10). Guards:
+// Level 3, "A prism for sound", at try/ (docs/levels_spec.md, Level 3 Revision 11). Guards:
 // - the hall: the stage light misses at first, is caught when aimed anywhere at the chandelier, goes into the prism's
 //   near face, and the colours leave in a real prism's order (red bent least, violet most);
 // - the tuner's little signal is the big signal, laid exactly on its screen;
@@ -23,7 +23,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   BOARD, fit, triangle, HALL, RAINBOW, BEND, crystalCorners, nearFace, aimAngle, toCrystal, startAngle, edge, lightPath,
-  STRIP, STRIP_BOX, signal, samplesPath, TUNER, onTuner, SPECTRUM, GLYPH, barX, barHeight, barAt, stepsAt, pureTone, allBack,
+  STRIP, STRIP_BOX, repeats, signal, samplesPath, TUNER, onTuner, SPECTRUM, GLYPH, barX, barHeight, barAt, stepsAt, pureTone, allBack,
   NOTE_LED, neon, ROWS, MRI, BODY_PARTS, partOf, strength, partAt, partWave, coarseRows, chordSamples, unmix, rowOrder, FIRST_ROW,
   rowIn, toSignal, BRAIN, SKULL, EXPLORE, exploreHead, exploreData, labels, partLoudness, partLink, dataInlet, dataTitle, RIPPLES, patternSpectrum, patternRowBand, coatLapels, FIGURE, BREAK, figureBox, FACE, hairPath, shirtPath, lookAt, PLAYER, RADIOLOGIST, bucketHat, beamHeightAt,
   PATTERN, patternBox, PIC_FRAME, picToPattern, patternBars, patternLight, slideShift, captionAt, REVEAL,
@@ -40,8 +40,9 @@ const spec = read('docs/levels_spec.md');
 const level3 = spec.slice(spec.indexOf('## Level 3, "A prism for sound"'));
 const rev8 = level3.slice(level3.indexOf('### Revision 8'), level3.indexOf('### Revision 9'));
 const rev9 = level3.slice(level3.indexOf('### Revision 9'), level3.indexOf('### Revision 10'));
-const rev10 = level3.slice(level3.indexOf('### Revision 10'));
-const copyList = rev10.slice(rev10.indexOf('#### Level 3 learner copy (Revision 10)'), rev10.indexOf('#### The review strip'));
+const rev10 = level3.slice(level3.indexOf('### Revision 10'), level3.indexOf('### Revision 11'));
+const rev11 = level3.slice(level3.indexOf('### Revision 11'));
+const copyList = rev11.slice(rev11.indexOf('#### Level 3 learner copy (Revision 11)'), rev11.indexOf('#### The review strip'));
 const main = read('src/levels/prism.js');
 const css = read('src/levels/prism.css');
 const inside = (r, x, y, e = 1e-6) => x >= r.x - e && x <= r.x + r.w + e && y >= r.y - e && y <= r.y + r.h + e;
@@ -98,6 +99,13 @@ test("2. the tuner: its little signal is the big signal laid exactly on its scre
 });
 
 test('3. the four bars are exactly the A note\'s tones and the signal is their sum; dragging sets one bar; one bar is a tuning fork', () => {
+  // "Can you see them?": the bumps are one shape, again and again. The repeats cover the strip, one per period of the
+  // A note, and the signal one repeat along is the same signal (so the copy of the first repeat fits the second exactly).
+  const R = repeats();
+  assert.equal(R.length, Math.ceil(STRIP.periods));
+  assert.ok(same(R[0].x, STRIP.x) && same(R.reduce((t, r) => t + r.w, 0), STRIP.w) && R.every((r, k) => !k || same(r.x, R[k - 1].x + R[k - 1].w)), 'side by side, across the whole strip');
+  assert.ok(same(R[0].w, STRIP.w / STRIP.periods), 'one repeat: one period of the A note');
+  for (let u = 0; u < 1; u += 0.01) assert.ok(Math.abs(wave(A_NOTE, u) - wave(A_NOTE, u + 1)) < 1e-12, 'the signal repeats exactly');
   A_NOTE.forEach((a) => assert.equal(barHeight(a), a * SPECTRUM.unit));
   const whole = ys(signal(A_NOTE));
   const parts = A_NOTE.map((_, k) => ys(signal(part(A_NOTE, k))));
@@ -305,11 +313,11 @@ test("6. the break and the faces: you and the radiologist stand apart on the flo
   assert.ok(FIGURE.torso.y < FACE.view.h && FIGURE.coat.every((c) => c.y + c.h > FIGURE.torso.y + FIGURE.torso.h), 'the body under the face; the coat longer than the shirt');
 });
 
-test('7. the copy is verbatim from the Revision 10 list and in order: line 21, a part of the brain, the pattern slide by slide in Nadia\'s words, the grand reveal before "the same geometric math", the applications last', () => {
+test('7. the copy is verbatim from the Revision 11 list and in order: the answer to "Can you see them?" depends on yours; line 21, a part of the brain, the pattern slide by slide in Nadia\'s words, the grand reveal before "the same geometric math", the applications last', () => {
   const R = (s) => `Radiologist: ${s}`;
   const ordered = [COPY.opening, COPY.dim, COPY.aim, COPY.aimHint, COPY.where.question, ...COPY.where.choices, COPY.where.after,
     `You (thinking): ${COPY.you.think}`, COPY.surprise, `[${COPY.play}]`, `${COPY.tunerLetter} (the letter`, COPY.drawsSignal, COPY.see.question,
-    ...COPY.see.choices, COPY.see.after, `[${COPY.apart}]`, COPY.split, COPY.notes.join(', '), COPY.pure, COPY.pureHint, COPY.pureDone, COPY.back,
+    ...COPY.see.choices, COPY.see.yes, COPY.see.notReally, `[${COPY.apart}]`, COPY.split, COPY.notes.join(', '), COPY.pure, COPY.pureHint, COPY.pureDone, COPY.back,
     `21. ${COPY.backDone}`, COPY.arrives, `You: ${COPY.you.tookApart}`, R(COPY.radiologist.same), COPY.tapBrain, COPY.bodyParts.join(', '), COPY.tapSkull,
     `28. ${COPY.mri[0].text.trim()}`, `[${COPY.collect}]`, `30. ${COPY.mri[1].text.trim()}`, `[${COPY.convert}]`, `32. ${COPY.mri[2].text.trim()}`,
     `33. ${COPY.mri[3].text.trim()}`, R(COPY.radiologist.pattern.question), ...COPY.radiologist.pattern.choices, R(COPY.radiologist.pattern.after),
@@ -318,7 +326,7 @@ test('7. the copy is verbatim from the Revision 10 list and in order: line 21, a
   let at = 0;
   for (const l of ordered) {
     const i = copyList.indexOf(l, at);
-    assert.ok(i >= 0, `not in the Revision 10 list, in order: ${l}`);
+    assert.ok(i >= 0, `not in the Revision 11 list, in order: ${l}`);
     at = i + 1;
   }
   assert.ok(copyList.includes(`46. ${COPY.final}\n\nNothing comes after line 46.`) && !/^47\. /m.test(copyList), 'the final line is last');
@@ -326,6 +334,11 @@ test('7. the copy is verbatim from the Revision 10 list and in order: line 21, a
   assert.ok(rev9.includes('follow the theme of something being inside and decoding it like violin -> pure tones inside') && rev9.includes('also change tap the brain to tap a part of the brain.'), "Nadia's Revision 9 messages, verbatim");
   assert.equal(COPY.tapBrain, 'Tap a part of the brain.', "line 25, in Nadia's words");
   assert.ok(rev10.includes('> MRI image → proton frequencies'), "Nadia's Revision 10 message, verbatim");
+  assert.ok(rev11.includes('when i press yes, the answer is still neither can anyone just by looking') && rev11.includes('> change level 3 to the final level.'), "Nadia's Revision 11 message, verbatim");
+  assert.ok(/^Careful: the bumps aren't the notes\./.test(COPY.see.yes) && /^Neither can anyone, just by looking\./.test(COPY.see.notReally) && COPY.see.yes.endsWith('Each bump is all four notes, added together.') && COPY.see.notReally.endsWith('Each bump is all four notes, added together.'), 'Yes and Not really each get their own answer, and the same point');
+  assert.match(main, /const seen = await ask\(COPY\.see\.choices, 'hidden'\);[\s\S]{0,700}say\(seen === COPY\.see\.choices\[0\] \? COPY\.see\.yes : COPY\.see\.notReally\);/, 'the answer follows the choice');
+  assert.equal(LEVELS.level3, 'Final level');
+  assert.equal(LEVELS.next3, 'Next: Final level');
   assert.equal(COPY.backDone, 'Every bump in the signal comes from a different pure tone.', "line 21, in Nadia's words");
   assert.equal(COPY.final, 'The applications are endless! From a simple tuner to looking inside your brain.', 'the last line');
   assert.ok(!/here it is/i.test(JSON.stringify(COPY)), '"Here it is" is gone');
@@ -345,7 +358,7 @@ test('7. the copy is verbatim from the Revision 10 list and in order: line 21, a
   assert.ok(level3.includes('Here is the mathematical tool that lets us start seeing it.'), "Nadia's goal sentence");
   for (const s of Object.values(LEVELS)) assert.ok(spec.includes(s), `in the spec: ${s}`);
   const calls = ['COPY.opening', 'COPY.dim', 'COPY.aim', 'COPY.aimHint', 'COPY.where.question', 'COPY.where.after', 'COPY.you.think', 'COPY.surprise',
-    'COPY.play', 'COPY.drawsSignal', 'COPY.see.question', 'COPY.see.after', 'COPY.apart', 'COPY.split', 'COPY.pure', 'COPY.pureHint', 'COPY.pureDone',
+    'COPY.play', 'COPY.drawsSignal', 'COPY.see.question', 'COPY.see.yes', 'COPY.see.notReally', 'COPY.apart', 'COPY.split', 'COPY.pure', 'COPY.pureHint', 'COPY.pureDone',
     'COPY.back', 'COPY.backDone', 'COPY.arrives', 'COPY.you.tookApart', 'COPY.radiologist.same', 'COPY.tapBrain', 'COPY.tapSkull', 'COPY.collect',
     'COPY.convert', 'COPY.radiologist.pattern.question', 'COPY.radiologist.pattern.after', 'COPY.next', 'COPY.reveal', 'COPY.name[0]', 'COPY.name[1]', 'COPY.final'];
   const story = main.indexOf('// ── the story');

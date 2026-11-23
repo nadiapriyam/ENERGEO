@@ -105,6 +105,15 @@ html.instant *, html.instant *::before, html.instant *::after { transition: none
 /* the break: the hall's lights on, you and the radiologist */
 .night .bulb.lit-bulb { fill: #ffd76a; filter: url(#p3-glow); }
 .walker { transition: transform 1600ms cubic-bezier(0.3, 0.6, 0.3, 1); }
+/* "Can you see them?": the signal's repeats, one shape again and again (a copy of the first slides onto the second) */
+.repeat { fill: #ffffff; opacity: 0; transition: opacity 500ms ease-out; }
+.strip.repeating .repeat { opacity: 0.05; }
+.strip.repeating .repeat.odd { opacity: 0.1; }
+.repeat-edge { stroke: #c9d3ff; stroke-width: 1.5; stroke-dasharray: 4 5; opacity: 0; transition: opacity 500ms ease-out; vector-effect: non-scaling-stroke; }
+.strip.repeating .repeat-edge { opacity: 0.55; }
+.ghost-move { opacity: 0; transition: transform 900ms cubic-bezier(0.45, 0, 0.2, 1), opacity 300ms ease-out; }
+.strip.repeating .ghost-move { opacity: 1; }
+.ghost { fill: none; stroke: #ffffff; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; opacity: 0.85; filter: url(#p3-glow); vector-effect: non-scaling-stroke; }
 .part-wave { fill: none; stroke-width: 2.4; stroke-linejoin: round; vector-effect: non-scaling-stroke; opacity: 0.35; transition: opacity 300ms ease-out; }
 .part-wave.picked { opacity: 1; filter: url(#p3-glow); }
 .part-waves.gone { opacity: 0; transition: opacity 600ms ease-out; }
@@ -173,7 +182,7 @@ html.instant *, html.instant *::before, html.instant *::after { transition: none
 @media (prefers-reduced-motion: reduce) {
   .scene, .scene.on, .bg, .hall, .arrive, .tuner, .tuner-letter, .tuner-light, .strip, .strip-box, .signal, .signal-inner, .part,
   .beam, .ray, .wall-glow, .glass, .bulb, .floor, .spectrum, .bar, .four-bars, .cell, .mri-part, .mri-image, .mri-sentence .frag,
-  .scene.band, .scene.band.on, .scene.scan, .scene.scan.on, .p-row,
+  .scene.band, .scene.band.on, .scene.scan, .scene.scan.on, .p-row, .repeat, .repeat-edge, .ghost-move,
   #prism-lesson .line.leaving, #prism-lesson .speaker.leaving { transition: none; }
   .walker, .body-map, .strip, .p-row, .pattern, .mri-image { transition: none; }
   .part-map.hint, .part-name.hint, .mri-sentence .frag.shown, .reveal-title.on, .tap-fx .link, .tap-fx .ripple { animation: none; }

@@ -13,6 +13,7 @@ import {
 } from '../math/violin.js';
 import { PITCH, A_NOTE, STEPS, HIDDEN, part, STAGE, lane, trace, EAR, HEARD, SQUEEZE, funnel, heardPath } from '../math/tones.js';
 import { keepPart } from './record.js';
+import { reader } from './reader.js';
 
 const NS = 'http://www.w3.org/2000/svg';
 const REDUCED = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -30,7 +31,6 @@ const svg = (tag, attrs = {}, ...kids) => {
 };
 const wait = (ms) => new Promise((r) => setTimeout(r, REDUCED ? Math.min(ms, 1200) : ms));
 const pause = (ms) => new Promise((r) => setTimeout(r, ms));
-const reading = (text) => Math.min(4500, 900 + 40 * text.length);
 const on = (node, v = true) => node.classList.toggle('on', v);
 const tween = (ms, step) => new Promise((resolve) => {            // step(t) for t from 0 to 1, eased
   if (REDUCED) { step(1); resolve(); return; }
@@ -130,6 +130,8 @@ const notesRow = el('div', { class: 'notes', role: 'group', 'aria-label': 'Hidde
 const transport = el('div', { class: 'transport' });
 const prompt = el('div', { class: 'prompt', 'aria-live': 'polite' });
 root.append(figure, notesRow, transport, prompt);
+const story = reader(root);                                 // Next and Back, under the level (reader.js)
+root.append(story.el);
 const speak = speaker(prompt);                               // you, the player, beside your own lines (characters.js)
 
 const board = svg('svg', { viewBox: `0 0 ${VIEW.w} ${VIEW.h}`, class: 'scene-board', role: 'img' });
@@ -296,13 +298,13 @@ async function opening() {                                  // you are the first
   describe('An orchestra on a stage, two curved rows of players. In front: your violin, lying across the bottom, with its bow across the strings.');
   requestAnimationFrame(() => figure.classList.add('in'));
   say(COPY.opening[0], 'lead');
-  await pause(reading(COPY.opening[0]));
+  await story.next();
   say(COPY.opening[1]);
-  await pause(reading(COPY.opening[1]));
+  await story.next();
   say(COPY.opening[2]);
-  await pause(reading(COPY.opening[2]));
+  await story.next();
   speak(COPY.you, 'you');                                    // meet the player: that's you, in the bucket hat
-  await pause(reading(COPY.you) + 300);
+  await story.next();
   say(COPY.bow, 'hint');
   await bowTheA();
   phase = 'tuned';
@@ -310,7 +312,7 @@ async function opening() {                                  // you are the first
   for (const p of players) p.classList.add('tuned');
   describe('Every player in the orchestra shows a little note: they are all tuned to your A note.');
   say(COPY.tuned);
-  await pause(reading(COPY.tuned) + 900);
+  await story.next();
   zoomIntoViolin();
 }
 
@@ -409,7 +411,7 @@ async function zoomIntoViolin() {
   say(COPY.shaking);
   await playA(2.4);
   bowLevel = 0;
-  await pause(reading(COPY.shaking) - 1600);
+  await story.next();
   insideTheSound();
 }
 
@@ -439,7 +441,7 @@ async function insideTheSound() {                           // cut: inside the v
   scroll();
   describe('Inside the sound: the shape of your A, a repeating wave with bumps, running across.');
   say(COPY.shape);
-  await pause(reading(COPY.shape));
+  await story.next();
   phase = 'question';
   say(COPY.oneNote.question);
   await ask(COPY.oneNote.choices);
@@ -510,7 +512,7 @@ async function splitNotes() {                               // four notes, one u
     return b;
   });
   notesRow.classList.add('in');
-  await pause(reading(COPY.hidden));
+  await story.next();
   say(COPY.tapNotes);
   followFocus(buttons[0]);
   setTimeout(() => { if (!heard && phase === 'notes') heardAll(); }, 14000);
@@ -537,7 +539,7 @@ async function together() {                                 // all four at once,
   clear();
   phase = 'oneA';
   say(COPY.oneA);
-  await pause(reading(COPY.oneA) + 900);
+  await story.next();
   phase = 'final';
   say(COPY.final, 'final');
   root.dispatchEvent(new CustomEvent('level-finished', { bubbles: true }));   // the page offers Level 2

@@ -59,90 +59,88 @@ Nothing comes after line 21 in Level 1.
 
 ## Level 2, "Inside the scanner": learner copy, in order (drafted by Claude at Nadia's request, for her review)
 
-Lines marked (R2) are Nadia's own wording, from `docs/prototype_try_spec.md` Revision 2.
+Lines marked (R2) are Nadia's own wording, from `docs/prototype_try_spec.md` Revision 2. Shortened on 2026-11-23 (see
+"All three levels: reading at your own pace, and a simpler Level 2" below); the words move on when you press Next.
 
-1. This is an MRI scanner.
-2. It can see inside a body: no X-rays, no cuts.
-3. Your first patient is here. You're about to take their MRI scan!
-4. You know more about an MRI than you think. Let's see if you can do it correctly! (the first sentence is R2; the second is Nadia's, 2026-11-20)
-5. [Slide your patient in]
-6. Inside, a giant magnet surrounds your patient.
-7. [Zoom in]
-8. O, H (the letters on the atoms)
-9. Your patient's body is full of water.
-10. One drop holds billions of trillions of hydrogen atoms.
-11. [Closer]
-12. N, S (the letters on every magnet)
-13. At the heart of each hydrogen atom is a proton: a tiny magnet.
-14. Picture each one as an arrow, pointing from S to N.
-15. So many tiny magnets. Why don't they add up to one giant magnet?
-16. TOTAL SIGNAL (the label on the total; Nadia's "TOTAL", now naming the signal)
-17. The TOTAL SIGNAL adds up every arrow in the drop. Your scanner can only pick up this total.
-18. + = … (the adding, written inside the TOTAL SIGNAL)
-19. Can you make the total 0? (R2)
-20. Drag a ↓ next to an ↑. (only after 6 seconds without a move)
-21. 0 (under every balanced group)
-22. Can every piece still be here while the total is 0? [Yes] [No] [Not sure] (R2)
-23. Let's see. (R2)
-24. You: Oh no! I got 0 signal for my MRI! (Nadia: "oh no you got no signal for your mri")
-25. But did everything disappear? [Look closer] (R2)
-26. If the total is 0, are the pieces gone? [Yes] [No] (R2)
-27. Exactly. They cancelled. (R2; after No)
-28. Look again — they're still there. (R2; after Yes)
-29. That's the answer: inside your patient, opposite tiny magnets cancel each other out.
-30. Same result. (R2)
-31. Here's a look at some more protons in another part of your patient's body. Its total is 0 too. (Nadia, 2026-11-20: "heres a look at some more protons in another part of your patients body")
-32. ? (on the covered drop, and in its TOTAL SIGNAL)
-33. What's behind this 0? [Nothing] [Something]
-34. Let's see. (R2)
-35. Different arrangement. (R2)
-36. And another. [Look inside]
-37. Still 0. (R2)
-38. And another. [Look inside]
-39. One result. Many possible arrangements behind it. (R2)
-40. You (thinking): My patient's total signal is 0. So how will my scanner see anything?
-41. [Switch on the magnet]
-42. Its magnet is tens of thousands of times stronger than Earth's.
-43. It tips the balance, just barely: a few more arrows point with it than against it.
-44. That's what an MRI does: it turns your patient's 0 signal into a small signal it can read.
-45. In a real body, only about five to ten in every million are left over.
-46. But the 0 was holding far more: every single tiny magnet, not just the few left over.
-47. Your scanner nudges them with radio waves and picks up their faint reply.
-48. [Take the scan]
-49. From that faint reply, it paints a picture of your patient's insides.
-50. You: I did it! My first MRI scan!
-51. one picture (the label on what the eye sees)
-52. Your eye sees just one picture. It's hiding far more than it seems.
-53. You just figured out one of the core principles of MRI.
-54. Do you see a similarity to the violin level? [Yes] [Not yet]
-55. Look.
-56. YOUR A NOTE, TOTAL SIGNAL, +, =, 0, A (the side by side)
-57. In Level 1, one A note hid many notes. Here, one 0 signal hides countless tiny magnets.
-58. A 0 isn't always nothing. Sometimes it's a whole person: countless tiny magnets, perfectly balanced.
+1. This is an MRI scanner. It can see inside a body: no X-rays, no cuts.
+2. Your first patient is here. Let's see if you can take their MRI scan correctly! (Nadia, 2026-11-20: "lets see if you can do it correctly")
+3. [Slide your patient in]
+4. Inside, a giant magnet surrounds your patient.
+5. [Zoom in]
+6. O, H (the letters on the atoms)
+7. Your patient's body is full of water.
+8. One drop holds billions of trillions of hydrogen atoms.
+9. [Closer]
+10. N, S (the letters on every magnet)
+11. Inside each hydrogen atom is a proton: a tiny magnet.
+12. Think of each one as an arrow.
+13. So many tiny magnets. Why don't they add up to one giant magnet?
+14. TOTAL SIGNAL (the label on the total; Nadia's "TOTAL", now naming the signal)
+15. Your scanner only picks up the TOTAL SIGNAL: every arrow in the drop, added up.
+16. + = … (the adding, written inside the TOTAL SIGNAL), and +1, −1 (popping up beside its result as each arrow joins, the result counting with it)
+17. Can you make the total 0? (R2)
+18. Drag a ↓ next to an ↑. (only after 6 seconds without a move)
+19. 0 (under every balanced group)
+20. Can every piece still be here while the total is 0? [Yes] [No] [Not sure] (R2)
+21. Let's see. (R2)
+22. You: Oh no! I got 0 signal for my MRI! (Nadia: "oh no you got no signal for your mri")
+23. If the total is 0, are the pieces gone? [Yes] [No] (R2)
+24. Exactly. They cancelled. (R2; after No)
+25. Look again — they're still there. (R2; after Yes)
+26. Inside your patient, opposite tiny magnets cancel out.
+27. Same result. (R2)
+28. Here's a look at some more protons in another part of your patient's body. Its total is 0 too. (Nadia, 2026-11-20: "heres a look at some more protons in another part of your patients body")
+29. ? (on the covered drop, and in its TOTAL SIGNAL)
+30. What's behind this 0? [Nothing] [Something]
+31. Different arrangement. (R2)
+32. And another. [Look inside]
+33. Still 0. (R2)
+34. And another. [Look inside]
+35. One result. Many possible arrangements behind it. (R2)
+36. You (thinking): My patient's signal is 0. How will my scanner see anything?
+37. [Switch on the magnet]
+38. It tips the balance: a few more arrows point with the magnet.
+39. That's what an MRI does: it turns your patient's 0 signal into a small signal it can read.
+40. In a real body, it's only about five to ten in every million.
+41. But the 0 held far more: every tiny magnet, not just the few left over.
+42. Your scanner nudges them with radio waves and picks up their faint reply. (radio waves come in from both sides; a faint reply spreads back out, in rings)
+43. [Take the scan]
+44. From that reply, it paints a picture of your patient's insides.
+45. You: I did it! My first MRI scan!
+46. one picture (the label on what the eye sees)
+47. Your eye sees just one picture. It's hiding far more than it seems.
+48. You just figured out one of the core principles of MRI.
+49. Do you see a similarity to the violin level? [Yes] [Not yet]
+50. Look.
+51. YOUR A NOTE, TOTAL SIGNAL, +, =, 0, A (the side by side)
+52. In Level 1, one A note hid many notes. Here, one 0 signal hides countless tiny magnets.
+53. A 0 isn't always nothing. Sometimes it's a whole person: countless tiny magnets, perfectly balanced.
 
-Nothing comes after line 58.
+Nothing comes after line 53.
 
-Around the levels: "Level 1", "Level 2", "Level 3", "Turn your sound on." (Levels 1 and 3 need sound), "Next: Level 2"
-and "Next: Level 3". The side panel (see "All three levels: the whole story as a comic, on the side" below): the tab
-"Scroll through", the panel's title "The whole story", and "Close".
+Around the levels: "Level 1", "Level 2", "Final level" (Level 3), "Turn your sound on." (Levels 1 and 3 need sound),
+"Next: Level 2" and "Next: Final level". The reader under each level (see "All three levels: reading at your own pace,
+and a simpler Level 2" below): "Back", "Next", the bar ("Progress", for screen readers), "+1", "Earlier" (with the
+part's number) and "Level up!". The side panel (see "All three levels: the whole story as a comic, on the side"
+below): the tab "Scroll through", the panel's title "The whole story", and "Close".
 
 ## What the new lines claim, and what they do not
 
-- **"0 signal" (lines 16, 17 and 24).** An MRI scanner's coil picks up the net magnetization: the total of all the
+- **"0 signal" (lines 14, 15 and 22).** An MRI scanner's coil picks up the net magnetization: the total of all the
   tiny magnets, not each one. When they cancel, that total is 0 and there is nothing to pick up.
-- **"That's what an MRI does" (line 44).** The scanner's magnet tips the balance, so the total is no longer 0 but a
-  small number it can read. In the drawing it is 2. In a real body it is about five to ten in every million (line 45).
-- **"But the 0 was holding far more" (line 46).** This states only what is certain. The 0 is one number, the total.
+- **"That's what an MRI does" (line 39).** The scanner's magnet tips the balance, so the total is no longer 0 but a
+  small number it can read. In the drawing it is 2. In a real body it is about five to ten in every million (line 40).
+- **"But the 0 held far more" (line 41).** This states only what is certain. The 0 is one number, the total.
   Behind it were all the tiny magnets, while the scanner's small signal reflects only the few left over. Nadia's
   stronger wording, "that 0 signal is way more knowledegable than the mri signal of manipulation of magnet", belongs to
   her hypothesis **B-ZERO-LOSS**: "leaving a natural zero/cancellation state may destroy information encoded in the
   relations that generated that zero" (`research/foundation_user_theories.md`, status: hypothesis). Until that
   hypothesis is established, the learner is not told that leaving the 0 destroys information, or that the 0 "knows"
   more.
-- **The eye (lines 51 and 52).** The eye takes in light from every part of the picture and we see one picture. The
+- **The eye (lines 46 and 47).** The eye takes in light from every part of the picture and we see one picture. The
   drawing shows what is seen, not how the eye works. "It's hiding far more than it seems" refers to what the story has
   shown: behind every grey dot of the picture are countless tiny magnets.
-- **The side by side (lines 56 and 57).** The left side is the violin level's arithmetic: the four notes' waves add up
+- **The side by side (lines 51 and 52).** The left side is the violin level's arithmetic: the four notes' waves add up
   exactly to the A note's wave. The right side is the MRI level's: ↑ = +1 and ↓ = −1, so each pair is 0 and the total
   signal is 0.
 
@@ -273,6 +271,57 @@ and "Next: Level 3". The side panel (see "All three levels: the whole story as a
 - **No new claims.** The comic shows the levels' own pictures and words.
 - Files: `src/levels/record.js`, `tools/record_comic.mjs`, `src/levels/comic/` (the recording),
   `src/levels/comic.js`, `src/levels/page.js` (the tab and the panel), `src/levels/base.css`.
+
+## All three levels: reading at your own pace, and a simpler Level 2 (2026-11-23). Nadia, verbatim:
+
+> change level 3 to the final level. Four notes hide in this signal. "Can you see them?
+>
+> Yes
+> Not really
+> Neither can anyone, just by looking." This script needs to be changed. when i press yes, the answer is still neither can anyone just by looking. also the signal that is presented with this script, it is aparaent that there are 4 bumps so maybe the unknowledgable user might assume that the are different notes. find a way to make that more clear. task 2: the second level is a bit confusing try to make the word count lower and simple. go through it, find gaps in which an unexperienced user would find it difficult, and if you need to add something, don't add words, add visuals. task 3: go through the whole 3 levels, and instead of the words just appearing after a set amount of seconds and disapearing with no ability for the user to go back to re read something they missed, develop a user friendly way that is also aestheticly clean to achieve the ability for the user to go back and click to go to the next words. For the click to go to the next words don't make it simple, make it fun, like for the click adda fun animation that associates them leveling up.
+
+The first part (Level 3 as the final level, and its four-notes question) is Level 3 Revision 11, below.
+
+### Reading at your own pace (all three levels)
+
+- **No more timers for words.** Wherever a level used to wait a set time for you to read, it now waits for you. Under
+  each level sits one slim bar, which stays at the bottom of the screen while the level is on screen:
+  "‹ Back", the level's bar, and "Next ›".
+- **Next, with a level-up.** When the story is waiting for you, Next glows. Pressing it (or →, or Enter) brings the
+  next words. Each press sends a burst of stars into the level's bar, a "+1" pops up, and the bar fills a notch. At the
+  end of the level the bar is full and turns gold: "Level up!", with confetti.
+  - How far each press fills the bar comes from how many presses each level takes. The comic's recorder counts them
+    (`steps` in `src/levels/comic/comic.json`).
+  - While you act on the board (drag, tap, choose), Next stays grey: the story is waiting for that, not for Next.
+- **Back, to read again.** "‹ Back" (or ←) shows the part before: a still picture of the board as that part ended,
+  with its words, tagged "Earlier" and its number. Back again goes further back. Next pages forward, and then returns
+  to now. Nothing in the level is lost while you look back.
+- **Unchanged.** The words of Levels 1 and 3 (apart from Level 3's question), and what you do on the boards. With
+  reduced motion there are no stars or confetti; the bar simply fills.
+- Files: `src/levels/reader.js` (the bar, Back, Next), `src/levels/record.js` (keeping each part), the levels'
+  `await story.next()`, and `src/levels/base.css` (in the levels' plain style: one accent, no gradients).
+
+### A simpler Level 2
+
+- **Fewer words: 53 lines instead of 58.** The list above is the new one.
+  - The opening is two lines instead of four: "This is an MRI scanner. It can see inside a body: no X-rays, no cuts."
+    and "Your first patient is here. Let's see if you can take their MRI scan correctly!"
+  - Some of Nadia's earlier lines (R2) are gone because the next line asks the same thing: "You know more about an MRI
+    than you think.", "But did everything disappear?" with its [Look closer] button, and the second "Let's see." (after
+    "What's behind this 0?", where the drop then shows what is behind it). They can come back if she wants them.
+  - The magnet's six lines are now five, each shorter. "Its magnet is tens of thousands of times stronger than
+    Earth's." is gone: the field lines show the magnet is on.
+- **Pictures for the gaps, instead of words.**
+  - *How arrows add up.* A new learner may not see why three ↑ make 3. Now, as each arrow joins the TOTAL, "+1" pops
+    up beside its result, and the result counts up with it: = 1, = 2, = 3. Each ↓ you drag in pops "−1", and the result
+    counts down to 0.
+  - *What "radio waves and a faint reply" means.* While that line is on screen, radio waves come in from both sides of
+    the drop toward the tiny magnets, and a faint reply spreads back out from among them, in rings, until you press
+    [Take the scan].
+- **What the new lines claim.** The same as before, in fewer words (the notes above, renumbered). "+1" and "−1" are the
+  rule the side by side already showed: ↑ = +1, ↓ = −1. The radio waves are drawn as a picture of what the line says:
+  the scanner sends radio waves, and the tiny magnets send back a faint radio signal that its coils pick up. They are
+  not drawn to scale or in their real shape.
 
 ## Level 3, "A prism for sound" (2026-11-19; first called "The magic glasses")
 
@@ -1221,7 +1270,7 @@ as in Revision 8 and keep its notes. New:
   - The wave's strength and fade are as in Revision 6's notes. It is as strong as the part is bright in the picture;
     how long it lasts is an illustration.
 
-### Revision 10 (2026-11-20), which governs Level 3. Nadia, verbatim:
+### Revision 10 (2026-11-20), superseded by Revision 11 below. Nadia, verbatim:
 
 > Violin note → pure tones
 > Stage light → its full color spectrum
@@ -1311,3 +1360,93 @@ Revision 9 and keep its notes. New:
   coloured elsewhere on the board.
 - On the board, as since Revision 6, each place in a row has its own frequency. Real scanners also use the waves'
   timing (phase) for the other direction.
+
+### Revision 11 (2026-11-23), which governs Level 3. Nadia, verbatim (the first part of her message; all of it is in
+"All three levels: reading at your own pace, and a simpler Level 2"):
+
+> change level 3 to the final level. Four notes hide in this signal. "Can you see them?
+>
+> Yes
+> Not really
+> Neither can anyone, just by looking." This script needs to be changed. when i press yes, the answer is still neither can anyone just by looking. also the signal that is presented with this script, it is aparaent that there are 4 bumps so maybe the unknowledgable user might assume that the are different notes. find a way to make that more clear.
+
+#### What changes
+
+- **The final level.** Its tag now reads "Final level", and Level 2 ends with "Next: Final level".
+- **The answer depends on yours (line 13).**
+  - After Yes: "Careful: the bumps aren't the notes. Each bump is all four notes, added together."
+  - After Not really: "Neither can anyone, just by looking. Each bump is all four notes, added together."
+- **The bumps are not the notes, shown.** After you answer, the signal holds still. Faint bands mark each repeat of its
+  shape, with a dashed line between them. A glowing copy of the first repeat slides onto the second and fits it
+  exactly. So the bumps are one shape, again and again, and counting them is not counting notes. Then "Take it apart"
+  shows the four notes, each a smooth wave all the way across.
+
+#### Level 3 learner copy (Revision 11), in order (drafted by Claude at Nadia's request, for her review)
+
+1. After your scan, you head back to the concert hall.
+2. The lights dim. You notice a stage light shining.
+3. Drag to aim it at the chandelier.
+4. Drag across the picture to swing the light. (only after 8 seconds)
+5. Where did the colors come from? [The glass] [The white light]
+6. From the white light. The glass on the chandelier is a prism: it takes light apart into its colors.
+7. You (thinking): If a prism is a tool that can take apart light, is there a tool that can take apart a sound?
+8. Surprise: it's your tuner.
+9. [Play your A note]
+10. A (the letter on the tuner)
+11. The tuner draws your note's signal, its shape over time, and names it: A.
+12. Four notes hide in this signal. Can you see them? [Yes] [Not really] (then the signal holds still: faint bands mark each repeat of its shape, and a glowing copy of the first repeat slides onto the second and fits it exactly)
+13. After Yes: Careful: the bumps aren't the notes. Each bump is all four notes, added together. After Not really: Neither can anyone, just by looking. Each bump is all four notes, added together.
+14. [Take it apart]
+15. Your A note, taken apart into four pure tones.
+16. A, high A, E, higher A (the labels under the bars)
+17. Drag the bars. Can you make a single pure tone, like a tuning fork?
+18. Drag all the bars but one down to 0. (only after 9 seconds)
+19. One bar, one smooth wave: a tuning fork.
+20. Now bring the others back.
+21. Every bump in the signal comes from a different pure tone.
+22. At the break, the radiologist who read your scan comes over. (the radiologist walks over to you on the board as this appears)
+23. You: My tuner just took my A note apart!
+24. Radiologist: The MRI scanner works the same way.
+25. Tap a part of the brain. (the outer or the inner brain; its signal comes out of the spot you tap, runs to the data box and is drawn there, under its name)
+26. skin, skull, fluid, outer brain, inner brain (the labels beside the head)
+27. Now tap the skull.
+28. Each tiny magnet behaves differently depending on which body part it's in.
+29. [Collect the data]
+30. Collecting that data
+31. [Convert it to pixels]
+32. and converting it into pixel data
+33. helps us see an MRI picture, with the Fourier transform. (lines 28, 30, 32 and 33 are one paragraph, shown one part at a time, the earlier parts turning grey; the people and their bubbles are gone while it is shown)
+34. Radiologist: Do you notice a pattern? [Yes] [Not yet]
+35. Radiologist: Let me help you out.
+36. Violin note → pure tones (the caption under its pictures, the A note's wave → its four bars, on a slide of its own)
+37. [Next]
+38. Stage light → its full color spectrum (on a slide of its own: a white beam into a prism → a fan of colours)
+39. [Next]
+40. MRI image → proton frequencies (on a slide of its own: the MRI picture of your patient's head, its middle row marked → that row's proton frequencies, one thin bar each)
+41. [Next] (then all three together, each caption under its pictures)
+42. the Fourier transform (the grand reveal: big and glowing in the middle of the board)
+43. The mathematical tool that lets us start seeing what hides inside: the Fourier transform.
+44. All three come down to the same geometric math.
+45. Joseph Fourier came up with it about 200 years ago.
+46. The applications are endless! From a simple tuner to looking inside your brain.
+
+Nothing comes after line 46.
+
+#### The review strip's labels (for review, not learner copy)
+
+- Level 3, step by step (the strip's title)
+- Scroll left and right, or use the arrows. Each frame is the level itself, stopped at that step.
+- Play from here
+- Back to the levels
+
+The 26 step titles are in `src/levels/stepsPrism.js`.
+
+#### What the new lines claim
+
+The numbers are computed in `src/math/prism.js` and checked by `test/prism.test.js`. Lines 1–12 and 14–46 are as in
+Revision 10 and keep its notes. New:
+
+- **"Each bump is all four notes, added together" (line 13).** At every moment, the signal is exactly the sum of the
+  four pure tones (Revision 1's notes). So a bump is a place where they add up a certain way, not one of the notes.
+- **The repeats.** The A note's signal repeats exactly: on the board it shows two and a half repeats, and the copy of
+  the first is the same curve, moved by one repeat (`repeats()`). The real A repeats 440 times a second.

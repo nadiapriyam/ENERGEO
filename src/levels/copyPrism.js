@@ -1,4 +1,4 @@
-// Every learner-facing line of Level 3, "A prism for sound", verbatim from docs/levels_spec.md (Revision 10, checked by
+// Every learner-facing line of Level 3, "A prism for sound", verbatim from docs/levels_spec.md (Revision 11, checked by
 // test/prism.test.js). Drafted at Nadia's request for her review: a story that picks up right after Level 2, in as few
 // words as it can. `you` holds the player's own lines (shown beside their face, a thought in a thought bubble) and
 // `radiologist` the radiologist's. `mri` is Nadia's description of the scanner, in four parts, shown one at a time as
@@ -19,7 +19,12 @@ export const COPY = {
   play: 'Play your A note',
   tunerLetter: 'A',
   drawsSignal: "The tuner draws your note's signal, its shape over time, and names it: A.",
-  see: { question: 'Four notes hide in this signal. Can you see them?', choices: ['Yes', 'Not really'], after: 'Neither can anyone, just by looking.' },
+  see: {
+    question: 'Four notes hide in this signal. Can you see them?',
+    choices: ['Yes', 'Not really'],
+    yes: "Careful: the bumps aren't the notes. Each bump is all four notes, added together.",
+    notReally: 'Neither can anyone, just by looking. Each bump is all four notes, added together.',
+  },
   apart: 'Take it apart',
   split: 'Your A note, taken apart into four pure tones.',
   notes: ['A', 'high A', 'E', 'higher A'],

@@ -1,4 +1,4 @@
-// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 10). Pure functions, no DOM, no audio. (The app's own
+// Level 3, "A prism for sound" (docs/levels_spec.md, Revision 11). Pure functions, no DOM, no audio. (The app's own
 // Fourier blocks are in fourier.js; this file is only the level's.)
 //
 // Three scenes, one idea: something that looks like one thing hides many.
@@ -122,6 +122,11 @@ export function lightPath(a) {
 // ── your A note: its signal, big ────────────────────────────────────────────────────────────────────
 export const STRIP = { x: 40, y: 36, w: 560, h: 150, periods: 2.5 };
 export const STRIP_BOX = { x: 26, y: 26, w: 588, h: 170 };
+/** The signal's repeats across the strip: one band per period of the A note (the last cut off by the edge), so the bumps can be seen to be one shape, again and again. */
+export function repeats() {
+  const w = STRIP.w / STRIP.periods;
+  return Array.from({ length: Math.ceil(STRIP.periods - 1e-9) }, (_, k) => ({ x: STRIP.x + k * w, w: Math.min(w, STRIP.w - k * w) }));
+}
 const PEAK_A = (() => { let m = 0; for (let i = 0; i < 2000; i++) m = Math.max(m, Math.abs(wave(A_NOTE, i / 2000))); return m; })();
 /** The signal of a mix (amounts in steps 0…3) across the strip, shifted by `shift` periods. */
 export function signal(amounts, shift = 0, n = 280) {

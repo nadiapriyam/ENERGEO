@@ -1,13 +1,14 @@
 // Every learner-facing line of Level 2, "Inside the scanner", verbatim from docs/levels_spec.md (checked by
 // test/mri.test.js). Lines kept from docs/prototype_try_spec.md Revision 2 are Nadia's wording; the rest was drafted at
 // her request and is listed in the spec for her review. Since the 2026-11-20 revision you are the one taking the scan,
-// of a patient; `you` holds your own lines, beside your face (characters.js), and reached[0] and magnetQuestion are
-// yours too. Nothing else on the page is learner-facing text, apart from accessibility labels.
+// of a patient; `you` holds your own lines, beside your face (characters.js), and reached and magnetQuestion are yours
+// too. The 2026-11-23 revision cut the words (Nadia: "try to make the word count lower and simple"), and fills the gaps
+// with pictures instead: +1 and −1 pop up as arrows join the TOTAL, and radio waves go in and a faint reply comes out.
+// Nothing else on the page is learner-facing text, apart from accessibility labels.
 
 export const COPY = {
-  scanner: ['This is an MRI scanner.', 'It can see inside a body: no X-rays, no cuts.'],
-  patient: "Your first patient is here. You're about to take their MRI scan!",
-  opening: "You know more about an MRI than you think. Let's see if you can do it correctly!",
+  scanner: 'This is an MRI scanner. It can see inside a body: no X-rays, no cuts.',
+  patient: "Your first patient is here. Let's see if you can take their MRI scan correctly!",
   slideIn: 'Slide your patient in',
   inside: 'Inside, a giant magnet surrounds your patient.',
   zoomIn: 'Zoom in',
@@ -15,18 +16,17 @@ export const COPY = {
   water: ["Your patient's body is full of water.", 'One drop holds billions of trillions of hydrogen atoms.'],
   closer: 'Closer',
   poles: { n: 'N', s: 'S' },
-  proton: ['At the heart of each hydrogen atom is a proton: a tiny magnet.', 'Picture each one as an arrow, pointing from S to N.'],
+  proton: ['Inside each hydrogen atom is a proton: a tiny magnet.', 'Think of each one as an arrow.'],
   hook: "So many tiny magnets. Why don't they add up to one giant magnet?",
   totalLabel: 'TOTAL SIGNAL',
-  totalMeans: 'The TOTAL SIGNAL adds up every arrow in the drop. Your scanner can only pick up this total.',
-  sum: { plus: '+', equals: '=', more: '…' },
+  totalMeans: 'Your scanner only picks up the TOTAL SIGNAL: every arrow in the drop, added up.',
+  sum: { plus: '+', equals: '=', more: '…', up: '+1', down: '−1' },
   task: 'Can you make the total 0?',
   hint: 'Drag a ↓ next to an ↑.',
   groupZero: '0',
   check1: { question: 'Can every piece still be here while the total is 0?', choices: ['Yes', 'No', 'Not sure'], after: "Let's see." },
   zero: '0',
-  reached: ['Oh no! I got 0 signal for my MRI!', 'But did everything disappear?'],
-  lookCloser: 'Look closer',
+  reached: 'Oh no! I got 0 signal for my MRI!',
   check2: {
     question: 'If the total is 0, are the pieces gone?',
     choices: ['Yes', 'No'],
@@ -34,30 +34,28 @@ export const COPY = {
     right: 'Exactly. They cancelled.',
     wrong: "Look again — they're still there.",
   },
-  answer: "That's the answer: inside your patient, opposite tiny magnets cancel each other out.",
+  answer: 'Inside your patient, opposite tiny magnets cancel out.',
   arrangements: ['Same result.', 'Different arrangement.', 'Still 0.'],
   cover: {
     intro: "Here's a look at some more protons in another part of your patient's body. Its total is 0 too.",
     mark: '?',
     question: "What's behind this 0?",
     choices: ['Nothing', 'Something'],
-    after: "Let's see.",
     again: 'And another.',
     look: 'Look inside',
   },
   reveal: 'One result. Many possible arrangements behind it.',
-  magnetQuestion: "My patient's total signal is 0. So how will my scanner see anything?",
+  magnetQuestion: "My patient's signal is 0. How will my scanner see anything?",
   switchOn: 'Switch on the magnet',
   magnet: [
-    "Its magnet is tens of thousands of times stronger than Earth's.",
-    'It tips the balance, just barely: a few more arrows point with it than against it.',
+    'It tips the balance: a few more arrows point with the magnet.',
     "That's what an MRI does: it turns your patient's 0 signal into a small signal it can read.",
-    'In a real body, only about five to ten in every million are left over.',
-    'But the 0 was holding far more: every single tiny magnet, not just the few left over.',
+    "In a real body, it's only about five to ten in every million.",
+    'But the 0 held far more: every tiny magnet, not just the few left over.',
     'Your scanner nudges them with radio waves and picks up their faint reply.',
   ],
   listen: 'Take the scan',
-  picture: "From that faint reply, it paints a picture of your patient's insides.",
+  picture: "From that reply, it paints a picture of your patient's insides.",
   you: { didIt: 'I did it! My first MRI scan!' },
   eye: { line: "Your eye sees just one picture. It's hiding far more than it seems.", label: 'one picture' },
   closing: 'You just figured out one of the core principles of MRI.',

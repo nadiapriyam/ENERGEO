@@ -157,6 +157,13 @@ export function sumLayout(groups, { lead = false, trail = false, labels = null }
 
 // ── the scanner's magnet: a bigger crowd of cancelled pairs, then one flips ───────────────────────────
 export const CROWD = { rows: [214, 294], cols: 6, pitch: 88, half: 14, scale: 0.72, labelGap: 10 };
+/**
+ * The scanner's radio waves: arcs come in from both sides of the drop toward the tiny magnets (`travel` units), and
+ * a faint reply spreads out from among them, in rings. Drawn while "nudges them with radio waves" is on screen.
+ */
+export const RADIO = { y: (CROWD.rows[0] + CROWD.rows[1]) / 2, from: [DROP.x + 14, DROP.x + DROP.w - 14], travel: 190, arc: 46, reply: { x: C, r: 34 } };
+/** Where +1 or −1 pops up as an arrow joins the TOTAL: just right of its result, which counts up or down with it. */
+export const POP = { x: PANEL.cx + 52, y: PANEL.resultY - 4 };
 /** Twelve ↓↑ pairs in the drop, all cancelled: pair k holds D k and U k. */
 export function crowd() {
   const out = [];
