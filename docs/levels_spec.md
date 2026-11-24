@@ -669,6 +669,22 @@ parts we can't see is possible, that we know a few ways, and that ENERGEO sets o
   The four hidden notes are blue, coral, purple and gold, in Level 1, in Level 2's side by side and as the final
   level's lights. Every detail stays.
 
+## All three levels: black text, gray sub-text, #172B3A interactives (2026-11-24). Nadia, verbatim:
+
+> change all the text to black and the sub text to gray and make the interactives #172B3A
+
+### What changes (colours only; every detail stays)
+
+- **Text**: every line of the levels' words is black (#111111): the lines, the bubbles, the titles, the buttons' words.
+- **Sub-text** is gray (#6B7075): each level's question under its title, "Turn your sound on.", captions, hints and the
+  question on the "Up next" card.
+- **The interactives** (the boards, "the interactive clicking the brain scan" in Nadia's own words) are #172B3A in all
+  three levels: Level 1's concert hall and the inside of the sound, Level 2's scanner, drop and 0, the final level's
+  hall (its lit moment a little lighter, #24435A, before the lights dim to #172B3A). On a board, the lines and words
+  drawn straight on it are near-white (the sound's wave, "A note", the bow ready to play, the magnifying glass's rim,
+  "one picture"); what sits on a light panel (the TOTAL SIGNAL, the drop, the 0, the side by side) keeps black text.
+- The top bar stays pine with its turquoise line; mustard, coral, turquoise and sky blue keep their roles.
+
 ## All three levels: a trailing "…", and Next sooner (2026-11-24). Nadia, verbatim (two messages):
 
 > increase the appear rate for the section just a bit

@@ -1,12 +1,12 @@
 /* Level 2, "Inside the scanner". Its palette ("Fresh intellectual": pine, turquoise, sky blue, mustard, coral, on a
    white page) and the prompt, buttons and choices it shares with every level are in base.css. Every magnet (a proton,
    an arrow, an arrow in the TOTAL) has the same two halves: S in pale sky blue, N in turquoise. The scanner is drawn in
-   cool grey-greens, the water in pale sky blue, so the magnets stay the strongest thing on the board. The 0 the
+   cool grey-greens, the water in pale sky blue, on the board's #172B3A, so the magnets stay the strongest thing on it. The 0 the
    balanced magnets live in is the mustard: a bold numeral 0, its hollow their home. The MRI SIGNAL is a small pine
    monitor beside the TOTAL. No curves for the
    pieces to travel on, no error colours. */
 
-.board { display: block; width: 100%; height: auto; overflow: hidden; border-radius: 6px; box-shadow: 0 0 0 1px var(--rule); touch-action: manipulation; --s: 1; }
+.board { display: block; width: 100%; height: auto; overflow: hidden; border-radius: 6px; box-shadow: 0 0 0 1px var(--rule); background: var(--board); touch-action: manipulation; --s: 1; }
 .figure.is-playing .board { touch-action: none; }   /* while arrows can be dragged, a swipe on the board moves an arrow, not the page */
 
 /* layers fade in and out as the story moves on */
@@ -102,7 +102,7 @@
 .frost-mark { font-family: var(--font); font-size: 96px; font-weight: 700; fill: var(--ink); }
 
 /* the MRI SIGNAL: a small black monitor beside the TOTAL; its wave and bars shrink as the magnets balance */
-.meter-box { fill: var(--ink); stroke: var(--ink); stroke-width: 2; }
+.meter-box { fill: #0b1a24; stroke: var(--board-edge); stroke-width: 2; }
 .meter-label { font-family: var(--font); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; fill: var(--mustard); }
 .meter-axis { stroke: #2a5a52; stroke-width: 1.5; }
 .meter-wave { fill: none; stroke: var(--mustard); stroke-width: 2.6; stroke-linejoin: round; stroke-linecap: round; transition: stroke 500ms; }
@@ -137,7 +137,7 @@
 .piece.waiting.dragging { cursor: grabbing; }
 .is-locked .piece.waiting { cursor: default; }
 .piece:focus { outline: none; }
-.piece:focus-visible .n-part, .piece:focus-visible .s-part { stroke: var(--ink); stroke-width: 2.5; }
+.piece:focus-visible .n-part, .piece:focus-visible .s-part { stroke: var(--on-board); stroke-width: 2.5; }
 .piece-mid { transform-box: fill-box; transform-origin: center; transform: scale(var(--s)); transition: transform 300ms ease-out; }
 .piece.prominent .piece-mid { transform: scale(calc(var(--s) * 1.14)); }
 .piece-enter { transition: opacity 420ms ease-out, transform 420ms ease-out; }
@@ -158,8 +158,8 @@
 .iris { fill: var(--turquoise); }
 .eyeball .pupil { fill: var(--ink); }
 .glint { fill: #ffffff; }
-.seen-arrow { fill: none; stroke: var(--ink-3); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
-.seen-label { font-family: var(--font); font-size: 21px; font-weight: 700; font-style: italic; fill: var(--ink); }
+.seen-arrow { fill: none; stroke: var(--on-board-2); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.seen-label { font-family: var(--font); font-size: 21px; font-weight: 700; font-style: italic; fill: var(--on-board); }
 
 /* side by side with Level 1 */
 .cmp-box { fill: var(--paper); stroke: var(--ink); stroke-width: 2; }

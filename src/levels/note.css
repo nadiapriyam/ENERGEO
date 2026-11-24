@@ -1,9 +1,9 @@
 /* Level 1, "Inside a note", in the levels' magazine style and "Fresh intellectual" palette (base.css): a white page,
-   bold Times, pine, turquoise, sky blue, mustard and coral, flat print drawings. The stage is pale grey-green; the
-   audience wears turquoise, mustard and sky blue; the violin is warm wood; your A is pine; the four hidden notes each
+   bold Times, pine, turquoise, sky blue, mustard and coral, flat print drawings, on the board's #172B3A. The stage is a
+   raised blue-grey; the audience wears turquoise, mustard and sky blue; the violin is warm wood; your A is white; the four hidden notes each
    have their own colour (sky blue, coral, turquoise, mustard: the hues of their lights in the final level). */
 
-.scene-board { display: block; width: 100%; height: auto; overflow: hidden; border-radius: 6px; box-shadow: 0 0 0 1px var(--rule); touch-action: manipulation; }
+.scene-board { display: block; width: 100%; height: auto; overflow: hidden; border-radius: 6px; box-shadow: 0 0 0 1px var(--rule); background: var(--board); touch-action: manipulation; }
 .scene-board.dragging-on { touch-action: none; cursor: grab; }
 .scene-board.dragging-on:active { cursor: grabbing; }
 .scene-board:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
@@ -13,9 +13,9 @@
 .scene-board.cut .cam { opacity: 0; }
 
 /* the drawing */
-.backdrop { fill: var(--card); }
-.stage-floor { fill: #e2eeec; }
-.chair { fill: #c8d8d5; }
+.backdrop { fill: var(--board); }
+.stage-floor { fill: var(--board-2); }
+.chair { fill: #2e4a5e; }
 .body-0 { fill: #008f87; } .body-1 { fill: #e9c46a; } .body-2 { fill: #38a9d6; }
 .player .skin { fill: #e8c3a2; }
 .wood { fill: #c98b48; stroke: #9b6532; stroke-width: 1.2; }
@@ -34,12 +34,12 @@
 .bow-stick { stroke: #5b4030; stroke-width: 3; stroke-linecap: round; }
 .bow-hair { stroke: #f3efe6; stroke-width: 2.4; }
 .bow-frog { fill: #0d2a26; }
-.bow.ready .bow-stick { stroke: var(--ink); stroke-width: 3.6; }
+.bow.ready .bow-stick { stroke: var(--on-board); stroke-width: 3.6; }
 .bow { transition: transform 60ms linear; }
 
 .tuned-mark { opacity: 0; transform: translateY(6px); transition: opacity 400ms ease-out, transform 400ms ease-out; }
-.tuned-mark circle { fill: var(--mustard); stroke: var(--ink); stroke-width: 1.5; }
-.tuned-mark path { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
+.tuned-mark circle { fill: var(--mustard); stroke: var(--board); stroke-width: 1.5; }
+.tuned-mark path { fill: none; stroke: var(--on-board); stroke-width: 2; stroke-linecap: round; }
 .player.tuned .tuned-mark { opacity: 1; transform: none; animation: tuned-pop 520ms var(--spring); }
 @keyframes tuned-pop { from { transform: scale(0.6); } }
 
@@ -48,21 +48,21 @@
 .lens-view.on, .lens-frame.on, .target-ring.on { opacity: 1; visibility: visible; transition: opacity 300ms ease-out, visibility 0s; }
 .lens-frame { pointer-events: none; }
 .lens-frame.fading { opacity: 0; }
-.lens-rim { fill: none; stroke: var(--ink); stroke-width: 5; }
+.lens-rim { fill: none; stroke: var(--on-board); stroke-width: 5; }
 .lens-glare { fill: none; stroke: #ffffff; stroke-width: 4; stroke-linecap: round; opacity: 0.8; }
 .lens-handle { stroke: var(--earth); stroke-width: 12; stroke-linecap: round; }
-.target-ring { fill: none; stroke: var(--ink); stroke-width: 2.5; stroke-dasharray: 5 5; pointer-events: none; }
+.target-ring { fill: none; stroke: var(--on-board); stroke-width: 2.5; stroke-dasharray: 5 5; pointer-events: none; }
 .target-ring.on { animation: beckon 1.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
 @keyframes beckon { 50% { transform: scale(1.3); } }
 
 /* inside the sound */
 .inside { opacity: 0; visibility: hidden; transition: opacity 400ms ease-out, visibility 0s linear 400ms; }
 .inside.on { opacity: 1; visibility: visible; transition: opacity 400ms ease-out, visibility 0s; }
-.stage { fill: var(--paper); stroke: var(--ink); stroke-width: 2; }
-.sum-wave { fill: none; stroke: var(--ink); stroke-width: 3.4; stroke-linejoin: round; }
-.veil { fill: var(--paper); opacity: 0; }
+.stage { fill: var(--board-2); stroke: var(--board-edge); stroke-width: 2; }
+.sum-wave { fill: none; stroke: var(--on-board); stroke-width: 3.4; stroke-linejoin: round; }
+.veil { fill: var(--board-2); opacity: 0; }
 .veil.on { opacity: 1; }
-.veil-all { fill: var(--paper); opacity: 0; transition: opacity 300ms ease-out; }
+.veil-all { fill: var(--board-2); opacity: 0; transition: opacity 300ms ease-out; }
 .veil-all.on { opacity: 1; }
 .parts { opacity: 0; transition: opacity 300ms ease-out; }
 .parts.on { opacity: 1; }
@@ -111,11 +111,11 @@
 .ear-canal { fill: #9c6f55; }
 .heard { opacity: 0; transition: opacity 500ms ease-out 900ms; }
 .hearing.on .heard { opacity: 1; }
-.heard-arrow { fill: none; stroke: var(--ink-3); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
-.heard-wave { fill: none; stroke: var(--ink); stroke-width: 3.4; stroke-linejoin: round; }
+.heard-arrow { fill: none; stroke: var(--on-board-2); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.heard-wave { fill: none; stroke: var(--on-board); stroke-width: 3.4; stroke-linejoin: round; }
 .hearing.flowing .heard-wave { animation: heard-pulse 0.9s ease-in-out infinite; }
 @keyframes heard-pulse { 50% { stroke-width: 5; } }
-.heard-label { font-family: var(--font); font-size: 24px; font-weight: 700; font-style: italic; fill: var(--ink); }
+.heard-label { font-family: var(--font); font-size: 24px; font-weight: 700; font-style: italic; fill: var(--on-board); }
 @media (prefers-reduced-motion: reduce) {
   .hearing, .hearing.on, .heard, .parts.squeezed .part-wave { transition: none; }
   .hearing.flowing .funnel, .hearing.flowing .heard-wave { animation: none; }

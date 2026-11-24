@@ -113,3 +113,15 @@ test('4. one page, three levels: no level styles another level\'s pieces (Level 
   assert.match(read('src/levels/prism.js'), /strip\.classList\.add\('scanner-data'\)/, 'the final level\'s data box has a name of its own');
   assert.ok(read('docs/levels_spec.md').includes('> also where is the middle part'), "Nadia's message, verbatim");
 });
+
+test('5. black text, gray sub-text, and every board #172B3A (Nadia, 2026-11-24)', () => {
+  const base = read('src/levels/base.css');
+  assert.match(base, /--ink: #111111;/, 'the text is black');
+  assert.match(base, /--ink-2: #6b7075;/, 'the sub-text is gray');
+  assert.match(base, /--board: #172b3a;/, 'the interactives are #172B3A');
+  assert.match(base, /\.level-dek \{[^}]*color: var\(--ink-2\)/, 'each level\'s question, in gray');
+  assert.match(read('src/levels/note.css'), /\.scene-board \{[^}]*background: var\(--board\)/);
+  assert.match(read('src/levels/mri.css'), /\.board \{[^}]*background: var\(--board\)/);
+  assert.match(read('src/levels/prism.css'), /--night: #172b3a;/);
+  assert.ok(read('docs/levels_spec.md').includes('> change all the text to black and the sub text to gray and make the interactives #172B3A'), "Nadia's message, verbatim");
+});

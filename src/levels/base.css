@@ -2,7 +2,8 @@
    be creative along the lines of fun but professional"), its details kept through each change of palette since. The
    palette now is "Fresh intellectual" (Nadia: "try Fresh intellectual ... first two for the top bar and top line"):
    pine #123B35, turquoise #008F87, sky blue #38A9D6, mustard #E9C46A, coral #E76F51. A white page; bold Times New Roman
-   in pine; the top bar pine with a turquoise line under it; mustard the one bright fill (buttons, tabs, the bar's
+   in black, sub-text in gray; every level's board (the interactives) #172B3A; the top bar pine with a turquoise line
+   under it; mustard the one bright fill (buttons, tabs, the bar's
    progress, the bold 0: always with pine on it, never mustard words on white); coral the highlight (the rule over a
    part's first line, the big idea's edge: never the colour of a wrong answer); turquoise the N half of every magnet
    and a page turned back; sky blue the water, the glass and your speech bubbles' tint. Flat print shapes with crisp
@@ -21,9 +22,14 @@
   --paper: #f1f7f6;
   --paper-2: #e2eeec;         /* frost, a stage floor */
   --rule: #cfe0dd;
-  --ink: #123b35;             /* pine */
-  --ink-2: #3d5f58;
-  --ink-3: #85a39d;
+  --ink: #111111;             /* every line of text: black (Nadia, 2026-11-24: "change all the text to black") */
+  --ink-2: #6b7075;           /* sub-text: gray (questions under the titles, captions, hints) */
+  --ink-3: #a4a9ae;
+  --board: #172b3a;           /* the interactives: every level's board (Nadia: "make the interactives #172B3A") */
+  --board-2: #213b4e;         /* a panel raised on a board */
+  --board-edge: #3b5a70;
+  --on-board: #f2f5f7;        /* lines and words drawn straight on a board */
+  --on-board-2: #a9bac6;
   --mustard-soft: #f8ecc8;
   --mustard-deep: #b08423;
   --accent: #e9c46a;          /* the page's one bright fill: mustard, under pine */
