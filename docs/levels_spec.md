@@ -669,6 +669,37 @@ parts we can't see is possible, that we know a few ways, and that ENERGEO sets o
   The four hidden notes are blue, coral, purple and gold, in Level 1, in Level 2's side by side and as the final
   level's lights. Every detail stays.
 
+## All three levels: the "Fresh intellectual" palette (2026-11-24). Nadia, verbatim:
+
+> try Fresh intellectual
+> #123B35
+>
+> #008F87 (first two for the top bar and top line)
+>
+> #38A9D6
+>
+> #E9C46A
+>
+> #E76F51
+>
+> Pine · Turquoise · Sky blue · Mustard · Coral
+
+### What changes (colours only; every detail stays)
+
+It takes the place of "Contemporary European":
+
+- **The top bar** is pine (#123B35), with a turquoise (#008F87) line under it.
+- **Pine** is also the ink: every line of text, the edges and shadows of the buttons, the big idea's box, the MRI SIGNAL
+  monitor. The final level's dark is a deeper pine.
+- **Mustard** (#E9C46A) is the bright fill: the buttons, the tabs, the bar's progress, the bold 0, the MRI SIGNAL's
+  wave, the final level's signal and ENERGEO.
+- **Coral** (#E76F51) is the highlight: the short rule over a part's first line and the big idea's edge, never the
+  colour of a wrong answer.
+- **Turquoise** is the N half of every magnet and a page turned back with Back.
+- **Sky blue** (#38A9D6) is the water, the glass and your speech bubbles' tint.
+- The four hidden notes are sky blue, coral, turquoise and mustard, in Level 1, in Level 2's side by side and as the
+  final level's lights. The page stays white.
+
 ## Level 3, "A prism for sound" (2026-11-19; first called "The magic glasses")
 
 ### Nadia's request, verbatim

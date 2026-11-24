@@ -5,7 +5,7 @@
 .storyboard-hint { color: var(--ink-2); margin: 0 0 0.8em; }
 .storyboard-nav { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .storyboard-nav .count { min-width: 4.5em; text-align: center; color: var(--ink-2); font-variant-numeric: tabular-nums; }
-.storyboard-back { margin-left: auto; color: var(--ink); font-weight: 700; text-decoration-color: var(--gold); text-decoration-thickness: 3px; }
+.storyboard-back { margin-left: auto; color: var(--ink); font-weight: 700; text-decoration-color: var(--mustard); text-decoration-thickness: 3px; }
 .frames { display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 0 16px; outline: none; }
 .frame { flex: 0 0 auto; width: min(440px, 86vw); margin: 0; scroll-snap-align: start; display: flex; flex-direction: column; gap: 8px; }
 .frame figcaption { display: flex; gap: 10px; align-items: baseline; font-size: 1rem; }

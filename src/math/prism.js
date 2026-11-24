@@ -170,7 +170,7 @@ export const stepsAt = (y) => Math.max(0, Math.min(STEPS, Math.round((SPECTRUM.b
 export const pureTone = (amounts) => amounts.filter((a) => a > 0).length === 1;
 export const allBack = (amounts) => amounts.every((a) => a > 0);
 /** The four notes' colours from Level 1, as LEDs: blue, teal, violet, amber. */
-export const NOTE_LED = ['#5a95ff', '#ff7a5c', '#c07ae0', '#ffc21a'];   // the four notes' Level 1 colours (blue, coral, purple, gold), as LEDs
+export const NOTE_LED = ['#5cc8f2', '#ff8a6b', '#2fd1c5', '#ffd56b'];   // the four notes' Level 1 colours (sky blue, coral, turquoise, mustard), as LEDs
 
 // ── cyber-city colours for the scanner's many notes ──────────────────────────────────────────────────
 const LED_HUES = [320, 285, 245, 200, 165, 120, 50, 28];

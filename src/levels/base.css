@@ -1,42 +1,43 @@
 /* The levels' shared page. Since 2026-11-24 a magazine look (Nadia: "use a nat geo color palate, bold times new roman
    be creative along the lines of fun but professional"), its details kept through each change of palette since. The
-   palette now is "Contemporary European" (Nadia: "that navy color is boring change the color palate to this"): deep
-   blue #174A7E, blue #4B72B2, purple #8C52A0, gold #E5A000, coral #E75A42. A white page; bold Times New Roman in deep
-   blue; gold the one bright fill (buttons, tabs, the bar, the bold 0: always with deep blue on it, never gold words on
-   white); coral the highlight (the rule under the top bar, the opening rule, the big idea's edge: never the colour of a
-   wrong answer); blue the N half of every magnet and a page turned back; purple the big idea's box and your bubbles'
-   tint. Flat print shapes with crisp offset shadows. Times New Roman's 0 is a plain, unslashed 0. */
+   palette now is "Fresh intellectual" (Nadia: "try Fresh intellectual ... first two for the top bar and top line"):
+   pine #123B35, turquoise #008F87, sky blue #38A9D6, mustard #E9C46A, coral #E76F51. A white page; bold Times New Roman
+   in pine; the top bar pine with a turquoise line under it; mustard the one bright fill (buttons, tabs, the bar's
+   progress, the bold 0: always with pine on it, never mustard words on white); coral the highlight (the rule over a
+   part's first line, the big idea's edge: never the colour of a wrong answer); turquoise the N half of every magnet
+   and a page turned back; sky blue the water, the glass and your speech bubbles' tint. Flat print shapes with crisp
+   offset shadows. Times New Roman's 0 is a plain, unslashed 0. */
 
 :root {
   --bg: #ffffff;
-  --deep: #174a7e;            /* deep blue */
-  --blue: #4b72b2;
-  --purple: #8c52a0;
-  --gold: #e5a000;
-  --coral: #e75a42;
+  --pine: #123b35;
+  --turquoise: #008f87;
+  --sky: #38a9d6;
+  --mustard: #e9c46a;
+  --coral: #e76f51;
   --white: #ffffff;
-  --mist: #c9d6ec;            /* a pale blue: glass, the S half of every magnet */
+  --mist: #cfe9f4;            /* a pale sky blue: glass, the S half of every magnet */
   --card: #ffffff;            /* bubbles, panels */
-  --paper: #f4f7fb;
-  --paper-2: #e6ecf5;         /* frost, a stage floor */
-  --rule: #d3dceb;
-  --ink: #174a7e;             /* deep blue */
-  --ink-2: #3f5f86;
-  --ink-3: #8398b6;
-  --gold-soft: #fbe6ad;
-  --gold-deep: #b37d00;
-  --accent: #e5a000;          /* the page's one bright fill: gold, under deep blue */
-  --accent-soft: #fbe6ad;     /* a chosen answer */
-  --magnet: #4b72b2;          /* the N half of every magnet: blue */
-  --s-pole: #c9d6ec;          /* the S half: pale blue */
+  --paper: #f1f7f6;
+  --paper-2: #e2eeec;         /* frost, a stage floor */
+  --rule: #cfe0dd;
+  --ink: #123b35;             /* pine */
+  --ink-2: #3d5f58;
+  --ink-3: #85a39d;
+  --mustard-soft: #f8ecc8;
+  --mustard-deep: #b08423;
+  --accent: #e9c46a;          /* the page's one bright fill: mustard, under pine */
+  --accent-soft: #f8ecc8;     /* a chosen answer */
+  --magnet: #008f87;          /* the N half of every magnet: turquoise */
+  --s-pole: #cfe9f4;          /* the S half: pale sky blue */
   --forest: #3f6b5a;
-  --ochre: #c88400;
+  --ochre: #c99a2e;
   --earth: #7a5230;
-  --water: #e6eef8;           /* the drop and the zoom: a pale blue */
-  --water-edge: #a9bfe0;
-  --steel: #eef1f6;           /* the scanner, in cool greys */
-  --steel-edge: #c3cddd;
-  --steel-dark: #a9b6ca;
+  --water: #e3f3f8;           /* the drop and the zoom: a pale sky blue */
+  --water-edge: #a6d6e8;
+  --steel: #eef3f2;           /* the scanner, in cool grey-greens */
+  --steel-edge: #c3d3d0;
+  --steel-dark: #a5bcb8;
   --font: "Times New Roman", Times, "Liberation Serif", "Nimbus Roman", serif;   /* bold Times; a plain 0 */
   --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --glide: cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -65,7 +66,7 @@
 
 .action {
   font: inherit; font-size: 1.18rem; font-weight: 700; letter-spacing: 0.01em;
-  color: var(--ink); background: var(--gold);
+  color: var(--ink); background: var(--mustard);
   border: 2px solid var(--ink); border-radius: 6px; box-shadow: 3px 3px 0 var(--ink);
   padding: 0.4em 1.15em; margin: 0 0 1em; cursor: pointer;
   opacity: 0; transform: translateY(8px) scale(0.96);
@@ -82,9 +83,9 @@
   background: var(--bg); border: 2px solid var(--ink); border-radius: 6px;
   padding: 0.32em 1.05em; cursor: pointer; transition: background-color 160ms, transform 160ms, box-shadow 160ms;
 }
-.choice:hover:not(:disabled) { background: var(--gold-soft); transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--ink); }
+.choice:hover:not(:disabled) { background: var(--mustard-soft); transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--ink); }
 .choice:disabled { cursor: default; color: var(--ink-3); border-color: var(--rule); }
-.choice.picked { background: var(--gold); color: var(--ink); border-color: var(--ink); box-shadow: 3px 3px 0 var(--ink); animation: picked 420ms var(--spring); }
+.choice.picked { background: var(--mustard); color: var(--ink); border-color: var(--ink); box-shadow: 3px 3px 0 var(--ink); animation: picked 420ms var(--spring); }
 @keyframes picked { from { transform: scale(0.92); } }
 .choice.missed { border-style: dashed; }            /* not an error colour: just set aside */
 
@@ -137,7 +138,7 @@ body {
 .bubble:first-child::before { content: ''; position: absolute; left: -7px; top: 0; border: 7px solid transparent; border-left: 0; border-top: 0; border-right-color: var(--paper); }
 :is(.face, .person) .skin { fill: #e8b58c; }
 :is(.face, .person) .eye { fill: #ffffff; }
-:is(.face, .person) .pupil { fill: #14304f; }
+:is(.face, .person) .pupil { fill: #10302b; }
 :is(.face, .person) .rim { fill: none; stroke: #3a3a3a; stroke-width: 3; stroke-linecap: round; }
 :is(.face, .person) .brow { stroke-width: 4.5; stroke-linecap: round; }
 :is(.face, .person) .mouth { fill: #7a3e2c; transform-box: fill-box; transform-origin: center; }
@@ -145,12 +146,12 @@ body {
 @keyframes talk { from { transform: scaleY(1); } to { transform: scaleY(3.4); } }
 :is(.face, .person) .eyes { transform-box: fill-box; transform-origin: center; animation: blink 5s infinite; }
 @keyframes blink { 0%, 93%, 100% { transform: scaleY(1); } 96% { transform: scaleY(0.12); } }
-.speaker.you .bubble { background: #f1e6f5; }
-.speaker.you .bubble:first-child::before { border-right-color: #f1e6f5; }
+.speaker.you .bubble { background: #e3f3fa; }
+.speaker.you .bubble:first-child::before { border-right-color: #e3f3fa; }
 .bubble.thought { font-style: italic; background: var(--card); border: 2px dashed var(--ink-3); border-radius: 16px; }
 .speaker.you .bubble.thought:first-child::before { content: ''; left: -15px; top: 16px; width: 9px; height: 9px; border: 2px dashed var(--ink-3); border-radius: 50%; background: var(--card); }
 
-.person .legs { fill: #173a63; }
+.person .legs { fill: #1d4a43; }
 .coat { fill: #ffffff; }
 .speaker.leaving { opacity: 0; transform: translateY(-4px); transition: opacity 260ms ease-in, transform 260ms ease-in; }
 
@@ -169,14 +170,14 @@ body {
 #level-1 { border-top: 0; margin-top: 0; }
 .side-toggle {
   position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 30;
-  writing-mode: vertical-rl; font: inherit; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em; color: var(--gold);
-  background: var(--ink); border: 1.5px solid var(--gold); border-right: 0; border-radius: 6px 0 0 6px;
+  writing-mode: vertical-rl; font: inherit; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em; color: var(--mustard);
+  background: var(--ink); border: 1.5px solid var(--mustard); border-right: 0; border-radius: 6px 0 0 6px;
   padding: 0.9em 0.35em; cursor: pointer; transition: right 260ms ease-out, color 200ms, background-color 200ms;
 }
-.side-toggle:hover { color: var(--ink); background: var(--gold); }
+.side-toggle:hover { color: var(--ink); background: var(--mustard); }
 .side {
   position: fixed; top: 0; right: 0; bottom: 0; z-index: 29; width: min(360px, 86vw);
-  background: var(--bg); border-left: 3px solid var(--ink); box-shadow: -8px 0 0 rgba(229, 160, 0, 0.9);
+  background: var(--bg); border-left: 3px solid var(--ink); box-shadow: -8px 0 0 rgba(233, 196, 106, 0.95);
   overflow-y: auto; overscroll-behavior: contain; padding: 0 16px 48px;
   transform: translateX(100%); visibility: hidden; transition: transform 260ms ease-out, visibility 0s linear 260ms;
 }
@@ -184,17 +185,17 @@ html.side-open .side { transform: none; visibility: visible; transition: transfo
 html.side-open .side-toggle { right: min(360px, 86vw); }
 .side-head { position: sticky; top: 0; z-index: 1; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; background: var(--bg); padding: 14px 0 8px; border-bottom: 2px solid var(--ink); }
 .side-head h2 { margin: 0; font-size: 1.42rem; font-weight: 700; }
-.side-close { font: inherit; font-size: 1.05rem; font-weight: 700; color: var(--ink); background: none; border: 0; border-bottom: 3px solid var(--gold); padding: 0.1em 0; cursor: pointer; }
-.side-level-name { display: inline-block; margin: 1.3em 0 0.7em; padding: 0.15em 0.55em; font-size: 0.84rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); background: var(--gold); }
+.side-close { font: inherit; font-size: 1.05rem; font-weight: 700; color: var(--ink); background: none; border: 0; border-bottom: 3px solid var(--mustard); padding: 0.1em 0; cursor: pointer; }
+.side-level-name { display: inline-block; margin: 1.3em 0 0.7em; padding: 0.15em 0.55em; font-size: 0.84rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); background: var(--mustard); }
 .comic-part { margin: 0 0 1.6em; font-size: 0.96rem; line-height: 1.4; }
 .comic-part img { display: block; width: 100%; height: auto; margin: 0 0 0.55em; }
 /* tap a picture to go to that scene (jump.js): the picture is a link, its tag in the corner */
 .comic-go { position: relative; display: block; margin: 0 0 0.55em; border-radius: 4px; outline-offset: 2px; transition: transform 160ms ease-out, box-shadow 160ms ease-out; }
 .comic-go img { margin: 0; border-radius: 4px; }
-.comic-go:hover, .comic-go:focus-visible { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--gold); }
+.comic-go:hover, .comic-go:focus-visible { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--mustard); }
 .comic-go-tag {
   position: absolute; top: 6px; right: 6px; padding: 0.12em 0.55em; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em;
-  color: var(--ink); background: var(--gold); border-radius: 3px; box-shadow: 2px 2px 0 var(--ink);
+  color: var(--ink); background: var(--mustard); border-radius: 3px; box-shadow: 2px 2px 0 var(--ink);
 }
 .comic-part .line { margin-bottom: 0.45em; font-size: 0.96rem; }
 .comic-part .line.lead, .comic-part .line.final, .comic-part .line.mri-sentence { font-size: 1.06rem; }
@@ -223,45 +224,45 @@ html.side-open .side-toggle { right: min(360px, 86vw); }
 .reader-back:disabled { opacity: 0.3; cursor: default; }
 .reader-next {
   font: inherit; font-size: 1.16rem; font-weight: 700; color: var(--ink); cursor: pointer; white-space: nowrap;
-  background: var(--gold); border: 2px solid var(--ink); border-radius: 6px; padding: 0.34em 1.3em; box-shadow: 3px 3px 0 var(--ink);
+  background: var(--mustard); border: 2px solid var(--ink); border-radius: 6px; padding: 0.34em 1.3em; box-shadow: 3px 3px 0 var(--ink);
 }
 .reader-next:not(.ready):not(.paging) { visibility: hidden; }
 .reader-next.ready { animation: next-glow 1.6s ease-in-out infinite; }
 .reader-next:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
 @keyframes next-glow {
-  0%, 100% { box-shadow: 3px 3px 0 var(--ink), 0 0 0 0 rgba(229, 160, 0, 0.7); }
-  50% { box-shadow: 3px 3px 0 var(--ink), 0 0 0 10px rgba(229, 160, 0, 0); }
+  0%, 100% { box-shadow: 3px 3px 0 var(--ink), 0 0 0 0 rgba(233, 196, 106, 0.8); }
+  50% { box-shadow: 3px 3px 0 var(--ink), 0 0 0 10px rgba(233, 196, 106, 0); }
 }
-.reader-next.paging { color: var(--white); background: var(--blue); box-shadow: 3px 3px 0 var(--ink); }
+.reader-next.paging { color: var(--white); background: var(--turquoise); box-shadow: 3px 3px 0 var(--ink); }
 
 html.has-story-bar body { padding-top: 62px; }
 .story-bar {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 25; background: var(--ink); box-shadow: 0 4px 0 var(--coral);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 25; background: var(--pine); box-shadow: 0 4px 0 var(--turquoise);
   padding: 10px max(16px, env(safe-area-inset-right, 0px)) 7px max(16px, env(safe-area-inset-left, 0px));
 }
 .story-sections { max-width: 680px; margin: 0 auto; display: flex; gap: 10px; }
 .story-section { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
 .story-row { position: relative; display: flex; align-items: center; gap: 5px; }
-.story-track { flex: 1; height: 8px; border-radius: 1px; background: #2f6198; overflow: hidden; }
+.story-track { flex: 1; height: 8px; border-radius: 1px; background: #2a5a52; overflow: hidden; }
 .story-fill { display: block; height: 100%; width: 0; border-radius: inherit; background: var(--accent); transition: width 650ms var(--glide), background-color 400ms; }
 .story-section.gain .story-track { animation: story-gain 650ms ease-out; }
-@keyframes story-gain { 30% { box-shadow: 0 0 0 2px var(--gold); } }
+@keyframes story-gain { 30% { box-shadow: 0 0 0 2px var(--mustard); } }
 .story-mark {
   flex: none; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 2px;
-  border: 2px solid #6d8fc4; background: var(--ink); color: #9db6dd; font-size: 11px; line-height: 1;
+  border: 2px solid #5f8f86; background: var(--ink); color: #9cc3bb; font-size: 11px; line-height: 1;
   transition: background-color 300ms, border-color 300ms;
 }
-.story-name { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #c3d3ec; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.story-name { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #bfd9d4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .story-section.now .story-name { color: var(--white); }
 .story-section.done .story-mark { background: var(--accent); border-color: var(--accent); color: var(--ink); animation: mark-in 520ms var(--spring); }
 @keyframes mark-in { from { transform: scale(0.4); } }
-.story-spark { position: fixed; left: 0; top: 0; z-index: 40; pointer-events: none; margin: -9px 0 0 -7px; font-size: 15px; line-height: 1; color: var(--gold); text-shadow: 0 0 6px rgba(229, 160, 0, 0.85); }
+.story-spark { position: fixed; left: 0; top: 0; z-index: 40; pointer-events: none; margin: -9px 0 0 -7px; font-size: 15px; line-height: 1; color: var(--mustard); text-shadow: 0 0 6px rgba(233, 196, 106, 0.9); }
 .framed .story-bar { display: none; }
 /* Back: a part read earlier, shown over the level (Next pages forward again, to now) */
 .reader-earlier { position: absolute; inset: 0; z-index: 5; overflow: auto; background: var(--bg); padding: 4vh 0 0; animation: earlier-in 300ms ease-out; }
 @keyframes earlier-in { from { opacity: 0; } }
 .reader-earlier[hidden] { display: none; }
-.reader-earlier-tag { display: inline-block; margin: 0 0 0.6em; font-size: 0.86rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); background: var(--gold); border-radius: 0; padding: 0.18em 0.7em; }
+.reader-earlier-tag { display: inline-block; margin: 0 0 0.6em; font-size: 0.86rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); background: var(--mustard); border-radius: 0; padding: 0.18em 0.7em; }
 .reader-part .figure { margin-bottom: 0.6em; }
 /* Back, on one screen: the earlier part laid out like the level, its picture sized to fit the room above Back and Next
    (stacked: on top; wide: on the left); the live board under it is hidden, so none of it shows around the edges */
@@ -290,10 +291,10 @@ html.has-story-bar body { padding-top: 62px; }
 }
 
 /* The magazine (page.js, magazine.js): each level's cover, "The big idea", and the "Up next" card between levels.
-   Covers: a gold kicker tab, a bold headline that rises in, an italic question. The big idea: a purple pull-quote
-   with a coral edge that wipes open, its tag in gold. Up next: a card with a gold offset shadow. */
+   Covers: a mustard kicker tab, a bold headline that rises in, an italic question. The big idea: a pine pull-quote
+   with a coral edge that wipes open, its tag in mustard. Up next: a card with a mustard offset shadow. */
 .level-kicker {
-  display: inline-block; padding: 0.16em 0.6em 0.12em; color: var(--ink); background: var(--gold);
+  display: inline-block; padding: 0.16em 0.6em 0.12em; color: var(--ink); background: var(--mustard);
   animation: kicker-in 600ms var(--glide) both;
 }
 @keyframes kicker-in { from { opacity: 0; transform: translateX(-14px); } }
@@ -303,20 +304,20 @@ html.has-story-bar body { padding-top: 62px; }
 .idea-tag { display: inline-block; margin: 0 0 0.35em; padding: 0.12em 0.5em 0.08em; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
 .big-idea {
   margin: 0.6em 0 1em; padding: 0.6em 0.85em 0.75em; border-left: 8px solid var(--coral);
-  background: var(--purple); color: var(--white); font-size: 1.7rem; font-weight: 700; line-height: 1.18;
+  background: var(--pine); color: var(--white); font-size: 1.7rem; font-weight: 700; line-height: 1.18;
   clip-path: inset(0 100% 0 0); transition: opacity 360ms ease-out, transform 460ms var(--glide), clip-path 700ms var(--glide) 80ms;
 }
 .big-idea.in { clip-path: inset(0 0 0 0); }
-.idea-tag { color: var(--ink); background: var(--gold); }
+.idea-tag { color: var(--ink); background: var(--mustard); }
 .idea-text { display: block; }
 .up-next {
   display: block; max-width: 680px; margin: 1.2em auto 0; padding: 1.1em 1.25em 1.25em; background: var(--card);
-  border: 2px solid var(--ink); border-radius: 8px; box-shadow: 7px 7px 0 var(--gold);
+  border: 2px solid var(--ink); border-radius: 8px; box-shadow: 7px 7px 0 var(--mustard);
   opacity: 0; transform: translateY(14px); transition: opacity 450ms ease-out, transform 600ms var(--spring);
 }
 .up-next[hidden] { display: none; }
 .up-next.in { opacity: 1; transform: none; }
-.up-next-kicker { display: inline-block; padding: 0.12em 0.5em 0.08em; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); background: var(--ink); }
+.up-next-kicker { display: inline-block; padding: 0.12em 0.5em 0.08em; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mustard); background: var(--ink); }
 .up-next-title { display: block; margin: 0.22em 0 0.08em; font-size: 1.95rem; font-weight: 700; line-height: 1.1; }
 .up-next-dek { display: block; margin: 0 0 0.85em; font-size: 1.27rem; font-style: italic; color: var(--ink-2); }
 .up-next .next-level { margin: 0; }
@@ -365,7 +366,7 @@ html.has-story-bar { --bar-h: 62px; }
 :is(#note-lesson, #mri-lesson, #prism-lesson) > .reader-column { flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; }
 .reader-column > .prompt { flex: 1 1 0; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
 .reader-column > .reader { flex: none; margin-top: 0.3em; padding: 8px 0 calc(8px + env(safe-area-inset-bottom, 0px)); }
-.reader-column > .up-next { flex: none; margin: 0.2em 6px 0.6em 0; padding: 0.65em 0.95em 0.8em; box-shadow: 5px 5px 0 var(--gold); }
+.reader-column > .up-next { flex: none; margin: 0.2em 6px 0.6em 0; padding: 0.65em 0.95em 0.8em; box-shadow: 5px 5px 0 var(--mustard); }
 .reader-column > .up-next .up-next-title { font-size: 1.38rem; }
 .reader-column > .up-next .up-next-dek { font-size: 1.1rem; margin-bottom: 0.5em; }
 .level > .up-next-slot { flex: none; padding: 0; }
@@ -401,7 +402,7 @@ html.has-story-bar { --bar-h: 62px; }
 /* "Scroll through" sits in the top bar, clear of every board */
 .side-toggle {
   top: 9px; right: max(12px, env(safe-area-inset-right, 0px)); transform: none; writing-mode: horizontal-tb;
-  border: 1.5px solid var(--gold); border-radius: 4px; padding: 0.24em 0.8em; font-size: 0.95rem;
+  border: 1.5px solid var(--mustard); border-radius: 4px; padding: 0.24em 0.8em; font-size: 0.95rem;
 }
 html.side-open .side-toggle { right: max(12px, env(safe-area-inset-right, 0px)); visibility: hidden; }
 @media (max-width: 900px) { .story-bar { padding-right: 144px; } }

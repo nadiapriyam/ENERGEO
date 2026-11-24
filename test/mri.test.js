@@ -324,11 +324,11 @@ test('8. the frame: ↑ and ↓ magnets mirrored, never rotated; no curve or com
   assert.match(css, /--bg: #ffffff;/, 'a light page: white (Nadia\'s "Contemporary European" palette, 2026-11-24)');
   assert.ok(!/prefers-color-scheme: dark|linear-gradient|\bred\b|crimson/i.test(css), 'no dark theme, no gradients, no red');
   for (const hex of css.match(/#[0-9a-f]{6}\b/gi) ?? []) {
-    if (hex.toLowerCase() === '#e75a42') continue;   // the palette's coral (Nadia, 2026-11-24): an accent, never a wrong answer's colour
+    if (hex.toLowerCase() === '#e76f51') continue;   // the palette's coral (Nadia, 2026-11-24): an accent, never a wrong answer's colour
     const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
     assert.ok(!(r - g > 80 && r - b > 80), `no error red: ${hex}`);
   }
-  assert.ok(!/\.(missed|wrong|feedback)[^{]*\{[^}]*(coral|#e75a42)/i.test(css), 'coral never marks a wrong answer');
+  assert.ok(!/\.(missed|wrong|feedback)[^{]*\{[^}]*(coral|#e76f51)/i.test(css), 'coral never marks a wrong answer');
   assert.match(css, /prefers-reduced-motion: reduce/);
   assert.match(read('vite.config.js'), /try\/index\.html/);
 });

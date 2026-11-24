@@ -1,8 +1,9 @@
-/* Level 2, "Inside the scanner". Its palette ("Contemporary European": deep blue, blue, purple, gold, coral, on a white
-   page) and the prompt, buttons and choices it shares with every level are in base.css. Every magnet (a proton, an
-   arrow, an arrow in the TOTAL) has the same two halves: S in pale blue, N in blue. The scanner is drawn in cool greys,
-   the water in pale blue, so the magnets stay the strongest thing on the board. The 0 the balanced magnets live in is
-   the gold: a bold numeral 0, its hollow their home. The MRI SIGNAL is a small deep-blue monitor beside the TOTAL. No curves for the
+/* Level 2, "Inside the scanner". Its palette ("Fresh intellectual": pine, turquoise, sky blue, mustard, coral, on a
+   white page) and the prompt, buttons and choices it shares with every level are in base.css. Every magnet (a proton,
+   an arrow, an arrow in the TOTAL) has the same two halves: S in pale sky blue, N in turquoise. The scanner is drawn in
+   cool grey-greens, the water in pale sky blue, so the magnets stay the strongest thing on the board. The 0 the
+   balanced magnets live in is the mustard: a bold numeral 0, its hollow their home. The MRI SIGNAL is a small pine
+   monitor beside the TOTAL. No curves for the
    pieces to travel on, no error colours. */
 
 .board { display: block; width: 100%; height: auto; overflow: hidden; border-radius: 6px; box-shadow: 0 0 0 1px var(--rule); touch-action: manipulation; --s: 1; }
@@ -14,12 +15,12 @@
 
 /* scene 1: the scanner */
 .board .floor { stroke: var(--steel-edge); stroke-width: 2; }
-.pedestal { fill: #e3e9f2; }
-.table { fill: #c9d3e3; }
-.gown { fill: #8fa9d6; }
+.pedestal { fill: #e5eeec; }
+.table { fill: #c8d8d5; }
+.gown { fill: #8fcbe0; }
 .patient .skin { fill: #e8c3a2; }
 .wall { fill: var(--steel); stroke: var(--steel-edge); stroke-width: 2; transition: fill-opacity 700ms ease-out; }
-.bore-face { fill: #e3e9f2; stroke: var(--steel-edge); stroke-width: 2; }
+.bore-face { fill: #e5eeec; stroke: var(--steel-edge); stroke-width: 2; }
 .bore-hole { fill: var(--steel-dark); }
 .tunnel { fill: var(--card); opacity: 0; transition: opacity 700ms ease-out; }
 .coils rect { fill: none; stroke: var(--ochre); stroke-width: 3; opacity: 0; transition: opacity 700ms ease-out; }
@@ -42,9 +43,9 @@
 .poles.swap { opacity: 0; }
 
 /* scene 2: water */
-.bond { stroke: #9db4dc; stroke-width: 7; stroke-linecap: round; }
-.oxygen { fill: #b3c6e6; }
-.hydrogen { fill: #eaf0f9; stroke: #9db4dc; stroke-width: 2; }
+.bond { stroke: #93cde3; stroke-width: 7; stroke-linecap: round; }
+.oxygen { fill: #aedbea; }
+.hydrogen { fill: #e8f5fa; stroke: #93cde3; stroke-width: 2; }
 .atom-letter { font-family: var(--font); font-size: 19px; font-weight: 700; fill: var(--ink); transition: opacity 400ms ease-out; }
 .atom-letter.o { font-size: 22px; }
 .ball { opacity: 0; transition: opacity 500ms ease-out; }
@@ -85,14 +86,14 @@
 .vessel-grow { transition: transform 1100ms cubic-bezier(0.5, 0, 0.2, 1); }
 .vessel-grow.still { transition: none; }
 .vessel-hollow { fill: var(--water); }
-.vessel-ring { fill: var(--gold); stroke: var(--ink); stroke-width: 2.5; stroke-linejoin: round; transition: fill 700ms ease-out; }
+.vessel-ring { fill: var(--mustard); stroke: var(--ink); stroke-width: 2.5; stroke-linejoin: round; transition: fill 700ms ease-out; }
 .vessel-tag { font-family: var(--font); font-size: 12px; font-weight: 700; letter-spacing: 0.22em; fill: var(--ink); opacity: 0; transition: opacity 500ms ease-out; }
 .vessel-tag.in { opacity: 1; }
 .vessel.on .vessel-grow { animation: settle 900ms ease-out 1000ms; }
 @keyframes settle { 40% { transform: scale(1.025, 0.975); } 70% { transform: scale(0.99, 1.01); } }
 /* the magnet tips the balance: the 0 leans, like an italic 0, and pales */
 .vessel.tipped .vessel-grow { transform: skewX(-6deg) scale(0.97); animation: none; }
-.vessel.tipped .vessel-ring { fill: var(--gold-soft); stroke-dasharray: 9 6; }
+.vessel.tipped .vessel-ring { fill: var(--mustard-soft); stroke-dasharray: 9 6; }
 /* a covered 0: its inside frosted over, a ? on it; the frost opens like an iris when you look inside */
 .frost { pointer-events: none; }
 .frost-iris { opacity: 0; transform: scale(0.15); transition: opacity 450ms ease-out, transform 650ms cubic-bezier(0.5, 0, 0.2, 1); }
@@ -102,15 +103,15 @@
 
 /* the MRI SIGNAL: a small black monitor beside the TOTAL; its wave and bars shrink as the magnets balance */
 .meter-box { fill: var(--ink); stroke: var(--ink); stroke-width: 2; }
-.meter-label { font-family: var(--font); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; fill: var(--gold); }
-.meter-axis { stroke: #2f6198; stroke-width: 1.5; }
-.meter-wave { fill: none; stroke: var(--gold); stroke-width: 2.6; stroke-linejoin: round; stroke-linecap: round; transition: stroke 500ms; }
-.meter.flat .meter-wave { stroke: #7f9cc4; }
+.meter-label { font-family: var(--font); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; fill: var(--mustard); }
+.meter-axis { stroke: #2a5a52; stroke-width: 1.5; }
+.meter-wave { fill: none; stroke: var(--mustard); stroke-width: 2.6; stroke-linejoin: round; stroke-linecap: round; transition: stroke 500ms; }
+.meter.flat .meter-wave { stroke: #85a39d; }
 .meter.faint .meter-wave { stroke-width: 2; opacity: 0.8; }   /* the nudged signal: faint */
-.meter-bar { fill: #2f6198; transition: fill 300ms ease-out; }
-.meter-bar.lit { fill: var(--gold); }
+.meter-bar { fill: #2a5a52; transition: fill 300ms ease-out; }
+.meter-bar.lit { fill: var(--mustard); }
 .meter.flat .meter-box { animation: flatline 1.6s ease-in-out infinite; }
-@keyframes flatline { 50% { stroke: #7f9cc4; } }
+@keyframes flatline { 50% { stroke: #85a39d; } }
 
 .board .ghost { transition: transform 520ms cubic-bezier(0.3, 0.7, 0.3, 1), opacity 400ms ease-out; pointer-events: none; }
 .board .hint-ghost { opacity: 0.45; transition-duration: 900ms, 400ms; }
@@ -154,7 +155,7 @@
 .eye-scene.flowing .eye-feed { animation: into-eye 0.7s linear infinite; }
 @keyframes into-eye { to { stroke-dashoffset: -12; } }
 .eye-white { fill: #ffffff; stroke: var(--ink-2); stroke-width: 2.4; }
-.iris { fill: var(--blue); }
+.iris { fill: var(--turquoise); }
 .eyeball .pupil { fill: var(--ink); }
 .glint { fill: #ffffff; }
 .seen-arrow { fill: none; stroke: var(--ink-3); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
@@ -165,7 +166,7 @@
 .cmp-label { font-family: var(--font); font-size: 15px; font-weight: 700; letter-spacing: 0.18em; fill: var(--ink); }
 .cmp-plus { font-family: var(--font); font-size: 22px; font-weight: 700; fill: var(--ink-2); }
 .cmp-wave { fill: none; stroke-width: 2.6; stroke-linejoin: round; }
-.cmp-0 { stroke: #4b72b2; } .cmp-1 { stroke: #e75a42; } .cmp-2 { stroke: #8c52a0; } .cmp-3 { stroke: #e5a000; }
+.cmp-0 { stroke: #38a9d6; } .cmp-1 { stroke: #e76f51; } .cmp-2 { stroke: #008f87; } .cmp-3 { stroke: #c99a2e; }
 .cmp-sum { stroke: var(--ink); stroke-width: 3.2; }
 .cmp-bracket { fill: none; stroke: var(--ink-3); stroke-width: 1.5; }
 .cmp-zero { font-family: var(--font); font-size: 18px; font-weight: 700; fill: var(--ink-2); }
