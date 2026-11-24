@@ -1,7 +1,7 @@
 // Every learner-facing line of Level 1, "Inside a note", verbatim from docs/levels_spec.md (checked by
 // test/note.test.js). Drafted at Nadia's request for her review. `you` is the player's own line, beside their face (the
-// character the levels share: characters.js). `ears` is a "Did you know?" box and `final` is the level's big idea
-// (magazine.js): the first step of the thought the three levels build, that there is more hiding than we can sense.
+// character the levels share: characters.js). `final` is the level's big idea (magazine.js): the first step of the
+// thought the three levels build, that there is more hiding than we can sense.
 // Nothing else on the page is learner-facing text, apart from accessibility labels.
 
 export const COPY = {
@@ -26,6 +26,5 @@ export const COPY = {
   together: 'Play them together',
   heard: 'A note',
   oneA: 'Your ear takes in all four and hears just one A note. Inside, it is many notes at once.',
-  ears: 'Your ears only hear sounds that shake about 20 to 20,000 times a second. Bats hear far higher, and elephants rumble too low for us to hear.',
   final: 'One thing on the outside. Many hidden parts inside.',
 };

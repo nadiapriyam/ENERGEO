@@ -59,7 +59,7 @@ export const COPY = {
   revealTitle: 'the Fourier transform',
   reveal: 'The mathematical tool that lets us start seeing what hides inside: the Fourier transform.',
   name: 'All three come down to the same geometric math.',
-  fourier: 'Joseph Fourier came up with it about 200 years ago, while working out how heat spreads.',
+  fourier: 'Joseph Fourier came up with it about 200 years ago.',
   bigIdea: 'Going from a whole to the hidden parts inside it is possible.',
   mapKnown: ['sound', 'light', 'MRI'],
   mapUnknown: '?',

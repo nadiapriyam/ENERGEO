@@ -151,10 +151,6 @@
        "cls": []
       },
       {
-       "kind": "fact",
-       "text": "Your ears only hear sounds that shake about 20 to 20,000 times a second. Bats hear far higher, and elephants rumble too low for us to hear."
-      },
-      {
        "kind": "line",
        "text": "One thing on the outside. Many hidden parts inside.",
        "cls": [
@@ -772,8 +768,9 @@
        "cls": []
       },
       {
-       "kind": "fact",
-       "text": "Joseph Fourier came up with it about 200 years ago, while working out how heat spreads."
+       "kind": "line",
+       "text": "Joseph Fourier came up with it about 200 years ago.",
+       "cls": []
       }
      ]
     },

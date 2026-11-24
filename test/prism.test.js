@@ -1,4 +1,4 @@
-// Level 3, "A prism for sound", at try/ (docs/levels_spec.md, Level 3 Revision 12). Guards:
+// Level 3, "A prism for sound", at try/ (docs/levels_spec.md, Level 3 Revision 13). Guards:
 // - the hall: the stage light misses at first, is caught when aimed anywhere at the chandelier, goes into the prism's
 //   near face, and the colours leave in a real prism's order (red bent least, violet most);
 // - the tuner's little signal is the big signal, laid exactly on its screen;
@@ -42,8 +42,8 @@ const rev8 = level3.slice(level3.indexOf('### Revision 8'), level3.indexOf('### 
 const rev9 = level3.slice(level3.indexOf('### Revision 9'), level3.indexOf('### Revision 10'));
 const rev10 = level3.slice(level3.indexOf('### Revision 10'), level3.indexOf('### Revision 11'));
 const rev11 = level3.slice(level3.indexOf('### Revision 11'), level3.indexOf('### Revision 12'));
-const rev12 = level3.slice(level3.indexOf('### Revision 12'));
-const copyList = rev12.slice(rev12.indexOf('#### Level 3 learner copy (Revision 12)'), rev12.indexOf('#### The review strip'));
+const rev13 = level3.slice(level3.indexOf('### Revision 13'));
+const copyList = rev13.slice(rev13.indexOf('#### Level 3 learner copy (Revision 13)'), rev13.indexOf('#### The review strip'));
 const main = read('src/levels/prism.js');
 const css = read('src/levels/prism.css');
 const inside = (r, x, y, e = 1e-6) => x >= r.x - e && x <= r.x + r.w + e && y >= r.y - e && y <= r.y + r.h + e;
@@ -314,7 +314,7 @@ test("6. the break and the faces: you and the radiologist stand apart on the flo
   assert.ok(FIGURE.torso.y < FACE.view.h && FIGURE.coat.every((c) => c.y + c.h > FIGURE.torso.y + FIGURE.torso.h), 'the body under the face; the coat longer than the shirt');
 });
 
-test('7. the copy is verbatim from the Revision 12 list and in order: the ending builds to ENERGEO; the answer to "Can you see them?" depends on yours; line 21, a part of the brain, the pattern slide by slide in Nadia\'s words, the grand reveal before "the same geometric math", the applications last', () => {
+test('7. the copy is verbatim from the Revision 13 list and in order: the ending builds to ENERGEO; the answer to "Can you see them?" depends on yours; line 21, a part of the brain, the pattern slide by slide in Nadia\'s words, the grand reveal before "the same geometric math", the applications last', () => {
   const R = (s) => `Radiologist: ${s}`;
   const ordered = [COPY.opening, COPY.dim, COPY.aim, COPY.aimHint, COPY.where.question, ...COPY.where.choices, COPY.where.after,
     `You (thinking): ${COPY.you.think}`, COPY.surprise, `[${COPY.play}]`, `${COPY.tunerLetter} (the letter`, COPY.drawsSignal, COPY.see.question,
@@ -323,13 +323,13 @@ test('7. the copy is verbatim from the Revision 12 list and in order: the ending
     `28. ${COPY.mri[0].text.trim()}`, `[${COPY.collect}]`, `30. ${COPY.mri[1].text.trim()}`, `[${COPY.convert}]`, `32. ${COPY.mri[2].text.trim()}`,
     `33. ${COPY.mri[3].text.trim()}`, R(COPY.radiologist.pattern.question), ...COPY.radiologist.pattern.choices, R(COPY.radiologist.pattern.after),
     `36. ${COPY.pattern[0]}`, `[${LEVELS.forward}]`, `38. ${COPY.pattern[1]}`, `[${LEVELS.forward}]`, `40. ${COPY.pattern[2]}`, `[${LEVELS.forward}]`,
-    `42. ${COPY.revealTitle}`, `43. ${COPY.reveal}`, `44. ${COPY.name}`, `45. Did you know? ${COPY.fourier}`, `46. [${LEVELS.forward}]`,
+    `42. ${COPY.revealTitle}`, `43. ${COPY.reveal}`, `44. ${COPY.name}`, `45. ${COPY.fourier}`, `46. [${LEVELS.forward}]`,
     `47. The big idea: ${COPY.bigIdea}`, `48. ${COPY.mapKnown.join(', ')}`, `49. ${COPY.few}`, `50. ${COPY.mapUnknown} (on every node`, `51. ${COPY.surface}`,
     `52. [${LEVELS.forward}]`, `53. ${COPY.energeo.name}, ${COPY.energeo.field}`, ...COPY.energeo.lines.map((l, k) => `${54 + k}. ${l}`), `57. ${COPY.final}`];
   let at = 0;
   for (const l of ordered) {
     const i = copyList.indexOf(l, at);
-    assert.ok(i >= 0, `not in the Revision 12 list, in order: ${l}`);
+    assert.ok(i >= 0, `not in the Revision 13 list, in order: ${l}`);
     at = i + 1;
   }
   assert.ok(copyList.includes(`57. ${COPY.final}\n\nNothing comes after line 57.`) && !/^58\. /m.test(copyList), 'the final line is last');
@@ -345,6 +345,7 @@ test('7. the copy is verbatim from the Revision 12 list and in order: the ending
   assert.equal(LEVELS.next3, 'Next: Final level');
   assert.equal(COPY.backDone, 'Every bump in the signal comes from a different pure tone.', "line 21, in Nadia's words");
   assert.equal(COPY.final, 'You just took your first steps into it.', 'the last line');
+  assert.equal(COPY.fourier, 'Joseph Fourier came up with it about 200 years ago.', 'a plain line again, no "Did you know?" box (Nadia, 2026-11-24)');
   assert.ok(COPY.few.endsWith('from a simple tuner to looking inside your brain.') && /possibilities are endless/.test(COPY.surface) && /just the surface\.$/.test(COPY.surface), "Nadia's words: a few figured out, endless possibilities, just the surface");
   assert.ok(/sets out to/.test(COPY.energeo.lines[1]) && !/has (built|found|mapped)|proves?|discovered (new|every)/i.test(COPY.energeo.lines.join(' ')), 'ENERGEO: what it sets out to do, not results it has');
   assert.ok(!/here it is/i.test(JSON.stringify(COPY)), '"Here it is" is gone');

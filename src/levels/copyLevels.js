@@ -1,6 +1,7 @@
 // The text around the levels (docs/levels_spec.md): each level's cover (its name, headline and question), the "Up next"
-// card and button from one level to the next, the magazine's boxes ("Did you know?", "The big idea"), the reader under each level (Back, Next, the bar, Level up!), the side panel with the whole story as a
-// comic, and the review strip's labels (try/?steps: every step of Level 3, left to right).
+// card and button from one level to the next, the magazine's box ("The big idea"), the reader under each level (Back,
+// Next, the bar), the side panel with the whole story as a comic, and the review strip's labels (try/?steps: every
+// step of Level 3, left to right).
 
 export const LEVELS = {
   level1: 'Level 1',
@@ -13,7 +14,6 @@ export const LEVELS = {
   dek2: 'If one note can hide many, what could a 0 hide?',
   dek3: 'Is there any way to perceive these hidden things?',
   upNext: 'Up next',
-  didYouKnow: 'Did you know?',
   bigIdea: 'The big idea',
   soundOn: 'Turn your sound on.',
   next: 'Next: Level 2',
@@ -22,7 +22,6 @@ export const LEVELS = {
   forward: 'Next',
   progress: 'Progress',
   earlier: 'Earlier',
-  levelUp: 'Level up!',
   scrollThrough: 'Scroll through',
   wholeStory: 'The whole story',
   close: 'Close',

@@ -141,16 +141,15 @@ test('6. inside the sound: four rows inside the stage, each note in its own row;
 test('7. the copy is verbatim from the Level 1 list and in order; the take-home is last; the page shows it in that order', () => {
   const ordered = [...COPY.opening, `You: ${COPY.you}`, COPY.bow, COPY.tuned, COPY.lens1, COPY.lens2, `${COPY.stringLabel} (the label`, COPY.shaking, COPY.shape,
     COPY.oneNote.question, ...COPY.oneNote.choices, COPY.oneNote.after, COPY.xray, COPY.hidden, COPY.notes.join(', '), COPY.tapNotes, COPY.together,
-    `${COPY.heard} (the label`, COPY.oneA, COPY.ears, COPY.final];
-  assert.ok(copyList.includes(`21. Did you know? ${COPY.ears}`), 'line 21: a "Did you know?" box');
+    `${COPY.heard} (the label`, COPY.oneA, COPY.final];
   let at = 0;
   for (const line of ordered) {
     const i = copyList.indexOf(line, at);
     assert.ok(i >= 0, `not in the Level 1 list, in order: ${line}`);
     at = i;
   }
-  assert.ok(copyList.includes(`22. The big idea: ${COPY.final}`) && copyList.includes('Nothing comes after line 22 in Level 1.') && !/^23\. /m.test(copyList), 'the big idea is last');
-  assert.match(main, /put\(fact\(COPY\.ears\)\);[\s\S]{0,200}put\(bigIdea\(COPY\.final\)\);/, 'a "Did you know?" box, then the level\'s big idea');
+  assert.ok(copyList.includes(`21. The big idea: ${COPY.final}`) && copyList.includes('Nothing comes after line 21 in Level 1.') && !/^22\. /m.test(copyList), 'the big idea is last');
+  assert.ok(!('ears' in COPY) && !/fact\(/.test(main), 'no "Did you know?" box (Nadia, 2026-11-24)');
   assert.match(main, /speak\(COPY\.you, 'you'\)/, 'the player, introduced: your face beside your first line');
   assert.match(main, /from '\.\/characters\.js'/, 'drawn like every character');
   assert.ok([COPY.opening[2], COPY.bow, COPY.tuned, COPY.oneNote.question, COPY.oneA].every((l) => l.includes('A note')), 'the A is called an A note');
@@ -159,7 +158,7 @@ test('7. the copy is verbatim from the Level 1 list and in order; the take-home 
   for (const line of ordered) assert.ok(line.split(/(?<=[.?!])\s+(?=[A-Z])/).length <= 2, `at most two sentences: ${line}`);
   assert.ok(!/fourier|frequenc|harmonic|spectrum|DIFFERENCE/i.test(JSON.stringify(COPY)), 'nothing named yet, and no tuning game');
   const calls = ['COPY.opening[0]', 'COPY.opening[1]', 'COPY.opening[2]', 'COPY.you', 'COPY.bow', 'COPY.tuned', 'COPY.lens1', 'COPY.lens2', 'COPY.shaking', 'COPY.shape', 'COPY.oneNote.question',
-    'COPY.oneNote.after', 'COPY.xray', 'COPY.hidden', 'COPY.notes[k]', 'COPY.tapNotes', 'COPY.together', 'COPY.oneA', 'COPY.ears', 'COPY.final'];
+    'COPY.oneNote.after', 'COPY.xray', 'COPY.hidden', 'COPY.notes[k]', 'COPY.tapNotes', 'COPY.together', 'COPY.oneA', 'COPY.final'];
   const pos = calls.map((c) => main.indexOf(c, main.indexOf('// ── the story')));
   assert.ok(pos.every((i) => i >= 0), JSON.stringify(calls.filter((c, k) => pos[k] < 0)));
   assert.deepEqual([...pos].sort((a, b) => a - b), pos, 'the story shows the copy in order');

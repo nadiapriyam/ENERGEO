@@ -21,7 +21,7 @@ import { STEPS as STORY_STEPS } from './stepsPrism.js';
 import { person as standing, speaker } from './characters.js';
 import { keepPart } from './record.js';
 import { reader } from './reader.js';
-import { fact, bigIdea } from './magazine.js';
+import { bigIdea } from './magazine.js';
 import { A_NOTE, STEPS, PITCH, part } from '../math/tones.js';
 import {
   BOARD, css, triangle, HALL, crystalCorners, aimAngle, toCrystal, startAngle, lightPath,
@@ -809,7 +809,7 @@ async function theReveal() {                                // the grand reveal:
   await step('reveal');
   say(COPY.name);
   await story.beat();
-  put(fact(COPY.fourier));                                   // did you know? about 200 years ago, from how heat spreads
+  say(COPY.fourier);
   await story.next();
   theSurface();
 }

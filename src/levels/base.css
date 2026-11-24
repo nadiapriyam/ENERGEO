@@ -160,7 +160,7 @@ html.side-open .side-toggle { right: min(360px, 86vw); }
 
 /* The reader (reader.js). Under each level: ‹ Back, and Next › only when the story waits for it (one way forward at a
    time: where you act, there is no Next). At the top of the page: one bar for the whole story, a section per level,
-   each ending in its marker; Next sends stars up into it (+1); a finished level's marker turns gold: Level up! */
+   each ending in its marker; Next sends stars up into it; a finished level's section is full, its marker filled. */
 .lesson { position: relative; }
 .reader {
   position: sticky; bottom: 0; z-index: 6; display: flex; align-items: center; justify-content: space-between; gap: 12px;
@@ -204,21 +204,8 @@ html.has-story-bar body { padding-top: 62px; }
 }
 .story-name { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .story-section.now .story-name { color: var(--accent); font-weight: 650; }
-.story-section.done .story-fill { background: #ffc531; }
-.story-section.done .story-mark { background: #ffc531; border-color: #ffc531; color: #3b2a00; box-shadow: 0 0 10px rgba(255, 197, 49, 0.75); animation: mark-pop 650ms cubic-bezier(0.2, 1.5, 0.4, 1); }
-.story-section.done .story-name { color: #9a7400; }
-@keyframes mark-pop { from { transform: scale(0.4); } to { transform: scale(1); } }
-.story-levelup {
-  position: absolute; right: -4px; top: calc(100% + 20px); white-space: nowrap; pointer-events: none;
-  font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #3b2a00;
-  background: #ffc531; border-radius: 999px; padding: 0.2em 0.75em; box-shadow: 0 2px 10px rgba(255, 197, 49, 0.6);
-  animation: levelup-pop 700ms cubic-bezier(0.2, 1.5, 0.4, 1) both;
-}
-@keyframes levelup-pop { from { transform: translateY(-8px) scale(0.3); opacity: 0; } to { transform: none; opacity: 1; } }
-.story-spark, .story-plus, .story-confetti { position: fixed; left: 0; top: 0; z-index: 40; pointer-events: none; }
-.story-spark { margin: -9px 0 0 -7px; font-size: 15px; line-height: 1; color: #ffc531; text-shadow: 0 0 6px rgba(255, 197, 49, 0.85); }
-.story-plus { font-size: 0.85rem; font-weight: 800; color: var(--accent); }
-.story-confetti { width: 7px; height: 4px; border-radius: 1px; }
+.story-section.done .story-mark { background: var(--accent); border-color: var(--accent); color: #ffffff; }
+.story-spark { position: fixed; left: 0; top: 0; z-index: 40; pointer-events: none; margin: -9px 0 0 -7px; font-size: 15px; line-height: 1; color: #ffc531; text-shadow: 0 0 6px rgba(255, 197, 49, 0.85); }
 .framed .story-bar { display: none; }
 /* Back: a part read earlier, shown over the level (Next pages forward again, to now) */
 .reader-earlier { position: absolute; inset: 0; z-index: 5; overflow: auto; background: #ffffff; padding: 4vh 0 0; }
@@ -233,7 +220,7 @@ html.has-story-bar body { padding-top: 62px; }
   .story-name { font-size: 0.62rem; letter-spacing: 0.06em; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .reader-next.ready, .story-section.gain .story-track, .story-section.done .story-mark, .story-levelup { animation: none; }
+  .reader-next.ready, .story-section.gain .story-track { animation: none; }
   .story-fill { transition: none; }
 }
 
@@ -241,12 +228,7 @@ html.has-story-bar body { padding-top: 62px; }
    "Up next" card between levels. Plain white, one accent, and the gold of Level up! */
 .level-title { display: block; margin: 0.18em 0 0.05em; font-size: 2.1rem; font-weight: 850; line-height: 1.12; letter-spacing: -0.01em; text-transform: none; color: var(--ink); }
 .level-dek { display: block; margin: 0 0 0.2em; font-size: 1.18rem; font-style: italic; letter-spacing: 0; text-transform: none; color: var(--ink-2); }
-.fact {
-  display: block; margin: 0.5em 0 0.9em; padding: 0.7em 0.95em 0.8em; font-size: 1.02rem; line-height: 1.45;
-  background: #fff8e1; border-left: 5px solid #ffc531; border-radius: 4px 14px 14px 4px;
-}
-.fact-tag, .idea-tag { display: block; margin: 0 0 0.25em; font-size: 0.74rem; font-weight: 850; letter-spacing: 0.13em; text-transform: uppercase; }
-.fact-tag { color: #8a6400; }
+.idea-tag { display: block; margin: 0 0 0.25em; font-size: 0.74rem; font-weight: 850; letter-spacing: 0.13em; text-transform: uppercase; }
 .big-idea { margin: 0.6em 0 1em; padding: 0.05em 0 0.1em 0.85em; border-left: 6px solid var(--accent); font-size: 1.6rem; font-weight: 850; line-height: 1.25; }
 .idea-tag { color: var(--accent); }
 .idea-text { display: block; }
@@ -261,7 +243,6 @@ html.has-story-bar body { padding-top: 62px; }
 .up-next-title { display: block; margin: 0.18em 0 0.08em; font-size: 1.75rem; font-weight: 850; line-height: 1.15; }
 .up-next-dek { display: block; margin: 0 0 0.85em; font-size: 1.15rem; font-style: italic; color: var(--ink-2); }
 .up-next .next-level { margin: 0; }
-.comic-part .fact { font-size: 0.86rem; padding: 0.5em 0.7em 0.55em; }
 .comic-part .big-idea { font-size: 1.1rem; }
 @media (max-width: 520px) {
   .level-title { font-size: 1.7rem; }
@@ -269,3 +250,78 @@ html.has-story-bar body { padding-top: 62px; }
   .up-next-title { font-size: 1.45rem; }
 }
 @media (prefers-reduced-motion: reduce) { .up-next { transition: none; transform: none; } }
+
+/* One screen per level (Nadia: "i dont want to scroll to see anything in a level in each section, i dont mind
+   scrolling to the next level though"). Each level fills the screen under the bar, and everything in it stays in
+   view. Wide screens: the board on the left, as large as fits, the words and Back/Next on the right. Narrow or tall
+   screens: the board on top, the words under it. A part's words that outgrow their space keep the newest line in view
+   (reader.js). Scrolling is only from one level to the next. */
+:root { --bar-h: 0px; }
+html.has-story-bar { --bar-h: 62px; }
+.level {
+  display: flex; flex-direction: column; height: calc(100vh - var(--bar-h)); height: calc(100svh - var(--bar-h));
+  min-height: 0; margin-top: 0; border-top: 0; scroll-margin-top: var(--bar-h);
+}
+.level + .level { border-top: 1px solid #e6e9ef; }
+.level > .level-tag { flex: none; width: 100%; padding-top: 1.6vh; margin-bottom: 0; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 12px; }
+.level-kicker { flex: none; }
+.level-tag .level-note { display: inline; margin: 0; }
+.level-tag .level-title, .level-tag .level-dek { flex: 0 0 100%; }
+.level-tag .level-title { font-size: 1.85rem; margin: 0.08em 0 0; }
+.level-tag .level-dek { font-size: 1.08rem; }
+:is(#note-lesson, #mri-lesson, #prism-lesson) {
+  flex: 1 1 0; min-height: 0; width: 100%; padding: 1.2vh 0 0;
+  display: flex; flex-direction: column; container-type: size;
+}
+#note-lesson { --aspect: 1.6; --reserve: 104px; }
+#mri-lesson { --aspect: 1.4545; --reserve: 12px; }
+#prism-lesson { --aspect: 1.5238; --reserve: 58px; }
+:is(#note-lesson, #mri-lesson, #prism-lesson) > .figure {
+  flex: none; align-self: center; margin: 0 0 0.5em;
+  width: min(100%, calc((100cqh - var(--reserve) - clamp(170px, 34cqh, 300px)) * var(--aspect)));
+}
+:is(#note-lesson, #mri-lesson, #prism-lesson) > :is(.notes, .transport, .controls) { flex: none; }
+:is(#note-lesson, #mri-lesson, #prism-lesson) > .reader-column { flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; }
+.reader-column > .prompt { flex: 1 1 0; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.reader-column > .reader { flex: none; margin-top: 0.3em; padding: 8px 0 calc(8px + env(safe-area-inset-bottom, 0px)); }
+.reader-column > .up-next { flex: none; margin: 0.2em 0 0.6em; padding: 0.65em 0.95em 0.8em; box-shadow: 5px 5px 0 #ffc531; }
+.reader-column > .up-next .up-next-title { font-size: 1.25rem; }
+.reader-column > .up-next .up-next-dek { font-size: 1rem; margin-bottom: 0.5em; }
+.level > .up-next-slot { flex: none; padding: 0; }
+.level > .up-next-slot:not(:has(.up-next:not([hidden]))) { display: none; }
+.up-next { margin: 0.5em auto 0.9em; padding: 0.8em 1.1em 0.95em; }
+.up-next-title { font-size: 1.45rem; }
+.up-next-dek { margin-bottom: 0.6em; }
+@media (min-width: 1000px) and (min-aspect-ratio: 1/1) {
+  .level > :is(.level-tag, .up-next-slot), :is(#note-lesson, #mri-lesson, #prism-lesson) { max-width: 1160px; }
+  :is(#note-lesson, #mri-lesson, #prism-lesson) {
+    display: grid; column-gap: 32px; grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+    grid-template-rows: auto auto auto minmax(0, 1fr);
+  }
+  #note-lesson { --reserve: 112px; }
+  #mri-lesson { --reserve: 14px; }
+  #prism-lesson { --reserve: 86px; }
+  :is(#note-lesson, #mri-lesson, #prism-lesson) > .figure { grid-column: 1; grid-row: 1; justify-self: center; width: min(100%, calc((100cqh - var(--reserve)) * var(--aspect))); }
+  :is(#note-lesson, #mri-lesson, #prism-lesson) > :is(.notes, .controls) { grid-column: 1; grid-row: 2; }
+  :is(#note-lesson, #mri-lesson, #prism-lesson) > .transport { grid-column: 1; grid-row: 3; }
+  :is(#note-lesson, #mri-lesson, #prism-lesson) > .reader-column { grid-column: 2; grid-row: 1 / -1; }
+  .reader-column > .prompt { padding-top: 0.2em; }
+}
+@media (max-height: 720px) {                                    /* a short screen: the end-of-level card stands in for the bar */
+  .reader-column:has(> .up-next:not([hidden])) > .reader { display: none; }
+  .reader-column > .up-next .up-next-dek { display: none; }
+  .reader-column > .up-next .up-next-title { font-size: 1.1rem; margin-bottom: 0.35em; }
+}
+@media (max-height: 760px) {
+  .level-tag .level-title { font-size: 1.45rem; }
+  .level-tag .level-dek { font-size: 0.98rem; }
+  .up-next-title { font-size: 1.2rem; }
+}
+/* "Scroll through" sits in the top bar, clear of every board */
+.side-toggle {
+  top: 9px; right: max(12px, env(safe-area-inset-right, 0px)); transform: none; writing-mode: horizontal-tb;
+  border: 1.5px solid #d5dae2; border-radius: 999px; padding: 0.28em 0.85em; font-size: 0.85rem;
+}
+html.side-open .side-toggle { right: max(12px, env(safe-area-inset-right, 0px)); visibility: hidden; }
+@media (max-width: 900px) { .story-bar { padding-right: 132px; } }
+@media (max-width: 520px) { .side-toggle { font-size: 0.76rem; padding: 0.25em 0.6em; } .story-bar { padding-right: 112px; } }

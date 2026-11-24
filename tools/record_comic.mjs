@@ -46,7 +46,7 @@ async function collect(page, level, lesson, prefix) {
     const last = document.createElement('div');
     last.dataset.alt = root.querySelector(':scope > .figure svg[aria-label]')?.getAttribute('aria-label') ?? '';
     last.append(...live.map((n) => n.cloneNode(true)), Object.assign(document.createElement('div'), { className: 'recorded-words' }));
-    last.lastChild.append(...[...root.querySelector(':scope > .prompt').children].map((n) => n.cloneNode(true)));
+    last.lastChild.append(...[...root.querySelector('.reader-column > .prompt').children].map((n) => n.cloneNode(true)));
     window.__comic = [...recorded, last];
     return window.__comic.length;
   }, [level, lesson]);
@@ -64,7 +64,6 @@ async function collect(page, level, lesson, prefix) {
       const words = [...part.querySelector('.recorded-words').children].flatMap((n) => {
         if (n.classList.contains('speaker')) return [{ kind: 'speaker', who: n.dataset.who, bubbles: [...n.querySelectorAll('.bubble')].map((b) => ({ text: b.textContent.trim(), thought: b.classList.contains('thought') })) }];
         if (n.tagName === 'BUTTON' || n.classList.contains('choices') || n.classList.contains('hint')) return [];
-        if (n.classList.contains('fact')) return [{ kind: 'fact', text: n.querySelector('.fact-text').textContent.trim() }];
         if (n.classList.contains('big-idea')) return [{ kind: 'line', text: n.querySelector('.idea-text').textContent.trim(), cls: ['big-idea'] }];
         const text = n.textContent.replace(/\s+/g, ' ').trim();
         return text ? [{ kind: 'line', text, cls: [...n.classList].filter((c) => ['lead', 'final', 'feedback', 'caption', 'mri-sentence'].includes(c)) }] : [];
@@ -109,7 +108,7 @@ await drag(L1, [await lens(), await ring()]);
 await until1('lens2'); await p.waitForTimeout(900);
 await drag(L1, [await lens(), await ring()]);
 await until1('question', 30000); await p.waitForTimeout(400);
-await p.click('#note-lesson > .prompt .choice:text-is("No")');
+await p.click('#note-lesson .reader-column > .prompt .choice:text-is("No")');
 await until1('xray'); await p.waitForTimeout(400);
 { const l = await lens(); await drag(L1, [l, { x: l.x + 120, y: l.y + 40 }, { x: l.x + 260, y: l.y }]); }
 await until1('notes'); await p.waitForTimeout(1400);
@@ -119,8 +118,8 @@ await until1('final', 30000); await p.waitForTimeout(2500);
 await p.click('#next-level');
 await p.waitForSelector('#mri-lesson .reader');
 const until2 = (ph, ms = 30000) => p.waitForFunction((x) => [].concat(x).includes(window.__mri?.phase), ph, { timeout: ms });
-const live = (t) => p.waitForFunction((t) => [...document.querySelectorAll('#mri-lesson > .prompt button')].some((b) => b.textContent === t && !b.disabled), t, { timeout: 60000 });
-const press = async (t) => { await live(t); await p.waitForTimeout(300); await p.click(`#mri-lesson > .prompt button:text-is("${t}"):not([disabled])`); };
+const live = (t) => p.waitForFunction((t) => [...document.querySelectorAll('#mri-lesson .reader-column > .prompt button')].some((b) => b.textContent === t && !b.disabled), t, { timeout: 60000 });
+const press = async (t) => { await live(t); await p.waitForTimeout(300); await p.click(`#mri-lesson .reader-column > .prompt button:text-is("${t}"):not([disabled])`); };
 await p.waitForTimeout(1200);
 await press('Slide your patient in'); await press('Zoom in'); await press('Closer');
 await until2('play', 30000); await p.waitForTimeout(400);

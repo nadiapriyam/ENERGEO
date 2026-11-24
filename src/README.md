@@ -98,17 +98,20 @@ a few ways; what we have found is just the surface. Then ENERGEO: the start of a
 sets out to map transformations like the Fourier transform and build tools to see what was always there.
 
 - **The magazine** (`page.js`, `magazine.js`): each level opens with a cover (name, headline, question); an "Up next"
-  card carries the thought into the next level; "Did you know?" boxes and "The big idea" pull quotes stand out from
-  the story. The final level ends on a map of transformations (`MAP`, `mapKnown`, `mapUnknown` in `src/math/prism.js`)
+  card carries the thought into the next level; "The big idea" pull quotes stand out from the story. The final level ends on a map of transformations (`MAP`, `mapKnown`, `mapUnknown` in `src/math/prism.js`)
   and the name ENERGEO.
 
+- **One screen per level** (`base.css`): each level fills the screen under the bar and nothing in it is below the
+  screen. Wide screens: the board on the left, as large as fits, the words with Back and Next on the right; narrow or
+  tall screens: the board on top, the words under it. Words that outgrow their space keep the newest line in view. The
+  page scrolls only from one level to the next.
 - Each level plays on one board, its lines clearing between parts. **You set the pace** (`src/levels/reader.js`),
   one way forward at a time: where you act (a button, a choice, a drag), that is the way on; lines of one part follow
   a beat apart and stay; only where the story would turn the page itself does Next appear, under the level. One bar for
-  the whole story sits at the top: a section per level, each ending in its marker; each Next sends stars up into it
-  (+1), and a finished level's marker turns gold: Level up! Back (or ←) pages through the parts already read (kept by
+  the whole story sits at the top: a section per level, each ending in its marker; each Next sends stars up into it,
+  and a finished level's section is full, its marker filled. Back (or ←) pages through the parts already read (kept by
   `record.js`); Next pages forward to now.
-- **Scroll through, on the side.** A tab at the right edge opens "The whole story": every part of all three levels as
+- **Scroll through, on the side.** A button in the top bar opens "The whole story": every part of all three levels as
   a comic, a picture of the board above its lines, without playing anything. The comic is recorded from the levels:
   `npm run comic` (`tools/record_comic.mjs`) plays each level on `try/?record`, where `src/levels/record.js` keeps each
   part, and writes `src/levels/comic/`. `test/comic.test.js` checks the comic's words are still the levels' own.

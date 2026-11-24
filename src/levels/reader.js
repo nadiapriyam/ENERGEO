@@ -4,7 +4,7 @@
 //   Lines of the same part follow each other by themselves, a beat apart, and stay. Only where the story would turn the
 //   page on its own does it wait: then Next appears under the level, glowing.
 // - One bar for the whole story, at the top of the page: Level 1, Level 2, the final level, each ending in a marker.
-//   Each Next sends stars up into it (+1) and fills a notch; when a level is done, its marker turns gold: Level up!
+//   Each Next sends stars up into it and fills a notch; when a level is done, its section is full and its marker filled.
 // - Back pages back through the parts already read (a still picture of the board, with its words, kept by record.js);
 //   Next pages forward again, to now. Keys: → or Enter for Next, ← for Back.
 import { LEVELS } from './copyLevels.js';
@@ -22,7 +22,7 @@ window.__reader = readers;
 addEventListener('keydown', (e) => {                       // only when nothing else has the key (a board being aimed, a button)
   if (!current || e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey || document.documentElement.classList.contains('side-open')) return;
   const a = document.activeElement;
-  if (a && a !== document.body && !current.el.contains(a)) return;
+  if (a && a !== document.body && !current.el.querySelector('.reader').contains(a)) return;
   if (e.key === 'ArrowRight' || (e.key === 'Enter' && (!a || a === document.body))) { if (current.forward()) e.preventDefault(); }
   else if (e.key === 'ArrowLeft') { if (current.backward()) e.preventDefault(); }
 });
@@ -64,26 +64,11 @@ function storyBar() {
   };
   const gain = (id) => { const x = find(id); x.s.classList.remove('gain'); void x.s.offsetWidth; x.s.classList.add('gain'); };
   const end = (id) => find(id)?.fill.getBoundingClientRect();
-  const done = (id) => {                                     // the level's marker turns gold: Level up!
+  const done = (id) => {                                     // the level is done: its section full, its marker filled
     const x = find(id);
     if (!x) return;
     set(id, 1);
     x.s.classList.add('done');
-    const badge = make('span', 'story-levelup', { textContent: LEVELS.levelUp });
-    x.row.append(badge);
-    setTimeout(() => badge.remove(), 2800);
-    if (REDUCED) return;
-    const m = x.mark.getBoundingClientRect();
-    for (let k = 0; k < 18; k++) {
-      const c = make('span', 'story-confetti');
-      c.style.background = `hsl(${(k * 47) % 360}, 90%, 60%)`;
-      c.style.left = `${m.left + m.width / 2}px`;
-      c.style.top = `${m.top + m.height / 2}px`;
-      document.body.append(c);
-      const a = (Math.PI * 2 * k) / 18;
-      c.animate([{ transform: 'translate(0, 0) rotate(0deg)', opacity: 1 }, { transform: `translate(${Math.cos(a) * (50 + (k % 4) * 16)}px, ${Math.abs(Math.sin(a)) * 60 + 10}px) rotate(${k * 70}deg)`, opacity: 0 }],
-        { duration: 1100 + (k % 5) * 80, easing: 'cubic-bezier(0.2, 0.7, 0.3, 1)' }).onfinish = () => c.remove();
-    }
   };
   top = { el, set, gain, end, done };
   return top;
@@ -91,8 +76,9 @@ function storyBar() {
 
 /**
  * The reader for the level whose lesson is `root`. `fast()` says the level is fast-forwarding (Level 3's review
- * frames): then nothing waits. Returns { el, next, beat }: `el` goes under the level (Back, and Next when it is
- * needed); `await next()` waits for Next; `await beat()` is the short pause between lines of the same part.
+ * frames): then nothing waits. Returns { el, next, beat }: `el` is the level's column of words, with Back (and Next,
+ * when it is needed) under them, made around the level's prompt; `await next()` waits for Next; `await beat()` is the
+ * short pause between lines of the same part.
  */
 export function reader(root, { fast = () => false } = {}) {
   const level = root.closest('.level')?.id ?? '';
@@ -100,9 +86,15 @@ export function reader(root, { fast = () => false } = {}) {
   const bar = document.documentElement.classList.contains('framed') ? null : storyBar();
   const back = make('button', 'reader-back', { type: 'button', textContent: `‹ ${LEVELS.goBack}` });
   const go = make('button', 'reader-next', { type: 'button', textContent: `${LEVELS.forward} ›` });
-  const el = make('div', 'reader');
-  el.setAttribute('role', 'group');
-  el.append(back, go);
+  const row = make('div', 'reader');
+  row.setAttribute('role', 'group');
+  row.append(back, go);
+  const words = root.querySelector(':scope > .prompt');
+  const el = make('div', 'reader-column');                   // the level's words, with Back and Next under them
+  words?.before(el);
+  el.append(...(words ? [words] : []), row);
+  if (words) new MutationObserver(() => requestAnimationFrame(() => words.scrollTo({ top: words.scrollHeight, behavior: REDUCED ? 'auto' : 'smooth' })))
+    .observe(words, { childList: true, subtree: true });       // one screen per level: the newest line always in view
   const layer = make('div', 'reader-earlier');               // a part read earlier, shown over the level
   layer.hidden = true;
   root.prepend(layer);
@@ -118,7 +110,7 @@ export function reader(root, { fast = () => false } = {}) {
     go.classList.toggle('ready', page < 0 && !!waiting);
     go.classList.toggle('paging', page >= 0);
     go.disabled = !(page >= 0 || waiting);
-    el.classList.toggle('looking-back', page >= 0);
+    row.classList.toggle('looking-back', page >= 0);
   };
   const show = (i) => {                                      // page through the parts read earlier; -1 is now
     page = i;
@@ -126,13 +118,13 @@ export function reader(root, { fast = () => false } = {}) {
     const view = parts()[i].cloneNode(true);
     view.className = 'reader-part';
     layer.replaceChildren(make('p', 'reader-earlier-tag', { textContent: `${LEVELS.earlier} · ${i + 1} / ${parts().length}` }), view);
-    layer.style.bottom = `${el.offsetHeight + 8}px`;            // above the bar, which stays in reach
+    layer.style.bottom = `${row.offsetHeight + 8}px`;           // above the bar, which stays in reach
     layer.hidden = false;
     layer.scrollTop = 0;
     root.classList.add('reading-back');
     refresh();
   };
-  const burst = () => {                                      // stars from Next up into the bar at the top, and +1
+  const burst = () => {                                      // stars from Next up into the bar at the top
     if (REDUCED || !bar) return;
     const b = go.getBoundingClientRect();
     const t = bar.end(level);
@@ -149,12 +141,6 @@ export function reader(root, { fast = () => false } = {}) {
         { transform: `translate(${to.x}px, ${to.y}px) scale(0.5)`, opacity: 0.3 },
       ], { duration: 760 + k * 35, easing: 'cubic-bezier(0.3, 0.7, 0.4, 1)' }).onfinish = () => s.remove();
     }
-    const plus = make('span', 'story-plus', { textContent: '+1' });
-    plus.style.left = `${to.x}px`;
-    plus.style.top = `${to.y + 10}px`;
-    document.body.append(plus);
-    plus.animate([{ transform: 'translate(-50%, 0)', opacity: 0 }, { transform: 'translate(-50%, 6px)', opacity: 1, offset: 0.3 }, { transform: 'translate(-50%, 14px)', opacity: 0 }],
-      { duration: 1000, delay: 600, easing: 'ease-out', fill: 'both' }).onfinish = () => plus.remove();
     go.animate([{ transform: 'scale(1)' }, { transform: 'scale(0.9)' }, { transform: 'scale(1.08)' }, { transform: 'scale(1)' }], { duration: 320 });
     setTimeout(() => bar.gain(level), 700);
   };
@@ -179,7 +165,7 @@ export function reader(root, { fast = () => false } = {}) {
   document.addEventListener('part-kept', refresh);
   go.addEventListener('click', forward);
   back.addEventListener('click', backward);
-  root.addEventListener('level-finished', () => { done = true; bar?.done(level); refresh(); });
+  root.addEventListener('level-finished', () => { done = true; bar?.done(level); refresh(); });   // the section fills
 
   const self = {
     el, forward, backward,

@@ -13,11 +13,9 @@ const COVERS = {
   'level-2': [LEVELS.level2, LEVELS.title2, LEVELS.dek2],
   'level-3': [LEVELS.level3, LEVELS.title3, LEVELS.dek3, LEVELS.soundOn],
 };
-for (const [id, [name, title, dek, note]] of Object.entries(COVERS)) {
+for (const [id, [name, title, dek, note]] of Object.entries(COVERS)) {   // the name (and the sound note) on one line
   const t = document.getElementById(`${id}-tag`);
-  t.textContent = name;
-  t.append(span('level-title', title), span('level-dek', dek));
-  if (note) t.append(span('level-note', note));
+  t.replaceChildren(span('level-kicker', name), ...(note ? [span('level-note', note)] : []), span('level-title', title), span('level-dek', dek));
 }
 const query = new URLSearchParams(location.search);
 
@@ -34,6 +32,7 @@ function chain(from, buttonId, text, section, load) {
   next.before(card);
   card.append(span('up-next-kicker', `${LEVELS.upNext} · ${name}`), span('up-next-title', title), span('up-next-dek', dek), next);
   document.getElementById(from).addEventListener('level-finished', () => {
+    document.getElementById(from).querySelector('.reader-column')?.append(card);   // under the level's words, on its screen
     card.hidden = false;
     next.hidden = false;
     requestAnimationFrame(() => { card.classList.add('in'); next.classList.add('in'); });
@@ -85,7 +84,7 @@ if (!query.has('step') && !query.has('steps')) {
   let filled = false;
   const fill = async () => {                                   // the comic is drawn the first time the panel opens
     filled = true;
-    const [{ COMIC, pictures }, { face }, { fact, bigIdea }] = await Promise.all([import('./comic.js'), import('./characters.js'), import('./magazine.js')]);
+    const [{ COMIC, pictures }, { face }, { bigIdea }] = await Promise.all([import('./comic.js'), import('./characters.js'), import('./magazine.js')]);
     const names = { 'level-1': LEVELS.level1, 'level-2': LEVELS.level2, 'level-3': LEVELS.level3 };
     for (const level of COMIC.levels) {
       const group = make('section', { className: 'side-level' }, make('h3', { className: 'side-level-name', textContent: names[level.id] }));
@@ -94,9 +93,8 @@ if (!query.has('step') && !query.has('steps')) {
         const words = make('div', { className: 'comic-words' }, ...part.words.map((w) => (w.kind === 'speaker'
           ? make('div', { className: `speaker ${w.who} in` }, make('div', { className: 'who' }, face(w.who)),
             make('div', { className: 'bubbles' }, ...w.bubbles.map((b) => make('p', { className: `bubble in${b.thought ? ' thought' : ''}`, textContent: b.text }))))
-          : w.kind === 'fact' ? box(fact(w.text))
-            : w.cls.includes('big-idea') ? box(bigIdea(w.text))
-              : make('p', { className: ['line', 'in', ...w.cls].join(' '), textContent: w.text }))));
+          : w.cls.includes('big-idea') ? box(bigIdea(w.text))
+            : make('p', { className: ['line', 'in', ...w.cls].join(' '), textContent: w.text }))));
         group.append(make('figure', { className: 'comic-part' },
           make('img', { src: pictures[part.img], width: part.w, height: part.h, alt: part.alt, loading: 'lazy', decoding: 'async' }), words));
       }

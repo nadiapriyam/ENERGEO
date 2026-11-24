@@ -53,10 +53,9 @@ or `try/#level-3`.
 18. [Play them together]
 19. A note (the label on what comes out of the ear)
 20. Your ear takes in all four and hears just one A note. Inside, it is many notes at once.
-21. Did you know? Your ears only hear sounds that shake about 20 to 20,000 times a second. Bats hear far higher, and elephants rumble too low for us to hear. (a "Did you know?" box; since 2026-11-23)
-22. The big idea: One thing on the outside. Many hidden parts inside. (pulled out as the level's big idea; since 2026-11-23)
+21. The big idea: One thing on the outside. Many hidden parts inside. (pulled out as the level's big idea; since 2026-11-23. The "Did you know?" box that stood before it, on what our ears can hear, was taken out on 2026-11-24)
 
-Nothing comes after line 22 in Level 1.
+Nothing comes after line 21 in Level 1.
 
 ## Level 2, "Inside the scanner": learner copy, in order (drafted by Claude at Nadia's request, for her review)
 
@@ -124,10 +123,10 @@ Around the levels: "Level 1", "Level 2", "Final level" (Level 3), "Turn your sou
 "Next: Level 2" and "Next: Final level". Each level's cover (since 2026-11-23): Level 1, "Inside a note", "Can one sound
 hide more than you hear?"; Level 2, "Inside the scanner", "If one note can hide many, what could a 0 hide?"; the final
 level, "A prism for sound", "Is there any way to perceive these hidden things?". The card between levels: "Up next"
-(with the next level's name, headline and question, and its button). The boxes: "Did you know?" and "The big idea". The reader under each level (see "All three levels: reading at your own pace,
-and a simpler Level 2" below): "Back", "Next", the bar ("Progress", for screen readers), "+1", "Earlier" (with the
-part's number) and "Level up!". The side panel (see "All three levels: the whole story as a comic, on the side"
-below): the tab "Scroll through", the panel's title "The whole story", and "Close".
+(with the next level's name, headline and question, and its button). The box: "The big idea". The reader under each
+level's words (see "All three levels: reading at your own pace, and a simpler Level 2" below): "Back", "Next", the bar
+at the top ("Progress", for screen readers) and "Earlier" (with the part's number). The side panel (see "All three levels: the whole story as a comic, on the side"
+below): the tab "Scroll through" (in the top bar), the panel's title "The whole story", and "Close".
 
 ## What the new lines claim, and what they do not
 
@@ -421,6 +420,36 @@ parts we can't see is possible, that we know a few ways, and that ENERGEO sets o
   They do not say that energy geometry has already found new transformations or built new tools.
 - Files: `src/levels/magazine.js` (the boxes), `src/levels/page.js` (covers, "Up next"), the levels' copy files,
   `src/math/prism.js` (`MAP`, `mapKnown`, `mapUnknown`, `revealToHub`), `src/levels/base.css`, `src/levels/prism.css`.
+
+## All three levels: one screen per level, and no "Did you know?", +1 or Level up! (2026-11-24). Nadia, verbatim (three messages):
+
+> take the did you know part out, also take the +1 and level up parts out
+
+> i dont want to scroll to see anything in a level in each section,i dont mind scrolling to the next level though
+
+> i can't see the mri brain, skull signal anymore, bring those signals back that came from the interactive clicking the brain scan
+
+### What changes
+
+- **Taken out.**
+  - Both "Did you know?" boxes. Level 1's, on what our ears can hear, is gone. The final level's goes back to the
+    plain line it was before: "Joseph Fourier came up with it about 200 years ago."
+  - The "+1" that popped up on each Next, and the "Level up!" badge with its confetti. Next still sends stars up into
+    the bar at the top, and a finished level's section of the bar is full, its marker filled.
+  - Level 2's "+1" and "−1" beside the TOTAL stay: they are the picture of how the arrows add up, not a reward.
+- **One screen per level.** Each level fills the screen under the bar, and nothing in it is below the screen.
+  - On a wide screen (a laptop): the board on the left, as large as fits; the level's words, with Back and Next under
+    them, in a column on the right.
+  - On a narrow or tall screen (a phone, a tablet held upright): the board on top, the words under it.
+  - If a part's words outgrow their space, the newest line stays in view by itself (Back shows earlier parts).
+  - The "Up next" card appears under the level's words, on the same screen; the page scrolls only from one level to the
+    next.
+  - "Scroll through" moved into the top bar, so it no longer covers the right edge of a board.
+- **The brain and skull signals.** They were still drawn when you tap, in the box beside the head, but on a
+  laptop-sized screen the final level was taller than the screen: reading "Tap a part of the brain" meant scrolling
+  down, and the box with the signal went out of view above. With one screen per level, the head, the signal and the
+  words are all in view as you tap.
+- **No new claims.**
 
 ## Level 3, "A prism for sound" (2026-11-19; first called "The magic glasses")
 
@@ -1550,7 +1579,7 @@ Revision 10 and keep its notes. New:
 - **The repeats.** The A note's signal repeats exactly: on the board it shows two and a half repeats, and the copy of
   the first is the same curve, moved by one repeat (`repeats()`). The real A repeats 440 times a second.
 
-### Revision 12 (2026-11-23), which governs Level 3
+### Revision 12 (2026-11-23), superseded by Revision 13 below
 
 Nadia's message, verbatim, is in "All three levels: the magazine, and the thought it builds", above.
 
@@ -1651,3 +1680,81 @@ the thought it builds" (above). Also:
 
 - **Line 45.** Fourier set out his series in his work on how heat flows (presented in 1807, published in 1822).
 - **Line 49.** The tuner, a prism's spectrum and the MRI scanner are the three uses the level has just shown.
+
+### Revision 13 (2026-11-24), which governs Level 3
+
+Nadia's messages, verbatim, are in "All three levels: one screen per level, and no "Did you know?", +1 or Level up!",
+above. Only line 45 changes: the "Did you know?" box goes, and the line is the plain one it was before Revision 12.
+Everything else, and every note, is as in Revision 12.
+
+#### Level 3 learner copy (Revision 13), in order (drafted by Claude at Nadia's request, for her review)
+
+1. After your scan, you head back to the concert hall, still wondering.
+2. The lights dim. You notice a stage light shining.
+3. Drag to aim it at the chandelier.
+4. Drag across the picture to swing the light. (only after 8 seconds)
+5. Where did the colors come from? [The glass] [The white light]
+6. From the white light. The glass on the chandelier is a prism: it takes light apart into its colors.
+7. You (thinking): If a prism is a tool that can take apart light, is there a tool that can take apart a sound?
+8. Surprise: it's your tuner.
+9. [Play your A note]
+10. A (the letter on the tuner)
+11. The tuner draws your note's signal, its shape over time, and names it: A.
+12. Four notes hide in this signal. Can you see them? [Yes] [Not really] (then the signal holds still: faint bands mark each repeat of its shape, and a glowing copy of the first repeat slides onto the second and fits it exactly)
+13. After Yes: Careful: the bumps aren't the notes. Each bump is all four notes, added together. After Not really: Neither can anyone, just by looking. Each bump is all four notes, added together.
+14. [Take it apart]
+15. Your A note, taken apart into four pure tones.
+16. A, high A, E, higher A (the labels under the bars)
+17. Drag the bars. Can you make a single pure tone, like a tuning fork?
+18. Drag all the bars but one down to 0. (only after 9 seconds)
+19. One bar, one smooth wave: a tuning fork.
+20. Now bring the others back.
+21. Every bump in the signal comes from a different pure tone.
+22. At the break, the radiologist who read your scan comes over. (the radiologist walks over to you on the board as this appears)
+23. You: My tuner just took my A note apart!
+24. Radiologist: The MRI scanner works the same way.
+25. Tap a part of the brain. (the outer or the inner brain; its signal comes out of the spot you tap, runs to the data box and is drawn there, under its name)
+26. skin, skull, fluid, outer brain, inner brain (the labels beside the head)
+27. Now tap the skull.
+28. Each tiny magnet behaves differently depending on which body part it's in.
+29. [Collect the data]
+30. Collecting that data
+31. [Convert it to pixels]
+32. and converting it into pixel data
+33. helps us see an MRI picture, with the Fourier transform. (lines 28, 30, 32 and 33 are one paragraph, shown one part at a time, the earlier parts turning grey; the people and their bubbles are gone while it is shown)
+34. Radiologist: Do you notice a pattern? [Yes] [Not yet]
+35. Radiologist: Let me help you out.
+36. Violin note → pure tones (the caption under its pictures, the A note's wave → its four bars, on a slide of its own)
+37. [Next]
+38. Stage light → its full color spectrum (on a slide of its own: a white beam into a prism → a fan of colours)
+39. [Next]
+40. MRI image → proton frequencies (on a slide of its own: the MRI picture of your patient's head, its middle row marked → that row's proton frequencies, one thin bar each)
+41. [Next] (then all three together, each caption under its pictures)
+42. the Fourier transform (the grand reveal: big and glowing in the middle of the board)
+43. The mathematical tool that lets us start seeing what hides inside: the Fourier transform.
+44. All three come down to the same geometric math.
+45. Joseph Fourier came up with it about 200 years ago.
+46. [Next]
+47. The big idea: Going from a whole to the hidden parts inside it is possible. (the rows fade, and the glowing title shrinks into the hub of a map, labelled the Fourier transform)
+48. sound, light, MRI (the three things it already takes apart, lit around the hub)
+49. Surprise: we've already figured out a few, from a simple tuner to looking inside your brain.
+50. ? (on every node of the map not yet found, smaller and fainter the further out, spreading past the board's edges)
+51. But the possibilities are endless. What we've discovered is just the surface.
+52. [Next]
+53. ENERGEO, energy geometry (the name and the field, at the top of the map)
+54. Meet ENERGEO: the start of a new science, energy geometry.
+55. It sets out to map transformations like the Fourier transform.
+56. And to build tools that help us see what we couldn't before, but that was always there.
+57. You just took your first steps into it.
+
+Nothing comes after line 57.
+
+#### The review strip's labels (for review, not learner copy)
+
+- Level 3, step by step (the strip's title)
+- Scroll left and right, or use the arrows. Each frame is the level itself, stopped at that step.
+- Play from here
+- Back to the levels
+
+The 27 step titles are in `src/levels/stepsPrism.js`.
+

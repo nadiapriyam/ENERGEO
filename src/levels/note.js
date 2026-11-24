@@ -14,7 +14,7 @@ import {
 import { PITCH, A_NOTE, STEPS, HIDDEN, part, STAGE, lane, trace, EAR, HEARD, SQUEEZE, funnel, heardPath } from '../math/tones.js';
 import { keepPart } from './record.js';
 import { reader } from './reader.js';
-import { fact, bigIdea } from './magazine.js';
+import { bigIdea } from './magazine.js';
 
 const NS = 'http://www.w3.org/2000/svg';
 const REDUCED = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -542,8 +542,6 @@ async function together() {                                 // all four at once,
   phase = 'oneA';
   say(COPY.oneA);
   await story.beat();
-  put(fact(COPY.ears));                                      // did you know? our ears hear only part of what is there
-  await story.beat(1600);
   phase = 'final';
   put(bigIdea(COPY.final));                                  // the big idea: the first step of the thought
   root.dispatchEvent(new CustomEvent('level-finished', { bubbles: true }));   // the page offers Level 2

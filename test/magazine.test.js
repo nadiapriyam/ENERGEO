@@ -10,7 +10,6 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { LEVELS } from '../src/levels/copyLevels.js';
-import { COPY as NOTE } from '../src/levels/copyNote.js';
 import { COPY as MRI } from '../src/levels/copyMri.js';
 import { COPY as PRISM } from '../src/levels/copyPrism.js';
 import { BOARD, MAP, REVEAL, mapKnown, mapUnknown, revealToHub } from '../src/math/prism.js';
@@ -26,19 +25,18 @@ test('1. covers, "Up next" cards and the thought the three levels build, in orde
   assert.deepEqual([LEVELS.title1, LEVELS.title2, LEVELS.title3], ['Inside a note', 'Inside the scanner', 'A prism for sound']);
   for (const d of [LEVELS.dek1, LEVELS.dek2, LEVELS.dek3]) assert.ok(d.endsWith('?'), `each cover asks its question: ${d}`);
   assert.equal(LEVELS.dek3, 'Is there any way to perceive these hidden things?', "Nadia's question opens the final level");
-  assert.deepEqual([LEVELS.upNext, LEVELS.didYouKnow, LEVELS.bigIdea], ['Up next', 'Did you know?', 'The big idea']);
+  assert.deepEqual([LEVELS.upNext, LEVELS.bigIdea], ['Up next', 'The big idea']);
+  assert.ok(!('didYouKnow' in LEVELS), 'no "Did you know?" boxes (Nadia, 2026-11-24)');
   const page = read('src/levels/page.js');
   assert.match(page, /'level-1': \[LEVELS\.level1, LEVELS\.title1, LEVELS\.dek1, LEVELS\.soundOn\]/);
   assert.match(page, /span\('up-next-kicker', `\$\{LEVELS\.upNext\} · \$\{name\}`\), span\('up-next-title', title\), span\('up-next-dek', dek\), next\)/, 'the card: Up next, the next level, its headline and question, its button');
   assert.match(page, /next\.addEventListener\('click', async \(\) => \{\s*card\.remove\(\);/, 'the card gives way to the level');
   const mag = read('src/levels/magazine.js');
-  assert.match(mag, /make\('aside', 'line fact'\)/);
-  assert.match(mag, /make\('span', 'fact-tag', LEVELS\.didYouKnow\)/);
+  assert.ok(!/fact/.test(mag), 'only The big idea');
   assert.match(mag, /make\('p', 'line big-idea'\)/);
   assert.match(mag, /make\('span', 'idea-tag', LEVELS\.bigIdea\)/);
   // the thought, level by level
-  order(read('src/levels/note.js'), ['say(COPY.oneA)', 'put(fact(COPY.ears))', 'put(bigIdea(COPY.final))'], 'Level 1: one note, many inside; what our ears miss; the big idea');
-  assert.match(NOTE.ears, /20 to 20,000/);
+  order(read('src/levels/note.js'), ['say(COPY.oneA)', 'put(bigIdea(COPY.final))'], 'Level 1: one note, many inside; the big idea');
   order(read('src/levels/mri.js'), ['say(COPY.magnet[3])', 'say(COPY.picture)', 'say(COPY.eye.line)', 'put(bigIdea(COPY.bigIdea))', 'say(COPY.whole)', 'say(COPY.unknown)', 'say(COPY.compare)', "say(COPY.final, 'final')"],
     'Level 2: the faint reply, the picture, the big idea, a whole person, still so much unknown, then the violin and what our ears miss');
   assert.ok(/faint reply/.test(MRI.magnet[3]) && /faint reply/.test(MRI.picture) && /faint reply/.test(MRI.eye.line), 'the faint reply leads up to the big idea');
@@ -46,7 +44,7 @@ test('1. covers, "Up next" cards and the thought the three levels build, in orde
   assert.ok(!/destroy|lost|loses|knows/i.test(MRI.bigIdea + MRI.unknown + MRI.whole), 'B-ZERO-LOSS stays a hypothesis: nothing about leaving the 0 destroying information');
   assert.match(MRI.unknown, /still so many things we don't know about, hiding behind the 0/);
   assert.match(MRI.final, /frequencies our ears can't hear/);
-  order(read('src/levels/prism.js'), ['say(COPY.reveal', 'say(COPY.name)', 'put(fact(COPY.fourier))', 'put(bigIdea(COPY.bigIdea))', "mapLayer.classList.add('known')", 'say(COPY.few)', "mapLayer.classList.add('endless')", 'say(COPY.surface', "mapLayer.classList.add('named')", 'say(COPY.energeo.lines[0]', 'say(COPY.final'],
+  order(read('src/levels/prism.js'), ['say(COPY.reveal', 'say(COPY.name)', 'say(COPY.fourier)', 'put(bigIdea(COPY.bigIdea))', "mapLayer.classList.add('known')", 'say(COPY.few)', "mapLayer.classList.add('endless')", 'say(COPY.surface', "mapLayer.classList.add('named')", 'say(COPY.energeo.lines[0]', 'say(COPY.final'],
     'the final level: the tool, the big idea, a few found, just the surface, then ENERGEO');
   assert.equal(PRISM.bigIdea, 'Going from a whole to the hidden parts inside it is possible.');
   assert.match(PRISM.opening, /still wondering\.$/, 'the final level picks up the question');
@@ -54,14 +52,14 @@ test('1. covers, "Up next" cards and the thought the three levels build, in orde
   assert.match(PRISM.energeo.lines[2], /see what we couldn't before, but that was always there/);
   // kept for Back and the comic, drawn the same in the comic
   const rec = read('tools/record_comic.mjs');
-  assert.match(rec, /kind: 'fact'/);
   assert.match(rec, /cls: \['big-idea'\]/);
-  assert.match(page, /w\.kind === 'fact' \? box\(fact\(w\.text\)\)/);
+  assert.match(page, /w\.cls\.includes\('big-idea'\) \? box\(bigIdea\(w\.text\)\)/);
   const spec = read('docs/levels_spec.md');
   assert.ok(spec.includes('> i think we should add, the bold statement around from the reply, we get an image portion in level 2.') && spec.includes('Energeo maps all the transfomations that can occur such as the fourier transfomation'), "Nadia's message, verbatim");
   assert.ok(spec.includes('### The thought the three levels build') && spec.includes('### What the new lines claim, and what they do not'));
   const css = read('src/levels/base.css');
-  for (const c of ['.fact {', '.big-idea {', '.up-next {', '.level-title {', '.level-dek {']) assert.ok(css.includes(c), `styled: ${c}`);
+  for (const c of ['.big-idea {', '.up-next {', '.level-title {', '.level-dek {']) assert.ok(css.includes(c), `styled: ${c}`);
+  assert.ok(!/\.fact\b/.test(css));
 });
 
 test('2. the finale map: the Fourier transform at the hub, sound, light and MRI lit, and "?" spreading past the edges', () => {
