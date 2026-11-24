@@ -116,22 +116,6 @@ export function reader(root, { fast = () => false } = {}) {
     if (records.some((m) => m.type === 'childList')) requestAnimationFrame(() => words.scrollTo({ top: words.scrollHeight, behavior: REDUCED ? 'auto' : 'smooth' }));
   }) : null;
   watch?.observe(words, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'], attributeOldValue: true });   // and the newest line always in view
-  // "…" at the end of the last line while more lines are on their way by themselves, as a sentence trails off before
-  // the story goes on (Nadia, 2026-11-24: "add ... when there are going to be more sectionals that appear"; then "the
-  // .. looks like loading try something mor eintuitive to the situation"): shown during a beat, gone the moment the next
-  // line comes
-  const more = make('span', 'more-coming', { ariaHidden: 'true', textContent: '…' });
-  let pending = 0;
-  const lastWords = () => {                                  // the last line, bubble or big idea on show
-    const all = words ? [...words.querySelectorAll(':scope > .line:not(.big-idea), :scope > .big-idea .idea-text, :scope > .speaker .bubble:last-child')] : [];
-    return all.at(-1) ?? null;
-  };
-  const coming = (v) => {
-    pending = Math.max(0, pending + (v ? 1 : -1));
-    const at = pending && !RECORDING ? lastWords() : null;
-    if (at) at.append(more);
-    else more.remove();
-  };
   const caughtUp = () => { if (watch) ingest(watch.takeRecords()); return RECORDING ? 0 : Math.max(0, readUntil - performance.now()); };
   const layer = make('div', 'reader-earlier');               // a part read earlier, shown over the level
   layer.hidden = true;
@@ -231,9 +215,7 @@ export function reader(root, { fast = () => false } = {}) {
     beat(ms = BEAT) {
       if (fast()) return Promise.resolve();
       const left = RECORDING ? ms : Math.max(ms, caughtUp());
-      let shown = false;
-      const show = setTimeout(() => { shown = true; coming(true); }, Math.min(400, left / 3));   // "…": more is on its way
-      return new Promise((r) => setTimeout(() => { clearTimeout(show); if (shown) coming(false); r(); }, left));
+      return new Promise((r) => setTimeout(r, left));
     },
   };
   current = self;

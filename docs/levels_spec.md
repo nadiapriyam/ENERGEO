@@ -669,6 +669,19 @@ parts we can't see is possible, that we know a few ways, and that ENERGEO sets o
   The four hidden notes are blue, coral, purple and gold, in Level 1, in Level 2's side by side and as the final
   level's lights. Every detail stays.
 
+## All three levels: no "…", a clearer fade-in, a little quicker (2026-11-24). Nadia, verbatim:
+
+> ... still looks like its loading, just take it out, make the fading in of the appearing sections more apparent and make the speed of the appering a tiny bit fast
+
+### What changes
+
+- **No "…".** The trailing ellipsis (and the dots before it) is gone; nothing shows while the next line is on its way.
+- **A clearer fade-in.** Each line now rises into place from a little lower down, from transparent and slightly soft
+  (blurred) to sharp, over three quarters of a second; speech bubbles rise and grow in the same way. With reduced
+  motion, they simply appear.
+- **A tiny bit quicker**: 250 words a minute (was 230), a short line at least 0.9 seconds. Next still comes after half
+  of the reading time left.
+
 ## All three levels: black text, gray sub-text, #172B3A interactives (2026-11-24). Nadia, verbatim:
 
 > change all the text to black and the sub text to gray and make the interactives #172B3A

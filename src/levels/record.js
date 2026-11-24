@@ -65,7 +65,6 @@ export function keepPart(shown, prompt) {
     document.body.append(list);
   }
   lines.forEach((l) => l.classList.remove('leaving'));
-  for (const m of prompt.querySelectorAll('.more-coming')) m.remove();   // the reader's "…" is never kept
   for (const l of lines) for (const b of l.matches('button') ? [l] : l.querySelectorAll('button')) b.disabled = true;
   const pictures = shown.filter(shownNow);
   const markup = pictures.map((n) => n.outerHTML).join('');

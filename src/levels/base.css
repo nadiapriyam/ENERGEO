@@ -52,8 +52,10 @@
 
 :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
 
-.line { margin: 0 0 0.62em; font-weight: 700; opacity: 0; transform: translateX(-12px); transition: opacity 360ms ease-out, transform 460ms var(--glide); }
-.line.in { opacity: 1; transform: none; }
+/* each line fades in clearly as it appears (Nadia, 2026-11-24: "make the fading in of the appearing sections more
+   apparent"): from transparent, a little low and soft, rising into place */
+.line { margin: 0 0 0.62em; font-weight: 700; opacity: 0; transform: translateY(18px); filter: blur(3px); transition: opacity 750ms ease-out, transform 750ms var(--glide), filter 600ms ease-out; }
+.line.in { opacity: 1; transform: none; filter: none; }
 .line.lead { font-size: 1.7rem; line-height: 1.22; letter-spacing: -0.005em; }
 .line.lead::before {                                         /* a coral rule wipes in over the opening line */
   content: ''; display: block; width: 46px; height: 5px; margin: 0 0 0.4em; background: var(--coral);
@@ -64,8 +66,6 @@
 .line.caption { color: var(--ink-2); font-size: 1.22rem; font-weight: 400; font-style: italic; }
 .line.hint { color: var(--ink-2); font-weight: 400; font-style: italic; }
 .line.final { font-size: 1.56rem; line-height: 1.25; padding-top: 0.45em; border-top: 3px solid var(--ink); }
-.more-coming { margin-left: 0.12em; color: var(--ink-3); font-weight: 700; letter-spacing: 0.04em; animation: more-coming 1.8s ease-in-out infinite; }
-@keyframes more-coming { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } }   /* the sentence trails off: more to come */
 
 .action {
   font: inherit; font-size: 1.18rem; font-weight: 700; letter-spacing: 0.01em;
@@ -122,9 +122,8 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .line, .action, .choices, .figure, .next-level, .line.lead::before { transition: none; }
-  .line, .action, .figure { transform: none; }
+  .line, .action, .figure { transform: none; filter: none; }
   .choice.picked { animation: none; }
-  .more-coming { animation: none; opacity: 0.7; }
 }
 
 .framed .level { margin-top: 0; border-top: 0; min-height: 0; }
@@ -136,7 +135,7 @@ body {
 .who { flex: 0 0 76px; }
 .face { display: block; width: 76px; height: auto; }
 .bubbles { display: flex; flex-direction: column; gap: 8px; min-width: 0; padding-top: 4px; }
-.bubble { position: relative; margin: 0; padding: 0.42em 0.85em; font-weight: 700; background: var(--paper); border-radius: 4px 16px 16px 16px; opacity: 0; transform: translateY(6px) scale(0.97); transform-origin: left top; transition: opacity 320ms ease-out, transform 440ms var(--spring); }
+.bubble { position: relative; margin: 0; padding: 0.42em 0.85em; font-weight: 700; background: var(--paper); border-radius: 4px 16px 16px 16px; opacity: 0; transform: translateY(14px) scale(0.94); transform-origin: left top; transition: opacity 700ms ease-out, transform 700ms var(--spring); }
 .bubble.in { opacity: 1; transform: none; }
 .bubble:first-child::before { content: ''; position: absolute; left: -7px; top: 0; border: 7px solid transparent; border-left: 0; border-top: 0; border-right-color: var(--paper); }
 :is(.face, .person) .skin { fill: #e8b58c; }
