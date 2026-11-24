@@ -722,6 +722,8 @@ async function theBrain() {                                 // the people step a
   dataName.classList.remove('on');
   stripBox.style.stroke = '';
   await wait(900);
+  jump(strip, css(toSignal()));                              // settle the data box in place, freshly drawn, whatever the browser did with the move
+  strip.classList.remove('hidden');
   mArrows[0].classList.add('lit');
   jump(headBand, `translateY(${(rowIn(H, FIRST_ROW).y - H.y).toFixed(2)}px)`);
   on(headBand);

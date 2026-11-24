@@ -25,7 +25,7 @@ import {
   BOARD, fit, triangle, HALL, RAINBOW, BEND, crystalCorners, nearFace, aimAngle, toCrystal, startAngle, edge, lightPath,
   STRIP, STRIP_BOX, repeats, signal, samplesPath, TUNER, onTuner, SPECTRUM, GLYPH, barX, barHeight, barAt, stepsAt, pureTone, allBack,
   NOTE_LED, neon, ROWS, MRI, BODY_PARTS, partOf, strength, partAt, partWave, coarseRows, chordSamples, unmix, rowOrder, FIRST_ROW,
-  rowIn, toSignal, BRAIN, SKULL, EXPLORE, exploreHead, exploreData, labels, partLoudness, partLink, dataInlet, dataTitle, RIPPLES, patternSpectrum, patternRowBand, coatLapels, FIGURE, BREAK, figureBox, FACE, hairPath, shirtPath, lookAt, PLAYER, RADIOLOGIST, bucketHat, beamHeightAt,
+  rowIn, toSignal, BRAIN, SKULL, LOUDEST, EXPLORE, exploreHead, exploreData, labels, partLoudness, partLink, dataInlet, dataTitle, RIPPLES, patternSpectrum, patternRowBand, coatLapels, FIGURE, BREAK, figureBox, FACE, hairPath, shirtPath, lookAt, PLAYER, RADIOLOGIST, bucketHat, beamHeightAt,
   PATTERN, patternBox, PIC_FRAME, picToPattern, patternBars, patternLight, slideShift, captionAt, REVEAL,
 } from '../src/math/prism.js';
 import { A_NOTE, STEPS, part, wave } from '../src/math/tones.js';
@@ -201,6 +201,15 @@ test('4. the scanner: every pixel of your head is exactly one body part, and eac
   });
   assert.equal(COPY.bodyParts[SKULL], 'skull');
   assert.ok(strength(SKULL) < 0.35 * Math.min(...BRAIN.map(strength)), 'brain then skull: the skull\'s signal is less than a third of the brain\'s');
+  // the skull's signal can be seen (Nadia, 2026-11-24: "i cant see the skulls signal when i tap on the skull"): every part
+  // is drawn against the loudest, which fills the data box; the skull's is faint and the quickest to fade, but it lasts
+  // about one wave and is drawn clearly above the line
+  const amp = (STRIP.h / 2 - 8) / LOUDEST;
+  assert.ok(Math.abs(amp * LOUDEST - (STRIP.h / 2 - 8)) < 1e-9, 'the loudest part fills the box');
+  assert.ok(amp * partLoudness(SKULL, 0) >= 12 && amp * partLoudness(SKULL, 1 / 6) >= 4, 'the skull\'s signal is drawn big enough to see, for about one wave');
+  assert.ok(BODY_PARTS[SKULL].fade >= 1 / 6 && BODY_PARTS[SKULL].fade < 0.25, 'still the quickest to fade');
+  assert.match(read('src/levels/prism.css'), /\.part-wave \{[^}]*opacity: 0\.16;[^}]*\}\n\.part-wave\.picked \{ opacity: 1; stroke-width: 3\.2;/, 'the part you tapped last stands out; the earlier ones step back');
+  assert.ok(read('docs/levels_spec.md').includes('> i cant see the skulls signal when i tap on the skull but i can see the inner brain signal when i tap on the inner brain pop up'), "Nadia's message, verbatim");
 });
 
 test('5. converting each row\'s data gives back every row of the picture exactly; rows are converted from the middle out; the data and the picture move into the pattern', () => {

@@ -115,8 +115,8 @@ html.instant *, html.instant *::before, html.instant *::after { transition: none
 .ghost-move { opacity: 0; transition: transform 900ms cubic-bezier(0.45, 0, 0.2, 1), opacity 300ms ease-out; }
 .strip.repeating .ghost-move { opacity: 1; }
 .ghost { fill: none; stroke: #ffffff; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; opacity: 0.85; filter: url(#p3-glow); vector-effect: non-scaling-stroke; }
-.part-wave { fill: none; stroke-width: 2.4; stroke-linejoin: round; vector-effect: non-scaling-stroke; opacity: 0.35; transition: opacity 300ms ease-out; }
-.part-wave.picked { opacity: 1; filter: url(#p3-glow); }
+.part-wave { fill: none; stroke-width: 2.4; stroke-linejoin: round; vector-effect: non-scaling-stroke; opacity: 0.16; transition: opacity 300ms ease-out; }
+.part-wave.picked { opacity: 1; stroke-width: 3.2; filter: url(#p3-glow); }   /* the part you tapped last stands out; the earlier ones step back */
 .part-waves.gone { opacity: 0; transition: opacity 600ms ease-out; }
 /* a tap: the signal comes out of the spot (rings), travels to the data box (the line), and its wave is drawn there */
 .tap-fx .link { fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; filter: url(#p3-glow); animation: link-draw 450ms ease-in both; }

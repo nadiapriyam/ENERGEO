@@ -57,9 +57,11 @@ async function collect(page, level, lesson, prefix) {
       const stage = Object.assign(document.createElement('div'), { id: 'comic-stage' });
       stage.style.cssText = 'position:absolute;left:0;top:0;width:680px;background:#fff;z-index:99999';
       const freeze = document.createElement('style');
-      freeze.textContent = '#comic-stage *{transition:none!important;animation-delay:-60s!important;animation-iteration-count:1!important}#comic-stage>*{margin:0 0 12px!important}';   // whole pixels: no sliver of the page under the stage
+      freeze.textContent = '#comic-stage *{transition:none!important;animation-delay:-60s!important;animation-iteration-count:1!important}#comic-stage>*{margin:0 0 12px!important}';
       stage.append(freeze, ...[...part.children].filter((n) => !n.classList.contains('recorded-words')).map((n) => n.cloneNode(true)));
       document.body.append(stage);
+      stage.style.height = `${Math.floor(stage.getBoundingClientRect().height)}px`;   // whole pixels: no sliver of the page under it
+      stage.style.overflow = 'hidden';
       scrollTo(0, 0);
       const words = [...part.querySelector('.recorded-words').children].flatMap((n) => {
         if (n.classList.contains('speaker')) return [{ kind: 'speaker', who: n.dataset.who, bubbles: [...n.querySelectorAll('.bubble')].map((b) => ({ text: b.textContent.trim(), thought: b.classList.contains('thought') })) }];

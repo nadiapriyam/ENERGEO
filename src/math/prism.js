@@ -196,11 +196,12 @@ export const MRI = {
 /**
  * The body parts of Level 2's head slice, in the order of their names in the copy (skin, skull, fluid, outer brain,
  * inner brain: the grey rim of gray matter and the bright white matter inside it). `values` are the brightnesses scanner.js gives that part; `fade` is how long its signal lasts, as
- * drawn (an illustration: bone hardly sends anything, fluid fades slowest).
+ * drawn (an illustration: bone sends a faint, short signal, fading fastest; fluid fades slowest). Since 2026-11-24 the
+ * skull's signal lasts about one wave, so a faint signal can be seen at all (Nadia: "i cant see the skulls signal").
  */
 export const BODY_PARTS = [
   { values: [0.85], fade: 0.3, color: 'hsl(28, 100%, 60%)' },
-  { values: [0.1, 0.22], fade: 0.06, color: 'hsl(275, 85%, 72%)' },
+  { values: [0.1, 0.22], fade: 0.18, color: 'hsl(275, 85%, 72%)' },
   { values: [0.16, 0.26, 0.3], fade: 1.2, color: 'hsl(200, 100%, 60%)' },
   { values: [0.52], fade: 0.45, color: 'hsl(165, 100%, 48%)' },
   { values: [0.78], fade: 0.35, color: 'hsl(320, 100%, 66%)' },
@@ -223,9 +224,11 @@ export function partAt(p, rows = coarseRows()) {
 }
 /** How strong body part k's signal is at time t (0…1 across the data box): its strength, fading at its own pace. */
 export const partLoudness = (k, t) => strength(k) * Math.exp(-t / BODY_PARTS[k].fade);
+/** The strongest body part's signal fills the data box's height; every other part is drawn in proportion to it. */
+export const LOUDEST = Math.max(...BODY_PARTS.map((_, k) => strength(k)));
 /** One body part's signal, drawn across the data box (in the strip's own units, which move with it), up to `upTo` of the way: the drawing grows from the left as the signal arrives. */
 export function partWave(k, n = 200, upTo = 1) {
-  const amp = STRIP.h / 2 - 8;
+  const amp = (STRIP.h / 2 - 8) / LOUDEST;
   const m = Math.max(1, Math.round(n * Math.min(1, Math.max(0, upTo))));
   let d = '';
   for (let i = 0; i <= m; i++) {

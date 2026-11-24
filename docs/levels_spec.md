@@ -522,6 +522,32 @@ parts we can't see is possible, that we know a few ways, and that ENERGEO sets o
 - The 0 drawn around the magnets is a picture of the TOTAL (what the magnets add up to), with the arrangement that
   gives it inside: "a 0 has a geometry" in Nadia's words. It is not a claim that a 0 is a physical container.
 
+## The final level: the skull's signal, and the data box (2026-11-24). Nadia, verbatim (two messages; the second with a screenshot of the finished MRI picture, its middle empty):
+
+> i cant see the skulls signal when i tap on the skull but i can see the inner brain signal when i tap on the inner brain pop up
+
+> also where is the middle part
+
+### What changes
+
+- **The skull's signal can be seen.** It was drawn, but so small and so short (it faded within a third of a wave)
+  that it looked like nothing.
+  - Every body part's signal is now drawn against the loudest one (the skin's), which fills the data box; the others
+    are in proportion to it, as before.
+  - The skull's signal lasts about one wave before it fades. It is still the faintest of the parts you tap first (less
+    than a third of the brain's) and still the quickest to fade.
+  - The part you tapped last is drawn bolder; the earlier ones step further back, so the brain's big signal no longer
+    hides the skull's small one.
+- **The middle part (the data box between the head and the picture).** On every browser and screen size we can test
+  here it is in place, from "Collect the data" to the finished picture, also with reduced motion and through Back. The
+  data box now settles into place at the end of its move without relying on the animation, which may help a browser
+  that dropped it. Which browser and device showed it empty is still to find out.
+- **Back, on one screen.** Back showed an earlier part with its picture too wide on a laptop, cut off at the bottom,
+  and the live board peeking out under it. Now the earlier part is laid out like the level, its picture sized to fit
+  above Back and Next, and the live board fades out while you look back.
+- **No new claims.** In a real MRI scan, bone gives very little signal, and it fades very fast: the drawing exaggerates
+  how long it lasts so that it can be seen.
+
 ## Level 3, "A prism for sound" (2026-11-19; first called "The magic glasses")
 
 ### Nadia's request, verbatim

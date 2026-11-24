@@ -78,6 +78,9 @@ test('3. one screen per level: everything in a level is in view, the words in th
   assert.match(r, /new MutationObserver\(\(\) => requestAnimationFrame\(\(\) => words\.scrollTo\(\{ top: words\.scrollHeight/, 'the newest line stays in view by itself');
   assert.match(read('src/levels/page.js'), /document\.getElementById\(from\)\.querySelector\('\.reader-column'\)\?\.append\(card\);/, 'the Up next card, on the level\'s own screen');
   assert.match(css, /\.side-toggle \{\s*top: 9px;[^}]*writing-mode: horizontal-tb;/, '"Scroll through" in the top bar, off the boards');
+  // Back, on one screen too: the earlier part's picture sized to fit above Back and Next, the live board faded out under it
+  assert.match(css, /\.reading-back > :is\(\.figure, \.notes, \.transport, \.controls\) \{ opacity: 0; pointer-events: none; \}/);
+  assert.match(css, /\.reader-earlier \.reader-part > \.figure \{ width: min\(100%, calc\(\(100cqh - 120px - clamp\(140px, 30cqh, 260px\)\) \* var\(--aspect\)\)\);/);
   const spec = read('docs/levels_spec.md');
   assert.ok(spec.includes("> i dont want to scroll to see anything in a level in each section,i dont mind scrolling to the next level though") && spec.includes('> take the did you know part out, also take the +1 and level up parts out') && spec.includes("> i can't see the mri brain, skull signal anymore"), "Nadia's messages, verbatim");
 });
