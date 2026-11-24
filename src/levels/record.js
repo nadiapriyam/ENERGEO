@@ -36,6 +36,10 @@ export function still(node) {
   return copy;
 }
 
+/** How many parts of each level have ended so far (every end of a part with lines, kept or not): where a scene starts. */
+export const partsEnded = {};
+if (typeof window !== 'undefined') window.__partsEnded = partsEnded;   // read-only, for the comic's recorder
+
 const shownNow = (n) => n.childElementCount > 0 && n.offsetHeight > 0 && getComputedStyle(n).opacity !== '0';
 const last = new WeakMap();                                  // the live picture → the part it last recorded, and its markup
 
@@ -49,8 +53,12 @@ const last = new WeakMap();                                  // the live picture
 export function keepPart(shown, prompt) {
   const lines = [...prompt.children];
   if (!lines.length) return;
-  if (!keeping()) { prompt.replaceChildren(); return; }
   const live = shown[0];
+  const level = live.closest('.level')?.id ?? '';
+  const start = partsEnded[level] ?? 0;                      // this part began once `start` parts had ended
+  partsEnded[level] = start + 1;
+  const ended = () => document.dispatchEvent(new CustomEvent('part-ended', { detail: { level, count: partsEnded[level] } }));   // jump.js
+  if (!keeping()) { prompt.replaceChildren(); ended(); return; }
   let list = document.getElementById('story-record');
   if (!list) {
     list = Object.assign(document.createElement('div'), { id: 'story-record', hidden: true });
@@ -61,14 +69,16 @@ export function keepPart(shown, prompt) {
   const pictures = shown.filter(shownNow);
   const markup = pictures.map((n) => n.outerHTML).join('');
   const before = last.get(live);
-  if (before && before.markup === markup && before.part === list.lastElementChild) { before.part.querySelector('.recorded-words').append(...lines); return; }
+  if (before && before.markup === markup && before.part === list.lastElementChild) { before.part.querySelector('.recorded-words').append(...lines); ended(); return; }
   const words = Object.assign(document.createElement('div'), { className: 'prompt recorded-words' });
   words.append(...lines);
   const part = Object.assign(document.createElement('div'), { className: 'recorded-part' });
-  part.dataset.level = live.closest('.level')?.id ?? '';
+  part.dataset.level = level;
+  part.dataset.start = String(start);
   part.dataset.alt = live.querySelector('svg[aria-label]')?.getAttribute('aria-label') ?? '';
   part.append(...pictures.map(still), words);
   list.append(part);
   last.set(live, { markup, part });
   document.dispatchEvent(new CustomEvent('part-kept'));     // the reader's Back button can now reach it
+  ended();
 }

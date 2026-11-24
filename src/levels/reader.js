@@ -116,6 +116,16 @@ export function reader(root, { fast = () => false } = {}) {
     if (records.some((m) => m.type === 'childList')) requestAnimationFrame(() => words.scrollTo({ top: words.scrollHeight, behavior: REDUCED ? 'auto' : 'smooth' }));
   }) : null;
   watch?.observe(words, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'], attributeOldValue: true });   // and the newest line always in view
+  // "…" under the words while more lines are on their way by themselves (Nadia, 2026-11-24: "add ... when there are
+  // going to be more sectionals that appear"): shown during a beat, gone the moment the next line comes
+  const more = make('p', 'more-coming', { ariaHidden: 'true' });
+  more.append(make('span', 'dot'), make('span', 'dot'), make('span', 'dot'));
+  let pending = 0;
+  const coming = (v) => {
+    pending = Math.max(0, pending + (v ? 1 : -1));
+    if (pending && words && !RECORDING) words.append(more);
+    else more.remove();
+  };
   const caughtUp = () => { if (watch) ingest(watch.takeRecords()); return RECORDING ? 0 : Math.max(0, readUntil - performance.now()); };
   const layer = make('div', 'reader-earlier');               // a part read earlier, shown over the level
   layer.hidden = true;
@@ -212,7 +222,13 @@ export function reader(root, { fast = () => false } = {}) {
     /** Resolves once the words on show have been read (at once while fast-forwarding or recording). */
     read() { return fast() ? Promise.resolve() : new Promise((r) => setTimeout(r, caughtUp())); },
     /** A beat between lines of the same part: the next line follows by itself, once the earlier ones have been read (at least `ms`), and they stay. */
-    beat(ms = BEAT) { return fast() ? Promise.resolve() : new Promise((r) => setTimeout(r, RECORDING ? ms : Math.max(ms, caughtUp()))); },
+    beat(ms = BEAT) {
+      if (fast()) return Promise.resolve();
+      const left = RECORDING ? ms : Math.max(ms, caughtUp());
+      let shown = false;
+      const show = setTimeout(() => { shown = true; coming(true); }, Math.min(400, left / 3));   // "…": more is on its way
+      return new Promise((r) => setTimeout(() => { clearTimeout(show); if (shown) coming(false); r(); }, left));
+    },
   };
   current = self;
   readers[level] = self;

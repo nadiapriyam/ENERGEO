@@ -21,6 +21,7 @@ import { STEPS as STORY_STEPS } from './stepsPrism.js';
 import { person as standing, speaker } from './characters.js';
 import { keepPart } from './record.js';
 import { reader } from './reader.js';
+import { jumping, onArrive } from './jump.js';
 import { bigIdea } from './magazine.js';
 import { A_NOTE, STEPS, PITCH, part } from '../math/tones.js';
 import {
@@ -50,8 +51,9 @@ const svg = (tag, attrs = {}, ...kids) => {
 const QUERY = new URLSearchParams(location.search);
 const STOP = QUERY.get('step');
 const FROM = QUERY.get('from');
-let FAST = [STOP, FROM].some((id) => id && STORY_STEPS.some((s) => s.id === id));
+let FAST = [STOP, FROM].some((id) => id && STORY_STEPS.some((s) => s.id === id)) || jumping('level-3');   // or a scene from "Scroll through" (jump.js)
 if (FAST) document.documentElement.classList.add('instant');
+onArrive('level-3', () => { FAST = false; document.documentElement.classList.remove('instant'); });
 const reached = [];
 /** A named step (stepsPrism.js). Fast-forwarding, it stops here for good if this is ?step, or hands over to you if this is ?from. */
 async function step(id) {

@@ -131,7 +131,9 @@ level, "A prism for sound", "Is there any way to perceive these hidden things?".
 (with the next level's name, headline and question, and its button). The box: "The big idea". The reader under each
 level's words (see "All three levels: reading at your own pace, and a simpler Level 2" below): "Back", "Next", the bar
 at the top ("Progress", for screen readers) and "Earlier" (with the part's number). The side panel (see "All three levels: the whole story as a comic, on the side"
-below): the tab "Scroll through" (in the top bar), the panel's title "The whole story", and "Close".
+below): the tab "Scroll through" (in the top bar), the panel's title "The whole story", and "Close"; and "Go here ›" on
+each picture in the panel (tap it, and the level goes to that scene: see "Scroll through: go to a scene" below). While
+more lines are on their way: "…" (three pulsing dots, no words).
 
 ## What the new lines claim, and what they do not
 
@@ -613,7 +615,8 @@ parts we can't see is possible, that we know a few ways, and that ENERGEO sets o
   light up as hubs of their own, each with three spokes: other geometries, none of them named.
 - **Words at reading pace** (all three levels). Each line, speech bubble or big idea is given the time it takes to read
   at an average reading speed, 200 words a minute (`src/math/reading.js`), with a moment to take it in (a short line
-  gets at least about a second). The next line of the same part waits until the earlier ones have been read; so do
+  gets at least about a second). Since then a little quicker (Nadia: "increase the appear rate for the section just a
+  bit"): 230 words a minute, a short line at least a second. The next line of the same part waits until the earlier ones have been read; so do
   Next and every button that moves the story on. Questions show their answers at once. While Level 3 fast-forwards to
   a step, or the comic is recorded, nothing waits.
 
@@ -624,6 +627,47 @@ parts we can't see is possible, that we know a few ways, and that ENERGEO sets o
 - ENERGEO's lines say what it sets out to do: find more geometries and what each uncovers. They do not say it has found
   any, and the other hubs on the map are unnamed and marked as unknown.
 - The stage light, the pool of light and the flicker are staging, not a claim.
+
+## Scroll through: go to a scene; bigger text; "…"; the "Contemporary European" palette (2026-11-24). Nadia, verbatim (three messages):
+
+> add an option in the scroll through where the user can tap on a scene and the main display goes there
+
+> also make all the text a bit bigger includeing all the titles subtext the top bar, and then add ... when there are going to be more sectionals that appear
+
+> that navy color is boring change the color palate to this: Contemporary European
+> #174A7E
+>
+> #4B72B2
+>
+> #8C52A0
+>
+> #E5A000
+>
+> #E75A42
+
+### What changes
+
+- **Go to a scene.** Every picture in the side panel ("Scroll through") is a link, tagged "Go here ›" in its corner.
+  Tap one, and the page opens that level and goes to that scene: the parts before it run at once, without waiting,
+  sound or animation (every button pressed, every question answered, every drag done for you), and the scene then
+  plays as usual, from its start. How: each level counts the parts that have ended (`src/levels/record.js`), the comic's
+  recorder stores where each picture's scene starts (`comic.json`: `start`), and `try/?jump=level-2.7` fast-forwards
+  Level 2 until 7 parts have ended (`src/levels/jump.js`). The levels before the one you go to are left out; the
+  "Up next" card still leads on.
+- **Bigger text.** About a tenth bigger everywhere on the page: the lines and bubbles, the buttons and answers, each
+  level's name, headline and question, the big idea, the "Up next" card, the top bar's level names and "Scroll
+  through", Back and Next, and the side panel. The writing on the boards keeps its size.
+- **"…" while more is coming.** When the next line of a part is on its way by itself (it waits for the earlier ones to
+  be read), three dots pulse under the words; they go the moment the line comes. Where the story waits for you (Next, a
+  button, a choice), there are no dots.
+- **The palette.** "Contemporary European" takes the place of "Bold intellectual": a white page; deep blue (#174A7E)
+  for every line of text, the top bar and the edges and shadows of the buttons; gold (#E5A000) the bright fill (the
+  buttons, the tabs, the bar's progress, the bold 0, the MRI SIGNAL's wave, ENERGEO); coral (#E75A42) the highlight
+  (the rule under the top bar, the short rule over a part's first line, the big idea's edge; never the colour of a
+  wrong answer); blue (#4B72B2) the N half of every magnet and a page turned back; purple (#8C52A0) the big idea's box
+  and your speech bubbles' tint. The final level's dark is a deeper shade of the deep blue, so its lights still glow.
+  The four hidden notes are blue, coral, purple and gold, in Level 1, in Level 2's side by side and as the final
+  level's lights. Every detail stays.
 
 ## Level 3, "A prism for sound" (2026-11-19; first called "The magic glasses")
 

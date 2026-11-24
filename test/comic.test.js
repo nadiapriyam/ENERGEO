@@ -57,7 +57,7 @@ test('2. the comic is the whole story, start to end, in the levels\' own words; 
   const record = read('src/levels/record.js');
   assert.match(record, /has\('record'\)/);
   assert.match(record, /const keeping = \(\) => recording\(\) \|\| \(!html\(\)\.classList\.contains\('framed'\) && !html\(\)\.classList\.contains\('instant'\)\);/, 'parts are kept for Back and for the recorder, but not in review frames or while fast-forwarding');
-  assert.match(record, /if \(!keeping\(\)\) \{ prompt\.replaceChildren\(\); return; \}/);
+  assert.match(record, /if \(!keeping\(\)\) \{ prompt\.replaceChildren\(\); ended\(\); return; \}/);
   const page = read('src/levels/page.js');
   for (const k of ['scrollThrough', 'wholeStory', 'close', 'level1', 'level2', 'level3']) assert.ok(page.includes(`LEVELS.${k}`), `the panel uses ${k}`);
   assert.ok(/import\('\.\/comic\.js'\)/.test(page) && /loading: 'lazy'/.test(page) && /alt: part\.alt/.test(page), 'the comic is drawn from the recording, its pictures loaded as they come into view');
@@ -70,4 +70,26 @@ test('2. the comic is the whole story, start to end, in the levels\' own words; 
   assert.ok(section.includes('> like just like a comic book scroll through the user doesnt need to finish it to see the whole story, its like a shortcut to see the whole thing quickly'), "Nadia's request, verbatim");
   assert.ok(section.includes('> take out the all steps in level 3'), "Nadia's request, verbatim");
   assert.ok(section.includes('"Scroll through"') && section.includes('"The whole story"') && /No new claims/.test(section));
+});
+
+test('3. go to a scene from the comic: each picture knows where its scene starts; ?jump fast-forwards that level to it (Nadia, 2026-11-24)', () => {
+  const read = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
+  const comic = JSON.parse(read('src/levels/comic/comic.json'));
+  for (const l of comic.levels) {
+    const starts = l.parts.map((p) => p.start);
+    assert.ok(starts.every(Number.isInteger) && starts[0] === 0, `${l.id}: every scene's start is recorded, the first at 0`);
+    assert.ok(starts.every((v, i) => !i || v > starts[i - 1]), `${l.id}: scenes start in order`);
+  }
+  const page = read('src/levels/page.js');
+  assert.match(page, /href: `\?jump=\$\{level\.id\}\.\$\{part\.start\}`/, 'each picture links to its scene');
+  assert.match(page, /LEVELS\.goHere/);
+  const jump = read('src/levels/jump.js');
+  assert.match(jump, /\^\(level-\[123\]\)\\\.\(\\d\+\)\$/, '?jump=level-N.start');
+  assert.match(jump, /e\.detail\.count < jumpTo\.start/, 'it stops once that many parts have ended');
+  for (const [f, level] of [['note', 'level-1'], ['mri', 'level-2'], ['prism', 'level-3']]) {
+    const main = read(`src/levels/${f}.js`);
+    assert.ok(main.includes(`jumping('${level}')`) && main.includes(`onArrive('${level}'`), `${f}.js fast-forwards to a scene, then plays on`);
+  }
+  assert.match(read('src/levels/record.js'), /partsEnded\[level\] = start \+ 1;/, 'every end of a part is counted, kept or not');
+  assert.ok(read('docs/levels_spec.md').includes('> add an option in the scroll through where the user can tap on a scene and the main display goes there'), "Nadia's message, verbatim");
 });

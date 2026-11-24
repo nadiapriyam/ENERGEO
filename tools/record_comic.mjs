@@ -44,6 +44,7 @@ async function collect(page, level, lesson, prefix) {
     const root = document.getElementById(lesson);
     const live = [root.querySelector(':scope > .figure'), root.querySelector(':scope > .notes')].filter((n) => n && n.childElementCount && n.offsetHeight);
     const last = document.createElement('div');
+    last.dataset.start = String(window.__partsEnded?.[level] ?? 0);   // the live last part starts once every kept part has ended
     last.dataset.alt = root.querySelector(':scope > .figure svg[aria-label]')?.getAttribute('aria-label') ?? '';
     last.append(...live.map((n) => n.cloneNode(true)), Object.assign(document.createElement('div'), { className: 'recorded-words' }));
     last.lastChild.append(...[...root.querySelector('.reader-column > .prompt').children].map((n) => n.cloneNode(true)));
@@ -70,7 +71,7 @@ async function collect(page, level, lesson, prefix) {
         const text = n.textContent.replace(/\s+/g, ' ').trim();
         return text ? [{ kind: 'line', text, cls: [...n.classList].filter((c) => ['lead', 'final', 'feedback', 'caption', 'mri-sentence'].includes(c)) }] : [];
       });
-      return { alt: part.dataset.alt, words };
+      return { alt: part.dataset.alt, words, start: Number(part.dataset.start ?? 0) };
     }, i);
     await page.waitForTimeout(120);
     const name = `${prefix}-${String(i + 1).padStart(2, '0')}`;
@@ -81,7 +82,7 @@ async function collect(page, level, lesson, prefix) {
     const webp = spawnSync('python3', ['-c', 'import sys; from PIL import Image; im = Image.open(sys.argv[1]).convert("RGB"); im.save(sys.argv[2], "WEBP", quality=80, method=6)', png, path.join(OUT, `${name}.webp`)]);
     if (webp.status !== 0) throw new Error(`WebP: ${webp.stderr}`);
     rmSync(png);
-    parts.push({ img: `${name}.webp`, w: Math.round(box.width), h: Math.round(box.height), alt: info.alt, words: info.words });
+    parts.push({ img: `${name}.webp`, w: Math.round(box.width), h: Math.round(box.height), alt: info.alt, start: info.start, words: info.words });
   }
   return parts;
 }

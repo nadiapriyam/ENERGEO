@@ -14,6 +14,7 @@ import {
 import { PITCH, A_NOTE, STEPS, HIDDEN, part, STAGE, lane, trace, EAR, HEARD, SQUEEZE, funnel, heardPath } from '../math/tones.js';
 import { keepPart } from './record.js';
 import { reader } from './reader.js';
+import { jumping, onArrive } from './jump.js';
 import { bigIdea } from './magazine.js';
 
 const NS = 'http://www.w3.org/2000/svg';
@@ -30,11 +31,16 @@ const svg = (tag, attrs = {}, ...kids) => {
   e.append(...kids);
   return e;
 };
-const wait = (ms) => new Promise((r) => setTimeout(r, REDUCED ? Math.min(ms, 1200) : ms));
-const pause = (ms) => new Promise((r) => setTimeout(r, ms));
+// going to a scene from "Scroll through" (jump.js): until it is reached, nothing waits or sounds, and every action is
+// done for you
+let FAST = jumping('level-1');
+if (FAST) document.documentElement.classList.add('instant');
+onArrive('level-1', () => { FAST = false; document.documentElement.classList.remove('instant'); });
+const wait = (ms) => (FAST ? Promise.resolve() : new Promise((r) => setTimeout(r, REDUCED ? Math.min(ms, 1200) : ms)));
+const pause = (ms) => (FAST ? Promise.resolve() : new Promise((r) => setTimeout(r, ms)));
 const on = (node, v = true) => node.classList.toggle('on', v);
 const tween = (ms, step) => new Promise((resolve) => {            // step(t) for t from 0 to 1, eased
-  if (REDUCED) { step(1); resolve(); return; }
+  if (REDUCED || FAST) { step(1); resolve(); return; }
   const t0 = performance.now();
   const frame = (now) => {
     const t = Math.min(1, (now - t0) / ms);
@@ -53,7 +59,7 @@ let bowLevel = 0;                                   // how hard the A string is 
 let ctx = null;
 function audio() {
   const AC = window.AudioContext || window.webkitAudioContext;
-  if (!AC) return null;
+  if (!AC || FAST) return null;
   try { ctx ??= new AC(); if (ctx.state === 'suspended') ctx.resume(); } catch { return null; }
   return ctx;
 }
@@ -131,7 +137,7 @@ const notesRow = el('div', { class: 'notes', role: 'group', 'aria-label': 'Hidde
 const transport = el('div', { class: 'transport' });
 const prompt = el('div', { class: 'prompt', 'aria-live': 'polite' });
 root.append(figure, notesRow, transport, prompt);
-const story = reader(root);                                 // Next and Back, under the level (reader.js)
+const story = reader(root, { fast: () => FAST });          // Next and Back, under the level (reader.js)
 root.append(story.el);
 const speak = speaker(prompt);                               // you, the player, beside your own lines (characters.js)
 
@@ -271,6 +277,7 @@ const ask = (options) => new Promise((resolve) => {
   prompt.append(row);
   requestAnimationFrame(() => row.classList.add('in'));
   followFocus(buttons[0]);
+  if (FAST) setTimeout(() => buttons[0].click(), 0);          // fast-forwarding: answered for you
 });
 
 /** Drag anywhere on the board; `move(dx, dy, e)` for each step. Keyboard: Enter or Space calls `key()`. Resolves when `done()` says so. */
@@ -288,6 +295,7 @@ function dragOnBoard(move, key) {
   board.addEventListener('pointerup', up);
   board.addEventListener('pointercancel', up);
   board.addEventListener('keydown', kd);
+  if (FAST) setTimeout(key, 0);                             // fast-forwarding: done for you, the keyboard's way
   return () => {
     board.classList.remove('dragging-on');
     board.removeAttribute('tabindex');
@@ -517,7 +525,7 @@ async function splitNotes() {                               // four notes, one u
   await story.beat();
   say(COPY.tapNotes);
   followFocus(buttons[0]);
-  setTimeout(() => { if (!heard && phase === 'notes') heardAll(); }, 14000);
+  setTimeout(() => { if (!heard && phase === 'notes') heardAll(); }, FAST ? 0 : 14000);
 }
 
 async function together() {                                 // all four at once, into your ear: one A note
@@ -528,7 +536,9 @@ async function together() {                                 // all four at once,
   b.disabled = false;
   requestAnimationFrame(() => b.classList.add('in'));
   followFocus(b);
-  await new Promise((r) => b.addEventListener('click', r, { once: true }));
+  const pressed = new Promise((r) => b.addEventListener('click', r, { once: true }));
+  if (FAST) b.click();                                      // fast-forwarding: pressed for you
+  await pressed;
   b.remove();
   clear();
   notesRow.classList.remove('in');

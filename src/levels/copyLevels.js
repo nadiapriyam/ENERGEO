@@ -25,6 +25,7 @@ export const LEVELS = {
   scrollThrough: 'Scroll through',
   wholeStory: 'The whole story',
   close: 'Close',
+  goHere: 'Go here',                                        // on each picture in the side panel: tap to go to that scene
   steps: 'Level 3, step by step',
   stepsHint: 'Scroll left and right, or use the arrows. Each frame is the level itself, stopped at that step.',
   playFrom: 'Play from here',

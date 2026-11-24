@@ -27,6 +27,7 @@ import {
 import { A_NOTE, STEPS as NOTE_STEPS, part, wave } from '../math/tones.js';
 import { keepPart } from './record.js';
 import { reader } from './reader.js';
+import { jumping, onArrive } from './jump.js';
 import { bigIdea } from './magazine.js';
 
 const NS = 'http://www.w3.org/2000/svg';
@@ -45,8 +46,12 @@ const svg = (tag, attrs = {}, ...kids) => {
   return e;
 };
 const label = (attrs, text) => svg('text', { 'text-anchor': 'middle', 'dominant-baseline': 'central', ...attrs, text });
-const wait = (ms) => new Promise((r) => setTimeout(r, REDUCED ? Math.min(ms, 1200) : ms));
-const pause = (ms) => new Promise((r) => setTimeout(r, ms));          // reading time: the same with reduced motion
+// going to a scene from "Scroll through" (jump.js): until it is reached, nothing waits and every action is done for you
+let FAST = jumping('level-2');
+if (FAST) document.documentElement.classList.add('instant');
+onArrive('level-2', () => { FAST = false; document.documentElement.classList.remove('instant'); });
+const wait = (ms) => (FAST ? Promise.resolve() : new Promise((r) => setTimeout(r, REDUCED ? Math.min(ms, 1200) : ms)));
+const pause = (ms) => (FAST ? Promise.resolve() : new Promise((r) => setTimeout(r, ms)));   // reading time: the same with reduced motion
 const frameTick = () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
 const on = (node, v = true) => node.classList.toggle('on', v);
 
@@ -61,7 +66,7 @@ const root = document.getElementById('mri-lesson');
 const figure = el('figure', { class: 'figure' });
 const prompt = el('div', { class: 'prompt', 'aria-live': 'polite' });
 root.append(figure, prompt);
-const story = reader(root);                                 // Next and Back, under the level (reader.js)
+const story = reader(root, { fast: () => FAST });          // Next and Back, under the level (reader.js)
 root.append(story.el);
 const speak = speaker(prompt);                               // you, beside your own lines (characters.js)
 const board = svg('svg', { viewBox: `0 0 ${VIEW.w} ${VIEW.h}`, class: 'board', role: 'group' });
@@ -358,7 +363,8 @@ function settle(id, p) {
     popValue(dirs[id] ?? dirOf(id));                         // a ↓ joins: −1
     showSignal(totalOf(state), inPlay(state).length);       // and the MRI signal gets weaker
     afterPair();
-  }, REDUCED ? 0 : 240);
+    if (FAST && !locked) autoPair();                         // fast-forwarding: the next ↓ pairs itself
+  }, REDUCED || FAST ? 0 : 240);
 }
 
 function startDrag(e, id) {
@@ -390,11 +396,17 @@ function startDrag(e, id) {
   piece.outer.addEventListener('pointercancel', end);
 }
 
+/** Fast-forwarding: the next waiting ↓ pairs itself with a free ↑. */
+function autoPair() {
+  const id = state.waiting[0];
+  if (id && !locked) settle(id, tapTarget(state, id));
+}
 function setLocked(v) {
   locked = v;
   figure.classList.toggle('is-locked', v);
   figure.classList.toggle('is-playing', !v);
   for (const id of state.waiting) pieces.get(id)?.outer.setAttribute('aria-disabled', String(v));
+  if (!v && FAST) setTimeout(autoPair, 0);                    // fast-forwarding: the pieces pair themselves
 }
 
 // ── the prompt under the figure: one small piece of text at a time ─────────────────────────────────
@@ -425,6 +437,7 @@ function choices(options, onPick) {
   prompt.append(row);
   requestAnimationFrame(() => row.classList.add('in'));
   followFocus(buttons[0]);
+  if (FAST) setTimeout(() => buttons[options === COPY.check2.choices ? options.indexOf(COPY.check2.intended) : 0].click(), 0);   // fast-forwarding: answered for you
   return buttons;
 }
 const ask = (options) => new Promise((resolve) => choices(options, (o, b, all) => {
@@ -438,6 +451,7 @@ function button(text, onClick) {
   b.addEventListener('click', () => { b.remove(); onClick(); }, { once: true });
   prompt.append(b);
   story.read().then(() => { b.disabled = false; requestAnimationFrame(() => b.classList.add('in')); followFocus(b); });   // once the words above are read
+  if (FAST) setTimeout(() => { if (FAST) { b.disabled = false; b.click(); } }, 0);   // fast-forwarding: pressed for you
   return b;
 }
 const press = (text) => new Promise((resolve) => button(text, resolve));

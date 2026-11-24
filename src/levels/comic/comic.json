@@ -9,6 +9,7 @@
      "w": 680,
      "h": 437,
      "alt": "Every player in the orchestra shows a little note: they are all tuned to your A note.",
+     "start": 0,
      "words": [
       {
        "kind": "line",
@@ -49,6 +50,7 @@
      "w": 680,
      "h": 437,
      "alt": "A magnifying glass appears. Under it, everything looks bigger.",
+     "start": 1,
      "words": [
       {
        "kind": "line",
@@ -62,6 +64,7 @@
      "w": 680,
      "h": 437,
      "alt": "Your violin, close up: its body, the bridge, and four strings, one marked A.",
+     "start": 2,
      "words": [
       {
        "kind": "line",
@@ -75,6 +78,7 @@
      "w": 680,
      "h": 437,
      "alt": "The A string, huge, shaking back and forth.",
+     "start": 3,
      "words": [
       {
        "kind": "line",
@@ -88,6 +92,7 @@
      "w": 680,
      "h": 437,
      "alt": "Inside the sound: the shape of your A, a repeating wave with bumps, running across.",
+     "start": 4,
      "words": [
       {
        "kind": "line",
@@ -111,6 +116,7 @@
      "w": 680,
      "h": 437,
      "alt": "Four smooth waves, one under another, each faster and smaller than the one above: A, high A, E and higher A.",
+     "start": 5,
      "words": [
       {
        "kind": "line",
@@ -122,8 +128,9 @@
     {
      "img": "l1-07.webp",
      "w": 680,
-     "h": 487,
+     "h": 491,
      "alt": "Four smooth waves, one under another, each faster and smaller than the one above: A, high A, E and higher A.",
+     "start": 6,
      "words": [
       {
        "kind": "line",
@@ -144,6 +151,7 @@
      "w": 680,
      "h": 437,
      "alt": "The four notes flow from their rows into an ear. Out of the ear comes one wave, labelled A note: what you hear.",
+     "start": 7,
      "words": [
       {
        "kind": "line",
@@ -170,6 +178,7 @@
      "w": 680,
      "h": 479,
      "alt": "An MRI scanner, seen from the side, with your patient lying on its table. You stand beside it, in your bucket hat.",
+     "start": 0,
      "words": [
       {
        "kind": "line",
@@ -190,6 +199,7 @@
      "w": 680,
      "h": 479,
      "alt": "Your patient is inside the scanner. The wall is see-through: rings of magnet coils surround them.",
+     "start": 1,
      "words": [
       {
        "kind": "line",
@@ -203,6 +213,7 @@
      "w": 680,
      "h": 479,
      "alt": "Three water molecules. Each is one large oxygen atom, O, joined to two small hydrogen atoms, H.",
+     "start": 2,
      "words": [
       {
        "kind": "line",
@@ -223,6 +234,7 @@
      "w": 680,
      "h": 479,
      "alt": "Each proton is now an arrow pointing from its S end to its N end: some point up, some point down.",
+     "start": 3,
      "words": [
       {
        "kind": "line",
@@ -241,6 +253,7 @@
      "w": 680,
      "h": 479,
      "alt": "A drop holding three up arrows; three down arrows wait below it. The TOTAL adds the arrows in the drop: up plus up plus up equals 3.",
+     "start": 4,
      "words": [
       {
        "kind": "line",
@@ -259,6 +272,7 @@
      "w": 680,
      "h": 479,
      "alt": "A drop holding three up arrows; three down arrows wait below it. The TOTAL adds the arrows in the drop: up plus up plus up equals 3.",
+     "start": 5,
      "words": [
       {
        "kind": "line",
@@ -272,6 +286,7 @@
      "w": 680,
      "h": 479,
      "alt": "The 0 of the TOTAL grows into a big bold 0, and the six arrows, three opposite pairs, now sit inside it.",
+     "start": 6,
      "words": [
       {
        "kind": "line",
@@ -290,6 +305,7 @@
      "w": 680,
      "h": 479,
      "alt": "The 0 of the TOTAL grows into a big bold 0, and the six arrows, three opposite pairs, now sit inside it.",
+     "start": 7,
      "words": [
       {
        "kind": "speaker",
@@ -330,6 +346,7 @@
      "w": 680,
      "h": 479,
      "alt": "The 0 of the TOTAL grows into a big bold 0, and the six arrows, three opposite pairs, now sit inside it.",
+     "start": 8,
      "words": [
       {
        "kind": "line",
@@ -367,6 +384,7 @@
      "w": 680,
      "h": 479,
      "alt": "The 0 of the TOTAL grows into a big bold 0, and the six arrows, three opposite pairs, now sit inside it.",
+     "start": 9,
      "words": [
       {
        "kind": "line",
@@ -392,6 +410,7 @@
      "w": 680,
      "h": 479,
      "alt": "Twelve pairs of opposite arrows in the drop, one up and one down, each pair a group with a total of 0. The TOTAL is 0.",
+     "start": 11,
      "words": [
       {
        "kind": "speaker",
@@ -410,6 +429,7 @@
      "w": 680,
      "h": 479,
      "alt": "With the magnet on, one down arrow has turned to point up, with the magnet. Its group no longer cancels: it adds up to 2. The TOTAL is 2.",
+     "start": 12,
      "words": [
       {
        "kind": "line",
@@ -433,6 +453,7 @@
      "w": 680,
      "h": 479,
      "alt": "Radio waves come in from both sides toward the tiny magnets; faint rings spread back out from among them.",
+     "start": 13,
      "words": [
       {
        "kind": "line",
@@ -451,6 +472,7 @@
      "w": 680,
      "h": 479,
      "alt": "A picture of your patient's head, painted row by row in shades of grey, like an MRI image.",
+     "start": 14,
      "words": [
       {
        "kind": "line",
@@ -474,6 +496,7 @@
      "w": 680,
      "h": 479,
      "alt": "The picture moves left. Lines run from all over it into an eye. Out of the eye comes the same picture, small: one picture.",
+     "start": 15,
      "words": [
       {
        "kind": "line",
@@ -509,6 +532,7 @@
      "w": 680,
      "h": 479,
      "alt": "Left, Level 1: four notes add up to one A note. Right: up, down, up, down arrows add up to a total signal of 0.",
+     "start": 16,
      "words": [
       {
        "kind": "line",
@@ -540,6 +564,7 @@
      "w": 680,
      "h": 458,
      "alt": "The white beam goes into the glass on the chandelier and comes out as a fan of colours on the wall: red, orange, yellow, green, cyan, blue, violet.",
+     "start": 0,
      "words": [
       {
        "kind": "line",
@@ -565,6 +590,7 @@
      "w": 680,
      "h": 458,
      "alt": "You stand in the dimmed hall, thinking. In a thought bubble: a prism takes white light apart into its colours; under it, the same prism takes your A note apart into four pure tones.",
+     "start": 1,
      "words": [
       {
        "kind": "line",
@@ -593,6 +619,7 @@
      "w": 680,
      "h": 458,
      "alt": "A tuner clipped to the scroll of your violin. Its screen is blank.",
+     "start": 2,
      "words": [
       {
        "kind": "line",
@@ -608,6 +635,7 @@
      "w": 680,
      "h": 458,
      "alt": "On the tuner's screen, your note drawn as a bumpy line, with the letter A under it and a green light.",
+     "start": 3,
      "words": [
       {
        "kind": "line",
@@ -621,6 +649,7 @@
      "w": 680,
      "h": 458,
      "alt": "The signal holds still. Faint bands mark each repeat of its shape; a glowing copy of the first repeat slides onto the second and fits it exactly.",
+     "start": 4,
      "words": [
       {
        "kind": "line",
@@ -639,6 +668,7 @@
      "w": 680,
      "h": 458,
      "alt": "Drag the bars up and down. The signal above changes with them.",
+     "start": 5,
      "words": [
       {
        "kind": "line",
@@ -659,6 +689,7 @@
      "w": 680,
      "h": 458,
      "alt": "Drag the bars up and down. The signal above changes with them.",
+     "start": 6,
      "words": [
       {
        "kind": "line",
@@ -686,6 +717,7 @@
      "w": 680,
      "h": 458,
      "alt": "The break: the hall lights are on. You stand by the stage. The radiologist who read your scan, in a white coat, walks over to you.",
+     "start": 8,
      "words": [
       {
        "kind": "line",
@@ -719,6 +751,7 @@
      "w": 680,
      "h": 458,
      "alt": "Your patient’s skull is lit. Its signal comes out of the spot you tapped and travels to the data box, where its wave is drawn, named skull.",
+     "start": 9,
      "words": [
       {
        "kind": "line",
@@ -737,6 +770,7 @@
      "w": 680,
      "h": 458,
      "alt": "Row by row, the pixels have made an MRI picture of your patient’s head.",
+     "start": 10,
      "words": [
       {
        "kind": "line",
@@ -752,6 +786,7 @@
      "w": 680,
      "h": 458,
      "alt": "Three rows, each with its caption: Violin note → pure tones; Stage light → its full color spectrum; MRI image → proton frequencies.",
+     "start": 11,
      "words": [
       {
        "kind": "speaker",
@@ -780,6 +815,7 @@
      "w": 680,
      "h": 458,
      "alt": "The three rows dim. The stage light comes on and lights up the middle of the board: the Fourier transform.",
+     "start": 12,
      "words": [
       {
        "kind": "line",
@@ -805,6 +841,7 @@
      "w": 680,
      "h": 458,
      "alt": "Beyond them, the board fills with question marks, smaller and fainter the further out they go, past its edges.",
+     "start": 13,
      "words": [
       {
        "kind": "line",
@@ -832,6 +869,7 @@
      "w": 680,
      "h": 458,
      "alt": "At the top of the map: ENERGEO, and under it, energy geometry. Around the map, other hubs light up: other geometries, each with its own hidden parts.",
+     "start": 14,
      "words": [
       {
        "kind": "line",

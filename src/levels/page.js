@@ -5,6 +5,7 @@
 // whole story as a comic, to see it quickly without playing it.
 import './base.css';
 import { LEVELS } from './copyLevels.js';
+import { jumpTo } from './jump.js';
 
 const span = (className, textContent) => Object.assign(document.createElement('span'), { className, textContent });
 /** Each level's cover: its name, then its headline and the question it asks (and, where it needs sound, a note). */
@@ -51,7 +52,8 @@ chain('mri-lesson', 'next-level-3', LEVELS.next3, 'level-3', () => import('./pri
 // Opening one level on its own, for review: try/#level-2 or try/#level-3 skips straight to it. try/?steps shows every
 // step of Level 3 side by side.
 const review = query.has('step') || query.has('from');     // a Level 3 step (no #anchor, so a frame never scrolls the page around it)
-const direct = { '#level-2': ['level-2', () => import('./mri.js')], '#level-3': ['level-3', () => import('./prism.js')] }[review ? '#level-3' : location.hash];
+const scene = jumpTo && jumpTo.level !== 'level-1' ? `#${jumpTo.level}` : null;   // a scene from Scroll through (jump.js)
+const direct = { '#level-2': ['level-2', () => import('./mri.js')], '#level-3': ['level-3', () => import('./prism.js')] }[review ? '#level-3' : scene ?? (jumpTo ? '' : location.hash)];
 const dropLevel1 = () => document.getElementById('level-1')?.remove();
 if (query.has('step')) document.documentElement.classList.add('framed');   // one frame of the review strip
 if (query.has('steps')) {
@@ -95,8 +97,11 @@ if (!query.has('step') && !query.has('steps')) {
             make('div', { className: 'bubbles' }, ...w.bubbles.map((b) => make('p', { className: `bubble in${b.thought ? ' thought' : ''}`, textContent: b.text }))))
           : w.cls.includes('big-idea') ? box(bigIdea(w.text))
             : make('p', { className: ['line', 'in', ...w.cls].join(' '), textContent: w.text }))));
-        group.append(make('figure', { className: 'comic-part' },
-          make('img', { src: pictures[part.img], width: part.w, height: part.h, alt: part.alt, loading: 'lazy', decoding: 'async' }), words));
+        const img = make('img', { src: pictures[part.img], width: part.w, height: part.h, alt: part.alt, loading: 'lazy', decoding: 'async' });
+        const go = Number.isInteger(part.start)                // tap a picture: the main display goes to that scene (jump.js)
+          ? make('a', { className: 'comic-go', href: `?jump=${level.id}.${part.start}` }, img, make('span', { className: 'comic-go-tag', textContent: `${LEVELS.goHere} ›` }))
+          : img;
+        group.append(make('figure', { className: 'comic-part' }, go, words));
       }
       parts.append(group);
     }
