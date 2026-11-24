@@ -122,7 +122,7 @@
     {
      "img": "l1-07.webp",
      "w": 680,
-     "h": 482,
+     "h": 488,
      "alt": "Four smooth waves, one under another, each faster and smaller than the one above: A, high A, E and higher A.",
      "words": [
       {
@@ -271,7 +271,7 @@
      "img": "l2-07.webp",
      "w": 680,
      "h": 480,
-     "alt": "A drop holding three up arrows; three down arrows wait below it. The TOTAL adds the arrows in the drop: up plus up plus up equals 3.",
+     "alt": "The 0 of the TOTAL grows into a big bold 0, and the six arrows, three opposite pairs, now sit inside it.",
      "words": [
       {
        "kind": "line",
@@ -282,7 +282,15 @@
        "kind": "line",
        "text": "Let's see.",
        "cls": []
-      },
+      }
+     ]
+    },
+    {
+     "img": "l2-08.webp",
+     "w": 680,
+     "h": 480,
+     "alt": "The 0 of the TOTAL grows into a big bold 0, and the six arrows, three opposite pairs, now sit inside it.",
+     "words": [
       {
        "kind": "speaker",
        "who": "you",
@@ -309,14 +317,19 @@
        "kind": "line",
        "text": "Inside your patient, opposite tiny magnets cancel out.",
        "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "This balanced 0 is their natural state.",
+       "cls": []
       }
      ]
     },
     {
-     "img": "l2-08.webp",
+     "img": "l2-09.webp",
      "w": 680,
      "h": 480,
-     "alt": "A drop holding three up arrows; three down arrows wait below it. The TOTAL adds the arrows in the drop: up plus up plus up equals 3.",
+     "alt": "The 0 of the TOTAL grows into a big bold 0, and the six arrows, three opposite pairs, now sit inside it.",
      "words": [
       {
        "kind": "line",
@@ -350,10 +363,10 @@
      ]
     },
     {
-     "img": "l2-09.webp",
+     "img": "l2-10.webp",
      "w": 680,
      "h": 480,
-     "alt": "A drop holding three up arrows; three down arrows wait below it. The TOTAL adds the arrows in the drop: up plus up plus up equals 3.",
+     "alt": "The 0 of the TOTAL grows into a big bold 0, and the six arrows, three opposite pairs, now sit inside it.",
      "words": [
       {
        "kind": "line",
@@ -375,7 +388,7 @@
      ]
     },
     {
-     "img": "l2-10.webp",
+     "img": "l2-11.webp",
      "w": 680,
      "h": 480,
      "alt": "Twelve pairs of opposite arrows in the drop, one up and one down, each pair a group with a total of 0. The TOTAL is 0.",
@@ -393,7 +406,7 @@
      ]
     },
     {
-     "img": "l2-11.webp",
+     "img": "l2-12.webp",
      "w": 680,
      "h": 480,
      "alt": "With the magnet on, one down arrow has turned to point up, with the magnet. Its group no longer cancels: it adds up to 2. The TOTAL is 2.",
@@ -416,7 +429,7 @@
      ]
     },
     {
-     "img": "l2-12.webp",
+     "img": "l2-13.webp",
      "w": 680,
      "h": 480,
      "alt": "Radio waves come in from both sides toward the tiny magnets; faint rings spread back out from among them.",
@@ -425,11 +438,16 @@
        "kind": "line",
        "text": "Your scanner nudges them with radio waves and picks up their faint reply.",
        "cls": []
+      },
+      {
+       "kind": "line",
+       "text": "That's a nudged, faint version. The balanced 0 is the original: the MRI just made us aware of it.",
+       "cls": []
       }
      ]
     },
     {
-     "img": "l2-13.webp",
+     "img": "l2-14.webp",
      "w": 680,
      "h": 480,
      "alt": "A picture of your patient's head, painted row by row in shades of grey, like an MRI image.",
@@ -452,7 +470,7 @@
      ]
     },
     {
-     "img": "l2-14.webp",
+     "img": "l2-15.webp",
      "w": 680,
      "h": 480,
      "alt": "The picture moves left. Lines run from all over it into an eye. Out of the eye comes the same picture, small: one picture.",
@@ -487,7 +505,7 @@
      ]
     },
     {
-     "img": "l2-15.webp",
+     "img": "l2-16.webp",
      "w": 680,
      "h": 480,
      "alt": "Left, Level 1: four notes add up to one A note. Right: up, down, up, down arrows add up to a total signal of 0.",

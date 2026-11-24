@@ -87,8 +87,9 @@ does not touch the journey store or any interactive.
 
 ## The levels (`try/`)
 
-Three short stories on one page, in one plain style: a white page, the system sans (its 0 is a plain 0) and one
-accent. `docs/levels_spec.md` governs. `try/level-2/` and `notebook/` forward here.
+Three short stories on one page, in one style, a field magazine (since 2026-11-24): a white page, bold Times New
+Roman (its 0 is a plain 0), ink black, one signature yellow, warm paper and earth tones, flat print shapes with offset
+shadows (`src/levels/base.css`). `docs/levels_spec.md` governs. `try/level-2/` and `notebook/` forward here.
 
 They read like a kids' science magazine about technology, and build one thought to its end (the spec's "All three
 levels: the magazine, and the thought it builds"): one note hides many; there is far more hiding in a 0 than the

@@ -22,7 +22,7 @@ export const total = (pieces) => pieces.reduce((s, p) => s + (typeof p === 'stri
 // ── geometry (SVG user units) ──────────────────────────────────────────────────────────────────────
 export const VIEW = { w: 640, h: 440 };
 export const PIECE = { length: 61, width: 30 };              // an upright bar magnet with a pointed N end
-export const PANEL = { x: 120, y: 6, w: 400, h: 150, cx: 320, labelY: 22, sumY: 56, bracketY: 84, resultY: 126, sumWidth: 360 };
+export const PANEL = { x: 120, y: 6, w: 400, h: 150, cx: 320, labelY: 22, sumY: 56, bracketY: 84, resultY: 126, sumWidth: 360, eqX: 298, valueX: 340 };
 export const DROP = { x: 24, y: 146, w: 592, h: 208, r: 36 };
 export const ROWS = { mat: 248, supply: 400 };
 export const GROUP = { pad: 10, label: 20 };                 // the outline around a balanced group, and its 0 below it
@@ -91,30 +91,99 @@ export function frame(spots, scale = 1, labelGap = GROUP.label) {
 // ── the four arrangements behind the same 0 ────────────────────────────────────────────────────────
 // Ids keep their direction, so the same pieces move between arrangements and new pieces join. Every group is balanced.
 // Arrangement 1 is the learner's own drop (three ↓↑ pairs). The others stack each group: its ↑ arrows in a row on top,
-// its ↓ arrows in a row underneath, one under each, so the evenness is visible.
+// its ↓ arrows in a row underneath, one under each, so the evenness is visible. All four sit inside the 0 (below).
 export const ARRANGEMENTS = [
   { name: 'learner', groups: [['D0', 'U0'], ['D1', 'U1'], ['D2', 'U2']] },
   { name: 'rearranged', groups: [['U0', 'U1', 'D0', 'D1'], ['U2', 'D2']] },
   { name: 'more', groups: [['U0', 'U1', 'U2', 'D0', 'D1', 'D2'], ['U3', 'D3']] },
   { name: 'denser', groups: [['U0', 'U1', 'U2', 'U3', 'U4', 'U5', 'D0', 'D1', 'D2', 'D3', 'D4', 'D5']] },
 ];
-export const STACK = { top: 214, bottom: 280, pitch: 46, gap: 44 };
-
-/** Positions of every piece in arrangement k, as a list of groups of { id, x, y }. */
+// ── the 0 the balanced magnets live in ────────────────────────────────────────────────────────────────
+// When the TOTAL reaches 0, the 0 of its result grows into a bold numeral 0 and closes around the balanced magnets: from
+// then on they sit inside it, in its hollow, and the drop they were in is gone. The learner's own pairs keep their ↓↑
+// form, in a row; every other arrangement is stacked, each group's ↑ in a row on top and its ↓ mirrored underneath.
+// For the scanner's many pairs the 0 is wider. Its sides are thicker than its top and bottom, as a bold 0's are. It is
+// drawn as two superellipses (|x/a|^n + |y/b|^n = 1) around its own centre, the inner one cut out (fill-rule evenodd).
+export const ZERO = { cx: VIEW.w / 2, cy: 288, rx: 180, ry: 124, side: 46, end: 24, n: 3, scale: 0.8, pitch: 36, rows: 42, gap: 28, pairPitch: 86, pairHalf: 14, labelGap: 12 };
+export const CROWD_ZERO = { cx: VIEW.w / 2, cy: 264, rx: 316, ry: 106, side: 24, end: 18, n: 3 };
+/** A superellipse around (cx, cy), as a closed SVG path. */
+export function superellipse(cx, cy, a, b, n, steps = 120) {
+  let d = '';
+  for (let i = 0; i < steps; i++) {
+    const t = (2 * Math.PI * i) / steps;
+    const c = Math.cos(t);
+    const sn = Math.sin(t);
+    const x = cx + a * Math.sign(c) * Math.abs(c) ** (2 / n);
+    const y = cy + b * Math.sign(sn) * Math.abs(sn) ** (2 / n);
+    d += `${i ? 'L' : 'M'}${x.toFixed(1)} ${y.toFixed(1)}`;
+  }
+  return `${d}Z`;
+}
+/** The hollow inside a 0 (around the 0's own centre when `local`). */
+export const zeroInner = (z) => ({ cx: z.cx, cy: z.cy, rx: z.rx - z.side, ry: z.ry - z.end, n: z.n });
+/** A bold numeral 0 around its own centre (0, 0): its outline, then its hollow (draw with fill-rule evenodd). */
+export const zeroPath = (z) => `${superellipse(0, 0, z.rx, z.ry, z.n)} ${superellipse(0, 0, z.rx - z.side, z.ry - z.end, z.n)}`;
+/** The hollow alone, around the 0's own centre. */
+export const hollowPath = (z) => superellipse(0, 0, z.rx - z.side, z.ry - z.end, z.n);
+/** Whether a point (with a margin around it) is inside a 0's hollow. */
+export const insideZero = (p, z, margin = 0) => {
+  const h = zeroInner(z);
+  return Math.abs((p.x - h.cx) / (h.rx - margin)) ** h.n + Math.abs((p.y - h.cy) / (h.ry - margin)) ** h.n <= 1;
+};
+/** Positions of every piece in arrangement k, inside the 0, as a list of groups of { id, x, y }. */
 export function layout(k) {
   const a = ARRANGEMENTS[k];
-  if (k === 0) return a.groups.map((g, p) => [{ id: g[0], ...PAIRS[p].down }, { id: g[1], ...PAIRS[p].up }]);
-  const widths = a.groups.map((g) => (g.length / 2) * STACK.pitch);
-  const full = widths.reduce((s, w) => s + w, 0) + STACK.gap * (a.groups.length - 1);
-  let x = C - full / 2;
+  const { cx, cy, pitch, rows, gap, pairPitch, pairHalf } = ZERO;
+  if (k === 0) {
+    return a.groups.map((g, p) => {
+      const x = cx + (p - (a.groups.length - 1) / 2) * pairPitch;
+      return [{ id: g[0], x: x - pairHalf, y: cy }, { id: g[1], x: x + pairHalf, y: cy }];
+    });
+  }
+  const cols = a.groups.map((g) => g.length / 2);
+  const full = cols.reduce((s, c) => s + c * pitch, 0) + gap * (a.groups.length - 1);
+  let x = cx - full / 2;
   return a.groups.map((g, i) => {
     const ups = g.filter((id) => dirOf(id) > 0);
     const downs = g.filter((id) => dirOf(id) < 0);
-    const col = (j) => x + (j + 0.5) * STACK.pitch;
-    const spots = [...ups.map((id, j) => ({ id, x: col(j), y: STACK.top })), ...downs.map((id, j) => ({ id, x: col(j), y: STACK.bottom }))];
-    x += widths[i] + STACK.gap;
+    const spots = [...ups.map((id, j) => ({ id, x: x + (j + 0.5) * pitch, y: cy - rows })), ...downs.map((id, j) => ({ id, x: x + (j + 0.5) * pitch, y: cy + rows }))];
+    x += cols[i] * pitch + gap;
     return spots;
   });
+}
+/** The 0 of the TOTAL's result: where the big 0 grows from, as a move and a scale of the big 0 (around its centre). */
+export const RESULT_GLYPH = { x: PANEL.valueX, y: PANEL.resultY, h: 44 };
+export function zeroFromResult(z = ZERO) {
+  return { dx: RESULT_GLYPH.x - z.cx, dy: RESULT_GLYPH.y - z.cy, s: RESULT_GLYPH.h / (2 * z.ry) };
+}
+/** The tag pinned to the bottom of a 0 (around the 0's own centre). */
+export const zeroTag = (z) => ({ x: 0, y: z.ry - z.end / 2, h: 24 });
+
+// ── the MRI signal, beside the TOTAL ────────────────────────────────────────────────────────────────
+// A small screen in the drop's scene: what the scanner can pick up from the drop. Its wave is as tall as the share of
+// the drop's arrows that line up, |TOTAL| / arrows (the scanner's signal follows the drop's net magnetization), and its
+// four bars light with it. As ↓ pair with ↑ the wave shrinks to a flat line; when the scanner's magnet tips the
+// balance it comes back, faint.
+export const METER = { x: 528, y: 10, w: 104, h: 106, label: 27, wave: { y: 62, h: 34, pad: 10 }, bars: { y: 104, n: 4, w: 10, gap: 6, h: [5, 9, 13, 17] } };
+export const share = (value, count) => (count ? Math.abs(value) / count : 0);
+/** The meter's wave for a share (0…1), shifted along by `phase` (in waves). */
+export function meterWave(s, phase = 0, n = 64) {
+  const { x, w, wave } = METER;
+  const amp = Math.max(0, Math.min(1, s)) * (wave.h / 2);
+  let d = '';
+  for (let i = 0; i <= n; i++) {
+    const u = i / n;
+    d += `${i ? 'L' : 'M'}${(x + wave.pad + u * (w - 2 * wave.pad)).toFixed(1)} ${(wave.y - amp * Math.sin(2 * Math.PI * (2.5 * u + phase))).toFixed(1)}`;
+  }
+  return d;
+}
+/** How many of the meter's bars are lit for a share: none at 0, at least one for any signal. */
+export const meterBars = (s) => (s <= 0 ? 0 : Math.max(1, Math.min(METER.bars.n, Math.round(s * METER.bars.n))));
+/** The meter's bars, left to right, each standing on the meter's floor. */
+export function meterBarSpots() {
+  const { n, w, gap, y, h } = METER.bars;
+  const x0 = METER.x + (METER.w - (n * w + (n - 1) * gap)) / 2;
+  return h.map((hk, i) => ({ x: x0 + i * (w + gap), y: y - hk, w, h: hk }));
 }
 
 /** The direction pattern of an arrangement, group by group (e.g. '↑↑↓↓ | ↑↓'). */
@@ -156,14 +225,14 @@ export function sumLayout(groups, { lead = false, trail = false, labels = null }
 }
 
 // ── the scanner's magnet: a bigger crowd of cancelled pairs, then one flips ───────────────────────────
-export const CROWD = { rows: [214, 294], cols: 6, pitch: 88, half: 14, scale: 0.72, labelGap: 10 };
+export const CROWD = { rows: [222, 292], cols: 6, pitch: 72, half: 14, scale: 0.72, labelGap: 10 };
 /**
  * The scanner's radio waves: arcs come in from both sides of the drop toward the tiny magnets (`travel` units), and
  * a faint reply spreads out from among them, in rings. Drawn while "nudges them with radio waves" is on screen.
  */
 export const RADIO = { y: (CROWD.rows[0] + CROWD.rows[1]) / 2, from: [DROP.x + 14, DROP.x + DROP.w - 14], travel: 190, arc: 46, reply: { x: C, r: 34 } };
 /** Where +1 or −1 pops up as an arrow joins the TOTAL: just right of its result, which counts up or down with it. */
-export const POP = { x: PANEL.cx + 52, y: PANEL.resultY - 4 };
+export const POP = { x: PANEL.valueX + 30, y: PANEL.resultY - 4 };
 /** Twelve ↓↑ pairs in the drop, all cancelled: pair k holds D k and U k. */
 export function crowd() {
   const out = [];

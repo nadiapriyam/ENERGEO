@@ -57,7 +57,7 @@ async function collect(page, level, lesson, prefix) {
       const stage = Object.assign(document.createElement('div'), { id: 'comic-stage' });
       stage.style.cssText = 'position:absolute;left:0;top:0;width:680px;background:#fff;z-index:99999';
       const freeze = document.createElement('style');
-      freeze.textContent = '#comic-stage *{transition:none!important;animation-delay:-60s!important;animation-iteration-count:1!important}';
+      freeze.textContent = '#comic-stage *{transition:none!important;animation-delay:-60s!important;animation-iteration-count:1!important}#comic-stage>*{margin:0 0 12px!important}';   // whole pixels: no sliver of the page under the stage
       stage.append(freeze, ...[...part.children].filter((n) => !n.classList.contains('recorded-words')).map((n) => n.cloneNode(true)));
       document.body.append(stage);
       scrollTo(0, 0);

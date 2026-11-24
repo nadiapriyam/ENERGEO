@@ -2,20 +2,23 @@
 // MRI scanner, where you (the player, in the bucket hat: characters.js) take a patient's scan. Your first patient is
 // here: let's see if you can do it correctly. Slide your patient in, zoom down to the water in their body and its
 // hydrogen atoms, whose protons are tiny magnets (N and
-// S), picture each as an arrow, and add the arrows up in the TOTAL SIGNAL, all a scanner can pick up. Pair opposite
-// arrows until the signal is an exact 0; look behind more 0s and find them full. Then the scanner's magnet tips the
-// balance, turning the 0 into a small signal it can read, though the 0 held far more. It paints a picture; an eye sees
+// S), picture each as an arrow, and add the arrows up in the TOTAL SIGNAL, all a scanner can pick up; its MRI signal
+// meter shows how strong that is. Pair opposite arrows until the signal is an exact 0 and the meter goes flat: the 0 of
+// the TOTAL grows into a bold 0 around the balanced magnets, their natural state. Look inside more 0s and find them
+// full. Then the scanner's magnet tips the balance, turning the 0 into a small, faint signal it can read, a nudged
+// version of the balanced original. It paints a picture; an eye sees
 // one picture that hides far more than it seems; and the violin of Level 1 turns out to work the same way. Every
 // learner-facing line comes from copyMri.js; every position and every total from src/math (pieces.js, scanner.js,
 // tones.js).
-import './mri.css';   // system sans: its 0 is a plain 0
+import './mri.css';   // bold Times: its 0 is a plain 0
 
 import { COPY } from './copyMri.js';
 import { person, speaker } from './characters.js';
 import { figureAt } from '../math/characters.js';
 import {
-  start, pair, dropTarget, tapTarget, totalOf, pairedCount, restingSpot, total, layout, puzzleGroups, frame, sumLayout, crowd, crowdDirections,
+  start, pair, dropTarget, tapTarget, totalOf, inPlay, pairedCount, restingSpot, total, layout, puzzleGroups, frame, sumLayout, crowd, crowdDirections,
   ARRANGEMENTS, PAIRS, VIEW, PANEL, DROP, CROWD, RADIO, POP, CROWD_SHOWN, FIELD_LINES, FIELD_SPAN, FLIP, dirOf,
+  ZERO, CROWD_ZERO, zeroPath, hollowPath, zeroFromResult, zeroTag, METER, share, meterWave, meterBars, meterBarSpots,
 } from '../math/pieces.js';
 import {
   HOUSING, BORE, TUNNEL, COILS, TABLE, PEDESTAL, PATIENT, FLOOR, SLIDE, OPERATOR, ZOOM, ATOM, molecules, hydrogenSpot, SCREEN, picture,
@@ -135,20 +138,40 @@ const radio = svg('g', { class: 'radio' },
   ...RADIO.from.flatMap((x, side) => [0, 1, 2].map((k) => svg('path', { class: `radio-in ${side ? 'from-right' : 'from-left'}`, style: `animation-delay: ${k * 0.22}s`,
     d: `M ${x} ${RADIO.y - RADIO.arc} Q ${x + (side ? -1 : 1) * RADIO.arc * 0.55} ${RADIO.y} ${x} ${RADIO.y + RADIO.arc}` }))),
   ...[0, 1, 2].map((k) => svg('circle', { class: 'radio-out', cx: RADIO.reply.x, cy: RADIO.y, r: RADIO.reply.r, style: `animation-delay: ${k * 0.3}s` })));
-puzzle.append(drop, field, radio, frames, ...slots);
+// the 0 the balanced magnets live in (pieces.js: ZERO): it grows out of the TOTAL's own 0 and closes around them. Its
+// hollow is where they sit; its tag says what the balance is. Drawn around its own centre, moved there by `vessel`.
+const vessel = svg('g', { class: 'vessel' });
+const vesselGrow = svg('g', { class: 'vessel-grow' });
+const vesselHollow = svg('path', { class: 'vessel-hollow' });
+const vesselRing = svg('path', { class: 'vessel-ring', 'fill-rule': 'evenodd' });
+const vesselTag = label({ class: 'vessel-tag' }, '');
+vesselGrow.append(vesselHollow, vesselRing, vesselTag);
+vessel.append(vesselGrow);
+puzzle.append(drop, vessel, field, radio, frames, ...slots);
 
 // the TOTAL: the arrows in the drop, added up, and what they add up to
 const panel = svg('g', { class: 'panel layer' });
 const sumRow = svg('g', { class: 'sum' });
 const sumMarks = svg('g', { class: 'sum-marks' });
-const result = label({ class: 'result', x: PANEL.cx, y: PANEL.resultY }, '');
+const resultEq = label({ class: 'result', x: PANEL.eqX, y: PANEL.resultY }, '');
+const result = label({ class: 'result result-value', x: PANEL.valueX, y: PANEL.resultY }, '');
 const pops = svg('g', { class: 'pops' });
 panel.append(svg('rect', { class: 'panel-box', x: PANEL.x, y: PANEL.y, width: PANEL.w, height: PANEL.h, rx: 18 }),
-  label({ class: 'total-label', x: PANEL.cx, y: PANEL.labelY }, COPY.totalLabel), sumMarks, sumRow, result, pops);
+  label({ class: 'total-label', x: PANEL.cx, y: PANEL.labelY }, COPY.totalLabel), sumMarks, sumRow, resultEq, result, pops);
 
-const cover = svg('g', { class: 'cover' },
-  svg('rect', { x: DROP.x, y: DROP.y, width: DROP.w, height: DROP.h, rx: DROP.r }),
-  label({ class: 'cover-mark', x: DROP.x + DROP.w / 2, y: DROP.y + DROP.h / 2 }, COPY.cover.mark));
+// the MRI signal meter, beside the TOTAL (pieces.js: METER): what the scanner can pick up from the drop. Its wave and bars
+// shrink as ↓ pair with ↑, go flat at 0, and come back faint when the magnet tips the balance.
+const meterWavePath = svg('path', { class: 'meter-wave' });
+const meterBarEls = meterBarSpots().map((b) => svg('rect', { class: 'meter-bar', x: b.x, y: b.y, width: b.w, height: b.h, rx: 1.5 }));
+const meter = svg('g', { class: 'meter layer', role: 'img', 'aria-label': COPY.meterLabel },
+  svg('rect', { class: 'meter-box', x: METER.x, y: METER.y, width: METER.w, height: METER.h, rx: 10 }),
+  label({ class: 'meter-label', x: METER.x + METER.w / 2, y: METER.label }, COPY.meterLabel),
+  svg('line', { class: 'meter-axis', x1: METER.x + METER.wave.pad, x2: METER.x + METER.w - METER.wave.pad, y1: METER.wave.y, y2: METER.wave.y }),
+  meterWavePath, ...meterBarEls);
+
+// a covered 0: its inside frosted over, a ? on it (the magnets are in there, out of sight)
+const frost = svg('g', { class: 'frost', style: `transform: translate(${ZERO.cx}px, ${ZERO.cy}px)` },
+  svg('g', { class: 'frost-iris' }, svg('path', { class: 'frost-fill', d: hollowPath(ZERO) }), label({ class: 'frost-mark', x: 0, y: 4 }, COPY.cover.mark)));
 const screen = svg('g', { class: 'screen layer', id: 'mri-screen' }, svg('rect', { class: 'screen-box', x: SCREEN.x - 6, y: SCREEN.y - 6, width: SCREEN.size + 12, height: SCREEN.size + 12, rx: 14 }));
 const screenShift = svg('g', { class: 'screen-shift' }, screen);
 
@@ -169,7 +192,7 @@ eyeScene.querySelector('.seen-label').textContent = COPY.eye.label;
 // side by side with Level 1
 const compareLayer = svg('g', { class: 'compare layer' });
 const piecesLayer = svg('g', { class: 'pieces' });
-board.append(scanner, lens, water, puzzle, screenShift, eyeScene, panel, piecesLayer, cover, compareLayer);
+board.append(scanner, lens, water, puzzle, screenShift, eyeScene, panel, meter, piecesLayer, frost, compareLayer);
 
 // ── pieces ───────────────────────────────────────────────────────────────────────────────────────
 const pieces = new Map();
@@ -246,9 +269,52 @@ function drawSumUnknown() {
   sumMarks.replaceChildren(label({ class: 'more', x: PANEL.cx, y: PANEL.sumY }, COPY.cover.mark));
 }
 function drawResult(value) {
-  result.textContent = value === null ? '' : `${COPY.sum.equals} ${Math.abs(value)}`;
+  resultEq.textContent = value === null ? '' : COPY.sum.equals;
+  result.textContent = value === null ? '' : String(Math.abs(value));
   panel.classList.toggle('is-zero', value === 0);
   panel.setAttribute('aria-label', value === null ? COPY.totalLabel : `${COPY.totalLabel}: ${value === 0 ? COPY.zero : `${Math.abs(value)} ${value > 0 ? 'up' : 'down'}`}`);
+}
+
+// ── the MRI signal meter: its wave eases to the share of the drop's arrows that line up ───────────────────
+let meterNow = 0;
+let meterTarget = 0;
+let meterRaf = 0;
+function showSignal(value, count) {
+  meterTarget = share(value, count);
+  const lit = meterBars(meterTarget);
+  meterBarEls.forEach((b, i) => b.classList.toggle('lit', i < lit));
+  meter.classList.toggle('flat', meterTarget === 0);
+  meter.classList.toggle('faint', meterTarget > 0 && meterTarget < 0.25);
+  meter.setAttribute('aria-label', `${COPY.meterLabel}: ${lit} of ${METER.bars.n}`);
+  if (!meterRaf) meterRaf = requestAnimationFrame(meterTick);
+}
+function meterTick(t) {
+  meterNow = REDUCED || Math.abs(meterTarget - meterNow) < 0.002 ? meterTarget : meterNow + (meterTarget - meterNow) * 0.06;
+  meterWavePath.setAttribute('d', meterWave(meterNow, REDUCED ? 0 : t / 1400));
+  meterRaf = meter.classList.contains('on') && !REDUCED ? requestAnimationFrame(meterTick) : 0;
+}
+
+// ── the 0 around the balanced magnets ───────────────────────────────────────────────────────────────
+function shapeVessel(z) {
+  vessel.style.transform = `translate(${z.cx}px, ${z.cy}px)`;
+  vesselHollow.setAttribute('d', hollowPath(z));
+  vesselRing.setAttribute('d', zeroPath(z));
+  const t = zeroTag(z);
+  vesselTag.setAttribute('x', t.x);
+  vesselTag.setAttribute('y', t.y);
+}
+/** Move the 0 without its transition (to start a grow from there), then let it go to rest. */
+async function growVessel(from) {
+  vesselGrow.classList.add('still');
+  vesselGrow.style.transform = from;
+  await frameTick();
+  vesselGrow.classList.remove('still');
+  vesselGrow.style.transform = '';
+}
+function tagVessel(text) {                                  // the tag on the 0's band
+  vesselTag.classList.remove('in');
+  vesselTag.textContent = text;
+  frameTick().then(() => vesselTag.classList.add('in'));
 }
 
 // outlines around balanced groups in the drop, each with its own total under it
@@ -290,6 +356,7 @@ function settle(id, p) {
     drawSum(puzzleGroups(state));
     drawResult(totalOf(state));
     popValue(dirs[id] ?? dirOf(id));                         // a ↓ joins: −1
+    showSignal(totalOf(state), inPlay(state).length);       // and the MRI signal gets weaker
     afterPair();
   }, REDUCED ? 0 : 240);
 }
@@ -446,6 +513,8 @@ async function scene5() {                                   // the drop, and its
   say(COPY.hook);
   await story.beat();
   on(panel);
+  on(meter);
+  showSignal(0, 0);
   say(COPY.totalMeans);
   await wait(500);
   for (let k = 1; k <= state.row.length; k++) {               // each arrow in the drop is added in turn
@@ -463,6 +532,7 @@ async function scene5() {                                   // the drop, and its
     drawSum(groups);
     drawResult(total(groups.flat().map((r) => dirs[r] ?? dirOf(r))));   // the result counts up as each arrow joins: +1
     popValue(dirs[id] ?? dirOf(id));
+    showSignal(total(groups.flat().map((r) => dirs[r] ?? dirOf(r))), k);
     await wait(420);
   }
   drawResult(totalOf(state));
@@ -539,11 +609,27 @@ async function checkpoint1() {                              // midway checkpoint
 async function reachZero() {                                // reaching 0
   phase = 'zero';
   setLocked(true);
-  await wait(1400);
+  await wait(900);
+  await intoZero();
   clear();
   speak(COPY.reached, 'you');                                // oh no: no signal for your MRI
   await story.beat();
   checkpoint2();
+}
+
+async function intoZero() {                                 // the TOTAL's 0 grows around the balanced magnets
+  shapeVessel(ZERO);
+  const from = zeroFromResult(ZERO);
+  await growVessel(`translate(${from.dx}px, ${from.dy}px) scale(${from.s})`);
+  on(vessel);
+  drop.classList.add('gone');
+  frames.classList.add('away');
+  await wait(450);
+  board.style.setProperty('--s', String(ZERO.scale));
+  showArrangement(0);
+  frames.classList.remove('away');
+  describe('The 0 of the TOTAL grows into a big bold 0, and the six arrows, three opposite pairs, now sit inside it.');
+  await wait(900);
 }
 
 function emphasize() {
@@ -567,6 +653,9 @@ function checkpoint2() {                                    // second checkpoint
       feedback = say(COPY.check2.right, 'feedback');
       await story.beat();
       say(COPY.answer);
+      await story.beat();
+      say(COPY.natural);                                     // the balance is the natural state
+      tagVessel(COPY.zeroTag.natural);
       await story.next();
       arrangements();
     } else {
@@ -584,19 +673,19 @@ function showArrangement(k) {                               // pieces move into 
     if (pieces.has(id)) place(pieces.get(id), x, y);
     else makePiece(id, { x, y }, { entering: !REDUCED });
   }
-  drawFrames(groups.map((spots) => ({ spots })));
+  drawFrames(groups.map((spots) => ({ spots, scale: ZERO.scale, gap: ZERO.labelGap })));
 }
 function revealArrangement(k) {                             // the TOTAL shows what is now behind its 0
   drawSum(ARRANGEMENTS[k].groups);
   drawResult(total(ARRANGEMENTS[k].groups.flat()));       // the same 0, computed from the pieces behind it
+  showSignal(total(ARRANGEMENTS[k].groups.flat()), ARRANGEMENTS[k].groups.flat().length);
 }
-const covered = (v) => { cover.classList.toggle('on', v); if (v) drawSumUnknown(); };
+const covered = (v) => { frost.classList.toggle('on', v); if (v) drawSumUnknown(); };   // the inside of the 0, frosted over
 
 async function arrangements() {                             // look behind more 0s
   phase = 'arrangements';
   for (const p of pieces.values()) p.outer.classList.remove('prominent');
   clear();
-  showArrangement(0);
   revealArrangement(0);
   say(COPY.arrangements[0], 'caption');                     // the words stay; the page turns only when you press
   await story.beat(1400);
@@ -644,6 +733,8 @@ async function magnet() {                                   // many more pairs, 
   phase = 'magnet';
   clear();
   board.style.setProperty('--s', String(CROWD.scale));
+  shapeVessel(CROWD_ZERO);                                   // the 0 widens around many more pairs
+  growVessel(`translate(0px, ${ZERO.cy - CROWD_ZERO.cy}px) scale(${ZERO.rx / CROWD_ZERO.rx}, ${ZERO.ry / CROWD_ZERO.ry})`);
   const c = crowd();
   for (const p of c) for (const end of [p.down, p.up]) {
     if (pieces.has(end.id)) place(pieces.get(end.id), end.x, end.y);
@@ -653,6 +744,7 @@ async function magnet() {                                   // many more pairs, 
   const before = crowdDirections(false);
   drawSum(crowdTerms(), { lead: true, trail: true });
   drawResult(total(Object.values(before)));
+  showSignal(total(Object.values(before)), Object.keys(before).length);
   describe('Twelve pairs of opposite arrows in the drop, one up and one down, each pair a group with a total of 0. The TOTAL is 0.');
   await wait(800);
   speak(COPY.magnetQuestion, 'you', true);
@@ -663,6 +755,8 @@ async function magnet() {                                   // many more pairs, 
 async function magnetOn() {                                 // the magnet tips the balance by one flipped arrow
   phase = 'magnet-on';
   clear();
+  vessel.classList.add('tipped');                            // the scanner nudges the balanced 0
+  tagVessel(COPY.zeroTag.nudged);
   on(field);
   await wait(700);
   const now = crowdDirections(true);
@@ -677,6 +771,7 @@ async function magnetOn() {                                 // the magnet tips t
   drawFrames(c.map((p) => ({ spots: [p.down, p.up], scale: CROWD.scale, gap: CROWD.labelGap, value: total([dirs[p.down.id], dirs[p.up.id]]) })));
   drawSum(crowdTerms(), { lead: true, trail: true, labels: CROWD_SHOWN.map((k) => total([dirs[`D${k}`], dirs[`U${k}`]])) });
   drawResult(total(Object.values(now)));
+  showSignal(total(Object.values(now)), Object.keys(now).length);   // the MRI signal comes back, faint
   describe('With the magnet on, one down arrow has turned to point up, with the magnet. Its group no longer cancels: it adds up to 2. The TOTAL is 2.');
   say(COPY.magnet[0]);
   await story.beat();
@@ -688,6 +783,8 @@ async function magnetOn() {                                 // the magnet tips t
   say(COPY.magnet[3]);                                       // the faint reply
   on(radio);                                                 // radio waves go in; a faint reply comes out
   describe('Radio waves come in from both sides toward the tiny magnets; faint rings spread back out from among them.');
+  await story.beat();
+  say(COPY.original);                                        // the scanner reads a nudged version; the balanced 0 is the original
   await wait(500);
   button(COPY.listen, paint);
 }
@@ -721,6 +818,7 @@ async function seeIt() {                                    // your eye sees one
   phase = 'eye';
   clear();
   on(panel, false);
+  on(meter, false);
   screenShift.style.transform = `translateX(${PICTURE_SHIFT}px)`;
   await wait(700);
   on(eyeScene);

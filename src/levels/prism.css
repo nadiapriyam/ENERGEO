@@ -1,11 +1,12 @@
-/* Level 3, "A prism for sound". It starts in the levels' plain style, a white page; then the hall's lights dim to a
-   night-city dark, and everything lit glows like LED lights: the prism's rainbow, the signal, the bars. The four notes
-   keep their Level 1 colours, as LEDs. The technician and you (the player) speak in bubbles beside your faces; your
+/* Level 3, "A prism for sound". It starts in the levels' field-magazine style (base.css), a white page; then the hall's
+   lights dim to a deep night-sky black, like a night photograph, and everything lit glows like LED lights: the prism's
+   rainbow, the signal, the bars. The four notes keep their Level 1 colours, as LEDs; the name at the end is in the
+   page's signature yellow. The technician and you (the player) speak in bubbles beside your faces; your
    thoughts are thought bubbles. Scenes move into one another (transforms and fades), never just swap. */
 
 .prism-board {
-  display: block; width: 100%; height: auto; overflow: hidden; border-radius: 20px; touch-action: manipulation;
-  --night: #0b0f22; --night-2: #141b3a; --night-edge: #2a3463;
+  display: block; width: 100%; height: auto; overflow: hidden; border-radius: 6px; box-shadow: 0 0 0 1px var(--rule); touch-action: manipulation;
+  --night: #0a0c12; --night-2: #151925; --night-edge: #2d3445;
 }
 .prism-board.aiming, .prism-board.dragging-on, .prism-board.tapping { touch-action: none; }
 .prism-board.aiming { cursor: crosshair; }
@@ -19,11 +20,11 @@
 /* the hall */
 .hall { transition: transform 1100ms cubic-bezier(0.45, 0, 0.2, 1), opacity 900ms ease-out; }
 .hall.leaving { transform: translateY(-160px); opacity: 0; }
-.floor { stroke: #c9d1db; stroke-width: 3; transition: stroke 1200ms; }
+.floor { stroke: var(--steel-edge); stroke-width: 3; transition: stroke 1200ms; }
 .night .floor { stroke: var(--night-edge); }
-.stand { fill: none; stroke: #6b7380; stroke-width: 4; stroke-linecap: round; }
-.lamp-can { fill: #4a5260; }
-.lamp-lens { fill: #dfe5ee; transition: fill 600ms; }
+.stand { fill: none; stroke: #6d675c; stroke-width: 4; stroke-linecap: round; }
+.lamp-can { fill: #3b3832; }
+.lamp-lens { fill: #e8e3d8; transition: fill 600ms; }
 .hall.lit .lamp-lens { fill: #ffffff; filter: url(#p3-glow); }
 .lamp { cursor: grab; }
 .lamp:focus-visible .lamp-can { stroke: #ffffff; stroke-width: 2.5; }
@@ -46,8 +47,8 @@
 .arrive.up { transform: none; }
 .pegbox, .scroll { fill: #8a5a2c; }
 .scroll-curl { fill: none; stroke: #5e3b1b; stroke-width: 2.4; stroke-linecap: round; }
-.tuner-body { fill: #2f3540; stroke: #444d5c; stroke-width: 2; }
-.tuner-clip { fill: #4a5260; }
+.tuner-body { fill: #24211d; stroke: #45413a; stroke-width: 2; }
+.tuner-clip { fill: #3b3832; }
 .tuner-screen { fill: #0f1a2b; stroke: #3a4a63; stroke-width: 2; }
 .tuner-letter { font-family: var(--font); font-size: 30px; font-weight: 700; fill: #7dffb0; opacity: 0; transition: opacity 400ms ease-out; }
 .tuner.in-tune .tuner-letter { opacity: 1; }
@@ -94,8 +95,8 @@ html.instant *, html.instant *::before, html.instant *::after { transition: none
 .part-map.hint { animation: hint-pulse 1.1s ease-in-out infinite; }
 @keyframes hint-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 .body-map { transform-box: view-box; transform-origin: 0 0; transition: transform 1000ms cubic-bezier(0.45, 0, 0.2, 1), opacity 600ms ease-out; }
-.part-name { font-family: var(--font); font-size: 20px; font-weight: 600; }
-.part-name.picked { font-weight: 800; filter: url(#p3-glow); }
+.part-name { font-family: var(--font); font-size: 21px; font-weight: 700; }
+.part-name.picked { font-weight: 700; filter: url(#p3-glow); }
 .part-name.hint { animation: hint-pulse 1.1s ease-in-out infinite; }
 .leader { stroke-width: 1.5; stroke-dasharray: 3 3; opacity: 0.85; }
 .scan.exploring .m-arrow, .scan.exploring .mri-image, .scan.exploring .glyph { opacity: 0; }
@@ -123,7 +124,7 @@ html.instant *, html.instant *::before, html.instant *::after { transition: none
 .tap-fx .spot { filter: url(#p3-glow); stroke: #fff; stroke-width: 1.5; }
 @keyframes link-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 @keyframes ripple { from { opacity: 0.95; transform: scale(0.12); } to { opacity: 0; transform: scale(1); } }
-.data-name { font-family: var(--font); font-size: 22px; font-weight: 800; opacity: 0; filter: url(#p3-glow); transition: opacity 300ms ease-out; }
+.data-name { font-family: var(--font); font-size: 23px; font-weight: 700; opacity: 0; filter: url(#p3-glow); transition: opacity 300ms ease-out; }
 .data-name.on { opacity: 1; }
 .scan:not(.exploring) .tap-fx, .scan:not(.exploring) .data-name { opacity: 0; }
 .scene.band { fill: none; stroke: url(#p3-led); stroke-width: 2; filter: url(#p3-glow); transform-box: view-box;
@@ -138,7 +139,7 @@ html.instant *, html.instant *::before, html.instant *::after { transition: none
 .m-arrow.lit { filter: url(#p3-glow); }
 .scan.to-pattern .mri-part, .scan.to-pattern .glyph { opacity: 0; }
 .mri-image { transform-box: view-box; transform-origin: 0 0; }
-.mri-sentence { font-size: 1.35rem; line-height: 1.45; }
+.mri-sentence { font-size: 1.38rem; line-height: 1.32; }
 .mri-sentence .frag { display: none; color: var(--ink); transition: color 600ms ease-out; }
 .mri-sentence .frag.shown { display: inline; animation: frag-in 600ms ease-out; }
 .mri-sentence .frag.past { color: var(--ink-3); }
@@ -146,31 +147,31 @@ html.instant *, html.instant *::before, html.instant *::after { transition: none
 /* the pattern: three rows */
 .p-row { opacity: 0; transform-box: view-box; transition: opacity 700ms ease-out, transform 1000ms cubic-bezier(0.45, 0, 0.2, 1); }
 .p-row.on { opacity: 1; }
-.p-caption { font-family: var(--font); font-size: 20px; font-weight: 700; fill: #e9ecf8; }
+.p-caption { font-family: var(--font); font-size: 21px; font-weight: 700; fill: #f1ede4; }
 .p-caption { transform-box: view-box; transition: transform 600ms ease-out; }
 .pattern.sliding .p-caption { font-size: 30px; transform: translateY(var(--slide-caption)); }
 .pattern { transition: opacity 800ms ease-out; }
 .mri-image { transition: transform 1100ms cubic-bezier(0.45, 0, 0.2, 1), opacity 600ms ease-out; }
 .mri-image.hidden { opacity: 0; }
 .pattern.dim, .strip.dim, .mri-image.dim { opacity: 0.16; }
-.reveal-title { font-family: var(--font); font-size: 50px; font-weight: 800; filter: url(#p3-glow); transform-box: fill-box; transform-origin: center; }
+.reveal-title { font-family: var(--font); font-size: 52px; font-weight: 700; filter: url(#p3-glow); transform-box: fill-box; transform-origin: center; }
 .reveal-title.on { animation: reveal-in 1100ms cubic-bezier(0.2, 0.8, 0.2, 1); }
 .reveal-title.to-hub { transition: transform 1200ms cubic-bezier(0.45, 0, 0.2, 1); }
 .pattern.gone, .strip.gone, .mri-image.gone { opacity: 0; transition: opacity 700ms ease-out; }
 /* the finale: a map of transformations; just the surface; then the name */
-.map-link { stroke: #9fb4ff; stroke-width: 2; opacity: 0; transition: opacity 600ms ease-out; }
+.map-link { stroke: #a9a28f; stroke-width: 2; opacity: 0; transition: opacity 600ms ease-out; }
 .map.known .map-link { opacity: 0.75; }
 .map-hub { fill: url(#p3-led); filter: url(#p3-glow); }
 .map-leaf { opacity: 0; transition: opacity 500ms ease-out; }
 .map.known .map-leaf { opacity: 1; }
 .map-leaf circle { fill: #ffffff; filter: url(#p3-glow); }
-.map-label { fill: #dde5ff; font-family: var(--font); font-size: 17px; font-weight: 650; }
+.map-label { fill: #f1ede4; font-family: var(--font); font-size: 18px; font-weight: 700; }
 .map-q { opacity: 0; transition: opacity 600ms ease-out; }
 .map.endless .map-q { opacity: var(--o); }
-.map-q circle { fill: none; stroke: #8fa3ff; stroke-width: 1.5; stroke-dasharray: 3 3; }
-.map-q text { fill: #b9c6ff; font-family: var(--font); font-weight: 800; }
-.map-title { fill: #ffffff; font-family: var(--font); font-size: 46px; font-weight: 900; letter-spacing: 0.18em; opacity: 0; filter: url(#p3-glow); transition: opacity 900ms ease-out; }
-.map-sub { fill: #c9d3ff; font-family: var(--font); font-size: 15px; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase; opacity: 0; transition: opacity 900ms ease-out 400ms; }
+.map-q circle { fill: none; stroke: var(--yellow); stroke-width: 1.5; stroke-dasharray: 3 3; }
+.map-q text { fill: var(--yellow); font-family: var(--font); font-weight: 700; }
+.map-title { fill: var(--yellow); font-family: var(--font); font-size: 48px; font-weight: 700; letter-spacing: 0.2em; opacity: 0; filter: url(#p3-glow); transition: opacity 900ms ease-out; }
+.map-sub { fill: #f1ede4; font-family: var(--font); font-size: 15px; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase; opacity: 0; transition: opacity 900ms ease-out 400ms; }
 .map.named .map-title, .map.named .map-sub { opacity: 1; }
 @keyframes reveal-in { from { opacity: 0; transform: scale(0.6); } 60% { opacity: 1; transform: scale(1.06); } to { transform: none; } }
 .p-box { fill: var(--night-2); stroke: var(--night-edge); stroke-width: 2; }
@@ -180,9 +181,9 @@ html.instant *, html.instant *::before, html.instant *::after { transition: none
 .p-ray { stroke-width: 3.2; stroke-linecap: round; filter: url(#p3-glow); }
 .p-freq { filter: url(#p3-glow); }
 .p-row-band { fill: none; stroke: url(#p3-led); stroke-width: 1.6; filter: url(#p3-glow); }
-.p-arrow line { stroke: #8b93b8; stroke-width: 3; stroke-linecap: round; }
-.p-arrow polygon { fill: #8b93b8; }
-.line.pattern-line { font-weight: 600; }
+.p-arrow line { stroke: #a9a28f; stroke-width: 3; stroke-linecap: round; }
+.p-arrow polygon { fill: #a9a28f; }
+.line.pattern-line { font-weight: 700; }
 
 /* the words and the buttons: no jumps */
 .controls { display: flex; justify-content: center; gap: 10px; min-height: 3em; align-items: center; margin: 6px 0 2px; }

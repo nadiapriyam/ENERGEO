@@ -16,6 +16,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import {
   start, pair, dropTarget, tapTarget, totalOf, pairedCount, total, dirOf, layout, pattern, puzzleGroups, frame, sumLayout, crowd, crowdDirections, crowdTotal,
   ARRANGEMENTS, PAIRS, ROWS, VIEW, PIECE, PANEL, DROP, DROP_LINE, CROWD, CROWD_SHOWN, FIELD_LINES, FIELD_SPAN, FLIP, RADIO, POP,
+  ZERO, CROWD_ZERO, insideZero, zeroFromResult, RESULT_GLYPH, zeroTag, METER, share, meterBars, meterBarSpots, meterWave, inPlay,
 } from '../src/math/pieces.js';
 import {
   excessPerMillion, timesEarth, hydrogenInDrop, molecules, hydrogenSpot, picture, scanPixel, PHYS,
@@ -110,7 +111,10 @@ test('4. four visibly different arrangements, every group balanced, the stacked 
   }
   assert.deepEqual(ARRANGEMENTS.map((a) => a.groups.flat().length), [6, 6, 8, 12]);
   const finished = layout(0);
-  PAIRS.forEach((p, k) => assert.deepEqual(finished[k], [{ id: `D${k}`, ...p.down }, { id: `U${k}`, ...p.up }]), 'arrangement 1 is the learner\'s own drop');
+  finished.forEach((g, k) => {
+    assert.deepEqual(g.map((s) => s.id), [`D${k}`, `U${k}`], 'arrangement 1 is the learner\'s own drop: its three ↓↑ pairs');
+    assert.ok(g[0].x < g[1].x && g[0].y === g[1].y, 'each pair side by side, ↓ then ↑, as the learner made it');
+  });
   for (let k = 1; k < 4; k++) for (const g of layout(k)) {
     const ups = g.filter((s) => dirOf(s.id) > 0);
     const downs = g.filter((s) => dirOf(s.id) < 0);
@@ -120,19 +124,28 @@ test('4. four visibly different arrangements, every group balanced, the stacked 
   for (let k = 1; k < 4; k++) for (const id of ARRANGEMENTS[k - 1].groups.flat()) assert.ok(ARRANGEMENTS[k].groups.flat().includes(id), `${id} stays from ${k} to ${k + 1}`);
 });
 
-test('5. positions: arrangements and the magnet crowd fit the drop without overlaps; groups and their 0s apart; one flip tips the TOTAL to 2', () => {
+test('5. positions: the arrangements fit inside the 0 and the magnet crowd fits the drop and its wide 0, without overlaps; groups and their 0s apart; one flip tips the TOTAL to 2', () => {
   const framesApart = (fs, tag) => {
-    for (const f of fs) assert.ok(inside(DROP, f) && inside(DROP, { x: f.x + f.w, y: f.y + f.h }) && inside(DROP, f.label) && f.y > PANEL.y + PANEL.h, `${tag}: group and its 0 in the drop`);
     for (let i = 0; i < fs.length; i++) for (let j = i + 1; j < fs.length; j++) {
       const a = fs[i], b = fs[j];
       assert.ok(a.x + a.w < b.x || b.x + b.w < a.x || a.label.y + 8 < b.y || b.label.y + 8 < a.y, `${tag}: groups ${i} and ${j} overlap`);
     }
   };
+  /** A group's outline and its small 0, all inside the hollow of the 0 `z`. */
+  const inZero = (fs, z, tag) => {
+    for (const f of fs) for (const p of [{ x: f.x, y: f.y }, { x: f.x + f.w, y: f.y }, { x: f.x, y: f.y + f.h }, { x: f.x + f.w, y: f.y + f.h }, f.label])
+      assert.ok(insideZero(p, z, 2), `${tag}: group and its 0 inside the big 0 (${p.x.toFixed(0)}, ${p.y.toFixed(0)})`);
+  };
+  for (const z of [ZERO, CROWD_ZERO]) {
+    assert.ok(z.cy - z.ry > PANEL.y + PANEL.h && z.cy + z.ry < VIEW.h && z.cx - z.rx >= 0 && z.cx + z.rx <= VIEW.w, 'the 0 is under the TOTAL, on the board');
+    assert.ok(z.side > z.end, 'a bold 0: its sides thicker than its top and bottom');
+  }
   for (let k = 0; k < 4; k++) {
     const groups = layout(k);
-    inDrop(groups.flat(), 1, `arrangement ${k + 1}`);
-    apart(groups.flat(), 1, `arrangement ${k + 1}`);
-    framesApart(groups.map((g) => frame(g)), `arrangement ${k + 1}`);
+    apart(groups.flat(), ZERO.scale, `arrangement ${k + 1}`);
+    const fs = groups.map((g) => frame(g, ZERO.scale, ZERO.labelGap));
+    framesApart(fs, `arrangement ${k + 1}`);
+    inZero(fs, ZERO, `arrangement ${k + 1}`);
   }
   const c = crowd();
   assert.equal(c.length, 12);
@@ -141,6 +154,7 @@ test('5. positions: arrangements and the magnet crowd fit the drop without overl
   apart(ends, CROWD.scale, 'crowd');
   const fs = c.map((p) => frame([p.down, p.up], CROWD.scale, CROWD.labelGap));
   framesApart(fs, 'crowd');
+  inZero(fs, CROWD_ZERO, 'crowd');
   for (const x of FIELD_LINES) for (const f of fs) assert.ok(x < f.x - 2 || x > f.x + f.w + 2, `field line ${x} passes between the groups`);
   assert.ok(FIELD_SPAN.top > PANEL.y + PANEL.h && FIELD_SPAN.bottom < DROP.y + DROP.h);
   assert.equal(crowdTotal(false), 0, 'before the magnet: every pair cancels');
@@ -151,6 +165,48 @@ test('5. positions: arrangements and the magnet crowd fit the drop without overl
   assert.equal(after[FLIP], 1, 'it turns to point with the magnet, up');
   assert.ok(CROWD_SHOWN.includes(+FLIP.slice(1)), 'the sum shows the flipped pair');
   for (let k = 0; k < 6; k++) assert.ok(ends.some((e) => e.id === `D${k}`) && ends.some((e) => e.id === `U${k}`), 'the learner\'s arrows stay in the crowd');
+});
+
+test('5b. the MRI SIGNAL gets weaker as each ↓ joins and is flat at 0; the 0 grows from the TOTAL\'s own 0 (Nadia, 2026-11-24)', () => {
+  // the meter: beside the TOTAL, on the board, not over it
+  assert.ok(METER.x > PANEL.x + PANEL.w && METER.x + METER.w <= VIEW.w && METER.y >= 0 && METER.y + METER.h < DROP.y + 20, 'the MRI SIGNAL beside the TOTAL, in the same scene');
+  const bars = meterBarSpots();
+  assert.equal(bars.length, METER.bars.n);
+  for (const b of bars) assert.ok(b.x >= METER.x && b.x + b.w <= METER.x + METER.w && b.y + b.h <= METER.y + METER.h, 'its bars inside it');
+  assert.ok(bars.every((b, i) => !i || b.h > bars[i - 1].h), 'signal bars, each taller than the last');
+  // the puzzle: three ↑, then each ↓ joining makes the signal weaker, down to flat at 0
+  let s = start();
+  const shares = [share(totalOf(s), inPlay(s).length)];
+  for (const [id, p] of [['D0', 0], ['D1', 1], ['D2', 2]]) { s = pair(s, id, p); shares.push(share(totalOf(s), inPlay(s).length)); }
+  assert.deepEqual(shares, [1, 0.5, 0.2, 0], 'full, then weaker with every ↓, then 0');
+  assert.deepEqual(shares.map(meterBars), [4, 2, 1, 0], 'four bars, two, one, none');
+  assert.ok(shares.every((v, i) => !i || v < shares[i - 1]), 'always weaker, never stronger, as the arrows balance');
+  assert.ok(!/[1-9]/.test(meterWave(0).replace(/M[\d.]+ |L[\d.]+ /g, '').replace(new RegExp(String(METER.wave.y), 'g'), '')), 'at 0 the wave is a flat line');
+  // the magnet: the crowd's signal comes back, faint
+  const faint = share(crowdTotal(true), Object.keys(crowdDirections(true)).length);
+  assert.ok(faint > 0 && faint < 0.1 && meterBars(faint) === 1, 'with the magnet on, a faint signal: one bar');
+  assert.equal(share(crowdTotal(false), 24), 0, 'before the magnet, flat');
+  // the 0 grows from the 0 of "= 0", in the TOTAL
+  const from = zeroFromResult(ZERO);
+  assert.ok(Math.abs(ZERO.cx + from.dx - PANEL.valueX) < 1e-9 && Math.abs(ZERO.cy + from.dy - PANEL.resultY) < 1e-9, 'it starts where the TOTAL\'s 0 is');
+  assert.ok(Math.abs(from.s * 2 * ZERO.ry - RESULT_GLYPH.h) < 1e-9 && from.s < 0.25, 'as small as that 0');
+  assert.ok(PANEL.eqX < PANEL.valueX && POP.x > PANEL.valueX, '"=" then the value, and +1 beside it');
+  for (const z of [ZERO, CROWD_ZERO]) {
+    const t = zeroTag(z);
+    assert.ok(t.y > z.ry - z.end && t.y < z.ry, 'the tag sits on the 0\'s bottom band');
+  }
+  // the scene: the meter in the drop's scene (no new scene); the magnets inside the 0; the covered 0 frosted
+  assert.match(main, /board\.append\(scanner, lens, water, puzzle, screenShift, eyeScene, panel, meter, piecesLayer, frost, compareLayer\);/);
+  assert.match(main, /showSignal\(totalOf\(state\), inPlay\(state\)\.length\);/, 'each ↓ that joins: the signal gets weaker');
+  assert.match(main, /await intoZero\(\);/, 'at 0, the magnets go inside the 0');
+  assert.match(main, /const covered = \(v\) => \{ frost\.classList\.toggle\('on', v\)/, 'a covered 0 is the 0, frosted, not a box');
+  assert.ok(!/class: 'cover'/.test(main), 'no box over the drop');
+  assert.match(main, /say\(COPY\.natural\);[^\n]*\n\s*tagVessel\(COPY\.zeroTag\.natural\);/, 'the natural state: said, and tagged on the 0');
+  assert.match(main, /vessel\.classList\.add\('tipped'\);[^\n]*\n\s*tagVessel\(COPY\.zeroTag\.nudged\);/, 'the magnet nudges the 0');
+  assert.match(COPY.original, /nudged, faint version/);
+  assert.match(COPY.original, /balanced 0 is the original/);
+  assert.ok(!/destroy|loses? (information|everything)/i.test(COPY.original + COPY.natural), 'no claim that leaving the 0 loses anything (B-ZERO-LOSS stays a hypothesis)');
+  assert.ok(levels.includes('> when adding the magnets to the total signal in level 2, 1. make sure when adding magnets it shows the signal to the mri is getting weaker'), "Nadia's message, verbatim");
 });
 
 test('6. the scanner scenes, the picture, and the MRI numbers the copy states', () => {
@@ -191,12 +247,12 @@ test('6. the scanner scenes, the picture, and the MRI numbers the copy states', 
 
 test('7. the learner-facing copy is verbatim from the Level 2 list, in its order; Nadia\'s Revision 2 lines unchanged; the page shows it in that order and nothing after the final line', () => {
   const ordered = [COPY.scanner, COPY.patient, COPY.slideIn, COPY.inside, COPY.zoomIn, `${COPY.atoms.o}, ${COPY.atoms.h}`, COPY.water[0], COPY.water[1], COPY.closer,
-    `${COPY.poles.n}, ${COPY.poles.s}`, COPY.proton[0], COPY.proton[1], COPY.hook, COPY.totalLabel, COPY.totalMeans, `${COPY.sum.plus} ${COPY.sum.equals} ${COPY.sum.more}`, `${COPY.sum.up}, ${COPY.sum.down}`,
+    `${COPY.poles.n}, ${COPY.poles.s}`, COPY.proton[0], COPY.proton[1], COPY.hook, COPY.totalLabel, COPY.totalMeans, `${COPY.meterLabel} (the label`, `${COPY.sum.plus} ${COPY.sum.equals} ${COPY.sum.more}`, `${COPY.sum.up}, ${COPY.sum.down}`,
     COPY.task, COPY.hint, `${COPY.groupZero} (under`, COPY.check1.question, ...COPY.check1.choices, COPY.check1.after,
     COPY.reached, COPY.check2.question, ...COPY.check2.choices, COPY.check2.right, COPY.check2.wrong,
-    COPY.answer, COPY.arrangements[0], COPY.cover.intro, `${COPY.cover.mark} (on the covered`, COPY.cover.question, ...COPY.cover.choices,
+    COPY.answer, COPY.natural, `${COPY.zeroTag.natural} (the tag`, COPY.arrangements[0], COPY.cover.intro, `${COPY.cover.mark} (on the covered`, COPY.cover.question, ...COPY.cover.choices,
     COPY.arrangements[1], COPY.cover.again, COPY.cover.look, COPY.arrangements[2], COPY.cover.again, COPY.cover.look, COPY.reveal,
-    COPY.magnetQuestion, COPY.switchOn, ...COPY.magnet, COPY.listen, COPY.picture, `You: ${COPY.you.didIt}`, `${COPY.eye.label} (the label`, COPY.eye.line, COPY.bigIdea, COPY.whole, COPY.unknown,
+    COPY.magnetQuestion, COPY.switchOn, `${COPY.zeroTag.nudged} (the 0's tag`, ...COPY.magnet, COPY.original, COPY.listen, COPY.picture, `You: ${COPY.you.didIt}`, `${COPY.eye.label} (the label`, COPY.eye.line, COPY.bigIdea, COPY.whole, COPY.unknown,
     COPY.similar.question, ...COPY.similar.choices, COPY.similar.after,
     `${COPY.compareLabels.note}, ${COPY.compareLabels.signal}, ${COPY.sum.plus}, ${COPY.sum.equals}, ${COPY.zero}, ${COPY.aName}`, COPY.compare, COPY.final];
   let at = 0;
@@ -205,7 +261,7 @@ test('7. the learner-facing copy is verbatim from the Level 2 list, in its order
     assert.ok(i >= 0, `not in the Level 2 list, in order: ${line}`);
     at = i;
   }
-  assert.ok(copyList.includes(`54. ${COPY.final}`) && copyList.includes('Nothing comes after line 54.') && !/^55\. /m.test(copyList), 'the final line is last');
+  assert.ok(copyList.includes(`59. ${COPY.final}`) && copyList.includes('Nothing comes after line 59.') && !/^60\. /m.test(copyList), 'the final line is last');
   assert.match(main, /put\(bigIdea\(COPY\.bigIdea\)\);[\s\S]{0,240}say\(COPY\.whole\);[\s\S]{0,240}say\(COPY\.unknown\);/, 'the big idea, then what hides behind the 0');
   assert.ok(levels.includes('task 2: the second level is a bit confusing try to make the word count lower and simple.'), "Nadia's 2026-11-23 message, verbatim");
   const words = ordered.join(' ').split(/\s+/).length;
@@ -229,16 +285,16 @@ test('7. the learner-facing copy is verbatim from the Level 2 list, in its order
   for (const line of ordered) assert.ok(line.split(/(?<=[.?!])\s+/).length <= 2, `at most two sentences: ${line}`);
   const calls = ['COPY.scanner', 'COPY.patient', 'COPY.slideIn', 'COPY.inside', 'COPY.zoomIn', 'COPY.water[0]', 'COPY.water[1]', 'COPY.closer',
     'COPY.proton[0]', 'COPY.proton[1]', 'COPY.hook', 'COPY.totalMeans', 'COPY.task', 'COPY.hint', 'COPY.check1.question', 'COPY.check1.after', 'COPY.reached',
-    'COPY.check2.question', 'COPY.check2.right', 'COPY.answer', 'COPY.check2.wrong', 'COPY.arrangements[0]', 'COPY.cover.intro', 'COPY.cover.question',
+    'COPY.check2.question', 'COPY.check2.right', 'COPY.answer', 'COPY.natural', 'COPY.zeroTag.natural', 'COPY.check2.wrong', 'COPY.arrangements[0]', 'COPY.cover.intro', 'COPY.cover.question',
     'COPY.arrangements[1]', 'COPY.cover.again', 'COPY.cover.look', 'COPY.arrangements[2]', 'COPY.reveal',
-    'COPY.magnetQuestion', 'COPY.switchOn', 'COPY.magnet[0]', 'COPY.magnet[1]', 'COPY.magnet[2]', 'COPY.magnet[3]', 'COPY.listen',
+    'COPY.magnetQuestion', 'COPY.switchOn', 'COPY.zeroTag.nudged', 'COPY.magnet[0]', 'COPY.magnet[1]', 'COPY.magnet[2]', 'COPY.magnet[3]', 'COPY.original', 'COPY.listen',
     'COPY.picture', 'COPY.you.didIt', 'COPY.eye.line', 'COPY.bigIdea', 'COPY.whole', 'COPY.unknown', 'COPY.similar.question', 'COPY.similar.after', 'COPY.compareLabels.note', 'COPY.compare', 'COPY.final'];
   const pos = calls.map((c) => main.indexOf(c, main.indexOf('// ── the story')));
   assert.ok(pos.every((i) => i >= 0), JSON.stringify(calls.filter((c, k) => pos[k] < 0)));
   assert.deepEqual([...pos].sort((a, b) => a - b), pos, 'the story shows the copy in order');
   const tail = main.slice(main.indexOf("say(COPY.final, 'final');"));
   assert.ok(!/say\(|button\(|choices\(|press\(|ask\(/.test(tail.replace("say(COPY.final, 'final');", '')), 'nothing is shown after the final line');
-  for (const line of [COPY.task, COPY.hook, COPY.totalMeans, COPY.reveal, COPY.final, ...COPY.magnet, COPY.bigIdea, COPY.whole, COPY.unknown, COPY.eye.line, COPY.compare]) assert.ok(!main.includes(line), `copy belongs in copyMri.js: ${line}`);
+  for (const line of [COPY.task, COPY.hook, COPY.totalMeans, COPY.reveal, COPY.final, ...COPY.magnet, COPY.bigIdea, COPY.whole, COPY.unknown, COPY.eye.line, COPY.compare, COPY.natural, COPY.original, COPY.meterLabel, COPY.zeroTag.natural]) assert.ok(!main.includes(line), `copy belongs in copyMri.js: ${line}`);
   // gaps filled with pictures, not words: +1 and −1 as arrows join the TOTAL (its result counting with them), and radio
   // waves in, a faint reply out, while that line is on screen
   assert.ok(COPY.sum.up === '+1' && COPY.sum.down === '−1');

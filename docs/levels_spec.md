@@ -77,47 +77,52 @@ Lines marked (R2) are Nadia's own wording, from `docs/prototype_try_spec.md` Rev
 13. So many tiny magnets. Why don't they add up to one giant magnet?
 14. TOTAL SIGNAL (the label on the total; Nadia's "TOTAL", now naming the signal)
 15. Your scanner only picks up the TOTAL SIGNAL: every arrow in the drop, added up.
-16. + = … (the adding, written inside the TOTAL SIGNAL), and +1, −1 (popping up beside its result as each arrow joins, the result counting with it)
-17. Can you make the total 0? (R2)
-18. Drag a ↓ next to an ↑. (only after 6 seconds without a move)
-19. 0 (under every balanced group)
-20. Can every piece still be here while the total is 0? [Yes] [No] [Not sure] (R2)
-21. Let's see. (R2)
-22. You: Oh no! I got 0 signal for my MRI! (Nadia: "oh no you got no signal for your mri")
-23. If the total is 0, are the pieces gone? [Yes] [No] (R2)
-24. Exactly. They cancelled. (R2; after No)
-25. Look again — they're still there. (R2; after Yes)
-26. Inside your patient, opposite tiny magnets cancel out.
-27. Same result. (R2)
-28. Here's a look at some more protons in another part of your patient's body. Its total is 0 too. (Nadia, 2026-11-20: "heres a look at some more protons in another part of your patients body")
-29. ? (on the covered drop, and in its TOTAL SIGNAL)
-30. What's behind this 0? [Nothing] [Something]
-31. Different arrangement. (R2)
-32. And another. [Look inside]
-33. Still 0. (R2)
-34. And another. [Look inside]
-35. One result. Many possible arrangements behind it. (R2)
-36. You (thinking): My patient's signal is 0. How will my scanner see anything?
-37. [Switch on the magnet]
-38. It tips the balance: a few more arrows point with the magnet.
-39. That's what an MRI does: it turns your patient's 0 signal into a small signal it can read.
-40. In a real body, it's only about five to ten in every million.
-41. Your scanner nudges them with radio waves and picks up their faint reply. (radio waves come in from both sides; a faint reply spreads back out, in rings)
-42. [Take the scan]
-43. From that faint reply, it paints a picture of your patient's insides.
-44. You: I did it! My first MRI scan!
-45. one picture (the label on what the eye sees)
-46. Your eye sees one picture, painted from a faint reply: a few tiny magnets in every million.
-47. The big idea: There's far more hiding in a 0 than the signal shows us. (pulled out as the level's big idea; Nadia, 2026-11-23: "the bold statement")
-48. A 0 isn't always nothing. Sometimes it's a whole person: countless tiny magnets, perfectly balanced.
-49. And there are still so many things we don't know about, hiding behind the 0. (Nadia, 2026-11-23: "there are still so many things that we don't know about hiding behind the 0")
-50. Do you see a similarity to the violin level? [Yes] [Not yet]
-51. Look.
-52. YOUR A NOTE, TOTAL SIGNAL, +, =, 0, A (the side by side)
-53. In Level 1, one A note hid many notes. Here, one 0 signal hides countless tiny magnets.
-54. Hidden things are everywhere. There are even frequencies our ears can't hear. (Nadia, 2026-11-23: "there are frequencies our ear cna't even percieve")
+16. MRI SIGNAL (the label on the small monitor beside the TOTAL SIGNAL, in the same scene: its wave and its four bars shrink as each ↓ joins, and go flat at 0; Nadia, 2026-11-24: "shows the signal to the mri is getting weaker in a additional visual, dont add another scene rather add to the scene")
+17. + = … (the adding, written inside the TOTAL SIGNAL), and +1, −1 (popping up beside its result as each arrow joins, the result counting with it)
+18. Can you make the total 0? (R2)
+19. Drag a ↓ next to an ↑. (only after 6 seconds without a move)
+20. 0 (under every balanced group)
+21. Can every piece still be here while the total is 0? [Yes] [No] [Not sure] (R2)
+22. Let's see. (R2)
+23. You: Oh no! I got 0 signal for my MRI! (Nadia: "oh no you got no signal for your mri"; just before it, the 0 of the TOTAL SIGNAL grows into a big bold 0 and closes around the balanced magnets, which now sit inside it: Nadia, 2026-11-24, "the magnets need to be inside 0 visually because we a showing that 0 has a geometry")
+24. If the total is 0, are the pieces gone? [Yes] [No] (R2)
+25. Exactly. They cancelled. (R2; after No)
+26. Look again — they're still there. (R2; after Yes)
+27. Inside your patient, opposite tiny magnets cancel out.
+28. This balanced 0 is their natural state. (Nadia, 2026-11-24: "make sure the user know that the magnets balanced are the normal balanced state")
+29. NATURAL STATE (the tag on the 0's band, appearing with line 28)
+30. Same result. (R2)
+31. Here's a look at some more protons in another part of your patient's body. Its total is 0 too. (Nadia, 2026-11-20: "heres a look at some more protons in another part of your patients body")
+32. ? (on the covered 0: its inside frosted over, the magnets in there out of sight; and in its TOTAL SIGNAL)
+33. What's behind this 0? [Nothing] [Something]
+34. Different arrangement. (R2)
+35. And another. [Look inside]
+36. Still 0. (R2)
+37. And another. [Look inside]
+38. One result. Many possible arrangements behind it. (R2)
+39. You (thinking): My patient's signal is 0. How will my scanner see anything?
+40. [Switch on the magnet]
+41. NUDGED (the 0's tag once the magnet tips the balance: the 0 leans and pales, and the MRI SIGNAL comes back, faint)
+42. It tips the balance: a few more arrows point with the magnet.
+43. That's what an MRI does: it turns your patient's 0 signal into a small signal it can read.
+44. In a real body, it's only about five to ten in every million.
+45. Your scanner nudges them with radio waves and picks up their faint reply. (radio waves come in from both sides; a faint reply spreads back out, in rings)
+46. That's a nudged, faint version. The balanced 0 is the original: the MRI just made us aware of it. (Nadia, 2026-11-24: "in energeo it is paramount that we use the origninal geometry not a manipulated/faint version like an mri, however the mri made us aware of this geometry")
+47. [Take the scan]
+48. From that faint reply, it paints a picture of your patient's insides.
+49. You: I did it! My first MRI scan!
+50. one picture (the label on what the eye sees)
+51. Your eye sees one picture, painted from a faint reply: a few tiny magnets in every million.
+52. The big idea: There's far more hiding in a 0 than the signal shows us. (pulled out as the level's big idea; Nadia, 2026-11-23: "the bold statement")
+53. A 0 isn't always nothing. Sometimes it's a whole person: countless tiny magnets, perfectly balanced.
+54. And there are still so many things we don't know about, hiding behind the 0. (Nadia, 2026-11-23: "there are still so many things that we don't know about hiding behind the 0")
+55. Do you see a similarity to the violin level? [Yes] [Not yet]
+56. Look.
+57. YOUR A NOTE, TOTAL SIGNAL, +, =, 0, A (the side by side)
+58. In Level 1, one A note hid many notes. Here, one 0 signal hides countless tiny magnets.
+59. Hidden things are everywhere. There are even frequencies our ears can't hear. (Nadia, 2026-11-23: "there are frequencies our ear cna't even percieve")
 
-Nothing comes after line 54.
+Nothing comes after line 59.
 
 Around the levels: "Level 1", "Level 2", "Final level" (Level 3), "Turn your sound on." (Levels 1 and 3 need sound),
 "Next: Level 2" and "Next: Final level". Each level's cover (since 2026-11-23): Level 1, "Inside a note", "Can one sound
@@ -450,6 +455,72 @@ parts we can't see is possible, that we know a few ways, and that ENERGEO sets o
   down, and the box with the signal went out of view above. With one screen per level, the head, the signal and the
   words are all in view as you tap.
 - **No new claims.**
+
+## Level 2's 0, and a new look for all three levels (2026-11-24). Nadia, verbatim:
+
+> when adding the magnets to the total signal in level 2, 1. make sure when adding magnets it shows the signal to the mri is getting weaker in a additional visual, dont add another scene rather add to the scene, 2. on the screen where the magnets are hidden under 0 by a box and a question mark, its not visually supported for the user to believe that the magnets are physically inside 0, the magnets right now just seem like they are in a box. so fix this level 2 visual to include the visual meaning of the total signal in relation to showing the mri signal physically getting week, but at the same time make sure the user know that the magnets balanced are the normal balanced state because in energeo it is paramount that we use the origninal geometry not a manipulated/faint version like an mri, however the mri made us aware of this geometry. 2. the magnets need to be inside 0 visually because we a showing that 0 has a geometry, be creative. 3. go over the whole thing. make things more professsional, yet fun finding the inbetween is hard, so use a nat geo color palate, bold times new roman be creative along the lines of fun but professional through out the whole project, i expect a major design change in all levels, all text, all animations, everything.
+
+### Level 2: the MRI SIGNAL, in the same scene
+
+- Beside the TOTAL SIGNAL, in the drop's own scene (no new scene), a small black monitor labelled MRI SIGNAL: a moving
+  yellow wave over four bars, like a phone's signal bars.
+- Its wave is as tall as the share of the drop's arrows that line up, |TOTAL| ÷ arrows (`src/math/pieces.js`:
+  `share`). Three ↑: the wave is full and all four bars are lit. Each ↓ that joins makes it weaker: 2 of 4 (two bars),
+  1 of 5 (one bar), 0 of 6 (a flat grey line, no bars, the monitor's frame dimming in and out).
+- It stays flat through every covered 0 and every arrangement. When the magnet tips the balance, it comes back,
+  faint: 2 of 24, one bar. It stays on while the picture is painted, and leaves with the TOTAL.
+
+### Level 2: the magnets inside the 0
+
+- When the TOTAL reaches 0, its own 0 (in "= 0") grows into a big bold numeral 0, in the signature yellow, and closes
+  around the balanced magnets; the drop they were in fades away. From then on the magnets sit inside the 0, in its
+  hollow, and every arrangement is drawn inside it: the learner's own ↓↑ pairs in a row; the others stacked, each
+  group's ↑ on top and its ↓ mirrored under them. Every group keeps its own small 0 under it, inside the big one.
+- The 0's band carries a tag. "NATURAL STATE" appears with the line "This balanced 0 is their natural state."
+- A covered 0 (the "?" screens) is the same 0 with its inside frosted over and a big "?" on the frost: the magnets
+  are in the 0, out of sight. "Look inside" opens the frost like an iris, from the edge to the middle.
+- For the scanner's many pairs the 0 stretches wider around them. When the magnet tips the balance, the 0 leans, like
+  an italic 0, its band pales and turns dashed, and its tag reads "NUDGED". After the radio waves: "That's a nudged,
+  faint version. The balanced 0 is the original: the MRI just made us aware of it."
+- Every position is from `src/math/pieces.js` (`ZERO`, `CROWD_ZERO`, `layout`, `zeroFromResult`, `METER`), checked by
+  `test/mri.test.js`: every group and its small 0 inside the 0's hollow, nothing overlapping, the 0 below the TOTAL and
+  on the board, the monitor beside the TOTAL.
+
+### All three levels: a new look (a field magazine: fun, but professional)
+
+- **Type.** Bold Times New Roman throughout: the lines, the buttons, the covers, the labels on every board. Italic for
+  questions on the covers, captions and hints.
+- **Colour.** White pages and ink black, one signature yellow (always a fill, a bar or a marker with black, never
+  yellow words on white), warm paper, and the earth's own tones around them: ocean blue for the N half of every
+  magnet, forest, ochre, sand, sage and slate. Level 1's concert hall is warm paper and sand; the scanner is in warm
+  greys; the final level's dark is a night-sky black, its name at the end in yellow. No red, no gradients, no dark
+  theme.
+- **Shapes.** Flat print shapes with crisp offset shadows: square-cornered yellow buttons with a black edge and shadow
+  that press down when pressed; boards framed by a hairline, like photographs on a page.
+- **The top bar.** A black masthead with a yellow rule under it; each level's section fills in yellow, its marker
+  turning yellow when the level is done. "Scroll through" sits in it, outlined in yellow.
+- **Covers.** Each level opens with a yellow kicker tab ("Level 1"), then its headline rising in, then its question,
+  in italics.
+- **The big idea.** A black pull-quote with a yellow edge and a yellow "The big idea" tab; it wipes open.
+- **Up next.** A card with a black edge and a yellow offset shadow; it springs up.
+- **Animations.** Lines slide in from the left; the opening line of a part gets a short yellow rule that wipes in
+  above it; buttons and answers spring; a chosen answer turns yellow; speech bubbles pop from the speaker's face.
+- **No new claims beyond the lines above.**
+
+### What the new lines claim, and what they do not
+
+- "This balanced 0 is their natural state.": outside a magnet, the protons' tiny magnets point every which way and
+  cancel: their total, the net magnetization, is 0. That is the state they rest in.
+- The MRI SIGNAL monitor is a picture of how strong a signal the scanner could pick up from the drop. A scanner's
+  signal follows the net magnetization; the monitor shows the share of the drop's arrows that line up. It is not a
+  measured value, and it does not model noise.
+- "That's a nudged, faint version. The balanced 0 is the original: the MRI just made us aware of it.": the scanner
+  reads the tipped state (about five to ten in every million lined up, line 44) and the faint reply to its radio
+  waves; the balanced arrangement is the one the magnets rest in, without the scanner. The line does not say that
+  leaving the 0 loses anything (that stays the open hypothesis B-ZERO-LOSS), and it says nothing about what ENERGEO
+  has found.
+- The 0 drawn around the magnets is a picture of the TOTAL (what the magnets add up to), with the arrangement that
+  gives it inside: "a 0 has a geometry" in Nadia's words. It is not a claim that a 0 is a physical container.
 
 ## Level 3, "A prism for sound" (2026-11-19; first called "The magic glasses")
 

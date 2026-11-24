@@ -6,7 +6,10 @@
 // with pictures instead: +1 and −1 pop up as arrows join the TOTAL, and radio waves go in and a faint reply comes out.
 // Since the magazine revision (2026-11-23), the picture leads to the level's big idea, that there is far more hiding
 // in a 0 than the signal shows, and the level ends on what hides from our senses, the question the final level opens
-// with. Nothing else on the page is learner-facing text, apart from accessibility labels.
+// with. Since 2026-11-24 an MRI SIGNAL meter beside the TOTAL shows the signal getting weaker as the arrows balance,
+// and the balanced magnets sit inside a bold 0 (zeroTag on it): the balanced 0 is their natural state, the original;
+// what the scanner reads is a nudged, faint version. Nothing else on the page is learner-facing text, apart from
+// accessibility labels.
 
 export const COPY = {
   scanner: 'This is an MRI scanner. It can see inside a body: no X-rays, no cuts.',
@@ -22,6 +25,7 @@ export const COPY = {
   hook: "So many tiny magnets. Why don't they add up to one giant magnet?",
   totalLabel: 'TOTAL SIGNAL',
   totalMeans: 'Your scanner only picks up the TOTAL SIGNAL: every arrow in the drop, added up.',
+  meterLabel: 'MRI SIGNAL',
   sum: { plus: '+', equals: '=', more: '…', up: '+1', down: '−1' },
   task: 'Can you make the total 0?',
   hint: 'Drag a ↓ next to an ↑.',
@@ -37,6 +41,8 @@ export const COPY = {
     wrong: "Look again — they're still there.",
   },
   answer: 'Inside your patient, opposite tiny magnets cancel out.',
+  natural: 'This balanced 0 is their natural state.',
+  zeroTag: { natural: 'NATURAL STATE', nudged: 'NUDGED' },
   arrangements: ['Same result.', 'Different arrangement.', 'Still 0.'],
   cover: {
     intro: "Here's a look at some more protons in another part of your patient's body. Its total is 0 too.",
@@ -55,6 +61,7 @@ export const COPY = {
     "In a real body, it's only about five to ten in every million.",
     'Your scanner nudges them with radio waves and picks up their faint reply.',
   ],
+  original: "That's a nudged, faint version. The balanced 0 is the original: the MRI just made us aware of it.",
   listen: 'Take the scan',
   picture: "From that faint reply, it paints a picture of your patient's insides.",
   you: { didIt: 'I did it! My first MRI scan!' },
