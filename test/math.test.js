@@ -206,6 +206,7 @@ test('block 7: averaging over shifts by d keeps exactly the d-periodic part', ()
 test('reading pace: each line is given the time it takes to read at an average reading speed (Nadia, 2026-11-24)', async () => {
   const { READING, wordCount, readingTime, readBy } = await import('../src/math/reading.js');
   assert.ok(READING.wpm >= 150 && READING.wpm <= 250, 'an average reading speed, in words a minute');
+  assert.ok(READING.nextShare > 0 && READING.nextShare < 1, 'Next comes sooner than the next line');
   assert.equal(wordCount("That's a nudged, faint version."), 5);
   assert.equal(wordCount('+1, −1'), 2);
   assert.equal(readingTime(''), 0, 'nothing to read: no wait');

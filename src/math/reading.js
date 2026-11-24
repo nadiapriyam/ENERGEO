@@ -4,7 +4,9 @@
 // speed (READING.wpm words a minute), plus a moment to take it in; the next line of the same part, and the Next
 // button, wait for it. Pure functions, no DOM.
 
-export const READING = { wpm: 230, settle: 400, min: 1000 };   // a little quicker since 2026-11-24 (Nadia: "increase the appear rate for the section just a bit")
+export const READING = { wpm: 230, settle: 400, min: 1000, nextShare: 0.5 };   // a little quicker since 2026-11-24 (Nadia: "increase the appear rate for the section just a bit")
+// Next (and a button that moves the story on) waits only `nextShare` of the reading time left: it comes sooner than the
+// next line would (Nadia, 2026-11-24: "make the speed of when the next appears faster than the sections speed").
 
 /** The words in a line of text (numbers and symbols such as "+1" or "→" are read too, as one word each). */
 export const wordCount = (text) => (String(text).match(/[^\s]+/g) ?? []).filter((w) => /[\p{L}\p{N}→↑↓?]/u.test(w)).length;

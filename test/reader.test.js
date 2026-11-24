@@ -79,7 +79,9 @@ test('3. one screen per level: everything in a level is in view, the words in th
   // reading pace (Nadia, 2026-11-24: "match the average reading speed to when the sections appear, same with the next button")
   assert.match(r, /const left = RECORDING \? ms : Math\.max\(ms, caughtUp\(\)\);/, 'the next line waits until the earlier ones are read');
   assert.match(r, /coming\(true\)/, '"…" while more lines are on their way (Nadia, 2026-11-24: "add ... when there are going to be more sectionals that appear")');
-  assert.match(read('src/levels/base.css'), /\.more-coming \.dot \{/);
+  assert.match(read('src/levels/base.css'), /\.more-coming \{[^}]*animation: more-coming/, 'a trailing "…", fading in and out (not loading dots: Nadia, 2026-11-24)');
+  assert.match(r, /const left = caughtUp\(\) \* READING\.nextShare;/, 'Next comes sooner than the next line would (Nadia, 2026-11-24)');
+  assert.match(read('src/levels/record.js'), /querySelectorAll\('\.more-coming'\)\) m\.remove\(\)/, 'the "…" is never kept');
   assert.match(r, /readyAt = performance\.now\(\) \+ left;/, 'Next lights up once the words on show are read');
   assert.match(r, /if \(!waiting \|\| performance\.now\(\) < readyAt\) return false;/, 'and cannot be pressed before');
   for (const f of ['note', 'mri', 'prism']) assert.match(read(`src/levels/${f}.js`), /story\.read\(\)/, `${f}.js: its buttons appear once the words above are read`);

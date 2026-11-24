@@ -669,6 +669,23 @@ parts we can't see is possible, that we know a few ways, and that ENERGEO sets o
   The four hidden notes are blue, coral, purple and gold, in Level 1, in Level 2's side by side and as the final
   level's lights. Every detail stays.
 
+## All three levels: a trailing "…", and Next sooner (2026-11-24). Nadia, verbatim (two messages):
+
+> increase the appear rate for the section just a bit
+
+> the .. looks like loading try something mor eintuitive to the situation, also make the speed of when the next appears faster than the sections speed
+
+### What changes
+
+- **Lines a little quicker**: 230 words a minute (was 200), a short line at least a second.
+- **"…" as the sentence trailing off.** The three pulsing dots under the words looked like something loading. Now,
+  while the next line is on its way, a "…" in the same type follows the last line on show (or the last speech bubble,
+  or the big idea), fading softly in and out, as a story pauses before it goes on. It goes the moment the next line
+  comes, and it is never kept for Back or the comic.
+- **Next sooner than the next line.** Next (and a button that moves the story on, such as "Zoom in") lights up once
+  half of the reading time left has passed (`src/math/reading.js`: `nextShare`), so it comes faster than the lines of a
+  part follow each other.
+
 ## All three levels: the "Fresh intellectual" palette (2026-11-24). Nadia, verbatim:
 
 > try Fresh intellectual

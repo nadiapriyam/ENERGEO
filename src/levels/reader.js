@@ -9,7 +9,7 @@
 // - Back pages back through the parts already read (a still picture of the board, with its words, kept by record.js);
 //   Next pages forward again, to now. Keys: → or Enter for Next, ← for Back.
 import { LEVELS } from './copyLevels.js';
-import { readBy } from '../math/reading.js';
+import { readBy, READING } from '../math/reading.js';
 import { COMIC } from './comic.js';
 
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -116,14 +116,20 @@ export function reader(root, { fast = () => false } = {}) {
     if (records.some((m) => m.type === 'childList')) requestAnimationFrame(() => words.scrollTo({ top: words.scrollHeight, behavior: REDUCED ? 'auto' : 'smooth' }));
   }) : null;
   watch?.observe(words, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'], attributeOldValue: true });   // and the newest line always in view
-  // "…" under the words while more lines are on their way by themselves (Nadia, 2026-11-24: "add ... when there are
-  // going to be more sectionals that appear"): shown during a beat, gone the moment the next line comes
-  const more = make('p', 'more-coming', { ariaHidden: 'true' });
-  more.append(make('span', 'dot'), make('span', 'dot'), make('span', 'dot'));
+  // "…" at the end of the last line while more lines are on their way by themselves, as a sentence trails off before
+  // the story goes on (Nadia, 2026-11-24: "add ... when there are going to be more sectionals that appear"; then "the
+  // .. looks like loading try something mor eintuitive to the situation"): shown during a beat, gone the moment the next
+  // line comes
+  const more = make('span', 'more-coming', { ariaHidden: 'true', textContent: '…' });
   let pending = 0;
+  const lastWords = () => {                                  // the last line, bubble or big idea on show
+    const all = words ? [...words.querySelectorAll(':scope > .line:not(.big-idea), :scope > .big-idea .idea-text, :scope > .speaker .bubble:last-child')] : [];
+    return all.at(-1) ?? null;
+  };
   const coming = (v) => {
     pending = Math.max(0, pending + (v ? 1 : -1));
-    if (pending && words && !RECORDING) words.append(more);
+    const at = pending && !RECORDING ? lastWords() : null;
+    if (at) at.append(more);
     else more.remove();
   };
   const caughtUp = () => { if (watch) ingest(watch.takeRecords()); return RECORDING ? 0 : Math.max(0, readUntil - performance.now()); };
@@ -211,7 +217,7 @@ export function reader(root, { fast = () => false } = {}) {
       if (fast()) { count++; fill(); return Promise.resolve(); }
       return new Promise((resolve) => {
         waiting = resolve;
-        const left = caughtUp();                               // Next lights up once the words on show have been read
+        const left = caughtUp() * READING.nextShare;          // Next lights up sooner than a line follows (reading.js)
         readyAt = performance.now() + left;
         clearTimeout(readyTimer);
         if (left) readyTimer = setTimeout(refresh, left + 20);
@@ -220,7 +226,7 @@ export function reader(root, { fast = () => false } = {}) {
       });
     },
     /** Resolves once the words on show have been read (at once while fast-forwarding or recording). */
-    read() { return fast() ? Promise.resolve() : new Promise((r) => setTimeout(r, caughtUp())); },
+    read() { return fast() ? Promise.resolve() : new Promise((r) => setTimeout(r, caughtUp() * READING.nextShare)); },
     /** A beat between lines of the same part: the next line follows by itself, once the earlier ones have been read (at least `ms`), and they stay. */
     beat(ms = BEAT) {
       if (fast()) return Promise.resolve();
