@@ -321,7 +321,7 @@ test('8. the frame: ↑ and ↓ magnets mirrored, never rotated; no curve or com
   assert.match(read('src/levels/page.js'), /chain\('note-lesson', 'next-level', LEVELS\.next, 'level-2', \(\) => import\('\.\/mri\.js'\)\)/, 'the MRI level starts when Level 1 is done');
   assert.match(notebookHtml, /url=\.\.\/try\//, 'the old notebook link opens the levels');
   assert.match(read('try/level-2/index.html'), /url=\.\.\//, 'the old Level 2 link opens the levels');
-  assert.match(css, /--bg: #ffffff;/);
+  assert.match(css, /--bg: #f5f0e6;/, 'a light page: ivory (Nadia\'s "Bold intellectual" palette, 2026-11-24)');
   assert.ok(!/prefers-color-scheme: dark|linear-gradient|\bred\b|crimson/i.test(css), 'no dark theme, no gradients, no red');
   for (const hex of css.match(/#[0-9a-f]{6}\b/gi) ?? []) {
     const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));

@@ -208,7 +208,7 @@ test('4. the scanner: every pixel of your head is exactly one body part, and eac
   assert.ok(Math.abs(amp * LOUDEST - (STRIP.h / 2 - 8)) < 1e-9, 'the loudest part fills the box');
   assert.ok(amp * partLoudness(SKULL, 0) >= 12 && amp * partLoudness(SKULL, 1 / 6) >= 4, 'the skull\'s signal is drawn big enough to see, for about one wave');
   assert.ok(BODY_PARTS[SKULL].fade >= 1 / 6 && BODY_PARTS[SKULL].fade < 0.25, 'still the quickest to fade');
-  assert.match(read('src/levels/prism.css'), /\.part-wave \{[^}]*opacity: 0\.16;[^}]*\}\n\.part-wave\.picked \{ opacity: 1; stroke-width: 3\.2;/, 'the part you tapped last stands out; the earlier ones step back');
+  assert.match(read('src/levels/prism.css'), /\.part-waves \.part-wave \{[^}]*opacity: 0\.16;[^}]*\}\n\.part-waves \.part-wave\.picked \{ opacity: 1; stroke-width: 3\.2;/, 'the part you tapped last stands out; the earlier ones step back');
   assert.ok(read('docs/levels_spec.md').includes('> i cant see the skulls signal when i tap on the skull but i can see the inner brain signal when i tap on the inner brain pop up'), "Nadia's message, verbatim");
 });
 

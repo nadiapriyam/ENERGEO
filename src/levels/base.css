@@ -1,33 +1,40 @@
-/* The levels' shared page, since 2026-11-24 a field magazine (Nadia: "use a nat geo color palate, bold times new
-   roman be creative along the lines of fun but professional"): a white page, bold Times New Roman, ink black, one
-   signature yellow (a fill, a bar, a marker: always with black, never yellow words on white), warm paper and the
-   earth's own tones around it, flat print shapes with crisp offset shadows. The prompt under the figure, and the
-   buttons and choices every level uses. Times New Roman's 0 is a plain, unslashed 0. */
+/* The levels' shared page. Since 2026-11-24 a magazine look (Nadia: "use a nat geo color palate, bold times new roman
+   be creative along the lines of fun but professional"), and then, the same day, its palette, "Bold intellectual"
+   (Nadia: "i like the details, dont change them, just change the color palate"): midnight blue #172B3A, teal #247C78,
+   eucalyptus #C5D6C0, amber #E5A34B, ivory #F5F0E6. An ivory page; bold Times New Roman in midnight blue; amber the
+   one bright accent (a fill, a bar, a marker: always with midnight blue on it, never amber words on ivory); teal the
+   second (the N half of every magnet, a page turned back); eucalyptus the soft fills; flat print shapes with crisp
+   offset shadows. The prompt under the figure, and the buttons and choices every level uses. Times New Roman's 0 is a
+   plain, unslashed 0. */
 
 :root {
-  --bg: #ffffff;
-  --paper: #f7f3ea;           /* warm paper: bubbles, cards, panels */
-  --paper-2: #ece5d4;
-  --rule: #d9d2c2;
-  --ink: #141414;
-  --ink-2: #4c4943;
-  --ink-3: #8d887e;
-  --yellow: #ffcd00;          /* the signature yellow */
-  --yellow-soft: #fff1b8;
-  --yellow-deep: #c99a00;
-  --accent: #ffcd00;          /* the page's one accent: yellow, under black */
-  --accent-soft: #fff1b8;     /* a chosen answer */
-  --magnet: #1d4e89;          /* the N half of every magnet: deep ocean blue */
-  --s-pole: #c6d7ea;          /* the S half */
-  --ocean: #1d4e89;
-  --forest: #2f5d3a;
-  --ochre: #b8741a;
+  --bg: #f5f0e6;              /* ivory */
+  --midnight: #172b3a;
+  --teal: #247c78;
+  --eucalyptus: #c5d6c0;
+  --amber: #e5a34b;
+  --ivory: #f5f0e6;
+  --card: #fffdf8;            /* a card on the ivory page: bubbles, panels */
+  --paper: #fffdf8;
+  --paper-2: #e8e0cf;         /* a deeper ivory: frost, sand */
+  --rule: #d6ccb9;
+  --ink: #172b3a;             /* midnight blue */
+  --ink-2: #44596a;
+  --ink-3: #8193a0;
+  --amber-soft: #f6dfb8;
+  --amber-deep: #b8781f;
+  --accent: #e5a34b;          /* the page's one bright accent: amber, under midnight blue */
+  --accent-soft: #f6dfb8;     /* a chosen answer */
+  --magnet: #247c78;          /* the N half of every magnet: teal */
+  --s-pole: #c5d6c0;          /* the S half: eucalyptus */
+  --forest: #3f6b5a;
+  --ochre: #c8862e;
   --earth: #7a5230;
-  --water: #e7f0f7;           /* the drop and the zoom */
-  --water-edge: #b5cbdf;
-  --steel: #efebe3;           /* the scanner, in warm greys */
-  --steel-edge: #c9c2b5;
-  --steel-dark: #b3ab9d;
+  --water: #e3eeea;           /* the drop and the zoom: a pale teal */
+  --water-edge: #a9c9c2;
+  --steel: #ebe5d8;           /* the scanner, in warm ivory greys */
+  --steel-edge: #c4baa6;
+  --steel-dark: #ada38f;
   --font: "Times New Roman", Times, "Liberation Serif", "Nimbus Roman", serif;   /* bold Times; a plain 0 */
   --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --glide: cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -39,8 +46,8 @@
 .line { margin: 0 0 0.62em; font-weight: 700; opacity: 0; transform: translateX(-12px); transition: opacity 360ms ease-out, transform 460ms var(--glide); }
 .line.in { opacity: 1; transform: none; }
 .line.lead { font-size: 1.55rem; line-height: 1.22; letter-spacing: -0.005em; }
-.line.lead::before {                                         /* a yellow rule wipes in over the opening line */
-  content: ''; display: block; width: 46px; height: 5px; margin: 0 0 0.4em; background: var(--yellow);
+.line.lead::before {                                         /* an amber rule wipes in over the opening line */
+  content: ''; display: block; width: 46px; height: 5px; margin: 0 0 0.4em; background: var(--amber);
   transform: scaleX(0); transform-origin: left; transition: transform 520ms var(--glide) 160ms;
 }
 .line.lead.in::before { transform: none; }
@@ -51,7 +58,7 @@
 
 .action {
   font: inherit; font-size: 1.08rem; font-weight: 700; letter-spacing: 0.01em;
-  color: var(--ink); background: var(--yellow);
+  color: var(--ink); background: var(--amber);
   border: 2px solid var(--ink); border-radius: 6px; box-shadow: 3px 3px 0 var(--ink);
   padding: 0.4em 1.15em; margin: 0 0 1em; cursor: pointer;
   opacity: 0; transform: translateY(8px) scale(0.96);
@@ -68,9 +75,9 @@
   background: var(--bg); border: 2px solid var(--ink); border-radius: 6px;
   padding: 0.32em 1.05em; cursor: pointer; transition: background-color 160ms, transform 160ms, box-shadow 160ms;
 }
-.choice:hover:not(:disabled) { background: var(--yellow-soft); transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--ink); }
+.choice:hover:not(:disabled) { background: var(--amber-soft); transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--ink); }
 .choice:disabled { cursor: default; color: var(--ink-3); border-color: var(--rule); }
-.choice.picked { background: var(--yellow); color: var(--ink); border-color: var(--ink); box-shadow: 3px 3px 0 var(--ink); animation: picked 420ms var(--spring); }
+.choice.picked { background: var(--amber); color: var(--ink); border-color: var(--ink); box-shadow: 3px 3px 0 var(--ink); animation: picked 420ms var(--spring); }
 @keyframes picked { from { transform: scale(0.92); } }
 .choice.missed { border-style: dashed; }            /* not an error colour: just set aside */
 
@@ -122,7 +129,7 @@ body {
 .bubble:first-child::before { content: ''; position: absolute; left: -7px; top: 0; border: 7px solid transparent; border-left: 0; border-top: 0; border-right-color: var(--paper); }
 :is(.face, .person) .skin { fill: #e8b58c; }
 :is(.face, .person) .eye { fill: #ffffff; }
-:is(.face, .person) .pupil { fill: #111111; }
+:is(.face, .person) .pupil { fill: #172b3a; }
 :is(.face, .person) .rim { fill: none; stroke: #3a3a3a; stroke-width: 3; stroke-linecap: round; }
 :is(.face, .person) .brow { stroke-width: 4.5; stroke-linecap: round; }
 :is(.face, .person) .mouth { fill: #7a3e2c; transform-box: fill-box; transform-origin: center; }
@@ -130,13 +137,13 @@ body {
 @keyframes talk { from { transform: scaleY(1); } to { transform: scaleY(3.4); } }
 :is(.face, .person) .eyes { transform-box: fill-box; transform-origin: center; animation: blink 5s infinite; }
 @keyframes blink { 0%, 93%, 100% { transform: scaleY(1); } 96% { transform: scaleY(0.12); } }
-.speaker.you .bubble { background: var(--yellow-soft); }
-.speaker.you .bubble:first-child::before { border-right-color: var(--yellow-soft); }
-.bubble.thought { font-style: italic; background: #ffffff; border: 2px dashed var(--ink-3); border-radius: 16px; }
-.speaker.you .bubble.thought:first-child::before { content: ''; left: -15px; top: 16px; width: 9px; height: 9px; border: 2px dashed var(--ink-3); border-radius: 50%; background: #ffffff; }
+.speaker.you .bubble { background: var(--amber-soft); }
+.speaker.you .bubble:first-child::before { border-right-color: var(--amber-soft); }
+.bubble.thought { font-style: italic; background: var(--card); border: 2px dashed var(--ink-3); border-radius: 16px; }
+.speaker.you .bubble.thought:first-child::before { content: ''; left: -15px; top: 16px; width: 9px; height: 9px; border: 2px dashed var(--ink-3); border-radius: 50%; background: var(--card); }
 
-.person .legs { fill: #2a2722; }
-.coat { fill: #f7f4ec; }
+.person .legs { fill: #22394a; }
+.coat { fill: #fffdf8; }
 .speaker.leaving { opacity: 0; transform: translateY(-4px); transition: opacity 260ms ease-in, transform 260ms ease-in; }
 
 @media (max-width: 520px) {
@@ -154,23 +161,23 @@ body {
 #level-1 { border-top: 0; margin-top: 0; }
 .side-toggle {
   position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 30;
-  writing-mode: vertical-rl; font: inherit; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em; color: var(--yellow);
-  background: var(--ink); border: 1.5px solid var(--yellow); border-right: 0; border-radius: 6px 0 0 6px;
+  writing-mode: vertical-rl; font: inherit; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em; color: var(--amber);
+  background: var(--ink); border: 1.5px solid var(--amber); border-right: 0; border-radius: 6px 0 0 6px;
   padding: 0.9em 0.35em; cursor: pointer; transition: right 260ms ease-out, color 200ms, background-color 200ms;
 }
-.side-toggle:hover { color: var(--ink); background: var(--yellow); }
+.side-toggle:hover { color: var(--ink); background: var(--amber); }
 .side {
   position: fixed; top: 0; right: 0; bottom: 0; z-index: 29; width: min(360px, 86vw);
-  background: #ffffff; border-left: 3px solid var(--ink); box-shadow: -8px 0 0 rgba(255, 205, 0, 0.9);
+  background: var(--bg); border-left: 3px solid var(--ink); box-shadow: -8px 0 0 rgba(229, 163, 75, 0.9);
   overflow-y: auto; overscroll-behavior: contain; padding: 0 16px 48px;
   transform: translateX(100%); visibility: hidden; transition: transform 260ms ease-out, visibility 0s linear 260ms;
 }
 html.side-open .side { transform: none; visibility: visible; transition: transform 260ms ease-out, visibility 0s; }
 html.side-open .side-toggle { right: min(360px, 86vw); }
-.side-head { position: sticky; top: 0; z-index: 1; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; background: #ffffff; padding: 14px 0 8px; border-bottom: 2px solid var(--ink); }
+.side-head { position: sticky; top: 0; z-index: 1; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; background: var(--bg); padding: 14px 0 8px; border-bottom: 2px solid var(--ink); }
 .side-head h2 { margin: 0; font-size: 1.3rem; font-weight: 700; }
-.side-close { font: inherit; font-size: 0.95rem; font-weight: 700; color: var(--ink); background: none; border: 0; border-bottom: 3px solid var(--yellow); padding: 0.1em 0; cursor: pointer; }
-.side-level-name { display: inline-block; margin: 1.3em 0 0.7em; padding: 0.15em 0.55em; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); background: var(--yellow); }
+.side-close { font: inherit; font-size: 0.95rem; font-weight: 700; color: var(--ink); background: none; border: 0; border-bottom: 3px solid var(--amber); padding: 0.1em 0; cursor: pointer; }
+.side-level-name { display: inline-block; margin: 1.3em 0 0.7em; padding: 0.15em 0.55em; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); background: var(--amber); }
 .comic-part { margin: 0 0 1.6em; font-size: 0.88rem; line-height: 1.4; }
 .comic-part img { display: block; width: 100%; height: auto; margin: 0 0 0.55em; }
 .comic-part .line { margin-bottom: 0.45em; font-size: 0.88rem; }
@@ -190,55 +197,55 @@ html.side-open .side-toggle { right: min(360px, 86vw); }
 .reader {
   position: sticky; bottom: 0; z-index: 6; display: flex; align-items: center; justify-content: space-between; gap: 12px;
   margin-top: 0.8em; padding: 12px 0 calc(12px + env(safe-area-inset-bottom, 0px));
-  background: #ffffff; box-shadow: 0 -1px 0 var(--rule);
+  background: var(--bg); box-shadow: 0 -1px 0 var(--rule);
 }
 .reader-back {
-  font: inherit; font-size: 0.98rem; font-weight: 700; color: var(--ink); background: #ffffff; cursor: pointer;
+  font: inherit; font-size: 0.98rem; font-weight: 700; color: var(--ink); background: var(--card); cursor: pointer;
   border: 2px solid var(--ink); border-radius: 6px; padding: 0.28em 0.9em; white-space: nowrap; transition: background-color 160ms;
 }
 .reader-back:hover:not(:disabled) { background: var(--paper); }
 .reader-back:disabled { opacity: 0.3; cursor: default; }
 .reader-next {
   font: inherit; font-size: 1.06rem; font-weight: 700; color: var(--ink); cursor: pointer; white-space: nowrap;
-  background: var(--yellow); border: 2px solid var(--ink); border-radius: 6px; padding: 0.34em 1.3em; box-shadow: 3px 3px 0 var(--ink);
+  background: var(--amber); border: 2px solid var(--ink); border-radius: 6px; padding: 0.34em 1.3em; box-shadow: 3px 3px 0 var(--ink);
 }
 .reader-next:not(.ready):not(.paging) { visibility: hidden; }
 .reader-next.ready { animation: next-glow 1.6s ease-in-out infinite; }
 .reader-next:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
 @keyframes next-glow {
-  0%, 100% { box-shadow: 3px 3px 0 var(--ink), 0 0 0 0 rgba(255, 205, 0, 0.7); }
-  50% { box-shadow: 3px 3px 0 var(--ink), 0 0 0 10px rgba(255, 205, 0, 0); }
+  0%, 100% { box-shadow: 3px 3px 0 var(--ink), 0 0 0 0 rgba(229, 163, 75, 0.7); }
+  50% { box-shadow: 3px 3px 0 var(--ink), 0 0 0 10px rgba(229, 163, 75, 0); }
 }
-.reader-next.paging { color: #ffffff; background: var(--ink-2); box-shadow: 3px 3px 0 var(--ink); }
+.reader-next.paging { color: var(--ivory); background: var(--teal); box-shadow: 3px 3px 0 var(--ink); }
 
 html.has-story-bar body { padding-top: 62px; }
 .story-bar {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 25; background: var(--ink); box-shadow: 0 4px 0 var(--yellow);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 25; background: var(--ink); box-shadow: 0 4px 0 var(--amber);
   padding: 10px max(16px, env(safe-area-inset-right, 0px)) 7px max(16px, env(safe-area-inset-left, 0px));
 }
 .story-sections { max-width: 680px; margin: 0 auto; display: flex; gap: 10px; }
 .story-section { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
 .story-row { position: relative; display: flex; align-items: center; gap: 5px; }
-.story-track { flex: 1; height: 8px; border-radius: 1px; background: #3a3833; overflow: hidden; }
+.story-track { flex: 1; height: 8px; border-radius: 1px; background: #2c4556; overflow: hidden; }
 .story-fill { display: block; height: 100%; width: 0; border-radius: inherit; background: var(--accent); transition: width 650ms var(--glide), background-color 400ms; }
 .story-section.gain .story-track { animation: story-gain 650ms ease-out; }
-@keyframes story-gain { 30% { box-shadow: 0 0 0 2px var(--yellow); } }
+@keyframes story-gain { 30% { box-shadow: 0 0 0 2px var(--amber); } }
 .story-mark {
   flex: none; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 2px;
-  border: 2px solid #6c675d; background: var(--ink); color: #8d887e; font-size: 11px; line-height: 1;
+  border: 2px solid #4d6779; background: var(--ink); color: #7f96a6; font-size: 11px; line-height: 1;
   transition: background-color 300ms, border-color 300ms;
 }
-.story-name { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #a9a397; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.story-section.now .story-name { color: #ffffff; }
+.story-name { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #9bb0bd; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.story-section.now .story-name { color: var(--ivory); }
 .story-section.done .story-mark { background: var(--accent); border-color: var(--accent); color: var(--ink); animation: mark-in 520ms var(--spring); }
 @keyframes mark-in { from { transform: scale(0.4); } }
-.story-spark { position: fixed; left: 0; top: 0; z-index: 40; pointer-events: none; margin: -9px 0 0 -7px; font-size: 15px; line-height: 1; color: var(--yellow); text-shadow: 0 0 6px rgba(255, 205, 0, 0.85); }
+.story-spark { position: fixed; left: 0; top: 0; z-index: 40; pointer-events: none; margin: -9px 0 0 -7px; font-size: 15px; line-height: 1; color: var(--amber); text-shadow: 0 0 6px rgba(229, 163, 75, 0.85); }
 .framed .story-bar { display: none; }
 /* Back: a part read earlier, shown over the level (Next pages forward again, to now) */
-.reader-earlier { position: absolute; inset: 0; z-index: 5; overflow: auto; background: #ffffff; padding: 4vh 0 0; animation: earlier-in 300ms ease-out; }
+.reader-earlier { position: absolute; inset: 0; z-index: 5; overflow: auto; background: var(--bg); padding: 4vh 0 0; animation: earlier-in 300ms ease-out; }
 @keyframes earlier-in { from { opacity: 0; } }
 .reader-earlier[hidden] { display: none; }
-.reader-earlier-tag { display: inline-block; margin: 0 0 0.6em; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); background: var(--yellow); border-radius: 0; padding: 0.18em 0.7em; }
+.reader-earlier-tag { display: inline-block; margin: 0 0 0.6em; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); background: var(--amber); border-radius: 0; padding: 0.18em 0.7em; }
 .reader-part .figure { margin-bottom: 0.6em; }
 /* Back, on one screen: the earlier part laid out like the level, its picture sized to fit the room above Back and Next
    (stacked: on top; wide: on the left); the live board under it is hidden, so none of it shows around the edges */
@@ -267,10 +274,10 @@ html.has-story-bar body { padding-top: 62px; }
 }
 
 /* The magazine (page.js, magazine.js): each level's cover, "The big idea", and the "Up next" card between levels.
-   Covers: a yellow kicker tab, a bold headline that rises in, an italic question. The big idea: a black pull-quote
-   that wipes open, its tag in yellow. Up next: a card with a yellow offset shadow. */
+   Covers: an amber kicker tab, a bold headline that rises in, an italic question. The big idea: a midnight-blue
+   pull-quote that wipes open, its tag in amber. Up next: a card with an amber offset shadow. */
 .level-kicker {
-  display: inline-block; padding: 0.16em 0.6em 0.12em; color: var(--ink); background: var(--yellow);
+  display: inline-block; padding: 0.16em 0.6em 0.12em; color: var(--ink); background: var(--amber);
   animation: kicker-in 600ms var(--glide) both;
 }
 @keyframes kicker-in { from { opacity: 0; transform: translateX(-14px); } }
@@ -279,21 +286,21 @@ html.has-story-bar body { padding-top: 62px; }
 .level-dek { display: block; margin: 0 0 0.2em; font-size: 1.18rem; font-weight: 400; font-style: italic; letter-spacing: 0; text-transform: none; color: var(--ink-2); animation: title-in 800ms var(--glide) 260ms both; }
 .idea-tag { display: inline-block; margin: 0 0 0.35em; padding: 0.12em 0.5em 0.08em; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
 .big-idea {
-  margin: 0.6em 0 1em; padding: 0.6em 0.85em 0.75em; border-left: 8px solid var(--yellow);
-  background: var(--ink); color: #ffffff; font-size: 1.55rem; font-weight: 700; line-height: 1.18;
+  margin: 0.6em 0 1em; padding: 0.6em 0.85em 0.75em; border-left: 8px solid var(--amber);
+  background: var(--ink); color: var(--ivory); font-size: 1.55rem; font-weight: 700; line-height: 1.18;
   clip-path: inset(0 100% 0 0); transition: opacity 360ms ease-out, transform 460ms var(--glide), clip-path 700ms var(--glide) 80ms;
 }
 .big-idea.in { clip-path: inset(0 0 0 0); }
-.idea-tag { color: var(--ink); background: var(--yellow); }
+.idea-tag { color: var(--ink); background: var(--amber); }
 .idea-text { display: block; }
 .up-next {
-  display: block; max-width: 680px; margin: 1.2em auto 0; padding: 1.1em 1.25em 1.25em; background: #ffffff;
-  border: 2px solid var(--ink); border-radius: 8px; box-shadow: 7px 7px 0 var(--yellow);
+  display: block; max-width: 680px; margin: 1.2em auto 0; padding: 1.1em 1.25em 1.25em; background: var(--card);
+  border: 2px solid var(--ink); border-radius: 8px; box-shadow: 7px 7px 0 var(--amber);
   opacity: 0; transform: translateY(14px); transition: opacity 450ms ease-out, transform 600ms var(--spring);
 }
 .up-next[hidden] { display: none; }
 .up-next.in { opacity: 1; transform: none; }
-.up-next-kicker { display: inline-block; padding: 0.12em 0.5em 0.08em; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--yellow); background: var(--ink); }
+.up-next-kicker { display: inline-block; padding: 0.12em 0.5em 0.08em; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber); background: var(--ink); }
 .up-next-title { display: block; margin: 0.22em 0 0.08em; font-size: 1.75rem; font-weight: 700; line-height: 1.1; }
 .up-next-dek { display: block; margin: 0 0 0.85em; font-size: 1.15rem; font-style: italic; color: var(--ink-2); }
 .up-next .next-level { margin: 0; }
@@ -342,7 +349,7 @@ html.has-story-bar { --bar-h: 62px; }
 :is(#note-lesson, #mri-lesson, #prism-lesson) > .reader-column { flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; }
 .reader-column > .prompt { flex: 1 1 0; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
 .reader-column > .reader { flex: none; margin-top: 0.3em; padding: 8px 0 calc(8px + env(safe-area-inset-bottom, 0px)); }
-.reader-column > .up-next { flex: none; margin: 0.2em 6px 0.6em 0; padding: 0.65em 0.95em 0.8em; box-shadow: 5px 5px 0 var(--yellow); }
+.reader-column > .up-next { flex: none; margin: 0.2em 6px 0.6em 0; padding: 0.65em 0.95em 0.8em; box-shadow: 5px 5px 0 var(--amber); }
 .reader-column > .up-next .up-next-title { font-size: 1.25rem; }
 .reader-column > .up-next .up-next-dek { font-size: 1rem; margin-bottom: 0.5em; }
 .level > .up-next-slot { flex: none; padding: 0; }
@@ -378,7 +385,7 @@ html.has-story-bar { --bar-h: 62px; }
 /* "Scroll through" sits in the top bar, clear of every board */
 .side-toggle {
   top: 9px; right: max(12px, env(safe-area-inset-right, 0px)); transform: none; writing-mode: horizontal-tb;
-  border: 1.5px solid var(--yellow); border-radius: 4px; padding: 0.24em 0.8em; font-size: 0.85rem;
+  border: 1.5px solid var(--amber); border-radius: 4px; padding: 0.24em 0.8em; font-size: 0.85rem;
 }
 html.side-open .side-toggle { right: max(12px, env(safe-area-inset-right, 0px)); visibility: hidden; }
 @media (max-width: 900px) { .story-bar { padding-right: 132px; } }

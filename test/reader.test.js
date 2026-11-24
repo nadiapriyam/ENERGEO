@@ -84,3 +84,23 @@ test('3. one screen per level: everything in a level is in view, the words in th
   const spec = read('docs/levels_spec.md');
   assert.ok(spec.includes("> i dont want to scroll to see anything in a level in each section,i dont mind scrolling to the next level though") && spec.includes('> take the did you know part out, also take the +1 and level up parts out') && spec.includes("> i can't see the mri brain, skull signal anymore"), "Nadia's messages, verbatim");
 });
+
+test('4. one page, three levels: no level styles another level\'s pieces (Level 2\'s .radio once hid the final level\'s data box: Nadia, 2026-11-24, "also where is the middle part")', () => {
+  // In a play-through all three stylesheets are on the page. A rule that styles a class on its own (no ancestor in its
+  // selector) must not name a class another level puts on its elements, unless the shared page (base.css) owns it.
+  const shared = new Set([...read('src/levels/base.css').matchAll(/\.([a-z][\w-]*)/g)].map((m) => m[1]));
+  const bare = (s) => new Set([...s.replace(/\/\*[\s\S]*?\*\//g, '').matchAll(/(?:^|[},]\s*)\s*\.([a-z][\w-]*)((?:\.[a-z][\w-]*|:[\w-]+(?:\([^)]*\))?)*)\s*(?=[{,])/gm)].map((m) => m[1]));
+  const used = (s) => new Set([...s.matchAll(/class: [`'"]([^`'"]+)[`'"]/g)].flatMap((m) => m[1].replace(/\$\{[^}]*\}/g, ' ').split(/\s+/))
+    .concat([...s.matchAll(/classList\.(?:add|toggle)\(\s*'([\w-]+)'/g)].map((m) => m[1])).filter(Boolean));
+  const levels = { note: 'note', mri: 'mri', prism: 'prism' };
+  for (const a of Object.keys(levels)) {
+    const styled = bare(read(`src/levels/${a}.css`));
+    for (const b of Object.keys(levels)) if (a !== b) {
+      const u = used(read(`src/levels/${b}.js`));
+      const both = [...styled].filter((c) => u.has(c) && !shared.has(c));
+      assert.deepEqual(both, [], `${a}.css styles classes that ${b}.js uses: ${both.join(' ')}`);
+    }
+  }
+  assert.match(read('src/levels/prism.js'), /strip\.classList\.add\('scanner-data'\)/, 'the final level\'s data box has a name of its own');
+  assert.ok(read('docs/levels_spec.md').includes('> also where is the middle part'), "Nadia's message, verbatim");
+});

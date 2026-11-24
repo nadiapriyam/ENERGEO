@@ -177,8 +177,8 @@ test("8. the frame: sound only after the learner touches the bow, Level 1's whit
   assert.ok(!/violinA\(|playA\(|pureTone\(|orchestraTunes\(/.test(story.slice(0, story.indexOf('function bowTheA')).replace('orchestraTunes();', '')), 'nothing sounds before the bow');
   assert.match(main, /createPeriodicWave\(real, imag, \{ disableNormalization: true \}\)/, 'the A is exactly its four notes played as one');
   assert.ok(!/recording|real violin/i.test(JSON.stringify(COPY)), 'the copy never calls the sound a recording');
-  assert.match(read('src/levels/base.css'), /--bg: #ffffff;/, "Level 1's white page");
-  assert.ok(!/prefers-color-scheme: dark|linear-gradient|caveat|night/i.test(css), 'no dark stage, no notebook');
+  assert.match(read('src/levels/base.css'), /--bg: #f5f0e6;/, "Level 1's light page: ivory (Nadia's 'Bold intellectual' palette, 2026-11-24)");
+  assert.ok(!/prefers-color-scheme: dark|linear-gradient|caveat|\bnight\b/i.test(css), 'no dark stage, no notebook (the palette\'s "midnight blue" is a colour, not a night stage)');
   assert.match(read('try/index.html'), /src\/levels\/page\.js/);
   assert.match(read('src/levels/page.js'), /import\('\.\/note\.js'\);\s+\/\/ Level 1 starts the page/, 'the violin is Level 1: it starts the page');
   assert.match(main, /<use|svg\('use'/, 'the glass shows the same drawing, magnified');

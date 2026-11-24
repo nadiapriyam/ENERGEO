@@ -538,15 +538,48 @@ parts we can't see is possible, that we know a few ways, and that ENERGEO sets o
     than a third of the brain's) and still the quickest to fade.
   - The part you tapped last is drawn bolder; the earlier ones step further back, so the brain's big signal no longer
     hides the skull's small one.
-- **The middle part (the data box between the head and the picture).** On every browser and screen size we can test
-  here it is in place, from "Collect the data" to the finished picture, also with reduced motion and through Back. The
-  data box now settles into place at the end of its move without relying on the animation, which may help a browser
-  that dropped it. Which browser and device showed it empty is still to find out.
+- **The middle part (the data box between the head and the picture).** Found (Nadia: "chrome one mac"): in a
+  play-through all three levels' styles are on one page, and Level 2's radio waves are hidden by a rule for the class
+  "radio", the very name the final level gave its data box. So from the break on, the data box, and every body part's
+  signal in it, was invisible; opening the final level on its own (as the checks did) never loaded Level 2's styles. The
+  data box now has a name of its own, every rule that reached another level's pieces (Level 1's strings and skin, the
+  floor, the ghosts, the waves) now names its own level's board, and a test checks that no level's styles reach another
+  level's pieces. The data box also settles into place at the end of its move without relying on the animation.
 - **Back, on one screen.** Back showed an earlier part with its picture too wide on a laptop, cut off at the bottom,
   and the live board peeking out under it. Now the earlier part is laid out like the level, its picture sized to fit
   above Back and Next, and the live board fades out while you look back.
 - **No new claims.** In a real MRI scan, bone gives very little signal, and it fades very fast: the drawing exaggerates
   how long it lasts so that it can be seen.
+
+## All three levels: the "Bold intellectual" palette (2026-11-24). Nadia, verbatim:
+
+> also i like the details, dont change them, just change the color palate, it seems a little mismatched to the theme use this color palate 4. Bold intellectual
+> #172B3A
+>
+> #247C78
+>
+> #C5D6C0
+>
+> #E5A34B
+>
+> #F5F0E6
+>
+> Midnight blue · Teal · Eucalyptus · Amber · Ivory
+
+### What changes (colours only; every detail stays)
+
+- **Ivory** (#F5F0E6) is the page. Cards, bubbles and panels on it are a lighter ivory.
+- **Midnight blue** (#172B3A) is the ink: every line of text, the edges and shadows of the buttons, the top bar, the big
+  idea's box, the MRI SIGNAL monitor, and the final level's dark (the hall when its lights dim).
+- **Amber** (#E5A34B) takes the yellow's place: the buttons, the kicker tabs, the bar's progress, the rules, the big
+  idea's edge and tag, the bold 0 that holds the magnets, the MRI SIGNAL's wave and bars, the final level's signal and
+  its name, ENERGEO.
+- **Teal** (#247C78) is the second accent: the N half of every magnet, the eye, a page turned back with Back.
+- **Eucalyptus** (#C5D6C0) is the soft one: the S half of every magnet, your speech bubbles, the scanner's data, the
+  glass.
+- Drawings keep their own natural colours where they need them (the violin's wood, skin, the LED lights of the final
+  level, a prism's rainbow). The four hidden notes are slate blue, teal, violet and amber, the hues of their lights in
+  the final level. No red, no gradients, no dark theme.
 
 ## Level 3, "A prism for sound" (2026-11-19; first called "The magic glasses")
 

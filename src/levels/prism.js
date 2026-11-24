@@ -656,7 +656,7 @@ async function theRadiologist() {                           // at the break: the
   running = null;
   signalPath.setAttribute('d', '');
   jump(strip, css(exploreData()));
-  strip.classList.add('radio');
+  strip.classList.add('scanner-data');                     // the scanner's data (its own name: Level 2's styles are on the same page)
   on(breakScene);
   describe('The break: the hall lights are on. You stand by the stage. The radiologist who read your scan, in a white coat, walks over to you.');
   say(COPY.arrives);
