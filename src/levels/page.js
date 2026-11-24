@@ -6,6 +6,8 @@
 import './base.css';
 import { LEVELS } from './copyLevels.js';
 import { jumpTo } from './jump.js';
+import { storyBar } from './reader.js';
+import { readingTime } from '../math/reading.js';
 
 const span = (className, textContent) => Object.assign(document.createElement('span'), { className, textContent });
 /** Each level's cover: its name, then its headline and the question it asks (and, where it needs sound, a note). */
@@ -19,6 +21,41 @@ for (const [id, [name, title, dek, note]] of Object.entries(COVERS)) {   // the 
   t.replaceChildren(span('level-kicker', name), ...(note ? [span('level-note', note)] : []), span('level-title', title), span('level-dek', dek));
 }
 const query = new URLSearchParams(location.search);
+
+// Each level opens with an intro scene (Nadia, 2026-11-24: "when introducting each level including level one, add
+// introduction scenes where it displays the title and the sub title of each level before the user sees the start of the
+// level"): a title card over the level's screen, on the boards' #172B3A, with the level's name, its title, its
+// question and (where it needs sound) the sound note. It moves on by itself once it has been read, or at a tap or a
+// key; then the level starts. Not while recording the comic, in a review frame, fast-forwarding or going to a scene.
+const noIntro = ['record', 'step', 'from', 'steps'].some((k) => query.has(k)) || !!jumpTo;
+const REDUCED_PAGE = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function intro(section) {
+  if (noIntro) return Promise.resolve();
+  const level = document.getElementById(section);
+  const [name, title, dek, note] = COVERS[section];
+  const card = Object.assign(document.createElement('button'), { type: 'button', className: 'level-intro' });
+  card.setAttribute('aria-label', [name, title, dek, note].filter(Boolean).join('. '));
+  card.append(span('intro-kicker', name), span('intro-title', title), span('intro-rule', ''), span('intro-dek', dek), ...(note ? [span('intro-note', note)] : []));
+  level.append(card);
+  requestAnimationFrame(() => card.classList.add('in'));
+  const stay = Math.min(7000, Math.max(3500, readingTime([title, dek, note].filter(Boolean).join(' ')) + 1500));
+  return new Promise((resolve) => {
+    let gone = false;
+    const go = () => {
+      if (gone) return;
+      gone = true;
+      clearTimeout(timer);
+      removeEventListener('keydown', key, true);
+      card.classList.add('out');                             // the card lifts away as the level begins under it
+      setTimeout(() => card.remove(), REDUCED_PAGE ? 0 : 750);
+      resolve();
+    };
+    const key = (e) => { if (['Enter', ' ', 'ArrowRight'].includes(e.key)) { e.preventDefault(); go(); } };
+    const timer = setTimeout(go, stay);
+    card.addEventListener('click', go);
+    addEventListener('keydown', key, true);
+  });
+}
 
 const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
 /**
@@ -42,8 +79,9 @@ function chain(from, buttonId, text, section, load) {
     card.remove();
     const s = document.getElementById(section);
     s.hidden = false;
-    await load();                                            // the level builds itself, then the page brings it into view
-    requestAnimationFrame(() => s.scrollIntoView({ behavior, block: 'start' }));
+    requestAnimationFrame(() => s.scrollIntoView({ behavior, block: 'start' }));   // the page brings the level into view …
+    await intro(section);                                    // … its intro scene plays …
+    await load();                                            // … and then the level builds itself and starts
   }, { once: true });
 }
 chain('note-lesson', 'next-level', LEVELS.next, 'level-2', () => import('./mri.js'));
@@ -64,9 +102,13 @@ if (query.has('steps')) {
   dropLevel1();
   for (const id of ['level-2', 'level-3']) if (id !== direct[0]) document.getElementById(id).hidden = true;
   document.getElementById(direct[0]).hidden = false;
-  direct[1]();
+  if (!review && !document.documentElement.classList.contains('framed')) storyBar();
+  intro(direct[0]).then(direct[1]);
 } else {
-  import('./note.js');                                        // Level 1 starts the page
+  storyBar();                                                 // the bar first, so the page does not shift when Level 1 starts
+  intro('level-1').then(() => {
+    import('./note.js');                                        // Level 1 starts the page
+  });
 }
 
 // Scroll through, on the side: a tab at the right edge opens the whole story as a comic, from the first part of Level 1

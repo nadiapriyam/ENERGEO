@@ -133,7 +133,8 @@ level's words (see "All three levels: reading at your own pace, and a simpler Le
 at the top ("Progress", for screen readers) and "Earlier" (with the part's number). The side panel (see "All three levels: the whole story as a comic, on the side"
 below): the tab "Scroll through" (in the top bar), the panel's title "The whole story", and "Close"; and "Go here ›" on
 each picture in the panel (tap it, and the level goes to that scene: see "Scroll through: go to a scene" below). While
-more lines are on their way: "…" (three pulsing dots, no words).
+more lines are on their way: nothing (the "…" was taken out, 2026-11-24). In the top bar's left corner: "ENERGEO"
+and "demo" (Nadia, 2026-11-24: "name it energeo demo on the top corner left").
 
 ## What the new lines claim, and what they do not
 
@@ -668,6 +669,35 @@ parts we can't see is possible, that we know a few ways, and that ENERGEO sets o
   and your speech bubbles' tint. The final level's dark is a deeper shade of the deep blue, so its lights still glow.
   The four hidden notes are blue, coral, purple and gold, in Level 1, in Level 2's side by side and as the final
   level's lights. Every detail stays.
+
+## All three levels: "ENERGEO demo" in the top left corner (2026-11-24). Nadia, verbatim:
+
+> name it energeo demo on the top corner left
+
+### What changes
+
+- The top bar's left corner reads "ENERGEO" (bold, letter-spaced, in mustard) and "demo" (in italics). On a phone the two
+  words sit one above the other, smaller, so the three levels' sections keep their room.
+- The page's title (the browser tab) is unchanged.
+
+## All three levels: an intro scene for each level (2026-11-24). Nadia, verbatim:
+
+> when introducting each level including level one, add introduction scenes where it displays the title and the sub title of each level before the user sees the start of the level.
+
+### What changes
+
+- Before each level starts (Level 1 as the page opens; Level 2 and the final level after their "Up next" button, or
+  when opened on their own), its intro scene fills the level's screen: a title card on the boards' #172B3A with the
+  level's name on a mustard tab ("Level 1", "Level 2", "Final level"), its title, big ("Inside a note", "Inside the
+  scanner", "A prism for sound"), a coral rule, its question in gray italics, and, for Levels 1 and 3, "Turn your sound
+  on." They come in one after another: the tab slides in, the title rises into focus, the rule wipes across, the
+  question and the note fade in.
+- The card stays until it has been read (its words at the reading pace, plus a moment: 3.5 to 7 seconds), or until a
+  tap or Enter, Space or → moves on at once. It lifts away as the level begins underneath. With reduced motion it
+  simply appears and goes.
+- No new words: the name, title, question and sound note are the level's cover, as listed under "Around the levels".
+- No intro while the comic is recorded, in a review frame, while fast-forwarding, or when going to a scene from
+  "Scroll through".
 
 ## All three levels: no "…", a clearer fade-in, a little quicker (2026-11-24). Nadia, verbatim:
 

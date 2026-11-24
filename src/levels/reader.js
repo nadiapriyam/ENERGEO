@@ -31,7 +31,8 @@ addEventListener('keydown', (e) => {                       // only when nothing 
 
 // ── the bar for the whole story, at the top: one section per level, each ending in its marker ─────────────────────
 let top = null;
-function storyBar() {
+/** The bar (made once, on first use; page.js makes it before the first level's intro). */
+export function storyBar() {
   if (top) return top;
   const el = make('div', 'story-bar', { role: 'progressbar' });
   el.setAttribute('aria-label', LEVELS.progress);
@@ -52,7 +53,9 @@ function storyBar() {
   });
   const row = make('div', 'story-sections');
   row.append(...sections.map((x) => x.s));
-  el.append(row);
+  const brand = make('span', 'story-brand');                 // the top left corner: ENERGEO demo (Nadia, 2026-11-24)
+  brand.append(make('span', 'story-brand-name', { textContent: LEVELS.brand }), make('span', 'story-brand-tag', { textContent: LEVELS.demo }));
+  el.append(brand, row);
   document.body.append(el);
   document.documentElement.classList.add('has-story-bar');
   const find = (id) => sections.find((y) => y.id === id);

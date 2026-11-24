@@ -86,3 +86,16 @@ test('2. the finale map: the Fourier transform at the hub, sound, light and MRI 
   const h = revealToHub();
   assert.ok(h.s < 0.5 && Math.abs(REVEAL.x + h.dx - hub.x) < 1e-9 && Math.abs(REVEAL.y + h.dy - (hub.y + label.dy)) < 1e-9, 'the reveal\'s title becomes the hub\'s label');
 });
+
+test('2. every level opens with its intro scene: name, title, question (and the sound note), then the level (Nadia, 2026-11-24)', () => {
+  const read = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
+  const page = read('src/levels/page.js');
+  assert.match(page, /card\.append\(span\('intro-kicker', name\), span\('intro-title', title\), span\('intro-rule', ''\), span\('intro-dek', dek\)/, 'the level\'s own cover words, big');
+  assert.match(page, /intro\('level-1'\)\.then\(\(\) => \{\s*import\('\.\/note\.js'\);/, 'Level 1 starts after its intro');
+  assert.match(page, /await intro\(section\);[^\n]*\n\s*await load\(\);/, 'Levels 2 and 3 start after theirs');
+  assert.match(page, /intro\(direct\[0\]\)\.then\(direct\[1\]\)/, 'a level opened on its own too');
+  assert.match(page, /const noIntro = \['record', 'step', 'from', 'steps'\]\.some\(\(k\) => query\.has\(k\)\) \|\| !!jumpTo;/, 'not while recording, reviewing or going to a scene');
+  const css = read('src/levels/base.css');
+  assert.match(css, /\.level-intro \{[^}]*background: var\(--board\)/, 'on the boards\' #172B3A');
+  assert.ok(read('docs/levels_spec.md').includes('> when introducting each level including level one, add introduction scenes where it displays the title and the sub title of each level before the user sees the start of the level.'), "Nadia's message, verbatim");
+});
