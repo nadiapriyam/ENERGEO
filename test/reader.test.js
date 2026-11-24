@@ -27,7 +27,7 @@ test('1. no words wait on a timer, and one way forward at a time: Next only wher
     assert.ok(!/await pause\(\d+\);\s*clear\(\);/.test(main), `${f}.js: no words cleared on a timer`);
     assert.ok(read('try/index.html').includes(`id="${lesson}"`));
   }
-  assert.deepEqual(nexts, { note: 2, mri: 6, prism: 7 }, 'few Next presses: 2, 6, and 6 plus the three slides (in one loop)');
+  assert.deepEqual(nexts, { note: 2, mri: 6, prism: 8 }, 'few Next presses: 2, 6, and 7 plus the three slides (in one loop); the final level\'s thought bubble has a page of its own (2026-11-24)');
   assert.match(read('src/levels/prism.js'), /reader\(root, \{ fast: \(\) => FAST \}\)/, 'fast-forwarding never waits');
   const comic = JSON.parse(read('src/levels/comic/comic.json'));
   for (const l of comic.levels) assert.ok(Number.isInteger(l.steps) && l.steps >= 2, `${l.id}: its count of Next presses (${l.steps})`);
@@ -75,7 +75,12 @@ test('3. one screen per level: everything in a level is in view, the words in th
   assert.match(css, /\.reader-column > \.prompt \{ flex: 1 1 0; min-height: 0; overflow-y: auto;/);
   const r = read('src/levels/reader.js');
   assert.match(r, /const el = make\('div', 'reader-column'\);[^\n]*\n\s*words\?\.before\(el\);\s*el\.append\(\.\.\.\(words \? \[words\] : \[\]\), row\);/, 'the column: the level\'s words, Back and Next under them');
-  assert.match(r, /new MutationObserver\(\(\) => requestAnimationFrame\(\(\) => words\.scrollTo\(\{ top: words\.scrollHeight/, 'the newest line stays in view by itself');
+  assert.match(r, /requestAnimationFrame\(\(\) => words\.scrollTo\(\{ top: words\.scrollHeight/, 'the newest line stays in view by itself');
+  // reading pace (Nadia, 2026-11-24: "match the average reading speed to when the sections appear, same with the next button")
+  assert.match(r, /beat\(ms = BEAT\) \{ return fast\(\) \? Promise\.resolve\(\) : new Promise\(\(r\) => setTimeout\(r, RECORDING \? ms : Math\.max\(ms, caughtUp\(\)\)\)\); \}/, 'the next line waits until the earlier ones are read');
+  assert.match(r, /readyAt = performance\.now\(\) \+ left;/, 'Next lights up once the words on show are read');
+  assert.match(r, /if \(!waiting \|\| performance\.now\(\) < readyAt\) return false;/, 'and cannot be pressed before');
+  for (const f of ['note', 'mri', 'prism']) assert.match(read(`src/levels/${f}.js`), /story\.read\(\)/, `${f}.js: its buttons appear once the words above are read`);
   assert.match(read('src/levels/page.js'), /document\.getElementById\(from\)\.querySelector\('\.reader-column'\)\?\.append\(card\);/, 'the Up next card, on the level\'s own screen');
   assert.match(css, /\.side-toggle \{\s*top: 9px;[^}]*writing-mode: horizontal-tb;/, '"Scroll through" in the top bar, off the boards');
   // Back, on one screen too: the earlier part's picture sized to fit above Back and Next, the live board faded out under it

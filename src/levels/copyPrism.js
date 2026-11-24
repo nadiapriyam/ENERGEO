@@ -5,7 +5,9 @@
 // each happens on the board, the earlier parts turning grey. `bodyParts` label the head's parts on the board. The level
 // ends the thought the three levels build (Revision 12): going from a whole to its hidden parts is possible; we have
 // found a few ways; what we have found is just the surface (`mapKnown`, `mapUnknown`: the map on the board); then
-// ENERGEO. Nothing else on the page is learner-facing text, apart from accessibility labels.
+// ENERGEO: the Fourier transform is one example of a geometry uncovering what it gives, and there are many geometries
+// (Nadia, 2026-11-24). `thoughtLabels` name the two rows of your thought bubble on the board. Nothing else on the page
+// is learner-facing text, apart from accessibility labels.
 
 export const COPY = {
   opening: 'After your scan, you head back to the concert hall, still wondering.',
@@ -17,6 +19,7 @@ export const COPY = {
     choices: ['The glass', 'The white light'],
     after: 'From the white light. The glass on the chandelier is a prism: it takes light apart into its colors.',
   },
+  thoughtLabels: { light: 'light', sound: 'sound' },
   surprise: "Surprise: it's your tuner.",
   play: 'Play your A note',
   tunerLetter: 'A',
@@ -70,8 +73,8 @@ export const COPY = {
     field: 'energy geometry',
     lines: [
       'Meet ENERGEO: the start of a new science, energy geometry.',
-      'It sets out to map transformations like the Fourier transform.',
-      "And to build tools that help us see what we couldn't before, but that was always there.",
+      'The Fourier transform is just one example: one geometry, and what it can uncover.',
+      'There are a whole bunch of geometries. ENERGEO sets out to find them, and what each one uncovers.',
     ],
   },
   final: 'You just took your first steps into it.',

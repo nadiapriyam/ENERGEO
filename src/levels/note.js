@@ -522,8 +522,10 @@ async function splitNotes() {                               // four notes, one u
 
 async function together() {                                 // all four at once, into your ear: one A note
   phase = 'together';
-  const b = el('button', { type: 'button', class: 'action', text: COPY.together });
+  const b = el('button', { type: 'button', class: 'action', text: COPY.together, disabled: '' });
   transport.replaceChildren(b);
+  await story.read();                                       // once the words above are read
+  b.disabled = false;
   requestAnimationFrame(() => b.classList.add('in'));
   followFocus(b);
   await new Promise((r) => b.addEventListener('click', r, { once: true }));

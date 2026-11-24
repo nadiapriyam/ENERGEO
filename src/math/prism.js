@@ -21,7 +21,7 @@
 
 import { A_NOTE, STEPS, wave } from './tones.js';
 import { scanPixel } from './scanner.js';
-import { figureAt } from './characters.js';
+import { figureAt, FACE, FIGURE } from './characters.js';
 
 export const BOARD = { w: 640, h: 420 };
 
@@ -401,4 +401,149 @@ export function mapUnknown() {
 export function revealToHub() {
   const s = 0.36;
   return { dx: MAP.hub.x - REVEAL.x, dy: MAP.hub.y + MAP.label.dy - REVEAL.y, s };
+}
+
+// ── a prism, drawn the same everywhere: a glass triangle with a highlight along its left face ───────────────────
+// (Nadia, 2026-11-24: "making the triangle in all scenes a regular shaped prisim with no rainbow outline")
+/** The highlight on a prism's left face, scaled with it (the chandelier's prism, size 48, sets the proportions). */
+export function facetOf({ cx, cy, size }) {
+  const [top, , left] = triangle({ cx, cy, size });
+  const k = size / 48;
+  return { x1: top.x, y1: top.y + 8 * k, x2: (top.x + left.x) / 2 + 6 * k, y2: (top.y + left.y) / 2 + 4 * k };
+}
+/** Where light (or sound) goes into a prism, the middle of its left face, and comes out, the middle of its right face. */
+export function faces(t) {
+  const [top, right, left] = triangle(t);
+  return { into: { x: (top.x + left.x) / 2, y: (top.y + left.y) / 2 }, out: { x: (top.x + right.x) / 2, y: (top.y + right.y) / 2 } };
+}
+
+// ── the thought: is there a prism for sound? ─────────────────────────────────────────────────────────────────────
+// (Nadia, 2026-11-24: "introducing a scene where a prisim is breaking up light, and in that same scene a prisim
+// breaking apart sound into its components ... when the yellow shirt guy is thinking is there a prisim for music and
+// pairing the just said visual to it in a thought bubble.") You stand in the dimmed hall; a thought bubble rises from
+// your head. In it, two rows, the same prism in each: white light goes in and its colours fan out (red bent least),
+// and your A note's wave goes in and its four pure tones fan out (A, high A, E, higher A, each as strong as it is in
+// the note). The second row is the thought: the prism for sound, before the tuner turns out to be one.
+export const THOUGHT = {
+  you: { cx: 112, height: 200 },
+  cloud: { x: 190, y: 12, w: 436, h: 296, r: 18 },
+  rows: { light: 108, sound: 226 },
+  prism: { dx: 204, size: 64 },
+  inX: 46,                                                   // where the light and the sound start, from the cloud's left
+  outPad: 30,                                                // where they end, from its right
+  label: { dy: -38 },
+  rays: { first: 4, step: 9 },
+  tones: { first: -21, step: 20, fan: 0.3, cycles: 3, amp: 9 },
+  wave: { periods: 2, amp: 17 },
+};
+/** The cloud: a scalloped outline whose arcs bulge out from a rectangle inset by r, all inside THOUGHT.cloud. */
+export function cloudPath(c = THOUGHT.cloud) {
+  const { x, y, w, h, r } = c;
+  const x0 = x + r, y0 = y + r, x1 = x + w - r, y1 = y + h - r;
+  const R = r * 1.02;
+  const side = (ax, ay, bx, by) => {
+    const n = Math.max(1, Math.round(Math.hypot(bx - ax, by - ay) / (1.8 * r)));
+    let d = '';
+    for (let i = 1; i <= n; i++) d += ` A ${R.toFixed(1)} ${R.toFixed(1)} 0 0 1 ${(ax + ((bx - ax) * i) / n).toFixed(1)} ${(ay + ((by - ay) * i) / n).toFixed(1)}`;
+    return d;
+  };
+  return `M ${x0} ${y0}${side(x0, y0, x1, y0)}${side(x1, y0, x1, y1)}${side(x1, y1, x0, y1)}${side(x0, y1, x0, y0)} Z`;
+}
+/** How far a cloud arc bulges out from its chord: each chord is at most 1.8 r long, each arc's radius 1.02 r. */
+export const cloudBulge = (r = THOUGHT.cloud.r) => { const R = r * 1.02; const half = 0.9 * r; return R - Math.sqrt(R * R - half * half); };
+/** You, thinking, standing on the hall's floor; the point just above your head, on its right, where the thought rises from. */
+export const thinker = () => {
+  const box = figureAt(THOUGHT.you.cx, HALL.floor, THOUGHT.you.height);
+  const head = { x: box.x + (box.w * (FACE.head.cx + FACE.head.rx * 0.8)) / FIGURE.view.w, y: box.y + (box.h * (FACE.head.cy - FACE.head.ry)) / FIGURE.view.h };
+  return { box, head };
+};
+/** The three little circles from your head up to the cloud, growing as they go. */
+export function thoughtTrail() {
+  const { head } = thinker();
+  const c = THOUGHT.cloud;
+  const to = { x: c.x + c.r * 1.6, y: c.y + c.h - c.r * 0.6 };
+  return [[0.2, 4.5], [0.52, 7], [0.84, 10]].map(([t, r]) => ({ x: head.x + (to.x - head.x) * t, y: head.y + (to.y - head.y) * t, r }));
+}
+/** The prism in one row of the thought. */
+export const thoughtPrism = (row) => ({ cx: THOUGHT.cloud.x + THOUGHT.prism.dx, cy: THOUGHT.rows[row], size: THOUGHT.prism.size });
+const thoughtX = () => ({ x0: THOUGHT.cloud.x + THOUGHT.inX, x1: THOUGHT.cloud.x + THOUGHT.cloud.w - THOUGHT.outPad });
+/** Light: a white beam into the prism, and its colours out of it, red bent least, violet most. */
+export function thoughtLight() {
+  const t = thoughtPrism('light');
+  const { into, out } = faces(t);
+  const { x0, x1 } = thoughtX();
+  return {
+    prism: t, beam: { from: { x: x0, y: into.y + 14 }, to: into },
+    rays: RAINBOW.map((color, i) => ({ from: out, to: { x: x1, y: out.y + THOUGHT.rays.first + i * THOUGHT.rays.step }, color })),
+    label: { x: x0, y: t.cy + THOUGHT.label.dy },
+  };
+}
+/** Sound: your A note's wave into the prism, and its four pure tones out of it, fanning into lanes, each as strong as it is in the note. */
+export function thoughtSound(n = 120) {
+  const t = thoughtPrism('sound');
+  const { into, out } = faces(t);
+  const { x0, x1 } = thoughtX();
+  const W = THOUGHT.wave;
+  let note = '';
+  for (let i = 0; i <= n; i++) {
+    const u = i / n;
+    note += `${i ? 'L' : 'M'}${(x0 + u * (into.x - x0)).toFixed(1)} ${(into.y - (wave(A_NOTE, u * W.periods) / PEAK_A) * W.amp).toFixed(1)}`;
+  }
+  const T = THOUGHT.tones;
+  const tones = A_NOTE.map((a, k) => {
+    const lane = out.y + T.first + k * T.step;
+    let d = '';
+    for (let i = 0; i <= n; i++) {
+      const u = i / n;
+      const g = Math.min(1, u / T.fan);
+      const y = out.y + (lane - out.y) * g - g * T.amp * (a / STEPS) * Math.sin(2 * Math.PI * T.cycles * (k + 1) * u);
+      d += `${i ? 'L' : 'M'}${(out.x + u * (x1 - out.x)).toFixed(1)} ${y.toFixed(1)}`;
+    }
+    return { k, d, lane, color: NOTE_LED[k] };
+  });
+  return { prism: t, wave: note, tones, label: { x: x0, y: t.cy + THOUGHT.label.dy } };
+}
+
+// ── the grand reveal, lit by the stage light ────────────────────────────────────────────────────────────────────────
+// (Nadia, 2026-11-24: "making the text rainbow isn't nessesary ... it can be a fun reveal with a stage light perhaps
+// to keep it on theme.") The stage light from the start of the level stands on the floor again, swings to the middle
+// of the board and lights a pool there; the name appears in it.
+export const SPOT = { pool: { cx: REVEAL.x, cy: REVEAL.y - 15, rx: 300, ry: 62 }, spread: 64 };
+/** The stage light aimed at the pool: its angle (radians, from the light's pivot), its lens, and the cone of light. */
+export function spotlight() {
+  const L = HALL.light;
+  const { cx, cy } = SPOT.pool;
+  const a = Math.atan2(cy - L.y, cx - L.x);
+  const lens = { x: L.x + L.lens * Math.cos(a), y: L.y + L.lens * Math.sin(a) };
+  const n = { x: -Math.sin(a), y: Math.cos(a) };
+  const cone = [lens, { x: cx + n.x * SPOT.spread, y: cy + n.y * SPOT.spread }, { x: cx - n.x * SPOT.spread, y: cy - n.y * SPOT.spread }];
+  return { a, deg: (a * 180) / Math.PI, lens, cone };
+}
+
+// ── the finale's other geometries ────────────────────────────────────────────────────────────────────────────────────
+// (Nadia, 2026-11-24: "fourier is also just an example of using a specific geometry to uncover its given resultants.
+// there are a bunch of geometries, that is the aim") When ENERGEO is named, some of the unknown nodes light up as hubs
+// of their own, each with three little spokes: other geometries, each uncovering its own parts, none of them named.
+export const GEOMETRIES = { min: 112, apart: 84, ring: 6, spoke: 18, dot: 3.2, max: 8, r: 5.5 };
+export function otherGeometries() {
+  const picked = [];
+  for (const n of mapUnknown()) {
+    if (picked.length >= GEOMETRIES.max) break;
+    if (n.r < GEOMETRIES.r || n.d < GEOMETRIES.min) continue;
+    const reach = n.r + GEOMETRIES.ring + GEOMETRIES.spoke + GEOMETRIES.dot + 4;
+    if (n.x - reach < 0 || n.x + reach > BOARD.w || n.y - reach < MAP.clearTop || n.y + reach > BOARD.h) continue;
+    if (Math.abs(n.x - MAP.hub.x) < MAP.label.halfW + reach && Math.abs(n.y - (MAP.hub.y + MAP.label.dy)) < 22 + reach) continue;   // clear of the hub's label
+    if (picked.some((p) => Math.hypot(p.x - n.x, p.y - n.y) < GEOMETRIES.apart)) continue;
+    picked.push(n);
+  }
+  return picked.map((n, i) => {
+    const turn = (i * 0.7) % (2 * Math.PI / 3);
+    const spokes = [0, 1, 2].map((j) => {
+      const a = turn - Math.PI / 2 + (j * 2 * Math.PI) / 3;
+      const r0 = n.r + GEOMETRIES.ring;
+      const r1 = r0 + GEOMETRIES.spoke;
+      return { x1: n.x + r0 * Math.cos(a), y1: n.y + r0 * Math.sin(a), x2: n.x + r1 * Math.cos(a), y2: n.y + r1 * Math.sin(a) };
+    });
+    return { ...n, ring: n.r + GEOMETRIES.ring, spokes };
+  });
 }

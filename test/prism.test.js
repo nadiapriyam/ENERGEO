@@ -326,7 +326,7 @@ test("6. the break and the faces: you and the radiologist stand apart on the flo
 test('7. the copy is verbatim from the Revision 13 list and in order: the ending builds to ENERGEO; the answer to "Can you see them?" depends on yours; line 21, a part of the brain, the pattern slide by slide in Nadia\'s words, the grand reveal before "the same geometric math", the applications last', () => {
   const R = (s) => `Radiologist: ${s}`;
   const ordered = [COPY.opening, COPY.dim, COPY.aim, COPY.aimHint, COPY.where.question, ...COPY.where.choices, COPY.where.after,
-    `You (thinking): ${COPY.you.think}`, COPY.surprise, `[${COPY.play}]`, `${COPY.tunerLetter} (the letter`, COPY.drawsSignal, COPY.see.question,
+    `You (thinking): ${COPY.you.think}`, `${COPY.thoughtLabels.light}, ${COPY.thoughtLabels.sound} (the two rows' labels)`, COPY.surprise, `[${COPY.play}]`, `${COPY.tunerLetter} (the letter`, COPY.drawsSignal, COPY.see.question,
     ...COPY.see.choices, COPY.see.yes, COPY.see.notReally, `[${COPY.apart}]`, COPY.split, COPY.notes.join(', '), COPY.pure, COPY.pureHint, COPY.pureDone, COPY.back,
     `21. ${COPY.backDone}`, COPY.arrives, `You: ${COPY.you.tookApart}`, R(COPY.radiologist.same), COPY.tapBrain, COPY.bodyParts.join(', '), COPY.tapSkull,
     `28. ${COPY.mri[0].text.trim()}`, `[${COPY.collect}]`, `30. ${COPY.mri[1].text.trim()}`, `[${COPY.convert}]`, `32. ${COPY.mri[2].text.trim()}`,
@@ -356,7 +356,8 @@ test('7. the copy is verbatim from the Revision 13 list and in order: the ending
   assert.equal(COPY.final, 'You just took your first steps into it.', 'the last line');
   assert.equal(COPY.fourier, 'Joseph Fourier came up with it about 200 years ago.', 'a plain line again, no "Did you know?" box (Nadia, 2026-11-24)');
   assert.ok(COPY.few.endsWith('from a simple tuner to looking inside your brain.') && /possibilities are endless/.test(COPY.surface) && /just the surface\.$/.test(COPY.surface), "Nadia's words: a few figured out, endless possibilities, just the surface");
-  assert.ok(/sets out to/.test(COPY.energeo.lines[1]) && !/has (built|found|mapped)|proves?|discovered (new|every)/i.test(COPY.energeo.lines.join(' ')), 'ENERGEO: what it sets out to do, not results it has');
+  assert.ok(/sets out to/.test(COPY.energeo.lines.join(' ')) && !/has (built|found|mapped)|proves?|discovered (new|every)/i.test(COPY.energeo.lines.join(' ')), 'ENERGEO: what it sets out to do, not results it has');
+  assert.ok(/just one example/.test(COPY.energeo.lines[1]) && /geometries/.test(COPY.energeo.lines[2]), 'the Fourier transform is one geometry among many: that is the aim (Nadia, 2026-11-24)');
   assert.ok(!/here it is/i.test(JSON.stringify(COPY)), '"Here it is" is gone');
   assert.ok(COPY.reveal.endsWith('the Fourier transform.') && COPY.reveal.includes('the mathematical tool that lets us start seeing what hides inside'.replace(/^t/, 'T')), 'the tool, named');
   assert.ok(!/Fourier/.test(COPY.name) && /geometric math/.test(COPY.name), 'after the reveal, the geometric math line without repeating the name');
@@ -418,7 +419,7 @@ test("8. the frame: sound after a tap, the dark comes with the dimmed lights, re
   assert.ok(where.every((i) => i >= 0), `every step is reached: ${ids.filter((id, k) => where[k] < 0)}`);
   assert.deepEqual([...where].sort((a, b) => a - b), where, 'in order');
   assert.match(main, /function audio\(\) \{\n  if \(FAST\) return null;/, 'fast-forwarding makes no sound');
-  assert.match(main, /if \(FAST\) step\(id\)\.then\(\(\) => \{ if \(FAST\) b\.click\(\); \}\);/, 'buttons press themselves only while fast-forwarding');
+  assert.match(main, /if \(FAST\) step\(id\)\.then\(\(\) => \{ if \(FAST\) \{ b\.disabled = false; b\.click\(\); \} \}\);/, 'buttons press themselves only while fast-forwarding');
   assert.match(main, /if \(id === FROM\) \{ FAST = false;/, 'Play from here hands over at its step');
   assert.match(css, /html\.instant \*, html\.instant \*::before, html\.instant \*::after \{ transition: none !important; animation: none !important; \}/);
   const board = read('src/levels/storyboard.js');

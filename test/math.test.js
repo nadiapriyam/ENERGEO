@@ -202,3 +202,17 @@ test('block 7: averaging over shifts by d keeps exactly the d-periodic part', ()
   const p = proj.cyclicSubgroupAverage(x, 4);
   p.forEach((v, i) => close(v, Math.cos((2 * Math.PI * 2 * i) / n), 1e-12));
 });
+
+test('reading pace: each line is given the time it takes to read at an average reading speed (Nadia, 2026-11-24)', async () => {
+  const { READING, wordCount, readingTime, readBy } = await import('../src/math/reading.js');
+  assert.ok(READING.wpm >= 150 && READING.wpm <= 250, 'an average reading speed, in words a minute');
+  assert.equal(wordCount("That's a nudged, faint version."), 5);
+  assert.equal(wordCount('+1, −1'), 2);
+  assert.equal(readingTime(''), 0, 'nothing to read: no wait');
+  assert.equal(readingTime('Look.'), READING.min, 'a short line still gets a moment');
+  const ten = 'one two three four five six seven eight nine ten';
+  assert.equal(readingTime(ten), READING.settle + (10 * 60000) / READING.wpm, 'ten words at the reading speed, and a moment to take them in');
+  assert.ok(readingTime(`${ten} ${ten}`) > readingTime(ten), 'longer lines take longer');
+  assert.equal(readBy(5000, 1000, 'Look.'), 5000 + READING.min, 'a line shown while earlier ones are still being read waits its turn');
+  assert.equal(readBy(0, 1000, 'Look.'), 1000 + READING.min);
+});

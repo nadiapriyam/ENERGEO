@@ -581,6 +581,50 @@ parts we can't see is possible, that we know a few ways, and that ENERGEO sets o
   level, a prism's rainbow). The four hidden notes are slate blue, teal, violet and amber, the hues of their lights in
   the final level. No red, no gradients, no dark theme.
 
+## The final level: a prism for sound you can see, a reveal under the stage light, ENERGEO's aim; all three levels: words at reading pace (2026-11-24). Nadia, verbatim (four messages):
+
+> the rainbow triangle that takes apart the A tone in level three doesn't seem like it belongs there. In other words, its not intuitive to the user that its a prisim for sound, make that more aparent, maybe by making the triangle in all scenes a regular shaped prisim with no rainbow outline. and also introducing a scene where a prisim is breaking up light, and in that same scene a prisim breaking apart sound into its components. I was thinking this change should be when the yellow shirt guy is thinking is there a prisim for music and pairing the just said visual to it in a thought bubble.
+
+> so when the big reveal is fourier. making the text rainbow isn't nessesary its a bit unprofessional or kidish. it can be a fun reveal with a stage light perhaps to keep it on theme.
+
+> also the main goal of energeo isn't to use fourier to uncover more things we can't see. fourier is also just an example of using a specific geometry to uncover its given resultants. there are a bunch of geometries, that is the aim
+
+> also in every scene the sentence sections appear too fast, match the average reading speed to when the sections appear, same with the next button
+
+### What changes
+
+- **One prism, everywhere.** Every triangle in the final level is now the same glass prism as the one on the chandelier:
+  a plain glass triangle with a highlight on its left face, no rainbow outline. That is the prism the A note falls
+  through into its four bars, and the one between the scanner's data and the picture. The rainbow outlines around the
+  marked row of the head and of the picture are amber now.
+- **The thought, as a picture** (Revision 13, line 7). When you think "If a prism is a tool that can take apart light,
+  is there a tool that can take apart a sound?", the hall dims and you stand in it, thinking. A thought bubble rises
+  from your head. In it, a prism takes white light apart into its colors (red bent least); then, under it, the same
+  prism takes your A note's wave apart into its four pure tones (A, high A, E, higher A, each as strong as it is in the
+  note, in their light colours). The two rows are labelled "light" and "sound". Then: "Surprise: it's your tuner."
+- **The grand reveal, under the stage light** (line 42). The name is no longer in rainbow letters. The stage light from
+  the start of the level stands on the floor again, swings on, flickers like a real one and lights a pool in the middle
+  of the board; "the Fourier transform" appears in its light, big, in ivory. The light goes off as the name moves to
+  the hub of the map, which is amber now.
+- **ENERGEO's aim** (lines 53, 55, 56). "The Fourier transform is just one example: one geometry, and what it can
+  uncover." and "There are a whole bunch of geometries. ENERGEO sets out to find them, and what each one uncovers."
+  take the place of "It sets out to map transformations like the Fourier transform." and "And to build tools that help
+  us see what we couldn't before, but that was always there." As ENERGEO is named, some of the map's unknown nodes
+  light up as hubs of their own, each with three spokes: other geometries, none of them named.
+- **Words at reading pace** (all three levels). Each line, speech bubble or big idea is given the time it takes to read
+  at an average reading speed, 200 words a minute (`src/math/reading.js`), with a moment to take it in (a short line
+  gets at least about a second). The next line of the same part waits until the earlier ones have been read; so do
+  Next and every button that moves the story on. Questions show their answers at once. While Level 3 fast-forwards to
+  a step, or the comic is recorded, nothing waits.
+
+### What the new lines claim, and what they do not
+
+- The thought bubble is a thought: the prism for sound in it is the question, drawn as its answer would look. The tuner
+  that follows is the real one; the bars it shows come from the same four amounts as the A note itself.
+- ENERGEO's lines say what it sets out to do: find more geometries and what each uncovers. They do not say it has found
+  any, and the other hubs on the map are unnamed and marked as unknown.
+- The stage light, the pool of light and the flicker are staging, not a claim.
+
 ## Level 3, "A prism for sound" (2026-11-19; first called "The magic glasses")
 
 ### Nadia's request, verbatim
@@ -1825,7 +1869,7 @@ Everything else, and every note, is as in Revision 12.
 4. Drag across the picture to swing the light. (only after 8 seconds)
 5. Where did the colors come from? [The glass] [The white light]
 6. From the white light. The glass on the chandelier is a prism: it takes light apart into its colors.
-7. You (thinking): If a prism is a tool that can take apart light, is there a tool that can take apart a sound?
+7. You (thinking): If a prism is a tool that can take apart light, is there a tool that can take apart a sound? (on the board, the hall dims and you stand in it, thinking; a thought bubble rises from your head: a prism takes white light apart into its colors, then the same prism takes your A note apart into its four pure tones) light, sound (the two rows' labels)
 8. Surprise: it's your tuner.
 9. [Play your A note]
 10. A (the letter on the tuner)
@@ -1860,7 +1904,7 @@ Everything else, and every note, is as in Revision 12.
 39. [Next]
 40. MRI image → proton frequencies (on a slide of its own: the MRI picture of your patient's head, its middle row marked → that row's proton frequencies, one thin bar each)
 41. [Next] (then all three together, each caption under its pictures)
-42. the Fourier transform (the grand reveal: big and glowing in the middle of the board)
+42. the Fourier transform (the grand reveal: the stage light from the start of the level stands on the floor again, swings on, flickers and lights the middle of the board; the name appears in its light, big, in ivory)
 43. The mathematical tool that lets us start seeing what hides inside: the Fourier transform.
 44. All three come down to the same geometric math.
 45. Joseph Fourier came up with it about 200 years ago.
@@ -1871,10 +1915,10 @@ Everything else, and every note, is as in Revision 12.
 50. ? (on every node of the map not yet found, smaller and fainter the further out, spreading past the board's edges)
 51. But the possibilities are endless. What we've discovered is just the surface.
 52. [Next]
-53. ENERGEO, energy geometry (the name and the field, at the top of the map)
+53. ENERGEO, energy geometry (the name and the field, at the top of the map; around the map, other hubs light up, each with spokes of its own: other geometries, none of them named)
 54. Meet ENERGEO: the start of a new science, energy geometry.
-55. It sets out to map transformations like the Fourier transform.
-56. And to build tools that help us see what we couldn't before, but that was always there.
+55. The Fourier transform is just one example: one geometry, and what it can uncover. (Nadia, 2026-11-24: "fourier is also just an example of using a specific geometry to uncover its given resultants")
+56. There are a whole bunch of geometries. ENERGEO sets out to find them, and what each one uncovers. (Nadia: "there are a bunch of geometries, that is the aim")
 57. You just took your first steps into it.
 
 Nothing comes after line 57.

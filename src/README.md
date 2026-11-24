@@ -95,8 +95,9 @@ They read like a kids' science magazine about technology, and build one thought 
 levels: the magazine, and the thought it builds"): one note hides many; there is far more hiding in a 0 than the
 signal shows, and still so much we don't know, even frequencies our ears can't hear; is there any way to perceive
 these hidden things? The Fourier transform shows that going from a whole to its hidden parts is possible; we have found
-a few ways; what we have found is just the surface. Then ENERGEO: the start of a new science, energy geometry, which
-sets out to map transformations like the Fourier transform and build tools to see what was always there.
+a few ways; what we have found is just the surface. Then ENERGEO: the start of a new science, energy geometry. The
+Fourier transform is just one example of a geometry uncovering what it gives; there are a whole bunch of geometries,
+and ENERGEO sets out to find them and what each one uncovers.
 
 - **The magazine** (`page.js`, `magazine.js`): each level opens with a cover (name, headline, question); an "Up next"
   card carries the thought into the next level; "The big idea" pull quotes stand out from the story. The final level ends on a map of transformations (`MAP`, `mapKnown`, `mapUnknown` in `src/math/prism.js`)

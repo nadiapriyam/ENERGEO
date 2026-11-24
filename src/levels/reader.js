@@ -1,18 +1,20 @@
 // The reader (docs/levels_spec.md, "All three levels: reading at your own pace", and "One way forward at a time, and
 // one bar for the whole story"). A level's words no longer come and go on a timer.
 // - One way forward at a time. Where you act (a button, a choice, a drag), that is the way on, and there is no Next.
-//   Lines of the same part follow each other by themselves, a beat apart, and stay. Only where the story would turn the
-//   page on its own does it wait: then Next appears under the level, glowing.
+//   Lines of the same part follow each other by themselves, at reading pace (src/math/reading.js: each line is given the
+//   time it takes to read it), and stay. Only where the story would turn the page on its own does it wait: then Next
+//   appears under the level, glowing, once the words on show have been read. A level's buttons appear then too.
 // - One bar for the whole story, at the top of the page: Level 1, Level 2, the final level, each ending in a marker.
 //   Each Next sends stars up into it and fills a notch; when a level is done, its section is full and its marker filled.
 // - Back pages back through the parts already read (a still picture of the board, with its words, kept by record.js);
 //   Next pages forward again, to now. Keys: → or Enter for Next, ← for Back.
 import { LEVELS } from './copyLevels.js';
+import { readBy } from '../math/reading.js';
 import { COMIC } from './comic.js';
 
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const RECORDING = new URLSearchParams(location.search).has('record');   // the comic's recorder: the story moves on by itself
-const BEAT = 900;                                            // ms between lines of the same part
+const BEAT = 900;                                            // ms between lines of the same part, at least (reading pace: reading.js)
 const ORDER = ['level-1', 'level-2', 'level-3'];
 const make = (tag, className, attrs = {}) => Object.assign(document.createElement(tag), { className, ...attrs });
 let current = null;                                          // the reader of the level being played: the keys go to it
@@ -93,8 +95,28 @@ export function reader(root, { fast = () => false } = {}) {
   const el = make('div', 'reader-column');                   // the level's words, with Back and Next under them
   words?.before(el);
   el.append(...(words ? [words] : []), row);
-  if (words) new MutationObserver(() => requestAnimationFrame(() => words.scrollTo({ top: words.scrollHeight, behavior: REDUCED ? 'auto' : 'smooth' })))
-    .observe(words, { childList: true, subtree: true });       // one screen per level: the newest line always in view
+  // Reading pace: every line, speech bubble or big idea shown here (and each part of a sentence shown a part at a time)
+  // adds its reading time; the next line of the part, and Next, wait until it has been read (reading.js).
+  let readUntil = 0;
+  const readable = (n) => {
+    if (n.nodeType !== 1 || n.closest('button, .choices')) return '';
+    if (n.matches('.mri-sentence')) return [...n.querySelectorAll('.frag.shown')].map((f) => f.textContent).join(' ');
+    if (n.matches('.line, .bubble')) return n.textContent;
+    return [...n.querySelectorAll('.line:not(.mri-sentence), .bubble')].map((e) => e.textContent).join(' ');
+  };
+  const ingest = (records) => {
+    for (const m of records) {
+      const texts = m.type === 'childList' ? [...m.addedNodes].map(readable)
+        : m.target.classList?.contains('frag') && m.target.classList.contains('shown') && !/\bshown\b/.test(m.oldValue ?? '') ? [m.target.textContent] : [];
+      for (const t of texts) if (t.trim()) readUntil = readBy(readUntil, performance.now(), t);
+    }
+  };
+  const watch = words ? new MutationObserver((records) => {
+    ingest(records);
+    if (records.some((m) => m.type === 'childList')) requestAnimationFrame(() => words.scrollTo({ top: words.scrollHeight, behavior: REDUCED ? 'auto' : 'smooth' }));
+  }) : null;
+  watch?.observe(words, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'], attributeOldValue: true });   // and the newest line always in view
+  const caughtUp = () => { if (watch) ingest(watch.takeRecords()); return RECORDING ? 0 : Math.max(0, readUntil - performance.now()); };
   const layer = make('div', 'reader-earlier');               // a part read earlier, shown over the level
   layer.hidden = true;
   root.prepend(layer);
@@ -103,13 +125,16 @@ export function reader(root, { fast = () => false } = {}) {
   let waiting = null;                                        // resolves the story's next(), while it waits for you
   let page = -1;                                             // -1: now; otherwise the index of the earlier part on show
   let done = false;
+  let readyAt = 0;                                           // Next lights up once the words on show have been read
+  let readyTimer = 0;
   const parts = () => [...document.querySelectorAll('#story-record .recorded-part')].filter((p) => p.dataset.level === level);
   const fill = () => { if (bar && !done) bar.set(level, Math.min(0.96, count / total)); };
   const refresh = () => {
     back.disabled = page === 0 || parts().length === 0;
-    go.classList.toggle('ready', page < 0 && !!waiting);
+    const read = performance.now() >= readyAt;
+    go.classList.toggle('ready', page < 0 && !!waiting && read);
     go.classList.toggle('paging', page >= 0);
-    go.disabled = !(page >= 0 || waiting);
+    go.disabled = !(page >= 0 || (waiting && read));
     row.classList.toggle('looking-back', page >= 0);
   };
   const show = (i) => {                                      // page through the parts read earlier; -1 is now
@@ -146,7 +171,7 @@ export function reader(root, { fast = () => false } = {}) {
   };
   const forward = () => {
     if (page >= 0) { show(page + 1 < parts().length ? page + 1 : -1); return true; }
-    if (!waiting) return false;
+    if (!waiting || performance.now() < readyAt) return false;
     const r = waiting;
     waiting = null;
     count++;
@@ -176,12 +201,18 @@ export function reader(root, { fast = () => false } = {}) {
       if (fast()) { count++; fill(); return Promise.resolve(); }
       return new Promise((resolve) => {
         waiting = resolve;
+        const left = caughtUp();                               // Next lights up once the words on show have been read
+        readyAt = performance.now() + left;
+        clearTimeout(readyTimer);
+        if (left) readyTimer = setTimeout(refresh, left + 20);
         refresh();
         if (RECORDING) setTimeout(forward, 250);
       });
     },
-    /** A beat between lines of the same part: the next line follows by itself, and the earlier ones stay. */
-    beat(ms = BEAT) { return fast() ? Promise.resolve() : new Promise((r) => setTimeout(r, ms)); },
+    /** Resolves once the words on show have been read (at once while fast-forwarding or recording). */
+    read() { return fast() ? Promise.resolve() : new Promise((r) => setTimeout(r, caughtUp())); },
+    /** A beat between lines of the same part: the next line follows by itself, once the earlier ones have been read (at least `ms`), and they stay. */
+    beat(ms = BEAT) { return fast() ? Promise.resolve() : new Promise((r) => setTimeout(r, RECORDING ? ms : Math.max(ms, caughtUp()))); },
   };
   current = self;
   readers[level] = self;

@@ -26,9 +26,10 @@ import { A_NOTE, STEPS, PITCH, part } from '../math/tones.js';
 import {
   BOARD, css, triangle, HALL, crystalCorners, aimAngle, toCrystal, startAngle, lightPath,
   STRIP, STRIP_BOX, repeats, signal, samplesPath, TUNER, onTuner, SPECTRUM, GLYPH, barX, barHeight, barAt, stepsAt, pureTone, allBack,
-  NOTE_LED, neon, ROWS, MRI, BODY_PARTS, partOf, partAt, partWave, partLink, dataTitle, RIPPLES, coarseRows, chordSamples, unmix, rowOrder, FIRST_ROW,
+  NOTE_LED, ROWS, MRI, BODY_PARTS, partOf, partAt, partWave, partLink, dataTitle, RIPPLES, coarseRows, chordSamples, unmix, rowOrder, FIRST_ROW,
   rowIn, toSignal, BRAIN, SKULL, EXPLORE, exploreHead, exploreData, labels, BREAK, figureBox,
   PATTERN, patternBox, picToPattern, patternRowBand, patternBars, patternLight, patternSpectrum, slideShift, captionAt, REVEAL, MAP, mapKnown, mapUnknown, revealToHub,
+  facetOf, thinker, thoughtTrail, cloudPath, thoughtLight, thoughtSound, SPOT, spotlight, otherGeometries,
 } from '../math/prism.js';
 
 const NS = 'http://www.w3.org/2000/svg';
@@ -72,6 +73,8 @@ const grey = (a) => { const v = Math.round(255 * Math.min(1, Math.max(0, a))); r
 /** Put a node somewhere at once (no transition), so its next move animates from there. */
 const jump = (node, transform) => { node.style.transition = 'none'; node.style.transform = transform; node.getBoundingClientRect(); node.style.transition = ''; };
 const line = (p, q, attrs) => svg('line', { x1: p.x.toFixed(1), y1: p.y.toFixed(1), x2: q.x.toFixed(1), y2: q.y.toFixed(1), ...attrs });
+/** A prism, drawn the same everywhere: a glass triangle with a highlight on its left face (no rainbow outline). */
+const prismShape = (t) => { const f = facetOf(t); return svg('g', { class: 'prism-shape' }, svg('polygon', { class: 'glass', points: pts(triangle(t)) }), svg('line', { class: 'facet', x1: f.x1.toFixed(1), y1: f.y1.toFixed(1), x2: f.x2.toFixed(1), y2: f.y2.toFixed(1) })); };
 
 // ── state ────────────────────────────────────────────────────────────────────────────────────────
 let phase = 'opening';
@@ -130,9 +133,7 @@ root.append(story.el);
 const board = svg('svg', { viewBox: `0 0 ${BOARD.w} ${BOARD.h}`, class: 'prism-board', role: 'img' });
 const describe = (text) => board.setAttribute('aria-label', text);
 figure.append(board);
-const led = (id, n, x2, y2) => svg('linearGradient', { id, x1: '0', y1: '0', x2, y2 },
-  ...Array.from({ length: n }, (_, i) => svg('stop', { offset: `${(100 * i) / (n - 1)}%`, 'stop-color': neon(i, n) })));
-board.append(svg('defs', {}, led('p3-led', 7, '1', '1'),
+board.append(svg('defs', {},
   svg('clipPath', { id: 'p3-repeat' }, svg('rect', { x: STRIP.x, y: STRIP.y - 12, width: repeats()[0].w, height: STRIP.h + 24 })),
   svg('linearGradient', { id: 'p3-ramp', x1: '0', y1: '0', x2: '1', y2: '0' },
     svg('stop', { offset: '0%', 'stop-color': '#3b2a8a' }), svg('stop', { offset: '100%', 'stop-color': '#ff3fd0' })),
@@ -188,7 +189,7 @@ const strip = svg('g', { class: 'strip small', style: `transform: ${css(onTuner(
 const arrive = svg('g', { class: 'arrive' }, tuner, strip);
 
 // taking the A note apart: four glowing bars
-const glyph = svg('g', { class: 'scene glyph' }, svg('polygon', { class: 'glyph-glass', points: pts(triangle(GLYPH)) }));
+const glyph = svg('g', { class: 'scene glyph' }, prismShape(GLYPH));
 const bars = A_NOTE.map((_, k) => svg('rect', { class: 'bar', fill: NOTE_LED[k], x: barX(k) - SPECTRUM.barW / 2, width: SPECTRUM.barW, rx: 6 }));
 const barLabels = A_NOTE.map((_, k) => svg('text', { class: 'bar-label', x: barX(k), y: SPECTRUM.base + 26, 'text-anchor': 'middle', fill: NOTE_LED[k], text: COPY.notes[k] }));
 const fourBars = svg('g', { class: 'four-bars' }, ...bars, ...barLabels);
@@ -214,7 +215,7 @@ const labelGroup = svg('g', { class: 'mri-part part-labels' }, ...LABELS.map((l)
   labelTexts[l.k] = t;
   return svg('g', {}, line({ x: l.label.x + 6, y: l.label.y }, l.anchor, { class: 'leader', stroke: BODY_PARTS[l.k].color }), svg('circle', { class: 'anchor', cx: l.anchor.x.toFixed(1), cy: l.anchor.y.toFixed(1), r: 3.5, fill: BODY_PARTS[l.k].color }), t);
 }));
-const mGlyph = svg('g', { class: 'scene glyph' }, svg('polygon', { class: 'glyph-glass', points: pts(triangle(MRI.glyph)) }));
+const mGlyph = svg('g', { class: 'scene glyph' }, prismShape(MRI.glyph));
 const mArrows = MRI.arrows.map((a) => svg('g', { class: 'mri-part p-arrow m-arrow' },
   line({ x: a.x1, y: a.y }, { x: a.x2 - 6, y: a.y }, {}), svg('polygon', { points: pts([{ x: a.x2, y: a.y }, { x: a.x2 - 12, y: a.y - 7 }, { x: a.x2 - 12, y: a.y + 7 }]) })));
 const pixelSize = P.size / ROWS;
@@ -237,6 +238,26 @@ const breakScene = svg('g', { class: 'scene break-scene' },
   svg('line', { class: 'string', x1: CHB.cx, y1: CHB.armY + 9, x2: cTop.x, y2: cTop.y }),
   svg('polygon', { class: 'glass', points: pts([cTop, cRight, cLeft]) }),
   youFigure, radiologistFigure);
+
+// the thought: you, in the dimmed hall, wondering if there is a prism for sound. In a thought bubble, the same prism
+// takes white light apart into its colours, and your A note apart into its four pure tones (prism.js: THOUGHT).
+const TL = thoughtLight();
+const TS = thoughtSound();
+const drawn = (el) => { el.setAttribute('pathLength', '1'); return el; };   // drawn in by its dash, start to end
+const thought = svg('g', { class: 'scene thought' },
+  standing('you', thinker().box, { x: 420, y: 60 }),
+  ...thoughtTrail().map((c, i) => svg('circle', { class: 'trail', cx: c.x.toFixed(1), cy: c.y.toFixed(1), r: c.r, style: `transition-delay: ${i * 140}ms` })),
+  svg('path', { class: 'cloud', d: cloudPath() }),
+  svg('g', { class: 'think-light' },
+    svg('text', { class: 'think-label', x: TL.label.x, y: TL.label.y, text: COPY.thoughtLabels.light }),
+    drawn(line(TL.beam.from, TL.beam.to, { class: 'think-beam' })),
+    ...TL.rays.map((r) => drawn(line(r.from, r.to, { class: 'think-ray', stroke: r.color }))),
+    prismShape(TL.prism)),
+  svg('g', { class: 'think-sound' },
+    svg('text', { class: 'think-label', x: TS.label.x, y: TS.label.y, text: COPY.thoughtLabels.sound }),
+    drawn(svg('path', { class: 'think-wave', d: TS.wave })),
+    ...TS.tones.map((t) => drawn(svg('path', { class: 'think-tone', d: t.d, stroke: t.color }))),
+    prismShape(TS.prism)));
 
 // the pattern: the scanner's row is your patient's picture, moved down, and its marked row's proton frequencies; the
 // violin and the light join them above
@@ -274,7 +295,16 @@ function fitCaptions() {
     if (w > PATTERN.captionMax) t.style.fontSize = `${((parseFloat(getComputedStyle(t).fontSize) * PATTERN.captionMax) / w).toFixed(1)}px`;
   }
 }
-const revealTitle = svg('text', { class: 'scene reveal-title', x: REVEAL.x, y: REVEAL.y, 'text-anchor': 'middle', fill: 'url(#p3-led)', text: COPY.revealTitle });
+const revealTitle = svg('text', { class: 'scene reveal-title', x: REVEAL.x, y: REVEAL.y, 'text-anchor': 'middle', text: COPY.revealTitle });
+// the grand reveal's stage light: the hall's stage light on the floor again, swung to the middle, lighting a pool there
+const SL = spotlight();
+const spot = svg('g', { class: 'scene spot' },
+  svg('ellipse', { class: 'spot-pool', cx: SPOT.pool.cx, cy: SPOT.pool.cy, rx: SPOT.pool.rx, ry: SPOT.pool.ry }),
+  svg('polygon', { class: 'spot-cone', points: pts(SL.cone) }),
+  svg('path', { class: 'stand', d: `M ${L.x} ${L.y} L ${L.x - 16} ${HALL.floor} M ${L.x} ${L.y} L ${L.x + 16} ${HALL.floor}` }),
+  svg('g', { transform: `rotate(${SL.deg.toFixed(2)} ${L.x} ${L.y})` },
+    svg('rect', { class: 'lamp-can', x: L.x - 16, y: L.y - 13, width: 40, height: 26, rx: 7 }),
+    svg('rect', { class: 'lamp-lens spot-lens', x: L.x + L.lens - 4, y: L.y - 11, width: 6, height: 22, rx: 2 })));
 
 // the finale: a map of transformations (math: MAP). The Fourier transform at the hub, the three things it already
 // takes apart lit around it, and "?" everywhere else, spreading out past the edges: just the surface. Then the name.
@@ -287,10 +317,14 @@ const mapLayer = svg('g', { class: 'scene map' },
   ...mapUnknown().map((n) => svg('g', { class: 'map-q', style: `--o: ${n.opacity.toFixed(2)}; transition-delay: ${Math.round(n.d * 3)}ms` },
     svg('circle', { cx: n.x.toFixed(1), cy: n.y.toFixed(1), r: n.r.toFixed(1) }),
     ...(n.mark ? [svg('text', { x: n.x.toFixed(1), y: (n.y + n.r * 0.42).toFixed(1), 'text-anchor': 'middle', 'font-size': (n.r * 1.2).toFixed(1), text: COPY.mapUnknown })] : []))),
+  ...otherGeometries().map((g, i) => svg('g', { class: 'map-geo', style: `transition-delay: ${900 + i * 220}ms` },   // other geometries, each a hub of its own
+    svg('circle', { class: 'geo-ring', cx: g.x.toFixed(1), cy: g.y.toFixed(1), r: g.ring.toFixed(1) }),
+    ...g.spokes.flatMap((k) => [svg('line', { class: 'geo-spoke', x1: k.x1.toFixed(1), y1: k.y1.toFixed(1), x2: k.x2.toFixed(1), y2: k.y2.toFixed(1) }),
+      svg('circle', { class: 'geo-dot', cx: k.x2.toFixed(1), cy: k.y2.toFixed(1), r: 3.2 })]))),
   svg('text', { class: 'map-title', x: MAP.title.x, y: MAP.title.y, 'text-anchor': 'middle', text: COPY.energeo.name }),
   svg('text', { class: 'map-sub', x: MAP.title.x, y: MAP.sub.y, 'text-anchor': 'middle', text: COPY.energeo.field }));
 
-board.append(bg, hall, breakScene, scan, arrive, glyph, spectrum, pattern, mapLayer, revealTitle);
+board.append(bg, hall, thought, breakScene, scan, arrive, glyph, spectrum, pattern, mapLayer, spot, revealTitle);
 
 // ── drawing ──────────────────────────────────────────────────────────────────────────────────────
 function aim(a) {                                           // the stage light, pointing at angle a
@@ -432,12 +466,11 @@ const ask = (options, id) => new Promise((resolve) => {
   if (FAST) step(id).then(() => { if (FAST) buttons[0].click(); });
 });
 const press = (text, id) => new Promise((resolve) => {
-  const b = el('button', { type: 'button', class: 'action', text });
+  const b = el('button', { type: 'button', class: 'action', text, disabled: '' });
   b.addEventListener('click', () => { b.remove(); resolve(); }, { once: true });
   controls.replaceChildren(b);
-  later(() => b.classList.add('in'));
-  followFocus(b);
-  if (FAST) step(id).then(() => { if (FAST) b.click(); });
+  story.read().then(() => { b.disabled = false; later(() => b.classList.add('in')); followFocus(b); });   // once the words above are read
+  if (FAST) step(id).then(() => { if (FAST) { b.disabled = false; b.click(); } });
 });
 const boardPoint = (e) => { const p = board.createSVGPoint(); p.x = e.clientX; p.y = e.clientY; return p.matrixTransform(board.getScreenCTM().inverse()); };
 
@@ -512,8 +545,17 @@ async function theColors() {                                // where did the col
   await ask(COPY.where.choices, 'colors');
   say(COPY.where.after);
   await story.beat();
+  hall.classList.add('thinking');                           // the hall steps back: you, wondering, and your thought
+  on(thought);
   speak(COPY.you.think, 'you', true);
-  await story.beat();
+  describe('You stand in the dimmed hall, thinking. In a thought bubble: a prism takes white light apart into its colours; under it, the same prism takes your A note apart into four pure tones.');
+  await wait(1100);
+  thought.classList.add('light');                           // a prism takes light apart …
+  await wait(1500);
+  thought.classList.add('sound');                           // … and the same prism, a sound
+  await story.beat(2400);
+  await story.next();                                       // a page of its own: Back and the comic keep the thought
+  await clear();
   say(COPY.surprise, 'lead');
   await story.beat();
   await step('thought');
@@ -523,6 +565,7 @@ async function theColors() {                                // where did the col
 async function theTuner() {                                 // the hall rises away; your violin and its tuner rise in
   phase = 'tuner';
   hall.classList.add('leaving');
+  on(thought, false);
   arrive.classList.add('up');
   await wait(1100);
   hall.style.visibility = 'hidden';
@@ -624,7 +667,7 @@ async function tuningFork() {                               // one bar, then all
         await clear();
         say(COPY.pureDone, 'lead');
         if (FAST) say(COPY.back);
-        else setTimeout(() => say(COPY.back), REDUCED ? 0 : 1600);
+        else story.beat(1600).then(() => say(COPY.back));    // once the line above is read
       } else if (phase === 'back' && allBack(mine)) {
         stop();
         resolve();
@@ -804,9 +847,10 @@ async function theReveal() {                                // the grand reveal:
   phase = 'reveal';
   await clear();
   [pattern, strip, image].forEach((n) => n.classList.add('dim'));
-  on(revealTitle);
+  on(spot);                                                  // the stage light swings on, lighting the middle of the board …
+  on(revealTitle);                                           // … and the name appears in its light
   say(COPY.reveal, 'final');
-  describe('The three rows dim. In the middle, glowing: the Fourier transform.');
+  describe('The three rows dim. The stage light comes on and lights up the middle of the board: the Fourier transform.');
   await story.beat(1400);
   await step('reveal');
   say(COPY.name);
@@ -821,6 +865,7 @@ async function theSurface() {                               // a whole into its 
   await clear();
   [pattern, strip, image].forEach((n) => n.classList.add('gone'));
   const h = revealToHub();                                   // the title shrinks into the hub of a map
+  on(spot, false);
   revealTitle.classList.add('to-hub');
   revealTitle.style.transform = `translate(${h.dx}px, ${h.dy}px) scale(${h.s})`;
   on(mapLayer);
@@ -842,8 +887,8 @@ async function theSurface() {                               // a whole into its 
 async function theEnergeo() {                               // the name over the map: ENERGEO, a new science
   phase = 'energeo';
   await clear();
-  mapLayer.classList.add('named');
-  describe('At the top of the map: ENERGEO, and under it, energy geometry.');
+  mapLayer.classList.add('named');                           // and other geometries light up: hubs of their own
+  describe('At the top of the map: ENERGEO, and under it, energy geometry. Around the map, other hubs light up: other geometries, each with its own hidden parts.');
   say(COPY.energeo.lines[0], 'lead');
   await story.beat(1400);
   say(COPY.energeo.lines[1]);

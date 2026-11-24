@@ -434,11 +434,10 @@ const ask = (options) => new Promise((resolve) => choices(options, (o, b, all) =
 }));
 
 function button(text, onClick) {
-  const b = el('button', { type: 'button', class: 'action', text });
+  const b = el('button', { type: 'button', class: 'action', text, disabled: '' });
   b.addEventListener('click', () => { b.remove(); onClick(); }, { once: true });
   prompt.append(b);
-  requestAnimationFrame(() => b.classList.add('in'));
-  followFocus(b);
+  story.read().then(() => { b.disabled = false; requestAnimationFrame(() => b.classList.add('in')); followFocus(b); });   // once the words above are read
   return b;
 }
 const press = (text) => new Promise((resolve) => button(text, resolve));

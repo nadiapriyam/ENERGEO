@@ -533,7 +533,7 @@
   },
   {
    "id": "level-3",
-   "steps": 9,
+   "steps": 10,
    "parts": [
     {
      "img": "l3-01.webp",
@@ -564,7 +564,7 @@
      "img": "l3-02.webp",
      "w": 680,
      "h": 458,
-     "alt": "A tuner clipped to the scroll of your violin. Its screen is blank.",
+     "alt": "You stand in the dimmed hall, thinking. In a thought bubble: a prism takes white light apart into its colours; under it, the same prism takes your A note apart into four pure tones.",
      "words": [
       {
        "kind": "line",
@@ -585,7 +585,15 @@
          "thought": true
         }
        ]
-      },
+      }
+     ]
+    },
+    {
+     "img": "l3-03.webp",
+     "w": 680,
+     "h": 458,
+     "alt": "A tuner clipped to the scroll of your violin. Its screen is blank.",
+     "words": [
       {
        "kind": "line",
        "text": "Surprise: it's your tuner.",
@@ -596,7 +604,7 @@
      ]
     },
     {
-     "img": "l3-03.webp",
+     "img": "l3-04.webp",
      "w": 680,
      "h": 458,
      "alt": "On the tuner's screen, your note drawn as a bumpy line, with the letter A under it and a green light.",
@@ -609,7 +617,7 @@
      ]
     },
     {
-     "img": "l3-04.webp",
+     "img": "l3-05.webp",
      "w": 680,
      "h": 458,
      "alt": "The signal holds still. Faint bands mark each repeat of its shape; a glowing copy of the first repeat slides onto the second and fits it exactly.",
@@ -627,7 +635,7 @@
      ]
     },
     {
-     "img": "l3-05.webp",
+     "img": "l3-06.webp",
      "w": 680,
      "h": 458,
      "alt": "Drag the bars up and down. The signal above changes with them.",
@@ -647,7 +655,7 @@
      ]
     },
     {
-     "img": "l3-06.webp",
+     "img": "l3-07.webp",
      "w": 680,
      "h": 458,
      "alt": "Drag the bars up and down. The signal above changes with them.",
@@ -674,7 +682,7 @@
      ]
     },
     {
-     "img": "l3-07.webp",
+     "img": "l3-08.webp",
      "w": 680,
      "h": 458,
      "alt": "The break: the hall lights are on. You stand by the stage. The radiologist who read your scan, in a white coat, walks over to you.",
@@ -707,7 +715,7 @@
      ]
     },
     {
-     "img": "l3-08.webp",
+     "img": "l3-09.webp",
      "w": 680,
      "h": 458,
      "alt": "Your patient’s skull is lit. Its signal comes out of the spot you tapped and travels to the data box, where its wave is drawn, named skull.",
@@ -725,7 +733,7 @@
      ]
     },
     {
-     "img": "l3-09.webp",
+     "img": "l3-10.webp",
      "w": 680,
      "h": 458,
      "alt": "Row by row, the pixels have made an MRI picture of your patient’s head.",
@@ -740,7 +748,7 @@
      ]
     },
     {
-     "img": "l3-10.webp",
+     "img": "l3-11.webp",
      "w": 680,
      "h": 458,
      "alt": "Three rows, each with its caption: Violin note → pure tones; Stage light → its full color spectrum; MRI image → proton frequencies.",
@@ -768,10 +776,10 @@
      ]
     },
     {
-     "img": "l3-11.webp",
+     "img": "l3-12.webp",
      "w": 680,
      "h": 458,
-     "alt": "The three rows dim. In the middle, glowing: the Fourier transform.",
+     "alt": "The three rows dim. The stage light comes on and lights up the middle of the board: the Fourier transform.",
      "words": [
       {
        "kind": "line",
@@ -793,7 +801,7 @@
      ]
     },
     {
-     "img": "l3-12.webp",
+     "img": "l3-13.webp",
      "w": 680,
      "h": 458,
      "alt": "Beyond them, the board fills with question marks, smaller and fainter the further out they go, past its edges.",
@@ -820,10 +828,10 @@
      ]
     },
     {
-     "img": "l3-13.webp",
+     "img": "l3-14.webp",
      "w": 680,
      "h": 458,
-     "alt": "At the top of the map: ENERGEO, and under it, energy geometry.",
+     "alt": "At the top of the map: ENERGEO, and under it, energy geometry. Around the map, other hubs light up: other geometries, each with its own hidden parts.",
      "words": [
       {
        "kind": "line",
@@ -834,12 +842,12 @@
       },
       {
        "kind": "line",
-       "text": "It sets out to map transformations like the Fourier transform.",
+       "text": "The Fourier transform is just one example: one geometry, and what it can uncover.",
        "cls": []
       },
       {
        "kind": "line",
-       "text": "And to build tools that help us see what we couldn't before, but that was always there.",
+       "text": "There are a whole bunch of geometries. ENERGEO sets out to find them, and what each one uncovers.",
        "cls": []
       },
       {

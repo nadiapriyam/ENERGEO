@@ -48,8 +48,9 @@ test('1. covers, "Up next" cards and the thought the three levels build, in orde
     'the final level: the tool, the big idea, a few found, just the surface, then ENERGEO');
   assert.equal(PRISM.bigIdea, 'Going from a whole to the hidden parts inside it is possible.');
   assert.match(PRISM.opening, /still wondering\.$/, 'the final level picks up the question');
-  assert.ok(/^Meet ENERGEO: the start of a new science, energy geometry\.$/.test(PRISM.energeo.lines[0]) && /sets out to map transformations like the Fourier transform/.test(PRISM.energeo.lines[1]), 'ENERGEO, and what it sets out to do');
-  assert.match(PRISM.energeo.lines[2], /see what we couldn't before, but that was always there/);
+  assert.ok(/^Meet ENERGEO: the start of a new science, energy geometry\.$/.test(PRISM.energeo.lines[0]) && /just one example/.test(PRISM.energeo.lines[1]) && /a whole bunch of geometries\. ENERGEO sets out to find them/.test(PRISM.energeo.lines[2]), 'ENERGEO, and what it sets out to do: the Fourier transform is one geometry among many (Nadia, 2026-11-24)');
+  assert.ok(!/see what we couldn't before/.test(PRISM.energeo.lines.join(' ')), 'not uncovering more with the Fourier transform: many geometries is the aim (Nadia, 2026-11-24)');
+  assert.ok(read('docs/levels_spec.md').includes("> also the main goal of energeo isn't to use fourier to uncover more things we can't see. fourier is also just an example of using a specific geometry to uncover its given resultants. there are a bunch of geometries, that is the aim"), "Nadia's message, verbatim");
   // kept for Back and the comic, drawn the same in the comic
   const rec = read('tools/record_comic.mjs');
   assert.match(rec, /cls: \['big-idea'\]/);
