@@ -16,6 +16,7 @@ import { h } from '../core/dom.js';
 import { tex } from '../core/tex.js';
 import { DEEPER } from './copyDeeper.js';
 import { hypothesis, currentApplications } from './records.js';
+import { shareRow } from '../levels/share.js';
 
 const badge = (cls) => h('span', { class: `badge badge-${cls}`, title: data.classes[cls] }, h('i', { 'aria-hidden': 'true' }), data.classes[cls]);
 const badges = (list) => h('span', { class: 'badges' }, ...list.map(badge));
@@ -31,6 +32,7 @@ const page = h('main', { class: 'deeper' },
     h('p', { class: 'deep-kicker' }, DEEPER.kicker),
     h('h1', null, DEEPER.title),
     h('p', { class: 'deep-top-lede' }, DEEPER.lede),
+    shareRow('deeper', 'top-share'),                          // the whole thing (the levels and this page), by email
     h('nav', { class: 'deep-toc', 'aria-label': DEEPER.contents }, ...['what', 'path', 'proved', 'open', 'apps'].map((id) => h('a', { href: `#${id}` }, DEEPER[id].title)))),
 
   section('what', DEEPER.what.title, DEEPER.what.lede,
@@ -77,7 +79,8 @@ const page = h('main', { class: 'deeper' },
     h('p', { class: 'deep-sub' }, DEEPER.apps.energeo),
     (() => { const e = data.open.find((g) => /energeo/i.test(g.title)); return h('p', { class: 'energeo-q' }, h('strong', null, e.title), ' ', e.question, ' ', badge('open')); })()),
 
-  h('p', { class: 'deep-more' }, h('a', { href: '../../research-preview/' }, DEEPER.more)));
+  h('p', { class: 'deep-more' }, h('a', { href: '../../research-preview/' }, DEEPER.more)),
+  shareRow('deeper', 'end-share'));
 
 document.getElementById('deeper').replaceWith(page);
 document.title = DEEPER.title;

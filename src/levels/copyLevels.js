@@ -33,9 +33,22 @@ export const LEVELS = {
   deeperTitle: 'The research behind ENERGEO',
   deeperDek: 'What ENERGEO is, mathematically, its geometries, and its applications so far.',
   deeperOpen: 'Explore the research ›',
+  share: 'Share by email',                                  // sharing the whole thing, the levels and the research (Nadia, 2026-11-25: "can you make it sharable through email, the whole thing")
+  copyLink: 'Copy link',
+  linkCopied: 'Link copied',
+  shareSubject: 'ENERGEO Learn: three short interactives, and the research behind them',
   goHere: 'Go here',                                        // on each picture in the side panel: tap to go to that scene
   steps: 'Level 3, step by step',
   stepsHint: 'Scroll left and right, or use the arrows. Each frame is the level itself, stopped at that step.',
   playFrom: 'Play from here',
   back: 'Back to the levels',
 };
+
+// The body of the email "Share by email" sends (share.js): the two links are filled in where {levels} and {deeper} are.
+export const SHARE_BODY = [
+  'Three short interactives from ENERGEO Learn: a violin, an MRI scanner and a prism for sound. Start here:',
+  '{levels}',
+  '',
+  'And the research behind ENERGEO, for anyone who wants to go deeper: what it is mathematically, its geometries, what has been proved and what is still open, and the applications tested so far:',
+  '{deeper}',
+];

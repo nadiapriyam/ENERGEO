@@ -5,6 +5,7 @@
 // whole story as a comic, to see it quickly without playing it.
 import './base.css';
 import { LEVELS } from './copyLevels.js';
+import { shareRow } from './share.js';
 import { jumpTo } from './jump.js';
 import { storyBar } from './reader.js';
 import { readingTime } from '../math/reading.js';
@@ -106,7 +107,7 @@ chain('mri-lesson', 'next-level-3', LEVELS.next3, 'level-3', () => import('./pri
 function goDeeper(from) {
   const open = Object.assign(document.createElement('a'), { className: 'action next-level', href: 'deeper/', textContent: LEVELS.deeperOpen });
   const card = Object.assign(document.createElement('div'), { className: 'up-next go-deeper', hidden: true });
-  card.append(span('up-next-kicker', LEVELS.deeperKicker), span('up-next-title', LEVELS.deeperTitle), span('up-next-dek', LEVELS.deeperDek), open);
+  card.append(span('up-next-kicker', LEVELS.deeperKicker), span('up-next-title', LEVELS.deeperTitle), span('up-next-dek', LEVELS.deeperDek), open, shareRow('levels', 'card-share'));   // and the whole thing, by email
   document.getElementById(from).addEventListener('level-finished', () => {
     const column = document.getElementById(from).querySelector('.reader-column');
     column?.append(card);                                    // under the final level's words …
@@ -150,7 +151,7 @@ if (!query.has('step') && !query.has('steps')) {
   const make = (tag, attrs, ...kids) => { const e = Object.assign(document.createElement(tag), attrs); e.append(...kids); return e; };
   const close = make('button', { type: 'button', className: 'side-close', textContent: LEVELS.close });
   const parts = make('div', { className: 'side-parts' });
-  const panel = make('aside', { className: 'side', id: 'side-panel', inert: true }, make('div', { className: 'side-head' }, make('h2', { textContent: LEVELS.wholeStory }), close), parts);
+  const panel = make('aside', { className: 'side', id: 'side-panel', inert: true }, make('div', { className: 'side-head' }, make('h2', { textContent: LEVELS.wholeStory }), close), shareRow('levels', 'side-share'), parts);   // the whole thing, by email, at any time
   panel.setAttribute('aria-label', LEVELS.wholeStory);
   const tab = make('button', { type: 'button', className: 'side-toggle', textContent: LEVELS.scrollThrough });
   tab.setAttribute('aria-controls', 'side-panel');

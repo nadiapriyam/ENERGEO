@@ -141,7 +141,8 @@ education layer so name it somehting along those lines but short"). On the first
 At the end of the final level, the "Go deeper" card (see "The final level: "Go deeper", the research behind ENERGEO" below):
 "Go deeper", "The research behind ENERGEO",
 "What ENERGEO is, mathematically, its geometries, and its applications so far."
-and "Explore the research ›".
+and "Explore the research ›". Sharing the whole thing (see "share the whole thing by email" below):
+"Share by email", "Copy link" and "Link copied".
 
 ## What the new lines claim, and what they do not
 
@@ -676,6 +677,43 @@ parts we can't see is possible, that we know a few ways, and that ENERGEO sets o
   and your speech bubbles' tint. The final level's dark is a deeper shade of the deep blue, so its lights still glow.
   The four hidden notes are blue, coral, purple and gold, in Level 1, in Level 2's side by side and as the final
   level's lights. Every detail stays.
+
+## All three levels and "Go deeper": share the whole thing by email (2026-11-25). Nadia, verbatim:
+
+> can you make it sharable through email, the whole thing
+
+### What changes
+
+- **"Share by email"** opens the reader's email app with a new email, ready to send: the subject and the body below,
+  with both links filled in. The whole thing goes with it: the link to the levels (try/, from the beginning, Level 1's
+  title slide) and the link to "The research behind ENERGEO" (try/deeper/), which in turn links to the full research
+  preview. **"Copy link"** copies the link to the levels (it shows "Link copied" for a moment); where a browser cannot
+  copy, it shows the link to copy by hand. The links are worked out from the page's own address, without any scene or
+  review step in it.
+- **Where**: under "Explore the research ›" on the "Go deeper" card at the end of the final level (on a phone or
+  tablet, an envelope button on its slim row, and on a small phone the row drops the "Go deeper" tag to make room); at
+  the top of the "Scroll through" panel, so the whole thing can be shared at any time; and on "The research behind
+  ENERGEO", under its introduction and again at the end.
+- **The words**:
+  - "Share by email" (with an envelope, ✉)
+  - "Copy link"
+  - "Link copied"
+  - The email's subject: "ENERGEO Learn: three short interactives, and the research behind them"
+  - The email's body (the two links are filled in):
+    - "Three short interactives from ENERGEO Learn: a violin, an MRI scanner and a prism for sound. Start here:"
+    - "{levels}"
+    - (an empty line)
+    - "And the research behind ENERGEO, for anyone who wants to go deeper: what it is mathematically, its geometries, what has been proved and what is still open, and the applications tested so far:"
+    - "{deeper}"
+- **A picture with the link.** Email and messaging apps that show a preview of a link (Apple Mail, Messages, Outlook,
+  Slack and others; Gmail usually shows the link alone) show a picture of the final level's map, the Fourier transform at its
+  hub and ENERGEO over it, beside the words "ENERGEO LEARN", "Three short interactives" and
+  "A violin, an MRI scanner and a prism for sound, and the research behind ENERGEO."
+  (public/share/energeo-learn.jpg, 1200 × 630, made from the level itself). The preview's title for the levels is
+  "ENERGEO Learn: three short interactives", with the same sentence under it; for the research page,
+  "The research behind ENERGEO", with that page's description. The levels page keeps its own title, "Try this", which
+  names no concept.
+- The site is public (GitHub Pages), so anyone who gets the email can open both links; nothing needs signing in.
 
 ## The final level: "Go deeper", the research behind ENERGEO (2026-11-25). Nadia, verbatim:
 

@@ -19,6 +19,13 @@
 .deep-top h1 { margin: 0.3em 0 0.25em; font-size: clamp(2.4rem, 6.4vw, 4.4rem); line-height: 1.02; letter-spacing: -0.015em; color: var(--white); }
 .deep-top h1::after { content: ''; display: block; width: min(200px, 40vw); height: 6px; margin-top: 0.3em; background: var(--coral); }
 .deep-top-lede { max-width: 40ch; margin: 0.6em 0 1em; font-size: clamp(1.15rem, 2.2vw, 1.5rem); font-style: italic; line-height: 1.3; color: var(--on-board-2); }
+/* sharing, on the masthead: light on the board */
+.top-share { margin: 0 0 1.3em; }
+.top-share .share-email { color: var(--pine); background: var(--mustard); border-color: var(--mustard); }
+.top-share .share-email:hover { background: var(--white); border-color: var(--white); }
+.top-share .share-copy { color: var(--on-board); }
+.top-share .share-copy:hover { border-bottom-color: var(--on-board); }
+.end-share { margin-top: 1.4em; }
 .deep-toc { display: flex; flex-wrap: wrap; gap: 8px 10px; }
 .deep-toc a {
   font-size: 1rem; font-weight: 700; color: var(--on-board); text-decoration: none; padding: 0.25em 0.75em; border: 2px solid var(--board-edge); border-radius: 999px;
