@@ -139,7 +139,8 @@ test('7. Space skips: a line on its way, a button, Next; the first title slide s
   assert.match(r, /else if \(e\.key === ' ' && \(!a \|\| a === document\.body\)\) \{ current\.skip\(\); e\.preventDefault\(\); \}/, 'Space, when nothing else has the key');
   assert.match(r, /skip\(\) \{[\s\S]*if \(waiting\) \{ readyAt = 0;[\s\S]*for \(const done of \[\.\.\.skippable\]\) done\(\);/, 'Next pressed, or the waits cut short');
   assert.match(r, /return waitFor\(left\);/, 'a line on its way can be skipped');
-  assert.deepEqual([LEVELS.skipKey, LEVELS.skipTap], ['Press space to skip', 'Tap to skip']);
+  assert.deepEqual([LEVELS.skipKey, LEVELS.skipTap], ['Optional: press space to skip any part. Without it, the levels play normally.', 'Optional: tap to skip. Without it, the levels play normally.']);
+  assert.ok(read('docs/levels_spec.md').includes('> can you say press space to skip any portion and say this is optional not required on the front the levels will progress normally, but say it short'), "Nadia's message, verbatim");
   const page = read('src/levels/page.js');
   assert.match(page, /if \(firstIntro\) \{/, 'only on the first title slide');
   assert.match(page, /\['Enter', ' ', 'ArrowRight'\]\.includes\(e\.key\)/, 'Space skips a title slide');

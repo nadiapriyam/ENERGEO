@@ -135,8 +135,9 @@ below): the tab "Scroll through" (in the top bar), the panel's title "The whole 
 each picture in the panel (tap it, and the level goes to that scene: see "Scroll through: go to a scene" below). While
 more lines are on their way: nothing (the "…" was taken out, 2026-11-24). In the top bar's left corner: "ENERGEO"
 and "Learn" (Nadia, 2026-11-24: "name it energeo demo on the top corner left"; 2026-11-25: "actually its energeo
-education layer so name it somehting along those lines but short"). On the first title slide: "Press space to skip"
-(on a touch screen, "Tap to skip").
+education layer so name it somehting along those lines but short"). On the first title slide:
+"Optional: press space to skip any part. Without it, the levels play normally."
+(on a touch screen, "Optional: tap to skip. Without it, the levels play normally.").
 
 ## What the new lines claim, and what they do not
 
@@ -671,6 +672,16 @@ parts we can't see is possible, that we know a few ways, and that ENERGEO sets o
   and your speech bubbles' tint. The final level's dark is a deeper shade of the deep blue, so its lights still glow.
   The four hidden notes are blue, coral, purple and gold, in Level 1, in Level 2's side by side and as the final
   level's lights. Every detail stays.
+
+## All three levels: the skip instruction says it is optional (2026-11-25). Nadia, verbatim:
+
+> can you say press space to skip any portion and say this is optional not required on the front the levels will progress normally, but say it short
+
+### What changes
+
+- The first title slide's instruction now reads "Optional: press space to skip any part. Without it, the levels play
+  normally." ("space" drawn as a key); on a touch screen, "Optional: tap to skip. Without it, the levels play
+  normally." It replaces "Press space to skip" / "Tap to skip".
 
 ## All three levels: Space to skip (2026-11-25). Nadia, verbatim:
 

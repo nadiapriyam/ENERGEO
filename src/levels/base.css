@@ -143,7 +143,7 @@ body {
 .level-intro.in .intro-kicker, .level-intro.in .intro-title, .level-intro.in .intro-dek, .level-intro.in .intro-note { opacity: 1; transform: none; filter: none; }
 .level-intro.in .intro-rule { transform: none; }
 /* the first title slide: how to skip */
-.intro-skip { position: absolute; left: max(8vw, 24px); bottom: max(5vh, 24px); font-size: clamp(0.95rem, 1.5vw, 1.15rem); color: var(--on-board-2); opacity: 0; transition: opacity 700ms ease-out 2400ms; }
+.intro-skip { position: absolute; left: max(8vw, 24px); right: max(8vw, 24px); bottom: max(5vh, 24px); line-height: 1.6; font-size: clamp(0.95rem, 1.5vw, 1.15rem); color: var(--on-board-2); opacity: 0; transition: opacity 700ms ease-out 2400ms; }
 .level-intro.in .intro-skip { opacity: 1; animation: skip-hint 2.4s ease-in-out 3.2s infinite; }
 .intro-skip kbd {
   display: inline-block; margin: 0 0.35em; padding: 0.08em 0.9em 0.12em; font: inherit; font-weight: 700; color: var(--pine);
