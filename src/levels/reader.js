@@ -53,8 +53,8 @@ export function storyBar() {
   });
   const row = make('div', 'story-sections');
   row.append(...sections.map((x) => x.s));
-  const brand = make('span', 'story-brand');                 // the top left corner: ENERGEO demo (Nadia, 2026-11-24)
-  brand.append(make('span', 'story-brand-name', { textContent: LEVELS.brand }), make('span', 'story-brand-tag', { textContent: LEVELS.demo }));
+  const brand = make('span', 'story-brand');                 // the top left corner: ENERGEO Learn, the education layer (Nadia, 2026-11-25)
+  brand.append(make('span', 'story-brand-name', { textContent: LEVELS.brand }), make('span', 'story-brand-tag', { textContent: LEVELS.layer }));
   el.append(brand, row);
   document.body.append(el);
   document.documentElement.classList.add('has-story-bar');

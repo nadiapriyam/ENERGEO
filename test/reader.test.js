@@ -125,10 +125,11 @@ test('5. black text, gray sub-text, and every board #172B3A (Nadia, 2026-11-24)'
   assert.ok(read('docs/levels_spec.md').includes('> change all the text to black and the sub text to gray and make the interactives #172B3A'), "Nadia's message, verbatim");
 });
 
-test('6. "ENERGEO demo" in the top bar\'s left corner (Nadia, 2026-11-24: "name it energeo demo on the top corner left")', () => {
-  assert.deepEqual([LEVELS.brand, LEVELS.demo], ['ENERGEO', 'demo']);
+test('6. "ENERGEO Learn" in the top bar\'s left corner: the education layer (Nadia, 2026-11-24 and 25)', () => {
+  assert.deepEqual([LEVELS.brand, LEVELS.layer], ['ENERGEO', 'Learn']);
   const r = read('src/levels/reader.js');
-  assert.match(r, /make\('span', 'story-brand-name', \{ textContent: LEVELS\.brand \}\), make\('span', 'story-brand-tag', \{ textContent: LEVELS\.demo \}\)/);
+  assert.match(r, /make\('span', 'story-brand-name', \{ textContent: LEVELS\.brand \}\), make\('span', 'story-brand-tag', \{ textContent: LEVELS\.layer \}\)/);
+  assert.ok(read('docs/levels_spec.md').includes("> actually its energeo education layer so name it somehting along those lines but short"), "Nadia's message, verbatim");
   assert.match(read('src/levels/base.css'), /\.story-brand \{\s*position: absolute; left: max\(16px/, 'in the left corner');
   assert.ok(read('docs/levels_spec.md').includes('> name it energeo demo on the top corner left'), "Nadia's message, verbatim");
 });

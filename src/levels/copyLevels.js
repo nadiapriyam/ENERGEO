@@ -23,8 +23,8 @@ export const LEVELS = {
   progress: 'Progress',
   earlier: 'Earlier',
   scrollThrough: 'Scroll through',
-  brand: 'ENERGEO',                                         // the name in the top bar's left corner, with "demo" (Nadia, 2026-11-24)
-  demo: 'demo',
+  brand: 'ENERGEO',                                         // the name in the top bar's left corner, with "Learn": the education layer (Nadia, 2026-11-25)
+  layer: 'Learn',
   wholeStory: 'The whole story',
   close: 'Close',
   goHere: 'Go here',                                        // on each picture in the side panel: tap to go to that scene

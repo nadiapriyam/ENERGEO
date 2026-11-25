@@ -134,7 +134,8 @@ at the top ("Progress", for screen readers) and "Earlier" (with the part's numbe
 below): the tab "Scroll through" (in the top bar), the panel's title "The whole story", and "Close"; and "Go here ›" on
 each picture in the panel (tap it, and the level goes to that scene: see "Scroll through: go to a scene" below). While
 more lines are on their way: nothing (the "…" was taken out, 2026-11-24). In the top bar's left corner: "ENERGEO"
-and "demo" (Nadia, 2026-11-24: "name it energeo demo on the top corner left").
+and "Learn" (Nadia, 2026-11-24: "name it energeo demo on the top corner left"; 2026-11-25: "actually its energeo
+education layer so name it somehting along those lines but short").
 
 ## What the new lines claim, and what they do not
 
@@ -669,6 +670,16 @@ parts we can't see is possible, that we know a few ways, and that ENERGEO sets o
   and your speech bubbles' tint. The final level's dark is a deeper shade of the deep blue, so its lights still glow.
   The four hidden notes are blue, coral, purple and gold, in Level 1, in Level 2's side by side and as the final
   level's lights. Every detail stays.
+
+## All three levels: "ENERGEO Learn" in the top left corner (2026-11-25). Nadia, verbatim:
+
+> actually its energeo education layer so name it somehting along those lines but short
+
+### What changes
+
+- The top bar's left corner reads "ENERGEO" and "Learn" (it was "ENERGEO demo"): short, and it says this is ENERGEO's
+  education layer. Same place and style: ENERGEO bold and letter-spaced in mustard, Learn in italics; stacked and
+  smaller on a phone.
 
 ## All three levels: "ENERGEO demo" in the top left corner (2026-11-24). Nadia, verbatim:
 
