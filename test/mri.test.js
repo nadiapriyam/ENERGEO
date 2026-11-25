@@ -16,7 +16,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import {
   start, pair, dropTarget, tapTarget, totalOf, pairedCount, total, dirOf, layout, pattern, puzzleGroups, frame, sumLayout, crowd, crowdDirections, crowdTotal,
   ARRANGEMENTS, PAIRS, ROWS, VIEW, PIECE, PANEL, DROP, DROP_LINE, CROWD, CROWD_SHOWN, FIELD_LINES, FIELD_SPAN, FLIP, RADIO, POP,
-  ZERO, CROWD_ZERO, insideZero, zeroFromResult, RESULT_GLYPH, zeroTag, METER, share, meterBars, meterBarSpots, meterWave, inPlay,
+  ZERO, CROWD_ZERO, insideZero, zeroFromResult, RESULT_GLYPH, zeroTag, METER, PUZZLE_FULL, share, meterBars, meterBarSpots, meterWave, inPlay,
 } from '../src/math/pieces.js';
 import {
   excessPerMillion, timesEarth, hydrogenInDrop, molecules, hydrogenSpot, picture, scanPixel, PHYS,
@@ -174,12 +174,17 @@ test('5b. the MRI SIGNAL gets weaker as each ↓ joins and is flat at 0; the 0 g
   assert.equal(bars.length, METER.bars.n);
   for (const b of bars) assert.ok(b.x >= METER.x && b.x + b.w <= METER.x + METER.w && b.y + b.h <= METER.y + METER.h, 'its bars inside it');
   assert.ok(bars.every((b, i) => !i || b.h > bars[i - 1].h), 'signal bars, each taller than the last');
-  // the puzzle: three ↑, then each ↓ joining makes the signal weaker, down to flat at 0
+  // the puzzle: each ↑ added to the TOTAL makes the signal stronger (Nadia, 2026-11-25), then each ↓ joining makes it
+  // weaker, down to flat at 0
+  const rising = [1, 2, 3].map((k) => share(k, PUZZLE_FULL));
+  assert.deepEqual(rising.map(meterBars), [1, 3, 4], 'one bar, three, four as the ↑ join');
+  assert.ok(rising.every((v, i) => !i || v > rising[i - 1]) && rising[2] === 1, 'stronger with every ↑, full at three');
+  assert.match(main, /showSignal\(total\(groups\.flat\(\)\.map\(\(r\) => dirs\[r\] \?\? dirOf\(r\)\)\), PUZZLE_FULL\);/, 'the meter grows as each ↑ joins');
   let s = start();
-  const shares = [share(totalOf(s), inPlay(s).length)];
-  for (const [id, p] of [['D0', 0], ['D1', 1], ['D2', 2]]) { s = pair(s, id, p); shares.push(share(totalOf(s), inPlay(s).length)); }
-  assert.deepEqual(shares, [1, 0.5, 0.2, 0], 'full, then weaker with every ↓, then 0');
-  assert.deepEqual(shares.map(meterBars), [4, 2, 1, 0], 'four bars, two, one, none');
+  const shares = [share(totalOf(s), PUZZLE_FULL)];
+  for (const [id, p] of [['D0', 0], ['D1', 1], ['D2', 2]]) { s = pair(s, id, p); shares.push(share(totalOf(s), PUZZLE_FULL)); }
+  assert.deepEqual(shares, [1, 2 / 3, 1 / 3, 0], 'full, then weaker with every ↓, then 0');
+  assert.deepEqual(shares.map(meterBars), [4, 3, 1, 0], 'four bars, three, one, none');
   assert.ok(shares.every((v, i) => !i || v < shares[i - 1]), 'always weaker, never stronger, as the arrows balance');
   assert.ok(!/[1-9]/.test(meterWave(0).replace(/M[\d.]+ |L[\d.]+ /g, '').replace(new RegExp(String(METER.wave.y), 'g'), '')), 'at 0 the wave is a flat line');
   // the magnet: the crowd's signal comes back, faint
@@ -197,7 +202,7 @@ test('5b. the MRI SIGNAL gets weaker as each ↓ joins and is flat at 0; the 0 g
   }
   // the scene: the meter in the drop's scene (no new scene); the magnets inside the 0; the covered 0 frosted
   assert.match(main, /board\.append\(scanner, lens, water, puzzle, screenShift, eyeScene, panel, meter, piecesLayer, frost, compareLayer\);/);
-  assert.match(main, /showSignal\(totalOf\(state\), inPlay\(state\)\.length\);/, 'each ↓ that joins: the signal gets weaker');
+  assert.match(main, /showSignal\(totalOf\(state\), PUZZLE_FULL\);/, 'each ↓ that joins: the signal gets weaker');
   assert.match(main, /await intoZero\(\);/, 'at 0, the magnets go inside the 0');
   assert.match(main, /const covered = \(v\) => \{ frost\.classList\.toggle\('on', v\)/, 'a covered 0 is the 0, frosted, not a box');
   assert.ok(!/class: 'cover'/.test(main), 'no box over the drop');

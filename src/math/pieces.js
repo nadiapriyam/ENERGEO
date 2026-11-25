@@ -160,12 +160,15 @@ export function zeroFromResult(z = ZERO) {
 export const zeroTag = (z) => ({ x: 0, y: z.ry - z.end / 2, h: 24 });
 
 // ── the MRI signal, beside the TOTAL ────────────────────────────────────────────────────────────────
-// A small screen in the drop's scene: what the scanner can pick up from the drop. Its wave is as tall as the share of
-// the drop's arrows that line up, |TOTAL| / arrows (the scanner's signal follows the drop's net magnetization), and its
-// four bars light with it. As ↓ pair with ↑ the wave shrinks to a flat line; when the scanner's magnet tips the
-// balance it comes back, faint.
+// A small screen in the drop's scene: what the scanner can pick up from the drop. The scanner's signal follows the
+// drop's net magnetization, so the wave is as tall as |TOTAL|, against the strongest the scene's arrows can give (`full`:
+// the puzzle's three ↑, or the crowd's 24 arrows all lined up), and its four bars light with it. As each ↑ joins the
+// TOTAL the signal grows (Nadia, 2026-11-25: "before the user puts the arrows the mri signal should increase as well");
+// as ↓ pair with ↑ it shrinks to a flat line; when the scanner's magnet tips the balance it comes back, faint.
+/** The puzzle's strongest signal: its three ↑. */
+export const PUZZLE_FULL = 3;
 export const METER = { x: 528, y: 10, w: 104, h: 106, label: 27, wave: { y: 62, h: 34, pad: 10 }, bars: { y: 104, n: 4, w: 10, gap: 6, h: [5, 9, 13, 17] } };
-export const share = (value, count) => (count ? Math.abs(value) / count : 0);
+export const share = (value, full) => (full ? Math.min(1, Math.abs(value) / full) : 0);
 /** The meter's wave for a share (0…1), shifted along by `phase` (in waves). */
 export function meterWave(s, phase = 0, n = 64) {
   const { x, w, wave } = METER;

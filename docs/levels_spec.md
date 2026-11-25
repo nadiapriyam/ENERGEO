@@ -673,6 +673,23 @@ parts we can't see is possible, that we know a few ways, and that ENERGEO sets o
   The four hidden notes are blue, coral, purple and gold, in Level 1, in Level 2's side by side and as the final
   level's lights. Every detail stays.
 
+## Level 2: the MRI SIGNAL grows as the arrows join; all three levels: a quicker pace (2026-11-25). Nadia, verbatim (two messages):
+
+> alsso when adding the arrows to the mri signal before the user puts the arrows the mri signal should increase as well
+
+> increase the pace more
+
+### What changes
+
+- **The MRI SIGNAL grows, then weakens.** As each ↑ is added to the TOTAL SIGNAL (TOTAL 1, 2, 3), the monitor's wave
+  grows and its bars light: one bar, three bars, four bars (full). Then, as each ↓ joins: three bars, one bar, a flat
+  line at 0. The wave is now as tall as |TOTAL| against the strongest the drop's arrows can give (three ↑), the way a
+  scanner's signal follows the net magnetization; for the scanner's many pairs it is measured against all 24 arrows
+  lined up, so the nudged signal (TOTAL 2) still shows faint, one bar. (Before, it was |TOTAL| ÷ the arrows in the drop,
+  which stayed full while the ↑ were added.)
+- **A quicker pace**: 300 words a minute (was 250), a short line at least 0.8 seconds; Next still after half of the
+  reading time left.
+
 ## All three levels: the skip instruction says it is optional (2026-11-25). Nadia, verbatim:
 
 > can you say press space to skip any portion and say this is optional not required on the front the levels will progress normally, but say it short

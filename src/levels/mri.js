@@ -16,9 +16,9 @@ import { COPY } from './copyMri.js';
 import { person, speaker } from './characters.js';
 import { figureAt } from '../math/characters.js';
 import {
-  start, pair, dropTarget, tapTarget, totalOf, inPlay, pairedCount, restingSpot, total, layout, puzzleGroups, frame, sumLayout, crowd, crowdDirections,
+  start, pair, dropTarget, tapTarget, totalOf, pairedCount, restingSpot, total, layout, puzzleGroups, frame, sumLayout, crowd, crowdDirections,
   ARRANGEMENTS, PAIRS, VIEW, PANEL, DROP, CROWD, RADIO, POP, CROWD_SHOWN, FIELD_LINES, FIELD_SPAN, FLIP, dirOf,
-  ZERO, CROWD_ZERO, zeroPath, hollowPath, zeroFromResult, zeroTag, METER, share, meterWave, meterBars, meterBarSpots,
+  ZERO, CROWD_ZERO, zeroPath, hollowPath, zeroFromResult, zeroTag, METER, PUZZLE_FULL, share, meterWave, meterBars, meterBarSpots,
 } from '../math/pieces.js';
 import {
   HOUSING, BORE, TUNNEL, COILS, TABLE, PEDESTAL, PATIENT, FLOOR, SLIDE, OPERATOR, ZOOM, ATOM, molecules, hydrogenSpot, SCREEN, picture,
@@ -284,8 +284,8 @@ function drawResult(value) {
 let meterNow = 0;
 let meterTarget = 0;
 let meterRaf = 0;
-function showSignal(value, count) {
-  meterTarget = share(value, count);
+function showSignal(value, full) {
+  meterTarget = share(value, full);
   const lit = meterBars(meterTarget);
   meterBarEls.forEach((b, i) => b.classList.toggle('lit', i < lit));
   meter.classList.toggle('flat', meterTarget === 0);
@@ -361,7 +361,7 @@ function settle(id, p) {
     drawSum(puzzleGroups(state));
     drawResult(totalOf(state));
     popValue(dirs[id] ?? dirOf(id));                         // a ↓ joins: −1
-    showSignal(totalOf(state), inPlay(state).length);       // and the MRI signal gets weaker
+    showSignal(totalOf(state), PUZZLE_FULL);                 // and the MRI signal gets weaker
     afterPair();
     if (FAST && !locked) autoPair();                         // fast-forwarding: the next ↓ pairs itself
   }, REDUCED || FAST ? 0 : 240);
@@ -545,7 +545,7 @@ async function scene5() {                                   // the drop, and its
     drawSum(groups);
     drawResult(total(groups.flat().map((r) => dirs[r] ?? dirOf(r))));   // the result counts up as each arrow joins: +1
     popValue(dirs[id] ?? dirOf(id));
-    showSignal(total(groups.flat().map((r) => dirs[r] ?? dirOf(r))), k);
+    showSignal(total(groups.flat().map((r) => dirs[r] ?? dirOf(r))), PUZZLE_FULL);   // … and the MRI signal grows with it
     await wait(420);
   }
   drawResult(totalOf(state));
@@ -691,7 +691,7 @@ function showArrangement(k) {                               // pieces move into 
 function revealArrangement(k) {                             // the TOTAL shows what is now behind its 0
   drawSum(ARRANGEMENTS[k].groups);
   drawResult(total(ARRANGEMENTS[k].groups.flat()));       // the same 0, computed from the pieces behind it
-  showSignal(total(ARRANGEMENTS[k].groups.flat()), ARRANGEMENTS[k].groups.flat().length);
+  showSignal(total(ARRANGEMENTS[k].groups.flat()), ARRANGEMENTS[k].groups.flat().length);   // 0: flat
 }
 const covered = (v) => { frost.classList.toggle('on', v); if (v) drawSumUnknown(); };   // the inside of the 0, frosted over
 
