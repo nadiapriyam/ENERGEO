@@ -109,6 +109,7 @@ export function reader(root, { fast = () => false } = {}) {
     return [...n.querySelectorAll('.line:not(.mri-sentence), .bubble')].map((e) => e.textContent).join(' ');
   };
   const ingest = (records) => {
+    if (fast()) return;                                      // fast-forwarding to a scene: the lines passed over are not waited for
     for (const m of records) {
       const texts = m.type === 'childList' ? [...m.addedNodes].map(readable)
         : m.target.classList?.contains('frag') && m.target.classList.contains('shown') && !/\bshown\b/.test(m.oldValue ?? '') ? [m.target.textContent] : [];

@@ -29,6 +29,10 @@ export const LEVELS = {
   skipTap: 'Optional: tap to skip. Without it, the levels play normally.',
   wholeStory: 'The whole story',
   close: 'Close',
+  deeperKicker: 'Go deeper',                                // the card under the final level's last line (Nadia, 2026-11-25): the research behind ENERGEO
+  deeperTitle: 'The research behind ENERGEO',
+  deeperDek: 'What ENERGEO is, mathematically, its geometries, and its applications so far.',
+  deeperOpen: 'Explore the research ›',
   goHere: 'Go here',                                        // on each picture in the side panel: tap to go to that scene
   steps: 'Level 3, step by step',
   stepsHint: 'Scroll left and right, or use the arrows. Each frame is the level itself, stopped at that step.',

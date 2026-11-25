@@ -97,6 +97,26 @@ function chain(from, buttonId, text, section, load) {
 chain('note-lesson', 'next-level', LEVELS.next, 'level-2', () => import('./mri.js'));
 chain('mri-lesson', 'next-level-3', LEVELS.next3, 'level-3', () => import('./prism.js'));
 
+/**
+ * When the final level ends, "Go deeper" appears under its last line, like an "Up next" card: for those who want to
+ * explore more deeply, it opens the research behind ENERGEO (try/deeper/: what ENERGEO is mathematically, its
+ * geometries, what is proved and open, and the applications tested, laid out from the research records). Nadia
+ * (2026-11-25): "a snapshot ... that we can put on the last slide for those who want to explore more deeply".
+ */
+function goDeeper(from) {
+  const open = Object.assign(document.createElement('a'), { className: 'action next-level', href: 'deeper/', textContent: LEVELS.deeperOpen });
+  const card = Object.assign(document.createElement('div'), { className: 'up-next go-deeper', hidden: true });
+  card.append(span('up-next-kicker', LEVELS.deeperKicker), span('up-next-title', LEVELS.deeperTitle), span('up-next-dek', LEVELS.deeperDek), open);
+  document.getElementById(from).addEventListener('level-finished', () => {
+    const column = document.getElementById(from).querySelector('.reader-column');
+    column?.append(card);                                    // under the final level's words …
+    card.hidden = false;
+    const words = column?.querySelector(':scope > .prompt');
+    requestAnimationFrame(() => { card.classList.add('in'); open.classList.add('in'); words?.scrollTo({ top: words.scrollHeight }); });   // … its last line still in view
+  }, { once: true });
+}
+goDeeper('prism-lesson');
+
 // Opening one level on its own, for review: try/#level-2 or try/#level-3 skips straight to it. try/?steps shows every
 // step of Level 3 side by side.
 const review = query.has('step') || query.has('from');     // a Level 3 step (no #anchor, so a frame never scrolls the page around it)

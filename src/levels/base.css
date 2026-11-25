@@ -446,6 +446,12 @@ html.has-story-bar { --bar-h: 62px; }
   .reader-column > .up-next .up-next-dek { display: none; }
   .reader-column > .up-next .up-next-title { font-size: 1.22rem; margin-bottom: 0.35em; }
 }
+@media (max-width: 999px), (max-aspect-ratio: 1/1) {           /* "Go deeper" with the words under the board: one slim row, so the final level's last line stays in view */
+  .reader-column > .go-deeper { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 0.4em 0.55em 0.4em 0.75em; box-shadow: 4px 4px 0 var(--mustard); }
+  .reader-column > .go-deeper :is(.up-next-title, .up-next-dek) { display: none; }
+  .reader-column > .go-deeper .up-next-kicker { white-space: nowrap; letter-spacing: 0.1em; }
+  .reader-column > .go-deeper .next-level { flex: none; font-size: 1rem; padding: 0.3em 0.85em; white-space: nowrap; box-shadow: 2px 2px 0 var(--ink); }
+}
 @media (max-height: 760px) {
   .level-tag .level-title { font-size: 1.65rem; }
   .level-tag .level-dek { font-size: 1.1rem; }

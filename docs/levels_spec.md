@@ -138,6 +138,10 @@ and "Learn" (Nadia, 2026-11-24: "name it energeo demo on the top corner left"; 2
 education layer so name it somehting along those lines but short"). On the first title slide:
 "Optional: press space to skip any part. Without it, the levels play normally."
 (on a touch screen, "Optional: tap to skip. Without it, the levels play normally.").
+At the end of the final level, the "Go deeper" card (see "The final level: "Go deeper", the research behind ENERGEO" below):
+"Go deeper", "The research behind ENERGEO",
+"What ENERGEO is, mathematically, its geometries, and its applications so far."
+and "Explore the research ›".
 
 ## What the new lines claim, and what they do not
 
@@ -672,6 +676,90 @@ parts we can't see is possible, that we know a few ways, and that ENERGEO sets o
   and your speech bubbles' tint. The final level's dark is a deeper shade of the deep blue, so its lights still glow.
   The four hidden notes are blue, coral, purple and gold, in Level 1, in Level 2's side by side and as the final
   level's lights. Every detail stays.
+
+## The final level: "Go deeper", the research behind ENERGEO (2026-11-25). Nadia, verbatim:
+
+> is there a way we can include a snapshot of what we worked on with energeo before starting these interactives that we can put on the last slide for those who want to explore more deeply, and mathematically what energeo specifically is and the geometries associated with it, and a snapshot of some applications associated with what we talked about?
+
+### What changes
+
+- **On the last slide.** When the final level ends ("You just took your first steps into it."), a card appears under
+  its last line, the way "Up next" does between levels. The story itself is unchanged: nothing is added after its
+  last line. The card's words:
+  - "Go deeper"
+  - "The research behind ENERGEO"
+  - "What ENERGEO is, mathematically, its geometries, and its applications so far."
+  - "Explore the research ›" (the button; it opens try/deeper/)
+
+  On a phone or tablet, where the words sit under the board, the card is one slim row ("Go deeper" and its button),
+  so the final line stays in view above it.
+- **A new page, try/deeper/, "The research behind ENERGEO".** It is a snapshot for those who want to go deeper, in five parts:
+  what ENERGEO is mathematically; the geometries, step by step; what has been proved; what is still open; and
+  applications. Everything on it except the words listed below is read from the research records, unchanged, when the
+  site is built: Nadia's three hypotheses in her own words, with her shared evidence (research/hypotheses/H1–H3.md);
+  the structure that became visible and the 20 steps of the questions, each with its status (research/canonical_story.json
+  and research/preview.json); the six groups of proved results, each with its question, an equation and its verifier
+  count; the six open questions; and the current version of the application matrix (research/application_matrix.md:
+  each candidate, its result, its transfer depth, its Backbone Support % and its AI Slop / Delusion Risk %, and the
+  novelty line). Every status badge uses the research preview's names and line styles.
+- **The page's own words**, in order:
+  - "ENERGEO Learn · Go deeper"
+  - "The research behind ENERGEO"
+  - "For anyone who wants more than the story: what ENERGEO is, mathematically, the geometries the research works with, what has been proved and what is still open, and the applications tested so far. Every status here is taken from the project's research records."
+  - "‹ Back to the levels"
+  - "Contents" (for screen readers: the row of section links)
+  - "What ENERGEO is, mathematically"
+  - "ENERGEO starts from a hypothesis of Nadia's, in three parts. Each is a target: the research looks for the mathematics that would realise it, and records only what is proved."
+  - "Hypothesis" (the badge on each of H1, H2 and H3)
+  - "Her evidence, in her words"
+  - "The Fourier relation it starts from: a signal is the sum of its pure tones, and each tone's amount is an inner product."
+  - "How the research works"
+  - "Construct first."
+  - "Classify second."
+  - "Preserve the zero."
+  - "Investigate its geometry."
+  - "Known structures are examples, not the boundary of the search space."
+  - "Search as though the theorem is true. Report only what the evidence actually proves."
+  - "The research programme is called Geometry of Representation; ENERGEO is the name of the project and of its later energy application."
+  - "The geometries, step by step"
+  - "The questions that led from one mathematical relation to the next, in order, and the general structure that became visible along the way. Each step carries the status of what it holds."
+  - "The structure that became visible"
+  - "What has been proved"
+  - "Six groups of results, each with its question and its exact equation, checked by the project's verifier."
+  - "verifier cards pass" (after each group's count, such as "11 / 11 verifier cards pass")
+  - "What is still open"
+  - "The questions the research is still working on."
+  - "Applications"
+  - "In the levels: known applications of the same mathematics"
+  - "Sound": "Tuners and spectrum analysers take a note apart into its pure tones with the Fourier transform."
+  - "Light": "A prism, and the spectrometers built on the same idea, take light apart into its colors."
+  - "MRI": "A scanner collects its signal as frequencies and turns it into a picture with the Fourier transform."
+  - "Pictures and phones": "JPEG images and Wi-Fi signals are stored and sent as sums of waves, using close relatives of the Fourier transform."
+  - "Tested in the research: does the same rule carry over unchanged?"
+  - "Each candidate pair of physical things was tested against one mathematical rule, applied unchanged: a real signal's frequencies come in mirror pairs, each the complex conjugate of the other. "Transfer depth" says how far the rule carried over. "Backbone support" is how directly and deeply the result supports the backbone of the theory; "AI slop / delusion risk" is how much of a claimed connection rests on interpretation or framing rather than on the mathematics."
+  - The table's columns: "Candidate", "Result", "Transfer depth", "Backbone support", "AI slop / delusion risk"
+  - "ENERGEO's own application"
+  - "See every result, open question and number: the full research preview ›" (it opens the full research preview, research-preview/)
+- **Fixed on the way: going to a scene from "Scroll through".** The level fast-forwards through the parts before the
+  scene, and the lines it passed over were still being counted as lines to read, so the scene's own lines waited
+  minutes for them (in the final level's last scene, only its first line appeared). Lines passed over while
+  fast-forwarding are no longer waited for; the scene plays at the usual reading pace.
+
+### What the page claims, and what it does not
+
+- **ENERGEO is a hypothesis.** H1, H2 and H3 carry the badge "Hypothesis", as in docs/objective.md (status:
+  HYPOTHESIS). The page says the research looks for the mathematics that would realise each part and records only what
+  is proved; it does not say any part is proved.
+- **The known applications are known mathematics**, marked "known / established mathematics": the Fourier transform in
+  tuners and spectrum analysers, spectrometers, MRI reconstruction, and its close relatives in JPEG (the discrete
+  cosine transform) and Wi-Fi (OFDM). They are applications of the Fourier transform, not results of ENERGEO.
+- **The tested applications are the records' own.** The table is the current version of the application matrix,
+  unchanged, with its novelty line: every result is VALIDATION OF KNOWN MATHEMATICS or a project classification of
+  known mathematics, and there is no nontrivial predictive transfer.
+- **ENERGEO's own application is open.** It is shown as the open question research/preview.json gives it ("Energeo:
+  the downstream application"), with its status. The page does not work on it.
+- The formula is the Fourier series and the inner product that gives each coefficient, as Nadia's evidence writes it
+  (f hat (k) * e^2pi*ikt).
 
 ## Level 2: the MRI SIGNAL grows as the arrows join; all three levels: a quicker pace (2026-11-25). Nadia, verbatim (two messages):
 
