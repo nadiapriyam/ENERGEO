@@ -142,8 +142,19 @@ body {
 .intro-note { display: block; margin-top: 1.2em; font-size: clamp(1rem, 1.6vw, 1.2rem); font-style: italic; color: #5fd0c7; opacity: 0; transition: opacity 700ms ease-out 1900ms; }
 .level-intro.in .intro-kicker, .level-intro.in .intro-title, .level-intro.in .intro-dek, .level-intro.in .intro-note { opacity: 1; transform: none; filter: none; }
 .level-intro.in .intro-rule { transform: none; }
+/* the first title slide: how to skip */
+.intro-skip { position: absolute; left: max(8vw, 24px); bottom: max(5vh, 24px); font-size: clamp(0.95rem, 1.5vw, 1.15rem); color: var(--on-board-2); opacity: 0; transition: opacity 700ms ease-out 2400ms; }
+.level-intro.in .intro-skip { opacity: 1; animation: skip-hint 2.4s ease-in-out 3.2s infinite; }
+.intro-skip kbd {
+  display: inline-block; margin: 0 0.35em; padding: 0.08em 0.9em 0.12em; font: inherit; font-weight: 700; color: var(--pine);
+  background: var(--on-board); border-radius: 5px; box-shadow: 0 3px 0 #8aa1ae;
+}
+.intro-skip-tap { display: none; }
+@media (hover: none) and (pointer: coarse) { .intro-skip-key { display: none; } .intro-skip-tap { display: inline; } }
+@keyframes skip-hint { 50% { opacity: 0.55; } }
 @media (prefers-reduced-motion: reduce) {
-  .level-intro, .intro-kicker, .intro-title, .intro-rule, .intro-dek, .intro-note { transition: none; }
+  .level-intro, .intro-kicker, .intro-title, .intro-rule, .intro-dek, .intro-note, .intro-skip { transition: none; }
+  .level-intro.in .intro-skip { animation: none; }
 }
 .next-level.in { opacity: 1; }
 

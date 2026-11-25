@@ -25,6 +25,8 @@ export const LEVELS = {
   scrollThrough: 'Scroll through',
   brand: 'ENERGEO',                                         // the name in the top bar's left corner, with "Learn": the education layer (Nadia, 2026-11-25)
   layer: 'Learn',
+  skipKey: 'Press space to skip',                            // on the first title slide (Nadia, 2026-11-25); a touch screen shows skipTap
+  skipTap: 'Tap to skip',
   wholeStory: 'The whole story',
   close: 'Close',
   goHere: 'Go here',                                        // on each picture in the side panel: tap to go to that scene

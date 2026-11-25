@@ -133,3 +133,15 @@ test('6. "ENERGEO Learn" in the top bar\'s left corner: the education layer (Nad
   assert.match(read('src/levels/base.css'), /\.story-brand \{\s*position: absolute; left: max\(16px/, 'in the left corner');
   assert.ok(read('docs/levels_spec.md').includes('> name it energeo demo on the top corner left'), "Nadia's message, verbatim");
 });
+
+test('7. Space skips: a line on its way, a button, Next; the first title slide says so (Nadia, 2026-11-25)', () => {
+  const r = read('src/levels/reader.js');
+  assert.match(r, /else if \(e\.key === ' ' && \(!a \|\| a === document\.body\)\) \{ current\.skip\(\); e\.preventDefault\(\); \}/, 'Space, when nothing else has the key');
+  assert.match(r, /skip\(\) \{[\s\S]*if \(waiting\) \{ readyAt = 0;[\s\S]*for \(const done of \[\.\.\.skippable\]\) done\(\);/, 'Next pressed, or the waits cut short');
+  assert.match(r, /return waitFor\(left\);/, 'a line on its way can be skipped');
+  assert.deepEqual([LEVELS.skipKey, LEVELS.skipTap], ['Press space to skip', 'Tap to skip']);
+  const page = read('src/levels/page.js');
+  assert.match(page, /if \(firstIntro\) \{/, 'only on the first title slide');
+  assert.match(page, /\['Enter', ' ', 'ArrowRight'\]\.includes\(e\.key\)/, 'Space skips a title slide');
+  assert.ok(read('docs/levels_spec.md').includes('> add an option to press space to skip and but that instruction for the first title slide'), "Nadia's message, verbatim");
+});

@@ -135,7 +135,8 @@ below): the tab "Scroll through" (in the top bar), the panel's title "The whole 
 each picture in the panel (tap it, and the level goes to that scene: see "Scroll through: go to a scene" below). While
 more lines are on their way: nothing (the "…" was taken out, 2026-11-24). In the top bar's left corner: "ENERGEO"
 and "Learn" (Nadia, 2026-11-24: "name it energeo demo on the top corner left"; 2026-11-25: "actually its energeo
-education layer so name it somehting along those lines but short").
+education layer so name it somehting along those lines but short"). On the first title slide: "Press space to skip"
+(on a touch screen, "Tap to skip").
 
 ## What the new lines claim, and what they do not
 
@@ -670,6 +671,21 @@ parts we can't see is possible, that we know a few ways, and that ENERGEO sets o
   and your speech bubbles' tint. The final level's dark is a deeper shade of the deep blue, so its lights still glow.
   The four hidden notes are blue, coral, purple and gold, in Level 1, in Level 2's side by side and as the final
   level's lights. Every detail stays.
+
+## All three levels: Space to skip (2026-11-25). Nadia, verbatim:
+
+> add an option to press space to skip and but that instruction for the first title slide
+
+### What changes
+
+- **Space skips ahead**, everywhere in the levels: on a title slide, the level starts at once; while the next line is
+  on its way, it comes at once; when a button is about to appear (such as "Zoom in"), it appears at once; where the
+  story waits for Next, Space presses Next; looking back with Back, Space shows the next part. Space does nothing extra
+  when a button, an answer or a board has the keyboard focus (they use Space themselves), and the page no longer
+  scrolls on Space while a level is playing.
+- **The instruction**, on the first title slide only (Level 1's, or whichever level opens the page): "Press space to
+  skip", with "space" drawn as a key, near the bottom of the slide, gently pulsing. On a touch screen it reads "Tap to
+  skip" instead (a tap on the slide has always moved on).
 
 ## All three levels: "ENERGEO Learn" in the top left corner (2026-11-25). Nadia, verbatim:
 

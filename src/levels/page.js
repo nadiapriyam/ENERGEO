@@ -29,6 +29,7 @@ const query = new URLSearchParams(location.search);
 // key; then the level starts. Not while recording the comic, in a review frame, fast-forwarding or going to a scene.
 const noIntro = ['record', 'step', 'from', 'steps'].some((k) => query.has(k)) || !!jumpTo;
 const REDUCED_PAGE = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let firstIntro = true;                                       // the first title slide says how to skip (Space, or a tap)
 function intro(section) {
   if (noIntro) return Promise.resolve();
   const level = document.getElementById(section);
@@ -36,6 +37,15 @@ function intro(section) {
   const card = Object.assign(document.createElement('button'), { type: 'button', className: 'level-intro' });
   card.setAttribute('aria-label', [name, title, dek, note].filter(Boolean).join('. '));
   card.append(span('intro-kicker', name), span('intro-title', title), span('intro-rule', ''), span('intro-dek', dek), ...(note ? [span('intro-note', note)] : []));
+  if (firstIntro) {                                          // "Press space to skip" (a touch screen: "Tap to skip")
+    const [before, after] = LEVELS.skipKey.split('space');
+    const key = span('intro-skip-key', before);
+    key.append(Object.assign(document.createElement('kbd'), { textContent: 'space' }), after);
+    const hint = span('intro-skip', '');
+    hint.append(key, span('intro-skip-tap', LEVELS.skipTap));
+    card.append(hint);
+  }
+  firstIntro = false;
   level.append(card);
   requestAnimationFrame(() => card.classList.add('in'));
   const stay = Math.min(7000, Math.max(3500, readingTime([title, dek, note].filter(Boolean).join(' ')) + 1500));

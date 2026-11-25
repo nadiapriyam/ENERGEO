@@ -27,6 +27,7 @@ addEventListener('keydown', (e) => {                       // only when nothing 
   if (a && a !== document.body && !current.el.querySelector('.reader').contains(a)) return;
   if (e.key === 'ArrowRight' || (e.key === 'Enter' && (!a || a === document.body))) { if (current.forward()) e.preventDefault(); }
   else if (e.key === 'ArrowLeft') { if (current.backward()) e.preventDefault(); }
+  else if (e.key === ' ' && (!a || a === document.body)) { current.skip(); e.preventDefault(); }   // Space skips (Nadia, 2026-11-25)
 });
 
 // ── the bar for the whole story, at the top: one section per level, each ending in its marker ─────────────────────
@@ -129,6 +130,12 @@ export function reader(root, { fast = () => false } = {}) {
   let page = -1;                                             // -1: now; otherwise the index of the earlier part on show
   let done = false;
   let readyAt = 0;                                           // Next lights up once the words on show have been read
+  const skippable = new Set();                               // the waits Space can cut short: a line on its way, a button
+  const waitFor = (ms) => new Promise((resolve) => {
+    const done = () => { clearTimeout(timer); skippable.delete(done); resolve(); };
+    const timer = setTimeout(done, ms);
+    skippable.add(done);
+  });
   let readyTimer = 0;
   const parts = () => [...document.querySelectorAll('#story-record .recorded-part')].filter((p) => p.dataset.level === level);
   const fill = () => { if (bar && !done) bar.set(level, Math.min(0.96, count / total)); };
@@ -213,12 +220,23 @@ export function reader(root, { fast = () => false } = {}) {
       });
     },
     /** Resolves once the words on show have been read (at once while fast-forwarding or recording). */
-    read() { return fast() ? Promise.resolve() : new Promise((r) => setTimeout(r, caughtUp() * READING.nextShare)); },
+    read() { return fast() ? Promise.resolve() : waitFor(caughtUp() * READING.nextShare); },
+    /**
+     * Space: skip ahead (Nadia, 2026-11-25: "add an option to press space to skip"). A line on its way, or a button,
+     * comes at once; where the story waits for Next, Next is pressed; looking back, the next part shows.
+     */
+    skip() {
+      if (page >= 0) return forward();
+      if (waiting) { readyAt = 0; clearTimeout(readyTimer); refresh(); return forward(); }
+      if (!skippable.size) return false;
+      for (const done of [...skippable]) done();
+      return true;
+    },
     /** A beat between lines of the same part: the next line follows by itself, once the earlier ones have been read (at least `ms`), and they stay. */
     beat(ms = BEAT) {
       if (fast()) return Promise.resolve();
       const left = RECORDING ? ms : Math.max(ms, caughtUp());
-      return new Promise((r) => setTimeout(r, left));
+      return waitFor(left);
     },
   };
   current = self;
